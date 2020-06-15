@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: mimart
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: 0a508e52189938447ea6fc1928d441d81deab392
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 2bdb305e0342dc9b7807ad64de9b5d872237afcc
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714013"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014334"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>エンド ユーザーがアプリケーションに同意する方法を構成する
 
@@ -49,7 +49,7 @@ Azure portal を使用してユーザーの同意設定を構成するには:
 1. **[User consent for applications]\(アプリケーションに対するユーザーの同意\)** で、すべてのユーザーに対して構成する同意設定を選択します。
 1. **[Save]\(保存\)** を選択して設定を保存します。
 
-![ユーザーの同意設定](./media/configure-user-consent/setting-for-all-users.png)
+:::image type="content" source="media/configure-user-consent/setting-for-all-users.png" alt-text="ユーザーの同意設定":::
 
 > [!TIP]
 > ユーザーの同意が許可されていないアプリケーションを管理者がレビューおよび承認するようにユーザーが要求できるようにするには (たとえば、ユーザーの同意が無効になっているとき、またはユーザーに付与することが許可されていないアクセス許可をアプリケーションが要求しているとき)、[管理者の同意ワークフローを構成すること](configure-admin-consent-workflow.md)を検討します。
@@ -102,7 +102,7 @@ Azure portal を使用してユーザーの同意設定を構成するには:
 
 この例では、シングル サインオンに必要な最小限のアクセス許可セットを分類しました。
 
-![アクセス許可の分類](./media/configure-user-consent/permission-classifications.png)
+:::image type="content" source="media/configure-user-consent/permission-classifications.png" alt-text="アクセス許可の分類":::
 
 > [!TIP]
 > Microsoft Graph API の場合、基本的なシングル サインオンを実行するために必要な最低限のアクセス許可は、`openid`、`profile`、`User.Read`、および `offline_access` です。 これらのアクセス許可を使用すると、アプリはサインインしているユーザーのプロファイルの詳細を読み取ることができ、ユーザーがアプリを使用しなくなった場合でもこのアクセスを維持できます。
@@ -192,7 +192,7 @@ Azure portal を使用してユーザーの同意設定を構成するには:
 
 この例では、すべてのグループ所有者が、そのグループのデータにアクセスするアプリに同意することが許可されています。
 
-![アクセス許可の分類](./media/configure-user-consent/group-owner-consent.png)
+:::image type="content" source="media/configure-user-consent/group-owner-consent.png" alt-text="グループ所有者の同意設定":::
 
 ### <a name="configure-group-owner-consent-using-powershell"></a>PowerShell を使用してグループ所有者の同意を構成する
 

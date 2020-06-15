@@ -3,12 +3,12 @@ title: 効果のしくみを理解する
 description: Azure Policy の定義には、コンプライアンスが管理および報告される方法を決定するさまざまな効果があります。
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6c2dc8303b630eb01de5c3ad9e3504dfec5256bc
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 223acb523b8a7e4bc14d894c0eb6781d147b8923
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746898"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84308882"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy の効果について
 
@@ -316,7 +316,7 @@ DeployIfNotExists 効果の **details** プロパティは、照合する関連�
 
 この効果は、状況をテストする場合や、効果がポリシー定義によってパラメーター化されている場合に役立ちます。 この柔軟性により、ポリシーのすべての割り当てを無効にするのではなく、単一の割り当てを無効にすることができます。
 
-無効にした効果の代替は、ポリシー割り当てに設定されている **enforcementMode です。
+無効にした効果の代替は、ポリシー割り当てに設定されている **enforcementMode** です。
 **enforcementMode** が _[無効]_ の場合、リソースは引き続き評価されます。 アクティビティ ログなどのログ記録や、ポリシーの効果はありません。 詳細については、[ポリシー割り当て - 強制モード](./assignment-structure.md#enforcement-mode)に関するページを参照してください。
 
 

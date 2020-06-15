@@ -12,12 +12,12 @@ ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ff5d8ecaaeff67e1a97c4afd4ca8119f8ac7c1e1
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 68143c4ac3851604996e1f7ba2adce48934e59c5
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83696951"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84295390"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML アプリケーションを Azure AD B2C に登録する
 
@@ -265,12 +265,12 @@ Azure AD B2C ポリシー IDP メタデータは、SAML ID プロバイダーの
 
 ## <a name="4-setup-application-in-the-azure-ad-b2c-directory"></a>4.Azure AD B2C ディレクトリでアプリケーションをセットアップする
 
-### <a name="41-register-your-application-in-azure-active-directory"></a>4.1 Azure Active Directory にアプリケーションを登録する
+### <a name="41-register-your-application-in-azure-ad-b2c"></a>4.1 Azure AD B2C にアプリケーションを登録する
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
 1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
-1. **[アプリの登録 (プレビュー)]** 、 **[新規登録]** の順に選択します。
+1. **[アプリの登録]** を選択し、 **[新規登録]** を選択します。
 1. アプリケーションの**名前**を入力します。 たとえば、*SAMLApp1* です。
 1. **[サポートされているアカウントの種類]** で、 **[この組織のディレクトリ内のアカウントのみ]** を選択します。
 1. **[リダイレクト URI]** で **[Web]** を選択し、「`https://localhost`」と入力します。 この値は、後でアプリケーションの登録のマニフェストで変更します。

@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 06/02/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 294a59ed94344ecf590eb9b34f991deaaa10db69
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: c2ffd22c8b3e3ca1786e0a1f905cd07d0568fcf2
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82607386"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84296359"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Azure NetApp Files を使用してホスト プール用の FSLogix プロファイル コンテナーを作成する
 
@@ -231,3 +231,5 @@ FSLogix プロファイル コンテナーは、使いやすい Azure のネイ�
 ## <a name="next-steps"></a>次のステップ
 
 FSLogix プロファイル コンテナーを使用すると、ユーザー プロファイル共有を設定できます。 新しいコンテナーを使用してユーザー プロファイル共有を作成する方法については、「[ファイル共有を使用してホスト プール用のプロファイル コンテナーを作成する](create-host-pools-user-profile.md)」を参照してください。
+
+このほか、Azure Files のファイル共有を作成し、そこに FSLogix プロファイルを格納することもできます。 詳細については、「[ドメイン コントローラーを使用して Azure Files のファイル共有を作成する](create-file-share.md)」を参照してください。

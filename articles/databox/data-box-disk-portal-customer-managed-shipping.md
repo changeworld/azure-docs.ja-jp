@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.author: v-grpr
-ms.openlocfilehash: 74828bfd3a110739afc211a530c11c74387b70ed
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 70c37b60d3b01c939b9b06d6b053b526e036904a
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83748781"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266510"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-disk-in-the-azure-portal"></a>Azure portal で Azure Data Box Disk の自己管理型の発送を使用する
 
@@ -43,11 +43,11 @@ Data Box Disk を注文するときに、自己管理型の発送オプション
 
    ![自己管理の出荷](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
-4. デバイスの準備が完了したら、受け取りをスケジュールします。 Azure Data Box Disk の注文の **[概要]** に移動し、 **[Schedule pickup]\(受け取りのスケジュールを設定\)** を選択します。
+4. デバイスの準備が完了し、電子メール通知を受け取ったら、受け取りをスケジュールします。 Azure Data Box Disk の注文の **[概要]** に移動し、 **[Schedule pickup]\(受け取りのスケジュールを設定\)** を選択します。
 
    ![Data Box デバイスの受け取りを注文する](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-user-pickup-01b.png)
 
-5. **[Schedule pickup for Azure]\(Azure の受け取りのスケジュール\)** の説明に従ってください。 認証コードを取得する前に、[adbops@microsoft.com](mailto:adbops@microsoft.com) にメールを送信して、リージョンのデータセンターからデバイスを受け取るスケジュールを設定する必要があります。
+5. **[Schedule pickup for Azure]\(Azure の受け取りのスケジュール\)** の説明に従ってください。 認証コードを取得する前に、[adbops@microsoft.com](mailto:adbops@microsoft.com) にメールを送信して、リージョンのデータセンターからデバイスを受け取りのスケジュールを設定する必要があります。
 
    ![集荷のスケジュール](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-user-pickup-02c.png)
 
@@ -57,11 +57,11 @@ Data Box Disk を注文するときに、自己管理型の発送オプション
 
    この**認証コード**をメモしておきます。
 
-   セキュリティ要件に従って、受け取りと返却をスケジュールするときに、受け取りおよび返却を行う人物の名前を指定する必要があります。
+   セキュリティ要件に従って、受け取りをスケジュールするときに、受け取りを行う人物の名前を指定する必要があります。
 
    また、データセンターに受け取りに行くユーザーの詳細を指定する必要もあります。 お客様または連絡担当者は、データセンターで検証される政府発行の写真付きの ID を携帯する必要があります。
 
-   さらに、デバイスを受け取りに行くユーザーにも、**認証コード**が必要です。 承認コードは、データセンターでの受け取り時に検証されます。
+   さらに、デバイスを受け取りに行くユーザーにも、**認証コード**が必要です。 認証コードは、受け取りまたは返却に一意であり、データセンターで検証されます。
 
 7. デバイスをデータセンターから受け取ると、注文は自動的に **[Picked up]\(受け取り済み\)** 状態になります。
 

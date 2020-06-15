@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/26/2020
 ms.topic: how-to
-ms.openlocfilehash: 86ffe47c009f9e0ae121ffc6ab57bff8fb73210f
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 3375b28d94956d5c368db4bf3026bdf52ee2d58e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679197"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021145"
 ---
 # <a name="install-the-remote-rendering-package-for-unity"></a>Unity 用の Remote Rendering パッケージをインストールする
 
@@ -39,13 +39,13 @@ Unity のパッケージの命名規則に従い、パッケージは **com.micr
 }
 ```
 これが追加されたら、Unity のパッケージ マネージャーを使用して、最新バージョンがあることを確認できます。
-より包括的な手順については、「[チュートリアル: Unity プロジェクトをゼロから設定する](../../tutorials/unity/project-setup.md)」を参照してください。
+より包括的な手順については、次をご覧ください: 「[チュートリアル: Unity プロジェクトをゼロから設定する](../../tutorials/unity/project-setup.md)」。
 
 ## <a name="unity-render-pipelines"></a>Unity のレンダリング パイプライン
 
-Remote Rendering は、**ユニバーサル レンダリング パイプライン** と **標準レンダリング パイプライン**の両方で動作します。 パフォーマンス上の理由から、ユニバーサル レンダリング パイプラインを使用することをお勧めします。
+Remote Rendering は、 **:::no-loc text="Universal render pipeline":::** と **:::no-loc text="Standard render pipeline":::** の両方で機能します。 パフォーマンス上の理由から、ユニバーサル レンダリング パイプラインを使用することをお勧めします。
 
-**ユニバーサル レンダリング パイプライン**を使用するには、Unity にそのパッケージをインストールする必要があります。 これを行うには、Unity の **パッケージ マネージャー** UI (パッケージ名 **Universal RP**、バージョン 7.2.1 以降)、または[Unity プロジェクトのセットアップのチュートリアル](../../tutorials/unity/project-setup.md#configure-the-projects-manifest)で説明されているように、`Packages/manifest.json` ファイルを使用します。
+**:::no-loc text="Universal render pipeline":::** を使用するには、Unity にそのパッケージをインストールする必要があります。 これを行うには、Unity の **パッケージ マネージャー** UI (パッケージ名 **Universal RP**、バージョン 7.2.1 以降)、または[Unity プロジェクトのセットアップのチュートリアル](../../tutorials/unity/project-setup.md#configure-the-projects-manifest)で説明されているように、`Packages/manifest.json` ファイルを使用します。
 
 ## <a name="next-steps"></a>次のステップ
 

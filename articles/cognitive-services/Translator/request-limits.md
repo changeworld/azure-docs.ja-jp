@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 03/17/2020
+ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 386f34e001457da4c5ae0e170ab2c090725ad5b7
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 100084a244944bcaf0d566e347d56dd4a03ecfae
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592238"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995787"
 ---
 # <a name="request-limits-for-translator"></a>Translator に対する要求の制限
 
@@ -27,14 +27,14 @@ ms.locfileid: "83592238"
 
 次の表には、Translator の各操作に関する配列要素および文字の制限が一覧表示されています。
 
-| 操作 | 配列要素の最大サイズ |   配列要素の最大数 |  最大要求サイズ (文字数) |
+| 操作 | 配列要素の最大サイズ |    配列要素の最大数 |    最大要求サイズ (文字数) |
 |:----|:----|:----|:----|
-| Translate | 5,000 | 100   | 5,000 |
-| Transliterate | 5,000 | 10    | 5,000 |
-| Detect | 10,000 | 100 |   50,000 |
-| BreakSentence | 10,000    | 100 | 50,000 |
-| 辞書検索| 100 |  10  | 1,000 |
-| 辞書の例 | テキストに 100 と翻訳に 100 (合計 200)| 10|   2,000 |
+| Translate | 5,000    | 100    | 5,000 |
+| Transliterate | 5,000    | 10    | 5,000 |
+| Detect | 10,000 |    100 |    50,000 |
+| BreakSentence | 10,000    | 100 |    50,000 |
+| 辞書検索| 100 |    10    | 1,000 |
+| 辞書の例 | テキストに 100 と翻訳に 100 (合計 200)| 10|    2,000 |
 
 ## <a name="character-limits-per-hour"></a>時間あたりの文字制限
 

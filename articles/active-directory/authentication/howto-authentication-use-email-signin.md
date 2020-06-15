@@ -10,24 +10,24 @@ ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: scottsta
-ms.openlocfilehash: ed317039e683ef36054d5ace612e09ca75dfa11e
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 9a02a01bb55e63322964b52a5f4d6113b3280360
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837311"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220717"
 ---
-# <a name="sign-in-to-azure-using-email-as-an-alternate-login-id-preview"></a>代替ログイン ID としてメールを使用して Azure にサインインする (プレビュー)
+# <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>代替ログイン ID としてメールを使用して Azure Active Directory にサインインする (プレビュー)
 
-多くの組織では、ユーザーがオンプレミス ディレクトリ環境と同じ資格情報を使用して Azure にサインインできるようにしたいと考えています。 ハイブリッド認証と呼ばれるこの方法では、ユーザーは 1 組の資格情報を記憶しておくだけでよくなります。
+多くの組織では、ユーザーがオンプレミス ディレクトリ環境と同じ資格情報を使用して Azure Active Directory (Azure AD) にサインインできるようにしたいと考えています。 ハイブリッド認証と呼ばれるこの方法では、ユーザーは 1 組の資格情報を記憶しておくだけでよくなります。
 
 一部の組織では、次の理由によりハイブリッド認証に移行していません。
 
-* 既定で、Azure Active Directory (Azure AD) のユーザー プリンシパル名 (UPN) が、オンプレミス ディレクトリと同じ UPN に設定されています。
-* Azure AD UPN を変更すると、オンプレミス環境と Azure 環境の間で不一致が生じ、特定のアプリケーションやサービスで問題が発生する可能性があります。
-* ビジネスまたはコンプライアンス上の理由により、組織では、Azure へのサインインにオンプレミスの UPN を使用したくないと考えています。
+* 既定で、Azure AD のユーザー プリンシパル名 (UPN) が、オンプレミス ディレクトリと同じ UPN に設定されています。
+* Azure AD UPN を変更すると、オンプレミス環境と Azure AD 環境の間で不一致が生じ、特定のアプリケーションやサービスで問題が発生する可能性があります。
+* ビジネスまたはコンプライアンス上の理由により、組織では、Azure AD へのサインインにオンプレミスの UPN を使用したくないと考えています。
 
-ハイブリッド認証への移行を支援するために、ユーザーが代替ログイン ID として確認済みドメイン内のメールで Azure にサインインできるように Azure AD を構成できます。 たとえば、*Contoso* が *Fabrikam* にブランド変更した場合、従来の `balas@contoso.com` UPN でのサインインを続行するのではなく、代替ログイン ID としてメールを使用できるようになりました。 アプリケーションまたはサービスにアクセスするために、ユーザーは、割り当てられたメール (`balas@fabrikam.com` など) を使用して Azure にサインインします。
+ハイブリッド認証への移行を支援するために、ユーザーが代替ログイン ID として確認済みドメイン内のメールでサインインできるように Azure AD を構成できます。 たとえば、*Contoso* が *Fabrikam* にブランド変更した場合、従来の `balas@contoso.com` UPN でのサインインを続行するのではなく、代替ログイン ID としてメールを使用できるようになりました。 アプリケーションまたはサービスにアクセスするために、ユーザーは、割り当てられたメール (`balas@fabrikam.com` など) を使用して Azure AD にサインインします。
 
 |     |
 | --- |
@@ -36,17 +36,15 @@ ms.locfileid: "83837311"
 
 ## <a name="overview-of-azure-ad-sign-in-approaches"></a>Azure AD サインイン方法の概要
 
-ユーザープリンシパル名 (UPN) は、オンプレミス ディレクトリと Azure AD でのユーザー アカウントの一意の識別子です。 ディレクトリ内の各ユーザー アカウントは、`balas@contoso.com` などの UPN によって表されます。 既定では、オンプレミスの Active Directory ドメイン サービス (AD DS) 環境を Azure AD と同期する場合、Azure AD UPN はオンプレミスの UPN と一致するように設定されます。
+Azure AD にサインインするには、ユーザーが自分のアカウントを一意に識別する名前を入力します。 これまでは、サインイン名として使用できるのは Azure AD UPN のみでした。
 
-多くの組織では、オンプレミスの UPN と Azure AD UPN を一致するように設定することは問題ありません。 ユーザーは、Azure アプリケーションとサービスにサインインするときに、Azure AD UPN を使用します。 ただし、ビジネス ポリシーやユーザー エクスペリエンスの問題のために、サインインに一致する UPN を使用できない組織もあります。
+オンプレミスの UPN がユーザーの推奨されるサインイン メールである組織の場合、この方法は優れていました。 そうした組織では、Azure AD UPN をオンプレミスの UPN とまったく同じ値に設定することで、ユーザーの一貫したサインイン エクスペリエンスを実現しています。
 
-Azure AD で一致する UPN を使用できない組織には、いくつかのオプションがあります。
+しかし、組織によっては、オンプレミスの UPN をサインイン名として使用していません。 オンプレミス環境では、代替ログイン ID を使用してサインインできるようにローカル AD DS を構成しています。 Azure AD UPN をオンプレミスの UPN と同じ値に設定すると、Azure AD がユーザーにその値を使用してサインインするよう求めるため、そうするわけにはいかないのです。
 
-* 1 つの方法は、ビジネス ニーズに基づいて、Azure AD UPN を `balas@fabrikam.com` のように別のものに設定することです。
-    * ただし、すべてのアプリケーションとサービスが、オンプレミス UPN と Azure AD UPN に異なる値を使用することに対応できるわけではありません。
-* より適切な方法は、Azure AD とオンプレミスの UPN を同じ値に設定し、ユーザーが代替ログイン ID としてメールを使用して Azure にサインインできるように Azure AD を構成するというものです。
+この問題の一般的な回避策は、Azure AD UPN を、ユーザーがサインインに使用するメール アドレスに設定することでした。 この方法は有効ですが、オンプレミスの AD と Azure AD 内で UPN が異なるため、この構成はすべての Microsoft 365 ワークロードと互換性がありません。
 
-代替ログイン ID としてメールを使用する場合、ユーザーは引き続き UPN を入力して Azure にサインインできますが、メールを使用してサインインすることもできます。 これをサポートするには、オンプレミス ディレクトリのユーザーの *ProxyAddresses* 属性でメール アドレスを定義します。 この *ProxyAddress* 属性は 1 つ以上のメール アドレスをサポートします。
+別の方法は、Azure AD とオンプレミスの UPN を同じ値に同期し、ユーザーが確認済みのメールを使用して Azure AD にサインインできるように Azure AD を構成するというものです。 この機能を実現するには、オンプレミス ディレクトリ内のユーザーの *ProxyAddresses* 属性で 1 つ以上のメール アドレスを定義します。 そうすると、*ProxyAddresses* が Azure AD Connect を使用して自動的に Azure AD と同期されます。
 
 ## <a name="synchronize-sign-in-email-addresses-to-azure-ad"></a>サインインのメール アドレスを Azure AD に同期する
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: absha
-ms.openlocfilehash: 046946bb9d3ce1ae86d49409d024c862d2edb982
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: bd6f04ca7e24e380ad657f967284704ad613375a
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856062"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996399"
 ---
 # <a name="application-gateway-configuration-overview"></a>アプリケーション ゲートウェイ構成の概要
 
@@ -224,9 +224,7 @@ Azure portal を使用してアプリケーション ゲートウェイを作成
 
 #### <a name="order-of-processing-rules"></a>規則を処理する順序
 
-v1 SKU の場合、着信要求のパターン マッチングは、パスベースの規則の URL パス マップにパスが指定された順序で行われます。 要求がパス マップ内の複数のパスのパターンと一致する場合、一覧の順序が最初のパスが一致します。 また、要求はそのパスに関連付けられたバック エンドに転送されます。
-
-v2 SKU の場合、完全一致が URL パス マップ内のパスの順序よりも優先されます。 要求が複数のパスのパターンと一致する場合、その要求は、その要求と完全に一致するパスに関連付けられているバック エンドに転送されます。 着信要求内のパスがマップ内のどのパスとも正確に一致しない場合、要求のパターン マッチングはパスベースの規則のパス マップ順序の一覧で処理されます。
+v1 SKU と v2 SKU の場合、着信要求のパターン マッチングは、パス ベースの規則の URL パス マップにパスが一覧された順序で処理されます。 要求がパス マップ内の複数のパスのパターンと一致する場合、一覧の順序が最初のパスが一致します。 また、要求はそのパスに関連付けられたバック エンドに転送されます。
 
 ### <a name="associated-listener"></a>関連付けられたリスナー
 

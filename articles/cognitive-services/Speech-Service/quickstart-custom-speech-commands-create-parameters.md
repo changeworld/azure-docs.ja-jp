@@ -1,7 +1,7 @@
 ---
-title: クイック スタート:パラメーターを含むカスタム コマンドを作成する (プレビュー) - 音声サービス
+title: クイック スタート:パラメーターを使用してカスタム コマンド プレビュー アプリを作成する - Speech Service
 titleSuffix: Azure Cognitive Services
-description: この記事では、カスタム コマンド アプリケーションにパラメーターを追加します。
+description: この記事では、複数のデバイスのオンとオフを切り替えることができるようにカスタム コマンド アプリケーションにパラメーターを追加します。
 services: cognitive-services
 author: don-d-kim
 manager: yetian
@@ -10,82 +10,86 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: donkim
-ms.openlocfilehash: bf77616123f9311f7384fea515f250e47b354c8c
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 5461ef9680ab89c8cc9cc2e1166366abb04a6eab
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82853581"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142284"
 ---
-# <a name="quickstart-create-a-custom-commands-application-with-parameters-preview"></a>クイック スタート:パラメーターを使用してカスタム コマンド アプリケーションを作成する (プレビュー)
+# <a name="quickstart-create-a-custom-commands-preview-application-with-parameters"></a>クイック スタート:パラメーターを使用してカスタム コマンド プレビュー アプリケーションを作成する
 
 [前の記事](./quickstart-custom-speech-commands-create-new.md)では、パラメーターを使用せず、単純なカスタム コマンド アプリケーションを作成しました。
 
-この記事では、複数のデバイスのオンとオフを処理できるように、このアプリケーションを拡張し、パラメーターを使用します。
+この記事では、複数のデバイスのオンとオフを切り替えることができるように、パラメーターを使用してそのアプリケーションを拡張します。
 
-## <a name="create-parameters"></a>パラメーターを作成する
+## <a name="create-parameters"></a>パラメーターの作成
 
-1. [前に作成した](./quickstart-custom-speech-commands-create-new.md)プロジェクトを開きます
-1. 複数のデバイスのオンとオフを切り替えるように既存のコマンドを編集しましょう。
-1. コマンドはオンとオフを処理するようになったので、コマンドの名前を `TurnOnOff` に変更します。
-   - 左側のペインで `TurnOn` コマンドを選択し、ペインの上部にある `+ New command` の横にある `...` アイコンをクリックします。
+1. [前の記事](./quickstart-custom-speech-commands-create-new.md)で作成したプロジェクトを開きます。
+
+   複数のデバイスのオンとオフの切り替えに使用できるように既存のコマンドを編集します。
+1. コマンドはオンとオフの両方を処理するようになるため、その名前を **TurnOnOff** に変更します。
+   1. 左ペインで **TurnOn** コマンドを選択し、ペインの上部で **[新しいコマンド]** の横にある省略記号 ( **...** ) ボタンを選択します。
    
-   - `Rename` アイコンを選択します。 **[Rename command]\(コマンドの名前変更\)** ポップアップ アイテムで **[名前]** を `TurOnOff` に変更します。 次に、 **[保存]** を選択します。
+   1. **[Rename]\(名前の変更\)** を選択します。 **[Rename command]\(コマンドの名前変更\)** ウィンドウで、 **[名前]** を「**TurOnOff**」に変更します。 **[保存]** を選択します。
 
-1. 次に、ユーザーがデバイスをオンにしたいのか、オフにしたいのかを表わす新しいパラメーターを作成します。
-   - 中央のペインの上部に表示されている `+ Add` アイコンを選択します。 ドロップダウンから **[パラメーター]** を選択します。
-   - 右端のペインには、 **[パラメーター]** 構成セクションが表示されます。
-   - **[名前]** の値を追加します。
-   - **[必須]** チェックボックスにチェックマークを入れます。 **[Add response for a required parameter]\(必須パラメーターの応答追加\)** ウィンドウで **[Simple editor]\(シンプルなエディター\)** を選択し、 **[最初のバリエーション]** に次を追加します。
+1. ユーザーがデバイスをオンにするかオフにするかを表すパラメーターを作成します。
+   1. 中央のペインの上部にある **[追加]** を選択します。 ドロップダウン リストで、 **[パラメーター]** を選択します。
+   1. 右ペインの **[パラメーター]** セクションで、 **[名前]** ボックスに値を追加します。
+   1. **[必須]** を選択します。 **[Add response for a required parameter]\(必須パラメーターの応答追加\)** ウィンドウで **[Simple editor]\(シンプルなエディター\)** を選択します。 **[First variation]\(最初のバリエーション\)** ボックスに次のテキストを入力します。
         ```
         On or Off?
         ```
-   - **[Update]\(更新\)** を選択します。
+   1. **[Update]\(更新\)** を選択します。
 
        > [!div class="mx-imgBorder"]
        > ![必須パラメーターの応答を作成する](media/custom-speech-commands/add-required-on-off-parameter-response.png)
    
-   - 次に、パラメーターの残りのプロパティを次のように構成し、`Save` を選択してパラメーターのすべての構成を保存しましょう。
+1. このパラメーターの残りのプロパティを次のように構成します。
        
 
-       | 構成      | 推奨値     | 説明                                                      |
-       | ------------------ | ----------------| ---------------------------------------------------------------------|
-       | 名前               | OnOff           | パラメーターのわかりやすい名前                                                                           |
-       | Is Global          | チェック解除       | このパラメーターの値がアプリケーションのすべてのコマンドにグローバルで適用されるかどうかを示すチェックボックス|
-       | 必須           | チェック         | コマンドを完了する前にこのパラメーターの値を必須とするかどうかを示すチェックボックス |
-       | 必須パラメーターの応答      |シンプルなエディター -> オンまたはオフ?      | 理解されていないとき、このパラメーターの値を問うプロンプト |
-       | Type               | String          | Number、String、Date Time、Geography などのパラメーターの型   |
-       | 構成      | 内部カタログから事前定義済み入力値を受け取る | Strings の場合、これにより入力が一連の指定可能値に限定されます。 |
-       | 定義済み入力値     | on、off             | 一連の入力可能値とその別名         |
+    | 構成      | 推奨値     | 説明                                                      |
+    | ------------------ | ----------------| ---------------------------------------------------------------------|
+    | **名前**               | **OnOff**           | パラメーターのわかりやすい名前。                                                                  |
+    | **Is Global (グローバル)**          | クリア       | このパラメーターの値がアプリケーションのすべてのコマンドにグローバルに適用されるかどうかを示すチェック ボックス。|
+    | **必須**           | Selected         | このパラメーターの値が必須であるかどうかを示すチェック ボックス。  |
+    | **Response for required parameter (必須パラメーターの応答)**      |**[Simple editor]\(シンプルなエディター\) -> 「On or Off?」**      | 認識されない場合にパラメーターの値を求めるプロンプト。 |
+    | **Type**               | **String**          | パラメーターの型。 たとえば、Number、String、Date Time、Geography があります。   |
+    | **Configuration**      | **Accept predefined input values from internal catalog (内部カタログから定義済み入力値を受け取る)** | 文字列の場合、この設定により、入力が一連の指定可能な値に制限されます。 |
+    | **Predefined input values (定義済み入力値)**     | **on**、**off**             | 一連の指定可能な値とその別名。         |
        
-        > [!div class="mx-imgBorder"]
-        > ![パラメーターの作成](media/custom-speech-commands/create-on-off-parameter.png)
 
-   - 次に、`+ Add` アイコンをもう一度選択し、次の構成が与えられたデバイスの名前を表わす 2 つ目のパラメーターを追加します。
+
+    > [!div class="mx-imgBorder"]
+    > ![パラメーターの作成](media/custom-speech-commands/create-on-off-parameter.png)
+
+1. **[保存]** を選択して設定を保存します。
+
+ 1. もう一度 **[追加]** を選択して 2 つ目のパラメーターを追加します。 このパラメーターは、デバイスの名前を表します。 次の設定を使用します。
    
 
        | 設定            | 推奨値       | 説明                                                                                               |
        | ------------------ | --------------------- | --------------------------------------------------------------------------------------------------------- |
-       | 名前               | SubjectDevice         | パラメーターのわかりやすい名前                                                                     |
-       | Is Global          | チェック解除             | このパラメーターの値がアプリケーションのすべてのコマンドにグローバルで適用されるかどうかを示すチェックボックス |
-       | 必須           | チェック               | コマンドを完了する前にこのパラメーターの値を必須とするかどうかを示すチェックボックス          |
-       | シンプルなエディター      | Which device? (どのデバイスですか?)    | 理解されていないとき、このパラメーターの値を問うプロンプト                                       |
-       | Type               | String                | Number、String、Date Time、Geography などのパラメーターの型                                                |
-       | 構成      | 内部カタログから事前定義済み入力値を受け取る | Strings の場合、String List により入力が一連の指定可能値に限定されます。       |
-       | 定義済み入力値 | tv、fan               | 一連の入力可能値とその別名                               |
-       | 別名 (tv)      | television、telly     | 定義済み入力値の任意の別名 (考えられる値別)                                 |
+       | **名前**               | **SubjectDevice**         | パラメーターのわかりやすい名前。                                                                     |
+       | **Is Global (グローバル)**          | クリア             | このパラメーターの値がアプリケーションのすべてのコマンドにグローバルに適用されるかどうかを示すチェック ボックス。 |
+       | **必須**           | Selected               | このパラメーターの値が必須であるかどうかを示すチェック ボックス。          |
+       | **Simple editor (シンプルなエディター)**      | **Which device?**    | 認識されない場合にパラメーターの値を求めるプロンプト。                                       |
+       | **Type**               | **String**                | パラメーターの型。 たとえば、Number、String、Date Time、Geography があります。                                                |
+       | **Configuration**      | **Accept predefined input values from internal catalog (内部カタログから定義済み入力値を受け取る)** | 文字列の場合、この設定により、入力が一連の指定可能な値に制限されます。       |
+       | **Predefined input values (定義済み入力値)** | **tv**、**fan**               | 一連の指定可能な値とその別名。                               |
+       | **別名** (tv)      | **television**、**telly**     | 定義済み入力値それぞれの任意の別名。                                 |
 
 ## <a name="add-example-sentences"></a>例文を追加する
 
-パラメーターと共にコマンドを利用するとき、可能な組み合わせをすべて網羅する例文を追加すると役立ちます。 次に例を示します。
+パラメーターを含むコマンドの場合、考えられる組み合わせすべてを網羅する例文を追加すると役立ちます。 次に例を示します。
 
-1. 完全なパラメーター情報 - `turn {OnOff} the {SubjectDevice}`
-1. 部分パラメーター情報 - `turn it {OnOff}`
-1. パラメーターなし情報 - `turn something`
+- 完全なパラメーター情報: `turn {OnOff} the {SubjectDevice}`
+- 部分的なパラメーター情報: `turn it {OnOff}`
+- パラメーター情報なし: `turn something`
 
-情報の度合いの異なる例文を利用することで、カスタム コマンド アプリケーションでは、部分的な情報で 1 回限りの解決とマルチターンの解決の両方を解決できます。
+情報量の異なる例文を利用すると、カスタム コマンド アプリケーションでは、部分的な情報を含む 1 回限りの解決とマルチターンの解決の両方を解決できます。
 
-そのことを念頭に置き、下の提案のようにパラメーターを使用するように例文を編集します。
+そのことを念頭に置き、ここでの提案に従って、パラメーターを使用するよう例文を編集します。
 
 ```
 turn {OnOff} the {SubjectDevice}
@@ -95,36 +99,40 @@ turn something {OnOff}
 turn something
 ```
 > [!TIP]
-> 例文エディターでは、中かっこを使用してパラメーターを参照します。 - `turn {OnOff} the {SubjectDevice}` 前に作成したパラメーターでバックアップされるオートコンプリートには Tab キーを使用します。
+> 例文エディターでは、中かっこを使用してパラメーターを参照します: `turn {OnOff} the {SubjectDevice}`。
+>
+> 以前に作成したパラメーターで定義されているオートコンプリートには Tab キーを使用します。
 
 ## <a name="add-parameters-to-completion-rules"></a>完了ルールにパラメーターを追加する
 
-[前のクイックスタート](./quickstart-custom-speech-commands-create-new.md)で作成した完了ルールを修正します。
+[前のクイックスタート](./quickstart-custom-speech-commands-create-new.md)で作成した完了ルールを変更します。
 
-1. **[条件]** セクションで **[+ 条件を追加する]** を選択し、新しい条件を追加します。
-1. **[新しい条件]** というポップアップが新しく表示されたら、 **[種類]** ドロップダウンから `Required parameters` を選択します。 下のチェックリストで、`OnOff` と `SubjectDevice` の両方を選択します。
-1. **[作成]** をクリックします。
-1. **[アクション]** セクションで、アクションの上にカーソルを置き、編集アイコンをクリックすることで既存の [送信] 音声応答アクションを編集します。 今回、新しく作成した `OnOff` パラメーターと `SubjectDevice` パラメーターを使用してみましょう。
+1. **[条件]** セクションで、 **[条件の追加]** を選択します。
+1. **[新しい条件]** ウィンドウの **[種類]** リストで、 **[必要なパラメーター]** を選択します。 リストで **OnOff** と **SubjectDevice** の両方を選択します。
+1. **［作成］** を選択します
+1. **[アクション]** セクションで、既存の **[Send speech response]\(音声応答の送信\)** アクションにカーソルを移動して編集ボタンを選択することで、そのアクションを編集します。 今回は、新しい `OnOff` および `SubjectDevice` パラメーターを使用します。
 
     ```
     Ok, turning {OnOff} the {SubjectDevice}
     ```
 
 ## <a name="try-it-out"></a>試してみる
-1. 右側のペインの上部に表示されている `Train` アイコンを選択します。
+1. 右ペインの上部にある **[トレーニング]** を選択します。
 
-1. トレーニングが完了したら、[`Test`] を選択します。
-    - 新しい **[アプリケーションのテスト]** ウィンドウが表示されます。
-    - いくつかやりとりしてみてください。
+1. トレーニングが完了したら、 **[テスト]** を選択します。
+    
+    **[Test your application]\(アプリケーションのテスト\)** ウィンドウが表示されます。
 
-        - 入力: turn off the tv (テレビを消して)
-        - 出力:Ok, turning off the tv (了解です。テレビを消します)        
-        - 入力: turn off the television (テレビを消して)
-        - 出力:Ok, turning off the tv (了解です。テレビを消します)
-        - 入力: turn it off (それを消して)
-        - 出力:Which device? (どのデバイスですか?)
-        - 入力: the tv (テレビ)
-        - 出力:Ok, turning off the tv (了解です。テレビを消します)
+1. いくつかやりとりしてみてください。
+
+        - Input: turn off the tv
+        - Output: Ok, turning off the tv        
+        - Input: turn off the television
+        - Output: Ok, turning off the tv
+        - Input: turn it off
+        - Output: Which device?
+        - Input: the tv
+        - Output: Ok, turning off the tv
 
 ## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]

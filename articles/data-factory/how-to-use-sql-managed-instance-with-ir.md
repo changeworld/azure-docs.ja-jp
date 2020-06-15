@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory で Azure SQL Server Integration Services (SSIS) とともに Azure SQL Database Managed Instance を使用する
-description: Azure Data Factory で、SQL Server Integration Services (SSIS) とともに Azure SQL Database Managed Instance を使用する方法について説明します。
+title: Azure Data Factory 内で Azure SQL Server Integration Services (SSIS) と共に Azure SQL Managed Instance を使用する
+description: Azure Data Factory 内で SQL Server Integration Services (SSIS) と共に Azure SQL Managed Instance を使用する方法について説明します。
 services: data-factory
 documentationcenter: ''
 author: chugugrace
@@ -11,30 +11,30 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: 74cad0ab9ffc3eb05219cb9e2c2585e73498c9bd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f53c7ccec5e82b79966807f12978adfb00940354
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663540"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195380"
 ---
-# <a name="use-azure-sql-database-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Azure Data Factory で SQL Server Integration Services (SSIS) とともに Azure SQL Database Managed Instance を使用する
+# <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Azure Data Factory 内で SQL Server Integration Services (SSIS) と共に Azure SQL Managed Instance を使用する
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-xxx-md.md)]
 
-SQL Server Integration Services (SSIS) プロジェクト、パッケージ、ワークロードを Azure クラウドに移動できるようになりました。 SQL Server Management Studio (SSMS) などのよく使われるツールを利用して、SSIS プロジェクトとパッケージを Azure SQL Database または SQL Database Managed Instance でデプロイ、実行、管理します。 この記事では、Azure SQL Database Managed Instance を Azure-SSIS Integration Runtime (IR) とともに使用するときの、次の特定の領域を取り上げます。
+SQL Server Integration Services (SSIS) プロジェクト、パッケージ、ワークロードを Azure クラウドに移動できるようになりました。 SQL Server Management Studio (SSMS) などのよく使われるツールを利用して、SSIS プロジェクトとパッケージを Azure SQL Database または SQL Managed Instance でデプロイ、実行、管理します。 この記事では、Azure SQL Managed Instance を Azure-SSIS Integration Runtime (IR) と共に使用するときの、次の特定の領域を取り上げます。
 
-- [Azure SQL Database Managed Instance によってホストされている SSIS カタログ (SSISDB) で Azure-SSIS IR をプロビジョニングする](#provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-database-managed-instance)
+- [Azure SQL Managed Instance によってホストされている SSIS カタログ (SSISDB) を使用して Azure-SSIS IR をプロビジョニングする](#provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-managed-instance)
 - [Azure SQL Managed Instance エージェント ジョブによって SSIS パッケージを実行する](how-to-invoke-ssis-package-managed-instance-agent.md)
 - [Azure SQL Managed Instance エージェント ジョブによって SSISDB ログをクリーンアップする](#clean-up-ssisdb-logs)
-- [Azure SQL Database Managed Instance による Azure-SSIS IR フェールオーバー](configure-bcdr-azure-ssis-integration-runtime.md#azure-ssis-ir-failover-with-a-sql-database-managed-instance)
-- [データベース ワークロードの宛先として Azure SQL Database Managed Instance を使用して、ADF での SSIS にオンプレミスの SSIS ワークロードを移行する](scenario-ssis-migration-overview.md#azure-sql-database-managed-instance-as-database-workload-destination)
+- [Azure SQL Managed Instance による Azure-SSIS IR フェールオーバー](configure-bcdr-azure-ssis-integration-runtime.md#azure-ssis-ir-failover-with-a-sql-managed-instance)
+- [データベース ワークロードの宛先として Azure SQL Managed Instance を使用して、ADF の SSIS にオンプレミスの SSIS ワークロードを移行する](scenario-ssis-migration-overview.md#azure-sql-managed-instance-as-database-workload-destination)
 
-## <a name="provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance によってホストされた SSISDB で Azure-SSIS IR をプロビジョニングする
+## <a name="provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-managed-instance"></a>Azure SQL Managed Instance によってホストされている SSISDB を使用して Azure-SSIS IR をプロビジョニングする
 
 ### <a name="prerequisites"></a>前提条件
 
-1. Azure Active Directory 認証を選択する場合は、[Azure SQL Database Managed Instance で Azure Active Directory (Azure AD) を有効にします。](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-database-managed-instance)
+1. Azure Active Directory 認証を選択する場合は、[Azure SQL Managed Instance に対して Azure Active Directory (Azure AD) を有効にします](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-managed-instance)。
 
 1. SQL Managed Instance を接続する方法を、プライベート エンドポイント経由かパブリック エンドポイント経由か選択します。
 
@@ -44,13 +44,13 @@ SQL Server Integration Services (SSIS) プロジェクト、パッケージ、�
             - **サブネットが異なる**、SQL Managed Instance と同じ仮想ネットワーク内部。
             - 仮想ネットワーク ピアリング経由 (グローバル VNet ピアリング制約のために同じリージョンに制限)、または仮想ネットワーク間の接続を介した、SQL Managed Instance とは異なる仮想ネットワーク内部。
 
-            SQL Managed Instance 接続の詳細については、[Azure SQL Database Managed Instance へのアプリケーションの接続](https://review.docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app)に関するページをご覧ください。
+            SQL Managed Instance 接続の詳細については、[Azure SQL Managed Instance へのご自分のアプリケーションの接続](https://review.docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app)に関するページをご覧ください。
 
         1. [仮想ネットワークを構成します](#configure-virtual-network)。
 
     - パブリック エンドポイント経由
 
-        Azure SQL Database Managed Instance は、[パブリック エンドポイント](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)経由で接続を提供できます。 SQL Managed Instance と Azure-SSIS IR の間のトラフィックを許可するには、受信と送信の要件を満たす必要があります。
+        Azure SQL Managed Instance は、[パブリック エンドポイント](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)経由で接続を提供できます。 SQL Managed Instance と Azure-SSIS IR の間のトラフィックを許可するには、受信と送信の要件を満たす必要があります。
 
         - Azure-SSIS IR が仮想ネットワーク内にない場合 (優先)
 
@@ -147,7 +147,7 @@ SQL Server Integration Services (SSIS) プロジェクト、パッケージ、�
 
     ![カタログ-パブリック-エンドポイント](./media/how-to-use-sql-managed-instance-with-ir/catalog-aad.png)
 
-    Azure AD 認証を有効にする方法の詳細については、「[Azure SQL Database Managed Instance で Azure AD を有効にする](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-database-managed-instance)」をご覧ください。
+    Azure AD 認証を有効にする方法の詳細については、[Azure SQL Database Managed Instance に対する Azure AD の有効化](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-managed-instance)に関するセクションをご覧ください。
 
 1. 適用する場合は、Azure-SSIS IR を仮想ネットワークに参加させます。
 

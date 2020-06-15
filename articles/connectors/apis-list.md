@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 04/24/2020
-ms.openlocfilehash: f2a2ee7a2806a753ffd159c91ed782634e74c704
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: ede385670dec6629cc3e75a9d09c0ceb14362bdc
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82838669"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119384"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Azure Logic Apps のコネクタ
 
@@ -106,7 +106,7 @@ Logic Apps には、ロジック アプリのワークフローで独自のコ�
 
 |   |   |   |   |
 |---|---|---|---|
-| [![API アイコン][azure-functions-icon]<br>**Azure Functions**][azure-functions-doc] | カスタム コード スニペット (C# または Node.js) をロジック アプリから実行する Azure 関数を呼び出します。 | [![API アイコン][inline-code-icon]<br>**インライン コード**][azure-functions-doc] | ロジック アプリから JavaScript コード スニペットを追加して実行します。 |
+| [![API アイコン][azure-functions-icon]<br>**Azure Functions**][azure-functions-doc] | カスタム コード スニペット (C# または Node.js) をロジック アプリから実行する Azure 関数を呼び出します。 | [![API アイコン][inline-code-icon]<br>**インライン コード**][inline-code-doc] | ロジック アプリから JavaScript コード スニペットを追加して実行します。 |
 |||||
 
 ### <a name="control-workflow"></a>ワークフローを制御する
@@ -388,6 +388,7 @@ Azure Active Directory (Azure AD) OAuth を使用するコネクタの場合、�
 [http-response-doc]: ./connectors-native-reqres.md "ロジック アプリで HTTP 要求に応答する"
 [http-swagger-doc]: ./connectors-native-http-swagger.md "ロジック アプリから REST エンドポイントを呼び出す"
 [http-webhook-doc]: ./connectors-native-webhook.md "HTTP または HTTPS エンドポイントからの特定のイベントを待機する"
+[inline-code-doc]: ../logic-apps/logic-apps-add-run-inline-code.md "ロジック アプリから JavaScript コード スニペットを追加して実行する"
 [nested-logic-app-doc]: ../logic-apps/logic-apps-http-endpoint.md "入れ子になったワークフローを使用してロジック アプリを統合します。"
 [query-doc]: ../logic-apps/logic-apps-perform-data-operations.md#filter-array-action "クエリ アクションで、配列の選択とフィルター処理を行います。"
 [schedule-doc]: ../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md "スケジュールに基づいてロジック アプリを実行する"

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 22744ecbced40b3195f4d047227b1e2a37228102
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f79d0e917ba741e72e2bbecd4a1f94a4c99e5393
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230063"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996059"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>Service Bus のトランザクション処理の概要
 
@@ -36,8 +36,8 @@ Service Bus は、トランザクションのスコープ内の単一メッセ�
 
 トランザクション スコープ内で実行できる操作は次のとおりです。
 
-* **[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient)、[MessageSender](/dotnet/api/microsoft.azure.servicebus.core.messagesender)、[TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient)** : Send、SendAsync、SendBatch、SendBatchAsync 
-* **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)** : Complete、CompleteAsync、Abandon、AbandonAsync、Deadletter、DeadletterAsync、Defer、DeferAsync、RenewLock、RenewLockAsync 
+* **[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient)、[MessageSender](/dotnet/api/microsoft.azure.servicebus.core.messagesender)、[TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient)** : `Send`、`SendAsync`、`SendBatch`、`SendBatchAsync`
+* **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)** : `Complete`、`CompleteAsync`、`Abandon`、`AbandonAsync`、`Deadletter`、`DeadletterAsync`、`Defer`、`DeferAsync`、`RenewLock`、`RenewLockAsync` 
 
 一部の受信ループ内、または [OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage) コールバックで、[ReceiveMode.PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) モードを使用してアプリケーションがメッセージを取得した後にのみ、メッセージを処理するためのトランザクション スコープを開くことを前提としているため、受信操作は含まれません。
 
@@ -45,7 +45,7 @@ Service Bus は、トランザクションのスコープ内の単一メッセ�
 
 ## <a name="transfers-and-send-via"></a>転送および "経由送信"
 
-キューからプロセッサ、そこから別のキューへのデータのトランザクションの移行を有効にするために、Service Bus は "*転送*" をサポートしています。 転送操作では、送信者がまず*転送キュー*にメッセージを送信すると、転送キューが、自動転送機能で使用されているものと同じ堅牢な転送実装を使用して、すぐに目的の送信先キューにメッセージを移動します。 メッセージは、転送キューのコンシューマーに表示されるようになる方法で、転送キューのログにコミットされることはありません。
+キューからプロセッサ、そこから別のキューへのデータのトランザクションの移行を有効にするために、Service Bus は "*転送*" をサポートしています。 転送操作では、送信者がまず "*転送キュー*" にメッセージを送信すると、転送キューが、自動転送機能で使用されているものと同じ堅牢な転送実装を使用して、すぐに目的の送信先キューにメッセージを移動します。 メッセージは、転送キューのコンシューマーに表示されるようになる方法で、転送キューのログにコミットされることはありません。
 
 転送キュー自体が送信者の入力メッセージの送信元である場合は、このトランザクションの機能の能力が明らかになります。 つまり、Service Bus は、入力メッセージの完了 (または延期や配信不能) 操作を実行しながら、転送キューを "経由" してメッセージを送信先キューに転送できる、オールインワンのアトミック操作です。 
 
@@ -96,6 +96,9 @@ using (var ts = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
     }
 }
 ```
+
+## <a name="timeout"></a>タイムアウト
+トランザクションは 2 分後にタイムアウトになります。 トランザクションの最初の操作が開始されると、トランザクション タイマーが開始されます。 
 
 ## <a name="next-steps"></a>次のステップ
 

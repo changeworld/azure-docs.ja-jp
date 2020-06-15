@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 5705e5f29bc851d615f91d902fd505a69b5cfd12
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: face605d756d2107c04b3df0c072602ac91d147d
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587001"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83992897"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Microsoft Translator Hub ワークスペースとプロジェクトを移行する
 
@@ -24,7 +24,7 @@ ms.locfileid: "83587001"
 * すべてのドキュメントとプロジェクトの定義は、名前に "hub_" というプレフィックスが追加された状態で転送されます。 自動生成されたテストとチューニング データには、hub_systemtune_\<modelid> または hub_systemtest_\<modelid> という名前が付きます。
 * 移行が実施されたときにデプロイ済み状態だったトレーニングはすべて、Hub トレーニングのドキュメントを使用して自動的にトレーニングされます。 このトレーニングによってお客様のサブスクリプションが課金されることはありません。 移行に自動デプロイが選択された場合、完了時にトレーニング済みのモデルがデプロイされます。 通常のホスティング料金は適用されます。
 * 移行されたトレーニングのうち、デプロイ済み状態でなかったものはすべて、移行済みドラフト状態になります。 この状態では、移行済みの定義を使用してモデルをトレーニングするかどうかを選択できますが、通常のトレーニング料金が適用されます。
-* Hub トレーニングから移行された BLEU スコアは、モデルの TrainingDetails ページ ([Bleu score in MT Hub]\(MT Hub におけるBLEU スコア\) という見出し) でいつでも確認できます。
+* Hub トレーニングから移行された BLEU スコアは、モデルの TrainingDetails ページ ([Bleu score in MT Hub]\(MT Hub における BLEU スコア\) という見出し) でいつでも確認できます。
 
 > [!Note] 
 > Custom Translator でトレーニングを正常に実行するには、一意の文が最低 10,000 個抽出されている必要があります。 [推奨される最小要件](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment#suggested-minimum-number-of-sentences)に満たない場合、Custom Translator ではトレーニングを実行できません。
@@ -92,7 +92,7 @@ ms.locfileid: "83587001"
 
 ## <a name="migration-history"></a>移行履歴
 
-Hub からワークスペース/プロジェクトの移行を要求すると、Custom Translator の [設定] ページで移行履歴を確認できます。
+Hub からワークスペースまたはプロジェクトの移行を要求すると、カスタム翻訳ツールの [設定] ページで移行履歴を確認できます。
 
 移行履歴を表示するには、次の手順を実行します。
 
@@ -132,11 +132,11 @@ Hub からワークスペース/プロジェクトの移行を要求すると、
 
 |   | ハブ | Custom Translator |
 |:-----|:----:|:----:|
-|カスタマイズ機能の状態   | 一般公開  | 一般公開 |
-| Text API バージョン  | V2    | V3  |
-| SMT のカスタマイズ | はい   | いいえ |
-| NMT のカスタマイズ | いいえ    | はい |
-| 新しい統合 Speech Services のカスタマイズ | いいえ    | はい |
+|カスタマイズ機能の状態    | 一般公開    | 一般公開 |
+| Text API バージョン    | V2     | V3  |
+| SMT のカスタマイズ    | はい    | いいえ |
+| NMT のカスタマイズ    | いいえ    | はい |
+| 新しい統合 Speech Services のカスタマイズ    | いいえ    | はい |
 | トレースなし | はい | はい |
 
 ## <a name="new-languages"></a>新しい言語

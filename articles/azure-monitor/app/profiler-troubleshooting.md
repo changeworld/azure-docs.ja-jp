@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 55bc4ff05b650884ef17e0de10d7156cbf458a9c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7c9dd20aea410aecb34811ca6e08e0f641be292b
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81640960"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148346"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Application Insights Profiler の有効化または表示に関する問題のトラブルシューティング
 
@@ -128,7 +128,7 @@ Profiler が有効になっている Web Apps リソースに Web アプリを�
 
 Profiler は、Web アプリ内の継続的な WebJob として実行されます。 Web アプリのリソースは、[Azure Portal](https://portal.azure.com) で開くことができます。 **[WebJobs]** ウィンドウで、**ApplicationInsightsProfiler** の状態を確認してください。 実行されていない場合は、 **[ログ]** を開いて詳細情報を入手します。
 
-## <a name="troubleshoot-problems-with-profiler-and-azure-diagnostics"></a>Profiler と Azure Diagnostics に関する問題のトラブルシューティング
+## <a name="troubleshoot-vms-and-cloud-services"></a>VM と Cloud Services のトラブルシューティング
 
 >**Cloud Services 向けの WAD に付属しているプロファイラーのバグが修正されました。** Cloud Services 向け WAD の最新バージョン (1.12.2.0) は、最近リリースされたすべての App Insights SDK バージョンで動作します。 Cloud Service のホストでは WAD が自動的にアップグレードされますが、即時に行われるわけではありません。 アップグレードを強制するには、サービスを再デプロイするか、ノードを再起動します。
 
@@ -141,27 +141,45 @@ Azure Diagnostics によって Profiler が正しく構成されているかど�
 
 Azure Diagnostics の構成に使用された設定を確認するには:
 
-1. 仮想マシン (VM) にサインインした後、次の場所にあるログ ファイルを開きます。 (ドライブは c: または d: の場合があり、プラグインのバージョンは異なる可能性があります)。
-
-    ```
-    c:\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log  
-    ```
-    or
+1. 仮想マシン (VM) にサインインした後、次の場所にあるログ ファイルを開きます。 マシン上のプラグインの方がより新しいバージョンである場合があります。
+    
+    VM の場合:
     ```
     c:\WindowsAzure\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log
+    ```
+    
+    Cloud Services の場合:
+    ```
+    c:\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log  
     ```
 
 1. そのファイルでは、**WadCfg** という文字列を検索して、Azure Diagnostics を構成するために VM に渡された設定を確認できます。 Profiler シンクによって使用された iKey が正しいかどうかを確認できます。
 
-1. Profiler の起動に使用されたコマンド ラインを確認します。 Profiler の起動に使用される引数は、次のファイルにあります。 (ドライブは c: または d:)
+1. Profiler の起動に使用されたコマンド ラインを確認します。 Profiler の起動に使用される引数は、次のファイルにあります。 (ドライブは c: または d: である可能性があり、ディレクトリは非表示である可能性があります)。
 
+    VM の場合:
+    ```
+    C:\ProgramData\ApplicationInsightsProfiler\config.json
+    ```
+    
+    Cloud Services の場合:
     ```
     D:\ProgramData\ApplicationInsightsProfiler\config.json
     ```
 
 1. Profiler のコマンド ラインの iKey が正しいことを確認します。 
 
-1. 前記の *config.json* ファイルで見つかるパスを使用して、Profiler のログ ファイルを確認します。 Profiler で使用されている設定を示すデバッグ情報が表示されます。 また、Profiler の状態とエラー メッセージも表示されます。  
+1. 前記の *config.json* ファイルで見つかるパスを使用して、**BootstrapN.log** という名前の Profiler のログ ファイルを確認します。 Profiler で使用されている設定を示すデバッグ情報が表示されます。 また、Profiler の状態とエラー メッセージも表示されます。  
+
+    通常、VM のファイルの場所は以下になります。
+    ```
+    C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.17.0.6\ApplicationInsightsProfiler
+    ```
+
+    Cloud Services の場合:
+    ```
+    C:\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.17.0.6\ApplicationInsightsProfiler
+    ```
 
     アプリケーションが要求を受信している間に Profiler が実行された場合は、次のようなメッセージが表示されます。*Activity detected from iKey* (iKey からアクティビティが検出されました)。 
 

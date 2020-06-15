@@ -7,14 +7,14 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 05/26/2020
 ms.author: dapine
-ms.openlocfilehash: 885f92bfb7a49fb90f68d3d5c5a2a93e5880afbc
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8fcac761ab1f0805a3b2b75107e0119fbfb9db6e
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588344"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148091"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Azure Cognitive Services 仮想ネットワークを構成する
 
@@ -484,6 +484,68 @@ Cognitive Services リソースの IP ネットワーク ルールは、Azure po
 
 > [!IMPORTANT]
 > **拒否**するように[既定のルールを設定](#change-the-default-network-access-rule)します。そうしないと、ネットワーク ルールは効力を発揮しません。
+
+## <a name="use-private-endpoints"></a>プライベート エンドポイントを使用する
+
+お使いの Cognitive Services リソースの[プライベート エンドポイント](../private-link/private-endpoint-overview.md)を使用すると、仮想ネットワーク (VNet) 上のクライアントは[プライベート リンク](../private-link/private-link-overview.md)を介してデータに安全にアクセスできるようになります。 プライベート エンドポイントは、Cognitive Services リソースの VNet アドレス空間からの IP アドレスを使用します。 VNet 上のクライアントとリソースの間のネットワーク トラフィックは、VNet と Microsoft バックボーン ネットワーク上のプライベート リンクを経由することで、パブリック インターネットからの露出を排除します。
+
+Cognitive Services リソースのプライベート エンドポイントを使用すると、次のことができます。
+
+- Cognitive Services サービスのパブリック エンドポイント上のすべての接続をブロックするようにファイアウォールを構成することにより、Cognitive Services リソースをセキュリティで保護します。
+- VNet からのデータの流出をブロックできるようにすることで、VNet のセキュリティを強化します。
+- [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) または [ExpressRoutes](../expressroute/expressroute-locations.md) とプライベートピアリングを使用して VNet に接続するオンプレミス ネットワークから Cognitive Services リソースに安全に接続します。
+
+### <a name="conceptual-overview"></a>概念の概要
+
+プライベート エンドポイントは、[VNet](../virtual-network/virtual-networks-overview.md) 内の Azure サービス用の特別なネットワーク インターフェイスです。 Cognitive Services リソースのプライベート エンドポイントを作成すると、対象の VNet 上のクライアントと対象のリソース間のセキュリティで保護された接続が提供されます。 プライベート エンドポイントには、VNet の IP アドレス範囲から IP アドレスが割り当てられます。 プライベート エンドポイントと Cognitive Services サービス間の接続には、セキュリティで保護されたプライベート リンクが使用されます。
+
+VNet 内のアプリケーションは、プライベート エンドポイント経由でサービスにシームレスに接続できます。その際、使用される接続文字列と承認メカニズムは、それを経由しない場合と同じものになります。 例外は Speech Service で、これには別のエンドポイントが必要です。 「[プライベート エンドポイントと Speech Service](#private-endpoints-with-the-speech-service)」セクションを参照してください。 プライベート エンドポイントは、Cognitive Services リソースでサポートされているすべてのプロトコル (REST を含む) で使用できます。
+
+プライベート エンドポイントは、[サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)を使用するサブネットに作成できます。 サブネット内のクライアントは、プライベート エンドポイントを使用して 1 つの Cognitive Services リソースに接続する一方で、サービス エンドポイントを使用して他のリソースにアクセスできます。
+
+お使いの VNet で Cognitive Services リソース用プライベート エンドポイントを作成すると、承認を得るために同意要求が Cognitive Services リソースの所有者に送信されます。 プライベート エンドポイントの作成を要求しているユーザーがリソースの所有者でもある場合、この同意要求は自動的に承認されます。
+
+Cognitive Services リソースの所有者は、[Azure portal](https://portal.azure.com) で Cognitive Services リソースの *[プライベート エンドポイント]* タブを使用して、同意要求とプライベート エンドポイントを管理できます。
+
+### <a name="private-endpoints"></a>プライベート エンドポイント
+
+プライベート エンドポイントを作成するときは、接続先の Cognitive Services リソースを指定する必要があります。 プライベート エンドポイントを作成する方法の詳細については、次の記事を参照してください。
+
+- [Azure portal でプライベート リンク センターを使用してプライベート エンドポイントを作成する](../private-link/create-private-endpoint-portal.md)
+- [Azure CLI を使用してプライベート エンドポイントを作成する](../private-link/create-private-endpoint-cli.md)
+- [Azure PowerShell を使用してプライベート エンドポイントを作成する](../private-link/create-private-endpoint-powershell.md)
+
+### <a name="connecting-to-private-endpoints"></a>プライベート エンドポイントへの接続
+
+プライベート エンドポイントを使用する VNet 上のクライアントは、パブリック エンドポイントに接続するクライアントと同じ接続文字列を Cognitive Services リソースに対して使用する必要があります。 例外は Speech Service で、これには別のエンドポイントが必要です。 「[プライベート エンドポイントと Speech Service](#private-endpoints-with-the-speech-service)」セクションを参照してください。 プライベート リンク経由の VNet から Cognitive Services リソースへの接続を自動的にルーティングするために、DNS 解決に依存しています。 Speech Service 
+
+既定では、VNet に接続されている[プライベート DNS ゾーン](../dns/private-dns-overview.md)が作成され、プライベート エンドポイントに必要な更新も行われます。 ただし、独自の DNS サーバーを使用している場合は、DNS 構成に追加の変更が必要になることがあります。 以下の [DNS の変更](#dns-changes-for-private-endpoints)に関するセクションで、プライベート エンドポイントに必要な更新について説明しています。
+
+### <a name="private-endpoints-with-the-speech-service"></a>プライベート エンドポイントと Speech Service
+
+Speech Service でプライベート エンドポイントを使用する場合は、カスタム エンドポイントを使用して Speech Service API を呼び出す必要があります。 グローバル エンドポイントは使用できません。 {account}.{stt|tts|voice|dls}.speech.microsoft.com という形式のエンドポイントを使用する必要があります。
+
+### <a name="dns-changes-for-private-endpoints"></a>プライベート エンドポイントの DNS の変更
+
+プライベート エンドポイントを作成すると、Cognitive Services リソースの DNS CNAME リソース レコードは、プレフィックス "*privatelink*" を持つサブドメイン内のエイリアスに更新されます。 既定では、"*privatelink*" サブドメインに対応する[プライベート DNS ゾーン](../dns/private-dns-overview.md)も作成されます。これには、プライベート エンドポイントの DNS A リソース レコードが含まれます。
+
+プライベート エンドポイントを備える VNet の外部からエンドポイント URL を解決すると、Cognitive Services リソースのパブリック エンドポイントに解決されます。 プライベート エンドポイントをホストしている VNet から解決されると、エンドポイント URL はプライベート エンドポイントの IP アドレスに解決されます。
+
+この方法を使用すると、プライベート エンドポイントをホストしている VNet 上のクライアントと、VNet の外部のクライアントから同じ接続文字列を使用して Cognitive Services リソースにアクセスできます。
+
+ネットワーク上でカスタム DNS サーバーを使用している場合、クライアントで、Cognitive Services リソースのエンドポイントの完全修飾ドメイン名 (FQDN) をプライベート エンドポイントの IP アドレスに解決できる必要があります。 プライベート リンク サブドメインを VNet のプライベート DNS ゾーンに委任するように DNS サーバーを構成する必要があります。
+
+> [!TIP]
+> カスタムまたはオンプレミスの DNS サーバーを使用している場合は、"privatelink" サブドメインの Cognitive Services リソース名をプライベート エンドポイントの IP アドレスに解決するように DNS サーバーを構成する必要があります。 これを行うには、VNet のプライベート DNS ゾーンに "privatelink" サブドメインを委任するか、DNS サーバーで DNS ゾーンを構成し、DNS A レコードを追加します。
+
+プライベート エンドポイントをサポートするように独自の DNS サーバーを構成する方法の詳細については、次の記事を参照してください。
+
+- [Azure 仮想ネットワーク内のリソースの名前解決](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
+- [プライベート エンドポイントの DNS 構成](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)
+
+### <a name="pricing"></a>価格
+
+料金の詳細については、「[Azure Private Link の料金](https://azure.microsoft.com/pricing/details/private-link)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

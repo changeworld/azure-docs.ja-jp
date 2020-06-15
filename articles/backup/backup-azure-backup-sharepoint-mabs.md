@@ -3,12 +3,12 @@ title: MABS を使用して SharePoint ファームを Azure にバックアッ�
 description: Azure Backup Server を使用して SharePoint データをバックアップおよび復元します。 この記事では、目的のデータを Azure に保存できるように SharePoint ファームを構成するための情報を提供します。 ディスクまたは Azure から保護対象の SharePoint データを復元できます。
 ms.topic: conceptual
 ms.date: 04/26/2020
-ms.openlocfilehash: 7e429eeb5319a12c3483510072fd82c69c8d8ab3
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 62fcb434ef00df43ce2950a5df569e346a06903a
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657275"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234784"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>MABS を使用して SharePoint ファームを Azure にバックアップする
 
@@ -68,10 +68,9 @@ SharePoint ファームをバックアップするには、ConfigureSharePoint.e
 
     * ファーム管理者の資格情報を入力します。 このアカウントは、WFE サーバーのローカル管理者グループのメンバーである必要があります。 ファーム管理者がローカル管理者ではない場合は、WFE サーバーで次の権限を付与します。
 
-        * MABS フォルダー \(%Program Files%\\Data Protection Manager\\DPM\) に対するフル コントロールを WSS\_Admin\_WPG グループに付与します。
-            -A
+        * MABS フォルダー (`%Program Files%\Data Protection Manager\DPM\`) に対するフル コントロールを **WSS_Admin_WPG** グループに付与します。
 
-        * MABS レジストリ キー \(HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\Microsoft Data Protection Manager\) に対する読み取りアクセスを WSS\_Admin\_WPG グループに付与します。
+        * MABS レジストリ キー (`HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager`) に対する読み取りアクセスを **WSS_Admin_WPG** グループに付与します。
 
         ConfigureSharePoint.exe を実行した後で、SharePoint ファーム管理者の資格情報に変更がある場合は、これを再実行する必要があります。
 
@@ -83,7 +82,7 @@ SharePoint ファームをバックアップするには、ConfigureSharePoint.e
 
     SharePoint サーバーを展開すると、MABS は VSS を照会して MABS で保護できるデータを確認します。  SharePoint データベースがリモートである場合、MABS はそれに接続します。 SharePoint データ ソースが表示されない場合は、VSS ライターが SharePoint サーバーといずれかのリモート SQL Server で実行されていることを確認し、SharePoint サーバーとリモート SQL Server の両方で MABS エージェントがインストールされていることを確認します。 さらに、SharePoint データベースが SQL Server データベースとして他の場所で保護されていないことを確認してください。
 
-1. **[データの保護方法の選択]** で、短期と長期のバックアップの処理方法を指定します。 短期バックアップは常にディスクへのバックアップが優先されますが、Azure Backup を使用してディスクから Azure クラウドにバックアップするオプションもあります (短期または長期)。
+1. **[データの保護方法の選択]** で、短期と長期のバックアップの処理方法を指定します。 短\-期バックアップは常にディスクへのバックアップが優先されますが、Azure Backup を使用してディスクから Azure クラウドにバックアップするオプションもあります \((短期または長\-期)\)。
 
 1. **[短期的な目標の選択]** で、ディスク上の短期記憶域へのバックアップ方法を指定します。   **[保有期間の範囲]** で、ディスクにデータを保持する期間を指定します。 **[同期の頻度]** で、ディスクへの増分バックアップを実行する頻度を指定します。 バックアップ間隔を設定しない場合は、[回復ポイントの直前] を有効にし、各回復ポイントがスケジュールされる直前に MABS が高速完全バックアップを実行するように指定できます。
 

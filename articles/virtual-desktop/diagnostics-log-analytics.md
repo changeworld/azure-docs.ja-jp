@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/30/2020
+ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 76a5e12eee7a325a73b3c17dba6c775b6984b89a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 04c02cb493941d101cf230b1ca3dab32aaa7a2fc
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195919"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234556"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>診断機能に Log Analytics を使用する
 
@@ -118,6 +118,9 @@ Azure portal または Azure Monitor 上で Log Analytics ワークスペース�
 
 5. クエリ診断の準備が整いました。 すべての診断テーブルに、"WVD" プレフィックスがあります。
 
+>[!NOTE]
+>Azure Monitor ログ内に格納されているテーブルの詳細については、「[Azure Monitor のデータ リファレンス](https://docs.microsoft.com/azure/azure-monitor/reference/)」を参照してください。 Windows Virtual Desktop に関連するすべてのテーブルに "WVD" というラベルが付いています。
+
 ## <a name="cadence-for-sending-diagnostic-events"></a>診断イベントの送信頻度
 
 診断イベントは、完了時に Log Analytics に送信されます。
@@ -180,6 +183,7 @@ WVDFeeds
 1 人のユーザーのすべての接続を検索するには: 
 
 ```kusto
+WVDConnections
 |where UserName == "userupn" 
 |take 100 
 |sort by TimeGenerated asc, CorrelationId 
@@ -238,10 +242,32 @@ WVDErrors
 | render barchart 
 ```
 
+すべてのユーザーにわたってエラーの発生を確認するには:
+
+```kusto
+WVDErrors 
+| where ServiceError =="false" 
+| summarize usercount = count(UserName) by CodeSymbolic 
+| sort by usercount desc
+| render barchart 
+```
+
+ユーザーが開いたアプリに対してクエリを実行するには、このクエリを実行します。
+
+```kusto
+WVDCheckpoints 
+| where TimeGenerated > ago(7d)
+| where Name == "LaunchExecutable"
+| extend App = parse_json(Parameters).filename
+| summarize Usage=count(UserName) by tostring(App)
+| sort by Usage desc
+| render columnchart
+```
 >[!NOTE]
->トラブルシューティングのための最も重要なテーブルは、WVDErrors です。 このクエリを使用して、ユーザーがアプリまたはデスクトップの一覧にサブスクライブするときに、接続やフィードなどのユーザー アクティビティにどの問題が発生するかを把握します。 テーブルには、管理エラーとホスト登録の問題が示されます。
->
->パブリック プレビュー中に、問題の解決に関するヘルプが必要な場合は、ヘルプ要求の中でエラーの CorrelationID を必ず提供してください。 また、サービス エラーの値が常に ServiceError = "false" になっていることを確認します。 "false" の値は、ユーザー側で管理タスクによって問題を解決できることを意味します。 ServiceError = "true" の場合は、問題を Microsoft にエスカレートする必要があります。
+>- ユーザーが完全なデスクトップを開いた場合、セッション内でのユーザーによるアプリの使用は WVDCheckpoints テーブルのチェックポイントとして追跡されません。
+>- WVDConnections テーブル内の ResourcesAlias 列は、ユーザーが完全なデスクトップと公開済みアプリのどちらに接続しているかを示します。 この列には、接続中に開いた最初のアプリのみが表示されます。 ユーザーが開いた公開済みアプリは、WVDCheckpoints 内で追跡されます。
+>- WVDErrors テーブルには、管理エラー、ホスト登録の問題、およびユーザーがアプリまたはデスクトップの一覧をサブスクライブしている間に発生したその他の問題が表示されます。
+>- WVDErrors は、管理タスクによって解決できる問題を特定するのに役立ちます。 ServiceError の値は、これらの種類の問題の場合、必ず "false" と表示されます。 ServiceError = "true" の場合は、問題を Microsoft にエスカレートする必要があります。 エスカレートするエラーの CorrelationID をお伝えください。
 
 ## <a name="next-steps"></a>次のステップ 
 

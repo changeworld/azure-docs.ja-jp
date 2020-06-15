@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5d4fb87ae5edd4919923e66336760aadf23d1888
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b1822f6a5bf0d3ac4217a43978dfcc739044e812
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657252"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235563"
 ---
 # <a name="identify-and-diagnose-issues"></a>問題の特定と診断
 
@@ -161,7 +161,7 @@ Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityId <ActivityGuid> 
 
 |数値コード|エラー コード|推奨されている解決方法|
 |---|---|---|
-|-2147467259|ConnectionFailedAdErrorNoSuchMember|ユーザーは Azure Active Directory のメンバーではありません。 [Active Directory 管理センター](/windows-server/identity/ad-ds/get-started/adac/active-directory-administrative-center)の手順に従って追加してください。|
+|-2147467259|ConnectionFailedAdErrorNoSuchMember|ユーザーは Active Directory のメンバーではありません。 [Active Directory 管理センター](/windows-server/identity/ad-ds/get-started/adac/active-directory-administrative-center)の手順に従って追加してください。|
 |-2147467259|ConnectionFailedAdTrustedRelationshipFailure|セッション ホストは、Active Directory に正しく参加していません。|
 |-2146233088|ConnectionFailedUserHasValidSessionButRdshIsUnhealthy|セッション ホストが使用できないため、接続が失敗しました。 セッション ホストの正常性を確認してください。|
 |-2146233088|ConnectionFailedClientDisconnect|このエラーが頻繁に発生する場合は、ユーザーのコンピューターがネットワークに接続されていることを確認してください。|
@@ -172,6 +172,7 @@ Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityId <ActivityGuid> 
 |8|ConnectionBroken|クライアントとゲートウェイまたはサーバーとの間の接続が削除されました。 予期せず発生した場合を除き、アクションは不要です。|
 |14|UnexpectedNetworkDisconnect|ネットワークへの接続が削除されました。 ユーザーにもう一度接続するよう依頼してください。|
 |24|ReverseConnectFailed|ホスト仮想マシンには、RD ゲートウェイへの直接の見通し線がありません。 ゲートウェイ IP アドレスを解決できることを確認してください。|
+|1322|ConnectionFailedNoMappingOfSIDinAD|ユーザーは Active Directory のメンバーではありません。 [Active Directory 管理センター](/windows-server/identity/ad-ds/get-started/adac/active-directory-administrative-center)の手順に従って追加してください。|
 
 ## <a name="next-steps"></a>次のステップ
 

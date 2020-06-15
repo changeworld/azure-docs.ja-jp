@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.date: 02/20/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 9cb1149073247b7f5fc3e74a1aef6f96388c7135
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6d072cd03fa0e5c8da4593d8633a268d3b5a50fb
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648121"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84197057"
 ---
 # <a name="sync-your-github-repository-to-app-configuration"></a>GitHub リポジトリを App Configuration と同期する
 
@@ -92,7 +92,7 @@ jobs:
 ```
 ## <a name="sync-multiple-files-in-one-action"></a>1 つのアクションで複数のファイルを同期する 
 
-構成が複数のファイルに含まれている場合は、次のパターンを使用して、いずれかのファイルが変更されたときに同期をトリガーできます。 このパターンでは、glob ライブラリ https://www.npmjs.com/package/glob が使用されます。 
+構成が複数のファイルに含まれている場合は、次のパターンを使用して、いずれかのファイルが変更されたときに同期をトリガーできます。 このパターンでは、glob ライブラリ https://www.npmjs.com/package/glob が使用されます。 構成ファイル名にコンマが含まれている場合はバックスラッシュを使用してそのコンマをエスケープできることに注意してください。 
 
 ```json
 on:

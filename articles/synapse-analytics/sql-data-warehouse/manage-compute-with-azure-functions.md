@@ -11,12 +11,12 @@ ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: aa2cff552b49bceeaf6fd46510bf78384f0e7bfb
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: c69d28d2be6b04286bb04a2ede6eebc69400c777
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631957"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014895"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>Azure Synapse Analytics SQL プールで Azure Functions を使用してコンピューティング リソースを管理します
 
@@ -29,7 +29,7 @@ Azure Function App を SQL プールと組み合わせて使用するために�
 このテンプレートを展開するには、次の情報が必要です。
 
 - SQL プール インスタンスが存在するリソース グループの名前
-- SQL プール インスタンスが存在する論理サーバーの名前
+- SQL プール インスタンスが存在するサーバーの名前
 - SQL プール インスタンスの名前
 - Azure Active Directory のテナント ID (ディレクトリ ID)
 - サブスクリプション ID
@@ -115,7 +115,7 @@ Azure Function App を SQL プールと組み合わせて使用するために�
 
 5. 次のように operation 変数を目的の動作に設定します。
 
-   ```javascript
+   ```JavaScript
    // Resume the SQL pool instance
    var operation = {
        "operationType": "ResumeDw"
@@ -141,7 +141,7 @@ Azure Function App を SQL プールと組み合わせて使用するために�
 
 毎日午前 8 時に DW600 にスケールアップし、午後 8 時に DW200 にスケールダウンします。
 
-| 機能  | スケジュール     | Operation                                |
+| 機能  | スケジュール     | 操作                                |
 | :-------- | :----------- | :--------------------------------------- |
 | Function1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW600"}` |
 | Function2 | 0 0 20 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200"}` |
@@ -150,7 +150,7 @@ Azure Function App を SQL プールと組み合わせて使用するために�
 
 毎日午前 8 時に DW1000 にスケールアップし、午後 4 時に DW600 にスケールダウンします。さらに、午後 10 時に DW200 にスケールダウンします。
 
-| 機能  | スケジュール     | Operation                                |
+| 機能  | スケジュール     | 操作                                |
 | :-------- | :----------- | :--------------------------------------- |
 | Function1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000"}` |
 | Function2 | 0 0 16 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600"}` |
@@ -160,7 +160,7 @@ Azure Function App を SQL プールと組み合わせて使用するために�
 
 平日の午前 8 時に DW1000 にスケールアップし、午後 4 時に 1 回 DW600 にスケールダウンします。 金曜日の午後 11 時に一時停止し、月曜朝の午前 7 時に再開します。
 
-| 機能  | スケジュール       | Operation                                |
+| 機能  | スケジュール       | 操作                                |
 | :-------- | :------------- | :--------------------------------------- |
 | Function1 | 0 0 8 * * 1-5  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000"}` |
 | Function2 | 0 0 16 * * 1-5 | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600"}` |

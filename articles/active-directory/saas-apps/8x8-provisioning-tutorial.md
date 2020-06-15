@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 6fc14bd41faf6a86953b82f8a7ea7bd75b746cf9
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: b200aabff1231cdf383d30ad2e671c4b46ca91bb
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801515"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196207"
 ---
 # <a name="tutorial-configure-8x8-for-automatic-user-provisioning"></a>チュートリアル:8x8 を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -116,7 +116,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 7. **[保存]** を選択します。
 
-8. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to 8x8]\(Azure Active Directory ユーザーを 8x8 に同期する\)** を選択します。
+8. **[マッピング]** セクションの **[Provision Azure Active Directory Users]\(Azure Active Directory ユーザーをプロビジョニングする\)** を選択します。
 
 9. **[属性マッピング]** セクションで、Azure AD から 8x8 に同期されるユーザー属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で 8x8 のユーザー アカウントとの照合に使用されます。 [一致する対象の属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)を変更する場合は、その属性に基づいたユーザーのフィルター処理が確実に 8x8 API でサポートされているようにする必要があります。 **[保存]** ボタンをクリックして変更をコミットします。
 

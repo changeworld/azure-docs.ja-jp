@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用して SQL Server データを SQL Azure へ - Team Data Science Process
+title: Azure Data Factory を使用して SQL Server データを SQL Database へ - Team Data Science Process
 description: オンプレミスとクラウド内のデータベース間で毎日同時にデータを移動する 2 つのデータ移行アクティビティを構成する ADF パイプラインを設定します。
 services: machine-learning
 author: marktab
@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8f696f1c6c414cd9db082e79e0f34c56156e1ee0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a484a6c9a55eac4d166a711a9eae7990c4305cb4
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76722494"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194408"
 ---
-# <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスの SQL Server から SQL Azure にデータを移動する
+# <a name="move-data-from-a-sql-server-database-to-sql-database-with-azure-data-factory"></a>Azure Data Factory を使用して SQL Server データベースから SQL Database にデータを移動する
 
-この記事では、Azure Data Factory (ADF) を使用して、Azure Blob Storage 経由でオンプレミスの SQL Server データベースから SQL Azure データベースにデータを移動する方法について説明します。この方法は、サポートされている従来の方法であり、複製されたステージング コピーの利点を備えています。ただし、[データ移行ページで最新のオプションを確認することをお勧めします](https://datamigration.microsoft.com/scenario/sql-to-azuresqldb?step=1)。
+この記事では、Azure Data Factory (ADF) を使用して、Azure Blob Storage 経由で SQL Server データベースから Azure SQL Database にデータを移動する方法について説明します。この方法は、サポートされている従来の方法であり、複製されたステージング コピーの利点を備えています。ただし、[データ移行ページで最新のオプションを確認することをお勧めします](https://datamigration.microsoft.com/scenario/sql-to-azuresqldb?step=1)。
 
 Azure SQL Database にデータを移動するためのさまざまなオプションをまとめた表については、「[Azure Machine Learning 用にデータを Azure SQL Database に移動する](move-sql-azure.md)」を参照してください。
 
@@ -37,13 +37,13 @@ ADF を使用すると、既存のデータ処理サービスを、可用性が�
 ADF では、定期的にデータの移動を管理するシンプルな JSON スクリプトを使用して、ジョブのスケジュールと監視ができます。 ADF には他にも、複雑な操作のサポートなどの機能があります。 詳細については、 [Azure Data Factory (ADF)](https://azure.microsoft.com/services/data-factory/)にあるドキュメントを参照してください。
 
 ## <a name="the-scenario"></a><a name="scenario"></a>シナリオ
-2 つのデータ移行アクティビティを構成する ADF パイプラインを設定します。 これらのアクティビティは、オンプレミスの SQL データベースとクラウドの Azure SQL データベース間で毎日データを移動します。 2 つのアクティビティは次のとおりです。
+2 つのデータ移行アクティビティを構成する ADF パイプラインを設定します。 それらの連携によって、SQL Server データベースと Azure SQL Database の間で毎日データが移動されます。 2 つのアクティビティは次のとおりです。
 
-* オンプレミスの SQL Server データベースから Azure BLOB ストレージ アカウントにデータをコピーする
-* Azure BLOB ストレージ アカウントから Azure SQL Database にデータをコピーする
+* SQL Server データベースから Azure Blob Storage アカウントにデータをコピーする
+* Azure Blob Storage アカウントから Azure SQL Database にデータをコピーする
 
 > [!NOTE]
-> ここで示す手順は、ADF チームが提供するより詳細なチュートリアル「[オンプレミスの SQL Server データベースから Azure Blob Storage にデータをコピーする](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/)」から抜粋したものです。また、このトピックの関連セクションへの参照が適宜提供されています。
+> ここで示す手順は、ADF チームが提供するより詳細なチュートリアル「[SQL Server データベースから Azure Blob ストレージにデータをコピーする](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/)」から抜粋したものです。また、このトピックの関連セクションへの参照が適宜提供されています。
 >
 >
 
@@ -60,10 +60,10 @@ ADF では、定期的にデータの移動を管理するシンプルな JSON �
 >
 >
 
-## <a name="upload-the-data-to-your-on-premises-sql-server"></a><a name="upload-data"></a> オンプレミスの SQL Server にデータをアップロードする
+## <a name="upload-the-data-to-your-sql-server-instance"></a><a name="upload-data"></a> SQL Server インスタンスにデータをアップロードする
 [NYC タクシー データセット](https://chriswhong.com/open-data/foil_nyc_taxi/) を使用して、移行プロセスを説明します。 NYC タクシー データセットは、記事に記載されているように、Azure BLOB ストレージの [NYC タクシー データ](https://www.andresmh.com/nyctaxitrips/)から入手できます。 データには、乗車の詳細を含む trip_data.csv ファイルと、乗車ごとの料金の詳細を含む trip_far.csv ファイルの 2 つのファイルがあります。 これらのファイルのサンプルと説明は、「 [NYC タクシー乗車データセットの説明](sql-walkthrough.md#dataset)」にあります。
 
-ここに示されている手順は、自身のデータに適用することも、NYC タクシー データセットを使用してこの手順に従って行うこともできます。 NYC タクシー データセットを自身のオンプレミスの SQL Server データベースにアップロードするには、「[SQL Server データベースにデータを一括インポートする](sql-walkthrough.md#dbload)」に記載されている手順に従います。 これらは Azure Virtual Machine 上の SQL Server にアップロードする手順ですが、オンプレミスの SQL Server へのアップロード手順も同じです。
+ここに示されている手順は、自身のデータに適用することも、NYC タクシー データセットを使用してこの手順に従って行うこともできます。 NYC タクシー データセットをご利用の SQL Server データベースにアップロードするには、「[SQL Server データベースにデータを一括インポートする](sql-walkthrough.md#dbload)」に記載されている手順に従います。
 
 ## <a name="create-an-azure-data-factory"></a><a name="create-adf"></a> Azure Data Factory を作成する
 [Azure Portal](https://portal.azure.com/) で新しい Azure Data Factory とリソース グループを作成する手順については、「[Azure Data Factory を作成する](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-data-factory)」をご覧ください。 新しい ADF インスタンスに *adfdsp* という名前を付け、作成されたリソース グループに *adfdsprg* という名前を付けます。
@@ -93,7 +93,7 @@ Integration Runtime は、異なるネットワーク環境間でデータ統合
 
 テーブル内の JSON ベースの定義では、次の名前が使用されます。
 
-* オンプレミスの SQL サーバーでは、**テーブル名**は *nyctaxi_data* です。
+* SQL Server での**テーブル名**は *nyctaxi_data* です
 * the **コンテナー名** は *containername*
 
 この ADF パイプラインには、次の 3 つのテーブル定義が必要です。
@@ -108,7 +108,7 @@ Integration Runtime は、異なるネットワーク環境間でデータ統合
 >
 
 ### <a name="sql-on-premises-table"></a><a name="adf-table-onprem-sql"></a>オンプレミスの SQL テーブル
-オンプレミス SQL Server のテーブル定義は、次の JSON ファイルで指定されています。
+SQL Server のテーブル定義は、次の JSON ファイルで指定されています。
 
 ```json
 {
@@ -226,12 +226,12 @@ Integration Runtime は、異なるネットワーク環境間でデータ統合
     "name": "AMLDSProcessPipeline",
     "properties":
     {
-        "description" : "This pipeline has one Copy activity that copies data from an on-premises SQL to Azure blob",
+        "description" : "This pipeline has one Copy activity that copies data from SQL Server to Azure blob",
         "activities":
         [
             {
                 "name": "CopyFromSQLtoBlob",
-                "description": "Copy data from on-premises SQL server to blob",
+                "description": "Copy data from SQL Server to blob",
                 "type": "CopyActivity",
                 "inputs": [ {"name": "OnPremSQLTable"} ],
                 "outputs": [ {"name": "OutputBlobTable"} ],

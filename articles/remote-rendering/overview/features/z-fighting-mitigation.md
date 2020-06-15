@@ -5,16 +5,16 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/06/2020
 ms.topic: article
-ms.openlocfilehash: 69774c0014aac26c7266620bbe7d06ba37d6023b
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: f4c49be5f5a0f2c89831891dc2640b64fee9fc44
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758811"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022420"
 ---
 # <a name="z-fighting-mitigation"></a>Z ファイティングの軽減
 
-2 つの面が重なっている場合、どちらをもう一方にレンダリングする必要があるかはっきりしません。 結果はピクセル単位でも変化し、ビューに依存するアーティファクトが生成されることになります。 その結果、カメラまたはメッシュが移動すると、これらのパターンが著しくちらつくことになります。 このアーティファクトは "*Z ファイティング*" と呼ばれます。 AR アプリケーションと VR アプリケーションの場合、ヘッドマウント デバイスは当然ながら常に動くため、問題はさらに悪化します。 視聴者に不快感を与えないため、Azure Remote Rendering では Z ファイティングの軽減機能が提供されています。
+2 つの面が重なっている場合、どちらをもう一方にレンダリングする必要があるかはっきりしません。 結果はピクセル単位でも変化し、カメラ ビューに依存するアーティファクトが生成されることになります。 その結果、カメラまたはメッシュが移動すると、これらのパターンが著しくちらつくことになります。 このアーティファクトは "*Z ファイティング*" と呼ばれます。 AR アプリケーションと VR アプリケーションの場合、ヘッドマウント デバイスは当然ながら常に動くため、問題はさらに悪化します。 視聴者に不快感を与えないため、Azure Remote Rendering では Z ファイティングの軽減機能が提供されています。
 
 ## <a name="z-fighting-mitigation-modes"></a>Z ファイティングの軽減モード
 

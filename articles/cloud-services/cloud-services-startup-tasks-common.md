@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: 4fe1ee3ccf2849943959889838ba0f22fb64bb9a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73762c431c84de01ce3561d586c5a12bfd26ac81
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233803"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310127"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>クラウド サービス共通のスタートアップ タスク
 この記事では、クラウド サービスで実行できる共通のスタートアップ タスクの例を示します。 ロールが開始する前に、スタートアップ タスクを使用して操作を実行できます。 対象となる操作としては、コンポーネントのインストール、COM コンポーネントの登録、レジストリ キーの設定、実行時間の長いプロセスの開始などがあります。 
@@ -466,12 +466,12 @@ EXIT %ERRORLEVEL%
 ### <a name="set-executioncontext-appropriately-for-startup-tasks"></a>スタートアップ タスクに適した executionContext を設定する
 スタートアップ タスクに適切な特権を設定します。 ロールが通常の特権で実行されるときでも、スタートアップ タスクは管理者特権で実行する必要がある場合があります。
 
-[executionContext][environment] 属性はスタートアップ タスクの特権レベルを設定します。 `executionContext="limited"` を使用すると、スタートアップ タスクにロールと同じ特権レベルが付与されます。 `executionContext="elevated"` を使用すると、スタートアップ タスクに管理者特権が付与されます。これにより、お使いのロールに管理者特権を与えることなく、スタートアップ タスクで管理者のタスクを実行できます。
+[executionContext][Task] 属性はスタートアップ タスクの特権レベルを設定します。 `executionContext="limited"` を使用すると、スタートアップ タスクにロールと同じ特権レベルが付与されます。 `executionContext="elevated"` を使用すると、スタートアップ タスクに管理者特権が付与されます。これにより、お使いのロールに管理者特権を与えることなく、スタートアップ タスクで管理者のタスクを実行できます。
 
 管理者特権を必要とするスタートアップ タスクの例は、 **AppCmd.exe** を使用して IIS を構成するスタートアップ タスクです。 **AppCmd.exe** には `executionContext="elevated"` が必要です。
 
 ### <a name="use-the-appropriate-tasktype"></a>適切な taskType を使用する
-[taskType][environment] 属性は、スタートアップ タスクを実行する方法を決定します。 **simple**、**background**、および **foreground** の 3 つの値があります。 background タスクと foreground タスクは非同期的に開始され、simple タスクは一度に 1 回のみ同期的に実行されます。
+[taskType][Task] 属性は、スタートアップ タスクを実行する方法を決定します。 **simple**、**background**、および **foreground** の 3 つの値があります。 background タスクと foreground タスクは非同期的に開始され、simple タスクは一度に 1 回のみ同期的に実行されます。
 
 **simple** スタートアップ タスクでは、ServiceDefinition.csdef ファイルに表示される順序でタスクが実行されます。 **simple** タスクがゼロ以外の終了コードで終了すると、スタートアップ手続きは停止し、ロールは開始されません。
 
@@ -483,7 +483,7 @@ EXIT %ERRORLEVEL%
 ロールが開始されない一般的な原因は、スタートアップ バッチ ファイルの末尾に `EXIT /B 0` がないことです。
 
 > [!NOTE]
-> 入れ子になったバッチファイルで `/B` パラメーターを使用すると、ハングする場合があります。 別のバッチ ファイルが現在のバッチ ファイルを呼び出す場合 ([ログ ラッパーを使用する場合など](#always-log-startup-activities)) に、このハング問題が発生しないようにすることができます。 このような場合は、`/B` パラメーターを省略できます。
+> 入れ子になったバッチファイルで `/B` パラメーターを使用すると、応答が停止する場合があります。 別のバッチ ファイルが現在のバッチ ファイルを呼び出す場合 ([ログ ラッパーを使用する場合など](#always-log-startup-activities)) に、この問題が発生しないようにすることができます。 このような場合は、`/B` パラメーターを省略できます。
 > 
 > 
 
@@ -501,17 +501,14 @@ EXIT %ERRORLEVEL%
 クラウド サービス パッケージを[作成してデプロイ](cloud-services-how-to-create-deploy-portal.md)します。
 
 [ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
-[Environment]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
+[Task]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
 [Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [Runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
 [Environment]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
 [Variable]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
-[ServiceDefinition.csdef]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
+[EndPoints]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
 [LocalStorage]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalStorage
 [LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
-
-
-

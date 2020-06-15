@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: 2c7cad2dfdcd55073a1cf09d79e5223b666ced5f
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: a8b1c53a5c060f2124a36b69365bdd9b62896b56
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478151"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220953"
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows でのカスタムのスクリプト拡張機能
 
@@ -30,7 +30,17 @@ ms.locfileid: "80478151"
 
 ### <a name="operating-system"></a>オペレーティング システム
 
-Windows 用カスタム スクリプト拡張機能は、サポートされている拡張機能 OS 上で動作します。詳細については、こちらの [Azure 拡張機能でサポートされているオペレーティング システム](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems)に関する記事を参照してください。
+Windows 用カスタム スクリプト拡張機能は、サポートされている拡張機能 OS で動作します。
+### <a name="windows"></a>Windows
+
+* Windows Server 2008 R2
+* Windows Server 2012
+* Windows Server 2012 R2
+* Windows 10
+* Windows Server 2016
+* Windows Server 2016 Core
+* Windows Server 2019
+* Windows Server 2019 Core
 
 ### <a name="script-location"></a>スクリプトの場所
 

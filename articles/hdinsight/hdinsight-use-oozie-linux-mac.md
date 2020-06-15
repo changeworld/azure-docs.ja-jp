@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 48b322f32bd6e8f2a2da0c5be8eb7b7987881f83
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 27cc1052a2f35382b2d6a93482b7af219a9a187a
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204119"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015167"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Apache Hadoop で Apache Oozie を使用して Linux ベースの Azure HDInsight でワークフローを定義して実行する
 
@@ -232,7 +232,7 @@ Oozie ワークフローの定義は、XML プロセス定義言語である Had
     sudo apt-get --assume-yes install freetds-dev freetds-bin
     ```
 
-2. 次のコードを編集して、`<serverName>` を Azure SQL サーバー名に置き換え、`<sqlLogin>` を Azure SQL サーバー ログインに置き換えます。  コマンドを入力して、前提条件の SQL データベースに接続します。  プロンプトでパスワードを入力します。
+2. 次のコードを編集して、`<serverName>` をご利用の[論理 SQL サーバー](../azure-sql/database/logical-servers.md)名に置き換え、`<sqlLogin>` をサーバー ログインに置き換えます。  コマンドを入力して、前提条件の SQL データベースに接続します。  プロンプトでパスワードを入力します。
 
     ```bash
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <sqlLogin> -p 1433 -D oozietest
@@ -301,9 +301,9 @@ Oozie ワークフローの定義は、XML プロセス定義言語である Had
     |---|---|
     |wasbs://mycontainer\@mystorageaccount.blob.core.windows.net| 手順 1 で受け取った値。|
     |admin| admin ではない場合、HDInsight クラスターの自分のログイン名。|
-    |serverName| Azure SQL データベース サーバー名。|
-    |sqlLogin| Azure SQL データベース サーバー ログイン。|
-    |sqlPassword| Azure SQL データベース サーバー ログインのパスワード。|
+    |serverName| Azure SQL Database サーバー名。|
+    |sqlLogin| Azure SQL Database サーバー ログイン。|
+    |sqlPassword| Azure SQL Database サーバー ログインのパスワード。|
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -449,7 +449,7 @@ Oozie ワークフローの定義は、XML プロセス定義言語である Had
 
     このコマンドの実行後に状態を確認すると、ジョブが実行中状態になり、ジョブのアクションに関する情報が返されます。  このジョブは完了までに数分かかります。
 
-6. 次のコードを編集して、`<serverName>` を Azure SQL サーバー名に置き換え、`<sqlLogin>` を Azure SQL サーバー ログインに置き換えます。  正常に "*タスクが完了したら*"、次のコマンドを使って、データが生成され、SQL データベース テーブルにエクスポートされたことを確認できます。  プロンプトでパスワードを入力します。
+6. 次のコードを編集して、`<serverName>` をご利用のサーバー名に置き換え、`<sqlLogin>` をサーバー ログインに置き換えます。  正常に "*タスクが完了したら*"、次のコマンドを使って、データが生成され、SQL データベース テーブルにエクスポートされたことを確認できます。  プロンプトでパスワードを入力します。
 
     ```bash
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <sqlLogin> -p 1433 -D oozietest

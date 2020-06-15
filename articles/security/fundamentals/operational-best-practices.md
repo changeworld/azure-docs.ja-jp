@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 80b8adfc26cd87e0788852e98fddb0fd3f2e8cd5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 56132eae03a52af425e00bec93a63a697a2a55e6
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188588"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204737"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure で運用可能なセキュリティに関するベスト プラクティス
 この記事では、Azure 内のデータ、アプリケーション、その他の資産を保護するための運用可能な一連のベスト プラクティスについて説明します。
@@ -215,8 +215,8 @@ Azure Policy の採用後に従うセキュリティのベストプラクティ�
 **ベスト プラクティス**: ポリシー違反の監視を担当するロールを特定し、適切な修復アクションが確実に迅速に行われるようにします。   
 **詳細**: 割り当てられたロールに、[Azure portal](../../governance/policy/how-to/get-compliance-data.md#portal) または[コマンド ライン](../../governance/policy/how-to/get-compliance-data.md#command-line)を使用してコンプライアンスを監視させます。
 
-**ベスト プラクティス**: Azure Policy は、組織の明文化されたポリシーを技術的に表したものです。 混乱を減らし、一貫性を高めるため、すべての Azure ポリシーを組織のポリシーにマッピングします。   
-**詳細**: [Azure Policy の定義](../../governance/policy/concepts/definition-structure.md#display-name-and-description)内または [Azure Policy イニシアティブ](../../governance/policy/concepts/definition-structure.md#initiatives)の説明内に組織のポリシーへの参照を追加することにより、組織のドキュメント内または Azure Policy の定義自体にマッピングをドキュメント化します。
+**ベスト プラクティス**: Azure Policy は、組織の明文化されたポリシーを技術的に表したものです。 混乱を減らし、一貫性を高めるため、すべての Azure Policy 定義を組織のポリシーにマッピングします。   
+**詳細**: [ポリシーの定義](../../governance/policy/concepts/definition-structure.md#display-name-and-description)内または [イニシアティブ定義](../../governance/policy/concepts/initiative-definition-structure.md#metadata)の説明内に組織のポリシーへの参照を追加することにより、組織のドキュメント内または Azure Policy の定義自体にマッピングをドキュメント化します。
 
 ## <a name="monitor-azure-ad-risk-reports"></a>Azure AD のリスク レポートの監視
 ほとんどのセキュリティ侵害は、攻撃者がユーザーの ID を盗むことにより環境にアクセスできるようになると発生します。 侵害された ID を検出するのは簡単な作業ではありません。 Azure AD では、アダプティブ機械学習アルゴリズムとヒューリスティックを使用して、ユーザー アカウントに関連する疑わしいアクションを検出します。 検出された疑わしいアクションはそれぞれ、[リスク検出](../../active-directory/reports-monitoring/concept-risk-events.md)と呼ばれるレコードに格納されます。 リスク検出は、Azure AD のセキュリティ レポートに記録されます。 詳細については、[危険な状態のユーザー セキュリティ レポート](../../active-directory/reports-monitoring/concept-user-at-risk.md)に関する記事、および[リスクの高いサインイン セキュリティ レポート](../../active-directory/reports-monitoring/concept-risky-sign-ins.md)に関する記事をご覧ください。

@@ -11,12 +11,12 @@ ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 7c09e9d9f93ead6f894c954f647ebe33918cf41d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e80ff74ad1dec25c815a9dd28a04133502b82085
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653007"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84012910"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Azure Synapse Analytics でのリソース使用状況とクエリ アクティビティの監視
 
@@ -49,7 +49,7 @@ Azure portal では、Synapse SQL に対して以下のメトリックを使用�
 メトリックを表示してアラートを設定するときに考慮が必要な事項は次のとおりです。
 
 - 使用される DWU は、SQL プール全体の**使用に関する高レベル表現**のみを表しており、使用率を包括的に示すものではありません。 スケールアップまたはスケールダウンするかどうかを判断するには、コンカレンシー、メモリ、tempdb、アダプティブ キャッシュ容量など、DWU の影響を受ける可能性があるすべての要素を考慮してください。 [さまざまな DWU 設定でワークロードを実行して](sql-data-warehouse-manage-compute-overview.md#finding-the-right-size-of-data-warehouse-units)、ビジネス目標を達成するために最適な動作を判断することをお勧めします。
-- 接続の失敗と成功がレポートされるのは、特定のデータ ウェアハウスについてです。論理サーバーについてはレポートされません
+- サーバー自体ではなく、特定のデータ ウェアハウスについての接続の失敗と成功がレポートされます。
 - データ ウェアハウスがアイドル状態であっても、メモリの割合には使用率が反映されます。アクティブなワークロードのメモリ消費は反映されません。 追加のキャッシュ容量のスケーリングによってワークロードのパフォーマンスが要件を満たすように向上するかどうかに関する総合的な意思決定を行うために、このメトリックとその他 (tempdb、gen2 キャッシュ) を使用して追跡します。
 
 ## <a name="query-activity"></a>クエリ アクティビティ

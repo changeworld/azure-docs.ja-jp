@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/19/2019
 ms.author: memildin
-ms.openlocfilehash: 1c1b48d3715d838827f88f99fc0849d25677fdcc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bb7ffb06bb0cffeefae87ada665e2c123213186a
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585739"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84218642"
 ---
 # <a name="azure-container-registry-integration-with-security-center"></a>Azure Container Registry と Security Center の統合
 
@@ -27,7 +27,7 @@ Azure Security Center の 標準レベルを使用している場合には、Con
 
 イメージがレジストリにプッシュされるたびに、Security Center はそのイメージを自動的にスキャンします。 イメージのスキャンをトリガーするには、イメージをリポジトリにプッシュしてください。
 
-スキャンが完了すると (通常は約 10 分後)、次のような Security Center の推奨事項で結果が得られます。
+スキャンが完了すると (通常は約 10 分後ですが、最大で 48 時間かかることもあります)、次のような Security Center の推奨事項で結果が得られます。
 
 [![Azure Container Registry (ACR) でホストされるイメージで検出された脆弱性に関する Azure Security Center の推奨事項のサンプル](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
 

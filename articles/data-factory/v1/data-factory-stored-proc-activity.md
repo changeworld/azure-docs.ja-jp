@@ -12,12 +12,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 45aa49de51f42b26c653b15e79c865e3f5647c39
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3f9f4db0119b10a2df3a1007f9e5fa710e31f0e2
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74931640"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84113713"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server ストアド プロシージャ アクティビティ
 > [!div class="op_single_selector" title1="変換アクティビティ"]
@@ -114,7 +114,7 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
    ![新しいデータ ストア](media/data-factory-stored-proc-activity/new-data-store.png)
 3. JSON スクリプトを次のように変更します。
 
-   1. `<servername>` を、Azure SQL Database サーバーの名前に置き換えます。
+   1. `<servername>` をご自分のサーバーの名前に置き換えます。
    2. `<databasename>` を、テーブルとストアド プロシージャを作成したデータベースの名前に置き換えます。
    3. `<username@servername>` を、データベースへのアクセス権を持つユーザー アカウントに置き換えます。
    4. `<password>` を、ユーザー アカウントのパスワードに置き換えます。

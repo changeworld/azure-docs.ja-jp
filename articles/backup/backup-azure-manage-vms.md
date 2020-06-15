@@ -4,12 +4,12 @@ description: Azure Backup サービスを使用して Azure VM のバックア�
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: dd4e9dc199048b3faf3da0cadfdf60bdcb26c5bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6e49d1eed81d15970519299fb6f662c650116d6e
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226139"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248585"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Azure Backup サービスで Azure VM のバックアップを管理する
 
@@ -30,7 +30,7 @@ Azure portal では、Recovery Services コンテナーのダッシュボード�
 
 コンテナー ダッシュボードに VM を表示するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. [ハブ] メニューで、 **[参照]** を選択します。 リソース ボックスに「 **Recovery Services**」と入力します。 入力すると、入力内容に基づいて、一覧がフィルター処理されます。 **[Recovery Services コンテナー]** を選択します。
 
     ![Recovery Services コンテナーを作成する](./media/backup-azure-manage-vms/browse-to-rs-vaults.png)
@@ -56,7 +56,7 @@ Azure portal では、Recovery Services コンテナーのダッシュボード�
 
 バックアップ ポリシーを管理するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) にサインインする コンテナー ダッシュボードを開きます。
+1. [Azure portal](https://portal.azure.com/) にサインインします。 コンテナー ダッシュボードを開きます。
 2. **[バックアップ項目]** タイルで、 **[Azure Virtual Machines]** を選択します。
 
     ![[バックアップ項目] タイルを開く](./media/backup-azure-manage-vms/contoso-vault-1606.png)
@@ -167,7 +167,7 @@ VM のバックアップ データを削除する方法は 2 つあります。
 
 * Azure Backup 用に構成された Azure VM が保護を停止せずに削除または移動された場合、スケジュールされたバックアップ ジョブとオンデマンド (アドホック) バックアップ ジョブの両方が、エラー UserErrorVmNotFoundV2 で失敗します。 バックアップの事前チェックは、失敗したオンデマンド バックアップ ジョブについてのみクリティカルと表示されます (スケジュールされたジョブが失敗した場合は表示されません)。
 * ユーザーによって設定されたバックアップおよびアイテム保持ポリシーに準拠しているシステムでは、これらのバックアップ項目はアクティブなままになります。 これらの Azure VM のバックアップ データは、アイテム保持ポリシーに従って保持されます。 期限切れの復旧ポイント (最後の復旧ポイントを除く) は、バックアップ ポリシーで設定されている保持期間の範囲に従ってクリーニングされます。
-* 最後の復旧ポイントは無期限に保持され、ユーザーは該当するバックアップ価格に従って課金されるので、削除リソースのバックアップ項目/データが不要になった場合は、追加コストを回避するため、プライマリ データ ソースが存在しなくなったバックアップ項目を削除することをお勧めします。
+* 最後の復旧ポイントは無期限に保持され、ユーザーは該当するバックアップ価格に従って課金されるので、削除リソースのバックアップ項目またはデータが不要になった場合は、追加コストを回避するため、プライマリ データ ソースが存在しなくなったバックアップ項目を削除することをお勧めします。
 
 ## <a name="next-steps"></a>次のステップ
 

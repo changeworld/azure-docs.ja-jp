@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 6e780268d4b8c1a512ce82b1ca10a2f6b7b894b7
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: bbf569e95c59e888b830876f0458b063bd3920da
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125759"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84258812"
 ---
 # <a name="topic-filters-and-actions"></a>トピック フィルターとアクション
 
@@ -64,7 +64,7 @@ SQL フィルター条件を使用すると、プロパティとその値を追�
 
 
 > [!NOTE]
-> 現在、Azure portal では、サブスクリプションのフィルター規則を指定することはできません。 サポートされている任意の SDK または Azure Resource Manager テンプレートを使用して、サブスクリプションの規則を定義できます。 
+> Azure portal で Service Bus Explorer の機能がサポートされるようになったため、サブスクリプション フィルターをポータルから作成したり編集したりすることができます。 
 
 ## <a name="next-steps"></a>次のステップ
 次のサンプルを参照してください。 

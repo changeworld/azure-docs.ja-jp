@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 20f8e0bea460c20ed3af0c2844ebc3510bd2d6b6
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 9c70f8d728786e8aff8da33f9a39b8c2cfaafdc4
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800800"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84295611"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>コマーシャル マーケットプレース パートナーと顧客の使用状況の属性
 
@@ -58,6 +58,9 @@ GUID は、32 桁の 16 進数を含む一意の参照識別子です。 追跡�
 顧客の使用状況の属性を有効にするには、GUID をパートナー センターに登録する必要があります。
 
 テンプレートまたはユーザー エージェントに GUID を追加し、その GUID をパートナー センターに登録すると、将来のデプロイが追跡されます。
+
+> [!NOTE]
+> パートナー センターを通じて Azure Marketplace に [Azure アプリケーション](./partner-center-portal/create-new-azure-apps-offer.md) オファーを公開する場合には、テンプレートをアップロードした時点で、テンプレート内で使用している新しい GUID がパートナー センターのプロファイルに自動で登録されます。  
 
 1. [パートナー センター](https://partner.microsoft.com/dashboard)にサインインします。
 
@@ -246,7 +249,7 @@ foreach ($deployment in $deployments){
 
 ### <a name="notification-for-sdk-or-api-deployments"></a>SDK または API でデプロイする場合の通知
 
-\<PARTNER> ソフトウェアを使用すると、Microsoft は \<PARTNER> ソフトウェアのインストールを、デプロイされた Azure リソースと共に識別することができます。 Microsoft は、ソフトウェアをサポートするために使用される Azure リソースを関連付けることができます。 Microsoft はこの情報を収集し、パートナーの製品とビジネスの運用に最適なエクスペリエンスを提供します。 このデータは、Microsoft のプライバシー ポリシー (https://www.microsoft.com/trustcenter で確認できます) に沿って収集され、管理されます。
+\<PARTNER> ソフトウェアをデプロイすると、Microsoft は \<PARTNER> ソフトウェアのインストールを、デプロイされた Azure リソースと共に識別することができます。 Microsoft は、ソフトウェアをサポートするために使用される Azure リソースを関連付けることができます。 Microsoft はこの情報を収集し、パートナーの製品とビジネスの運用に最適なエクスペリエンスを提供します。 このデータは、Microsoft のプライバシー ポリシー (https://www.microsoft.com/trustcenter で確認できます) に沿って収集され、管理されます。
 
 ## <a name="get-support"></a>サポートを受ける
 

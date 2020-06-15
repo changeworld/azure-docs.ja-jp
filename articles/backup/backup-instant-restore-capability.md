@@ -4,12 +4,12 @@ description: Azure のインスタント リストア機能と、VM バックア
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: fc29d1ac4c2e4c22ce6e6f8356927e768dc274e3
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: 6225a7eb8198ffcca0d1e3e15f64e2b3c977dc16
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82597656"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248279"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Azure Backup のインスタント リストア機能を使用してバックアップと復元のパフォーマンスを改善する
 
@@ -48,7 +48,7 @@ ms.locfileid: "82597656"
 * 一方向のアップグレードであり、インスタント アップグレードにアップグレードされると、元に戻すことはできません。
 
 >[!NOTE]
->このインスタント リストアのアップグレードにより、(**新規と既存両方の**) すべての顧客のスナップショット保持期間は、既定で 2 日に設定されるようになります。 ただし、必要に応じて、1 ～ 5 日の任意の値に期間を設定できます。
+>このインスタント リストアのアップグレードにより、(**新規と既存両方の**) すべての顧客のスナップショット保持期間は、既定で 2 日に設定されるようになります。 ただし、必要に応じて、1 日から 5 日までの任意の値に期間を設定できます。
 
 ## <a name="cost-impact"></a>コストの影響
 

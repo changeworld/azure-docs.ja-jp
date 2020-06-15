@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 0383a512dfb7c2bb1ae2422b9ade1e3c7387a70c
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 85021af94c3cc88f45b391690d7481d5498c40a9
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478307"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84246885"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>構成サーバーの問題のトラブルシューティング
 
@@ -52,6 +52,8 @@ ms.locfileid: "80478307"
     b. Installation_Directory/Vx/bin/uninstall.sh ファイルを開き、**stop_services** 関数の呼び出しをコメントアウトします。
     c. Installation_Directory/Fx/uninstall.sh ファイルを開き、Fx サービスの停止を試行するセクション全体をコメントアウトします。
     d. モビリティ エージェントを[アンインストール](vmware-physical-manage-mobility-service.md#uninstall-mobility-service)します。 アンインストールが成功したら、システムを再起動して、モビリティ エージェントの再インストールを試みます。
+
+8. ユーザー アカウントの多要素認証が有効になっていないことを確認します。 Azure Site Recovery では現在のところ、ユーザー アカウントで多要素認証をサポートしていません。 多要素認証が有効になっているユーザー アカウントなしで構成サーバーを登録します。  
 
 ## <a name="installation-failure-failed-to-load-accounts"></a>インストールの失敗: アカウントを読み込めませんでした
 
@@ -203,7 +205,7 @@ Site Recovery の認証に必要な証明書を作成できません。 ロー�
 
 マスター ターゲット エージェントが構成サーバー IP の TCP セッションを作成できるか確認するには、マスター ターゲット エージェントのログで次のようなトレースを探します。
 
-TCP \<ここで IP を CS IP に置き換える>:52739 \<ここで IP を CS IP に置き換える>:443 SYN_SENT 
+TCP \<Replace IP with CS IP here>:52739 \<Replace IP with CS IP here>:443 SYN_SENT 
 
 TCP    192.168.1.40:52739     192.168.1.40:443      SYN_SENT  // ここでは IP は CS IP に置き換えます
 

@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: 850b06153a25020f36a4c7df1863e5a576495f3b
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 2e563cd0f9a8a25e57312494f1313f895c3b4628
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744155"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267156"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Azure Security Center での脅威の防止
 
@@ -162,11 +162,15 @@ Advanced Threat Protection for Azure SQL Database and SQL は、高度な SQL �
 
 ## <a name="threat-protection-for-azure-storage"></a>Azure Storage の脅威の防止 <a name="azure-storage"></a>
 
-Advanced Threat Protection for Storage では、ストレージ アカウントにアクセスしたり、ストレージ アカウントを利用したりする試みに通常と異なるところがあり、有害な性質が疑われる場合に、そのような試みを検出できます。 この保護層により、セキュリティの専門家でなくても脅威に対処し、セキュリティ監視システムを管理できます。
+Advanced Threat Protection for Azure Storage では、ストレージ アカウントにアクセスしたり、ストレージ アカウントを利用したりする試みに通常と異なるところがあり、有害な性質が疑われる場合に、そのような試みを検出できます。 この保護層により、セキュリティの専門家でなくても脅威に対処し、セキュリティ監視システムを管理できます。 
 
-Advanced Threat Protection for Azure Storage は、現時点では [BLOB ストレージ](https://azure.microsoft.com/services/storage/blobs/)でのみ使用できます。 
+お客様のストレージ アカウントで不審なアクティビティがある場合や、異常な動作が検出された場合に、セキュリティ アラートがトリガーされます。 不審なアクティビティとしては、マルウェアが含まれている可能性がある BLOB のアップロードなどが考えられます。 異常な動作のアラートには、ストレージ アカウントへのアクセス パターンの変化が含まれています。
 
-このサービスはすべてのパブリック クラウドと米国政府のクラウドで利用できますが、他のソブリン クラウド (Azure Government クラウド) のリージョンでは使用できません。
+アラートには、それらをトリガーするインシデントの詳細と、脅威の調査や修復方法に関する推奨事項が含まれています。
+
+Threat Protection for Azure Storage は、現在 [BLOB ストレージ](https://azure.microsoft.com/services/storage/blobs/)でのみ使用できます。 
+
+このサービスはすべてのパブリック クラウドと米国政府のクラウドで利用できますが、他のソブリン クラウド (Azure Government クラウド) のリージョンでは使用できません。 
 
 30 日間の無料試用など、価格の詳細については、[Azure Security Center の価格ページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
 

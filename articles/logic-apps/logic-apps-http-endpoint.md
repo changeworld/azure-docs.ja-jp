@@ -5,13 +5,13 @@ services: logic-apps
 ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 05/06/2020
-ms.openlocfilehash: 7f91d8eab2e7a29163dae5ae2a4d34792ddd0cb0
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.date: 05/28/2020
+ms.openlocfilehash: b5c4005c95a88a40a836b9c0f6d1fd01e0417ed0
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005504"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170275"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>Azure Logic Apps で HTTPS エンドポイントを使用して、ロジック アプリの呼び出し、トリガー、または入れ子を行います
 
@@ -214,6 +214,9 @@ ms.locfileid: "83005504"
 
    * 2 つ目の位置: `https://prod-07.westus.logic.azure.com:433/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke?api-version=2016-10-01&postalCode=123456&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
 
+> [!NOTE]
+> ハッシュまたはシャープ記号 ( **#** ) を URI に含める場合、エンコードされたバージョン `%25%23` を代わりに使用します。
+
 <a name="relative-path"></a>
 
 ### <a name="accept-values-through-a-relative-path"></a>相対パス経由で値を受け取る
@@ -257,6 +260,9 @@ ms.locfileid: "83005504"
    ブラウザーから応答が返され、`Postal Code: 123456` というテキストが表示されます。
 
    ![コールバック URL に要求を送信したときの応答](./media/logic-apps-http-endpoint/callback-url-returned-response.png)
+
+> [!NOTE]
+> ハッシュまたはシャープ記号 ( **#** ) を URI に含める場合、エンコードされたバージョン `%25%23` を代わりに使用します。
 
 ## <a name="call-logic-app-through-endpoint-url"></a>エンドポイント URL 経由でロジック アプリを呼び出す
 

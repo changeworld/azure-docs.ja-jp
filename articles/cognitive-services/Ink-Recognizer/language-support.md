@@ -10,12 +10,12 @@ ms.subservice: ink-recognizer
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: aahi
-ms.openlocfilehash: 36f2fa65f47f824ccc3544f5c13b5f5ee9afd21a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7e5c1c74a3659be855b3f846c16672d0d73b9de4
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67721743"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309698"
 ---
 # <a name="language-and-region-support-for-the-ink-recognizer-api"></a>Ink Recognizer API の言語と地域のサポート
 
@@ -23,7 +23,7 @@ ms.locfileid: "67721743"
 
 ## <a name="supported-languages"></a>サポートされている言語
 
-| 言語                                   | 言語コード   |
+| Language                                   | 言語コード   |
 |:-------------------------------------------|:---------------:|
 | アフリカーンス語                                  |    `af-ZA`      |
 | アルバニア語                                   |     `sq-AL`     |
@@ -89,7 +89,7 @@ ms.locfileid: "67721743"
 | コサ語                                      |     `xh-ZA`     |
 | ズールー語                                       |     `zu-ZA`     |
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 * [Ink Recognizer API とは](overview.md)
 * [Ink Recognizer API にデジタル インク ストロークを送信する](concepts/send-ink-data.md)

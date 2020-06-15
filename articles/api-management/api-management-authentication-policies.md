@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 828f738ff8923dc8194e2449f5fb0be74ef45ad7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 70f124a498ff4aa45b5d90f6221fe3d0121e804a
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473559"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84221041"
 ---
 # <a name="api-management-authentication-policies"></a>API Management の認証ポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](https://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。
@@ -48,16 +48,16 @@ ms.locfileid: "79473559"
 
 ### <a name="elements"></a>要素
 
-|Name|説明|必須|
+|名前|説明|必須|
 |----------|-----------------|--------------|
 |authentication-basic|ルート要素。|はい|
 
 ### <a name="attributes"></a>属性
 
-|Name|説明|必須|Default|
+|名前|説明|必須|Default|
 |----------|-----------------|--------------|-------------|
 |username|基本認証の資格情報のユーザー名を指定します。|はい|該当なし|
-|パスワード|基本認証の資格情報のパスワードを指定します。|はい|該当なし|
+|password|基本認証の資格情報のパスワードを指定します。|はい|該当なし|
 
 ### <a name="usage"></a>使用法
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
@@ -88,13 +88,13 @@ ms.locfileid: "79473559"
 
 ### <a name="elements"></a>要素  
   
-|Name|説明|必須|  
+|名前|説明|必須|  
 |----------|-----------------|--------------|  
 |authentication-certificate|ルート要素。|はい|  
   
 ### <a name="attributes"></a>属性  
   
-|Name|説明|必須|Default|  
+|名前|説明|必須|Default|  
 |----------|-----------------|--------------|-------------|  
 |thumbprint|クライアント証明書のサムプリント。|`thumbprint` または `certificate-id` のいずれかが存在しなければなりません。|該当なし|  
 |証明書 ID|証明書リソースの名前。|`thumbprint` または `certificate-id` のいずれかが存在しなければなりません。|該当なし|  
@@ -135,7 +135,21 @@ ms.locfileid: "79473559"
 ```xml  
 <authentication-managed-identity resource="https://database.windows.net/"/> <!--Azure SQL-->
 ```
-  
+
+```xml
+<authentication-managed-identity resource="api://Client_id_of_Backend"/> <!--Your own Azure AD Application-->
+```
+
+#### <a name="use-managed-identity-and-set-header-manually"></a>マネージド ID を使用し、ヘッダーを手動で設定する
+
+```xml
+<authentication-managed-identity resource="api://Client_id_of_Backend"
+   output-token-variable-name="msi-access-token" ignore-error="false" /> <!--Your own Azure AD Application-->
+<set-header name="Authorization" exists-action="override">
+   <value>@("Bearer " + (string)context.Variables["msi-access-token"])</value>
+</set-header>
+```
+
 #### <a name="use-managed-identity-in-send-request-policy"></a>send-request ポリシーでマネージド ID を使用する
 ```xml  
 <send-request mode="new" timeout="20" ignore-error="false">
@@ -147,13 +161,13 @@ ms.locfileid: "79473559"
 
 ### <a name="elements"></a>要素  
   
-|Name|説明|必須|  
+|名前|説明|必須|  
 |----------|-----------------|--------------|  
 |authentication-managed-identity |ルート要素。|はい|  
   
 ### <a name="attributes"></a>属性  
   
-|Name|説明|必須|Default|  
+|名前|説明|必須|Default|  
 |----------|-----------------|--------------|-------------|  
 |resource|文字列 をオンにします。 Azure Active Directory におけるターゲット Web API のアプリ ID (セキュリティで保護されたリソース)。|はい|該当なし|  
 |output-token-variable-name|文字列 をオンにします。 オブジェクトの種類 `string` としてトークン値を受け取るコンテキスト変数の名前。 |いいえ|該当なし|  

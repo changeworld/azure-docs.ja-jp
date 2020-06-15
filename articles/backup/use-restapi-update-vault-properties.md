@@ -4,12 +4,12 @@ description: この記事では、REST API を使用してコンテナーの構�
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: 4c604fe067e73f5f9a17f4b5f810708121cff767
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: eadcebdaf4db3dbe6c0a62b8631ff7d76fa50fad
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744563"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248228"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>REST API を使用して Azure Recovery Services コンテナーの構成を更新する
 
@@ -21,7 +21,7 @@ ms.locfileid: "82744563"
 
 ただし、この機能が不要なシナリオもあります。 Azure Recovery Services コンテナーは、論理的に削除されたものも含め、その中にバックアップ項目がある場合は削除できません。 コンテナーをすぐに削除する必要がある場合、このことにより問題が発生する可能性があります。 たとえばデプロイ操作では、作成されたリソースが同じワークフローでクリーンアップされることがよくあります。 デプロイはコンテナーを作成し、項目のバックアップを構成して、テストの復元を実行してから、バックアップ項目とコンテナーの削除に進むことができます。 コンテナーの削除に失敗した場合、デプロイ全体が失敗する可能性があります。 論理的な削除を無効にすることが、即時の削除を保証する唯一の方法です。
 
-そのため、顧客はシナリオに応じて、特定のコンテナーの論理的な削除を無効にするかどうかを慎重に選択する必要があります。 詳細については、[論理的な削除に関する記事](backup-azure-security-feature-cloud.md)を参照してください。
+そのため、シナリオに応じて、特定のコンテナーの論理的な削除を無効にするかどうかを慎重に選択する必要があります。 詳細については、[論理的な削除に関する記事](backup-azure-security-feature-cloud.md)を参照してください。
 
 ### <a name="fetch-soft-delete-state-using-rest-api"></a>REST API を使用した論理的な削除状態の取得
 
@@ -43,7 +43,7 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 'GET' 操作に対する正常な応答は次のようになります。
 
-|Name  |種類  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
 |200 OK     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | [OK]        |
 
@@ -83,7 +83,7 @@ PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-0000000
 
 詳細については、[REST API のドキュメント](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/update#request-body)を参照してください
 
-|Name  |必須  |種類  |説明  |
+|名前  |必須  |Type  |説明  |
 |---------|---------|---------|---------|
 |eTag     |         |   String      |  省略可能な eTag       |
 |location     |  true       |String         |   リソースの場所      |
@@ -107,7 +107,7 @@ PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-0000000
 
 'PATCH' 操作に対する正常な応答は次のようになります。
 
-|Name  |種類  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
 |200 OK     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | [OK]        |
 

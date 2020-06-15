@@ -4,18 +4,18 @@ description: Application Insights は、アプリのテレメトリの高度な�
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: ad4341993d92052123eacd3d37500905a0b25179
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 22c1eeb00372b9b3c67d6a87f2300225a071438e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697163"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84016850"
 ---
 # <a name="smart-detection---performance-anomalies"></a>スマート検出 - パフォーマンスの異常
 
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) は、Web アプリケーションのパフォーマンスを自動的に分析し、潜在的な問題について警告できます。 この記事は、スマート検出による通知を受信されたユーザーを主に想定しています。
 
-この機能を使用する場合、([ASP.NET](../../azure-monitor/app/asp-net.md)、[Java](../../azure-monitor/app/java-get-started.md)、[Node.js](../../azure-monitor/app/nodejs.md)、および [Web ページ コード](../../azure-monitor/app/javascript.md)における) Application Insights 用のアプリの構成を除き、特別な設定は不要です。 この機能は、アプリが十分なテレメトリを生成する際にアクティブになります。
+この機能を使用する場合、[サポートされている言語](../../azure-monitor/app/platforms.md)のための Application Insights 用のアプリの構成を除き、特別な設定は不要です。 この機能は、アプリが十分なテレメトリを生成する際にアクティブになります。
 
 ## <a name="when-would-i-get-a-smart-detection-notification"></a>スマート検出による通知はいつ送信されますか
 
@@ -39,9 +39,9 @@ Application Insights は、アプリケーションのパフォーマンスの�
 
 ![サーバー応答時間の低下の検出例](media/proactive-performance-diagnostics/server_response_time_degradation.png)
 
-1. **トリアージ**:  通知は、影響を受けるユーザーまたは操作の数を示します。 この情報を基に、問題に優先順位を割り当てることができます。
-2. **スコープ**:  問題が影響する範囲はすべてのトラフィックですか。または一部のページのみですか。 特定のブラウザーまたは場所に限定されますか。 この情報を通知から取得できます。
-3. **診断**:  多くの場合、通知内の診断情報は問題の性質を示します。 たとえば、要求率が高い場合に応答時間が遅くなると、サーバーまたは依存関係が過負荷状態であることを示します。 
+1. **トリアージ**: 通知は、影響を受けるユーザーまたは操作の数を示します。 この情報を基に、問題に優先順位を割り当てることができます。
+2. **スコープ**: 問題が影響する範囲はすべてのトラフィックですか。または一部のページのみですか。 特定のブラウザーまたは場所に限定されますか。 この情報を通知から取得できます。
+3. **診断**: 多くの場合、通知内の診断情報は問題の性質を示します。 たとえば、要求率が高い場合に応答時間が遅くなると、サーバーまたは依存関係が過負荷状態であることを示します。 
 
     それ以外の場合は、Application Insights の [パフォーマンス] ブレードを開きます。 このブレードには[プロファイラー](profiler.md) データが表示されます。 例外がスローされた場合は、[スナップショット デバッガー](../../azure-monitor/app/snapshot-debugger.md)を試すこともできます。
 

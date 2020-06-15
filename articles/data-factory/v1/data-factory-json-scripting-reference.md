@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 3492f917be8116d0eed0c7ec03ed8aa9ff506520
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: cc316636c3f708d4b3ef81a22f57dab9b140d2fa
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346594"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195956"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory - JSON スクリプトのリファレンス
 > [!NOTE]
@@ -2446,15 +2446,15 @@ SAP HANA データ ストアからデータをコピーする場合は、コピ�
 ## <a name="sql-server"></a>SQL Server
 
 ### <a name="linked-service"></a>リンクされたサービス
-**OnPremisesSqlServer** 型のリンクされたサービスを作成し、オンプレミスの SQL Server データベースをデータ ファクトリにリンクします。 次の表は、オンプレミスの SQL Server のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
+**OnPremisesSqlServer** 型のリンクされたサービスを作成し、SQL Server データベースをデータ ファクトリにリンクします。 次の表は、SQL Server のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
 次の表は、SQL Server のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | type |type プロパティは次の値に設定されます。**OnPremisesSqlServer** |はい |
-| connectionString |SQL 認証または Windows 認証を使用して、オンプレミス SQL Server データベースに接続するために必要な connectionString 情報を指定します。 |はい |
-| gatewayName |Data Factory サービスが、オンプレミスの SQL Server データベースへの接続に使用するゲートウェイの名前です。 |はい |
+| connectionString |SQL 認証または Windows 認証を使用して、SQL Server データベースに接続するために必要な connectionString 情報を指定します。 |はい |
+| gatewayName |Data Factory サービスが、SQL Server データベースへの接続に使用するゲートウェイの名前です。 |はい |
 | username |Windows 認証を使用している場合は、ユーザー名を指定します。 例: **domainname\\username**。 |いいえ |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ |
 
@@ -2481,7 +2481,7 @@ SAP HANA データ ストアからデータをコピーする場合は、コピ�
 ```
 #### <a name="example-json-for-using-windows-authentication"></a>例:Windows 認証を使用するための JSON
 
-ユーザー名とパスワードが指定されている場合、ゲートウェイはその情報を使用して指定されたユーザー アカウントに偽装して、オンプレミス SQL Server データベースに接続します。 指定されていない場合、ゲートウェイは、Gateway (スタートアップ アカウント) のセキュリティ コンテキストを使用して SQL Server に直接接続します。
+ユーザー名とパスワードが指定されている場合、ゲートウェイはその情報を使用して指定されたユーザー アカウントに偽装して、SQL Server データベースに接続します。 指定されていない場合、ゲートウェイは、Gateway (スタートアップ アカウント) のセキュリティ コンテキストを使用して SQL Server に直接接続します。
 
 ```json
 {
@@ -5001,15 +5001,15 @@ Azure Machine Learning のリンクされたサービスを作成し、Machine L
 SQL Server のリンクされたサービスを作成し、 [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md) で使用して、Data Factory パイプラインからストアド プロシージャを起動します。
 
 ### <a name="linked-service"></a>リンクされたサービス
-**OnPremisesSqlServer** 型のリンクされたサービスを作成し、オンプレミスの SQL Server データベースをデータ ファクトリにリンクします。 次の表は、オンプレミスの SQL Server のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
+**OnPremisesSqlServer** 型のリンクされたサービスを作成し、SQL Server データベースをデータ ファクトリにリンクします。 次の表は、SQL Server のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
 次の表は、SQL Server のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | type |type プロパティは次の値に設定されます。**OnPremisesSqlServer** |はい |
-| connectionString |SQL 認証または Windows 認証を使用して、オンプレミス SQL Server データベースに接続するために必要な connectionString 情報を指定します。 |はい |
-| gatewayName |Data Factory サービスが、オンプレミスの SQL Server データベースへの接続に使用するゲートウェイの名前です。 |はい |
+| connectionString |SQL 認証または Windows 認証を使用して、SQL Server データベースに接続するために必要な connectionString 情報を指定します。 |はい |
+| gatewayName |Data Factory サービスが、SQL Server データベースへの接続に使用するゲートウェイの名前です。 |はい |
 | username |Windows 認証を使用している場合は、ユーザー名を指定します。 例: **domainname\\username**。 |いいえ |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ |
 
@@ -5036,7 +5036,7 @@ SQL Server のリンクされたサービスを作成し、 [ストアド プロ
 ```
 #### <a name="example-json-for-using-windows-authentication"></a>例:Windows 認証を使用するための JSON
 
-ユーザー名とパスワードが指定されている場合、ゲートウェイはその情報を使用して指定されたユーザー アカウントに偽装して、オンプレミス SQL Server データベースに接続します。 指定されていない場合、ゲートウェイは、Gateway (スタートアップ アカウント) のセキュリティ コンテキストを使用して SQL Server に直接接続します。
+ユーザー名とパスワードが指定されている場合、ゲートウェイはその情報を使用して指定されたユーザー アカウントに偽装して、SQL Server データベースに接続します。 指定されていない場合、ゲートウェイは、Gateway (スタートアップ アカウント) のセキュリティ コンテキストを使用して SQL Server に直接接続します。
 
 ```json
 {

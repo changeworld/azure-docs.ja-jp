@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 4287bd766d73d7fae42aec54950ad5a3f09b5ba3
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: bf22e10bc0a4b969c41d4a377ddba7fcadd9c147
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83120421"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193393"
 ---
 # <a name="change-feed-support-in-azure-blob-storage-preview"></a>Azure Blob Storage の変更フィードのサポート (プレビュー)
 
@@ -37,7 +37,7 @@ ms.locfileid: "83120421"
 
   - 作成されたオブジェクトまたは変更されたオブジェクトに基づいて、変更イベントまたはスケジュールの実行に対応する、接続されたアプリケーション パイプラインを構築する。
   
-変更フィードは、[ブロック BLOB に対してポイントインタイム リストア](point-in-time-restore-overview.md)を行うための前提条件となる機能です。
+変更フィードは、[オブジェクト レプリケーション](object-replication-overview.md)と[ブロック BLOB のポイントインタイム リストア](point-in-time-restore-overview.md)を行うための前提条件となる機能です。
 
 > [!NOTE]
 > 変更フィードは、BLOB に発生する変更の持続的でかつ順序付けられたログ モデルを提供します。 変更は、変更から数分以内に変更フィード ログに書き込まれ、使用可能になります。 アプリケーションでこれよりはるかに高速にイベントに対応する必要がある場合は、代わりに [Blob Storage イベント](storage-blob-event-overview.md)を使用することを検討してください。 [Blob Storage イベント](storage-blob-event-overview.md)は、Azure Functions またはアプリケーションが BLOB に発生する変更にすばやく反応できるようにする、リアルタイムの 1 回限りのイベントを提供します。 

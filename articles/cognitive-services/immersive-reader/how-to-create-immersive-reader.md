@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: 41efe4592c65ae3cdd85ce1b212554e50691905a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 79014d318da1732d48eeb893aa383e948e1036cd
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78330721"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267105"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>イマーシブ リーダー リソースを作成して Azure Active Directory 認証を構成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "78330721"
 
 ## <a name="set-up-powershell-environment"></a>PowerShell 環境をセットアップする
 
-1. まず、[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) を開きます。 左上のドロップダウンを参照するか、または「`pwsh`」と入力して、Cloud Shell が PowerShell に設定されていることを確認します。
+1. まず、[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) を開きます。 左上のドロップダウンを参照するか、「`pwsh`」と入力して、Cloud Shell が PowerShell に設定されていることを確認します。
 
 1. 以下のコード スニペットをコピーしてシェルに貼り付けます。
 
@@ -183,7 +183,7 @@ ms.locfileid: "78330721"
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Node.js クイックスタート](./quickstart-nodejs.md)で、Node.js とイマーシブ リーダー SDK を使用して他にできることを確認する
+* [Node.js クイックスタート](./quickstarts/client-libraries.md?pivots=programming-language-nodejs)で、Node.js とイマーシブ リーダー SDK を使用して他にできることを確認する
 * [Python チュートリアル](./tutorial-python.md)で、Python と Immersive Reader SDK を使用して他にできることを確認する
 * [Swift チュートリアル](./tutorial-ios-picture-immersive-reader.md)で、Swift と Immersive Reader SDK を使用して他にできることを確認する
 * [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) と [Immersive Reader SDK リファレンス](./reference.md)を探索する

@@ -1,16 +1,16 @@
 ---
 title: テンプレート デプロイの what-if (プレビュー)
 description: Azure Resource Manager テンプレートをデプロイする前に、リソースがどのような変更されるかを確認します。
-author: mumian
+author: tfitzmac
 ms.topic: conceptual
-ms.date: 04/29/2020
-ms.author: jgao
-ms.openlocfilehash: 70023f4fa5d44c74c7ce14f3a2c09ff14c9d2f8c
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.date: 05/29/2020
+ms.author: tomfitz
+ms.openlocfilehash: 31ef0f26043c416ff902fe792bae064c63f15b20
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82581190"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84218288"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>ARM テンプレートのデプロイの what-if 操作 (プレビュー)
 
@@ -396,6 +396,16 @@ Are you sure you want to execute the deployment?
 ```
 
 期待通りの変更が表示され、デプロイを実行することを確認できます。
+
+## <a name="sdks"></a>SDK
+
+what-if 操作は、Azure SDK を介して使用できます。
+
+* Python の場合は、[what-if](/python/api/azure-mgmt-resource/azure.mgmt.resource.resources.v2019_10_01.operations.deploymentsoperations?view=azure-python#what-if-resource-group-name--deployment-name--properties--location-none--custom-headers-none--raw-false--polling-true----operation-config-) を使用します。
+
+* Java の場合は、[DeploymentWhatIf クラス](/java/api/com.microsoft.azure.management.resources.deploymentwhatif?view=azure-java-stable)を使用します。
+
+* .NET の場合は、[DeploymentWhatIf クラス](/dotnet/api/microsoft.azure.management.resourcemanager.models.deploymentwhatif?view=azure-dotnet)を使用します。
 
 ## <a name="next-steps"></a>次のステップ
 

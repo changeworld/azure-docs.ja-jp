@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 36b449c4c4ca30eb658c9519ce8e870a4f1fab32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 510c75b6e1a06ab800128534a72c5e1f6e510600
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "71970739"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83997045"
 ---
 # <a name="what-is-a-dictionary"></a>辞書とは
 

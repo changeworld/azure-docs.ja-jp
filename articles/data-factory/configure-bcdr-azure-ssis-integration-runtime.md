@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/09/2020
-ms.openlocfilehash: 795247cd0d6adfd27115b73c1d0de02e6810d670
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: e1b70e0e3eb54253972afded1bd37363d1a868e7
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201139"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195711"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-sql-database-geo-replication-and-failover"></a>SQL Database geo レプリケーションとフェールオーバーを使用して Azure-SSIS 統合ランタイムを構成する
 
@@ -29,11 +29,11 @@ SQL Database の geo レプリケーションとフェールオーバーの詳�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="azure-ssis-ir-failover-with-a-sql-database-managed-instance"></a>SQL Database マネージド インスタンスによる Azure-SSIS IR フェールオーバー
+## <a name="azure-ssis-ir-failover-with-a-sql-managed-instance"></a>SQL マネージド インスタンスによる Azure-SSIS IR フェールオーバー
 
 ### <a name="prerequisites"></a>前提条件
 
-Azure SQL Database マネージド インスタンスでは、*データベース マスター キー (DMK)* を使用して、データベースに格納されるデータ、資格情報、および接続情報がセキュリティで保護されます。 DMK の暗号化を自動的に解除できるように、*サーバー マスター キー (SMK)* を使用してキーのコピーが暗号化されます。 
+Azure SQL マネージド インスタンスでは、"*データベース マスター キー (DMK)* " を使用して、データベースに格納されるデータ、資格情報、および接続情報がセキュリティで保護されます。 DMK の暗号化を自動的に解除できるように、*サーバー マスター キー (SMK)* を使用してキーのコピーが暗号化されます。 
 
 SMK はフェールオーバー グループにレプリケートされません。 フェールオーバー後の DMK 復号化のために、プライマリ インスタンスとセカンダリ インスタンスの両方にパスワードを追加する必要があります。
 
@@ -43,7 +43,7 @@ SMK はフェールオーバー グループにレプリケートされません
     ALTER MASTER KEY ADD ENCRYPTION BY PASSWORD = 'password'
     ```
 
-2. Azure SQL Database マネージド インスタンス上にフェールオーバー グループを作成します。
+2. SQL マネージド インスタンスのフェールオーバー グループを構成します。
 
 3. 新しい暗号化パスワードを使用して、セカンダリ インスタンスに **sp_control_dbmasterkey_password**  を実行します。
 
@@ -87,27 +87,27 @@ Azure-SSIS IR が読み取りと書き込みのリスナー エンドポイン�
 2. セカンダリ インスタンスの新しいリージョン、エンドポイント、および仮想ネットワークの情報を使って Azure-SSIS IR を編集します。
 
     ```powershell
-    Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
-                -CatalogServerEndpoint "Azure SQL Database server endpoint" `
-                -CatalogAdminCredential "Azure SQL Database server admin credentials" `
-                -VNetId "new VNet" `
-                -Subnet "new subnet" `
-                -SetupScriptContainerSasUri "new custom setup SAS URI"
-    ```
+      Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
+                    -CatalogServerEndpoint "Azure SQL Database endpoint" `
+                    -CatalogAdminCredential "Azure SQL Database admin credentials" `
+                    -VNetId "new VNet" `
+                    -Subnet "new subnet" `
+                    -SetupScriptContainerSasUri "new custom setup SAS URI"
+        ```
 
-3. Azure-SSIS IR を再起動します。
+3. Restart the Azure-SSIS IR.
 
-### <a name="scenario-3-azure-ssis-ir-is-pointing-to-a-public-endpoint-of-a-sql-database-managed-instance"></a>シナリオ 3: Azure-SSIS IR が SQL Database マネージド インスタンスのパブリック エンドポイントを指している
+### Scenario 3: Azure-SSIS IR is pointing to a public endpoint of a SQL Managed Instance
 
-このシナリオは、Azure-SSIS IR が Azure SQL Database マネージド インスタンスのパブリック エンドポイントを指していて、仮想ネットワークに参加していない場合に適しています。 シナリオ 2 との唯一の違いは、フェールオーバー後に Azure-SSIS IR の仮想ネットワーク情報を編集する必要がないことです。
+This scenario is suitable if the Azure-SSIS IR is pointing to a public endpoint of a Azure SQL Managed Instance and it doesn't join to a virtual network. The only difference from scenario 2 is that you don't need to edit virtual network information for the Azure-SSIS IR after failover.
 
-#### <a name="solution"></a>解決策
+#### Solution
 
-フェールオーバーが発生した場合は、次の手順を行います。
+When failover occurs, take the following steps:
 
-1. プライマリ リージョンの Azure-SSIS IR を停止します。
+1. Stop the Azure-SSIS IR in the primary region.
 
-2. セカンダリ インスタンスの新しいリージョンとエンドポイントの情報で Azure-SSIS IR を編集します。
+2. Edit the Azure-SSIS IR with the new region and endpoint information for the secondary instance.
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
@@ -137,7 +137,7 @@ Azure-SSIS IR が読み取りと書き込みのリスナー エンドポイン�
     EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'
     ```
 
-3. 新しいリージョンに **\<new_data_factory_name\>** という名前の新しいデータ ファクトリを作成します。
+3. 新しいリージョン内に **\<new_data_factory_name\>** という名前の新しいデータ ファクトリを作成します。
 
     ```powershell
     Set-AzDataFactoryV2 -ResourceGroupName "new resource group name" `
@@ -147,7 +147,7 @@ Azure-SSIS IR が読み取りと書き込みのリスナー エンドポイン�
     
     この PowerShell コマンドの詳細については、[PowerShell を使用した Azure データ ファクトリの作成](quickstart-create-data-factory-powershell.md)に関するページを参照してください。
 
-4. Azure PowerShell を使用して、新しいリージョンに **\<new_integration_runtime_name\>** という名前の新しい Azure-SSIS IR を作成します。
+4. Azure PowerShell を使用して、新しいリージョン内に **\<new_integration_runtime_name\>** という名前の新しい Azure-SSIS IR を作成します。
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "new resource group name" `
@@ -202,12 +202,12 @@ Azure-SSIS IR のリージョンまたはその他の情報を更新する場合
 2. セカンダリ インスタンスの新しいリージョン、エンドポイント、および仮想ネットワークの情報を使って Azure-SSIS IR を編集します。
 
     ```powershell
-    Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
-                    -CatalogServerEndpoint "Azure SQL Database server endpoint" `
-                    -CatalogAdminCredential "Azure SQL Database server admin credentials" `
-                    -VNetId "new VNet" `
-                    -Subnet "new subnet" `
-                    -SetupScriptContainerSasUri "new custom setup SAS URI"
+      Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
+                        -CatalogServerEndpoint "Azure SQL Database endpoint" `
+                        -CatalogAdminCredential "Azure SQL Database admin credentials" `
+                        -VNetId "new VNet" `
+                        -Subnet "new subnet" `
+                        -SetupScriptContainerSasUri "new custom setup SAS URI"
     ```
 
 3. Azure-SSIS IR を再起動します。
@@ -231,7 +231,7 @@ Azure-SSIS IR のリージョンまたはその他の情報を更新する場合
     EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'
     ```
 
-3. 新しいリージョンに **\<new_data_factory_name\>** という名前の新しいデータ ファクトリを作成します。
+3. 新しいリージョン内に **\<new_data_factory_name\>** という名前の新しいデータ ファクトリを作成します。
 
     ```powershell
     Set-AzDataFactoryV2 -ResourceGroupName "new resource group name" `
@@ -241,7 +241,7 @@ Azure-SSIS IR のリージョンまたはその他の情報を更新する場合
     
     この PowerShell コマンドの詳細については、[PowerShell を使用した Azure データ ファクトリの作成](quickstart-create-data-factory-powershell.md)に関するページを参照してください。
 
-4. Azure PowerShell を使用して、新しいリージョンに **\<new_integration_runtime_name\>** という名前の新しい Azure-SSIS IR を作成します。
+4. Azure PowerShell を使用して、新しいリージョン内に **\<new_integration_runtime_name\>** という名前の新しい Azure-SSIS IR を作成します。
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "new resource group name" `

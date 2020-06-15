@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 78b49b8b7e17f12d49825390a302e28a61e10d16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9b7df06ea7ff07907a292bdcc32e66aafa44ae68
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81770837"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170785"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>アプリを Azure 仮想ネットワークと統合する
 
@@ -127,7 +127,7 @@ VNet 統合インスタンスのアプリ ビューで実行できる操作は�
 
 App Service プランの VNet 統合の UI には、App Service プラン内のアプリによって使用されているすべての VNet 統合が表示されます。 各 VNet の詳細を表示するには、目的の VNet を選択します。 ここでは、ゲートウェイが必要な VNet 統合に対して実行できる操作が 2 つあります。
 
-* **ネットワークを同期する**: ネットワーク同期操作は、ゲートウェイに依存する VNet 統合機能に対してのみ使用されます。 ネットワーク同期操作を実行すると、証明書とネットワークの情報が確実に同期されるようになります。VNet の DNS を追加または変更する場合は、ネットワーク同期操作を実行する必要があります。 この操作では、この VNet を使用するすべてのアプリが再起動されます。
+* **ネットワークを同期する**: ネットワーク同期操作は、ゲートウェイに依存する VNet 統合機能に対してのみ使用されます。 ネットワーク同期操作を実行すると、証明書とネットワークの情報が確実に同期されるようになります。VNet の DNS を追加または変更する場合は、ネットワーク同期操作を実行する必要があります。 この操作では、この VNet を使用するすべてのアプリが再起動されます。 この操作は、使用しているアプリと VNet が異なるサブスクリプションに属している場合は機能しません。
 * **ルートを追加する**: ルートを追加すると、送信トラフィックが VNet に転送されます。
 
 ### <a name="gateway-required-vnet-integration-routing"></a>ゲートウェイが必要な VNET 統合のルーティング

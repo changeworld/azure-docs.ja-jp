@@ -3,12 +3,12 @@ title: Azure Application Insights における依存関係の追跡 | Microsoft 
 description: オンプレミスまたは Microsoft Azure Web アプリケーションからの依存関係呼び出しを Application Insights で監視します。
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 2b7a20731fa5eae8313adcf07d877626fcaa4dce
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 759e465a21b421c22a62245536827546acc2d79e
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82980849"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204754"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Azure Application Insights での依存関係の追跡 
 
@@ -90,7 +90,10 @@ Web ページの場合、Application Insights JavaScript SDK によって AJAX �
 
 SQL 呼び出しの場合、サーバーとデータベースの名前が常に収集され、収集された `DependencyTelemetry` の名前として保存されます。 "データ" という名称の追加フィールドがあります。これに完全な SQL クエリ テキストを含めることができます。
 
-ASP.NET Core アプリケーションの場合、完全な SQL クエリを取得するために必要な追加手順はありません。
+ASP.NET Core アプリケーションの場合は、次を使用して SQL テキスト コレクションをオプトインすることが必要になりました。
+```csharp
+services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, o) => { module. EnableSqlCommandTextInstrumentation = true; });
+```
 
 ASP.NET アプリケーションの場合、インストルメンテーション エンジン、または[Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet パッケージの使用を必要とするバイトコード インストルメンテーションの支援により、完全な SQL クエリが収集されます。 以下の説明のように、プラットフォーム固有の追加手順が必要になります。
 

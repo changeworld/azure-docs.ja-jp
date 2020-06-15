@@ -3,12 +3,12 @@ title: Azure Backup Server を使用して VMware VM をバックアップする
 description: この記事では、Azure Backup Server を使用し、VMware vCenter/ESXi サーバー上で実行している VMware VM をバックアップする方法について説明します。
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: 92846f9bb9259e55a2c957716676ff42c032b2b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c4bf61e2a02200b2e6af814ef4509081649e202d
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537408"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204720"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Azure Backup Server を使用して VMware VM をバックアップする
 
@@ -26,6 +26,10 @@ ms.locfileid: "81537408"
 
 - バックアップに対してサポートされている vCenter または ESXi のバージョンを実行していることを確認します。 [こちら](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix)のサポート マトリックスを参照してください。
 - Azure Backup Server がセットアップされていることを確認します。 まだの場合は、始める前に[行います](backup-azure-microsoft-azure-backup.md)。 Azure Backup Server が最新の更新プログラムで実行されている必要があります。
+- 確実に、次のネットワーク ポートを開いた状態にします。
+    - MABS と vCenter 間の TCP 443
+    - MABS と ESXi ホストの間の TCP 443 と TCP 902
+
 
 ## <a name="create-a-secure-connection-to-the-vcenter-server"></a>vCenter Server へのセキュリティで保護された接続の作成
 

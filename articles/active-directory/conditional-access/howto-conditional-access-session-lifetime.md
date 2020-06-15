@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 05/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e9c0c88064c00c97de7dc58a500910e81c04eef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cc75b300704ef7f8218134c9d384b0718fca1e97
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230795"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220697"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>条件付きアクセスを使用して認証セッション管理を構成する
 
@@ -50,6 +50,10 @@ ms.locfileid: "79230795"
 - Teams Web クライアント
 - Dynamics CRM Online
 - Azure portal
+
+### <a name="user-sign-in-frequency-and-multi-factor-authentication"></a>ユーザーのサインイン頻度と多要素認証
+
+以前は、サインイン頻度は、Azure AD 参加済み、Hybrid Azure AD 参加済み、Azure AD 登録済みのデバイス上での第一要素認証のみに適用されていました。 お客様がこれらのデバイスに対して多要素認証 (MFA) を再適用する簡単な方法はありませんでした。 お客様からのフィードバックに基づいて、サインイン頻度が MFA にも適用されるようになります。
 
 ### <a name="user-sign-in-frequency-and-device-identities"></a>ユーザーサインインの頻度とデバイス ID
 

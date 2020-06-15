@@ -3,12 +3,12 @@ title: プライベート エンドポイント
 description: Azure Backup のプライベート エンドポイントを作成するプロセスと、プライベート エンドポイントを使用することでリソースのセキュリティが維持しやすくなるシナリオについて説明します。
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: bc778506819c44291bb2d8f69cdd9ac0aed51399
-ms.sourcegitcommit: 801a551e047e933e5e844ea4e735d044d170d99a
+ms.openlocfilehash: 2696f3fdbc4e9061afee266ae36ae8d3507026fc
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2020
-ms.locfileid: "83007620"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84231433"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure Backup のプライベート エンドポイント
 
@@ -110,7 +110,7 @@ Azure で別個のプライベート DNS ゾーンを作成する場合は、必
 
 リージョン コードについては、[こちらの一覧](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx)を参照してください。
 
-各国の geo の URL 名前付け規則については:
+各国のリージョンの URL 名前付け規則については:
 
 - [中国](https://docs.microsoft.com/azure/china/resources-developer-guide#check-endpoints-in-azure)
 - [ドイツ](https://docs.microsoft.com/azure/germany/germany-developer-guide#endpoint-mapping)

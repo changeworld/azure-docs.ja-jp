@@ -3,12 +3,12 @@ title: Azure Backup Server を使用した SQL Server のバックアップ
 description: この記事では、Microsoft Azure Backup Server (MABS) を使用して SQL Server データベースのバックアップを構成する方法について説明します。
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: 9cd6a8b76e4618031f4d21dc04a82a78fad0076d
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 2bb172ca36f3f932fdaaf5b71e8fa183c04d1510
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159252"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194178"
 ---
 # <a name="back-up-sql-server-to-azure-by-using-azure-backup-server"></a>Azure Backup Server を使用して SQL Server を Azure にバックアップする
 
@@ -36,7 +36,7 @@ Azure で SQL Server データベースを保護するには、最初にバッ�
 1. 保護グループの種類として **[サーバー]** を選択します。
 
     ![サーバーの保護グループの種類を選択する](./media/backup-azure-backup-sql/pg-servers.png)
-1. バックアップしたいデータベースが配置されている SQL Server マシンを展開します。 そのサーバーからバックアップできるデータ ソースが表示されます。 **[All SQL Shares]\(すべての SQL 共有\)** を展開し、バックアップしたいデータベースを選択します。 この例では、ReportServer$MSDPM2012 と ReportServer$MSDPM2012TempDB を選択します。 **[次へ]** を選択します。
+1. バックアップするデータベースが配置されている SQL Server インスタンスを展開します。 そのサーバーからバックアップできるデータ ソースが表示されます。 **[All SQL Shares]\(すべての SQL 共有\)** を展開し、バックアップしたいデータベースを選択します。 この例では、ReportServer$MSDPM2012 と ReportServer$MSDPM2012TempDB を選択します。 **[次へ]** を選択します。
 
     ![SQL Server データベースを選択する](./media/backup-azure-backup-sql/pg-databases.png)
 1. 保護グループに名前を付け、 **[オンライン保護を利用する]** を選択します。
@@ -64,14 +64,14 @@ Azure で SQL Server データベースを保護するには、最初にバッ�
 
     ![MABS でレプリカの作成方法を選択する](./media/backup-azure-backup-sql/pg-manual.png)
 
-    初回バックアップ コピーでは、データ ソース (SQL Server データベース) 全体を転送する必要があります。 バックアップ データは、運用サーバー (SQL Server マシン) から MABS に移動されます。 このバックアップが大きい場合、ネットワーク経由でデータを転送すると、帯域幅の輻輳が発生する可能性があります。 このため、管理者は、リムーバブル メディアを使用して初回バックアップを**手動**で転送することを選択できます。 または、指定した時間に**自動的 (ネットワーク経由)** にデータを転送できます。
+    初回バックアップ コピーでは、データ ソース (SQL Server データベース) 全体を転送する必要があります。 バックアップ データは、運用サーバー (SQL Server コンピューター) から MABS に移動されます。 このバックアップが大きい場合、ネットワーク経由でデータを転送すると、帯域幅の輻輳が発生する可能性があります。 このため、管理者は、リムーバブル メディアを使用して初回バックアップを**手動**で転送することを選択できます。 または、指定した時間に**自動的 (ネットワーク経由)** にデータを転送できます。
 
     初回バックアップが完了すると、バックアップは初回バックアップ コピーで増分的に続行されます。 増分バックアップは一般に非常に小さく、ネットワーク経由で容易に転送できます。
 1. 整合性チェックを実行するタイミングを選択します。 **[次へ]** を選択します。
 
     ![整合性チェックを実行するタイミングを選択する](./media/backup-azure-backup-sql/pg-consistent.png)
 
-    MABS では、バックアップ ポイントの整合性に関する整合性チェックを実行できます。 それにより、運用サーバー (この例では SQL Server マシン) のバックアップ ファイルと MABS にバックアップされたこのファイルのデータのチェックサムを計算します。 チェックで競合が検出された場合は、MABS 内のバックアップ ファイルが破損していることが想定されます。 MABS からチェックサムの不一致に対応するブロックが送信され、バックアップ データが修正されます。 正常性チェックは負荷の高い処理なので、管理者は正常性チェックをスケジュールすることも、自動的に実行することもできます。
+    MABS では、バックアップ ポイントの整合性に関する整合性チェックを実行できます。 それにより、運用サーバー (この例では SQL Server コンピューター) のバックアップ ファイルと MABS にバックアップされたそのファイルのデータのチェックサムが計算されます。 チェックで競合が検出された場合は、MABS 内のバックアップ ファイルが破損していることが想定されます。 MABS からチェックサムの不一致に対応するブロックが送信され、バックアップ データが修正されます。 正常性チェックは負荷の高い処理なので、管理者は正常性チェックをスケジュールすることも、自動的に実行することもできます。
 1. Azure で保護するデータ ソースを選択します。 **[次へ]** を選択します。
 
     ![Azure で保護するデータ ソースを選択する](./media/backup-azure-backup-sql/pg-sqldatabases.png)

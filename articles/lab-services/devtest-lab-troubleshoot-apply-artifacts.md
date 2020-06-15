@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/03/2019
 ms.author: spelluru
-ms.openlocfilehash: fc5051667100a2ebaa01b7815f825fadd766b08f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8da33f5a553b4a671d9d7b9b223f77b301b8440b
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75456974"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310276"
 ---
 # <a name="troubleshoot-issues-when-applying-artifacts-in-an-azure-devtest-labs-virtual-machine"></a>Azure DevTest Labs 仮想マシンに、成果物を適用する場合に生じる問題のトラブルシューティング
 仮想マシンへの成果物の適用は、さまざまな理由で失敗する可能性があります。 この記事では、考えられる原因を特定するのに役立ついくつかの方法について説明します。
@@ -57,8 +57,9 @@ $vm.Properties.canApplyArtifacts
 
 ## <a name="symptoms-causes-and-potential-resolutions"></a>症状、原因、および考えられる解決策 
 
-### <a name="artifact-appears-to-hang"></a>成果物がハングしているように見える   
-成果物は、事前定義されたタイムアウト期間が経過するまでハングしているように見え、成果物は、**失敗** としてマークされます。
+### <a name="artifact-appears-to-stop-responding"></a>成果物が応答を停止しているように見える
+
+成果物は、事前定義されたタイムアウト期間が経過するまで応答を停止しているように見え、成果物は、**失敗** としてマークされます。
 
 成果物がハングしているように見える場合は、まず、スタックしている場所を確認します。 成果物は、実行中の次の手順のいずれかでブロックできます。
 
@@ -67,11 +68,11 @@ $vm.Properties.canApplyArtifacts
     - これらのエントリでエラーを検索します。 エラーには、それに応じてタグ付けされない場合があります。また、各エントリを調査する必要があります。
     - 各エントリの詳細を調査するときは、必ず JSON ペイロードの内容を確認してください。 ドキュメントの下部にエラーが表示されることがあります。
 - **成果物を実行しようとしていル場合**。 ネットワークまたはストレージの問題が原因である可能性があります。 詳細については、この記事で後述する各セクションを参照してください。 スクリプトの作成方法によっても発生する可能性があります。 次に例を示します。
-    - PowerShell スクリプトには、**必須のパラメーター**がありますが、ユーザーが空白のままにすることを許可しているか、artifactfile. json 定義ファイルのプロパティに既定値がないために、1つのパラメーターに値を渡すことはできません。 ユーザーの入力を待機しているため、スクリプトがハングします。
+    - PowerShell スクリプトには、**必須のパラメーター**がありますが、ユーザーが空白のままにすることを許可しているか、artifactfile. json 定義ファイルのプロパティに既定値がないために、1つのパラメーターに値を渡すことはできません。 ユーザーの入力を待機しているため、スクリプトが応答を停止します。
     - PowerShell スクリプトでは、実行の一部として **ユーザー入力** が必要です。 スクリプトは、ユーザー介入を必要とせずに、警告なしで動作するように記述する必要があります。
 - **VM エージェントは、準備が完了するまでに時間がかかります**。 VM が最初に起動されたとき、または成果物を適用するための要求を処理するためにカスタムスクリプト拡張機能が最初にインストールされたときに、VM は VM エージェントをアップグレードするか、VM エージェントが初期化されるのを待機する必要があります。 VM エージェントが依存しているサービスの初期化に長い時間がかかっている可能性があります。 そのような場合のトラブルシューティングの詳細については、「[Azure 仮想マシンエージェントの概要](../virtual-machines/extensions/agent-windows.md)」を参照してください。
 
-### <a name="to-verify-if-the-artifact-appears-to-hang-because-of-the-script"></a>スクリプトが原因で成果物がハングしているように見えるかどうかを確認するには
+### <a name="to-verify-if-the-artifact-appears-to-stop-responding-because-of-the-script"></a>スクリプトが原因で成果物が応答を停止しているように見えるかどうかを確認するには
 
 1. 問題の仮想マシンにログインします。
 2. バーチャルマシンでスクリプトをローカルにコピーするか、`C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\<version>`の下のバーチャルマシンでスクリプトを検索してください。 それは成果物のスクリプトがダウンロードされる場所です。
@@ -83,7 +84,7 @@ $vm.Properties.canApplyArtifacts
 > 
 > 独自の成果物の作成の詳細については、[AUTHORING.md](https://github.com/Azure/azure-devtestlab/blob/master/Artifacts/AUTHORING.md) ドキュメントを参照してください。
 
-### <a name="to-verify-if-the-artifact-appears-to-hang-because-of-the-vm-agent"></a>VM エージェントが原因で成果物がハングしたように見えるかどうかを確認するには
+### <a name="to-verify-if-the-artifact-appears-to-stop-responding-because-of-the-vm-agent"></a>VM エージェントが原因で成果物が応答を停止したように見えるかどうかを確認するには
 1. 問題の仮想マシンにログインします。
 2. エクスプローラーを使用して **C:\WindowsAzure\logs**に移動します。
 3. ファイル **Waappagent.exe**を検索して開きます。
@@ -137,4 +138,3 @@ CSE Error: Failed to download all specified files. Exiting. Exception: Microsoft
 
 ## <a name="next-steps"></a>次のステップ
 これらのエラーが発生していないのに、成果物を適用できない場合は、Azure サポートインシデントを申請できます。 その場合は、 [Azure サポートのサイト](https://azure.microsoft.com/support/options/) に移動して、 **[サポートの要求]** をクリックします。
-

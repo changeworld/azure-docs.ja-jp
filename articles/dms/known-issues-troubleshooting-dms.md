@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: c5d2ad481124f5ae048d010cdf632ee661bbd6ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0f108c8b9d86a527764d2c7b8dddc6fb239b00d2
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77649109"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196264"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Azure Database Migration Service の一般的な問題やエラーのトラブルシューティング
 
@@ -32,7 +32,7 @@ Azure Database Migration Service プロジェクトに新しいアクティビ�
 
 ## <a name="max-number-of-databases-selected-for-migration"></a>移行のために選択されたデータベースの最大数
 
-Azure SQL Database または Azure SQL Database マネージド インスタンスに移動するためのデータベース移行プロジェクトのアクティビティを作成すると、次のエラーが発生します。
+Azure SQL Database または Azure SQL マネージド インスタンスに移動するためのデータベース移行プロジェクトのアクティビティを作成すると、次のエラーが発生します。
 
 * **Error**: 移行の設定の検証エラー、"errorDetail": "'Databases' のオブジェクトの最大数 '4' を超えるオブジェクトが移行用に選択されています。"
 
@@ -72,13 +72,13 @@ Azure Database Migration Service インスタンスを開始すると、次の�
 
 ## <a name="error-restoring-database-while-migrating-sql-to-azure-sql-db-managed-instance"></a>SQL から Azure SQL DB マネージド インスタンスに移行中のデータベース復元エラー
 
-SQL Server から Azure SQL Database マネージド インスタンスへのオンライン移行を実行すると、一括移行に失敗し、次のエラーが表示されます。
+SQL Server から Azure SQL Managed Instance へのオンライン移行を実行すると、一括移行に失敗し、次のエラーが表示されます。
 
 * **Error**: 操作 ID 'operationId' の復元操作に失敗しました。 コード 'AuthorizationFailed'、メッセージ 'オブジェクト ID 'objectId' のクライアント 'clientId' は、スコープ '/subscriptions/subscriptionId' に対するアクション 'Microsoft.Sql/locations/managedDatabaseRestoreAzureAsyncOperation/read' の実行を承認されていません。'。
 
 | 原因         | 解像度    |
 | ------------- | ------------- |
-| このエラーは、SQL Server から Azure SQL Database マネージド インスタンスへのオンライン移行に使用されているアプリケーション プリンシパルに、サブスクリプションに対する共同作成アクセス許可がないことを示しています。 現在、マネージド インスタンスを使用した特定の API 呼び出しでは、復元操作のために、サブスクリプションに対するこのアクセス許可が必要です。 <br><br><br><br><br><br><br><br><br><br><br><br><br><br> | エラー メッセージから取得できる `-ObjectId` を指定して `Get-AzureADServicePrincipal` PowerShell コマンドレットを使用すると、使用されているアプリケーション ID の表示名が表示されます。<br><br> このアプリケーションに対するアクセス許可を確認し、それがサブスクリプション レベルで[共同作成者ロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor)を持っていることを確認してください。 <br><br> Azure Database Migration Service のエンジニアリング チームは、サブスクリプションの現在の共同作成者ロールから必要とされるアクセスを制限するように取り組んでいます。 共同作成者ロールの使用を許可しないビジネス要件がある場合は、Azure サポートに追加の支援を要請してください。 |
+| このエラーは、SQL Server から SQL Managed Instance へのオンライン移行に使用されているアプリケーション プリンシパルに、サブスクリプションに対する共同作成アクセス許可がないことを示しています。 現在、マネージド インスタンスを使用した特定の API 呼び出しでは、復元操作のために、サブスクリプションに対するこのアクセス許可が必要です。 <br><br><br><br><br><br><br><br><br><br><br><br><br><br> | エラー メッセージから取得できる `-ObjectId` を指定して `Get-AzureADServicePrincipal` PowerShell コマンドレットを使用すると、使用されているアプリケーション ID の表示名が表示されます。<br><br> このアプリケーションに対するアクセス許可を確認し、それがサブスクリプション レベルで[共同作成者ロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor)を持っていることを確認してください。 <br><br> Azure Database Migration Service のエンジニアリング チームは、サブスクリプションの現在の共同作成者ロールから必要とされるアクセスを制限するように取り組んでいます。 共同作成者ロールの使用を許可しないビジネス要件がある場合は、Azure サポートに追加の支援を要請してください。 |
 
 ## <a name="error-when-deleting-nic-associated-with-azure-database-migration-service"></a>Azure Database Migration Service に関連付けられた NIC を削除するときのエラー
 

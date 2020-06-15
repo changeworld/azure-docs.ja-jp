@@ -3,12 +3,12 @@ title: アプリケーションのアップグレードに関する高度なト�
 description: この記事では、Service Fabric アプリケーションのアップグレードに関連する高度なトピックについて説明します。
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: a12d2ec55bda95c1c61d4a73c76f4a777f4237f2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 98d8213cc50f73ef2c053e1fe5574fe33a2f3cb6
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81414493"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84263093"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric アプリケーションのアップグレード:高度なトピック
 
@@ -20,9 +20,9 @@ ms.locfileid: "81414493"
 
 ## <a name="avoid-connection-drops-during-stateless-service-planned-downtime"></a>ステートレス サービスの計画的なダウンタイム中に接続がドロップされないようにする
 
-アプリケーションやクラスターのアップグレードまたはノードの非アクティブ化など、ステートレス インスタンスの計画的なダウンタイムの場合、インスタンスがダウンして接続が強制的に終了された後、公開されたエンドポイントが削除されるため、接続がドロップされる可能性があります。
+アプリケーションやクラスターのアップグレードまたはノードの非アクティブ化など、ステートレス インスタンスの計画的なダウンタイムの場合、インスタンスがダウンして接続が強制的に終了した後、公開されたエンドポイントが削除されるため、接続が解除される場合があります。
 
-これを回避するには、*RequestDrain* (プレビュー) 機能を構成します。サービス構成に*インスタンスの終了遅延期間*を追加して、クラスター内で他のサービスからの要求受信中にドレインを許可し、リバース プロキシを使用するか、エンドポイントを更新するための通知モデルで解決 API を使用してください。 これにより、ステートレス インスタンスによってアドバタイズされたエンドポイントは、インスタンス終了に先立つ延期期間の開始*前*に削除されます。 この延期期間により、インスタンスが実際に停止する前に、既存の要求を適切にドレインすることができます。 クライアントには、延期期間開始時点でコールバック関数によってエンドポイントの変更が通知されるため、エンドポイントを解決し、停止するインスタンスへの新しい要求の送信を回避できます。
+これを回避するには、サービス構成に*インスタンスの終了遅延期間*を追加する、*RequestDrain* 機能を構成して、公開されているエンドポイントでクラスター内の既存の要求がドレインされるようにします。 これにより、ステートレス インスタンスによってアドバタイズされたエンドポイントが、インスタンスの終了前の延期期間の開始*前*に削除されます。 この延期期間により、インスタンスが実際に停止する前に、既存の要求を適切にドレインすることができます。 クライアントには、延期期間開始時点でコールバック関数によってエンドポイントの変更が通知されるため、エンドポイントを解決し、停止するインスタンスへの新しい要求の送信を回避できます。 これらの要求は、[リバース プロキシ](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy)を使用するクライアントや、エンドポイントを更新する通知モデル ([ServiceNotificationFilterDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription)) をサービス エンドポイントの解決 API と共に使用しているクライアントから送信されたものである場合があります。
 
 ### <a name="service-configuration"></a>サービス構成
 
@@ -31,7 +31,7 @@ ms.locfileid: "81414493"
  * **新しいサービスを作成する場合**は、`-InstanceCloseDelayDuration` を指定します。
 
     ```powershell
-    New-ServiceFabricService -Stateless [-ServiceName] <Uri> -InstanceCloseDelayDuration <TimeSpan>`
+    New-ServiceFabricService -Stateless [-ServiceName] <Uri> -InstanceCloseDelayDuration <TimeSpan>
     ```
 
  * **アプリケーション マニフェストの既定のセクションでサービスを定義する場合**は、`InstanceCloseDelayDurationSeconds` プロパティを割り当てます。
@@ -46,6 +46,33 @@ ms.locfileid: "81414493"
 
     ```powershell
     Update-ServiceFabricService [-Stateless] [-ServiceName] <Uri> [-InstanceCloseDelayDuration <TimeSpan>]`
+    ```
+
+ * **ARM テンプレートを使用して既存のサービスを作成または更新する場合**は、`InstanceCloseDelayDuration` 値を指定します (サポートされている最小 API バージョン:2019-11-01-preview):
+
+    ```ARM template to define InstanceCloseDelayDuration of 30seconds
+    {
+      "apiVersion": "2019-11-01-preview",
+      "type": "Microsoft.ServiceFabric/clusters/applications/services",
+      "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'), '/', parameters('serviceName'))]",
+      "location": "[variables('clusterLocation')]",
+      "dependsOn": [
+        "[concat('Microsoft.ServiceFabric/clusters/', parameters('clusterName'), '/applications/', parameters('applicationName'))]"
+      ],
+      "properties": {
+        "provisioningState": "Default",
+        "serviceKind": "Stateless",
+        "serviceTypeName": "[parameters('serviceTypeName')]",
+        "instanceCount": "-1",
+        "partitionDescription": {
+          "partitionScheme": "Singleton"
+        },
+        "serviceLoadMetrics": [],
+        "servicePlacementPolicies": [],
+        "defaultMoveCost": "",
+        "instanceCloseDelayDuration": "00:00:30.0"
+      }
+    }
     ```
 
 ### <a name="client-configuration"></a>クライアントの構成
@@ -63,15 +90,17 @@ Start-ServiceFabricApplicationUpgrade [-ApplicationName] <Uri> [-ApplicationType
 Start-ServiceFabricClusterUpgrade [-CodePackageVersion] <String> [-ClusterManifestVersion] <String> [-InstanceCloseDelayDurationSec <UInt32>]
 ```
 
-延期期間は、呼び出されたアップグレード インスタンスにのみ適用されます。それ以外の場合、個々のサービスの延期期間構成は変更されません。 たとえば、これを利用すると、事前に構成されたアップグレードの延期期間をスキップするために `0` の延期期間を指定できます。
+オーバーライドされた延期期間は、呼び出されたアップグレード インスタンスにのみ適用されます。それ以外の場合、個々のサービスの延期期間構成は変更されません。 たとえば、これを利用すると、事前に構成されたアップグレードの延期期間をスキップするために `0` の延期期間を指定できます。
 
 > [!NOTE]
-> 要求をドレインする設定は、Azure ロード バランサーからの要求では受け入れられません。 呼び出しサービスがクレーム ベースの解決を使用する場合、この設定は無視されます。
+> * 要求をドレインする設定では、ドレイン中のエンドポイントへの Azure ロード バランサーによる新しい要求の送信が阻止できません。
+> * サービスの解決は、エラーの発生後にトリガーされるため、クレームベースの解決メカニズムでは要求は正常にドレインされません。 前述のように、これは代わりに [ServiceNotificationFilterDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription) を使用してエンドポイントの変更通知をサブスクライブするように拡張する必要があります。
+> * アップグレードが影響を受けないものである場合、つまり アップグレード時にレプリカが停止されない場合、この設定は受け入れられません。
 >
 >
 
 > [!NOTE]
-> この機能は、前述のように Update-ServiceFabricService コマンドレットを使用すると、既存のサービスで構成できます (クラスター コードのバージョンが 7.1.XXX 以上の場合)。
+> この機能は、クラスター コードのバージョンが 7.1.XXX 以上の場合、前述のように Update-ServiceFabricService コマンドレットまたは ARM テンプレートを使用して既存のサービスに構成することができます。
 >
 >
 

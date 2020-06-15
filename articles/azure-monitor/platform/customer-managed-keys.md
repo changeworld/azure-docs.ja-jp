@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 05/20/2020
-ms.openlocfilehash: 037edb8af6e04a2ff65977a92a66482c9f4f880f
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 8bff8cf1111675446c1c9fb2e5dde8b19e2ef5c1
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845100"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310888"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor のカスタマー マネージド キー 
 
@@ -196,8 +196,8 @@ Azure Key Vault を作成するか既存のものを使用して、データの�
 "*クラスター*" リソースを作成するときに、"*容量予約*" レベル (sku) を指定する必要があります。 "*容量予約*" レベルは、1 日あたり 1,000 GB から 2,000 GB の範囲で指定でき、後から 100 刻みで更新できます。 1 日あたり 2,000 GB を超える容量予約レベルが必要な場合は、LAIngestionRate@microsoft.com までお問い合わせください。 [詳細情報](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-clusters)
 
 *billingType* プロパティによって、"*クラスター*" リソースとそのデータの課金の帰属が決まります。
-- *cluster* (既定) - 課金は、"*クラスター*" リソースをホストするサブスクリプションに帰属します
-- *workspaces* - 課金は、ワークスペースをホストするサブスクリプションに比例的に帰属します
+- *クラスター* (既定)--クラスターの容量予約コストは、*クラスター* リソースに帰属します。
+- *ワークスペース*--クラスターの容量予約コストは、クラスター内のワークスペースに比例的に帰属します。その日に取り込まれた合計データが容量予約を下回る場合に使用量の一部が*クラスター* リソースに課金されます。 クラスターの価格モデルの詳細については、[Log Analytics 専用クラスター](manage-cost-storage.md#log-analytics-dedicated-clusters)に関するページを参照してください。 
 
 > [!NOTE]
 > "*クラスター*" リソースを作成した後は、PATCH REST 要求を使用して *sku*、*keyVaultProperties* または *billingType* でそれを更新できます。
@@ -289,7 +289,7 @@ Authorization: Bearer <token>
 
 この手順は、Key Vault の初期および将来のキー バージョンの更新時に実行されます。 データの暗号化に使用されるキーのバージョンについて Azure Monitor ストレージに通知します。 更新すると、新しいキーを使用してストレージ キー (AEK) のラップとラップ解除が行われます。
 
-Key Vault の*キー識別子*の詳細で*クラスター* リソースを更新するには、Azure Key Vault で現在のバージョンのキーを選択して、キー識別子の詳細を取得します。
+Key Vault の*キー識別子*の詳細で*クラスター リソー*スを更新するには、Azure Key Vault で現在のバージョンのキーを選択して、キー識別子の詳細を取得します。
 
 ![Key Vault アクセス許可を付与する](media/customer-managed-keys/key-identifier-8bit.png)
 

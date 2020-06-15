@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: 83ccc3160ed62a1ea801dd8c5795328fd2b5109f
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 0023bcc4a7c31a0e337683fa3d3080a45445fc49
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82584025"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117905"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Azure-SSIS Integration Runtime をスケジュールに従って開始および停止する方法
 
@@ -133,7 +133,7 @@ Azure-SSIS IR をまだプロビジョニングしていない場合は、[チ�
     
 2. 3 つ目のパイプラインをテストするには、SQL Server Management Studio (SSMS) を起動します。 **[サーバーへの接続]** ウィンドウで、次の操作を行います。 
 
-    1. **[サーバー名]** に、「 **&lt;自分の Azure SQL Database サーバー名&gt;.database.windows.net**」と入力します。
+    1. **[サーバー名]** に、「 **&lt;自分のサーバー名&gt;.database.windows.net**」と入力します。
     2. **[オプション >>]** を選択します。
     3. **[データベースの接続]** では **[SSISDB]** を選択します。
     4. **[接続]** を選択します。 

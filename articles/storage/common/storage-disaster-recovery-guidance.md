@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 6534e7d3a05434855503a9cbf1e675aa11799984
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 4b1abe8efb4baaf260005df1a4ee5b6d1645715a
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857781"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169221"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>ディザスター リカバリーとストレージ アカウントのフェールオーバー
 
@@ -26,8 +26,6 @@ Azure Storage では、geo 冗長ストレージ アカウントのアカウン�
 アカウント フェールオーバーは、Azure Resource Manager デプロイを使用する汎用 v1、汎用 v2、および BLOB Storage アカウントの種類で使用できます。 アカウントのフェールオーバーはすべてのパブリック リージョンでサポートされていますが、現時点ではソブリン クラウドまたは各国のクラウドでは使用できません。
 
 この記事では、アカウントのフェールオーバーに関する概念とプロセスについて、および顧客への影響が最小限になるようにストレージ アカウントの復旧を準備する方法について説明します。 Azure portal または PowerShell でアカウントのフェールオーバーを開始する方法については、[アカウントのフェールオーバーの開始](storage-initiate-account-failover.md)に関するページを参照してください。
-
-[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -104,6 +102,8 @@ geo 冗長アカウントの場合は、DNS エントリが更新されて、要
 
 ベスト プラクティスとしては、最終同期時刻を使用して予想されるデータ損失を評価できるようにアプリケーションを設計します。 たとえば、すべての書き込み操作をログに記録している場合は、最後の書き込み操作の時刻を最終同期時刻と比較することで、セカンダリに同期されていない書き込みを特定できます。
 
+**[最終同期時刻]** プロパティの詳細については、「[ストレージ アカウントの最終同期時刻プロパティを確認する](last-sync-time-get.md)」を参照してください。
+
 ### <a name="use-caution-when-failing-back-to-the-original-primary"></a>元のプライマリにフェールバックするときは注意が必要である
 
 プライマリ リージョンからセカンダリ リージョンにフェールオーバーした後、ストレージ アカウントは新しいプライマリ リージョンでローカル冗長に構成されます。 次に、geo 冗長用にアカウントを再構成することができます。 フェールオーバー後にアカウントが再び geo 冗長用に構成されると、新しいプライマリ リージョンは直ちに新しいセカンダリ リージョン (元のフェールオーバーの前にプライマリであったもの) へのデータのコピーを開始します。 ただし、プライマリの既存データが完全に新しいセカンダリにコピーされるまで、しばらくかかる場合があります。
@@ -175,4 +175,5 @@ VM をシャットダウンすると、一時ディスクに格納されてい�
 
 - [geo 冗長性を使用する高可用性アプリケーションの設計](geo-redundant-design.md)
 - [アカウントのフェールオーバーを開始する](storage-initiate-account-failover.md)
+- [ストレージ アカウントの最終同期時刻プロパティを確認する](last-sync-time-get.md)
 - [チュートリアル:Blob Storage を使用して高可用性アプリケーションを作成する](../blobs/storage-create-geo-redundant-storage.md)

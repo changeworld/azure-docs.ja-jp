@@ -1,37 +1,33 @@
 ---
-title: 名前付きエンティティ認識でサポートされている型
+title: 固有表現認識でサポートされるカテゴリ
 titleSuffix: Azure Cognitive Services
-description: Text Analytics API でサポートされているエンティティ型について説明します。
+description: Text Analytics API でサポートされているエンティティのカテゴリについて説明します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 02/06/2020
+ms.date: 03/30/2020
 ms.author: aahi
-ms.openlocfilehash: 164e803a6af8a7d1ccdc9c70cc3e42b787857b3a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9800eb9ec8ae9aa800e5281131148b600e42725f
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77086874"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140934"
 ---
-# <a name="supported-types-for-named-entity-recognition-version-3-preview"></a>固有表現抽出
-バージョン 3 でサポートされている型 (プレビュー)
+# <a name="supported-entity-categories-in-named-entity-recognition-v3"></a>固有表現認識 v3 でサポートされるエンティティのカテゴリ
 
-Text Analytics API には、テキスト内のエンティティを識別し、あいまいさを解消する機能が搭載されています。 [固有表現抽出
-](how-tos/text-analytics-how-to-entity-linking.md) (NER) は、テキスト形式のさまざまなエンティティを識別して、事前に定義したクラスに分類する機能です。
+この記事では、[固有表現認識 ](how-tos/text-analytics-how-to-entity-linking.md) (NER) から取得できるエンティティのカテゴリを紹介しています。 NER v3.1 のプレビューも提供されており、そちらには、個人情報 (`PII`) と医療情報 (`PHI`) を検出する機能が備わっています。
 
-## <a name="entity-types"></a>エンティティの種類
-
-サポートされているエンティティ型とサブタイプ (該当する場合) を以下に示します。
+## <a name="entity-categories"></a>エンティティのカテゴリ
 
 #### <a name="general"></a>[全般](#tab/general)
 
 [!INCLUDE [supported entity types - general](./includes/entity-types/general-entities.md)]
 
-#### <a name="personal-information"></a>[個人情報](#tab/personal)
+#### <a name="personal-and-health"></a>[個人と医療](#tab/personal)
 
 [!INCLUDE [supported entity types - personally identifying information](./includes/entity-types/personal-information-entities.md)]
 
