@@ -357,7 +357,7 @@ Azure Resource Manager テンプレートを使用してライフサイクル管
 また、クラウド内でアイドル状態のままとなり、格納されてからはほとんどアクセスされないデータもあります。 次のライフサイクル ポリシーは、取り込み直後にデータをアーカイブするように構成されます。 この例では、コンテナー `archivecontainer` 内のストレージ アカウントのブロック BLOB をアーカイブ層に移行します。 この移行は、最終変更時刻の 0 日後に BLOB を処理することによって実現されます。
 
 > [!NOTE] 
-> より効率的な方法として、BLOB をアーカイブ層に直接アップロードすることをお勧めします。 [PutBlob](https://docs.microsoft.com/rest/api/storageservices/put-blob) または [PutBlockList](https://docs.microsoft.com/rest/api/storageservices/put-block-list) の x-ms-acess-tier ヘッダーを REST バージョン 2018-11-09 以降または最新の BLOB ストレージ クライアント ライブラリと使用できます。 
+> より効率的な方法として、BLOB をアーカイブ層に直接アップロードすることをお勧めします。 [PutBlob](https://docs.microsoft.com/rest/api/storageservices/put-blob) または [PutBlockList](https://docs.microsoft.com/rest/api/storageservices/put-block-list) の x-ms-access-tier ヘッダーを REST バージョン 2018-11-09 以降または最新の BLOB ストレージ クライアント ライブラリと使用できます。 
 
 ```json
 {
