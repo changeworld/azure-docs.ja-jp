@@ -12,7 +12,7 @@ ms.locfileid: "82145326"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions の Java 開発者向けガイド
 
-Azure Functions ランタイムは、[Java SE 8 LTS (zulu8.31.0.2-jre8.0.181-win_x64)](https://repos.azul.com/azure-only/zulu/packages/zulu-8/8u181/) をサポートします。 このガイドには、Java で Azure 関数を記述する複雑な作業についての情報が含まれます。
+Azure Functions ランタイムは、[Java SE 8 LTS (zulu8.31.0.2-jre8.0.181-win_x64)](https://repos.azul.com/azure-only/zulu/packages/zulu-8/8u181/) をサポートします。 このガイドには、Java で Azure Functions を記述する複雑な作業についての情報が含まれます。
 
 他の言語と同様、関数アプリにも、1 つまたは複数の関数を使用することができます。 Java 関数は、注釈 `@FunctionName` で装飾された `public` メソッドです。 このメソッドは、Java 関数のエントリを定義し、特定のパッケージ内で一意である必要があります。 Java で作成された 1 つの関数アプリに、`@FunctionName` で注釈付けされたパブリック メソッドを複数持つクラスが複数存在することもあります。
 
