@@ -91,7 +91,7 @@ Azure Stack Edge サービスは、次のシナリオで個人情報を収集し
 
 共有にアクセスできる、または削除できるユーザーの一覧を表示するには、[Azure Stack Edge での共有の管理](azure-stack-edge-manage-shares.md)に関するページにある手順に従ってください。
 
-詳細については、[セキュリティ センター](https://www.microsoft.com/trustcenter)で Microsoft のプライバシー ポリシーを確認してください。
+詳細については、[Security Center](https://www.microsoft.com/trustcenter)で Microsoft のプライバシー ポリシーを確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 
