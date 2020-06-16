@@ -1,5 +1,5 @@
 ---
-title: Azure 関数アプリを API として API Management にインポートする
+title: Azure Functions アプリを API として API Management にインポートする
 titleSuffix: Azure API Management
 description: このチュートリアルでは、Azure Function App を API として Azure API Management にインポートする方法について説明します。
 services: api-management
