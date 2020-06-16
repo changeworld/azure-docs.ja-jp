@@ -63,7 +63,7 @@ Profiler を有効にするために必要な設定は次のとおりです。
 
 ## <a name="disable-profiler"></a>Profiler を無効にする
 
-個々の Web アプリのインスタンスで Profiler を停止または再起動するには、 **[Web ジョブ]** で Web Apps リソースに移動します。 Profiler を削除するには、 **[拡張機能]** に移動します。
+個々の Web アプリのインスタンスで Profiler を停止または再起動するには、 **[WebJobs]** で Web Apps リソースに移動します。 Profiler を削除するには、 **[拡張機能]** に移動します。
 
 ![Web ジョブで Profiler を無効にする][disable-profiler-webjob]
 
