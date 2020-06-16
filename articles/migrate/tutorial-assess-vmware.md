@@ -2,14 +2,14 @@
 title: Azure Migrate Server Assessment を使用して VMware VM を評価する
 description: Azure Migrate Server Assessment を使用して Azure に移行するためにオンプレミスの VMware VM を評価する方法について説明します。
 ms.topic: tutorial
-ms.date: 04/15/2020
+ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: bd9e6b5923207297b1aa70a67052a7796b901781
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 87eac5979176fe9a71db15961e4c5f822b56568e
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535368"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331884"
 ---
 # <a name="assess-vmware-vms-with-server-assessment"></a>Server Assessment による VMware VM の評価
 
@@ -85,18 +85,26 @@ Azure Migrate:Server Assessment では、軽量の Azure Migrate アプライア
 OVA ファイルをデプロイする前に、それが安全であることを確認します。
 
 1. ファイルをダウンロードしたマシンで、管理者用のコマンド ウィンドウを開きます。
-1. OVA ファイルのハッシュを生成するには、次のコマンドを実行します。
+2. OVA ファイルのハッシュを生成するには、次のコマンドを実行します。
   
    ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
    
    使用例: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
 
-バージョン 2.19.07.30 の場合、生成されたハッシュは次の値と一致する必要があります。
+3. 最新のアプライアンス バージョンとハッシュ値を確認します。
 
-**アルゴリズム** | **ハッシュ値**
---- | ---
-MD5 | c06ac2a2c0f870d3b274a0b7a73b78b1
-SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
+    - Azure パブリック クラウドの場合:
+    
+        **アルゴリズム** | **ダウンロード** | **SHA256**
+        --- | --- | ---
+        VMware (10.9 GB) | [最新バージョン](https://aka.ms/migrate/appliance/vmware) | cacbdaef927fe5477fa4e1f494fcb7203cbd6b6ce7402b79f234bc0fe69663dd
+
+    - Azure Goverment の場合:
+    
+        **アルゴリズム** | **ダウンロード** | **SHA256**
+        --- | --- | ---
+        VMware (63.1 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2120300&clcid=0x409 ) | 3d5822038646b81f458d89d706832c0a2c0e827bfa9b0a55cc478eaf2757a4de
+
 
 ### <a name="create-the-appliance-vm"></a>アプライアンス VM を作成する
 

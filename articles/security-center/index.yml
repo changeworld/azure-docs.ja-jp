@@ -11,12 +11,12 @@ metadata:
   author: memildin
   ms.author: memildin
   ms.date: 11/04/2019
-  ms.openlocfilehash: a1d764ce1ce332290c1bd68c5beb5f2731ae5e41
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: f564113f9a2bb92d1591ac0d3512ae460aa8f58d
+  ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "80159304"
+  ms.lasthandoff: 06/15/2020
+  ms.locfileid: "84783199"
 landingContent:
 - title: Security Center について
   linkLists:
@@ -49,7 +49,7 @@ landingContent:
     - text: セキュリティ ポリシーの構成
       url: tutorial-security-policy.md
     - text: セキュリティ体制の評価
-      url: security-center-secure-score.md
+      url: secure-score-security-controls.md
     - text: 高度なセキュリティへのアップグレード
       url: security-center-onboarding.md
 - title: セキュア スコアを向上させる

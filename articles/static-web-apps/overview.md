@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: d416044599535e8acd363d09099e8667bba59a0a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 476b81fc9aceae3f05ed54e7b2b11be381121bd8
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599067"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488921"
 ---
 # <a name="what-is-azure-static-web-apps-preview"></a>Azure Static Web Apps のプレビューとは
 
@@ -30,7 +30,7 @@ Static Web Apps では、静的アセットは従来の Web サーバーから�
 
 ## <a name="key-features"></a>主要な機能
 
-- HTML、CSS、JavaScript、イメージなどの静的コンテンツの**無料の Web ホスティング**。
+- HTML、CSS、JavaScript、画像などの静的コンテンツの **Web ホスティング**。
 - Azure Functions によって提供される**統合 API** サポート。
 - リポジトリの変更によってビルドとデプロイがトリガーされる**ファーストパーティの GitHub 統合**。
 - コンテンツをユーザーの近くに配置する、**グローバルに分散**された静的コンテンツ。

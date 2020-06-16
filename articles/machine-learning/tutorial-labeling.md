@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: 54f09c4b35f31619c3dcaa027c70444595c4352e
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 5f3a73ed6c7843c13d35a91a75189fe9dd8d4dbd
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196530"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628384"
 ---
 # <a name="tutorial-create-a-labeling-project-preview-for-multi-class-image-classification"></a>チュートリアル:多クラス画像分類のラベル付けプロジェクト (プレビュー) を作成する 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -109,6 +109,12 @@ Azure Machine Learning データストアは、サブスクリプション ID �
     1. リスト内のデータセット名 (例: **images-for-tutorial**) の横にある円を選択します。
 
 1. **[次へ]** を選択してプロジェクトの作成を続けます。
+
+### <a name="incremental-refresh"></a>増分更新
+
+新しい画像をデータセットに追加する予定がある場合、増分更新によって、それらの新しい画像が検出されてプロジェクトに追加されます。  この機能を有効にすると、新しい画像がないかプロジェクトによって定期的にチェックされます。  このチュートリアルでは新しい画像をデータストアに追加する予定はないので、この機能はオフにしておきます。
+
+**[次へ]** をクリックして続行します。
 
 ### <a name="label-classes"></a>ラベル クラス
 

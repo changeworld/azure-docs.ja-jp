@@ -7,20 +7,20 @@ ms.topic: overview
 ms.date: 02/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7d95cc08595296d697618cbb3ff0025c7c212a1f
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 804e469a01be042b4c299fd608f11426e7274b72
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84296529"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84464812"
 ---
 # <a name="azure-files-networking-considerations"></a>Azure Files のネットワークに関する考慮事項 
 Azure ファイル共有には、次の 2 つの方法で接続できます。
 
 - SMB または FileREST プロトコル経由で直接共有にアクセスします。 このアクセス パターンは主に、できるだけ多くのオンプレミス サーバーを排除するために使用されます。
-- Azure File Sync を使用してオンプレミス サーバー上に Azure ファイル共有のキャッシュを作成し、ユース ケースに合った任意のプロトコル (SMB、NFS、FTPS など) を使用してオンプレミス サーバーからファイル共有のデータにアクセスします。 このアクセス パターンは、オンプレミスのパフォーマンスとクラウド スケールの両方、およびサーバーレスの接続可能なサービス (Azure Backup など) のメリットが組み合わされるために非常に便利です。
+- Azure File Sync を使用してオンプレミス サーバー上 (Azure VM 上) に Azure ファイル共有のキャッシュを作成し、ユース ケースに合った任意のプロトコル (SMB、NFS、FTPS など) を使用してオンプレミス サーバーからファイル共有のデータにアクセスします。 このアクセス パターンは、オンプレミスのパフォーマンスとクラウド スケールの両方、およびサーバーレスの接続可能なサービス (Azure Backup など) のメリットが組み合わされるために非常に便利です。
 
-この記事では、Azure File Sync を使用するのではなく、直接 Azure ファイル共有にアクセスするためにユース ケースに必要となるネットワークの構成方法に重点を置いています。Azure File Sync のデプロイのネットワークに関する考慮事項の詳細については、[Azure File Sync のプロキシとファイアウォールの設定の構成](storage-sync-files-firewall-and-proxy.md)に関するページを参照してください。
+この記事では、Azure File Sync を使用するのではなく、直接 Azure ファイル共有にアクセスするためにユース ケースに必要となるネットワークの構成方法に重点を置いています。Azure File Sync のデプロイのネットワークに関する考慮事項の詳細については、「[Azure File Sync のネットワークに関する考慮事項](storage-sync-files-networking-overview.md)」を参照してください。
 
 Azure ファイル共有のネットワーク構成は Azure ストレージ アカウントで行います。 ストレージ アカウントは、複数のファイル共有だけでなく、BLOB コンテナーやキューなどのその他のストレージ リソースをデプロイできるストレージの共有プールを表す管理構造です。 ストレージ アカウントには、ネットワーク エンドポイント、ストレージ アカウントのファイアウォール設定、転送中の暗号化など、ファイル共有へのネットワーク アクセスをセキュリティで保護するうえで役立つ多数の設定が公開されています。 
 

@@ -2,14 +2,14 @@
 title: Azure Migrate を使用して Azure に移行するために Hyper-V VM を評価する | Microsoft Docs
 description: Azure Migrate Server Assessment を使用して Azure に移行するためにオンプレミスの Hyper-V VM を評価する方法について説明します。
 ms.topic: tutorial
-ms.date: 04/15/2020
+ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: c627902268af3a91e172223c1741dd24ea21fa92
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 2c4233df6566f3187c8366188b0eb960189b43c5
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535453"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331765"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Azure Migrate Server Assessment を使用して Hyper-V VM を評価する
 
@@ -96,12 +96,20 @@ Azure Migrate:Server Assessment では、軽量の Azure Migrate アプライア
     - ```C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm]```
     - 使用例: ```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v1.19.06.27.zip -Algorithm SHA256```
 
-3.  アプライアンス バージョン 2.19.07.30 の場合は、生成されたハッシュがこれらの設定と一致する必要があります。
+3.  最新のアプライアンス バージョンを確認し、次の値になっていることを確認します。
 
-  **アルゴリズム** | **ハッシュ値**
-  --- | ---
-  MD5 | 29a7531f32bcf69f32d964fa5ae950bc
-  SHA256 | 37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
+    - Azure パブリック クラウドの場合:
+
+        **シナリオ** | **ダウンロード** | **SHA256**
+        --- | --- | ---
+        Hyper-V (8.93 MB) | [最新バージョン](https://aka.ms/migrate/appliance/hyperv) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
+
+    - Azure Government の場合:
+
+        **シナリオ*** | **ダウンロード** | **SHA256**
+        --- | --- | ---
+        Hyper-V (63.1 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2120200&clcid=0x409) |  2c5e73a1e5525d4fae468934408e43ab55ff397b7da200b92121972e683f9aa3
+
 
 ### <a name="create-the-appliance-vm"></a>アプライアンス VM を作成する
 

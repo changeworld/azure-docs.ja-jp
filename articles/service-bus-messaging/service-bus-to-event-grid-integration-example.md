@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: tutorial
-ms.date: 11/05/2019
+ms.date: 06/08/2020
 ms.author: spelluru
-ms.openlocfilehash: fef325b67c38eda09a05dac9d74bd5b97df164cc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 548a51fef693aae6e9b9068f9731b82aaa85dfe3
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80067767"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610495"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>チュートリアル:Azure Functions と Azure Logic Apps を使用して、Azure Event Grid 経由で受信した Azure Service Bus イベントに応答する
 このチュートリアルでは、Azure Functions と Azure Logic Apps を使用して、Azure Event Grid 経由で受信した Azure Service Bus イベントに応答する方法について説明します。 
@@ -122,19 +122,25 @@ ms.locfileid: "80067767"
     }
     
     ```
-2. **[保存および実行]** を選択します。
+2. ツール バーの **[保存]** を選択し、関数のコードを保存します。
 
-    ![関数アプリの出力](./media/service-bus-to-event-grid-integration-example/function-run-output.png)
+    ![関数のコードの保存](./media/service-bus-to-event-grid-integration-example/save-function-code.png)
+3. ツール バーの **[テストと実行]** を選択し、本文に名前を入力したら、 **[実行]** を選択します。 
+
+    ![テストの実行](./media/service-bus-to-event-grid-integration-example/test-run-function.png)
+4. 次の図のような出力とログが表示されることを確認します。 
+
+    ![テストの実行 - 出力](./media/service-bus-to-event-grid-integration-example/test-run-output.png)
 3. **[関数の URL の取得]** を選択して、URL をメモします。 
 
     ![関数の URL の取得](./media/service-bus-to-event-grid-integration-example/get-function-url.png)
+5. URL テキストの横にある **[コピー]** を選択します。    
+    ![関数の URL をコピーする](./media/service-bus-to-event-grid-integration-example/get-function-url-copy.png)
 
 # <a name="azure-functions-v1"></a>[Azure Functions V1](#tab/v1)
 
 1. **V1** バージョンを使用するように関数を構成します。 
     1. ツリー ビューで関数アプリを選択し、 **[Function App の設定]** を選択します。 
-
-        ![Function App の設定]()./media/service-bus-to-event-grid-integration-example/function-app-settings.png)
     2. **[ランタイム バージョン]** には、 **[~1]** を選択します。 
 2. ツリー ビューで **[関数]** を展開し、関数を選択します。 関数のコードを次のコードに置き換えます。 
 
@@ -184,9 +190,11 @@ ms.locfileid: "80067767"
 4. **[保存および実行]** を選択します。
 
     ![関数アプリの出力](./media/service-bus-to-event-grid-integration-example/function-run-output.png)
-4. **[関数の URL の取得]** を選択して、URL をメモします。 
+4. ツール バーで **[関数の URL の取得]** を選択します。 
 
     ![関数の URL の取得](./media/service-bus-to-event-grid-integration-example/get-function-url.png)
+5. URL テキストの横にある **[コピー]** を選択します。    
+    ![関数の URL をコピーする](./media/service-bus-to-event-grid-integration-example/get-function-url-copy.png)
 
 ---
 
@@ -201,16 +209,20 @@ Azure Event Grid サブスクリプションを作成するには、次の手順
 2. ツール バーの **[+ イベント サブスクリプション]** を選択します。 
 3. **[イベント サブスクリプションの作成]** ページで、次の手順を実行します。
     1. サブスクリプションの**名前**を入力します。 
+    2. **システム トピック**の**名前**を入力します。 システム トピックは、Azure Storage アカウントや Azure Service Bus などの Azure リソースに関して作成されたトピックです。 システム トピックの詳細については、[システム トピックの概要](../event-grid/system-topics.md)に関するページを参照してください。
     2. **[エンドポイントのタイプ]** には **[Webhook]** を選択します。 
 
         ![Service Bus - Event Grid サブスクリプション](./media/service-bus-to-event-grid-integration-example/event-grid-subscription-page.png)
-    3. **[エンドポイントの選択]** を選び、関数の URL を貼り付けてから、 **[選択の確認]** を選びます。 
+    3. **[エンドポイントの選択]** を選択し、関数の URL を貼り付けてから、 **[選択の確認]** を選択します。 
 
         ![関数 - エンドポイントの選択](./media/service-bus-to-event-grid-integration-example/function-select-endpoint.png)
-    4. **[フィルター]** タブに切り替えて、前に作成した Service Bus トピックに対する**最初のサブスクリプション**の名前を入力し、 **[作成]** ボタンを選択します。 
+    4. **[フィルター]** タブに切り替えて、次の作業を行います。
+        1. **[サブジェクト フィルタリングを有効にする]** を選択します。
+        2. 前に作成した Service Bus トピックに対する**最初のサブスクリプション**の名前を入力します。
+        3. **[作成]** ボタンを選択します。 
 
-        ![イベント サブスクリプションのフィルター](./media/service-bus-to-event-grid-integration-example/event-subscription-filter.png)
-4. 一覧にそのイベント サブスクリプションが表示されていることを確認します。
+            ![イベント サブスクリプションのフィルター](./media/service-bus-to-event-grid-integration-example/event-subscription-filter.png)
+4. **[イベント]** ページの **[イベント サブスクリプション]** タブで、一覧にイベント サブスクリプションが表示されていることを確認します。
 
     ![一覧のイベント サブスクリプション](./media/service-bus-to-event-grid-integration-example/event-subscription-in-list.png)
 
@@ -242,11 +254,15 @@ Azure Event Grid サブスクリプションを作成するには、次の手順
         ![関数の発行プロファイルの取得](./media/service-bus-to-event-grid-integration-example/function-download-publish-profile.png)
     4. プロジェクトのフォルダーにファイルを保存します。 
 4. Visual Studio で **SBEventGridIntegration** を右クリックして **[発行]** を選択します。 
-5. **[発行]** ページで **[開始]** を選択します。 
-6. **[発行先を選択]** ページで、次の手順に従い、 **[プロファイルのインポート]** を選択します。 
+5. **[発行]** で、次の手順を実行します。 
+    1. **[発行]** ページで **[開始]** を選択します。 
+    2. **[ターゲット]** には **[プロファイルのインポート]** を選択します。 
+    3. **[次へ]** を選択します。 
 
-    ![Visual Studio - [プロファイルのインポート] ボタン](./media/service-bus-to-event-grid-integration-example/visual-studio-import-profile-button.png)
-7. 先ほどダウンロードした**発行プロファイル ファイル**を選択します。 
+        ![Visual Studio - [プロファイルのインポート] ボタン](./media/service-bus-to-event-grid-integration-example/visual-studio-import-profile-button.png)
+7. 先ほどダウンロードした**発行プロファイル ファイル**を選択して、 **[完了]** を選択します。
+
+    ![発行プロファイルの選択](./media/service-bus-to-event-grid-integration-example/select-publish-profile.png)
 8. **[発行]** ページで **[発行]** を選択します。 
 
     ![Visual Studio - 発行](./media/service-bus-to-event-grid-integration-example/select-publish.png)

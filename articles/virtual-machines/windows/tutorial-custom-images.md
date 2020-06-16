@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9061cbbae0b30881fffe1762208216cb8009594a
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 1ded745b5a734fd92a8ace851e3ecfc4a7a487d5
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791580"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636395"
 ---
 # <a name="tutorial-create-windows-vm-images-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して Windows VM イメージを作成する
 
@@ -140,7 +140,7 @@ New-AzGalleryImageVersion `
 
 ## <a name="create-a-vm"></a>VM の作成 
 
-特殊化されたイメージが用意できたら、新しい VM を 1 つ以上作成できます。 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) コマンドレットの使用。 このイメージを使用するには、Set-AzVMSourceImage を使用し、-Id をイメージ定義 ID (この場合は $galleryImage.Id) に設定して、常に最新のイメージ バージョンを使用するようにします。 
+特殊化されたイメージが用意できたら、新しい VM を 1 つ以上作成できます。 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) コマンドレットの使用。 このイメージを使用するには、`Set-AzVMSourceImage` を使用し、`-Id` をイメージ定義 ID (この場合は $galleryImage.Id) に設定して、常に最新のイメージ バージョンを使用します。 
 
 必要に応じて、この例のリソース名を置き換えてください。 
 

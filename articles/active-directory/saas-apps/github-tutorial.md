@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e812e1b03637a3ecd7a45f02664c4e3547f1aef1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1da910cbf700845bdb6d5c07a6ee375a73579e75
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79138979"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456863"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と GitHub の統合
 
@@ -163,7 +163,7 @@ GitHub で Azure AD SSO を構成してテストするには、次の構成要�
 
     d. **[Edit]\(編集\)** アイコンをクリックし、 **[Signature Method]\(署名方法\)** と **[Digest Method]\(ダイジェスト方法\)** を編集して、**RSA-SHA1** および **SHA1** から **RSA-SHA256** および **SHA256** に変更します (下図参照)。
     
-    e. Github の URL が Azure アプリ登録の URL と一致するように、**Assertion Consumer Service URL** (応答 URL) を既定の URL から更新します。
+    e. GitHub の URL が Azure アプリ登録の URL と一致するように、**Assertion Consumer Service URL** (応答 URL) を既定の URL から更新します。
 
     ![image](./media/github-tutorial/tutorial_github_sha.png)
 

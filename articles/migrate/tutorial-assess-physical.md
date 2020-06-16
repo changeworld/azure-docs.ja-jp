@@ -3,12 +3,12 @@ title: Azure に移行するために Azure Migrate Server Assessment を使用�
 description: Azure Migrate Server Assessment を使用して、Azure に移行するためにオンプレミスの物理サーバーを評価する方法について説明します。
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: b36cba18bd154cd5d14e16a9f8bf85cda6bf87a8
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 5cbd1b85bdb9017a96dc863b83223c31c716cf77
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535436"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331799"
 ---
 # <a name="assess-physical-servers-with-azure-migrateserver-assessment"></a>Azure Migrate:Server Assessment を使用して物理サーバーを評価する
 
@@ -102,20 +102,18 @@ Azure Migrate: Server Assessment では、軽量のアプライアンスが実�
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 使用例 (パブリック クラウドの場合): ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
     - 使用例 (政府機関向けクラウドの場合): ```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
-3.  ハッシュ値を確認します。
- 
-    - パブリック クラウドの場合 (最新のアプライアンス バージョン):
+3.  最新のアプライアンス バージョンとハッシュ値を確認します。
+    - パブリック クラウドの場合:
 
-        **アルゴリズム** | **ハッシュ値**
-          --- | ---
-          MD5 | 1e92ede3e87c03bd148e56a708cdd33f
-          SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
+        **シナリオ** | **ダウンロード*** | **ハッシュ値**
+        --- | --- | ---
+        物理 (63.1 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2105112) | 0a27adf13cc5755e4b23df0c05732c6ac08d1fe8850567cb57c9906fbc3b85a0
 
-    - Azure Government の場合 (最新のアプライアンス バージョン):
+    - Azure Government の場合:
 
-        **アルゴリズム** | **ハッシュ値**
-          --- | ---
-          MD5 | f81c155fc4a1409901caea948713913f
+        **シナリオ** | **ダウンロード*** | **ハッシュ値**
+        --- | --- | ---
+        物理 (63.1 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2120100&clcid=0x409) | 93dfef131026e70acdfad2769cd208ff745ab96a96f013cdf3f9e1e61c9b37e1
 
 ### <a name="run-the-azure-migrate-installer-script"></a>Azure Migrate インストーラー スクリプトを実行する
 

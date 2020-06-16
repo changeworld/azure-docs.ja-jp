@@ -5,16 +5,16 @@ services: event-grid
 keywords: ''
 author: spelluru
 ms.author: spelluru
-ms.date: 02/27/2020
+ms.date: 06/03/2020
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: subject-armqs
-ms.openlocfilehash: 86dc7a4ed05ceae5c7a641ffef23bd75ec48ceea
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 0cf880411a5c2a8eefd592a01de40b5098f31cda
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81605550"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424133"
 ---
 # <a name="route-blob-storage-events-to-web-endpoint-by-using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して BLOB ストレージ イベントを Web エンドポイントにルーティングする
 
@@ -50,7 +50,8 @@ BLOB ストレージのイベントをサブスクライブする前に、イベ
 テンプレートでは、次の 2 つの Azure リソースが定義されています。
 
 * [**Microsoft.Storage/storageAccounts**](/azure/templates/microsoft.storage/storageaccounts): Azure のストレージ アカウントを作成します。
-* [ **"Microsoft.Storage/storageAccounts/providers/eventSubscriptions**](/azure/templates/microsoft.eventgrid/eventsubscriptions): ストレージ アカウントの Azure Event Grid サブスクリプションを作成します。
+* [**Microsoft.EventGrid/systemTopics**](/azure/templates/microsoft.eventgrid/systemtopics): 指定されたストレージ アカウント名でシステム トピックを作成します。 
+* [**Microsoft.EventGrid/systemTopics/eventSubscriptions**](/azure/templates/microsoft.eventgrid/systemtopics/eventsubscriptions): システム トピックの Azure Event Grid サブスクリプションを作成します。
 
 ### <a name="deploy-the-template"></a>テンプレートのデプロイ
 

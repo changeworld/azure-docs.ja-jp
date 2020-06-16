@@ -7,12 +7,12 @@ ms.date: 06/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: a2430e29acb83945e9893ca4c6e2e0110ef6e007
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: eefd4a9ddf2150728578a4e058686a3204e34930
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298161"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456557"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA Portal の管理
 
@@ -76,7 +76,7 @@ Azure EA Portal は、Azure EA のコストと使用状況を管理するのに�
 
 Azure EA アカウントは、Azure EA Portal における組織単位です。 これは、サブスクリプションの管理に使用されるほか、レポートにも使用されます。 Azure サービスにアクセスして使用するには、自分でアカウントを作成するか、誰かにアカウントを作成してもらう必要があります。
 
-Azure アカウントの詳細については、「Add an account (アカウントを追加する)」を参照してください。
+Azure アカウントの詳細については、「[アカウントの追加](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-get-started#add-an-account)」を参照してください。
 
 ## <a name="enterprise-devtest-offer"></a>Enterprise Dev/Test オファー
 

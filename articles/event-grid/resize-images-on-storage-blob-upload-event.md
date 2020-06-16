@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 04/01/2020
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: 77b801837be80749ca73dd4ae5c526a7980e83e0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 92962c376e2b800a327f44c4cad5cd9fdd4cab8d
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652728"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560514"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>チュートリアル:Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する
 
@@ -75,14 +75,19 @@ Azure Functions には、一般的なストレージ アカウントが必要で
     ```azurecli-interactive
     resourceGroupName="myResourceGroup"
     ```
-2. Azure 関数が必要とする新しいストレージ アカウントの名前の変数を設定します。
+2. リソースを作成する場所を保持する変数を設定します。 
+
+    ```azurecli-interactive
+    location="eastus"
+    ```    
+3. Azure 関数が必要とする新しいストレージ アカウントの名前の変数を設定します。
     ```azurecli-interactive
     functionstorage="<name of the storage account to be used by the function>"
     ```
-3. Azure 関数用のストレージ アカウントを作成します。
+4. Azure 関数用のストレージ アカウントを作成します。
 
     ```azurecli-interactive
-    az storage account create --name $functionstorage --location southeastasia \
+    az storage account create --name $functionstorage --location $location \
     --resource-group $resourceGroupName --sku Standard_LRS --kind StorageV2
     ```
 
@@ -101,7 +106,7 @@ Azure Functions には、一般的なストレージ アカウントが必要で
 
     ```azurecli-interactive
     az functionapp create --name $functionapp --storage-account $functionstorage \
-      --resource-group $resourceGroupName --consumption-plan-location southeastasia \
+      --resource-group $resourceGroupName --consumption-plan-location $location \
       --functions-version 2
     ```
 
@@ -114,7 +119,6 @@ Azure Functions には、一般的なストレージ アカウントが必要で
 # <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
 
 ```azurecli-interactive
-blobStorageAccount="<name of the Blob storage account you created in the previous tutorial>"
 storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName \
   --name $blobStorageAccount --query connectionString --output tsv)
 
@@ -126,8 +130,6 @@ az functionapp config appsettings set --name $functionapp --resource-group $reso
 # <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
 
 ```azurecli-interactive
-blobStorageAccount="<name of the Blob storage account you created in the previous tutorial>"
-
 blobStorageAccountKey=$(az storage account keys list -g $resourceGroupName \
   -n $blobStorageAccount --query [0].value --output tsv)
 
@@ -211,6 +213,7 @@ Event Grid の通知から関数に渡されるデータには、BLOB の URL �
     | **サブスクリプション** | お使いの Azure サブスクリプション | 既定では、現在の Azure サブスクリプションが選択されています。 |
     | **リソース グループ** | myResourceGroup | **[既存のものを使用]** を選び、このチュートリアルで使っているリソース グループを選びます。 |
     | **リソース** | お使いの BLOB ストレージ アカウント | 作成した Blob Storage アカウントを選びます。 |
+    | **[システム トピック名]** | imagestoragesystopic | システム トピックの名前を指定します。 システム トピックについては、[システム トピックの概要](system-topics.md)に関するページを参照してください。 |    
     | **イベントの種類** | Blob created (作成された BLOB) | **[Blob created]\(作成された BLOB\)** 以外のすべての種類をオフにします。 `Microsoft.Storage.BlobCreated` のイベントの種類のみが関数に渡されます。 |
     | **[エンドポイントの種類]** | 自動生成 | **Azure Function** としてあらかじめ定義されています。 |
     | **エンドポイント** | 自動生成 | 関数の名前です。 この場合は、**Thumbnail** です。 |
