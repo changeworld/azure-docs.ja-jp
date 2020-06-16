@@ -51,7 +51,7 @@ VM に接続されていないアンマネージド ディスクがあり、そ�
 
 1. ディスクのブレードでは、 **[接続先]** がまだ " **-** " になっていることで、ディスクが接続されていないことを確認できます。
 
-    :::image type="content" source="media/disks-find-unattached-portal/unmanaged-disk-unattached-select-blade.png" alt-text="個々のアンマネージド ディスク ブレードのスクリーンショット。接続されていない場合、[接続先] の値が "-" になります。このディスクのデータが必要ない場合は、ディスクを削除することができます。":::
+    :::image type="content" source="media/disks-find-unattached-portal/unmanaged-disk-unattached-select-blade.png" alt-text="個々のアンマネージド ディスク ブレードのスクリーンショット。接続されていない場合、[接続先] の値が - になります。このディスクのデータが必要ない場合は、ディスクを削除することができます。":::
 
 1. **[削除]** を選択します。
 
