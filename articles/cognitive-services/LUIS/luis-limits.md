@@ -2,13 +2,13 @@
 title: 制限 - LUIS
 description: この記事では、Azure Cognitive Services Language Understanding (LUIS) の既知の制限を示します。 LUIS にはいくつかの制限領域があります。 モデルの制限によって、LUIS の意図、エンティティ、および機能が制御されます。 キーの種類に基づくクォータ制限。 キーボードの組み合わせは LUIS Web サイトを制御します。
 ms.topic: reference
-ms.date: 05/06/2020
-ms.openlocfilehash: d4a6162758fab7e5c9592b98974620bbf06ba978
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 06/04/2020
+ms.openlocfilehash: aa4362fba09834758d47f3ef063068c1854b9280
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684608"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449500"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>LUIS モデルとキーの制限
 LUIS にはいくつかの制限領域があります。 1 つは[モデルの制限](#model-limits)であり、これによって LUIS で意図、エンティティ、および機能が制御されます。 2 つ目の領域は、キーの種類に基づく[クォータ制限](#key-limits)です。 3 つ目の制限領域は、LUIS Web サイトを制御するための[キーボードの組み合わせ](#keyboard-controls)です。 4 つ目の領域は、LUIS オーサリング Web サイトと LUIS [エンドポイント](luis-glossary.md#endpoint) API の間の[世界リージョン マッピング](luis-reference-regions.md)です。
@@ -37,8 +37,8 @@ LUIS にはいくつかの制限領域があります。 1 つは[モデルの�
 | [事前構築済みのエンティティ](./luis-prebuilt-entities.md) | 制限なし|
 | [正規表現エンティティ](./luis-concept-entity-types.md)|20 エンティティ<br>最大文字数: 500 文字/ 正規表現エンティティ パターンあたり|
 | [ロール](luis-concept-roles.md)|アプリケーションあたり 300 の役割。 エンティティあたりの 10 の役割|
-| [発話][utterances] | 500 文字|
-| [発話][utterances] | アプリケーションあたり 15,000 - 意図あたりの発話の数に制限はありません|
+| [発話][utterances] | 500 文字<br><br>この文字制限より長いテキストがある場合は、LUIS に入力する前に発話を分割し、それに従って応答をマージする必要があります。 句読点や音声内の長い一時停止など、操作可能な明らかな中断があります。|
+| [発話の例][utterances] | アプリケーションあたり 15,000 - 意図あたりの発話の数に制限はありません<br><br>追加の例でアプリケーションをトレーニングする必要がある場合は、[ディスパッチ](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch) モデル アプローチを使用します。 1 つ以上の意図で個々の LUIS アプリ (親ディスパッチ アプリに対して子アプリと呼ばれる) をトレーニングし、次に各子 LUIS アプリの発話からサンプリングされたディスパッチ アプリをトレーニングして、予測要求を正しい子アプリに送ります。 |
 | [バージョン](luis-concept-version.md)| アプリケーションごとに 100 バージョン |
 | [バージョン名][luis-how-to-manage-versions] | 128 文字 |
 
@@ -50,7 +50,7 @@ LUIS にはいくつかの制限領域があります。 1 つは[モデルの�
 
 オブジェクト名は、同じレベルの他のオブジェクトと比較したときに一意である必要があります。
 
-|オブジェクト|制限|
+|Objects|制限|
 |--|--|
 |意図、エンティティ|すべての意図とエンティティの名前は、アプリのバージョン内で一意である必要があります。|
 |ML エンティティ コンポーネント|すべての機械学習エンティティ コンポーネント (子エンティティ) は、同じレベルのコンポーネントに関して、同じエンティティ内で一意である必要があります。|

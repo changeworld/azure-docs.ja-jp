@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: f710b8bfdd4dcfd3b7a63aa0b457036ab7037016
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 27229d36dbe9592b6ad6fc2740f7714f99fd6857
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74806098"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629055"
 ---
 # <a name="evaluate-custom-speech-accuracy"></a>カスタム音声の正確性を評価する
 
@@ -52,7 +52,7 @@ Microsoft の音声テキスト変換ベースライン モデルまたはトレ
 モデルを並べて評価するには、次のように操作します。
 
 1. [Custom Speech ポータル](https://speech.microsoft.com/customspeech)にサインインします。
-2. **[音声テキスト変換]、[Custom Speech]、[Testing]\(テスト\)** の順に移動します。
+2. **[音声テキスト変換]、[Custom Speech]、[<プロジェクト名>]、[テスト]** の順に移動します。
 3. **[テストの追加]** をクリックします。
 4. **[Evaluate accuracy]\(正確性の評価\)** を選択します。 テストの名前と説明を設定し、オーディオ + ヒューマン ラベル付け文字起こしデータセットを選択します。
 5. テストするモデルを最大で 2 つ選択します。

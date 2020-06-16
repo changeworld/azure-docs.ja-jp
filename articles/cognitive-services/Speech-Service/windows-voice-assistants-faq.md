@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: aa71057d3819acb335153ee5b4b65960320405be
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 3cb4dd16592f3af962b32fe3005d2ad4b241d831
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82997290"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457015"
 ---
 # <a name="samples-and-faqs"></a>サンプルと FAQ
 
@@ -31,7 +31,7 @@ UWP 音声アシスタント サンプルは、以下のための Windows 上の
 サンプル アプリに付属しているドキュメントでは、起動の前提条件から適切なクリーンアップまで、音声によるアクティブ化とエージェント管理のコード パスが順を追って説明されています。
 
 > [!div class="nextstepaction"]
-> [UWP サンプルの Github リポジトリにアクセスする](https://aka.ms/MVA/sample)
+> [UWP サンプルの GitHub リポジトリにアクセスする](https://aka.ms/MVA/sample)
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
