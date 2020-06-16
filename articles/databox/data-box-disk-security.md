@@ -56,7 +56,7 @@ Data Box Disk に対する入出力データは、次の機能によって保護
 Data Box サービスは、次の機能によって保護されます。
 
 - Data Box Disk サービスにアクセスするには、Data Box Disk を含む Azure サブスクリプションを会社が保有している必要があります。 Azure ポータルから利用できる機能は、保有するサブスクリプションによって決まります。
-- Data Box サービスは Azure でホストされるため、Azure のセキュリティ機能によって保護されます。 Microsoft Azure のセキュリティ機能の詳細については、「 [Microsoft Azure セキュリティ センター](https://www.microsoft.com/TrustCenter/Security/default.aspx)」をご覧ください。
+- Data Box サービスは Azure でホストされるため、Azure のセキュリティ機能によって保護されます。 Microsoft Azure のセキュリティ機能の詳細については、「[Microsoft Azure Security Center](https://www.microsoft.com/TrustCenter/Security/default.aspx)」をご覧ください。
 - このサービスでは、ディスクのロック解除にパスキーが使用されます。ディスクのパスキーは、Data Box Disk に格納されます。 
 - Data Box Disk サービスは、その注文の詳細と状態を格納します。 この情報は、注文が削除されると削除されます。
 
@@ -86,7 +86,7 @@ Azure Data Box Disk は、同サービスにおける次の主要なインスタ
 
 - **配送先住所** - Data Box サービスは、注文を受けると、サード パーティの運送業者 (UPS、DHL など) に配送先住所を提供します。 
 
-詳細については、[セキュリティ センター](https://www.microsoft.com/trustcenter)にある Microsoft のプライバシー ポリシーを確認してください。
+詳細については、[Security Center](https://www.microsoft.com/trustcenter)にある Microsoft のプライバシー ポリシーを確認してください。
 
 
 ## <a name="next-steps"></a>次のステップ
