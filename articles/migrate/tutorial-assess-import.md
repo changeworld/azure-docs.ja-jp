@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 484dfd7834a206dce6805dc38b0eabeae2ee352a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 519520538c16b1bde18f0810344864d37090accf
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82114566"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342648"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>インポートされたデータを使用してサーバーを評価する
 
@@ -111,6 +111,7 @@ CSV テンプレートをダウンロードし、サーバー情報を追加し�
 **[メモリ]** | はい | サーバーに割り当てられている合計 RAM (MB 単位)。
 **OS 名** | はい | サーバーのオペレーティング システム。 <br/> この[一覧](#supported-operating-system-names)内の名前と一致するか、この名前を含むオペレーティング システム名は、評価によって認識されます。
 **OS バージョン** | いいえ | サーバーのオペレーティング システムのバージョン。
+**OS アーキテクチャ** | いいえ | サーバー OS アーキテクチャ <br/> 有効な値: x64、x86、amd64、32 ビット、64 ビット
 **ディスクの数** | いいえ | 個々のディスクの詳細が指定されている場合は必要ありません。
 **Disk 1 size (ディスク 1 のサイズ)**  | いいえ | ディスクの最大サイズ (GB 単位)。<br/>テンプレートに[列を追加](#add-multiple-disks)することで、さらにディスクの詳細を追加できます。 最大 8 つのディスクを追加できます。
 **Disk 1 read ops (ディスク 1 の読み取り操作)** | いいえ | 1 秒あたりのディスク読み取り操作。

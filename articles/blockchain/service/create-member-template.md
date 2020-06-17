@@ -7,13 +7,13 @@ ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: patricka
-ms.date: 04/22/2020
-ms.openlocfilehash: 1e0e4018c79c231c69f29b2272420344198af413
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.date: 06/04/2020
+ms.openlocfilehash: 5524a8920ef49603ab9aa143ae4094cdaad9d340
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310361"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456532"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-member-using-an-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用して Azure Blockchain Service メンバーを作成する
 
@@ -61,6 +61,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. **[購入]** を選択してテンプレートをデプロイします。
 
   テンプレートをデプロイするために、ここでは Azure portal を使用します。 Azure PowerShell、Azure CLI、および REST API を使用することもできます。 他のデプロイ方法については、「[テンプレートのデプロイ](../../azure-resource-manager/templates/deploy-powershell.md)」を参照してください。
+
+## <a name="review-deployed-resources"></a>デプロイされているリソースを確認する
+
+Azure portal を使用して、デプロイされた Azure Blockchain Service メンバーの詳細を表示できます。 ポータルで、Azure Blockchain Service メンバーが含まれているリソース グループにアクセスします。 作成したブロックチェーン メンバーを選択します。
+
+![Azure portal におけるデプロイされた Azure Blockchain メンバーの概要の詳細](./media/create-member-template/deployed-member.png)
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

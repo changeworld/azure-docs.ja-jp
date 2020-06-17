@@ -3,12 +3,12 @@ title: 数日間の記録の再生 - Azure
 description: このチュートリアルでは、Azure Media Services API を使用して数日間の継続的なビデオ記録を再生する方法について説明します。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 0b294769fce58f5aaae82fec590c783e8328d826
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 52ef33e8c4380e9c21e99c4ba45b7f25f7c57780
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84260044"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433663"
 ---
 # <a name="tutorial-playback-of-multi-day-recordings"></a>チュートリアル:数日間の記録の再生  
 
@@ -57,7 +57,7 @@ ms.locfileid: "84260044"
 }
 ```
 
-次に、Visual Studio Code で src/ams-asset-player を開きます。 このフォルダーには、このチュートリアルで必要なファイルが含まれています。 appsettings.json ファイルを開き、その内容を appsettings.Developer.json という新しいファイルにコピーします。 後者のファイルに次の編集を行います。
+次に、Visual Studio Code で src/ams-asset-player を開きます。 このフォルダーには、このチュートリアルで必要なファイルが含まれています。 appsettings.json ファイルを開き、その内容を appsettings.development.json という新しいファイルにコピーします。 後者のファイルに次の編集を行います。
 
 ```
   "AMS" : {

@@ -3,16 +3,16 @@ title: クイック スタート:QnA Maker ポータルで質問と回答を追�
 description: このクイックスタートでは、ユーザーが自分の質問に対する適切な回答を見つけられるように、質問と回答のペアをメタデータと共に追加する方法について説明します。
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: e35f7437f0028fedffea7cbcb6216fb7e1fad1f8
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: a832d9f421d3a1851401c286f129e29d0196ec99
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266578"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331391"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>クイック スタート:QnA Maker ポータルで質問と回答を追加する
 
-ナレッジ ベースを作成したら、質問と回答 (QnA) のペアを、回答をフィルター処理するためのメタデータと共に追加します。 次の表には Azure サービスの制限についての質問が記載されていますが、関係する Azure サービスはそれぞれ異なります。
+ナレッジ ベースを作成したら、質問と回答 (QnA) のペアを、回答をフィルター処理するためのメタデータと共に追加します。 次の表には Azure サービスの制限についての質問が記載されていますが、関係する Azure Search サービスはそれぞれ異なります。
 
 <a name="qna-table"></a>
 

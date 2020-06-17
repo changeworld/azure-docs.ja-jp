@@ -9,12 +9,12 @@ ms.date: 06/02/2020
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 3c84bf32f0d7b8b8381747e995f060d7e2dc1c9b
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 8c1627b0a9ae37f7d784c49613eb14b0c851b9b1
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310499"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457050"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>クイック スタート:Azure portal で Blob Storage のイベントを Web エンドポイントにルーティングする
 
@@ -92,12 +92,9 @@ BLOB ストレージのイベントをサブスクライブする前に、イベ
    ![[webhook] を選択する](./media/blob-event-quickstart-portal/select-web-hook.png)
 3. **[イベント サブスクリプションの作成]** ページで、次の手順を実行します。 
     1. イベント サブスクリプションの**名前**を入力します。
-    2. **システム トピック**の**名前**を入力します。 
+    2. **システム トピック**の**名前**を入力します。 システム トピックについては、[システム トピックの概要](system-topics.md)に関するページを参照してください。
 
        ![イベント サブスクリプションとシステム トピックの名前を入力します](./media/blob-event-quickstart-portal/event-subscription-name-system-topic.png)
-
-       > [!NOTE]
-       > 以前は、Azure のソースによって生成されるイベントのサブスクリプションを作成すると、Event Grid サービスによって、ランダムに生成された名前を持つシステム トピックが自動的に作成されていました。 今は、このテキスト ボックスを使用してシステム トピックの名前を指定できるようになっています。 このシステム トピック リソースを使用して、メトリックと診断ログを検出できます。
     2. **[エンドポイントのタイプ]** には **[Webhook]** を選択します。 
 
        ![エンドポイントのタイプに Webhook を選択する](./media/blob-event-quickstart-portal/select-web-hook-end-point-type.png)

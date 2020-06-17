@@ -7,39 +7,41 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 03/25/2020
-ms.openlocfilehash: 248ef093601eda7a180a6465ccb97e6fc1c9fe41
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/07/2020
+ms.openlocfilehash: 6c956c937027b16d51141ded4de5ff9b019c37d4
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80369706"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488173"
 ---
 # <a name="quickstart-create-a-search-app-in-the-portal-azure-cognitive-search"></a>クイック スタート:ポータルで検索アプリを作成する (Azure Cognitive Search)
 
-ブラウザーで動作する "localhost" スタイルのダウンロード可能な Web アプリを生成するには、ポータルの**検索アプリの作成**ウィザードを使用します。 その構成にもよりますが、生成されたアプリはリモート インデックスへのライブ接続を備え、そのままで実用性があります。 既定のアプリは、検索バーや結果領域、サイド バーのフィルターを備えているほか、先行入力をサポートします。
-
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
+ブラウザーで動作する "localhost" スタイルのダウンロード可能な Web アプリを生成するには、Azure portal の**検索アプリの作成**ウィザードを使用します。 その構成にもよりますが、生成されたアプリはリモート インデックスへのライブ接続を備え、そのままで実用性があります。 既定のアプリは、検索バーや結果領域、サイド バーのフィルターを備えているほか、先行入力をサポートします。
 
 ## <a name="prerequisites"></a>前提条件
 
-[最新バージョンの Microsoft Edge](https://www.microsoft.com/edge) にアップグレードするか、Google の Chrome ブラウザーをこのクイックスタートに使用してください。
+開始する前に、次の項目を用意する必要があります。
 
-[Azure Cognitive Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。 
++ アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/)。
 
-アプリケーションの基礎として使用する[インデックスを作成](search-create-index-portal.md)します。 
++ Azure Cognitive Search サービス。 [サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを検索](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)します。 このクイック スタート用には、無料のサービスを使用できます。 
 
-このクイックスタートでは、縮小版画像を含んだ組み込みの不動産サンプル データとインデックスを使用します (このウィザードでは、結果ページへの画像の追加がサポートされます)。 この演習で使用するインデックスを作成するには、**データのインポート** ウィザードを実行します。その際、データ ソースとして *realestate-us-sample* を選択してください。
++ [Microsoft Edge (最新バージョン)](https://www.microsoft.com/edge) または Google Chrome。
 
-![サンプル データのデータ ソース ページ](media/search-create-app-portal/import-data-realestate.png)
++ 生成されるアプリケーションの基礎として使用する[検索インデックス](search-create-index-portal.md)。 
+
+  このクイックスタートでは、縮小版画像を含んだ組み込みの不動産サンプル データとインデックスを使用します (このウィザードでは、結果ページへの画像の追加がサポートされます)。 この演習で使用するインデックスを作成するには、**データのインポート** ウィザードを実行します。その際、データ ソースとして *realestate-us-sample* を選択してください。
+
+  ![サンプル データのデータ ソース ページ](media/search-create-app-portal/import-data-realestate.png)
 
 インデックスを使用する準備が整ったら、次の手順に進みます。
 
 ## <a name="start-the-wizard"></a>ウィザードを起動する
 
-1. [Azure portal](https://portal.azure.com) にサインインし、[ご利用の検索サービスを探し](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)ます。
+1. Azure アカウントで [Azure Portal](https://portal.azure.com/) にサインインします。
 
-1. 概要ページの中央のリンクから **[インデックス]** を選択します。 
+1. [自分の検索サービスを探し](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)、概要ページの中央のリンクから **[インデックス]** を選択します。 
 
 1. 既存のインデックスの一覧から *[realestate-us-sample-index]* を選択します。
 
@@ -57,7 +59,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. [説明] では、クリックしてその特定のドキュメントにアクセスするかどうかの判断に役立つような詳しい情報が格納されているフィールドを選択します。
 
-![サンプル データのデータ ソース ページ](media/search-create-app-portal/configure-results.png)
+   ![サンプル データのデータ ソース ページ](media/search-create-app-portal/configure-results.png)
 
 ## <a name="add-a-sidebar"></a>サイド バーを追加する
 

@@ -6,14 +6,14 @@ ms.author: sngun
 tags: azure-resource-manager
 ms.service: cosmos-db
 ms.topic: quickstart
-ms.date: 02/27/2020
+ms.date: 06/01/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: f524a1e1db426b9b9dafb2fb95d77538a34b04ec
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 273305894e05b397d0f48acd7a483a9fdfc247ef
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81605457"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324040"
 ---
 # <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用して Azure Cosmos DB とコンテナーを作成する
 
@@ -35,9 +35,9 @@ Azure サブスクリプションまたは Azure Cosmos DB の無料試用版ア
 
 ### <a name="review-the-template"></a>テンプレートを確認する
 
-このクイック スタートで使用されるテンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-cosmosdb-create/)からのものです。
+このクイック スタートで使用されるテンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql/)からのものです。
 
-:::code language="json" source="~/quickstart-templates/101-cosmosdb-create/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json":::
 
 テンプレートには、次の 3 つの Azure リソースが定義されています。
 
@@ -53,7 +53,7 @@ Azure サブスクリプションまたは Azure Cosmos DB の無料試用版ア
 
 1. Azure にサインインし、テンプレートを開くには次のイメージを選択します。 テンプレートによって Azure Cosmos アカウント、データベース、コンテナーが作成されます。
 
-   [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-create%2Fazuredeploy.json)
+   [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql%2Fazuredeploy.json)
 
 2. 次の値を選択または入力します。
 
@@ -68,6 +68,9 @@ Azure サブスクリプションまたは Azure Cosmos DB の無料試用版ア
     * **場所**: Azure Cosmos アカウントの作成先となる場所を入力します。 Azure Cosmos アカウントは、リソース グループと同じ場所でかまいません。
     * **プライマリ リージョン**: Azure Cosmos アカウントのプライマリ レプリカのリージョン。
     * **セカンダリ リージョン**: Azure Cosmos アカウントのセカンダリ レプリカのリージョン。
+    * **既定の整合性レベル**: Azure Cosmos アカウントの既定の一貫性レベル。
+    * **最大整合性制約プレフィックス**: 整合性制約要求の最大数。 BoundedStaleness の場合に必須。
+    * **最大間隔秒数**: 最大ラグ時間。 BoundedStaleness の場合に必須。
     * **データベース名**: Azure Cosmos データベースの名前。
     * **コンテナー名**: Azure Cosmos コンテナーの名前。
     * **スループット**:コンテナーのスループット。最小スループット値は 400 RU/秒です。
@@ -106,7 +109,7 @@ $resourceGroupName = Read-Host -Prompt "Enter the resource group name where your
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 引き続き後続のチュートリアルに取り組む場合は、これらのリソースをそのまま残しておくことをお勧めします。
-不要になったら、リソース グループを削除します。これにより、Azure Cosmos アカウントおよび関連リソースが削除されます。 Azure CLI または Azure PowerShell を使用してリソース グループを削除するには次を実行します。
+不要になったら、リソース グループを削除します。これにより、Azure Cosmos アカウントおよび関連リソースが削除されます。 Azure CLI または Azure PowerShell を使用してリソース グループを削除するには、次を実行します。
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 

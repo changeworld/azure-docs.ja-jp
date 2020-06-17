@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, subject-armqs
 ms.date: 05/27/2020
-ms.openlocfilehash: 8435704963e832020ecff27a11d00793ad28890c
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: c8503aee5cefbe197fd63cd6406006a1cdf8afa9
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171040"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84463152"
 ---
 # <a name="quickstart-create-an-azure-databricks-workspace-by-using-the-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用して Azure Databricks ワークスペースを作成する
 
@@ -33,13 +33,13 @@ ms.locfileid: "84171040"
 
 ### <a name="review-the-template"></a>テンプレートを確認する
 
-このクイック スタートで使用されるテンプレートは [Azure クイック スタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-databricks-workspace)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-databricks-workspace/)からのものです。
 
-:::code language="json" source="~/quickstart-templates/101-databricks-workspace/azuredeploy.json" range="1-53":::
+:::code language="json" source="~/quickstart-templates/101-databricks-workspace/azuredeploy.json" range="1-53" highlight="33-46":::
 
-テンプレートで定義されている Azure リソースは Microsoft.Databricks/workspaces です。つまり Azure Databricks ワークスペースを作成します。 
+テンプレートで定義されている Azure リソースは [Microsoft.Databricks/workspaces](/azure/templates/microsoft.databricks/workspaces) です。つまり Azure Databricks ワークスペースを作成します。
 
-## <a name="deploy-the-template"></a>テンプレートのデプロイ
+### <a name="deploy-the-template"></a>テンプレートのデプロイ
 
 このセクションでは、Azure Resource Manager テンプレートを使って Azure Databricks ワークスペースを作成します。
 
