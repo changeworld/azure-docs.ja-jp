@@ -1,20 +1,6 @@
 - name: 安全な開発に関するドキュメント
   href: index.yml
-- name: サンプル アプリ
-  expanded: true
-  items:
-    - name: 安全な開発に詳しくない場合
-      items:
-        - name: Linux コンテナー内の Web アプリ
-          href: secure-web-app.md
-        - name: Web アプリと Azure Active Directory
-          href: secure-aad-app.md
-    - name: 業界準拠のソリューション
-      items:
-        - name: ペイメント カード業界
-          href: secure-pci-web-app.md
 - name: 概念
-  expanded: true
   items:
     - name: ベスト プラクティス
       items:
@@ -26,8 +12,8 @@
           href: secure-develop.md
         - name: セキュリティで保護されたアプリをデプロイする
           href: secure-deploy.md
-- name: リソース
   expanded: true
+- name: リソース
   items:
     - name: Microsoft Security Code Analysis
       items:
@@ -95,3 +81,4 @@
               href: threat-modeling-tool-sensitive-data.md
             - name: セッションの管理
               href: threat-modeling-tool-session-management.md
+  expanded: true

@@ -946,14 +946,14 @@
               href: insights/container-insights-enable-new-cluster.md
             - name: 既存の AKS クラスターでの有効化
               href: insights/container-insights-enable-existing-clusters.md
+            - name: Arc 対応クラスターでの有効化
+              href: insights/container-insights-enable-arc-enabled-clusters.md
             - name: ハイブリッド クラスターでの有効化
               href: insights/container-insights-hybrid-setup.md
             - name: Azure Red Hat OpenShift v3 での有効化
               href: insights/container-insights-azure-redhat-setup.md
             - name: Azure Red Hat OpenShift v4 での有効化
               href: insights/container-insights-azure-redhat4-setup.md
-            - name: Arc 対応クラスターでの有効化
-              href: insights/container-insights-enable-arc-enabled-clusters.md
             - name: リージョンのマッピング
               href: insights/container-insights-region-mapping.md
         - name: パフォーマンスの監視

@@ -155,7 +155,7 @@
     - name: イメージ変換の初期化
       href: init-image-transformation.md
     - name: イメージ ディレクトリの分割
-      href: split-to-image-directory.md
+      href: split-image-directory.md
     - name: DenseNet
       href: densenet.md
     - name: ResNet

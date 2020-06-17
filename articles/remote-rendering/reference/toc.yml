@@ -1,3 +1,5 @@
+- name: VM サイズ
+  href: vm-sizes.md
 - name: モデル形式の素材マッピング
   href: material-mapping.md
 - name: リージョン

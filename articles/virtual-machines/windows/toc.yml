@@ -493,6 +493,8 @@
               href: ../linux/image-builder-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Azure CLI の使用
               href: image-builder.md
+            - name: Azure PowerShell の使用
+              href: image-builder-powershell.md
             - name: イメージ ギャラリー用のビルド
               href: image-builder-gallery.md
             - name: 既存のイメージの更新
