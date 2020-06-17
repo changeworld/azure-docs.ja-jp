@@ -32,7 +32,7 @@ Microsoft では、開発者によるクラウド アプリケーションの作
 このガイドの情報では、これらの違いをまとめています。 これは、[Azure Germany](https://azure.microsoft.com/overview/clouds/germany/ "Azure Germany") サイトと [Azure ドキュメント センター](https://azure.microsoft.com/documentation/)で提供されている情報を補完するものです。 
 
 公式の情報は、次のような他の場所にも記載されています。
-* [Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/ "Microsoft Azure セキュリティ センター") 
+* [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/ "Microsoft Azure Trust Center") 
 * [Azure ブログ](https://azure.microsoft.com/blog/ "Azure ブログ")
 * [Azure Germany ブログ](https://blogs.msdn.microsoft.com/azuregermany/ "Azure Germany ブログ")
 
