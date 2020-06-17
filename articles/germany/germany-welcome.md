@@ -32,7 +32,7 @@ Azure Germany は、静止データのレプリケーションや自動スケー
 ## <a name="azure-germany-documentation"></a>Azure Germany ドキュメント
 このサイトでは、 [Microsoft Azure Germany](https://azure.microsoft.com/overview/clouds/germany/) サービスの機能について説明すると共に、すべてのお客様に該当する一般的なガイダンスを提供しています。 特に規制されたデータを Azure Germany のサブスクリプションに含める前に、Azure Germany の機能について理解を深めておいてください。
 
-特定の適格性認定や規制の対象となる Azure Germany サービスの最新情報については、[Microsoft Azure セキュリティ センター コンプライアンス ページ](https://www.microsoft.com/en-us/TrustCenter/Compliance/default.aspx)を参照してください。 その他の Microsoft サービスが利用できる可能性もありますが、Azure Germany がカバーするサービスおよびこのドキュメントの範囲には含まれていません。 また、Azure Germany サービスでは、その他さまざまなリソース、アプリケーション、サービスを使用することが認められている場合があります。そうしたリソースやアプリケーション、サービスは、サード パーティまたは Microsoft が、独立した使用条件とプライバシー ポリシーの下で提供しています。 それらもこのドキュメントの範囲に含まれていません。 そうした "付加的" サービス (Azure Marketplace サービスなど) については、付随する条項をご自身の責任ですべて確認し、コンプライアンスに関する要件を確実に満たしてください。
+特定の適格性認定や規制の対象となる Azure Germany サービスの最新情報については、[Microsoft Azure Security Center コンプライアンス ページ](https://www.microsoft.com/en-us/TrustCenter/Compliance/default.aspx)を参照してください。 その他の Microsoft サービスが利用できる可能性もありますが、Azure Germany がカバーするサービスおよびこのドキュメントの範囲には含まれていません。 また、Azure Germany サービスでは、その他さまざまなリソース、アプリケーション、サービスを使用することが認められている場合があります。そうしたリソースやアプリケーション、サービスは、サード パーティまたは Microsoft が、独立した使用条件とプライバシー ポリシーの下で提供しています。 それらもこのドキュメントの範囲に含まれていません。 そうした "付加的" サービス (Azure Marketplace サービスなど) については、付随する条項をご自身の責任ですべて確認し、コンプライアンスに関する要件を確実に満たしてください。
 
 Azure Germany は、英国を含む EU/EFTA 圏内でビジネスを行う予定の全世界の有資格のお客様およびパートナーにご利用いただけます。
 
