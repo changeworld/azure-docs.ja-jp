@@ -102,7 +102,7 @@ Azure portal にログインします。
 
     ![詳細設定ページ](./media/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery/zonal-disaster-recovery-advanced-settings-blade.png)
 
-7. [次:レプリケーションの確認と開始]、[レプリケーションを開始する] の順にクリックします。
+7. [次へ:レプリケーションの確認と開始]、[レプリケーションを開始する] の順にクリックします。
 
 ## <a name="faqs"></a>FAQ
 
