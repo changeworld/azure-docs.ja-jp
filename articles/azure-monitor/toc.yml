@@ -197,7 +197,7 @@
             - name: 概要
               href: platform/agents-overview.md
             - name: よく寄せられる質問
-              href: 'faq.md#agents'
+              href: faq.md#agents
             - name: Azure Diagnostics 拡張機能
               items:
                 - name: 概要
@@ -905,7 +905,7 @@
         - name: 一般提供の FAQ
           href: insights/vminsights-ga-release-faq.md
         - name: よく寄せられる質問
-          href: 'faq.md#azure-monitor-for-vms'
+          href: faq.md#azure-monitor-for-vms
         - name: 監視を有効にする
           items:
             - name: 監視の有効化の概要
@@ -937,7 +937,7 @@
         - name: 概要
           href: insights/container-insights-overview.md
         - name: よく寄せられる質問
-          href: 'faq.md#azure-monitor-for-containers'
+          href: faq.md#azure-monitor-for-containers
         - name: 監視を有効にする
           items:
             - name: 監視の有効化の概要
@@ -952,6 +952,8 @@
               href: insights/container-insights-azure-redhat-setup.md
             - name: Azure Red Hat OpenShift v4 での有効化
               href: insights/container-insights-azure-redhat4-setup.md
+            - name: Arc 対応クラスターでの有効化
+              href: insights/container-insights-enable-arc-enabled-clusters.md
             - name: リージョンのマッピング
               href: insights/container-insights-region-mapping.md
         - name: パフォーマンスの監視

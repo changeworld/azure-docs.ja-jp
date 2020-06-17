@@ -10,6 +10,10 @@
       href: overview-iot-central-developer.md
     - name: 最新の更新
       items:
+        - name: 2020 年 5 月の更新
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-may-2020-updates/'
+        - name: 2020 年 5 月のダッシュボード更新
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-may-2020-dashboard-updates/'
         - name: 2020 年 4 月の新機能
           href: 'https://azure.microsoft.com/updates/azure-iot-central-april-2020-new-features/'
         - name: 2020 年 4 月の更新
@@ -182,9 +186,9 @@
     - name: Azure IoT SDK
       items:
         - name: IoT サービスの SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT デバイス SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: IoT Central API リファレンス
       href: 'https://docs.microsoft.com/rest/api/iotcentral/'
     - name: 顧客データ要求
