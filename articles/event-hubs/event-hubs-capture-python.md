@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.custom: seodec18
+ms.custom: seodec18, tracking-python
 ms.date: 01/15/2020
 ms.author: shvija
-ms.openlocfilehash: 6c830cf871c2ae650bb61e8b3712a664e9e405d4
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c726b0d11759d30730046e635c701cf23d130dfc
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77187285"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561563"
 ---
 # <a name="quickstart-event-hubs-capture-walkthrough-python-azure-eventhub-version-1"></a>クイック スタート:Event Hubs Capture チュートリアル:Python (azure-eventhub バージョン 1)
 
@@ -80,7 +80,7 @@ Capture は Azure Event Hubs の機能です。 Capture を使用すると、任
 
 1. [Visual Studio Code][Visual Studio Code]など、お使いの Python エディターを開きます。
 2. "*sender.py*" という名前の新しいファイルを作成します。 
-3. 次のコードを "*sender.py*" に貼り付けます。 Event Hubs の \<namespace>、\<AccessKeyName>、\<primary key value>、および \<eventhub> を、実際の値に置き換えます。
+3. 次のコードを "*sender.py*" に貼り付けます。 イベント ハブの \<namespace>、\<AccessKeyName>、\<primary key value>、\<eventhub> は、使用する実際の値で置き換えてください。
    
    ```python
    import uuid
@@ -108,7 +108,7 @@ Capture は Azure Event Hubs の機能です。 Capture を使用すると、任
 このスクリプトでは、キャプチャされたファイルを読み取り、デバイスごとに、そのデバイスのデータのみを書き込めるようにファイルを作成します。
 
 1. Python エディターで、"*capturereader.py*" という名前の新しいファイルを作成します。 
-2. 次のコードを "*capturereader.py*" に貼り付けます。 \<storageaccount>、\<storage account access key>、および \<storagecontainer> を、保存した値に置き換えます。
+2. 次のコードを "*capturereader.py*" に貼り付けます。 \<storageaccount>、\<storage account access key>、\<storagecontainer> は、保存した実際の値で置き換えてください。
    
    ```python
    import os

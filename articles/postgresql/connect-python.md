@@ -4,16 +4,16 @@ description: このクイックスタートでは、Azure Database for PostgreSQ
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.custom: mvc, devcenter
+ms.custom: mvc, devcenter, tracking-python
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
-ms.openlocfilehash: 3694c0b74393068538a0c8f496444a1541d88fee
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 174c11ba65ccba6389bf3e62d233b1ee56943b97
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76769055"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560936"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>クイック スタート:Python を使用して Azure Database for PostgreSQL - Single Server に接続し、データにクエリを実行する
 
@@ -38,7 +38,7 @@ ms.locfileid: "76769055"
 Azure Database for PostgreSQL データベースに接続するには、完全修飾サーバー名とログイン資格情報が必要です。 この情報は Azure portal から取得できます。
 
 1. [Azure portal](https://portal.azure.com/) で、ご利用の Azure Database for PostgreSQL サーバー名を検索して選択します。 
-1. サーバーの **[概要]** ページで、完全修飾**サーバー名**と**管理者ユーザー名**をコピーします。 完全修飾**サーバー名** は常に *\<my-server-name>.postgres.database.azure.com* の形式になり、**管理者ユーザー名**は常に *\<my-admin-username>@\<my-server-name>* の形式になります。 
+1. サーバーの **[概要]** ページで、完全修飾**サーバー名**と**管理者ユーザー名**をコピーします。 完全修飾**サーバー名**は常に *\<my-server-name>.postgres.database.azure.com* の形式になり、**管理者ユーザー名**は常に *\<my-admin-username>@\<my-server-name>* の形式になります。 
    
    また、管理者パスワードも必要です。 忘れた場合は、このページでリセットできます。 
    

@@ -1,6 +1,6 @@
 ---
-title: FAQ - Azure Synapse Analytics
-description: Azure Synapse Analytics に関する FAQ
+title: FAQ - Azure Synapse Analytics (ワークスペース プレビュー)
+description: Azure Synapse Analytics (ワークスペース プレビュー) の FAQ
 services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 999a181a812157a3e408d3e95b3e7fc00e29ecea
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 2c470483cee8b621475fa70dd09c80aa126173be
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118384"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609150"
 ---
-# <a name="azure-synapse-analytics-workspace-preview-frequently-asked-questions"></a>Azure Synapse Analytics (ワークスペース プレビュー) のよく寄せられる質問
+# <a name="azure-synapse-analytics-workspaces-preview-frequently-asked-questions"></a>Azure Synapse Analytics (ワークスペース プレビュー) のよく寄せられる質問
 
 このガイドでは、Synapse Analytics についてよく寄せられる質問を紹介します。
 

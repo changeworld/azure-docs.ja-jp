@@ -7,12 +7,12 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 40c31d4dd4a6c675691f75d3717f7865d6b847f7
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 45097b948c76413785ca5ec48c31faa83b3883ee
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171560"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629630"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>データのラベル付けプロジェクトを作成してラベルをエクスポートする 
 
@@ -40,7 +40,6 @@ Azure Machine Learning によって、進行状況が追跡され、未完了の
 
 ## <a name="prerequisites"></a>前提条件
 
-
 * ローカル ファイルまたは Azure Blob Storage 内にある、ラベル付け対象のデータ。
 * 適用するラベルのセット。
 * ラベル付けに関する指示。
@@ -67,6 +66,8 @@ Azure Machine Learning によって、進行状況が追跡され、未完了の
 
 対象のデータが含まれるデータセットを既に作成済みの場合は、 **[既存のデータセットを選択します]** ボックスの一覧から選択します。 または、 **[Create a dataset]\(データセットの作成\)** を選択して、既存の Azure データストアを選択するか、ローカル ファイルをアップロードします。
 
+> [!NOTE]
+> 1 つのプロジェクトに 50 万を超える画像を含めることはできません。  データセットにそれを超える画像がある場合は、最初の 50 万件だけが読み込まれます。  
 
 ### <a name="create-a-dataset-from-an-azure-datastore"></a>Azure データストアからデータセットを作成する
 
@@ -85,8 +86,6 @@ Azure Blob Storage に既に格納済みのデータからデータセットを�
 1. **[次へ]** を選択します。
 1. 詳細を確認します。 **[戻る]** を選択して設定を変更するか、 **[作成]** を選択してデータセットを作成します。
 
-> [!NOTE]
-> 選択したデータはプロジェクトに読み込まれます。  プロジェクトの作成後に、さらにデータをデータストアに追加しても、このプロジェクトには表示されません。  
 
 ### <a name="create-a-dataset-from-uploaded-data"></a>アップロードしたデータからデータセットを作成する
 
@@ -102,6 +101,19 @@ Azure Blob Storage に既に格納済みのデータからデータセットを�
 1. 詳細を確認します。 **[戻る]** を選択して設定を変更するか、 **[作成]** を選択してデータセットを作成します。
 
 データは、Machine Learning ワークスペースの既定の BLOB ストア ("workspaceblobstore") にアップロードされます。
+
+## <a name="configure-incremental-refresh"></a><a name="incremental-refresh"> </a> 増分更新を構成する
+
+新しい画像をデータセットに追加する予定がある場合、増分更新を使用して、これらの新しい画像をプロジェクトに追加します。   **増分更新**が有効になっている場合、ラベル付けの完了率に基づいて、プロジェクトに追加する新しい画像がないかどうかデータセットが定期的にチェックされます。   プロジェクトに最大 50 万件の画像が含まれている場合は、新しいデータのチェックは停止されます。
+
+プロジェクトにさらに多くのイメージを追加するには、[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用して、BLOB ストレージ内の適切なフォルダーにアップロードします。 
+
+プロジェクトでデータストア内の新しいデータを継続的に監視する場合は、 **[Enable incremental refresh]\(増分更新を有効にする\)** チェックボックスをオンにします。
+
+データストアに表示される新しい画像をプロジェクトに追加しない場合は、このチェックボックスをオフにします。
+
+最新の更新のタイムスタンプは、プロジェクトの **[詳細]** タブの **[増分更新]** セクションで確認できます。
+
 
 ## <a name="specify-label-classes"></a>ラベル クラスを指定する
 

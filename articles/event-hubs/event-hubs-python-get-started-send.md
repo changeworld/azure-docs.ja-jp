@@ -9,12 +9,13 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 01/15/2020
 ms.author: spelluru
-ms.openlocfilehash: 22f6b2aba36e560e9bd335baa92925fe9846c670
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: tracking-python
+ms.openlocfilehash: 96c95efdc8f2154e0586fec59d1af66496acb101
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77162601"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558963"
 ---
 # <a name="quickstart-send-and-receive-events-with-event-hubs-using-python-azure-eventhub-version-1"></a>クイック スタート:Python を使用して Event Hubs 間でイベントを送受信する (azure-eventhub バージョン 1)
 このクイックスタートでは、**azure-eventhub バージョン 1** Python パッケージを使用して、イベント ハブとの間でイベントを送受信する方法について説明します。 
@@ -47,7 +48,7 @@ Azure Event Hubs を初めて使用する場合は、このクイックスター
 
 1. [Visual Studio Code](https://code.visualstudio.com/) など、お使いの Python エディターを開きます。
 2. "*send.py*" という名前の新しいファイルを作成します。 このスクリプトでは、100 のイベントをイベント ハブに送信します。
-3. 次のコードを "*send.py*" に貼り付けて、Event Hubs の \<namespace>、\<eventhub>、\<AccessKeyName>、および \<primary key value> を実際の値に置き換えます。 
+3. 次のコードを *send.py* に貼り付けて、Event Hubs の \<namespace>、\<eventhub>、\<AccessKeyName>、および \<primary key value> を実際の値に置き換えます。 
    
    ```python
    import sys
@@ -110,7 +111,7 @@ start python send.py
 イベント ハブからイベントを受信する Python アプリケーションを作成するには、次のようにします。
 
 1. お使いの Python エディターで、"*recv.py*" という名前のファイルを作成します。
-2. 次のコードを "*recv.py*" に貼り付けて、Event Hubs の \<namespace>、\<eventhub>、\<AccessKeyName>、および \<primary key value> を実際の値に置き換えます。 
+2. 次のコードを *recv.py* に貼り付けて、Event Hubs の \<namespace>、\<eventhub>、\<AccessKeyName>、および \<primary key value> を実際の値に置き換えます。 
    
    ```python
    import os

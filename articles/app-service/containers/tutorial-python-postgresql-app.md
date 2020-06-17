@@ -9,12 +9,13 @@ ms.custom:
 - seodec18
 - seo-python-october2019
 - cli-validate
-ms.openlocfilehash: 504e2f7c07d8d29e4fe4dad52dc008c895517a3d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+- tracking-python
+ms.openlocfilehash: 4a2f80ea30fc68ae1dfea72983fd2b229d40c711
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82609784"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559280"
 ---
 # <a name="tutorial-deploy-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>チュートリアル:PostgreSQL を使用した Python (Django) Web アプリを Azure App Service にデプロイする
 
@@ -180,7 +181,7 @@ az webapp up --plan myAppServicePlan --location westus2 --sku B1 --name <app-nam
 }
 </pre>
 
-*\<app-resource-group>* の値をコピーしてください。 後でアプリを構成する際に必要となります。 
+*\<app-resource-group>* の値をコピーします。 後でアプリを構成する際に必要となります。 
 
 > [!TIP]
 > 関連する設定は、リポジトリ内の *.azure* という隠しディレクトリに保存されます。 後で変更があれば簡単なコマンドを使用して再デプロイし、直ちに診断ログを有効にすることができます。
@@ -195,7 +196,7 @@ az webapp up --plan myAppServicePlan --location westus2 --sku B1 --name <app-nam
 
 アプリをローカルで実行するときは、ターミナル セッションで環境変数を設定できます。 App Service では、"*アプリ設定*" と [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) コマンドを使用して行います。
 
-次のコマンドを実行して、データベース接続の詳細をアプリ設定として指定します。 *\<app-name>* 、 *\<app-resource-group>* 、 *\<postgresql-name>* は、独自の値に置き換えます。 ユーザーの資格情報 `root` と `Pollsdb1` は、`az postgres up` によって自動で作成されたものであることに注意してください。
+次のコマンドを実行して、データベース接続の詳細をアプリ設定として指定します。 *\<app-name>* 、 *\<app-resource-group>* 、および *\<postgresql-name>* を独自の値に置き換えます。 ユーザーの資格情報 `root` と `Pollsdb1` は、`az postgres up` によって自動で作成されたものであることに注意してください。
 
 ```azurecli
 az webapp config appsettings set --name <app-name> --resource-group <app-resource-group> --settings DJANGO_ENV="production" DBHOST="<postgresql-name>.postgres.database.azure.com" DBUSER="root@<postgresql-name>" DBPASS="Pollsdb1" DBNAME="pollsdb"
@@ -376,7 +377,7 @@ python manage.py migrate
 
 ### <a name="review-app-in-production"></a>運用環境でアプリを確認する
 
-ブラウザーで *http:\//\<app-name>.azurewebsites.net* にアクセスし、行った変更が運用環境で実行されていることを確認します。 
+ブラウザーで *http:\//\<app-name>.azurewebsites.net* にアクセスし、変更が運用環境でライブ実行されていることを確認します。 
 
 ## <a name="stream-diagnostic-logs"></a>診断ログをストリーミングする
 

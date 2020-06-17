@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.date: 05/19/2020
-ms.openlocfilehash: 24a34ae6f00eca7154021162184f5e71503da06b
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 00f93086fec62c08c5241d868fc5104a1197cff3
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248330"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84605410"
 ---
 # <a name="getting-started-with-azure-synapse-analytics"></a>Azure Synapse Analytics の使用を開始する
 
@@ -164,7 +164,7 @@ Synapse で Spark アクティビティを実行するときは、使用する S
 
 1. **[データ]** ハブに移動し、 **[データベース]** を右クリックして、 **[更新]** を選択します。
 1. 次のデータベースが表示されます。
-    - SQLDB (SQL プール)
+    - SQLDB1 (SQL プール)
     - nyctaxi (Spark)
       
 ## <a name="analyze-the-nyc-taxi-data-using-spark-and-notebooks"></a>Spark とノートブックを使用して NYC タクシーのデータを分析する
@@ -190,10 +190,10 @@ Synapse で Spark アクティビティを実行するときは、使用する S
       WHERE TripDistanceMiles > 0 AND PassengerCount > 0
       GROUP BY PassengerCount
       ORDER BY PassengerCount
-    """) 
-    display(df)
-    df.write.saveAsTable("nyctaxi.passengercountstats")
-    ```
+   """) 
+   display(df)
+   df.write.saveAsTable("nyctaxi.passengercountstats")
+   ```
 
 1. セルの結果で **[グラフ]** を選択し、視覚化されたデータを確認します。
  
@@ -262,7 +262,7 @@ Azure Synapse では、さまざまなタスクを調整できます。 この�
 * ストレージ アカウントの名前: `contosolake`
 * ストレージ アカウント内のコンテナーの名前: `users`
 
-### <a name="creating-csv-and-parquet-files-in-your-storage-account"></a>ストレージ アカウントに CSV ファイルと Parquet ファイルを作成する
+### <a name="creating-csv-and-parquet-files-in-your-storage-account"></a>ストレージ アカウントに CSV および Parquet ファイルを作成する
 
 ノートブック内の次のコードを実行します。 ストレージ アカウントに CSV ファイルと parquet ファイルが作成されます。
 
@@ -282,7 +282,7 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats.parquet")
 1. **[users (プライマリ)]** を選択します。
 1. `NYCTaxi` というフォルダーが表示されます。 内部には、`PassengerCountStats.csv` と `PassengerCountStats.parquet` という 2 つのフォルダーがあるはずです。
 1. `PassengerCountStats.parquet` フォルダーに移動します。
-1. その中にある parquet ファイルを右クリックし、 **[新しいノートブック]** を選択すると、次のようなセルを含むノートブックが作成されます。
+1. その中にある `.parquet` ファイルを右クリックし、 **[新しいノートブック]** を選択すると、次のようなセルを含むノートブックが作成されます。
 
     ```py
     %%pyspark
