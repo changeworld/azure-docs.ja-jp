@@ -141,7 +141,7 @@ let Run(req: HttpRequestMessage, log: ILogger) =
 * `System.Net.Http`
 * `System.Threading.Tasks`
 * `Microsoft.Azure.WebJobs`
-* [https://login.microsoftonline.com/consumers/](`Microsoft.Azure.WebJobs.Host`)
+* `Microsoft.Azure.WebJobs.Host`
 
 ## <a name="referencing-external-assemblies"></a>外部アセンブリの参照
 同様に、フレームワーク アセンブリ参照を、`#r "AssemblyName"` ディレクティブと共に追加できます。
@@ -169,7 +169,7 @@ let Run(req: HttpRequestMessage, log: ILogger) =
 * `Microsoft.Azure.WebJobs.Host`
 * `Microsoft.Azure.WebJobs.Extensions`
 * `System.Web.Http`
-* [https://login.microsoftonline.com/consumers/](`System.Net.Http.Formatting`)
+* `System.Net.Http.Formatting`
 
 さらに、次のアセンブリは特別扱いされ、simplename によって参照される場合があります (例: `#r "AssemblyName"`)。
 
@@ -177,7 +177,7 @@ let Run(req: HttpRequestMessage, log: ILogger) =
 * `Microsoft.WindowsAzure.Storage`
 * `Microsoft.ServiceBus`
 * `Microsoft.AspNet.WebHooks.Receivers`
-* [https://login.microsoftonline.com/consumers/](`Microsoft.AspNEt.WebHooks.Common`)
+* `Microsoft.AspNEt.WebHooks.Common`
 
 プライベート アセンブリを参照する必要がある場合は、アセンブリ ファイルを関数に関連する `bin` フォルダーにアップロードし、ファイル名 (例: `#r "MyAssembly.dll"`) を使用して参照できます。 関数フォルダーにファイルをアップロードする方法については、パッケージ管理の次のセクションを参照してください。
 

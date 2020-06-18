@@ -122,7 +122,7 @@ Marketplace の測定サービスで使用されるディメンションは、�
 1. [サポート ページ](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff)に移動します。 最初のいくつかのドロップダウン メニューは、自動的に入力されます。 マーケットプレース サポートのため、製品ファミリを **[Cloud and Online Services]\(クラウドとオンライン サービス\)** として、製品を **[Marketplace パブリッシャー]** として指定します。 この事前設定されたドロップダウン メニューの選択は変更しないでください。
 2. [Select the product version]\(製品バージョンの選択\) で、 **[Live offer management]\(ライブ オファー管理\)** を選択します。
 3. [Select a category that best describe the issue]\(問題を最もよく表しているカテゴリを選択する\) で、 **[Azure Applications offer] (Azure アプリケーション オファー)** を選択します。
-4. [Select a problem that best describes the issue]\(問題を最もよく表している問題を選択する\) で、 **[metered billing]\(従量制課金\) ** を選択します。
+4. [Select a problem that best describes the issue]\(問題を最もよく表している問題を選択する\) で、 **[metered billing]\(従量制課金\)** を選択します。
 5. **[次へ]** を選択すると、 **[問題の詳細]** ページが表示され、問題の詳細を入力できます。
 
 発行元サポート オプションについては、「[パートナー センターでの商業マーケットプレース プログラムのサポート](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)」をご覧ください。
