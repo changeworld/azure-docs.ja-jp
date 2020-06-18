@@ -4,6 +4,10 @@
   items:
     - name: Azure Arc 対応 Kubernetes について
       href: overview.md
+- name: サンプル
+  items:
+    - name: Azure Policy の組み込み
+      href: ./policy-samples.md
 - name: 操作方法ガイド
   items:
     - name: クラスターの操作

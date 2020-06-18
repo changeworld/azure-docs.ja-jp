@@ -23,6 +23,8 @@
           href: b2b-tutorial-require-mfa.md
     - name: サンプル
       items:
+        - name: セルフサービス サインアップのサンプル
+          href: code-samples-self-service-sign-up.md
         - name: コードと Azure PowerShell のサンプル
           href: code-samples.md
     - name: 概念

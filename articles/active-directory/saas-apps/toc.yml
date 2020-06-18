@@ -687,8 +687,6 @@
           href: helpshift-tutorial.md
         - name: ヘルス サポート システム
           href: health-support-system-tutorial.md
-        - name: Helix Core- Helix Authentication Service
-          href: perforce-helix-core-tutorial.md
         - name: Heroku
           href: heroku-tutorial.md
         - name: HeyBuddy
@@ -1193,6 +1191,8 @@
           href: perceptyx-tutorial.md
         - name: Percolate
           href: percolate-tutorial.md
+        - name: Perforce Helix Core - Helix 認証サービス
+          href: perforce-helix-core-tutorial.md
         - name: PerformanceCentre
           href: performancecentre-tutorial.md
         - name: Periscope Data
@@ -1807,7 +1807,7 @@
         - name: Airstack
           href: airstack-provisioning-tutorial.md
         - name: アマゾン ウェブ サービス (AWS) - ロール プロビジョニング
-          href: 'amazon-web-service-tutorial.md#configure-azure-ad-sso'
+          href: amazon-web-service-tutorial.md#configure-azure-ad-sso
         - name: Asana
           href: asana-provisioning-tutorial.md
         - name: Atlassian Cloud

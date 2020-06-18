@@ -10,19 +10,22 @@
   items:
     - name: 最初のクエリを実行する - Azure portal
       displayName: 'portal, resource, graph, explorer'
-      href: first-query-portal.md
+      href: ./first-query-portal.md
     - name: 最初のクエリを実行する - Azure CLI
       displayName: 'extension, docker'
-      href: first-query-azurecli.md
-    - name: 最初のクエリを実行する - PowerShell
+      href: ./first-query-azurecli.md
+    - name: 最初のクエリを実行する - Azure PowerShell
       displayName: 'module, docker, Az.ResourceGraph'
-      href: first-query-powershell.md
+      href: ./first-query-powershell.md
+    - name: 最初のクエリを実行する - Go
+      displayName: 'package, sdk, golang'
+      href: ./first-query-go.md
     - name: 最初のクエリを実行する - Python
       displayName: 'library, azure-mgmt, cli'
-      href: first-query-python.md
+      href: ./first-query-python.md
     - name: 共有クエリをデプロイする - ARM テンプレート
       displayName: 'resource manager, queries'
-      href: shared-query-template.md
+      href: ./shared-query-template.md
 - name: チュートリアル
   items:
     - name: Azure portal でのクエリの作成と共有

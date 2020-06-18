@@ -863,7 +863,7 @@
               href: table-storage-how-to-use-c-plus.md
             - name: Ruby
               href: table-storage-how-to-use-ruby.md
-            - name: 'F#'
+            - name: F#
               href: /dotnet/articles/fsharp/using-fsharp-on-azure/table-storage
               maintainContext: true
         - name: 概念
@@ -1055,7 +1055,7 @@
           href: import-github-notebooks.md
         - name: 組み込みの Python ノートブック コマンドを使用する
           href: use-python-notebook-features-and-commands.md
-        - name: '組み込みの C# ノートブック コマンドを使用する'
+        - name: 組み込みの C# ノートブック コマンドを使用する
           href: use-csharp-notebook-features-and-commands.md
     - name: サーバー側プログラミング
       items:
@@ -1155,6 +1155,8 @@
           href: ../data-factory/connector-azure-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Azure Stream Analytics
           href: ../stream-analytics/stream-analytics-documentdb-output.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+        - name: Azure Data Explorer
+          href: 'https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration'
         - name: Azure Event Hubs と Azure Storage
           href: 'https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md'
         - name: Spring Boot Starter の使用

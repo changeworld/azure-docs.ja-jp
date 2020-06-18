@@ -41,10 +41,10 @@
           href: mca-section-invoice.md
         - name: Microsoft 顧客契約の請求先アカウントの設定
           href: mca-setup-account.md
-        - name: Office 365 アカウントでサインアップする
-          href: office-365-account-for-azure-subscription.md
-        - name: Azure アカウントで Office 365 にサインアップする
-          href: azure-account-for-office-365-subscription.md
+        - name: Microsoft 365 アカウントを使用したサインアップ
+          href: microsoft-365-account-for-azure-subscription.md
+        - name: Azure アカウントを使用した Microsoft 365 のサインアップ
+          href: azure-account-for-microsoft-365-subscription.md
         - name: 強力な顧客認証を使用した支払い
           href: open-banking-strong-customer-authentication.md
     - name: サブスクリプションの管理

@@ -305,7 +305,7 @@
         - name: iOS と macOS
           items:
             - name: Azure AD B2C との統合
-              href: 'config-authority.md#b2c'
+              href: config-authority.md#b2c
             - name: MSAL.iOS/macOS への移行
               href: migrate-objc-adal-msal.md
             - name: iOS デバイスの共有デバイス モード
@@ -376,6 +376,11 @@
               displayName: 'shared device mode, firstline worker, frontline worker, flw'
             - name: Chrome ブラウザーにおける SameSite Cookie の変更の処理
               href: howto-handle-samesite-cookie-changes-chrome-browser.md
+            - name: v1.0 トークンを受け入れる Web API のスコープ
+              href: msal-v1-app-scopes.md
+            - name: ADAL から MSAL へのアプリの移行
+              href: msal-migration.md
+              displayName: migration
     - name: 認証プロトコル
       displayName: Auth protocol
       items:
