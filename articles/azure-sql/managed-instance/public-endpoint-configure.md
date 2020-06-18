@@ -16,6 +16,7 @@ ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 06/03/2020
 ms.locfileid: "84310157"
+ms.custom: fasttrack-edit
 ---
 # <a name="configure-public-endpoint-in-azure-sql-managed-instance"></a>Azure SQL Managed Instance のパブリック エンドポイントを構成する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -99,7 +100,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
     |**ソース**     |任意の IP アドレスまたはサービス タグ         |<ul><li>Power BI などの Azure サービスの場合は、Azure クラウド サービス タグを選択します</li> <li>自分のコンピューターまたは Azure 仮想マシンの場合は、NAT IP アドレスを使用します</li></ul> |
     |**ソース ポート範囲**     |* |ソース ポートは、通常、動的に割り当てられ、予測できないため、* (任意) のままにしておきます |
     |**宛先**     |Any         |マネージド インスタンスのサブネットへのトラフィックを許可するには、宛先は [任意] のままにしておきます |
-    |**宛先ポート範囲**     |3342         |宛先ポート野範囲を 3342 に設定します。これが、マネージド インスタンスのパブリック TDS エンドポイントです |
+    |**宛先ポート範囲**     |3342         |宛先ポートの範囲を 3342 に設定します。これが、マネージド インスタンスのパブリック TDS エンドポイントです |
     |**プロトコル**     |TCP         |SQL Managed Instance では、TDS に TCP プロトコルを使用します |
     |**操作**     |Allow         |パブリック エンドポイントを介したマネージド インスタンスへの受信トラフィックを許可します |
     |**優先順位**     |1300         |この規則が **deny_all_inbound** 規則よりも優先度が高いことを確認してください |
