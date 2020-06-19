@@ -218,7 +218,7 @@ Azure の関数アプリに必要な設定をアップロードする最も簡�
 * [Azure Functions Core ツールでの `--publish-local-settings` 発行オプションの使用](functions-run-local.md#publish)。
 * [Azure CLI の使用](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)。
 
-## <a name="monitoring-functions"></a>関数の監視
+## <a name="monitoring-functions"></a>Functions の監視
 
 関数の実行を監視するための推奨される方法は、関数アプリを Azure Application Insights と統合することです。 Azure Portal で関数アプリを作成する場合、この統合は、既定で自動的に行われます。 ただし、Visual Studio の発行中に関数アプリを作成する場合は、Azure で関数アプリの統合は実行されません。
 
