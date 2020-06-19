@@ -4,12 +4,12 @@ description: Azure Migrate Server Assessment を使用して Azure に移行す�
 ms.topic: tutorial
 ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 87eac5979176fe9a71db15961e4c5f822b56568e
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: 231daff5972e9b2f115df9e6184c43a553f55b83
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331884"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771310"
 ---
 # <a name="assess-vmware-vms-with-server-assessment"></a>Server Assessment による VMware VM の評価
 
@@ -34,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 - このシリーズの[最初のチュートリアルを完了します](tutorial-prepare-vmware.md)。 そうしないと、このチュートリアルの手順はうまくいきません。
 - 最初のチュートリアルでは、以下のことを行ったはずです。
     - Azure Migrate と連携するように [Azure を準備](tutorial-prepare-vmware.md#prepare-azure)します。
-    - [評価のために VMware を準備](tutorial-prepare-vmware.md#prepare-for-vmware-vm-assessment)します。 これには、VMware の設定の確認、Azure Migrate が vCenter Server にアクセスするために使用できるアカウントの設定などが含まれています。
+    - [評価のために VMware を準備](tutorial-prepare-vmware.md#prepare-for-assessment)します。 これには、VMware の設定の確認、Azure Migrate が vCenter Server にアクセスするために使用できるアカウントの設定などが含まれています。
     - VMware の評価用の Azure Migrate アプライアンスをデプロイするために必要なものを[確認](tutorial-prepare-vmware.md#verify-appliance-settings-for-assessment)します。
 
 ## <a name="set-up-an-azure-migrate-project"></a>Azure Migrate プロジェクトを設定する
@@ -99,7 +99,7 @@ OVA ファイルをデプロイする前に、それが安全であることを�
         --- | --- | ---
         VMware (10.9 GB) | [最新バージョン](https://aka.ms/migrate/appliance/vmware) | cacbdaef927fe5477fa4e1f494fcb7203cbd6b6ce7402b79f234bc0fe69663dd
 
-    - Azure Goverment の場合:
+    - Azure Government の場合:
     
         **アルゴリズム** | **ダウンロード** | **SHA256**
         --- | --- | ---
@@ -170,7 +170,7 @@ VM の構成データとパフォーマンス データを検出するには、�
 1. **[vCenter Server の詳細を指定する]** で、vCenter Server インスタンスの名前 (FQDN) または IP アドレスを指定します。 既定のポートをそのまま使用することも、vCenter Server でリッスンするカスタム ポートを指定することもできます。
 2. vCenter Server インスタンス上の VM を検出するためにアプライアンスが使用する vCenter Server アカウントの資格情報を **[ユーザー名]** と **[パスワード]** に指定します。 
 
-    - [前のチュートリアル](tutorial-prepare-vmware.md#set-up-an-account-for-assessment)で、必要なアクセス許可を持つアカウントを設定してある必要があります。
+    - [前のチュートリアル](tutorial-prepare-vmware.md#set-up-permissions-for-assessment)で、必要なアクセス許可を持つアカウントを設定してある必要があります。
     - 検出を特定の VMware オブジェクト (vCenter Server データセンター、クラスター、クラスターのフォルダー、ホスト、ホストのフォルダー、または個々の VM) にスコーピングする場合、Azure Migrate によって使用されるアカウントを制限するには、[この記事](set-discovery-scope.md)の手順を参照してください。
 
 3. **[接続の検証]** を選択し、アプライアンスが vCenter Server に接続できることを確認します。
@@ -178,7 +178,7 @@ VM の構成データとパフォーマンス データを検出するには、�
 
     - [アプリケーション検出機能](how-to-discover-applications.md)または[エージェントレスの依存関係の分析機能](how-to-create-group-machine-dependencies-agentless.md)のために使用するアカウントを作成した場合は、必要に応じて、ここで資格情報を追加します。
     - これらの機能を使用していない場合は、この設定を省略できます。
-    - [アプリ検出](migrate-support-matrix-vmware.md#application-discovery)または[エージェントレス分析](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements)に必要な資格情報を確認してください。
+    - [アプリ検出](migrate-support-matrix-vmware.md#application-discovery-requirements)または[エージェントレス分析](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)に必要な資格情報を確認してください。
 
 5. VM の検出を開始するには、 **[保存して検出を開始]** を選択します。
 
