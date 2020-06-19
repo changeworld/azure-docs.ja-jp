@@ -6,12 +6,12 @@ metadata:
   title: Microsoft Azure コンテナー サービスのドキュメント | Microsoft Docs
   description: Azure コンテナー サービスを使用して、クラウドベースのコンテナー アプリケーションを管理および開発する方法について説明します。
   ms.topic: hub-page
-  ms.openlocfilehash: f4d76c0f2ddbecd386a3e3b9d3de370f19b86fee
-  ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+  ms.openlocfilehash: 8cfbe066a0e52615b6312ff49d0af268d1acf610
+  ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/13/2020
-  ms.locfileid: "81259019"
+  ms.lasthandoff: 06/18/2020
+  ms.locfileid: "84981593"
 highlightedContent:
   items:
   - itemType: whats-new
@@ -41,18 +41,15 @@ conceptualContent:
       text: 詳細情報
   - title: AKS アプリケーションのテストと開発
     links:
-    - url: /azure/dev-spaces/about
-      itemType: overview
-      text: Azure Dev Spaces とは
-    - url: /azure/dev-spaces/quickstart-netcore
-      itemType: quickstart
-      text: マイクロサービスを実行してデバッグする
-    - url: /azure/dev-spaces/quickstart-team-development
-      itemType: quickstart
-      text: 一連のマイクロサービスでチームと共同作業を行う
-    footerLink:
-      url: /azure/dev-spaces/
-      text: 詳細情報
+    - url: /azure/dev-spaces/how-dev-spaces-works-local-process-kubernetes
+      itemType: concept
+      text: Local Process with Kubernetes のしくみ
+    - url: /azure/dev-spaces/how-to/local-process-kubernetes-vs-code
+      itemType: how-to-guide
+      text: Visual Studio Code を使用して Local Process with Kubernetes を利用する
+    - url: /azure/dev-spaces/how-to/local-process-kubernetes-visual-studio
+      itemType: how-to-guide
+      text: Visual Studio を使用して Local Process with Kubernetes を利用する
   - title: Web およびモバイル向けのクラウド アプリを作成する
     links:
     - url: /azure/app-service/overview

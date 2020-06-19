@@ -330,6 +330,8 @@
               href: ./partner-center-portal/azure-vm-create-offer.md
             - name: Azure VM の技術資産を作成する
               items:
+                - name: 仮想マシンの認定 - 問題と解決策
+                  href: ./partner-center-portal/vm-certification-issues-solutions.md
                 - name: Azure VM の技術資産を作成する
                   href: ./partner-center-portal/create-azure-vm-technical-asset.md
                 - name: Azure VM 技術資産に関する FAQ

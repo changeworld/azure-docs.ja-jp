@@ -26,7 +26,7 @@
     - name: ARM テンプレート
       displayName: Resource Manager
       href: search-get-started-arm.md
-    - name: 'C#'
+    - name: C#
       href: search-get-started-dotnet.md
     - name: Java
       href: search-get-started-java.md
@@ -40,7 +40,7 @@
       href: search-get-started-python.md
 - name: チュートリアル
   items:
-    - name: 'C# アプリの作成'
+    - name: C# アプリの作成
       items:
         - name: 1 - 基本的な検索ページ
           href: tutorial-csharp-create-first-app.md
@@ -64,7 +64,7 @@
       href: tutorial-optimize-indexing-push-api.md
     - name: AI を使用してコンテンツを作成する
       items:
-        - name: 'C#'
+        - name: C#
           href: cognitive-search-tutorial-blob-dotnet.md
         - name: REST
           href: cognitive-search-tutorial-blob.md
@@ -76,7 +76,7 @@
       href: search-howto-powerapps.md
 - name: サンプル
   items:
-    - name: 'C# のサンプル'
+    - name: C# のサンプル
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=csharp'
     - name: Java のサンプル
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=java'
@@ -224,8 +224,6 @@
               href: cognitive-search-custom-skill-form.md
             - name: 例 - Azure Machine Learning
               href: cognitive-search-tutorial-aml-custom-skill.md
-            - name: 例 - コンテナー
-              href: 'https://go.microsoft.com/fwlink/?linkid=2089500'
         - name: 設計のヒント
           href: cognitive-search-concept-troubleshooting.md
         - name: ナレッジ ストア
@@ -482,7 +480,7 @@
     - name: フィードバック フォーラム (UserVoice)
       href: 'https://feedback.azure.com/forums/263029-azure-search'
     - name: コンプライアンスと認定資格
-      href: 'https://aka.ms/azurecompliance'
+      href: 'https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/'
     - name: ドキュメントのリンク (ナレッジ マイニング)
       href: cognitive-search-resources-documentation.md
     - name: デモ サイト

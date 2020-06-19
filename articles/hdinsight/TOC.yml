@@ -219,10 +219,6 @@
               href: ./hadoop/apache-hadoop-visual-studio-tools-get-started.md
             - name: Spark & Hive Tools for VSCode
               href: ./hdinsight-for-vscode.md
-            - name: Hortonworks Sandbox と IntelliJ 用 HDInsight ツール
-              href: ./hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox.md
-            - name: Data Lake Tools と Hortonworks サンドボックス
-              href: ./hdinsight-hadoop-emulator-visual-studio.md
         - name: 監視
           items:
             - name: Azure Monitor ログの使用
@@ -501,7 +497,7 @@
                   href: ./hadoop/apache-hadoop-run-samples-linux.md
                 - name: カスタムの Apache Hadoop MapReduce プログラムを実行する
                   href: ./hadoop/apache-hadoop-run-custom-programs.md
-                - name: 'C# ストリーミング MapReduce プログラムを開発する'
+                - name: C# ストリーミング MapReduce プログラムを開発する
                   href: ./hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md
                 - name: Java MapReduce プログラムを開発する
                   href: ./hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
@@ -758,7 +754,7 @@
           items:
             - name: JSON ドキュメントを処理および分析する
               href: ./hadoop/using-json-in-hive.md
-            - name: 'C# ユーザー定義関数を使用する'
+            - name: C# ユーザー定義関数を使用する
               href: ./hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md
             - name: Apache Hive と Apache Pig で Python を使用する
               href: ./hadoop/python-udf-hdinsight.md
@@ -893,7 +889,7 @@
                   href: ./storm/apache-storm-develop-java-topology.md
                 - name: Python を使用してトポロジを開発する
                   href: ./storm/apache-storm-develop-python-topology.md
-                - name: 'C# を使用してトポロジを開発する'
+                - name: C# を使用してトポロジを開発する
                   href: ./storm/apache-storm-develop-csharp-visual-studio-topology.md
                 - name: SCP.NET プログラミング ガイド
                   href: ./storm/apache-storm-scp-programming-guide.md
@@ -901,7 +897,7 @@
                   href: ./storm/apache-storm-example-topology.md
             - name: ストリーミング パイプライン
               items:
-                - name: 'Event Hubs と Apache Storm (C# および Java)'
+                - name: Event Hubs と Apache Storm (C# および Java)
                   href: ./storm/apache-storm-develop-csharp-event-hub-topology.md
         - name: 管理する
           items:

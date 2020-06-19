@@ -1,21 +1,25 @@
 ---
 title: 組み込みのポリシー イニシアチブの一覧
 description: Azure Policy の組み込みのポリシー　イニシアチブの一覧を示します。 カテゴリには、規制コンプライアンス、ゲスト構成などが含まれます。
-ms.date: 05/29/2020
+ms.date: 06/10/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: b3b0826e2121e7d609bd4091a162fa1820c1be53
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 41e19426daeaee799f9ad008c820a689fe552ec4
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84233979"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709152"
 ---
 # <a name="azure-policy-built-in-initiative-definitions"></a>Azure Policy の組み込みイニシアチブの定義
 
 このページは、Azure Policy の組み込みイニシアチブの定義のインデックスです。
 
 各組み込みの名前は、[Azure Policy GitHub リポジトリ](https://github.com/Azure/azure-policy)のイニシアチブ定義ソースにリンクされています。 組み込みは、**metadata** 内の **category** プロパティごとにグループ化されています。 特定の**カテゴリ**にジャンプするには、ページの右側にあるメニューを使用します。 それ以外では、<kbd>Ctrl</kbd>-<kbd>F</kbd> キーを押して、ブラウザーの検索機能を使用してください。
+
+## <a name="cosmos-db"></a>Cosmos DB
+
+[!INCLUDE [azure-policy-samples-policysets-cosmos-db](../../../../includes/policy/samples/bycat/policysets-cosmos-db.md)]
 
 ## <a name="guest-configuration"></a>ゲスト構成
 

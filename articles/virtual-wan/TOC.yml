@@ -44,14 +44,10 @@
           href: path-selection-multiple-links.md
 - name: 操作方法ガイド
   items:
-    - name: 仮想ネットワーク ゲートウェイを Virtual WAN に接続する
-      href: connect-virtual-network-gateway-vwan.md
     - name: グローバル VNet ピアリングを構成する
       href: global-peering-vnet.md
     - name: Virtual WAN SKU をアップグレードする
       href: upgrade-virtual-wan.md
-    - name: カスタム IPsec ポリシーを構成する
-      href: virtual-wan-custom-ipsec-portal.md
     - name: ExpressRoute
       items:
         - name: ExpressRoute 接続を作成する
@@ -62,6 +58,10 @@
       items:
         - name: サイト間接続を作成する
           href: virtual-wan-site-to-site-portal.md
+        - name: 仮想ネットワーク ゲートウェイを Virtual WAN に接続する
+          href: connect-virtual-network-gateway-vwan.md
+        - name: カスタム IPsec ポリシーを構成する
+          href: virtual-wan-custom-ipsec-portal.md
     - name: ユーザー VPN (ポイント対サイト)
       items:
         - name: ユーザー VPN 接続を作成する
@@ -109,7 +109,7 @@
 - name: リファレンス
   items:
     - name: Azure PowerShell
-      href: '/powershell/module/az.network#networking'
+      href: /powershell/module/az.network#networking
     - name: REST
       href: /rest/api/azure
     - name: Azure CLI

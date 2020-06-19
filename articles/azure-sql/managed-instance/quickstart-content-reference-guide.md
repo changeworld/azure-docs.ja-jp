@@ -3,8 +3,8 @@ title: 使用開始に関するコンテンツ リファレンス
 titleSuffix: Azure SQL Managed Instance
 description: 'Azure SQL Managed Instance の使用を開始するのに役立つコンテンツのリファレンス。 '
 services: sql-database
-ms.service: sql-database
-ms.subservice: managed-instance
+ms.service: sql-managed-instance
+ms.subservice: operations
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: quickstart
@@ -12,12 +12,12 @@ author: davidtrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 07/11/2019
-ms.openlocfilehash: 5ed88514650b9931a52e5f155abc34fbf734a3b7
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 7c7268aa361c77f1d466ab7a58b74aa91090dc4b
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310769"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708571"
 ---
 # <a name="getting-started-with-azure-sql-managed-instance"></a>Azure SQL Managed Instance の使用を開始する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
