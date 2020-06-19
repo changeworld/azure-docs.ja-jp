@@ -2,25 +2,25 @@
 title: Azure Active Directory の一般的なアプリケーション管理シナリオ | Microsoft Docs
 description: Azure AD を使用したアプリケーション管理の一元化
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 03/02/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1874a2f2cf96aaa905616bddcc6cb83c60c1d279
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 6b81e792d3b3bf491b281e09c00f48a7ad56fa47
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83115610"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763637"
 ---
 # <a name="centralize-application-management-with-azure-ad"></a>Azure AD を使用したアプリケーション管理の一元化
 

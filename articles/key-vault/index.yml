@@ -13,32 +13,32 @@ metadata:
   author: msmbaldwin
   ms.author: mbaldwin
   ms.date: 04/07/2020
-  ms.openlocfilehash: 7a0efa00b4fc881c113e151c6730ca5185ea0349
-  ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+  ms.openlocfilehash: 55cf57d283433936b0cba03b67de8726d0ee98c8
+  ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/29/2020
-  ms.locfileid: "84194449"
+  ms.lasthandoff: 06/17/2020
+  ms.locfileid: "84945598"
 highlightedContent:
   items:
   - title: Azure Key Vault の概要
     itemType: overview
     url: ./general/overview.md
-  - title: 基本的な概念
+  - title: 認証
     itemType: overview
-    url: ./general/basic-concepts.md
+    url: ./general/authentication.md
   - title: 論理的な削除
     itemType: overview
     url: ./general/overview-soft-delete.md
+  - title: 基本的な概念
+    itemType: overview
+    url: ./general/basic-concepts.md
   - title: ログ記録
     itemType: overview
     url: ./general/logging.md
   - title: Throttling
     itemType: overview
     url: ./general/overview-throttling.md
-  - title: セキュリティに関する推奨事項
-    itemType: overview
-    url: ./general/security-recommendations.md
 conceptualContent:
   items:
   - title: 証明書
@@ -63,6 +63,9 @@ conceptualContent:
     - url: ./keys/about-keys.md
       itemType: overview
       text: キーについて
+    - url: ../security/fundamentals/encryption-atrest.md
+      itemType: overview
+      text: データの暗号化
     - url: ./keys/quick-create-portal.md
       itemType: quickstart
       text: Azure portal を使用して Azure Key Vault との間でキーの設定と取得を行う
@@ -131,6 +134,6 @@ conceptualContent:
     - url: ../aks/developer-best-practices-pod-security.md#use-azure-key-vault-with-secrets-store-csi-driver
       itemType: overview
       text: Azure Kubernetes Service - AKS で Key Vault シークレット、証明書、キーを使用する
-    - url: ../data-factory/store-credentials-in-key-vault.md
+    - url: https://docs.microsoft.com/azure/databricks/security/secrets/secret-scopes
       itemType: overview
-      text: Azure Data Factory - Key Vault で資格情報を管理する
+      text: Azure Databricks - Key Vault によるシークレットの管理

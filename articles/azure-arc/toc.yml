@@ -18,6 +18,8 @@
           href: ./servers/onboard-dsc.md
     - name: 管理する
       items:
+        - name: Azure VM 拡張機能の管理と使用
+          href: ./servers/manage-vm-extensions.md
         - name: エージェントの管理
           href: ./servers/manage-agent.md
 - name: サンプル

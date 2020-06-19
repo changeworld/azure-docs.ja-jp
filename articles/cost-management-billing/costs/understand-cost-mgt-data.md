@@ -7,12 +7,12 @@ ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
-ms.openlocfilehash: 10bd2e4722751b290263fc0599890ca92cd743c9
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: a25a34db99a4c1550ed78b5f084501fb8badfacf
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995651"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791284"
 ---
 # <a name="understand-cost-management-data"></a>Cost Management のデータを理解する
 
@@ -122,6 +122,7 @@ Cost Management に特定のタグが表示されない場合は、次の点を�
 - タグが 24 時間以上前に適用されたか。 「[コストと使用状況データの更新と保持](#cost-and-usage-data-updates-and-retention)」を参照してください。
 - リソースの種類でタグがサポートされているか。 2019 年 12 月 1 日の時点で、次のリソースの種類では、使用状況データのタグはサポートされていません。 サポート対象の完全な一覧については、「[Azure リソースでのタグのサポート](../../azure-resource-manager/tag-support.md)」を参照してください。
     - Azure Active Directory B2C ディレクトリ
+    - Azure Bastion
     - Azure ファイアウォール
     - Azure NetApp Files
     - Data Factory

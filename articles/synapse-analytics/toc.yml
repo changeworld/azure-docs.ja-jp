@@ -426,6 +426,8 @@
               href: data-integration/data-integration-data-lake.md
     - name: データの変換と分析
       items:
+        - name: 配列と入れ子になった構造体の分析
+          href: how-to-analyze-complex-schema.md
         - name: Synapse Link
           items:
             - name: Synapse Link の構成

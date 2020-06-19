@@ -114,6 +114,8 @@
         - name: ログ データ インジェスト時間
           displayname: latency
           href: platform/data-ingestion-time.md
+        - name: Event Hubs へのデータのストリーム配信
+          href: platform/stream-monitoring-data-event-hubs.md
     - name: 洞察
       href: insights/insights-overview.md
     - name: データのセキュリティ
@@ -299,36 +301,12 @@
           displayName: 'Platform logs, Resource logs, Activity log'
           href: platform/platform-logs-overview.md
         - name: アクティビティ ログ
-          items:
-            - name: Azure portal に表示
-              displayName: 'Platform logs, Activity log'
-              href: platform/activity-log-view.md
-            - name: 収集と分析
-              displayName: 'Platform logs, Activity log'
-              href: platform/activity-log-collect.md
-            - name: エクスポート (レガシ)
-              displayname: Activity log
-              href: platform/activity-log-export.md
-        - name: Log Analytics ワークスペースに送信する
-          displayname: 'Resource logs, Activity log, Platform logs'
-          href: platform/resource-logs-collect-workspace.md
-        - name: Azure Storage への送信
-          displayname: 'Resource logs, Activity log, Platform logs'
-          href: platform/resource-logs-collect-storage.md
-        - name: Event Hubs への送信
-          displayname: 'Resource logs, Activity log, Platform logs'
-          href: platform/resource-logs-stream-event-hubs.md
-        - name: 診断設定の作成
+          href: platform/activity-log.md
+        - name: リソース ログ
+          href: platform/resource-logs.md
+        - name: 診断設定
           displayName: 'Platform logs, Resource logs, Activity log'
           href: platform/diagnostic-settings.md
-        - name: Resource Manager での診断設定の作成
-          displayName: 'diagnostic setting, Platform logs, Resource logs, Activity log'
-          href: platform/diagnostic-settings-template.md
-        - name: BLOB ストレージのフォーマットの変更
-          displayname: Diagnostic settings
-          href: platform/resource-logs-blob-format.md
-        - name: Event Hubs へのデータのストリーム配信
-          href: platform/stream-monitoring-data-event-hubs.md
     - name: Log Analytics
       items:
         - name: ログ クエリの概要
@@ -1015,6 +993,8 @@
           href: insights/storage-insights-overview.md
         - name: リソース グループ
           href: insights/resource-group-insights.md
+        - name: 分析情報のトラブルシューティング
+          href: insights/troubleshoot-workbooks.md
     - name: ソリューション
       items:
         - name: 概要
@@ -1185,12 +1165,12 @@
           href: platform/alerts-metric-near-real-time.md
     - name: プラットフォーム ログ
       items:
-        - name: サポートされているリソース ログの種類とカテゴリ
-          href: platform/resource-logs-categories.md
-        - name: リソース ログ スキーマ
-          href: platform/resource-logs-schema.md
         - name: アクティビティ ログのスキーマ
           href: platform/activity-log-schema.md
+        - name: リソース ログ スキーマ
+          href: platform/resource-logs-schema.md
+        - name: サポートされているリソース ログのカテゴリ
+          href: platform/resource-logs-categories.md
     - name: 診断の拡張機能のスキーマ
       items:
         - name: Windows Diagnostics 拡張機能
@@ -1277,6 +1257,9 @@
           href: platform/oms-portal-transition.md
         - name: ディスク メトリックの廃止
           href: platform/portal-disk-metrics-deprecation.md
+        - name: BLOB ストレージのフォーマットの変更
+          displayname: Diagnostic settings
+          href: platform/resource-logs-blob-format.md
 - name: リソース
   items:
     - name: Azure のロードマップ

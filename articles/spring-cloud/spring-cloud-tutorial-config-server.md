@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.author: brendm
 author: bmitchell287
 ms.date: 10/18/2019
-ms.openlocfilehash: 5e0b5633a153583117cfe0d90ec5c0e7c5f2a147
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4c8b2e92cd7e88dde434e42971d091db689bfbc9
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76277521"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791301"
 ---
 # <a name="tutorial-set-up-a-spring-cloud-config-server-instance-for-your-service"></a>チュートリアル:自分のサービス向けに Spring Cloud Config Server インスタンスを設定する
 
@@ -33,6 +33,7 @@ eureka.client.tls.keystore
 server.port
 spring.cloud.config.tls.keystore
 spring.application.name
+spring.jmx.enabled
 ```
 
 > [!CAUTION]
