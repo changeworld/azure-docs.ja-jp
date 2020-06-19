@@ -7,11 +7,11 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.openlocfilehash: bfe1d1aeeac55039acf0c7eb295001277be9cd2e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223129"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84693075"
 ---
 # <a name="tutorial-create-the-azure-fxt-edge-filer-cluster"></a>チュートリアル:Azure FXT Edge Filer クラスターの作成
 

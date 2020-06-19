@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 070a65207bc1aa2cf754f3a0dca59f1a2950a339
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: 2534b2ef2eec0ca993ee2506dcc285d750ba38ce
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84611816"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737201"
 ---
 # <a name="explore-azure-digital-twins-with-a-sample-client-app"></a>サンプル クライアント アプリを使用して Azure Digital Twins を試す
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 このチュートリアルでは、Azure Digital Twins インスタンスとやり取りするためのコマンド ライン クライアント アプリケーションを実装したサンプル アプリケーションを紹介します。 このクライアント アプリは、[クライアント アプリのコーディングに関するチュートリアル](tutorial-code.md)で作成したアプリに似ています。
 

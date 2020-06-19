@@ -188,6 +188,8 @@
       items:
         - name: デバイスの書き戻しを有効にする
           href: how-to-connect-device-writeback.md
+        - name: グループの書き戻しを有効にする
+          href: how-to-connect-group-writeback.md
         - name: デバイス オプション
           href: how-to-connect-device-options.md
         - name: Azure AD Connect の追加の機能

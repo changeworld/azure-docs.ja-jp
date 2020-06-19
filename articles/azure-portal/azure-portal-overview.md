@@ -6,15 +6,15 @@ keywords: ポータル
 author: mgblythe
 ms.author: mblythe
 ms.date: 12/20/2019
-ms.topic: conceptual
+ms.topic: overview
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: c5e02e791185db3713c67b8ff97b8f7eebe9da77
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4aa1ccbd9b605850052e190949542eb014fe90a8
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76310732"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763926"
 ---
 # <a name="azure-portal-overview"></a>Azure Portal の概要
 
