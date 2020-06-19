@@ -9,11 +9,11 @@ ms.date: 02/21/2020
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: 064fcf618914bca31ad9e7e60c76df8f599cd8bf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223649"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84687193"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Azure Firewall をデプロイして構成する
 
@@ -102,7 +102,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 2. **[Compute]** をクリックし、おすすめのリストで **[Windows Server 2016 Datacenter]** を選択します。
 3. 次の仮想マシンの値を入力します。
 
-   |設定  |Value  |
+   |設定  |値  |
    |---------|---------|
    |Resource group     |**Test-FW-RG**|
    |仮想マシン名     |**Srv-Jump**|
@@ -123,7 +123,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 次の表の情報を使用して、**Srv-Work** という名前の別の仮想マシンを構成します。 残りの構成は、Srv-Jump 仮想マシンと同じです。
 
-|設定  |Value  |
+|設定  |値  |
 |---------|---------|
 |Subnet|**Workload-SN**|
 |パブリック IP|**なし**|
@@ -138,9 +138,9 @@ VNet にファイアウォールをデプロイします。
 3. **[ファイアウォール]** を選択し、 **[作成]** を選択します。
 4. **[ファイアウォールの作成]** ページで、次の表を使用してファイアウォールを構成します。
 
-   |設定  |Value  |
+   |設定  |値  |
    |---------|---------|
-   |サブスクリプション     |\<該当するサブスクリプション\>|
+   |サブスクリプション     |\<your subscription\>|
    |Resource group     |**Test-FW-RG** |
    |名前     |**Test-FW01**|
    |場所     |以前使用したのと同じ場所を選択します|
