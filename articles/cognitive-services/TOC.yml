@@ -9,8 +9,6 @@
       href: cognitive-services-and-machine-learning.md
     - name: Cognitive Services のカスタム サブドメイン
       href: cognitive-services-custom-subdomains.md
-    - name: Cognitive Services のゲート プロセス
-      href: cognitive-services-gating-process.md
     - name: 言語のサポート
       href: language-support.md
 - name: クイックスタート
@@ -21,6 +19,13 @@
       href: cognitive-services-apis-create-account-cli.md
     - name: 診断ログ
       href: diagnostic-logging.md
+    - name: ARM テンプレート
+      displayName: Resource Manager
+      href: resource-manager-template.md
+- name: サンプル
+  items:
+    - name: Azure Policy の組み込み
+      href: ./policy-samples.md
 - name: Security
   items:
     - name: Cognitive Services のセキュリティ
