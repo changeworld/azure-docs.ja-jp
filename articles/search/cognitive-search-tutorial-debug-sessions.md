@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: b84f98bd383c2b90c3291527b336d798e9b9cae9
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 14760eaef309ec5695b423b98e59a8ae1ab5cacb
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83662235"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886744"
 ---
 # <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>チュートリアル:スキルセットに対する診断、修復、および変更のコミットを行う
 
@@ -173,12 +173,12 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 ## <a name="fix-missing-skill-output-values"></a>不足しているスキル出力値を修正する
 
 > [!div class="mx-imgBorder"]
-> ![エラーおよび警告](media/cognitive-search-debug/warnings-missing-value-locs-orgs.png)
+> ![エラーおよび警告](media/cognitive-search-debug/warnings-missing-value-locations-organizations.png)
 
 スキルからの出力値が不足しています。 エラーが発生したスキルを特定するには、エンリッチ処理されたデータ構造に移動し、値の名前を検索して、[Originating Source]\(元のソース\) を確認します。 組織と場所の値が不足している場合、それらはスキル #1 からの出力です。 各パスの </> で式エバリュエーターを開くと、"/document/content/organizations" および "/document/content/locations" として一覧表示されているそれぞれの式が表示されます。
 
 > [!div class="mx-imgBorder"]
-> ![式エバリュエーターの organizations エンティティ](media/cognitive-search-debug/expression-eval-missing-value-locs-orgs.png)
+> ![式エバリュエーターの organizations エンティティ](media/cognitive-search-debug/expression-eval-missing-value-locations-organizations.png)
 
 これらのエンティティの出力は空ですが、空にするべきではありません。 この結果を生成する入力は何でしょうか。
 
@@ -187,7 +187,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 1. 入力 "text" の **</>** で式エバリュエーターを開きます。
 
 > [!div class="mx-imgBorder"]
-> ![テキスト スキルの入力](media/cognitive-search-debug/input-skill-missing-value-locs-orgs.png)
+> ![テキスト スキルの入力](media/cognitive-search-debug/input-skill-missing-value-locations-organizations.png)
 
 この入力に表示される結果は、テキスト入力のようには見えません。 改行で囲まれた画像のように見えます。 テキストがないことは、エンティティを識別できないことを意味します。 スキルセットの階層を見ると、コンテンツは最初に #6 (OCR) スキルによって処理され、次に #5 (マージ) スキルに渡されると表示されています。 
 
@@ -195,7 +195,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 1. 右側のスキルの詳細ペインで **[実行]** タブを選択し、出力 "mergedText" の **</>** で式エバリュエーターを開きます。
 
 > [!div class="mx-imgBorder"]
-> ![マージ スキルの出力](media/cognitive-search-debug/merge-output-detail-missing-value-locs-orgs.png)
+> ![マージ スキルの出力](media/cognitive-search-debug/merge-output-detail-missing-value-locations-organizations.png)
 
 ここで、テキストは画像とペアになっています。 式 "/document/merged_content" を見ると、#1 スキルの "organizations" および "locations" パスのエラーが表示されています。 "text" 入力には、"/document/content" ではなく、"/document/merged_content" を使用する必要があります。
 
@@ -216,7 +216,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 1. "organizations" エンティティの **</>** で式エバリュエーターを開きます。
 
 > [!div class="mx-imgBorder"]
-> ![organizations エンティティの出力](media/cognitive-search-debug/skill-output-detail-missing-value-locs-orgs.png)
+> ![organizations エンティティの出力](media/cognitive-search-debug/skill-output-detail-missing-value-locations-organizations.png)
 
 式の結果を評価すると、正しい結果が得られます。 このスキルは、"organizations" というエンティティの正しい値を識別するために機能しています。 ただし、エンティティのパス内の出力マッピングでは、引き続きエラーがスローされます。 スキルの出力パスとエラーの出力パスを比較すると、/document/content ノードの下の出力、組織、および場所の親となっているスキルがあります。 一方、出力フィールド マッピングでは、結果が /document/merged_content ノードの下で子になることが想定されています。 前の手順では、入力を "/document/content" から "/document/merged_content" に変更しました。 出力が正しいコンテキストで生成されるようにするには、スキル設定のコンテキストを変更する必要があります。
 
@@ -228,7 +228,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 1. セッションのウィンドウ メニューで **[実行]** をクリックします。 これにより、ドキュメントを使用してスキルセットの別の実行が開始されます。
 
 > [!div class="mx-imgBorder"]
-> ![スキルの設定でのコンテキストの修正](media/cognitive-search-debug/skill-setting-context-correction-missing-value-locs-orgs.png)
+> ![スキルの設定でのコンテキストの修正](media/cognitive-search-debug/skill-setting-context-correction-missing-value-locations-organizations.png)
 
 すべてのエラーが解決されました。
 

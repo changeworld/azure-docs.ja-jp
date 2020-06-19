@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/30/2020
 ms.author: aahi
-ms.openlocfilehash: 04fb080d09b1945add7340db081ab49dd017731d
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 637c2bb1bc37d26dcdf1a169b2f5d20766d0a27f
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84637489"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84902528"
 ---
 > [!NOTE]
 > `PHI` を検出するには、`domain=phi` パラメーターおよびモデル バージョン `2020-04-01` 以降を使用します。
@@ -40,7 +40,7 @@ ms.locfileid: "84637489"
 | DateTime | Date | カレンダーの日付。 | `2019-10-01` | `domain=phi` でも返されます。 |
 | Quantity | 該当なし | 数値と数量です。 | `2019-10-01` |  |
 | Quantity | Age | 年齢。 | `2019-10-01` | | |
-| 国際疾病分類 (ICD-10-CM) | 該当なし | 国際疾病分類第 9 版に関連するエンティティ。   | `2020-04-01` | |
+| 国際疾病分類 (ICD-9-CM) | 該当なし | 国際疾病分類第 9 版に関連するエンティティ。   | `2020-04-01` | |
 | 国際疾病分類 (ICD-10-CM) | 該当なし | 国際疾病分類第 10 版に関連するエンティティ。    | `2020-04-01` | |
 
 ## <a name="azure-information"></a>Azure の情報

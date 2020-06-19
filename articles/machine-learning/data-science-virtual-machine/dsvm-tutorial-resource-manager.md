@@ -10,14 +10,14 @@ ms.date: 06/10/2020
 ms.service: machine-learning
 ms.subservice: data-science-vm
 ms.topic: quickstart
-ms.openlocfilehash: e89f3d85156081106f4e1dbb55ee6c895e7e7a2d
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 7e3e45d96839be06deec238deccdc9873492d68f
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636752"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660254"
 ---
-# <a name="tutorial-create-an-ubuntu-data-science-virtual-machine-using-a-resource-manager-template"></a>チュートリアル:Resource Manager テンプレートを使用して Ubuntu Data Science Virtual Machine を作成する
+# <a name="quickstart-create-an-ubuntu-data-science-virtual-machine-using-a-resource-manager-template"></a>クイック スタート:Resource Manager テンプレートを使用して Ubuntu Data Science Virtual Machine を作成する
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 このクイックスタートでは、Azure Resource Manager テンプレートを使用して Ubuntu 18.04 Data Science Virtual Machine を作成する方法について説明します。 Data Science Virtual Machine は、一連のデータ サイエンスおよび機械学習のフレームワークとツールがプリロードされているクラウドベースの仮想マシンです。 GPU を利用したコンピューティング リソースにデプロイすると、すべてのツールとライブラリは GPU を使用するよう構成されます。 

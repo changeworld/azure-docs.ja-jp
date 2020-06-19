@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: b65213bd87f6b82391733a135e096077127765d7
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 44472981e48a7018fcdf55f28d33d0dda9479d44
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344018"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669904"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>チュートリアル:Hugo サイトを Azure Static Web Apps プレビューに発行する
 
@@ -133,9 +133,9 @@ Azure Static Web Apps に接続するには、GitHub のリポジトリが必要
 
 1. **[次へ:ビルド >]** ボタンをクリックして、ビルド構成を編集します。
 
-1. _[App location]\(アプリの場所\)_ を **public** に設定します。
+1. _[App location]\(アプリの場所\)_ を「 **/** 」に設定します。
 
-1. _[App artifact location]\(アプリ成果物の場所\)_ を空白のままにします。
+1. _[App artifact location]\(アプリ成果物の場所\)_ を「**public**」に設定します。
 
    この時点では API をデプロイしていないため _[API location]\(アプリの場所\)_ の値は必要ありません。
 
