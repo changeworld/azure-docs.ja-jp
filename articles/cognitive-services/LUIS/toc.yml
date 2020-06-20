@@ -30,9 +30,9 @@
     - name: REST API の使用
       items:
         - name: 意図の取得
-          href: luis-get-started-get-intent-from-rest.md
+          href: luis-get-started-rest-get-intent.md
         - name: モデルの変更
-          href: get-started-get-model-rest-apis.md
+          href: luis-get-started-rest-get-model.md
 - name: チュートリアル
   items:
     - name: 分解可能なアプリの作成
@@ -226,6 +226,12 @@
           href: luis-migration-api-v3.md
         - name: V2 API への移行
           href: luis-migration-api-v1-to-v2.md
+    - name: REST API の使用
+      items:
+        - name: 意図の取得
+          href: luis-get-started-get-intent-from-rest.md
+        - name: モデルの変更
+          href: get-started-get-model-rest-apis.md
     - name: コンテナーの使用
       items:
         - name: コンテナーのインストールと実行

@@ -141,6 +141,9 @@
       items:
         - name: JavaScript クライアント SDK
           href: 'https://github.com/microsoft/tsiclient/blob/master/docs/API.md'
+    - name: Azure CLI
+      href: /cli/azure/ext/timeseriesinsights/timeseriesinsights
+      displayName: az iot
 - name: リソース
   expanded: true
   items:
