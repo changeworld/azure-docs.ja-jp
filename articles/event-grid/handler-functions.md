@@ -1,5 +1,5 @@
 ---
-title: Azure Event Grid イベントに対するイベント ハンドラーとしての Azure 関数
+title: Azure Event Grid イベントに対するイベント ハンドラーとしての Azure Functions
 description: Event Grid イベントのイベント ハンドラーとして Azure Functions を使用する方法について説明します。
 services: event-grid
 author: spelluru
@@ -14,11 +14,11 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 05/19/2020
 ms.locfileid: "83595651"
 ---
-# <a name="azure-function-as-an-event-handler-for-event-grid-events"></a>Event Grid イベントに対するイベント ハンドラーとしての Azure 関数
+# <a name="azure-function-as-an-event-handler-for-event-grid-events"></a>Event Grid イベントに対するイベント ハンドラーとしての Azure Functions
 
 イベント ハンドラーは、イベントの送信先となる場所です。 ハンドラーでは、イベントを処理するアクションが実行されます。 一部の Azure サービスは、イベントを処理するように自動的に構成されます。**Azure Functions** はその 1 つです。 
 
-サーバーレス アーキテクチャで Event Grid からのイベントに応答するには、**Azure Functions** を使用します。 ハンドラーとして Azure 関数を使用する場合は、汎用 HTTP トリガーではなく Event Grid トリガーを使用します。 Event Grid では、Event Grid トリガーが自動的に検証されます。 汎用 HTTP トリガーの場合は、[検証応答](webhook-event-delivery.md)を開発者自身が実装する必要があります。
+サーバーレス アーキテクチャで Event Grid からのイベントに応答するには、**Azure Functions** を使用します。 ハンドラーとして Azure Functions を使用する場合は、汎用 HTTP トリガーではなく Event Grid トリガーを使用します。 Event Grid では、Event Grid トリガーが自動的に検証されます。 汎用 HTTP トリガーの場合は、[検証応答](webhook-event-delivery.md)を開発者自身が実装する必要があります。
 
 関数での Event Grid トリガーの使用の詳細については、「[Azure Functions の Event Grid トリガー](../azure-functions/functions-bindings-event-grid.md)」を参照してください。
 
