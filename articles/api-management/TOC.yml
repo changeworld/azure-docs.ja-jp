@@ -38,9 +38,11 @@
 - name: サンプル
   items:
     - name: ポリシー
-      href: policy-samples.md
+      href: ./policies/index.md
     - name: Azure PowerShell
       href: powershell-samples.md
+    - name: Azure Policy の組み込み
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 用語
