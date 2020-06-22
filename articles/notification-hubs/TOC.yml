@@ -48,10 +48,14 @@
           href: push-notification-updates-ios-13.md
         - name: iOS アプリにプッシュ通知を送信する
           items:
-            - name: Objective-C
-              href: notification-hubs-ios-apple-push-notification-apns-get-started.md
+            - name: iOS チュートリアルの前提条件
+              href: ios-sdk-get-started.md
+            - name: Objective-C (バージョン 3.0.0-preview1)
+              href: ios-sdk-300.md
+            - name: Objective-C (バージョン 2.0.4)
+              href: ios-sdk-204.md
             - name: Swift
-              href: notification-hubs-ios-push-notifications-swift-apps-get-started.md
+              href: ios-sdk-swift-rest.md
         - name: 特定のデバイスにプッシュ通知を送信する
           href: notification-hubs-ios-xplat-segmented-apns-push-notification.md
         - name: 特定のユーザーにプッシュ通知を送信する
@@ -68,7 +72,7 @@
               href: notification-hubs-backend-service-xamarin-forms.md
     - name: Windows Phone
       items:
-        - name: アプリに通知をプッシュする
+        - name: アプリにプッシュ通知を送信する
           href: notification-hubs-windows-mobile-push-notifications-mpns.md
         - name: 特定のデバイスにプッシュ通知を送信する
           href: notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md
@@ -78,7 +82,7 @@
           href: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
         - name: 特定のデバイスにプッシュ通知を送信する
           href: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
-        - name: ローカライズした通知をアプリにプッシュする
+        - name: ローカライズしたプッシュ通知をアプリに送信する
           href: notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
         - name: 特定のユーザーにプッシュ通知を送信する
           href: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
