@@ -60,7 +60,7 @@
           displayName: 'docker, container, run, billing, apikey, logging'
         - name: Container Instances の使用
           href: deploy-form-recognizer-on-container-instances.md
-    - name: ディザスター リカバリーのモデルをコピーする
+    - name: モデルのバックアップと復旧
       href: disaster-recovery.md
 - name: リファレンス
   items:

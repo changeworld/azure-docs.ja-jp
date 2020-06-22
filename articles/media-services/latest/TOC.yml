@@ -18,6 +18,11 @@
     - name: ポータルと OBS を使用したライブ イベント
       displayName: 'live, event, portal, obs'
       href: live-events-obs-quickstart.md
+    - name: ポータルを使用したコンテンツのアップロード、エンコード、ストリーム配信
+      href: manage-assets-quickstart.md
+    - name: ポータルを使用したコンテンツの暗号化
+      displayName: 'protect, drm, aes'
+      href: encrypt-content-quickstart.md
 - name: チュートリアル
   items:
     - name: リモート ファイルのエンコードとビデオのストリーム配信
@@ -378,6 +383,8 @@
       href: /azure/templates/microsoft.media/allversions
     - name: Standard Encoder のスキーマ
       items:
+        - name: 入力メタデータ
+          href: input-metadata-schema.md
         - name: 出力メタデータ
           href: output-metadata-schema.md
 - name: リソース

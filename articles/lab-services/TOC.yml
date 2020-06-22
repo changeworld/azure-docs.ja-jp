@@ -26,8 +26,10 @@
       href: capacity-limits.md
     - name: シナリオ
       items:
-        - name: クラスを実施するためのラボの使用
+        - name: クラスを実施するためのラボ サービスの使用
           href: classroom-labs-scenarios.md
+        - name: ハッカソンにラボ サービスを使用する
+          href: hackathon-labs.md
         - name: クラスルーム ラボ - クラスの種類
           items:
             - name: クラスの種類の概要

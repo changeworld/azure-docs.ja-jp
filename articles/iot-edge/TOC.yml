@@ -27,11 +27,11 @@
               href: tutorial-c-module.md
             - name: Windows デバイス向けの C モジュール
               href: tutorial-c-module-windows.md
-        - name: 'C#'
+        - name: C#
           items:
-            - name: 'Linux デバイス向けの C# モジュール'
+            - name: Linux デバイス向けの C# モジュール
               href: tutorial-csharp-module.md
-            - name: 'Windows デバイス向けの C# モジュール'
+            - name: Windows デバイス向けの C# モジュール
               href: tutorial-csharp-module-windows.md
         - name: Java
           href: tutorial-java-module.md
@@ -199,6 +199,12 @@
           href: how-to-store-data-blob.md
         - name: Blob Storage モジュールのデプロイ
           href: how-to-deploy-blob.md
+    - name: IoT Edge の Azure SQL Edge
+      items:
+        - name: エッジでの Azure SQL について
+          href: ../azure-sql-edge/overview.md?toc=/azure/iot-edge/toc.json&bc=/azure/iot-edge/breadcrumb/toc.json
+        - name: Azure SQL Edge モジュールをデプロイする
+          href: ../azure-sql-edge/deploy-portal.md?toc=/azure/iot-edge/toc.json&bc=/azure/iot-edge/breadcrumb/toc.json
     - name: DevOps ツールを使用した管理
       items:
         - name: Azure DevOps Projects
@@ -238,12 +244,12 @@
     - name: Azure IoT SDK
       items:
         - name: IoT サービスの SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT デバイス SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: Azure IoT サンプル
       items:
-        - name: 'C# (.NET)'
+        - name: C# (.NET)
           href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
         - name: Node.js
           href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-node/'

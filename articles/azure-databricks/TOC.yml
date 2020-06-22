@@ -860,14 +860,14 @@
             - name: モデル推論の例
               href: /azure/databricks/applications/deep-learning/inference/model-inference-examples
               maintainContext: true
-            - name: Keras を使用したモデル推論
+            - name: TensorFlow Keras を使用したモデル推論
               href: /azure/databricks/applications/deep-learning/inference/resnet-model-inference-keras
               maintainContext: true
             - name: PyTorch を使用したモデル推論
               href: /azure/databricks/applications/deep-learning/inference/resnet-model-inference-pytorch
               maintainContext: true
-            - name: TensorFlow を使用したモデル推論
-              href: /azure/databricks/applications/deep-learning/inference/resnet-model-inference-tensorflow
+            - name: TensorFlow と TensorRT を使用したモデル推論
+              href: /azure/databricks/applications/deep-learning/inference/resnet-model-inference-tensorrt
               maintainContext: true
             - name: モデル推論のパフォーマンス チューニング
               href: /azure/databricks/applications/deep-learning/inference/model-inference-performance
@@ -1072,14 +1072,22 @@
               maintainContext: true
         - name: GDPR のベスト プラクティス
           href: /azure/databricks/security/privacy/gdpr-delta
+          maintainContext: true
+        - name: データ ガバナンスのベスト プラクティス
+          href: /azure/databricks/security/data-governance
+          maintainContext: true
         - name: IP アクセスの一覧
           href: /azure/databricks/security/network/ip-access-list
+          maintainContext: true
         - name: クラスター ワーカー ノード間のトラフィックを暗号化する
           href: /azure/databricks/security/encryption/encrypt-otw
+          maintainContext: true
         - name: ノートブック用に顧客が管理するキーを有効にする
           href: /azure/databricks/security/keys/customer-managed-key-notebook
+          maintainContext: true
         - name: DBFS 用に顧客が管理するキーを有効にする
           href: /azure/databricks/security/keys/customer-managed-keys-dbfs
+          maintainContext: true
     - name: 管理
       items:
         - name: 管理の概要
@@ -1196,6 +1204,8 @@
             - name: ユーザー定義ルートの設定
               href: /azure/databricks/administration-guide/cloud-configurations/azure/udr
               maintainContext: true
+            - name: MySQL IP アドレス
+              href: mysql-ip-address.md
     - name: トラブルシューティング
       items:
         - name: 一般的な質問
@@ -1886,13 +1896,13 @@
                 - name: ランタイム リリース
                   href: /azure/databricks/release-notes/runtime/releases
                   maintainContext: true
-                - name: Databricks Runtime 7.0 (ベータ版)
+                - name: Databricks Runtime 7.0
                   href: /azure/databricks/release-notes/runtime/7.0
                   maintainContext: true
                 - name: Databricks Runtime 7.0 ML (ベータ版)
                   href: /azure/databricks/release-notes/runtime/7.0ml
                   maintainContext: true
-                - name: Databricks Runtime 7.0 Genomics (ベータ版)
+                - name: Databricks Runtime 7.0 Genomics
                   href: /azure/databricks/release-notes/runtime/7.0genomics
                   maintainContext: true
                 - name: Databricks Runtime 6.6

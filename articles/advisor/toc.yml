@@ -10,7 +10,7 @@
       href: advisor-get-started.md
 - name: 操作方法ガイド
   items:
-    - name: Azure アプリケーションの可用性の向上
+    - name: Azure アプリケーションの信頼性の向上
       href: advisor-high-availability-recommendations.md
     - name: リソースのセキュリティを強化する
       href: advisor-security-recommendations.md

@@ -34,6 +34,8 @@
       href: create-certificate-scenarios.md
     - name: 証明書の作成方法
       href: create-certificate.md
+    - name: 証明書署名要求の作成
+      href: create-certificate-signing-request.md
 - name: 操作方法ガイド
   items:
     - name: Key Vault と DigiCert CA の統合

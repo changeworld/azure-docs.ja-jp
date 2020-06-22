@@ -51,6 +51,8 @@
           href: signalr-concept-serverless-development-config.md
         - name: Azure Functions 用の SignalR Service バインドのリファレンス
           href: ../azure-functions/functions-bindings-signalr-service.md
+        - name: アップストリームの設定
+          href: concept-upstream.md
     - name: 高可用性
       items:
         - name: 回復性とディザスター リカバリー
@@ -81,6 +83,8 @@
           href: howto-private-endpoints.md
         - name: ネットワーク アクセス制御の管理
           href: howto-network-access-control.md
+        - name: マネージド ID の使用
+          href: howto-use-managed-identity.md
     - name: 統合
       items:
         - name: Azure Functions のバインド

@@ -34,6 +34,8 @@
       href: log-analytics-samples.md
 - name: 概念
   items:
+    - name: Azure Firewall の機能
+      href: features.md
     - name: FQDN のタグ
       href: fqdn-tags.md
     - name: インフラストラクチャ FQDN
