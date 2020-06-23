@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 05/13/2020
+ms.date: 06/03/2020
 ms.author: aahi
-ms.openlocfilehash: c0e71ffcc88a85caf4b76c34940293663c4acf66
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 4fd893691f68c8b51fa3ef234d7828b1bd70cea5
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142165"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465594"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Text Analytics API v3 の言語のサポート 
 
 > [!IMPORTANT]
-> 現在、Text Analytics API のバージョン 3.x は、次のリージョンで使用できません: インド中部、Fairfax、アラブ首長国連邦北部、南アフリカ北部、中国北部 2、中国東部。
+> 現在、Text Analytics API のバージョン 3.x は、次のリージョンで使用できません: インド中部、アラブ首長国連邦北部、中国北部 2、中国東部。
 
 
 #### <a name="sentiment-analysis"></a>[感情分析](#tab/sentiment-analysis)
