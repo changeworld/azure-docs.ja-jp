@@ -193,6 +193,8 @@
           items:
             - name: 構成オプション
               href: concepts-hyperscale-configuration-options.md
+            - name: 予約容量の前払い
+              href: concepts-hyperscale-reserved-pricing.md
 - name: 操作方法ガイド
   items:
     - name: 単一サーバー
