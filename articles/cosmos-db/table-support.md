@@ -3,17 +3,17 @@ title: Azure Cosmos DB における Azure Table Storage サポート
 description: 同じテーブル データ モデルと操作を共有して Azure Cosmos DB Table API と Azure Storage Tables を連携させる方法について説明します
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
-ms.topic: overview
+ms.topic: how-to
 ms.date: 05/21/2020
 author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
-ms.openlocfilehash: 6f10763f6906f67a3378d54df0574060294ef87d
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 28c58251d9a30b3bae9d958c32c4d6a71f86aaae
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800386"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263213"
 ---
 # <a name="developing-with-azure-cosmos-db-table-api-and-azure-table-storage"></a>Azure Cosmos DB Table API と Azure Table Storage を使用した開発
 

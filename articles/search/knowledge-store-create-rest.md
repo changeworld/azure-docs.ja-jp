@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 12/30/2019
-ms.openlocfilehash: 478a7e03b432006b429c96e03307fd8e494c88ff
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 06/23/2020
+ms.openlocfilehash: f030fc81ab33ecd0531040662346e1ed44f5d17c
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77472317"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263026"
 ---
 # <a name="create-a-knowledge-store-using-rest-and-postman"></a>REST と Postman を使用してナレッジ ストアを作成する
 

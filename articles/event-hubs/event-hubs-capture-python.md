@@ -2,24 +2,19 @@
 title: クイック スタート:Python アプリからキャプチャしたデータを読み取る - Azure Event Hubs
 description: クイック スタート:Azure Python SDK を用いて、Event Hubs Capture 機能を示すスクリプト。
 services: event-hubs
-documentationcenter: ''
-author: ShubhaVijayasarathy
-editor: ''
+author: spelluru
 ms.assetid: bdff820c-5b38-4054-a06a-d1de207f01f6
 ms.service: event-hubs
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.custom: seodec18, tracking-python
-ms.date: 01/15/2020
-ms.author: shvija
-ms.openlocfilehash: c726b0d11759d30730046e635c701cf23d130dfc
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.reviewer: shvija
+ms.openlocfilehash: 658bfc95e9d7ef2954d245ac9bd7eafb56ebaaa1
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561563"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296595"
 ---
 # <a name="quickstart-event-hubs-capture-walkthrough-python-azure-eventhub-version-1"></a>クイック スタート:Event Hubs Capture チュートリアル:Python (azure-eventhub バージョン 1)
 

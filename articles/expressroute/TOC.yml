@@ -54,8 +54,12 @@
       href: expressroute-global-reach.md
     - name: ExpressRoute の暗号化について
       href: expressroute-about-encryption.md
-    - name: セキュリティ コントロール
-      href: expressroute-security-controls.md
+    - name: Security
+      items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
+        - name: セキュリティ属性
+          href: expressroute-security-controls.md
     - name: 仮想ネットワーク ゲートウェイについて
       href: expressroute-about-virtual-network-gateways.md
     - name: Azure をパブリック クラウドに接続する
@@ -210,7 +214,7 @@
 - name: リファレンス
   items:
     - name: Azure PowerShell
-      href: '/powershell/module/az.network#expressroute'
+      href: /powershell/module/az.network#expressroute
     - name: Azure CLI
       href: /cli/azure/network/express-route
     - name: REST

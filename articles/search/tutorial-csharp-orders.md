@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/10/2020
-ms.openlocfilehash: 699b3e5b7e51e12ec0bf39ec0c9045dd3a27a6fd
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 06/20/2020
+ms.openlocfilehash: 552f974b99b9430d82596a5a25265bb916cb4e25
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780608"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262193"
 ---
 # <a name="tutorial-order-search-results-using-the-net-sdk"></a>チュートリアル:.NET SDK を使用して検索結果を並べ替える
 
