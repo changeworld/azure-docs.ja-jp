@@ -123,6 +123,8 @@
     - name: Azure での SAP NetWeaver の計画と実装
       href: planning-guide.md
       items:
+        - name: SAP ワークロードの Azure Storage の種類
+          href: planning-guide-storage.md
         - name: Azure 仮想マシンの SAP ワークロードでサポートされるシナリオ
           href: sap-planning-supported-configurations.md
         - name: Azure デプロイでサポートされている SAP ソフトウェア
@@ -230,7 +232,7 @@
             - name: A(SCS) インスタンス用の Pacemaker マルチ SID を使用した RHEL
               href: high-availability-guide-rhel-multi-sid.md
     - name: SAP のディザスター リカバリーのための Azure Site Recovery
-      href: '../../../site-recovery/site-recovery-workload.md#protect-sap'
+      href: ../../../site-recovery/site-recovery-workload.md#protect-sap
     - name: SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ
       href: sap-proximity-placement-scenarios.md
 - name: AAD SAP ID 統合およびシングル サインオン

@@ -59,6 +59,8 @@
           href: automation-config-aws-account.md
         - name: Azure AD による認証を構成する
           href: automation-use-azure-ad.md
+        - name: Automation によって使用される DNS レコードを管理する
+          href: how-to/automation-region-dns-records.md
         - name: Automation 実行アカウントを管理する
           href: manage-runas-account.md
         - name: ロールのアクセス許可とセキュリティの管理
@@ -282,7 +284,7 @@
         - name: Event Grid および Microsoft Teams と統合する
           href: ../event-grid/ensure-tags-exists-on-new-virtual-machines.md
         - name: Azure-SSIS IR の開始/停止の自動化
-          href: '../data-factory/how-to-schedule-azure-ssis-integration-runtime.md#create-and-schedule-azure-automation-runbook-that-startsstops-azure-ssis-ir'
+          href: ../data-factory/how-to-schedule-azure-ssis-integration-runtime.md#create-and-schedule-azure-automation-runbook-that-startsstops-azure-ssis-ir
 - name: リファレンス
   items:
     - name: Azure PowerShell Az
