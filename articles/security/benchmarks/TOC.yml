@@ -37,6 +37,8 @@
       href: ../../api-management/security-baseline.md
     - name: Application Gateway のセキュリティ ベースライン
       href: ../../application-gateway/security-baseline.md
+    - name: Automation のセキュリティ ベースライン
+      href: ../../automation/security-baseline.md
     - name: Azure Cache for Redis のセキュリティ ベースライン
       href: ../../azure-cache-for-redis/security-baseline.md
     - name: Backup のセキュリティ ベースライン
@@ -51,24 +53,32 @@
       href: ../../cosmos-db/security-baseline.md
     - name: カスタマー ロックボックスのセキュリティ ベースライン
       href: ../fundamentals/customer-lockbox-security-baseline.md
+    - name: Databox のセキュリティ ベースライン
+      href: ../../databox/security-baseline.md
     - name: データ エクスプローラーのセキュリティ ベースライン
       href: /azure/data-explorer/security-baseline
     - name: Data Factory のセキュリティ ベースライン
-      href: /azure/data-factory/security-baseline
+      href: ../../data-factory/security-baseline.md
     - name: Databricks のセキュリティ ベースライン
       href: ../../azure-databricks/security-baseline.md
     - name: Event Hubs のセキュリティ ベースライン
       href: ../../event-hubs/security-baseline.md
+    - name: ExpressRoute のセキュリティ ベースライン
+      href: ../../expressroute/security-baseline.md
     - name: Functions のセキュリティ ベースライン
       href: ../../azure-functions/security-baseline.md
     - name: HDInsight のセキュリティ ベースライン
       href: ../../hdinsight/security-baseline.md
     - name: Key Vault のセキュリティ ベースライン
       href: ../../key-vault/security-baseline.md
+    - name: Logic Apps のセキュリティ ベースライン
+      href: ../../logic-apps/security-baseline.md
     - name: MariaDB のセキュリティ ベースライン
       href: ../../mariadb/security-baseline.md
     - name: MySQL のセキュリティ ベースライン
       href: ../../mysql/security-baseline.md
+    - name: Network Watcher のセキュリティベースライン
+      href: ../../network-watcher/security-baseline.md
     - name: PostgreSQL のセキュリティ ベースライン
       href: ../../postgresql/security-baseline.md
     - name: SQL Database のセキュリティ ベースライン
