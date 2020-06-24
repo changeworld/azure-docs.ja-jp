@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/05/2020
-ms.openlocfilehash: 85ac56eb20eabf308d6686a047d8c5ede914fed9
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: ef1f0c607eb1d0152a5dd5f5acc812bb9364e47a
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82941759"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85079218"
 ---
 # <a name="tutorial-optimize-indexing-with-the-push-api"></a>チュートリアル:プッシュ API を使用してインデックス作成を最適化する
 
@@ -21,7 +21,7 @@ Azure Cognitive Search は、検索インデックスにデータをインポー
 
 このチュートリアルでは、[プッシュ モデル](search-what-is-data-import.md#pushing-data-to-an-index)を使用して効率的にデータのインデックスを作成する方法について説明します。その際、要求はバッチで処理し、エクスポネンシャル バックオフの再試行戦略を使用しています。 [アプリケーションをダウンロードして実行](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/optimize-data-indexing)することができます。 この記事では、アプリケーションの主な特徴と、データのインデックスを作成する際に考慮すべき事柄について説明します。
 
-このチュートリアルでは、C# と [.NET SDK](https://aka.ms/search-sdk) を使用して次のタスクを実行します。
+このチュートリアルでは、C# と [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) を使用して次のタスクを実行します。
 
 > [!div class="checklist"]
 > * インデックスを作成する
