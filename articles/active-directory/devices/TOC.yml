@@ -35,6 +35,8 @@
 - name: 操作方法ガイド
   expanded: false
   items:
+    - Name: Azure AD デバイスのデプロイを計画する
+      href: plan-device-deployment.md
     - name: Azure AD Join の実装を計画する
       href: azureadjoin-plan.md
     - name: Azure AD 参加済みデバイスにローカル管理者を割り当てる
