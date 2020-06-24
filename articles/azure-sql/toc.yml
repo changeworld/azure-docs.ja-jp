@@ -664,12 +664,15 @@
     - name: クイックスタート
       href: managed-instance/quickstart-content-reference-guide.md
       items:
-        - name: 作成
+        - name: SQL マネージド インスタンスの作成
           items:
-            - name: Azure Portal の使用
+            - name: Azure portal
               href: managed-instance/instance-create-quickstart.md
-            - name: PowerShell の使用
+            - name: PowerShell
               href: managed-instance/scripts/create-configure-managed-instance-powershell.md
+            - name: ARM テンプレート
+              displayName: Resource Manager
+              href: managed-instance/create-template-quickstart.md
             - name: インスタンス プールの作成
               href: managed-instance/instance-pools-configure.md
         - name: 構成

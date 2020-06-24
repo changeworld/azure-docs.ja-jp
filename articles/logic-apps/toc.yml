@@ -44,6 +44,10 @@
       href: connect-virtual-network-vnet-isolated-environment-overview.md
     - name: 事業継続とディザスター リカバリー
       href: business-continuity-disaster-recovery-guidance.md
+    - name: Security
+      items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
 - name: 操作方法ガイド
   items:
     - name: 開発
