@@ -46,8 +46,12 @@
                   href: data-box-system-requirements-rest.md
             - name: 制限を理解する
               href: data-box-limits.md
-            - name: セキュリティを確認する
-              href: data-box-security.md
+            - name: Security
+              items:
+                - name: セキュリティ ベースライン
+                  href: security-baseline.md
+                - name: セキュリティを確認する
+                  href: data-box-security.md
             - name: よく寄せられる質問
               href: data-box-faq.md
         - name: 方法
