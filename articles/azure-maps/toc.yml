@@ -244,7 +244,7 @@
           href: schema-stateset-stylesobject.md
         - name: 車両消費モデル
           href: consumption-model.md
-        - name: GeoJSON 形式の拡張
+        - name: 拡張された GeoJSON 形式
           href: extend-geojson.md
         - name: ジオフェンスの GeoJSON 形式
           href: geofence-geojson.md

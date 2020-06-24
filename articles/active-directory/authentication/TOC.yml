@@ -36,6 +36,8 @@
       items:
         - name: MFA のしくみ
           href: concept-mfa-howitworks.md
+        - name: プロンプトとセッションの有効期間
+          href: concepts-azure-multi-factor-authentication-prompts-session-lifetime.md
         - name: データの保存場所
           href: concept-mfa-data-residency.md
         - name: ライセンス
