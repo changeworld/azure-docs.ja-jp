@@ -48,6 +48,10 @@
           href: tutorial-assess-physical.md
         - name: 物理サーバーを移行する
           href: tutorial-migrate-physical-virtual-machines.md
+    - name: AWS の VM を評価して移行する
+      items:
+        - name: アマゾン ウェブ サービス (AWS) の VM を見つけて評価し、Azure に移行する
+          href: tutorial-migrate-aws-virtual-machines.md
     - name: 移行の対象となるインポートされたサーバーを評価する
       items:
         - name: 移行の対象となるインポートされたサーバーを評価する
