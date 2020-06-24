@@ -16,6 +16,8 @@
       href: tutorial-access-private-cloud.md
     - name: 5 - プライベート クラウドのスケーリング
       href: tutorial-scale-private-cloud.md
+    - name: 6 - コンテンツ ライブラリを作成して VM をデプロイする
+      href: tutorial-deploy-vm-content-library.md
 - name: 概念
   items:
     - name: プライベート クラウドとクラスター
@@ -28,6 +30,8 @@
       href: concepts-identity.md
     - name: プライベート クラウドのアップグレード
       href: concepts-upgrades.md
+    - name: AVS VM の API Management
+      href: concepts-api-management.md
 - name: 操作方法ガイド
   items:
     - name: HCX の設定

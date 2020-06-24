@@ -69,6 +69,8 @@
         - name: 修復できるポリシーをデプロイする
           displayName: 'deployIfNotExists, modify, managed identities, managed identity'
           href: ./how-to/deploy-policy-remediation.md
+    - name: Azure Sentinel の統合
+      href: ./how-to/manage-sentinel-workspaces.md
     - name: 顧客のアクション
       items:
         - name: サービス プロバイダーを表示し、管理する
