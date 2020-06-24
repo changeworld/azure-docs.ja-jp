@@ -91,6 +91,8 @@
           href: troubleshoot-reboot-loop.md
         - name: Windows Update でのスタック
           href: troubleshoot-stuck-updating-boot-error.md
+        - name: 予期しない再起動またはエラー
+          href: troubleshoot-unexpected-restart-error-during-vm-boot.md
         - name: VM の起動が停止しています
           href: troubleshoot-vm-boot-configure-update.md
         - name: Windows ブート マネージャーが原因で VM を起動できない
