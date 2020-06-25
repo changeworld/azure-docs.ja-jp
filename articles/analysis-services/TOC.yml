@@ -30,9 +30,9 @@
     - name: サービス プリンシパルによる自動化
       href: analysis-services-service-principal.md
     - name: クライアント ライブラリ
-      href: analysis-services-data-providers.md
+      href: 'https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current'
     - name: 互換性レベル
-      href: 'https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services'
+      href: 'https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services?view=azure-analysis-services-current'
     - name: オンプレミス データ ソースへの接続
       href: analysis-services-gateway.md
     - name: サーバーへの接続
