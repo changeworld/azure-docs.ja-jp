@@ -152,7 +152,7 @@ ContentKeyIdentifierClaim は ContentKeyPolicy で使用されます。つまり
 
 ## <a name="build-a-streaming-url"></a>ストリーミング URL を作成する
 
-[StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) が作成されたので、ストリーミング URL を取得できます。 URL を作成するには、[StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) のホスト名と**ストリーミング ロケーター**のパスを連結する必要があります。 このサンプルでは、*既定の***ストリーミング エンドポイント**を使っています。 最初に Media Service アカウントを作成したとき、この*既定の***ストリーミング エンドポイント**は停止状態になっているので、**Start** を呼び出す必要があります。
+[StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) が作成されたので、ストリーミング URL を取得できます。 URL を作成するには、[StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) のホスト名と**ストリーミング ロケーター**のパスを連結する必要があります。 このサンプルでは、*既定の* **ストリーミング エンドポイント**を使っています。 最初に Media Service アカウントを作成したとき、この*既定の* **ストリーミング エンドポイント**は停止状態になっているので、**Start** を呼び出す必要があります。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#GetMPEGStreamingUrl)]
 
