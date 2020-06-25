@@ -30,9 +30,9 @@ Azure Front Door プロファイルを作成するには、「[クイック ス�
 
 ### <a name="create-a-waf-policy"></a>WAF ポリシーを作成する
 
-1. Azure portal で、 **[Create a resource]/(リソースの作成/)** を選択し、検索ボックスに「**Web application firewall**」と入力して、 **[Web Application Firewall (WAF)]/(Web アプリケーション ファイアウォール (WAF)/)** を選択します。
+1. Azure portal で、 **[Create a resource]\(リソースの作成\)** を選択し、検索ボックスに「**Web application firewall**」と入力して、 **[Web Application Firewall (WAF)]\(Web アプリケーション ファイアウォール (WAF)\)** を選択します。
 2. **［作成］** を選択します
-3. **[Create a WAF policy]/(WAF ポリシーの作成/)** ページで、次の値を使用して **[基本]** タブを完成させます。
+3. **[Create a WAF policy]\(WAF ポリシーの作成\)** ページで、次の値を使用して **[基本]** タブを完成させます。
    
    |設定  |値  |
    |---------|---------|
@@ -42,11 +42,11 @@ Azure Front Door プロファイルを作成するには、「[クイック ス�
    |ポリシー名     |ポリシーの名前を入力します|
    |ポリシーの状態     |Enabled|
 
-   **[Next: Policy settings]/(次へ: ポリシー設定/)** を選択します
+   **[Next: Policy settings]\(次へ: ポリシー設定\)** を選択します
 
 1. **[ポリシー設定]** タブで、 **[防止]** を選択します。 **ブロックの応答本文**には、「*You've been blocked!* 」と入力します そうすると、カスタム ルールが有効になっていることを確認できます。
-2. **[Next: Managed rules]/(次へ: マネージド ルール/)** を選択します。
-3. **[Next: Custom rules]/(次へ: カスタム ルール/)** を選択します。
+2. **[Next: Managed rules]\(次へ: マネージド ルール\)** を選択します。
+3. **[Next: Custom rules]\(次へ: カスタム ルール\)** を選択します。
 4. **[カスタム ルールの追加]** を選択します。
 5. **[カスタム ルールの追加]** ページで、次のテスト値を使用してカスタム ルールを作成します。
 
@@ -65,8 +65,8 @@ Azure Front Door プロファイルを作成するには、「[クイック ス�
    :::image type="content" source="../media/waf-front-door-configure-ip-restriction/custom-rule.png" alt-text="カスタム規則":::
 
    **[追加]** を選択します。
-6. **[Next: Association]/(次へ: 関連付け/)** を選択します。
-7. **[Add frontend host]/(フロントエンド ホストの追加/)** を選択します。
+6. **[Next: Association]\(次へ: 関連付け\)** を選択します。
+7. **[Add frontend host]\(フロントエンド ホストの追加\)** を選択します。
 8. **[フロントエンド ホスト]** では、フロントエンド ホストを選択し、 **[追加]** を選択します。
 9. **[Review + create]\(レビュー + 作成\)** を選択します。
 10. ポリシー検証に合格した後、 **[作成]** を選択します。
