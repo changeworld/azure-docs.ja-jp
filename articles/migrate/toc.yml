@@ -58,6 +58,8 @@
           href: tutorial-assess-import.md
 - name: 概念
   items:
+    - name: Azure Migrate を使用した移行計画の作成
+      href: concepts-migration-planning.md
     - name: サポート マトリックス
       items:
         - name: 一般的なサポート

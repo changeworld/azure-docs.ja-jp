@@ -41,6 +41,10 @@
       href: automation-runbook-types.md
     - name: PowerShell DSC
       href: /powershell/scripting/dsc/overview/overview
+    - name: Security
+      items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
     - name: データのセキュリティ
       items:
         - name: セキュリティで保護された資産の暗号化
@@ -63,6 +67,8 @@
           href: how-to/automation-region-dns-records.md
         - name: Automation 実行アカウントを管理する
           href: manage-runas-account.md
+        - name: Automation アカウントに非公開で接続する
+          href: how-to/private-link-security.md
         - name: ロールのアクセス許可とセキュリティの管理
           href: automation-role-based-access-control.md
         - name: Automation アカウントを別のサブスクリプションに移動する
