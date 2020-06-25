@@ -17,9 +17,11 @@ ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/27/2020
 ms.locfileid: "84038353"
+ms.custom: fasttrack-edit
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads"></a>読み取り専用レプリカを使用して読み取り専用クエリ ワークロードを負荷分散する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+[!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
