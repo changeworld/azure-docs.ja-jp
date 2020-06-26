@@ -121,6 +121,8 @@
       href: troubleshoot-sign-in-issue.md
     - name: エンタープライズ コスト ビューが無効になっている
       href: enterprise-mgmt-grp-troubleshoot-cost-view.md
+    - name: 課金アカウントが見つかりません
+      href: troubleshoot-account-not-found.md
     - name: サポートにお問い合せください
       href: ../../azure-portal/supportability/how-to-create-azure-support-request.md
 - name: サンプル

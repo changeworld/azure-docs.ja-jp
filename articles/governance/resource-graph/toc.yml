@@ -4,7 +4,7 @@
   items:
     - name: Azure Resource Graph とは
       displayName: 'Resource Manager, query language, rbac, permissions'
-      href: overview.md
+      href: ./overview.md
 - name: クイックスタート
   expanded: true
   items:
@@ -20,6 +20,9 @@
     - name: 最初のクエリを実行する - Go
       displayName: 'package, sdk, golang'
       href: ./first-query-go.md
+    - name: 最初のクエリを実行する - JavaScript
+      displayName: 'library, node, arm-resourcegraph'
+      href: ./first-query-javascript.md
     - name: 最初のクエリを実行する - Python
       displayName: 'library, azure-mgmt, cli'
       href: ./first-query-python.md
@@ -77,7 +80,7 @@
       href: /java/api/overview/azure/resourcegraph/management?view=azure-java-stable
     - name: Azure SDK for Java (Maven)
       href: 'https://search.maven.org/artifact/com.microsoft.azure.resourcegraph.v2019_04_01/azure-mgmt-resourcegraph/1.0.0-beta/jar'
-    - name: Azure SDK For Node
+    - name: Azure SDK for JavaScript
       href: /javascript/api/@azure/arm-resourcegraph
     - name: Azure SDK for Python
       href: /python/api/azure-mgmt-resourcegraph/azure.mgmt.resourcegraph

@@ -132,6 +132,8 @@
           href: upgrade-cluster.md
         - name: アップタイム SLA を使用する
           href: uptime-sla.md
+        - name: 近接配置グループの使用 (プレビュー)
+          href: reduce-latency-ppg.md
         - name: ノード イメージのアップグレード (プレビュー)
           href: node-image-upgrade.md
         - name: ノードの OS の更新プログラムの処理

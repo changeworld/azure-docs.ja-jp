@@ -581,6 +581,9 @@
         - name: 入門用ノートブック
           href: /azure/databricks/delta/intro-notebooks
           maintainContext: true
+        - name: Delta Lake へのデータの取り込み
+          href: /azure/databricks/delta/delta-ingest
+          maintainContext: true
         - name: テーブルのバッチ読み取りと書き込み
           href: /azure/databricks/delta/delta-batch
           maintainContext: true
@@ -593,68 +596,65 @@
         - name: テーブル ユーティリティ コマンド
           href: /azure/databricks/delta/delta-utility
           maintainContext: true
-        - name: Delta Lake API リファレンス
+        - name: API リファレンス
           href: /azure/databricks/delta/delta-apidoc
           maintainContext: true
         - name: コンカレンシー制御
           href: /azure/databricks/delta/concurrency-control
           maintainContext: true
-        - name: 最適化
-          items:
-            - name: 最適化の概要
-              href: /azure/databricks/delta/optimizations/index
-              maintainContext: true
-            - name: ファイル管理を使用してパフォーマンスを最適化する
-              href: /azure/databricks/delta/optimizations/file-mgmt
-              maintainContext: true
-            - name: 自動最適化
-              href: /azure/databricks/delta/optimizations/auto-optimize
-              maintainContext: true
-            - name: キャッシュを使用してパフォーマンスを最適化する
-              href: /azure/databricks/delta/optimizations/delta-cache
-              maintainContext: true
-            - name: 分離レベル
-              href: /azure/databricks/delta/optimizations/isolation-level
-              maintainContext: true
-            - name: MySQL テーブルを Delta Lake テーブルにレプリケートする
-              href: /azure/databricks/delta/optimizations/mysql-delta
-              maintainContext: true
-            - name: 結合のパフォーマンスを最適化する
-              items:
-                - name: 結合のパフォーマンスの最適化の概要
-                  href: /azure/databricks/delta/join-performance/index
-                  maintainContext: true
-                - name: 範囲の結合の最適化
-                  href: /azure/databricks/delta/join-performance/range-join
-                  maintainContext: true
-                - name: スキューの結合の最適化
-                  href: /azure/databricks/delta/join-performance/skew-join
-                  maintainContext: true
-            - name: 最適化されたデータ変換
-              items:
-                - name: 最適化されたデータ変換の概要
-                  href: /azure/databricks/delta/data-transformation/index
-                  maintainContext: true
-                - name: 高階関数
-                  href: /azure/databricks/delta/data-transformation/higher-order-lambda-functions
-                  maintainContext: true
-                - name: 複合データ型を変換する
-                  href: /azure/databricks/delta/data-transformation/complex-types
-                  maintainContext: true
-            - name: ベスト プラクティス
-              href: /azure/databricks/delta/best-practices
-              maintainContext: true
-            - name: テーブルのバージョン管理
-              href: /azure/databricks/delta/optimizations/versioning
-              maintainContext: true
-            - name: 最適化の例
-              href: /azure/databricks/delta/optimizations/optimization-examples
-              maintainContext: true
+        - name: ベスト プラクティス
+          href: /azure/databricks/delta/best-practices
+          maintainContext: true
         - name: よく寄せられる質問
           href: /azure/databricks/delta/delta-faq
           maintainContext: true
-        - name: Delta のその他のリソース
+        - name: リソース
           href: /azure/databricks/delta/delta-resources
+          maintainContext: true
+    - name: Delta Engine
+      items:
+        - name: Delta Engine の概要
+          href: /azure/databricks/delta/optimizations/index
+          maintainContext: true
+        - name: ファイル管理を使用してパフォーマンスを最適化する
+          href: /azure/databricks/delta/optimizations/file-mgmt
+          maintainContext: true
+        - name: 自動最適化
+          href: /azure/databricks/delta/optimizations/auto-optimize
+          maintainContext: true
+        - name: キャッシュを使用してパフォーマンスを最適化する
+          href: /azure/databricks/delta/optimizations/delta-cache
+          maintainContext: true
+        - name: 分離レベル
+          href: /azure/databricks/delta/optimizations/isolation-level
+          maintainContext: true
+        - name: 結合のパフォーマンスを最適化する
+          items:
+            - name: 結合のパフォーマンスの最適化の概要
+              href: /azure/databricks/delta/join-performance/index
+              maintainContext: true
+            - name: 範囲の結合の最適化
+              href: /azure/databricks/delta/join-performance/range-join
+              maintainContext: true
+            - name: スキューの結合の最適化
+              href: /azure/databricks/delta/join-performance/skew-join
+              maintainContext: true
+        - name: 最適化されたデータ変換
+          items:
+            - name: 最適化されたデータ変換の概要
+              href: /azure/databricks/delta/data-transformation/index
+              maintainContext: true
+            - name: 高階関数
+              href: /azure/databricks/delta/data-transformation/higher-order-lambda-functions
+              maintainContext: true
+            - name: 複合データ型を変換する
+              href: /azure/databricks/delta/data-transformation/complex-types
+              maintainContext: true
+        - name: テーブルのバージョン管理
+          href: /azure/databricks/delta/optimizations/versioning
+          maintainContext: true
+        - name: 最適化の例
+          href: /azure/databricks/delta/optimizations/optimization-examples
           maintainContext: true
     - name: DataFrames と Datasets
       items:
@@ -1899,7 +1899,7 @@
                 - name: Databricks Runtime 7.0
                   href: /azure/databricks/release-notes/runtime/7.0
                   maintainContext: true
-                - name: Databricks Runtime 7.0 ML (ベータ版)
+                - name: Databricks Runtime 7.0 ML
                   href: /azure/databricks/release-notes/runtime/7.0ml
                   maintainContext: true
                 - name: Databricks Runtime 7.0 Genomics

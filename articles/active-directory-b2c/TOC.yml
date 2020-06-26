@@ -325,6 +325,8 @@
                     - name: Azure Multi-Factor Authentication
                       href: multi-factor-auth-technical-profile.md
                       displayName: mfa
+                    - name: Azure AD SSPR
+                      href: aad-sspr-technical-profile.md
                     - name: 要求の変換
                       href: claims-transformation-technical-profile.md
                     - name: JWT トークン発行者

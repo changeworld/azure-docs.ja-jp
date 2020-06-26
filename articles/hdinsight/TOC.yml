@@ -167,6 +167,8 @@
                   href: ./optimize-hive-ambari.md
                 - name: Apache Pig の最適化
                   href: ./optimize-pig-ambari.md
+            - name: クラスタ ノードの再起動
+              href: ./cluster-reboot-vm.md
             - name: Apache Ambari REST API の使用
               href: ./hdinsight-hadoop-manage-ambari-rest-api.md
             - name: クラスターの削除
@@ -410,7 +412,7 @@
               items:
                 - name: Data Lake Storage の使用
                   href: ./spark/apache-spark-use-with-data-lake-store.md
-                - name: Azure SQL データベースに接続する
+                - name: Azure SQL Database に接続する
                   href: ./spark/apache-spark-connect-to-sql-database.md
                 - name: Apache Spark と Cosmos DB を使用してラムダ アーキテクチャを実装する
                   href: ../cosmos-db/lambda-architecture.md

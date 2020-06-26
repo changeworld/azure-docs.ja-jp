@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: アプリケーション管理のドキュメント
-summary: Azure Active Directory では、クラウドとオンプレミス アプリケーションに安全かつシームレスなアクセスを提供します。 さらに、パスワードを管理する必要がありません。 エンドユーザーは、1 回サインインするだけで、Office 365 や数千もの他のアプリケーションにアクセスできます。 クイックスタート、チュートリアル、およびガイダンスを使用してアプリケーションを管理、デプロイする方法について説明します。
+summary: Azure Active Directory では、クラウドとオンプレミス アプリケーションに安全かつシームレスなアクセスを提供します。 さらに、パスワードを管理する必要がありません。 エンドユーザーは、1 回サインインするだけで、Microsoft 365 やその他多数のアプリケーションにアクセスできます。 クイックスタート、チュートリアル、およびガイダンスを使用してアプリケーションを管理、デプロイする方法について説明します。
 metadata:
   title: アプリケーション管理のドキュメント
-  description: Azure Active Directory では、クラウドとオンプレミス アプリケーションに安全かつシームレスなアクセスを提供します。 さらに、パスワードを管理する必要がありません。 エンドユーザーは、1 回サインインするだけで、Office 365 や数千もの他のアプリケーションにアクセスできます。 クイックスタート、チュートリアル、およびガイダンスを使用してアプリケーションを管理、デプロイする方法について説明します。
+  description: Azure Active Directory では、クラウドとオンプレミス アプリケーションに安全かつシームレスなアクセスを提供します。 さらに、パスワードを管理する必要がありません。 エンドユーザーは、1 回サインインするだけで、Microsoft 365 やその他多数のアプリケーションにアクセスできます。 クイックスタート、チュートリアル、およびガイダンスを使用してアプリケーションを管理、デプロイする方法について説明します。
   ms.service: active-directory
   ms.subservice: app-mgmt
   ms.workload: identity
@@ -12,12 +12,12 @@ metadata:
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: 3bea7dda1cf44548ea924ffa84fb922410242f27
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: ed81c8d5eda3a9db84d85d79b10c0a5ab76705a4
+  ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "77063474"
+  ms.lasthandoff: 06/24/2020
+  ms.locfileid: "85339207"
 landingContent:
 - title: アプリケーション管理について
   linkLists:
