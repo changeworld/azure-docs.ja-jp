@@ -4,12 +4,12 @@ description: この記事では、Azure Migrate を使用して、物理マシ�
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: MVC
-ms.openlocfilehash: 1824fc6c7cbc0fd0390770027f4a15d9130139de
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 38f1c67bdd3b280640e9be54fd677e2b403eb78b
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535385"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771395"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>マシンを物理サーバーとして Azure に移行する
 
@@ -45,9 +45,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 このチュートリアルを始める前に、次の準備が必要です。
 
 移行のアーキテクチャを[確認](migrate-architecture.md)します。
-
-
-
 
 ## <a name="prepare-azure"></a>Azure を準備する
 
@@ -93,7 +90,9 @@ Azure 仮想ネットワーク (VNet) を[設定](../virtual-network/manage-virt
 
 1. 物理サーバーの要件を[確認](migrate-support-matrix-physical-migration.md#physical-server-requirements)します。
 2. Azure にレプリケートするオンプレミスのマシンが、[Azure VM の要件](migrate-support-matrix-physical-migration.md#azure-vm-requirements)に準拠していることを確認します。
-
+3. VM を Azure に移行する前に、いくつかの変更を行う必要があります。
+    - 一部のオペレーティング システムでは、これらの変更が Azure Migrate によって自動的に行われます。 
+    - 移行を開始する前にこれらの変更を行うことが重要です。 変更を行う前に VM を移行すると、Azure で VM が起動しない可能性があります。 [Windows](prepare-for-migration.md#windows-machines) と [Linux](prepare-for-migration.md#linux-machines) で必要な変更を確認してください。
 
 ### <a name="prepare-a-machine-for-the-replication-appliance"></a>レプリケーション アプライアンス用のマシンの準備
 

@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 252b3b3ecf2de24410d046473ee2cfd2215254a9
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: ff4a2b9cb66013900b5b9969a4281d1a20d9c122
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198220"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736443"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用した仮想マシン スケール セットの作成および管理
 仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 仮想マシン スケール セットのライフサイクルを通して、1 つ以上の管理タスクを実行することが必要になる場合があります。 このチュートリアルで学習する内容は次のとおりです。
@@ -166,6 +166,9 @@ CentOS   OpenLogic   7.3   OpenLogic:CentOS:7.3:7.3.20170925   7.3.20170925
 ```
 
 特定のイメージを使用するスケール セットをデプロイするには、*Urn* 列の値を使用します。 イメージを指定するときにイメージのバージョン番号を *latest* で置き換えることもできます。このようにすると、ディストリビューションの最新バージョンが選択されます。 次の例では、`--image` 引数を使用して、CentOS 7.3 イメージの最新バージョンを指定しています。
+
+> [!IMPORTANT]
+> "*最新*" のイメージ バージョンを使用することをお勧めします。 デプロイ時に使用可能な最新バージョンのイメージを使用するには、'latest' を指定します。 'latest' を使用する場合でも、デプロイ後に新しいバージョンが使用可能になったとしても、VM イメージが自動的に更新されないことに注意してください。
 
 すべてのスケール セット リソースと VM インスタンスを作成して構成するには数分かかるため、次のスケール セットをデプロイする必要はありません。
 

@@ -7,19 +7,23 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 05/19/2020
-ms.openlocfilehash: f8ddc3ef56aefc6ea613af19d91cd0122435efd7
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.date: 06/08/2020
+ms.openlocfilehash: 97defe2af5b82cccbaf289ccbd805b608b978a43
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344205"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736086"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Cognitive Search の新機能
 
 サービス内の新機能について説明します。 このページをブックマークして、常にサービスの最新情報を確認してください。
 
 ## <a name="feature-announcements"></a>機能のお知らせ
+
+### <a name="june-2020"></a>2020 年 6 月
+
+Azure Machine Learning スキルは、Azure Machine Learning からの推論エンドポイントを統合するための新しいスキルの種類です。 ポータル エクスペリエンスでは、Cognitive Search スキルセット内の Azure Machine Learning エンドポイントの検出と統合がサポートされています。 検出には、Cognitive Search および Azure ML のサービスが同じサブスクリプションにデプロイされている必要があります。 AML スキル プレビューにサインアップするには、[こちらのフォームに入力してください](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0jK7x7HQYdDm__YfEsbtcZUMTFGTFVTOE5XMkVUMFlDVFBTTlYzSlpLTi4u)。 [このチュートリアル](cognitive-search-tutorial-aml-custom-skill.md)で作業を開始します。
 
 ### <a name="may-2020-microsoft-build"></a>2020 年 5 月 (Microsoft Build)
 

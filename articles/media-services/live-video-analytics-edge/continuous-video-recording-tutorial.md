@@ -1,78 +1,86 @@
 ---
-title: クラウドへの継続的なビデオ記録とクラウドからの再生に関するチュートリアル - Azure
-description: このチュートリアルでは、Live Video Analytics on IoT Edge を使用して、クラウドにビデオを継続的に記録し、Azure Media Services を使用してそのビデオの任意の部分をストリーム配信する方法について説明します。
+title: クラウドでの継続的なビデオ記録と再生に関するチュートリアル - Azure
+description: このチュートリアルでは、Azure Live Video Analytics on Azure IoT Edge を使用して、クラウドにビデオを継続的に記録し、Azure Media Services を使用してそのビデオの任意の部分をストリーム配信する方法について説明します。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: a69d3f5db9dd8cbe25bbf79f44921f26258005cc
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 95182478b75d506526cce28c0d5e446d71140eac
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259989"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84765065"
 ---
-# <a name="tutorial-continuous-video-recording-to-cloud-and-playback-from-cloud"></a>チュートリアル:クラウドへの継続的なビデオ記録とクラウドからの再生  
+# <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>チュートリアル:クラウドでの継続的なビデオ記録と再生
 
-このチュートリアルでは、Live Video Analytics on IoT Edge を使用して、クラウドへの[継続的なビデオ記録](continuous-video-recording-concept.md) (CVR) を実行し、Media Services を使用してそのビデオの任意の部分をストリーム配信する方法について説明します。 これは、安全性やコンプライアンスなどのシナリオで、数日間 (または数週間) にわたってカメラから撮影した映像のアーカイブを保持する必要がある場合に便利です。
+このチュートリアルでは、Azure Live Video Analytics on Azure IoT Edge を使用して、クラウドへの[継続的なビデオ記録](continuous-video-recording-concept.md) (CVR) を実行し、Azure Media Services を使用してそのビデオの任意の部分をストリーム配信する方法について説明します。 この機能は、安全性やコンプライアンスなどのシナリオで、カメラから撮影した映像のアーカイブを数日または数週間保持する必要がある場合に便利です。 
+
+このチュートリアルでは、次のことについて説明します。
 
 > [!div class="checklist"]
-> * 関連リソースを設定する
-> * CVR を実行するコードを確認する
-> * サンプル コードを実行します。
-> * 結果を確認し、ビデオを表示する
+> * 関連リソースを設定する。
+> * CVR を実行するコードを確認する。
+> * サンプル コードを実行する。
+> * 結果を確認し、ビデオを表示する。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="suggested-pre-reading"></a>先に読んでおくことが推奨される記事  
+## <a name="suggested-pre-reading"></a>推奨される事前読み取り  
 
-次のドキュメントのページに目を通すことをお勧めします
+始める前に、以下の記事をお読みください。
 
-* [Live Video Analytics on IoT Edge の概要](overview.md)
+* [IoT Edge の Live Video Analytics (プレビュー)](overview.md)
 * [Live Video Analytics on IoT Edge の用語](terminology.md)
 * [メディア グラフの概念](media-graph-concept.md) 
 * [継続的なビデオ記録のシナリオ](continuous-video-recording-concept.md)
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルの前提条件は次のとおりです
+このチュートリアルの前提条件は次のとおりです。
 
-* [Visual Studio Code](https://code.visualstudio.com/)。[Azure IoT Tools 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)および [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) 拡張機能と共に開発マシンにインストールされている必要があります。
+* [Visual Studio Code](https://code.visualstudio.com/)。[Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) および [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) 拡張機能と共に開発用マシンにインストールされている必要があります。
 
     > [!TIP]
-    > Docker のインストールを求められる場合があります。 このメッセージは無視してかまいません。
+    > Docker のインストールを求められる場合があります。 このメッセージは無視してください。
 * 開発マシンにインストールされた [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/thank-you/sdk-3.1.201-windows-x64-installer)。
-* [Live Video Analytics リソース設定スクリプト](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)の完了
+* [Live Video Analytics リソース設定スクリプト](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)の完了。
 
-上記の手順の最後に、次のような特定の Azure リソースが Azure サブスクリプション内にデプロイされます。
+これらの手順を完了すると、以下の関連する Azure リソースが Azure サブスクリプションにデプロイされます。
 
-* IoT Hub
-* ストレージ アカウント
+* Azure IoT Hub
+* Azure ストレージ アカウント
 * Azure Media Services アカウント
 * Azure 上の Linux VM ([IoT Edge ランタイム](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)がインストール済み)
 
 ## <a name="concepts"></a>概念
 
-[こちら](media-graph-concept.md)で説明されているように、メディア グラフを使用すると、メディアのキャプチャ元、処理方法、および結果の配信先を定義できます。 CVR を実現するには、RTSP 対応カメラからビデオをキャプチャし、それを [Azure Media Services 資産](terminology.md#asset)に継続的に記録する必要があります。 そのメディア グラフをグラフィカルに表したものが次の図です。
+[メディア グラフの概念](media-graph-concept.md)に関するページで説明されているように、メディア グラフでは次のことを定義できます。
+
+- メディアのキャプチャ元。
+- それが処理される方法。
+- 結果の配信先。 
+ 
+ CVR を実現するには、RTSP 対応カメラからビデオをキャプチャし、それを [Azure Media Services 資産](terminology.md#asset)に継続的に記録する必要があります。 次の図は、そのメディア グラフをグラフィカルに表したものです。
 
 ![メディア グラフ](./media/continuous-video-recording-tutorial/continuous-video-recording-overview.png)
 
-このチュートリアルでは、[Live555 Media Server](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) を使用して構築された 1 つの Edge モジュールを使用して、RTSP カメラをシミュレートします。 メディア グラフ内で [RTSP ソース](media-graph-concept.md#rtsp-source) ノードを使用してライブ フィードを取得し、そのビデオを[資産シンク ノード](media-graph-concept.md#asset-sink)に送信します。これにより、ビデオが資産に記録されます。
+このチュートリアルでは、[Live555 Media Server](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) を使用して構築された 1 つのエッジ モジュールを使用して、RTSP カメラをシミュレートします。 メディア グラフ内で [RTSP ソース](media-graph-concept.md#rtsp-source) ノードを使用してライブ フィードを取得し、そのビデオを[資産シンク ノード](media-graph-concept.md#asset-sink)に送信します。これにより、ビデオが資産に記録されます。
 
 ## <a name="set-up-your-development-environment"></a>開発環境を設定する
 
-開始する前に、[前提条件](#prerequisites)の 3 番目の条件が完了していることを確認してください。 リソース設定スクリプトが完了したら、中かっこをクリックしてフォルダー構造を展開します。 ~/clouddrive/lva-sample ディレクトリに、いくつかのファイルが作成されていることがわかります。
+開始する前に、[前提条件](#prerequisites)の 3 番目の条件が完了していることを確認してください。 リソース設定スクリプトが完了したら、中かっこを選択してフォルダー構造を展開します。 ~/clouddrive/lva-sample ディレクトリに、いくつかのファイルが作成されていることがわかります。
 
 ![アプリケーション設定](./media/quickstarts/clouddrive.png)
 
 このチュートリアルで注目するのは、次のファイルです。
 
-     * ~/clouddrive/lva-sample/edge-deployment/.env  - contains properties that Visual Studio Code uses to deploy modules to an edge device
-     * ~/clouddrive/lva-sample/appsettings.json - used by Visual Studio Code for running the sample code
+* **~/clouddrive/lva-sample/edge-deployment/.env**:Visual Studio Code がエッジ デバイスにモジュールをデプロイする際に使用するプロパティが格納されています。
+* **~/clouddrive/lva-sample/appsettings.json**:サンプル コードを実行するために、Visual Studio Code によって使用されます。
 
 これらのファイルは、以下の手順で必要になります。
 
-1. こちら (https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp ) からリポジトリをクローンします。
+1. GitHub リンク https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp からリポジトリをクローンします。
 1. Visual Studio Code を起動して、リポジトリをダウンロードしたフォルダーを開きます。
-1. Visual Studio Code で、"src/cloud-to-device-console-app" フォルダーに移動し、"appsettings.json" という名前のファイルを作成します。 このファイルには、プログラムを実行するために必要な設定が格納されます。
+1. Visual Studio Code で、src/cloud-to-device-console-app フォルダーに移動し、**appsettings.json** という名前のファイルを作成します。 このファイルには、プログラムを実行するために必要な設定が格納されています。
 1. ~/clouddrive/lva-sample/appsettings.json ファイルの内容をコピーします。 このテキストは次のようになっています。
     ```
     {  
@@ -81,9 +89,9 @@ ms.locfileid: "84259989"
         "moduleId" : "lvaEdge"  
     }
     ```
-    IoT Hub 接続文字列を使用すると、Visual Studio Code を使用して Azure IoT Hub 経由で Edge モジュールにコマンドを送信できます。
+    IoT Hub 接続文字列を設定すると、Visual Studio Code を使用して Azure IoT Hub 経由でエッジ モジュールにコマンドを送信できます。
     
-1. 次に、"src/edge" フォルダーに移動して、".env" という名前のファイルを作成します。
+1. 次に、src/edge フォルダーに移動して、 **.env** という名前のファイルを作成します。
 1. ~/clouddrive/lva-sample/.env ファイルの内容をコピーします。 このテキストは次のようになっています。
 
     ```
@@ -103,66 +111,66 @@ ms.locfileid: "84259989"
 
 ## <a name="examine-the-sample-files"></a>サンプル ファイルを詳しく調べる
 
-Visual Studio Code で、"src/edge/deployment.template.json" を開きます。 このテンプレートでは、エッジ デバイス (Azure Linux VM) にデプロイするエッジ モジュールを定義します。 "modules" セクションには、次の名前の 2 つのエントリがあります。
+Visual Studio Code で、src/edge/deployment.template.json を開きます。 このテンプレートでは、エッジ デバイス (Azure Linux VM) にデプロイするエッジ モジュールを定義します。 **modules** セクションには、次の名前の 2 つのエントリがあります。
 
-* lvaEdge – これは Live Video Analytics on IoT Edge モジュールです
-* rtspsim – これは RTSP シミュレーターです
+* **lvaEdge**:これは Live Video Analytics on IoT Edge モジュールです。
+* **rtspsim**:これは RTSP シミュレーターです。
 
-次に、"src/cloud-to-device-console-app" フォルダーに移動します。 ここには、作成した appsettings.json ファイルのほか、いくつかのファイルが確認できます。
+次に、src/cloud-to-device-console-app フォルダーに移動します。 ここでは、作成した appsettings.json ファイルと、他のいくつかのファイルを確認できます。
 
-* c2d-console-app.csproj - Visual Studio Code のプロジェクト ファイルです。
-* operations.json - このファイルには、実行できるさまざまな操作がリストされています
-* Program.cs - サンプル プログラムのコードです。次を実行します。
-    * アプリ設定を読み込みます
-    * Live Video Analytics on IoT Edge モジュールによって公開されているダイレクト メソッドを呼び出します。 ライブ ビデオ ストリームの分析は、モジュールを使用し、その[ダイレクト メソッド](direct-methods.md)を呼び出すことによって行うことができます
-    * プログラムからの出力をターミナル ウィンドウで、またモジュールによって生成されたイベントを出力ウィンドウで詳しく調べることができるように一時停止します
-    * ダイレクト メソッドを呼び出して、リソースをクリーンアップします
+* **c2d-console-app.csproj**:Visual Studio Code 用のプロジェクト ファイルです。
+* **operations.json**:このファイルには、実行できるさまざまな操作がリストされています。
+* **Program.cs**サンプル プログラム コードです。これは次のことを実行します。
+    * アプリ設定を読み込みます。
+    * Live Video Analytics on IoT Edge モジュールによって公開されているダイレクト メソッドを呼び出します。 このモジュールを使用して、その[ダイレクト メソッド](direct-methods.md)を呼び出すことで、ライブ ビデオ ストリームを分析できます。
+    * プログラムからの出力を **[ターミナル]** ウィンドウで、またモジュールによって生成されたイベントを **[出力]** ウィンドウで詳しく調べることができるように一時停止します。
+    * ダイレクト メソッドを呼び出して、リソースをクリーンアップします。
 
 ## <a name="generate-and-deploy-the-iot-edge-deployment-manifest"></a>IoT Edge の配置マニフェストを生成してデプロイする 
 
-エッジ デバイスにデプロイされるモジュールとそれらのモジュールの構成設定は、配置マニフェストによって定義されます。 そのようなマニフェストをテンプレート ファイルから生成して、エッジ デバイスにデプロイするには、次の手順に従います。
+エッジ デバイスにデプロイされるモジュールとそれらのモジュールの構成設定は、配置マニフェストによって定義されます。 マニフェストをテンプレート ファイルから生成して、エッジ デバイスにデプロイするには、次の手順に従います。
 
-1. Visual Studio Code を起動します
-1. 左下隅の [Azure IoT Hub] ペインの横にある [その他のアクション] アイコンをクリックして、IoTHub 接続文字列を設定します。 この文字列は、src/cloud-to-device-console-app/appsettings.json ファイルからコピーすることができます。 
+1. Visual Studio Code を起動します。
+1. 左下隅の **[Azure IoT Hub]** ペインの横にある **[その他のアクション]** アイコンを選択して、IoTHub 接続文字列を設定します。 src/cloud-to-device-console-app/appsettings.json ファイルからその文字列をコピーします。 
 
-    ![IoT 接続文字列を設定する](./media/quickstarts/set-iotconnection-string.png)
-1. 次に、"src/edge/deployment.template.json" ファイルを右クリックし、[Generate IoT Edge Deployment Manifest]\(IoT Edge 配置マニフェストの生成\) をクリックします。 Visual Studio Code は、配置テンプレート ファイル内で見つかった変数を置き換えるために、.env ファイル内の値を使用します。 これで、"deployment.amd64.json" という名前のマニフェスト ファイルが src/edge/config フォルダーに作成されます。
+    ![IoT Hub 接続文字列を設定する](./media/quickstarts/set-iotconnection-string.png)
+1. src/edge/deployment.template.json ファイルを右クリックし、 **[Generate IoT Edge Deployment Manifest]\(IoT Edge 配置マニフェストの生成\)** を選択します。 Visual Studio Code は、.env ファイルの値を使用して、配置テンプレート ファイル内で見つかった変数を置き換えます。 このアクションにより、**deployment.amd64.json** という名前のマニフェスト ファイルが src/edge/config フォルダーに作成されます。
 
    ![IoT Edge 配置マニフェストの生成](./media/quickstarts/generate-iot-edge-deployment-manifest.png)
-1. 次に、"src/edge/config/deployment.amd64.json" を右クリックし、[Create Deployment for Single Device]\(単一デバイスのデプロイの作成\) をクリックします。
+1. src/edge/config/deployment.amd64.json ファイルを右クリックし、 **[Create Deployment for Single Device]\(単一デバイスのデプロイの作成\)** を選択します。
 
    ![単一デバイスのデプロイを作成する](./media/quickstarts/create-deployment-single-device.png)
-1. その後、IoT Hub デバイスを選択するように求められます。 ドロップダウンから [lva-sample-device] を選択します。
-1. 30 秒ほど経過したら、左下のセクションで Azure IoT Hub を最新の情報に更新してください。そうすると、エッジ デバイスに次のモジュールがデプロイされていることがわかります。
-    * Live Video Analytics on IoT Edge (モジュール名: "lvaEdge")
-    * RTSP シミュレーター (モジュール名: "rtspsim")
+1. その後、**IoT Hub デバイスを選択する**ように求められます。 ドロップダウン リストから lva-sample-device を選択します。
+1. 30 秒ほど経過したら、左下のセクションで Azure IoT Hub を更新します。 エッジ デバイスに次のモジュールがデプロイされたことがわかります。
+    * Live Video Analytics on IoT Edge (モジュール名 **lvaEdge**)
+    * RTSP シミュレーター (モジュール名: **rtspsim**)
  
-    ![IoT ハブ](./media/continuous-video-recording-tutorial/iot-hub.png)
+    ![IoT Hub](./media/continuous-video-recording-tutorial/iot-hub.png)
 
 ## <a name="prepare-to-monitor-the-modules"></a>モジュールの監視の準備をする 
 
 Live Video Analytics on IoT Edge モジュールを使用して、ライブ ビデオ ストリームを記録すると、IoT Hub にイベントが送信されます。 それらのイベントを確認するには、次の手順に従います。
 
-1. Visual Studio Code の [エクスプローラー] ペインを開いて、左下隅の Azure IoT Hub を探します。
-1. [Devices] ノードを展開します。
-1. [lva-sample-device] を右クリックし、[Start Monitoring Built-in Event Monitoring]\(組み込みイベント モニタリングの監視を開始する\) オプションを選択します。
+1. Visual Studio Code の [エクスプローラー] ペインを開き、左下隅にある **[Azure IoT Hub]** を探します。
+1. **[デバイス]** ノードを展開します。
+1. lva-sample-device ファイルを右クリックし、 **[組み込みイベント エンドポイントの監視を開始します]** を選択します。
 
     ![組み込みイベント エンドポイントの監視を開始する](./media/quickstarts/start-monitoring-iothub-events.png)
 
 ## <a name="run-the-program"></a>プログラムの実行 
 
-1. Visual Studio Code で、"src/cloud-to-device-console-app/operations.json" に移動します
-1. GraphTopologySet ノードで、次を編集します。
+1. Visual Studio Code で、src/cloud-to-device-console-app/operations.json に移動します。
+1. **GraphTopologySet** ノードで、次を編集します。
 
     `"topologyUrl" : "https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/cvr-asset/topology.json" `
-1. 次に、GraphInstanceSet ノードと GraphTopologyDelete ノードで、topologyName の値が、上記グラフ トポロジの "name" プロパティの値と一致していることを確認します。
+1. 次に、**GraphInstanceSet** および **GraphTopologyDelete** のノードで、**topologyName** の値が、前のグラフ トポロジの **name** プロパティの値と一致していることを確認します。
 
     `"topologyName" : "CVRToAMSAsset"`  
-1. ブラウザーでその[トポロジ](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json)を開き、assetNamePattern を確認します。 資産の名前を確実に一意にするために、operations.json ファイル内でグラフ インスタンスの名前を (既定値の "Sample-Graph-1" から) 変更します。
+1. ブラウザーでその[トポロジ](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json)を開き、assetNamePattern を確認します。 資産の名前を確実に一意にするために、operations.json ファイル内でグラフ インスタンスの名前を (既定値の "Sample-Graph-1" から) 変更することをお勧めします。
 
     `"assetNamePattern": "sampleAsset-${System.GraphTopologyName}-${System.GraphInstanceName}"`    
-1. デバッグ セッションを開始します (F5 キーを押します)。 ターミナル ウィンドウへのメッセージ出力が開始されます。
-1. operations.json は、GraphTopologyList と GraphInstanceList の呼び出しで開始されます。 前回のクイックスタートまたはチュートリアルの後に、リソースをクリーンアップした場合は、空のリストが返された後、一時停止して、以下のように Enter キーの入力待ち状態になります。
+1. F5 キーを押して、デバッグ セッションを開始します。 **[ターミナル]** ウィンドウにいくつかのメッセージが出力されます。
+1. operations.json ファイルは、GraphTopologyList および GraphInstanceList の呼び出しで開始されます。 前回のクイックスタートまたはチュートリアルの後に、リソースをクリーンアップした場合は、このアクションによって空のリストが返された後、一時停止して、以下のように **Enter** キーの入力待ち状態になります。
 
     ```
     --------------------------------------------------------------------------
@@ -179,9 +187,10 @@ Live Video Analytics on IoT Edge モジュールを使用して、ライブ ビ�
     Executing operation WaitForInput
     Press Enter to continue
     ```
-1. ターミナル ウィンドウで Enter キーを押すと、次に示す一連のダイレクト メソッドの呼び出しが実行されます
-     * 前出の topologyUrl を使用した GraphTopologySet の呼び出し。
-     * 次の body を使用した GraphInstanceSet の呼び出し。
+
+1. **[ターミナル]** ウィンドウで **Enter** キーを押すと、次に示す一連のダイレクト メソッド呼び出しが実行されます。
+   * 前の topologyUrl を使用した GraphTopologySet の呼び出し
+   * 次の本文を使用した GraphInstanceSet の呼び出し
      
      ```
      {
@@ -207,26 +216,26 @@ Live Video Analytics on IoT Edge モジュールを使用して、ライブ ビ�
        }
      }
      ```
-     * グラフ インスタンスを起動し、ビデオのフローを開始する GraphInstanceActivate の呼び出し
-     * 実際にグラフ インスタンスが実行状態として表示される GraphInstanceList の 2 回目の呼び出し  
-1. ターミナル ウィンドウの出力が、今度は "Press Enter to continue (続行するには Enter キーを押してください)" というプロンプトで一時停止状態となります。 この時点では Enter キーは押さないでください。 上へスクロールすると、呼び出したダイレクト メソッドの JSON 応答のペイロードを確認できます
-1. ここで Visual Studio Code の出力ウィンドウに切り替えると、Live Video Analytics on IoT Edge モジュールから IoT Hub に送信されているメッセージが表示されます。
+   * グラフ インスタンスを起動し、ビデオのフローを開始する GraphInstanceActivate の呼び出し
+   * グラフ インスタンスが実行状態であることを表示する GraphInstanceList の 2 回目の呼び出し 
+1. **[ターミナル]** ウィンドウの出力が、今度は **[続行するには Enter キーを押してください]** というプロンプトで一時停止状態となります。 この時点では **Enter** キーは押さないでください。 上へスクロールして、呼び出したダイレクト メソッドの JSON 応答のペイロードを確認します。
+1. ここで Visual Studio Code の **[出力]** ウィンドウに切り替えると、Live Video Analytics on IoT Edge モジュールによって IoT Hub に送信されたメッセージが表示されます。
 
-     * これらのメッセージについては、以降のセクションで取り上げます
-1. 引き続きグラフ インスタンスが実行され、ビデオが記録されます。つまり、RTSP シミュレーターによってソース ビデオがループ処理されます。 記録を停止するには、ターミナル ウィンドウに戻って Enter キーを押します。 次の一連の呼び出しによって、リソースがクリーンアップされます。
+   これらのメッセージについては、次のセクションで説明します。
+1. 引き続きグラフ インスタンスが実行され、ビデオが記録されます。 RTSP シミュレーターによって、ソース ビデオがループ処理され続けます。 記録を停止するには、 **[ターミナル]** ウィンドウに戻って **Enter** キーを押します。 次の一連の呼び出しが行われて、リソースがクリーンアップされます。
 
-     * グラフ インスタンスを非アクティブ化する GraphInstanceDeactivate の呼び出し
-     * インスタンスを削除する GraphInstanceDelete の呼び出し
-     * トポロジを削除する GraphTopologyDelete の呼び出し
-     * リストが空になったことを示す GraphTopologyList の最後の呼び出し
+   * グラフ インスタンスを非アクティブ化する GraphInstanceDeactivate の呼び出し。
+   * インスタンスを削除する GraphInstanceDelete の呼び出し。
+   * トポロジを削除する GraphTopologyDelete の呼び出し。
+   * リストが空になったことを示す GraphTopologyList の最後の呼び出し。
 
 ## <a name="interpret-the-results"></a>結果を解釈する 
 
-メディア グラフを実行すると、Live Video Analytics on IoT Edge モジュールによって、特定の診断イベントと操作イベントが IoT Edge ハブに送信されます。 これらのイベントは Visual Studio Code の出力ウィンドウに表示されるメッセージで、"body" セクションと "applicationProperties" セクションが含まれています。 これらのセクションが表す内容については、[こちら](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)の記事を参照してください。
+メディア グラフを実行すると、Live Video Analytics on IoT Edge モジュールによって、特定の診断および操作イベントが IoT Edge ハブに送信されます。 これらのイベントは Visual Studio Code の **出力** ウィンドウに表示されるメッセージです。 それらには、body セクションと applicationProperties セクションが存在します。 これらのセクションが表す内容については、「[IoT Hub メッセージを作成し、読み取る](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)」を参照してください。
 
-以下のメッセージ内のアプリケーションのプロパティと body の内容は Live Video Analytics モジュールによって定義されています。
+次のメッセージ内のアプリケーションのプロパティと body の内容は、Live Video Analytics モジュールによって定義されています。
 
-## <a name="diagnostic-events"></a>診断イベント 
+## <a name="diagnostics-events"></a>診断イベント 
 
 ### <a name="mediasession-established-event"></a>MediaSession Established イベント
 
@@ -248,17 +257,17 @@ Live Video Analytics on IoT Edge モジュールを使用して、ライブ ビ�
 }
 ```
 
-* このメッセージは Diagnostics イベントです。MediaSessionEstablished は、RTSP ソース ノード (subject) が RTSP シミュレーターとの接続を確立し、(シミュレートされた) ライブ フィードの受信を開始できたことを示します。
-* applicationProperties の "subject" が、メッセージの生成元となったグラフ トポロジ内のノードを参照しています。 このケースでは、RTSP ソース ノードからメッセージが生成されています。
-* applicationProperties の "eventType" には Diagnostics イベントであることが示されています。
-* "eventTime" にはイベントの発生時刻が示されています。
-* 診断イベントに関するデータ (このケースでは [SDP](https://en.wikipedia.org/wiki/Session_Description_Protocol) の詳細) は "body" に含まれています。
+* メッセージは診断イベント (MediaSessionEstablished) です。 これは、RTSP ソース ノード (subject) によって RTSP シミュレーターとの接続が確立され、(シミュレートされた) ライブ フィードの受信が開始されたことを示します。
+* applicationProperties の subject セクションが、メッセージの生成元となったグラフ トポロジ内のノードを参照しています。 このケースでは、RTSP ソース ノードからメッセージが生成されています。
+* applicationProperties の eventType セクションには、これが Diagnostics イベントであることが示されています。
+* eventTime セクションにはイベントの発生時刻が示されています。
+* body セクションには、診断イベントに関するデータ (このケースでは [SDP](https://en.wikipedia.org/wiki/Session_Description_Protocol) の詳細) が含まれています。
 
 ## <a name="operational-events"></a>操作イベント 
 
 ### <a name="recordingstarted-event"></a>RecordingStarted イベント
 
-資産シンク ノードがビデオの記録を開始すると、種類が Microsoft.Media.Graph.Operational.RecordingStarted のこのイベントが出力されます
+資産シンク ノードがビデオの記録を開始すると、種類が Microsoft.Media.Graph.Operational.RecordingStarted のこのイベントが出力されます。
 
 ```
 [IoTHubMonitor] [9:42:38 AM] Message received from [lva-sample-device/lvaEdge]:
@@ -277,13 +286,13 @@ Live Video Analytics on IoT Edge モジュールを使用して、ライブ ビ�
 }
 ```
 
-applicationProperties の "subject" が、このメッセージの生成元となったグラフ内の資産シンク ノードを参照しています。
+applicationProperties の subject セクションが、このメッセージの生成元となったグラフ内の資産シンク ノードを参照しています。
 
-body には、出力場所に関する情報が含まれています。このケースでは、ビデオが記録される Azure Media Service 資産の名前です。 この値を書き留めておきます。
+body セクションには、出力場所に関する情報が含まれています。 このケースでは、ビデオが記録される Azure Media Services 資産の名前です。 この値を書き留めておきます。
 
 ### <a name="recordingavailable-event"></a>RecordingAvailable イベント
 
-名前が示すように、RecordingStarted イベントは記録が開始されると送信されますが、ビデオ データがまだ資産にアップロードされていない可能性があります。 資産シンク ノードがビデオ データを資産にアップロードすると、種類が Microsoft.Media.Graph.Operational.RecordingAvailable のこのイベントが出力されます
+名前が示すように、RecordingStarted イベントは記録が開始されると送信されますが、ビデオ データがまだ資産にアップロードされていない可能性があります。 資産シンク ノードがビデオ データを資産にアップロードすると、種類が Microsoft.Media.Graph.Operational.RecordingAvailable のこのイベントが出力されます。
 
 ```
 [IoTHubMonitor] [[9:43:38 AM] Message received from [lva-sample-device/lvaEdge]:
@@ -304,13 +313,13 @@ body には、出力場所に関する情報が含まれています。このケ
 
 このイベントは、プレーヤーまたはクライアントがビデオの再生を開始するのに十分なデータが資産に書き込まれたことを示します。
 
-applicationProperties の "subject" が、このメッセージの生成元となったグラフ内の資産シンク ノードを参照しています。
+applicationProperties の subject セクションが、このメッセージの生成元となったグラフ内の AssetSink ノードを参照しています。
 
-body には、出力場所に関する情報が含まれています。このケースでは、ビデオが記録される Azure Media Service 資産の名前です。
+body セクションには、出力場所に関する情報が含まれています。 このケースでは、ビデオが記録される Azure Media Services 資産の名前です。
 
 ### <a name="recordingstopped-event"></a>RecordingStopped イベント
 
-グラフ インスタンスを非アクティブ化すると、資産シンク ノードが資産へのビデオの記録を停止し、種類が Microsoft.Media.Graph.Operational.RecordingStopped のこのイベントが出力されます。
+グラフ インスタンスを非アクティブ化すると、資産シンク ノードは資産へのビデオの記録を停止します。 それにより、種類が Microsoft.Media.Graph.Operational.RecordingStopped のこのイベントが出力されます。
 
 ```
 [IoTHubMonitor] [11:33:31 PM] Message received from [lva-sample-device/lvaEdge]:
@@ -331,39 +340,39 @@ body には、出力場所に関する情報が含まれています。このケ
 
 このイベントは、記録が停止したことを示します。
 
-applicationProperties の "subject" が、このメッセージの生成元となったグラフ内の資産シンク ノードを参照しています。
+applicationProperties の subject セクションが、このメッセージの生成元となったグラフ内の AssetSink ノードを参照しています。
 
-body には、出力場所に関する情報が含まれています。このケースでは、ビデオが記録される Azure Media Service 資産の名前です。
+body セクションには、出力場所に関する情報が含まれています。このケースでは、ビデオが記録される Azure Media Service 資産の名前です。
 
 ## <a name="media-services-asset"></a>Media Services 資産  
 
 メディア グラフによって作成された Media Services 資産を確認するには、Azure portal にログインし、ビデオを表示します。
 
 1. Web ブラウザーを開き、[Azure portal](https://portal.azure.com/) に移動します。 資格情報を入力してポータルにサインインします。 既定のビューはサービス ダッシュボードです。
-1. ご自分のサブスクリプション内のリソースの中からお使いの Media Services アカウントを見つけ、アカウント ブレードを開きます
-1. Media Services リストで、[資産] をクリックします
+1. ご自分のサブスクリプション内のリソースの中からお使いの Media Services アカウントを見つけ、アカウント ペインを開きます。
+1. **[Media Services]** の一覧で、 **[資産]** を選択します。
 
     ![アセット](./media/continuous-video-recording-tutorial/assets.png)
-1. sampleAsset-CVRToAMSAsset-Sample-Graph-1 という名前の資産が表示されます。これは、ご自分のグラフ トポロジ ファイル内で選択されている名前付けパターンです。
-1. [資産] をクリックします。
-1. 資産の詳細ページで、[ストリーミング URL] ボックスの下にある **[新規作成]** をクリックします。
+1. SampleAsset-CVRToAMSAsset-Sample-Graph-1 という名前の資産が表示されます。 これは、グラフ トポロジ ファイル内で選択されている名前付けパターンです。
+1. 資産を選択します。
+1. 資産の詳細ページで、 **[ストリーミング URL]** テキスト ボックスの下の **[新規作成]** を選択します。
 
     ![新しい資産](./media/continuous-video-recording-tutorial/new-asset.png)
 
-1. 開いたウィザードで、既定のオプションをそのまま使用し、[追加] をクリックします。 詳細については、「[ビデオの再生](video-playback-concept.md)」を参照してください。
+1. 開いたウィザードで、既定のオプションをそのまま使用し、 **[追加]** を選択します。 詳細については、「[ビデオ再生](video-playback-concept.md)」を参照してください。
 
     > [!TIP]
     > [ストリーミング エンドポイントが実行されている](../latest/streaming-endpoint-concept.md)ことを確認します。
-1. プレーヤーにビデオが読み込まれ、 **[再生]** をクリックして表示することができます。
+1. プレーヤーでビデオを読み込む必要があります。 **[再生]** を選択して、それを表示します。
 
 > [!NOTE]
-> このビデオのソースはカメラ フィードをシミュレートしたコンテナーであるため、ビデオのタイムスタンプは、グラフ インスタンスをアクティブ化した時点と、非アクティブ化した時点に関連付けられています。 複数日の記録を閲覧し、そのアーカイブの一部を表示する方法については、[この](playback-multi-day-recordings-tutorial.md)チュートリアルを参照してください。 そのチュートリアルでは、画面に表示されているビデオのタイムスタンプを確認することもできます。
+> このビデオのソースはカメラ フィードをシミュレートしたコンテナーだったため、ビデオのタイム スタンプは、グラフ インスタンスをアクティブ化した時点と、非アクティブ化した時点に関連付けられています。 複数日の記録を閲覧し、そのアーカイブの一部を表示する方法については、「[数日間の記録の再生](playback-multi-day-recordings-tutorial.md)」チュートリアルを参照してください。 そのチュートリアルでは、画面に表示されているビデオのタイム スタンプを確認することもできます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-他のチュートリアルに取り組む場合は、作成したリソースをそのまま残しておく必要があります。 それ以外の場合は、Azure portal にアクセスして、ご利用のリソース グループに移動し、このチュートリアルで使用したリソース グループを選択して、それらのリソース グループを削除してください。
+他のチュートリアルに取り組む場合は、作成したリソースをそのまま残します。 それ以外の場合は、Azure portal にアクセスして、ご利用のリソース グループに移動し、このチュートリアルで使用したリソース グループを選択して、それらのリソース グループを削除してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 * RTSP シミュレーターを使用する代わりに、RTSP をサポートする [IP カメラ](https://en.wikipedia.org/wiki/IP_camera)を使用します。 RTSP をサポートする IP カメラを検索するには、[ONVIF 準拠製品のページ](https://www.onvif.org/conformant-products/)でプロファイル G、S、または T に準拠しているデバイスを検索します。
-* AMD64 または X64 Linux デバイスを使用します (Azure Linux VM を使用するのではなく)。 このデバイスは、IP カメラと同じネットワーク内にある必要があります。 [Linux への Azure IoT Edge ランタイムのインストール](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)に関するページの手順に従い、次に「[初めての IoT Edge モジュールを Linux 仮想デバイスにデプロイする](https://docs.microsoft.com/azure/iot-edge/quickstart-linux)」クイックスタートの手順に従って、Azure IoT Hub にデバイスを登録することができます。
+* AMD64 または X64 Linux デバイスを使用します (Azure Linux VM を使用するのではなく)。 このデバイスは、IP カメラと同じネットワーク内にある必要があります。 [Linux への Azure IoT Edge ランタイムのインストール](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)に関するページの手順に従います。 「[初めての IoT Edge モジュールを Linux 仮想デバイスにデプロイする](https://docs.microsoft.com/azure/iot-edge/quickstart-linux)」クイックスタートの手順に従って、Azure IoT Hub にデバイスを登録します。
