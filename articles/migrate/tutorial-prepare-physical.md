@@ -4,12 +4,12 @@ description: Azure Migrate を使用した評価と移行に向けて物理サ�
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: b7bde5df943a35bfcf08ace3b454a26dae8c1d89
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: ed648458416bacb091212bb569a27ecdf13fe8ee
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901423"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771276"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>物理サーバーの評価および Azure への移行を準備する
 
@@ -138,7 +138,7 @@ Azure 仮想ネットワーク (VNet) を[設定](../virtual-network/manage-virt
 
 Azure Migrate には、オンプレミスのサーバーを検出するためのアクセス許可が必要です。
 
-- **Windows:** 検出に含めるすべての Windows サーバー上にローカル ユーザー アカウントを設定します。 ユーザー アカウントは、Remote Management Users、Performance Monitor Users、Performance Log Users の各グループに追加する必要があります。
+- **Windows:** 検出するすべての Windows サーバーで、ドメイン管理者またはローカル管理者である必要があります。 次のグループにユーザー アカウントを追加する必要があります:リモート管理ユーザー、パフォーマンス モニター ユーザー、パフォーマンス ログ ユーザー。
 - **Linux:** 検出する Linux サーバーのルート アカウントが必要です。
 
 ## <a name="prepare-for-physical-server-migration"></a>物理サーバーの移行を準備する
@@ -148,12 +148,14 @@ Azure Migrate には、オンプレミスのサーバーを検出するための
 > [!NOTE]
 > 物理マシンを移行するとき、Azure Migrate:Server Migration では、Azure Site Recovery サービスのエージェントベースのディザスター リカバリーと同じレプリケーション アーキテクチャが使用されており、一部のコンポーネントでは、同じコード ベースが共有されています。 一部のコンテンツは、Site Recovery のドキュメントにリンクされている場合があります。
 
-- 移行のための物理サーバーの要件を[確認](migrate-support-matrix-physical-migration.md#physical-server-requirements)します。
-- Azure Migrate:Server Migration では、物理サーバーの移行にレプリケーション サーバーが使用されます。
+1. 移行のための物理サーバーの要件を[確認](migrate-support-matrix-physical-migration.md#physical-server-requirements)します。
+2. Azure Migrate:Server Migration では、物理サーバーの移行にレプリケーション サーバーが使用されます。
     - レプリケーション アプライアンスのデプロイ要件と、アプライアンスでの MySQL のインストールの[オプション](migrate-replication-appliance.md#mysql-installation)を[確認](migrate-replication-appliance.md#appliance-requirements)します。
     - パブリック クラウドおよび政府機関向けクラウドにアクセスするレプリケーション アプライアンスに必要な [Azure URL](migrate-appliance.md#url-access) を確認します。
     - レプリケーション アプライアンスの[ポート](migrate-replication-appliance.md#port-access) アクセス要件を確認します。
-
+3. Azure に VM を移行する前に、それらに対していくつかの変更を行う必要があります。
+    - 移行を開始する前にこれらの変更を行うことが重要です。 変更を行う前に VM を移行すると、Azure で VM が起動しない可能性があります。
+    - [Windows](prepare-for-migration.md#windows-machines) と [Linux](prepare-for-migration.md#linux-machines) で必要な変更を確認してください。
 
 
 
