@@ -303,8 +303,6 @@
               href: application-proxy-page-load-speed-problem.md
             - name: アプリケーション ページ上のリンクが動作しない
               href: application-proxy-page-links-broken-problem.md
-            - name: アプリに対して開く必要のあるポート
-              href: application-proxy-connectivity-ports-how-to.md
             - name: アプリのコネクタ グループに動作するコネクタがない
               href: application-proxy-connectivity-no-working-connector.md
             - name: 管理ポータルでの構成

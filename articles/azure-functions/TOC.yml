@@ -65,7 +65,7 @@
       href: 'https://www.serverlesslibrary.net/'
     - name: Azure のサンプル
       items:
-        - name: 'C#'
+        - name: C#
           href: /samples/browse/?products=azure-functions&languages=csharp
         - name: Java
           href: /samples/browse/?products=azure-functions&languages=java
@@ -112,11 +112,11 @@
       items:
         - name: サポートされている言語
           href: supported-languages.md
-        - name: 'C# (クラス ライブラリ)'
+        - name: C# (クラス ライブラリ)
           href: functions-dotnet-class-library.md
-        - name: 'C# スクリプト (.csx)'
+        - name: C# スクリプト (.csx)
           href: functions-reference-csharp.md
-        - name: 'F#'
+        - name: F#
           href: functions-reference-fsharp.md
         - name: JavaScript
           href: functions-reference-node.md
@@ -127,7 +127,7 @@
         - name: Python
           href: functions-reference-python.md
         - name: TypeScript
-          href: 'functions-reference-node.md#typescript'
+          href: functions-reference-node.md#typescript
     - name: Security
       items:
         - name: セキュリティの概要
@@ -377,7 +377,7 @@
             - name: Functions 1.x
               href: functions-bindings-cosmosdb.md
               displayName: Azure Cosmos DB
-            - name: Functions 2.x
+            - name: Functions 2.x 以降
               displayName: Azure Cosmos DB
               items:
                 - name: 概要
@@ -507,7 +507,7 @@
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: クォータの情報
-      href: 'functions-scale.md#service-limits'
+      href: functions-scale.md#service-limits
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/regions/services/'
     - name: ビデオ

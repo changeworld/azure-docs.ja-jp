@@ -141,7 +141,9 @@
 - name: リソース
   items:
     - name: PowerShell
-      href: '/powershell/module/az.desktopvirtualization/?view=azps-4.2.0#desktopvirtualization'
+      href: /powershell/module/az.desktopvirtualization/?view=azps-4.2.0#desktopvirtualization
+    - name: REST API リファレンス
+      href: /rest/api/desktopvirtualization/
     - name: エクスペリエンス見積もりツール
       href: 'https://azure.microsoft.com/services/virtual-desktop/assessment/'
     - name: 料金計算ツール
