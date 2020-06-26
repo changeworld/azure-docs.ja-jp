@@ -36,6 +36,8 @@
       href: ./encryption/cognitive-services-encryption-keys-portal.md
     - name: Cognitive Services に対する要求の認証
       href: authentication.md
+    - name: セキュリティ ベースライン
+      href: security-baseline.md
 - name: コンテナー サポート
   items:
     - name: コンテナー サポート
