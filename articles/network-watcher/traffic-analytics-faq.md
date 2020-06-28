@@ -254,7 +254,7 @@ Traffic Analytics のスキーマとデータ集計に関するドキュメン�
 
 ## <a name="how-does-traffic-analytics-decide-that-an-ip-is-malicious"></a>Traffic Analytics では悪意のある IP であるかどうかがどのように判断されますか? 
 
-Traffic Analytics では、IP を悪意のあるものとみなす上で、Microsoft の内部的な脅威インテリジェンス システムに依存しています。 これらのシステムでは、Microsoft の製品とサービス、Microsoft デジタル犯罪対策ユニット (DCU)、Microsoft セキュリティ レスポンス センター (MSRC)、外部フィードなどのさまざまなテレメトリ ソースを活用し、その上に多くのインテリジェンスが構築されます。 このデータの一部は Mircosoft の内部的なものです。 既知の IP に悪意のあることを示すフラグが設定された場合、その詳細を知るにはサポート チケットを発行してください。
+Traffic Analytics では、IP を悪意のあるものとみなす上で、Microsoft の内部的な脅威インテリジェンス システムに依存しています。 これらのシステムでは、Microsoft の製品とサービス、Microsoft デジタル犯罪対策ユニット (DCU)、Microsoft セキュリティ レスポンス センター (MSRC)、外部フィードなどのさまざまなテレメトリ ソースを活用し、その上に多くのインテリジェンスが構築されます。 このデータの一部は Microsoft の内部的なものです。 既知の IP に悪意のあることを示すフラグが設定された場合、その詳細を知るにはサポート チケットを発行してください。
 
 ## <a name="how-can-i-set-alerts-on-traffic-analytics-data"></a>Traffic Analytics のデータに対してアラートを設定するにはどうすればよいですか?
 
