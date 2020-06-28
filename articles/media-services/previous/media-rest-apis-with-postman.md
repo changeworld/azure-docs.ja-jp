@@ -27,7 +27,8 @@ ms.locfileid: "76694992"
 
 このチュートリアルでは、Azure Media Services (AMS) REST API を呼び出すために使用できるように **Postman** を構成する方法を示します。 チュートリアルでは、環境およびコレクション ファイルを **Postman** にインポートする方法を示しています。 コレクションには、Azure Media Services (AMS) REST API を呼び出す HTTP 要求のグループ化された定義が含まれます。 環境ファイルには、コレクションによって使用される変数が含まれています。
 
-この環境とコレクションは、Azure Media Services REST API を使用してさまざまなタスクを実現する方法を示す記事で使用されます。
+この環境とコレクションは、Azure Media Services REST AP
+I を使用してさまざまなタスクを実現する方法を示す記事で使用されます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,10 +40,10 @@ ms.locfileid: "76694992"
 
 1. AMS チュートリアルで使用される環境変数を含む .json ファイルを作成します。 ファイルに名前を付けます (例: **AzureMediaServices.postman_environment.json**)。 ファイルを開き、Postman 環境を定義するコードを[このコード リスト](postman-environment.md)から貼り付けます。 
 2. **Postman** を開きます。
-3. 画面の右側で、 **[Manage environment]/(環境の管理/)** オプションを選択します。
+3. 画面の右側で、 **[Manage environment]\(環境の管理\)** オプションを選択します。
 
     ![ファイルをアップロードする](./media/media-services-rest-upload-files/postman-create-env.png)
-4. **[Manage environment]/(環境の管理/)** ダイアログで、 **[インポート]** をクリックします。
+4. **[Manage environment]\(環境の管理\)** ダイアログで、 **[インポート]** をクリックします。
 5. **AzureMediaServices.postman_environment.json** ファイルを参照し、選択します。
 6. **AzureMedia** 環境が追加されます。
 7. ダイアログを閉じます。
