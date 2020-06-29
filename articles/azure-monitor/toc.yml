@@ -12,6 +12,12 @@
   items:
     - name: Azure リソースの監視
       href: learn/quick-monitor-azure-resource.md
+    - name: ワークスペースへのアクティビティ ログの送信
+      items:
+        - name: Azure portal
+          href: learn/quick-collect-activity-log-portal.md
+        - name: ARM テンプレート
+          href: learn/quick-collect-activity-log-arm.md
     - name: 仮想マシンの監視
       items:
         - name: Azure VM
@@ -455,7 +461,7 @@
             - name: Webhook アクション
               href: platform/alerts-log-webhook.md
             - name: ログ アラートのトラブルシューティング
-              href: platform/alert-log-troubleshoot.md
+              href: platform/alerts-troubleshoot-log.md
         - name: アクティビティ ログ アラート ルール
           items:
             - name: アクティビティ ログ イベントのアラート
@@ -506,6 +512,8 @@
           href: platform/api-alerts.md
         - name: アラートのトラブルシューティング
           href: platform/alerts-troubleshoot.md
+        - name: アラートとリージョンの移動
+          href: platform/alerts-resource-move.md
         - name: IT Service Management
           items:
             - name: IT Service Management Connector
@@ -555,12 +563,12 @@
             - name: ASP.NET
               displayname: 'ASP.NET, c#, csharp, .NET, NET, dotnet'
               href: app/asp-net.md
+            - name: ASP.NET コンソール
+              displayname: 'console, .NET, dotnet console, dotnet, c#, csharp, NET'
+              href: app/console.md
             - name: 非 HTTP アプリ/バックグラウンド アプリ
               displayname: 'console, .NET, .NET Core, dotnet console, dotnet, c#, csharp, NET, worker, background, generic host'
               href: app/worker-service.md
-            - name: .NET コンソール
-              displayname: 'console, .NET, dotnet console, dotnet, c#, csharp, NET'
-              href: app/console.md
             - name: Java
               items:
                 - name: Web Apps
