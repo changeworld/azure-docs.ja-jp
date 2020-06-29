@@ -8,9 +8,13 @@
       href: lab-services-overview.md
 - name: チュートリアル
   items:
-    - name: 1. ラボを設定する
-      href: tutorial-create-custom-lab.md
-    - name: 2. ラボにアクセスする
+    - name: ラボを設定する
+      items:
+        - name: Azure Portal の使用
+          href: tutorial-create-custom-lab.md
+        - name: Resource Manager テンプレートの使用
+          href: create-lab-windows-vm-template.md
+    - name: ラボにアクセスする
       href: tutorial-use-custom-lab.md
 - name: サンプル
   items:
