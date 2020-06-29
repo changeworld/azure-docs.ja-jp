@@ -242,10 +242,14 @@
           href: enable-diagnostic-logs-topic.md
         - name: エラーをトラブルシューティングする
           href: troubleshoot-errors.md
+        - name: ネットワーク接続に関する問題のトラブルシューティング
+          href: troubleshoot-network-connectivity.md
         - name: サブスクリプション検証のトラブルシューティング
           href: troubleshoot-subscription-validation.md
-        - name: メトリックを表示し、アラートを作成する
+        - name: メトリックを表示する
           href: monitor-event-delivery.md
+        - name: アラートを作成する
+          href: set-alerts.md
 - name: リファレンス
   items:
     - name: Azure CLI

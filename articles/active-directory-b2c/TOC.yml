@@ -191,8 +191,12 @@
               displayName: 'ux, input, cors, html, css'
             - name: 言語をカスタマイズする
               href: custom-policy-localization.md
-            - name: カスタム メール
-              href: custom-email.md
+            - name: カスタム メール確認
+              items:
+                - name: Mailjet
+                  href: custom-email-mailjet.md
+                - name: SendGrid
+                  href: custom-email-sendgrid.md
               displayName: verification
             - name: メールの確認を無効にする
               href: custom-policy-disable-email-verification.md
@@ -373,6 +377,8 @@
           href: partner-trusona.md
         - name: Twilio
           href: partner-twilio.md
+        - name: TypingDNA
+          href: partner-typingdna.md
     - name: b2clogin.com の使用
       items:
         - name: b2clogin.com の概要

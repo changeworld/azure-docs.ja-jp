@@ -367,9 +367,9 @@
     - name: バックアップと回復
       href: backup-recovery.md
     - name: クラウド導入フレームワーク
-      href: 'https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/get-started/'
+      href: 'https://docs.microsoft.com/azure/cloud-adoption-framework/get-started/'
     - name: アーキテクチャ センター
-      href: 'https://docs.microsoft.com/en-us/azure/architecture/'
+      href: 'https://docs.microsoft.com/azure/architecture/'
     - name: インフラストラクチャのガイドライン
       href: infrastructure-example.md
 - name: 操作方法ガイド

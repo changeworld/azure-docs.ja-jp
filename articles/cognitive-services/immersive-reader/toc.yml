@@ -29,9 +29,15 @@
       href: how-to-customize-launch-button.md
     - name: 認証トークンをキャッシュする
       href: how-to-cache-token.md
+    - name: 音声読み上げを構成する
+      href: how-to-configure-read-aloud.md
+    - name: 翻訳を構成する
+      href: how-to-configure-translation.md
+    - name: ユーザー設定を格納する
+      href: how-to-store-user-preferences.md
 - name: リファレンス
   items:
-    - name: SDK リファレンス
+    - name: JavaScript SDK
       href: reference.md
 - name: リソース
   items:
