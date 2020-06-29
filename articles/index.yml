@@ -13,12 +13,12 @@ metadata:
   ms.date: 02/27/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: 6edc39bc9923d53732775c68c9b7fe4f2d35b055
-  ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+  ms.openlocfilehash: 5f9dbc120b301100364da61f7d8c19fa58beb5c9
+  ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/26/2020
-  ms.locfileid: "85414387"
+  ms.lasthandoff: 06/27/2020
+  ms.locfileid: "85482923"
 highlightedContent:
   items:
   - title: Azure 開発者向けファースト ステップ ガイド
@@ -1042,12 +1042,12 @@ productDirectory:
     - media
     url: media-services/latest/index.yml
   - title: Data Box
-    summary: Azure とエッジのコンピューティングへのデータ転送のためのアプライアンスとソリューション
+    summary: Azure へのデータ転送のためのアプライアンスとソリューション
     imageSrc: https://static.docs.com/ui/media/product/azure/data-box.svg
     azureCategories:
     - migration
     - storage
-    url: databox-family/index.md
+    url: databox/index.yml
   - title: Spatial Anchors (プレビュー)
     summary: 空間認識機能を備えたマルチユーザー対応の複合現実エクスペリエンスを作成
     imageSrc: https://static.docs.com/ui/media/product/azure/spatial-anchor-accounts.svg
