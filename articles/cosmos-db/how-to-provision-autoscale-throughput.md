@@ -127,7 +127,7 @@ ThroughputProperties autoscaleThroughputProperties = ThroughputProperties.create
 CosmosAsyncDatabase database = client.createDatabase(databaseName, autoscaleThroughputProperties).block().getDatabase();
 ```
 
-#### <a name="sync"></a>[[同期]](#tab/api-sync)
+#### <a name="sync"></a>[同期](#tab/api-sync)
 
 ```java
 // Create instance of CosmosClient
@@ -164,7 +164,7 @@ CosmosAsyncContainer container = database.createContainer(autoscaleContainerProp
                                 .getContainer();
 ```
 
-#### <a name="sync"></a>[[同期]](#tab/api-sync)
+#### <a name="sync"></a>[同期](#tab/api-sync)
 
 ```java
 // Get reference to database that container will be created in
@@ -199,7 +199,7 @@ int autoscaleMaxThroughput = autoscaleContainerThroughput.getAutoscaleMaxThrough
 int currentThroughput = autoscaleContainerThroughput.Throughput;
 ```
 
-#### <a name="sync"></a>[[同期]](#tab/api-sync)
+#### <a name="sync"></a>[同期](#tab/api-sync)
 
 ```java
 // Get a reference to the resource
@@ -226,7 +226,7 @@ int currentThroughput = autoscaleContainerThroughput.Throughput;
 container.replaceThroughput(ThroughputProperties.createAutoscaledThroughput(newAutoscaleMaxThroughput)).block();
 ```
 
-#### <a name="sync"></a>[[同期]](#tab/api-sync)
+#### <a name="sync"></a>[同期](#tab/api-sync)
 
 ```java
 // Change the autoscale max throughput (RU/s)

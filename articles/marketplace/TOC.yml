@@ -258,36 +258,6 @@
           href: ./cloud-partner-portal/saas-app/cpp-saas-offer.md
         - name: 仮想マシンのオファー
           href: ./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md
-    - name: API リファレンス
-      items:
-        - name: 概要
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-overview.md
-        - name: 前提条件
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-prerequisites.md
-        - name: 考慮事項
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-considerations.md
-        - name: コンカレンシー制御
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-concurrency-control.md
-        - name: オファーを取得する
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-retrieve-offers.md
-        - name: 特定のオファーの取得
-          href: ./cloud-partner-portal-orig//cloud-partner-portal-api-retrieve-specific-offer.md
-        - name: オファーの追加または変更
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-creating-offer.md
-        - name: プランの状態の取得
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-retrieve-offer-status.md
-        - name: プランの発行
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-publish-offer.md
-        - name: 操作の取得
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-retrieve-operations.md
-        - name: 操作のキャンセル
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-cancel-operations.md
-        - name: 公開
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-go-live.md
-        - name: 仮想マシン プランの価格
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-setting-price.md
-        - name: 認証エラーのトラブルシューティング
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-troubleshooting-authentication-errors.md
     - name: サポートの利用
       href: ./cloud-partner-portal-orig/cloud-partner-portal-support-for-cloud-partner-portal.md
 - name: パートナー センターのコマーシャル マーケットプレース
@@ -433,8 +403,6 @@
       href: ./partner-center-portal/update-existing-offer.md
     - name: ベネフィットのアクティブ化
       href: ./partner-center-portal/marketplace-rewards.md
-    - name: サポート オプション
-      href: ./partner-center-portal/support.md
     - name: パートナー センターの分析
       items:
         - name: コマーシャル マーケットプレースの分析
@@ -471,3 +439,35 @@
           href: ./partner-center-portal/payout-policy-details.md
         - name: 税の詳細
           href: ./partner-center-portal/tax-details-paid-transactions.md
+    - name: CPP API リファレンス
+      items:
+        - name: 概要
+          href: ./cloud-partner-portal-api-overview.md
+        - name: 前提条件
+          href: ./cloud-partner-portal-api-prerequisites.md
+        - name: 考慮事項
+          href: ./cloud-partner-portal-api-considerations.md
+        - name: コンカレンシー制御
+          href: ./cloud-partner-portal-api-concurrency-control.md
+        - name: オファーを取得する
+          href: ./cloud-partner-portal-api-retrieve-offers.md
+        - name: 特定のオファーの取得
+          href: ./cloud-partner-portal-api-retrieve-specific-offer.md
+        - name: オファーの追加または変更
+          href: ./cloud-partner-portal-api-creating-offer.md
+        - name: プランの状態の取得
+          href: ./cloud-partner-portal-api-retrieve-offer-status.md
+        - name: プランの発行
+          href: ./cloud-partner-portal-api-publish-offer.md
+        - name: 操作の取得
+          href: ./cloud-partner-portal-api-retrieve-operations.md
+        - name: 操作のキャンセル
+          href: ./cloud-partner-portal-api-cancel-operations.md
+        - name: 公開
+          href: ./cloud-partner-portal-api-go-live.md
+        - name: 仮想マシン プランの価格
+          href: ./cloud-partner-portal-api-setting-price.md
+        - name: 認証エラーのトラブルシューティング
+          href: ./cloud-partner-portal-api-troubleshooting-authentication-errors.md
+    - name: サポート オプション
+      href: ./partner-center-portal/support.md

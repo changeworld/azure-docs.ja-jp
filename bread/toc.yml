@@ -441,9 +441,9 @@
     - name: Cosmos DB
       tocHref: /azure/cosmos-db/
       topicHref: /azure/cosmos-db/
-    - name: Data Box ファミリ
-      tocHref: /azure/databox-family/
-      topicHref: /azure/databox-family/
+    - name: ストレージ
+      tocHref: /azure/storage/
+      topicHref: /azure/storage/
       items:
         - name: Data Box のオフライン転送
           tocHref: /azure/databox/
