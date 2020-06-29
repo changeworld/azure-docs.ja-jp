@@ -24,7 +24,7 @@ ms.locfileid: "84765065"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="suggested-pre-reading"></a>推奨される事前読み取り  
+## <a name="suggested-pre-reading"></a>先に読んでおくことが推奨される記事  
 
 始める前に、以下の記事をお読みください。
 
