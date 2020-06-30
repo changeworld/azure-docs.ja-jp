@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/30/2020
 ms.author: aahi
-ms.openlocfilehash: 637c2bb1bc37d26dcdf1a169b2f5d20766d0a27f
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: cd17bf6c97cb89984bf407552330fbe9bec36e3f
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84902528"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85292117"
 ---
 > [!NOTE]
 > `PHI` を検出するには、`domain=phi` パラメーターおよびモデル バージョン `2020-04-01` 以降を使用します。
@@ -51,7 +51,7 @@ ms.locfileid: "84902528"
 |---------------------------------------|-----------------------------------------------------------------------------|
 | Azure DocumentDB 認証キー             | Azure DocumentDB サーバーの認証キー。                           |
 | Azure IAAS データベース接続文字列および Azure SQL 接続文字列 | Azure サービスとしてのインフラストラクチャ (IaaS) データベースの接続文字列、および SQL 接続文字列。 |
-| Azure SQL 接続文字列           | Azure SQL データベースの接続文字列。                                |
+| Azure SQL 接続文字列           | Azure SQL Database 内のデータベースの接続文字列。                                |
 | Azure IoT 接続文字列           | Azure モノのインターネット (IoT) の接続文字列。                        |
 | Azure 発行設定パスワード        | Azure 発行設定のパスワード。                                        |
 | Azure Redis Cache 接続文字列   | Azure Cache for Redis の接続文字列。                             |

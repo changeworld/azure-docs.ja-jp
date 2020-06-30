@@ -3,12 +3,12 @@ title: Azure に移行するために Azure Migrate Server Assessment を使用�
 description: Azure Migrate Server Assessment を使用して、Azure に移行するためにオンプレミスの物理サーバーを評価する方法について説明します。
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: 5cbd1b85bdb9017a96dc863b83223c31c716cf77
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: ee88f9058abc89a671fa846a67c22a752f0d05e4
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331799"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052200"
 ---
 # <a name="assess-physical-servers-with-azure-migrateserver-assessment"></a>Azure Migrate:Server Assessment を使用して物理サーバーを評価する
 
@@ -101,7 +101,7 @@ Azure Migrate: Server Assessment では、軽量のアプライアンスが実�
 2. 次のコマンドを実行して、圧縮されたファイルのハッシュを生成します。
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 使用例 (パブリック クラウドの場合): ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
-    - 使用例 (政府機関向けクラウドの場合): ```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
+    - 使用例 (政府機関向けクラウドの場合): ```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip SHA256 ```
 3.  最新のアプライアンス バージョンとハッシュ値を確認します。
     - パブリック クラウドの場合:
 
@@ -180,7 +180,7 @@ Azure Migrate: Server Assessment では、軽量のアプライアンスが実�
 
 1. **[資格情報の追加]** をクリックして、アプライアンスがサーバーの検出に使用するアカウント資格情報を指定します。  
 2. **オペレーティング システム**、資格情報のフレンドリ名、ユーザー名、パスワードを指定します。 **[追加]** をクリックします。
-Windows および Linux サーバーごとに 1 セットの資格情報を追加できます。
+Windows および Linux サーバーの複数の資格情報を追加できます。
 4. **[サーバーの追加]** をクリックし、サーバーの詳細 (FQDN/IP アドレスと資格情報のフレンドリ名 (行ごとに 1 つのエントリ)) を指定してサーバーに接続します。
 3. **[検証]** をクリックします。 検証後、検出可能なサーバーの一覧が表示されます。
     - サーバーの検証が失敗した場合は、 **[状態]** 列のアイコンをポイントしてエラーを確認します。 問題を修正し、もう一度検証します。

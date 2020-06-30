@@ -1,14 +1,14 @@
 ---
 title: チュートリアル:カスタム ポリシー定義の作成
 description: このチュートリアルでは、Azure リソースに対してカスタム ビジネス ルールを適用するための Azure Policy のカスタム ポリシー定義を作成します。
-ms.date: 05/20/2020
+ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: 4d91ae589adbadb7d03e318dc20d6b2b78a84a18
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f8702e84923762b2f417eee882a473228d6bafb8
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683245"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888152"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>チュートリアル:カスタム ポリシー定義の作成
 
@@ -171,6 +171,9 @@ Azure リソースのエイリアスを判別する方法はいくつかあり�
 ### <a name="get-aliases-in-vs-code-extension"></a>VS Code 拡張機能でエイリアスを取得する
 
 VS Code 拡張機能の Azure Policy 拡張機能を使用すると、リソースを簡単に参照し、[エイリアスを検出](../how-to/extension-for-vscode.md#discover-aliases-for-resource-properties)できます。
+
+> [!NOTE]
+> VS Code 拡張機能では、Resource Manager モードのプロパティのみが公開され、[リソースプロバイダー モード](../concepts/definition-structure.md#mode)のプロパティは表示されません。
 
 ### <a name="azure-cli"></a>Azure CLI
 

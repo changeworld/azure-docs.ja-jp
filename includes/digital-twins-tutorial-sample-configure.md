@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: f7b3bf347b15ebad2403f3aa64c0f3fd6c4be052
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 463fb7860eb35a7ff45d3794d200c69685825827
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84611794"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737200"
 ---
 ## <a name="configure-the-sample-project"></a>サンプル プロジェクトを構成する
 
@@ -22,7 +22,7 @@ ms.locfileid: "84611794"
 
 Visual Studio の *[ソリューション エクスプローラー]* ペインを使用して、 _[SampleClientApp] > **[serviceConfig.json.TEMPLATE]**_ ファイルのコピーを作成します (右クリック メニューを使用してコピーし、貼り付けることができます)。 コピーの名前を *serviceConfig.json* に変更します。 このファイルは、プロジェクトを実行するために必要な構成変数を含んだ事前設定済みの JSON ファイルとして機能します。
 
-新しいファイルを選択して、編集ウィンドウで開きます。 `tenantId` は実際の "*ディレクトリ ID*" に、`clientId` は実際の "*アプリケーション ID*" に、`instanceUrl` は実際の Azure Digital Twins インスタンスの *hostName* URL (以下に示したように先頭に *https://* を付ける) に変更してください。
+*serviceConfig.json* ファイルを選択して、編集ウィンドウで開きます。 `tenantId` は実際の "*ディレクトリ ID*" に、`clientId` は実際の "*アプリケーション ID*" に、`instanceUrl` は実際の Azure Digital Twins インスタンスの *hostName* URL (以下に示したように先頭に *https://* を付ける) に変更してください。
 
 ```json
 {

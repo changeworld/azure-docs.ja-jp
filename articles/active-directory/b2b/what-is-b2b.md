@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0effb6bb6e3d3f80775a3cee1ad8a63013a78805
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 89e1868d8e9a346d5a791c9fa8ae7682ca2b6807
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585830"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905138"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Azure Active Directory B2B のゲスト ユーザー アクセスとは
 
@@ -98,9 +98,12 @@ Azure AD は、Facebook、Microsoft アカウント、Google、エンタープ�
 
 ## <a name="create-a-self-service-sign-up-user-flow-preview"></a>セルフサービス サインアップのユーザー フローを作成する (プレビュー)
 
-セルフサービス サインアップ ユーザー フローを使用すると、アプリにアクセスしようとする外部ユーザーのためにサインアップ エクスペリエンスを作成できます。 サインアップ フローの一部として、さまざまなソーシャル ID プロバイダーまたはエンタープライズ ID プロバイダーのオプションを提供したり、ユーザーに関する情報を収集したりすることができます。 セルフサービス サインアップとその設定方法について説明します。
+セルフサービス サインアップ ユーザー フローを使用すると、アプリにアクセスしようとする外部ユーザーのためにサインアップ エクスペリエンスを作成できます。 サインアップ フローの一部として、さまざまなソーシャル ID プロバイダーまたはエンタープライズ ID プロバイダーのオプションを提供したり、ユーザーに関する情報を収集したりすることができます。 セルフサービス サインアップとその設定方法については、[こちら](self-service-sign-up-overview.md)を参照してください。
+
+また、[API コネクタ](api-connectors-overview.md)を使用して、セルフサービス サインアップ ユーザー フローを外部クラウド システムと統合することもできます。 カスタム承認ワークフローを使用して接続したり、本人確認を実行したり、ユーザー指定の情報を検証したりできます。
 
 ![ユーザー フロー ページを示すスクリーンショット](media/what-is-b2b/self-service-sign-up-user-flow-overview.png)
+<!--TODO: Add screenshot with API connectors -->
 
 ## <a name="next-steps"></a>次のステップ
 

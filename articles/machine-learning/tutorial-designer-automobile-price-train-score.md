@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 05/12/2020
 ms.custom: designer
-ms.openlocfilehash: f6d684829092d8be97785c46058186f3ca5542b2
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 2fab23e9f765d9ab4908cc4be69d8b747c6856b9
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84119031"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84790536"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>チュートリアル:デザイナーを使用して自動車の価格を予測する (プレビュー)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -77,7 +77,7 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
     使用できるコンピューティング先が既にある場合は、それを選択してこのパイプラインを実行できます。
 
     > [!NOTE]
-    > デザイナーは、Azure Machine Learning コンピューティングおよび Azure Machine Learning コンピューティング インスタンスのコンピューティング先でのみトレーニング実験を実行できます。 その他のコンピューティング先は表示されません。
+    > デザイナーは、Azure Machine Learning コンピューティングおよび Azure Machine Learning コンピューティング インスタンスでのみトレーニング実験を実行できます。その他のコンピューティング先は表示されません。
 
 1. コンピューティング リソースの名前を入力します。
 

@@ -1,9 +1,9 @@
 ---
 title: クイック スタート:バックアップを復元する (SSMS)
-titleSuffix: Azure SQL SQL Managed Instance
-description: このクイックスタートでは、SQL Server Management (SSMS) を使用して Azure SQL Managed Instance にデータベース バックアップを復元する方法について説明します。
+titleSuffix: Azure SQL Managed Instance
+description: このクイックスタートでは、SQL Server Management Studio (SSMS) を使用して Azure SQL Managed Instance にデータベース バックアップを復元する方法について説明します。
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
@@ -12,45 +12,45 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: c750912e942d5dadeb97e6675427f1730912704a
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 0d10105648f434eb1d02a821e972e789bd39d66f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267581"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708445"
 ---
-# <a name="quickstart-restore-a-database-to-an-azure-sql-managed-instance-with-ssms"></a>クイック スタート:SSMS を使用して Azure SQL Managed Instance にデータベースを復元する
+# <a name="quickstart-restore-a-database-to-azure-sql-managed-instance-with-ssms"></a>クイック スタート:SSMS を使用して Azure SQL Managed Instance にデータベースを復元する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-このクイック スタートでは、SQL Server Management Studio (SSMS) を使用して、Azure Blob Storage から [Azure SQL Managed Instance](sql-managed-instance-paas-overview.md) にデータベース (Wide World Importers - 標準のバックアップ ファイル) を復元します。
+このクイックスタートでは、SQL Server Management Studio (SSMS) を使用して、Azure Blob Storage から [Azure SQL Managed Instance](sql-managed-instance-paas-overview.md) にデータベース (Wide World Importers - 標準のバックアップ ファイル) を復元します。
 
 > [!VIDEO https://www.youtube.com/embed/RxWYojo_Y3Q]
 
 > [!NOTE]
-> Azure Database Migration Service (DMS) を使用した移行の詳細については、[DMS を使用した SQL Managed Instance の移行](../../dms/tutorial-sql-server-to-managed-instance.md)に関するページを参照してください。
+> Azure Database Migration Service を使用した移行の詳細については、[Database Migration Service を使用した SQL Managed Instance の移行](../../dms/tutorial-sql-server-to-managed-instance.md)に関するページを参照してください。
 > 各種の移行方法の詳細については、[Azure SQL Managed Instance への SQL Server の移行](migrate-to-instance-from-sql-server.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 このクイック スタート:
 
-- [SQL Managed Instance の作成](instance-create-quickstart.md)に関するクイック スタートのリソースを使用します。
-- 最新バージョンの [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) がインストールされている必要があります。
+- [マネージド インスタンスの作成](instance-create-quickstart.md)に関するクイックスタートのリソースを使用します。
+- 最新バージョンの [SSMS](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) がインストールされている必要があります。
 - SSMS を使用して SQL Managed Instance に接続する必要があります。 接続方法については、次のクイック スタートを参照してください。
   - SQL Managed Instance で[パブリック エンドポイントを有効にする](public-endpoint-configure.md) - これは、このチュートリアルで推奨される方法です。
-  - [Azure VM から SQL Managed Instance に接続する](connect-vm-instance-configure.md)
-  - [オンプレミスから SQL Managed Instance へのポイント対サイト接続を構成する](point-to-site-p2s-configure.md)
+  - [Azure VM から SQL Managed Instance に接続する](connect-vm-instance-configure.md)。
+  - [オンプレミスから SQL Managed Instance へのポイント対サイト接続を構成する](point-to-site-p2s-configure.md)。
 
 > [!NOTE]
 > Azure Blob Storage と [Shared Access Signature (SAS) キー](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)を使用した SQL Server データベースのバックアップと復元の詳細については、[SQL Server Backup to URL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-2017) に関するページを参照してください。
 
 ## <a name="restore-from-a-backup-file"></a>バックアップ ファイルから復元する
 
-SQL Server Management Studio (SSMS) で、次の手順に従って、Wide World Importers データベースを SQL Managed Instance に復元します。 データベース バックアップ ファイルは、事前構成済みの Azure Blob Storage アカウントに格納されています。
+SQL Server Management Studio で、次の手順に従って、Wide World Importers データベースを SQL Managed Instance に復元します。 データベース バックアップ ファイルは、事前構成済みの Azure Blob Storage アカウントに格納されています。
 
-1. SSMS を開き、SQL Managed Instance に接続します。
-2. **オブジェクト エクスプローラー**で、SQL Managed Instance を右クリックし、 **[新しいクエリ]** を選択して新しいクエリ ウィンドウを開きます。
-3. 次の SQL スクリプトを実行します。これは、事前構成済みのストレージ アカウントと SAS キーを使用して、SQL Managed Instance に[資格情報を作成](https://docs.microsoft.com/sql/t-sql/statements/create-credential-transact-sql)します。
+1. SSMS を開き、お使いのマネージド インスタンスに接続します。
+2. **オブジェクト エクスプローラー**で、マネージド インスタンスを右クリックし、 **[新しいクエリ]** を選択して新しいクエリ ウィンドウを開きます。
+3. 次の SQL スクリプトを実行します。このスクリプトでは、事前構成済みのストレージ アカウントと SAS キーを使用して、マネージド インスタンスに[資格情報を作成](https://docs.microsoft.com/sql/t-sql/statements/create-credential-transact-sql)します。
 
    ```sql
    CREATE CREDENTIAL [https://mitutorials.blob.core.windows.net/databases]
@@ -88,10 +88,10 @@ SQL Server Management Studio (SSMS) で、次の手順に従って、Wide World 
    WHERE r.command in ('BACKUP DATABASE','RESTORE DATABASE')
    ```
 
-7. 復元が完了したら、オブジェクト エクスプローラー上でデータベースを表示します。 データベースの復元が完了したことを確認するには、[sys. dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) ビューを使用できます。
+7. 復元が完了したら、オブジェクト エクスプローラー上でデータベースを表示します。 データベースの復元が完了したことを確認するには、[sys.dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) ビューを使用できます。
 
 > [!NOTE]
-> データベースの復元操作は非同期であり、再試行可能です。 接続が切断されるか、何らかのタイムアウトが発生した場合に、SQL Server Management Studio に何らかのエラーが生じる可能性があります。 Azure SQL Database では、バックグラウンドでのデータベースの復元を試行し続けます。[sys. dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) および [dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) ビューを使用して、復元の進行状況を追跡できます。
+> データベースの復元操作は非同期であり、再試行可能です。 接続が切断されるか、タイムアウトが発生した場合に、SQL Server Management Studio にエラーが生じる可能性があります。 Azure SQL Database では、バックグラウンドでのデータベースの復元を試行し続けます。[sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) および [sys.dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) ビューを使用して、復元の進行状況を追跡できます。
 > 復元プロセスの一部のフェーズでは、システム ビューに実際のデータベース名ではなく、一意の識別子が表示されます。 `RESTORE` ステートメントの動作の違いについては、[こちら](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-transact-sql-information#restore-statement)で確認してください。
 
 ## <a name="next-steps"></a>次のステップ

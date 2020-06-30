@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: sample
 ms.date: 01/14/2020
 ms.author: iainfou
-ms.openlocfilehash: b44547998b7ed7159e43bcbbfb4b4456d2a232e9
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: d826a40073d243193f87d90ab80333b491a203b2
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654549"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734217"
 ---
 # <a name="create-an-azure-active-directory-domain-services-managed-domain-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して Azure Active Directory Domain Services マネージド ドメインを作成する
 
@@ -38,7 +38,7 @@ Azure Active Directory Domain Services (Azure AD DS) では、Windows Server Act
 
 ## <a name="dns-naming-requirements"></a>DNS の名前付けに関する要件
 
-Azure AD DS インスタンスを作成する際は、DNS 名を指定します。 この DNS 名を選ぶ際のいくつかの考慮事項を次に示します。
+Azure AD DS のマネージド ドメインを作成する際は、DNS 名を指定します。 この DNS 名を選ぶ際のいくつかの考慮事項を次に示します。
 
 * **組み込みドメイン名:** 既定では、ディレクトリの組み込みドメイン名が使用されます ( *.onmicrosoft.com* サフィックス)。 マネージド ドメインに対するインターネット経由での Secure LDAP アクセスを有効にしたい場合、デジタル証明書を作成して、この既定のドメインとの接続をセキュリティで保護することはできません。 *.onmicrosoft.com* ドメインを所有するのは Microsoft であるため、証明機関 (CA) からは証明書が発行されません。
 * **カスタム ドメイン名:** 最も一般的な方法は、カスタム ドメイン名を指定することです。一般に、貴社が既に所有していて、なおかつルーティング可能なものを指定します。 ルーティング可能なカスタム ドメインを使用すれば、ご利用のアプリケーションをサポートするために必要なトラフィックを正しく送信することができます。
@@ -47,7 +47,7 @@ Azure AD DS インスタンスを作成する際は、DNS 名を指定します�
 > [!TIP]
 > カスタム ドメイン名を作成する場合は、既存の DNS 名前空間に注意してください。 Azure およびオンプレミスの既存の DNS 名前空間とは別のドメイン名を使用することをお勧めします。
 >
-> たとえば、*contoso.com* の既存の DNS 名前空間がある場合、*aaddscontoso.com* というカスタム ドメイン名を使用して Azure AD DS のマネージド ドメインを作成します。 Secure LDAP を使用する必要がある場合は、このカスタム ドメイン名を登録して所有し、必要な証明書を生成する必要があります。
+> たとえば、*contoso.com* の既存の DNS 名前空間がある場合、*aaddscontoso.com* というカスタム ドメイン名を使用してマネージド ドメインを作成します。 Secure LDAP を使用する必要がある場合は、このカスタム ドメイン名を登録して所有し、必要な証明書を生成する必要があります。
 >
 > 場合によっては、環境内の他のサービス用に追加で DNS レコードを作成したり、環境内に既に存在する 2 つの DNS 名前空間の間に条件付き DNS フォワーダーを作成したりする必要があります。 たとえば、ルート DNS 名を使用するサイトをホストする Web サーバーを実行する場合、名前の競合が発生して、追加の DNS エントリが必要になる可能性があります。
 >
@@ -63,7 +63,7 @@ DNS 名には、次の制限も適用されます。
 
 ## <a name="create-required-azure-ad-resources"></a>必要な Azure AD リソースを作成する
 
-Azure AD DS には、サービス プリンシパルと Azure AD グループが必要です。 これらのリソースにより、Azure AD DS マネージド ドメインはデータを同期し、マネージド ドメインで管理アクセス許可を持つユーザーを定義できます。
+Azure AD DS には、サービス プリンシパルと Azure AD グループが必要です。 これらのリソースにより、マネージド ドメインはデータを同期し、マネージド ドメインで管理アクセス許可を持つユーザーを定義できます。
 
 まず、[Register-AzResourceProvider][Register-AzResourceProvider] コマンドレットを使用して、Azure AD Domain Services リソース プロバイダーを登録します。
 
@@ -77,7 +77,7 @@ Azure AD DS が通信し、自身を認証するようにするには、[New-Azu
 New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 ```
 
-次に、[New-AzureADGroup][New-AzureADGroup] コマンドレットを使用して *AAD DC Administrators* という名前の Azure AD グループを作成します。 このグループに追加されたユーザーには、Azure AD DS マネージド ドメインで管理タスクを実行するためのアクセス許可が付与されます。
+次に、[New-AzureADGroup][New-AzureADGroup] コマンドレットを使用して *AAD DC Administrators* という名前の Azure AD グループを作成します。 このグループに追加されたユーザーには、マネージド ドメインで管理タスクを実行するためのアクセス許可が付与されます。
 
 ```powershell
 New-AzureADGroup -DisplayName "AAD DC Administrators" `
@@ -125,10 +125,10 @@ Resource Manager リソース定義の一部として、次の構成パラメー
 |-------------------------|---------|
 | domainName              | マネージド ドメインの DNS ドメイン名。プレフィックスの名前付けや競合に関する前のポイントを考慮に入れてください。 |
 | filteredSync            | Azure AD DS では、Azure AD に存在する "*すべて*" のユーザーとグループを同期できるほか、特定のグループのみを "*範囲指定*" して同期することもできます。 すべてのユーザーとグループを同期することを選択した場合は、後で、範囲指定された同期のみの実行を選択することはできません。<br /> 範囲指定された同期の詳細については、[Azure AD Domain Services の範囲指定された同期][scoped-sync]に関するページを参照してください。|
-| notificationSettings    | Azure AD DS マネージド ドメインで生成されたアラートがある場合は、電子メール通知を送信できます。 <br />Azure テナントの*全体管理者*と *AAD DC Administrators* グループのメンバーは、これらの通知に対して *[有効]* にすることができます。<br /> 必要に応じて、注意を必要とするアラートが発生した場合の通知の受信者を追加できます。|
-| domainConfigurationType | 既定では、Azure AD DS のマネージド ドメインが "*ユーザー*" フォレストとして作成されます。 このタイプのフォレストでは、オンプレミスの AD DS 環境で作成されたユーザー アカウントも含め、Azure AD 内のすべてのオブジェクトが同期されます。 ユーザー フォレストを作成するために *domainConfiguration* 値を指定する必要はありません。<br /> "*リソース*" フォレストでは、Azure AD に直接作成されたユーザーとグループだけが同期されます。 リソース フォレストは現在プレビュー段階です。 リソース フォレストを作成するには、この値を *ResourceTrusting* に設定します。<br />リソース フォレストを使用する理由や、オンプレミスの AD DS ドメインを使用してフォレストの信頼を作成する方法など、"*リソース*" フォレストの詳細については、[Azure AD DS リソース フォレストの概要][resource-forests]に関するページを参照してください。|
+| notificationSettings    | マネージド ドメインで生成されたアラートがある場合は、電子メール通知を送信できます。 <br />Azure テナントの*全体管理者*と *AAD DC Administrators* グループのメンバーは、これらの通知に対して *[有効]* にすることができます。<br /> 必要に応じて、注意を必要とするアラートが発生した場合の通知の受信者を追加できます。|
+| domainConfigurationType | 既定では、マネージド ドメインは "*ユーザー*" フォレストとして作成されます。 このタイプのフォレストでは、オンプレミスの AD DS 環境で作成されたユーザー アカウントも含め、Azure AD 内のすべてのオブジェクトが同期されます。 ユーザー フォレストを作成するために *domainConfiguration* 値を指定する必要はありません。<br /> "*リソース*" フォレストでは、Azure AD に直接作成されたユーザーとグループだけが同期されます。 リソース フォレストは現在プレビュー段階です。 リソース フォレストを作成するには、この値を *ResourceTrusting* に設定します。<br />リソース フォレストを使用する理由や、オンプレミスの AD DS ドメインを使用してフォレストの信頼を作成する方法など、"*リソース*" フォレストの詳細については、[Azure AD DS リソース フォレストの概要][resource-forests]に関するページを参照してください。|
 
-次の圧縮されたパラメーターの定義は、これらの値がどのように宣言されるかを示しています。 *aaddscontoso.com* という名前のユーザー フォレストは、Azure AD DS マネージド ドメインに同期されている Azure AD のすべてのユーザーで作成されます。
+次の圧縮されたパラメーターの定義は、これらの値がどのように宣言されるかを示しています。 *aaddscontoso.com* という名前のユーザー フォレストは、マネージド ドメインに同期されている Azure AD のすべてのユーザーで作成されます。
 
 ```json
 "parameters": {
@@ -149,7 +149,7 @@ Resource Manager リソース定義の一部として、次の構成パラメー
 }
 ```
 
-その後、次の圧縮された Resource Manager テンプレート リソースの種類を使用して、Azure AD DS マネージド ドメインが定義および作成されます。 Azure 仮想ネットワークとサブネットが既に存在するか、または Resource Manager テンプレートの一部として作成される必要があります。 Azure AD DS マネージド ドメインは、このサブネットに接続されます。
+その後、次の圧縮された Resource Manager テンプレート リソースの種類を使用して、マネージド ドメインが定義および作成されます。 Azure 仮想ネットワークとサブネットが既に存在するか、または Resource Manager テンプレートの一部として作成される必要があります。 マネージド ドメインは、このサブネットに接続されます。
 
 ```json
 "resources": [
@@ -176,7 +176,7 @@ Resource Manager リソース定義の一部として、次の構成パラメー
 
 ## <a name="create-a-managed-domain-using-sample-template"></a>サンプル テンプレートを使用してマネージド ドメインを作成する
 
-次の完全な Resource Manager サンプル テンプレートでは、Azure AD DS マネージド ドメインとサポートする仮想ネットワーク、サブネット、およびネットワーク セキュリティ グループの規則が作成されます。 ネットワーク セキュリティ グループの規則は、マネージド ドメインをセキュリティで保護し、トラフィックを正常に送受信できることを確認するために必要です。 *aaddscontoso.com* の DNS 名を持つユーザー フォレストが作成され、すべてのユーザーが Azure AD から同期されます。
+次の完全な Resource Manager サンプル テンプレートでは、マネージド ドメインとサポートする仮想ネットワーク、サブネット、ネットワーク セキュリティ グループの規則が作成されます。 ネットワーク セキュリティ グループの規則は、マネージド ドメインをセキュリティで保護し、トラフィックを正常に送受信できることを確認するために必要です。 *aaddscontoso.com* の DNS 名を持つユーザー フォレストが作成され、すべてのユーザーが Azure AD から同期されます。
 
 ```json
 {
@@ -325,17 +325,17 @@ Resource Manager リソース定義の一部として、次の構成パラメー
 New-AzResourceGroupDeployment -ResourceGroupName "myResourceGroup" -TemplateFile <path-to-template>
 ```
 
-リソースが作成され、PowerShell プロンプトに制御が戻るまで数分かかります。 Azure AD DS マネージド ドメインは引き続きバックグラウンドでプロビジョニングされ、デプロイが完了するまでには最大 1 時間かかる場合があります。 Azure portal では、お使いの Azure AD DS マネージド ドメインの **[概要]** ページに、このデプロイ ステージ全体の現在の状態が表示されます。
+リソースが作成され、PowerShell プロンプトに制御が戻るまで数分かかります。 マネージド ドメインは引き続きバックグラウンドでプロビジョニングされ、デプロイが完了するまでには最大 1 時間かかる場合があります。 Azure portal では、お使いのマネージド ドメインの **[概要]** ページに、このデプロイ ステージ全体の現在の状態が表示されます。
 
-Azure AD DS マネージド ドメインがプロビジョニングを完了したことが Azure portal に示されたら、次のタスクを完了する必要があります。
+マネージド ドメインがプロビジョニングを完了したことが Azure portal に示されたら、次のタスクを完了する必要があります。
 
 * 仮想マシンがマネージド ドメインを検出してドメイン参加または認証を行うことができるように、仮想ネットワークの DNS 設定を更新します。
-    * DNS を構成するには、ポータルで Azure AD DS のマネージド ドメインを選択します。 **[概要]** ウィンドウで、これらの DNS 設定を自動的に構成するように求められます。
+    * DNS を構成するには、ポータルでマネージド ドメインを選択します。 **[概要]** ウィンドウで、これらの DNS 設定を自動的に構成するように求められます。
 * [Azure AD Domain Services とのパスワード同期を有効にして](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)、エンド ユーザーが会社の資格情報を使用してマネージド ドメインにサインインできるようにします。
 
 ## <a name="next-steps"></a>次のステップ
 
-動作中の Azure AD DS マネージド ドメインを確認するために、[Windows VM のドメイン参加][windows-join]、[Secure LDAP の構成][tutorial-ldaps]、および[パスワード ハッシュ同期の構成][tutorial-phs]を実行できます。
+動作中のマネージド ドメインを確認するために、[Windows VM のドメイン参加][windows-join]、[Secure LDAP の構成][tutorial-ldaps]、[パスワード ハッシュ同期の構成][tutorial-phs]を実行できます。
 
 <!-- INTERNAL LINKS -->
 [windows-join]: join-windows-vm.md

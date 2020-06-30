@@ -7,12 +7,12 @@ ms.date: 06/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 16f89fa99c9619e3956a089763ece1b96aff4480
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 5c26af74a392e3e6d3bb5557960b81604de7cdf3
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298127"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807796"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure エンタープライズ加入契約の請求書
 
@@ -224,7 +224,7 @@ Azure エンタープライズ ポータルでは、IEEE 標準の銀行型丸�
 | ゾーン 2 | 東アジア太平洋 <br> 東南アジア太平洋 <br> 東日本 <br> 西日本 <br> オーストラリア東部 <br> オーストラリア南東部 | アジア太平洋 <br> 日本 <br> ラテン アメリカ <br> 中東/アフリカ <br> オーストラリア東部 <br> オーストラリア南東部 |
 | ゾーン 3 | ブラジル南部 |   |
 
-同じデータ センター内に格納されているサービス間のデータ エグレスに対する料金は発生しません。 たとえば、Office 365 や Azure などです。
+同じデータ センター内に格納されているサービス間のデータ エグレスに対する料金は発生しません。 たとえば、Microsoft 365 や Azure などです。
 
 ### <a name="monetary-commitment-and-unbilled-usage"></a>年額コミットメントと未請求の使用量
 

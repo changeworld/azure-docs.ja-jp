@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: 0b1cf99fe6e2aa4d7fcb12c3fb96b10b42c7c0b7
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 248bae81db1bc8cb69bac4618bd7593658336636
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76169910"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986705"
 ---
 # <a name="example-identify-faces-in-images"></a>例:画像内の顔を識別する
 
@@ -50,7 +50,11 @@ private readonly IFaceClient faceClient = new FaceClient(
             new System.Net.Http.DelegatingHandler[] { });
 ```
  
-サブスクリプションキー を取得するには、Azure portal から Azure Marketplace にアクセスします。 詳細については、[サブスクリプション](https://azure.microsoft.com/try/cognitive-services/)に関する記事を参照してください。
+次の手順に従って、キーを取得します。
+
+1. [Azure アカウント](https://azure.microsoft.com/free/cognitive-services/)を作成します。 既にある場合は、次の手順に進むことができます。
+2. Azure portal で [Face リソース](https://portal.azure.com/#create/Microsoft.CognitiveServicesFace)を作成し、キーを取得します。 設定中に必ず Free レベル (F0) を選択してください。 
+3. リソースがデプロイされたら、 **[リソースに移動]** をクリックし、キーを収集します。 
 
 ## <a name="step-2-create-the-persongroup"></a>手順 2:PersonGroup を作成する
 

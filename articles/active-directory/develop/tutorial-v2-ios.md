@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 08/30/2019
+ms.date: 06/16/2020
 ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1dd0bc589b8290172d18482b36baf30c24d099b4
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0f712dbee6218ce8e012639b82a3a2ee7c177bb3
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83640575"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84904764"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>iOS または macOS アプリからユーザーのサインインを行い、Microsoft Graph を呼び出す
 
@@ -48,7 +48,7 @@ ms.locfileid: "83640575"
 
 ## <a name="prerequisites"></a>前提条件
 
-- このガイドのアプリをビルドするには、XCode バージョン 11.x 以降が必要です。 XCode は、[iTunes の Web サイト](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "XCode のダウンロード URL")からダウンロードできます。
+- このガイドのアプリをビルドするには、XCode バージョン 11.x 以降が必要です。 XCode は、[Mac App Store](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "XCode のダウンロード URL") からダウンロードできます。
 - Microsoft Authentication Library ([MSAL.framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc))。 依存関係マネージャーを使用するか、ライブラリを手動で追加できます。 以下の手順でその方法を示します。
 
 このチュートリアルでは新しいプロジェクトを作成します。 代わりに完了したチュートリアルをダウンロードする場合は、コードをダウンロードしてください。

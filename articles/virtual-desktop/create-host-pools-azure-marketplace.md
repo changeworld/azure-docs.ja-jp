@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a6ac2fd0ef3414f5b9d7f6551628264b4724b037
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: a01d8568c50cca181ec10f91b316715d64d2c37e
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234328"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737837"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>チュートリアル:Azure portal を使用してホスト プールを作成する
 
@@ -111,7 +111,7 @@ Azure サブスクリプションをまだお持ちでない場合は、これ�
 
     - **[ギャラリー]** を選択した場合は、ドロップダウン メニューから推奨イメージを 1 つ選択します。
 
-      - Windows 10 Enterprise マルチセッション、バージョン 1909 + Office 365 ProPlus - Gen 1
+      - Windows 10 Enterprise マルチセッション、バージョン 1909 + Microsoft 365 Apps for enterprise - Gen 1
       - Windows 10 Enterprise マルチセッション、バージョン 1909 - Gen 1
       - Windows Server 2019 Datacenter - Gen1
 

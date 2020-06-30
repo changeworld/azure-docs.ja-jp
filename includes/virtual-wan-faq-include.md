@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/24/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 827a2d6dc8a3622c17cdbcdfb179a3ea0f434f6f
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 01ed6d836e5d6bfe139e4a21a0ff6a9708c261d3
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83006406"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84977904"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>ユーザーは、Azure Virtual WAN を使用するために、SD-WAN/VPN デバイスを利用したハブとスポークを用意する必要がありますか。
 
@@ -32,7 +32,7 @@ Virtual WAN では [Azure VPN クライアント](https://go.microsoft.com/fwlin
 P2S クライアント用の DNS サーバーを追加するには、2つのオプションがあります。
 
 1. Microsoft にサポート チケットを申請し、ハブに DNS サーバーを追加してもらいます
-2. または、Windows 10 向けに Azure VPN クライアントを使用している場合は、ダウンロードしたプロファイル XML ファイルを変更して、 **\<dnsservers>\<dnsserver> \</dnsserver>\</dnsservers>** タグを追加してからインポートできます。
+2. または、Windows 10 向けの Azure VPN クライアントを使用している場合は、ダウンロードしたプロファイル XML ファイルを変更して、 **\<dnsservers>\<dnsserver> \</dnsserver>\</dnsservers>** タグを追加してからインポートできます。
 
 ```
 <azvpnprofile>
@@ -212,9 +212,14 @@ Azure Virtual WAN ハブでは、最大で 1,000 個のサイト間接続、10,0
 ### <a name="how-does-the-virtual-hub-in-a-virtual-wan-select-the-best-path-for-a-route-from-multiple-hubs"></a>Virtual WAN 内の仮想ハブは、どのようにして複数のハブからのルートに最適なパスを選択するのですか
 
 仮想ハブが複数のリモート ハブから同じルートを学習する場合は、次の順序で決定されます。
-1) ルートの発信元  a) ネットワーク ルート – 仮想ハブ ゲートウェイによって直接習得された VNET プレフィックス  b) ハブの RouteTable (静的に構成されたルート)  c) BGP  d) InterHub ルート
-2)  ルート メトリック:Virtual WAN では、VPN よりも ExpressRoute が優先されます。 ExpressRoute ピアは VPN ピアと比べて重み付けが高くなります
-3)  AS パスの長さ
+1. プレフィックスの最長一致
+2. interhub 経由のローカル ルート
+3. BGP 経由の静的ルート
+4. VPN 経由の ExpressRoute (ER)
+5. AS パスの長さ
+
+ER 間の転送は、常に Global Reach を経由します。そのため、要求が 1 つのハブの ER 経由で届き、VPN と ER がリモート ハブにある場合、リモート ハブの VPN または ER を介して接続されるエンドポイントに到達する際にリモート ハブの ER よりも VPN が優先されます
+
 
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>Virtual WAN に IPv6 のサポートはありますか。
 

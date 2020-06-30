@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.author: banders
-ms.openlocfilehash: 15c686e0d33d7341d16097f32e1c69077c319a12
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: e38271b3a56894380ca5456146a7ab36fb09e08c
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84295305"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678020"
 ---
 # <a name="managing-azure-enterprise-roles"></a>Azure エンタープライズ ロールの管理
 
@@ -27,6 +27,10 @@ ms.locfileid: "84295305"
 <sup>1</sup> EA 契約の請求先は、このロールの連絡先になります。
 
 <sup>2</sup> 請求先担当者は、Azure EA Portal で追加したり変更したりすることはできません。契約レベルで請求先担当者として設定されているユーザーに基づいて、EA 加入契約に追加されます。 請求先担当者を変更するには、パートナーまたはソフトウェア アドバイザーを通じて地域オペレーション センター (ROC) に要請する必要があります。
+
+請求先担当者アカウントの認証の種類は、加入契約のプロビジョニング時に設定された最初の加入契約管理者によって決まります。 請求先担当者が読み取り専用管理者として EA Portal に追加されるときは、請求先担当者に Microsoft アカウント認証が適用されます。 
+
+たとえば、最初の認証の種類が [Mixed]\(混在\) に設定されている場合、EA は Microsoft アカウントとして追加され、請求先担当者には読み取り専用の EA 管理特権が与えられます。 既存の請求先担当者に対する Microsoft アカウント認証を EA 管理者が承認していない場合は、該当ユーザーを削除し、EA Portal から加入契約レベルで設定された "職場または学校アカウントのみ" の読み取り専用管理者としてそのユーザーを再び追加するよう EA 管理者から求められることがあります。
 
 以上のロールは Azure Enterprise Agreement 管理に固有のものであり、リソース アクセスを制御する目的で Azure に与えられる組み込みロールに追加されるものです。 詳細については、「[Azure リソースの組み込みロール](../../role-based-access-control/built-in-roles.md)」を参照してください。
 

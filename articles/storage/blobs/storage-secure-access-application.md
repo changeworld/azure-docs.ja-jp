@@ -7,16 +7,16 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: tutorial
-ms.date: 03/06/2020
+ms.date: 06/10/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.custom: mvc
-ms.openlocfilehash: 13a2a0bcc362a13b0c42650509d356f613527cfc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ac9bf7edf6e3973dd2f1f917d26ac280be4648e3
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80061323"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945649"
 ---
 # <a name="secure-access-to-application-data"></a>アプリケーション データへのアクセスをセキュリティで保護する
 
@@ -43,7 +43,7 @@ ms.locfileid: "80061323"
 blobStorageAccount="<blob_storage_account>"
 
 blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
-    --name $blobStorageAccount --query [0].value --output tsv) 
+    --account-name $blobStorageAccount --query [0].value --output tsv) 
 
 az storage container set-permission \
     --account-name $blobStorageAccount \
@@ -135,11 +135,13 @@ public static async Task<List<string>> GetThumbNailUrls(AzureStorageConfig _stor
 |[UriBuilder](/dotnet/api/system.uribuilder) | [クエリ](/dotnet/api/system.uribuilder.query) |  |
 |[一覧](/dotnet/api/system.collections.generic.list-1) | | [追加](/dotnet/api/system.collections.generic.list-1.add) |
 
-## <a name="server-side-encryption"></a>サーバー側暗号化
+## <a name="azure-storage-encryption"></a>Azure Storage の暗号化
 
-[Azure Storage Service Encryption (SSE)](../common/storage-service-encryption.md) を使用すると、データを保護できます。 SSE は、暗号化、復号化、キー管理を処理して、保存データを暗号化します。 現在利用できるブロック暗号化の中でも最強レベルの 256 ビット [AES 暗号化](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)によってすべてのデータを暗号化します。
+[Azure Storage 暗号化](../common/storage-service-encryption.md)は、保存データを暗号化し、暗号化と解読を処理することで、ユーザーがデータを保護するのを支援します。 現在利用できるブロック暗号化の中でも最強レベルの 256 ビット [AES 暗号化](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)によってすべてのデータを暗号化します。
 
-SSE は、すべてのパフォーマンス レベル (Standard および Premium)、すべてのデプロイ モデル (Azure Resource Manager とクラシック)、すべての Azure Storage サービス (BLOB、Queue、Table、File) のデータを自動的に暗号化します。 
+Microsoft に暗号化キーの管理を任せることも、Azure Key Vault を使用して、顧客マネージド キーを使用する独自のキーを提供することもできます。 詳細については、「[Azure Key Vault で顧客マネージド キーを使用して Azure Storage の暗号化を管理する](../common/encryption-customer-managed-keys.md)」を参照してください。
+
+Azure Storage 暗号化は、すべてのパフォーマンス レベル (Standard および Premium)、すべてのデプロイ モデル (Azure Resource Manager とクラシック)、すべての Azure Storage サービス (Blob、Queue、Table、File) のデータを自動的に暗号化します。
 
 ## <a name="enable-https-only"></a>HTTPS のみを有効にする
 

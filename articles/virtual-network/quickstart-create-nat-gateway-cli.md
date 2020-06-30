@@ -1,11 +1,11 @@
 ---
-title: クイック スタート:NAT ゲートウェイの作成 - Azure CLI
+title: チュートリアル:NAT ゲートウェイの作成 - Azure CLI
 titlesuffix: Azure Virtual Network NAT
 description: このクイックスタートでは、Azure CLI を使用して NAT ゲートウェイを作成する方法について説明します。
 services: virtual-network
 documentationcenter: na
 author: asudbring
-manager: KumundD
+manager: KumudD
 Customer intent: I want to create a NAT gateway for outbound connectivity for my virtual network.
 ms.service: virtual-network
 ms.subservice: nat
@@ -14,16 +14,16 @@ ms.topic: tutorial
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: dcc3eda4c19e8d15040feb31d2a45922035c6cb0
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 016e187c2ae41958b9527b88b06517b5f5544c7b
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84341543"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707908"
 ---
-# <a name="quickstart-create-a-nat-gateway-using-azure-cli"></a>クイック スタート:Azure CLI を使用した NAT ゲートウェイの作成
+# <a name="tutorial-create-a-nat-gateway-using-azure-cli"></a>チュートリアル:Azure CLI を使用した NAT ゲートウェイの作成
 
-このクイックスタートでは、Azure Virtual Network NAT サービスを使用する方法について説明します。 Azure 内の仮想マシンに送信接続を提供する NAT ゲートウェイを作成しましょう。 
+このチュートリアルでは、Azure Virtual Network NAT サービスを使用する方法について説明します。 Azure 内の仮想マシンに送信接続を提供する NAT ゲートウェイを作成しましょう。 
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]

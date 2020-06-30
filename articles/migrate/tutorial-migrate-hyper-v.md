@@ -2,62 +2,52 @@
 title: Azure Migrate Server Migration を使用して Hyper-V VM を Azure に移行する
 description: Azure Migrate Server Migration を使用してオンプレミスの Hyper-V VM を Azure に移行する方法について説明します。
 ms.topic: tutorial
-ms.date: 04/15/2020
+ms.date: 06/08/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 3b50c11f43d29de354f04e1a4296818c5bd8cbab
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 820b9b7e67e873d23bed5a1f9c6aa1a0a2128015
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773533"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84770919"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Hyper-V VM を Azure に移行する 
 
-この記事では、Azure Migrate のエージェントレス移行を使用して、オンプレミスの Hyper-V VM を Azure に移行する方法について説明します。サーバー移行ツール。
+この記事では、[Azure Migrate:Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool) ツールを使用して、オンプレミスの Hyper-V VM を Azure に移行する方法について説明します。
 
-[Azure Migrate](migrate-services-overview.md) は、オンプレミスのアプリとワークロード、およびプライベート/パブリック クラウド VM の検出、評価、および Azure への移行を追跡するための中央ハブとなります。 このハブには、評価および移行のための Azure Migrate ツールのほか、サードパーティの独立系ソフトウェア ベンダー (ISV) のオファリングが用意されています。
+これは、マシンを評価して Azure に移行する方法を示すシリーズの 3 番目のチュートリアルです。 
 
-このチュートリアルは、Azure Migrate の Server Assessment と Server Migration を使用して Hyper-V を評価し、Azure に移行する方法を示すシリーズの、3 番目のチュートリアルです。 このチュートリアルでは、以下の内容を学習します。
+> [!NOTE]
+> チュートリアルでは、概念実証をすばやく設定できるように、シナリオの最も簡単なデプロイ パスを示します。 チュートリアルではできるだけ既定のオプションを使用しており、使用可能な設定とパスをすべて示しているわけではありません。 
 
+ このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-> * Azure とオンプレミスの Hyper-V 環境を準備する
-> * ソース環境を設定します。
-> * ターゲット環境を設定します。
-> * レプリケーションを有効にします。
+> * Azure Migrate:Server Migration ツールを追加します。
+> * 移行したい VM を検出します。
+> * VM のレプリケートを開始します。
 > * すべてが想定どおりに動作していることを確認するためにテスト移行を実行します。
-> * Azure への完全な移行を実行します。
+> * 完全な VM 移行を実行します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を作成してください。
 
 
 ## <a name="prerequisites"></a>前提条件
 
+
 このチュートリアルを始める前に、次の準備が必要です。
 
 1. Hyper-V の移行のアーキテクチャを[確認](hyper-v-migration-architecture.md)します。
-2. Hyper-V ホストの要件と、Hyper-V ホストがアクセスする必要のある Azure URL を[確認](migrate-support-matrix-hyper-v-migration.md#hyper-v-hosts)します。
-3. 移行する Hyper-V VM の要件を[確認](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms)します。 Hyper-V VM は [Azure VM の要件](migrate-support-matrix-hyper-v-migration.md#azure-vm-requirements)に準拠している必要があります。
-2. このシリーズの先行するチュートリアルを済ませておくことをお勧めします。 [最初のチュートリアル](tutorial-prepare-hyper-v.md)では、移行に向けて Azure と Hyper-V を設定する方法を紹介しています。 2 番目のチュートリアルでは、移行前に、Azure Migrate:Server Assessment を使用して [Hyper-V VM を評価する](tutorial-assess-hyper-v.md)方法を説明しています。 
-    > [!NOTE]
-    > 評価を試してみることをお勧めしますが、VM を移行する前に評価を実行しなければならないわけではありません。
-    > Azure Migrate:Server Migration は、Hyper-V VM を移行するにあたり、ソフトウェア エージェント (Microsoft Azure Site Recovery プロバイダーおよび Microsoft Azure Recovery Services エージェント) を Hyper-V ホストまたはクラスター ノード上で実行することによってデータを調整し、Azure Migrate にレプリケートします。 Hyper-V の移行に [Azure Migrate アプライアンス](migrate-appliance.md)は使用されません。
+2. Hyper-V ホストの移行の要件と、VM 移行のために Hyper-V ホストおよびクラスターがアクセスする必要がある Azure URL を[確認](migrate-support-matrix-hyper-v-migration.md#hyper-v-host-requirements)します。
+3. Azure に移行する Hyper-V VM の要件を[確認](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms)します。
+4. [Hyper-V VM を評価](tutorial-assess-hyper-v.md)したうえで Azure に移行することをお勧めしますが、必須ではありません。
 
-3. ご自分の Azure アカウントに仮想マシンの共同作成者ロールが割り当てられ、以下を行うためのアクセス許可を持っていることを確認します。
-
-    - 選択したリソース グループ内に VM を作成する。
-    - 選択した仮想ネットワーク内に VM を作成する。
-    - Azure マネージド ディスクに書き込む。
-4. [Azure ネットワークをセットアップ](../virtual-network/manage-virtual-network.md#create-a-virtual-network)します。 Azure に移行すると、作成された Azure VM が移行の設定時に指定した Azure ネットワークに参加させられます。
-
+   
 ## <a name="add-the-azure-migrateserver-migration-tool"></a>Azure Migrate:Server Migration ツールを追加する
 
-Azure Migrate Server Migration ツールを追加します。
-
-- 2 番目のチュートリアルに従って [Hyper-V VM を評価](tutorial-assess-hyper-v.md)した場合は、Azure Migrate プロジェクトが既に設定されているので、すぐにツールを追加することができます。
-- 2 番目のチュートリアルに従っていない場合は、[こちらの手順に従って](how-to-add-tool-first-time.md)、Azure Migrate プロジェクトの設定を行ってください。 プロジェクトの作成時に Azure Migrate:Server Migration ツールを追加します。
+Azure Migrate Server Migration ツールを追加します。 Azure Migrate プロジェクトがまだない場合は、[先にプロジェクトを作成](how-to-add-tool-first-time.md)してから Azure Migrate プロジェクトを設定してください。 プロジェクトの作成時に Azure Migrate:Server Migration ツールを追加します。
 
 プロジェクトの設定が済んでいる場合は、次の手順に従ってツールを追加します。
 
@@ -71,8 +61,9 @@ Azure Migrate Server Migration ツールを追加します。
 
     ![Server Migration ツール](./media/tutorial-migrate-hyper-v/server-migration-tool.png)
 
-## <a name="prepare-hyper-v-hosts"></a>Hyper-V ホストを準備する
+## <a name="download-and-install-the-provider"></a>プロバイダーをダウンロードしてインストールする
 
+Azure Migrate:Server Migration は、Hyper-V VM を移行するにあたり、ソフトウェア プロバイダー (Microsoft Azure Site Recovery プロバイダーおよび Microsoft Azure Recovery Services エージェント) を Hyper-V ホストまたはクラスター ノードにインストールします。 Hyper-V の移行に [Azure Migrate アプライアンス](migrate-appliance.md)は使用されないことに注意してください。
 
 1. Azure Migrate プロジェクトの **[サーバー]** で、 **[Azure Migrate: Server Migration]** で、 **[検出]** をクリックします。
 2. **[マシンの検出]**  >  **[マシンは仮想化されていますか?]** で、 **[はい。Hyper-V を使用します]** を選択します。
@@ -149,7 +140,7 @@ Azure Migrate Server Migration ツールを追加します。
 > [!NOTE]
 > レプリケーションを開始する前であれば、 **[管理]**  >  **[マシンのレプリケート]** でレプリケーションの設定をいつでも更新できます。 レプリケーションの開始後は、設定を変更することができません。
 
-## <a name="provisioning-for-the-first-time"></a>初回のプロビジョニング
+## <a name="provision-for-the-first-time"></a>初回のプロビジョニング
 
 これが Azure Migrate プロジェクトでレプリケートしている最初の VM である場合は、Azure Migrate: Server Migration によって、プロジェクトと同じリソース グループにこれらのリソースが自動的にプロビジョニングされます。
 

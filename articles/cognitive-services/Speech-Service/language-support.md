@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 43476f3e3f125bc338ba25e8cce0e96baa76262b
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 89b2b7b993ef9613740dd777546cc15a12203e62
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636106"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85210730"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>音声サービスの言語と音声のサポート
 
@@ -27,8 +27,6 @@ ms.locfileid: "84636106"
 Microsoft Speech SDK と REST API は、どちらも以下の言語 (ロケール) をサポートしています。 
 
 精度を高めるために、 **"オーディオ + 人間" というラベルが付いたトランスクリプト**または**関連テキスト (文)** をアップロードすることにより、言語のサブセットに対してカスタマイズが提供されます。 カスタマイズの詳細については、[Custom Speech の利用の開始](how-to-custom-speech.md)に関するページを参照してください。
-
-発音の質を向上させる方法の詳細については、[Custom Speech のモデルの改良](how-to-custom-speech-improve-accuracy.md#add-new-words-with-pronunciation)に関するセクションを参照してください。
 
 <!--
 To get the AM and ML bits:
@@ -314,6 +312,26 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 | ベトナム語              | `vi`          |
 | ウェールズ語                   | `cy`          |
 | ユカテコ語            | `yua`         |
+
+## <a name="speaker-recognition"></a>Speaker Recognition
+
+さまざまな Speaker Recognition API でサポートされる言語については、次の表を参照してください。 Speaker Recognition の詳細については、[概要](speaker-recognition-overview.md)に関するページを参照してください。
+
+| Locale | Language | テキスト依存の認証 | テキストに依存しない認証 | テキストに依存しない識別 |
+|----|----|----|----|----|
+| ja-JP | 英語 (米国) | はい | はい | はい |
+|zh-CN  |中国語 (標準、簡体字)|    該当なし|    はい|    はい|
+|de-DE  |ドイツ語 (ドイツ)   |該当なし    |はい    |はい|
+|en-GB  |英語 (英国)   |該当なし    |はい    |はい|
+|fr-FR  |フランス語 (フランス)    |該当なし    |はい    |はい|
+|en-AU  |英語 (オーストラリア)    |該当なし    |はい    |はい|
+|en-CA  |英語 (カナダ)   |該当なし|   はい|    はい|
+|fr-CA  |フランス語 (カナダ)    |該当なし    |はい|   はい|
+|it-IT  |イタリア語|   該当なし |はい|   はい|
+|es-ES| スペイン語 (スペイン) |該当なし    |はい|   はい|
+|es-MX  |スペイン語 (メキシコ)   |該当なし|   はい|    はい|
+|ja-JP| 日本語    |該当なし    |はい    |はい|
+|pt-BR| ポルトガル語 (ブラジル)|    該当なし|    はい|    はい|
 
 ## <a name="next-steps"></a>次のステップ
 

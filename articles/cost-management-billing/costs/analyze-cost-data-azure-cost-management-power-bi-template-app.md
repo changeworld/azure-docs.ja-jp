@@ -3,16 +3,16 @@ title: Power BI アプリを使用して Azure のコストを分析する
 description: この記事では、Azure Cost Management Power BI アプリをインストールして使用する方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 04/15/2020
+ms.date: 06/16/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
-ms.openlocfilehash: 050df590827b94888c44826ac6391ff79ada1cfc
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 53340c72a6456b24b52cff6d7eda9d4a34db6564
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81461601"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888200"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>Enterprise Agreement (EA) 用の Azure Cost Management Power BI アプリを使用してコストを分析する
 
@@ -127,6 +127,27 @@ _[Normalized Size]\(正規化されたサイズ\)_ と _[Recommended Quantity No
 ## <a name="troubleshoot-problems"></a>問題のトラブルシューティング
 
 Power BI アプリに問題がある場合は、次のトラブルシューティング情報が役立つ場合があります。
+
+### <a name="error-processing-the-data-in-the-dataset"></a>データセット内のデータの処理中のエラー
+
+次のエラーが表示される場合があります。
+
+```
+There was an error when processing the data in the dataset.
+Data source error: {"error":{"code":"ModelRefresh_ShortMessage_ProcessingError","pbi.error":{"code":"ModelRefresh_ShortMessage_ProcessingError","parameters":{},"details":[{"code":"Message","detail":{"type":1,"value":"We cannot convert the value \"Required Field: 'Enr...\" to type List."}}],"exceptionCulprit":1}}} Table: <TableName>.
+```
+
+`<TableName>` ではなくテーブル名が表示されます。
+
+#### <a name="cause"></a>原因
+
+`Enrollment Number` の既定の **[範囲]** 値が、Cost Management への接続で変更されました。
+
+#### <a name="solution"></a>解決策
+
+Cost Management に再接続し、 **[範囲]** 値を `Enrollment Number` に設定します。 組織の登録番号を入力するのではなく、次の図に示すように正確に「`Enrollment Number`」と入力します。
+
+![EA 登録情報を入力する](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
 
 ### <a name="budgetamount-error"></a>BudgetAmount エラー
 

@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/16/2018
-ms.openlocfilehash: 3c55becb098c9d93688b59f1db4f702acbff3f72
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: bb61f6146e588673038fae9f41b770c4865cefb7
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837268"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945292"
 ---
 # <a name="azure-monitor-cli-samples"></a>Azure Monitor CLI のサンプル
 この記事では、Azure Monitor の機能にアクセスするために役立つコマンド ライン インターフェイス (CLI) のサンプル コマンドを紹介します。 Azure Monitor では、Cloud Services、Virtual Machines、Web Apps を自動スケールできます。また、アラート通知の送信や、構成済みのテレメトリ データの値に基づく Web URL の呼び出しも行うことができます。
@@ -29,51 +29,51 @@ az login
 
 このコマンドを実行した後、画面の指示に従ってサインインする必要があります。 すべてのコマンドは、既定のサブスクリプションのコンテキストで動作します。
 
-現在のサブスクリプションの詳細を一覧表示するには、次のコマンドを使用します。
+現在のサブスクリプションの詳細を一覧表示します。
 
 ```azurecli
 az account show
 ```
 
-作業コンテキストを別のサブスクリプションに変更するには、次のコマンドを使用します。
+作業コンテキストを別のサブスクリプションに変更します。
 
 ```azurecli
 az account set -s <Subscription ID or name>
 ```
 
-サポートされているすべての Azure Monitor コマンドの一覧を表示するには、次のコマンドを実行します。
+サポートされているすべての Azure Monitor コマンドの一覧を表示します。
 
 ```azurecli
 az monitor -h
 ```
 
-## <a name="view-activity-log-for-a-subscription"></a>サブスクリプションのアクティビティ ログの表示
+## <a name="view-activity-log"></a>アクティビティ ログを表示する
 
-監査ログ イベントの一覧を表示するには、次のコマンドを実行します。
+監査ログ イベントの一覧を表示します。
 
 ```azurecli
 az monitor activity-log list
 ```
 
-次のコマンドを実行すると、利用可能なオプションがすべて表示されます。
+使用可能なすべてのオプションを表示します。
 
 ```azurecli
 az monitor activity-log list -h
 ```
 
-resourceGroup を指定してログの一覧を表示する例を次に示します。
+resourceGroup を指定してログの一覧を表示します。
 
 ```azurecli
 az monitor activity-log list --resource-group <group name>
 ```
 
-caller を指定してログの一覧を表示する例
+呼び出し元を指定してログの一覧を表示します。
 
 ```azurecli
 az monitor activity-log list --caller myname@company.com
 ```
 
-caller を指定して、日付範囲内のリソースの種類のログの一覧を表示する例
+日付の範囲、リソースの種類、および呼び出し元を指定して、ログの一覧を表示します。
 
 ```azurecli
 az monitor activity-log list --resource-provider Microsoft.Web \

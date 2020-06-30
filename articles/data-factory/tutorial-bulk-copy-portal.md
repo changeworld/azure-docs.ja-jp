@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 05/28/2020
-ms.openlocfilehash: a59fafccecaf2fc266a6c7864174c477e1831186
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.date: 06/08/2020
+ms.openlocfilehash: 4e39d4e106a399f0105ee4ec3f3606354f113165
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561151"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84661071"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Azure portal で Azure Data Factory を使用して複数のテーブルを一括コピーする
 
@@ -108,13 +108,16 @@ SQL Database と Azure Synapse Analytics (旧称 SQL DW) の両方について�
 ### <a name="create-the-source-azure-sql-database-linked-service"></a>ソース Azure SQL Database のリンクされたサービスを作成する
 この手順では、Azure SQL データベースをデータ ファクトリに接続するためのリンクされたサービスを作成します。 
 
-1. ウィンドウの下部にある **[接続]** をクリックし、ツールバーの **[+ 新規]** をクリックします ( **[接続]** ボタンは、 **[Factory Resources]\(ファクトリ リソース\)** の左側の列の下部にあります)。 
+1. 左ペインから [[管理] タブ](https://docs.microsoft.com/azure/data-factory/author-management-hub)を開きます。
 
+1. [リンクされたサービス] ページの **[+ 新規]** を選択して、リンクされたサービスを新規作成します。
+
+   ![新規のリンクされたサービス](./media/doc-common-process/new-linked-service.png)
 1. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで **[Azure SQL Database]** を選択し、 **[続行]** をクリックします。 
 1. **[New Linked Service (Azure SQL Database)]** \(新しいリンクされたサービス (Azure SQL Database)\) ウィンドウで、次の手順を実行します。 
 
     a. **[名前]** に「**AzureSqlDatabaseLinkedService**」と入力します。
-    
+
     b. **[サーバー名]** で、サーバーを選択します
     
     c. **[データベース名]** で、使用する Azure SQL データベースを選択します。 
@@ -159,7 +162,6 @@ SQL Database と Azure Synapse Analytics (旧称 SQL DW) の両方について�
     b. **[ストレージ アカウント名]** で、使用する **Azure ストレージ アカウント**を選択します。
     
     c. **Create** をクリックしてください。
-
 
 ## <a name="create-datasets"></a>データセットを作成する
 このチュートリアルでは、データの格納場所を指定するための、ソースとシンクのデータセットを作成します。 

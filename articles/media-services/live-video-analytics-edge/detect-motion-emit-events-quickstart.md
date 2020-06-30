@@ -3,16 +3,16 @@ title: モーションの検出とイベントの生成 - Azure
 description: このクイックスタートでは、Live Video Analytics on IoT Edge を使用して、プログラムからダイレクト メソッドを呼び出すことで動きを検出し、イベントを生成する方法について説明します。
 ms.topic: quickstart
 ms.date: 05/29/2020
-ms.openlocfilehash: 4986ea13bec5382a8e0ef791e75442e4333e4356
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 69486515125c624b3ef5d44aba6e6d8f7694a3cc
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84261589"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84816703"
 ---
 # <a name="quickstart-detect-motion-and-emit-events"></a>クイック スタート:モーションの検出とイベントの生成
 
-このクイックスタートでは、Live Video Analytics on IoT Edge の基本的な操作手順について説明します。 IoT Edge デバイスとして Azure VM を使用すると共に、シミュレートしたライブ ビデオ ストリームを使用します。 セットアップ手順の完了後、メディア グラフを通じてライブ ビデオ ストリームのシミュレーションを実行することができます。そのストリーム内のあらゆるモーションがメディア グラフによって検出、レポートされます。 そのメディア グラフをグラフィカルに表したものが次の図です。
+このクイックスタートでは、Live Video Analytics on IoT Edge の基本的な操作手順について説明します。 IoT Edge デバイスとして Azure VM を使用すると共に、シミュレートしたライブ ビデオ ストリームを使用します。 セットアップ手順の完了後、メディア グラフを通じて、シミュレートされたライブ ビデオ ストリームを実行できます。そのストリーム内のあらゆるモーションがメディア グラフによって検出およびレポートされます。 次の図は、そのメディア グラフをグラフィカルに表したものです。
 
 ![モーション検出に基づく Live Video Analytics](./media/analyze-live-video/motion-detection.png) 
 
@@ -20,29 +20,29 @@ ms.locfileid: "84261589"
 
 ## <a name="prerequisites"></a>前提条件
 
-* アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* [Visual Studio Code](https://code.visualstudio.com/) と次の拡張機能がマシンにインストールされていること。
-    1. [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
-    2. [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
-* [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1) がシステムにインストールされていること
+* アクティブなサブスクリプションが含まれる Azure アカウント。 まだお持ちでない場合は、[無料のアカウントを作成してください](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* [Visual Studio Code](https://code.visualstudio.com/) と次の拡張機能:
+    * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
+    * [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
+* [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)。 
 
 > [!TIP]
-> Azure IoT Tools 拡張機能のインストール中に Docker のインストールを求められる場合があります。 これは無視してかまいません。
+> Azure IoT Tools 拡張機能のインストール中に Docker のインストールを求められる場合があります。 このメッセージは無視してかまいません。
 
 ## <a name="set-up-azure-resources"></a>Azure リソースの設定
 
-このチュートリアルには、次の Azure リソースが必要です。
+このチュートリアルでは、次の Azure リソースが必要です。
 
 * IoT Hub
 * ストレージ アカウント
 * Azure Media Services アカウント
 * Azure 上の Linux VM ([IoT Edge ランタイム](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)がインストール済み)
 
-このクイックスタートでは、[Live Video Analytics リソース セットアップ スクリプト](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)を使用して、ご利用の Azure サブスクリプションに上記の Azure リソースをデプロイするようお勧めします。 そのためには、次の手順に従います。
+このクイックスタートでは、[Live Video Analytics リソース セットアップ スクリプト](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)を使用して、ご利用の Azure サブスクリプションに必要なリソースをデプロイすることをお勧めします。 これを行うには、次のステップに従います。
 
-1. https://shell.azure.com を参照します。
-1. Cloud Shell を初めて使用している場合は、ストレージ アカウントと Microsoft Azure Files 共有を作成するためのサブスクリプションを選択するよう求められます。 [ストレージの作成] を選択して、Cloud Shell のセッション情報を保存するためのストレージ アカウントを作成してください。 Azure Media Services アカウントで使用するためのストレージ アカウントもスクリプトによって作成されますが、このストレージ アカウントはそれとは別のものです。
-1. シェル ウィンドウの左側にあるドロップダウンから "Bash" 環境をご利用の環境として選択します。
+1. [Azure Cloud Shell](https://shell.azure.com) を開きます。
+1. Cloud Shell の初回使用時には、ストレージ アカウントと Microsoft Azure Files 共有を作成するためのサブスクリプションの選択を求められます。 **[ストレージの作成]** を選択して、Cloud Shell のセッション情報用のストレージ アカウントを作成します。 このストレージ アカウントは、Azure Media Services アカウントで使用するためにスクリプトによって作成されるアカウントとは別のものです。
+1. Cloud Shell ウィンドウの左側にあるドロップダウン メニューから **[Bash]** をご利用の環境として選択します。
 
     ![環境セレクター](./media/quickstarts/env-selector.png)
 
@@ -52,26 +52,25 @@ ms.locfileid: "84261589"
     bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
     ```
 
-    スクリプトが正常に完了すれば、前述したすべてのリソースがご利用のサブスクリプションに表示されます。
+    スクリプトが正常に終了すれば、必要なすべてのリソースがご利用のサブスクリプションに表示されます。
 
-1. スクリプトが完了したら、中かっこをクリックしてフォルダー構造を展開します。 ~/clouddrive/lva-sample ディレクトリに、いくつかのファイルが作成されていることがわかります。 このクイックスタートで注目するのは、次のものです。
+1. スクリプトが完了したら、中かっこを選択してフォルダー構造を展開します。 *~/clouddrive/lva-sample* ディレクトリに、いくつかのファイルがあるのを確認できます。 このクイックスタートで注目するのは、次のものです。
 
-     * ~/clouddrive/lva-sample/edge-deployment/.env  - Visual Studio Code がエッジ デバイスにモジュールをデプロイする際に使用するプロパティが格納されます
-     * ~/clouddrive/lva-sample/appsetting.json - Visual Studio Code がサンプル コードを実行するときに使用されます
+     * ***~/clouddrive/lva-sample/edge-deployment/.env*** - このファイルには、Visual Studio Code がエッジ デバイスにモジュールをデプロイする際に使用するプロパティが格納されています。
+     * ***~/clouddrive/lva-sample/appsetting.json*** - Visual Studio Code は、このファイルを使用してサンプル コードを実行します。
      
-このクイックスタートの後の方で Visual Studio Code のファイルを更新する際に、これらが必要となります。 差し当たりローカル ファイルとしてコピーしておいてください。
-
+これらのファイルは、次のセクションで Visual Studio Code に開発環境を設定するときに必要になります。 差し当たりローカル ファイルとしてコピーしておいてください。
 
  ![アプリケーション設定](./media/quickstarts/clouddrive.png)
 
 ## <a name="set-up-your-development-environment"></a>開発環境を設定する
 
-1. こちら (https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp ) からリポジトリをクローンします。
-1. Visual Studio Code を起動して、リポジトリをダウンロードしたフォルダーを開きます。
-1. Visual Studio Code で、"src/cloud-to-device-console-app" フォルダーに移動し、"appsettings.json" という名前のファイルを作成します。 このファイルには、プログラムを実行するために必要な設定が格納されます。
-1. 前のセクション (手順 5. を参照) で生成した ~/clouddrive/lva-sample/appsettings.json ファイルの内容をコピーします
+1. 次の場所からリポジトリをクローンします: https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp 。
+1. Visual Studio Code で、リポジトリをダウンロードしたフォルダーを開きます。
+1. Visual Studio Code で、*src/cloud-to-device-console-app* フォルダーに移動します。 そこにファイルを作成し、*appsettings.json* という名前を付けます。 このファイルには、プログラムを実行するために必要な設定が格納されます。
+1. このクイックスタートで前に生成した *~/clouddrive/lva-sample/appsettings.json* ファイルの内容をコピーします。
 
-    このテキストは次のようになっています。
+    テキストは次の出力のようになります。
 
     ```
     {  
@@ -80,8 +79,8 @@ ms.locfileid: "84261589"
         "moduleId" : "lvaEdge"  
     }
     ```
-1. 次に、"src/edge" フォルダーに移動して、".env" という名前のファイルを作成します。
-1. "/clouddrive/lva-sample/edge-deployment/.env ファイルの内容をコピーします。 このテキストは次のようになっています。
+1. *src/edge* フォルダーに移動し、 *.env* という名前のファイルを作成します。
+1. */clouddrive/lva-sample/edge-deployment/.env* ファイルの内容をコピーします。 テキストは次のコードのようになります。
 
     ```
     SUBSCRIPTION_ID="<Subscription ID>"  
@@ -100,66 +99,74 @@ ms.locfileid: "84261589"
 
 ## <a name="examine-the-sample-files"></a>サンプル ファイルを詳しく調べる
 
-1. Visual Studio Code で "src/edge" に移動します。 作成した .env ファイルが、いくつかの展開テンプレート ファイルと共に確認できます。
+1. Visual Studio Code で、*src/edge* に移動します。 *.env* ファイルと、いくつかの展開テンプレート ファイルがあります。
 
-    展開テンプレートでは、いくつかのプレースホルダー値で、エッジ デバイスの配置マニフェストが参照されています。 それらの変数の値が .env ファイルに格納されています。
-1. 次に、"src/cloud-to-device-console-app" フォルダーに移動します。 ここには、作成した appsettings.json ファイルのほか、いくつかのファイルが確認できます。
+    展開テンプレートは、エッジ デバイスの配置マニフェストを参照します。マニフェストでは、一部のプロパティに変数が使用されています。 それらの変数の値が *.env* ファイルに格納されています。
+1. *src/cloud-to-device-console-app* フォルダーに移動します。 ここには、*appsettings.json* ファイルと、他にいくつかのファイルがあります。
 
-    * c2d-console-app.csproj - Visual Studio Code のプロジェクト ファイルです。
-    * operations.json - このファイルには、プログラムで実行したいさまざまな操作がリストされています。
-    * Program.cs - サンプル プログラムのコードです。次の処理を実行します。
+    * ***c2d-console-app.csproj*** - Visual Studio Code のプロジェクト ファイルです。
+    * ***operations.json*** - プログラムで実行する操作のリストです。
+    * ***Program.cs*** - サンプル プログラム コードです。 このコードによって以下が行われます。
     
-        * アプリ設定を読み込みます
-        * Live Video Analytics on IoT Edge モジュールによって公開されているダイレクト メソッドを呼び出します。 ライブ ビデオ ストリームの分析は、モジュールを使用し、その[ダイレクト メソッド](direct-methods.md)を呼び出すことによって行うことができます 
-        * プログラムからの出力をターミナル ウィンドウで、またモジュールによって生成されたイベントを出力ウィンドウで詳しく調べることができるように一時停止します
-        * ダイレクト メソッドを呼び出して、リソースをクリーンアップします   
+      * アプリ設定を読み込みます。
+      * Live Video Analytics on IoT Edge モジュールによって公開されているダイレクト メソッドを呼び出します。 このモジュールを使用し、その[ダイレクト メソッド](direct-methods.md)を呼び出すことで、ライブ ビデオ ストリームを分析できます。
+      * 一時停止することで、プログラムの出力を **[ターミナル]** ウィンドウで調べたり、モジュールによって生成されたイベントを **[出力]** ウィンドウで調べたりできます。
+      * ダイレクト メソッドを呼び出して、リソースをクリーンアップします。   
 
-## <a name="generate-and-deploy-the-iot-edge-deployment-manifest"></a>IoT Edge の配置マニフェストを生成してデプロイする
+## <a name="generate-and-deploy-the-deployment-manifest"></a>配置マニフェストを生成してデプロイする
 
-エッジ デバイスにデプロイされるモジュールとそれらのモジュールの構成設定は、配置マニフェストによって定義されます。 そのようなマニフェストをテンプレート ファイルから生成して、エッジ デバイスにデプロイするには、次の手順に従います。
+エッジ デバイスにデプロイされるモジュールは、配置マニフェストによって定義されます。 また、これらのモジュールの構成設定も定義されます。 
+
+マニフェストをテンプレート ファイルから生成して、エッジ デバイスにデプロイするには、これらの手順に従います。
 
 1. Visual Studio Code を開きます。
-1. 左下隅の [Azure IoT Hub] ペインの横にある [その他のアクション] アイコンをクリックして、IoTHub 接続文字列を設定します。 この文字列は、src/cloud-to-device-console-app/appsettings.json ファイルからコピーすることができます。 
+1. **[Azure IoT Hub]** ペインの横にある **[その他のアクション]** アイコンを選択して、IoT Hub 接続文字列を設定します。 この文字列は、*src/cloud-to-device-console-app/appsettings.json* ファイルからコピーすることができます。 
 
     ![IOT 接続文字列を設定する](./media/quickstarts/set-iotconnection-string.png)
-1. 次に、"src/edge/deployment.template.json" ファイルを右クリックし、[Generate IoT Edge Deployment Manifest]\(IoT Edge 配置マニフェストの生成\) をクリックします。
+
+1. **src/edge/deployment.template.json** を右クリックして、 **[Generate IoT Edge deployment manifest]\(IoT Edge 配置マニフェストの生成\)** を選択します。
+
     ![IoT Edge 配置マニフェストの生成](./media/quickstarts/generate-iot-edge-deployment-manifest.png)
 
-    これで、"deployment.amd64.json" という名前のマニフェスト ファイルが src/edge/config フォルダーに作成されます。
-1. [src/edge/config/deployment.amd64.json] を右クリックし、[Create Deployment for Single Device]\(単一デバイスのデプロイの作成\) をクリックして、エッジ デバイスの名前を選択します。
+    このアクションによって、*deployment.amd64.json* という名前のマニフェスト ファイルが *src/edge/config* フォルダーに作成されます。
+1. **src/edge/config/deployment.amd64.json** を右クリックして、 **[Create Deployment for Single Device]\(単一デバイスのデプロイの作成\)** を選択し、エッジ デバイスの名前を選択します。
 
     ![単一デバイスのデプロイを作成する](./media/quickstarts/create-deployment-single-device.png)
-1. その後、IoT Hub デバイスを選択するように求められます。 ドロップダウンから [lva-sample-device] を選択します。
-1. 30 秒ほど経過したら、左下のセクションで Azure IoT Hub を最新の情報に更新してください。そうすると、エッジ デバイスに次のモジュールがデプロイされていることがわかります。
 
-    * Live Video Analytics on IoT Edge (モジュール名: "lvaEdge")
-    * RTSP シミュレーター (モジュール名: "rtspsim")
+1. IoT Hub デバイスを選択するように求めるメッセージが表示されたら、ドロップダウン メニューから **[lva-sample-device]** を選択します。
+1. 約 30 秒後に、ウィンドウの左下隅で Azure IoT Hub を最新の情報に更新します。 エッジ デバイスには、次のデプロイ済みモジュールが表示されます。
 
-RTSP シミュレーター モジュールは、[Live Video Analytics リソース セットアップ スクリプト](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)の実行時にエッジ デバイスにコピーされた保存済みのビデオ ファイルを使用してライブ ビデオ ストリームをシミュレートします。 この段階で、モジュールのデプロイは完了していますが、メディア グラフはアクティブになっていません。
+    * Live Video Analytics on IoT Edge (モジュール名 `lvaEdge`)
+    * リアルタイム ストリーミング プロトコル (RTSP) シミュレーター (モジュール名 `rtspsim`)
 
-## <a name="prepare-for-monitoring-events"></a>イベントを監視するための準備をする
+RTSP シミュレーター モジュールは、[Live Video Analytics リソース セットアップ スクリプト](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)の実行時にエッジ デバイスにコピーされたビデオ ファイルを使用して、ライブ ビデオ ストリームをシミュレートします。 
 
-ここでは、Live Video Analytics on IoT Edge モジュールを使用して、受信したライブ ビデオ ストリーム内で動きを検出し、IoT Hub にイベントを送信します。 それらのイベントを確認するには、次の手順に従います。
+この段階でモジュールはデプロイされていますが、メディア グラフはアクティブになっていません。
 
-1. Visual Studio Code の [エクスプローラー] ペインを開いて、左下隅の Azure IoT Hub を探します。
-1. [Devices] ノードを展開します。
-1. [lva-sample-device] を右クリックし、[Start Monitoring Built-in Event Monitoring]\(組み込みイベント モニタリングの監視を開始する\) オプションを選択します。
+## <a name="prepare-to-monitor-events"></a>イベントの監視の準備をする
+
+Live Video Analytics on IoT Edge モジュールを使用して、受信したライブ ビデオ ストリーム内で動きを検出し、イベントを IoT ハブに送信します。 それらのイベントを確認するには、次の手順に従います。
+
+1. Visual Studio Code の [エクスプローラー] ペインを開き、左下隅にある [Azure IoT Hub] を探します。
+1. **[デバイス]** ノードを展開します。
+1. **[lva-sample-device]** を右クリックし、 **[Start Monitoring Built-in Event Endpoint]\(組み込みイベント エンドポイントの監視を開始する\)** を選択します。
 
     ![組み込みイベント エンドポイントの監視を開始する](./media/quickstarts/start-monitoring-iothub-events.png)
 
 ## <a name="run-the-sample-program"></a>サンプル プログラムを実行する
 
-次の手順に従って、サンプル コードを実行します。
-1. Visual Studio Code で、"src/cloud-to-device-console-app/operations.json" に移動します。
-1. GraphTopologySet ノードで、次の項目を確認します。
+サンプル コードを実行するには、これらの手順に従います。
 
-    ` "topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/motion-detection/topology.json"`
-1. 次に、GraphInstanceSet ノードと GraphTopologyDelete ノードで、topologyName の値が、上記グラフ トポロジの "name" プロパティの値と一致していることを確認します。
+1. Visual Studio Code で、*src/cloud-to-device-console-app/operations.json* に移動します。
+1. **GraphTopologySet** ノードで、次の値が表示されていることを確認します。
+
+    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/motion-detection/topology.json"`
+1. **GraphInstanceSet** および **GraphTopologyDelete** ノードで、`topologyName` の値が、グラフ トポロジの `name` プロパティの値と一致していることを確認します。
 
     `"topologyName" : "MotionDetection"`
     
-1. デバッグ セッションを開始します (F5 キーを押します)。 ターミナル ウィンドウへのメッセージ出力が開始されます。
-1. operations.json は、GraphTopologyList と GraphInstanceList の呼び出しで開始されます。 前回のクイックスタート後、リソースをクリーンアップした場合は、空のリストが返された後、一時停止して、Enter キーの入力待ち状態になります。
+1. F5 キーを押して、デバッグ セッションを開始します。 **[ターミナル]** ウィンドウに、いくつかのメッセージが表示されます。
+1. *operations.json* ファイルは、`GraphTopologyList` および `GraphInstanceList` の呼び出しから始まります。 前回のクイックスタートを終了した後にリソースをクリーンアップしている場合は、このプロセスにより空のリストが返されてから、一時停止します。 続行するには、Enter キーを押します。
 
     ```
     --------------------------------------------------------------------------
@@ -176,56 +183,58 @@ RTSP シミュレーター モジュールは、[Live Video Analytics リソー�
     Executing operation WaitForInput
     Press Enter to continue
     ```
-1. ターミナル ウィンドウで Enter キーを押すと、次に示す一連のダイレクト メソッドの呼び出しが実行されます
+
+    **[ターミナル]** ウィンドウに、次の一連のダイレクト メソッド呼び出しが表示されます。
      
-     * 前出の topologyUrl を使用した GraphTopologySet の呼び出し
-     * 次の body を使用した GraphInstanceSet の呼び出し
+     * 前の `topologyUrl` を使用する `GraphTopologySet` の呼び出し
+     * 次の本文を使用する `GraphInstanceSet` の呼び出し。
      
-     ```
-     {
-       "@apiVersion": "1.0",
-       "name": "Sample-Graph",
-       "properties": {
-         "topologyName": "MotionDetection",
-         "description": "Sample graph description",
-         "parameters": [
-           {
-             "name": "rtspUrl",
-             "value": "rtsp://rtspsim:554/media/camera-300s.mkv"
-           },
-           {
-             "name": "rtspUserName",
-             "value": "testuser"
-           },
-           {
-             "name": "rtspPassword",
-             "value": "testpassword"
+         ```
+         {
+           "@apiVersion": "1.0",
+           "name": "Sample-Graph",
+           "properties": {
+             "topologyName": "MotionDetection",
+             "description": "Sample graph description",
+             "parameters": [
+               {
+                 "name": "rtspUrl",
+                 "value": "rtsp://rtspsim:554/media/camera-300s.mkv"
+               },
+               {
+                 "name": "rtspUserName",
+                 "value": "testuser"
+               },
+               {
+                 "name": "rtspPassword",
+                 "value": "testpassword"
+               }
+             ]
            }
-         ]
-       }
-     }
-     ```
+         }
+         ```
      
-     * GraphInstanceActivate を呼び出すことでグラフ インスタンスが起動し、ビデオのフローが開始されます。
-     * GraphInstanceList の 2 回目の呼び出しで、実際にグラフ インスタンスが実行状態として表示されます。
-1. ターミナル ウィンドウの出力が、今度は "Press Enter to continue (続行するには Enter キーを押してください)" というプロンプトで一時停止状態となります。 この時点では Enter キーは押さないでください。 上へスクロールすると、呼び出したダイレクト メソッドの JSON 応答のペイロードを確認できます
-1. ここで Visual Studio Code の出力ウィンドウに切り替えると、Live Video Analytics on IoT Edge モジュールから IoT Hub に送信されているメッセージが表示されます。
-     * これらのメッセージについては、以降のセクションで取り上げます
-1. 引き続きメディア グラフが実行され、結果が出力されます。つまり、RTSP シミュレーターによってソース ビデオがループ処理されます。 メディア グラフを停止するには、ターミナル ウィンドウに戻って "Enter" キーを押します。 次の一連の呼び出しによって、リソースがクリーンアップされます。
-     * グラフ インスタンスを非アクティブ化する GraphInstanceDeactivate の呼び出し
-     * インスタンスを削除する GraphInstanceDelete の呼び出し
-     * トポロジを削除する GraphTopologyDelete の呼び出し
-     * リストが空になったことを示す GraphTopologyList の最後の呼び出し
+     * グラフ インスタンスとビデオのフローを開始する `GraphInstanceActivate` の呼び出し
+     * グラフ インスタンスが実行状態であることを示す `GraphInstanceList` の 2 回目の呼び出し
+1. **[ターミナル]** ウィンドウの出力は `Press Enter to continue` で一時停止します。 Enter キーはまだ押さないでください。 上へスクロールして、呼び出したダイレクト メソッドの JSON 応答のペイロードを確認します。
+1. Visual Studio Code の **[出力]** ウィンドウに切り替えます。 Live Video Analytics on IoT Edge モジュールから IoT ハブに送信されているメッセージが表示されます。 このクイックスタートの次のセクションでは、これらのメッセージについて説明します。
+1. メディア グラフは引き続き実行され、結果が出力されます。 RTSP シミュレーターによって、ソース ビデオがループ処理され続けます。 メディア グラフを停止するには、 **[ターミナル]** ウィンドウに戻り、Enter キーを押します。 
+
+    次の一連の呼び出しによって、リソースがクリーンアップされます。
+     * `GraphInstanceDeactivate` の呼び出しによって、グラフ インスタンスが非アクティブ化されます。
+     * `GraphInstanceDelete` の呼び出しによって、インスタンスが削除されます。
+     * `GraphTopologyDelete` の呼び出しによって、トポロジが削除されます。
+     * `GraphTopologyList` の最後の呼び出しによって、リストが空であることが示されます。
 
 ## <a name="interpret-results"></a>結果を解釈する
 
-メディア グラフを実行すると、モーション検出プロセッサ ノードから IoT Hub シンク ノードを介して IoT Hub に結果が送信されます。 Visual Studio Code の出力ウィンドウに表示されるメッセージには、"body" セクションと "applicationProperties" セクションが含まれています。 これらのセクションが表す内容については、[こちら](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)の記事を参照してください。
+メディア グラフを実行すると、モーション検出プロセッサ ノードの結果が IoT Hub シンク ノードを介して IoT バブに渡されます。 Visual Studio Code の **[出力]** ウィンドウに表示されるメッセージには、`body` セクションと `applicationProperties` セクションが含まれています。 詳細については、「[IoT Hub メッセージを作成し、読み取る](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)」を参照してください。
 
-以下のメッセージ内のアプリケーションのプロパティと body の内容は Live Video Analytics モジュールによって定義されています。
+次のメッセージ内のアプリケーションのプロパティと body の内容は、Live Video Analytics モジュールによって定義されています。
 
-## <a name="mediasession-established-event"></a>MediaSession Established イベント
+### <a name="mediasessionestablished-event"></a>MediaSessionEstablished イベント
 
-メディア グラフがインスタンス化されると、RTSP ソース ノードは、rtspsim-live555 コンテナーで実行されている RTSP サーバーへの接続を試みます。 成功した場合、このイベントが出力されます。
+メディア グラフがインスタンス化されると、RTSP ソース ノードは、rtspsim-live555 コンテナーで実行されている RTSP サーバーへの接続を試みます。 接続に成功すると、次のイベントが出力されます。
 
 ```
 [IoTHubMonitor] [9:42:18 AM] Message received from [lvaedgesample/lvaEdge]:  
@@ -243,16 +252,19 @@ RTSP シミュレーター モジュールは、[Live Video Analytics リソー�
 }
 ```
 
-* このメッセージは Diagnostics イベントです。MediaSessionEstablished は、RTSP ソース ノード (subject) が RTSP シミュレーターとの接続を確立し、(シミュレートされた) ライブ フィードの受信を開始できたことを示します。
-* applicationProperties の "subject" が、メッセージの生成元となったグラフ トポロジ内のノードを参照しています。 このケースでは、RTSP ソース ノードからメッセージが生成されています。
-* applicationProperties の "eventType" には Diagnostics イベントであることが示されています。
-* "eventTime" にはイベントの発生時刻が示されています。
-* 診断イベントに関するデータ (このケースでは [SDP](https://en.wikipedia.org/wiki/Session_Description_Protocol) の詳細) は "body" に含まれています。
+前の出力は、次のような内容を表します。 
+* このメッセージは、診断イベント `MediaSessionEstablished` です。 これは、RTSP ソース ノード (subject) が RTSP シミュレーターと接続され、(シミュレートされた) ライブ フィードの受信を開始したことを示します。
+* `applicationProperties` 内の `subject` は、メッセージの生成元となった、グラフ トポロジ内のノードを参照しています。 このケースでは、RTSP ソース ノードからメッセージが生成されます。
+* `applicationProperties` 内の `eventType` は、このイベントが診断イベントであることを示しています。
+* `eventTime` の値は、イベントの発生時刻を示しています。
+* `body` セクションには、診断イベントに関するデータが含まれています。 このケースでは、データは[セッション記述プロトコル (SDP)](https://en.wikipedia.org/wiki/Session_Description_Protocol) の詳細で構成されています。
 
 
-## <a name="motion-detection-event"></a>モーション検出イベント
+### <a name="motiondetection-event"></a>MotionDetection イベント
 
-モーションが検出されると、Live Video Analytics Edge モジュールから Inference イベントが送信されます。 type は、モーション検出プロセッサからの結果であることを示す "motion" に設定され、また、eventTime を見るとモーションが発生した日時 (UTC) がわかります。 次に例を示します。
+モーションが検出されると、Live Video Analytics on IoT Edge モジュールから推論イベントが送信されます。 `type` は、これがモーション検出プロセッサからの結果であることを示す `motion` に設定されています。 `eventTime` の値は、モーションが発生した時刻 (UTC) を示しています。 
+
+このメッセージの例を次に示します。
 
 ```
   {  
@@ -282,12 +294,14 @@ RTSP シミュレーター モジュールは、[Live Video Analytics リソー�
 }  
 ```
 
-* applicationProperties の "subject" が、メッセージの生成元となったメディア グラフ内のノードを参照しています。 このケースでは、モーション検出プロセッサ ノードからメッセージが生成されています。
-* applicationProperties の "eventType" を見ると、これは Analytics イベントであることがわかります。
-* "eventTime" にはイベントの発生時刻が示されています。
-"body" に、分析イベントに関するデータが含まれています。 このケースでは、Inference イベントであるため、body には "timestamp" データと "inferences" データが存在します。
-* "inferences" データを見ると、"type" が "motion" であること、また、その "motion" イベントについての詳しいデータが存在することがわかります。
-* "box" セクションには、移動する物体を囲む境界ボックスの座標が格納されます。 これらの値は、ピクセル単位のビデオの幅と高さ (幅 1920、高さ 1080 など) で正規化されます。 width of 1920 and height of 1080).
+次の点に注意してください。 
+
+* `applicationProperties` 内の `subject` は、メッセージの生成元となった、メディア グラフ内のノードを参照しています。 このケースでは、メッセージはモーション検出プロセッサ ノードから生成されています。
+* `applicationProperties` 内の `eventType` は、このイベントが分析イベントであることを示しています。
+* `eventTime` 値は、イベントが発生した時刻です。
+* `body` 値は、分析イベントに関するデータです。 このケースでは、イベントは推論イベントであるため、本文には `timestamp` および `inferences` のデータが含まれています。
+* `inferences` のデータは、`type` が `motion` であることを示しています。 ここには `motion` イベントに関する追加データが含まれています。
+* `box` セクションには、移動するオブジェクトを囲む境界ボックスの座標が格納されます。 これらの値は、ビデオの幅と高さ (ピクセル単位) で正規化されます (例: 幅 1920、高さ 1080)。
 
     ```
     l - distance from left of image
@@ -296,10 +310,10 @@ RTSP シミュレーター モジュールは、[Live Video Analytics リソー�
     h - height of bounding box
     ```
     
-## <a name="cleanup-resources"></a>リソースをクリーンアップする
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-これから他のクイックスタートに取り組む場合は、作成したリソースをそのまま残しておく必要があります。 それ以外の場合は、Azure portal にアクセスして、ご利用のリソース グループに移動し、このクイックスタートで使用したリソース グループを選択して、それらのリソースをすべて削除してください。
+他のクイックスタートに取り組む場合は、作成したリソースをそのまま残しておきます。 それ以外の場合は、Azure portal で、ご利用のリソース グループに移動し、このクイックスタートを実行したリソース グループを選択して、そのリソースをすべて削除してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-ライブ ビデオ フィードからの物体の検出など、他のクイックスタートに取り組みます。        
+ライブ ビデオ フィードでのオブジェクトの検出など、他のクイックスタートを実行します。        

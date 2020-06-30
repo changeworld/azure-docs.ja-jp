@@ -4,35 +4,42 @@ description: Azure の予約を交換または払い戻す方法について説�
 author: yashesvi
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 06/12/2020
 ms.author: banders
-ms.openlocfilehash: 174ed17056bf49b541d55719f4058141e88e7ea5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e924c46632e37c6d196fae2db729c17a99bbae3b
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192112"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84765116"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure の予約のセルフサービスによる交換と払戻
 
-Azure の予約は、変化するニーズを満たすために柔軟性を提供します。 変化するニーズを満たすために、予約を同じ種類の別の予約と交換できます。 また、予約が不要になった場合は、最大で年間 50,000 米国ドルまでの払い戻しができます。 この返金の上限は、お客様の Microsoft との契約の範囲内のすべての予約が対象です。
+Azure の予約は、変化するニーズを満たすために柔軟性を提供します。 予約は、同じ種類の別の予約と交換できます。つまり仮想マシンの予約と引き換えに、あらゆるサイズまたはリージョンの仮想マシンの予約を購入することが可能です。 同様に、SQL PaaS Database の予約と引き換えに、あらゆる種類またはリージョンの SQL PaaS Database の予約を購入することができます。 予約の払い戻しを行うこともできますが、取り消した予約コミットメントの総額が、12 か月のローリング ウィンドウで 50,000 米国ドルを超えないようにする必要があります。 Azure Databricks の予約容量、Azure VMware Solution by CloudSimple の予約、Azure Red Hat Open Shift の予約、Red Hat プラン、SUSE Linux プランは払い戻しの対象外となります。
 
-セルフ サービスの交換およびキャンセルの機能は、米国政府のエンタープライズ契約のお客様は利用できません。 従量課金制や CSP などの他の種類の米国政府機関向けサブスクリプションがサポートされています。
+セルフ サービスの交換およびキャンセルの機能は、米国政府のエンタープライズ契約のお客様は利用できません。 従量課金制やクラウド ソリューション プロバイダー (CSP) などの他の種類の米国政府機関向けサブスクリプションがサポートされています。
 
-既存の予約を交換または払い戻しするには、予約注文の所有者アクセス権を持っている必要があります。
+既存の予約を交換または払い戻しするには、予約注文の所有者アクセス権を持っている必要があります。 [予約を管理できるユーザーを追加または変更する](https://docs.microsoft.com/azure/cost-management-billing/reservations/manage-reserved-vm-instance#add-or-change-users-who-can-manage-a-reservation)ことができます。
 
-## <a name="exchange-an-existing-reserved-instance"></a>既存の予約済みインスタンスを交換する
+> [!NOTE]
+> 現在は、予約の払戻に対する中途解約料は請求されません。 将来は、払戻の料金が請求される可能性があります。 現在、この料金が実施される日程は未定です。
 
-[Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) での簡単な 3 つの手順により予約を交換できます。
+## <a name="how-to-exchange-or-refund-an-existing-reservation"></a>既存の予約の交換または払戻を行う方法
+
+予約の交換は [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) から行うことができます。
 
 1. 払い戻したい予約を選択して **[交換]** を選択します。  
-    ![返金する予約を示す例の画像](./media/exchange-and-refund-azure-reservations/exchange-refund-return.png)
-2. 購入する VM 製品を選択し、数量を入力します。 新しい購入合計が、返金合計より多くなるようにしてください。 [購入する前に適切なサイズを決定](../../virtual-machines/windows/prepay-reserved-vm-instances.md#determine-the-right-vm-size-before-you-buy)します。  
-    ![交換による VM 製品の購入を示す例の画像](./media/exchange-and-refund-azure-reservations/exchange-refund-select-purchase.png)
-3. トランザクションを確認して、完了します。  
-    ![交換による VM 製品の購入で返金を完了する例の画像](./media/exchange-and-refund-azure-reservations/exchange-refund-confirm-exchange.png)
+    [![返上する予約を示す例の画像](./media/exchange-and-refund-azure-reservations/exchange-refund-return.png)](./media/exchange-and-refund-azure-reservations/exchange-refund-return.png#lightbox)
+1. 購入する VM 製品を選択し、数量を入力します。 新しい購入合計が、返金合計より多くなるようにしてください。 [購入する前に適切なサイズを決定](../../virtual-machines/windows/prepay-reserved-vm-instances.md#determine-the-right-vm-size-before-you-buy)します。  
+    [![交換による VM 製品の購入を示す例の画像](./media/exchange-and-refund-azure-reservations/exchange-refund-select-purchase.png)](./media/exchange-and-refund-azure-reservations/exchange-refund-select-purchase.png#lightbox)
+1. トランザクションを確認して、完了します。  
+    [![交換による VM 製品の購入で返上を完了する例の画像](./media/exchange-and-refund-azure-reservations/exchange-refund-confirm-exchange.png)](./media/exchange-and-refund-azure-reservations/exchange-refund-confirm-exchange.png#lightbox)
 
 予約を払い戻すには、 **[予約の詳細]** に移動し、 **[払戻]** を選択します。
+
+## <a name="exchange-non-premium-storage-for-premium-storage"></a>Premium Storage 以外のストレージを Premium Storage と交換する
+
+Premium Storage をサポートしない VM サイズの購入済み予約を、Premium Storage をサポートする対応する VM サイズと交換できます。 たとえば、_F1_ を _F1s_ と交換できます。 交換を行う場合は、[予約の詳細] に移動し、 **[交換]** を選択します。 交換により、予約済みインスタンスの期間のリセットや、新しいトランザクションの作成が行われることはありません。 
 
 ## <a name="how-transactions-are-processed"></a>トランザクションの処理方法
 
@@ -40,13 +47,13 @@ Azure の予約は、変化するニーズを満たすために柔軟性を提�
 
 ### <a name="enterprise-agreement-customers"></a>エンタープライズ契約のお客様
 
-元の購入が年額コミットメントを使用して購入されていた場合は、年額コミットメントに交換の金額が加算されて払い戻されます。 元の購入以来の超過分の請求書は、年額コミットメントが使用されるように、再度開かれて再計算されます。 予約を購入するのに使用された年額コミットメントの期間がアクティブでなくなっている場合は、現在のエンタープライズ契約年額コミットメント期間にクレジットを追加できます。 クレジットは、返金日付から 90 日間有効です。 未使用のクレジットは、90 日後に有効期限が切れます。
+元の購入が年額コミットメントを使用して購入されていた場合は、年額コミットメントに交換の金額が加算されて払い戻されます。 予約を購入するのに使用された年額コミットメントの期間がアクティブでなくなっている場合は、現在のエンタープライズ契約年額コミットメント期間にクレジットを追加できます。 クレジットは、返金日付から 90 日間有効です。 未使用のクレジットは、90 日後に有効期限が切れます。
 
-元の購入が超過であった場合、Microsoft はクレジット メモを発行します。
+元の購入が超過であった場合、予約の購入に使用された元の請求書が再度開かれて再調整されます。 払戻用のクレジット メモが Microsoft から発行されます。
 
 ### <a name="pay-as-you-go-invoice-payments-and-csp-program"></a>従量課金制の請求書支払いと CSP プログラム
 
-元の予約購入請求書がキャンセルされ、払戻用の新しい請求書が作成されます。 交換の場合、新しい請求書には払戻と新しい購入が示されます。 払戻額は購入に対して調整されます。 予約の払戻のみの場合は、日割り金額が保持され、今後の予約購入に対して調整されます。
+元の予約購入請求書がキャンセルされ、払戻用の新しい請求書が作成されます。 交換の場合、新しい請求書には払戻と新しい購入が示されます。 払戻額は購入に対して調整されます。 予約の払戻のみの場合は、日割り金額が保持され、今後の予約購入に対して調整されます。 従量課金制料金で予約を購入し、その後 CSP に移動した場合、予約を返上して再購入できます。ペナルティはありません。
 
 ### <a name="pay-as-you-go-credit-card-customers"></a>従量課金制クレジット カードのお客様
 
@@ -58,24 +65,20 @@ Azure には、キャンセル、交換、払戻に関して次のポリシー�
 
 **交換ポリシー**
 
-- 既存の複数の予約を返金して、同じ種類の新しい予約を購入できます。 別の種類の予約と交換することはできません。 たとえば、VM の予約を返金して、SQL の予約を購入することはできません。
+- 既存の複数の予約を返上して、同じ種類の新しい予約を 1 つ購入できます。 別の種類の予約と交換することはできません。 たとえば、VM の予約を返金して、SQL の予約を購入することはできません。 交換により、ファミリ、シリーズ、バージョン、SKU、リージョン、数量、期間などの予約のプロパティを変更できます。
 - 交換を処理できるのは、予約の所有者のみです。 [予約を管理できるユーザーを追加または変更する](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)方法を参照してください。
-- 交換は払戻と再購入として処理されます。キャンセルと新しい購入には、異なるトランザクションが作成されます。 日割り計算された予約金額が、交換する予約に払い戻されます。 新しい購入は全額請求されます。 日割り計算された予約金額は、返金される予約の日割り計算された残余値です。
+- 交換は払戻と再購入として処理されます。キャンセルと新しい予約の購入には、異なるトランザクションが作成されます。 日割り計算された予約金額が、交換する予約に払い戻されます。 新しい購入は全額請求されます。 日割り計算された予約金額は、返金される予約の日割り計算された残余値です。
 - 予約を購入するために使用したエンタープライズ契約の有効期限が切れて、新しい契約として更新された場合も、予約を交換または払い戻すことができます。
-- 交換により、ファミリ、シリーズ、バージョン、SKU、リージョン、数量、期間などの予約のプロパティを変更できます。
-- 新しい購入合計は、返金額以上でなければなりません。
+- 新しい予約の生涯コミットメントは、返上する予約の残りのコミットメントと同じか、それよりも大きくなければなりません。 たとえば、1 か月あたり 100 ドルの 3 年間の予約を 18 回目の支払い後に交換した場合、新しい予約の生涯コミットメントは 1,800 ドル以上である必要があります (月払いまたは前払い)。
 - 交換の一部として購入された新しい予約には、交換の時点から開始される新しい期間が適用されます。
 - 交換に対するペナルティや年間制限はありません。
 
 **払戻ポリシー**
-- 今後、キャンセルに対して 12% の中途解約料が発生する可能性があります。 現在、この違約金は課されていません。
-- 12 か月間のローリング ウィンドウ内に合計払戻金額が 50,000 米国ドルを超えることはできません。
+
+- 現在、中途解約料は課金されませんが、将来は 12% の解約料が発生する可能性があります。
+- 取り消したコミットメントの合計が、12 か月のローリング ウィンドウで 50,000 ドルを超えないようにする必要があります。 たとえば、1 か月あたり 100 米国ドルの 3 年間の予約を 18 か月目に払い戻した場合、取り消したコミットメント額は 1,800 米国ドルとなります。 この払い戻し後は、48,200 米国ドルが、払い戻し可能な新しい限度額となります。 この払い戻しから 365 日後、48,200 米国ドルという上限が 1,800 米国ドル増やされ、新しいプールは 50,000 米国ドルとなります。 以降すべての予約取り消しは同じプールから減額され、同じ補充ロジックが適用されます。
 - 払い戻し額は、購入価格または予約の現在の価格のいずれかの最低価格に基づいて計算されます。
 - 払戻を処理できるのは、予約注文の所有者のみです。 [予約を管理できるユーザーを追加または変更する](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)方法を参照してください。
-
-## <a name="exchange-non-premium-storage-for-premium-storage"></a>Premium Storage 以外のストレージを Premium Storage と交換する
-
-Premium Storage をサポートしない VM サイズの購入済み予約を、Premium Storage をサポートする対応する VM サイズと交換できます。 たとえば、_F1_ を _F1s_ と交換できます。 交換を行う場合は、[予約の詳細] に移動し、 **[交換]** を選択します。 交換により、予約済みインスタンスの期間のリセットや、新しいトランザクションの作成が行われることはありません。
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
@@ -91,4 +94,4 @@ Premium Storage をサポートしない VM サイズの購入済み予約を、
     - [従量課金制サブスクリプションの予約使用量について](understand-reserved-instance-usage.md)
     - [エンタープライズ加入契約の予約使用量について](understand-reserved-instance-usage-ea.md)
     - [予約に含まれない Windows ソフトウェアのコスト](reserved-instance-windows-software-costs.md)
-    - [パートナー センターのクラウド ソリューション プロバイダー (CSP) プログラムでの Azure の予約](/partner-center/azure-reservations)
+    - [CSP プログラムにおける Azure の予約](/partner-center/azure-reservations)

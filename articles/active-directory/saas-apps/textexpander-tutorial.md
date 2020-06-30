@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/22/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 581c3a035ab5b9e573f153361b41eedcd759baa1
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 77bd880bbbc1d600ca21e058993102d69b417f41
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83853085"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764096"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-textexpander"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と TextExpander の統合
 
@@ -43,7 +43,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* TextExpander では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* TextExpander では、**IDP** Initiated SSO がサポートされます
 * TextExpander では、**Just In Time** ユーザー プロビジョニングがサポートされます
 * TextExpander を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
@@ -87,10 +87,6 @@ TextExpander で Azure AD SSO を構成してテストするには、次の構�
     a. **[識別子]** ボックスに、`https://app.textexpander.com/acs/<ORGID>` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://app.textexpander.com/acs/<ORGID>` のパターンを使用して URL を入力します
-
-1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
-
-    **[サインオン URL]** テキスト ボックスに、URL として「`https://app.textexpander.com/ssoSignin`」と入力します。
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[TextExpander クライアント サポート チーム](mailto:support@smilesoftware.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

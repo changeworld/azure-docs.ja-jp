@@ -7,14 +7,17 @@ ms.author: cschorm
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 7e057d6d973eedd3ac53fd7b2ea228470e9123d7
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: f36a41a1151255e792281ae959d40ce183040cb5
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84611486"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737140"
 ---
 # <a name="coding-with-the-azure-digital-twins-apis"></a>Azure Digital Twins API を使用したコーディング
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Azure Digital Twins を使用する開発者は、Azure Digital Twins サービスのインスタンスとのやり取りのために、クライアント アプリケーションを作成するのが一般的です。 この開発者向けのチュートリアルでは、[.NET 用 Azure IoT Digital Twins クライアント ライブラリ (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core) を使用した、Azure Digital Twins サービスに対するプログラミングの概要を説明します。 C# コンソール クライアント アプリの作成手順を最初から順を追って説明します。
 
@@ -99,8 +102,8 @@ using Azure.Identity;
 
 認証のためには、次の 3 つの情報が必要です。
 * サブスクリプションの "*ディレクトリ (テナント) ID*"
-* 前の手順でサービス インスタンスを設定したときに作成した "*アプリケーション (クライアント) ID*"
-* ご自分のサービス インスタンスの *hostName*
+* 前の手順で Azure Digital Twins インスタンスを設定したときに作成した "*アプリケーション (クライアント) ID*"
+* Azure Digital Twins インスタンスの *hostName*
 
 >[!TIP]
 > "*ディレクトリ (テナント) ID*" が不明な場合は、[Azure Cloud Shell](https://shell.azure.com) で次のコマンドを実行することで確認できます。

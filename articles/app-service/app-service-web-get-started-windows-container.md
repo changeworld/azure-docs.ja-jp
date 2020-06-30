@@ -4,12 +4,12 @@ description: 初めてのカスタム Windows コンテナーを Azure App Servi
 ms.topic: quickstart
 ms.date: 08/30/2019
 ms.custom: mvc, seodec18
-ms.openlocfilehash: cd6b78e5fd824cc013cc946d23677237923f485e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 44ade8b0b218f028cf6f211e37824ffc43a191ac
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80047115"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764079"
 ---
 # <a name="run-a-custom-windows-container-in-azure-preview"></a>Azure でのカスタム Windows コンテナーの実行 (プレビュー)
 
@@ -37,7 +37,7 @@ ms.locfileid: "80047115"
 
 1. **[新しいプロジェクトの作成]** で、C# の **[ASP.NET Web アプリケーション (.NET Framework)]** を選択し、 **[次へ]** を選択します。
 
-1. **[新しいプロジェクトの構成]** で、アプリケーションに _myFirstAzureWebApp_ という名前を付け、 **[作成]** を選択します。
+1. **[新しいプロジェクトの構成]** で、アプリケーションに _myfirstazurewebapp_ という名前を付け、 **[作成]** を選択します。
 
    ![Web アプリ プロジェクトを構成する](./media/app-service-web-get-started-windows-container/configure-web-app-project-container.png)
 
@@ -61,7 +61,7 @@ ms.locfileid: "80047115"
 
 ## <a name="publish-to-docker-hub"></a>Docker Hub に発行する
 
-1. **ソリューション エクスプローラー**で **myFirstAzureWebApp** プロジェクトを右クリックし、 **[発行]** を選択します。
+1. **ソリューション エクスプローラー**で **myfirstazurewebapp** プロジェクトを右クリックし、 **[発行]** を選択します。
 
 1. **App Service** を選択し、 **[発行]** を選択します。
 
@@ -149,7 +149,7 @@ https://<app_name>.scm.azurewebsites.net/api/logstream
    </div>
    ```
 
-1. Azure に再デプロイするには、**ソリューション エクスプローラー**で **myFirstAzureWebApp** プロジェクトを右クリックし、 **[発行]** を選択します。
+1. Azure に再デプロイするには、**ソリューション エクスプローラー**で **myfirstazurewebapp** プロジェクトを右クリックし、 **[発行]** を選択します。
 
 1. 発行ページで **[発行]** を選択し、発行が完了するまで待ちます。
 
