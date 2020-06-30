@@ -152,21 +152,21 @@ Everbridge で Azure AD シングル サインオンを構成するには、次�
  
 1. 別の Web ブラウザー ウィンドウで、Everbridge に管理者としてサインインします。
 
-1. 上部のメニューで **[Settings]\(設定)\** タブを選択します。 **[Serucity]\(セキュリティ)\** の下で **[Single Sign-On]\(シングル サインオン)\** を選択します。
+1. 上部のメニューで **[Settings]\(設定)** タブを選択します。 **[Serucity]\(セキュリティ)** の下で **[Single Sign-On]\(シングル サインオン)** を選択します。
    
      ![Configure single sign-on](./media/everbridge-tutorial/tutorial_everbridge_002.png)
    
-     a. **[Name]\(名前)\** ボックスに、識別子プロバイダーの名前を入力します。 たとえば、自分の会社名などです。
+     a. **[Name]\(名前)** ボックスに、識別子プロバイダーの名前を入力します。 たとえば、自分の会社名などです。
    
-     b. **[API Name]\(API 名)\** ボックスに、API の名前を入力します。
+     b. **[API Name]\(API 名)** ボックスに、API の名前を入力します。
    
-     c. **[Choose File]\(ファイルの選択)\** を選択して、Azure portal からダウンロードしたメタデータ ファイルをアップロードします。
+     c. **[Choose File]\(ファイルの選択)** を選択して、Azure portal からダウンロードしたメタデータ ファイルをアップロードします。
    
      d. **[SAML Identity Location]\(SAML ID の場所\)** で、 **[Identity is in the NameIdentifier element of the Subject statement]\(ID を Subject ステートメントの NameIdentifier 要素にする\)** をオンにします。
    
      e. **[SSO Login URL]\(SSO ログイン URL\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
    
-     f. **[Service Provider initiated Request Binding]\(サービス プロバイダーが開始した要求のバインド)\** で **[HTTP Redirect]\(HTTP リダイレクト)\** を選択します。
+     f. **[Service Provider initiated Request Binding]\(サービス プロバイダーが開始した要求のバインド)** で **[HTTP Redirect]\(HTTP リダイレクト)\** を選択します。
 
      g. **[保存]** を選択します。
 
