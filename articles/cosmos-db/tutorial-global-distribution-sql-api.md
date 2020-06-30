@@ -115,13 +115,13 @@ client = cosmos_client.CosmosClient(ENDPOINT, {'masterKey': MASTER_KEY}, connect
 
 次のコードは、Java SDK を使用して優先される場所を設定する方法を示しています。
 
-# <a name="async"></a>[[非同期]](#tab/api-async)
+# <a name="async"></a>[非同期](#tab/api-async)
 
    [Java SDK V4](sql-api-sdk-java-v4.md) (Maven [com.azure::azure-cosmos](https://mvnrepository.com/artifact/com.azure/azure-cosmos)) 非同期 API
 
    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=TutorialGlobalDistributionPreferredLocationAsync)]
 
-# <a name="sync"></a>[[同期]](#tab/api-sync)
+# <a name="sync"></a>[同期](#tab/api-sync)
 
    [Java SDK V4](sql-api-sdk-java-v4.md) (Maven [com.azure::azure-cosmos](https://mvnrepository.com/artifact/com.azure/azure-cosmos)) 同期 API
 
