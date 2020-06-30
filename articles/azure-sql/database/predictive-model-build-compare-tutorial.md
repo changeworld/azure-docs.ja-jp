@@ -14,17 +14,17 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4a5936501f45694febe284d9747bdefdfeae6aeb
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ca0af9a34587f8d3a3c0502c77556975b1d8df4e
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84023989"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253836"
 ---
 # <a name="tutorial-create-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>チュートリアル:Azure SQL Database Machine Learning Services (プレビュー) を使用して R で予測モデルを作成する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-この 3 部構成のチュートリアル シリーズのパート 2 では、R で 2 つの予測モデルを作成し、最も正確なモデルを選択します。 このシリーズの次のパートでは、Azure SQL Database Machine Learning Services (プレビュー) を使用して、このモデルを SQL データベースにデプロイします。
+この 3 部構成のチュートリアル シリーズのパート 2 では、R で 2 つの予測モデルを作成し、最も正確なモデルを選択します。 このシリーズの次のパートでは、Azure SQL Database Machine Learning Services (プレビュー) を使用して、このモデルを Azure SQL Database のデータベースにデプロイします。
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
@@ -38,7 +38,7 @@ ms.locfileid: "84023989"
 
 [パート 1](predictive-model-prepare-data-tutorial.md) では、サンプル データベースをインポートし、R での予測モデルのトレーニングに使用されるデータを準備する方法を学習しました。
 
-[パート 3](predictive-model-deploy-tutorial.md) では、モデルをデータベースに格納した後、パート 1 と 2 で開発した R スクリプトからストアド プロシージャを作成する方法を学習します。 このストアド プロシージャは、SQL データベース内で実行され、新しいデータに基づいて予測を行います。
+[パート 3](predictive-model-deploy-tutorial.md) では、モデルをデータベースに格納した後、パート 1 と 2 で開発した R スクリプトからストアド プロシージャを作成する方法を学習します。 このストアド プロシージャは、データベース内で実行され、新しいデータに基づいて予測を行います。
 
 ## <a name="prerequisites"></a>前提条件
 

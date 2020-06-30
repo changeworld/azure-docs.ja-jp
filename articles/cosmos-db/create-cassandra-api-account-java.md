@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4122e575fc7823fd2e79a26f210f06e5c1b0a835
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: e114bf3a87f3018cc51c5752d57ce5911053542f
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857989"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118408"
 ---
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>チュートリアル:Java アプリケーションを使用して Azure Cosmos DB に Cassandra API アカウントを作成し、キーと値のデータを格納する
 
@@ -54,7 +54,7 @@ ms.locfileid: "82857989"
    |リソース グループ   | 名前を入力    |  **[新規作成]** を選択し、お客様のアカウントで使用する新しいリソース グループの名前を入力します。 簡略化のため、ID と同じ名前を使用することができます。    |
    |場所    |  ユーザーに最も近いリージョンを選択    |  お客様の Azure Cosmos アカウントをホストする地理的な場所を選択します。 データに最も高速にアクセスできるよう、お客様のユーザーに最も近い場所を使用します。    |
 
-   ![ポータルでアカウントを作成する](./media/create-cassandra-api-account-java/create-account.png)
+   :::image type="content" source="./media/create-cassandra-api-account-java/create-account.png" alt-text="ポータルでアカウントを作成する":::
 
 4. **［作成］** を選択します <br/>アカウントの作成には数分かかります。 リソースが作成された後、ポータルの右側に "**デプロイに成功しました**" という通知が表示されます。
 

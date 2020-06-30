@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 9a9c6897937b73786367accc33e985a268907226
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 6b446fe83ad37dfe9edbe55fcb1b5b42aa578274
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81258747"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100366"
 ---
 # <a name="transform-and-protect-your-api"></a>API を変換および保護する
 
@@ -112,11 +112,8 @@ ms.locfileid: "81258747"
 2.  **[すべての操作]** を選択します。
 3.  画面の上部の **[デザイン]** タブを選択します。
 4.  **[送信処理]** セクションで、 **[</>]** アイコンをクリックします。
-5.  **&lt;outbound&gt;** 要素内にカーソルを置き、右上隅にある **[Insert policy]\(ポリシーの挿入\)** ボタンをクリックします。
-6.  右側のウィンドウの **[変換ポリシー]** で、 **[+ Find and replace string in body]\(+ 本文内の文字列の検索および置換\)** をクリックします。
-7.  **find-and-replace** コード ( **\<outbound\>** 要素内) を変更して、APIM ゲートウェイと一致するように URL を置換します。 次に例を示します。
-
-        <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
+5.  **&lt;outbound&gt;** 要素内にカーソルを置き、右上隅にある **[Show snippets]\(スニペットの表示\)** ボタンをクリックします。
+6.  右側のウィンドウの **[変換ポリシー]** で、 **[Mask URLs in content]\(コンテンツ内の URL をマスク\)** をクリックします。
 
 ## <a name="protect-an-api-by-adding-rate-limit-policy-throttling"></a>レート制限ポリシー (調整) を追加して API を保護する
 

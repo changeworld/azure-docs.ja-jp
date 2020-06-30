@@ -1,7 +1,7 @@
 ---
 title: チュートリアル:R で予測モデルをトレーニングするためのデータを準備する
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: この 3 部構成のチュートリアル シリーズのパート 1 では、R で Azure SQL Database Machine Learning Services (プレビュー) を使用して予測モデルをトレーニングするための Azure SQL データベースのデータを準備します。
+description: この 3 部構成のチュートリアル シリーズのパート 1 では、R で Azure SQL Database Machine Learning Services (プレビュー) を使用して予測モデルをトレーニングするための Azure SQL Database のデータベースのデータを準備します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -14,35 +14,36 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: a82467a097c50314e8f26f4a5cc4507f867ad504
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 698cc089f770d60b6399864c9832fbc8d104c16f
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84024792"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253802"
 ---
 # <a name="tutorial-prepare-data-to-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>チュートリアル:R で Azure SQL Database Machine Learning Services (プレビュー) を使用して予測モデルをトレーニングするためのデータを準備する
+
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-この 3 部構成のチュートリアル シリーズのパート 1 では、R を使用して、Azure SQL データベースのデータをインポートして準備します。このシリーズでは、その後、このデータを利用し、R で Azure SQL Database Machine Learning Services (プレビュー) を使用して予測機械学習モデルをトレーニングしてデプロイします。
+この 3 部構成のチュートリアル シリーズのパート 1 では、R を使用して、Azure SQL Database のデータベースのデータをインポートして準備します。このシリーズでは、その後、このデータを利用し、R で Azure SQL Database Machine Learning Services (プレビュー) を使用して予測機械学習モデルをトレーニングしてデプロイします。
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
 このチュートリアル シリーズでは、あなたはスキー レンタル業を自ら営んでおり、今後のレンタル数を予測する必要があるとします。 この情報は、在庫、スタッフおよび設備の準備に役立ちます。
 
-このシリーズのパート 1 と 2 では、使用するデータを準備し、機械学習モデルをトレーニングするために、RStudio 内でいくつかの R スクリプトを開発します。 その後、パート 3 では、ストアド プロシージャを使用して SQL データベース内でそれらの R スクリプトを実行します。
+このシリーズのパート 1 と 2 では、使用するデータを準備し、機械学習モデルをトレーニングするために、RStudio 内でいくつかの R スクリプトを開発します。 その後、パート 3 では、ストアド プロシージャを使用してデータベース内でそれらの R スクリプトを実行します。
 
 この記事では、次の方法について学習します。
 
 > [!div class="checklist"]
 >
-> * R を使用して Azure SQL データベースにサンプル データベースをインポートする
-> * Azure SQL データベースから R データ フレームにデータを読み込む
+> * R を使用して Azure SQL Database のデータベースにサンプル データベースをインポートする
+> * データベースから R データ フレームにデータを読み込む
 > * R でカテゴリとしていくつかの列を識別してデータを準備する
 
 [パート 2](predictive-model-build-compare-tutorial.md) では、R で複数の機械学習モデルを作成してトレーニングしてから、最も正確なものを選ぶ方法を学習します。
 
-[パート 3](predictive-model-deploy-tutorial.md) では、モデルをデータベースに格納した後、パート 1 と 2 で開発した R スクリプトからストアド プロシージャを作成する方法を学習します。 このストアド プロシージャは、SQL データベース内で実行され、新しいデータに基づいて予測を行います。
+[パート 3](predictive-model-deploy-tutorial.md) では、モデルをデータベースに格納した後、パート 1 と 2 で開発した R スクリプトからストアド プロシージャを作成する方法を学習します。 このストアド プロシージャは、データベース内で実行され、新しいデータに基づいて予測を行います。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -66,7 +67,7 @@ ms.locfileid: "84024792"
 
 1. ファイル [TutorialDB.bacpac](https://sqlchoice.blob.core.windows.net/sqlchoice/static/TutorialDB.bacpac) をダウンロードします。
 
-1. これらの詳細を使用して、[Azure SQL データベースを作成するための BACPAC ファイルのインポート](https://docs.microsoft.com/azure/sql-database/sql-database-import)に関するページの指示に従います。
+1. これらの詳細を使用して、「[Azure SQL Database または Azure SQL Managed Instance 内のデータベースに BACPAC ファイルをインポートする](../../azure-sql/database/database-import.md)」の指示に従います。
 
    * ダウンロードした **TutorialDB.bacpac** ファイルからインポートする
    * パブリック プレビュー期間中は、新しいデータベースに対して **Gen5/vCore** 構成を選択する
@@ -74,7 +75,7 @@ ms.locfileid: "84024792"
 
 ## <a name="load-the-data-into-a-data-frame"></a>データをデータ フレームに読み込む
 
-R でデータを使用するには、Azure SQL データベースからデータ フレーム (`rentaldata`) にデータを読み込みます。
+R でデータを使用するには、データベースからデータ フレーム (`rentaldata`) にデータを読み込みます。
 
 RStudio で新しい RScript ファイルを作成し、以下のスクリプトを実行します。 **Server**、**UID**、および **PWD** は、独自の接続情報に置き換えてください。
 
@@ -163,8 +164,8 @@ Azure portal から次の手順を実行します。
 
 このチュートリアル シリーズの第 1 部では、これらの手順を完了しました。
 
-* R を使用して Azure SQL データベースにサンプル データベースをインポートする
-* Azure SQL データベースから R データ フレームにデータを読み込む
+* R を使用して Azure SQL Database のデータベースにサンプル データベースをインポートする
+* データベースから R データ フレームにデータを読み込む
 * R でカテゴリとしていくつかの列を識別してデータを準備する
 
 TutorialDB データベースからデータを使用する機械学習モデルを作成するには、このチュートリアル シリーズのパート 2 に従います。

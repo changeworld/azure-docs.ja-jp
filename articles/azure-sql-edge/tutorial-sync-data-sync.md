@@ -9,15 +9,14 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 7aa7c33a94980081efa3bc54422389aef7defa61
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 6c0518e12a2c654b8f971db3a6733b0e64f80a1f
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235013"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254052"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-sql-database-by-using-sql-data-sync"></a>チュートリアル:SQL データ同期を使用して SQL Edge と Azure SQL Database のデータを同期する
-
 
 このチュートリアルでは、Azure SQL データ同期の "*同期グループ*" を使用して、Azure SQL から Azure SQL Database にデータを増分同期する方法を説明します。 SQL データ同期は、Azure SQL Database 上に構築されているサービスであり、選択したデータを Azure SQL Database や SQL Server インスタンスの複数のデータベース間で双方向に同期させることができます。 SQL データ同期の詳細については、[Azure SQL データ同期](../azure-sql/database/sql-data-sync-data-sql-server-sql-database.md)に関するページを参照してください。
 
@@ -29,7 +28,7 @@ SQL Edge は最新バージョンの [SQL Server データベース エンジン
 
 ## <a name="before-you-begin"></a>開始する前に
 
-* Azure SQL データベースを作成します。 Azure portal を使用して Azure SQL Database を作成する方法については、[Azure SQL Database での単一データベースの作成](../azure-sql/database/single-database-create-quickstart.md?tabs=azure-portal)に関するページを参照してください。
+* Azure SQL Database にデータベースを作成します。 Azure portal を使用してデータベースを作成する方法については、[Azure SQL Database での単一データベースの作成](../azure-sql/database/single-database-create-quickstart.md?tabs=azure-portal)に関するページを参照してください。
 
 * Azure SQL Database のデプロイ内に、テーブルおよびその他の必要なオブジェクトを作成します。
 
@@ -37,9 +36,9 @@ SQL Edge は最新バージョンの [SQL Server データベース エンジン
 
 * Azure SQL Edge インスタンスを Azure SQL データ同期用の Data Sync Agent に登録します。詳細については、[SQL Server データベースの追加](../azure-sql/database/sql-data-sync-sql-server-configure.md#add-on-prem)に関するページを参照してください。
 
-## <a name="sync-data-between-an-azure-sql-database-and-sql-edge"></a>Azure SQL データベースと SQL Edge の間でデータを同期する
+## <a name="sync-data-between-a-database-in-azure-sql-database-and-sql-edge"></a>Azure SQL Database のデータベースと SQL Edge の間でデータを同期する
 
-SQL データ同期を使用した Azure SQL データベースと SQL Edge インスタンスとの間の同期の設定には、次の 3 つの重要な手順が含まれます。  
+SQL データ同期を使用した Azure SQL Database のデータベースと SQL Edge インスタンスとの間の同期の設定には、次の 3 つの重要な手順が含まれます。  
 
 
 1. Azure portal を使用して同期グループを作成します。 詳細については、「[同期グループを作成する](../azure-sql/database/sql-data-sync-sql-server-configure.md#create-sync-group)」を参照してください。 単一の "*ハブ*" データベースを使用して複数の同期グループを作成し、さまざまな SQL Edge インスタンスのデータを、Azure SQL Database の 1 つ以上のデータベースに同期することができます。 
@@ -48,7 +47,7 @@ SQL データ同期を使用した Azure SQL データベースと SQL Edge イ�
 
 3. 同期グループを設定し、この同期の一部となるテーブルを選択します。 詳細については、「[同期グループを構成する](../azure-sql/database/sql-data-sync-sql-server-configure.md#add-sync-members)」を参照してください。
 
-前の手順を完了すると、Azure SQL データベースと SQL Edge インスタンスを含む同期グループが作成されます。
+前の手順を完了すると、Azure SQL Database のデータベースと SQL Edge インスタンスを含む同期グループが作成されます。
 
 SQL データ同期の詳細については、次の記事を参照してください。
 

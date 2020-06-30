@@ -5,16 +5,20 @@ author: mumami
 tags: billing
 ms.service: cost-management-billing
 ms.topic: reference
-ms.date: 04/14/2020
+ms.date: 06/22/2020
 ms.author: banders
-ms.openlocfilehash: aeca9aede4c1b2d8c27de749c7e07c0153000825
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: bf1acd8bce53801c7c241121db2079e9b8a01851
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383167"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253708"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>企業ユーザー向けの Reporting API の概要
+
+> [!Note]
+> Microsoft は今後、Azure Billing - Enterprise Reporting API を更新しません。 代わりに、[Azure Consumption](/rest/api/consumption) API を使用してください。
+
 Reporting API を使用すると、Enterprise Azure の顧客はプログラムで消費量および課金データを希望のデータ分析ツールに取り出すことができます。 Enterprise 顧客は、Azure の [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) を締結し、交渉によって年額コミットメントを決定しています。Azure リソースのカスタム価格が提示されます。
 
 API に必要なすべての日付と時刻のパラメーターは、結合された協定世界時 (UTC) の値で表す必要があります。 API によって返される値は UTC 形式で表示されます。
@@ -27,7 +31,7 @@ API に必要なすべての日付と時刻のパラメーターは、結合さ�
 |-|-|
 |承認| 次の形式で値を指定します:**bearer {API_KEY}** <br/> 例: bearer eyr....09|
 
-## <a name="consumption-apis"></a>Consumption API
+## <a name="consumption-based-apis"></a>使用量ベースの API
 下記の API では、[こちら](https://consumption.azure.com/swagger/ui/index)の Swagger エンドポイントを使用できます。これによって、API のイントロスペクションが容易になり、[AutoRest](https://github.com/Azure/AutoRest) または [Swagger CodeGen](https://swagger.io/swagger-codegen/) を使用したクライアント SDK の生成機能が有効になります。 2014 年 5 月 1 日以降のデータは、この API で使用できます。
 
 * **Balance and Summary** - [Balance and Summary API](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) を使用すると、残高、新規購入、Azure Marketplace サービス料金、調整、および超過料金に関する情報の月別サマリーが提供されます。

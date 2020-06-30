@@ -5,16 +5,16 @@ services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: tutorial
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 84e808caa033491ce3f2da099459d1242df6decd
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: afe231186adec95b09a75d7fe59552ca8a07049b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299538"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213144"
 ---
 # <a name="use-sql-on-demand-preview-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio-preview"></a>SQL オンデマンド (プレビュー) を使用した Azure Open Datasets の分析と Azure Synapse Studio (プレビュー) での結果の視覚化
 
@@ -32,7 +32,7 @@ ms.locfileid: "84299538"
 
 ## <a name="automatic-schema-inference"></a>自動スキーマ推論
 
-データは Parquet ファイル形式で格納されるため、自動スキーマ推論を使用できます。 ファイル内のすべての列のデータ型を一覧表示する必要なく、簡単にデータに対するクエリを実行できます。 また、仮想列のメカニズムと filepath 関数を利用して、ファイルの特定のサブセットを除外することもできます。
+データは Parquet ファイル形式で格納されるため、自動スキーマ推論を使用できます。 ファイル内のすべての列のデータ型を一覧表示することなく、簡単にデータに対するクエリを実行できます。 また、仮想列のメカニズムと filepath 関数を利用して、ファイルの特定のサブセットを除外することもできます。
 
 まず、NYC のタクシー データについて理解するために、次のクエリを実行します。
 

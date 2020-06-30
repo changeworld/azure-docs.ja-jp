@@ -14,12 +14,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 6ffc1aa6e28bf17d0de3783e5e03b6a2df541e4a
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 2c3f2ccd80f2f329a7495beda1a002d84d769802
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194642"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253921"
 ---
 # <a name="set-up-an-azure-ssis-ir-in-azure-data-factory-by-using-powershell"></a>PowerShell を使用して Azure Data Factory で Azure-SSIS IR を設定する
 
@@ -55,7 +55,7 @@ Azure-SSIS IR の概念については、[Azure-SSIS 統合ランタイムの概
     - SSISDB は、選択したデータベース サーバーに基づいて、SQL Database の単一データベースとしてまたはエラスティック プールの一部として、あるいは SQL Managed Instance 上に自動的に作成することができ、パブリック ネットワークからアクセスしたり、仮想ネットワークに参加したりすることによってアクセスできます。 SSISDB のホストとなるデータベース サーバーの種類を選択する際のガイダンスについては、[SQL Database と SQL Managed Instance の比較](create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance)に関するセクションを参照してください。
     
       IP ファイアウォールや仮想ネットワーク サービス エンドポイントを利用する SQL Database またはプライベート エンドポイントを利用する SQL Managed Instance を使用して SSISDB をホストする場合、またはセルフホステッド IR を構成せずにオンプレミス データにアクセスする必要がある場合は、Azure-SSIS IR を仮想ネットワークに参加させます。 詳細については、[仮想ネットワークへの Azure-SSIS IR の作成](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)に関するページを参照してください。
-    - SQL Database で **[Azure サービスへのアクセスを許可]** の設定が有効になっていることを確認します。 この設定は、IP ファイアウォール規則または仮想ネットワーク サービス エンドポイントを備えた SQL Database や、プライベート エンドポイントを備えた SQL Managed Instance を使用して SSISDB をホストする場合は当てはまりません。 詳細については、「[Azure SQL データベースのセキュリティ保護](../azure-sql/database/secure-database-tutorial.md#create-firewall-rules)」を参照してください。 PowerShell を使用してこの設定を有効にするには、「[New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule)」を参照してください。
+    - SQL Database で **[Azure サービスへのアクセスを許可]** の設定が有効になっていることを確認します。 この設定は、IP ファイアウォール規則または仮想ネットワーク サービス エンドポイントを備えた SQL Database や、プライベート エンドポイントを備えた SQL Managed Instance を使用して SSISDB をホストする場合は当てはまりません。 詳細については、「[Azure SQL Database のセキュリティ保護](../azure-sql/database/secure-database-tutorial.md#create-firewall-rules)」を参照してください。 PowerShell を使用してこの設定を有効にするには、「[New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule)」を参照してください。
     - クライアント マシンの IP アドレス、またはクライアント マシンの IP アドレスを含む IP アドレスの範囲を、SQL Database のファイアウォール設定にあるクライアント IP アドレスの一覧に追加します。 詳細については、[サーバーレベルとデータベースレベルのファイアウォール規則](../azure-sql/database/firewall-configure.md)に関するページを参照してください。
     - SQL 認証とサーバー管理者の資格情報、または Azure Active Directory (Azure AD) 認証とデータ ファクトリのマネージド ID を使用して、SQL Database または SQL Managed Instance に接続できます。 Azure AD 認証の場合、データベース サーバーへのアクセス許可が割り当てられている Azure AD グループにデータ ファクトリのマネージド ID を追加するには、[Azure AD 認証を使用する場合の Azure-SSIS IR の作成](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)に関するページを参照してください。
     - SQL Database または SQL Managed Instance に SSISDB がまだ存在しないことを確認します。 Azure-SSIS IR の設定では、既存の SSISDB の使用はサポートされていません。

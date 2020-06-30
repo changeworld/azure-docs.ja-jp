@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/03/2019
-ms.openlocfilehash: ecd78cdc534b68d913b6b5114a04ad2720796665
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 1f63b8adfabb9de427fd19a992f913d032aa9d8b
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84658166"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251524"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance のための Azure CLI サンプル 
  
@@ -39,15 +39,15 @@ CLI をローカルにインストールして使用する場合、このトピ�
 |---|---|
 |**Azure SQL Database にデータベースを作成する**||
 | [単一のデータベースを作成し、ファイアウォール規則を構成する](scripts/create-and-configure-database-cli.md) | SQL Database を作成し、サーバーレベルのファイアウォール規則を構成します。 |
-| [エラスティック プールを作成し、プールされたデータベースを移動する](scripts/move-database-between-elastic-pools-cli.md) | エラスティック プールを作成し、プールされた SQL データベースを移動して、コンピューティング サイズを変更します。 |
+| [エラスティック プールを作成し、プールされたデータベースを移動する](scripts/move-database-between-elastic-pools-cli.md) | エラスティック プールを作成し、プールされたデータベースを移動して、コンピューティング サイズを変更します。 |
 |**Azure SQL Database のデータベースをスケーリングする**||
 | [単一のデータベースをスケーリングする](scripts/monitor-and-scale-database-cli.md) | データベースのサイズ情報の照会後、SQL Database 内のデータベースを別のコンピューティング サイズにスケーリングします。 |
 | [エラスティック プールをスケーリングする](scripts/scale-pool-cli.md) | SQL エラスティック プールを別のコンピューティング サイズにスケーリングします。 |
 |**geo レプリケーションを構成しフェールオーバーする**||
 | [フェールオーバー グループに単一データベースを追加する](scripts/add-database-to-failover-group-cli.md)| データベースとフェールオーバー グループを作成し、データベースをフェールオーバー グループに追加して、セカンダリ サーバーへのフェールオーバーをテストします。 |
 | [エラスティック プールに対してフェールオーバー グループを構成する](../../sql-database/scripts/sql-database-add-elastic-pool-to-failover-group-cli.md) | データベースを作成し、それをエラスティック プールに追加し、そのエラスティック プールをフェールオーバー グループに追加して、セカンダリ サーバーへのフェールオーバーをテストします。 |
-| [アクティブ geo レプリケーションを使用して、単一データベースを構成し、フェールオーバーする](../../sql-database/scripts/sql-database-setup-geodr-and-failover-database-cli.md)| Azure SQL データベースのアクティブ geo レプリケーションを構成し、セカンダリ レプリカにフェールオーバーします。 |
-| [アクティブ geo レプリケーションを使用して、プールされたデータベースを構成およびフェールオーバーする](../../sql-database/scripts/sql-database-setup-geodr-and-failover-pool-cli.md)| SQL エラスティック プール内の Azure SQL データベース用にアクティブ geo レプリケーションを構成し、そのデータベースをセカンダリ レプリカにフェールオーバーします。 |
+| [アクティブ geo レプリケーションを使用して、単一データベースを構成し、フェールオーバーする](../../sql-database/scripts/sql-database-setup-geodr-and-failover-database-cli.md)| Azure SQL Database のデータベースのアクティブ geo レプリケーションを構成し、セカンダリ レプリカにフェールオーバーします。 |
+| [アクティブ geo レプリケーションを使用して、プールされたデータベースを構成およびフェールオーバーする](../../sql-database/scripts/sql-database-setup-geodr-and-failover-pool-cli.md)| エラスティック プール内のデータベース用にアクティブ geo レプリケーションを構成してから、そのデータベースをセカンダリ レプリカにフェールオーバーします。 |
 | **監査と脅威の検出** |
 | [監査と脅威検出を構成する](../../sql-database/scripts/sql-database-auditing-and-threat-detection-cli.md)| Azure SQL Database にあるデータベースの監査と脅威検出ポリシーを構成します。 |
 | **データベースをバックアップ、復元、コピー、インポートする**||

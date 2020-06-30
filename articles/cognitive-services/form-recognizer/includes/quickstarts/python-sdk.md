@@ -7,21 +7,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 05/07/2020
+ms.date: 06/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 1a2c5bfb2866e2cc28c013be60dbe791edeb9ac1
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: c150d60b05ccd306f055c60d180ee9421b356feb
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83997510"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85242190"
 ---
-[リファレンス ドキュメント](https://docs.microsoft.com/python/api/overview/azure/formrecognizer?view=azure-python-preview) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/azure/ai/formrecognizer) | [パッケージ (PyPi)](https://pypi.org/project/azure-ai-formrecognizer/) | [サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)
+[リファレンス ドキュメント](https://docs.microsoft.com/python/api/overview/azure/formrecognizer) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/azure/ai/formrecognizer) | [パッケージ (PyPi)](https://pypi.org/project/azure-ai-formrecognizer/) | [サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)
-* トレーニング データのセットを含む Azure Storage Blob。 トレーニング データ セットをまとめるためのヒントとオプションについては、[カスタム モデル用のトレーニング データ セットの作成](../../build-training-data-set.md)に関する記事を参照してください。 このクイックスタートでは、[サンプル データ セット](https://go.microsoft.com/fwlink/?linkid=2090451)の **Train** フォルダーにあるファイルを使用できます。
+* トレーニング データのセットを含む Azure Storage Blob。 トレーニング データ セットをまとめるためのヒントとオプションについては、「[カスタム モデルのトレーニング データ セットを作成する](../../build-training-data-set.md)」を参照してください。 このクイックスタートでは、[サンプル データ セット](https://go.microsoft.com/fwlink/?linkid=2090451)の **Train** フォルダーにあるファイルを使用できます。
 * [Python 2.7 または 3.5 以降](https://www.python.org/)
 
 ## <a name="setting-up"></a>設定
@@ -58,7 +58,7 @@ key = os.environ["FORM_RECOGNIZER_KEY"]
 Python をインストールしたら、次を使用してクライアント ライブラリをインストールすることができます。
 
 ```console
-pip install azure-ai-formrecognizer
+pip install azure_ai_formrecognizer
 ```
 
 <!-- 
@@ -90,7 +90,7 @@ form_training_client = FormTrainingClient(self.endpoint, AzureKeyCredential(self
 ## <a name="define-variables"></a>変数の定義
 
 > [!NOTE]
-> このガイドのコード スニペットでは、URL でアクセスされるリモート フォームが使用されます。 ローカル フォーム ドキュメントを代わりに処理する場合は、[リファレンス ドキュメント](https://docs.microsoft.com/python/api/overview/azure/formrecognizer?view=azure-python-preview)の関連するメソッドと[サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)を参照してください。
+> このガイドのコード スニペットでは、URL でアクセスされるリモート フォームが使用されます。 ローカル フォーム ドキュメントを代わりに処理する場合は、[リファレンス ドキュメント](https://docs.microsoft.com/python/api/overview/azure/formrecognizer)の関連するメソッドと[サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)を参照してください。
 
 また、トレーニング データとテスト データの URL への参照を追加する必要もあります。
 * カスタム モデルのトレーニング データの SAS URL を取得するには、Microsoft Azure Storage Explorer を開き、ご利用のコンテナーを右クリックし、 **[Shared Access Signature の取得]** を選択します。 アクセス許可の **[読み取り]** と **[表示]** がオンになっていることを確認し、 **[作成]** をクリックします。 次に、その値を **URL** セクションにコピーします。 それは次の書式になります`https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`。
@@ -161,14 +161,20 @@ poller = form_recognizer_client.begin_recognize_receipts_from_url(receiptUrl)
 receipts = poller.result()
 ```
 
-返される値は **USReceipt** オブジェクトのコレクションで、送信されたドキュメント内のページごとに 1 つです。 次のコード ブロックは、基本的な領収書情報をコンソールに出力します。
+返される値は **RecognizedReceipt** オブジェクトのコレクションで、送信されたドキュメント内のページごとに 1 つです。 次のコード ブロックは、基本的な領収書情報をコンソールに出力します。
 
 ```python
 for idx, receipt in enumerate(receipts):
     print("--------Recognizing receipt #{}--------".format(idx))
-    print("Receipt Type: {} has confidence: {}".format(receipt.receipt_type.type, receipt.receipt_type.confidence))
-    print("Merchant Name: {} has confidence: {}".format(receipt.merchant_name.value, receipt.merchant_name.confidence))
-    print("Transaction Date: {} has confidence: {}".format(receipt.transaction_date.value, receipt.transaction_date.confidence))
+    receipt_type = receipt.fields.get("ReceiptType")
+    if receipt_type:
+        print("Receipt Type: {} has confidence: {}".format(receipt_type.value, receipt_type.confidence))
+    merchant_name = receipt.fields.get("MerchantName")
+    if merchant_name:
+        print("Merchant Name: {} has confidence: {}".format(merchant_name.value, merchant_name.confidence))
+    transaction_date = receipt.fields.get("TransactionDate")
+    if transaction_date:
+        print("Transaction Date: {} has confidence: {}".format(transaction_date.value, transaction_date.confidence))
 ```
 
 次のコード ブロックは、領収書で検出された個々の項目を反復処理し、その詳細をコンソールに出力します。
@@ -176,20 +182,37 @@ for idx, receipt in enumerate(receipts):
 
 ```python
     print("Receipt items:")
-    for item in receipt.receipt_items:
-        print("...Item Name: {} has confidence: {}".format(item.name.value, item.name.confidence))
-        print("...Item Quantity: {} has confidence: {}".format(item.quantity.value, item.quantity.confidence))
-        print("...Individual Item Price: {} has confidence: {}".format(item.price.value, item.price.confidence))
-        print("...Total Item Price: {} has confidence: {}".format(item.total_price.value, item.total_price.confidence))
+    for idx, item in enumerate(receipt.fields.get("Items").value):
+        print("...Item #{}".format(idx))
+        item_name = item.value.get("Name")
+        if item_name:
+            print("......Item Name: {} has confidence: {}".format(item_name.value, item_name.confidence))
+        item_quantity = item.value.get("Quantity")
+        if item_quantity:
+            print("......Item Quantity: {} has confidence: {}".format(item_quantity.value, item_quantity.confidence))
+        item_price = item.value.get("Price")
+        if item_price:
+            print("......Individual Item Price: {} has confidence: {}".format(item_price.value, item_price.confidence))
+        item_total_price = item.value.get("TotalPrice")
+        if item_total_price:
+            print("......Total Item Price: {} has confidence: {}".format(item_total_price.value, item_total_price.confidence))
 ```
 
 最終的に、最後のコード ブロックが、主要な領収書の詳細の残りを出力します。
 
 ```python
-    print("Subtotal: {} has confidence: {}".format(receipt.subtotal.value, receipt.subtotal.confidence))
-    print("Tax: {} has confidence: {}".format(receipt.tax.value, receipt.tax.confidence))
-    print("Tip: {} has confidence: {}".format(receipt.tip.value, receipt.tip.confidence))
-    print("Total: {} has confidence: {}".format(receipt.total.value, receipt.total.confidence))
+    subtotal = receipt.fields.get("Subtotal")
+    if subtotal:
+        print("Subtotal: {} has confidence: {}".format(subtotal.value, subtotal.confidence))
+    tax = receipt.fields.get("Tax")
+    if tax:
+        print("Tax: {} has confidence: {}".format(tax.value, tax.confidence))
+    tip = receipt.fields.get("Tip")
+    if tip:
+        print("Tip: {} has confidence: {}".format(tip.value, tip.confidence))
+    total = receipt.fields.get("Total")
+    if total:
+        print("Total: {} has confidence: {}".format(total.value, total.confidence))
     print("--------------------------------------")
 ```
 
@@ -205,25 +228,25 @@ for idx, receipt in enumerate(receipts):
 
 カスタム モデルをトレーニングして、トレーニング ドキュメントに手動でラベルを付けることなく、カスタム フォームにあるすべてのフィールドと値を認識できるようにします。
 
-次のコードは、トレーニング クライアントを **begin_train_model** 関数と共に使用して、特定のドキュメント セットでモデルをトレーニングします。
+次のコードは、トレーニング クライアントを **begin_training** 関数と共に使用して、特定のドキュメント セットでモデルをトレーニングします。
 
 ```python
-poller = form_training_client.begin_train_model(self.trainingDataUrl)
+poller = form_training_client.begin_training(self.trainingDataUrl, use_training_labels=False)
 model = poller.result()
 ```
 
-返された **CustomFormModel** オブジェクトには、モデルが認識できるフォームの種類と、それぞれのフォームの種類から抽出できるフィールドに関する情報が含まれています。 次のコード ブロックは、この情報をコンソールに出力します。
+返される **CustomFormSubmodel** オブジェクトには、モデルが認識できるフォームの種類と、それぞれのフォームの種類から抽出できるフィールドに関する情報が含まれています。 次のコード ブロックは、この情報をコンソールに出力します。
 
 ```python
 # Custom model information
 print("Model ID: {}".format(model.model_id))
 print("Status: {}".format(model.status))
-print("Created on: {}".format(model.created_on))
-print("Last modified: {}".format(model.last_modified))
+print("Created on: {}".format(model.requested_on))
+print("Last modified: {}".format(model.completed_on))
 
 print("Recognized fields:")
 # Looping through the submodels, which contains the fields they were trained on
-for submodel in model.models:
+for submodel in model.submodels:
     print("...The submodel has form type '{}'".format(submodel.form_type))
     for name, field in submodel.fields.items():
         print("...The model found field '{}' to have label '{}'".format(
@@ -236,14 +259,14 @@ for submodel in model.models:
 トレーニング ドキュメントに手動でラベルを付けて、カスタム モデルをトレーニングすることもできます。 ラベルを使用してトレーニングを行うと、一部のシナリオでパフォーマンスの向上につながります。 
 
 > [!IMPORTANT]
-> ラベルを使用してトレーニングするには、トレーニング ドキュメントと共に、BLOB ストレージ コンテナーに特別なラベル情報ファイル ( *\<filename\>.pdf.labels.json*) を用意する必要があります。 [Form Recognizer のサンプル ラベル付けツール](../../quickstarts/label-tool.md)では、これらのラベル ファイルの作成を支援する UI が提供されています。 それらの用意ができたら、*use_labels* パラメーターを `true` に設定して、**begin_train_model** 関数を呼び出すことができます。
+> ラベルを使用してトレーニングするには、トレーニング ドキュメントと共に、BLOB ストレージ コンテナーに特別なラベル情報ファイル ( *\<filename\>.pdf.labels.json*) を用意する必要があります。 [Form Recognizer のサンプル ラベル付けツール](../../quickstarts/label-tool.md)では、これらのラベル ファイルの作成を支援する UI が提供されています。 それらの用意ができたら、*use_training_labels* パラメーターを `true` に設定して、**begin_training** 関数を呼び出すことができます。
 
 ```python
-poller = form_training_client.begin_train_model(self.trainingDataUrl, use_labels=True)
+poller = form_training_client.begin_training(self.trainingDataUrl, use_training_labels=True)
 model = poller.result()
 ```
 
-返される **CustomFormModel** は、モデルが抽出できるフィールドを、各フィールドの予測精度と共に示します。 次のコード ブロックは、この情報をコンソールに出力します。
+返される **CustomFormSubmodel** は、モデルが抽出できるフィールドを、各フィールドの予測精度と共に示します。 次のコード ブロックは、この情報をコンソールに出力します。
 
 ```python
 # Custom model information
@@ -255,7 +278,7 @@ print("Last modified: {}".format(model.last_modified))
 print("Recognized fields:")
 # looping through the submodels, which contains the fields they were trained on
 # The labels are based on the ones you gave the training document.
-for submodel in model.models:
+for submodel in model.submodels:
     print("...The submodel with form type {} has accuracy '{}'".format(submodel.form_type, submodel.accuracy))
     for name, field in submodel.fields.items():
         print("...The model found field '{}' to have name '{}' with an accuracy of {}".format(
@@ -265,7 +288,7 @@ for submodel in model.models:
 
 ## <a name="analyze-forms-with-a-custom-model"></a>カスタム モデルを使用してフォームを分析する
 
-このセクションでは、独自のフォームでトレーニングしたモデルを使用して、カスタムのフォームの種類からキー/値情報やその他のコンテンツを抽出する方法について説明します。
+このセクションでは、独自のフォームでトレーニングしたモデルを使用して、カスタムのフォームの種類からキー/値の情報やその他のコンテンツを抽出する方法について説明します。
 
 > [!IMPORTANT]
 > このシナリオを実装するには、モデルのトレーニングが完了している必要があります。それにより、次のメソッドにその ID を渡すことができます。 「[モデルをトレーニングする](#train-a-model-without-labels)」セクションを参照してください。
@@ -275,7 +298,7 @@ for submodel in model.models:
 ```python
 # Make sure your form's type is included in the list of form types the custom model can recognize
 poller = form_recognizer_client.begin_recognize_custom_forms_from_url(
-    model_id=model.model_id, url=formUrl)
+    model_id=model.model_id, form_url=formUrl)
 forms = poller.result()
 ```
 
@@ -325,7 +348,7 @@ print("Our account has {} custom models, and we can have at most {} custom model
 
 ```python
 # Next, we get a paged list of all of our custom models
-custom_models = form_training_client.list_model_infos()
+custom_models = form_training_client.list_custom_models()
 
 print("We have models with the following ids:")
 
@@ -345,8 +368,8 @@ for model in custom_models:
 custom_model = form_training_client.get_custom_model(model_id=first_model.model_id)
 print("Model ID: {}".format(custom_model.model_id))
 print("Status: {}".format(custom_model.status))
-print("Created on: {}".format(custom_model.created_on))
-print("Last modified: {}".format(custom_model.last_modified))
+print("Created on: {}".format(custom_model.requested_on))
+print("Last modified: {}".format(custom_model.completed_on))
 ```
 
 ### <a name="delete-a-model-from-the-resource-account"></a>リソース アカウントからモデルを削除する
@@ -426,4 +449,4 @@ poller = form_recognizer_client.begin_recognize_receipts(receipt, logging_enable
 > [トレーニング データ セットの作成](../../build-training-data-set.md)
 
 * [Form Recognizer とは](../../overview.md)
-* このガイドのサンプル コード (およびその他) については、[GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) を参照してください。
+* このガイドのサンプル コード (およびその他の情報) については、[GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) を参照してください。

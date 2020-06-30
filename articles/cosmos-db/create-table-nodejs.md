@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/28/2020
 ms.author: sngun
-ms.openlocfilehash: 83ba361541949b1be8205361d968ec6614b97cc9
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: bbb6ac60c28635371760987b7a55ae7344dd73fb
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84217938"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85115041"
 ---
 # <a name="quickstart-build-a-table-api-app-with-nodejs-and-azure-cosmos-db"></a>クイック スタート:Node.js と Azure Cosmos DB での Table API アプリの構築
 
@@ -138,7 +138,7 @@ GitHub で Table アプリの複製を作成し、接続文字列を設定して
 
 1. [Azure portal](https://portal.azure.com/) の Azure Cosmos DB アカウントで、 **[接続文字列]** を選択します。 
 
-    ![[接続文字列] ウィンドウに表示されている必要な接続文字列情報をコピーします。](./media/create-table-nodejs/connection-string.png)
+    :::image type="content" source="./media/create-table-nodejs/connection-string.png" alt-text="[接続文字列] ウィンドウに表示されている必要な接続文字列情報をコピーする":::
 
 2. 右側にあるコピー ボタンを使って、プライマリ接続文字列をコピーします。
 

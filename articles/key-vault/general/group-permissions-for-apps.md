@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 0d2666e2b56e73b809a0480d45fa3a4a63f06490
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 28765d3a4a0812f6f3631427432105fdc4650808
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652207"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85126231"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>アクセス制御ポリシーを使用して Key Vault の認証を提供する
 
@@ -60,10 +60,10 @@ Key Vault のアクセス制御の詳細については、「[Azure Key Vault �
 
 アプリケーションの objectId を取得する方法は 2 とおりあります。  1 つ目は、アプリケーションを Azure Active Directory に登録することです。 そのためには、[Microsoft ID プラットフォームにアプリケーションを登録する](../../active-directory/develop/quickstart-register-app.md)クイックスタートの手順に従います。 登録が完了すると、objectID が "アプリケーション (クライアント) ID" として一覧に表示されます。
 
-2 つ目は、ターミナル ウィンドウでサービス プリンシパルを作成することです。 Azure CLI で [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) コマンドを使用し、一意のサービス プリンシパル名を -n フラグに "http://&lt;my-unique-service-principle-name&gt;" という形式で指定します。
+2 つ目は、ターミナル ウィンドウでサービス プリンシパルを作成することです。 Azure CLI で [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) コマンドを使用し、一意のサービス プリンシパル名を -n フラグに "http://&lt;my-unique-service-principal-name&gt;" という形式で指定します。
 
 ```azurecli-interactive
-az ad sp create-for-rbac -n "http://<my-unique-service-principle-name"
+az ad sp create-for-rbac -n "http://<my-unique-service-principal-name"
 ```
 
 この objectId は出力に `clientID` として表示されます。
@@ -72,7 +72,7 @@ Azure PowerShell では、[New-AzADServicePrincipal](/powershell/module/Az.Resou
 
 
 ```azurepowershell-interactive
-New-AzADServicePrincipal -DisplayName <my-unique-service-principle-name>
+New-AzADServicePrincipal -DisplayName <my-unique-service-principal-name>
 ```
 
 この objectId は出力に (`ApplicationId` ではなく) `Id` として表示されます。

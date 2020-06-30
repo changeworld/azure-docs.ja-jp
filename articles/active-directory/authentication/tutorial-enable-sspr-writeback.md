@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e56040f5e17ee33da6b21ab42d2deddf5dd7064
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 030d5b5ad596b0d9e5eb2d636770c985b1cff5ed
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84447800"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85099115"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>チュートリアル:オンプレミス環境への Azure Active Directory のセルフサービス パスワード リセットのライトバックを有効にする
 
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) のセルフサービス パスワード リ�
 
 このチュートリアルを完了するには、以下のリソースと特権が必要です。
 
-* 少なくとも Azure AD Premium P2 試用版ライセンスが有効になっている、動作している Azure AD テナント。
+* 少なくとも Azure AD Premium P1 または P2 試用版ライセンスが有効になっている、動作している Azure AD テナント。
     * 必要に応じて、[無料で作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
     * 詳細については、[Azure AD SSPR のライセンス要件](concept-sspr-licensing.md)に関するページを参照してください。
 * "*グローバル管理者*" 特権を持つアカウント。

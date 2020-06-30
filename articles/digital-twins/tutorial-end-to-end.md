@@ -8,12 +8,12 @@ ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 0f9ddf2f4fba9e216ef0b5a5747fc32f4288cf67
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: f83eb6a0cab8bdf2f26888f895aeac8a8fa796bb
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84737276"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296986"
 ---
 # <a name="build-out-an-end-to-end-solution"></a>エンド ツー エンドのソリューションを構築する
 
@@ -136,6 +136,8 @@ Visual Studio のメイン ウィンドウに再度 *[発行]* ペインが表�
 > [!NOTE]
 > 次のようなポップアップが表示されることがあります。:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="Visual Studio で Azure 関数を発行する: 資格情報" border="false":::
 > その場合は、 **[Attempt to retrieve credentials from Azure]\(Azure から資格情報の取得を試みる\)** を選択して **[保存]** を選択してください。
+>
+> 「*Functions ランタイムのバージョンが Azure で実行されているバージョンと一致しない*」という警告が表示された場合は、プロンプトに従って最新の Azure Functions ランタイム バージョンにアップグレードします。 この問題は、このチュートリアルの冒頭にある「*前提条件*」で推奨されているバージョンよりも古いバージョンの Visual Studio を使用している場合に発生する可能性があります。
 
 ### <a name="assign-permissions-to-the-function-app"></a>関数アプリにアクセス許可を割り当てる
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: chez
 ms.reviewer: mariozi
-ms.openlocfilehash: fa1ce8516223b725c1efcb7e27d4726bbadfe62e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a5d36ad92299ea079a6d7ba8c7ff924b8c4c42f5
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655050"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252476"
 ---
 # <a name="encrypt-azure-data-factory-with-customer-managed-keys"></a>カスタマー マネージド キーを使用した Azure Data Factory の暗号化
 

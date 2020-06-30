@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: tracking-python
-ms.openlocfilehash: 30ceed388412f08e31b9c9b0c7ea6fdf2fed143e
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 5555c176adfb5be78ea73f17bfa01ba87766acc1
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84607212"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100396"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-python"></a>チュートリアル:クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する (Python)
 
@@ -306,7 +306,7 @@ python3 environmental_sensor.py
 
 ## <a name="next-steps"></a>次のステップ
 
-デバイス開発者として、Node.js を使用してデバイスを作成する方法の基本を学習しました。推奨される次の手順は以下のとおりです。
+デバイス開発者として、Python を使用してデバイスを作成する方法の基本を学習しました。推奨される次の手順は以下のとおりです。
 
 * 「[MXChip IoT DevKit デバイスを Azure IoT Central アプリケーションに接続する](./howto-connect-devkit.md)」ハウツー記事で、実際のデバイスを IoT Central に接続する方法を確認します。
 * デバイス コードを実装する際のデバイス テンプレートの役割について詳しくは、「[デバイス テンプレートとは](./concepts-device-templates.md)」をご覧ください。

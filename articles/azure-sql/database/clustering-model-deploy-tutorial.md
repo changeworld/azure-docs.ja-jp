@@ -14,21 +14,21 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: d5227fc89d99257f3390820d4930c3d57b63f03d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 2a90003c9de2cf0e942b518c6d4e9c3569039caf
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84024110"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251422"
 ---
 # <a name="tutorial-deploy-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>チュートリアル:Azure SQL Database Machine Learning Services (プレビュー) を使用して R でクラスタリング モデルをデプロイする
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-この 3 部構成のチュートリアル シリーズのパート 3 では、Azure SQL Database Machine Learning Services (プレビュー) を使用して、R で開発したクラスタリング モデルを SQL データベースにデプロイします。
+この 3 部構成のチュートリアル シリーズのパート 3 では、Azure SQL Database Machine Learning Services (プレビュー) を使用して、R で開発したクラスタリング モデルを Azure SQL Database のデータベースにデプロイします。
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
-クラスタリングを実行する埋め込みの R スクリプトを含むストアド プロシージャを作成します。 モデルは Azure SQL データベースで実行されるため、データベースに格納されているデータに対して簡単にトレーニングすることができます。
+クラスタリングを実行する埋め込みの R スクリプトを含むストアド プロシージャを作成します。 モデルは Azure SQL Database で実行されるため、データベースに格納されているデータに対して簡単にトレーニングすることができます。
 
 この記事では、次の方法について学習します。
 
@@ -38,7 +38,7 @@ ms.locfileid: "84024110"
 > * SQL Database 上でのクラスタリング実行
 > * クラスタリング情報の使用
 
-[パート 1](clustering-model-prepare-data-tutorial.md) では、クラスタリングを実行するために Azure SQL データベースのデータを準備する方法を学習しました。
+[パート 1](clustering-model-prepare-data-tutorial.md) では、データベースからデータを準備してクラスタリングを実行する方法を学びました。
 
 [パート 2](clustering-model-build-tutorial.md) では、R で K-Means クラスタリング モデルを作成してトレーニングする方法について学習しました。
 

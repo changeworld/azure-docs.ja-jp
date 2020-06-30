@@ -10,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 103545225b15a74d8c2ea0be5e88caa18f3c31cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: de9e7fd605a1d53d1078523c77cd33065c03ca85
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82184777"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118969"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>Azure Cosmos DB の MongoDB 用 API で Angular アプリを作成する - アプリに CRUD 関数を追加する
 
@@ -40,7 +40,7 @@ ms.locfileid: "82184777"
 
     **hero.service.js** の 5 行目にある `getHeroes` 関数が、routes.js の 7 行目で呼び出されていることがわかります。  これと同じペアリングを Post、Put、Delete の各関数についても作成する必要があります。 
 
-    ![Visual Studio Code で routes.js と hero.service.js を表示したところ](./media/tutorial-develop-mongodb-nodejs-part6/routes-heroservicejs.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/routes-heroservicejs.png" alt-text="Visual Studio Code で routes.js と hero.service.js を表示したところ":::
     
     それでは、ヒーロー サービスのコーディングを始めましょう。 
 
@@ -88,11 +88,11 @@ ms.locfileid: "82184777"
 
 6. インターネット ブラウザーに戻り、デベロッパー ツールの [Network] タブを開きます。ほとんどのマシンでは、F12 キーを押すと、デベロッパー ツールが表示されます。 `http://localhost:3000` にアクセスして、ネットワーク上で実行される呼び出しを観察します。
 
-    ![Chrome の [Network] タブでネットワーク アクティビティを表示](./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png" alt-text="Chrome の [Network] タブでネットワーク アクティビティを表示":::
 
 7. **[Add New Hero]** ボタンを選択して新しいヒーローを追加します。 ID に「999」を、名前に「Fred」を、台詞に「Hello」と入力して、 **[Save]** を選択します。 [Network] タブを見ると、新しいヒーローの POST 要求が送信されたことを確認できます。 
 
-    ![Chrome の [Network] タブで Get 関数と Post 関数のネットワーク アクティビティを表示](./media/tutorial-develop-mongodb-nodejs-part6/post-new-hero.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/post-new-hero.png" alt-text="Chrome の [Network] タブで Get 関数と Post 関数のネットワーク アクティビティを表示":::
 
     今度は、Put 関数と Delete 関数をアプリに追加しましょう。
 
@@ -177,11 +177,11 @@ ms.locfileid: "82184777"
 
     [Network] タブで ID を選択すると、ペイロードが表示されます。 ペイロードを見ると、台詞が "Bye" に設定されていることが確認できます。
 
-    ![Heroes アプリと [Network] タブでペイロードを表示](./media/tutorial-develop-mongodb-nodejs-part6/put-hero-function.png) 
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/put-hero-function.png" alt-text="Heroes アプリと [Network] タブでペイロードを表示"::: 
 
     いずれかのヒーローを UI で削除して、削除操作にかかった時間を確認することもできます。 "Fred" というヒーローの [Delete] ボタンを選択して試してみましょう。
 
-    ![Heroes アプリと [Network] タブで関数の所要時間を表示](./media/tutorial-develop-mongodb-nodejs-part6/times.png) 
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/times.png" alt-text="Heroes アプリと [Network] タブで関数の所要時間を表示"::: 
 
     ページを最新の情報に更新すると、ヒーローを取得するのに要した時間が [Network] タブに表示されます。 これらはごく短時間ではありますが、どの国にデータが置かれているかや、ユーザーの近隣エリアで geo レプリケーションを実行できるかどうかによって、大きく変動します。 geo レプリケーションの詳細については、近日中に次のチュートリアルで取り上げる予定です。
 

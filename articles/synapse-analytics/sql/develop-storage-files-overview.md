@@ -5,16 +5,16 @@ services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: c2e18919b287713f59ba8785006c952134994be0
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: bfea79fe232fbb6f1b39c03a5cc8e9fe06bee867
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84258370"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85204941"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Synapse SQL 内で SQL オンデマンド (プレビュー) リソースを使用してストレージ ファイルに対してクエリを実行する
 
@@ -90,7 +90,7 @@ CSV (区切りテキスト) ファイルを操作するために、次の追加�
 ```
 
 - ESCAPE_CHAR = 'char' は、ファイル内でそれ自体とすべての区切り記号の値をエスケープするために使用するファイル内の文字を指定します。 エスケープ文字の後にそれ自体以外の値またはいずれかの区切り記号の値が続く場合は、その値を読み取るときにエスケープ文字が削除されます。
-ESCAPE_CHAR パラメーターは、FIELDQUOTE が有効かどうかに関係なく適用されます。 引用文字をエスケープするために使用されることはありません。 引用文字は、Excel CSV の動作に合わせて二重引用符でエスケープされます。
+ESCAPE_CHAR パラメーターは、FIELDQUOTE が有効かどうかに関係なく適用されます。 引用文字をエスケープするために使用されることはありません。 引用文字は、別の引用文字でエスケープする必要があります。 引用文字は、値が引用文字で囲まれている場合にのみ、列の値の中で使用できます。
 - FIELDTERMINATOR ='field_terminator' は、使用するフィールド ターミネータを指定します。 既定のフィールド ターミネータはコンマ (" **,** ") です。
 - ROWTERMINATOR ='row_terminator' は、使用する行ターミネータを指定します。 既定の行ターミネータは、改行文字  **\r\n** です。
 

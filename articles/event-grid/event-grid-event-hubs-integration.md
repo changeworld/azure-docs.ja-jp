@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: spelluru
-ms.openlocfilehash: e6733bdc91ba26d52366de09ed6bc255dcd4ff98
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 76d63b508705bf426b8fc86b3d27d75241d6f246
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84610819"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212209"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>チュートリアル:ビッグ データをデータ ウェアハウスにストリーミングする
 Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (イベント) への対応を可能にするインテリジェントなイベント ルーティング サービスです。 たとえば、Azure BLOB ストレージや Azure Data Lake Storage にキャプチャされた Event Hubs データを処理する Azure 関数をトリガーして、データを別のデータ リポジトリに移行できます。 この [Event Hubs と Event Grid の統合のサンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)では、Event Hubs と Event Grid を使用して、キャプチャされた Event Hubs データを BLOB ストレージから SQL データ ウェアハウスにシームレスに移行する方法を説明しています。
@@ -173,7 +173,7 @@ Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (�
 2. SQL データ ウェアハウスのページで、左側のメニューの **[クエリ エディター (プレビュー)]** を選択します。 
 
     ![SQL データ ウェアハウスのページ](media/event-grid-event-hubs-integration/sql-data-warehouse-page.png)
-2. SQL サーバーの**ユーザー**の名前と**パスワード**を入力し、 **[OK]** を選択します。 SQL サーバーに正常にログインするには、ファイアウォールにお使いのクライアント IP アドレスを追加することが必要な場合があります。 
+2. SQL サーバーの**ユーザー**の名前と**パスワード**を入力し、 **[OK]** を選択します。 SQL サーバーに正常にログインするために、クライアント IP アドレスをファイアウォールに追加することが必要な場合があります。 
 
     ![SQL Server 認証](media/event-grid-event-hubs-integration/sql-server-authentication.png)
 4. クエリ ウィンドウに、次の SQL スクリプトをコピーして実行します。 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: ''
 ms.date: 05/04/2020
-ms.openlocfilehash: 754fb27d03aebf6029d3ae2f22e748db87a89753
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: ca6b0ff197c21dd41521d2aa6106aa3b0df2d177
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84325227"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249485"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>変更データ キャプチャ (CDC) を使用して Azure SQL Managed Instance から Azure Storage へのデータの増分読み込みを行う
 
@@ -55,7 +55,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * **Azure SQL Database Managed Instance**。 **ソース** データ ストアとして使うデータベースです。 Azure SQL Database Managed Instance がない場合は、[Azure SQL Database Managed Instance の作成](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started)に関する記事に書かれている手順を参照して作成してください。
 * **Azure Storage アカウント**。 **シンク** データ ストアとして使用する BLOB ストレージです。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md)」を参照してください。 **raw** という名前のコンテナーを作成します。 
 
-### <a name="create-a-data-source-table-in-your-azure-sql-database"></a>Azure SQL データベースにデータ ソース テーブルを作成する
+### <a name="create-a-data-source-table-in-azure-sql-database"></a>Azure SQL Database にデータ ソース テーブルを作成する
+
 1. **SQL Server Management Studio** を起動し、Azure SQL Managed Instance サーバーに接続します。
 2. **サーバー エクスプローラー**で目的の**データベース**を右クリックして **[新しいクエリ]** を選択します。
 3. Azure SQL Managed Instance データベースに対して次の SQL コマンドを実行し、ソース データ ストアとして `customers` という名前のテーブルを作成します。  

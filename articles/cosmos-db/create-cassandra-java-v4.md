@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/18/2020
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: b87c4c0beec2b3b10c81355fc51ded870d7d1d9e
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 59ea78fed27b41199699d5413f605288bbf1a608
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310920"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118391"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data-v4-driver"></a>クイック スタート:Azure Cosmos DB Cassandra API データを管理する Java アプリを作成する (v4 ドライバー)
 
@@ -153,7 +153,7 @@ ms.locfileid: "84310920"
 
 1. [Azure portal](https://portal.azure.com/) の Azure Cosmos DB アカウントで、 **[接続文字列]** を選択します。 
 
-    ![Azure Portal の [接続文字列] ページからユーザー名を表示してコピー](./media/create-cassandra-java/copy-username-connection-string-azure-portal.png)
+    :::image type="content" source="./media/create-cassandra-java/copy-username-connection-string-azure-portal.png" alt-text="Azure portal の [接続文字列] ページからユーザー名を表示してコピー":::
 
 2. 画面右側の ![コピー ボタン](./media/create-cassandra-java/copy-button-azure-portal.png) ボタンを使用して [CONTACT POINT]\(コンタクト ポイント\) の値をコピーします。
 
@@ -215,7 +215,7 @@ ms.locfileid: "84310920"
 
 4. Azure portal で **Data Explorer** を開き、この新しいデータのクエリ、変更、操作を行います。 
 
-    ![データ エクスプローラーでデータを表示する - Azure Cosmos DB](./media/create-cassandra-java/view-data-explorer-java-app.png)
+    :::image type="content" source="./media/create-cassandra-java/view-data-explorer-java-app.png" alt-text="データ エクスプローラーでデータを表示する - Azure Cosmos DB":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
 

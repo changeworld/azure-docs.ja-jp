@@ -6,16 +6,16 @@ ms.assetid: 055440a9-fff1-49b2-b964-9c95b364e533
 ms.topic: sample
 ms.date: 03/20/2017
 ms.custom: mvc
-ms.openlocfilehash: e050675282d8a7784d31aaf45a564da991ff6e63
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9086e00e4b6caf89ab249bbf25ca03a6f068ba49
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020032"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85248299"
 ---
-# <a name="connect-an-app-service-app-to-a-sql-database"></a>SQL データベースへの App Service アプリの接続
+# <a name="connect-an-app-service-app-to-sql-database"></a>App Service アプリを SQL Database に接続する
 
-このシナリオでは、Azure SQL データベースと App Service アプリの作成方法について説明します。 作成後、アプリの設定を使用して SQL データベースをアプリにリンクします。
+このシナリオでは、Azure SQL Database のデータベースと App Service アプリの作成方法について説明します。 作成後、アプリの設定を使用してデータベースをアプリにリンクします。
 
 必要に応じて、[Azure PowerShell ガイド](/powershell/azure/overview)の手順に従って Azure PowerShell をインストールし、`Connect-AzAccount` を実行して、Azure との接続を作成します。
 
@@ -23,7 +23,7 @@ ms.locfileid: "84020032"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-[!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/connect-to-sql/connect-to-sql.ps1?highlight=13 "Connect an app to a SQL database")]
+[!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/connect-to-sql/connect-to-sql.ps1?highlight=13 "Connect an app to SQL Database")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
 

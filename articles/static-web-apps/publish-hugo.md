@@ -7,16 +7,16 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: 44472981e48a7018fcdf55f28d33d0dda9479d44
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: 250be11f498e825c3e487abfac1c0acc585e5317
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669904"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297943"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>チュートリアル:Hugo サイトを Azure Static Web Apps プレビューに発行する
 
-この記事では、[Hugo](https://gohugo.io/) Web アプリケーションを作成して [Azure Static Web Apps](overview.md) にデプロイする方法を説明します。 最終結果は、アプリのビルドと発行の方法を制御できる GitHub Actions が関連付けられた新しい Azure Static Web Apps になります。
+この記事では、[Hugo](https://gohugo.io/) Web アプリケーションを作成して [Azure Static Web Apps](overview.md) にデプロイする方法を説明します。 最終結果は、アプリのビルドと発行の方法を制御できる GitHub Actions が関連付けられた新しい Azure Static Web App になります。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -144,42 +144,6 @@ Azure Static Web Apps に接続するには、GitHub のリポジトリが必要
 1. **[Review + Create]\(確認および作成\)** ボタンをクリックして、詳細がすべて正しいことを確認します。
 
 1. **[作成]** をクリックして、Azure Static Web Apps の作成を開始し、デプロイのための GitHub アクションをプロビジョニングします。
-
-1. デプロイが完了したら、ターミナルに移動し、GitHub アクションを使用してコミットをお使いのコンピューターにプルします。
-
-   ```bash
-   git pull
-   ```
-
-1. Hugo アプリをテキスト エディターで開き、 _.github/workflows/azure-pages-<ワークフロー名>.yml_ ファイルを開きます。
-
-1. `- uses: actions/checkout@v2` という行 (18 行目) を次の行に置き換えて、Hugo アプリケーションをビルドします。 Hugo Extended が必要な場合は、`extended: true` のコメントを解除します。
-
-   ```yml
-   - uses: actions/checkout@v2
-     with:
-       submodules: true  # Fetch Hugo themes (true OR recursive)
-       fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
-
-   - name: Setup Hugo
-     uses: peaceiris/actions-hugo@v2.4.11
-     with:
-       hugo-version: "latest"  # Hugo version: latest OR x.y.z
-       # extended: true
-
-   - name: Build
-     run: hugo
-   ```
-   
-   GitHub Actions ランナーへの Hugo のインストールの詳細については、[peaceiris/actions-hugo](https://github.com/peaceiris/actions-hugo) のページを参照してください。
-
-1. 更新されたワークフローをコミットし、GitHub にプッシュします。
-
-   ```bash
-   git add -A
-   git commit -m "Updating GitHub Actions workflow"
-   git push
-   ```
 
 1. GitHub アクションが完了するのを待ちます。
 

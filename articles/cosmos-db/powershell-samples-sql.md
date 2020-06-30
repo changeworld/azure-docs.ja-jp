@@ -4,14 +4,14 @@ description: Azure Cosmos DB SQL API アカウントにおける各種の一般�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/13/2020
+ms.date: 06/12/2020
 ms.author: mjbrown
-ms.openlocfilehash: 7cd14151d8cb0fbef7593d62eee050be7987ab18
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 82d709567e75540a865758162ac87f55dfa84bea
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83713541"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85126095"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db---sql-core-api"></a>Azure Cosmos DB 用 Azure PowerShell サンプル - SQL (Core) API
 
@@ -35,4 +35,5 @@ ms.locfileid: "83713541"
 |[フェールオーバー優先度の変更またはフェールオーバーのトリガー](scripts/powershell/common/ps-account-failover-priority-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Azure Cosmos アカウントのリージョン内フェールオーバー優先度を変更したり、手動フェールオーバーをトリガーしたりします。 |
 |[アカウント キーまたは接続文字列](scripts/powershell/common/ps-account-keys-connection-strings.md?toc=%2fpowershell%2fmodule%2ftoc.json)| プライマリ キーとセカンダリ キー、接続文字列を取得します。または Azure Cosmos DB アカウントのアカウント キーを再生成します。 |
 |[IP ファイアウォールを使用した Cosmos アカウントの作成](scripts/powershell/common/ps-account-firewall-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| IP ファイアウォールを有効にして Azure Cosmos DB アカウントを作成します。 |
+|[リソースが削除されないようにロックする](scripts/powershell/sql/powershell-sql-lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| リソース ロックを使用してリソースが削除されないようにします。 |
 |||

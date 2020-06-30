@@ -5,18 +5,18 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: 76480959d94b9e2a2e04857c85b7359105e73e4f
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 4aa016294f0ef3bd26f7f3ef6fa374e9367b672d
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84611475"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296969"
 ---
 [!INCLUDE [cloud-shell-try-it.md](cloud-shell-try-it.md)]
 
 ### <a name="set-up-cloud-shell-session"></a>Cloud Shell セッションの設定
 
-Cloud Shell ウィンドウを開いた後は、まずログインし、このセッションのサブスクリプションにシェル コンテキストを設定します。 
+Cloud Shell ウィンドウを開いた後は、まずログインし、このセッションのサブスクリプションにシェル コンテキストを設定します。 Cloud Shell でこれらのコマンドを実行します。
 
 ```azurecli
 az login
@@ -29,16 +29,18 @@ az account set --subscription <your-Azure-subscription-ID>
 az provider register --namespace 'Microsoft.DigitalTwins'
 ```
 
-その後、Cloud Shell インスタンスで次のコマンドを実行して、Microsoft Azure IoT Extension for Azure CLI を追加します。
+次に、[**Azure CLI 用の Microsoft Azure IoT 拡張機能**](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest)を Cloud Shell に追加し、Azure Digital Twins およびその他の IoT サービスと対話するためのコマンドを有効にします。 次のコマンドを使用して拡張機能を追加します。
 
    ```azurecli-interactive
    az extension add --name azure-iot
    ```
 
-> [!NOTE]
-> この記事では、`azure-iot` と呼ばれる、Azure IoT 拡張機能の最新バージョンを使用します。 従来のバージョンは `azure-iot-cli-ext` と呼ばれます。一度にインストールできるバージョンは 1 つだけです。 コマンド `az extension list` を使用すると、現在インストールされている拡張機能を確認できます。
-> 拡張機能の従来のバージョンを削除するには、`az extension remove --name azure-cli-iot-ext` を使用します。
-> 拡張機能の新しいバージョンを追加するには、`az extension add --name azure-iot` を使用します。 インストール済みの拡張機能を表示するには、`az extension list` を使用してください。
+拡張機能を以前にインストールしたことがある場合、出力に "拡張機能 'azure-iot' は既にインストールされています" と表示されることがあります。 このようになる場合は、次を実行して、最新の更新プログラムがインストールされていることを確認します。 
 
-> [!TIP]
-> `az dt -h` を実行して、最上位レベルの Azure Digital Twins コマンドを表示できます。
+   ```azurecli-interactive
+   az extension update --name azure-iot
+   ```
+
+これで、Cloud Shell で Azure Digital Twins を使用する準備ができました。
+
+このことは、`az dt -h` を実行し、使用できる最上位の Azure Digital Twins コマンドの一覧を表示することで、いつでも確認できます。

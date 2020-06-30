@@ -7,18 +7,18 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 07/18/2019
 ms.author: lbosq
-ms.openlocfilehash: 9151b54d7fa0b64a465aa8384cb4bfdb8e72c482
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 0eb778d1fc2dca522bef675709b5241f214e2b86
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75500008"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118119"
 ---
 # <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB の概要:Gremlin API
 
 [Azure Cosmos DB](introduction.md) は、ミッション クリティカルなアプリケーション向けの、Microsoft のグローバル分散マルチモデル データベース サービスです。 これはマルチモデル データベースであり、ドキュメント、キー値、グラフ、列ファミリのデータ モデルがサポートされています。 Azure Cosmos DB Gremlin API は、あらゆるスケール向けに設計されたフル マネージド データベース サービスで、グラフ データを格納および操作するために使用されます。  
 
-![Azure Cosmos DB グラフ アーキテクチャ](./media/graph-introduction/cosmosdb-graph-architecture.png)
+:::image type="content" source="./media/graph-introduction/cosmosdb-graph-architecture.png" alt-text="Azure Cosmos DB グラフ アーキテクチャ" border="false":::
 
 この記事では、Azure Cosmos DB Gremlin API の概要と、これを使用して何十億もの頂点と辺のある大規模なグラフを保存する方法について説明します。 ミリ秒の待機時間でグラフを照会したり、グラフ構造を簡単に改善したりできます。 Azure Cosmos DB の Gremlin API は [Apache TinkerPop](https://tinkerpop.apache.org)  グラフ データベース標準に基づいており、Gremlin クエリ言語を使用します。 
 
@@ -101,7 +101,7 @@ Azure Cosmos DB のグラフ サポートが役立つ場合があるいくつか
 ### <a name="gremlin-by-example"></a>Gremlin の例
 サンプル グラフを使用して、Gremlin でクエリを表現する方法を理解しましょう。 次の図は、ユーザー、関心事、デバイスに関するデータを管理するビジネス アプリケーションをグラフの形で示しています。  
 
-![ユーザー、デバイス、関心事を示すサンプル データベース](./media/gremlin-support/sample-graph.png) 
+:::image type="content" source="./media/gremlin-support/sample-graph.png" alt-text="ユーザー、デバイス、関心事を示すサンプル データベース" border="false"::: 
 
 このグラフには、次の*頂点*の種類 (Gremlin では "ラベル" と呼ばれます) が含まれています。
 

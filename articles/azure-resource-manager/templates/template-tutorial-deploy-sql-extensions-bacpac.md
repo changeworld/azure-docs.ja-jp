@@ -5,12 +5,12 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 69e2b25a16a984445a32f884fab5caec6651df32
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e17bad915fd913f6e3894ed386e914e65aa46c01
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84018397"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250334"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>チュートリアル:ARM テンプレートを使用して SQL BACPAC ファイルをインポートする
 
@@ -45,7 +45,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prepare-a-bacpac-file"></a>BACPAC ファイルを準備する
 
-BACPAC ファイルは、[GitHub](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac) で共有されています。 独自のものを作成するには、「[Azure SQL データベースを BACPAC ファイルにエクスポートする](../../azure-sql/database/database-export.md)」を参照してください。 ファイルを独自の場所に発行する場合は、チュートリアルの後半でテンプレートを更新する必要があります。
+BACPAC ファイルは、[GitHub](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac) で共有されています。 独自のものを作成するには、[Azure SQL Database から BACPAC ファイルへのデータベースのエクスポート](../../azure-sql/database/database-export.md)に関する記事を参照してください。 ファイルを独自の場所に発行する場合は、チュートリアルの後半でテンプレートを更新する必要があります。
 
 BACPAC ファイルは、ARM テンプレートを使用してインポートする前に、Azure Storage アカウントに格納する必要があります。 以下の PowerShell スクリプトは、次の手順で BACPAC ファイルを準備します。
 
@@ -196,7 +196,7 @@ BACPAC ファイルは、ARM テンプレートを使用してインポートす
 
         リソース定義を理解するには、[SQL Database 拡張機能のリファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases/extensions)に関するページを参照してください。 以下にいくつかの重要な要素を示します。
 
-        * **dependsOn**:拡張機能リソースは、SQL データベースが作成された後に作成される必要があります。
+        * **dependsOn**:拡張機能リソースは、データベースが作成された後に作成される必要があります。
         * **storageKeyType**:使用するストレージ キーの種類を指定します。 値は `StorageAccessKey` と `SharedAccessKey` のいずれかにできます。 このチュートリアルでは `StorageAccessKey` を使用します。
         * **storageKey**:BACPAC ファイルが格納されているストレージ アカウントのキーを指定します。 ストレージ キーの種類が `SharedAccessKey` の場合、その前に "?" を付ける必要があります。
         * **storageUri**:ストレージ アカウントに格納されている BACPAC ファイルの URL を指定します。
@@ -241,7 +241,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 クライアント コンピューターからサーバーにアクセスするには、他のファイアウォール規則を追加する必要があります。 詳細については、「[IP ファイアウォール規則の作成および管理](../../azure-sql/database/firewall-configure.md#create-and-manage-ip-firewall-rules)」を参照してください。
 
-Azure portal で、新しくデプロイされたリソース グループから SQL データベースを選択します。 **[クエリ エディター (プレビュー)]** を選択してから、管理者の資格情報を入力します。 データベースにインポートされた 2 つのテーブルが表示されます。
+Azure portal で、新しくデプロイされたリソース グループからデータベースを選択します。 **[クエリ エディター (プレビュー)]** を選択してから、管理者の資格情報を入力します。 データベースにインポートされた 2 つのテーブルが表示されます。
 
 ![クエリ エディター (プレビュー)](./media/template-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac-query-editor.png)
 

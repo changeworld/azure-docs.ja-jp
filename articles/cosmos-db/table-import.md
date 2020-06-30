@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/07/2017
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 5c828644cb03d83df38265719cd8afabc24cf739
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3d1efc0a116a38686fa929a2058fa88e4c2cfa82
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "66242583"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119479"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Azure Cosmos DB Table API アカウントにデータを移行する
 
@@ -28,7 +28,7 @@ ms.locfileid: "66242583"
 
 ## <a name="prerequisites"></a>前提条件
 
-* **スループットを上げる:** データの移行にかかる時間は、個別のコンテナーまたは一連のコンテナーに対して設定したスループットの量に依存します。 大規模なデータ移行を行うときは、必ずスループットを上げておいてください。 移行が完了したら、コストを節約するためにスループットを下げます。 Azure Portal でスループットを上げることの詳細については、Azure Cosmos DB のパフォーマンス レベルと価格レベルに関するページを参照してください。
+* **スループットを向上させる:** データの移行にかかる時間は、個別のコンテナーまたは一連のコンテナーに対して設定したスループットの量に依存します。 大規模なデータ移行を行うときは、必ずスループットを上げておいてください。 移行が完了したら、コストを節約するためにスループットを下げます。 Azure Portal でスループットを上げることの詳細については、Azure Cosmos DB のパフォーマンス レベルと価格レベルに関するページを参照してください。
 
 * **Azure Cosmos DB リソースを作成する:** データの移行を開始する前に、Azure portal からすべてのテーブルを事前に作成します。 データベース レベルのスループットがある Azure Cosmos DB アカウントに移行しようとしている場合は、Azure Cosmos DB テーブルの作成時に必ずパーティション キーを提供するようにしてください。
 
@@ -68,11 +68,11 @@ ms.locfileid: "66242583"
 
 Azure Table Storage からインポートする場合にソースの接続文字列を取得するには、Azure Portal を開き、 **[ストレージ アカウント]**  >  **[アカウント]**  >  **[アクセス キー]** の順にクリックし、[コピー] ボタンを使用して **[接続文字列]** をコピーします。
 
-![HBase のソース オプションのスクリーンショット](./media/table-import/storage-table-access-key.png)
+:::image type="content" source="./media/table-import/storage-table-access-key.png" alt-text="HBase のソース オプションのスクリーンショット":::
 
 Azure Cosmos DB Table API (プレビュー) からインポートする場合にソースの接続文字列を取得するには、Azure Portal を開き、 **[Azure Cosmos DB]**  >  **[アカウント]**  >  **[接続文字列]** の順にクリックし、[コピー] ボタンを使用して **[接続文字列]** をコピーします。
 
-![HBase のソース オプションのスクリーンショット](./media/table-import/cosmos-connection-string.png)
+:::image type="content" source="./media/table-import/cosmos-connection-string.png" alt-text="HBase のソース オプションのスクリーンショット":::
 
 [Azure Table Storage のサンプル コマンド](#azure-table-storage)
 
@@ -91,7 +91,7 @@ Azure Cosmos DB Table API (プレビュー) からインポートする場合に
     /t.MaxBatchSize: Optional, default is 2MB. Specify the batch size in bytes
 
 <a id="azure-table-storage"></a>
-### <a name="sample-command-source-is-azure-table-storage"></a>サンプル コマンド: ソースが Azure Table Storage
+### <a name="sample-command-source-is-azure-table-storage"></a>サンプル コマンド:ソースが Azure Table Storage
 
 Azure Table Storage から Table API にインポートするコマンドライン サンプルを以下に示します。
 
@@ -99,7 +99,7 @@ Azure Table Storage から Table API にインポートするコマンドライ�
 dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Table storage account name>;AccountKey=<Account Key>;EndpointSuffix=core.windows.net /s.Table:<Table name> /t:TableAPIBulk /t.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Cosmos DB account name>;AccountKey=<Azure Cosmos DB account key>;TableEndpoint=https://<Account name>.table.cosmosdb.azure.com:443 /t.TableName:<Table name> /t.Overwrite
 ```
 <a id="table-api-preview"></a>
-### <a name="sample-command-source-is-azure-cosmos-db-table-api-preview"></a>サンプル コマンド: ソースが Azure Cosmos DB Table API (プレビュー)
+### <a name="sample-command-source-is-azure-cosmos-db-table-api-preview"></a>サンプル コマンド:ソースが Azure Cosmos DB Table API (プレビュー)
 
 Table API プレビュー から Table API GA にインポートするコマンドライン サンプルを以下に示します。
 

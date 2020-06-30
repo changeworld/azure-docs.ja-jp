@@ -1,7 +1,7 @@
 ---
 title: チュートリアル:R でクラスタリングを実行するためのデータを準備する
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: この 3 部構成のチュートリアル シリーズのパート 1 では、Azure SQL Database Machine Learning Services (プレビュー) を使用して R でクラスタリングを実行するために Azure SQL データベースのデータを準備します。
+description: この 3 部構成のチュートリアル シリーズのパート 1 では、Azure SQL Database Machine Learning Services (プレビュー) を使用して R でクラスタリングを実行するために Azure SQL Database のデータベースのデータを準備します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -14,17 +14,17 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: c06e1b13f87972cbcd50e888edf55158b77881d8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a23dbd150dbe8ab05e0d4cf1f3decd67a856cbf4
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84024099"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251252"
 ---
 # <a name="tutorial-prepare-data-to-perform-clustering-in-r-with-azure-sql-database-machine-learning-services-preview"></a>チュートリアル:Azure SQL Database Machine Learning Services (プレビュー) を使用して R でクラスタリングを実行するためのデータを準備する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-この 3 部構成のチュートリアル シリーズのパート 1 では、R を使用して、Azure SQL データベースのデータをインポートして準備します。このシリーズでは、その後、このデータを利用し、R で Azure SQL Database Machine Learning Services (プレビュー) を使用してクラスタリング モデルをトレーニングしてデプロイします。
+この 3 部構成のチュートリアル シリーズのパート 1 では、R を使用して、Azure SQL Database のデータベースのデータをインポートして準備します。このシリーズでは、その後、このデータを利用し、R で Azure SQL Database Machine Learning Services (プレビュー) を使用してクラスタリング モデルをトレーニングしてデプロイします。
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
@@ -32,7 +32,7 @@ ms.locfileid: "84024099"
 **K-Means** アルゴリズムを使用して、製品の購入と返品のデータセット内で、顧客のクラスタリングを実行します。 顧客をクラスタリングすることで、特定のグループをターゲットして、マーケティングの取り組みをより効果的に進めることができます。
 K-Means クラスタリングは、類似性に基づいてデータのパターンを探す*教師なし学習*アルゴリズムです。
 
-このシリーズのパート 1 と 2 では、使用するデータを準備し、機械学習モデルをトレーニングするために、RStudio 内でいくつかの R スクリプトを開発します。 その後、パート 3 では、ストアド プロシージャを使用して SQL データベース内でそれらの R スクリプトを実行します。
+このシリーズのパート 1 と 2 では、使用するデータを準備し、機械学習モデルをトレーニングするために、RStudio 内でいくつかの R スクリプトを開発します。 その後、パート 3 では、ストアド プロシージャを使用してデータベース内でそれらの R スクリプトを実行します。
 
 この記事では、次の方法について学習します。
 
@@ -40,11 +40,11 @@ K-Means クラスタリングは、類似性に基づいてデータのパター
 >
 > * Azure SQL Database にサンプル データベースをインポートする
 > * R を使用してさまざまな特徴に従って顧客を分類する
-> * Azure SQL データベースから R データ フレームにデータを読み込む
+> * データベースから R データ フレームにデータを読み込む
 
 [パート 2](clustering-model-build-tutorial.md) では、R で K-Means クラスタリング モデルを作成してトレーニングする方法について説明します。
 
-[パート 3](clustering-model-deploy-tutorial.md) では、R で新しいデータに基づいてクラスタリングを実行できるストアド プロシージャを Azure SQL データベースで作成する方法について学習します。
+[パート 3](clustering-model-deploy-tutorial.md) では、R で新しいデータに基づいてクラスタリングを実行できるストアド プロシージャを作成する方法について学習します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -68,7 +68,7 @@ K-Means クラスタリングは、類似性に基づいてデータのパター
 
 1. ファイル [tpcxbb_1gb.bacpac](https://sqlchoice.blob.core.windows.net/sqlchoice/static/tpcxbb_1gb.bacpac) をダウンロードします。
 
-1. これらの詳細を使用して、[Azure SQL データベースを作成するための BACPAC ファイルのインポート](https://docs.microsoft.com/azure/sql-database/sql-database-import)に関するページの指示に従います。
+1. これらの詳細を使用して、「[Azure SQL Database または Azure SQL Managed Instance 内のデータベースに BACPAC ファイルをインポートする](../../azure-sql/database/database-import.md)」の指示に従います。
 
    * ダウンロードした **tpcxbb_1gb.bacpac** ファイルからインポートする
    * パブリック プレビュー期間中は、新しいデータベースに対して **Gen5/vCore** 構成を選択する
@@ -211,9 +211,9 @@ Azure portal から次の手順を実行します。
 
 このチュートリアル シリーズの第 1 部では、これらの手順を完了しました。
 
-* Azure SQL データベースにサンプル データベースをインポートする
+* Azure SQL Database のデータベースにサンプル データベースをインポートする
 * R を使用してさまざまな特徴に従って顧客を分類する
-* Azure SQL データベースから R データ フレームにデータを読み込む
+* データベースから R データ フレームにデータを読み込む
 
 この顧客データを使用する機械学習モデルを作成するには、このチュートリアル シリーズのパート 2 に従ってください。
 

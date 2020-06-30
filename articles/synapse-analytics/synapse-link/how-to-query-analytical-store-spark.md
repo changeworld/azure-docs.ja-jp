@@ -5,20 +5,20 @@ services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: synapse-link
 ms.date: 05/06/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5c19a3f808b85ba9e34d3304251fe8acb21204ce
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 399aa00be3d585b1d37bab95d8108ee8a09a8791
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700190"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85195013"
 ---
 # <a name="query-azure-cosmos-db-analytical-store-preview-with-apache-spark-for-azure-synapse-analytics"></a>Apache Spark for Azure Synapse Analytics を使用して Azure Cosmos DB 分析ストア (プレビュー) のクエリを実行する
 
-この記事では、Synapse ジェスチャから分析ストアを操作する方法について、いくつかの例を紹介しています。 ジェスチャは、コンテナーを右クリックすると表示されます。 ジェスチャを使用すると、コードをすばやく生成し、ニーズに合わせて調整することができます。 ジェスチャは、1 回のクリックでデータを検出するのにも最適です。
+この記事では、Synapse ジェスチャから分析ストアを操作する方法について、例を紹介しています。 ジェスチャは、コンテナーを右クリックすると表示されます。 ジェスチャを使用すると、コードをすばやく生成し、ニーズに合わせて調整することができます。 ジェスチャは、1 回のクリックでデータを検出するのにも最適です。
 
 ## <a name="load-to-dataframe"></a>データフレームに読み込む
 

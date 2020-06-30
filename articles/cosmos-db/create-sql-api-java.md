@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 236cff59ffbef835b5a57a3d5a0d223cfebf34ae
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: bb711dc67df51edc569f23bd1e6c54eef55012d2
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647685"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85115392"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>クイック スタート:Azure Cosmos DB SQL API データを管理する Java アプリを作成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "83647685"
 このクイックスタートでは、Azure portal から Azure Cosmos DB の SQL API アカウントを作成して管理し、また GitHub からクローンされた Java アプリを使用します。 まず、Azure portal を使用して Azure Cosmos DB SQL API アカウントを作成し、SQL Java SDK を使用して Java アプリケーションを作成します。さらに Java アプリケーションを使用して Cosmos DB アカウントにリソースを追加します。 Azure Cosmos DB は、マルチモデル データベース サービスです。グローバルな分散と水平方向のスケーリング機能により、ドキュメント データベースやテーブル データベース、キーと値のデータベース、グラフ データベースをすばやく作成し、クエリを実行することができます。
 
 > [!IMPORTANT]  
-> このクイックスタートは Azure Cosmos DB Java SDK v4 のみを対象としています。 詳細については、Azure Cosmos DB Java SDK v4 [リリース ノート](sql-api-sdk-java-v4.md)、[Maven リポジトリ](https://mvnrepository.com/artifact/com.azure/azure-cosmos)、Azure Cosmos DB Java SDK v4 [パフォーマンスに関するヒント](performance-tips-java-sdk-v4-sql.md)、Azure Cosmos DB Java SDK v4 [トラブルシューティング ガイド](troubleshoot-java-sdk-v4-sql.md) を参照してください。 v4 より前のバージョンを現在使用している場合、Azure Cosmos DB Java SDK v4 に移行する方法を[こちら](migrate-java-v4-sdk.md)のガイドで参照し、v4 にアップグレードしてください。
+> このクイックスタートは Azure Cosmos DB Java SDK v4 のみを対象としています。 詳細については、Azure Cosmos DB Java SDK v4 [リリース ノート](sql-api-sdk-java-v4.md)、[Maven リポジトリ](https://mvnrepository.com/artifact/com.azure/azure-cosmos)、Azure Cosmos DB Java SDK v4 [パフォーマンスに関するヒント](performance-tips-java-sdk-v4-sql.md)、Azure Cosmos DB Java SDK v4 [トラブルシューティング ガイド](troubleshoot-java-sdk-v4-sql.md) を参照してください。 v4 より前のバージョンを現在使用している場合、v4 にアップグレードするには、[Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) ガイドを参照してください。
 >
 
 ## <a name="prerequisites"></a>前提条件
@@ -44,7 +44,7 @@ ms.locfileid: "83647685"
 
 "*Cosmos DB アカウントの構造:* " API またはプログラミング言語に関係なく、Cosmos DB "*アカウント*" には 0個以上の "*データベース*" が含まれます。"*データベース*" (DB) には 0 個以上の "*コンテナー*" が含まれます。また、次の図に示すように、"*コンテナー*" には 0 個以上の項目が含まれます。
 
-![Azure Cosmos アカウントのエンティティ](./media/databases-containers-items/cosmos-entities.png)
+:::image type="content" source="./media/databases-containers-items/cosmos-entities.png" alt-text="Azure Cosmos アカウントのエンティティ" border="false":::
 
 データベース、コンテナー、項目の詳細については、[こちら](databases-containers-items.md)を参照してください。 "*プロビジョニング済みスループット*" や "*パーティション キー*" など、いくつかの重要なプロパティが、コンテナーのレベルで定義されています。 
 

@@ -2,16 +2,16 @@
 title: Azure Cosmos Emulator を使用してローカルで開発する
 description: Azure Cosmos Emulator を使用すると、Azure サブスクリプションを作成せずに無料で、アプリケーションの開発とテストをローカルで行うことができます。
 ms.service: cosmos-db
-ms.topic: tutorial
+ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
-ms.openlocfilehash: cd7f1ba856cb2c58d14f7a2560a7716beff92076
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 0a6a1bd5e56f94a97779a85eafd0d46473cc2d0c
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849010"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262431"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>ローカルでの開発とテストに Azure Cosmos Emulator を使用する
 
@@ -76,7 +76,7 @@ Azure Cosmos Emulator は、既定では `C:\Program Files\Azure Cosmos DB Emula
 
 Azure Cosmos Emulator が起動すると、ブラウザーで Azure Cosmos データ エクスプローラーが自動的に開きます。 アドレスは `https://localhost:8081/_explorer/index.html` として表示されます。 エクスプローラーを閉じた後にもう一度開く場合は、ブラウザーでこの URL を開くか、次に示すように Windows トレイ アイコンの Azure Cosmos Emulator から起動できます。
 
-![Azure Cosmos ローカル エミュレーターのデータ エクスプローラー起動ツール](./media/local-emulator/database-local-emulator-data-explorer-launcher.png)
+:::image type="content" source="./media/local-emulator/database-local-emulator-data-explorer-launcher.png" alt-text="Azure Cosmos ローカル エミュレーターのデータ エクスプローラー起動ツール":::
 
 ## <a name="checking-for-updates"></a>更新プログラムの確認
 
@@ -262,7 +262,7 @@ Python SDK および Node.js SDK からエミュレーターに接続すると�
 | StartWprTraces  |  Windows パフォーマンス記録ツールを使用したデバッグ トレース ログの収集を開始します。 | Microsoft.Azure.Cosmos.Emulator.exe /StartWprTraces | |
 | StopWprTraces     | Windows パフォーマンス記録ツールを使用したデバッグ トレース ログの収集を停止します。 | Microsoft.Azure.Cosmos.Emulator.exe /StopWprTraces  | |
 |FailOnSslCertificateNameMismatch | 証明書の SAN にエミュレーターのホストのドメイン名、ローカル IPv4 アドレス、"localhost"、"127.0.0.1" が含まれていない場合、既定では、エミュレーターにより自己署名 TLS/SSL 証明書が再生成されます。 このオプションを設定すると、その代わりにエミュレーターが起動に失敗します。 その後は /GenCert オプションを使って新しい自己署名 TLS/SSL 証明書を作成およびインストールする必要があります。 | Microsoft.Azure.Cosmos.Emulator.exe /FailOnSslCertificateNameMismatch  | |
-| GenCert | 新しい自己署名 TLS/SSL 証明書を生成およびインストールします。 オプションで、ネットワーク経由でエミュレーターにアクセスするための追加の DNS 名を列挙したコンマ区切りリストを含めることもできます。 | Microsoft.Azure.Cosmos.Emulator.exe /GenCert=\<dns-names\> |\<dns-names\>: 追加の DNS 名のコンマ区切りリスト (省略可能)  |
+| GenCert | 新しい自己署名 TLS/SSL 証明書を生成およびインストールします。 オプションで、ネットワーク経由でエミュレーターにアクセスするための追加の DNS 名を列挙したコンマ区切りリストを含めることもできます。 | Microsoft.Azure.Cosmos.Emulator.exe /GenCert=\<dns-names\> |\<dns-names\>:追加の DNS 名のコンマ区切りリスト (省略可能)  |
 | DirectPorts |直接接続に使用するポートを指定します。 既定値は、10251、10252、10253、10254 です。 | Microsoft.Azure.Cosmos.Emulator.exe /DirectPorts:\<directports\> | \<directports\>:4 つのポートのコンマ区切りリスト |
 | Key |エミュレーターの承認キーです。 キーは、64 バイト ベクトルの Base 64 エンコーディングが施されている必要があります。 | Microsoft.Azure.Cosmos.Emulator.exe /Key:\<key\> | \<key\>:キーは、64 バイト ベクトルの Base 64 エンコーディングが施されている必要があります|
 | EnableRateLimiting | 要求レート制限の動作の有効化を指定します。 |Microsoft.Azure.Cosmos.Emulator.exe /EnableRateLimiting | |
@@ -271,9 +271,9 @@ Python SDK および Node.js SDK からエミュレーターに接続すると�
 | NoExplorer | 起動時にデータ エクスプローラーを表示しません。 |Microsoft.Azure.Cosmos.Emulator.exe /NoExplorer | | 
 | PartitionCount | パーティション分割されたコンテナーの最大数を指定します。 詳細については、「[コンテナーの数を変更する](#set-partitioncount)」を参照してください。 | Microsoft.Azure.Cosmos.Emulator.exe /PartitionCount=\<partitioncount\> | \<partitioncount\>:許容される単一パーティション コンテナーの最大数です。 既定値は 25 です。 許容される最大値は 250 です。|
 | DefaultPartitionCount| パーティション分割されたコンテナーの既定のパーティション数を指定します。 | Microsoft.Azure.Cosmos.Emulator.exe /DefaultPartitionCount=\<defaultpartitioncount\> | \<defaultpartitioncount\> 既定値は 25 です。|
-| AllowNetworkAccess | ネットワーク上でのエミュレーターへのアクセスを有効にします。 /Key=\<key_string\> または /KeyFile=\<file_name\> を渡して、ネットワーク アクセスを有効にする必要があります。 | Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=\<key_string\> または Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /KeyFile=\<file_name\>| |
+| AllowNetworkAccess | ネットワーク上でのエミュレーターへのアクセスを有効にします。 ネットワーク アクセスを有効にするには、/Key=\<key_string\> または /KeyFile=\<file_name\> も渡す必要があります。 | Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=\<key_string\> または  Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /KeyFile=\<file_name\>| |
 | NoFirewall | /AllowNetworkAccess オプションが使用されているときは、ファイアウォール規則を調整しないでください。 |Microsoft.Azure.Cosmos.Emulator.exe /NoFirewall | |
-| GenKeyFile | 新しい承認キーを生成し、指定したファイルに保存します。 生成されたキーは、/Key オプションまたは/KeyFile オプションで使用できます。 | Microsoft.Azure.Cosmos.Emulator.exe /GenKeyFile=\<キー ファイルへのパス\> | |
+| GenKeyFile | 新しい承認キーを生成し、指定したファイルに保存します。 生成されたキーは、/Key オプションまたは/KeyFile オプションで使用できます。 | Microsoft.Azure.Cosmos.Emulator.exe /GenKeyFile=\<path to key file\> | |
 | 一貫性 | アカウントの既定の一貫性レベルを設定します。 | Microsoft.Azure.Cosmos.Emulator.exe /Consistency=\<consistency\> | \<consistency\>:値は次のいずれかの[一貫性レベル](consistency-levels.md)である必要があります。Session、Strong、Eventual、または BoundedStaleness。 既定値は Session です。 |
 | ? | ヘルプ メッセージを表示します。| | |
 
@@ -482,7 +482,7 @@ Mac 環境では、次の手順に従います。
 
 1. その特定の項目のコンテキスト メニューを開いて *[項目の取得]* を選択し、 *[信頼]*  >  *[この証明書を使用するとき]* オプションの *[常に信頼]* を選択します。 
 
-   ![その特定の項目のコンテキスト メニューを開いて [項目の取得] を選択し、[信頼] の [この証明書を使用するとき] オプションで [常に信頼] を選択する](./media/local-emulator/mac-trust-certificate.png)
+   :::image type="content" source="./media/local-emulator/mac-trust-certificate.png" alt-text="その特定の項目のコンテキスト メニューを開いて [項目の取得] を選択し、[信頼] の [この証明書を使用するとき] オプションで [常に信頼] を選択する":::
 
 以上の手順に従った後、ご利用の環境は、`/AllowNetworkAccess` によって公開された IP アドレスに接続する際、エミュレーターによって使用された証明書を信頼するようになります。
 

@@ -10,12 +10,12 @@ ms.date: 12/06/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: d5ed706a0577423f0a95b8eb5f7a563da74a0e7f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ec6165ba8ab33beba0b50d6b589b3d31269d7b1e
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75441162"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114437"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-cosmos-account"></a>Azure Cosmos DB の MongoDB 用 API を使用して Angular アプリを作成する - Cosmos アカウントを作成する
 
@@ -64,11 +64,11 @@ Azure Cosmos DB アカウントの作成後、次の手順を実行します。
 1. 左側のバーにある Azure Cosmos DB のロゴ ( ![Azure Portal の Azure Cosmos DB アイコン](./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-icon.png) ) をクリックして、自分が所有しているすべての Azure Cosmos DB を表示します。
 1. 先ほど作成した Azure Cosmos DB アカウントをクリックして **[概要]** タブを選択し、下へスクロールして、データベースが置かれている場所のマップを表示します。 
 
-    ![Azure Portal の新しい Azure Cosmos DB アカウント](./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-angular-portal.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-angular-portal.png" alt-text="Azure portal の新しい Azure Cosmos DB アカウント":::
 
 4. 左側のナビゲーションで下へスクロールし、 **[データをグローバルにレプリケートする]** タブをクリックして表示されるマップで、レプリケート先として利用できるさまざまな地域を確認できます。 たとえば [オーストラリア南東部] または [オーストラリア東部] をクリックすれば、オーストラリアにデータをレプリケートすることができます。 グローバル レプリケーションの詳細については、「[Azure Cosmos DB を使用してデータをグローバルに分散させる方法](distribute-data-globally.md)」を参照してください。 差し当たり、以前のインスタンスを単に保持しておき、実際に必要が生じたときに、前述の方法でレプリケート先を選ぶことにしましょう。
 
-    ![Azure Portal の新しい Azure Cosmos DB アカウント](./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-replicate-portal.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-replicate-portal.png" alt-text="Azure portal の新しい Azure Cosmos DB アカウント":::
 
 ## <a name="next-steps"></a>次のステップ
 

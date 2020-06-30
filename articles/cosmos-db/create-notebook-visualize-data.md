@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 3de73156618b0f5234cc8049c4ea70385b790388
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: dfcde775780cdb42f9df1d677ff2f2475de92843
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743589"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85115280"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>チュートリアル:Azure Cosmos DB でデータを分析して視覚化するノートブックを作成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "83743589"
 
 1. **[Notebooks]** タブに移動し、 **[マイ ノートブック]** の横の [`…`] を選択して**新しいノートブック**を作成します。 既定のカーネルとして **[Python 3]** を選択します。
 
-   ![新しいノートブックを作成する](./media/create-notebook-visualize-data/create-new-notebook.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/create-new-notebook.png" alt-text="新しいノートブックを作成する":::
 
 1. 新しいノートブックが作成された後、その名前を変更できます (**VisualizeRetailData.ipynb** など)。
 
@@ -49,7 +49,7 @@ ms.locfileid: "83743589"
 
    セルを実行するには、`Shift + Enter` を選択します。または、セルを選択して、Data Explorer のナビゲーション バーの **[Run Active Cell]\(アクティブ セルの実行\)** オプションを選択します。
 
-   ![アクティブ セルを実行する](./media/create-notebook-visualize-data/run-active-cell.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/run-active-cell.png" alt-text="アクティブ セルを実行する":::
 
    データベースとコンテナーは、現在の Azure Cosmos アカウントに作成されます。 コンテナーは、400 RU/秒でプロビジョニングされます。 データベースとコンテナーが作成された後、次の出力結果が表示されます。 
 
@@ -60,7 +60,7 @@ ms.locfileid: "83743589"
 
    **[データ]** タブを最新の情報に更新することによって、新しく作成されたリソースを確認することもできます。
 
-   ![[データ] タブを最新の情報に更新して新しいコンテナーを表示する](media/create-notebook-visualize-data/refresh-data-tab.png)
+   :::image type="content" source="media/create-notebook-visualize-data/refresh-data-tab.png" alt-text="[データ] タブを最新の情報に更新して新しいコンテナーを表示する":::
 
 1. 次に、サンプルの小売データを Azure Cosmos コンテナーにインポートします。 小売データの項目の形式は次のとおりです。
 
@@ -135,7 +135,7 @@ SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c
 df_cosmos.head(10)
 ```
 
-![クエリを実行して最初の 10 項目を取得する](./media/create-notebook-visualize-data/run-query-get-top10-items.png)
+:::image type="content" source="./media/create-notebook-visualize-data/run-query-get-top10-items.png" alt-text="クエリを実行して最初の 10 項目を取得する":::
 
 ## <a name="run-queries-and-analyze-your-data"></a>クエリを実行してデータを分析する
 
@@ -148,7 +148,7 @@ df_cosmos.head(10)
    display(df_revenue.head(5))
    ```
 
-   ![総売上収益出力](./media/create-notebook-visualize-data/total-sales-revenue-output.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/total-sales-revenue-output.png" alt-text="総売上収益出力":::
 
 * **クエリ 2**:購入された項目の上位 5 件のリストを取得するために、新しいノートブック セルを開いて次のコードを実行します。
 
@@ -159,7 +159,7 @@ df_cosmos.head(10)
    pd.DataFrame(df_cosmos[df_cosmos['Action']=='Purchased'].groupby('Item').size().sort_values(ascending=False).head(5), columns=['Count'])
    ```
 
-   ![購入された項目の上位 5 件](./media/create-notebook-visualize-data/top5-purchased-items.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/top5-purchased-items.png" alt-text="購入された項目の上位 5 件":::
 
 ## <a name="visualize-your-data"></a>データを視覚化する  
 
@@ -286,7 +286,7 @@ df_cosmos.head(10)
    show(p)
    ```
 
-   ![購入のコンバージョン率を視覚化する](./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png" alt-text="購入のコンバージョン率を視覚化する":::
 
 ## <a name="next-steps"></a>次のステップ
 

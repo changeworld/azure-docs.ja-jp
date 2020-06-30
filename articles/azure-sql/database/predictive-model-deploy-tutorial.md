@@ -14,21 +14,22 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 86c73944753126aa3fb5c14c8d6626a449365c64
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 84c0f6564fc9ab8abc43205b58d9445cda82a2da
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84023978"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253819"
 ---
 # <a name="tutorial-deploy-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>チュートリアル:R で Azure SQL Database Machine Learning Services (プレビュー) を使用して予測モデルをデプロイする
+
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-この 3 部構成のチュートリアルのパート 3 では、Azure SQL Database Machine Learning Services (プレビュー) を使用して、R で開発した予測モデルを SQL データベースにデプロイします。
+この 3 部構成のチュートリアルのパート 3 では、Azure SQL Database Machine Learning Services (プレビュー) を使用して、R で開発した予測モデルを Azure SQL Database のデータベースにデプロイします。
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
-埋め込みの R スクリプトで、モデルを使用して予測するストアド プロシージャを作成します。 モデルは Azure SQL データベースで実行されるため、データベースに格納されているデータに対して簡単にトレーニングすることができます。
+埋め込みの R スクリプトで、モデルを使用して予測するストアド プロシージャを作成します。 モデルはデータベースで実行されるため、データベースに格納されているデータに対して、容易にトレーニングできます。
 
 この記事では、パート 1 と 2 で開発した R スクリプトを使用して、次の方法を学習します。
 
@@ -200,7 +201,7 @@ RentalCount_Predicted
 332.571428571429
 ```
 
-Azure SQL データベースでモデルを正常に作成し、トレーニングしてデプロイしました。 そうしたら、ストアド プロシージャでそのモデルを使用して、新しいデータに基づいて値を予測します。
+Azure SQL Database のデータベースでモデルを正常に作成し、トレーニングしてデプロイしました。 そうしたら、ストアド プロシージャでそのモデルを使用して、新しいデータに基づいて値を予測します。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

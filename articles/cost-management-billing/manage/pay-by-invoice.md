@@ -6,14 +6,14 @@ ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 06/23/2020
 ms.author: banders
-ms.openlocfilehash: 12ad1f09c988171b0d6212d79ca61d93acf92d80
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8552b6732736d1d10711479639fa45114f8b039b
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199604"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298006"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Azure サブスクリプションの請求書による支払い
 
@@ -113,10 +113,19 @@ Azure サブスクリプションを請求書支払い (小切手/電信送金) 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft 顧客契約にアクセスできるかどうかを確認する
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
+## <a name="frequently-asked-questions"></a>よく寄せられる質問
+
+*法的文書の要求が届いたのはなぜですか?*
+
+提供された情報が不完全または検証できない場合、Microsoft は法的文書を必要とすることがあります。 例には以下が含まれます。
+
+* アカウント名と会社名の間での名前の相違
+* 名前の変更
+
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
 ご質問がある場合やヘルプが必要な場合は、[サポート要求を作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-- 必要に応じて、[Azure アカウント センター](https://account.azure.com/Profile)で請求先連絡先情報を更新します。
+* 必要に応じて、[Azure アカウント センター](https://account.azure.com/Profile)で請求先連絡先情報を更新します。

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
 ms.date: 12/03/2019
-ms.openlocfilehash: f4d6e1bb0d5db0dbfc30e14abc58321bce8d0baf
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 6e1dc5f0016c27d987361aa52e59682806a31c95
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84693177"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118918"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>.NET SDK を使用した Azure Cosmos DB Table API と Azure Table Storage の概要
 
@@ -49,7 +49,7 @@ Visual Studio で、新しい .NET コンソール アプリケーションを�
 
 1. **[プロジェクト名]** フィールドに、**CosmosTableSamples** のようなアプリケーションの名前を入力します。 必要に応じて、別の名前を指定できます。
 
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
 このサンプルのすべてのコード例は、コンソール アプリケーションの **Program.cs** ファイルの Main() メソッドに追加できます。
 
@@ -67,7 +67,7 @@ NuGet パッケージを取得するには、次の手順に従います。
 
 1. **[接続文字列]** または **[アクセス キー]** ウィンドウを開きます。 ウィンドウの右側にある [コピー] ボタンを使って**プライマリ接続文字列**をコピーします。
 
-   ![[接続文字列] ウィンドウでプライマリ接続文字列を確認してコピーする](./media/create-table-dotnet/connection-string.png)
+   :::image type="content" source="./media/create-table-dotnet/connection-string.png" alt-text="[接続文字列] ウィンドウでプライマリ接続文字列を確認してコピーする":::
    
 1. 接続文字列を構成するには、Visual Studio から対象のプロジェクト **[CosmosTableSamples]** を右クリックします。
 
@@ -422,7 +422,7 @@ namespace CosmosTableSamples
 
 ここでソリューションをビルドし、F5 キーを押してプロジェクトを実行します。 プロジェクトを実行すると、コマンド プロンプトに次の出力内容が表示されます。
 
-![コマンド プロンプトからの出力](./media/tutorial-develop-table-standard/output-from-sample.png)
+:::image type="content" source="./media/tutorial-develop-table-standard/output-from-sample.png" alt-text="コマンド プロンプトからの出力":::
 
 プロジェクトを実行するときに Settings.json ファイルが見つからないというエラーが発生した場合は、次の XML エントリをプロジェクトの設定に追加することで解決できます。 CosmosTableSamples を右クリックし、[CosmosTableSamples.csproj の編集] を選択して、次の itemGroup を追加します。 
 
@@ -435,7 +435,7 @@ namespace CosmosTableSamples
 ```
 これで Azure portal にサインインして、テーブルにデータが存在することを確認できます。 
 
-![ポータルでの結果](./media/tutorial-develop-table-standard/results-in-portal.png)
+:::image type="content" source="./media/tutorial-develop-table-standard/results-in-portal.png" alt-text="ポータルでの結果":::
 
 ## <a name="next-steps"></a>次のステップ
 
