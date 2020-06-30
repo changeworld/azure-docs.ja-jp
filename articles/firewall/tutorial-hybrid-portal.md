@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 7da5e6fa3c977d309ad028cb446cd411a9d4fbaf
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 5ba9bb723ab7b052440eea2ac509692200b80f6e
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298960"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84750697"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>チュートリアル:Azure portal を使用してハイブリッド ネットワークに Azure Firewall をデプロイして構成する
 
@@ -54,7 +54,7 @@ Azure Firewall を使用すれば、許可するネットワーク トラフィ�
    また、ゲートウェイに接続された仮想ネットワークまたはオンプレミス ネットワークへのルートは、ピアリングされた仮想ネットワークのルーティング テーブルにゲートウェイ転送を使用して自動的に伝達されます。 詳細については、「[仮想ネットワーク ピアリングの VPN ゲートウェイ転送を構成する](../vpn-gateway/vpn-gateway-peering-gateway-transit.md)」を参照してください。
 
 - VNet-Spoke を VNet-Hub にピアリングする場合は、**UseRemoteGateways** を設定します。 **UseRemoteGateways** が設定され、リモート ピアリングに対する **AllowGatewayTransit** も設定されている場合、スポーク仮想ネットワークは転送にリモート仮想ネットワークのゲートウェイを使用します。
-- スポーク サブネット トラフィックをハブ ファイアウォール経由でルーティングするには、 **[仮想ネットワーク ゲートウェイのルート伝達]** オプションが無効になったファイアウォールを指すユーザー定義ルート (UDR) が必要です。 **[仮想ネットワーク ゲートウェイのルート伝達]** オプションが無効になっていると、スポーク サブネットへのルート配布ができなくなります。 これにより、学習されたルートと UDR との競合が防止されます。
+- スポーク サブネット トラフィックをハブ ファイアウォール経由でルーティングするには、 **[仮想ネットワーク ゲートウェイのルート伝達]** オプションが無効になったファイアウォールを指すユーザー定義ルート (UDR) を使用してください。 **[仮想ネットワーク ゲートウェイのルート伝達]** オプションが無効になっていると、スポーク サブネットへのルート配布ができなくなります。 これにより、学習されたルートと UDR との競合が防止されます。 **[仮想ネットワーク ゲートウェイのルート伝達]** を有効にしておきたい場合は必ず、ファイアウォールへのルートを具体的に定義して、オンプレミスから BGP で発行されたルートをオーバーライドしてください。
 - ハブ ゲートウェイ サブネット上の UDR を、スポーク ネットワークへの次のホップとしてファイアウォール IP アドレスを指すように構成します。 Azure Firewall サブネット上に UDR は必要ありません。BGP からルートを学習するためです。
 
 これらのルートの作成方法については、このチュートリアルの「[ルートを作成する](#create-the-routes)」セクションをご覧ください。
