@@ -26,11 +26,11 @@ Bing Web Search API は、ユーザーのクエリにすぐに回答する RESTf
 
 しくみを確認するには、 [Bing Web Search API のデモ](https://azure.microsoft.com/services/cognitive-services/bing-web-search-api/)を試してください。
 
-## <a name="features"></a>[機能]  
+## <a name="features"></a>特徴  
 
 Bing Web Search では、インスタント アンサーにアクセスできるだけではありません。 ユーザーの検索結果をカスタマイズできるさまざまな機能も利用できます。
 
-| 機能 | 説明 |
+| 特徴量 | 説明 |
 |---------|-------------|
 | [検索用語をリアルタイムで提案する](../bing-autosuggest/get-suggested-search-terms.md) | Bing Autosuggest API を使用して、入力時に候補検索用語を表示することで、アプリケーションのエクスペリエンスを向上します。 |
 | [コンテンツ タイプで結果をフィルター処理して制限する](filter-answers.md) | Web ページ、画像、動画、セーフ サーチなどのフィルターとクエリ パラメーターを使用して、検索結果をカスタマイズして絞り込みます。 |

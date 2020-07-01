@@ -27,7 +27,7 @@ Bing Image Search API では画像のみの検索結果が提供されますが�
 
 ## <a name="bing-image-search-features"></a>Bing Image Search の機能
 
-| 機能                                                                                                                                                                                 | 説明                                                                                                                                                            |
+| 特徴量                                                                                                                                                                                 | 説明                                                                                                                                                            |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [検索用語をリアルタイムで提案する](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries) | [Bing Autosuggest API](../bing-autosuggest/get-suggested-search-terms.md) を使用して、入力時に候補検索用語を表示することで、アプリのエクスペリエンスを向上します。 |
 | [画像の結果をフィルター処理して制限する](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images)                       | クエリ パラメーターを編集して、Bing から返される画像をフィルター処理します。                                                                                                       |
@@ -55,7 +55,7 @@ API を呼び出す準備ができたら、[Cognitive Services API アカウン�
 * REST API を使用して [Bing に検索クエリを送信する方法](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/quickstarts/csharp)。または
 * SDK を使用して Bing から返される画像を[要求してフィルター処理する方法](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart)。
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 * Bing Search API の[価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。 
 

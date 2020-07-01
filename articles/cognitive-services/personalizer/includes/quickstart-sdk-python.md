@@ -118,7 +118,7 @@ Personalizer の学習ループとは、[Rank](#request-the-best-action) 呼び�
 
 Rank 要求を実行するために、このプログラムは、ユーザーの好みをたずねてコンテンツの選択肢の `currentContent` を作成します。 このプロセスで、アクションから除外するコンテンツ (`excludeActions`) を作成することもできます。 応答を取得するためには、Rank 要求にアクションとそのフィーチャー、currentContext フィーチャー、excludeActions、一意のイベント ID が必要です。
 
-このクイックスタートにおけるコンテキストのフィーチャーは、時間帯と食べ物に対するユーザーの好みという単純なものです。 実稼働システムでは、[アクションとフィーチャー](../concept-feature-evaluation.md)を決定し、[評価](../concepts-features.md)することが、決して簡単ではない場合もあります。
+このクイックスタートにおけるコンテキストのフィーチャーは、時間帯と食べ物に対するユーザーの好みという単純なものです。 実稼働システムでは、[アクションとフィーチャー](../concepts-features.md)を決定し、[評価](../concept-feature-evaluation.md)することが、決して簡単ではない場合もあります。
 
 [!code-python[The Personalizer learning loop ranks the request.](~/samples-personalizer/quickstarts/python/sample.py?name=rank)]
 
