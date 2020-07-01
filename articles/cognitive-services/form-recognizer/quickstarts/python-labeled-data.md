@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: tracking-python
-ms.openlocfilehash: 12af4c57fd906d687eedfe7c865d36abaa0da18e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: d9bb6ef7629d236120660912daaad82ad18b8480
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85209149"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563093"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>REST API と Python でラベルを使用して Form Recognizer モデルをトレーニングする
 
@@ -65,8 +65,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ラベルによるトレーニング用として入力ファイルがこのサービスによって認識されるためには、対応する OCR 結果ファイルが必要です。 特定のソース フォームの OCR 結果を取得するには、次の手順に従います。
 
-1. 要求本文に入力ファイルを含めて、読み取りのレイアウト コンテナーに対して **[Analyze Layout](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeLayoutAsync)** API を呼び出します。 応答の **Operation-Location** ヘッダーにある ID を保存してください。
-1. 前の手順で得た操作 ID を使用して、 **[Get Analyze Layout Result](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/GetAnalyzeLayoutResult)** API を呼び出します。
+1. 要求本文に入力ファイルを含めて、読み取りのレイアウト コンテナーに対して **[Analyze Layout](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)** API を呼び出します。 応答の **Operation-Location** ヘッダーにある ID を保存してください。
+1. 前の手順で得た操作 ID を使用して、 **[Get Analyze Layout Result](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeLayoutResult)** API を呼び出します。
 1. 応答を取得し、その内容をファイルに書き込みます。 それぞれのソース フォームに対応する OCR ファイルでは、元のファイル名に `.ocr.json` が追加されています。 OCR の JSON は、次の形式で出力されている必要があります。 完全な例については、[サンプル OCR ファイル](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.ocr.json)を参照してください。 
 
     ```json
@@ -197,7 +197,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="train-a-model-using-labeled-data"></a>ラベル付けされたデータを使用してモデルをトレーニングする
 
-ラベル付けされたデータを使用してモデルをトレーニングするには、以下の Python コードを実行して、 **[Train Custom Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/TrainCustomModelAsync)** API を呼び出します。 コードを実行する前に、次の変更を行います。
+ラベル付けされたデータを使用してモデルをトレーニングするには、以下の Python コードを実行して、 **[Train Custom Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** API を呼び出します。 コードを実行する前に、次の変更を行います。
 
 1. `<Endpoint>` を、Form Recognizer リソースのエンドポイントの URL に置き換えます。
 1. `<SAS URL>` を Azure Blob ストレージ コンテナーの共有アクセス署名 (SAS) URL に置き換えます。 SAS URL を取得するには、Microsoft Azure Storage Explorer を開き、ご利用のコンテナーを右クリックし、 **[共有アクセス署名の取得]** を選択します。 アクセス許可の **[読み取り]** と **[表示]** がオンになっていることを確認し、 **[作成]** をクリックします。 次に、その値を **URL** セクションにコピーします。 それは次の書式になります`https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`。
@@ -561,4 +561,4 @@ Microsoft は、お客様にとってこれが不可欠なシナリオである�
 このクイックスタートでは、Form Recognizer REST API と Python を使用し、手動でラベル付けされたデータを使ってモデルをトレーニングする方法について説明しました。 引き続き API リファレンス ドキュメントを参照して、Form Recognizer API についての理解を深めましょう。
 
 > [!div class="nextstepaction"]
-> [REST API リファレンス ドキュメント](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeWithCustomForm)
+> [REST API リファレンス ドキュメント](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)

@@ -13,6 +13,7 @@
     - name: プロファイルとエンドポイントの作成
       href: cdn-create-new-endpoint.md
     - name: プロファイルとエンドポイントの作成 - Resource Manager テンプレート
+      displayName: Resource Manager
       href: create-profile-endpoint-template.md
 - name: チュートリアル
   items:

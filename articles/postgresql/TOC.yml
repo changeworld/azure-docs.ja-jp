@@ -161,6 +161,10 @@
               href: concepts-read-replicas.md
             - name: 論理デコード
               href: concepts-logical.md
+        - name: リージョン間の移動
+          items:
+            - name: Azure portal
+              href: howto-move-regions-portal.md
     - name: Hyperscale (Citus)
       items:
         - name: Nodes

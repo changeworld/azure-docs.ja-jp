@@ -5,16 +5,16 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 11/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 426158945e609b2bb46dd9fbbbbe378f25cd93f1
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 76b2b465354df5b06ecd93986aec71530d175fe6
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85206236"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85562890"
 ---
 ## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>キーと値のペアおよびテーブルについてフォームを分析する
 
-次に、新しくトレーニングしたモデルを使用してドキュメントを分析し、そこからキーと値のペアおよびテーブルを抽出します。 新しい Python スクリプトから、次のコードを実行して **[Analyze Form](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeWithCustomForm)** API を呼び出します。 スクリプトを実行する前に、次の変更を行います。
+次に、新しくトレーニングしたモデルを使用してドキュメントを分析し、そこからキーと値のペアおよびテーブルを抽出します。 新しい Python スクリプトから、次のコードを実行して **[Analyze Form](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)** API を呼び出します。 スクリプトを実行する前に、次の変更を行います。
 
 1. `<file path>` をお使いのフォームのファイル パス (例: C:\temp\file.pdf) に置き換えます。 リモート ファイルの URL を指定することもできます。 このクイックスタートでは、[サンプル データ セット](https://go.microsoft.com/fwlink/?linkid=2090451)の **Test** フォルダーにあるファイルを使用できます。
 1. `<model_id>` を、前のセクションで受信したモデル ID で置き換えます。

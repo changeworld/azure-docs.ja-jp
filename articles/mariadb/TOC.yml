@@ -112,6 +112,10 @@
           href: concepts-data-in-replication.md
         - name: 読み取りレプリカ
           href: concepts-read-replicas.md
+    - name: リージョン間の移動
+      items:
+        - name: Azure portal
+          href: howto-move-regions-portal.md
 - name: 操作方法ガイド
   items:
     - name: サーバーを管理する

@@ -7,7 +7,11 @@
 - name: クイックスタート
   items:
     - name: Service Health イベントのアラートの構成
-      href: ../azure-monitor/platform/alerts-activity-log-service-notifications.md
+      items:
+        - name: Azure portal
+          href: alerts-activity-log-service-notifications-portal.md
+        - name: ARM テンプレート
+          href: alerts-activity-log-service-notifications-arm.md
 - name: 概念
   items:
     - name: Azure の状態のページ

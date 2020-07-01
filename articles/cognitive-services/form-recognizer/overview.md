@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 241d91a8c8670c32461684ed964b6fc0fd7c1672
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 8885f66b3501217ead302486d2e5ef7de63f5f47
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85206412"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563251"
 ---
 # <a name="what-is-form-recognizer"></a>Form Recognizer とは
 
@@ -81,7 +81,7 @@ Form Recognizer は、高精細の光学式文字認識 (OCR) を使用して、
 | **Analyze Receipt** |単一のレシート ドキュメントを分析し、レシート内の主要な情報とその他のテキストを抽出します。|
 | **Analyze Layout** |フォームのレイアウトを分析してテキストとテーブル構造を抽出します。|
 
-詳しくは、[REST API のリファレンス ドキュメント](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeWithCustomForm)をご覧ください。 以前のバージョンの API をご利用の方は、「[新機能](./whats-new.md)」の記事で、レシートに関する最新の変更点をご確認ください。
+詳しくは、[REST API のリファレンス ドキュメント](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)をご覧ください。 以前のバージョンの API をご利用の方は、「[新機能](./whats-new.md)」の記事で、レシートに関する最新の変更点をご確認ください。
 
 ## <a name="input-requirements"></a>入力の要件
 ### <a name="custom-model"></a>カスタム モデル
@@ -104,4 +104,4 @@ Cognitive Services 全般に言えることですが、Form Recognizer サービ
 
 ## <a name="next-steps"></a>次のステップ
 
-[クイック スタート](quickstarts/curl-train-extract.md)をすべて終え、[Form Recognizer API シリーズ](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeWithCustomForm)の使用を開始します。
+[クイック スタート](quickstarts/curl-train-extract.md)をすべて終え、[Form Recognizer API シリーズ](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)の使用を開始します。
