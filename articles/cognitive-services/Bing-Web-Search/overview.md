@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 03/31/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 5ea98a4ef759937c5962dc86f0384051b8fa0bb3
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 4cbf79abaf915e7f6e055f5bcb0d8f09de026ad5
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80477473"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85604864"
 ---
 # <a name="what-is-the-bing-web-search-api"></a>Bing Web Search API とは
 
@@ -42,7 +42,7 @@ Bing Web Search では、インスタント アンサーにアクセスできる
 
 Bing Web Search API は、HTTP 要求を作成して JSON 応答を解析できる任意プログラミング言語から簡単に呼び出すことができます。 このサービスには、[REST API](quickstarts/python.md) または [Bing Web Search クライアント ライブラリ](./quickstarts/client-libraries.md)を使用してアクセスできます。
 
-1. Bing Search API に使用する [Azure リソース](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)を作成します。 Azure サブスクリプションをお持ちでない場合は、[無料のアカウント](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)を作成できます。  
+1. Bing Search API に使用する [Azure リソース](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)を作成します。 Azure サブスクリプションをお持ちでない場合は、[無料のアカウント](https://azure.microsoft.com/free/cognitive-services/)を作成できます。  
 2. [要求を Bing Web Search API](quickstarts/python.md) に送信します。
 3. JSON 応答を解析します。
 

@@ -30,10 +30,8 @@
       href: concepts-identity.md
     - name: プライベート クラウドのアップグレード
       href: concepts-upgrades.md
-    - name: ハブとスポークの統合
-      href: concepts-avs-hub-and-spoke-integration.md
-    - name: API Management
-      href: concepts-api-management.md
+    - name: ロールベースのアクセス制御
+      href: concepts-rbac.md
 - name: 操作方法ガイド
   items:
     - name: HCX の設定

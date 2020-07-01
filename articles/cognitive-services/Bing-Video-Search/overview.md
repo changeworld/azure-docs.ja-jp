@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: 8377f0f5d586212c94bb763598b6e7a9e391073c
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 2c52f909cf3cc77b4f5e40ee9804d0c473e575c5
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75382720"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85601940"
 ---
 # <a name="what-is-the-bing-video-search-api"></a>Bing Video Search API とは
 
@@ -35,7 +35,7 @@ Bing Video Search API を使用すると、サービスやアプリケーショ�
 
 Bing Video Search API は RESTful Web サービスです。HTTP 要求を作成して JSON を解析できる任意のプログラミング言語から簡単に呼び出すことができます。 [REST API](csharp.md) または [SDK](video-search-sdk-quickstart.md) のいずれかを使用してサービスを使用できます。
 
-1. Bing Search API が利用できる [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)を作成します。 Azure サブスクリプションをお持ちでない場合は、無料で[アカウントを作成](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)できます。
+1. Bing Search API が利用できる [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)を作成します。 Azure サブスクリプションをお持ちでない場合は、無料で[アカウントを作成](https://azure.microsoft.com/free/cognitive-services/)できます。
 2. 有効な検索クエリを使用して API に要求を送信します。
 3. 返された JSON メッセージを解析して API 応答を処理します。
 
@@ -43,8 +43,6 @@ Bing Video Search API は RESTful Web サービスです。HTTP 要求を作成�
 ## <a name="next-steps"></a>次のステップ
 
 Bing Video Search API の[対話型デモ](https://azure.microsoft.com/services/cognitive-services/bing-video-search-api/)では、検索クエリをカスタマイズし、Web から動画を検索する方法を紹介しています。
-
-API を呼び出す準備ができたら、[Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)を作成します。 Azure サブスクリプションをお持ちでない場合は、無料で[アカウントを作成](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)できます。
 
 [クイック スタート](csharp.md)で、初めての API 要求を手軽に体験してみましょう。
 
