@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 4a96f31588e199d5696e2d9eff351051d46c1f96
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 872a90a0b4f5b348e45b04998067f9e97a3ae987
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873956"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611324"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>クイック スタート:Bing Web Search REST API と Node.js を使用して Web を検索する
 
@@ -43,7 +43,7 @@ const https = require('https')
 
 ## <a name="set-the-subscription-key"></a>サブスクリプション キーの設定
 
-このコード スニペットでは、`AZURE_SUBSCRIPTION_KEY` 環境変数を使用してお使いのサブスクリプション キーを格納します。これは、お使いのコードをデプロイするときに、キーが誤って露出されてしまうのを防ぐ優れたやり方です。 ご自分のサブスクリプション キーを探すには、[自分の API](https://azure.microsoft.com/try/cognitive-services/my-apis/?apiSlug=search-api-v7) に関するページを参照してください。
+このコード スニペットでは、`AZURE_SUBSCRIPTION_KEY` 環境変数を使用してお使いのサブスクリプション キーを格納します。これは、お使いのコードをデプロイするときに、キーが誤って露出されてしまうのを防ぐ優れたやり方です。
 
 環境変数を使用について詳しくない場合や、このアプリをできるだけ早く実行したい場合は、文字列として設定されたご自分のサブスクリプション キーを、`process.env['AZURE_SUBSCRIPTION_KEY']` に置き換えます。
 
