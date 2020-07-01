@@ -23,7 +23,7 @@ Bing Video Search API を使用すると、サービスやアプリケーショ�
 
 ## <a name="bing-video-search-api-features"></a>Bing Video Search API の機能
 
-| 機能                                                                                                                                                                                 | 説明                                                                                                                                                            |
+| 特徴量                                                                                                                                                                                 | 説明                                                                                                                                                            |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [検索用語をリアルタイムで提案する](concepts/sending-requests.md#suggest-search-terms-with-the-bing-autosuggest-api) | [Bing Autosuggest API](../bing-autosuggest/get-suggested-search-terms.md) を使用して、入力時に候補検索用語を表示することで、アプリのエクスペリエンスを向上します。 |
 | [動画の結果をフィルター処理して制限する](concepts/get-videos.md#filtering-videos)                      | 返される動画を、クエリ パラメーターを編集してフィルター処理します。                                                                                                       |
@@ -48,7 +48,7 @@ API を呼び出す準備ができたら、[Cognitive Services API アカウン�
 
 [クイック スタート](csharp.md)で、初めての API 要求を手軽に体験してみましょう。
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 * [Bing Video Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference) リファレンス ページには、検索結果を要求する際に使用するエンドポイント、ヘッダー、クエリ パラメーターの一覧が記載されています。
 

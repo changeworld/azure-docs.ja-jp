@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: Go を使用して Text Analytics API を呼び出す'
+title: クイック スタート:Go を使用して Text Analytics API を呼び出す
 titleSuffix: Azure Cognitive Services
 description: Azure Cognitive Services の Text Analytics API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
 services: cognitive-services
@@ -17,7 +17,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "75378766"
 ---
-# <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>クイック スタート: Go を使用して Text Analytics Cognitive Service を呼び出す 
+# <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>クイック スタート:Go を使用して Text Analytics Cognitive Service を呼び出す 
 <a name="HOLTop"></a>
 
 この記事では、 [Text Analytics API シリーズ](//go.microsoft.com/fwlink/?LinkID=759711) を Go で使用して、[言語の検出](#Detect)、[センチメントの分析](#SentimentAnalysis)、[キー フレーズの抽出](#KeyPhraseExtraction)、および[リンクされているエンティティの識別](#Entities)を行う方法について説明します。
@@ -540,7 +540,7 @@ func main() {
 > [!div class="nextstepaction"]
 > [Text Analytics と Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
  [Text Analytics の概要](../overview.md)  
  [よく寄せられる質問 (FAQ)](../text-analytics-resource-faq.md)
