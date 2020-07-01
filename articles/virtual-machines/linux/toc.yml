@@ -350,7 +350,7 @@
       href: ../../virtual-machine-scale-sets/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: インフラストラクチャの自動化
       href: infrastructure-automation.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティとポリシー
           href: security-policy.md
@@ -553,7 +553,7 @@
           href: download-vhd.md
     - name: VM のセキュリティ保護
       items:
-        - name: Recommendations
+        - name: 推奨事項
           href: security-recommendations.md
         - name: ジャストインタイム アクセス
           href: ../../security-center/security-center-just-in-time.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -908,7 +908,7 @@
           href: 'https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/'
         - name: IBM Db2 pureScale
           items:
-            - name: Architecture
+            - name: アーキテクチャ
               href: ibm-db2-purescale-azure.md
             - name: デプロイ
               href: deploy-ibm-db2-purescale-azure.md
@@ -947,6 +947,8 @@
           items:
             - name: Azure Site Recovery を使用した Premium Storage への移行
               href: migrate-to-premium-storage-using-azure-site-recovery.md
+            - name: サーバー側の暗号化への変換
+              href: disks-ade-sse-conversion-cli.md
             - name: 管理ディスクに変換する
               href: convert-unmanaged-to-managed-disks.md
             - name: Standard と Premium 間でディスクを変換する

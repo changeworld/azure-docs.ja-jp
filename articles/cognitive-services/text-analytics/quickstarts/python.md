@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
 ms.custom: tracking-python
-ms.openlocfilehash: 1071f3dabf7148381edecedce495f645c52e748d
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 46fd431c14e6870058e415d619256f342d5f4ef4
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84610255"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85610933"
 ---
 # <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>クイック スタート:Python REST API を使用して Text Analytics Cognitive Service を呼び出す 
 <a name="HOLTop"></a>
@@ -65,10 +65,10 @@ endpoint = "<paste-your-text-analytics-endpoint-here>"
 
 ## <a name="detect-languages"></a>言語を検出する
 
-Text Analytics ベース エンドポイントに `/text/analytics/v2.1/languages` を追加して、言語検出 URL を形成します。 例: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/languages`
+Text Analytics ベース エンドポイントに `/text/analytics/v3.0/languages` を追加して、言語検出 URL を形成します。 例: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/languages`
     
 ```python
-language_api_url = endpoint + "/text/analytics/v2.1/languages"
+language_api_url = endpoint + "/text/analytics/v3.0/languages"
 ```
 
 API に対するペイロードは、`id` 属性と `text` 属性を含むタプルである `documents` の一覧で構成されます。 `text` 属性には、分析対象のテキストが格納され、`id` には任意の値を指定できます。 
@@ -94,39 +94,37 @@ pprint(languages)
 
 ```json
 {
-"documents":[
-    {
-        "detectedLanguages":[
+    "documents": [
         {
-            "iso6391Name":"en",
-            "name":"English",
-            "score":1.0
-        }
-        ],
-        "id":"1"
-    },
-    {
-        "detectedLanguages":[
+            "id": "1",
+            "detectedLanguage": {
+                "name": "English",
+                "iso6391Name": "en",
+                "confidenceScore": 1.0
+            },
+            "warnings": []
+        },
         {
-            "iso6391Name":"es",
-            "name":"Spanish",
-            "score":1.0
-        }
-        ],
-        "id":"2"
-    },
-    {
-        "detectedLanguages":[
+            "id": "2",
+            "detectedLanguage": {
+                "name": "Spanish",
+                "iso6391Name": "es",
+                "confidenceScore": 1.0
+            },
+            "warnings": []
+        },
         {
-            "iso6391Name":"zh_chs",
-            "name":"Chinese_Simplified",
-            "score":1.0
+            "id": "3",
+            "detectedLanguage": {
+                "name": "Chinese_Simplified",
+                "iso6391Name": "zh_chs",
+                "confidenceScore": 1.0
+            },
+            "warnings": []
         }
-        ],
-        "id":"3"
-    }
-],
-"errors":[]
+    ],
+    "errors": [],
+    "modelVersion": "2019-10-01"
 }
 ```
 
@@ -134,10 +132,10 @@ pprint(languages)
 
 ## <a name="analyze-sentiment"></a>感情を分析する
 
-一連のドキュメントのセンチメント (正または負の範囲) を検出するには、Text Analytics ベース エンドポイントに `/text/analytics/v2.1/sentiment` を追加して言語検出 URL を形成します。 例: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`
+一連のドキュメントのセンチメント (正または負の範囲) を検出するには、Text Analytics ベース エンドポイントに `/text/analytics/v3.0/sentiment` を追加して言語検出 URL を形成します。 例: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/sentiment`
     
 ```python
-sentiment_url = endpoint + "/text/analytics/v2.1/sentiment"
+sentiment_url = endpoint + "/text/analytics/v3.0/sentiment"
 ```
 
 言語検出の例に示すように、サービスには、ドキュメントの一覧で構成された `documents` キーを使用してディクショナリを作成します。 各ドキュメントは、`id`、分析対象の `text`、およびテキストの `language` で構成されるタプルです。 
@@ -145,13 +143,9 @@ sentiment_url = endpoint + "/text/analytics/v2.1/sentiment"
 ```python
 documents = {"documents": [
     {"id": "1", "language": "en",
-        "text": "I had a wonderful experience! The rooms were wonderful and the staff was helpful."},
-    {"id": "2", "language": "en",
-        "text": "I had a terrible time at the hotel. The staff was rude and the food was awful."},
-    {"id": "3", "language": "es",
-        "text": "Los caminos que llevan hasta Monte Rainier son espectaculares y hermosos."},
-    {"id": "4", "language": "es",
-     "text": "La carretera estaba atascada. Había mucho tráfico el día de ayer."}
+        "text": "I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable."},
+    {"id": "2", "language": "es",
+        "text": "Este ha sido un dia terrible, llegué tarde al trabajo debido a un accidente automobilistico."}
 ]}
 ```
 
@@ -170,25 +164,56 @@ pprint(sentiments)
 
 ```json
 {
-  "documents":[
-    {
-      "id":"1",
-      "score":0.9708490371704102
-    },
-    {
-      "id":"2",
-      "score":0.0019068121910095215
-    },
-    {
-      "id":"3",
-      "score":0.7456425428390503
-    },
-    {
-      "id":"4",
-      "score":0.334433376789093
-    }
-  ],
-  "errors":[]
+    "documents": [
+        {
+            "id": "1",
+            "sentiment": "positive",
+            "confidenceScores": {
+                "positive": 1.0,
+                "neutral": 0.0,
+                "negative": 0.0
+            },
+            "sentences": [
+                {
+                    "sentiment": "positive",
+                    "confidenceScores": {
+                        "positive": 1.0,
+                        "neutral": 0.0,
+                        "negative": 0.0
+                    },
+                    "offset": 0,
+                    "length": 102,
+                    "text": "I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable."
+                }
+            ],
+            "warnings": []
+        },
+        {
+            "id": "2",
+            "sentiment": "negative",
+            "confidenceScores": {
+                "positive": 0.02,
+                "neutral": 0.05,
+                "negative": 0.93
+            },
+            "sentences": [
+                {
+                    "sentiment": "negative",
+                    "confidenceScores": {
+                        "positive": 0.02,
+                        "neutral": 0.05,
+                        "negative": 0.93
+                    },
+                    "offset": 0,
+                    "length": 92,
+                    "text": "Este ha sido un dia terrible, llegué tarde al trabajo debido a un accidente automobilistico."
+                }
+            ],
+            "warnings": []
+        }
+    ],
+    "errors": [],
+    "modelVersion": "2020-04-01"
 }
 ```
 
@@ -196,10 +221,10 @@ pprint(sentiments)
 
 ## <a name="extract-key-phrases"></a>キー フレーズを抽出する
  
-一連のドキュメントからキー フレーズを抽出するには、Text Analytics ベース エンドポイントに `/text/analytics/v2.1/keyPhrases` を追加して言語検出 URL を形成します。 例: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/keyPhrases`
+一連のドキュメントからキー フレーズを抽出するには、Text Analytics ベース エンドポイントに `/text/analytics/v3.0/keyPhrases` を追加して言語検出 URL を形成します。 例: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases`
     
 ```python
-keyphrase_url = endpoint + "/text/analytics/v2.1/keyphrases"
+keyphrase_url = endpoint + "/text/analytics/v3.0/keyphrases"
 ```
 
 このドキュメントのコレクションは、感情分析の例で使用したものと同じです。
@@ -207,13 +232,11 @@ keyphrase_url = endpoint + "/text/analytics/v2.1/keyphrases"
 ```python
 documents = {"documents": [
     {"id": "1", "language": "en",
-        "text": "I had a wonderful experience! The rooms were wonderful and the staff was helpful."},
-    {"id": "2", "language": "en",
-        "text": "I had a terrible time at the hotel. The staff was rude and the food was awful."},
-    {"id": "3", "language": "es",
-        "text": "Los caminos que llevan hasta Monte Rainier son espectaculares y hermosos."},
-    {"id": "4", "language": "es",
-     "text": "La carretera estaba atascada. Había mucho tráfico el día de ayer."}
+        "text": "I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable."},
+    {"id": "2", "language": "es",
+        "text": "Si usted quiere comunicarse con Carlos, usted debe de llamarlo a su telefono movil. Carlos es muy responsable, pero necesita recibir una notificacion si hay algun problema."},
+    {"id": "3", "language": "en",
+        "text": "The Grand Hotel is a new hotel in the center of Seattle. It earned 5 stars in my review, and has the classiest decor I've ever seen."}
 ]}
 ```
 
@@ -230,41 +253,41 @@ pprint(key_phrases)
 
 ```json
 {
-  "documents":[
-    {
-      "keyPhrases":[
-        "wonderful experience",
-        "staff",
-        "rooms"
-      ],
-      "id":"1"
-    },
-    {
-      "keyPhrases":[
-        "food",
-        "terrible time",
-        "hotel",
-        "staff"
-      ],
-      "id":"2"
-    },
-    {
-      "keyPhrases":[
-        "Monte Rainier",
-        "caminos"
-      ],
-      "id":"3"
-    },
-    {
-      "keyPhrases":[
-        "carretera",
-        "tráfico",
-        "día"
-      ],
-      "id":"4"
-    }
-  ],
-  "errors":[]
+    "documents": [
+        {
+            "id": "1",
+            "keyPhrases": [
+                "HDR resolution",
+                "new XBox",
+                "clean look"
+            ],
+            "warnings": []
+        },
+        {
+            "id": "2",
+            "keyPhrases": [
+                "Carlos",
+                "notificacion",
+                "algun problema",
+                "telefono movil"
+            ],
+            "warnings": []
+        },
+        {
+            "id": "3",
+            "keyPhrases": [
+                "new hotel",
+                "Grand Hotel",
+                "review",
+                "center of Seattle",
+                "classiest decor",
+                "stars"
+            ],
+            "warnings": []
+        }
+    ],
+    "errors": [],
+    "modelVersion": "2019-10-01"
 }
 ```
 
@@ -272,17 +295,17 @@ pprint(key_phrases)
 
 ## <a name="identify-entities"></a>エンティティの識別
 
-テキスト ドキュメント内の既知のエンティティ (人、場所、物) を特定するには、Text Analytics ベース エンドポイントに `/text/analytics/v2.1/entities` を追加して言語検出 URL を形成します。 例: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
+テキスト ドキュメント内の既知のエンティティ (人、場所、物) を特定するには、Text Analytics ベース エンドポイントに `/text/analytics/v3.0/entities/recognition/general` を追加して言語検出 URL を形成します。 例: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/recognition/general`
     
 ```python
-entities_url = endpoint + "/text/analytics/v2.1/entities"
+entities_url = endpoint + "/text/analytics/v3.0/entities/recognition/general/recognition/general"
 ```
 
 前の例と同様に、ドキュメントのコレクションを作成します。 
 
 ```python
 documents = {"documents": [
-    {"id": "1", "text": "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800."}
+    {"id": "1", "text": "Microsoft is an It company."}
 ]}
 ```
 
@@ -299,154 +322,30 @@ pprint(entities)
 
 ```json
 {
-   "documents" : [
-      {
-         "id" : "1",
-         "entities" : [
-            {
-               "name" : "Microsoft",
-               "matches" : [
-                  {
-                     "wikipediaScore" : 0.49897989655674446,
-                     "entityTypeScore" : 1.0,
-                     "text" : "Microsoft",
-                     "offset" : 0,
-                     "length" : 9
-                  }
-               ],
-               "wikipediaLanguage" : "en",
-               "wikipediaId" : "Microsoft",
-               "wikipediaUrl" : "https://en.wikipedia.org/wiki/Microsoft",
-               "bingId" : "a093e9b9-90f5-a3d5-c4b8-5855e1b01f85",
-               "type" : "Organization"
-            },
-            {
-               "name" : "Bill Gates",
-               "matches" : [
-                  {
-                     "wikipediaScore" : 0.58357497243368983,
-                     "entityTypeScore" : 0.999847412109375,
-                     "text" : "Bill Gates",
-                     "offset" : 25,
-                     "length" : 10
-                  }
-               ],
-               "wikipediaLanguage" : "en",
-               "wikipediaId" : "Bill Gates",
-               "wikipediaUrl" : "https://en.wikipedia.org/wiki/Bill_Gates",
-               "bingId" : "0d47c987-0042-5576-15e8-97af601614fa",
-               "type" : "Person"
-            },
-            {
-               "name" : "Paul Allen",
-               "matches" : [
-                  {
-                     "wikipediaScore" : 0.52977533244176866,
-                     "entityTypeScore" : 0.99884098768234253,
-                     "text" : "Paul Allen",
-                     "offset" : 40,
-                     "length" : 10
-                  }
-               ],
-               "wikipediaLanguage" : "en",
-               "wikipediaId" : "Paul Allen",
-               "wikipediaUrl" : "https://en.wikipedia.org/wiki/Paul_Allen",
-               "bingId" : "df2c4376-9923-6a54-893f-2ee5a5badbc7",
-               "type" : "Person"
-            },
-            {
-               "name" : "April 4",
-               "matches" : [
-                  {
-                     "wikipediaScore" : 0.37220990924571939,
-                     "entityTypeScore" : 0.8,
-                     "text" : "April 4",
-                     "offset" : 54,
-                     "length" : 7
-                  }
-               ],
-               "wikipediaLanguage" : "en",
-               "wikipediaId" : "April 4",
-               "wikipediaUrl" : "https://en.wikipedia.org/wiki/April_4",
-               "bingId" : "52535f87-235e-b513-54fe-c03e4233ac6e",
-               "type" : "Other"
-            },
-            {
-               "name" : "April 4, 1975",
-               "matches" : [
-                  {
-                     "entityTypeScore" : 0.8,
-                     "text" : "April 4, 1975",
-                     "offset" : 54,
-                     "length" : 13
-                  }
-               ],
-               "type" : "DateTime",
-               "subType" : "Date"
-            },
-            {
-               "name" : "BASIC",
-               "matches" : [
-                  {
-                     "wikipediaScore" : 0.35686239324548041,
-                     "entityTypeScore" : 0.8,
-                     "text" : "BASIC",
-                     "offset" : 89,
-                     "length" : 5
-                  }
-               ],
-               "wikipediaLanguage" : "en",
-               "wikipediaId" : "BASIC",
-               "wikipediaUrl" : "https://en.wikipedia.org/wiki/BASIC",
-               "bingId" : "5b16443d-501c-58f3-352e-611bbe75aa6e",
-               "type" : "Other"
-            },
-            {
-               "name" : "Altair 8800",
-               "matches" : [
-                  {
-                     "wikipediaScore" : 0.868324676465041,
-                     "entityTypeScore" : 0.8,
-                     "text" : "Altair 8800",
-                     "offset" : 116,
-                     "length" : 11
-                  }
-               ],
-               "wikipediaLanguage" : "en",
-               "wikipediaId" : "Altair 8800",
-               "wikipediaUrl" : "https://en.wikipedia.org/wiki/Altair_8800",
-               "bingId" : "7216c654-3779-68a2-c7b7-12ff3dad5606",
-               "type" : "Other"
-            },
-            {
-               "name" : "Altair",
-               "matches" : [
-                  {
-                     "entityTypeScore" : 0.52505272626876831,
-                     "text" : "Altair",
-                     "offset" : 116,
-                     "length" : 6
-                  }
-               ],
-               "type" : "Organization"
-            },
-            {
-               "name" : "8800",
-               "matches" : [
-                  {
-                     "entityTypeScore" : 0.8,
-                     "text" : "8800",
-                     "offset" : 123,
-                     "length" : 4
-                  }
-               ],
-               "type" : "Quantity",
-               "subType" : "Number"
-            }
-         ]
-      }
-   ],
-   "errors" : []
+    "documents": [
+        {
+            "id": "1",
+            "entities": [
+                {
+                    "text": "Microsoft",
+                    "category": "Organization",
+                    "offset": 0,
+                    "length": 9,
+                    "confidenceScore": 0.86
+                },
+                {
+                    "text": "IT",
+                    "category": "Skill",
+                    "offset": 16,
+                    "length": 2,
+                    "confidenceScore": 0.8
+                }
+            ],
+            "warnings": []
+        }
+    ],
+    "errors": [],
+    "modelVersion": "2020-04-01"
 }
 ```
 

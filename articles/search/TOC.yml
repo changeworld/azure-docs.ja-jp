@@ -1,13 +1,13 @@
 - name: Azure Cognitive Search のドキュメント
   href: index.yml
 - name: 概要
+  expanded: true
   items:
     - name: Azure Cognitive Search とは
       href: search-what-is-azure-search.md
     - name: 新機能
       href: whats-new.md
 - name: クイックスタート
-  expanded: true
   items:
     - name: ポータル
       items:
@@ -85,7 +85,7 @@
     - name: Python のサンプル
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=python'
     - name: REST サンプル
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=rest'
+      href: 'https://docs.microsoft.com/samples/browse/?languages=http&expanded=azure&products=azure-cognitive-search'
     - name: Azure Policy の組み込み
       displayName: 'samples, policies, definitions'
       href: ./policy-samples.md
@@ -322,7 +322,7 @@
               href: search-dotnet-mgmt-sdk-migration.md
         - name: REST API をアップグレードする
           href: search-api-migration.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: 概要
           href: search-security-overview.md
@@ -388,10 +388,10 @@
           href: /dotnet/api/overview/azure/search/management?view=azure-dotnet
     - name: REST
       items:
-        - name: 検索 2019-05-06
+        - name: 検索 2020-06-30
           href: /rest/api/searchservice
-        - name: 検索 2019-05-06-Preview
-          href: /rest/api/searchservice/index-2019-05-06-preview
+        - name: 検索 2020-06-30-Preview
+          href: /rest/api/searchservice/index-preview
         - name: 管理 2020-03-13
           href: /rest/api/searchmanagement
         - name: 管理 2019-10-01-Preview

@@ -117,6 +117,8 @@
       items:
         - name: Long データ型のサポートの追加
           href: time-series-insights-long-data-type.md
+        - name: JSON のフラット化とストレージへの変更
+          href: ingestion-rules-update.md
 - name: リファレンス
   items:
     - name: Time Series Insights

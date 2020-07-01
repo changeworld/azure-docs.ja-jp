@@ -7,12 +7,15 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: ロジック アプリの作成 - Azure Portal
+    - name: ロジック アプリの作成 - ポータル
       href: quickstart-create-first-logic-app-workflow.md
     - name: ロジック アプリの作成 - Visual Studio
       href: quickstart-create-logic-apps-with-visual-studio.md
     - name: ロジック アプリの作成 - Visual Studio Code
       href: quickstart-create-logic-apps-visual-studio-code.md
+    - name: ロジック アプリの作成 - ARM テンプレート
+      displayName: Resource Manager
+      href: quickstart-create-deploy-azure-resource-manager-template.md
 - name: チュートリアル
   items:
     - name: スケジュールベースのワークフローの作成
@@ -44,7 +47,7 @@
       href: connect-virtual-network-vnet-isolated-environment-overview.md
     - name: 事業継続とディザスター リカバリー
       href: business-continuity-disaster-recovery-guidance.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -326,7 +329,7 @@
       items:
         - name: ロジック アプリを管理する - Azure portal
           href: manage-logic-apps-with-azure-portal.md
-        - name: ロジック アプリを管理する - Visual Studio
+        - name: Logic Apps を管理する - Visual Studio
           href: manage-logic-apps-with-visual-studio.md
         - name: 統合アカウントを管理する
           href: logic-apps-enterprise-integration-accounts.md
@@ -344,9 +347,9 @@
       items:
         - name: 概要 - ロジック アプリ デプロイの自動化
           href: logic-apps-azure-resource-manager-templates-overview.md
-        - name: ロジック アプリ テンプレートの作成
+        - name: Logic Apps テンプレートの作成
           href: logic-apps-create-azure-resource-manager-templates.md
-        - name: ロジック アプリ テンプレートのデプロイ
+        - name: Logic Apps テンプレートのデプロイ
           href: logic-apps-deploy-azure-resource-manager-templates.md
     - name: モニター
       items:

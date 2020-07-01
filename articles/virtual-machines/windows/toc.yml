@@ -334,7 +334,7 @@
       href: ../../virtual-machine-scale-sets/overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: インフラストラクチャの自動化
       href: infrastructure-automation.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティとポリシー
           href: security-policy.md
@@ -522,7 +522,7 @@
           href: download-vhd.md
     - name: VM のセキュリティ保護
       items:
-        - name: Recommendations
+        - name: 推奨事項
           href: security-recommendations.md
         - name: ジャストインタイム アクセス
           href: ../../security-center/security-center-just-in-time.md
@@ -855,6 +855,8 @@
           href: incremental-snapshots.md
         - name: 移行と変換
           items:
+            - name: サーバー側の暗号化への変換
+              href: disks-ade-sse-conversion-powershell.md
             - name: Standard と Premium 間でディスクを変換する
               href: convert-disk-storage.md
             - name: Azure Site Recovery を使用した Premium Storage への移行
