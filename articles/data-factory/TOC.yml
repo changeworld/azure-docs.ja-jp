@@ -26,7 +26,7 @@
     - name: データ ファクトリの作成 - Resource Manager テンプレート
       href: quickstart-create-data-factory-resource-manager-template.md
     - name: セキュリティ - カスタマー マネージド キーの暗号化を有効にする
-      href: quickstart-enable-customer-managed-key.md
+      href: enable-customer-managed-key.md
     - name: データ フローの作成
       href: data-flow-create.md
 - name: チュートリアル
@@ -162,7 +162,7 @@
       href: concepts-pipeline-execution-triggers.md
     - name: 統合ランタイム
       href: concepts-integration-runtime.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -559,7 +559,7 @@
           href: control-flow-system-variables.md
         - name: マッピング データ フローをパラメーター化する
           href: parameters-data-flow.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: データ移動のセキュリティに関する考慮事項
           href: data-movement-security-considerations.md
@@ -576,7 +576,7 @@
         - name: Data Factory のマネージド ID
           href: data-factory-service-identity.md
         - name: カスタマー マネージド キーの暗号化
-          href: quickstart-enable-customer-managed-key.md
+          href: enable-customer-managed-key.md
     - name: 監視と管理
       items:
         - name: 視覚的な監視

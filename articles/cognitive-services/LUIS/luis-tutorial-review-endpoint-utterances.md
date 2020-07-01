@@ -3,13 +3,13 @@ title: チュートリアル:エンドポイントの発話の確認 - LUIS
 description: このチュートリアルでは、LUIS HTTP エンドポイント経由で受け取った LUIS にとって不確かな発話を確認または修正することによって、アプリの予測精度を高めます。 いくつかの発話についての意図を確認したり、その他の発話のエンティティを確認したりすることが必要な場合もあります。
 services: cognitive-services
 ms.topic: tutorial
-ms.date: 04/01/2020
-ms.openlocfilehash: 32d43b36910c8fbfd60463f4062b6a00b9272fdb
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 06/22/2020
+ms.openlocfilehash: c2df8cdba3422c522aa4ccf1fe4138a510355d12
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592578"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445928"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>チュートリアル:エンドポイントの発話を確認して不確かな予測を修正する
 このチュートリアルでは、LUIS HTTPS エンドポイント経由で受け取った LUIS にとって不確かな発話を確認または修正することによって、アプリの予測精度を高めます。 LUIS の定期メンテナンスの通常の部分としてエンドポイントの発話を確認する必要があります。

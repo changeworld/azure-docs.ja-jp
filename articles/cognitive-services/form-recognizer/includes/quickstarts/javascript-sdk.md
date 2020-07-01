@@ -266,7 +266,7 @@ async function TrainModel(trainingClient, trainingDataUrl)
     }
 ```
 
-最後に、このメソッドがモデルの一意の ID を返します。
+最後に、このメソッドはモデルの一意の ID を返します。
 
 ```csharp
     return response.modelId;
@@ -293,7 +293,7 @@ async function TrainModelWithLabelsAsync(
 
 ## <a name="analyze-forms-with-a-custom-model"></a>カスタム モデルを使用してフォームを分析する
 
-このセクションでは、独自のフォームでトレーニングしたモデルを使用して、カスタムのフォームの種類からキー/値情報やその他のコンテンツを抽出する方法について説明します。
+このセクションでは、独自のフォームでトレーニングしたモデルを使用して、カスタムのフォームの種類からキー/値の情報やその他のコンテンツを抽出する方法について説明します。
 
 > [!IMPORTANT]
 > このシナリオを実装するには、モデルのトレーニングが完了している必要があります。それにより、次のメソッドにその ID を渡すことができます。 [モデルのトレーニング](#train-a-model-without-labels)に関するセクションを参照してください。
@@ -440,4 +440,4 @@ export DEBUG=azure*
 > [トレーニング データ セットの作成](../../build-training-data-set.md)
 
 * [Form Recognizer とは](../../overview.md)
-* このガイドのサンプル コード (およびその他) については、[GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) を参照してください。
+* このガイドのサンプル コード (およびその他の情報) については、[GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) を参照してください。
