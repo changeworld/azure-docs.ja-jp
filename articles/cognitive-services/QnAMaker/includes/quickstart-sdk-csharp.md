@@ -2,21 +2,23 @@
 title: クイック スタート:.NET 用 QnA Maker クライアント ライブラリ
 description: このクイックスタートでは、.NET 用 QnA Maker クライアント ライブラリの使用を開始する方法について説明します。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。  QnA Maker を使用すると、FAQ ドキュメント、URL、製品マニュアルなどの半構造化コンテンツからの質問と回答サービスをいっそう強力にできます。
 ms.topic: quickstart
-ms.date: 06/11/2020
-ms.openlocfilehash: e487783e506d16006231b07b9a86f93864f51903
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.date: 06/18/2020
+ms.openlocfilehash: 06aaf8861a263711ab3d01e6355bc161538a3311
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84765143"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114545"
 ---
 .NET 用 QnA Maker クライアント ライブラリは、次の目的で使用することができます。
 
  * ナレッジベースを作成する
- * ナレッジベースを更新する
- * ナレッジベースを発行し、その完了を待つ
- * 予測ランタイム エンドポイント キーを取得する
- * ナレッジベースをダウンロードする
+ * ナレッジ ベースの更新
+ * ナレッジ ベースの公開
+ * 予測ランタイム エンドポイント キーの取得
+ * 実行時間の長いタスクの待機
+ * ナレッジ ベースのダウンロード
+ * 回答の取得
  * ナレッジベースを削除する
 
 [リファレンス ドキュメント](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Knowledge.QnAMaker) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker/) | [C# サンプル](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/QnAMaker/SDK-based-quickstart)
@@ -27,16 +29,15 @@ ms.locfileid: "84765143"
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)
 * [Visual Studio IDE](https://visualstudio.microsoft.com/vs/) または現在のバージョンの [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)。
-* Azure サブスクリプションを入手したら、Azure portal で [QnA Maker リソース](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)を作成し、オーサリング キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** を選択します。
-    * アプリケーションを QnA Maker API に接続するには、作成したリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
+* Azure サブスクリプションを入手したら、Azure portal で [QnA Maker リソース](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)を作成し、オーサリング キーとリソース名を取得します。 デプロイされたら、 **[リソースに移動]** を選択します。
+    * アプリケーションを QnA Maker API に接続するには、作成したリソースのキーとリソース名が必要です。 このクイックスタートで後に示すコードに、自分のキーとリソース名を貼り付けます。
     * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
 
 ## <a name="setting-up"></a>設定
 
-
 #### <a name="visual-studio-ide"></a>[Visual Studio IDE](#tab/visual-studio)
 
-Visual Studio を使用して .NET Core アプリケーションを作成します。次に、**ソリューション エクスプローラー**でソリューションを右クリックし、 **[NuGet パッケージの管理]** を選択して、クライアント ライブラリをインストールしてください。 パッケージ マネージャーが開いたら、 **[参照]** を選択し、 **[プレリリースを含める]** をオンにして、`(package-name)` を検索します。 バージョン `(version)` を選択し、 **[インストール]** を選択します。
+Visual Studio を使用して .NET Core アプリケーションを作成します。次に、**ソリューション エクスプローラー**でソリューションを右クリックし、 **[NuGet パッケージの管理]** を選択して、クライアント ライブラリをインストールしてください。 パッケージ マネージャーが開いたら、 **[参照]** を選択し、 **[プレリリースを含める]** をオンにして、`Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker` を検索します。 バージョン `2.0.0-preview.1` を選択し、 **[インストール]** を選択します。
 
 #### <a name="cli"></a>[CLI](#tab/cli)
 
@@ -65,7 +66,7 @@ Build succeeded.
 次のコマンドを使用して、アプリケーション ディレクトリ内に .NET 用 QnA Maker クライアント ライブラリをインストールします。
 
 ```console
-dotnet add package Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker --version 1.1.0
+dotnet add package Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker --version 2.0.0-preview.1
 ```
 
 
@@ -78,14 +79,23 @@ dotnet add package Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker --versio
 
 [!code-csharp[Dependencies](~/cognitive-services-quickstart-code/dotnet/QnAMaker/SDK-based-quickstart/Program.cs?name=Dependencies&highlight=1-2)]
 
-このクイックスタートの共通のタスクを使用するために、以下のセクションに示す変数とコードをアプリケーションの `Main` メソッドに追加します。
+このクイックスタートの共通のタスクを使用するために、次のセクションに示す変数とコードをアプリケーションの `Main` メソッドに追加します。
+
+> [!IMPORTANT]
+> Azure portal に移動し、前提条件で作成した QnA Maker リソースのキーとエンドポイントを探します。 それらは、リソースの **[key and endpoint]\(キーとエンドポイント\)** ページの **[リソース管理]** にあります。
+> ナレッジ ベースを作成するには、キー全体が必要です。 エンドポイントから必要となるのはリソース名のみです。 形式は `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` です。
+> 終わったらコードからキーを削除し、公開しないよう注意してください。 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 たとえば、[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) で安全なキー記憶域を確保できます。
+
+[!code-csharp[Set the resource key and resource name](~/cognitive-services-quickstart-code/dotnet/QnAMaker/SDK-based-quickstart/Program.cs?name=Resourcevariables)]
+
 
 ## <a name="object-models"></a>オブジェクト モデル
 
 QnA Maker には、次の 2 種類のオブジェクト モデルが使用されています。
-* **[QnAMakerClient](#qnamakerclient-object-model)** は、ナレッジベースを作成、管理、発行、ダウンロードするためのオブジェクトです。
+* **[QnAMakerClient](#qnamakerclient-object-model)** は、ナレッジ ベースを作成、管理、公開、ダウンロードするためのオブジェクトです。
 * **[QnAMakerRuntime](#qnamakerruntimeclient-object-model)** は、GenerateAnswer API を使用してナレッジ ベースを照会したり、Train API を使用して ([アクティブ ラーニング](../concepts/active-learning-suggestions.md)の一環として) 提案された新しい質問を送信したりするためのオブジェクトです。
 
+[!INCLUDE [Get KBinformation](./quickstart-sdk-cognitive-model.md)]
 
 ### <a name="qnamakerclient-object-model"></a>QnAMakerClient オブジェクト モデル
 
@@ -99,6 +109,8 @@ JSON オブジェクトを送信して、ナレッジ ベースを管理しま�
 
 予測の QnA Maker クライアントは、[QnAMakerRuntimeClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.qnamakerruntimeclient?view=azure-dotnet) オブジェクトです。ナレッジベースの発行後に作成クライアントの呼び出し (`client.EndpointKeys.GetKeys`) から返される Microsoft.Rest.ServiceClientCredentials (予測ランタイム キーを含む) を使用して Azure に対する認証を行います。
 
+クエリ ランタイムから回答を取得するには、[GenerateAnswer](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtimeextensions.generateanswer?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Knowledge_QnAMaker_RuntimeExtensions_GenerateAnswer_Microsoft_Azure_CognitiveServices_Knowledge_QnAMaker_IRuntime_System_String_Microsoft_Azure_CognitiveServices_Knowledge_QnAMaker_Models_QueryDTO_) メソッドを使用します。
+
 ## <a name="code-examples"></a>コード例
 
 以下のコード スニペットは、.NET 用 QnA Maker クライアント ライブラリを使用して次のことを実行する方法を示します。
@@ -109,38 +121,16 @@ JSON オブジェクトを送信して、ナレッジ ベースを管理しま�
 * [ナレッジ ベースのダウンロード](#download-a-knowledge-base)
 * [ナレッジ ベースの公開](#publish-a-knowledge-base)
 * [ナレッジ ベースの削除](#delete-a-knowledge-base)
-* [クエリ ランタイム キーを取得する](#get-query-runtime-key)
+* [クエリ ランタイム キーの取得](#get-query-runtime-key)
 * [操作の状態の取得](#get-status-of-an-operation)
 * [クエリ ランタイム クライアントを認証する](#authenticate-the-runtime-for-generating-an-answer)
 * [ナレッジ ベースから回答を生成する](#generate-an-answer-from-the-knowledge-base)
 
-## <a name="using-this-example-knowledge-base"></a>このサンプル ナレッジ ベースを使用する
 
-このクイックスタートのナレッジ ベースは、2 つの会話型 QnA ペアから始めます。これは、例を簡略化し、Update メソッドで使用するための高度に予測可能な ID を持つようにするために行われます。これにより、質問を含むフォローアップ プロンプトが新しいペアに関連付けられます。 このクイックスタートでは、特定の順序でこれを計画、実装しています。
-
-いずれ、既存の QnA ペアに依存するフォローアップ プロンプトを使用してナレッジ ベースを開発する予定である場合、次の方法を選択できます。
-* 大規模なナレッジベースの場合、自動化をサポートする TSV ツールまたはテキスト エディターでナレッジ ベースを管理し、その後一度に、ナレッジ ベース全体を更新版に置き換えます。
-* 比較的小規模なナレッジベースの場合、QnA Maker ポータルのみでフォローアップ プロンプトを管理します。
 
 ## <a name="authenticate-the-client-for-authoring-the-knowledge-base"></a>ナレッジ ベースを作成するためのクライアントを認証する
 
-**main** メソッドに、リソース名とリソースの Azure キーに対応する変数を作成します。 作成 URL と予測 URL では、どちらもリソース名がサブドメインとして使用されます。
-
-[!code-csharp[Set the resource key and resource name](~/cognitive-services-quickstart-code/dotnet/QnAMaker/SDK-based-quickstart/Program.cs?name=Resourcevariables)]
-
-
-> [!IMPORTANT]
-> Azure portal に移動し、前提条件で作成した QnA Maker リソースのキーとエンドポイントを探します。 それらは、リソースの **[key and endpoint]\(キーとエンドポイント\)** ページの **[リソース管理]** にあります。
-> ナレッジベースを作成するには、キー全体が必要です。 エンドポイントから必要となるのはリソース名のみです。 形式は `` のようになります。
-> 終わったらコードからキーを削除し、公開しないよう注意してください。 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 たとえば、[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) で安全なキー記憶域を確保できます。
-
-次に、自分のキーを使用して [ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.apikeyserviceclientcredentials?view=azure-dotnet) オブジェクトを作成し、それを自分のエンドポイントと共に使用して、[QnAMakerClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.qnamakerclient?view=azure-dotnet) オブジェクトを作成します。
-
-|可変|例|
-|--|--|
-|`authoringKey`|このキーは 32 文字の文字列で、Azure portal の QnA Maker リソースの **[Keys and endpoints]\(キーとエンドポイント\)** ページで入手できます。 これは、予測ランタイム キーとは異なります。|
-|`resourceName`| リソース名は、`https://{resourceName}.cognitiveservices.azure.com` という形式で使用されます。 これは、予測ランタイムを照会するときに使用した URL とは異なります。|
-||||
+キーを使用してクライアント オブジェクトをインスタンス化し、リソースと共にそれを使用してエンドポイントを構築し、エンドポイントとキーを使用して [QnAMakerClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.qnamakerclient?view=azure-dotnet) を作成します。 [ServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.rest.serviceclientcredentials?view=azure-dotnet) オブジェクトを作成します。
 
 [!code-csharp[Create QnAMakerClient object with key and endpoint](~/cognitive-services-quickstart-code/dotnet/QnAMaker/SDK-based-quickstart/Program.cs?name=AuthorizationAuthor)]
 
@@ -150,14 +140,19 @@ JSON オブジェクトを送信して、ナレッジ ベースを管理しま�
 
 * **本文**の場合は、[QnADTO](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.qnadto?view=azure-dotnet) オブジェクトを使用します。
     * メタデータとフォローアップ プロンプトを使用するには、編集コンテキストを使用します (このデータは個々の QnA ペア レベルで追加されるため)。
-* **ファイル**の場合は、[FileDTO](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.filedto?view=azure-dotnet) オブジェクトを使用します。
-* **URL** の場合は、文字列のリストを使用します。
+* **ファイル**の場合は、[FileDTO](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.filedto?view=azure-dotnet) オブジェクトを使用します。 FileDTO には、ファイル名と、ファイルに到達するためのパブリック URL が含まれます。
+* **URL** の場合は、公開されている URL を表す文字列のリストを使用します。
+
+作成手順には、ナレッジ ベースのプロパティも含まれます。
+* `defaultAnswerUsedForExtraction` - 回答が見つからない場合に返されるもの
+* `enableHierarchicalExtraction` - 抽出された QnA ペア間のプロンプト関係を自動的に作成する
+* `language` - リソースの最初のナレッジ ベースを作成するときに、Azure Search インデックスで使用する言語を設定する
 
 [CreateAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebaseextensions.createasync?view=azure-dotnet) メソッドを呼び出した後、返された操作 ID を [MonitorOperation](#get-status-of-an-operation) メソッドに渡して、状態をポーリングします。
 
 次のコードの最後の行では、MonitorOperation の応答からナレッジ ベース ID を返しています。
 
-[!code-csharp[Create a knowledge base](~/cognitive-services-quickstart-code/dotnet/QnAMaker/SDK-based-quickstart/Program.cs?name=CreateKBMethod&highlight=37-38)]
+[!code-csharp[Create a knowledge base](~/cognitive-services-quickstart-code/dotnet/QnAMaker/SDK-based-quickstart/Program.cs?name=CreateKBMethod&highlight=31)]
 
 ナレッジ ベースを適切に作成するには、上記のコードで参照されている [`MonitorOperation`](#get-status-of-an-operation) 関数を必ず含めます。
 
@@ -171,25 +166,29 @@ JSON オブジェクトを送信して、ナレッジ ベースを管理しま�
 
 ## <a name="download-a-knowledge-base"></a>ナレッジ ベースのダウンロード
 
-データベースを [QnADocumentsDTO](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.qnadocumentsdto?view=azure-dotnet) のリストとしてダウンロードするには、[DownloadAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebaseextensions.downloadasync?view=azure-dotnet) メソッドを使用します。 このメソッドの結果は TSV ファイルではないため、これは、QnA Maker ポータルの **[設定]** ページからのエクスポートと同等 "_ではありません_"。
+データベースを [QnADocumentsDTO](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.qnadocumentsdto?view=azure-dotnet) のリストとしてダウンロードするには、[DownloadAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebaseextensions.downloadasync?view=azure-dotnet) メソッドを使用します。 このメソッドの結果はファイルではないため、これは、QnA Maker ポータルの **[設定]** ページからのエクスポートと同等 "_ではありません_"。
 
-[!code-csharp[Download a knowledge base](~/cognitive-services-quickstart-code/dotnet/QnAMaker/SDK-based-quickstart/Program.cs?name=DownloadKB&highlight=3,4)]
+[!code-csharp[Download a knowledge base](~/cognitive-services-quickstart-code/dotnet/QnAMaker/SDK-based-quickstart/Program.cs?name=DownloadKB&highlight=3)]
 
 ## <a name="publish-a-knowledge-base"></a>ナレッジ ベースの公開
 
-[PublishAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebaseextensions.publishasync?view=azure-dotnet) メソッドを使用して、ナレッジ ベースを公開します。 これにより、ナレッジ ベース ID によって参照される、最新の保存済みおよびトレーニング済みのモデルが取得され、エンドポイントで公開されます。
+[PublishAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebaseextensions.publishasync?view=azure-dotnet) メソッドを使用して、ナレッジ ベースを公開します。 これにより、ナレッジ ベース ID によって参照される、最新の保存済みおよびトレーニング済みのモデルが取得され、エンドポイントで公開されます。 これは、ナレッジ ベースに対してクエリを実行するために必要な手順です。
 
 [!code-csharp[Publish a knowledge base](~/cognitive-services-quickstart-code/dotnet/QnAMaker/SDK-based-quickstart/Program.cs?name=PublishKB&highlight=3)]
 
-## <a name="get-query-runtime-key"></a>クエリ ランタイム キーを取得する
 
-ナレッジベースの発行後、ランタイムに対してクエリを実行するには、クエリ ランタイム キーが必要です。 これは、元のクライアント オブジェクトを作成するときに使用したキーとは異なります。
+
+## <a name="get-query-runtime-key"></a>クエリ ランタイム キーの取得
+
+ナレッジ ベースの公開後、ランタイムに対してクエリを実行するには、クエリ ランタイム キーが必要です。 これは、元のクライアント オブジェクトを作成するときに使用したキーとは異なります。
 
 [EndpointKeys](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.endpointkeys.getkeyswithhttpmessagesasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Knowledge_QnAMaker_EndpointKeys_GetKeysWithHttpMessagesAsync_System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_Threading_CancellationToken_) メソッドを使用して、[EndpointKeysDTO](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.endpointkeysdto?view=azure-dotnet) クラスを取得します。
 
-そのオブジェクトに返されたいずれかのキー プロパティを使用して、ナレッジベースにクエリを実行します。
+そのオブジェクトに返されたいずれかのキー プロパティを使用して、ナレッジ ベースにクエリを実行します。
 
 [!code-csharp[Get query runtime key](~/cognitive-services-quickstart-code/dotnet/QnAMaker/SDK-based-quickstart/Program.cs?name=GetQueryEndpointKey&highlight=3)]
+
+ナレッジ ベースに対してクエリを実行するには、ランタイム キーが必要です。
 
 ## <a name="authenticate-the-runtime-for-generating-an-answer"></a>回答を生成するためのランタイムを認証する
 
@@ -197,7 +196,9 @@ JSON オブジェクトを送信して、ナレッジ ベースを管理しま�
 
 [!code-csharp[Authenticate the runtime](~/cognitive-services-quickstart-code/dotnet/QnAMaker/SDK-based-quickstart/Program.cs?name=AuthorizationQuery)]
 
-QnAMakerRuntimeClient を使用してナレッジから回答を取得するか、または、[アクティブ ラーニング](../concepts/active-learning-suggestions.md)を目的として提案された新しい質問をナレッジ ベースに送信します。
+QnAMakerRuntimeClient を使用して、次のことを行います。
+* ナレッジ ベースから回答を取得する
+* [アクティブ ラーニング](../concepts/active-learning-suggestions.md)のために、新しく提案された質問をナレッジ ベースに送信する
 
 ## <a name="generate-an-answer-from-the-knowledge-base"></a>ナレッジ ベースから回答を生成する
 
@@ -225,10 +226,8 @@ create や update などのメソッドの中には、プロセスが終了す�
 
 自分のアプリケーション ディレクトリで `dotnet run` コマンドを使用してアプリケーションを実行します。
 
-この記事にあるすべてのコード スニペットは、[入手可能](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py)であり、1 つのファイルとして実行できます。
-
 ```dotnetcli
 dotnet run
 ```
 
-* このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/QnAMaker/SDK-based-quickstart) にあります。
+このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/QnAMaker/SDK-based-quickstart) にあります。

@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: 71fca8f7dd808058e88d5a5ffe9a64e1136ceefc
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: df185f8b75af6a845306fccc18d7d3cce74d0815
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84736514"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249174"
 ---
-# <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Azure portal を使用して Azure SQL データベースから Azure Blob Storage にデータを増分読み込みする
+# <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Azure portal を使用して Azure SQL Database から Azure Blob Storage にデータを増分読み込みする
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-このチュートリアルでは、Azure SQL データベース内のテーブルから Azure BLOB ストレージに差分データを読み込むパイプラインを使用して Azure Data Factory を作成します。
+このチュートリアルでは、Azure SQL Database 内のテーブルから Azure BLOB ストレージに差分データを読み込むパイプラインを使用して Azure Data Factory を作成します。
 
 このチュートリアルでは、以下の手順を実行します。
 
@@ -65,7 +65,7 @@ ms.locfileid: "84736514"
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 ## <a name="prerequisites"></a>前提条件
-* **Azure SQL データベース**。 ソース データ ストアとして使うデータベースです。 SQL データベースがない場合の作成手順については、「[Azure SQL データベースを作成する](../azure-sql/database/single-database-create-quickstart.md)」を参照してください。
+* **Azure SQL データベース**。 ソース データ ストアとして使うデータベースです。 Azure SQL Database のデータベースがない場合の作成手順については、[Azure SQL Database のデータベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関するページを参照してください。
 * **Azure Storage**。 シンク データ ストアとして使用する BLOB ストレージです。 Azure ストレージ アカウントがない場合の作成手順については、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md)」を参照してください。 adftutorial という名前のコンテナーを作成します。 
 
 ### <a name="create-a-data-source-table-in-your-sql-database"></a>SQL データベースにデータ ソース テーブルを作成する
@@ -103,6 +103,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ```
 
 ### <a name="create-another-table-in-your-sql-database-to-store-the-high-watermark-value"></a>高基準値の格納用としてもう 1 つテーブルを SQL データベースに作成する
+
 1. SQL データベースに対して次の SQL コマンドを実行し、基準値の格納先として `watermarktable` という名前のテーブルを作成します。  
 
     ```sql
@@ -169,7 +170,7 @@ END
          
         リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。  
 6. **バージョン**として **[V2]** を選択します。
-7. データ ファクトリの **場所** を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
+7. データ ファクトリの **場所** を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database、Azure SQL Managed Instance など) とコンピューティング (HDInsight など) は他のリージョンに配置できます。
 8. **Create** をクリックしてください。      
 9. 作成が完了すると、図に示されているような **[Data Factory]** ページが表示されます。
 
@@ -199,7 +200,7 @@ END
     2. **[サーバー名]** で、サーバーを選択します。
     3. ドロップダウン リストから **[データベース名]** を選択します。
     4. **[ユーザー名]**  &  **[パスワード]** の順に入力します。
-    5. Azure SQL データベースへの接続をテストするために、 **[テスト接続]** をクリックします。
+    5. SQL データベースへの接続をテストするために、 **[テスト接続]** をクリックします。
     6. **[完了]** をクリックします。
     7. **[リンクされたサービス]** で **AzureSqlDatabaseLinkedService** が選択されていることを確認します。
 
@@ -322,7 +323,7 @@ END
 
 ## <a name="add-more-data-to-source"></a>ソースにデータを追加する
 
-SQL データベース (データ ソース ストア) に新しいデータを挿入します。
+データベース (データ ソース ストア) に新しいデータを挿入します。
 
 ```sql
 INSERT INTO data_source_table
@@ -332,7 +333,7 @@ INSERT INTO data_source_table
 VALUES (7, 'newdata','9/7/2017 9:01:00 AM')
 ```
 
-SQL データベース内の更新されたデータは次のとおりです。
+データベース内の更新されたデータは次のとおりです。
 
 ```
 PersonID | Name | LastModifytime
@@ -346,8 +347,8 @@ PersonID | Name | LastModifytime
 7 | newdata | 2017-09-07 09:01:00.000
 ```
 
-
 ## <a name="trigger-another-pipeline-run"></a>もう一つのパイプラインの実行をトリガーする
+
 1. **[編集]** タブに切り替えます。デザイナーでパイプラインが開かれていない場合は、ツリー ビューでパイプラインをクリックします。
 
 2. ツール バーの **[トリガーの追加]** をクリックし、 **[Trigger Now]\(今すぐトリガー\)** をクリックします。
@@ -398,7 +399,7 @@ PersonID | Name | LastModifytime
 > * 2 回目のパイプラインの実行を監視します
 > * 2 回目の実行の結果を確認します
 
-このチュートリアルでは、パイプラインで SQL データベース内の単一のテーブルから BLOB ストレージにデータをコピーしました。 次のチュートリアルに進んで、SQL Server データベースにある複数のテーブルから SQL Database にデータをコピーする方法について学習しましょう。
+このチュートリアルでは、パイプラインで SQL Database 内の単一のテーブルから BLOB ストレージにデータをコピーしました。 次のチュートリアルに進んで、SQL Server データベースにある複数のテーブルから SQL Database にデータをコピーする方法について学習しましょう。
 
 > [!div class="nextstepaction"]
 >[SQL Server にある複数のテーブルから Azure SQL Database にデータを増分読み込みする](tutorial-incremental-copy-multiple-tables-portal.md)

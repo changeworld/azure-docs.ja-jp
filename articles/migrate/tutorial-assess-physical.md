@@ -3,12 +3,12 @@ title: Azure に移行するために Azure Migrate Server Assessment を使用�
 description: Azure Migrate Server Assessment を使用して、Azure に移行するためにオンプレミスの物理サーバーを評価する方法について説明します。
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: ee88f9058abc89a671fa846a67c22a752f0d05e4
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 2c0662c6ccf66f09413891c99da789c50847277e
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85052200"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080770"
 ---
 # <a name="assess-physical-servers-with-azure-migrateserver-assessment"></a>Azure Migrate:Server Assessment を使用して物理サーバーを評価する
 
@@ -80,7 +80,7 @@ Azure Migrate: Server Assessment では、軽量のアプライアンスが実�
     - ZIP ファイルの内容を抽出します。 管理特権で PowerShell コンソールを起動します。
     - PowerShell スクリプトを実行して、アプライアンス Web アプリケーションを起動します。
     - アプライアンスを初めて構成し、Azure Migrate プロジェクトに登録します。
-- 1 つの Azure Migrate プロジェクトに対して、複数のアプライアンスを設定できます。 すべてのアプライアンスで多数の物理サーバーを検出できます。 アプライアンスごとに最大 250 台のサーバーを検出できます。
+- 1 つの Azure Migrate プロジェクトに対して、複数のアプライアンスを設定できます。 すべてのアプライアンスで多数の物理サーバーを検出できます。 アプライアンスごとに最大 1000 台のサーバーを検出できます。
 
 ### <a name="download-the-installer-script"></a>インストーラー スクリプトをダウンロードする
 

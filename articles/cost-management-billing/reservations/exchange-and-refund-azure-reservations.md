@@ -6,12 +6,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: banders
-ms.openlocfilehash: e924c46632e37c6d196fae2db729c17a99bbae3b
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 3c2f92db1f65a4e9e57ad443a9f000ab3f6567d5
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84765116"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85101031"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure の予約のセルフサービスによる交換と払戻
 
@@ -20,9 +20,6 @@ Azure の予約は、変化するニーズを満たすために柔軟性を提�
 セルフ サービスの交換およびキャンセルの機能は、米国政府のエンタープライズ契約のお客様は利用できません。 従量課金制やクラウド ソリューション プロバイダー (CSP) などの他の種類の米国政府機関向けサブスクリプションがサポートされています。
 
 既存の予約を交換または払い戻しするには、予約注文の所有者アクセス権を持っている必要があります。 [予約を管理できるユーザーを追加または変更する](https://docs.microsoft.com/azure/cost-management-billing/reservations/manage-reserved-vm-instance#add-or-change-users-who-can-manage-a-reservation)ことができます。
-
-> [!NOTE]
-> 現在は、予約の払戻に対する中途解約料は請求されません。 将来は、払戻の料金が請求される可能性があります。 現在、この料金が実施される日程は未定です。
 
 ## <a name="how-to-exchange-or-refund-an-existing-reservation"></a>既存の予約の交換または払戻を行う方法
 
@@ -75,7 +72,7 @@ Azure には、キャンセル、交換、払戻に関して次のポリシー�
 
 **払戻ポリシー**
 
-- 現在、中途解約料は課金されませんが、将来は 12% の解約料が発生する可能性があります。
+- キャンセルに対して 12% の中途解約料が発生する可能性があります。
 - 取り消したコミットメントの合計が、12 か月のローリング ウィンドウで 50,000 ドルを超えないようにする必要があります。 たとえば、1 か月あたり 100 米国ドルの 3 年間の予約を 18 か月目に払い戻した場合、取り消したコミットメント額は 1,800 米国ドルとなります。 この払い戻し後は、48,200 米国ドルが、払い戻し可能な新しい限度額となります。 この払い戻しから 365 日後、48,200 米国ドルという上限が 1,800 米国ドル増やされ、新しいプールは 50,000 米国ドルとなります。 以降すべての予約取り消しは同じプールから減額され、同じ補充ロジックが適用されます。
 - 払い戻し額は、購入価格または予約の現在の価格のいずれかの最低価格に基づいて計算されます。
 - 払戻を処理できるのは、予約注文の所有者のみです。 [予約を管理できるユーザーを追加または変更する](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)方法を参照してください。

@@ -5,16 +5,16 @@ services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: f70c14c424e8aaecbdc1138b52fdd6fb1e9fc265
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 2c5f65993909e142de6017b07591529cd7cb7b86
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85051807"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85200581"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>SQL オンデマンド (プレビュー) で OPENROWSET を使用する方法
 
@@ -52,7 +52,7 @@ Synapse SQL の OPENROWSET 関数は、データ ソースからファイルの�
     > `DATA_SOURCE` を指定しない `OPENROWSET` では、ストレージ ファイルにすばやく簡単にアクセスできますが、認証オプションが限られます。 例として、Azure AD プリンシパルは、[Azure AD ID](develop-storage-files-storage-access-control.md?tabs=user-identity) を使用した場合にのみファイルにアクセスできるほか、公開されているファイルにアクセスすることができます。 より強力な認証オプションが必要な場合は、`DATA_SOURCE` オプションを使用して、ストレージへのアクセスに使用する資格情報を定義します。
 
 
-## <a name="security"></a>Security
+## <a name="security"></a>セキュリティ
 
 データベース ユーザーが `OPENROWSET` 関数を使用するには `ADMINISTER BULK OPERATIONS` 権限が必要です。
 
@@ -178,7 +178,7 @@ ESCAPE_CHAR = 'char'
 
 ファイル内でそれ自体とすべての区切り記号の値をエスケープするために使用するファイル内の文字を指定します。 エスケープ文字の後にそれ自体以外の値、またはいずれかの区切り記号の値が続く場合は、その値を読み取るときにエスケープ文字が削除されます。 
 
-ESCAPE_CHAR パラメーターは、FIELDQUOTE が有効かどうかに関係なく適用されます。 引用文字をエスケープするために使用されることはありません。 引用文字は、Excel CSV の動作に合わせて二重引用符でエスケープされます。
+ESCAPE_CHAR パラメーターは、FIELDQUOTE が有効かどうかに関係なく適用されます。 引用文字をエスケープするために使用されることはありません。 引用文字は、別の引用文字でエスケープする必要があります。 引用文字は、値が引用文字で囲まれている場合にのみ、列の値の中で使用できます。
 
 FIRSTROW = 'first_row' 
 

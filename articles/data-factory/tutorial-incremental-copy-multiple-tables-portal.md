@@ -1,6 +1,6 @@
 ---
 title: Azure portal を使用して複数のテーブルを増分コピーする
-description: このチュートリアルでは、SQL Server データベースにある複数のテーブルから Azure SQL データベースに差分データを増分コピーする Azure Data Factory パイプラインを作成します。
+description: このチュートリアルでは、SQL Server データベースにある複数のテーブルから Azure SQL Database のデータベースに差分データを増分コピーする Azure Data Factory パイプラインを作成します。
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: 2578d1b6fa07545e7205b8a8c86447ef2e54176a
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: c215c2cb256ab37bcb096c018aefb3a410ab1e4f
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84730103"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251150"
 ---
-# <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database-using-the-azure-portal"></a>Azure portal を使用して、SQL Server にある複数のテーブルから Azure SQL データベースにデータを増分読み込みする
+# <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-a-database-in-azure-sql-database-using-the-azure-portal"></a>Azure portal を使用して、SQL Server にある複数のテーブルから Azure SQL Database のデータベースにデータを増分読み込みする
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-このチュートリアルでは、SQL Server データベースにある複数のテーブルから Azure SQL データベースに差分データを読み込むパイプラインを使用して Azure Data Factory を作成します。    
+このチュートリアルでは、SQL Server データベースにある複数のテーブルから Azure SQL Database のデータベースに差分データを読み込むパイプラインを使用して Azure データ ファクトリを作成します。    
 
 このチュートリアルでは、以下の手順を実行します。
 
@@ -69,7 +69,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 * **SQL Server**。 このチュートリアルでは、SQL Server データベースをソース データ ストアとして使用します。 
-* **Azure SQL データベース**。 シンク データ ストアとして SQL データベースを使用します。 SQL データベースがない場合の作成手順については、「[Azure SQL データベースを作成する](../azure-sql/database/single-database-create-quickstart.md)」を参照してください。 
+* **Azure SQL データベース**。 シンク データ ストアとして Azure SQL Database のデータベースを使用します。 SQL Database のデータベースがない場合の作成手順については、[Azure SQL Database のデータベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関するページを参照してください。 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>SQL Server データベースにソース テーブルを作成する
 
@@ -111,12 +111,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     
     ```
 
-### <a name="create-destination-tables-in-your-azure-sql-database"></a>Azure SQL データベースにターゲット テーブルを作成する
-1. SQL Server Management Studio を開き、Azure SQL データベースに接続します。
+### <a name="create-destination-tables-in-your-database"></a>データベースにターゲット テーブルを作成する
+
+1. SQL Server Management Studio を開き、Azure SQL Database のデータベースに接続します。
 
 1. **サーバー エクスプローラー**で目的のデータベースを右クリックし、 **[新しいクエリ]** を選択します。
 
-1. Azure SQL データベースに対して次の SQL コマンドを実行し、`customer_table` および `project_table` という名前のテーブルを作成します。  
+1. データベースに対して次の SQL コマンドを実行し、`customer_table` および `project_table` という名前のテーブルを作成します。  
     
     ```sql
     create table customer_table
@@ -134,8 +135,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ```
 
-### <a name="create-another-table-in-the-azure-sql-database-to-store-the-high-watermark-value"></a>高基準値の格納用としてもう 1 つテーブルを Azure SQL データベースに作成する
-1. Azure SQL データベースに対して次の SQL コマンドを実行し、`watermarktable` という名前のテーブルを作成して、基準値を格納します。 
+### <a name="create-another-table-in-your-database-to-store-the-high-watermark-value"></a>高基準値の格納用としてもう 1 つテーブルをデータベースに作成する
+
+1. データベースに対して次の SQL コマンドを実行し、基準値の格納先として `watermarktable` という名前のテーブルを作成します。 
     
     ```sql
     create table watermarktable
@@ -156,9 +158,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     
     ```
 
-### <a name="create-a-stored-procedure-in-the-azure-sql-database"></a>Azure SQL データベースにストアド プロシージャを作成する 
+### <a name="create-a-stored-procedure-in-your-database"></a>データベースにストアド プロシージャを作成する
 
-次のコマンドを実行して、Azure SQL データベースにストアド プロシージャを作成します。 パイプラインの実行後は都度、このストアド プロシージャによって基準値が更新されます。 
+次のコマンドを実行して、データベースにストアド プロシージャを作成します。 パイプラインの実行後は都度、このストアド プロシージャによって基準値が更新されます。 
 
 ```sql
 CREATE PROCEDURE usp_write_watermark @LastModifiedtime datetime, @TableName varchar(50)
@@ -174,8 +176,9 @@ END
 
 ```
 
-### <a name="create-data-types-and-additional-stored-procedures-in-azure-sql-database"></a>Azure SQL データベースにデータ型と新たなストアド プロシージャを作成する
-次のクエリを実行して、2 つのストアド プロシージャと 2 つのデータ型を Azure SQL データベースに作成します。 それらは、ソース テーブルから宛先テーブルにデータをマージするために使用されます。
+### <a name="create-data-types-and-additional-stored-procedures-in-your-database"></a>データベースにデータ型と新たなストアド プロシージャを作成する
+
+次のクエリを実行して、2 つのストアド プロシージャと 2 つのデータ型をデータベースに作成します。 それらは、ソース テーブルから宛先テーブルにデータをマージするために使用されます。
 
 作業工程を簡単に始められるように、差分データをテーブル変数を介して渡すこのようなストアド プロシージャを直接使用し、それらを宛先ストアにマージします。 テーブル変数には、"多数" の差分行 (100 を超える行) が格納されることが想定されていない点に注意してください。  
 
@@ -285,7 +288,7 @@ END
 1. 統合ランタイムの一覧に **MySelfHostedIR** が含まれていることを確認します。
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
-データ ストアおよびコンピューティング サービスをデータ ファクトリにリンクするには、リンクされたサービスをデータ ファクトリに作成します。 このセクションでは、SQL Server データベースと Azure SQL データベースに対するリンクされたサービスを作成します。 
+データ ストアおよびコンピューティング サービスをデータ ファクトリにリンクするには、リンクされたサービスをデータ ファクトリに作成します。 このセクションでは、SQL Server データベースと、Azure SQL Database のデータベースに対するリンクされたサービスを作成します。 
 
 ### <a name="create-the-sql-server-linked-service"></a>SQL Server のリンクされたサービスを作成する
 この手順では、SQL Server データベースをデータ ファクトリにリンクします。
@@ -308,7 +311,7 @@ END
     1. リンクされたサービスを保存するために、 **[完了]** をクリックします。
 
 ### <a name="create-the-azure-sql-database-linked-service"></a>Azure SQL Database のリンクされたサービスを作成する
-最後の手順では、ソース SQL Server データベースをデータ ファクトリに接続するためのリンクされたサービスを作成します。 この手順では、ターゲット/シンク Azure SQL データベースをデータ ファクトリにリンクします。 
+最後の手順では、ソース SQL Server データベースをデータ ファクトリに接続するためのリンクされたサービスを作成します。 この手順では、ターゲット/シンク データベースをデータ ファクトリにリンクします。 
 
 1. **[接続]** ウィンドウで、 **[Integration Runtimes]\(統合ランタイム\)** タブから **[リンクされたサービス]** タブに切り替え、 **[+ 新規]** をクリックします。
 1. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで **[Azure SQL Database]** を選択し、 **[続行]** をクリックします。 
@@ -316,8 +319,8 @@ END
 
     1. **[名前]** に「**AzureSqlDatabaseLinkedService**」と入力します。 
     1. **[サーバー名]** で、ドロップダウン リストからサーバーの名前を選択します。 
-    1. **[データベース名]** で、前提条件の一部として customer_table と project_table を作成した Azure SQL データベースを選択します。 
-    1. **[ユーザー名]** に、Azure SQL データベースにアクセスできるユーザーの名前を入力します。 
+    1. **[データベース名]** で、前提条件の一部として customer_table と project_table を作成したデータベースを選択します。 
+    1. **[ユーザー名]** に、データベースにアクセスするユーザーの名前を入力します。 
     1. **[パスワード]** に、ユーザーの**パスワード**を入力します。 
     1. Data Factory が SQL Server データベースに接続できるかどうかをテストするために、 **[Test connection]\(テスト接続\)** をクリックします。 エラーがあれば修正して、正常に接続できるようにします。 
     1. リンクされたサービスを保存するために、 **[完了]** をクリックします。

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a01d8568c50cca181ec10f91b316715d64d2c37e
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 8a20d7cb05f4529d5aa8a115b7d1db6e4d812be0
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84737837"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100851"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>チュートリアル:Azure portal を使用してホスト プールを作成する
 
