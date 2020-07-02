@@ -99,4 +99,4 @@ SQL Server Management Studio で、次の手順に従って、Wide World Importe
 - 手順 5 で、データベースの復元がメッセージ ID 22003 で終了した場合は、バックアップ チェックサムを含む新しいバックアップ ファイルを作成し、復元を再度実行します。 「[バックアップ中または復元中にバックアップ チェックサムを有効または無効にする](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server)」を参照してください。
 - URL へのバックアップのトラブルシューティングについては、「[SQL Server Backup to URL に関するベスト プラクティスとトラブルシューティング](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url-best-practices-and-troubleshooting)」を参照してください。
 - アプリの接続オプションの概要については、[SQL Managed Instance へのアプリケーションの接続](connect-application-instance.md)に関するページを参照してください。
-- 任意のツールまたは言語を使用してクエリを実行する方法については、「[クイック スタート:Azure SQL Database の接続とクエリ](../database/connect-query-content-reference-guide.md)」を参照してください。
+- 任意のツールまたは言語を使用してクエリを実行する方法については、[Azure SQL Database の接続とクエリに関するクイック スタート](../database/connect-query-content-reference-guide.md)を参照してください。

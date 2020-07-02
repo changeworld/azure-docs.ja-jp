@@ -48,7 +48,7 @@ Hadoop では、1 つのファイルを複数のファイルに分割 ( *"マッ
 
 1. 制限パラメーターを変更するには、Tez サービスの **[Configs]\(構成\)** タブに移動します。 **[General]\(全般\)** パネルを展開し、`tez.grouping.max-size` パラメーターと `tez.grouping.min-size` パラメーターを見つけます。
 
-1. 両方のパラメーターを ** 33,554,432 ** バイト(32 MB) に設定します。
+1. 両方のパラメーターを **33,554,432** バイト(32 MB) に設定します。
 
     ![Apache Ambari の Tez のグループ化サイズ](./media/optimize-hive-ambari/apache-tez-grouping-size.png)
 
