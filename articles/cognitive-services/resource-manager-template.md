@@ -9,16 +9,16 @@ ms.topic: quickstart
 ms.date: 06/18/2020
 ms.author: aahi
 ms.custom: subject-armqs
-ms.openlocfilehash: 30e3f901d9feca07902e20c87f4fbf5b6979a11b
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: fbaa10ec8a0b48d40644bb90144d89f53ab52563
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85299485"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513541"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Cognitive Services リソースを作成する
 
-この記事では、Azure Resource Manager (ARM) テンプレートを使用して、Cognitive Services リソースを作成およびデプロイする方法について説明します。 このマルチサービス リソースにより、次のことが可能になります。
+この記事では、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、Cognitive Services リソースを作成およびデプロイする方法について説明します。 このマルチサービス リソースにより、次のことが可能になります。
 * 1 つのキーとエンドポイントを使用して複数の Azure Cognitive Services にアクセスします。
 * ご利用の複数のサービスの課金を統合します。
 

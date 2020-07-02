@@ -3,12 +3,12 @@ title: 'チュートリアル: 機械学習エンティティを使用して構�
 description: 機械学習エンティティを使用して発話から構造化データを抽出します。 抽出精度を高めるには、特徴量を含むサブエンティティを追加します。
 ms.topic: tutorial
 ms.date: 05/08/2020
-ms.openlocfilehash: f9a732d38d2d4557340080d9d1bbdcf789caea08
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: e16badfb2e024c5d82f1aed8a02aa901dca2c2a9
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83676178"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611018"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learning-entities-in-language-understanding-luis"></a>チュートリアル:Language Understanding (LUIS) で機械学習エンティティを使用して、ユーザーの発話から構造化データを抽出する
 
@@ -98,7 +98,7 @@ ms.locfileid: "83676178"
 
 1. ドロップダウン メニューで **[Create new phrase list]\(新しい語句一覧の作成\)** を選択します。
 
-1. **[Create new phrase list]\(新しい語句一覧の作成\)** ボックスに名前「`SizePhraselist`」を入力し、値 `small`、`medium`、`large` を入力します。 **[Suggestions]\(候補\)** ボックスに候補が表示されたら、`extra large` と `xl` を選択します。 **[保存]** を選択すると、新しい語句一覧が作成されます。
+1. **[Create new phrase list]\(新しい語句一覧の作成\)** ボックスに名前「`SizePhraselist`」を入力し、値 `small`、`medium`、`large` を入力します。 **[Suggestions]\(候補\)** ボックスに候補が表示されたら、`extra large` と `xl` を選択します。 **[作成]** を選択すると、新しい語句一覧が作成されます。
 
     この語句一覧の特徴量によって単語の例が提供されるため、`Size` サブエンティティがサイズに関連する単語を見つけやすくなります。 この語句一覧にサイズに関連するすべての単語が含まれている必要はありませんが、サイズを示すことが想定される単語は含まれている必要があります。
 
@@ -131,7 +131,7 @@ ms.locfileid: "83676178"
 
 1. **[Schema and features]\(スキーマと特徴量\)** タブで、**Size** エンティティを選択して、 **[+ Add feature]\(+ 特徴量の追加\)** を選択します。
 
-1. ドロップダウン リストから **[@ SizeList]** を選択します。
+1. ドロップダウン リストから **[@ SizeListentity]** を選択します。
 
 <a name="add-prebuilt-number-entity-to-app"></a>
 

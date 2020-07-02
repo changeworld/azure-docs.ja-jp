@@ -12,12 +12,12 @@ ms.date: 04/14/2020
 ms.author: trbye
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-two-with-js
-ms.openlocfilehash: 2bba1536c9d0990eb771f62d27b852ae1eb3b45c
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: ddcfeaad70e6552f94f9c87b6e9cf24ed15bfba8
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84604617"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611470"
 ---
 # <a name="learn-the-basics-of-speech-synthesis"></a>音声合成の基本を学ぶ
 
@@ -29,8 +29,8 @@ ms.locfileid: "84604617"
 * ニューラル音声を使用する
 
 > [!TIP]
-> クイックスタートのいずれかを完了する機会がなかった場合は、ご自分で動作方法の確認をして音声認識を試してみることをお勧めします。
-> * [マイクから音声を認識する](quickstarts/text-to-speech.md)
+> クイックスタートのいずれかを完了する機会がなかった場合は、ご自分で動作方法の確認をしてテキスト読み上げを試してみることをお勧めします。
+> * [スピーカーに音声を合成する](quickstarts/text-to-speech.md)
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# Basics include](includes/how-to/text-to-speech-basics/text-to-speech-basics-csharp.md)]
