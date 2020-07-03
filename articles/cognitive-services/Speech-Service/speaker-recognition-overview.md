@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: trbye
-ms.openlocfilehash: 2d4ce6f274efbd4d8afe2ac48856b0fc312f0a09
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: a333a61a28fabddc2e8101fdf3290c52f3db59ae
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84261771"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84780887"
 ---
 # <a name="what-is-the-azure-speaker-recognition-service"></a>Azure Speaker Recognition サービスとは
 
@@ -27,7 +27,7 @@ Speaker Recognition サービスは、固有の音声特性によって話者を
 
 ### <a name="how-does-speaker-verification-work"></a>話者認証のしくみ
 
-![話者認証のしくみ](media/speaker-recognition/speaker-rec.png)
+:::image type="content" source="media/speaker-recognition/speaker-rec.png" alt-text="話者認証フローチャート。":::
 
 話者認証には、テキストに依存する種類とテキストに依存しない種類があります。 **テキストに依存する**検証は、登録フェーズと検証フェーズの両方で、使用する同じパスフレーズを話者が選択する必要があることを意味します。 **テキストに依存しない**検証は、話者が登録および検証のフレーズで日常的な言語で話すことができることを意味します。
 
@@ -56,7 +56,22 @@ API の目的は、オーディオがライブ ユーザーの声か、声をま
 
 Cognitive Services リソース全般に言えることですが、話者認識サービスを使用する開発者は、顧客データに関する Microsoft のポリシーに留意する必要があります。 開発者は、話者認識用の適切なアクセス許可が、ユーザーから付与されていることを確認する必要があります。 詳細については、Microsoft セキュリティ センターの  [Cognitive Services のページ](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/) を参照してください。 
 
+## <a name="common-questions-and-solutions"></a>一般的な質問と解決策
+
+| Question | 解決策 |
+|---------|----------|
+| Speaker Recognition はどのようなシナリオで使用できますか。 | コール センターでの顧客認証、音声ベースの患者チェックイン、会議の文字起こし、マルチユーザー デバイスのパーソナル化|
+| 識別と認証の違いは何ですか。 | 識別とは、話者のグループの内、どのメンバーが話しているかを検出するプロセスです。 認証では、話者が既知の、または**登録されている**音声と一致することを確認します。|
+| テキスト依存の認証およびテキストに依存しない認証の違いとは。 | テキスト依存の認証では、登録と認識の両方に特定のパスフレーズが必要です。 テキストに依存しない認証では、より長い音声サンプルが登録に必要ですが、認識時を含め、任意の内容を発話できます。|
+| どの言語がサポートされていますか。 | 英語、フランス語、スペイン語、中国語、ドイツ語、イタリア語、日本語、ポルトガル語 |
+| どの Azure リージョンがサポートされていますか。 | Speaker Recognition はプレビュー サービスであり、現在は米国西部リージョンでのみご利用いただけます。|
+| サポートされているオーディオ形式は何ですか。 | Mono 16 ビット、16kHz PCM エンコード済み WAV |
+| **Accept** と **Reject** 応答が正確ではない場合、しきい値はどのように調整しますか。 | 最適なしきい値はシナリオによって大きく変化するため、API は、単純に既定のしきい値である 0.5 に基づいて、"Accept" または "Reject" を決定します。 上級ユーザーは、既定の決定を上書きし、実際のシナリオに基づいて結果を微調整することをお勧めします。 |
+| 1 人の話者を複数回登録できますか。 | はい。テキスト依存の認証では、話者を最大 50 回登録できます。 テキストに依存しない認証、または話者識別では、最大 300 秒の音声を登録できます。 |
+| Azure に格納されるデータは何ですか。 | 登録音声は、音声プロファイルが[削除](speaker-recognition-basics.md#deleting-voice-profile-enrollments)されるまでサービスに格納されます。 認識音声サンプルは保持または保存されません。 |
+
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
+> * アプリケーションで使用できる一般的なデザイン パターンの実行に関する、Speaker Recognition の[基本の記事](speaker-recognition-basics.md)を完了してください。
 > * テキストに依存しない話者認証については、[ビデオ チュートリアル](https://azure.microsoft.com/resources/videos/speaker-recognition-text-independent-verification-developer-tutorial/)を参照してください。

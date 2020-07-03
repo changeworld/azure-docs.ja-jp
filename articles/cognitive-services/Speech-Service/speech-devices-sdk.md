@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: erhopf
-ms.openlocfilehash: 3fb5f1df0eb4473483c9298cdbf36909b75065e7
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 4ec153a9c770b0001888c972dc44414470e3ddbf
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927209"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84730307"
 ---
 # <a name="what-is-the-speech-devices-sdk"></a>Speech Devices SDK とは
 
@@ -37,7 +37,11 @@ Speech Devices SDK を使用すると、[音声アシスタント](https://aka.m
 
 ### <a name="android"></a>Android
 
-Android の場合、デバイスでは [Android Speech Devices SDK](https://aka.ms/sdsdk-download-android) の最新バージョンがダウンロードされます。
+Android 用の Speech Devices SDK は、[Roobo v1](speech-devices-sdk-roobo-v1.md) と同等のデバイスをサポートしています。使用するには、[Android Speech Devices SDK](https://aka.ms/sdsdk-download-android) の最新バージョンをダウンロードします。
+
+
+別の Android デバイス (電話やモバイルなど) がある場合は、[Android Speech SDK](speech-sdk.md) から開始します
+
 
 ### <a name="windows"></a>Windows
 
