@@ -33,7 +33,7 @@ Azure Cosmos DB アカウントをワークスペースに接続する前に、�
 
 ## <a name="navigate-to-synapse-studio"></a>Synapse Studio に移動する
 
-Synapse ワークスペースから、 **[Synapse Studio の起動]** を選択します。 Synapse Studio のホーム ページで、[**データ] を選択します。これにより、**データ オブジェクト エクスプローラー**に移動します。
+Synapse ワークスペースから、 **[Synapse Studio の起動]** を選択します。 Synapse Studio のホーム ページで、[**データ] を選択します。これにより、 **データ オブジェクト エクスプローラー** に移動します。
 
 ## <a name="connect-an-azure-cosmos-db-database-to-a-synapse-workspace"></a>Azure Cosmos DB データベースを Synapse ワークスペースに接続する
 
