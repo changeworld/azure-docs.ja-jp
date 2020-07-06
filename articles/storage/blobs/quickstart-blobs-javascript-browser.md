@@ -7,12 +7,12 @@ ms.date: 04/18/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 4d486b8ffc921a5ca2f38bef912ba6dc46ecec40
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: af76025317436f7046b857731e4c8af9b504201f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83634080"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833419"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -302,7 +302,7 @@ Visual Studio Code の**ターミナル** コンソールをクリックし、Ct
 チュートリアル、サンプル、クイックスタートなどのドキュメントについては、次のページを参照してください。
 
 > [!div class="nextstepaction"]
-> [Azure for JavaScript のドキュメント](/azure/javascript/)
+> [Azure for JavaScript のドキュメント](/azure/developer/javascript/)
 
 * 詳細については、[JavaScript 用 Azure Blob Storage クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob)に関するページを参照してください。
 * Blob Storage のサンプル アプリの詳細については、[Azure Blob Storage クライアント ライブラリ v12 JavaScript サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples) ページを参照してください。
