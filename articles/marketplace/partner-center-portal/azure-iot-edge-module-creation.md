@@ -292,7 +292,7 @@ Azure サブスクリプション ID は少なくとも 1 つ追加します。�
 
 マーケットプレースを利用するすべてのグローバル Azure リージョンで顧客がプランを利用できるよう、 **[Azure Global]** オプションを選択します。 詳細については、「[利用可能な地域と通貨サポート](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)」を参照してください。
 
-[[Azure Government クラウド]](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) オプションを選択すると、ソリューションがここに表示されます。 これはアメリカの連邦政府顧客、州政府顧客、地方自治体顧客、部族政府顧客と、そのような顧客にサービスを提供する資格があるパートナーのための政府機関コミュニティ クラウドであり、アクセスが制御されています。 公開元はこのクラウド コミュニティのコンプライアンス制御、セキュリティ対策、ベスト プラクティスに責任を負います。 Azure Government では、物理的に離れた場所にあるデータ センターとネットワークが使用されます (場所は米国のみ)。 Azure Government に[公開](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners)する前に、その領域内でソリューションをテストし、確認します。これは結果が異なる場合があるためです。 ソリューションを計画し、テストするには、[Microsoft Azure 政府機関向け試用版](https://azure.microsoft.com/global-infrastructure/government/request/)に試用版アカウントを申請します。
+[[Azure Government クラウド]](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) オプションを選択すると、ソリューションがここに表示されます。 これはアメリカ合衆国の連邦政府顧客、州政府顧客、地方自治体顧客、部族政府顧客と、そのような顧客にサービスを提供する資格があるパートナーのための政府機関コミュニティ クラウドであり、アクセスが制御されています。 公開元はこのクラウド コミュニティのコンプライアンス制御、セキュリティ対策、ベスト プラクティスに責任を負います。 Azure Government では、物理的に離れた場所にあるデータ センターとネットワークが使用されます (場所は米国のみ)。 Azure Government に[公開](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners)する前に、その領域内でソリューションをテストし、確認します。これは結果が異なる場合があるためです。 ソリューションを計画し、テストするには、[Microsoft Azure 政府機関向け試用版](https://azure.microsoft.com/global-infrastructure/government/request/)に試用版アカウントを申請します。
 
 > [!NOTE]
 > プランが公開され、特定のクラウドで利用できるようになったら、そのクラウドは削除できません。
