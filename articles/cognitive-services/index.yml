@@ -83,7 +83,7 @@ conceptualContent:
       text: Text Analytics
     - url: ./translator/index.yml
       itemType: overview
-      text: '[変換者]'
+      text: Translator
   - title: 音声
     summary: 音声をテキストに変換し、テキストを自然な音声に変換します。 ある言語を別の言語に翻訳し、話者の認証と認識を可能にします。
     links:

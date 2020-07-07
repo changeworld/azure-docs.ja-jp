@@ -1,21 +1,25 @@
 ---
 title: 組み込みのポリシー定義の一覧
 description: Azure Policy の組み込みのポリシー定義を一覧表示します。 カテゴリには、タグ、規制コンプライアンス、Key Vault、Kubernetes、ゲスト構成などが含まれます。
-ms.date: 06/10/2020
+ms.date: 06/23/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 0ab717e4246112152b9a497c51d2a630bc48dfd1
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 94f69754ab51728a18da10b45e05770f1271760b
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84709632"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85313512"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure Policy の組み込みのポリシー定義
 
 このページは、Azure Policy の組み込みのポリシー定義のインデックスです。
 
 各組み込みの名前は、Azure portal のポリシー定義にリンクしています。 **[ソース]** 列のリンクを使用すると、[Azure Policy GitHub リポジトリ](https://github.com/Azure/azure-policy)のソースを表示できます。 組み込みは、**メタデータ**内の**カテゴリ** プロパティによってグループ化されます。 特定の**カテゴリ**にジャンプするには、ページの右側にあるメニューを使用します。 それ以外では、<kbd>Ctrl</kbd>-<kbd>F</kbd> キーを押して、ブラウザーの検索機能を使用してください。
+
+## <a name="api-for-fhir"></a>API for FHIR
+
+[!INCLUDE [azure-policy-samples-policies-api-for-fhir](../../../../includes/policy/samples/bycat/policies-api-for-fhir.md)]
 
 ## <a name="api-management"></a>API Management
 

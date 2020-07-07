@@ -4,12 +4,12 @@ description: この記事では、Azure 仮想マシンの復旧ポイントか�
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 91918bb053c1f26e33d08dde3b68debfcffe350e
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 68fa3bb2b17da01004220f5876911fa3289a2e7c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195751"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85124989"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップからファイルを回復する
 
@@ -237,7 +237,7 @@ Linux では、ファイルの復元に使用するコンピューターの OS �
 
 > [!NOTE]
 >
-> - ダウンロードしたスクリプト ファイル名には、URL に **geo-name** が含まれます。 例: ダウンロードしたスクリプト名は、\'VMname\'\_\'geoname\'_\'GUID\' で始まります (*ContosoVM_wcus_12345678* など)
+> - ダウンロードしたスクリプト ファイル名には、URL に **geo-name** が含まれます。 次に例を示します。ダウンロードしたスクリプト名は、\'VMname\'\_\'geoname\'_\'GUID\' で始まります (*ContosoVM_wcus_12345678* など)
 > - URL は <https://pod01-rec2.wcus.backup.windowsazure.com>" になります
 >
 
@@ -288,7 +288,7 @@ Linux の場合、スクリプトによって復旧ポイントに接続する�
 | Linux 固有:目的のボリュームを表示できない | スクリプトを実行するマシンの OS が、保護された VM の基になるファイル システムを認識していない可能性があります | 復旧ポイントがクラッシュ整合性とファイル整合性のどちらであるかを確認します。 ファイル整合性の場合、保護された VM のファイル システムが OS で認識される別のマシンでスクリプトを実行します。 |
 | Windows 固有:目的のボリュームを表示できない | ディスクはアタッチされている可能性がありますが、ボリュームが構成されていません | ディスクの管理画面から、復旧ポイントに関連する追加のディスクを識別します。 これらのディスクのいずれかがオフライン状態の場合は、そのディスクを右クリックし、 **[オンライン]** をクリックしてオンライン状態にします。|
 
-## <a name="security"></a>Security
+## <a name="security"></a>セキュリティ
 
 このセクションでは、Azure VM バックアップからのファイル回復を実装するために講じるさまざまなセキュリティ対策について説明します。
 

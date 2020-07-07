@@ -6,17 +6,17 @@ author: mlee3gsd
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 469fdf19f8c5fa511070f2d809d06829578c2131
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 16cfdfb475ce21ed4b51dc9140e59df701363f27
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653729"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201006"
 ---
 # <a name="integrate-other-services-with-a-synapse-sql-pool-data-warehouse"></a>他のサービスを Synapse SQL プール (データ ウェアハウス) と統合する
 

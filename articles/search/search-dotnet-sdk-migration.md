@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fcad05749892e3a652e110a7e351450bffaca6f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 548cd488bc811ad16cd84950ce3819f2e1f3ddbb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72792980"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85080715"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-3"></a>Azure Search .NET SDK バージョン 3 へのアップグレード
 
@@ -25,7 +25,7 @@ Indexer execution result errors no longer have status
 the data source API will no longer return in the response of any REST operation, the connection string specified by the user.
 --->
 
-バージョン 2.0-preview 以前の [Azure Search .NET SDK](https://aka.ms/search-sdk) を使用している場合、この記事を参考にして、バージョン 3 を使用するようにアプリケーションをアップグレードできます。
+バージョン 2.0-preview 以前の [Azure Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) を使用している場合、この記事を参考にして、バージョン 3 を使用するようにアプリケーションをアップグレードできます。
 
 例を含む SDK の一般的なチュートリアルについては、「 [.NET アプリケーションから Azure Search を使用する方法](search-howto-dotnet-sdk.md)」を参照してください。
 
@@ -41,7 +41,7 @@ Azure Search .NET SDK のバージョン 3 には、以前のバージョンか�
 ## <a name="whats-new-in-version-3"></a>バージョン 3 の新機能
 Azure Search .NET SDK のバージョン 3 は、Azure Search REST API の最新の一般公開バージョン (2016-09-01) を対象としています。 これにより、次のような Azure Search の多数の新機能を .NET アプリケーションから使用することが可能になります。
 
-* [カスタム アナライザー](https://aka.ms/customanalyzers)
+* [カスタム アナライザー](index-add-custom-analyzers.md)
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) と [Azure Table Storage](search-howto-indexing-azure-tables.md) のインデクサーのサポート
 * [フィールド マッピング](search-indexer-field-mappings.md)
 * インデックスの定義、インデクサー、およびデータ ソースの安全な同時更新を有効にする Etag のサポート

@@ -4,16 +4,16 @@ description: Windows デスクトップ クライアントを使用して Window
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2b16818856ca8196b82eb8f618cf22b5fc1b6854
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 5d333b2f8bbb660e9fd71339159d942c0520f4f4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612692"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201550"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>Windows デスクトップ クライアントを使用して接続する
 
@@ -22,7 +22,7 @@ ms.locfileid: "82612692"
 Windows デスクトップ クライアントを使用して、Windows 7 または Windows 10、および Windows 10 IoT Enterprise を使用しているデバイス上の Windows Virtual Desktop リソースにアクセスできます。
 
 >[!NOTE]
->Windows クライアントは自動的に既定の Windows Virtual Desktop Fall 2019 リリースになります。 ただしクライアントは、ユーザーが Azure Resource Manager リソースも所有していることを検出した場合、そのリソースを自動的に追加するか、リソースが利用可能であることをユーザーに通知します。 
+>Windows クライアントは自動的に既定の Windows Virtual Desktop Fall 2019 リリースになります。 ただしクライアントは、ユーザーが Azure Resource Manager リソースも所有していることを検出した場合、そのリソースを自動的に追加するか、リソースが利用可能であることをユーザーに通知します。
 
 > [!IMPORTANT]
 > Windows Virtual Desktop では、RemoteApp とデスクトップ接続 (RADC) クライアントおよびリモート デスクトップ接続 (MSTSC) クライアントはサポートされていません。

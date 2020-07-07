@@ -8,12 +8,12 @@ ms.date: 01/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7540c5a82220eef61b8f1cf470697315496cd6bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 81db9c7e729aa0be67a807d9d77a3cccb8f41604
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127600"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85194792"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>1 台のデバイスまたは多数のデバイスを対象とした IoT Edge 自動デプロイについて
 
@@ -69,7 +69,7 @@ IoT Edge の自動デプロイでは、実行する IoT Edge モジュール イ
 * tags.environment ='prod'
 * tags.environment = 'prod' AND tags.location = 'westus'
 * tags.environment = 'prod' OR tags.location = 'westus'
-* tags.operator = 'John' AND tags.environment = 'prod' NOT deviceId = 'linuxprod1'
+* tags.operator = 'John' AND tags.environment = 'prod' AND NOT deviceId = 'linuxprod1'
 * properties.reported.devicemodel = '4000x'
 
 ターゲット条件を作成するときは、次のような制約を検討します。
