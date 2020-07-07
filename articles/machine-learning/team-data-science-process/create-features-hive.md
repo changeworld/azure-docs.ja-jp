@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c926aac3ea4360793ff52b616a55dc6198357c8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76721780"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Hive クエリを使用して Hadoop クラスターのデータの特徴を作成する
@@ -89,14 +89,14 @@ Hive には、[datetime] フィールドを処理するための UDF のセッ�
         select day(<datetime field>), month(<datetime field>)
         from <databasename>.<tablename>;
 
-この Hive クエリは、 *\<datetime フィールド>* が既定の datetime 形式であることを前提としています。
+この Hive クエリは、 *\<datetime field>* が既定の datetime 形式であることを前提としています。
 
 [datetime] フィールドが既定の形式でない場合、まず [datetime] フィールドを Unix のタイムスタンプに変換してから、Unix のタイムスタンプを既定の形式の datetime 文字列に変換する必要があります。 datetime が既定の形式の場合は、特徴を抽出するために組み込みの datetime ユーザー定義関数を適用することができます。
 
         select from_unixtime(unix_timestamp(<datetime field>,'<pattern of the datetime field>'))
         from <databasename>.<tablename>;
 
-このクエリでは、 *\<datetime フィールド>* が *03/26/2015 12:04:39* のようなパターンである場合、 *\<datetime フィールドのパターン>'* は `'MM/dd/yyyy HH:mm:ss'` である必要があります。 これをテストするために、ユーザーは次を実行できます。
+このクエリでは、 *\<datetime field>* が *03/26/2015 12:04:39* のようなパターンである場合、 *\<pattern of the datetime field>'* は `'MM/dd/yyyy HH:mm:ss'` である必要があります。 これをテストするために、ユーザーは次を実行できます。
 
         select from_unixtime(unix_timestamp('05/15/2015 09:32:10','MM/dd/yyyy HH:mm:ss'))
         from hivesampletable limit 1;
@@ -136,26 +136,26 @@ Hive テーブルに、スペースで区切られた単語から成る文字列
 
 Hive の組み込み UDF のリストは、<a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">Apache Hive Wiki</a> の**組み込み関数**のセクションにあります。  
 
-## <a name="advanced-topics-tune-hive-parameters-to-improve-query-speed"></a><a name="tuning"></a> 高度なトピック: Hive パラメーターを調整してクエリ速度を向上させる
+## <a name="advanced-topics-tune-hive-parameters-to-improve-query-speed"></a><a name="tuning"></a> 高度なトピック:Hive パラメーターを調整してクエリ速度を向上させる
 Hive クラスターの既定のパラメーター設定は、Hive クエリおよびクエリが処理するデータに適していないことがあります。 このセクションでは、Hive クエリのパフォーマンスを向上させるためにユーザーが調整できるパラメーターのいくつかについて説明します。 ユーザーは、データ処理のクエリの前に、パラメーター調整クエリを追加する必要があります。
 
-1. **Java ヒープ スペース**: 大規模なデータセットの結合または長いレコードの処理を伴うクエリの場合、一般的なエラーの 1 つに、**ヒープ領域の不足**があります。 このエラーを回避するには、パラメーター *mapreduce.map.java.opts* と *mapreduce.task.io.sort.mb* を必要な値に設定します。 たとえば次のようになります。
+1. **Java ヒープ スペース**:大規模なデータセットの結合または長いレコードの処理を伴うクエリの場合、一般的なエラーの 1 つに、**ヒープ領域の不足**があります。 このエラーを回避するには、パラメーター *mapreduce.map.java.opts* と *mapreduce.task.io.sort.mb* を必要な値に設定します。 たとえば次のようになります。
    
         set mapreduce.map.java.opts=-Xmx4096m;
         set mapreduce.task.io.sort.mb=-Xmx1024m;
 
     このパラメーターでは、Java ヒープ スペースに 4 GB のメモリが割り当てられ、より多くのメモリを割り当てることで並べ替えも効率化しています。 ヒープ スペース関連のジョブ失敗のエラーが発生する場合、これらの割り当てを試してみるとよいでしょう。
 
-1. **DFS ブロック サイズ**: このパラメーターでは、ファイル システムに保存されるデータの最小単位を設定します。 たとえば、DFS ブロック サイズが 128 MB の場合、サイズが 128 MB 以下のデータは 1 つのブロックに保存されます。 128 MB を超えるデータには、追加のブロックが割り当てられます。 
+1. **DFS ブロック サイズ**:このパラメーターでは、ファイル システムに保存されるデータの最小単位を設定します。 たとえば、DFS ブロック サイズが 128 MB の場合、サイズが 128 MB 以下のデータは 1 つのブロックに保存されます。 128 MB を超えるデータには、追加のブロックが割り当てられます。 
 2. 小さいブロック サイズを選ぶと、Hadoop に大きいオーバーヘッドが生じます。これは、名前ノードがファイルの関連ブロックを検索するために、さらに多くの要求を処理する必要があるためです。 ギガバイト (またはそれ以上) のデータを処理する場合に推奨される設定は、次のとおりです。
 
         set dfs.block.size=128m;
 
-2. **Hive で結合操作を最適化する**: マップ/縮小フレームワークでの結合操作は通常縮小フェーズで発生しますが、マップ フェーズ ("mapjoins" と呼ばれることもあります) で結合をスケジュールすることで大幅な向上を実現できる場合があります。 このオプションを次のように設定します。
+2. **Hive で結合操作を最適化する**:マップ/縮小フレームワークでの結合操作は通常縮小フェーズで発生しますが、マップ フェーズ ("mapjoins" と呼ばれることもあります) で結合をスケジュールすることで大幅な向上を実現できる場合があります。 このオプションを次のように設定します。
    
        set hive.auto.convert.join=true;
 
-3. **Hive にマッパーの数を指定する**: Hadoop ではユーザーがレジューサの数を設定できますが、マッパーの数をユーザーが設定することは、通常はできません。 Hadoop 変数 (*mapred.min.split.size* と *mapred.max.split.size*) を選択すると、この数をある程度制御できます。これは、各マップ タスクのサイズが次の式によって決定されるためです。
+3. **Hive にマッパーの数を指定する**:Hadoop ではユーザーがレジューサの数を設定できますが、マッパーの数をユーザーが設定することは、通常はできません。 Hadoop 変数 (*mapred.min.split.size* と *mapred.max.split.size*) を選択すると、この数をある程度制御できます。これは、各マップ タスクのサイズが次の式によって決定されるためです。
    
         num_maps = max(mapred.min.split.size, min(mapred.max.split.size, dfs.block.size))
    
