@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/12/2020
 ms.author: mjbrown
-ms.openlocfilehash: 2efc652c936e7949147bf77ccc1548308734a467
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: fec25bb3043942605895491952d963ee20ac4078
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85260680"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563889"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db---cassandra-api"></a>Azure Cosmos DB の Azure PowerShell サンプル - Cassandra API
 
@@ -20,7 +20,7 @@ ms.locfileid: "85260680"
 > [!NOTE]
 > このサンプルでは、[Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) 管理コマンドレットを使用します。 `Az.CosmosDB` の更新プログラムを定期的にチェックしてください。
 
-| | |
+|タスク | 説明 |
 |---|---|
 |[アカウント、キースペース、およびテーブルの作成](scripts/powershell/cassandra/ps-cassandra-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Azure Cosmos アカウント、キースペース、およびテーブルを作成します。 |
 |[キースペースまたはテーブルの一覧表示または取得](scripts/powershell/cassandra/ps-cassandra-list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| キースペースまたはテーブルを一覧表示または取得します。 |

@@ -10,12 +10,13 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 030d5b5ad596b0d9e5eb2d636770c985b1cff5ed
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.custom: contperfq4
+ms.openlocfilehash: 353bc49ad6a64ff00a8a3ab8594fd76e02ca7913
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85099115"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85551749"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>チュートリアル:オンプレミス環境への Azure Active Directory のセルフサービス パスワード リセットのライトバックを有効にする
 

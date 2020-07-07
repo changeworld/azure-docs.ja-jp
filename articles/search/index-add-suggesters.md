@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/21/2020
-ms.openlocfilehash: 7eb2988628d60fa72c7d83b81a58a1e0fae5de33
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a0798ee923624aef9f29c1e9cc30f38b55770a3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81770093"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565329"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>クエリでオートコンプリートと候補の結果を有効にする suggester を作成する
 
@@ -155,7 +155,7 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 API の使用方法については、オートコンプリート REST API の次の呼び出しで説明します。 この例では、2 つのポイントがあります。 第一に、すべてのクエリと同様に、操作はインデックスの documents コレクションに対して行われ、クエリには **search** パラメーターが含まれます。この場合、部分クエリが提供されます。 第二に、**suggesterName** を要求に追加する必要があります。 インデックスで suggester が定義されていない場合、オートコンプリートまたは検索候補の呼び出しは失敗します。
 
 ```http
-POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2019-05-06
+POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
 {
   "search": "minecraf",
   "suggesterName": "sg"

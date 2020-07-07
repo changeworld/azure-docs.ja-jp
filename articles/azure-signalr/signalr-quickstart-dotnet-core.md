@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: zhshang
-ms.openlocfilehash: f87625fe4f56b369f2bf4aade3ef5424084b6fe8
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 4665666fe56c208b2437a7051bbf9201383365f8
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81254888"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962137"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>クイック スタート:SignalR Service を使用してチャット ルームを作成する
 
@@ -45,7 +45,9 @@ Azure SignalR Service は、開発者がリアルタイムの機能を使って 
 
 2. 新しいフォルダーで、次のコマンドを実行してプロジェクトを作成します。
 
-        dotnet new mvc
+    ```dotnetcli
+    dotnet new mvc
+    ```
 
 
 ## <a name="add-secret-manager-to-the-project"></a>プロジェクトにシークレット マネージャーを追加します
@@ -74,11 +76,15 @@ Azure SignalR Service は、開発者がリアルタイムの機能を使って 
 
 1. 次のコマンドを実行して、`Microsoft.Azure.SignalR` NuGet パッケージへの参照を追加します。
 
-        dotnet add package Microsoft.Azure.SignalR
+    ```dotnetcli
+    dotnet add package Microsoft.Azure.SignalR
+    ```
 
 2. 次のコマンドを実行して、プロジェクトのパッケージを復元します。
 
-        dotnet restore
+    ```dotnetcli
+    dotnet restore
+    ```
 
 3. シークレット マネージャーに、*Azure:SignalR:ConnectionString* という名前のシークレットを追加します。 
 
@@ -86,7 +92,7 @@ Azure SignalR Service は、開発者がリアルタイムの機能を使って 
 
     このコマンドは、 *.csproj* ファイルと同じディレクトリで実行する必要があります。
 
-    ```
+    ```dotnetcli
     dotnet user-secrets set Azure:SignalR:ConnectionString "<Your connection string>"    
     ```
 
@@ -224,19 +230,25 @@ connection.start()
 
 1. .NET Core CLI を使用してアプリケーションをビルドするには、コマンド シェルで次のコマンドを実行します。
 
-        dotnet build
+    ```dotnetcli
+    dotnet build
+    ```
 
 2. ビルドが正常に完了したら、次のコマンドを実行して Web アプリをローカルで実行します。
 
-        dotnet run
+    ```dotnetcli
+    dotnet run
+    ```
 
     このアプリは、開発ランタイム プロファイルの構成に従って、ポート 5000 上でローカルにホストされます。
 
-        E:\Testing\chattest>dotnet run
-        Hosting environment: Development
-        Content root path: E:\Testing\chattest
-        Now listening on: http://localhost:5000
-        Application started. Press Ctrl+C to shut down.    
+    ```output
+    E:\Testing\chattest>dotnet run
+    Hosting environment: Development
+    Content root path: E:\Testing\chattest
+    Now listening on: http://localhost:5000
+    Application started. Press Ctrl+C to shut down.    
+    ```
 
 3. 2 つのブラウザー ウィンドウを開きます。 各ブラウザーで、`http://localhost:5000` に移動します。 名前を入力するよう求められます。 両方のクライアントのクライアント名を入力し、 **[Send]** ボタンを使用して、両方のクライアント間でのメッセージ コンテンツのプッシュをテストします。
 

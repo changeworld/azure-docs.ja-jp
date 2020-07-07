@@ -4,12 +4,12 @@ description: Azure Batch プール内の各ノードで同時実行タスクを�
 ms.topic: how-to
 ms.date: 04/17/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8d38076396ea89eed9e1ef0c2e9ba14cddfd7cc6
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 1b13f7f276740cd4f37e8d4c4ba1f2967d919ccf
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724192"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961576"
 ---
 # <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>タスクの同時実行による Batch コンピューティング ノードの使用率の最大化 
 
@@ -118,16 +118,16 @@ Duration: 00:08:48.2423500
 [Batch Explorer][batch_labs] は、Azure Batch アプリケーションの作成、デバッグ、および監視を支援する、豊富な機能を備えた無料のスタンドアロン クライアント ツールです。 Batch Explorer には、タスクの実行を視覚化する "*ヒート マップ*" 機能が含まれます。 [ParallelTasks][parallel_tasks_sample] サンプル アプリケーションを実行すると、ヒート マップ機能を使用し、各ノードでの並列タスクの実行を簡単に視覚化できます。
 
 
-[api_net]: https://msdn.microsoft.com/library/azure/mt348682.aspx
-[api_rest]: https://msdn.microsoft.com/library/azure/dn820158.aspx
+[api_net]: /dotnet/api/microsoft.azure.batch
+[api_rest]: /rest/api/batchservice/
 [batch_labs]: https://azure.github.io/BatchExplorer/
-[cloudpool]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.aspx
-[enable_autoscaling]: https://msdn.microsoft.com/library/azure/dn820173.aspx
-[fill_type]: https://msdn.microsoft.com/library/microsoft.azure.batch.common.computenodefilltype.aspx
+[cloudpool]: /dotnet/api/microsoft.azure.batch.cloudpool
+[enable_autoscaling]: /rest/api/batchservice/pool/enableautoscale
+[fill_type]: /dotnet/api/microsoft.azure.batch.common.computenodefilltype
 [github_samples]: https://github.com/Azure/azure-batch-samples
-[maxtasks_net]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.maxtaskspercomputenode.aspx
-[rest_addpool]: https://msdn.microsoft.com/library/azure/dn820174.aspx
+[maxtasks_net]: /dotnet/api/microsoft.azure.batch.cloudpool
+[rest_addpool]: /rest/api/batchservice/pool/add
 [parallel_tasks_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ParallelTasks
-[poolcreate_net]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.createpool.aspx
-[task_schedule]: https://msdn.microsoft.com/library/microsoft.azure.batch.cloudpool.taskschedulingpolicy.aspx
+[poolcreate_net]: /dotnet/api/microsoft.azure.batch.pooloperations
+[task_schedule]: /dotnet/api/microsoft.azure.batch.cloudpool
 

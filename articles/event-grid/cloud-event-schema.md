@@ -2,17 +2,17 @@
 title: CloudEvents スキーマ内のイベントで Azure Event Grid を使用する
 description: CloudEvents スキーマを Azure Event Grid 内のイベント用に使用する方法について説明します。 サービスでは、CloudEvents の JSON 実装でのイベントをサポートしています。
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.author: babanisa
-ms.openlocfilehash: 127095bef2c67a93097bf90bea54ca1b44b16c58
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.author: femila
+ms.openlocfilehash: 57827b1c5a43a3408d374e8bddb7b91113b2929a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393957"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84560689"
 ---
 # <a name="cloudevents-v10-schema-with-event-grid"></a>Event Grid での CloudEvents v1.0 スキーマ
 

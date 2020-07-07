@@ -2,18 +2,18 @@
 title: Azure Event Grid のセキュリティと認証
 description: Azure Event Grid とその概念について説明します。
 services: event-grid
-author: banisadr
+author: femila
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.author: babanisa
-ms.openlocfilehash: 5f8b0a779e6cb70537d126c251e1e065892934a9
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.author: femila
+ms.openlocfilehash: 87d436024dae21b0122bf6b861b8a3ae4299db73
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629509"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84559008"
 ---
 # <a name="authorizing-access-to-event-grid-resources"></a>Event Grid リソースへのアクセスの承認
 Azure Event Grid を使用すると、イベント サブスクリプションの一覧表示、新しいサブスクリプションの作成、キーの生成など、多様な管理操作を実行する各ユーザーに付与するアクセス レベルを制御できます。 Event Grid は、Azure のロール ベースのアクセス制御 (RBAC) を使います。

@@ -8,12 +8,13 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: menchi
-ms.openlocfilehash: f846af548913e0cb3e872560e4b8438da306a255
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.custom: tracking-python
+ms.openlocfilehash: f324b04dd87f84a07c07394f2ee7c3efdc30c3e1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756975"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84607076"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-python"></a>IoT Hub モジュール ID とモジュール ツイン (Python) の概要
 
