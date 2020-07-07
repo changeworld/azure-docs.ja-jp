@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/28/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2eba47dede77f6d8dd19bde99a94de3ff5900f99
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 97448bb99af3a451fbb59e446fa47aa7f871b845
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82732803"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800236"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>チュートリアル:Azure AD シングル サインオン (SSO) を NetSuite と統合する
 
@@ -89,14 +89,14 @@ Azure portal で Azure AD SSO を有効にするには、以下を実行しま�
 
 1. **[基本的な SAML 構成]** セクションの **[応答 URL]** ボックスに、次のいずれかの形式で URL を入力します。
 
-    ||
-    |-|
-    | `https://<Instance ID>.NetSuite.com/saml2/acs`|
-    | `https://<Instance ID>.na1.NetSuite.com/saml2/acs`|
-    | `https://<Instance ID>.na2.NetSuite.com/saml2/acs`|
-    | `https://<Instance ID>.sandbox.NetSuite.com/saml2/acs`|
-    | `https://<Instance ID>.na1.sandbox.NetSuite.com/saml2/acs`|
-    | `https://<Instance ID>.na2.sandbox.NetSuite.com/saml2/acs`|
+    ```https
+    https://<Instance ID>.NetSuite.com/saml2/acs
+    https://<Instance ID>.na1.NetSuite.com/saml2/acs
+    https://<Instance ID>.na2.NetSuite.com/saml2/acs
+    https://<Instance ID>.sandbox.NetSuite.com/saml2/acs
+    https://<Instance ID>.na1.sandbox.NetSuite.com/saml2/acs
+    https://<Instance ID>.na2.sandbox.NetSuite.com/saml2/acs
+    ```
 
     * **<`Instance ID`>** の値は、このチュートリアルの手順 8. で後述する [Netsuite Configuration]\(Netsuite の構成\) セクションで取得します。 厳密なドメイン (このケースでは system.na0.netsuite.com など) が見つかります。
 

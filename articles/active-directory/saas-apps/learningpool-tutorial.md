@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5bc0b395fcc874190b67bd99262c3a1c9294c0ac
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 173fab91681943576f9a4afeba8d38a99e22996f
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74229286"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799765"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learningpool-act"></a>チュートリアル: Azure Active Directory と Learningpool Act の統合
 
@@ -110,11 +110,10 @@ Learningpool Act で Azure AD シングル サインオンを構成するには�
 
     b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。
     
-    | |
-    |--|
-    | `https://<subdomain>.Learningpool.com/shibboleth` |
-    | `https://<subdomain>.preview.Learningpool.com/shibboleth` |
-    | | |
+    ```http
+    https://<subdomain>.Learningpool.com/shibboleth
+    https://<subdomain>.preview.Learningpool.com/shibboleth
+    ```
 
     > [!NOTE]
     > この識別子の値は実際のものではありません。 実際の識別子でこの値を更新します。 この値を取得するには、[Learningpool Act クライアント サポート チーム](https://www.learningpool.com/support)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/12/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b499c8311e3b8acb1a239acc196ae158692b8716
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: db770e513599aa5da43ffa25463994d887536494
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84765304"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800136"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-protoio"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Proto.io の統合
 
@@ -101,11 +101,11 @@ Proto.io に対する Azure AD SSO を構成してテストするには、次の
 
 1. その他に、Proto.io アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
     
-    | 名前 |  |  ソース属性|
-    | ---------------| --------------- | --------- |
-    | email | | User.mail |
-    | fname | | User.givenname |
-    | lname | | User.surname |
+    | 名前 | ソース属性|
+    | --------------- | --------- |
+    | email | User.mail |
+    | fname | User.givenname |
+    | lname | User.surname |
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 

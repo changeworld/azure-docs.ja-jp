@@ -60,6 +60,8 @@
           href: luis-nodejs-tutorial-bf-v4.md
 - name: 概念
   items:
+    - name: 人工知能
+      href: artificial-intelligence.md
     - name: 開発ライフサイクル
       href: luis-concept-app-iteration.md
     - name: アプリの計画

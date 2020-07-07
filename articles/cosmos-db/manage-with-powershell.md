@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/13/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 494c5f0c3d7d0a4c8a388ce06143795fe5f12f20
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 1e43cc48a6c4684326a152adedabcd00a44657a6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262278"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85390841"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>PowerShell を使用して Azure Cosmos DB SQL API リソースを管理する
 
@@ -776,4 +776,4 @@ Remove-AzResourceLock `
 [distribute-data-globally]: distribute-data-globally.md
 [azure-resource-groups]: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups
 [azure-resource-tags]: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
-[rp-rest-api]: https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/
+[rp-rest-api]: /rest/api/cosmos-db-resource-provider/

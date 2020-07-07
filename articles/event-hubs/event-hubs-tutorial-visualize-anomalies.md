@@ -1,20 +1,14 @@
 ---
 title: Azure Event Hubs - リアルタイム イベントでのデータの異常を視覚化する
 description: チュートリアル:Microsoft Azure Event Hubs に送信されたリアルタイム イベントのデータの異常を視覚化する
-services: event-hubs
-author: ShubhaVijayasarathy
-manager: timlt
-ms.author: shvija
 ms.topic: tutorial
-ms.service: event-hubs
-ms.custom: seodec18
-ms.date: 01/15/2020
-ms.openlocfilehash: f71d8e9f88dad32818ed25d4a0719a1528656f96
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 06/23/2020
+ms.openlocfilehash: 595c0e06750171c844249a77ecef16c84dc8ada5
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77163179"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85315620"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>チュートリアル:Azure Event Hubs に送信されたリアルタイム イベントのデータの異常を視覚化する
 

@@ -7,17 +7,14 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: f83eb6a0cab8bdf2f26888f895aeac8a8fa796bb
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: faad1f812fc5c2cde6847a5208ee4b385f28ab3e
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85296986"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391929"
 ---
 # <a name="build-out-an-end-to-end-solution"></a>エンド ツー エンドのソリューションを構築する
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Azure Digital Twins インスタンスは、環境のライブ データによって駆動される完全なエンド ツー エンドのソリューションを設定するために、デバイスとデータの管理を目的とした他の Azure サービスに接続することができます。
 

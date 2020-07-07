@@ -1,17 +1,17 @@
 ---
 title: Azure Managed Applications 用の組み込みポリシー定義
 description: Azure Managed Applications 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 06/10/2020
+ms.date: 06/23/2020
 ms.topic: sample
 author: tfitzmac
 ms.author: tomfitz
 ms.custom: subject-policy-samples
-ms.openlocfilehash: c0946082f7a6ad334dcc8794a2da8143e18d0235
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 4244da2ae34990da00d48448bc039fdfbe83c252
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84886645"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319051"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-managed-applications"></a>Azure Managed Applications 用の Azure Policy 組み込み定義
 

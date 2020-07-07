@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/30/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 581c850801c153996031378cbf470457264cad3d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3caf67ef436093e63683c270f7121a2861242aec
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76984463"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800884"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nintex-promapp"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Nintex Promapp の統合
 
@@ -84,14 +84,13 @@ Nintex Promapp で Azure AD SSO を構成してテストするには、次の構
 
     1. **[識別子]** ボックスに、次のパターンで URL を入力します。
 
-        | |
-        |--|
-        | `https://go.promapp.com/TENANTNAME/`|
-        | `https://au.promapp.com/TENANTNAME/`|
-        | `https://us.promapp.com/TENANTNAME/`|
-        | `https://eu.promapp.com/TENANTNAME/`|
-        | `https://ca.promapp.com/TENANTNAME/`|
-        |   |
+        ```https
+        https://go.promapp.com/TENANTNAME/
+        https://au.promapp.com/TENANTNAME/
+        https://us.promapp.com/TENANTNAME/
+        https://eu.promapp.com/TENANTNAME/
+        https://ca.promapp.com/TENANTNAME/
+        ```
 
        > [!NOTE]
        > Nintex Promapp と Azure AD の統合は、現在、サービスによって開始される認証向けにのみ構成されています (つまり、Nintex Promapp URL に移動することで、認証プロセスが開始されます)。ただし、 **[応答 URL]** フィールドは必須です。

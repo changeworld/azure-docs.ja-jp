@@ -7,17 +7,17 @@ author: hahamil
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: tutorial
+ms.topic: how-to
 ms.workload: identity
 ms.date: 06/01/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: 6af203759cca830a6adcf9f70436d42f3d983da4
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 0c7fe0629724217f36d3b28e74aaafdfd15c9a61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84301980"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85799243"
 ---
 # <a name="migrate-a-javascript-single-page-app-from-implicit-grant-to-auth-code-flow"></a>暗黙的な許可から承認ワークフロー フローに JavaScript のシングルページ アプリを移行する
 
@@ -99,4 +99,4 @@ Microsoft ID プラットフォームでの JavaScript シングルページ ア
 
 <!-- LINKS - external -->
 [msal-js-useragentapplication]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-core/modules/_useragentapplication_.html
-[msal-js-publicclientapplication]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-browser/classes/_app_publicclientapplication_.publicclientapplication.html
+[msal-js-publicclientapplication]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-browser/classes/_src_app_publicclientapplication_.publicclientapplication.html
