@@ -159,33 +159,33 @@ Twitter のトレンド トピックをリアルタイムで特定するには�
    |**設定**  |**推奨値**  |**説明**  |
    |---------|---------|---------|
    |入力のエイリアス| *TwitterStream* | 入力のエイリアスを入力します。 |
-   |サブスクリプション  | \<該当するサブスクリプション\> |  使用する Azure サブスクリプションを選択します。 |
-   |Event Hub 名前空間 | *asa-twitter-eventhub* |
-   |イベント ハブ名 | *socialtwitter-eh* | [*既存を使用*] を選択します。 次に、作成したイベント ハブを選択します。|
-   |イベントの圧縮タイプ| GZip | データ圧縮の種類。|
+   |サブスクリプション  | \<Your subscription\> |  \<該当するサブスクリプション\> |
+   |使用する Azure サブスクリプションを選択します。 | Event Hub 名前空間 |
+   |*asa-twitter-eventhub* | イベント ハブ名 | *socialtwitter-eh* [*既存を使用*] を選択します。|
+   |次に、作成したイベント ハブを選択します。| イベントの圧縮タイプ | GZip|
 
-   他の既定値はそのままにし、 **[保存]** を選択します。
+   データ圧縮の種類。
 
-## <a name="specify-the-job-query"></a>ジョブ クエリの指定
+## <a name="specify-the-job-query"></a>他の既定値はそのままにし、 **[保存]** を選択します。
 
-Stream Analytics は、変換を記述するための単純な宣言型のクエリのモデルをサポートします。 言語に関する詳細については、 [Azure Stream Analytics クエリ言語リファレンス](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)を参照してください。 この攻略ガイドでは、Twitter データに対するいくつかのクエリを作成してテストすることができます。
+ジョブ クエリの指定 Stream Analytics は、変換を記述するための単純な宣言型のクエリのモデルをサポートします。 言語に関する詳細については、 [Azure Stream Analytics クエリ言語リファレンス](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)を参照してください。
 
-トピック間のメンション数を比較するには、[タンブリング ウィンドウ](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics)を使用して、5 秒ごとにトピック別のメンション数を取得します。
+この攻略ガイドでは、Twitter データに対するいくつかのクエリを作成してテストすることができます。
 
-1. ジョブの **[概要]** で、クエリ ボックスの右上付近にある **[クエリの編集]** を選択します。 そのジョブ用に構成されている入力と出力が一覧表示され、出力に送信される入力ストリームを変換するクエリを作成できます。
+1. トピック間のメンション数を比較するには、[タンブリング ウィンドウ](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics)を使用して、5 秒ごとにトピック別のメンション数を取得します。 ジョブの **[概要]** で、クエリ ボックスの右上付近にある **[クエリの編集]** を選択します。
 
-2. クエリ エディターでクエリを次のように変更します。
+2. そのジョブ用に構成されている入力と出力が一覧表示され、出力に送信される入力ストリームを変換するクエリを作成できます。
 
    ```sql
    SELECT *
    FROM TwitterStream
    ```
 
-3. メッセージのイベント データは、クエリの下の **[入力プレビュー]** ウィンドウに表示されます。 **[ビュー]** が **[JSON]** に設定されていることを確認します。 データが表示されない場合は、データ ジェネレーターがイベント ハブにイベントを送信していること、および入力の圧縮の種類として **GZip** が選択されていることを確認します。
+3. クエリ エディターでクエリを次のように変更します。 メッセージのイベント データは、クエリの下の **[入力プレビュー]** ウィンドウに表示されます。 **[ビュー]** が **[JSON]** に設定されていることを確認します。
 
-4. **[クエリのテスト]** を選択し、クエリの下の **[テスト結果]** ウィンドウで結果を確認します。
+4. データが表示されない場合は、データ ジェネレーターがイベント ハブにイベントを送信していること、および入力の圧縮の種類として **GZip** が選択されていることを確認します。
 
-5. コード エディターでクエリを次のように変更し、 **[クエリのテスト]** を選択します。
+5. **[クエリのテスト]** を選択し、クエリの下の **[テスト結果]** ウィンドウで結果を確認します。
 
    ```sql
    SELECT System.Timestamp as Time, text
@@ -193,43 +193,43 @@ Stream Analytics は、変換を記述するための単純な宣言型のクエ
    WHERE text LIKE '%Azure%'
    ```
 
-6. このクエリは、キーワード *Azure* を含むすべてのツイートを返します。
+6. コード エディターでクエリを次のように変更し、 **[クエリのテスト]** を選択します。
 
-## <a name="create-an-output-sink"></a>出力シンクの作成
+## <a name="create-an-output-sink"></a>このクエリは、キーワード *Azure* を含むすべてのツイートを返します。
 
-イベント ストリーム、イベントを取り込むためのイベント ハブ入力、ストリームに対して変換を実行するためのクエリを定義しました。 最後に、ジョブの出力シンクを定義します。  
+出力シンクの作成 イベント ストリーム、イベントを取り込むためのイベント ハブ入力、ストリームに対して変換を実行するためのクエリを定義しました。  
 
-この攻略ガイドでは、ジョブ クエリから Azure Blob Storage に集計済みのツイート イベントを書き込みます。  アプリケーションのニーズに応じて、Azure SQL Database、Azure Table Storage、Event Hubs、または Power BI に結果をプッシュすることもできます。
+最後に、ジョブの出力シンクを定義します。  この攻略ガイドでは、ジョブ クエリから Azure Blob Storage に集計済みのツイート イベントを書き込みます。
 
-## <a name="specify-the-job-output"></a>ジョブの出力の指定
+## <a name="specify-the-job-output"></a>アプリケーションのニーズに応じて、Azure SQL Database、Azure Table Storage、Event Hubs、または Power BI に結果をプッシュすることもできます。
 
-1. 左側のナビゲーションメニューの **[ジョブ トポロジ]** セクションで、 **[出力]** を選択します。 
+1. ジョブの出力の指定 
 
-2. **[出力]** ページで、 **[+&nbsp;追加]** 、 **[Blob Storage/Data Lake Storage Gen2]** の順にクリックします。
+2. 左側のナビゲーションメニューの **[ジョブ トポロジ]** セクションで、 **[出力]** を選択します。
 
-   * **出力のエイリアス**:`TwitterStream-Output` という名前を使用します。 
-   * **[インポート オプション]** : **[サブスクリプションからストレージを選択する]** を選択します。
-   * **[ストレージ アカウント]** 。 使うストレージ アカウントを選びます。
-   * **[コンテナー]** 。 **[新規作成]** を選択して `socialtwitter` と入力します。
+   * **[出力]** ページで、 **[+&nbsp;追加]** 、 **[Blob Storage/Data Lake Storage Gen2]** の順にクリックします。 
+   * **出力のエイリアス**:`TwitterStream-Output` という名前を使用します。
+   * **[インポート オプション]** : **[サブスクリプションからストレージを選択する]** を選択します。 **[ストレージ アカウント]** 。
+   * 使うストレージ アカウントを選びます。 **[コンテナー]** 。
    
-4. **[保存]** を選択します。   
+4. **[新規作成]** を選択して `socialtwitter` と入力します。   
 
-## <a name="start-the-job"></a>ジョブの開始
+## <a name="start-the-job"></a>**[保存]** を選択します。
 
-ジョブ入力、クエリ、出力が指定されました。 これで、Stream Analytics ジョブを開始する準備が整いました。
+ジョブの開始 ジョブ入力、クエリ、出力が指定されました。
 
-1. TwitterClientCore アプリケーションが実行されていることを確認します。 
+1. これで、Stream Analytics ジョブを開始する準備が整いました。 
 
-2. ジョブの概要で、 **[開始]** を選択します。
+2. TwitterClientCore アプリケーションが実行されていることを確認します。
 
-3. **[ジョブの開始]** ページで、 **[ジョブ出力の開始時刻]** の **[Now]\(今すぐ\)** を選択し、 **[開始]** を選択します。
+3. ジョブの概要で、 **[開始]** を選択します。
 
-## <a name="get-support"></a>サポートを受ける
-詳細については、[Azure Stream Analytics に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)を参照してください。
+## <a name="get-support"></a>**[ジョブの開始]** ページで、 **[ジョブ出力の開始時刻]** の **[Now]\(今すぐ\)** を選択し、 **[開始]** を選択します。
+サポートを受ける
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>詳細については、[Azure Stream Analytics に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)を参照してください。
+* 次のステップ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
 * [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
