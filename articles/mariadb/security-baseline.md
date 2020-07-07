@@ -8,10 +8,10 @@ ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 2d78a7e0eaed27fec7f813fa3e6bffaffe5a6540
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82186171"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mariadb"></a>Azure Database for MariaDB 用の Azure セキュリティ ベースライン
@@ -128,7 +128,7 @@ Azure Database for MariaDB 用に Advanced Threat Protection を構成する方�
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9:ネットワーク デバイスの標準的なセキュリティ構成を維持する
 
-**ガイダンス**: Azure Policy を使用して、Azure Database for MariaDB インスタンスに関連付けられているネットワーク設定とネットワーク リソースの標準的なセキュリティ構成を定義して実装します。 Azure Database for MariaDB インスタンスのネットワーク構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.DBforMariaDB" および "Microsoft.Network" 名前空間で Azure Policy エイリアスを使用します。 次のように、ネットワークまたは Azure Database for MariaDB インスタンスに関連する組み込みのポリシー定義を使用することもできます。
+**ガイダンス**:Azure Policy を使用して、Azure Database for MariaDB インスタンスに関連付けられているネットワーク設定とネットワーク リソースの標準的なセキュリティ構成を定義して実装します。 Azure Database for MariaDB インスタンスのネットワーク構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.DBforMariaDB" および "Microsoft.Network" 名前空間で Azure Policy エイリアスを使用します。 次のように、ネットワークまたは Azure Database for MariaDB インスタンスに関連する組み込みのポリシー定義を使用することもできます。
 
 - DDoS Protection Standard を有効にする必要がある
 
@@ -200,7 +200,7 @@ Azure Database for MariaDB の監査ログの構成およびアクセス方法: 
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3:Azure リソースの監査ログ記録を有効にする
 
-**ガイダンス**: 監査、セキュリティ、および診断ログにアクセスするために、Azure Database for MariaDB インスタンスに関する診断設定を有効にします。 MariaDB 監査ログが明示的に有効になっていることを確認します。 自動的に使用できるアクティビティ ログには、イベント ソース、日付、ユーザー、タイムスタンプ、送信元アドレス、送信先アドレス、その他の役立つ要素が含まれています。 また、Azure アクティビティ ログの診断設定を有効にし、同じ Log Analytics ワークスペースまたはストレージ アカウントにログを送信することもできます。
+**ガイダンス**:監査、セキュリティ、および診断ログにアクセスするために、Azure Database for MariaDB インスタンスに関する診断設定を有効にします。 MariaDB 監査ログが明示的に有効になっていることを確認します。 自動的に使用できるアクティビティ ログには、イベント ソース、日付、ユーザー、タイムスタンプ、送信元アドレス、送信先アドレス、その他の役立つ要素が含まれています。 また、Azure アクティビティ ログの診断設定を有効にし、同じ Log Analytics ワークスペースまたはストレージ アカウントにログを送信することもできます。
 
 Azure Database for MariaDB のサーバー ログの構成およびアクセス方法: https://docs.microsoft.com/azure/mariadb/concepts-server-logs Azure Database for MariaDB の監査ログの構成およびアクセス方法: https://docs.microsoft.com/azure/mariadb/howto-configure-audit-logs-portal Azure アクティビティ ログ用に診断設定を構成する方法: https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
 
@@ -221,7 +221,7 @@ Azure Database for MariaDB のサーバー ログの構成およびアクセス�
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5:セキュリティ ログのストレージ保持を構成する
 
-**ガイダンス**: Azure Monitor 内で、Azure Database for MariaDB ログを保持するために使用される Log Analytics ワークスペースについて、組織のコンプライアンス規則に従って保有期間を設定します。 長期/アーカイブ ストレージには Azure Storage アカウントを使用します。
+**ガイダンス**:Azure Monitor 内で、Azure Database for MariaDB ログを保持するために使用される Log Analytics ワークスペースについて、組織のコンプライアンス規則に従って保有期間を設定します。 長期/アーカイブ ストレージには Azure Storage アカウントを使用します。
 Log Analytics ワークスペースのログ保持パラメーターを設定する方法: https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period Azure ストレージ アカウントでのリソース ログの格納: https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-storage
 
 
@@ -232,7 +232,7 @@ Log Analytics ワークスペースのログ保持パラメーターを設定す
 
 ### <a name="26-monitor-and-review-logs"></a>2.6:ログを監視して確認する
 
-**ガイダンス**: MariaDB インスタンスからのログを分析および監視して、異常な動作がないか確認します。 Azure Monitor の Log Analytics ワークスペースを使用してログを確認し、ログ データに対してクエリを実行します。 または、Azure Sentinel またはサード パーティの SIEM に対してデータを有効にしてオンボードすることもできます。
+**ガイダンス**:MariaDB インスタンスからのログを分析および監視して、異常な動作がないか確認します。 Azure Monitor の Log Analytics ワークスペースを使用してログを確認し、ログ データに対してクエリを実行します。 または、Azure Sentinel またはサード パーティの SIEM に対してデータを有効にしてオンボードすることもできます。
 
 Azure Sentinel をオンボードする方法: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
@@ -426,7 +426,7 @@ Azure アクティビティ ログを Azure Monitor に統合する方法: https
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12: アカウント ログイン動作の偏差に関するアラートを生成する
 
-**ガイダンス**: MariaDB 用に Advanced Threat Protection を有効にします。 Azure Database for MariaDB 用の Advanced Threat Protection は、データベースにアクセスしたりそれを悪用したりしようとする、通常とは異なり、かつ有害なおそれのある試みを示す異常なアクティビティを検出します。
+**ガイダンス**:MariaDB 用に Advanced Threat Protection を有効にします。 Azure Database for MariaDB 用の Advanced Threat Protection は、データベースにアクセスしたりそれを悪用したりしようとする、通常とは異なり、かつ有害なおそれのある試みを示す異常なアクティビティを検出します。
 
 検出された疑わしいアクションに対する自動応答を構成するには、Azure Active Directory の Identity Protection とリスク検出機能を使用します。 Azure Sentinel で自動応答を有効にして、組織のセキュリティ対応を実装することができます。
 
@@ -656,7 +656,7 @@ Azure RBAC の概要: https://docs.microsoft.com/azure/role-based-access-control
 
 ### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4:承認された Azure リソースとソフトウェア タイトルのインベントリを管理する
 
-**ガイダンス**: 適用できません。この推奨事項は、コンピューティング リソースと Azure 全体を対象にしています。
+**ガイダンス**:適用できません。この推奨事項は、コンピューティング リソースと Azure 全体を対象にしています。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -770,7 +770,7 @@ Azure Policy を使用して特定のリソースの種類を拒否する方法:
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1:すべての Azure リソースに対してセキュリティで保護された構成を確立する
 
-**ガイダンス**: Azure Policy を使用して、Azure Database for MariaDB インスタンスの標準的なセキュリティ構成を定義して実装します。 Azure Database for MariaDB サーバーのネットワーク構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.DBforMariaDB" 名前空間の Azure Policy エイリアスを使用します。 次のように、Azure Database for MariaDB サーバーに関連する組み込みのポリシー定義を使用することもできます。
+**ガイダンス**:Azure Policy を使用して、Azure Database for MariaDB インスタンスの標準的なセキュリティ構成を定義して実装します。 Azure Database for MariaDB サーバーのネットワーク構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.DBforMariaDB" 名前空間の Azure Policy エイリアスを使用します。 次のように、Azure Database for MariaDB サーバーに関連する組み込みのポリシー定義を使用することもできます。
 
 - Azure Database for MariaDB の geo 冗長バックアップを有効にする必要がある
 
@@ -794,7 +794,7 @@ Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3:セキュリティで保護された Azure リソースの構成を維持する
 
-**ガイダンス**: Azure リソース全体にセキュリティで保護された設定を適用するには、Azure Policy の [deny] と [deploy if not exist] を使用します。
+**ガイダンス**:Azure リソース全体にセキュリティで保護された設定を適用するには、Azure Policy の [deny] と [deploy if not exist] を使用します。
 
 Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -985,7 +985,7 @@ Key Vault のキーをバックアップする方法: https://docs.microsoft.com
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3:カスタマー マネージド キーを含むすべてのバックアップを検証する
 
-**ガイダンス**: Azure Database for MariaDB で、バックアップを定期的にテストするために元のサーバーのバックアップから復元を実行します。 使用できる復元には 2 つの種類があります。ポイントインタイム リストアと geo リストアです。 ポイントインタイム リストアは、いずれのバックアップ冗長オプションでも使用でき、元のサーバーと同じリージョンに新しいサーバーが作成されます。 geo リストアは、サーバーを geo 冗長ストレージ用に構成した場合にのみ使用でき、ご利用のサーバーを別のリージョンに復元できます。
+**ガイダンス**:Azure Database for MariaDB で、バックアップを定期的にテストするために元のサーバーのバックアップから復元を実行します。 使用できる復元には 2 つの種類があります。ポイントインタイム リストアと geo リストアです。 ポイントインタイム リストアは、いずれのバックアップ冗長オプションでも使用でき、元のサーバーと同じリージョンに新しいサーバーが作成されます。 geo リストアは、サーバーを geo 冗長ストレージ用に構成した場合にのみ使用でき、ご利用のサーバーを別のリージョンに復元できます。
 
 復旧の推定所要時間は、データベースのサイズ、トランザクション ログのサイズ、ネットワーク帯域幅、同じリージョン内で同時に復旧するデータベースの合計数など、複数の要因によって異なります。 通常は 12 時間もかかりません。
 

@@ -8,10 +8,10 @@ ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 62188aefffd05af49bb00c242b266e808b991c84
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82188176"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>HDInsight 用の Azure セキュリティ ベースライン
@@ -926,7 +926,7 @@ Azure Policy を使用して特定のリソースの種類を拒否する方法:
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13:リスクの高いアプリケーションを物理的または論理的に分離する
 
-**ガイダンス**: 適用なし。ベンチマークでは、Web アプリケーションをホストしている Azure アプリ サービスまたはコンピューティング リソースを対象にしています。
+**ガイダンス**:適用なし。ベンチマークでは、Web アプリケーションをホストしている Azure アプリ サービスまたはコンピューティング リソースを対象にしています。
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -1288,7 +1288,7 @@ https://docs.microsoft.com/azure/security-center/workflow-automation
 
 **ガイダンス**:侵入テストが Microsoft のポリシーに違反しないようにするために、Microsoft の活動規則に従ってください。
 
-https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
+https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1.
 
 Microsoft が管理しているクラウド インフラストラクチャ、サービス、アプリケーションに対する Red Teaming およびライブ サイト侵入テストに関する Microsoft の戦略と実施の詳細については、こちらの https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e で確認できます。
 

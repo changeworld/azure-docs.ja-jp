@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/20/2020
 ms.openlocfilehash: 5abc3395152e03520eaff14b02d150892abf0e22
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82184216"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Azure HDInsight での Apache Hive による JSON ドキュメントの処理および分析

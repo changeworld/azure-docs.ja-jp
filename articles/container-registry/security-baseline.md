@@ -8,10 +8,10 @@ ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 95864f932fe255d561eaeb2d803b5fcc79cb2802
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82184097"
 ---
 # <a name="azure-security-baseline-for-azure-container-registry"></a>Azure Container Registry 用の Azure セキュリティ ベースライン
@@ -55,7 +55,7 @@ NSG フロー ログを有効にする方法: https://docs.microsoft.com/azure/n
 
 ### <a name="13-protect-critical-web-applications"></a>1.3:重要な Web アプリケーションを保護する
 
-**ガイダンス**: 適用不可。 ベンチマークは、Web アプリケーションをホストしている Azure App Service またはコンピューティング リソースを対象にしています。
+**ガイダンス**:適用不可。 ベンチマークは、Web アプリケーションをホストしている Azure App Service またはコンピューティング リソースを対象にしています。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -63,7 +63,7 @@ NSG フロー ログを有効にする方法: https://docs.microsoft.com/azure/n
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4:既知の悪意のある IP アドレスとの通信を拒否する
 
-**ガイダンス**: DDoS 攻撃から保護するために、ご利用の仮想ネットワーク上で DDoS Standard 保護を有効にします。 Azure Security Center の統合された脅威インテリジェンスを使用して、既知の悪意のある、または未使用のインターネット IP アドレスとの通信を拒否します。  有効化され、悪意のあるネットワーク トラフィックに対して "アラートおよび拒否" するように構成された脅威インテリジェンスとともに、組織の各ネットワーク境界に Azure Firewall をデプロイします。
+**ガイダンス**:DDoS 攻撃から保護するために、ご利用の仮想ネットワーク上で DDoS Standard 保護を有効にします。 Azure Security Center の統合された脅威インテリジェンスを使用して、既知の悪意のある、または未使用のインターネット IP アドレスとの通信を拒否します。  有効化され、悪意のあるネットワーク トラフィックに対して "アラートおよび拒否" するように構成された脅威インテリジェンスとともに、組織の各ネットワーク境界に Azure Firewall をデプロイします。
 
 Azure Security Center の Just In Time ネットワーク アクセスを使用すれば、限られた期間、承認された IP アドレスへのエンドポイントの公開を制限するように NSG を構成することができます。 また、実際のトラフィックと脅威インテリジェンスに基づいてポートとソース IP を制限する NSG 構成を推奨する Azure Security Center のアダプティブ ネットワークのセキュリティ強化を使用することもできます。
 
@@ -122,7 +122,7 @@ Azure Firewall でアラートを構成する方法: https://docs.microsoft.com/
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8:ネットワーク セキュリティ規則の複雑さと管理オーバーヘッドを最小限に抑える
 
-**ガイダンス**: ご利用のコンテナー レジストリへのアクセスが必要なリソースについては、Azure Container Registry サービス用の仮想ネットワークサービス タグを使用して、ネットワーク セキュリティ グループまたは Azure Firewall に対するネットワーク アクセス制御を定義します。 セキュリティ規則を作成するときは、特定の IP アドレスの代わりにサービス タグを使うことができます。 規則の適切なソース フィールドまたはターゲット フィールドにサービス タグ名 "AzureContainerRegistry" を指定することにより、対応するサービスのトラフィックを許可または拒否できます。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。
+**ガイダンス**:ご利用のコンテナー レジストリへのアクセスが必要なリソースについては、Azure Container Registry サービス用の仮想ネットワークサービス タグを使用して、ネットワーク セキュリティ グループまたは Azure Firewall に対するネットワーク アクセス制御を定義します。 セキュリティ規則を作成するときは、特定の IP アドレスの代わりにサービス タグを使うことができます。 規則の適切なソース フィールドまたはターゲット フィールドにサービス タグ名 "AzureContainerRegistry" を指定することにより、対応するサービスのトラフィックを許可または拒否できます。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。
 
 サービス タグによるアクセスを許可する: https://docs.microsoft.com/azure/container-registry/container-registry-firewall-access-rules#allow-access-by-service-tag
 
@@ -390,7 +390,7 @@ Azure Security Center でユーザーの ID およびアクセス アクティ�
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8:承認された場所からのみ Azure リソースを管理する
 
-**ガイダンス**: 条件付きアクセスのネームド ロケーションを使用して、IP アドレス範囲または国/地域の特定の論理グループからのアクセスのみを許可します。
+**ガイダンス**:条件付きアクセスのネームド ロケーションを使用して、IP アドレス範囲または国/地域の特定の論理グループからのアクセスのみを許可します。
 
 Azure でネームド ロケーションを構成する方法:  https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
@@ -543,7 +543,7 @@ Azure での転送中の暗号化の概要:  https://docs.microsoft.com/azure/se
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5:アクティブ検出ツールを使用して機密データを特定する
 
-**ガイダンス**: Azure Container Registry では、データの識別、分類、損失防止の各機能はまだ使用できません。 コンプライアンスのために必要な場合は、サードパーティ ソリューションを実装します。
+**ガイダンス**:Azure Container Registry では、データの識別、分類、損失防止の各機能はまだ使用できません。 コンプライアンスのために必要な場合は、サードパーティ ソリューションを実装します。
 
 Microsoft によって管理される基になるプラットフォームの場合、Microsoft は顧客のすべてのコンテンツを機密として扱い、顧客データを損失や漏洩から保護するためにあらゆる手段を尽くします。 Azure 内の顧客データが確実にセキュリティで保護されるように、Microsoft では一連の堅牢なデータ保護制御および機能を実装して管理しています。
 
@@ -556,7 +556,7 @@ Azure での顧客データの保護の概要: https://docs.microsoft.com/azure/
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
-**ガイダンス**: Azure Active Directory (Azure AD) RBAC を使用して、Azure コンテナー レジストリ内のデータとリソースへのアクセスを制御します。 
+**ガイダンス**:Azure Active Directory (Azure AD) RBAC を使用して、Azure コンテナー レジストリ内のデータとリソースへのアクセスを制御します。 
 
 Azure で RBAC を構成する方法:  https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 
@@ -626,7 +626,7 @@ Azure Container Registry と Security Center の統合 (プレビュー):  https
 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2:自動化されたオペレーティング システム修正プログラム管理ソリューションを展開する
 
-**ガイダンス**: Microsoft では、Azure Container Registry をサポートしている基になるシステムでパッチの管理を行います。
+**ガイダンス**:Microsoft では、Azure Container Registry をサポートしている基になるシステムでパッチの管理を行います。
 
 基本イメージに対するオペレーティング システムからの更新プログラムおよびその他のパッチが検出された場合は、コンテナー イメージの更新を自動化します。
 
@@ -651,7 +651,7 @@ ACR タスクの基本イメージの更新について:  https://docs.microsoft
 
 ### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4:バックツーバックの脆弱性スキャンを比較する
 
-**ガイダンス**: Azure Container Registry (ACR) を Azure Security Center に統合して、コンテナー イメージの脆弱性を定期的にスキャンできるようにします。 必要があれば、Azure Marketplace からのサードパーティのソリューションをデプロイして、イメージの脆弱性評価を定期的に実行します。
+**ガイダンス**:Azure Container Registry (ACR) を Azure Security Center に統合して、コンテナー イメージの脆弱性を定期的にスキャンできるようにします。 必要があれば、Azure Marketplace からのサードパーティのソリューションをデプロイして、イメージの脆弱性評価を定期的に実行します。
 
 Azure Container Registry と Security Center の統合 (プレビュー):  https://docs.microsoft.com/azure/security-center/azure-container-registry-integration
 
@@ -723,7 +723,7 @@ Azure RBAC について:  https://docs.microsoft.com/azure/role-based-access-con
 
 ### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4:承認された Azure リソースとソフトウェア タイトルのインベントリを管理する
 
-**ガイダンス**: 組織のニーズに応じて、承認された Azure リソースのインベントリを作成する必要があります。  
+**ガイダンス**:組織のニーズに応じて、承認された Azure リソースのインベントリを作成する必要があります。  
 
 **Azure Security Center の監視**: 適用なし
 
@@ -860,7 +860,7 @@ Azure Policy を使用した Azure コンテナー レジストリのコンプ�
 
 ### <a name="72-establish-secure-operating-system-configurations"></a>7.2:セキュリティで保護されたオペレーティング システムの構成を確立する
 
-**ガイダンス**: Azure Security Center の推奨事項 "仮想マシンのセキュリティ構成の脆弱性を修復する" を使用して、すべてのコンピューティング リソースのセキュリティ構成を維持します。
+**ガイダンス**:Azure Security Center の推奨事項 "仮想マシンのセキュリティ構成の脆弱性を修復する" を使用して、すべてのコンピューティング リソースのセキュリティ構成を維持します。
 
 Azure Security Center の推奨事項を監視する方法:  https://docs.microsoft.com/azure/security-center/security-center-recommendations
 
@@ -932,7 +932,7 @@ Azure Policy を構成して管理する方法:  https://docs.microsoft.com/azur
 
 ### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8:オペレーティング システム用のシステム構成管理ツールをデプロイする
 
-**ガイダンス**: 適用不可。 ベンチマークは、コンピューティング リソースに適用されます。
+**ガイダンス**:適用不可。 ベンチマークは、コンピューティング リソースに適用されます。
 
 
 **Azure Security Center の監視**: 適用なし
@@ -1060,7 +1060,7 @@ Azure Container Registry の geo レプリケーション:  https://docs.microso
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: システムの完全バックアップを実行し、カスタマー マネージド キーをバックアップする
 
-**ガイダンス**: 必要に応じて、コンテナー イメージを、あるレジストリから別のレジストリにインポートすることでバックアップします。
+**ガイダンス**:必要に応じて、コンテナー イメージを、あるレジストリから別のレジストリにインポートすることでバックアップします。
 
 Azure コマンドライン ツールまたは SDK を使用して、Azure Key Vault 内のカスタマー マネージド キーをバックアップします。
 
@@ -1130,7 +1130,7 @@ Microsoft Security Response Center のインシデントの構造:  https://msrc
 
 ### <a name="103-test-security-response-procedures"></a>10.3:セキュリティ対応手順のテスト
 
-**ガイダンス**: 定期的にシステムのインシデント対応機能をテストする演習を実施します。 弱点やギャップを特定し、必要に応じて計画を見直します。
+**ガイダンス**:定期的にシステムのインシデント対応機能をテストする演習を実施します。 弱点やギャップを特定し、必要に応じて計画を見直します。
 
 NIST の出版物を参照してください。IT 計画と機能に関するテスト、トレーニング、および演習プログラムのガイド:  https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
@@ -1141,7 +1141,7 @@ NIST の出版物を参照してください。IT 計画と機能に関するテ
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4:セキュリティ インシデントの連絡先の詳細を指定し、セキュリティ インシデントのアラート通知を構成します
 
-**ガイダンス**: セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) で、不正なユーザーまたは権限のないユーザーによるお客様のデータへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。  事後にインシデントをレビューして、問題が解決されていることを確認します。
+**ガイダンス**:セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) で、不正なユーザーまたは権限のないユーザーによるお客様のデータへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。  事後にインシデントをレビューして、問題が解決されていることを確認します。
 
 Azure Security Center のセキュリティ連絡先を設定する方法:  https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
 
@@ -1180,7 +1180,7 @@ Azure Sentinel にアラートをストリーミングする方法:  https://doc
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1:Azure リソースの通常の侵入テストを実施し、セキュリティに関する重大な調査結果がすべて、60 日以内に確実に修復されるようにします
 
-**ガイダンス**: お客様の侵入テストが Microsoft のポリシーに違反しないように、Microsoft の活動規則 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1 に従ってください。
+**ガイダンス**:お客様の侵入テストが Microsoft のポリシーに違反しないように、Microsoft の活動規則 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1 に従ってください。
 
 Microsoft マネージド クラウド インフラストラクチャ、サービス、アプリケーションに対する Red Teaming およびライブ サイト侵入テストに関する Microsoft の戦略と実施の詳細については、こちらの https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e で確認できます。
 
