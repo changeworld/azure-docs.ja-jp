@@ -57,7 +57,7 @@
           href: 'https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/'
 - name: 概念
   items:
-    - name: Architecture
+    - name: アーキテクチャ
       href: concepts-architecture.md
     - name: アプリケーション テンプレートとは
       href: concepts-app-templates.md
@@ -133,6 +133,8 @@
               href: howto-use-app-templates.md
             - name: アプリケーションの正常性を監視する
               href: howto-monitor-application-health.md
+            - name: アプリケーションに関する情報
+              href: howto-get-app-info.md
         - name: 他の場所からの管理
           items:
             - name: Azure portal からの管理

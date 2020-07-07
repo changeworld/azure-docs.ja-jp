@@ -25,6 +25,8 @@
           href: quickstart-send-telemetry-android.md
         - name: iOS
           href: quickstart-send-telemetry-ios.md
+        - name: Xamarin.Forms
+          href: quickstart-send-telemetry-xamarinforms.md
     - name: デバイスの制御
       items:
         - name: Node.js
@@ -173,9 +175,9 @@
           href: iot-hub-amqp-support.md
         - name: 用語集
           href: iot-hub-devguide-glossary.md
-    - name: Security
+    - name: セキュリティ
       items:
-        - name: Recommendations
+        - name: 推奨事項
           href: /azure/iot-fundamentals/security-recommendations?context=azure/iot-hub/rc/rc
         - name: 徹底的なセキュリティ
           href: /azure/iot-fundamentals/iot-security-ground-up?context=azure/iot-hub/rc/rc
@@ -324,6 +326,8 @@
           href: iot-hub-distributed-tracing.md
         - name: IP フィルター処理を構成する
           href: iot-hub-ip-filtering.md
+        - name: パブリック ネットワーク アクセスの管理
+          href: iot-hub-public-network-access.md
         - name: 大規模な自動デバイス管理
           items:
             - name: Azure Portal の使用

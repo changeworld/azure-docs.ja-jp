@@ -58,6 +58,8 @@
           href: /azure/active-directory/fundamentals/active-directory-users-restore?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: ユーザーの一括復元
           href: users-bulk-restore.md
+        - name: ユーザーのアクセスを取り消す
+          href: users-revoke-access.md
         - name: 非管理対象ディレクトリのアカウントを削除する
           href: users-close-account.md
         - name: B2B ユーザーの追加

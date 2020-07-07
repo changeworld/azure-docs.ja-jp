@@ -7,10 +7,16 @@
       href: what-is-application-management.md
 - name: クイックスタート
   items:
-    - name: エンタープライズ アプリケーションの表示
+    - name: アプリを表示する
       href: view-applications-portal.md
-    - name: ギャラリーからのクラウド アプリの追加
+    - name: アプリを追加する
       href: add-application-portal.md
+    - name: アプリを構成する
+      href: add-application-portal-configure.md
+    - name: シングル サインオンを設定する
+      href: add-application-portal-setup-sso.md
+    - name: アプリを削除する
+      href: delete-application-portal.md
 - name: チュートリアル
   items:
     - name: 統合されたギャラリー アプリ (ServiceNow、Salesforce、Dropbox など)

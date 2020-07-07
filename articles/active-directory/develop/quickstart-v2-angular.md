@@ -14,7 +14,6 @@ ms.date: 03/18/2020
 ms.author: janutter
 ms.openlocfilehash: f457e876cb9484fce29cba35c7570572b2771aed
 ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
-ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/26/2020
 ms.locfileid: "83860054"
@@ -103,7 +102,7 @@ ms.locfileid: "83860054"
 >|Enter_the_Tenant_Info_Here| 次のいずれかのオプションに設定します。1) お使いのアプリケーションで "*この組織のディレクトリ内のアカウント*" がサポートされる場合は、この値をディレクトリ (テナント) ID またはテナント名 (例: "**contoso.microsoft.com**") に置き換えます。 アプリケーションで "*任意の組織のディレクトリ内のアカウント*" がサポートされる場合は、この値を **organizations** に置き換えます。 アプリケーションで "*任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント*" がサポートされる場合は、この値を **common** に置き換えます。 "*個人用の Microsoft アカウントのみ*" にサポートを制限するには、この値を **consumers** に置き換えます。 |
 >|Enter_the_Redirect_Uri_Here|**http://localhost:4200** に置き換えます。|
 >|cacheLocation  | (省略可能) 認証状態のブラウザー ストレージを設定します。 既定では **sessionStorage** です。   |
->|storeAuthStateInCookie  | (省略可能) 認証要求の状態を格納するライブラリを識別します。 認証フローを検証するためには、ブラウザーの Cookie にこの状態が必要になります。 この Cookie は、Internet Explorer および Edge の 2 つのブラウザーに適合するように設定されます。 詳細については、[既知の問題](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues->on-IE-and-Edge-Browser#issues)に関するページを参照してください。 |
+>|storeAuthStateInCookie  | (省略可能) 認証要求の状態を格納するライブラリを識別します。 認証フローを検証するためには、ブラウザーの Cookie にこの状態が必要になります。 この Cookie は、Internet Explorer および Microsoft Edge の 2 つのブラウザーに適合するように設定されます。 詳細については、[既知の問題](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues->on-IE-and-Edge-Browser#issues)に関するページを参照してください。 |
 > > [!TIP]
 > > **[アプリケーション (クライアント) ID]** 、 **[ディレクトリ (テナント) ID]** 、 **[サポートされているアカウントの種類]** の値を見つけるには、Azure portal でアプリの **[概要]** ページに移動します。
 

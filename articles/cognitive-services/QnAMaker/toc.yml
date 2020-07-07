@@ -28,6 +28,8 @@
       href: Quickstarts/batch-testing.md
 - name: 概念
   items:
+    - name: ナレッジ ベースの計画
+      href: Concepts/plan.md
     - name: Azure リソース
       href: Concepts/azure-resources.md
     - name: 他の人と共同作業を行う

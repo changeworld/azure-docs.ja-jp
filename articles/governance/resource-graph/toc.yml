@@ -17,6 +17,9 @@
     - name: 最初のクエリを実行する - Azure PowerShell
       displayName: 'module, docker, Az.ResourceGraph'
       href: ./first-query-powershell.md
+    - name: 最初のクエリを実行する - .NET
+      displayName: 'core, auth, dotnet'
+      href: ./first-query-dotnet.md
     - name: 最初のクエリを実行する - Go
       displayName: 'package, sdk, golang'
       href: ./first-query-go.md
@@ -26,6 +29,9 @@
     - name: 最初のクエリを実行する - Python
       displayName: 'library, azure-mgmt, cli'
       href: ./first-query-python.md
+    - name: 最初のクエリを実行する - REST
+      displayName: 'armclient, postman'
+      href: ./first-query-rest-api.md
     - name: 共有クエリを作成する - Azure CLI
       displayName: 'extension, docker, queries'
       href: ./shared-query-azure-cli.md

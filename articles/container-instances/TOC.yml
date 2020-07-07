@@ -52,7 +52,7 @@
       href: container-instances-region-availability.md
     - name: オーケストレーターとの関係
       href: container-instances-orchestrator-relationship.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -86,6 +86,8 @@
           href: container-instances-start-command.md
         - name: コマンドの実行 (exec)
           href: container-instances-exec.md
+        - name: セットアップ コンテナーの実行 (init)
+          href: container-instances-init-container.md
         - name: マネージド ID の使用 (プレビュー)
           href: container-instances-managed-identity.md
         - name: GPU リソースの使用 (プレビュー)

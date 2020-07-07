@@ -230,6 +230,8 @@
               href: sql/data-loading-best-practices.md
             - name: 列ストア圧縮
               href: sql/data-load-columnstore-compression.md
+            - name: データ読み込みの概要
+              href: sql/load-data-overview.md
         - name: 開発
           items:
             - name: 概要
@@ -362,8 +364,10 @@
       items:
         - name: パイプライン実行
           href: monitoring/how-to-monitor-pipeline-runs.md
-        - name: Spark アプリケーション
+        - name: Apache Spark アプリケーション
           href: monitoring/how-to-monitor-spark-applications.md
+        - name: Apache Spark アプリケーションの詳細
+          href: monitoring/apache-spark-applications.md
         - name: Synapse SQL
           items:
             - name: Gen2 キャッシュの監視

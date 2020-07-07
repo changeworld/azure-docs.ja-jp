@@ -389,6 +389,8 @@
               href: log-query/unify-app-resource-data.md
         - name: 例とガイダンス
           items:
+            - name: クエリの例
+              href: log-query/saved-queries.md
             - name: ログ クエリの例
               href: log-query/examples.md
             - name: スマート分析の例
@@ -1125,6 +1127,8 @@
               href: learn/tutorial-logs-dashboards.md
             - name: アプリケーション データを使用したダッシュボード
               href: learn/tutorial-app-dashboards.md
+            - name: Log Analytics ダッシュボードをアップグレードする
+              href: log-query/dashboard-upgrade.md
         - name: データを Grafana に送信する
           href: platform/grafana-plugin.md
     - name: カスタム データの収集と分析
@@ -1200,6 +1204,10 @@
           href: app/custom-endpoints.md
         - name: Azure Functions
           href: app/azure-functions-supported-features.md
+        - name: リリース ノート
+          items:
+            - name: Web アプリ拡張機能
+              href: app/web-app-extension-release-notes.md
         - name: データ モデル
           items:
             - name: 概要

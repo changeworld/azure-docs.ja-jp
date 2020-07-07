@@ -99,6 +99,10 @@
     - name: ゲスト構成を使用した VM の監査
       displayName: 'provider, tools, definition'
       href: ./concepts/guest-configuration.md
+    - name: セキュリティ
+      items:
+        - name: Azure セキュリティ ベンチマーク用のセキュリティ ベースライン
+          href: ./concepts/azure-security-benchmark-baseline.md
 - name: 操作方法ガイド
   items:
     - name: VS Code 用 Azure Policy 拡張機能

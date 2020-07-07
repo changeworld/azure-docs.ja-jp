@@ -8,7 +8,6 @@ ms.topic: overview
 ms.date: 04/20/2020
 ms.openlocfilehash: a1a55ceec2679034125ddd202402cabcbf71e17e
 ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/20/2020
 ms.locfileid: "83698311"
@@ -82,7 +81,7 @@ ms.locfileid: "83698311"
 
 ### <a name="bug-fixes-220"></a>バグ修正 2.2.0 ###
 
-- [バグ修正] Flash バージョンの検出が Chrome と Edge で正常に機能しない
+- [バグ修正] Flash バージョンの検出が Chrome と Microsoft Edge で正常に機能しない
 
 ### <a name="changes-220"></a>変更 2.2.0 ###
 
@@ -439,7 +438,7 @@ ms.locfileid: "83698311"
 
 ### <a name="bug-fixes-161"></a>バグ修正 1.6.1 ###
 
-- [バグ修正][FlashSS|Edge、IE][SilverlightSS|IE] IE または Edge で、入力などに使用される他の UI 要素のフォーカスを取得できない
+- [バグ修正][FlashSS|Edge、IE][SilverlightSS|IE] IE または Microsoft Edge で、入力などに使用される他の UI 要素のフォーカスを取得できない
 - [バグ修正] forge が定義されていないと AES 再生に失敗する
 - [バグ修正][Android][AzureHtml5JS|Chrome] 正常性チェック ループ状態になると継続的にスピナーが表示されてコンテンツが再生されない
 - [バグ修正][IE9] IE 9 で console.log() がサポートされないために例外が発生する
@@ -460,8 +459,8 @@ ms.locfileid: "83698311"
 - [バグ修正] マウスの移動でビットレート選択ボックスがリセットされ、より低いビットレートをマウス コントロールで選択するときに問題が発生する
 - [バグ修正] アプリ内で DRM チェックを実行しているときに Mac Office がクラッシュする
 - [バグ修正] CSS クラスが上書きされてしまいやすい
-- [バグ修正][Chrome] ブラウザーが Edge であることを示すユーザーエージェント文字列の ID を更新
-- [バグ修正][AzureHtml5JS] Edge (Win10) または Chrome (Mac) のツール バーにキャプション ボタンが表示されない
+- [バグ修正][Chrome] ブラウザーが Microsoft Edge であることを示すユーザーエージェント文字列の ID を更新
+- [バグ修正][AzureHtml5JS] Microsoft Edge (Win10) または Chrome (Mac) のツール バーにキャプション ボタンが表示されない
 - [バグ修正][Android][AzureHtml5JS|Chrome] ショート ビデオの endOfStream() 呼び出しで InvalidStateError 例外が発生する
 - [バグ修正][Firefox] ブラウザーの機能をチェックする際に Firefox が原因で生じる DRM 警告を削除
 - [バグ修正][Html5] プログレッシブ mp4 コンテンツで字幕またはキャプションが表示されない

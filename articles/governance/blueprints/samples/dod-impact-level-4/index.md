@@ -1,18 +1,20 @@
 ---
 title: DoD 影響レベル 4 ブループリント サンプルの概要
 description: DoD 影響レベル 4 サンプルの概要 このブループリント サンプルは、お客様が特定の DoD 影響レベル 4 コントロールを評価するのに役立ちます。
-ms.date: 03/12/2020
+ms.date: 06/30/2020
 ms.topic: sample
-ms.openlocfilehash: 3b032e1a26c4fb5e97b1c7ab4fff65bc1b046f21
-ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
-ms.translationtype: HT
+ms.openlocfilehash: 1c06cd738b9a63cb7a3ec14ef48bb8ae7c6dd6cb
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2020
-ms.locfileid: "85517254"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800394"
 ---
 # <a name="overview-of-the-dod-impact-level-4-blueprint-sample"></a>DoD 影響レベル 4 ブループリント サンプルの概要
 
 国防総省影響レベル 4 (DoD IL4) のブループリント サンプルでは、特定の DoD 影響レベル 4 コントロールの評価に役立つ、[Azure Policy](../../../policy/overview.md) を使用したガバナンス ガードレールが提供されます。 このブループリントは、DoD 影響レベル 4 コントロールの実施が必要とされる、Azure でデプロイされたアーキテクチャのために、一連の主要なポリシーをデプロイするのに役立ちます。 DoD 影響レベル 4 の承認を満たす Azure クラウドとサービスの最新情報については、「[FedRAMP および DoD CC SRG 監査スコープ別の Azure サービス](../../../../azure-government/compliance/azure-services-in-fedramp-auditscope.md)」を参照してください。
+
+> [!NOTE]
+> このブループリント サンプルは、Azure Government から入手できます。
 
 ## <a name="control-mapping"></a>コントロール マッピング
 

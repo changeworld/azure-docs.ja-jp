@@ -43,8 +43,8 @@
       items:
         - name: Azure サポート要求を作成する
           href: supportability/how-to-create-azure-support-request.md
-        - name: サポート リクエストのファイルのアップロード
-          href: supportability/how-to-use-file-uploader.md
+        - name: Azure サポート リクエストを管理する
+          href: supportability/how-to-manage-azure-support-request.md
         - name: クォータの増加を要求
           items:
             - name: コンピューティング vCPU の上限を引き上げる

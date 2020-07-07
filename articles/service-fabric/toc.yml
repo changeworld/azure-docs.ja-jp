@@ -94,7 +94,7 @@
   items:
     - name: Service Fabric のベスト プラクティスの概要
       href: service-fabric-best-practices-overview.md
-    - name: Security
+    - name: セキュリティ
       href: service-fabric-best-practices-security.md
     - name: ネットワーク
       href: service-fabric-best-practices-networking.md
@@ -127,9 +127,9 @@
       href: service-fabric-content-roadmap.md
     - name: アプリケーションのシナリオ
       href: service-fabric-application-scenarios.md
-    - name: Architecture
+    - name: アーキテクチャ
       href: service-fabric-architecture.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: Service Fabric のセキュリティ
           href: service-fabric-best-practices-security.md
@@ -165,7 +165,7 @@
               href: service-fabric-concepts-partitioning.md
             - name: ステートフル サービスの再構成
               href: service-fabric-concepts-reconfiguration.md
-            - name: 'Reliable Services のライフサイクル - C#'
+            - name: Reliable Services のライフサイクル - C#
               href: service-fabric-reliable-services-lifecycle.md
             - name: Reliable Services のライフサイクル - Java
               href: service-fabric-reliable-services-lifecycle-java.md
@@ -187,7 +187,7 @@
           items:
             - name: Reliable Actors の概要
               href: service-fabric-reliable-actors-introduction.md
-            - name: Architecture
+            - name: アーキテクチャ
               href: service-fabric-reliable-actors-platform.md
             - name: サービスレベルの機能の実装
               href: service-fabric-reliable-actors-using.md
@@ -222,6 +222,8 @@
               href: service-fabric-manifest-example-container-app.md
         - name: ホスティング モデル
           href: service-fabric-hosting-model.md
+        - name: ホスティングのアクティブ化と非アクティブ化のライフサイクルに関する高度なトピック
+          href: service-fabric-hosting-lifecycle.md
         - name: アプリケーションのセキュリティ
           href: service-fabric-application-and-service-security.md
         - name: サービスの状態
@@ -312,7 +314,7 @@
           items:
             - name: Cluster Resource Manager の概要
               href: service-fabric-cluster-resource-manager-introduction.md
-            - name: Architecture
+            - name: アーキテクチャ
               href: service-fabric-cluster-resource-manager-architecture.md
             - name: クラスターについて説明する
               href: service-fabric-cluster-resource-manager-cluster-description.md
@@ -404,13 +406,13 @@
           href: service-fabric-get-started-containers.md
         - name: Linux コンテナー アプリケーション
           href: service-fabric-get-started-containers-linux.md
-        - name: 'Windows の C# Reliable Services アプリケーション'
+        - name: Windows の C# Reliable Services アプリケーション
           href: service-fabric-reliable-services-quick-start.md
         - name: Linux の Java Reliable Services アプリケーション
           href: service-fabric-reliable-services-quick-start-java.md
-        - name: 'Linux の C# Reliable Services アプリケーション'
+        - name: Linux の C# Reliable Services アプリケーション
           href: service-fabric-create-your-first-linux-application-with-csharp.md
-        - name: 'Windows の C# Reliable Actors アプリケーション'
+        - name: Windows の C# Reliable Actors アプリケーション
           href: service-fabric-reliable-actors-get-started.md
         - name: Linux の Java Reliable Actors アプリケーション
           href: service-fabric-create-your-first-linux-application-with-java.md
@@ -448,13 +450,13 @@
               items:
                 - name: Reliable Services を使用して通信する
                   href: service-fabric-reliable-services-communication.md
-                - name: 'サービスのリモート処理 - C#'
+                - name: サービスのリモート処理 - C#
                   href: service-fabric-reliable-services-communication-remoting.md
                 - name: サービスのリモート処理 - Java
                   href: service-fabric-reliable-services-communication-remoting-java.md
                 - name: WCF
                   href: service-fabric-reliable-services-communication-wcf.md
-                - name: '通信のセキュリティ保護 - C#'
+                - name: 通信のセキュリティ保護 - C#
                   href: service-fabric-reliable-services-secure-communication.md
                 - name: 通信のセキュリティ保護 - Java
                   href: service-fabric-reliable-services-secure-communication-java.md
@@ -561,7 +563,7 @@
           items:
             - name: VS Code を使ってみる
               href: service-fabric-get-started-vs-code.md
-            - name: 'VS Code を使用した C# Service Fabric アプリケーションの開発'
+            - name: VS Code を使用した C# Service Fabric アプリケーションの開発
               href: service-fabric-develop-csharp-applications-with-vs-code.md
             - name: VS Code を使用した Java Service Fabric アプリケーションの開発
               href: service-fabric-develop-java-applications-with-vs-code.md

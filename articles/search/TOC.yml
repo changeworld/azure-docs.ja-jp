@@ -15,7 +15,7 @@
           href: search-create-service-portal.md
         - name: インデックスを作成する
           href: search-get-started-portal.md
-        - name: アプリを作成する
+        - name: デモ アプリを作成する
           href: search-create-app-portal.md
         - name: スキルセットを作成する
           href: cognitive-search-quickstart-blob.md

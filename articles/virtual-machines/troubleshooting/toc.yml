@@ -200,6 +200,8 @@
       href: storage-resource-deletion-errors.md
     - name: クラシック ストレージ リソースの削除時のエラー
       href: storage-classic-cannot-delete-storage-account-container-vhd.md
+    - name: Azure で VM を作成する場合に VHD がサポートされない
+      href: vhd-not-supported-vm-azure.md
     - name: 入れ子になった仮想化の使用
       href: troubleshoot-vm-by-use-nested-virtualization.md
 - name: VM のパフォーマンスの問題

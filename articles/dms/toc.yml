@@ -7,10 +7,14 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: サービスの作成 - ポータル
-      href: quickstart-create-data-migration-service-portal.md
-    - name: ハイブリッド モードでのサービスの作成 - ポータル
-      href: quickstart-create-data-migration-service-hybrid-portal.md
+    - name: サービスの作成
+      items:
+        - name: ポータル
+          href: quickstart-create-data-migration-service-portal.md
+        - name: ARM テンプレート
+          href: create-dms-resource-manager-template.md
+        - name: ハイブリッド モードの場合 (ポータル)
+          href: quickstart-create-data-migration-service-hybrid-portal.md
 - name: 概念
   items:
     - name: 前提条件

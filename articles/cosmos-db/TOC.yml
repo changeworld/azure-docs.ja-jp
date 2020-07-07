@@ -544,7 +544,7 @@
           href: optimize-dev-test.md
         - name: 予約容量によるコストの最適化
           href: cosmos-db-reserved-capacity.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティの概要
           href: database-security.md
@@ -1005,7 +1005,7 @@
               href: performance-tips-async-java.md
             - name: 同期の Java SDK v2
               href: performance-tips-java.md
-            - name: 非同期の Java SDK v2
+            - name: トラブルシューティング - Async Java SDK v2
               href: troubleshoot-java-async-sdk.md
         - name: パフォーマンス テスト - サンプル アプリ
           href: performance-testing.md
@@ -1065,7 +1065,7 @@
           href: how-to-write-javascript-query-api.md
         - name: ストアド プロシージャ、トリガー、UDF の使用
           href: how-to-use-stored-procedures-triggers-udfs.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: IP ファイアウォールの構成
           href: how-to-configure-firewall.md

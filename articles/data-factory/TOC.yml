@@ -583,6 +583,8 @@
           href: monitor-visually.md
         - name: Azure Monitor による監視
           href: monitor-using-azure-monitor.md
+        - name: Azure Monitor による SSIS の監視
+          href: monitor-using-azure-monitor.md#monitor-ssis-operations-with-azure-monitor
         - name: SDK を使用した監視
           href: monitor-programmatically.md
         - name: 統合ランタイムの監視
