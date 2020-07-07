@@ -2,13 +2,13 @@
 title: 管理テナントでの委任変更を監視する
 description: 顧客テナントから管理テナントへの委任アクティビティを監視する方法について説明します。
 ms.date: 03/30/2020
-ms.topic: conceptual
-ms.openlocfilehash: a4593b34311eca34e4fb68926a3820899ab3f324
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: 9a772cc577392558f050211b7f767928ecbb707b
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81458813"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85919137"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>管理テナントでの委任変更を監視する
 
@@ -44,7 +44,7 @@ ms.locfileid: "81458813"
 
 - この機能に対してのみ使用する[新しいサービス プリンシパル アカウントを作成](../../active-directory/develop/howto-create-service-principal-portal.md)し、他の自動化に使用する既存のサービス プリンシパルにこのロールを割り当てることはしません。
 - このサービス プリンシパルに、委任された顧客リソースへのアクセス権がないことを確認してください。
-- [証明書を使用して認証](../../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets)を行い、[それを Azure Key Vault に安全に格納します](../../key-vault/general/best-practices.md)。
+- [証明書を使用して認証](../../active-directory/develop/howto-create-service-principal-portal.md#upload-a-certificate-or-create-a-secret-for-signing-in)を行い、[それを Azure Key Vault に安全に格納します](../../key-vault/general/best-practices.md)。
 - サービス プリンシパルの代理として機能するアクセス権を持つユーザーを制限します。
 
 次のいずれかの方法を使用して、ルート スコープの割り当てを行います。
@@ -73,7 +73,7 @@ az role assignment create --assignee 00000000-0000-0000-0000-000000000000 --role
 
 ご利用の管理テナントのルート スコープに対して監視閲覧者アクセス権を持つ新しいサービス プリンシパル アカウントを作成したら、それを使用して、ご利用のテナント内の委任アクティビティのクエリとレポートを行うことができます。 
 
-[この Azure PowerShell スクリプト](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/tools/monitor-delegation-changes)を使用すると、過去 1 日間のアクティビティを照会し、追加または削除された委任 (または、成功しなかった試行) についてレポートすることができます。 [Tenant Activity Log](https://docs.microsoft.com/rest/api/monitor/TenantActivityLogs/List) データに対してクエリが実行され、追加または削除された委任についてレポートするために次の値が構築されます。
+[この Azure PowerShell スクリプト](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/tools/monitor-delegation-changes)を使用すると、過去 1 日間のアクティビティを照会し、追加または削除された委任 (または、成功しなかった試行) についてレポートすることができます。 [Tenant Activity Log](/rest/api/monitor/TenantActivityLogs/List) データに対してクエリが実行され、追加または削除された委任についてレポートするために次の値が構築されます。
 
 - **DelegatedResourceId**: 委任されたサブスクリプションまたはリソース グループの ID
 - **CustomerTenantId**: 顧客テナント ID

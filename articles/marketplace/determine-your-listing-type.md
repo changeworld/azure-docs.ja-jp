@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 92a24a59038eb74a6a2f6a738005ff8aadf35ff0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 7c8a8bcef548ae752b6ddeb7663dd82b3f245349
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658062"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957887"
 ---
 # <a name="determine-your-publishing-option"></a>公開オプションを選定する
 
@@ -60,7 +60,7 @@ ms.locfileid: "83658062"
 
 ## <a name="choose-a-publishing-option"></a>公開オプションを選択する
 
-公開オプションによってお客様のエンゲージメントが差別化され、潜在顧客の共有や[商業マーケットプレース特典](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)へのアクセスも可能になります。 公開オプションに対応した行動喚起を次に示します。
+公開オプションによってお客様のエンゲージメントが差別化され、潜在顧客の共有や[商業マーケットプレース特典](gtm-your-marketplace-benefits.md)へのアクセスも可能になります。 公開オプションに対応した行動喚起を次に示します。
 
 | **公開オプション**    | **説明**  |
 | :------------------- | :-------------------|

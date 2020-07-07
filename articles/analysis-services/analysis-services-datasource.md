@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 83a5543aa2d1f30696bed05caf85b04ed6685bae
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 5b0639179c21aefebc44222c9efaa4cd8d9c82f5
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84197216"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921903"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services でサポートされるデータ ソース
 
@@ -23,7 +23,7 @@ Analysis Services プロジェクトを使用した Visual Studio の [データ
 |データ ソース  |メモリ内  |DirectQuery  |Notes |
 |---------|---------|---------|---------|
 |Azure SQL データベース      |   はい      |    はい      |<sup>[2](#azprovider)</sup>、<sup>[3](#azsqlmanaged)</sup>|
-|Azure Synapse Analytics (SQL Data Warehouse)      |   はい      |   はい       |<sup>[2](#azprovider)</sup>|
+|Azure Synapse Analytics (SQL DW)      |   はい      |   はい       |<sup>[2](#azprovider)</sup>|
 |Azure Blob Storage      |   はい       |    いいえ      | <sup>[1](#tab1400a)</sup> |
 |Azure Table Storage     |   はい       |    いいえ      | <sup>[1](#tab1400a)</sup>|
 |Azure Cosmos DB     |  はい        |  いいえ        |<sup>[1](#tab1400a)</sup> |

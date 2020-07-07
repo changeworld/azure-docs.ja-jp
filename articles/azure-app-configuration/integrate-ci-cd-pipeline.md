@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.date: 01/30/2020
 ms.author: lcozzens
-ms.openlocfilehash: 4b1b9e2360f4ae1cf428133006ed08327b10cdef
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 47af78e562329a7221dcba865fc7304543a282df
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790764"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856762"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>CI/CD パイプラインとの統合
 
@@ -69,23 +69,33 @@ Azure App Configuration の[エクスポート](./howto-import-export-data.md#ex
 1. **ConnectionString** という名前の環境変数に、App Configuration ストアへのアクセス キーを設定します。 
     Windows コマンド プロンプトを使用する場合は、次のコマンドを実行してコマンド プロンプトを再起動し、変更が反映されるようにします。
 
-        setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```console
+     setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```
 
     Windows PowerShell を使用する場合は、次のコマンドを実行します。
 
-        $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```powershell
+     $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```
 
     macOS または Linux を使用する場合は、次のコマンドを実行します。
 
-        export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```console
+     export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```
 
 2. .NET Core CLI を使用してアプリケーションをビルドするには、コマンド シェルで次のコマンドを実行します。
 
-        dotnet build
+    ```console
+     dotnet build
+    ```
 
 3. ビルドが正常に完了したら、次のコマンドを実行して、Web アプリをローカルで実行します。
 
-        dotnet run
+    ```console
+     dotnet run
+    ```
 
 4. ブラウザー ウィンドウを開いて、`http://localhost:5000` (ローカルでホストされた Web アプリの既定の URL) に移動します。
 

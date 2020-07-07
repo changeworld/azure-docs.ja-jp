@@ -9,17 +9,17 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.custom: sqldbrb=1
-ms.date: 04/28/2020
-ms.openlocfilehash: 82e0cec514849eb41272e6b25dcce74eabfa2b8d
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 06/03/2020
+ms.openlocfilehash: 17d985681ab7a547bf715b1f8bb8d37cbf7ab662
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84190307"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954113"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL Database 監査ログの形式
 
-[!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
+[!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 [Azure SQL Database の監査](auditing-overview.md)では、データベース イベントを追跡し、それを Azure ストレージ アカウントの監査ログに書き込むか、ダウンストリーム処理および分析のためイベント ハブまたは Log Analytics に送信します。
 
@@ -31,7 +31,7 @@ Azure BLOB ストレージに格納されている監査ログは、Azure スト
 
 たとえば、`Server1` にあるデータベース `Database1` の場合、選択可能な有効なパスは以下のようになります：
 
-    Server1/Database1/SqlDbAuditing_ServerAudit_NoRetention/2019-02-03/12_23_30_794_0.xel
+`Server1/Database1/SqlDbAuditing_ServerAudit_NoRetention/2019-02-03/12_23_30_794_0.xel`
 
 [読み取り専用レプリカ](read-scale-out.md)の監査ログは、同じコンテナーに格納されます。 コンテナー内のディレクトリ階層は、`<ServerName>/<DatabaseName>/<AuditName>/<Date>/RO/` という形式になります。 BLOB ファイル名は同じ形式を共有します。 読み取り専用レプリカの監査ログは、同じコンテナーに格納されます。
 

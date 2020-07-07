@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 10/10/2019
-ms.openlocfilehash: 871ff0fe7fdf92e82b30b1c93867d753ce9a82b0
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e743d557f70aaa92e464244d0198debbc25a1e46
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84036083"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956901"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>スケールアウトされたクラウド データベース全体のレポート (プレビュー)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -64,45 +64,53 @@ ms.locfileid: "84036083"
 1. SQL Server Management Studio または Visual Studio の SQL Server Data Tools を開きます。
 2. ElasticDBQuery データベースに接続し、次の T-SQL コマンドを実行します。
 
-        CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<master_key_password>';
+    ```tsql
+    CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<master_key_password>';
 
-        CREATE DATABASE SCOPED CREDENTIAL ElasticDBQueryCred
-        WITH IDENTITY = '<username>',
-        SECRET = '<password>';
+    CREATE DATABASE SCOPED CREDENTIAL ElasticDBQueryCred
+    WITH IDENTITY = '<username>',
+    SECRET = '<password>';
+    ```
 
     "username" と "password" は、記事「**Elastic Database ツールの概要**」の「[サンプル アプリケーションのダウンロードと実行](elastic-scale-get-started.md#download-and-run-the-sample-app)」セクションの手順 3 で使用されているログイン情報と同じである必要があります。
 
 ### <a name="external-data-sources"></a>外部データ ソース
 外部データ ソースを作成するには、ElasticDBQuery データベースで、次のコマンドを実行します。
 
-    CREATE EXTERNAL DATA SOURCE MyElasticDBQueryDataSrc WITH
-      (TYPE = SHARD_MAP_MANAGER,
-      LOCATION = '<server_name>.database.windows.net',
-      DATABASE_NAME = 'ElasticScaleStarterKit_ShardMapManagerDb',
-      CREDENTIAL = ElasticDBQueryCred,
-       SHARD_MAP_NAME = 'CustomerIDShardMap'
-    ) ;
+```tsql
+CREATE EXTERNAL DATA SOURCE MyElasticDBQueryDataSrc WITH
+    (TYPE = SHARD_MAP_MANAGER,
+    LOCATION = '<server_name>.database.windows.net',
+    DATABASE_NAME = 'ElasticScaleStarterKit_ShardMapManagerDb',
+    CREDENTIAL = ElasticDBQueryCred,
+    SHARD_MAP_NAME = 'CustomerIDShardMap'
+) ;
+```    
 
  エラスティック データベース ツールのサンプルを使用してシャード マップとシャード マップ マネージャーを作成した場合、"CustomerIDShardMap" はシャード マップの名前となります。 ただし、このサンプルでカスタム セットアップを使用した場合は、アプリケーションで選択するシャード マップ名となります。
 
 ### <a name="external-tables"></a>外部テーブル
 シャード上の Customers テーブルと一致する外部テーブルを作成するには、ElasticDBQuery データベースに対して次のコマンドを実行します。
 
-    CREATE EXTERNAL TABLE [dbo].[Customers]
-    ( [CustomerId] [int] NOT NULL,
-      [Name] [nvarchar](256) NOT NULL,
-      [RegionId] [int] NOT NULL)
-    WITH
-    ( DATA_SOURCE = MyElasticDBQueryDataSrc,
-      DISTRIBUTION = SHARDED([CustomerId])
-    ) ;
+```tsql
+CREATE EXTERNAL TABLE [dbo].[Customers]
+( [CustomerId] [int] NOT NULL,
+    [Name] [nvarchar](256) NOT NULL,
+    [RegionId] [int] NOT NULL)
+WITH
+( DATA_SOURCE = MyElasticDBQueryDataSrc,
+    DISTRIBUTION = SHARDED([CustomerId])
+) ;
+```
 
 ## <a name="execute-a-sample-elastic-database-t-sql-query"></a>サンプルのエラスティック データベース T-SQL クエリを実行する
 外部データ ソースと外部テーブルを定義すると、外部テーブルに対して完全に T-SQL を使用できるようになります。
 
 ElasticDBQuery データベースでこのクエリを実行します。
 
-    select count(CustomerId) from [dbo].[Customers]
+```tsql
+select count(CustomerId) from [dbo].[Customers]
+```
 
 クエリはすべてのシャードからの結果を集計し、次のように出力を表示します。
 

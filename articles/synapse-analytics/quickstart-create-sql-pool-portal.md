@@ -5,16 +5,16 @@ services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: a040eb6db84c0e20be0f73a8e541ec824b2710c1
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 966ca099c44ba8b0f2d3241c391f4d7a101afb26
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83665530"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955099"
 ---
 # <a name="quickstart-create-a-synapse-sql-pool-preview-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Synapse SQL プール (プレビュー) を作成する
 

@@ -11,12 +11,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: e0df0773daf8f9be21ac70d8390013adfd93483a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: d3f3842265e0c8a36c7eb4b14abca771bd3d38f2
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78402675"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85918936"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>チュートリアル:Azure Databricks を使用した、ストリーミング データの異常検出
 
@@ -300,6 +300,7 @@ pool.shutdown()
 
 ノートブックを実行するには、**Shift + Enter** キーを押します。 次のスニペットに示されているような出力が表示されます。 出力内の各イベントは、Event Hubs に取り込まれたタイムスタンプと "いいね!" の数の組み合わせです。
 
+```output
     Sent event: {"timestamp":"2019-04-24T09:39:40.000Z","favorite":0}
 
     Sent event: {"timestamp":"2019-04-24T09:38:48.000Z","favorite":1}
@@ -318,6 +319,7 @@ pool.shutdown()
 
     ...
     ...
+```
 
 ## <a name="read-tweets-from-event-hubs"></a>Event Hubs からツイートを読み取る
 
@@ -423,16 +425,18 @@ object AnomalyDetector extends Serializable {
 
 ノートブックを実行するには、**Shift + Enter** キーを押します。 次のスニペットに示されているような出力が表示されます。
 
-    import java.io.{BufferedReader, DataOutputStream, InputStreamReader}
-    import java.net.URL
-    import java.sql.Timestamp
-    import com.google.gson.{Gson, GsonBuilder, JsonParser}
-    import javax.net.ssl.HttpsURLConnection
-    defined class Point
-    defined class Series
-    defined class AnomalySingleResponse
-    defined class AnomalyBatchResponse
-    defined object AnomalyDetector
+```scala
+import java.io.{BufferedReader, DataOutputStream, InputStreamReader}
+import java.net.URL
+import java.sql.Timestamp
+import com.google.gson.{Gson, GsonBuilder, JsonParser}
+import javax.net.ssl.HttpsURLConnection
+defined class Point
+defined class Series
+defined class AnomalySingleResponse
+defined class AnomalyBatchResponse
+defined object AnomalyDetector
+```
 
 次に、将来使用するための集計関数を作成します。
 ```scala
@@ -495,11 +499,13 @@ class AnomalyDetectorAggregationFunction extends UserDefinedAggregateFunction {
 
 ノートブックを実行するには、**Shift + Enter** キーを押します。 次のスニペットに示されているような出力が表示されます。
 
-    import org.apache.spark.sql.Row
-    import org.apache.spark.sql.expressions.{MutableAggregationBuffer, UserDefinedAggregateFunction}
-    import org.apache.spark.sql.types.{StructType, TimestampType, FloatType, MapType, BooleanType, DataType}
-    import scala.collection.immutable.ListMap
-    defined class AnomalyDetectorAggregationFunction
+```scala
+import org.apache.spark.sql.Row
+import org.apache.spark.sql.expressions.{MutableAggregationBuffer, UserDefinedAggregateFunction}
+import org.apache.spark.sql.types.{StructType, TimestampType, FloatType, MapType, BooleanType, DataType}
+import scala.collection.immutable.ListMap
+defined class AnomalyDetectorAggregationFunction
+```
 
 次に、異常検出についてのデータをイベント ハブから読み込みます。 プレースホルダーを、先ほど作成した Azure Event Hubs の値に置き換えます。
 

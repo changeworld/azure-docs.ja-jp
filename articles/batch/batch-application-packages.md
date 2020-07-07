@@ -4,12 +4,12 @@ description: Azure Batch のアプリケーション パッケージ機能を使
 ms.topic: how-to
 ms.date: 04/26/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fd5821a7876cc99be41fbb2c5b095b931653c345
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: cebb7bf001d16e1024ed466268758f0b1bc92c6c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780308"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955032"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Batch アプリケーション パッケージを使用したコンピューティング ノードへのアプリケーションのデプロイ
 
@@ -334,24 +334,24 @@ foreach (ApplicationSummary app in applications)
 * [Batch REST API][api_rest] も、アプリケーション パッケージの運用をサポートしています。 たとえば、REST API を使用したインストール パッケージの指定方法については、[アカウントへのプールの追加][rest_add_pool]に関する記事の [applicationPackageReferences][rest_add_pool_with_packages] 要素を参照してください。 Batch REST API を使用したアプリケーション情報の取得方法の詳細については、「[アプリケーション][rest_applications]」をご覧ください。
 * [Batch Management .NET でプログラムを使用して Azure Batch アカウントとクォータを管理する](batch-management-dotnet.md)方法を学習してください。 [Batch Management .NET][api_net_mgmt] ライブラリで、Batch アプリケーションやサービス用のアカウント作成機能と削除機能を有効にできます。
 
-[api_net]: https://docs.microsoft.com/dotnet/api/overview/azure/batch/client?view=azure-dotnet
-[api_net_mgmt]: https://docs.microsoft.com/dotnet/api/overview/azure/batch/management?view=azure-dotnet
-[api_rest]: https://docs.microsoft.com/rest/api/batchservice/
+[api_net]: /dotnet/api/overview/azure/batch/client?view=azure-dotnet
+[api_net_mgmt]: /dotnet/api/overview/azure/batch/management?view=azure-dotnet
+[api_rest]: /rest/api/batchservice/
 [batch_mgmt_nuget]: https://www.nuget.org/packages/Microsoft.Azure.Management.Batch/
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [storage_pricing]: https://azure.microsoft.com/pricing/details/storage/
-[net_appops]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.applicationoperations.aspx
-[net_appops_listappsummaries]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.applicationoperations.listapplicationsummaries.aspx
-[net_cloudpool]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.aspx
-[net_cloudpool_pkgref]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.applicationpackagereferences.aspx
-[net_cloudtask]: https://msdn.microsoft.com/library/microsoft.azure.batch.cloudtask.aspx
-[net_cloudtask_pkgref]: https://msdn.microsoft.com/library/microsoft.azure.batch.cloudtask.applicationpackagereferences.aspx
-[net_nodestate]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.computenode.state.aspx
-[net_pkgref]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.applicationpackagereference.aspx
+[net_appops]: /dotnet/api/microsoft.azure.batch.applicationoperations
+[net_appops_listappsummaries]: /dotnet/api/microsoft.azure.batch.applicationoperations
+[net_cloudpool]: /dotnet/api/microsoft.azure.batch.cloudpool
+[net_cloudpool_pkgref]: /dotnet/api/microsoft.azure.batch.cloudpool
+[net_cloudtask]: /dotnet/api/microsoft.azure.batch.cloudtask
+[net_cloudtask_pkgref]: /dotnet/api/microsoft.azure.batch.cloudtask
+[net_nodestate]: /dotnet/api/microsoft.azure.batch.computenode
+[net_pkgref]: /dotnet/api/microsoft.azure.batch.applicationpackagereference
 [portal]: https://portal.azure.com
-[rest_applications]: https://msdn.microsoft.com/library/azure/mt643945.aspx
-[rest_add_pool]: https://msdn.microsoft.com/library/azure/dn820174.aspx
-[rest_add_pool_with_packages]: https://msdn.microsoft.com/library/azure/dn820174.aspx#bk_apkgreference
+[rest_applications]: /rest/api/batchservice/application
+[rest_add_pool]: /rest/api/batchservice/pool/add
+[rest_add_pool_with_packages]: /rest/api/batchservice/pool/add#bk_apkgreference
 
 [1]: ./media/batch-application-packages/app_pkg_01.png "Application packages high-level diagram"
 [2]: ./media/batch-application-packages/app_pkg_02.png "Applications tile in Azure portal"

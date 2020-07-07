@@ -4,7 +4,6 @@ description: この記事では、Azure で実行されている SQL Server 仮�
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
-manager: craigg
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 58232e92-318f-456b-8f0a-2201a541e08d
@@ -15,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 3a255b87724bb0c2f86743a5efc3613aba765c78
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: ed973b6ea5bbcd2b23e30d381e909ef2ab03b917
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219646"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921676"
 ---
 # <a name="automated-patching-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Azure 仮想マシンでの SQL Server の自動修正 (Resource Manager)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -106,10 +105,13 @@ SQL VM をプロビジョニングしたら、PowerShell を使用して自動�
 
 次の例では、PowerShell を使用して、既存の SQL Server VM で自動修正を構成しています。 **New-AzVMSqlServerAutoPatchingConfig** コマンドは、自動更新の新しいメンテナンス期間を構成します。
 
-    $vmname = "vmname"
-    $resourcegroupname = "resourcegroupname"
-    $aps = New-AzVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120  -PatchCategory "Important"
-s Set-AzVMSqlServerExtension -AutoPatchingSettings $aps -VMName $vmname -ResourceGroupName $resourcegroupname
+```azurepowershell
+$vmname = "vmname"
+$resourcegroupname = "resourcegroupname"
+$aps = New-AzVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120  -PatchCategory "Important"
+s
+Set-AzVMSqlServerExtension -AutoPatchingSettings $aps -VMName $vmname -ResourceGroupName $resourcegroupname
+```
 
 > [!IMPORTANT]
 > 拡張機能がまだインストールされていない場合、インストールすると、SQL Server が再起動されます。
@@ -130,5 +132,5 @@ SQL Server IaaS エージェントのインストールと構成には数分か�
 ## <a name="next-steps"></a>次のステップ
 その他の利用可能なオートメーション タスクについては、 [SQL Server IaaS Agent 拡張機能](sql-server-iaas-agent-extension-automate-management.md)に関するページをご覧ください。
 
-Azure VM での SQL Server の実行について詳しくは、[Azure Virtual Machines における SQL Server の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)に関するページをご覧ください。
+Azure VM で SQL Server を実行する方法の詳細については、[Azure 仮想マシンにおける SQL Server の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)に関するページをご覧ください。
 

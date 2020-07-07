@@ -3,12 +3,12 @@ title: ISO 27001 共有サービス ブループリント サンプルのコン�
 description: ISO 27001 共有サービスのブループリント サンプルのコントロール マッピング。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy にマップされています。
 ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: 6c03da7d5d4caada9ef47a828163a79a003bea93
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 448808a54cd313ca0acf0b8db40172bc8e0f1e06
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75922520"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85919850"
 ---
 # <a name="control-mapping-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 共有サービスのブループリント サンプルのコントロール マッピング
 
@@ -28,7 +28,7 @@ Azure サブスクリプションの所有者を 1 人しか設定しなかっ�
 
 ## <a name="a821-classification-of-information"></a>A.8.2.1 情報の機密指定
 
-お使いのデータベースに格納されている機密データは、Azure の [SQL 脆弱性評価サービス](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)を使って簡単に検出し、そのデータを機密扱いにするための推奨情報を含めることができます。 このブループリントでは、SQL 脆弱性評価スキャン中に特定された脆弱性が修復されたことを監査するための [Azure Policy](../../../policy/overview.md) 定義が割り当てられます。
+お使いのデータベースに格納されている機密データは、Azure の [SQL 脆弱性評価サービス](/azure/sql-database/sql-vulnerability-assessment)を使って簡単に検出し、そのデータを機密扱いにするための推奨情報を含めることができます。 このブループリントでは、SQL 脆弱性評価スキャン中に特定された脆弱性が修復されたことを監査するための [Azure Policy](../../../policy/overview.md) 定義が割り当てられます。
 
 - \[プレビュー\]:SQL の脆弱性評価の結果の Azure Security Center での監視
 

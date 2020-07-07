@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 41b7dc2b7ddcf5d8bd15043d117a25771a278f95
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 14e8b3e28115fb191760382ed2a9fbd5c5a04114
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204873"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85919918"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: ホット、クール、アーカイブ ストレージ層
 
@@ -82,7 +82,7 @@ BLOB レベルの階層制御では、[Put Blob](/rest/api/storageservices/put-b
 BLOB 層が最後に変更された時間は、BLOB の**アクセス層変更時間**プロパティを介して公開されます。 ホット層またはクール層の BLOB を上書きするとき、作成時に新しい BLOB アクセス層を明示的に設定しない限り、新しく作成された BLOB では上書きされた BLOB の階層を引き継ぎます。 BLOB がアーカイブ層にあると、上書きできないため、このシナリオでは、同じ BLOB をアップロードすることは許可されません。 
 
 > [!NOTE]
-> アーカイブ ストレージと BLOB レベルの階層制御では、ブロック BLOB のみがサポートされます。 また、現時点では、スナップショットがあるブロック BLOB の層を変更することもできません。
+> アーカイブ ストレージと BLOB レベルの階層制御では、ブロック BLOB のみがサポートされます。
 
 ### <a name="blob-lifecycle-management"></a>BLOB のライフサイクル管理
 

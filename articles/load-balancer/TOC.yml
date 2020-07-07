@@ -38,7 +38,7 @@
       href: powershell-samples.md
 - name: 概念
   items:
-    - name: Components
+    - name: コンポーネント
       href: components.md
     - name: 概念
       href: concepts.md
@@ -103,6 +103,8 @@
           displayName: ARM
     - name: 内部ロード バランサーを構成する
       items:
+        - name: Azure portal
+          href: tutorial-load-balancer-standard-internal-portal.md
         - name: Azure CLI
           href: load-balancer-get-started-ilb-arm-cli.md
         - name: Azure PowerShell
@@ -121,8 +123,6 @@
           href: load-balancer-multiple-ip-cli.md
         - name: Azure PowerShell
           href: load-balancer-multiple-ip-powershell.md
-    - name: 内部ロード バランサー用の高可用性ポートを構成する
-      href: load-balancer-configure-ha-ports.md
     - name: リージョン間で移動する
       items:
         - name: 外部ロード バランサー - ポータル

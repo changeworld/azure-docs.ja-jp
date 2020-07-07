@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: 2774fc1374bf7fa3ed171258e8b1b51cfdb4b8b1
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: e41d3b47408d29a0463eed5f23117801be107c27
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612947"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920722"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>リモート監視ソリューション アクセラレータでロール ベースのアクセス制御を構成する
 
@@ -50,7 +50,7 @@ ms.locfileid: "82612947"
 
 ## <a name="add-or-remove-users"></a>ユーザーを追加または削除する
 
-Azure Active Directory アプリケーション所有者は、Azure Portal を使用して、リモート監視ソリューションからロールに対してユーザーを追加または削除することができます。 次の手順では、リモート監視ソリューションのデプロイ時に作成された [Azure Active Directory エンタープライズ アプリケーション](../active-directory/manage-apps/add-application-portal.md#find-your-azure-ad-tenant-application)を使用しています。
+Azure Active Directory アプリケーション所有者は、Azure Portal を使用して、リモート監視ソリューションからロールに対してユーザーを追加または削除することができます。 次の手順では、リモート監視ソリューションのデプロイ時に作成された [Azure Active Directory エンタープライズ アプリケーション](../active-directory/manage-apps/view-applications-portal.md)を使用しています。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
