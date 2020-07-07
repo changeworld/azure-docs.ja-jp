@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 03/31/2020
-ms.openlocfilehash: fabc8b7b2a97b75959eb7d82723d6af6bc55bbe5
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 0af790c9424cdb049bcd1f22090337bde1815c4a
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835480"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961933"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>HDInsight Hadoop クラスターに Hue をインストールして使用する
 
@@ -72,7 +72,9 @@ Hue は Apache Hadoop クラスターとの情報のやりとりに使用され�
 
     次のような名前が返されます。
 
-        myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
+    ```output
+    myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
+    ```
 
     これは、Hue の Web サイトが配置されているプライマリ ヘッドノードのホスト名です。
 
@@ -115,7 +117,7 @@ Hue は Apache Hadoop クラスターとの情報のやりとりに使用され�
 
 1. Hue は、Hive の現在の既定値である Apache Tez ジョブを認識しません。 Hive 実行エンジンとして MapReduce を使用する場合、スクリプトで次のコマンドを使用するようにスクリプトを更新します。
 
-         set hive.execution.engine=mr;
+   `set hive.execution.engine=mr;`
 
 1. Linux クラスターの場合、サービスをプライマリ ヘッドノードで実行し、Resource Manager をセカンダリ ヘッドノードで実行するシナリオがありえます。 そのようなシナリオの場合、Hue を利用してクラスターで「実行中」のジョブの詳細を表示するとき、エラーが発生する可能性があります (下の画像を参照)。 ただし、ジョブが完了したときにジョブの詳細を表示できます。
 

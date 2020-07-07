@@ -2,17 +2,17 @@
 title: Event GrID ソースとしての Azure SignalR
 description: Azure Event Grid の Azure SignalR イベントに対して用意されているプロパティについて説明します
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 04/23/2020
-ms.author: babanisa
-ms.openlocfilehash: e4ebae9597d750cea6f292655e9f03dd65ccc3f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: femila
+ms.openlocfilehash: 8fbae3fad4aeb85022c804e1ac648060360c6531
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133717"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84560628"
 ---
 # <a name="azure-event-grid-event-schema-for-signalr-service"></a>SignalR Service 用の Azure Event Grid イベント スキーマ
 

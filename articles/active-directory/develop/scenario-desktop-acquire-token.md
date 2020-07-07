@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
-ms.custom: aaddev
-ms.openlocfilehash: c439c118e242f3561593aa0c8fe9a88b3b07a4a9
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.custom: aaddev, tracking-python
+ms.openlocfilehash: 58be0315b272199e74f28654aae315a8c6c5f7b5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83771844"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84558821"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Web API を呼び出すデスクトップ アプリ:トークンを取得する
 

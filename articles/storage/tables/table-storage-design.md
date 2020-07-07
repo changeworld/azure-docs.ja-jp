@@ -9,10 +9,10 @@ ms.date: 03/09/2020
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: 1dba3a6f3ebd7b6675e6d0d90d98a45625ad04ee
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83656911"
 ---
 # <a name="design-scalable-and-performant-tables"></a>高性能で拡張性の高いテーブルの設計

@@ -7,18 +7,18 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 06/03/2020
 ms.author: mjbrown
-ms.openlocfilehash: 1f927823fd7984014e2b8dd4d2ab90d83f144605
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 01e46d144c287569687bb79e7e9cb67b4923b78a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262958"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552900"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API 用の Azure CLI サンプル
 
 次の表には、Azure Cosmos DB Gremlin API 用の Azure CLI サンプル スクリプトへのリンクが含まれています。 Azure Cosmos DB CLI のすべてのコマンドのリファレンス ページは、[Azure CLI リファレンス](/cli/azure/cosmosdb)で確認できます。 Azure Cosmos DB CLI のすべてのサンプル スクリプトについては、[Azure Cosmos DB CLI GitHub リポジトリ](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb)をご覧ください。
 
-| |  |
+|タスク | 説明 |
 |---|---|
 | [Azure Cosmos のアカウント、データベース、およびグラフを作成する](scripts/cli/gremlin/create.md?toc=%2fcli%2fazure%2ftoc.json)| Gremlin API 用の Azure Cosmos DB のアカウント、データベース、およびグラフを作成します。 |
 | [スループットを変更する](scripts/cli/gremlin/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | データベースとグラフの RU/秒を更新します。|

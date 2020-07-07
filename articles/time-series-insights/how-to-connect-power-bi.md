@@ -7,13 +7,13 @@ manager: cshankar
 services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 01/07/2020
-ms.openlocfilehash: 0f51f6867d773c906d2df24c7e61ad897a4304f6
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.date: 06/01/2020
+ms.openlocfilehash: ea46f37b0c09ca655b29ac3cfa2f168e18c85590
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84258890"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85052448"
 ---
 # <a name="visualize-data-from-time-series-insights-in-power-bi"></a>Power BI の Time Series Insights からのデータを視覚化する
 

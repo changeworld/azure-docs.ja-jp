@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: has-adal-ref
+ms.custom: has-adal-ref, tracking-python
 ms.date: 04/03/2020
-ms.openlocfilehash: 5e46e50da67559f69302357804f6f98fee70d4ad
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 5260da53ac7b65b68be58046ac6cb20e66c213c6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773306"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84605495"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>REST プロキシを使用して Azure HDInsight で Apache Kafka クラスターを操作する
 
