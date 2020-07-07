@@ -3,8 +3,8 @@ title: General Purpose および Business Critical サービス レベル
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: この記事では、Azure SQL Database と Azure SQL Managed Instance で使用される仮想コアベースの購入モデルにおける General Purpose と Business Critical のサービス レベルについて説明します。
 services: sql-database
-ms.service: sql-database
-ms.subservice: service
+ms.service: sql-db-mi
+ms.subservice: features
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 01/30/2020
-ms.openlocfilehash: 1783285704870dbcaeac731dc085bddf8851c7be
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 37dd6881876df010b548a8bb48ca88bb72dab764
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84037943"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986605"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-service-tiers"></a>Azure SQL Database と Azure SQL Managed Instance のサービス レベル
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -37,7 +37,7 @@ Azure SQL Database には追加のサービス レベルがあります。
 
 次の表は、最新世代 (Gen5) のサービス サービス間の主な違いをまとめたものです。 サービス レベルの特徴は SQL Database と SQL Managed Instance で異なる場合があることにご留意ください。
 
-| | リソースの種類 | General Purpose |  ハイパースケール | Business Critical |
+|-| リソースの種類 | General Purpose |  ハイパースケール | Business Critical |
 |:---:|:---:|:---:|:---:|:---:|
 | **最適な用途** | |  予算重視のバランスの取れたコンピューティングおよびストレージ オプションを提供します。 | ほとんどのビジネス ワークロード。 最大 100 TB までのストレージ サイズの自動スケーリング、垂直および水平方向へのなめらかなコンピューティング スケーリング、データベースの高速復元。 | トランザクション レートが高く IO 待ち時間が低い OLTP アプリケーション。 同期的に更新された複数のレプリカを使用して、最高の耐障害性と高速フェールオーバーを提供します。|
 |  **リソースの種類で使用可能:** ||SQL Database/SQL Managed Instance | 単一の Azure SQL Database | SQL Database/SQL Managed Instance |
@@ -94,7 +94,7 @@ MDF および LDF ファイルの現在の合計サイズを監視するには�
 データベース バックアップ用のストレージは、SQL Database と SQL Managed Instance のポイントインタイム リストア (PITR) および[長期リテンション期間 (LTR)](long-term-retention-overview.md) 機能をサポートするために割り当てられます。 このストレージはデータベースごとに別個に割り当てられ、データベース料金ごとに 2 つが個々に課金されます。
 
 - **PITR**:個々のデータベース バックアップは、[読み取りアクセス geo 冗長ストレージ (RA-GRS) ストレージ](../../storage/common/geo-redundant-design.md)に自動的にコピーされます。 ストレージ サイズは、新しいバックアップが作成されるにつれて、動的に増大します。 ストレージは、毎週の完全バックアップ、毎日の差分バックアップ、5 分ごとにコピーされるトランザクション ログ バックアップによって使用されます。 ストレージの使用量は、データベースの変化率とバックアップのリテンション期間に応じて異なります。 リテンション期間は、データベースごとに 7 ～ 35 日の範囲内で別々に構成できます。 データベース サイズの 100% (1 倍) に等しい最小ストレージ量は、追加料金なしで提供されます。 ほとんどのデータベースでは、この容量で十分に 7 日間のバックアップを格納できます。
-- **LTR**:また、最大 10 年間の完全バックアップの長期保有を構成することもできます (この機能は、[SQL Managed Instance の限定パブリック プレビュー](long-term-retention-overview.md#managed-instance-support)です。 LTR ポリシーを設定した場合、これらのバックアップは、RA-GRS ストレージに自動的に格納されますが、バックアップがコピーされる頻度は制御できます。 さまざまなコンプライアンス要件を満たすために、毎週、毎月、毎年のバックアップに対して異なるリテンション期間を選択することができます。 選択した構成によって、LTR バックアップに使用されるストレージ容量が決まります。 LTR ストレージのコストを見積もるには、LTR 料金計算ツールを使用できます。 詳細については、[SQL Database の長期保存](long-term-retention-overview.md)に関するページをご覧ください。
+- **LTR**:また、最大 10 年間の完全バックアップの長期保有を構成することもできます (この機能は、[SQL Managed Instance の限定パブリック プレビュー](long-term-retention-overview.md#sql-managed-instance-support)です。 LTR ポリシーを設定した場合、これらのバックアップは、RA-GRS ストレージに自動的に格納されますが、バックアップがコピーされる頻度は制御できます。 さまざまなコンプライアンス要件を満たすために、毎週、毎月、毎年のバックアップに対して異なるリテンション期間を選択することができます。 選択した構成によって、LTR バックアップに使用されるストレージ容量が決まります。 LTR ストレージのコストを見積もるには、LTR 料金計算ツールを使用できます。 詳細については、[SQL Database の長期保存](long-term-retention-overview.md)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

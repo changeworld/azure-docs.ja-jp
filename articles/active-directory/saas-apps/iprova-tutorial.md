@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98458f8be162d0903f5ea0d1f7d4651d46f78e8e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d7092ea68f2b7f35e372013a94108e43a83c8777
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80048432"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608642"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-iprova"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と iProva の統合
 
@@ -78,11 +78,10 @@ iProva で Azure AD SSO を構成してテストするには、次の構成要�
 
 1. Web ブラウザーを開き、次の URL パターンを使用して iProva の **[SAML2 info]\(SAML2 の情報\)** ページに移動します。
 
-    | | |
-    |-|-|
-    | `https://SUBDOMAIN.iprova.nl/saml2info`|
-    | `https://SUBDOMAIN.iprova.be/saml2info`|
-    | | |
+    ```https
+    https://SUBDOMAIN.iprova.nl/saml2info
+    https://SUBDOMAIN.iprova.be/saml2info
+    ```
 
     ![iProva の [SAML2 info]\(SAML2 の情報\) ページを表示する](media/iprova-tutorial/iprova-saml2-info.png)
 

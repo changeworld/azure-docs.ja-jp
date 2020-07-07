@@ -2,7 +2,7 @@
 title: Azure PowerShell スクリプトの例
 description: Azure PowerShell のサンプル スクリプトを使用して、Azure SQL Database と Azure SQL Managed Instance のリソースを作成、管理することができます。
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: development
 ms.custom: sqldbrb=2
 ms.devlang: PowerShell
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: cb8abf563834e23472589cd65bfe4196131d0138
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: 77220fabc78dd10b4299219ef84c1f6eb32ba82e
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84718567"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85987312"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database と Azure SQL Managed Instance の Azure PowerShell サンプル
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -32,7 +32,7 @@ PowerShell をインストールしてローカルで使用する場合、この
 
 次の表には、Azure SQL Database の Azure PowerShell スクリプトのサンプルへのリンクが含まれています。
 
-| |  |
+|Link|説明|
 |---|---|
 |**単一データベースとエラスティック プールを作成して構成する**||
 | [単一データベースを作成し、サーバーレベルのファイアウォール規則を構成する](scripts/create-and-configure-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | この PowerShell スクリプトでは、単一データベースを作成し、サーバーレベルの IP ファイアウォール規則を構成します。 |
@@ -64,7 +64,7 @@ PowerShell をインストールしてローカルで使用する場合、この
 
 次の表には、Azure SQL Managed Instance の Azure PowerShell サンプル スクリプトへのリンクが記載されています。
 
-| |  |
+|Link|説明|
 |---|---|
 |**マネージド インスタンスを作成して構成する**||
 | [マネージド インスタンスを作成して管理する](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | この PowerShell スクリプトでは、Azure PowerShell を使用してマネージド インスタンスを作成、管理する方法を紹介します。 |

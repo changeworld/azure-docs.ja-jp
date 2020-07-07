@@ -2,17 +2,17 @@
 title: Azure Event Grid パートナー トピック
 description: Azure Event Grid を使用して、サードパーティの Event Grid SaaS および PaaS パートナーから直接 Azure サービスにイベントを送信します。
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.author: babanisa
-ms.openlocfilehash: f47d63ce79846e94e992df93af1768aad3c17e67
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.author: femila
+ms.openlocfilehash: 5327efea8af734c723ba76d1a00b72c08f5c88b9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170955"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84560269"
 ---
 # <a name="partner-topics-in-azure-event-grid-preview"></a>Azure Event Grid でのパートナー トピック (プレビュー)
 パートナー トピックを使用することで、サードパーティのイベント ソースを Azure Event Grid に直接接続できます。 この統合により、Azure サービスからのイベントをサブスクライブするのと同じ方法で、パートナーからのイベントをサブスクライブすることができます。 

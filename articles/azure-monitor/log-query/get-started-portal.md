@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 29e24166218a6757cded9d1b002321800ab0c073
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bfed93a4ed13878448d21b95d265e49bf0260742
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80055671"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85798257"
 ---
 # <a name="tutorial-get-started-with-log-analytics-queries"></a>チュートリアル:Log Analytics クエリの使用方法
 
@@ -37,6 +37,7 @@ Log Analytics を使用するには、Azure アカウントにサインインす
 Azure Monitor を使用して 1 つ以上の Azure リソースに関するログ データを収集している場合は、ご自分の環境を使用してもかまいません。 Log Analytics ワークスペースを開くには、Azure Monitor の左側のナビゲーションで **[ログ]** を選択します。 
 
 ## <a name="understand-the-schema"></a>スキーマの概要
+ 
 "*スキーマ*" は、論理カテゴリでグループ分けされたテーブルのコレクションです。 デモ スキーマには、各種監視ソリューションのカテゴリが複数含まれています。 たとえば、**LogManagement** カテゴリには、Windows および Syslog イベント、パフォーマンス データ、エージェントのハートビートが含まれます。
 
 Log Analytics ワークスペースの **[テーブル]** タブには、スキーマ テーブルが表示されます。 このテーブルには複数の列が含まれ、各列では列名の隣にアイコンによりデータ型が示されます。 たとえば、**Event** テーブルには、**Computer** などのテキスト列と **EventCategory** などの数値列が含まれています。
@@ -50,6 +51,7 @@ Log Analytics を開くと、**クエリ エディター**に空白の新規ク�
 ![Log Analytics](media/get-started-portal/homepage.png)
 
 ### <a name="write-a-query"></a>クエリを記述する
+
 Azure Monitor ログ クエリでは、あるバージョンの Kusto クエリ言語を使用します。 クエリの先頭には、テーブル名または [search](/azure/kusto/query/searchoperator) コマンドを指定します。 
 
 次のクエリでは、**Event** テーブルのすべてのレコードを取得します。
@@ -156,6 +158,7 @@ x 軸や y 軸などのビューのプロパティ、グループ化と分割の
 [render](/azure/kusto/query/renderoperator) 演算子を使用して、クエリ自体に優先ビューを設定することもできます。
 
 ## <a name="pin-results-to-a-dashboard"></a>ダッシュ ボードに結果をピン留めする
+
 Log Analytics の結果テーブルまたはグラフを Azure の共有ダッシュボードにピン留めするには、上部バーの **[ダッシュボードにピン留めする]** を選択します。 
 
 ![[ダッシュボードにピン留めする]](media/get-started-portal/pin-dashboard.png)
@@ -171,9 +174,11 @@ Log Analytics の結果テーブルまたはグラフを Azure の共有ダッ�
 - グラフのカテゴリが多い場合、割合の低いカテゴリは単一の **[その他]** ビンに自動的にグループ化されます。
 
 ## <a name="save-load-or-export-queries"></a>クエリの保存、読み込み、エクスポートを行う
+
 クエリの作成後、クエリまたは結果を保存することも、他のユーザーと共有することもできます。 
 
 ### <a name="save-queries"></a>クエリの保存
+
 クエリを保存するには、次の手順に従います。
 
 1. 上部バーにある **[保存]** を選択します。

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 9e905e78a835c833abe415d8b76c09ce672f849c
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: c97dafa80adedd64d45666eb98ef6b1e69850719
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300116"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84629390"
 ---
 # <a name="workflow-automation"></a>ワークフローの自動化
 
@@ -43,7 +43,7 @@ ms.locfileid: "84300116"
 - クラウド: 
     - ✔ 商用クラウド
     - ✔ US Gov
-    - ✘ Chinese Gov、その他の Gov
+    - ✘ China Gov、その他の Gov
 
 
 ## <a name="create-a-logic-app-and-define-when-it-should-automatically-run"></a>ロジック アプリを作成し、自動的に実行するタイミングを定義する 

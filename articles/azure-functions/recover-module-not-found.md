@@ -5,12 +5,13 @@ author: Hazhzeng
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: hazeng
-ms.openlocfilehash: 191cde0f90b4968ca230db72bad68cca8b1db3fd
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.custom: tracking-python
+ms.openlocfilehash: b2582caf407b3983b32c40482fa0f0275f00fb8d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83690188"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84554753"
 ---
 # <a name="troubleshoot-python-module-errors-in-azure-functions"></a>Azure Functions で Python モジュール エラーのトラブルシューティングを行う
 

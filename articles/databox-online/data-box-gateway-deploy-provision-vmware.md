@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 9cf012df65560a921f2c9f12f6c0362a033300be
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: b62441a4b1307a232ad2f592f13253c0759b5431
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561641"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85564202"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>チュートリアル:VMware で Azure Data Box Gateway をプロビジョニングする
 
@@ -145,7 +145,7 @@ VMware ESXi 6.0、6.5、または 6.7 を実行しているホスト システ�
 
     同じページで、 **[Add hard disk]\(ハード ディスクの追加\)** をクリックし、 **[Existing hard disk]\(既存のハード ディスク\)** を選択します。 データ ストア内の VMDK ファイルを選択します。 これにより、OS ディスクが追加されます。 
 
-     ![Customize settings]\(設定のカスタマイズ\) ページ[](./media/data-box-gateway-deploy-provision-vmware/image14.png)
+     ![[Customize settings]\(設定のカスタマイズ\) ページ](./media/data-box-gateway-deploy-provision-vmware/image14.png)
 
     **[New hard disk]\(新しいハード ディスク\)** が表示するまで下にスクロールし、それを展開して設定を表示します。 **[Virtual Device Node]\(仮想デバイス ノード\)** を **[IDE controller 0]\(IDE コントロ―ラー 0\)** に設定します。
 

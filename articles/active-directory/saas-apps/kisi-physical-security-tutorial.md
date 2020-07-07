@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3ca4d30786953504218ef09c7c591ff2f46f524
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 556fd1f9fe4ba5753d882fa81c6d5a89051bcd91
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84765238"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85605034"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kisi-physical-security"></a>チュートリアル:Azure Active Directory のシングル サインオン (SSO) と Kisi Physical Security の統合
 
@@ -91,7 +91,7 @@ Kisi Physical Security に対する Azure AD SSO を構成してテストする�
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    **[サインオン URL]** ボックスに、`https://identity.kms.kisi.io/organizations/sign_in?domain=<DOMAIN>` という形式で URL を入力します。
+    **[サインオン URL]** ボックスに、`https://web.kisi.io/organizations/sign_in?domain=<DOMAIN>` という形式で URL を入力します。
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Kisi Physical Security クライアント サポート チーム](mailto:support@getkisi.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -102,11 +102,11 @@ Kisi Physical Security に対する Azure AD SSO を構成してテストする�
 
 1. その他に、Kisi Physical Security アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
     
-    | 名前 |  |  ソース属性|
-    | ---------------| --------------- | --------- |
-    | FirstName | | User.givenname |
-    | LastName | | User.surname |
-    | Email | | User.mail |
+    | 名前 | ソース属性|
+    | ---------------| --------- |
+    | FirstName | User.givenname |
+    | LastName | User.surname |
+    | Email | user.userprincipalname |
 
 1. **[Set up single sign-on with SAML]\(SAML でシングル サインオンをセットアップします\)** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーして、お使いのコンピューターに保存します。
 
