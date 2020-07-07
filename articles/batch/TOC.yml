@@ -272,13 +272,13 @@
     - name: Batch のフィードバック
       href: 'https://feedback.azure.com/forums/269742-batch'
     - name: Batch に関する Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-batch.html'
+      href: /answers/topics/azure-batch.html
     - name: Batch Shipyard
       href: 'https://github.com/Azure/batch-shipyard'
     - name: ブログ
       href: 'https://blogs.technet.microsoft.com/windowshpc/'
     - name: Azure での HPC
-      href: 'https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/'
+      href: /azure/architecture/topics/high-performance-computing/
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/batch/'
     - name: 料金計算ツール

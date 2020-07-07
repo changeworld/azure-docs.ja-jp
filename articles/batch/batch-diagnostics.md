@@ -4,12 +4,12 @@ description: プールやタスクなど Azure Batch アカウント リソー�
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: bd8265d18f618980af466e193b41cfcc03999c47
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 6e10a4fc6cd13854682f094274c975931b056365
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220341"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960726"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch の診断の評価と監視用のメトリック、アラート、およびログ
  
@@ -70,7 +70,7 @@ Azure portal でメトリック アラートを構成するには:
 
 メトリック アラートの作成の詳細については、「[Azure Monitor でのメトリック アラートのしくみを理解する](../azure-monitor/platform/alerts-metric-overview.md)」および「[Azure Monitor を使用してメトリック アラートを作成、表示、管理する](../azure-monitor/platform/alerts-metric.md)」を参照してください。
 
-リアルタイムに近い通知は、Azure Monitor [REST API](https://docs.microsoft.com/rest/api/monitor/) を使用して構成することもできます。 詳細については、「[Microsoft Azure のアラートの概要](../azure-monitor/platform/alerts-overview.md)」を参照してください。 ジョブ、タスク、またはプール固有の情報をアラートに含めるには、「[Azure Monitor のアラートを使用してイベントに応答する](../azure-monitor/learn/tutorial-response.md)」の検索クエリに関する情報を参照してください。
+リアルタイムに近い通知は、Azure Monitor [REST API](/rest/api/monitor/) を使用して構成することもできます。 詳細については、「[Microsoft Azure のアラートの概要](../azure-monitor/platform/alerts-overview.md)」を参照してください。 ジョブ、タスク、またはプール固有の情報をアラートに含めるには、「[Azure Monitor のアラートを使用してイベントに応答する](../azure-monitor/learn/tutorial-response.md)」の検索クエリに関する情報を参照してください。
 
 ## <a name="batch-diagnostics"></a>Batch 診断
 

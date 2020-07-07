@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/20/2020
-ms.openlocfilehash: 450a97b0be1b11980d65477d396431170180d00f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 0271bd08e01cdbd442e64db0c04184995f7d8d09
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746653"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958448"
 ---
 # <a name="how-to-purchase-software-on-microsoft-appsource"></a>Microsoft AppSource でソフトウェアを購入する方法
 
@@ -65,4 +65,4 @@ Microsoft 365 管理センターを通じて、[サポート チケットを送�
 
 ## <a name="next-steps"></a>次のステップ
 
-- 詳細については、[商業マーケットプレースのドキュメント](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview)を参照してください。
+- 詳細については、[商業マーケットプレースのドキュメント](partner-center-portal/commercial-marketplace-overview.md)を参照してください。

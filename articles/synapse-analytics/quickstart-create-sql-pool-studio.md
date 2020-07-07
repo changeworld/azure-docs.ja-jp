@@ -5,16 +5,16 @@ services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 3/19/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: da034479f110607e878a0ed26b9d487e41438e16
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f93eb55b888c58ad111bd67b2011ba9c996b16bb
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83665332"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960267"
 ---
 # <a name="quickstart-create-a-synapse-sql-pool-preview-using-synapse-studio"></a>クイック スタート:Synapse Studio を使用して Synapse SQL プール (プレビュー) を作成する
 

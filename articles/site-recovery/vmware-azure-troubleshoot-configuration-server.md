@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 85021af94c3cc88f45b391690d7481d5498c40a9
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 26376c6b20816d2e7302403c8391195e16092fa3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84246885"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85504322"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>構成サーバーの問題のトラブルシューティング
 
@@ -193,7 +193,7 @@ Site Recovery の認証に必要な証明書を作成できません。 ロー�
 この問題を解決するには、Azure portal にサインインし、次のいずれかを行います。
 
 - AAD でアプリケーション開発者ロールを要求します。 アプリケーション開発者ロールの詳細については、「[Azure Active Directory での管理者ロールのアクセス許可](../active-directory/users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
-- AAD で **[User can create application]\(ユーザーがアプリケーションを作成できる\)** フラグが *true* に設定されていることを確認します。 詳細については、「[リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)」のガイダンスに従って、サービス プリンシパルを作成します。
+- AAD で **[User can create application]\(ユーザーがアプリケーションを作成できる\)** フラグが *true* に設定されていることを確認します。 詳細については、「[リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)」のガイダンスに従って、サービス プリンシパルを作成します。
 
 ## <a name="process-servermaster-target-are-unable-to-communicate-with-the-configuration-server"></a>プロセス サーバー/マスター ターゲットが構成サーバーと通信できない 
 

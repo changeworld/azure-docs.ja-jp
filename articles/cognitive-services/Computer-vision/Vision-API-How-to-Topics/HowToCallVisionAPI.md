@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 44e5823ed3989dc092104d75d415524dac2c9622
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 0d2ef4af8af8ad9545277202f0aa7842ac05ea67
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84983470"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957904"
 ---
 # <a name="call-the-computer-vision-api"></a>Computer Vision API を呼び出す
 
@@ -254,4 +254,4 @@ categories[].detail     | `object?`      | (省略可能) 詳細オブジェク�
 
 ## <a name="next-steps"></a>次のステップ
 
-REST API を使用するには、[Computer Vision API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)を参照してください。
+REST API を使用するには、[Computer Vision API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/56f91f2e778daf14a499f21b)を参照してください。

@@ -3,15 +3,15 @@ title: テンプレート - Data Lake Storage Gen1 を使用する HDInsight ク
 description: Azure Resource Manager テンプレートを使用して、Azure Data Lake Storage Gen1 を使用する Azure HDInsight クラスターを作成および使用します。
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 486809201db45e0f5bbeed870e24b1f63770e319
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 593edecd2cc1bbdd3627430af41c64be4d6a022b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692037"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85508641"
 ---
 # <a name="create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して Azure Data Lake Storage Gen1 を使用する HDInsight クラスターを作成する
 > [!div class="op_single_selector"]

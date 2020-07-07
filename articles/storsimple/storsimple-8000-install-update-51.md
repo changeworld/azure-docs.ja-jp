@@ -7,17 +7,17 @@ author: priestlg
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 03/05/2020
 ms.author: v-grpr
-ms.openlocfilehash: b90f0f35f908d16b0746075e638fe66769939a64
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: fb2123bdb0e12571a58a32e414a610665935ebb6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657903"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85508216"
 ---
 # <a name="install-update-51-on-your-storsimple-device"></a>StorSimple デバイスへの Update 5.1 のインストール
 

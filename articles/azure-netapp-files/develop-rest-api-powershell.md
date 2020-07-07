@@ -11,15 +11,15 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: b-juche
-ms.openlocfilehash: 0d76fd9a826750e09ebdc374a30a271879393b66
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 90e88020f735f34d308935f1233fb91c0eddfe32
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84302624"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961066"
 ---
 # <a name="develop-for-azure-netapp-files-with-rest-api-using-powershell"></a>PowerShell を使用して REST API による Azure NetApp Files 用の開発を行う
 
@@ -40,15 +40,19 @@ Azure NetApp Files の REST API 仕様は、[GitHub](https://github.com/Azure/az
 
    2. Azure CLI で、次のコマンドを入力します。  
 
-           $RBAC_SP = az ad sp create-for-rbac --name <YOURSPNAMEGOESHERE> | ConvertFrom-Json 
+      ```azurepowershell
+      $RBAC_SP = az ad sp create-for-rbac --name <YOURSPNAMEGOESHERE> | ConvertFrom-Json         
+      ```
 
       サービス プリンシパル情報を表示するには、「`$RBAC_SP`」と入力して、Enter キーを押します。
 
-           appId       : appID displays here
-           displayName : displayName
-           name        : http://SP_Name
-           password    : super secret password
-           tenant      : your tenant shows here
+      ```output
+      appId       : appID displays here
+      displayName : displayName
+      name        : http://SP_Name
+      password    : super secret password
+      tenant      : your tenant shows here
+      ```
         
       出力は、変数オブジェクト `$RBAC_SP` に保存されます。 ここでは、`$RBAC_SP.appId`、`$RBAC_SP.password`、および `$RBAC_SP.tenant` の値を使用します。
 
@@ -57,27 +61,33 @@ Azure NetApp Files の REST API 仕様は、[GitHub](https://github.com/Azure/az
     この記事の例では、PowerShell を使用しています。 [Postman](https://www.getpostman.com/)、[Insomnia](https://insomnia.rest/)、[Paw](https://paw.cloud/) などのさまざまな API ツールを使用することもできます。  
 
     次に、`$RBAC_SP` 変数を使用して、ベアラー トークンを取得します。 
-
-        $body = "grant_type=client_credentials&client_id=$($RBAC_SP.appId)&client_secret=$($RBAC_SP.password)&resource=https://management.azure.com/"
-        $BearerToken = Invoke-RestMethod -Method Post -body $body -Uri https://login.microsoftonline.com/$($RBAC_SP.tenant)/oauth2/token
-
+    
+    ```azurepowershell
+    $body = "grant_type=client_credentials&client_id=$($RBAC_SP.appId)&client_secret=$($RBAC_SP.password)&resource=https://management.azure.com/"
+    $BearerToken = Invoke-RestMethod -Method Post -body $body -Uri https://login.microsoftonline.com/$($RBAC_SP.tenant)/oauth2/token
+    ```
     出力には、ベアラー トークン オブジェクトが提示されます。 アクセス トークンを確認するために、「`$BearerToken.access_token`」と入力します。 次の例のように表示されます。
 
-        eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Im5iQ3dXMTF3M1hrQi14VWFYd0tSU0xqTUhHUSIsImtpZCI6Im5iQ3dXMTF3M1hrQi14VWFYd0tSU0xqTUhHUSJ9
+    ```output
+    eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Im5iQ3dXMTF3M1hrQi14VWFYd0tSU0xqTUhHUSIsImtpZCI6Im5iQ3dXMTF3M1hrQi14VWFYd0tSU0xqTUhHUSJ9
+    ```
 
     表示されたトークンは、3,600 秒間有効です。 その後は新しいトークンを要求する必要があります。 トークンは変数に保存され、次の手順で使用されます。
 
 4. `headers` オブジェクトを作成します。
 
-        $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
-        $headers.Add("Authorization", "Bearer $($BearerToken.access_token)")
-        $headers.Add("Content-Type", "application/json")
+    ```azurepowershell  
+    $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
+    $headers.Add("Authorization", "Bearer $($BearerToken.access_token)")
+    $headers.Add("Content-Type", "application/json")
+    ```
 
 5. テスト呼び出しを送信し、REST API へのアクセスを検証するトークンを含めます。
 
-        $SubId = (Get-AzureRmContext).Subscription.Id 
-        Invoke-RestMethod -Method Get -Headers $headers -Uri https://management.azure.com/subscriptions/$SubId/providers/Microsoft.Web/sites?api-version=2019-11-01
-
+    ```azurepowershell
+    $SubId = (Get-AzureRmContext).Subscription.Id 
+    Invoke-RestMethod -Method Get -Headers $headers -Uri https://management.azure.com/subscriptions/$SubId/providers/Microsoft.Web/sites?api-version=2019-11-01
+    ```
 
 ## <a name="examples-using-the-api"></a>API の使用例  
 
@@ -88,26 +98,28 @@ Azure NetApp Files の REST API 仕様は、[GitHub](https://github.com/Azure/az
 次の例をご自身の固有の値で実行する前に、変数の値を割り当てる必要があります。 PowerShell 変数にアクセスするには、「`$variablename`」と入力します。
 PowerShell 変数は、`$variablename = “value”` を使用して割り当てられます。
 
-        $Region = “westus2" 
-        $ResourceGroup = “MYTest-RG-63" 
-        $ANFvnetname = “NetAppFilesVnet-63"
-        $ANFvnetCIDR = “10.63.64.0/18"
-        $ANFsubnet = “NetAppFilesSubnet-63"
-        $ANFsubnetCIDR = “10.63.120.0/28"
-        $ANFsubnetID = “/subscriptions/$SubID/resourceGroups/$ResourceGroup/providers/Microsoft.Network/virtualNetworks/$ANFvnetname/subnets/$ANFSubnet"
-        $ANFAccount = “TestoftheAPI"
-        $ANFCapacityPool = “ANFTestPool"
-        $ANFServicelevel = “Standard"
-        $ANFVolume = “ANFTestVolume"
-        $ANFVolumeShareName = “Share-TEST"
-        $ANFVolumesize = 100GB
-        $ANFSnapshot = “ANFTestSnapshot"
+```azurepowershell
+$Region = “westus2" 
+$ResourceGroup = “MYTest-RG-63" 
+$ANFvnetname = “NetAppFilesVnet-63"
+$ANFvnetCIDR = “10.63.64.0/18"
+$ANFsubnet = “NetAppFilesSubnet-63"
+$ANFsubnetCIDR = “10.63.120.0/28"
+$ANFsubnetID = “/subscriptions/$SubID/resourceGroups/$ResourceGroup/providers/Microsoft.Network/virtualNetworks/$ANFvnetname/subnets/$ANFSubnet"
+$ANFAccount = “TestoftheAPI"
+$ANFCapacityPool = “ANFTestPool"
+$ANFServicelevel = “Standard"
+$ANFVolume = “ANFTestVolume"
+$ANFVolumeShareName = “Share-TEST"
+$ANFVolumesize = 100GB
+$ANFSnapshot = “ANFTestSnapshot"
+```
 
 ### <a name="put-request-examples"></a>PUT 要求の例
 
 次の例に示すように、PUT 要求を使用して、Azure NetApp Files 内に新しいオブジェクトを作成します。 PUT 要求の本文には、変更の JSON 形式のデータが含まれます。 PowerShell コマンドにテキストとして含めるか、ファイルとして参照する必要があります。 ファイルとして本文を参照するには、json の例をファイルに保存し、PowerShell コマンドに `-body (Get-Content @<filename>)` を追加します。
 
-
+```azurepowershell
     #create a NetApp account  
     $body = "{ 
         `"name`": `"$ANFAccount`", 
@@ -120,7 +132,9 @@ PowerShell 変数は、`$variablename = “value”` を使用して割り当て
 
     $api_version = "2020-02-01"
     Invoke-RestMethod -Method 'PUT' -Headers $headers -Body $body "https://management.azure.com/subscriptions/$SubID/resourceGroups/$ResourceGroup/providers/Microsoft.NetApp/netAppAccounts/$ANFAccount`?api-version=$api_version"  
+```
 
+```azurepowershell
     #create a capacity pool  
     $body = "{
       `"location`": `"$Region`",
@@ -131,7 +145,9 @@ PowerShell 変数は、`$variablename = “value”` を使用して割り当て
     }"
     $api_version = "2020-02-01"
     Invoke-RestMethod -Method 'PUT' -Headers $headers -Body $body "https://management.azure.com/subscriptions/$SubID/resourceGroups/$ResourceGroup/providers/Microsoft.NetApp/netAppAccounts/$ANFAccount/capacityPools/$ANFCapacityPool`?api-version=$api_version" 
+```
 
+```azurepowershell
     #create a volume  
     $body = "{
         `"name`": `"$ANFVolume`",
@@ -147,7 +163,9 @@ PowerShell 変数は、`$variablename = “value”` を使用して割り当て
     }"
     $api_version = "2020-02-01"
     Invoke-RestMethod -Method 'PUT' -Headers $headers -Body $body "https://management.azure.com/subscriptions/$SubID/resourceGroups/$ResourceGroup/providers/Microsoft.NetApp/netAppAccounts/$ANFAccount/capacityPools/$ANFCapacityPool/volumes/$ANFVolume`?api-version=$api_version" 
+```
 
+```azurepowershell
     #create a volume snapshot
     $body = "{
         `"name`": `"$ANFAccount/$ANFCapacityPool/$ANFVolume/$ANFSnapshot`",
@@ -160,11 +178,13 @@ PowerShell 変数は、`$variablename = “value”` を使用して割り当て
     }"
     $api_version = '2020-02-01'
     Invoke-RestMethod -Method 'PUT' -Headers $headers -Body $body "https://management.azure.com/subscriptions/$SubID/resourceGroups/$ResourceGroup/providers/Microsoft.NetApp/netAppAccounts/$ANFAccount/capacityPools/$ANFCapacityPool/volumes/$ANFVolume/Snapshots/$ANFSnapshot`?api-version=$api_version"
+```
 
 ### <a name="json-examples"></a>JSON の使用例
 
 次の例は、NetApp アカウントを作成する方法を示しています。
 
+```json
     { 
         "name": "MYNETAPPACCOUNT", 
         "type": "Microsoft.NetApp/netAppAccounts", 
@@ -173,9 +193,11 @@ PowerShell 変数は、`$variablename = “value”` を使用して割り当て
             "name": "MYNETAPPACCOUNT" 
         }
     } 
+```
 
 次の例は、容量プールを作成する方法を示しています。 
 
+```json
     {
         "name": "MYNETAPPACCOUNT/POOLNAME",
         "type": "Microsoft.NetApp/netAppAccounts/capacityPools",
@@ -186,9 +208,11 @@ PowerShell 変数は、`$variablename = “value”` を使用して割り当て
             "serviceLevel": "Premium"
         }
     }
+```
 
 次の例は、新しいボリュームを作成する方法を示しています (ボリュームの既定のプロトコルは NFSV3 です)。 
 
+```json
     {
         "name": "MYNEWVOLUME",
         "type": "Microsoft.NetApp/netAppAccounts/capacityPools/volumes",
@@ -201,9 +225,11 @@ PowerShell 変数は、`$variablename = “value”` を使用して割り当て
             "subnetId": "/subscriptions/$SUBID/resourceGroups/$RESOURCEGROUP/providers/Microsoft.Network/virtualNetworks/VNETGOESHERE/subnets/MYDELEGATEDSUBNET.sn"
         }
     }
+```
 
 次の例は、ボリュームのスナップショットを作成する方法を示しています。 
 
+```json
     {
         "name": "apitest2/apiPool01/apiVol01/snap02",
         "type": "Microsoft.NetApp/netAppAccounts/capacityPools/Volumes/Snapshots",
@@ -213,6 +239,7 @@ PowerShell 変数は、`$variablename = “value”` を使用して割り当て
             "fileSystemId": "0168704a-bbec-da81-2c29-503825fe7420"
         }
     }
+```
 
 > [!NOTE] 
 > スナップショットの作成では、`fileSystemId` を指定する必要があります。  `fileSystemId` の値は、ボリュームに対する GET 要求によって取得できます。 
@@ -221,21 +248,30 @@ PowerShell 変数は、`$variablename = “value”` を使用して割り当て
 
 リソースが存在しない場合、エラーが発生します。 次の例に示すように、GET 要求を使用して、サブスクリプション内の Azure NetApp Files オブジェクトのクエリを実行します。
 
-    #get NetApp accounts 
-    Invoke-RestMethod -Method Get -Headers $headers -Uri https://management.azure.com/subscriptions/$SUBID/resourceGroups/$ResourceGroup/providers/Microsoft.NetApp/netAppAccounts?api-version=2019-11-01 | ConvertTo-Json
+```azurepowershell
+#get NetApp accounts 
+Invoke-RestMethod -Method Get -Headers $headers -Uri https://management.azure.com/subscriptions/$SUBID/resourceGroups/$ResourceGroup/providers/Microsoft.NetApp/netAppAccounts?api-version=2019-11-01 | ConvertTo-Json
+```
 
-    #get capacity pools for NetApp account 
-    Invoke-RestMethod -Method Get -Headers $headers -Uri https://management.azure.com/subscriptions/$SUBID/resourceGroups/$ResourceGroup/providers/Microsoft.NetApp/netAppAccounts/$ANFACCOUNT/capacityPools?api-version=2019-11-01 | ConvertTo-Json
+```azurepowershell
+#get capacity pools for NetApp account 
+Invoke-RestMethod -Method Get -Headers $headers -Uri https://management.azure.com/subscriptions/$SUBID/resourceGroups/$ResourceGroup/providers/Microsoft.NetApp/netAppAccounts/$ANFACCOUNT/capacityPools?api-version=2019-11-01 | ConvertTo-Json
+```
 
-    #get volumes in NetApp account & capacity pool 
-    Invoke-RestMethod -Method Get -Headers $headers -Uri https://management.azure.com/subscriptions/$SUBID/resourceGroups/$ResourceGroup/providers/Microsoft.NetApp/netAppAccounts/$ANFACCOUNT/capacityPools/$ANFCAPACITYPOOL/volumes?api-version=2019-11-01 | ConvertTo-Json
+```azurepowershell
+#get volumes in NetApp account & capacity pool 
+Invoke-RestMethod -Method Get -Headers $headers -Uri https://management.azure.com/subscriptions/$SUBID/resourceGroups/$ResourceGroup/providers/Microsoft.NetApp/netAppAccounts/$ANFACCOUNT/capacityPools/$ANFCAPACITYPOOL/volumes?api-version=2019-11-01 | ConvertTo-Json
+```
 
-    #get snapshots for a volume 
-    Invoke-RestMethod -Method Get -Headers $headers -Uri https://management.azure.com/subscriptions/$SUBID/resourceGroups/$ResourceGroup/providers/Microsoft.NetApp/netAppAccounts/$ANFACCOUNT/capacityPools/$ANFCAPACITYPOOL/volumes/$ANFVOLUME/snapshots?api-version=2019-11-01 | ConvertTo-Json
+```azurepowershell
+#get snapshots for a volume 
+Invoke-RestMethod -Method Get -Headers $headers -Uri https://management.azure.com/subscriptions/$SUBID/resourceGroups/$ResourceGroup/providers/Microsoft.NetApp/netAppAccounts/$ANFACCOUNT/capacityPools/$ANFCAPACITYPOOL/volumes/$ANFVOLUME/snapshots?api-version=2019-11-01 | ConvertTo-Json
+```
 
 ### <a name="complete-powershell-scripts"></a>完成した PowerShell スクリプト
 このセクションに、PowerShell のサンプル スクリプトを示します。
 
+```azurepowershell
     <#
     Disclaimer 
     The sample scripts are not supported under any Microsoft standard support program or service. The sample scripts are provided AS IS without warranty of any kind. Microsoft further disclaims all implied warranties including, without limitation, any implied warranties of merchantability or of fitness for a particular purpose. The entire risk arising out of the use or performance of the sample scripts and documentation remains with you. In no event shall Microsoft, its authors, or anyone else involved in the creation, production, or delivery of the scripts be liable for any damages whatsoever (including, without limitation, damages for loss of business profits, business interruption, loss of business information, or other pecuniary loss) arising out of the use of or inability to use the sample scripts or documentation, even if Microsoft has been advised of the possibility of such damages.
@@ -397,6 +433,7 @@ PowerShell 変数は、`$variablename = “value”` を使用して割り当て
        sleep 5
        $response = Invoke-RestMethod -Method ‘GET’ -Headers $headers -Uri "https://management.azure.com/subscriptions/$SubID/resourceGroups/$ResourceGroup/providers/Microsoft.NetApp/netAppAccounts/$ANFAccount/capacityPools/$ANFCapacityPool/volumes/$ANFVolume/Snapshots/$ANFSnapshot`?api-version=$api_version" 
        }  
+```
 
 ## <a name="next-steps"></a>次のステップ
 

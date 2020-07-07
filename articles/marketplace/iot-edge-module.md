@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 49f86a79eb5358d27c15d93004db396436c3e680
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 9783eb1dbcbfc3ee01008dfa33ff2429a87cf62a
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657962"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963378"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge のモジュール
 
@@ -30,7 +30,7 @@ ms.locfileid: "83657962"
 
 ## <a name="what-is-an-iot-edge-module"></a>IoT Edge モジュールとは何ですか。
 
-Azure IoT Edge では、ビジネス ロジックをモジュール形式でエッジに展開および管理できます。 Azure IoT Edge モジュールは、IoT Edge によって管理される計算の最小単位であり、Azure Stream Analytics などの Microsoft サービス、サードパーティー サービスまたは、独自ソリューション固有のコードを含めることができます。 IoT Edge モジュールの詳細については、[Azure IoT Edge モジュールを理解する](https://docs.microsoft.com/azure/iot-edge/iot-edge-modules)を参照してください。
+Azure IoT Edge では、ビジネス ロジックをモジュール形式でエッジに展開および管理できます。 Azure IoT Edge モジュールは、IoT Edge によって管理される計算の最小単位であり、Azure Stream Analytics などの Microsoft サービス、サードパーティー サービスまたは、独自ソリューション固有のコードを含めることができます。 IoT Edge モジュールの詳細については、[Azure IoT Edge モジュールを理解する](../iot-edge/iot-edge-modules.md)を参照してください。
 
 **コンテナー プランの種類と、IoT Edge モジュール プランの種類の違いは何ですか。**
 
@@ -40,7 +40,7 @@ IoT Edge モジュール プランの種類は、IoT Edge デバイスで実行�
 
 **右側のネット ショップの選択**
 
-IoT Edge モジュールが Azure Marketplace でのみ発行され、AppSource は適用されません。  ネット ショップ間の相違点と対象ユーザーの詳細については、[ソリューションの発行オプションの決定](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)を参照してください。
+IoT Edge モジュールが Azure Marketplace でのみ発行され、AppSource は適用されません。  ネット ショップ間の相違点と対象ユーザーの詳細については、[ソリューションの発行オプションの決定](determine-your-listing-type.md)を参照してください。
  
 **課金オプション**
 
@@ -48,7 +48,7 @@ Marketplace は現在、IoT Edge モジュールの**無料**および**ライ�
  
 **発行オプション**
 
-すべてのケースで IoT Edge モジュールでは、**Transact** 発行オプションを選択する必要があります。  発行オプションの詳細については、[発行オプションを選択する](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)を参照してください。  
+すべてのケースで IoT Edge モジュールでは、**Transact** 発行オプションを選択する必要があります。  発行オプションの詳細については、[発行オプションを選択する](determine-your-listing-type.md)を参照してください。  
 
 ## <a name="eligibility-criteria"></a>対象となる条件
 
@@ -58,7 +58,7 @@ Microsoft Azure Marketplace の契約とポリシーのすべてのご契約条�
 
 IoT Edge モジュールを Azure Marketplace で発行するには、次の前提条件を満たす必要があります。
 
-- パートナー センターへのアクセス。 詳細については、 [Azure Marketplace と AppSource の発行ガイド](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)を参照してください。
+- パートナー センターへのアクセス。 詳細については、 [Azure Marketplace と AppSource の発行ガイド](marketplace-publishers-guide.md)を参照してください。
 - Azure Container registry で IoT Edge モジュールをホストします。 
 - IoT Edge モジュールのメタデータを (非網羅的なリストのように) 用意してください： 
     - タイトル

@@ -7,19 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/12/2020
 ms.author: dsindona
-ms.openlocfilehash: 03921a5bf5635ee001f78ca67e4ac24839bd03c5
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 7ddea556ea4a9c7c0306ebdf1eca1f60769c5318
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657858"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958176"
 ---
 # <a name="commercial-marketplace-publishing-guide"></a>コマーシャル マーケットプレース公開ガイド
 
 この公開ガイドでは、新しいパブリッシャーと既存のパブリッシャー向けに、コマーシャル マーケットプレースのネットショップ [Azure Marketplace](https://azuremarketplace.microsoft.com) と [Microsoft AppSource](https://appsource.microsoft.com) にアプリケーションとサービスを登録し、Microsoft と連携してビジネスを成長させる方法を、わかりやすく説明しています。
 
 >[!Note]
->Marketplace はここでは、Azure Marketplace と AppSource の両方のことを指します。  詳細については、[1 つのマーケットプレース、2 つのネットショップ](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)に関するページを参照してください。
+>Marketplace はここでは、Azure Marketplace と AppSource の両方のことを指します。  詳細については、[1 つのマーケットプレース、2 つのネットショップ](comparing-appsource-azure-marketplace.md)に関するページを参照してください。
 
 このガイドでは、次のトピックについて説明します。 
 *   Marketplace の概要とそのしくみ 
@@ -62,7 +62,7 @@ Marketplace に新しく参加することで、パートナーは、Marketplace
 
 *   共同販売: Marketplace を通じた Microsoft との共同販売のプロセスを開始または加速します。 Microsoft チームとの共同販売を推進するプログラムおよびサポートにアクセスします。
 
-Marketplace に[ソリューションを提出](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)したら、オンボーディング チームからの連絡を待ち、パブリッシング プロセスのサポートを受けてください。  詳細については、[パートナー センター アカウントの作成方法](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)に関する記事を参照してください。
+Marketplace に[ソリューションを提出](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)したら、オンボーディング チームからの連絡を待ち、パブリッシング プロセスのサポートを受けてください。  詳細については、[パートナー センター アカウントの作成方法](partner-center-portal/create-account.md)に関する記事を参照してください。
 
 [商用マーケットプレースのベネフィット](https://docs.microsoft.com//azure/marketplace/gtm-your-marketplace-benefits)の詳細を確認します。
 

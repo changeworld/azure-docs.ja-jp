@@ -1,25 +1,14 @@
 ---
 title: Azure DevTest Labs を使用してラボを作成する | Microsoft Docs
 description: このチュートリアルでは、Azure portal を使って Azure DevTest Labs のラボを作成します。 ラボの管理者は、ラボを設定し、ラボに VM を作成して、ポリシーを構成します。
-services: devtest-lab, lab-services, virtual-machines
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.custom: mvc
-ms.date: 01/24/2020
-ms.author: spelluru
-ms.openlocfilehash: 44539c6779afaece6d955a907819ef82d8cd7d5a
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 9d016b38beb2f338a97ac862a060dc5ec3a77780
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84889170"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476565"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>チュートリアル: Azure DevTest Labs を使用してラボを設定する
 このチュートリアルでは、Azure portal を使ってラボを作成します。 ラボの管理者は、組織のラボを設定し、ラボに VM を作成して、ポリシーを構成します。 ラボのユーザー (開発者やテスト担当者など) は、ラボの VM を要求し、VM に接続して使用します。 

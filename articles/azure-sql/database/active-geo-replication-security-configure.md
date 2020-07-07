@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 12/18/2018
-ms.openlocfilehash: 7db83535b7e6257159e0a0eb363e6d05c5e916b9
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 3699191229a53735a62235cf8688cdfab9335339
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84035203"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963650"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Azure SQL Database のセキュリティを geo リストアやフェールオーバー用に構成し、管理する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -55,15 +55,19 @@ geo レプリケーション セカンダリに対するユーザー アクセ�
 
 サーバー管理者または **LoginManager** サーバー ロールのメンバーのみが、次の SELECT ステートメントを使用してソース サーバーのログインを特定できます。
 
-    SELECT [name], [sid]
-    FROM [sys].[sql_logins]
-    WHERE [type_desc] = 'SQL_Login'
+```sql
+SELECT [name], [sid]
+FROM [sys].[sql_logins]
+WHERE [type_desc] = 'SQL_Login'
+```
 
 また、db_owner データベース ロールのメンバー、dbo ユーザー、またはサーバー管理者のみが、プライマリ データベース内にあるすべてのデータベース ユーザー プリンシパルを特定できます。
 
-    SELECT [name], [sid]
-    FROM [sys].[database_principals]
-    WHERE [type_desc] = 'SQL_USER'
+```sql
+SELECT [name], [sid]
+FROM [sys].[database_principals]
+WHERE [type_desc] = 'SQL_USER'
+```
 
 #### <a name="2-find-the-sid-for-the-logins-identified-in-step-1"></a>2.手順 1 で特定したログインの SID を検索する
 
@@ -71,9 +75,11 @@ geo レプリケーション セカンダリに対するユーザー アクセ�
 
 次のクエリを使用すると、データベース内のすべてのユーザー プリンシパルとその SID を表示できます。 このクエリを実行できるのは、db_owner データベース ロールのメンバーまたはサーバー管理者のみです。
 
-    SELECT [name], [sid]
-    FROM [sys].[database_principals]
-    WHERE [type_desc] = 'SQL_USER'
+```sql
+SELECT [name], [sid]
+FROM [sys].[database_principals]
+WHERE [type_desc] = 'SQL_USER'
+```
 
 > [!NOTE]
 > **INFORMATION_SCHEMA** ユーザーと **sys** ユーザーの SID は *NULL* で、**ゲスト** SID は **0x00** です。 データベースの作成者が **DbManager** のメンバーではなくサーバー管理者だった場合、**dbo** SID は *0x01060000000001648000000000048454* で始まることがあります。
@@ -82,9 +88,11 @@ geo レプリケーション セカンダリに対するユーザー アクセ�
 
 最後の手順では、1 つ以上のターゲット サーバーにアクセスし、適切な SID を使用してログインを生成します。 基本的な構文は次のとおりです。
 
-    CREATE LOGIN [<login name>]
-    WITH PASSWORD = <login password>,
-    SID = <desired login SID>
+```sql
+CREATE LOGIN [<login name>]
+WITH PASSWORD = <login password>,
+SID = <desired login SID>
+```
 
 > [!NOTE]
 > セカンダリへのユーザー アクセスを許可し、プライマリへのアクセスは許可しない場合は、次の構文を使用してプライマリ サーバーでユーザー ログインを変更します。

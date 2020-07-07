@@ -3,15 +3,15 @@ title: Avere vFXT ストレージを構成する - Azure
 description: Avere vFXT for Azure にバックエンド ストレージ システムを追加する方法
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: dfffef90201ba4bbb5a912df6101e8338012df44
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e011b349c9296fd0ca15d119b35c1e6ec6af268a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227511"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85505751"
 ---
 # <a name="configure-storage"></a>記憶域を構成する
 

@@ -5,12 +5,12 @@ author: mscurrell
 ms.topic: how-to
 ms.date: 03/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: 90cd6476992eed30abbe9faca5cc66405aa40079
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 48350a684844ca0e1624826afeca8e0b9ab36f3b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780197"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959995"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Batch で優先順位の低い VM を使用する
 
@@ -23,11 +23,11 @@ Azure Batch には Batch ワークロードのコストを減らす優先順位�
 優先度の低い VM は、専用の VM と比較して大幅な割引価格で提供されます。 料金について詳しくは、「[Batch の価格](https://azure.microsoft.com/pricing/details/batch/)」をご覧ください。
 
 > [!NOTE]
-> [単一インスタンス VM](https://docs.microsoft.com/azure/virtual-machines/linux/spot-vms) と [VM スケールセット](https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot)に[スポット VM](https://azure.microsoft.com/pricing/spot/) を使用できるようになりました。 スポット VM は優先順位の低い VM の進化版ですが、その価格の差はさまざまで、オプションの最大価格をスポット VM の割り当て時に設定することもできます。
+> [単一インスタンス VM](../virtual-machines/linux/spot-vms.md) と [VM スケールセット](../virtual-machine-scale-sets/use-spot.md)に[スポット VM](https://azure.microsoft.com/pricing/spot/) を使用できるようになりました。 スポット VM は優先順位の低い VM の進化版ですが、その価格の差はさまざまで、オプションの最大価格をスポット VM の割り当て時に設定することもできます。
 >
-> Azure Batch プールでは、新しいバージョンの [Batch API とツール](https://docs.microsoft.com/azure/batch/batch-apis-tools)とともに、スポット VM の一般公開から数か月以内にそのサポートを開始する予定です。 スポット VM のサポートが開始されると、優先順位の低い VM は非推奨になりますが、スポット VM への移行に十分な時間を確保するため、API とツールの現在のバージョンを使用して、少なくとも 12 か月間は引き続きサポートされます。 
+> Azure Batch プールでは、新しいバージョンの [Batch API とツール](./batch-apis-tools.md)とともに、スポット VM の一般公開から数か月以内にそのサポートを開始する予定です。 スポット VM のサポートが開始されると、優先順位の低い VM は非推奨になりますが、スポット VM への移行に十分な時間を確保するため、API とツールの現在のバージョンを使用して、少なくとも 12 か月間は引き続きサポートされます。 
 >
-> スポット VM は、[クラウド サービス構成](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration)プールではサポートされません。 スポット VM を使用するには、クラウド サービス プールを[仮想マシン構成](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration)プールに移行する必要があります。
+> スポット VM は、[クラウド サービス構成](/rest/api/batchservice/pool/add#cloudserviceconfiguration)プールではサポートされません。 スポット VM を使用するには、クラウド サービス プールを[仮想マシン構成](/rest/api/batchservice/pool/add#virtualmachineconfiguration)プールに移行する必要があります。
 
 ## <a name="use-cases-for-low-priority-vms"></a>優先順位の低い VM の使用事例
 
