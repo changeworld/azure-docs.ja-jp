@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/14/2020
 ms.custom: mqtt
-ms.openlocfilehash: 20bbd3fbc7623f01e60acbd08eed0c09b7e1a26d
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 71ef7a8da6e575e995696ebaf14b265babf9aecf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117565"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84984932"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Azure IoT Hub SDK の概要と使用方法
 
@@ -25,6 +25,7 @@ IoT Hub を使用する場合、以下の 2 つのカテゴリのソフトウェ
 * **IoT Hub Service SDK** を使用すると、ご利用の IoT Hub を管理するバックエンド アプリケーションを構築できます。また、必要に応じてメッセージを送信し、ジョブのスケジュールを設定し、ダイレクト メソッドを呼び出し、ご利用の IoT デバイスまたはモジュールに必要なプロパティの更新情報を送信することができます。
 
 また、[デバイス プロビジョニング サービス](../iot-dps/about-iot-dps.md)を操作するための一連の SDK も利用できます。
+
 * **Device SDK をプロビジョニング**すると、IoT デバイス上で動作して、デバイス プロビジョニング サービスと通信するアプリを構築できます。
 
 * **Service SDK をプロビジョニング**すると、デバイス プロビジョニング サービスで自分の登録を管理するバックエンド アプリケーションを構築できます。
@@ -33,8 +34,7 @@ IoT Hub を使用する場合、以下の 2 つのカテゴリのソフトウェ
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-
-### <a name="os-platform-and-hardware-compatibility"></a>OS プラットフォームとハードウェアの互換性
+## <a name="os-platform-and-hardware-compatibility"></a>OS プラットフォームとハードウェアの互換性
 
 SDK でサポートされるプラットフォームは、「[Azure IoT SDK プラットフォームのサポート](iot-hub-device-sdk-platform-support.md)」で確認できます。
 
@@ -62,27 +62,27 @@ C 用 Azure IoT Hub デバイス SDK (ANSI C - C99):
 * クロスコンパイル、さまざまなプラットフォームでの基本など、[開発者向けドキュメント](https://github.com/Azure/azure-iot-sdk-c/tree/master/doc)
 * [Azure IoT Hub C SDK のリソース消費情報](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/c_sdk_resource_information.md)
 
-Java 用 Azure IoT Hub デバイス SDK: 
+Java 用 Azure IoT Hub デバイス SDK:
 
 * [Maven](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md#for-the-device-sdk) プロジェクトに追加する
 * [ソース コード](https://github.com/Azure/azure-iot-sdk-java)
 * [API リファレンス](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device)
 * [モジュール リファレンス](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)
 
-Node.js 用 Azure IoT Hub デバイス SDK: 
+Node.js 用 Azure IoT Hub デバイス SDK:
 
 * [npm](https://www.npmjs.com/package/azure-iot-device) からインストールする
 * [ソース コード](https://github.com/Azure/azure-iot-sdk-node)
 * [API リファレンス](https://docs.microsoft.com/javascript/api/azure-iot-device/?view=azure-iot-typescript-latest)
 * [モジュール リファレンス](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest)
 
-Python 用 Azure IoT Hub デバイス SDK: 
+Python 用 Azure IoT Hub デバイス SDK:
 
 * [pip](https://pypi.org/project/azure-iot-device/) からインストールする
 * [ソース コード](https://github.com/Azure/azure-iot-sdk-python)
 * [API リファレンス](https://docs.microsoft.com/python/api/azure-iot-device)
 
-iOS 用 Azure IoT Hub デバイス SDK: 
+iOS 用 Azure IoT Hub デバイス SDK:
 
 * [CocoaPod](https://cocoapods.org/pods/AzureIoTHubClient) からインストールする
 * [サンプル](https://github.com/Azure-Samples/azure-iot-samples-ios)
@@ -98,24 +98,25 @@ Azure IoT サービス SDK には、IoT Hub と直接やりとりしてデバイ
 * [ソース コード](https://github.com/Azure/azure-iot-sdk-csharp)
 * [API リファレンス](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices)
 
-Java 用 Azure IoT Hub サービス SDK: 
+Java 用 Azure IoT Hub サービス SDK:
 
 * [Maven](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md#for-the-service-sdk) プロジェクトに追加する
 * [ソース コード](https://github.com/Azure/azure-iot-sdk-java)
 * [API リファレンス](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.service)
 
-Node.js 用 Azure IoT Hub サービス SDK: 
+Node.js 用 Azure IoT Hub サービス SDK:
 
 * [npm](https://www.npmjs.com/package/azure-iothub) からダウンロードする
 * [ソース コード](https://github.com/Azure/azure-iot-sdk-node)
 * [API リファレンス](https://docs.microsoft.com/javascript/api/azure-iothub/?view=azure-iot-typescript-latest)
 
-Python 用 Azure IoT Hub サービス SDK: 
+Python 用 Azure IoT Hub サービス SDK:
 
 * [pip](https://pypi.python.org/pypi/azure-iot-hub/) からダウンロードする
 * [ソース コード](https://github.com/Azure/azure-iot-sdk-python/tree/master)
+* [API リファレンス](https://docs.microsoft.com/python/api/azure-iot-hub)
 
-C 用 Azure IoT Hub サービス SDK: 
+C 用 Azure IoT Hub サービス SDK:
 
 C 用 Azure IoT サービス SDK は、アクティブな開発ではなくなりました。
 クラッシュ、データの破損、セキュリティの脆弱性などの重大なバグは、引き続き修正します。 ただし、新しい機能を追加したり、重要ではないバグを修正したりすることはありません。
@@ -125,7 +126,7 @@ Azure IoT サービス SDK のサポートは、上位レベルの言語 ([C#](h
 * [apt-get、MBED、Arduino IDE、または NuGet](https://github.com/Azure/azure-iot-sdk-c/blob/master/readme.md) からダウンロードする
 * [ソース コード](https://github.com/Azure/azure-iot-sdk-c)
 
-iOS 用 Azure IoT Hub サービス SDK: 
+iOS 用 Azure IoT Hub サービス SDK:
 
 * [CocoaPod](https://cocoapods.org/pods/AzureIoTHubServiceClient) からインストールする
 * [サンプル](https://github.com/Azure-Samples/azure-iot-samples-ios)
@@ -169,14 +170,15 @@ Python 用の Azure Provisioning Device SDK および Azure Provisioning Service
 ## <a name="next-steps"></a>次のステップ
 
 Azure IoT SDK では、開発に役立つ一連のツールも提供しています。
+
 * [iothub-diagnostics](https://github.com/Azure/iothub-diagnostics): IoT Hub との接続に関連する問題の診断に役立つ、クロスプラットフォーム コマンド ライン ツール。
 * [azure-iot-explorer](https://github.com/Azure/azure-iot-explorer): IoT Hub に接続し、IoT デバイスの追加、管理、通信を行うクロスプラットフォーム デスクトップ アプリケーション。
 
 Azure IoT SDK を使用した開発に関連するドキュメント
+
 * IoT Hub デバイス SDK を使用して[接続と信頼できるメッセージングを管理する方法](iot-hub-reliability-features-in-sdks.md)に関する記事を参照してください。
 * iOS や Android などの[モバイル プラットフォーム向けの開発](iot-hub-how-to-develop-for-mobile-devices.md)方法に関する記事を参照してください。
 * [Azure IoT SDK プラットフォームのサポート](iot-hub-device-sdk-platform-support.md)
-
 
 この IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです。
 

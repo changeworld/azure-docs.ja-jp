@@ -33,7 +33,7 @@ HDInsight Spark クラスターには、[Apache Zeppelin](https://zeppelin.apach
    >
    > `https://CLUSTERNAME.azurehdinsight.net/zeppelin`
 
-2. 新しい Notebook を作成します。 ヘッダー ウィンドウから、 **[Notebook]**  >  **[新しいメモを作成します]** の順に移動します。
+2. 新しい Notebook を作成します。 ヘッダー ウィンドウから、 **[Notebook]** >  **[新しいメモを作成します]** の順に移動します。
 
     ![新しい Zeppelin ノートブックの作成](./media/apache-spark-zeppelin-notebook/hdinsight-create-zeppelin-notebook.png "新しい Zeppelin Notebook を作成します")
 
@@ -214,7 +214,7 @@ Ambari からサービスを検証するには、`https://CLUSTERNAME.azurehdins
 
 1. `https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary` に移動します。ここで、CLUSTERNAME はクラスターの名前です。
 
-1. **[CONFIGS]\(構成\)**  >  **[Advanced zeppelin-log4j-properties]\(詳細 zeppelin-log4j-properties\)**  >  **[log4j_properties_content]** に移動します。
+1. **[CONFIGS]\(構成\)** >  **[Advanced zeppelin-log4j-properties]\(詳細 zeppelin-log4j-properties\)** >  **[log4j_properties_content]** に移動します。
 
 1. `log4j.appender.dailyfile.Threshold = INFO` を `log4j.appender.dailyfile.Threshold = DEBUG` に変更します。
 

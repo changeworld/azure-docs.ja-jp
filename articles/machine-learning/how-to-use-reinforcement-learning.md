@@ -5,16 +5,17 @@ description: Azure Machine Learning の強化学習 (RL) を使用して、Pong 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: peterlu
 author: peterclu
 ms.date: 05/05/2020
-ms.openlocfilehash: b0a596ee4c576ff98be302b15a86a8758b11ce25
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.custom: tracking-python
+ms.openlocfilehash: f8559733de9b7acfb23e2846e4d92ce6db5e2df0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596341"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84556938"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Azure Machine Learning での強化学習 (プレビュー)
 
@@ -49,7 +50,7 @@ ms.locfileid: "83596341"
  - 独自の Jupyter Notebook サーバー
 
     - [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) をインストールします。
-    - [Azure Machine Learning RL SDK](https://review.docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/?view=azure-ml-py&branch=harnvirdebug) をインストールします: `pip install --upgrade azureml-contrib-reinforcementlearning`
+    - [Azure Machine Learning RL SDK](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/?view=azure-ml-py) をインストールします: `pip install --upgrade azureml-contrib-reinforcementlearning`
     - [ワークスペース構成ファイル](how-to-configure-environment.md#workspace)を作成します。
     - 仮想ネットワーク [セットアップ ノートブック](https://aka.ms/azure-rl-env-setup)を実行して、分散強化学習に使用されるネットワーク ポートを開きます。
 
@@ -210,7 +211,7 @@ else:
 
 ## <a name="create-a-reinforcement-learning-estimator"></a>強化学習の推定器を作成する
 
-このセクションでは、[ReinforcementLearningEstimator](https://review.docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?view=azure-ml-py&branch=harnvirdebug) を使用して、Azure Machine Learning にトレーニング ジョブを送信する方法について説明します。
+このセクションでは、[ReinforcementLearningEstimator](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?view=azure-ml-py) を使用して、Azure Machine Learning にトレーニング ジョブを送信する方法について説明します。
 
 Azure Machine Learning では、推定器クラスを使用して、実行の構成情報がカプセル化されます。 これにより、スクリプトの実行の構成方法を簡単に指定できます。 Azure Machine Learning の推定器のパターンの詳細については、[推定器を使用してモデルをトレーニングする方法](how-to-train-ml-models.md)に関するページを参照してください。
 
