@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/17/2017
 ms.author: tagore
-ms.openlocfilehash: 23fbb0b4c506b2f72000add9704618337b8b24cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 774d2bb58fd7dd75825be8f433f078d70c13fe8c
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75386189"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85919986"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ
 
@@ -47,19 +47,24 @@ Cloud Services の詳細と Azure の Web サイトおよび仮想マシンと�
 2. [PowerShell を接続します] 。
 3. 次の PowerShell コマンドレットを入力してプロジェクトを作成します。
 
-        New-AzureServiceProject helloworld
+   ```powershell
+   New-AzureServiceProject helloworld
+   ```
 
-    ![New-AzureService helloworld コマンドの結果][The result of the New-AzureService helloworld command]
+   ![New-AzureService helloworld コマンドの結果][The result of the New-AzureService helloworld command]
 
-    **New-AzureServiceProject** コマンドレットは、クラウド サービスに Node.js アプリケーションを発行するための基本的な構造を生成します。 これには、Azure への発行に必要な構成ファイルが含まれています。 また、このコマンドレットにより、作業ディレクトリがこのサービス用のディレクトリに変更されます。
+   **New-AzureServiceProject** コマンドレットは、クラウド サービスに Node.js アプリケーションを発行するための基本的な構造を生成します。 これには、Azure への発行に必要な構成ファイルが含まれています。 また、このコマンドレットにより、作業ディレクトリがこのサービス用のディレクトリに変更されます。
 
-    このコマンドレットによって作成されるファイルは、次のとおりです。
+   このコマンドレットによって作成されるファイルは、次のとおりです。
 
    * **ServiceConfiguration.Cloud.cscfg**、**ServiceConfiguration.Local.cscfg**、および **ServiceDefinition.csdef**: アプリケーションの発行に必要な Azure 固有のファイルです。 詳細については、「 [Overview of Creating a Hosted Service for Azure (Azure 対応のホステッド サービスの作成の概要)]」を参照してください。
    * **deploymentSettings.json**: Azure PowerShell デプロイ コマンドレットによって使用されるローカル設定が格納されます。
+
 4. 次のコマンドを入力して、新しい Web ロールを追加します。
 
-       Add-AzureNodeWebRole
+   ```powershell
+   Add-AzureNodeWebRole
+   ```
 
    ![The output of the Add-AzureNodeWebRole command][The output of the Add-AzureNodeWebRole command]
 
@@ -70,12 +75,14 @@ Cloud Services の詳細と Azure の Web サイトおよび仮想マシンと�
 
 Node.js アプリは **server.js** ファイルで定義されます。このファイルは Web ロール用のディレクトリ (既定では **WebRole1**) に配置されます。 次にコードを示します。
 
-    var http = require('http');
-    var port = process.env.port || 1337;
-    http.createServer(function (req, res) {
-        res.writeHead(200, { 'Content-Type': 'text/plain' });
-        res.end('Hello World\n');
-    }).listen(port);
+```js
+var http = require('http');
+var port = process.env.port || 1337;
+http.createServer(function (req, res) {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('Hello World\n');
+}).listen(port);
+```
 
 このコードは、クラウド環境に割り当てられたポート番号を使用する点を除いて、基本的に [nodejs.org] Web サイトの "Hello World" サンプルと同じです。
 
@@ -89,14 +96,18 @@ Node.js アプリは **server.js** ファイルで定義されます。このフ
 
 1. 次の Azure PowerShell コマンドレットを実行します。
 
-       Get-AzurePublishSettingsFile
+    ```powershell
+    Get-AzurePublishSettingsFile
+    ```
 
    ブラウザーで、発行設定のダウンロード ページが表示されます。 Microsoft アカウントによるログインを求められる場合があります。 その場合は、Azure サブスクリプションに関連付けられたアカウントを使用します。
 
    ダウンロードしたプロファイルを、簡単にアクセスできるファイルの保存場所に保存します。
 2. 次のコマンドレットを実行して、ダウンロードした発行プロファイルをインポートします。
 
-       Import-AzurePublishSettingsFile [path to file]
+    ```powershell
+    Import-AzurePublishSettingsFile [path to file]
+    ```
 
     > [!NOTE]
     > 発行設定をインポートしたら、ダウンロードした .publishSettings ファイルには他のユーザーがアカウントにアクセスできる情報が含まれているので、削除することを検討してください。
@@ -104,8 +115,10 @@ Node.js アプリは **server.js** ファイルで定義されます。このフ
 ### <a name="publish-the-application"></a>アプリケーションの発行
 発行するには、次のコマンドを実行します。
 
-      $ServiceName = "NodeHelloWorld" + $(Get-Date -Format ('ddhhmm'))
-    Publish-AzureServiceProject -ServiceName $ServiceName  -Location "East US" -Launch
+```powershell
+$ServiceName = "NodeHelloWorld" + $(Get-Date -Format ('ddhhmm'))
+Publish-AzureServiceProject -ServiceName $ServiceName  -Location "East US" -Launch
+```
 
 * **- ServiceName** は、このデプロイに使用する名前を指定します。 必ず一意の名前を使用してください。一意でない場合は発行が失敗します。 **Get-Date** コマンドは、名前を一意にする日付/時刻文字列を追加します。
 * **-Location** は、アプリケーションがホストされるデータ センターを指定します。 使用可能なデータ センターの一覧を表示するには、 **Get-azurelocation** コマンドレットを使用してください。
@@ -136,14 +149,18 @@ Node.js アプリは **server.js** ファイルで定義されます。このフ
 
 1. Windows PowerShell ウィンドウで次のコマンドレットを実行し、前のセクションで作成したサービスのデプロイを停止します。
 
-       Stop-AzureService
+    ```powershell
+    Stop-AzureService
+    ```
 
    サービスの停止には、数分間かかる場合があります。 サービスが停止すると、停止したことを知らせるメッセージが表示されます。
 
    ![Stop-AzureService コマンドの状態][The status of the Stop-AzureService command]
 2. サービスを削除するには、次のコマンドレットを呼び出します。
 
-       Remove-AzureService
+    ```powershell
+    Remove-AzureService
+    ```
 
    確認を求めるメッセージが表示されたら、「 **Y** 」と入力して、サービスを削除します。
 

@@ -4,10 +4,10 @@ description: リソースがいつ変更されたかを見つけ、変更され�
 ms.date: 05/20/2020
 ms.topic: how-to
 ms.openlocfilehash: 9e233ebbdd1d70d483af44eacf12cc924deaafac
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84167164"
 ---
 # <a name="get-resource-changes"></a>リソースの変更の取得
