@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/12/2018
-ms.openlocfilehash: 62e3eb73b165a190e9234470471bd699141e8a5f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 610e21064c26734461ba8fd6639868dc930f926c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84038893"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963939"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>C と C++ を使用して SQL Database に接続する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -91,12 +91,14 @@ Visual Studio でビルドする[こちらのサンプルを使用すれば、Wi
 
 次の手順では、ディストリビューションの SQL と ODBC に必要なライブラリをインストールします。
 
+```console
     sudo su
     sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/mssql-ubuntu-test/ xenial main" > /etc/apt/sources.list.d/mssqlpreview.list'
     sudo apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
     apt-get update
     apt-get install msodbcsql
     apt-get install unixodbc-dev-utf16 #this step is optional but recommended*
+```
 
 Visual Studio を起動します。 [ツール]、[オプション]、[クロス プラットフォーム]、[接続マネージャー] と移動し、Linux ボックスに接続を追加します。
 
@@ -109,11 +111,13 @@ SSH 経由で接続が確立されたら、空のプロジェクト (Linux) テ�
 次に、[新しい C ソース ファイルを追加し、次の内容で置き換えます](https://github.com/Microsoft/VCSamples/blob/master/VC2015Samples/ODBC%20database%20sample%20%28linux%29/odbcconnector/odbcconnector.c)。 ODBC APIs SQLAllocHandle、SQLSetConnectAttr、SQLDriverConnect を使用すると、データベースへの接続を初期化し、確立することができます。
 Windows ODBC のサンプルと同様に、SQLDriverConnect 呼び出しを、先に Azure Portal からコピーしたデータベース接続文字列パラメーターの詳細に置き換える必要があります。
 
+```c
      retcode = SQLDriverConnect(
         hdbc, NULL, "Driver=ODBC Driver 13 for SQL"
                     "Server;Server=<yourserver>;Uid=<yourusername>;Pwd=<"
                     "yourpassword>;database=<yourdatabase>",
         SQL_NTS, outstr, sizeof(outstr), &outstrlen, SQL_DRIVER_NOPROMPT);
+```
 
 最後に、コンパイルする前に **odbc** をライブラリ依存関係として追加します。
 

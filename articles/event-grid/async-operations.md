@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: spelluru
 ms.openlocfilehash: fb3479271733ee218da8a842956f3a8996e07f61
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82891768"
 ---
 # <a name="track-asynchronous-azure-operations"></a>非同期 Azure 操作の追跡
@@ -39,7 +39,7 @@ Azure の REST 操作の中には、操作を迅速に完了できないため�
 
 ただし、すべての非同期操作で、これらすべての値が返されるわけではありません。 たとえば、ある操作には Azure-AsyncOperation ヘッダー値を、別の操作には Location ヘッダー値を評価する必要がある場合があります。 
 
-他の要求のヘッダー値を取得するのと同じように、ヘッダーの値を取得します。 たとえば、C# では、次のコードを使用して `HttpWebResponse` という名前の `response` オブジェクトからヘッダー値を取得します。
+他の要求のヘッダー値を取得するのと同じように、ヘッダーの値を取得します。 たとえば、C# では、次のコードを使用して `response` という名前の `HttpWebResponse` オブジェクトからヘッダー値を取得します。
 
 ```cs
 response.Headers.GetValues("Azure-AsyncOperation").GetValue(0)

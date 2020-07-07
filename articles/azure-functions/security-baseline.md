@@ -8,10 +8,10 @@ ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 040eeda3edc8aa1165915a157cb7e1bdd1594740
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82793811"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>Azure Functions 用の Azure セキュリティ ベースライン
@@ -56,7 +56,7 @@ Azure Functions の実装にネットワーク セキュリティ グループ (
 
 ### <a name="13-protect-critical-web-applications"></a>1.3:重要な Web アプリケーションを保護する
 
-**ガイダンス**: 運用環境で、Azure 関数エンドポイントを完全に保護するには、次の関数アプリ レベルのセキュリティ オプションのいずれかの実装を検討してください。
+**ガイダンス**:運用環境で、Azure 関数エンドポイントを完全に保護するには、次の関数アプリ レベルのセキュリティ オプションのいずれかの実装を検討してください。
 - 関数アプリの App Service 認証および承認をオンにする
 - 要求の認証に Azure API Management (APIM) を使用する、または
 - Azure App Service Environment に関数アプリをデプロイする。
@@ -118,7 +118,7 @@ Azure Functions の実装にネットワーク セキュリティ グループ (
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6:ネットワーク ベースの侵入検出/侵入防止システム (IDS/IPS) をデプロイする
 
-**ガイダンス**: すべての受信要求を認証し、悪意のあるトラフィックをフィルターで除外するように Azure Web アプリケーション ファイアウォールなどのフロントエンド ゲートウェイを構成します。 Azure Web アプリケーション ファイアウォールを使用すると、SQL インジェクション、クロスサイト スクリプティング、マルウェアのアップロード、および DDoS 攻撃をブロックするために受信 Web トラフィックを検査することで、関数アプリを保護できます。 WAF を導入するには、App Service Environment またはプライベート エンドポイント (プレビュー) を使用する必要があります。 必ずプライベート エンドポイントが (プレビュー) 段階ではなくなってから、運用環境のワークロードで使用してください。
+**ガイダンス**:すべての受信要求を認証し、悪意のあるトラフィックをフィルターで除外するように Azure Web アプリケーション ファイアウォールなどのフロントエンド ゲートウェイを構成します。 Azure Web アプリケーション ファイアウォールを使用すると、SQL インジェクション、クロスサイト スクリプティング、マルウェアのアップロード、および DDoS 攻撃をブロックするために受信 Web トラフィックを検査することで、関数アプリを保護できます。 WAF を導入するには、App Service Environment またはプライベート エンドポイント (プレビュー) を使用する必要があります。 必ずプライベート エンドポイントが (プレビュー) 段階ではなくなってから、運用環境のワークロードで使用してください。
 
 また、IDS または IPS 機能を含め、Azure Marketplace で入手できる Barracuda WAF for Azure などのマーケットプレースの選択肢が複数あります。
 
@@ -164,7 +164,7 @@ Azure Functions の実装にネットワーク セキュリティ グループ (
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8:ネットワーク セキュリティ規則の複雑さと管理オーバーヘッドを最小限に抑える
 
-**ガイダンス**: ネットワーク セキュリティ グループまたは Azure Firewall でのネットワーク アクセス制御を定義するには、仮想ネットワーク サービス タグを使用します。 セキュリティ規則を作成するときは、特定の IP アドレスの代わりにサービス タグを使うことができます。 規則の適切なソース フィールドまたはターゲット フィールドにサービス タグ名 (たとえば AzureAppService) を指定することにより、対応するサービスのトラフィックを許可または拒否できます。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。
+**ガイダンス**:ネットワーク セキュリティ グループまたは Azure Firewall でのネットワーク アクセス制御を定義するには、仮想ネットワーク サービス タグを使用します。 セキュリティ規則を作成するときは、特定の IP アドレスの代わりにサービス タグを使うことができます。 規則の適切なソース フィールドまたはターゲット フィールドにサービス タグ名 (たとえば AzureAppService) を指定することにより、対応するサービスのトラフィックを許可または拒否できます。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。
 
 - [サービス タグの使用に関する詳細](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
 
@@ -221,7 +221,7 @@ Azure Functions の実装にネットワーク セキュリティ グループ (
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1:承認された時刻同期ソースを使用する
 
-**ガイダンス**: Microsoft では、Azure Functions などの Azure リソースに使用するタイム ソースを、ログ内にタイムスタンプとして保持します。
+**ガイダンス**:Microsoft では、Azure Functions などの Azure リソースに使用するタイム ソースを、ログ内にタイムスタンプとして保持します。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -343,7 +343,7 @@ Azure Functions アプリの Application Insights を有効にすると、ログ
 
 ### <a name="210-enable-command-line-audit-logging"></a>2.10:コマンドライン監査ログ記録を有効にする
 
-**ガイダンス**: 適用できません。このガイドラインは、IaaS コンピューティング リソースを対象にしています。
+**ガイダンス**:適用できません。このガイドラインは、IaaS コンピューティング リソースを対象にしています。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -423,7 +423,7 @@ Azure Functions アプリの Application Insights を有効にすると、ログ
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: すべての管理タスクに専用マシン (特権アクセス ワークステーション) を使用する
 
-**ガイダンス**: Multi-Factor Authentication (MFA) が構成された特権アクセス ワークステーション (PAW) を使用してログインし、Azure リソースを構成します。
+**ガイダンス**:Multi-Factor Authentication (MFA) が構成された特権アクセス ワークステーション (PAW) を使用してログインし、Azure リソースを構成します。
 
 - [特権アクセス ワークステーションについて](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
@@ -449,7 +449,7 @@ Azure Functions アプリの Application Insights を有効にすると、ログ
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8:承認された場所からのみ Azure リソースを管理する
 
-**ガイダンス**: 条件付きアクセスのネームド ロケーションを使用して、IP アドレスの範囲、国、またはリージョンの特定の論理グループからのみ Azure portal へのアクセスを許可します。
+**ガイダンス**:条件付きアクセスのネームド ロケーションを使用して、IP アドレスの範囲、国、またはリージョンの特定の論理グループからのみ Azure portal へのアクセスを許可します。
 
 - [Azure でネームド ロケーションを構成する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
 
@@ -471,7 +471,7 @@ Azure Functions アプリの Application Insights を有効にすると、ログ
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: ユーザー アクセスを定期的に確認して調整する
 
-**ガイダンス**: Azure Active Directory (AD) では、古いアカウントの検出に役立つログが提供されます。 また、Azure ID アクセス レビューを使用して、グループ メンバーシップ、エンタープライズ アプリケーションへのアクセス、およびロールの割り当てを効率的に管理します。 ユーザー アクセスを定期的にレビューし、適切なユーザーのみが継続的なアクセス権を持っていることを確認できます。 
+**ガイダンス**:Azure Active Directory (AD) では、古いアカウントの検出に役立つログが提供されます。 また、Azure ID アクセス レビューを使用して、グループ メンバーシップ、エンタープライズ アプリケーションへのアクセス、およびロールの割り当てを効率的に管理します。 ユーザー アクセスを定期的にレビューし、適切なユーザーのみが継続的なアクセス権を持っていることを確認できます。 
 
 - [Azure AD のレポートの概要](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
 
@@ -617,7 +617,7 @@ Microsoft では、Azure Functions 用の基になるインフラストラクチ
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8:機密情報を保存時に暗号化する
 
-**ガイダンス**: 関数アプリを作成するときは、BLOB、キュー、テーブル ストレージをサポートする汎用の Azure Storage アカウントを作成またはリンクする必要があります。 これは、Functions ではトリガーの管理や関数実行のログ記録などの操作に Azure Storage を使用しているためです。 Azure Storage は、保存されているストレージ アカウント内のすべてのデータを暗号化します。 規定では、データは Microsoft のマネージド キーで暗号化されます。 暗号化キーをさらに制御するには、BLOB およびファイル データの暗号化のためにカスタマー マネージド キーを用意します。 関数アプリからストレージ アカウントにアクセスできるように、これらのキーは Azure Key Vault 内に置かれている必要があります。
+**ガイダンス**:関数アプリを作成するときは、BLOB、キュー、テーブル ストレージをサポートする汎用の Azure Storage アカウントを作成またはリンクする必要があります。 これは、Functions ではトリガーの管理や関数実行のログ記録などの操作に Azure Storage を使用しているためです。 Azure Storage は、保存されているストレージ アカウント内のすべてのデータを暗号化します。 規定では、データは Microsoft のマネージド キーで暗号化されます。 暗号化キーをさらに制御するには、BLOB およびファイル データの暗号化のためにカスタマー マネージド キーを用意します。 関数アプリからストレージ アカウントにアクセスできるように、これらのキーは Azure Key Vault 内に置かれている必要があります。
 
 - [Azure Functions のストレージに関する考慮事項](https://docs.microsoft.com/azure/azure-functions/storage-considerations)
 
@@ -629,7 +629,7 @@ Microsoft では、Azure Functions 用の基になるインフラストラクチ
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9:重要な Azure リソースへの変更に関するログとアラート
 
-**ガイダンス**: 運用環境の Azure 関数アプリおよびその他の重要なリソースまたは関連リソースへの変更がいつ発生したかに関するアラートを作成するには、Azure Monitor と Azure アクティビティ ログを使用します。
+**ガイダンス**:運用環境の Azure 関数アプリおよびその他の重要なリソースまたは関連リソースへの変更がいつ発生したかに関するアラートを作成するには、Azure Monitor と Azure アクティビティ ログを使用します。
 
 - [Azure アクティビティ ログ イベントのアラートを作成する方法](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
 
@@ -665,7 +665,7 @@ Microsoft では、Azure Functions 用の基になるインフラストラクチ
 
 ### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3:サードパーティの自動化されたソフトウェア修正プログラム管理ソリューションを展開する
 
-**ガイダンス**: 適用できません。この推奨事項は、IaaS コンピューティング リソースを対象にしています。
+**ガイダンス**:適用できません。この推奨事項は、IaaS コンピューティング リソースを対象にしています。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -681,7 +681,7 @@ Microsoft では、Azure Functions 用の基になるインフラストラクチ
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5:リスク評価プロセスを使用して、検出された脆弱性の修復に優先順位を付ける
 
-**ガイダンス**: Microsoft によって、Azure Functions をサポートする基盤となるシステムに対して脆弱性管理が実行されますが、お客様が Azure Security Center 内の推奨事項の重大度とセキュリティ スコアを使用して環境内のリスクを測定することもできます。 ご自身のセキュア スコアは、軽減した Security Center の推奨事項の数に基づきます。 最初に解決すべき推奨事項が優先されるよう、それぞれどれが重要であるか考えてください。
+**ガイダンス**:Microsoft によって、Azure Functions をサポートする基盤となるシステムに対して脆弱性管理が実行されますが、お客様が Azure Security Center 内の推奨事項の重大度とセキュリティ スコアを使用して環境内のリスクを測定することもできます。 ご自身のセキュア スコアは、軽減した Security Center の推奨事項の数に基づきます。 最初に解決すべき推奨事項が優先されるよう、それぞれどれが重要であるか考えてください。
 
 - [セキュリティの推奨事項のリファレンス ガイド](https://docs.microsoft.com/azure/security-center/recommendations-reference)
 
@@ -695,7 +695,7 @@ Microsoft では、Azure Functions 用の基になるインフラストラクチ
 
 ### <a name="61-use-azure-asset-discovery"></a>6.1:Azure Asset Discovery を使用する
 
-**ガイダンス**: Azure Resource Graph を使用して、サブスクリプション内のすべてのリソース (コンピューティング、ストレージ、ネットワーク、ポート、プロトコルなど) のクエリまたは検出を行います。  テナントで適切な (読み取り) アクセス許可を確認し、サブスクリプション内のリソースだけでなく、すべての Azure サブスクリプションを列挙します。
+**ガイダンス**:Azure Resource Graph を使用して、サブスクリプション内のすべてのリソース (コンピューティング、ストレージ、ネットワーク、ポート、プロトコルなど) のクエリまたは検出を行います。  テナントで適切な (読み取り) アクセス許可を確認し、サブスクリプション内のリソースだけでなく、すべての Azure サブスクリプションを列挙します。
 
 従来の Azure リソースは Resource Graph で検出できますが、今後は Azure Resource Manager リソースを作成して使用することを強くお勧めします。
 
@@ -759,7 +759,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6:コンピューティング リソース内の承認されていないソフトウェア アプリケーションを監視する
 
-**ガイダンス**: 適用できません。この推奨事項は、IaaS コンピューティング リソースを対象にしています。
+**ガイダンス**:適用できません。この推奨事項は、IaaS コンピューティング リソースを対象にしています。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -795,7 +795,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ### <a name="610-implement-approved-application-list"></a>6.10:承認されたアプリケーションの一覧を実装する
 
-**ガイダンス**: 適用できません。この推奨事項は、IaaS コンピューティング リソースを対象にしています。
+**ガイダンス**:適用できません。この推奨事項は、IaaS コンピューティング リソースを対象にしています。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -849,7 +849,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1:すべての Azure リソースに対してセキュリティで保護された構成を確立する
 
-**ガイダンス**: Azure Policy を使用して、Azure 関数アプリの標準的なセキュリティ構成を定義および実装します。 "Microsoft.Web" 名前空間の Azure Policy エイリアスを使用して、Azure Functions アプリの構成を監査または適用するカスタム ポリシーを作成します。 次のように、組み込みのポリシー定義を使用することもできます。
+**ガイダンス**:Azure Policy を使用して、Azure 関数アプリの標準的なセキュリティ構成を定義および実装します。 "Microsoft.Web" 名前空間の Azure Policy エイリアスを使用して、Azure Functions アプリの構成を監査または適用するカスタム ポリシーを作成します。 次のように、組み込みのポリシー定義を使用することもできます。
 - 関数アプリではマネージド ID を使用する必要がある
 - 関数アプリでリモート デバッグを無効にする必要がある
 - Function App には HTTPS 経由でのみアクセスできるようにする
@@ -864,7 +864,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ### <a name="72-establish-secure-operating-system-configurations"></a>7.2:セキュリティで保護されたオペレーティング システムの構成を確立する
 
-**ガイダンス**: 適用できません。このガイドラインは、IaaS コンピューティング リソースを対象にしています。
+**ガイダンス**:適用できません。このガイドラインは、IaaS コンピューティング リソースを対象にしています。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -876,7 +876,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 - [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
-- [Azure Policy の効果の概要](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+- [Azure Policy の効果について](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -954,7 +954,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ### <a name="711-manage-azure-secrets-securely"></a>7.11:Azure シークレットを安全に管理する
 
-**ガイダンス**: マネージド ID を Azure Key Vault と組み合わせて使用し、クラウド アプリケーションのシークレット管理を簡素化し、セキュリティで保護します。 関数アプリにマネージド ID を使用すると、コードに資格情報を追加しなくても、Azure AD の認証をサポートするさまざまなサービス (Key Vault を含む) に対して認証を行うことができます。
+**ガイダンス**:マネージド ID を Azure Key Vault と組み合わせて使用し、クラウド アプリケーションのシークレット管理を簡素化し、セキュリティで保護します。 関数アプリにマネージド ID を使用すると、コードに資格情報を追加しなくても、Azure AD の認証をサポートするさまざまなサービス (Key Vault を含む) に対して認証を行うことができます。
 
 - [キー コンテナーを作成する方法](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
 
@@ -1013,7 +1013,7 @@ Microsoft のマルウェア対策は、Azure サービス (Azure Functions な�
 
 ### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>手順 8.3:マルウェア対策ソフトウェアと署名が確実に更新されるようにする
 
-**ガイダンス**: 適用できません。この推奨事項は、データを格納するように設計された非コンピューティング リソースを対象にしています。
+**ガイダンス**:適用できません。この推奨事項は、データを格納するように設計された非コンピューティング リソースを対象にしています。
 
 Microsoft のマルウェア対策は、Azure サービス (Azure Functions など) をサポートしている基になるホストで有効になっていますが、顧客のコンテンツに対しては実行されません。
 

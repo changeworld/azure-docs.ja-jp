@@ -24,7 +24,7 @@ ms.locfileid: "82592368"
 
 ## <a name="enable-client-certificates"></a>クライアント証明書を有効にする
 
-アプリでクライアント証明書を必須にするようアプリを設定するには、Azure Portal で **[構成]**  >  **[全般設定]** の順に選択して、[Require incoming certificate]\(着信証明書を必須にする\) を **[オン]** にするか、アプリの `clientCertEnabled` 設定を `true` に設定する必要があります。 この設定を行うには、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行します。
+アプリでクライアント証明書を必須にするようアプリを設定するには、Azure Portal で **[構成]** >  **[全般設定]** の順に選択して、[Require incoming certificate]\(着信証明書を必須にする\) を **[オン]** にするか、アプリの `clientCertEnabled` 設定を `true` に設定する必要があります。 この設定を行うには、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行します。
 
 ```azurecli-interactive
 az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
@@ -34,7 +34,7 @@ az webapp update --set clientCertEnabled=true --name <app_name> --resource-group
 
 お使いのアプリケーションで相互認証を有効にすると、お使いのアプリのルート下のすべてのパスで、アクセスにクライアント証明書が必要になります。 特定のパスが匿名アクセスできるよう残すには、お使いのアプリケーションを構成するときに除外するパスを定義する必要があります。
 
-除外するパスを構成するには、 **[構成]**  >  **[全般設定]** の順に選択して除外するパスを定義します。 この例では、お使いのアプリケーションの `/public` パスの下のすべてで、クライアント証明書は要求されません。
+除外するパスを構成するには、 **[構成]** >  **[全般設定]** の順に選択して除外するパスを定義します。 この例では、お使いのアプリケーションの `/public` パスの下のすべてで、クライアント証明書は要求されません。
 
 ![証明書不要のパス][exclusion-paths]
 

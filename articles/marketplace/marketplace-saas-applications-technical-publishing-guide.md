@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: dsindona
-ms.openlocfilehash: 4d1ee4fc0760e76af7475dd3b2dc83f306e7a7bd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 46f8da8b2b688900e50548bbece01117a7a47e24
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657818"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963837"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS アプリケーションのオファー発行ガイド
 
@@ -62,11 +62,9 @@ SaaS アプリケーションの技術面の要件はシンプルです。 パ�
 
 最適な Azure Active Directory のドキュメント、サンプル、およびガイダンスについては、以下のサイトを参照してください。 
 
-* [Azure Active Directory 開発者ガイド](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)
+* [Azure Active Directory 開発者ガイド](../active-directory/develop/index.yml)
 
-* [Azure Active Directory との統合](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-to-integrate)
-
-* [Azure Active Directory とアプリケーションの統合](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
+* [Azure Active Directory との統合](../active-directory/develop/active-directory-how-to-integrate.md)
 
 * [Azure のロードマップ - セキュリティ + ID](https://azure.microsoft.com/roadmap/?category=security-identity)
 
@@ -90,7 +88,7 @@ SaaS アプリケーションの技術面の要件はシンプルです。 パ�
 
 ## <a name="using-azure-active-directory-to-enable-trials"></a>Azure Active Directory を使用して試用を有効にする  
 
-Microsoft はすべての Marketplace ユーザーを Azure AD で認証するので、認証されたユーザーが Marketplace で試用リストをクリックし、試用環境にリダイレクトされた場合、それ以上のサインイン ステップを必要とせずに、ユーザーを直接試用にプロビジョニングできます。 認証の間にアプリが Azure AD から受け取るトークンには、アプリでユーザー アカウントを作成するために使うことができる重要なユーザー情報が含まれているので、プロビジョニング エクスペリエンスを自動化し、変換の可能性を高くすることができます。 トークンの詳細については、[サンプル トークン](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)に関するページを参照してください。
+Microsoft はすべての Marketplace ユーザーを Azure AD で認証するので、認証されたユーザーが Marketplace で試用リストをクリックし、試用環境にリダイレクトされた場合、それ以上のサインイン ステップを必要とせずに、ユーザーを直接試用にプロビジョニングできます。 認証の間にアプリが Azure AD から受け取るトークンには、アプリでユーザー アカウントを作成するために使うことができる重要なユーザー情報が含まれているので、プロビジョニング エクスペリエンスを自動化し、変換の可能性を高くすることができます。 トークンの詳細については、[サンプル トークン](../active-directory/develop/active-directory-token-and-claims.md)に関するページを参照してください。
 
 Azure AD を使ってアプリまたは試用版の 1 クリック認証を有効にすると、次のことが可能になります。  
 * Marketplace から試用版への顧客エクスペリエンスを簡素化する。  
@@ -106,15 +104,15 @@ Azure AD を使ってアプリまたは試用版の 1 クリック認証を有�
 
 既に Azure AD をサポートしている場合は、以下を実行します。
 1.    Azure Portal でアプリケーションを登録します
-2.    Azure AD でマルチテナント サポート機能を有効にして、ワンクリックの試用版エクスペリエンスを取得する。 詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)を参照してください。  
+2.    Azure AD でマルチテナント サポート機能を有効にして、ワンクリックの試用版エクスペリエンスを取得する。 詳細については、[こちら](../active-directory/develop/active-directory-integrating-applications.md)を参照してください。  
 
 Azure AD フェデレーション SSO が初めての場合は、以下を実行します。 
 1.  Azure Portal でアプリケーションを登録します
-2.  [OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code) または [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code) を使って、Azure AD で SSO を開発します。
-3.  AAD のマルチテナントのサポート機能を有効にして、ワンクリック試用環境を用意します。詳細情報については、[こちら](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified)を参照してください。  
+2.  [OpenID Connect](../active-directory/develop/active-directory-protocols-openid-connect-code.md) または [OAuth 2.0](../active-directory/develop/active-directory-protocols-oauth-code.md) を使って、Azure AD で SSO を開発します。
+3.  AAD のマルチテナントのサポート機能を有効にして、ワンクリック試用環境を用意します。詳細情報については、[こちら](../active-directory/develop/active-directory-devhowto-appsource-certified.md)を参照してください。  
 
 **シングルテナントアプリケーションの場合は、以下のいずれかのオプションを使用してください。**  
-* [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) を使用して、ユーザーをゲスト ユーザーとしてディレクトリに追加します
+* [Azure B2B](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md) を使用して、ユーザーをゲスト ユーザーとしてディレクトリに追加します
 * "お問い合わせ" を使用して、顧客用に試用版を手動でプロビジョニングします
 * 顧客ごとの "体験版" を開発します
 * SSO を使ってマルチテナント サンプル デモ アプリをビルドします

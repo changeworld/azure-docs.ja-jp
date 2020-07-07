@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: 180015a6bab576c02dcfaaea589628e40c6adde4
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 5a867243e57790bf72cef6991d6d8ac06639be49
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82736106"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963922"
 ---
 # <a name="managed-application-metered-billing"></a>マネージド アプリケーションの従量制課金 
 
@@ -125,7 +125,7 @@ Marketplace の測定サービスで使用されるディメンションは、�
 4. [Select a problem that best describes the issue]\(問題を最もよく表している問題を選択する\) で、 **[metered billing]\(従量制課金\)** を選択します。
 5. **[次へ]** を選択すると、 **[問題の詳細]** ページが表示され、問題の詳細を入力できます。
 
-発行元サポート オプションについては、「[パートナー センターでの商業マーケットプレース プログラムのサポート](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)」をご覧ください。
+発行元サポート オプションについては、「[パートナー センターでの商業マーケットプレース プログラムのサポート](support.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
