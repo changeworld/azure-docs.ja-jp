@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
 ms.openlocfilehash: bc99a9c9e9ff985730ec97dbacd1d7c1de06a45e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74073653"
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Azure Windows VM 拡張機能のエラーのトラブルシューティング
@@ -61,7 +61,7 @@ Azure PowerShell:
 ## <a name="troubleshooting-extension-failures"></a>拡張機能のエラーのトラブルシューティング
 ### <a name="rerun-the-extension-on-the-vm"></a>VM での拡張機能の再実行
 VM でカスタム スクリプト拡張機能を使用してスクリプトを実行している場合、VM は正常に作成されたがスクリプトは失敗するというエラーが発生することがあります。 このような状況でこのエラーから回復するためにお勧めする方法は、拡張機能を削除してもう一度テンプレートを実行することです。
-注: 将来的には、拡張機能のアンインストールが不要になるように機能強化が行われるる予定です。
+注:将来は、この機能が強化され、拡張機能をアンインストールする必要はなくなります。
 
 #### <a name="remove-the-extension-from-azure-powershell"></a>Azure Powershell から拡張機能を削除する
     Remove-AzVMExtension -ResourceGroupName $RGName -VMName $vmName -Name "myCustomScriptExtension"

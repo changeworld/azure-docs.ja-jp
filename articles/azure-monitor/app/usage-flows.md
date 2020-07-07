@@ -6,16 +6,16 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 8622ede9e6f7fba2fde2e0b2e90eb31520a23d04
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.openlocfilehash: 6583a2fe5abd0193f37502e07c7b3fa0ee58ba9d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80892446"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963439"
 ---
 # <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>Application Insights でユーザー フローを使用してユーザーのナビゲーション パターンを分析する
 
-![Application Insights ユーザー フロー ツール](./media/usage-flows/00001-flows.png)
+![Application Insights ユーザー フロー ツール](./media/usage-flows/flows.png)
 
 ユーザー フロー ツールは、ユーザーがサイトのページ間および機能間をどのように移動しているかを目で見てわかるようにします。 次のような疑問の答えを得るのに役立ちます。
 
@@ -33,7 +33,7 @@ ms.locfileid: "80892446"
 
 ## <a name="start-by-choosing-an-initial-event"></a>最初のイベントを選択して開始する
 
-![ユーザー フローの最初のイベントを選ぶ](./media/usage-flows/00002-flows-initial-event.png)
+![ユーザー フローの最初のイベントを選ぶ](./media/usage-flows/initial-event.png)
 
 ユーザー フロー ツールを使って前に示したような疑問への回答を始めるには、まず、表示の起点となる最初のページ ビュー、カスタム イベント、または例外を選びます。
 
@@ -58,7 +58,7 @@ ms.locfileid: "80892446"
 
 ## <a name="after-visiting-a-page-or-feature-where-do-users-go-and-what-do-they-click"></a>ページまたは機能にアクセスした後で、ユーザーが移動する先とクリックするもの
 
-![ユーザー フローを使ってユーザーがクリックする場所を理解する](./media/usage-flows/00003-flows-one-step.png)
+![ユーザー フローを使ってユーザーがクリックする場所を理解する](./media/usage-flows/one-step.png)
 
 最初のイベントがページ ビューである場合、視覚化の最初の列 ([Step 1]\(ステップ 1\)) を見ると、ユーザーがページにアクセスした直後に行ったことが簡単にわかります。 ユーザー フローの視覚化の横にあるウィンドウでサイトを開いてみてください。 ユーザーによるページの操作方法の予想と、[Step 1]\(ステップ 1\) 列のイベントの一覧を比較します。 多くの場合、チームにとってはあまり重要でないと思われるページの UI 要素が、ページで最も使われているものに含まれます。 これは、サイトのデザイン改善のよい出発点になる場合があります。
 

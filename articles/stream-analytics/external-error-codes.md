@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.service: stream-analytics
 ms.openlocfilehash: fad0794a3628e6a89d1c2b2c80bb27d70937db95
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83650039"
 ---
 # <a name="azure-stream-analytics-external-error-codes"></a>Azure Stream Analytics の外部エラー コード

@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 7/12/2019
 ms.author: dsindona
-ms.openlocfilehash: f7fd3f43c7faddb5481411dc9c4c94864b6dc0b1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1f312fad8e4cbdbfae6bd17f293f65fc3bb637a3
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288973"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964891"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Microsoft Business Applications 独立系ソフトウェア ベンダー (ISV) コネクト プログラム オンボード ガイド
 
@@ -43,7 +43,7 @@ Dynamics CE オファーまたは Dynamics Ops オファーを既に発行して
 1. [Cloud パートナー ポータル](https://cloudpartner.azure.com/)で、**発行元プロファイル**のページにサインインします。
 2. アカウント設定がパートナー センターに移行済みであることを示すバナーが表示される場合は、次のセクションに進みます。 それ以外の場合は、パートナー センター アカウントのアクティブ化を求めるバナーを選択します。
 
-詳細については、「[Cloud パートナー ポータルからパートナー センターへのアカウントの移行](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc)」をご覧ください。
+詳細については、「[Cloud パートナー ポータルからパートナー センターへのアカウントの移行](../partner-center-portal/account-migration-from-cpp-to-pc.md)」をご覧ください。
 
 ## <a name="accept-the-business-applications-isv-program-addendum"></a>Business Applications ISV プログラム補遺に同意する
 
@@ -88,7 +88,7 @@ Dynamics CE オファーまたは Dynamics Ops オファーを既に発行して
 Business Applications ISV コネクト プログラムに登録する最後のステップは、既存アプリケーションの再認定を受けることです。
 
 1. [手順に従って](https://partner.microsoft.com/solutions/business-applications/isv-publish)、AppSource に対するアプリケーションの再認定を受けます。
-2. [新しいオファーを作成して発行します](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer)。 このオファーはまったく新しいオファーになり、既存のオファーに代わるものではありません。
+2. [新しいオファーを作成して発行します](../partner-center-portal/create-new-customer-engagement-offer.md)。 このオファーはまったく新しいオファーになり、既存のオファーに代わるものではありません。
 
 ## <a name="further-info"></a>詳細情報
 

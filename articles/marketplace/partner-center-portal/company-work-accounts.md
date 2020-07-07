@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 3c0ee2f8d5291f7904435dea32d913adeaaf25c5
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 27a51a1203b0c25474bdb292c467a40b67309757
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262368"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964432"
 ---
 # <a name="company-work-accounts-and-partner-center"></a>会社の職場アカウントとパートナー センター
 
@@ -44,7 +44,7 @@ ms.locfileid: "81262368"
 
 このユーザー アカウントの電子メール アドレスは、ご使用のディレクトリで確認済みのドメイン名である必要があります。 左側のナビゲーション メニューで、 **[Azure Active Directory]**  ->  **[カスタム ドメイン名]** を選択することによって、ディレクトリで確認済みのドメインをすべて一覧表示できます。
 
-Azure Active Directory にカスタム ドメインを追加する方法の詳細については、[Azure AD へのドメインの追加または関連付け](https://docs.microsoft.com/azure/active-directory/active-directory-add-domain)に関するページをご覧ください。
+Azure Active Directory にカスタム ドメインを追加する方法の詳細については、[Azure AD へのドメインの追加または関連付け](../../active-directory/active-directory-add-domain.md)に関するページをご覧ください。
 
 ## <a name="troubleshoot-work-email-sign-in"></a>職場の電子メールによるサインインのトラブルシューティング
 

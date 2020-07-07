@@ -4,16 +4,16 @@ description: Azure Storage でのコンプライアンス認証の概要
 services: storage
 author: fhryo-msft
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: f711d0dbc2df2a5ab102b520fb0d166a459383c1
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c24db9fb1b411de31ba8d086b6baa418f656c920
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684458"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514403"
 ---
 # <a name="azure-storage-compliance-offerings"></a>Azure Storage のコンプライアンス認証
 

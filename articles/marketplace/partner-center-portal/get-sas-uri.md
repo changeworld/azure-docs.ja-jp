@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mingshen
-ms.openlocfilehash: 42e2419301b282685b2afe13782c2deb4f52823c
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 24ba593a56d4d12211d10f143261caaf6d901bfc
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725875"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964670"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>VM イメージの Shared Access Signature URI の取得
 
@@ -124,6 +124,6 @@ SAS アドレス (URL) の作成には、次の 2 つの一般的なツールが
 
 ## <a name="next-step"></a>次のステップ
 
-SAS URI の作成に問題がある場合は、[SAS URL に関する一般的な問題](https://docs.microsoft.com/azure/marketplace/partner-center-portal/common-sas-uri-issues)に関するページを参照してください。 それ以外の場合は、SAS URI を後で使用できるよう安全な場所に保存します。 これは、パートナー センターで VM オファーを発行するために必要になります。
+SAS URI の作成に問題がある場合は、[SAS URL に関する一般的な問題](common-sas-uri-issues.md)に関するページを参照してください。 それ以外の場合は、SAS URI を後で使用できるよう安全な場所に保存します。 これは、パートナー センターで VM オファーを発行するために必要になります。
 
-* [Azure 仮想マシン オファーを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer)
+* [Azure 仮想マシン オファーを作成する](azure-vm-create-offer.md)

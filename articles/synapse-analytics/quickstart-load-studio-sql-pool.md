@@ -5,16 +5,16 @@ services: synapse-analytics
 author: kevinvngo
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/06/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4ae13dc51b4621dc3d8be39049dcade87c105cbc
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 959742ec3c0434213d19b0f92fe523671fd60f33
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262618"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964551"
 ---
 # <a name="bulk-loading-with-synapse-sql"></a>Synapse SQL を使用したデータの一括読み込み
 

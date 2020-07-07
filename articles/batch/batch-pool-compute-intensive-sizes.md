@@ -3,12 +3,12 @@ title: Batch でのコンピューティング集中型 Azure VM の使用
 description: Azure Batch プールで HPC および GPU の仮想マシン サイズを利用する方法。 OS の依存関係について学習し、シナリオ例をいくつか確認してください。
 ms.topic: how-to
 ms.date: 12/17/2018
-ms.openlocfilehash: 7abe3c9bd689b20f608ad40105c1bb4d7108dbc6
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: acc56679d8be157541b0d7c056e57659584645be
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779758"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962511"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Batch プールで RDMA または GPU インスタンスを使用する
 
@@ -127,7 +127,7 @@ Linux NC ノードのプールで CUDA アプリケーションを実行する�
 
 ## <a name="example-microsoft-mpi-on-a-windows-h16r-vm-pool"></a>例:Windows H16r VM プールの Microsoft MPI
 
-Azure H16r VM ノードのプールで Windows MPI アプリケーションを実行するには、HpcVmDrivers 拡張機能を構成し、[Microsoft MPI](https://docs.microsoft.com/message-passing-interface/microsoft-mpi) をインストールする必要があります。 必要なドライバーとソフトウェアがインストールされたカスタムの Windows Server 2016 イメージをデプロイする手順の例を次に示します。
+Azure H16r VM ノードのプールで Windows MPI アプリケーションを実行するには、HpcVmDrivers 拡張機能を構成し、[Microsoft MPI](/message-passing-interface/microsoft-mpi) をインストールする必要があります。 必要なドライバーとソフトウェアがインストールされたカスタムの Windows Server 2016 イメージをデプロイする手順の例を次に示します。
 
 1. Windows Server 2016 を実行する Azure H16r VM をデプロイします。 たとえば、米国西部リージョンに VM を作成します。 
 2. Azure サブスクリプションに接続するクライアント コンピューターから [Azure PowerShell コマンドを実行して](../virtual-machines/sizes-hpc.md)、または Azure Cloud Shell を使用して、HpcVmDrivers 拡張機能を VM に追加します。 
@@ -163,6 +163,6 @@ Batch API または Azure portal で、このイメージを使い、必要な�
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure Batch プールで MPI ジョブを実行する方法については、[Windows](batch-mpi.md) または [Linux](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/) の例を参照してください。
+* Azure Batch プールで MPI ジョブを実行する方法については、[Windows](batch-mpi.md) または [Linux](/archive/blogs/windowshpc/introducing-mpi-support-for-linux-on-azure-batch) の例を参照してください。
 
 * Batch の GPU ワークロードの例については、[Batch Shipyard](https://github.com/Azure/batch-shipyard/) レシピを参照してください。
