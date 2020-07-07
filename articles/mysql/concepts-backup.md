@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.openlocfilehash: 3a6162bb381f4e54114e3cabbf138f5b1c6aaae0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80373027"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Azure Database for MySQL でのバックアップと復元
@@ -40,7 +40,7 @@ Azure Database for MySQL は、プロビジョニングされているサーバ�
 
 たとえば、サーバーを 250 GB でプロビジョニングした場合は、250 GB のバックアップ ストレージを追加料金なしで利用できます。 250 GB を超えたストレージ分についてのみ課金されます。
 
-## <a name="restore"></a>[復元]
+## <a name="restore"></a>復元
 
 Azure Database for MySQL で復元を実行すると、元のサーバーのバックアップから新しいサーバーが作成され、そのサーバーに含まれているすべてのデータベースが復元されます。
 
