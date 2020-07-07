@@ -3,21 +3,21 @@ title: SQL Database と SQL Managed Instance のデータベース エンジン�
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: この記事では、Azure SQL Database と Azure SQL Managed Instance のデータベース エンジンの機能を比較します
 services: sql-database
-ms.service: sql-database
-ms.subservice: service
+ms.service: sql-db-mi
+ms.subservice: features
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
-ms.date: 05/10/2019
-ms.openlocfilehash: a4a78dfd1fd88dfc6b212f0c50716bf3293a7ccd
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.date: 06/25/2020
+ms.openlocfilehash: e48a027af70ec9d002ddcfbb2ee36ded4ca7875a
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221344"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85983521"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>機能の比較:Azure SQL Database と Azure SQL Managed Instance
 
@@ -128,7 +128,7 @@ Azure プラットフォームには、標準のデータベース機能に追�
 | バックアップ保有期間 | はい。 既定値は 7 日、最大値は 35 日です。 | はい。 既定値は 7 日、最大値は 35 日です。 |
 | [データ移行サービス (DMS)](https://docs.microsoft.com/sql/dma/dma-overview) | はい | はい |
 | ファイル システムへのアクセス | いいえ。 代わりとして [BULK INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) または [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) を使用して、Azure Blob Storage のデータにアクセスし、Azure Blob Storage からデータを読み込みます。 | いいえ。 代わりとして [BULK INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) または [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) を使用して、Azure Blob Storage のデータにアクセスし、Azure Blob Storage からデータを読み込みます。 |
-| [geo リストア](recovery-using-backups.md#geo-restore) | はい - ハイパースケール以外のすべてのサービス レベル | はい - ハイパースケール以外のすべてのサービス レベル |
+| [geo リストア](recovery-using-backups.md#geo-restore) | はい | はい |
 | [Hyperscale アーキテクチャ](service-tier-hyperscale.md) | はい | いいえ |
 | [長期的なバックアップ保有期間 - (LTR)](long-term-retention-overview.md) | はい、自動的に取られたバックアップを最大 10 年間保持します。 | まだありません。 一時的な回避策として`COPY_ONLY` [手動バックアップ](../managed-instance/transact-sql-tsql-differences-sql-server.md#backup)を使用してください。 |
 | 一時停止/再開 | はい、[サーバー レスモデル](serverless-tier-overview.md)で | いいえ |

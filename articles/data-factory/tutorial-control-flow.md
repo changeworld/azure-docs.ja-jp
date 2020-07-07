@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: fd006e836432ce775be8cbbefea6d9219e8b13b3
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 0330e72ad74726f97bfdfd78ef8d5f9b24a5d172
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253462"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513307"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Data Factory パイプラインでのアクティビティの分岐と連鎖
 
@@ -54,7 +54,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 現在 Data Factory が利用可能な Azure リージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」を参照してください。 データ ストアとコンピューティングは、別のリージョンに配置できます。 ストアには、Azure Storage と Azure SQL Database が含まれます。 コンピューティングには、Data Factory で使用される HDInsight が含まれます。
 
-「[Azure Active Directory アプリケーションを作成する](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)」の説明に従って、アプリケーションを作成します。 同じ記事の手順に従って、このアプリケーションを**共同作成者**ロールに割り当てます。 このチュートリアルの後の方で、**アプリケーション (クライアント) ID** や**ディレクトリ (テナント) ID** など、いくつかの値が必要になります。
+「[Azure Active Directory アプリケーションを作成する](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)」の説明に従って、アプリケーションを作成します。 同じ記事の手順に従って、このアプリケーションを**共同作成者**ロールに割り当てます。 このチュートリアルの後の方で、**アプリケーション (クライアント) ID** や**ディレクトリ (テナント) ID** など、いくつかの値が必要になります。
 
 ### <a name="create-a-blob-table"></a>BLOB テーブルを作成する
 

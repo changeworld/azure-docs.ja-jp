@@ -3,15 +3,15 @@ title: StorSimple 用 PowerShell のデバイス管理
 description: Windows PowerShell for StorSimple を使用して StorSimple デバイスを管理する方法について説明します。
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 35be2e0b7b5a24261cd8ee15b1964b953c1a3327
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: c1976adba0159b54bd64b2c8830c3aaad9959912
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747720"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513698"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Windows PowerShell for StorSimple を使用してデバイスを管理する
 

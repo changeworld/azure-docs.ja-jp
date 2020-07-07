@@ -8,10 +8,10 @@ ms.date: 05/27/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 3897ef75be34d4413e06dc5459739baec3afdcec
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84268010"
 ---
 # <a name="azure-security-baseline-for-container-instances"></a>Container Instances の Azure セキュリティ ベースライン
@@ -45,7 +45,7 @@ Container Instances 用の Azure セキュリティ ベースラインには、�
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2:VNet、サブネット、NIC の構成とトラフィックを監視してログに記録する
 
-**ガイダンス**: Azure Security Center を使用し、ネットワークの保護に関する推奨事項を修正することで、Azure 内でご利用のネットワーク リソースを容易に保護することができます。 NSG フロー ログを有効にし、トラフィック監査のためにログをストレージ アカウントに送信します。
+**ガイダンス**:Azure Security Center を使用し、ネットワークの保護に関する推奨事項を修正することで、Azure 内でご利用のネットワーク リソースを容易に保護することができます。 NSG フロー ログを有効にし、トラフィック監査のためにログをストレージ アカウントに送信します。
 
 * [NSG フロー ログを有効にする方法](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
 
@@ -155,7 +155,7 @@ Container Instances 用の Azure セキュリティ ベースラインには、�
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9:ネットワーク デバイスの標準的なセキュリティ構成を維持する
 
-**ガイダンス**: Azure Blueprints を使用して、Azure Resource Manager テンプレート、RBAC コントロール、ポリシーなどの主要な環境成果物を単一のブループリント定義にパッケージ化することで、大規模な Azure デプロイを簡略化することもできます。 ブループリントを新しいサブスクリプションに適用し、バージョン管理によって制御と管理を微調整できます。 
+**ガイダンス**:Azure Blueprints を使用して、Azure Resource Manager テンプレート、RBAC コントロール、ポリシーなどの主要な環境成果物を単一のブループリント定義にパッケージ化することで、大規模な Azure デプロイを簡略化することもできます。 ブループリントを新しいサブスクリプションに適用し、バージョン管理によって制御と管理を微調整できます。 
 
 * [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -334,7 +334,7 @@ Azure コンテナー レジストリを Azure Container Instances と共に使�
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2: 既定のパスワードを変更する (該当する場合)
 
-**ガイダンス**: Azure Active Directory (Azure AD) には、既定のパスワードの概念がありません。 パスワードを必要とする他の Azure リソースでは、パスワードが強制的に作成されます。これには複雑な要件と、サービスによって異なるパスワードの最小文字数が適用されます。 既定のパスワードが使用される可能性があるサードパーティ製のアプリケーションと Marketplace サービスについては、お客様が責任を負うものとします。
+**ガイダンス**:Azure Active Directory (Azure AD) には、既定のパスワードの概念がありません。 パスワードを必要とする他の Azure リソースでは、パスワードが強制的に作成されます。これには複雑な要件と、サービスによって異なるパスワードの最小文字数が適用されます。 既定のパスワードが使用される可能性があるサードパーティ製のアプリケーションと Marketplace サービスについては、お客様が責任を負うものとします。
 
 Azure コンテナー レジストリを Azure Container Instances と共に使用し、Azure コンテナー レジストリの既定の管理者アカウントが有効になっている場合は、複雑なパスワードが自動的に作成されます。これはローテーションされる必要があります。 使用されていない場合、アカウントは無効にします。
 
@@ -395,7 +395,7 @@ Azure コンテナー レジストリを Azure Container Instances と共に使�
 
 ### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7: 管理者アカウントからの疑わしいアクティビティを記録してアラートを生成する
 
-**ガイダンス**: 環境内で疑わしいアクティビティまたは安全でないアクティビティが発生したときに、Azure Active Directory (Azure AD) セキュリティ レポートを使用して、ログおよびアラートを生成します。 Azure Security Center を使用して ID およびアクセス アクティビティを監視します。
+**ガイダンス**:環境内で疑わしいアクティビティまたは安全でないアクティビティが発生したときに、Azure Active Directory (Azure AD) セキュリティ レポートを使用して、ログおよびアラートを生成します。 Azure Security Center を使用して ID およびアクセス アクティビティを監視します。
 
 * [危険なアクティビティのフラグが設定された Azure AD ユーザーを識別する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk)
 
@@ -533,7 +533,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4:転送中のすべての機密情報を暗号化する
 
-**ガイダンス**: ご利用の Azure コンテナー グループに接続されているクライアントがいずれも TLS 1.2 以上を確実にネゴシエートできるようにします。 Microsoft Azure リソースでは、既定で TLS 1.2 がネゴシエートされます。
+**ガイダンス**:ご利用の Azure コンテナー グループに接続されているクライアントがいずれも TLS 1.2 以上を確実にネゴシエートできるようにします。 Microsoft Azure リソースでは、既定で TLS 1.2 がネゴシエートされます。
 
 該当する場合、保存時の暗号化と転送中の暗号化に関する Azure Security Center の推奨事項に従います。
 
@@ -718,7 +718,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 ### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4:承認された Azure リソースとソフトウェア タイトルのインベントリを管理する
 
-**ガイダンス**: 組織のニーズに応じて、承認された Azure リソースのインベントリを作成する必要があります。
+**ガイダンス**:組織のニーズに応じて、承認された Azure リソースのインベントリを作成する必要があります。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1045,7 +1045,7 @@ App Service、Data Lake Storage、Blob Storage などの非コンピューティ
 
 ### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>手順 8.3:マルウェア対策ソフトウェアと署名が確実に更新されるようにする
 
-**ガイダンス**: 適用できません。この推奨事項は、IaaS コンピューティング リソースを対象にしています。
+**ガイダンス**:適用できません。この推奨事項は、IaaS コンピューティング リソースを対象にしています。
 
 Microsoft のマルウェア対策は、Azure サービス (Azure Container Instances など) をサポートする基になるホストで有効にされます。ただし、顧客のコンテンツに対しては実行されません。
 
@@ -1059,7 +1059,7 @@ Microsoft のマルウェア対策は、Azure サービス (Azure Container Inst
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1:定期的に自動バックアップを行う
 
-**ガイダンス**: Azure Backup を有効にし、バックアップ ソース (コンテナー グループにマウントされたファイル共有など)、および必要な頻度と保持期間を構成します。 
+**ガイダンス**:Azure Backup を有効にし、バックアップ ソース (コンテナー グループにマウントされたファイル共有など)、および必要な頻度と保持期間を構成します。 
 
 * [Azure Backup を有効にする方法](https://docs.microsoft.com/azure/backup/)
 
@@ -1101,7 +1101,7 @@ Microsoft のマルウェア対策は、Azure サービス (Azure Container Inst
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: バックアップとカスタマー マネージド キーの保護を確保する
 
-**ガイダンス**: Azure Key Vault で論理的な削除を有効にすれば、偶発的な削除や悪意のある削除からキーを保護することができます。
+**ガイダンス**:Azure Key Vault で論理的な削除を有効にすれば、偶発的な削除や悪意のある削除からキーを保護することができます。
 
 * [Key Vault で論理的な削除を有効にする方法](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 
@@ -1190,7 +1190,7 @@ Microsoft のマルウェア対策は、Azure サービス (Azure Container Inst
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1:Azure リソースの通常の侵入テストを実施し、セキュリティに関する重大な調査結果がすべて、60 日以内に確実に修復されるようにします
 
-**ガイダンス**: お客様の侵入テストが Microsoft のポリシーに違反しないように、Microsoft の実施ルールに確実に従ってください。 Microsoft が管理しているクラウド インフラストラクチャ、サービス、アプリケーションに対する Red Teaming およびライブ サイト侵入テストに関する Microsoft の戦略と実施を活用してください。
+**ガイダンス**:お客様の侵入テストが Microsoft のポリシーに違反しないように、Microsoft の実施ルールに確実に従ってください。 Microsoft が管理しているクラウド インフラストラクチャ、サービス、アプリケーションに対する Red Teaming およびライブ サイト侵入テストに関する Microsoft の戦略と実施を活用してください。
 
 * [侵入テストの実施ルール](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 

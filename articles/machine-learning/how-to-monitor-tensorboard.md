@@ -5,16 +5,16 @@ description: TensorBoard を起動して実験の実行履歴を視覚化し、�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 author: maxluk
 ms.author: maxluk
 ms.date: 02/27/2020
-ms.openlocfilehash: 3df37126281a6654a6113f31895ddee276784c1c
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 317c771daca146660c62eb0cba14facc701b1b2c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681466"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84430156"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>TensorBoard と Azure Machine Learning を使用して実験の実行とメトリックを視覚化する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

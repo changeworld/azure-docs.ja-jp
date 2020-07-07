@@ -8,10 +8,10 @@ ms.author: barbkess
 ms.reviewer: lcozzens
 ms.service: azure-app-configuration
 ms.openlocfilehash: 560a2df5946b9cfe1160864752595e86cc6eeb65
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82981223"
 ---
 # <a name="how-to-use-managed-identities-for-azure-app-configuration"></a>Azure App Configuration でマネージド ID を使用する方法

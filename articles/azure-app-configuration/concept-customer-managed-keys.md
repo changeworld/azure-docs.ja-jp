@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.date: 02/18/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: ace34cf4a72b871ba6646b279007b8ce21c03e9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d312346accc4fb6781744343911158bb538c0ccf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457435"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84324081"
 ---
 # <a name="use-customer-managed-keys-to-encrypt-your-app-configuration-data"></a>カスタマー マネージド キーを使用して App Configuration データを暗号化する
 Azure App Configuration では、[保存されている機密情報を暗号化](../security/fundamentals/encryption-atrest.md)します。 カスタマー マネージド キーを使用すると、暗号化キーを管理できるため、データ保護が強化されます。  マネージド キー暗号化が使用されている場合、App Configuration 内のすべての機密情報が、ユーザー指定の Azure Key Vault キーで暗号化されます。  これにより、必要に応じて暗号化キーを交換することができます。  また、App Configuration インスタンスのキーへのアクセスを取り消すことによって、機密情報への Azure App Configuration のアクセスを取り消すことができます。
@@ -75,7 +75,7 @@ Azure App Configuration に対するカスタマー マネージド キー機能
 1. Azure CLI を使用して、システム割り当てマネージド ID を作成します。その際に、前の手順で使用された App Configuration インスタンスとリソース グループの名前に置き換えます。 マネージド ID は、マネージド キーにアクセスするために使用されます。 App Configuration インスタンスの名前を示すために、`contoso-app-config` を使用しています。
     
     ```azurecli
-    az appconfig identity assign --na1. me contoso-app-config --group contoso-resource-group --identities [system]
+    az appconfig identity assign --name contoso-app-config --resource-group contoso-resource-group --identities [system]
     ```
     
     このコマンドの出力には、システム割り当て ID のプリンシパル ID ("principalId") とテナント ID ("tenandId") が含まれます。  これは、マネージド キーへの ID によるアクセスを許可するために使用されます。

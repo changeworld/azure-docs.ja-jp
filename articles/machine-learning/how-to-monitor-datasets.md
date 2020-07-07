@@ -5,17 +5,17 @@ description: Azure Machine Learning データセット モニター (プレビ�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: nibaccam
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/04/2019
-ms.openlocfilehash: e49c621d92a8aa604b5f95291c5d80c0141f41dd
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 15cfa56f718290af3ae5fb87aadab70016cc8594
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81682720"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84430244"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>データセットでデータ ドリフトを検出する (プレビュー)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

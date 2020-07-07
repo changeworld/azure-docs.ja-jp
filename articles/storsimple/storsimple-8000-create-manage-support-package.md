@@ -3,15 +3,15 @@ title: StorSimple 8000 シリーズ　サポート パッケージの作成
 description: StorSimple 8000 シリーズ デバイスのサポート パッケージを作成、暗号化解除、編集する方法について説明します。
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 9ca033f6f786c0142261dafa31b93b71a8b3336a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f8f84542cd52d8ad4affd64627637d4e95b1fb10
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76277072"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514042"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>StorSimple 8000 シリーズのサポート パッケージの作成と管理
 

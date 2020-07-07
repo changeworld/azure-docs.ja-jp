@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/26/2020
-ms.openlocfilehash: 872cab4575b143dea057fe7fd070b433f8d54eb9
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 4bf0acdc774bc41d0bc80c944560f41789584c03
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220327"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513909"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Synapse Analytics (旧称: Azure SQL Data Warehouse) のデータをコピーして変換する
 
@@ -129,7 +129,7 @@ Azure Synapse Analytics のリンクされたサービスでは、次のプロ�
 
 サービス プリンシパル ベースの Azure AD アプリケーション トークン認証を使うには、以下の手順のようにします。
 
-1. Azure portal から **[Azure Active Directory アプリケーションを作成します](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)** 。 アプリケーション名と、リンクされたサービスを定義する次の値を記録しておきます。
+1. Azure portal から **[Azure Active Directory アプリケーションを作成します](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)** 。 アプリケーション名と、リンクされたサービスを定義する次の値を記録しておきます。
 
    - アプリケーション ID
    - アプリケーション キー

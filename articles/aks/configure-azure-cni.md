@@ -4,12 +4,12 @@ description: Azure Kubernetes サービス (AKS) で Azure CNI (高度な) ネ�
 services: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.openlocfilehash: 592376c1ff1686429d71496099f55c5009e07f20
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: d025bcddfdee25cddac311ac9a201b7f3afebd22
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83120931"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84416853"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Azure Kubernetes サービス (AKS) で Azure CNI ネットワークを構成する
 
@@ -151,7 +151,7 @@ Azure Portal の次のスクリーン ショットは、AKS クラスターの�
 
 * *クラスター サブネットに VM を展開できますか。*
 
-  いいえ。 Kubernetes クラスターで使用されているサブネットに VM を展開することはできません。 VM を同じ仮想ネットワークにデプロイできますが、異なるサブネットにデプロイする必要があります。
+  はい。
 
 * *ポッドごとのネットワーク ポリシーを構成できますか。*
 

@@ -4,10 +4,10 @@ description: このトピックでは、Live Video Analytics on IoT Edge の FAQ
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 0a6c1c0f26116227454fa0968264644ea7a43178
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84260735"
 ---
 # <a name="frequently-asked-questions-faqs"></a>よく寄せられる質問 (FAQ)

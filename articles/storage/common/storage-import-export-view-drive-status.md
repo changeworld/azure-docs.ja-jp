@@ -4,16 +4,16 @@ description: Import/Export ジョブの状態および使用されているド�
 author: alkohli
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/17/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 222c893f06d9adf77f8a8124af18bc03c5d20bdf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7a000ab4a465e3b19efe6f2853bcd19dca47e440
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72821428"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514128"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>Azure Import/Export ジョブの状態を表示する
 

@@ -13,10 +13,10 @@ ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: daberry
 ms.openlocfilehash: fdbf07fa51adf8151e80d230734ebe53d36b5390
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83124790"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>Azure で VM を作成、再起動、またはサイズ変更するときの割り当てエラーのトラブルシューティング

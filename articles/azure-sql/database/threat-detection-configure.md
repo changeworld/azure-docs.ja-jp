@@ -10,19 +10,19 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
 ms.date: 08/05/2019
-ms.openlocfilehash: e5af2a0b88ba46dd1c4751a8aeee4c118ca1b8ae
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 2f4e9841a44252829fae283a12ba804219204022
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84037783"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84321548"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-sql-database"></a>Advanced Threat Protection for Azure SQL Database を構成する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 [Advanced Threat Protection](threat-detection-overview.md) for Azure SQL Database では、データベースへのアクセスや悪用を試みる、通常とは異なる、害を及ぼす可能性がある異常なアクティビティが検出されます。 Advanced Threat Protection によって、**SQL インジェクションの可能性**、**通常とは異なる場所またはデータ センターからのアクセス**、**通常とは異なるプリンシパルまたは有害な可能性があるアプリケーションからのアクセス**、**SQL 資格情報に対するブルート フォース攻撃**を特定できます。詳細については、[Advanced Threat Protectionアラート](threat-detection-overview.md#alerts)に関する記事を参照してください。
 
-検出された脅威に関する通知は、[電子メールの通知](threat-detection-overview.md#explore-detection-of-a-suspicious-event)または [Azure portal](threat-detection-overview.md#explore-alerts-in-azure-portal) で受け取ることができます。
+検出された脅威に関する通知は、[電子メールの通知](threat-detection-overview.md#explore-detection-of-a-suspicious-event)または [Azure portal](threat-detection-overview.md#explore-alerts-in-the-azure-portal) で受け取ることができます。
 
 [Advanced Threat Protection](threat-detection-overview.md) は、高度な SQL セキュリティ機能の統合パッケージである [Advanced Data Security](advanced-data-security.md) オファリングの一部です。 Advanced Threat Protection は、中央の SQL Advanced Data Security ポータルからアクセスして管理することができます。
 
