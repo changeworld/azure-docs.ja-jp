@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 4c7eb5e4f22cb432a9d17e6eafa653e62e1f9129
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79529902"
 ---
 # <a name="choose-the-right-mariadb-server-option-in-azure"></a>Azure で適切な MariaDB サーバーオプションを選択する
@@ -85,7 +85,7 @@ Azure Database for MariaDB は、あらゆる種類のノード レベルの中�
   - インデックスのチューニング
   - クエリのチューニング
   - 監査
-  - Security
+  - セキュリティ
 
   また、別のデータ センターに高可用性を構成するために必要な構成や管理は、最小限で済むか、まったく行わないで済みます。
 

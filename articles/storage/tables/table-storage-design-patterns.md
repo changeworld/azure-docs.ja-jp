@@ -9,10 +9,10 @@ ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
 ms.openlocfilehash: 5478163a6103bcc84b4f3608d7513c6e7cb11c01
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79529341"
 ---
 # <a name="table-design-patterns"></a>テーブルの設計パターン
@@ -197,11 +197,11 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 * 従業員エンティティと同じパーティションにインデックス エンティティを作成する。  
 * 別のパーティションまたはテーブルにインデックス エンティティを作成する。  
 
-<u>オプション 1: BLOB ストレージの使用</u>  
+<u>オプション 1:Blob ストレージを使用する</u>  
 
 最初のオプションでは、すべての一意の姓について Blob を作成し、その姓の従業員用の各 Blob には **PartitionKey** (部署) と **RowKey** (従業員 ID) 値が格納されます。 従業員を追加または削除した場合は、関連する BLOB の内容と従業員エンティティの一貫性が最終的に確保されていることを確認する必要があります。  
 
-<u>オプション 2:</u> 同じパーティション内のインデックス エンティティの作成  
+<u>オプション 2:</u> 同じパーティション内でインデックス エンティティを作成する  
 
 2 番目の方法では、以下のデータを格納するインデックス エンティティを使用します。  
 
@@ -223,7 +223,7 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 2. EmployeeIDs フィールドで従業員 ID の一覧を解析します。  
 3. 各従業員に関する追加情報 (電子メール アドレスなど) が必要な場合は、手順 2 で取得した従業員リストから **PartitionKey** 値 "Sales" と **RowKey** 値を使用して各従業員のエンティティを取得します。  
 
-<u>オプション 3:</u> 別のパーティションまたはテーブルにインデックス エンティティを作成する  
+<u>オプション 3:</u>別のパーティションまたはテーブルにインデックス エンティティを作成する  
 
 3 番目の方法では、以下のデータを格納するインデックス エンティティを使用します。  
 

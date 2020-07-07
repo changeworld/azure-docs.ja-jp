@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 10/30/2019
 ms.author: zivr
 ms.openlocfilehash: d2fd8a2cd7dac7b1d3c78691c84a861d924005ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79226795"
 ---
 # <a name="co-locate-resources-for-improved-latency"></a>リソースの併置による待機時間の短縮

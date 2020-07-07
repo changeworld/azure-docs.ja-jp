@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: f5572611b99245fd62b4e0a9d73e6ed728e42f5b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79530650"
 ---
 # <a name="restart-azure-database-for-mariadb-server-using-the-azure-cli"></a>Azure CLI を使用した Azure Database for MariaDB サーバーの再起動
