@@ -10,12 +10,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8159ef45dee8a2f9ace69c2a5b66a29e4948d82c
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 2a2126aceba8724b46de094d14db754d704500c6
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982005"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850977"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect:ADSyncConfig PowerShell リファレンス
 次のドキュメントでは、Azure AD Connect に含まれる ADSyncConfig.psm1 PowerShell モジュールの参照情報を示します。
@@ -1080,28 +1080,19 @@ Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <
 ### <a name="description"></a>Description
 Set-ADSyncRestrictedPermissions 関数は、提供されているアカウントのアクセス許可のセキュリティを強化します。
 アクセス許可のセキュリティの強化には、次の手順が含まれます。
-1.
-指定したオブジェクトの継承を無効にします
-2.
-SELF に固有の ACE を除き、特定のオブジェクトのすべての ACE を削除します。
+1. 指定したオブジェクトの継承を無効にします
+2. SELF に固有の ACE を除き、特定のオブジェクトのすべての ACE を削除します。
 SELF については、既定のアクセス許可を維持します。
-3.
-以下の特定のアクセス許可を割り当てます。
+3. 以下の特定のアクセス許可を割り当てます。
 
-        Type    Name                                        Access              Applies To
-        =============================================================================================
-        Allow   SYSTEM                                      Full Control        This object
-        Allow   Enterprise Admins                           Full Control        This object
-        Allow   Domain Admins                               Full Control        This object
-        Allow   Administrators                              Full Control        This object
-
-        Allow   Enterprise Domain Controllers               List Contents
-                                                            Read All Properties
-                                                            Read Permissions    This object
-
-        Allow   Authenticated Users                         List Contents
-                                                            Read All Properties
-                                                            Read Permissions    This object
+   | Type | 名前 | アクセス | 適用対象 |
+   |------|------|--------|------------|
+   | Allow | SYSTEM | フル コントロール | このオブジェクト |
+   | Allow | Enterprise Admins | フル コントロール | このオブジェクト |
+   | Allow | Domain Admins | フル コントロール | このオブジェクト | 
+   | Allow | 管理者 | フル コントロール | このオブジェクト |
+   | Allow | Enterprise Domain Controllers | コンテンツの一覧 <br> すべてのプロパティの読み取り <br> 読み取りのアクセス許可 | このオブジェクト |
+   | Allow | Authenticated Users | コンテンツの一覧 <br> すべてのプロパティの読み取り <br> 読み取りのアクセス許可 | このオブジェクト |
 
 ### <a name="examples"></a>例
 

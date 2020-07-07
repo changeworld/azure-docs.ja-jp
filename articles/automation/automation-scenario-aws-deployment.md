@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 4dcc095648111348a6935225a6aa10798109f76e
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: d67e2639c2d4b168babeb7c29ef977d39d9e11cb
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832234"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855304"
 ---
 # <a name="deploy-an-amazon-web-services-vm-with-a-runbook"></a>Runbook を使用してアマゾン ウェブ サービスの VM をデプロイする
 
@@ -64,7 +64,7 @@ AWS PowerShell モジュールのデプロイが終わったら、PowerShell ス
 
 8. AWS サブスクリプションからイメージ名の一覧を取得するため、PowerShell ISE を起動し、AWS PowerShell モジュールをインポートします。 ISE 環境内の `Get-AutomationPSCredential` を `AWScred = Get-Credential` に置き換えることで、AWS に対する認証を行います。 このステートメントにより、資格情報の入力を求めるプロンプトが表示され、ユーザー名としてアクセス キー ID を、パスワードとしてシークレット アクセス キーを指定できます。 
 
-        ```powershell
+      ```powershell
         #Sample to get the AWS VM available images
         #Please provide the path where you have downloaded the AWS PowerShell module
         Import-Module AWSPowerShell
@@ -78,7 +78,7 @@ AWS PowerShell モジュールのデプロイが終わったら、PowerShell ス
         Set-DefaultAWSRegion -Region $AwsRegion
    
         Get-EC2ImageByName -ProfileName AWSProfile
-        ```
+      ```
         
     次の出力が返されます。<br><br>
    ![AWS イメージの取得](./media/automation-scenario-aws-deployment/powershell-ise-output.png)<br>  

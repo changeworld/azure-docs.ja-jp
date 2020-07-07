@@ -335,9 +335,6 @@
         - name: リモート コンピューティング ターゲットを使用する
           displayName: automl automated auto ml
           href: how-to-auto-train-remote.md
-        - name: ML タスクを定義する
-          displayName: 'machine learning, task type, automl'
-          href: how-to-define-task-type.md
         - name: 予測モデルを自動トレーニングする
           displayName: time series
           href: how-to-auto-train-forecast.md

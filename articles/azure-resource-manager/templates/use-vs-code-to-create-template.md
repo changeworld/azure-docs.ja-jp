@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: jgao
 ms.openlocfilehash: 585e2773ea5d6af184f85e65b63d39b60d632146
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233979"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847616"
 ---
 # <a name="use-visual-studio-code-to-create-azure-resource-manager-templates"></a>Visual Studio Code を使って Azure Resource Manager テンプレートを作成する
 

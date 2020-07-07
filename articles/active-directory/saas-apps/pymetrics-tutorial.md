@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/10/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f10bf6a0487ea53bf4e05d0d2d389e2a275e83a
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: ea300148f421577e6f3ace961d06127fc9f2b536
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84765216"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85801174"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pymetrics"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と pymetrics の統合
 
@@ -102,11 +102,11 @@ pymetrics に対する Azure AD SSO を構成してテストするには、次�
 
 1. その他に、pymetrics アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
     
-    | 名前 |  |  ソース属性|
-    | ---------------| --------------- | --------- |
-    | UserFirstName | | User.givenname |
-    | UserLastName | | User.surname |
-    | UserEmail | | user.userprincipalname |
+    | 名前 | ソース属性|
+    | --------------- | --------- |
+    | UserFirstName | User.givenname |
+    | UserLastName | User.surname |
+    | UserEmail | user.userprincipalname |
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 

@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 1/9/2019
 ms.author: lcozzens
-ms.openlocfilehash: 420d9b48013f5f6debe588667fe1cc0390517e66
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 7cabe5b0564ec63335800a999bebec67ec970587
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80245380"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856781"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>クイック スタート:App Configuration を使用して .NET Core アプリを作成する
 
@@ -99,7 +99,9 @@ ms.locfileid: "80245380"
 
     macOS または Linux を使用する場合は、次のコマンドを実行します。
 
-        export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```console
+    export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```
 
     変更を有効にするために、コマンド プロンプトを再起動します。 環境変数の値を出力して、正しく設定されていることを確認します。
 

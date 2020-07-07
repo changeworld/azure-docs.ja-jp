@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 08c5bd8da0dda74156b2d44c8106ed345ef749dd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 57f412f93d9dbe2d9967c5cbc7dc50b1ee8bd61f
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73177008"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85801497"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-picturepark"></a>チュートリアル: Azure Active Directory と Picturepark の統合
 
@@ -109,12 +109,11 @@ Picturepark で Azure AD シングル サインオンを構成するには、次
 
     b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。
 
-    |  |
-    |--|
-    | `https://<companyname>.current-picturepark.com`|
-    | `https://<companyname>.picturepark.com`|
-    | `https://<companyname>.next-picturepark.com`|
-    | |
+    ```http
+        https://<companyname>.current-picturepark.com
+        https://<companyname>.picturepark.com
+        https://<companyname>.next-picturepark.com
+    ```
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Picturepark クライアント サポート チーム](https://picturepark.com/company/picturepark-customer-support)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

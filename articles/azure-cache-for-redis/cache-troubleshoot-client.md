@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: troubleshooting
 ms.date: 10/18/2019
-ms.openlocfilehash: ace953fcb278604cb64eef463753f0f2622d3d24
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9317999f8862cd9930870fecaf5be44d291c07a9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235307"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829671"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>Azure Cache for Redis のクライアント側の問題に関するトラブルシューティング
 
@@ -43,8 +43,10 @@ ms.locfileid: "79235307"
 
 [`ThreadPoolLogger` の例](https://github.com/JonCole/SampleCode/blob/master/ThreadPoolMonitor/ThreadPoolLogger.cs)を使用して、`ThreadPool` 統計が時間の経過と共にどのように変化するかを監視します。 さらに調査するには、次のように StackExchange.Redis の `TimeoutException` メッセージを使用できます。
 
+```output
     System.TimeoutException: Timeout performing EVAL, inst: 8, mgr: Inactive, queue: 0, qu: 0, qs: 0, qc: 0, wr: 0, wq: 0, in: 64221, ar: 0,
     IOCP: (Busy=6,Free=999,Min=2,Max=1000), WORKER: (Busy=7,Free=8184,Min=2,Max=8191)
+```
 
 前の例外には、次のような興味深いいくつかの問題が存在します。
 

@@ -6,7 +6,7 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.topic: article
+ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.date: 04/16/2020
@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3af281846e2bd1a39e691d84e964d8a8f780a6f1
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 578fb481ec858e65ede49bdce2d8bc26470aa2ca
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81870412"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850757"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>スコープ付きロールを管理単位に割り当てる
 
@@ -52,25 +52,29 @@ Role  |  説明
 
 ### <a name="powershell"></a>PowerShell
 
-    $administrative = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
-    $AdminUser = Get-AzureADUser -ObjectId 'janedoe@fabidentity.onmicrosoft.com'
-    $uaRoleMemberInfo = New-Object -TypeName Microsoft.Open.AzureAD.Model.RoleMemberInfo -Property @{ObjectId = $AdminUser.ObjectId}
-    Add-AzureADScopedRoleMembership -RoleObjectId $UserAdminRole.ObjectId -ObjectId $administrative unitObj.ObjectId -RoleMemberInfo  $uaRoleMemberInfo
+```powershell
+$administrative = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
+$AdminUser = Get-AzureADUser -ObjectId 'janedoe@fabidentity.onmicrosoft.com'
+$uaRoleMemberInfo = New-Object -TypeName Microsoft.Open.AzureAD.Model.RoleMemberInfo -Property @{ObjectId = $AdminUser.ObjectId}
+Add-AzureADScopedRoleMembership -RoleObjectId $UserAdminRole.ObjectId -ObjectId $administrative unitObj.ObjectId -RoleMemberInfo  $uaRoleMemberInfo
+```
 
 強調表示されたセクションは、それぞれの環境で必要に応じて変更される場合があります。
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
-    Http request
-    POST /administrativeUnits/{id}/scopedRoleMembers
+```http
+Http request
+POST /administrativeUnits/{id}/scopedRoleMembers
     
-    Request body
-    {
-      "roleId": "roleId-value",
-      "roleMemberInfo": {
-        "id": "id-value"
-      }
-    }
+Request body
+{
+  "roleId": "roleId-value",
+  "roleMemberInfo": {
+    "id": "id-value"
+  }
+}
+```
 
 ## <a name="list-the-scoped-admins-on-an-au"></a>AU のスコープ付き管理者を一覧表示する
 
@@ -80,17 +84,21 @@ Role  |  説明
 
 ### <a name="powershell"></a>PowerShell
 
-    $administrative unitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
-    Get-AzureADScopedRoleMembership -ObjectId $administrative unitObj.ObjectId | fl *
+```powershell
+$administrative unitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
+Get-AzureADScopedRoleMembership -ObjectId $administrative unitObj.ObjectId | fl *
+```
 
 強調表示されたセクションは、それぞれの環境で必要に応じて変更される場合があります。
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
-    Http request
-    GET /administrativeUnits/{id}/scopedRoleMembers
-    Request body
-    {}
+```http
+Http request
+GET /administrativeUnits/{id}/scopedRoleMembers
+Request body
+{}
+```
 
 ## <a name="next-steps"></a>次のステップ
 

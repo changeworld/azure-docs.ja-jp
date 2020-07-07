@@ -3,26 +3,27 @@ title: Azure Storage での静的 Web サイト ホスティング
 description: Azure Storage 静的 Web サイト ホスティングは、最新の Web アプリケーションをホストするための、費用対効果の高いスケーラブルなソリューションを提供します。
 author: normesta
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/14/2020
 ms.subservice: blobs
-ms.openlocfilehash: 6a007525f8402bb163195b623173d665f9721bff
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e2dcc070baa94ecf1ea27100fd49d4cde1dac637
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648509"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833348"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure Storage での静的 Web サイト ホスティング
 
 *$web* という名前のストレージ コンテナーから直接に、静的コンテンツ (HTML、CSS、JavaScript、画像ファイル) を提供できます。 Azure Storage でコンテンツをホスティングすることで、[Azure Functions](/azure/azure-functions/functions-overview) やその他のサービスとしてのプラットフォーム (PaaS) サービスなど、サーバーレス アーキテクチャを使用できます。
 
-[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 > [!NOTE]
 > サイトでサーバー側コードに依存している場合は、代わりに [Azure App Service](/azure/app-service/overview) を使用します。
+必ず汎用 v2 Standard ストレージ アカウントを作成してください。 静的 Web サイトは、他の種類のストレージ アカウントでは使用できません。
 
 ## <a name="setting-up-a-static-website"></a>静的 Web サイトの設定
 
@@ -46,7 +47,7 @@ ms.locfileid: "83648509"
 > * [AzCopy](../common/storage-use-azcopy-v10.md)
 > * [Azure 記憶域エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)
 > * [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)
-> * [Visual Studio Code 拡張機能](/azure/javascript/tutorial-vscode-static-website-node-01)
+> * [Visual Studio Code 拡張機能](/azure/developer/javascript/tutorial-vscode-static-website-node-01)
 
 ## <a name="viewing-content"></a>コンテンツの表示
 
@@ -63,11 +64,11 @@ ms.locfileid: "83648509"
 
 そのコードは URL に残しておく必要がありますが、内部的に使用されるだけであり、他にそのコードを使用する必要はありません。
 
-ユーザーがサイトを開き、特定のファイル (例: `https://contosoblobaccount.z22.web.core.windows.net`) を指定しない場合、静的 Web サイトのホスティングを有効にしたときに指定したインデックス ドキュメントが表示されます。  
+ユーザーがサイトを開き、特定のファイル (例: `https://contosoblobaccount.z22.web.core.windows.net`) を指定しない場合、静的 Web サイトのホスティングを有効にしたときに指定したインデックス ドキュメントが表示されます。
 
 ### <a name="secondary-endpoints"></a>セカンダリ エンドポイント
 
-[セカンダリ リージョンでの冗長性](../common/storage-redundancy.md#redundancy-in-a-secondary-region)を設定した場合は、セカンダリ エンドポイントを使用して Web サイトのコンテンツにアクセスすることもできます。 データはセカンダリ リージョンに非同期にレプリケートされるため、セカンダリ エンドポイントで使用できるファイルが、プライマリ エンドポイントで使用できるファイルと常に同期されているとは限りません。 
+[セカンダリ リージョンでの冗長性](../common/storage-redundancy.md#redundancy-in-a-secondary-region)を設定した場合は、セカンダリ エンドポイントを使用して Web サイトのコンテンツにアクセスすることもできます。 データはセカンダリ リージョンに非同期にレプリケートされるため、セカンダリ エンドポイントで使用できるファイルが、プライマリ エンドポイントで使用できるファイルと常に同期されているとは限りません。
 
 ## <a name="impact-of-the-setting-the-public-access-level-of-the-web-container"></a>Web コンテナーのパブリック アクセス レベルの設定の影響
 
@@ -85,11 +86,11 @@ ms.locfileid: "83648509"
 
 ## <a name="mapping-a-custom-domain-to-a-static-website-url"></a>カスタム ドメインを静的 Web サイトの URL にマップする
 
-静的 Web サイトをカスタム ドメイン経由で利用できるようにすることができます。 
+静的 Web サイトをカスタム ドメイン経由で利用できるようにすることができます。
 
 カスタム ドメインの HTTP アクセスは、Azure Storage でネイティブにサポートされているため、簡単に有効にすることができます。 HTTPS を有効にするには、Azure CDN を使用する必要があります。これは、Azure Storage がカスタム ドメインを使用した HTTPS をまだネイティブにサポートしていないためです。 手順を追ったガイダンスについては、「[カスタム ドメインを Azure Blob Storage エンドポイントにマップする](storage-custom-domain-name.md)」を参照してください。
 
-ストレージ アカウントが HTTPS 経由での[安全な転送を必要とする](../common/storage-require-secure-transfer.md)ように構成されている場合、ユーザーは HTTPS エンドポイントを使用する必要があります。 
+ストレージ アカウントが HTTPS 経由での[安全な転送を必要とする](../common/storage-require-secure-transfer.md)ように構成されている場合、ユーザーは HTTPS エンドポイントを使用する必要があります。
 
 > [!TIP]
 > Azure でドメインをホストすることを検討してください。 詳しくは、「[Azure DNS でドメインをホストする](../../dns/dns-delegate-domain-azure-dns.md)」を参照してください。

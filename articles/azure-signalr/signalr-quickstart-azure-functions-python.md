@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: antchu
 ms.custom: tracking-python
-ms.openlocfilehash: 4078edcadf3985e3b4dd392f726ca2e8d171b8b1
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: d77faf8cf4f859c0ef933d28119bd024ace86ac8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559057"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85832493"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-python"></a>クイック スタート:Python を使用した Azure Functions と SignalR Service によるチャット ルームの作成
 
@@ -101,4 +101,4 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
 このクイック スタートでは、VS Code でリアルタイムのサーバーレス アプリケーションを構築して実行しました。 次は、VS Code から Azure Functions をデプロイする方法を詳しく学びます。
 
 > [!div class="nextstepaction"]
-> [VS Code で Azure Functions をデプロイする](/azure/javascript/tutorial-vscode-serverless-node-01)
+> [VS Code で Azure Functions をデプロイする](/azure/developer/javascript/tutorial-vscode-serverless-node-01)

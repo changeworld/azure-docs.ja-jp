@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 48602cb65430bcf6720b4d6f4ba05c771a7bd55b
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 9ea358fbe1173a765a2e04513a07bd5d62f0e2c3
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559965"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850010"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Apache Ambari REST API を使用した HDInsight クラスターの管理
 
@@ -364,7 +364,9 @@ $resp.Content
 2. `newconfig.json` を編集します。  
    `newconfig.json` ドキュメントを開き、`properties` オブジェクトの値を修正/追加します。 次の例では、`"livy.server.csrf_protection.enabled"` の値を `"true"` から `"false"` に変更します。
 
-        "livy.server.csrf_protection.enabled": "false",
+    ```json
+    "livy.server.csrf_protection.enabled": "false",
+    ```
 
     変更が完了したら、ファイルを保存します。
 

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 1f6a05fdfc28adf412ffbd1402e37b69d1c51634
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1a2d0322436bd91e92a7018552c5827e021ee74e
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79477767"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851514"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>クイック スタート:Azure CLI を使用して VM の負荷を分散する Standard Load Balancer を作成する
 
@@ -73,7 +73,7 @@ Basic パブリック IP を作成するには、`-SKU Basic` を使用します
 
 ### <a name="create-the-load-balancer"></a>ロード バランサーを作成する
 
-[az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) を使用して、**myLoadBalancer** という名前のパブリック Azure Load Balancer を作成します。これには、**myFrontEnd** という名前のフロントエンド プールと、前のステップで作成したパブリック IP アドレス **myPublicIP** に関連付けられている **myBackEndPool** という名前のバックエンド プールを含めます。 Basic パブリック IP を作成するには、`--sku basic` を使用します。 Microsoft では、運用環境のワークロードに Standard SKU をお勧めします。
+[az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) を使用して、**myLoadBalancer** という名前のパブリック Azure Load Balancer を作成します。これには、**myFrontEnd** という名前のフロントエンド プールと、前のステップで作成したパブリック IP アドレス **myPublicIP** に関連付けられている **myBackEndPool** という名前のバックエンド プールを含めます。 Basic Load Balancer を作成するには、`--sku basic` を使用します。 Microsoft では、運用環境のワークロードに Standard SKU をお勧めします。
 
 ```azurecli-interactive
   az network lb create \

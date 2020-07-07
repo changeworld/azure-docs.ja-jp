@@ -6,12 +6,12 @@ ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 1917bd6744e100db54fe959292e29486f8a1784b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7dcc6f9ece407bee20ed344d91ee95e34f8f4c0a
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74770188"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848192"
 ---
 # <a name="optimize-autovacuum-on-an-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server 上で自動バキュームを最適化する
 この記事では、Azure Database for PostgreSQL サーバー上で自動バキュームを効率的に最適化する方法について説明します。
@@ -47,7 +47,7 @@ PostgreSQL は、MVCC (MultiVersion Concurrency Control) を使用して、デ�
 パラメーター|説明|既定値
 ---|---|---
 autovacuum_vacuum_threshold|任意の 1 つのテーブルでバキューム操作をトリガーするために必要な、更新または削除されたタプルの最小数を指定します。 既定値は 50 タプルです。 このパラメーターは、postgresql.conf ファイルまたはサーバーのコマンド ラインでのみ設定します。 個々のテーブルの設定をオーバーライドするには、テーブル ストレージのパラメーターを変更します。|50
-autovacuum_vacuum_scale_factor|バキューム操作をトリガーするかどうかを決定する際に、autovacuum_vacuum_threshold に追加するテーブル サイズの割合を指定します。 既定値は 0.2 (テーブル サイズの 20%) です。 このパラメーターは、postgresql.conf ファイルまたはサーバーのコマンド ラインでのみ設定します。 個々のテーブルの設定をオーバーライドするには、テーブル ストレージのパラメーターを変更します。|5%
+autovacuum_vacuum_scale_factor|バキューム操作をトリガーするかどうかを決定する際に、autovacuum_vacuum_threshold に追加するテーブル サイズの割合を指定します。 既定値は 0.2 (テーブル サイズの 20%) です。 このパラメーターは、postgresql.conf ファイルまたはサーバーのコマンド ラインでのみ設定します。 個々のテーブルの設定をオーバーライドするには、テーブル ストレージのパラメーターを変更します。|0.2
 autovacuum_vacuum_cost_limit|自動バキューム操作で使用されるコストの上限値を指定します。 -1 (既定値) が指定されている場合は、通常の vacuum_cost_limit 値が使用されます。 複数の worker がある場合、この値は実行中の自動バキューム worker 間で均等に配分されます。 各 worker での上限の合計は、この変数の値を超えません。 このパラメーターは、postgresql.conf ファイルまたはサーバーのコマンド ラインでのみ設定します。 個々のテーブルの設定をオーバーライドするには、テーブル ストレージのパラメーターを変更します。|-1
 autovacuum_vacuum_cost_delay|自動バキューム操作で使用されるコストの遅延値を指定します。 -1 が指定された場合は、通常の vacuum_cost_delay 値が使用されます。 既定値は 20 ミリ秒です。 このパラメーターは、postgresql.conf ファイルまたはサーバーのコマンド ラインでのみ設定します。 個々のテーブルの設定をオーバーライドするには、テーブル ストレージのパラメーターを変更します。|20 ミリ秒
 autovacuum_nap_time|特定のデータベースに対する自動バキューム実行の間隔の最小遅延を指定します。 各ラウンドで、デーモンがデータベースを調査し、そのデータベースのテーブルに対して、必要に応じて VACUUM コマンドと ANALYZE コマンドを発行します。 遅延は秒単位で測定され、既定値は 1 分 (1 min) です。 このパラメーターは、postgresql.conf ファイルまたはサーバーのコマンド ラインでのみ設定します。|15 s

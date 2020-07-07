@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: e1fdf219d09148d47759652e97797b569e265fa4
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b90f86576928e44e00c548f4f3ad3c22c27b8bb3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84026633"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829436"
 ---
 # <a name="split-merge-security-configuration"></a>Split-Merge セキュリティの構成
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -47,7 +47,10 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
   
     インストールされている場合は、次のように参照します。
   
-        %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
+    ```console
+    %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
+    ```
+
 * 「[Windows 8.1:キットとツールのダウンロード](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)」から WDK を取得します
 
 ## <a name="to-configure-the-tlsssl-certificate"></a>TLS/SSL 証明書を構成するには
@@ -193,12 +196,14 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 ## <a name="create-a-self-signed-certificate"></a>自己署名証明書の作成
 次のように実行します。
 
-    makecert ^
-      -n "CN=myservice.cloudapp.net" ^
-      -e MM/DD/YYYY ^
-      -r -cy end -sky exchange -eku "1.3.6.1.5.5.7.3.1" ^
-      -a sha256 -len 2048 ^
-      -sv MySSL.pvk MySSL.cer
+```console
+makecert ^
+  -n "CN=myservice.cloudapp.net" ^
+  -e MM/DD/YYYY ^
+  -r -cy end -sky exchange -eku "1.3.6.1.5.5.7.3.1" ^
+  -a sha256 -len 2048 ^
+  -sv MySSL.pvk MySSL.cer
+```
 
 カスタマイズするには、次のように実行します。
 
@@ -208,7 +213,9 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 ## <a name="create-pfx-file-for-self-signed-tlsssl-certificate"></a>自己署名 TLS/SSL 証明書用の PFX ファイルを作成する
 次のように実行します。
 
-        pvk2pfx -pvk MySSL.pvk -spc MySSL.cer
+```console
+pvk2pfx -pvk MySSL.pvk -spc MySSL.cer
+```
 
 パスワードを入力し、その後、次のオプションを使用して証明書をエクスポートします。
 
@@ -230,7 +237,9 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 ## <a name="update-tlsssl-certificate-in-service-configuration-file"></a>サービス構成ファイルの TLS/SSL 証明書を更新する
 サービス構成ファイルの次の設定のサムプリント値を、クラウド サービスにアップロードされた証明書のサムプリントを使用して、次のように更新します。
 
-    <Certificate name="SSL" thumbprint="" thumbprintAlgorithm="sha1" />
+```console
+<Certificate name="SSL" thumbprint="" thumbprintAlgorithm="sha1" />
+```
 
 ## <a name="import-tlsssl-certification-authority"></a>TLS/SSL 証明機関をインポートする
 サービスと通信するすべてのアカウントおよびマシンで、次の手順に従います。
@@ -258,13 +267,15 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 ## <a name="create-a-self-signed-certification-authority"></a>自己署名証明機関を作成する
 認証機関として機能する自己署名証明書を作成するには、次の手順を実行します。
 
-    makecert ^
-    -n "CN=MyCA" ^
-    -e MM/DD/YYYY ^
-     -r -cy authority -h 1 ^
-     -a sha256 -len 2048 ^
-      -sr localmachine -ss my ^
-      MyCA.cer
+```console
+makecert ^
+-n "CN=MyCA" ^
+-e MM/DD/YYYY ^
+ -r -cy authority -h 1 ^
+ -a sha256 -len 2048 ^
+  -sr localmachine -ss my ^
+  MyCA.cer
+```
 
 これをカスタマイズするには次のようにします。
 
@@ -311,13 +322,15 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 
 自己署名 CA 証明書が生成および格納された同じマシンで、次の手順を実行する必要があります。
 
-    makecert ^
-      -n "CN=My ID" ^
-      -e MM/DD/YYYY ^
-      -cy end -sky exchange -eku "1.3.6.1.5.5.7.3.2" ^
-      -a sha256 -len 2048 ^
-      -in "MyCA" -ir localmachine -is my ^
-      -sv MyID.pvk MyID.cer
+```console
+makecert ^
+  -n "CN=My ID" ^
+  -e MM/DD/YYYY ^
+  -cy end -sky exchange -eku "1.3.6.1.5.5.7.3.2" ^
+  -a sha256 -len 2048 ^
+  -in "MyCA" -ir localmachine -is my ^
+  -sv MyID.pvk MyID.cer
+```
 
 次のようにカスタマイズします。
 
@@ -330,11 +343,15 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 ## <a name="create-pfx-files-for-client-certificates"></a>クライアント証明書の PFX ファイルを作成する
 生成された各クライアント証明書で、次のように実行します。
 
-    pvk2pfx -pvk MyID.pvk -spc MyID.cer
+```console
+pvk2pfx -pvk MyID.pvk -spc MyID.cer
+```
 
 次のようにカスタマイズします。
 
-    MyID.pvk and MyID.cer with the filename for the client certificate
+```console
+MyID.pvk and MyID.cer with the filename for the client certificate
+```
 
 パスワードを入力し、その後、次のオプションを使用して証明書をエクスポートします。
 
@@ -379,11 +396,15 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 ## <a name="create-pfx-file-for-self-signed-encryption-certificates"></a>自己署名の暗号化証明書の PFX ファイルを作成する
 暗号化証明書は、次のように実行します。
 
-    pvk2pfx -pvk MyID.pvk -spc MyID.cer
+```console
+pvk2pfx -pvk MyID.pvk -spc MyID.cer
+```
 
 次のようにカスタマイズします。
 
-    MyID.pvk and MyID.cer with the filename for the encryption certificate
+```console
+MyID.pvk and MyID.cer with the filename for the encryption certificate
+```
 
 パスワードを入力し、その後、次のオプションを使用して証明書をエクスポートします。
 
