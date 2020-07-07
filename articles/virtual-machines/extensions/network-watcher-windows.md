@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: mimckitt
 ms.openlocfilehash: f226e240a59b33c2913919495410b1a4923b4902
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81261671"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>Windows 用 Network Watcher Agent 仮想マシン拡張機能

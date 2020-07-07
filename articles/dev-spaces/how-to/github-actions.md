@@ -7,10 +7,10 @@ description: GitHub アクションと Azure Dev Spaces を使用して、Azure 
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, GitHub アクション, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
 ms.openlocfilehash: a83da0ef3958748831eb0eeda1aa5e91efa7ef2e
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80637940"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub のアクションと Azure Kubernetes Service (プレビュー)

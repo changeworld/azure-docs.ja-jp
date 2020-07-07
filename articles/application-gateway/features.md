@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: victorh
 ms.openlocfilehash: f021eed959ef88a1ef3671e1d0ace8080710c92a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80810235"
 ---
 # <a name="azure-application-gateway-features"></a>Azure Application Gateway の機能

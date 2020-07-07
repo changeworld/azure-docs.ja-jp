@@ -4,10 +4,10 @@ description: Service Fabric ステートフル サービスのパーティショ
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.openlocfilehash: 4edfaa74fe109c688cad733d16031e87fff1e46f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81115162"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Service Fabric Reliable Services のパーティション分割
