@@ -2,7 +2,7 @@
 title: 動的データ マスク
 description: 動的データ マスキングでは、Azure SQL Database、Azure SQL Managed Instance、Azure Synapse Analytics の特権のないユーザーに対して機密データをマスクすることにより、機密データの公開を制限します
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: sqldbrb=1
 ms.devlang: ''
@@ -12,12 +12,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 tags: azure-synpase
-ms.openlocfilehash: b7e5c9b1a602bf2d6ecfbfd9b2d95900d3b56ef4
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 4a6de0b2067cdc847b830fba7607be8cb8f265ab
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84038463"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85981392"
 ---
 # <a name="dynamic-data-masking"></a>動的データ マスク 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]

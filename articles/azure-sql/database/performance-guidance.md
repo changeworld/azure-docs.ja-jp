@@ -3,7 +3,7 @@ title: アプリケーションとデータベースのパフォーマンス チ
 titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: Azure SQL Database および Azure SQL Managed Instance でデータベース アプリケーションとデータベースのパフォーマンスを調整する方法について説明します。
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: carlrab; jrasnick
 ms.date: 03/10/2020
-ms.openlocfilehash: 50322f69ff1cbb58cd5461646ca057718696e0eb
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 793010ba9eaea32256796f5fcd42d1c469eb7917
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193886"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85981985"
 ---
 # <a name="tune-applications-and-databases-for-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database および Azure SQL Managed Instance でアプリケーションとデータベースのパフォーマンスを調整します
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

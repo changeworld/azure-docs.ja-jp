@@ -3,7 +3,7 @@ title: Azure CLI スクリプトの例
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Azure SQL Database と Azure SQL Managed Instance を作成、管理するための Azure CLI サンプル スクリプト
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: service
 ms.custom: overview-samples, mvc, sqldbrb=2
 ms.devlang: azurecli
@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/03/2019
-ms.openlocfilehash: 1f63b8adfabb9de427fd19a992f913d032aa9d8b
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: cc762c3c10c087a8c0db5bd17f9c38b8f9d26134
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85251524"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85982787"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance のための Azure CLI サンプル 
  
@@ -35,7 +35,7 @@ CLI をローカルにインストールして使用する場合、このトピ�
 
 次の表には、Azure SQL Database の単一データベースとプールされたデータベースを管理する Azure CLI サンプル スクリプトへのリンクが記載されています。 
 
-| | |
+|領域|説明|
 |---|---|
 |**Azure SQL Database にデータベースを作成する**||
 | [単一のデータベースを作成し、ファイアウォール規則を構成する](scripts/create-and-configure-database-cli.md) | SQL Database を作成し、サーバーレベルのファイアウォール規則を構成します。 |
@@ -63,7 +63,7 @@ CLI をローカルにインストールして使用する場合、このトピ�
 
 次の表には、Azure SQL Managed Instance の Azure CLI サンプル スクリプトへのリンクが記載されています。
 
-| | |
+|領域|説明|
 |---|---|
 | **SQL Managed Instance を作成する**||
 | [SQL Managed Instance を作成する](../../sql-database/scripts/sql-database-create-configure-managed-instance-cli.md)| SQL Managed Instance を作成します。 |
