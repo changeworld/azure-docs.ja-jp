@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 2a5ef1837375cc395a871f9a9860fa8bde572a94
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76773601"
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>ストレージ暗号化によるコンテンツの暗号化 
@@ -115,7 +115,7 @@ AMS の記憶域暗号化は、ファイル全体に **AES-CTR** モードの暗
 
     要求本文のプロパティ    | 説明
     ---|---
-    Id | ContentKey ID は、"nb:kid:UUID:\<NEW GUID>" 形式を使用して生成されます。
+    Id | "nb:kid:UUID:\<NEW GUID>" 形式を使用して生成される ContentKey ID です。
     ContentKeyType | コンテンツ キーの種類は、キーを定義する整数です。 ストレージ暗号化形式の場合、値は 1 です。
     EncryptedContentKey | 256 ビット (32 バイト) の値の新しいコンテンツ キー値を作成します。 このキーは、GetProtectionKeyId および GetProtectionKey メソッド用に HTTP GET 要求を実行して Microsoft Azure Media Services から取得する、ストレージ暗号化 X.509 証明書を使用して暗号化します。 たとえば、次の .NET コードをご覧ください。**EncryptSymmetricKeyData** メソッドの定義は[こちら](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)にあります。
     ProtectionKeyId | コンテンツ キーの暗号化に使用したストレージ暗号化 X.509 証明書の保護キー ID です。
