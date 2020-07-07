@@ -6,16 +6,16 @@ author: mlee3gsd
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 345794eead05a4ff5e5d1396df78878d2693f405
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 8483fd2a1b33330b868fb21d71922377e906e6c8
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834987"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958423"
 ---
 # <a name="best-practices-for-sql-pools-in-azure-synapse-analytics"></a>Azure Synapse Analytics での SQL プールのベスト プラクティス
 
@@ -59,7 +59,7 @@ PolyBase の読み込みは、CTAS または INSERT INTO を使用して実行�
 
 Gzip テキスト ファイルを使用する場合にスループットを最大限引き上げるには、ファイルを 60 個以上に分割して、読み込みの並列処理を最大化してください。 全体のスループットを引き上げるには、データを同時に読み込むことを検討してください。 このセクションに関連するトピックの追加情報については、次の記事をご覧ください。
 
-- [データの読み込み](data-loading-overview.md)
+- [データの読み込み](../sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [PolyBase の使い方ガイド](data-loading-best-practices.md)
 - [Azure SQL プールの読み込みパターンと戦略](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/)
 - [Azure Data Factory を使用してデータを読み込む](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)

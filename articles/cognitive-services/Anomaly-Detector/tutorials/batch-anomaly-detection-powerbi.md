@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: aahi
-ms.openlocfilehash: 67a17373bb161e54493974ebf01e785bb1329087
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.openlocfilehash: 9f27deebe3a1fb21f4c7406bfd424196fb1072ec
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84944816"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921928"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>チュートリアル:バッチ検出と Power BI を使用して異常を視覚化する
 
@@ -143,10 +143,10 @@ Power BI のメイン画面で、上で作成したクエリの使用を開始�
 
 次に、 **[呼び出された関数]** の以下のフィールドを、グラフの **[値]** フィールドに追加します。 下のスクリーンショットを使用すると、グラフの作成に役立ちます。
 
-    * 値
-    * UpperMargins
-    * LowerMargins
-    * ExpectedValues
+* 値
+* UpperMargins
+* LowerMargins
+* ExpectedValues
 
 ![新しいクイック メジャー画面のイメージ](../media/tutorials/chart-settings.png)
 

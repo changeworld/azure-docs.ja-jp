@@ -1,25 +1,14 @@
 ---
 title: Azure Lab Services でラボ アカウントを設定する | Microsoft Docs
 description: Azure Lab Services にラボ アカウントを設定する方法と、ラボの作成者を追加する方法、ラボ アカウント内のラボで使用する Marketplace イメージを指定する方法について説明します。
-services: devtest-lab, lab-services, virtual-machines
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.custom: mvc
-ms.date: 05/15/2020
-ms.author: spelluru
-ms.openlocfilehash: d344b055659e8efcfa9836c942aacb384bbdec4c
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: fba4dbc5386407bd796606d86a5b7bdc7c10fd61
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84889445"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445068"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>チュートリアル:Azure Lab Services でラボ アカウントを設定する
 Azure Lab Services では、ラボ アカウントは、それによって組織のラボが管理される中心的なアカウントとして機能します。 ラボ アカウントでは、ラボを作成する権限を他のユーザーに付与し、ラボ アカウントの管理下にあるすべてのラボに適用されるポリシーを設定します。 このチュートリアルでは、ラボ アカウントを作成する方法について説明します。 

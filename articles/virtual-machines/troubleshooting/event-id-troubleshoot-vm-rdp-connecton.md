@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: 2073d5f91b26cd2ae53e3291a6d1dad4d711b66d
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: d569bf454a62272a5c60cc92abc0f24715218894
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437054"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958397"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>イベント ID を使用した、Azure VM の RDP 接続に関する問題のトラブルシューティング 
 

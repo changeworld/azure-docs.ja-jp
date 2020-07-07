@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: dsindona
-ms.openlocfilehash: 25753ce4c313a60b06147ab06dbf0b5e3e05865f
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: ce8534fae44549c20eceda16e0e12fb0adc52c6f
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800513"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957768"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>商用マーケットプレースのベネフィット
 
@@ -26,7 +26,7 @@ Marketplace 報酬は、認識アクティビティから始めて最初の顧�
 
 プログラムでは正のフィードバック ループが作成されます。成長の各段階でのベネフィットは、次の段階に進むように設計されており、パートナーは、Microsoft の現場と協力し、商用マーケットプレースをラットフォームとして利用することで Microsoft のチャネルを通して、Microsoft の顧客に対するビジネスを拡大できます。 
 
-ベネフィットは、オファーが[リスト、試用版、トランザクション](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type#choose-a-publishing-option)のいずれであるかによって異なります。
+ベネフィットは、オファーが[リスト、試用版、トランザクション](determine-your-listing-type.md#choose-a-publishing-option)のいずれであるかによって異なります。
 
 パートナーがオファーを発行すると、資格に基づいて、報酬チームのメンバーから連絡があります。 
 
@@ -101,7 +101,7 @@ Azure Marketplace または Microsoft AppSource でトランザクション可�
 
 ### <a name="cancellation-policy"></a>キャンセルに関するポリシー
 
-[リストおよび試用版](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)の発行元は、オファーの発行ごとにアクティビティにオプトインまたはオプトアウトできます。 パートナーは、いつでもエンゲージメントをオプトアウトすることができます。 
+[リストおよび試用版](determine-your-listing-type.md)の発行元は、オファーの発行ごとにアクティビティにオプトインまたはオプトアウトできます。 パートナーは、いつでもエンゲージメントをオプトアウトすることができます。 
 
 Microsoft は、次のような発行元に対する Marketplace 報酬ベネフィットを取り消して終了する権利を留保します。 
 

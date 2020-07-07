@@ -4,12 +4,12 @@ description: Batch は、Batch サービスからの認証に Azure AD をサポ
 ms.topic: how-to
 ms.date: 01/28/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: 186de47b61c25485cec602cbc9bb208a795a7785
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: ed2bfb8e0fbaff0b7ad0ded734e33512c82a4040
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83757588"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958210"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch サービスの認証に Active Directory を使用する
 
@@ -20,7 +20,7 @@ Azure AD 認証に Azure Batch を使用する場合は、次の 2 つの方法�
 - **統合認証**を使用して、アプリケーションと対話するユーザーを認証します。 統合認証を使用するアプリケーションでは、ユーザーの資格情報を収集し、それらの資格情報を使用して Batch リソースへのアクセスを認証します。
 - **サービス プリンシパル**を使用して無人のアプリケーションを認証します。 サービス プリンシパルは、実行時のリソースへのアクセスの際にアプリケーションを表すための、アプリケーション用のポリシーとアクセス許可を定義します。
 
-Azure AD の詳細については、「[Azure Active Directory のドキュメント](https://docs.microsoft.com/azure/active-directory/)」を参照してください。
+Azure AD の詳細については、「[Azure Active Directory のドキュメント](../active-directory/index.yml)」を参照してください。
 
 ## <a name="endpoints-for-authentication"></a>認証のためのエンドポイント
 
@@ -419,7 +419,7 @@ credentials = ServicePrincipalCredentials(
 
 ## <a name="next-steps"></a>次のステップ
 
-- Azure AD の詳細については、「[Azure Active Directory のドキュメント](https://docs.microsoft.com/azure/active-directory/)」を参照してください。 ADAL の使用方法の詳細な例については、[Azure のコード サンプル](https://azure.microsoft.com/resources/samples/?service=active-directory) ライブラリを参照してください。
+- Azure AD の詳細については、「[Azure Active Directory のドキュメント](../active-directory/index.yml)」を参照してください。 ADAL の使用方法の詳細な例については、[Azure のコード サンプル](https://azure.microsoft.com/resources/samples/?service=active-directory) ライブラリを参照してください。
 
 - サービス プリンシパルの詳細については、「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/develop/app-objects-and-service-principals.md)」を参照してください。 Azure Portal を使用してサービス プリンシパルを作成するには、「[リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルをポータルで作成する](../active-directory/develop/howto-create-service-principal-portal.md)」を参照してください。 PowerShell または Azure CLI を使用してサービス プリンシパルを作成することもできます。
 

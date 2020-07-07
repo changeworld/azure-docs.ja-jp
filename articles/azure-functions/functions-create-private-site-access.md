@@ -1,17 +1,17 @@
 ---
 title: Azure Functions へのプライベート サイト アクセスを有効にする
 description: Azure Functions 用に Azure 仮想ネットワークのプライベート サイト アクセスを設定する方法について説明します。
-author: mcollier
-ms.author: mcollier
+author: craigshoemaker
+ms.author: cshoe
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
-ms.openlocfilehash: 930b691019d5cb56e487c58e3ca01c4f7ee4ef98
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 8e37876e0e9666097c3cf16589e64929c670b14a
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261149"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85390280"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>チュートリアル:Azure Functions のプライベート サイト アクセスを設定する
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: cenkdin;anilmur
-ms.openlocfilehash: 8e3705aaecb0760513f0605aece89b7ffc0044a8
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: f5ca4496b9de25d6e95f37076f679eacff28af81
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641657"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954973"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Wirecast エンコーダーを使用して、単一ビットレートのライブ ストリームを送信する 
 > [!div class="op_single_selector"]
@@ -147,7 +147,7 @@ ms.locfileid: "81641657"
 
 AMSE ツールに移動し、テストするチャネルを右クリックします。 メニューが表示されたら、 **[プレビューの再生]** にマウスを合わせ、 **[Azure Media Player を使用]** を選択します。  
 
-    ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast8.png)
+![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast8.png)
 
 ストリームがプレーヤーに表示されている場合は、エンコーダーが AMS に接続するように正しく構成されています。
 

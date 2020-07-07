@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: d76559c4a01c8c6e5d319df463970cbc8d6d6620
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 2e133228f04cacdc14278abb8b6ee6303b820e7b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84032033"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956850"
 ---
 # <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>クロスデータベース クエリの概要 (列方向のパーティション分割) (プレビュー)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -37,27 +37,31 @@ ALTER ANY EXTERNAL DATA SOURCE アクセス許可が必要です。 このアク
 
 「**Orders**」データベースで次のクエリを実行し、「**OrderInformation**」テーブルを作成し、サンプル データを入力します。
 
-    CREATE TABLE [dbo].[OrderInformation](
-        [OrderID] [int] NOT NULL,
-        [CustomerID] [int] NOT NULL
-        )
-    INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (123, 1)
-    INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (149, 2)
-    INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (857, 2)
-    INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (321, 1)
-    INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (564, 8)
+```tsql
+CREATE TABLE [dbo].[OrderInformation](
+    [OrderID] [int] NOT NULL,
+    [CustomerID] [int] NOT NULL
+    )
+INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (123, 1)
+INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (149, 2)
+INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (857, 2)
+INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (321, 1)
+INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (564, 8)
+```
 
 次に、**Customers** データベースで次のクエリを実行して、**CustomerInformation** テーブルを作成し、サンプル データを入力します。
 
-    CREATE TABLE [dbo].[CustomerInformation](
-        [CustomerID] [int] NOT NULL,
-        [CustomerName] [varchar](50) NULL,
-        [Company] [varchar](50) NULL
-        CONSTRAINT [CustID] PRIMARY KEY CLUSTERED ([CustomerID] ASC)
-    )
-    INSERT INTO [dbo].[CustomerInformation] ([CustomerID], [CustomerName], [Company]) VALUES (1, 'Jack', 'ABC')
-    INSERT INTO [dbo].[CustomerInformation] ([CustomerID], [CustomerName], [Company]) VALUES (2, 'Steve', 'XYZ')
-    INSERT INTO [dbo].[CustomerInformation] ([CustomerID], [CustomerName], [Company]) VALUES (3, 'Lylla', 'MNO')
+```tsql
+CREATE TABLE [dbo].[CustomerInformation](
+    [CustomerID] [int] NOT NULL,
+    [CustomerName] [varchar](50) NULL,
+    [Company] [varchar](50) NULL
+    CONSTRAINT [CustID] PRIMARY KEY CLUSTERED ([CustomerID] ASC)
+)
+INSERT INTO [dbo].[CustomerInformation] ([CustomerID], [CustomerName], [Company]) VALUES (1, 'Jack', 'ABC')
+INSERT INTO [dbo].[CustomerInformation] ([CustomerID], [CustomerName], [Company]) VALUES (2, 'Steve', 'XYZ')
+INSERT INTO [dbo].[CustomerInformation] ([CustomerID], [CustomerName], [Company]) VALUES (3, 'Lylla', 'MNO')
+```
 
 ## <a name="create-database-objects"></a>データベース オブジェクトを作成する
 
@@ -66,10 +70,12 @@ ALTER ANY EXTERNAL DATA SOURCE アクセス許可が必要です。 このアク
 1. SQL Server Management Studio または Visual Studio の SQL Server Data Tools を開きます。
 2. Orders データベースに接続し、次の T-SQL コマンドを実行します。
 
-        CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<master_key_password>';
-        CREATE DATABASE SCOPED CREDENTIAL ElasticDBQueryCred
-        WITH IDENTITY = '<username>',
-        SECRET = '<password>';  
+    ```tsql
+    CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<master_key_password>';
+    CREATE DATABASE SCOPED CREDENTIAL ElasticDBQueryCred
+    WITH IDENTITY = '<username>',
+    SECRET = '<password>';  
+    ```
 
     "username" と "password" は Customers データベースのログインに使用するユーザー名とパスワードになります。
     Azure Active Directory とエラスティック クエリを使用した認証は、現時点ではサポートされていません。
@@ -78,32 +84,38 @@ ALTER ANY EXTERNAL DATA SOURCE アクセス許可が必要です。 このアク
 
 外部データ ソースを作成するには、Orders データベースで、次のコマンドを実行します。
 
-    CREATE EXTERNAL DATA SOURCE MyElasticDBQueryDataSrc WITH
-        (TYPE = RDBMS,
-        LOCATION = '<server_name>.database.windows.net',
-        DATABASE_NAME = 'Customers',
-        CREDENTIAL = ElasticDBQueryCred,
-    ) ;
+```tsql
+CREATE EXTERNAL DATA SOURCE MyElasticDBQueryDataSrc WITH
+    (TYPE = RDBMS,
+    LOCATION = '<server_name>.database.windows.net',
+    DATABASE_NAME = 'Customers',
+    CREDENTIAL = ElasticDBQueryCred,
+) ;
+```
 
 ### <a name="external-tables"></a>外部テーブル
 
 CustomerInformation テーブルの定義に一致する外部テーブルを Orders データベースで作成します。
 
-    CREATE EXTERNAL TABLE [dbo].[CustomerInformation]
-    ( [CustomerID] [int] NOT NULL,
-      [CustomerName] [varchar](50) NOT NULL,
-      [Company] [varchar](50) NOT NULL)
-    WITH
-    ( DATA_SOURCE = MyElasticDBQueryDataSrc)
+```tsql
+CREATE EXTERNAL TABLE [dbo].[CustomerInformation]
+( [CustomerID] [int] NOT NULL,
+    [CustomerName] [varchar](50) NOT NULL,
+    [Company] [varchar](50) NOT NULL)
+WITH
+( DATA_SOURCE = MyElasticDBQueryDataSrc)
+```
 
 ## <a name="execute-a-sample-elastic-database-t-sql-query"></a>サンプルのエラスティック データベース T-SQL クエリを実行する
 
 外部データ ソースと外部テーブルを定義すると、T-SQL を使用して外部テーブルにクエリを実行できるようになります。 Orders データベースでこのクエリを実行します。
 
-    SELECT OrderInformation.CustomerID, OrderInformation.OrderId, CustomerInformation.CustomerName, CustomerInformation.Company
-    FROM OrderInformation
-    INNER JOIN CustomerInformation
-    ON CustomerInformation.CustomerID = OrderInformation.CustomerID
+```tsql
+SELECT OrderInformation.CustomerID, OrderInformation.OrderId, CustomerInformation.CustomerName, CustomerInformation.Company
+FROM OrderInformation
+INNER JOIN CustomerInformation
+ON CustomerInformation.CustomerID = OrderInformation.CustomerID
+```
 
 ## <a name="cost"></a>コスト
 

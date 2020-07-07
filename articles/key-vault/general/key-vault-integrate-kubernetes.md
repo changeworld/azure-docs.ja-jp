@@ -6,12 +6,12 @@ ms.author: t-trtr
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 06/04/2020
-ms.openlocfilehash: f13872352e8b4da89d2dcf955440bc54be0fe000
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: 7acdee98e5e433567a3d177400ee4e7043d0895c
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84817326"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921564"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>チュートリアル:Kubernetes 上のシークレット ストア CSI ドライバー向けに Azure Key Vault プロバイダーを構成して実行する
 
@@ -280,27 +280,27 @@ kubectl apply -f podIdentityAndBinding.yaml
 次に、ポッドをデプロイします。 次のコードは、前の手順のポッド ID のバインドを使用するデプロイ YAML ファイルです。 このファイルを *podBindingDeployment.yaml* として保存します。
 
 ```yml
-kind: Pod
 apiVersion: v1
+kind: Pod
 metadata:
-    name: nginx-secrets-store-inline
-    labels:
+  name: nginx-secrets-store-inline
+  labels:
     aadpodidbinding: azure-pod-identity-binding-selector
 spec:
-    containers:
+  containers:
     - name: nginx
-        image: nginx
-        volumeMounts:
+      image: nginx
+      volumeMounts:
         - name: secrets-store-inline
-        mountPath: "/mnt/secrets-store"
-        readOnly: true
-    volumes:
+          mountPath: "/mnt/secrets-store"
+          readOnly: true
+  volumes:
     - name: secrets-store-inline
-        csi:
+      csi:
         driver: secrets-store.csi.k8s.io
         readOnly: true
         volumeAttributes:
-            secretProviderClass: azure-kvname
+          secretProviderClass: azure-kvname
 ```
 
 次のコマンドを実行してポッドをデプロイします。
@@ -343,4 +343,4 @@ kubectl exec -it nginx-secrets-store-inline -- cat /mnt/secrets-store/secret1
 
 キー コンテナーが回復可能であることを確認するには、以下を参照してください。
 > [!div class="nextstepaction"]
-> [論理的な削除を有効にする](https://docs.microsoft.com/azure/key-vault/general/soft-delete-clid)
+> [論理的な削除を有効にする](https://docs.microsoft.com/azure/key-vault/general/soft-delete-cli)
