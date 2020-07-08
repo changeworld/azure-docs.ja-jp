@@ -4,12 +4,12 @@ description: この記事では、Azure Migrate を使用して、AWS VM を Azu
 ms.topic: tutorial
 ms.date: 06/16/2020
 ms.custom: MVC
-ms.openlocfilehash: 739439f63c81ef75cdcbe0b9e1d3f367d073d43b
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 6eeff73bdcac214eb3836731fcbfd2f9410c6045
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85198821"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102805"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>アマゾン ウェブ サービス (AWS) の VM を検出して評価し、Azure に移行する
 
@@ -39,8 +39,8 @@ Azure に移行する前に、VM の検出と移行の評価を行うことが�
 
 次のとおりに評価を設定します。
 
-1. Azure Migrate: Server Assessment ツールを使用した評価の実施のために、AWS VM を物理マシンとして扱うことによって、評価を実行できます。Server Assessment ツールを追加済みであることを確認してください。 [チュートリアル](https://docs.microsoft.com/azure/migrate/tutorial-prepare-physical)に従って、評価のために Azure の設定と AWS VM の準備を行います。
-2. 次に、[このチュートリアル](https://docs.microsoft.com/azure/migrate/tutorial-assess-physical)に従って Azure Migrate プロジェクトとアプライアンスを設定し、お使いの AWS VM を検出して評価します。
+1. Azure Migrate: Server Assessment ツールを使用した評価の実施のために、AWS VM を物理マシンとして扱うことによって、評価を実行できます。Server Assessment ツールを追加済みであることを確認してください。 [チュートリアル](./tutorial-prepare-physical.md)に従って、評価のために Azure の設定と AWS VM の準備を行います。
+2. 次に、[このチュートリアル](./tutorial-assess-physical.md)に従って Azure Migrate プロジェクトとアプライアンスを設定し、お使いの AWS VM を検出して評価します。
 
 評価を試すことが推奨されていますが、評価を実行することは、VM を移行できるようになるための必須の手順ではありません。
 
@@ -48,9 +48,9 @@ Azure に移行する前に、VM の検出と移行の評価を行うことが�
 
 ## <a name="1-prerequisites-for-migration"></a>1.移行の前提条件
 
-- 移行する AWS VM で、サポートされている OS バージョンが実行されていることを確認します。 AWS VM は、移行目的では物理マシンのように処理されます。 物理サーバーの移行ワークフローについては、[サポートされているオペレーティングシステム](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#replicated-machines)に関するページを参照してください。 実際の移行を進める前に、テスト移行 (テスト フェールオーバー) を実行し、VM が想定どおりに動作するかどうかを検証することをお勧めします。
-- AWS VM が、Azure への移行で[サポートされる構成](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-physical-migration#physical-server-requirements)に準拠していることを確認します。
-- Azure にレプリケートする AWS VM が、[Azure VM の要件](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-physical-migration#azure-vm-requirements)に準拠していることを確認します。
+- 移行する AWS VM で、サポートされている OS バージョンが実行されていることを確認します。 AWS VM は、移行目的では物理マシンのように処理されます。 物理サーバーの移行ワークフローについては、[サポートされているオペレーティングシステム](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines)に関するページを参照してください。 実際の移行を進める前に、テスト移行 (テスト フェールオーバー) を実行し、VM が想定どおりに動作するかどうかを検証することをお勧めします。
+- AWS VM が、Azure への移行で[サポートされる構成](./migrate-support-matrix-physical-migration.md#physical-server-requirements)に準拠していることを確認します。
+- Azure にレプリケートする AWS VM が、[Azure VM の要件](./migrate-support-matrix-physical-migration.md#azure-vm-requirements)に準拠していることを確認します。
 - Azure に VM を移行する前に、それらに対するいくつかの変更が必要です。
     - 一部のオペレーティング システムでは、これらの変更が Azure Migrate によって自動的に行われます。
     - 移行を開始する前にこれらの変更を行うことが重要です。 変更を行う前に VM を移行すると、Azure で VM が起動しない可能性があります。
@@ -98,7 +98,7 @@ Azure Migrate: Server Migration では、レプリケーション アプライ�
 
 次のようにして、アプライアンスのデプロイの準備をします。
 
-- レプリケーション アプライアンスをホストする別の EC2 VM を設定します。 このインスタンスは、Windows Server 2012 R2 または Windows Server 2016 を実行している必要があります。 アプライアンスのハードウェア、ソフトウェア、およびネットワークの要件を[確認](https://docs.microsoft.com/azure/migrate/migrate-replication-appliance#appliance-requirements)します。
+- レプリケーション アプライアンスをホストする別の EC2 VM を設定します。 このインスタンスは、Windows Server 2012 R2 または Windows Server 2016 を実行している必要があります。 アプライアンスのハードウェア、ソフトウェア、およびネットワークの要件を[確認](./migrate-replication-appliance.md#appliance-requirements)します。
 - レプリケートするソース VM にはアプライアンスをインストールしないでください。 これは異なる VM にデプロイする必要があります。
 - 移行するソース AWS VM には、レプリケーション アプライアンスへの良好なネットワーク接続が必要です。 これを実現するため、必要なセキュリティ グループ規則を構成します。 レプリケーション アプライアンスは、移行するソース VM と同じ VPC にデプロイすることが推奨されています。 レプリケーション アプライアンスが異なる VPC 内に存在する必要がある場合は、VPC を VPC ピアリングを介して接続する必要があります。
 - ソース AWS VM は、レプリケーション管理とレプリケーション データ転送のために、HTTPS 443 (コントロール チャネルのオーケストレーション) および TCP 9443 (データ転送) の受信ポートでレプリケーション アプライアンスと通信します。 レプリケーション アプライアンスは次に、HTTPS 443 送信ポート経由でレプリケーション データを Azure に送信します。 これらの規則を構成するには、ポートとソース IP の適切な情報を使用して、セキュリティ グループのインバウンド/アウトバウンド規則を編集します。
@@ -183,7 +183,7 @@ Azure Migrate プロジェクトを設定し、そこに Server Migration ツー
 
 1. レプリケーション アプライアンスにサインインします。
 2. **%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository** に移動します。
-3. ソース AWS VM のオペレーティング システムとバージョンに合ったインストーラーを見つけます。 [サポートされているオペレーティング システム](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#replicated-machines)を確認してください。
+3. ソース AWS VM のオペレーティング システムとバージョンに合ったインストーラーを見つけます。 [サポートされているオペレーティング システム](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines)を確認してください。
 4. 移行したいソース AWS VM にインストーラー ファイルをコピーします。
 5. レプリケーション アプライアンスをインストールしたときに作成されたパスフレーズ テキスト ファイルを保存済みであることを確認します。
     - パスフレーズを保存し忘れた場合は、この手順で、レプリケーション アプライアンスでのパスフレーズを参照できます。 現在のパスフレーズを表示するには、コマンド ラインで **C:\ProgramData\ASR\home\svsystems\bin\genpassphrase.exe -v** を実行します。
@@ -335,7 +335,7 @@ Azure Migrate プロジェクトを設定し、そこに Server Migration ツー
     - AWS VM のレプリケーションが停止されます。
     - Azure Migrate: Server Migration の **[サーバーをレプリケートしています]** のカウントから AWS VM を削除します。Server Migration に関するエラーのトラブルシューティングに役立つ情報を提供しています。
     - VM のレプリケーション状態情報をクリーンアップします。
-2. 移行されたマシンに [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) エージェントをインストールします。 Azure VM の Windows エージェントは、移行プロセス中に事前にインストールされています。
+2. 移行されたマシンに [Linux](../virtual-machines/extensions/agent-linux.md) エージェントをインストールします。 Azure VM の Windows エージェントは、移行プロセス中に事前にインストールされています。
 3. データベース接続文字列、および Web サーバー構成の更新など、移行後のアプリの微調整を実行します。
 4. Azure で現在実行されている移行後のアプリケーション上で、最終的なアプリケーションと移行の受け入れのテストを実行します。
 5. 移行された Azure VM インスタンスにトラフィックを切り替えます。
@@ -347,16 +347,16 @@ Azure Migrate プロジェクトを設定し、そこに Server Migration ツー
     - Azure Backup サービスを使用して、Azure VM をバックアップすることで、データの安全性を保持します。 [詳細については、こちらを参照してください](../backup/quick-backup-vm-portal.md)。
     - Azure VM を Site Recovery のセカンダリ リージョンにレプリケートし、継続的にワークロードを実行して利用可能にします。 [詳細については、こちらを参照してください](../site-recovery/azure-to-azure-tutorial-enable-replication.md)。
 - セキュリティの強化：
-    - [Azure Security Center のジャスト イン タイム管理](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)を利用して、インバウンド トラフィック アクセスをロックダウンして制限します。
-    - [ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview)を使って、ネットワーク トラフィックを管理エンドポイントに制限します。
-    - [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview) をデプロイして、ディスクをセキュリティ保護し、盗難や不正アクセスからデータを安全に保護します。
+    - [Azure Security Center のジャスト イン タイム管理](../security-center/security-center-just-in-time.md)を利用して、インバウンド トラフィック アクセスをロックダウンして制限します。
+    - [ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)を使って、ネットワーク トラフィックを管理エンドポイントに制限します。
+    - [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) をデプロイして、ディスクをセキュリティ保護し、盗難や不正アクセスからデータを安全に保護します。
     - [IaaS リソースのセキュリティ保護](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/)に関する詳細を読み、[Azure Security Center](https://azure.microsoft.com/services/security-center/) を確認してください。
 - 監視と管理：
-    - [Azure Cost Management](https://docs.microsoft.com/azure/cost-management/overview) をデプロイして、リソースの使用率と消費量を監視します。
+    - [Azure Cost Management](../cost-management-billing/cloudyn/overview.md) をデプロイして、リソースの使用率と消費量を監視します。
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure クラウド導入フレームワークでの[クラウド移行の工程](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/migrate)を調査します。
+Azure クラウド導入フレームワークでの[クラウド移行の工程](/azure/architecture/cloud-adoption/getting-started/migrate)を調査します。
 
 ## <a name="troubleshooting--tips"></a>トラブルシューティングとヒント
 
