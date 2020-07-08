@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 07/06/2020
 ms.author: aahi
-ms.openlocfilehash: 0cda6005a014e0f269e468daf389c1abea9d4bcd
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 92a80dc69afbda76d57a09e01efc9b91ecb286ba
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611176"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027924"
 ---
 # <a name="quickstart-using-ruby-to-call-the-text-analytics-cognitive-service"></a>クイック スタート:Ruby を使用して Text Analytics Cognitive Service を呼び出す
 <a name="HOLTop"></a>

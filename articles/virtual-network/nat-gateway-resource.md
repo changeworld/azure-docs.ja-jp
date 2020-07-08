@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2020
 ms.author: allensu
-ms.openlocfilehash: db50a8938459fe063553f08c495149867ee36f43
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 0b025b3e017c8a7702b411e9d91cbdf22f915aba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84710067"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85549639"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>NAT ゲートウェイ リソースを使用した仮想ネットワークの設計
 
@@ -37,7 +37,7 @@ NAT ゲートウェイ リソースは、[Virtual Network NAT](nat-overview.md) 
 
 NAT ゲートウェイは簡単に構成、使用できるように意図されています。  
 
-NAT ゲートウェイ リソース: 
+NAT ゲートウェイ リソース:
 - リージョン単位またはゾーン単位 (ゾーン分離) の NAT ゲートウェイ リソースを作成する。
 - パブリック IP アドレスを割り当てる。
 - 必要に応じて、TCP アイドル タイムアウトを変更する (省略可)。  既定値を変更する<ins>前に</ins>、[タイマー](#timers)を確認してください。
@@ -325,8 +325,7 @@ SNAT ポートは、同じ送信先 IP アドレスおよび同じ送信先ポ�
 - NAT を使用している場合、NSG フロー ログはサポートされません。
 - NAT を複数の仮想ネットワークにまたがって使用することはできません。
 
-
-## <a name="feedback"></a>フィードバック
+## <a name="suggestions"></a>検索候補
 
 サービスを改善するために、皆様のご意見をお待ちしております。 不足している機能があれば、 ぜひお聞かせください。今後の課題として、[NAT の UserVoice](https://aka.ms/natuservoice) で受け付けております。
 

@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 04/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 73244a635bbf14efcf33f1b978db14e9e2589581
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 20ab78aa67fa5d59dac774559b3c43561cf75fbc
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81271065"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040709"
 ---
 # <a name="what-is-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューとは
 
@@ -78,12 +78,12 @@ Azure Time Series Insights には、データ処理、ストレージ (データ
 
 | | |
 | ---| ---|
-| IoT 規模の時系列データに対応する多層ストレージ | データを取り込むための共有データ処理パイプラインを使うと、ウォーム ストアとコールド ストアの両方にデータを取り込むことができます。 対話型クエリにはウォーム ストアを使用し、大量のデータを保存するにはコールド ストアを使用します。 ハイ パフォーマンスのアセットベースのクエリを利用する方法の詳細については、[クエリ](./time-series-insights-update-tsq.md)に関する記事を参照してください。 |
-| 未加工のテレメトリをコンテキスト化してアセット ベースの分析情報を生成する時系列モデル | タイム シリーズ モデルを使うと、時系列データのインスタンス、階層、型、および変数を作成できます。 タイム シリーズ モデルの詳細については、「[タイム シリーズ モデル](./time-series-insights-update-tsm.md)」を参照してください。  |
-| 他のデータ ソリューションとの円滑で連続的な統合 | Time Series Insights のコールド ストアのデータは、オープンソースの Apache Parquet ファイルに[格納](./time-series-insights-update-storage-ingress.md)されます。 これにより、ビジネス インテリジェンス、高度な機械学習、および予測分析を含むシナリオで、他のデータ ソリューション (ファースト パーティまたはサード パーティ) とのデータ統合が可能になります。 |
+| IoT 規模の時系列データに対応する多層ストレージ | データを取り込むための共有データ処理パイプラインを使うと、ウォーム ストアとコールド ストアの両方にデータを取り込むことができます。 対話型クエリにはウォーム ストアを使用し、大量のデータを保存するにはコールド ストアを使用します。 ハイ パフォーマンスのアセットベースのクエリを利用する方法の詳細については、[クエリ](./concepts-query-overview.md)に関する記事を参照してください。 |
+| 未加工のテレメトリをコンテキスト化してアセット ベースの分析情報を生成する時系列モデル | タイム シリーズ モデルを使うと、時系列データのインスタンス、階層、型、および変数を作成できます。 タイム シリーズ モデルの詳細については、「[タイム シリーズ モデル](./concepts-model-overview.md)」を参照してください。  |
+| 他のデータ ソリューションとの円滑で連続的な統合 | Time Series Insights のコールド ストアのデータは、オープンソースの Apache Parquet ファイルに[格納](concepts-storage.md)されます。 これにより、ビジネス インテリジェンス、高度な機械学習、および予測分析を含むシナリオで、他のデータ ソリューション (ファースト パーティまたはサード パーティ) とのデータ統合が可能になります。 |
 | ほぼリアルタイムのデータ探索 | [Azure Time Series Insights プレビュー エクスプローラー](./time-series-insights-update-explorer.md)のユーザー エクスペリエンスは、取り込みのパイプライン経由ですべてのデータ ストリーミングの視覚化を提供しています。 イベント ソースを接続すると、イベント データの表示、調査、クエリを行うことができるようになります。 これにより、デバイスが想定どおりにデータを出力しているかどうかを検証できます。 IoT アセットの正常性、生産性、全体的な有効性を監視することもできます。 | 
 | 拡張性と統合 | Azure Time Series Insights Power BI Connector の統合は、Time Series Explorer のユーザー エクスペリエンスで**エクスポート** オプションを介して使用でき、ユーザー エクスペリエンスで作成した時系列クエリを Power BI デスクトップに直接エクスポートし、その時系列グラフを他の BI 分析と共に表示できます。 これにより、IoT の時系列などのさまざまなデータ ソースからの分析が 1 つのウィンドウに表示されるので、Power BI に投資した産業用 IoT 企業が新しいクラスのシナリオを実現できるようになります。 | 
-| Time Series Insights プラットフォーム上に構築されたカスタム アプリケーション | Time Series Insights では、[JavaScript SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) がサポートされています。 SDK では、豊富なコントロールとクエリへの簡単なアクセスが提供されます。 SDK を使用し、ビジネス ニーズに合わせて、Time Series Insights 上にカスタム IoT アプリケーションを構築します。 また、Time Series Insights の [Query API](./time-series-insights-update-tsq.md) を直接使用して、カスタム IoT アプリケーションへのデータを生成できます。 |
+| Time Series Insights プラットフォーム上に構築されたカスタム アプリケーション | Time Series Insights では、[JavaScript SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) がサポートされています。 SDK では、豊富なコントロールとクエリへの簡単なアクセスが提供されます。 SDK を使用し、ビジネス ニーズに合わせて、Time Series Insights 上にカスタム IoT アプリケーションを構築します。 また、Time Series Insights の [Query API](./concepts-query-overview.md) を直接使用して、カスタム IoT アプリケーションへのデータを生成できます。 |
 
 ## <a name="next-steps"></a>次のステップ
 

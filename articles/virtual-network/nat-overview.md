@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/14/2020
 ms.author: allensu
-ms.openlocfilehash: 94ef9b9754527bbb36ef1028f80e957da8c631dd
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 80e2ba8df9c81d2a34f63b2f1bc943ee5d731bae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84688400"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85549583"
 ---
 # <a name="what-is-virtual-network-nat"></a>Virtual Network NAT とは
 
@@ -144,7 +144,7 @@ Virtual Network NAT と NAT ゲートウェイ リソースは、すべての Az
 
 NAT のサポートは、通常のサポート チャンネルを通じて提供されます。
 
-## <a name="feedback"></a>フィードバック
+## <a name="suggestions"></a>検索候補
 
 サービスを改善するために、皆様のご意見をお待ちしております。 今後の新機能に関する提案や投票も、[NAT の UserVoice](https://aka.ms/natuservoice) で受け付けております。
 

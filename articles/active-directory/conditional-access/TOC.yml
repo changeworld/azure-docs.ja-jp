@@ -8,8 +8,6 @@
   items:
     - name: 使用条件への同意を必須にする
       href: require-tou.md
-    - name: セッションのリスクが検出されたときにアクセスをブロックする
-      href: app-sign-in-risk.md
 - name: チュートリアル
   items:
     - name: Azure Multi-Factor Authentication を必須とする
@@ -68,8 +66,10 @@
           href: howto-conditional-access-policy-azure-management.md
         - name: すべてのユーザーに対して MFA を必須にする
           href: howto-conditional-access-policy-all-users-mfa.md
-        - name: リスクベースの条件付きアクセス
+        - name: サインイン リスクベースの条件付きアクセス
           href: howto-conditional-access-policy-risk.md
+        - name: ユーザー リスクベースの条件付きアクセス
+          href: howto-conditional-access-policy-risk-user.md
         - name: セキュリティ情報の登録のセキュリティ保護
           href: howto-conditional-access-policy-registration.md
         - name: 場所ごとにアクセスをブロックする
