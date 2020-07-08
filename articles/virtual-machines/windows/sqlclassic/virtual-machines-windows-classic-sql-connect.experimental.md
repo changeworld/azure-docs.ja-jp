@@ -16,12 +16,12 @@ ms.author: mathoma
 ms.reviewer: jroth
 experimental: true
 experimental_id: d51f3cc6-753b-4e
-ms.openlocfilehash: 82c9f6f0797a4d863e04b45c918d649250157a72
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4b63735509c0d1c755eced8277d18b2a535457b
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84017652"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078444"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>Azure での SQL Server 仮想マシンへの接続 (クラシック デプロイ)
 > [!div class="op_single_selector"]
@@ -53,7 +53,9 @@ ms.locfileid: "84017652"
 
 このシナリオでは、VM の**名前** (ポータル内では **[コンピューター名]** または **[ホスト名]** とも表示されます) を使用して接続できます。 この名前は、作成時に VM に指定した名前です。 たとえば、SQL VM に **mysqlvm**という名前を付けた場合、同じクラウド サービス内のクライアント VM では次のような文字列を使用して接続できます。
 
-    "Server=mysqlvm;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
+```config
+"Server=mysqlvm;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
+```
 
 ### <a name="connect-to-sql-server-over-the-internet"></a>インターネット経由で SQL Server に接続する
 インターネットから、SQL Server データベース エンジンに接続する場合は、着信 TCP 通信用の仮想マシンのエンドポイントを作成する必要があります。 この Azure 構成手順により、仮想マシンからアクセスできる TCP ポートに、着信する TCP ポート トラフィックが送信されます。
@@ -62,7 +64,9 @@ ms.locfileid: "84017652"
 
 たとえば、DNS 名が **mysqlvm7777.cloudapp.net** であり、VM エンドポイントが **57500** である **mysqlvm** という名前のクラシック仮想マシンがあるとします。 適切に構成された接続がある場合は、次の接続文字列を使用して、インターネット上の任意の場所から仮想マシンにアクセスできます。
 
-    "Server=mycloudservice.cloudapp.net,57500;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
+```config
+"Server=mycloudservice.cloudapp.net,57500;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
+```
 
 この接続文字列でクライアントからインターネット経由での接続は有効になりますが、すべてのユーザーが SQL Server に接続できるわけではありません。 外部のクライアントは、ユーザー名とパスワードを修正する必要があります。 セキュリティを強化するために、既知のポート 1433 を仮想マシンのパブリック エンドポイントに使用しないでください。 また可能であれば、エンドポイントに ACL を追加して、許可されたクライアントのみにトラフィックを制限することを検討してください。 エンドポイントで ACL を使用する手順については、「 [エンドポイントの ACL の管理](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint)」を参照してください。
 
@@ -78,7 +82,9 @@ ms.locfileid: "84017652"
 
 ドメイン環境と Windows 認証を構成する場合は、パブリック エンドポイントまたは SQL 認証とログインを構成する必要はありません。 このシナリオでは、接続文字列で SQL Server VM 名を指定することによって、SQL Server インスタンスに接続できます。 次の例は、Windows 認証が構成されていることと、ユーザーが SQL Server インスタンスへのアクセスを許可されていることを前提としています。
 
-    "Server=mysqlvm;Integrated Security=true"
+```config
+"Server=mysqlvm;Integrated Security=true"
+```
 
 ## <a name="steps-for-configuring-sql-server-connectivity-in-an-azure-vm"></a>Azure VM で SQL Server への接続を構成する手順
 次の手順で、SQL Server Management Studio (SSMS) を使用してインターネット経由で SQL Server インスタンスに接続する方法を説明します。 ただし、同じ手順が、アプリケーションのアクセスが可能な SQL Server 仮想マシンを作成し、オンプレミスと Azure の両方で実行するときに適用されます。
