@@ -6,14 +6,14 @@ ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/10/2019
-ms.openlocfilehash: fb3484d013314897ea2e9157b642d8f2b85dcd60
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: acd51fc54e0655af6bfc6c05d2e99be2f26f942b
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437644"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080161"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Azure HDInsight で Enterprise セキュリティ パッケージ クラスターを作成および構成する
 
@@ -358,20 +358,20 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
         | Protocol | Any |
         | アクション | Allow |
         | Priority | \<Desired number> |
-        | \<望ましい値> | 名前 |
+        | 名前 | Port_LDAP_636 |
 
-    ![Port_LDAP_636](./media/apache-domain-joined-create-configure-enterprise-security-cluster/add-inbound-security-rule.png)
+    ![[受信セキュリティ規則の追加] ダイアログ ボックス](./media/apache-domain-joined-create-configure-enterprise-security-cluster/add-inbound-security-rule.png)
 
-[受信セキュリティ規則の追加] ダイアログ ボックス **HDIFabrikamManagedIdentity** は、ユーザー割り当てマネージド ID です。
+**HDIFabrikamManagedIdentity** は、ユーザー割り当てマネージド ID です。 HDInsight ドメイン サービス共同作成者ロールにマネージド ID を割り当てると、この ID でドメイン サービス操作の読み取り、作成、変更、および削除を行うことができるようになります。
 
-![HDInsight ドメイン サービス共同作成者ロールにマネージド ID を割り当てると、この ID でドメイン サービス操作の読み取り、作成、変更、および削除を行うことができるようになります。](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0117.png)
+![ユーザー割り当てマネージド ID を作成する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0117.png)
 
-## <a name="create-an-esp-enabled-hdinsight-cluster"></a>ユーザー割り当てマネージド ID を作成する
+## <a name="create-an-esp-enabled-hdinsight-cluster"></a>ESP 対応の HDInsight クラスターを作成する
 
-ESP 対応の HDInsight クラスターを作成する
+この手順には、次の前提条件が必要です。
 
-1. この手順には、次の前提条件が必要です。
 1. **米国西部**の場所に、新しいリソース グループ *HDIFabrikam-WestUS* を作成します。
+1. ESP 対応の HDInsight クラスターをホストする仮想ネットワークを作成します。
 
     ```powershell
     $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName 'HDIFabrikam-WestUS' -Location 'West US' -Name 'HDIFabrikam-HDIVNet' -AddressPrefix 10.1.0.0/16
@@ -379,7 +379,7 @@ ESP 対応の HDInsight クラスターを作成する
     $virtualNetwork | Set-AzVirtualNetwork
     ```
 
-1. ESP 対応の HDInsight クラスターをホストする仮想ネットワークを作成します。 Azure AD DS がホストされている仮想ネットワーク (`HDIFabrikam-AADDSVNET`) と ESP 対応の HDInsight クラスターがホストされている仮想ネットワーク (`HDIFabrikam-HDIVNet`) の間に、ピア関係を作成します。
+1. Azure AD DS がホストされている仮想ネットワーク (`HDIFabrikam-AADDSVNET`) と ESP 対応の HDInsight クラスターがホストされている仮想ネットワーク (`HDIFabrikam-HDIVNet`) の間に、ピア関係を作成します。 2 つの仮想ネットワークをピアリングするには、次の PowerShell コードを使用します。
 
     ```powershell
     Add-AzVirtualNetworkPeering -Name 'HDIVNet-AADDSVNet' -RemoteVirtualNetworkId (Get-AzVirtualNetwork -ResourceGroupName 'HDIFabrikam-CentralUS').Id -VirtualNetwork (Get-AzVirtualNetwork -ResourceGroupName 'HDIFabrikam-WestUS')
@@ -387,43 +387,43 @@ ESP 対応の HDInsight クラスターを作成する
     Add-AzVirtualNetworkPeering -Name 'AADDSVNet-HDIVNet' -RemoteVirtualNetworkId (Get-AzVirtualNetwork -ResourceGroupName 'HDIFabrikam-WestUS').Id -VirtualNetwork (Get-AzVirtualNetwork -ResourceGroupName 'HDIFabrikam-CentralUS')
     ```
 
-1. 2 つの仮想ネットワークをピアリングするには、次の PowerShell コードを使用します。 **Hdigen2store** という名前の新しい Azure Data Lake Storage Gen2 アカウントを作成します。 ユーザー マネージド ID **HDIFabrikamManagedIdentity** を使用して、アカウントを構成します。
+1. **Hdigen2store** という名前の新しい Azure Data Lake Storage Gen2 アカウントを作成します。 ユーザー マネージド ID **HDIFabrikamManagedIdentity** を使用して、アカウントを構成します。 詳しくは、「[Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する](../hdinsight-hadoop-use-data-lake-storage-gen2.md)」をご覧ください。
 
-1. 詳しくは、「[Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する](../hdinsight-hadoop-use-data-lake-storage-gen2.md)」をご覧ください。
-    1. **HDIFabrikam-AADDSVNET** 仮想ネットワーク上にカスタム DNS を設定します。
+1. **HDIFabrikam-AADDSVNET** 仮想ネットワーク上にカスタム DNS を設定します。
     1. Azure portal、 **[リソース グループ]**  >  **[OnPremADVRG]**  >  **[HDIFabrikam-AADDSVNET]**  >  **[DNS サーバー]** の順に移動します。
     1. **[カスタム]** を選択し、「*10.0.0.4*」と「*10.0.0.5*」を入力します。
+    1. **[保存]** を選択します。
 
-        ![**[保存]** を選択します。](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0123.png)
+        ![仮想ネットワークのカスタム DNS 設定を保存する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0123.png)
 
-1. 仮想ネットワークのカスタム DNS 設定を保存する
-    1. ESP 対応の新しい HDInsight Spark クラスターを作成します。
-    1. **[カスタム (サイズ、設定、アプリ)]** を選択します。 **[基本]** の詳細を入力します (セクション 1)。 **[クラスターの種類]** が **Spark 2.3 (HDI 3.6)**  であることを確認します。
+1. ESP 対応の新しい HDInsight Spark クラスターを作成します。
+    1. **[カスタム (サイズ、設定、アプリ)]** を選択します。
+    1. **[基本]** の詳細を入力します (セクション 1)。 **[クラスターの種類]** が **Spark 2.3 (HDI 3.6)**  であることを確認します。 **[リソース グループ]** が **HDIFabrikam-CentralUS** であることを確認します。
 
-    1. **[リソース グループ]** が **HDIFabrikam-CentralUS** であることを確認します。
-        * **[セキュリティとネットワーク]** (セクション 2) では、次の詳細を入力します。
-        * **[Enterprise セキュリティ パッケージ]** で **[有効]** を選択します。 **[クラスター管理者ユーザー]** を選択し、オンプレミス管理者ユーザーとして作成した **HDIAdmin** アカウントを選択します。
-        * **[選択]** をクリックします。 **[クラスター アクセス グループ]**  > **HDIUserGroup** を選択します。
+    1. **[セキュリティとネットワーク]** (セクション 2) では、次の詳細を入力します。
+        * **[Enterprise セキュリティ パッケージ]** で **[有効]** を選択します。
+        * **[クラスター管理者ユーザー]** を選択し、オンプレミス管理者ユーザーとして作成した **HDIAdmin** アカウントを選択します。 **[選択]** をクリックします。
+        * **[クラスター アクセス グループ]**  > **HDIUserGroup** を選択します。 以降、このグループに追加したすべてのユーザーは HDInsight クラスターにアクセスできるようになります。
 
-            ![以降、このグループに追加したすべてのユーザーは HDInsight クラスターにアクセスできるようになります。](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0129.jpg)
+            ![クラスター アクセス グループ HDIUserGroup を選択する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0129.jpg)
 
-    1. クラスター アクセス グループ HDIUserGroup を選択する クラスター構成の他の手順を完了し、 **[クラスターの概要]** で詳細を確認します。
+    1. クラスター構成の他の手順を完了し、 **[クラスターの概要]** で詳細を確認します。 **［作成］** を選択します
 
-1. **［作成］** を選択します `https://CLUSTERNAME.azurehdinsight.net` で新しく作成したクラスターの Ambari UI にサインインします。
+1. `https://CLUSTERNAME.azurehdinsight.net` で新しく作成したクラスターの Ambari UI にサインインします。 管理者ユーザー名 `hdiadmin@hdifabrikam.com` とそのパスワードを使用します。
 
-    ![管理者ユーザー名 `hdiadmin@hdifabrikam.com` とそのパスワードを使用します。](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0135.jpg)
+    ![Apache Ambari UI のサインイン ウィンドウ](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0135.jpg)
 
-1. Apache Ambari UI のサインイン ウィンドウ
-1. クラスター ダッシュボードから **[Roles]\(ロール\)** を選択します。 
+1. クラスター ダッシュボードから **[Roles]\(ロール\)** を選択します。
+1. **[Roles]\(ロール\)** ページの **[Assign roles to these]\(これらにロールを割り当てる\)** で、 **[Cluster Administrator]\(クラスター管理者\)** ロールにグループ *hdiusergroup* を入力します。 
 
-    ![**[Roles]\(ロール\)** ページの **[Assign roles to these]\(これらにロールを割り当てる\)** で、 **[Cluster Administrator]\(クラスター管理者\)** ロールにグループ *hdiusergroup* を入力します。](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0137.jpg)
+    ![クラスター管理者ロールを hdiusergroup に割り当てる](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0137.jpg)
 
-1. クラスター管理者ロールを hdiusergroup に割り当てる Secure Shell (SSH) クライアントを開き、クラスターにサインインします。
+1. Secure Shell (SSH) クライアントを開き、クラスターにサインインします。 オンプレミスの Active Directory インスタンスで作成した **hdiuser** を使用します。
 
-    ![オンプレミスの Active Directory インスタンスで作成した **hdiuser** を使用します。](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0139.jpg)
+    ![SSH クライアントを使用してクラスターにサインインする](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0139.jpg)
 
-SSH クライアントを使用してクラスターにサインインする
+このアカウントでサインインできる場合、ESP クラスターはオンプレミスの Active Directory インスタンスと同期するように正しく構成されています。
 
-## <a name="next-steps"></a>このアカウントでサインインできる場合、ESP クラスターはオンプレミスの Active Directory インスタンスと同期するように正しく構成されています。
+## <a name="next-steps"></a>次のステップ
 
-次のステップ
+[ESP による Apache Hadoop セキュリティの概要](hdinsight-security-overview.md)に関する記事をご覧ください。
