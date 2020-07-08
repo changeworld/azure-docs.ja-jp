@@ -1,21 +1,15 @@
 ---
 title: Azure CLI を使用したイベント ハブの作成 - Azure Event Hubs | Microsoft Docs
 description: このクイック スタートでは、Azure CLI を使用してイベント ハブを作成したうえで、Java を使用してイベントの送受信を行う方法について説明します。
-services: event-hubs
-author: spelluru
-manager: timlt
-ms.service: event-hubs
-ms.devlang: java
 ms.topic: quickstart
-ms.custom: seodec18
-ms.date: 02/11/2020
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 92fd7d15ee5bc54cc41b78f4ba0d078d3f8fac6b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 5d3499d6c480a3bfdbad57ffa367c5d2d326d565
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77162635"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85313114"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-cli"></a>クイック スタート: Azure CLI を使用したイベント ハブの作成
 

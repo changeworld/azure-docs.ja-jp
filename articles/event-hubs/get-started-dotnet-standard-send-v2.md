@@ -1,24 +1,14 @@
 ---
 title: .NET を使用して Azure Event Hubs との間でイベントを送受信する (最新バージョン)
 description: この記事では、最新の Azure.Messaging.EventHubs パッケージを使用して、Azure Event Hubs との間でイベントを送受信する .NET Core アプリケーションを作成する方法について説明します。
-services: event-hubs
-documentationcenter: na
-author: spelluru
-editor: ''
-ms.assetid: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 04/20/2020
-ms.author: spelluru
-ms.openlocfilehash: 44e77330e6a651a93b1f88fa6b20450ebc2b1455
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.date: 06/23/2020
+ms.openlocfilehash: 8752064b59030c04e409e13baf7bf58836ce7ac7
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773982"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85320157"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-azuremessagingeventhubs"></a>Azure Event Hubs との間でイベントを送受信する - .NET (Azure.Messaging.EventHubs) 
 このクイックスタートでは、**Azure.Messaging.EventHubs** .NET ライブラリを使用して、イベント ハブとの間でイベントを送受信する方法について説明します。 

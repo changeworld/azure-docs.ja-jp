@@ -1,24 +1,14 @@
 ---
 title: Azure Lab Services のクラスルーム ラボについて | Microsoft Docs
 description: クラウドにクラスルーム ラボ環境をすばやく設定する方法を紹介します。具体的には、ラボにクラスで必要になるソフトウェアを備えたテンプレート VM を構成し、その VM のコピーをクラスの学生全員分作成します。
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
-ms.date: 11/26/2019
-ms.author: spelluru
-ms.openlocfilehash: bbbea0c943758c2682f7b166e461807d2914f790
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: e6ff56a831282c3abf5eec644573b9a3e88c6543
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899416"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445629"
 ---
 # <a name="introduction-to-classroom-labs"></a>クラスルーム ラボの概要
 Azure Lab Services を使用すると、クラウド内にクラスルーム ラボ環境をすばやく設定することができます。 教師はクラスルーム ラボを作成し、Windows または Linux 仮想マシンをプロビジョニングし、必要なソフトウェアとツール ラボをクラスにインストールし、学生が利用できるようにします。 クラスの学生はラボの仮想マシン (VM) に接続し、プロジェクト、課題、教室での演習に使用します。 

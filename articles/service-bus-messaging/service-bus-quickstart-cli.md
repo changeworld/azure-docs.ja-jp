@@ -1,20 +1,17 @@
 ---
 title: クイック スタート - Azure CLI を使用して Service Bus キューを作成する | Microsoft Docs
 description: このクイック スタートでは、Azure CLI を使用して Service Bus キューを作成する方法について説明します。 その後、サンプル Java アプリケーションを使用してキューとの間でメッセージを送受信します。
-services: service-bus-messaging
 author: spelluru
-manager: timlt
-ms.service: service-bus-messaging
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 04/10/2019
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: e34599b12b8b0c487c6813038951b051d1eaf425
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ed09a72fd5eed72e7a07fefed53bf010a543b658
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "66400259"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85337402"
 ---
 # <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>クイック スタート:Azure CLI を使用して Service Bus キューを作成する
 このクイック スタートでは、Azure CLI と Service Bus Java ライブラリを使って、Service Bus とメッセージを送受信する方法について説明します。 最後に、技術的な詳細に関心がある場合は、サンプル コードの主要な要素の[説明を読む](#understand-the-sample-code)ことができます。

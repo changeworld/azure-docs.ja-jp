@@ -1,24 +1,14 @@
 ---
 title: Azure Lab Services の概要 | Microsoft Docs
 description: Lab Services を利用すると、開発者、テスト担当者、教育者、学生、その他のユーザーが使用できるラボを仮想マシンで簡単に作成、管理、セキュリティ保護できることを説明します。
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
-ms.date: 06/16/2020
-ms.author: spelluru
-ms.openlocfilehash: 1c4fb6660f8eaebe2a65e3dba3f9adbb07f1eb22
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 7661b26d16eb2c2acd53c30889ea791689c1eec0
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84882719"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85442807"
 ---
 # <a name="an-introduction-to-azure-lab-services"></a>Azure Lab Services の概要
 **Azure Lab Services** を使用すると、ラボを作成し、そのインフラストラクチャを Azure で管理できます。 現在、Azure Lab Services でサポートされるマネージド ラボの種類はクラスルーム ラボのみです。 VM の作成から、エラーの処理やインフラストラクチャのスケーリングまで、マネージド ラボの種類用のインフラストラクチャの管理はすべて、サービス自体によって行われます。 IT 管理者が Azure Lab Services にラボ アカウントを作成した後、講師はすぐに自分が担当するクラスのラボを設定し、クラスでの演習に必要な VM の数と種類を指定して、そのクラスにユーザーを追加できます。 ユーザーは、クラスへの登録後、VM にアクセスしてクラスの演習を行うことができます。  
