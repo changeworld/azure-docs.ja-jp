@@ -1,18 +1,18 @@
 ---
 title: DC シリーズ - Azure Virtual Machines
 description: DC シリーズ VM の仕様。
-services: virtual-machines
 author: susaxen
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 02/20/2020
-ms.author: lahugh
-ms.openlocfilehash: 955b3d967d2e62e1158f329a58f040121ca8b416
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.author: jushiman
+ms.openlocfilehash: e5a4c9d1afcc4caa0f9ac0db8b59274006ab3097
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220981"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84676558"
 ---
 # <a name="dcsv2-series"></a>DCsv2 シリーズ
 

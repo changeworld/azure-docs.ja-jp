@@ -5,15 +5,15 @@ description: Azure portal を使用して Direct ピアリングを作成また�
 services: internet-peering
 author: derekolo
 ms.service: internet-peering
-ms.topic: article
+ms.topic: how-to
 ms.date: 5/19/2020
 ms.author: derekol
-ms.openlocfilehash: 59b9079b500817c31586c0a566082a867d7e7f41
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: e49462612b58163c2ac51b78584761d0d8b8bd06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684003"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84700567"
 ---
 # <a name="create-or-modify-a-direct-peering-by-using-the-azure-portal"></a>Azure portal を使用して Direct ピアリングを作成または変更する
 
