@@ -5,17 +5,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 05/29/2020
+ms.topic: how-to
+ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 886a25fbf78f6071db55c02517621146b507f4ac
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 52684520aed8712aed40318f32a83194f7f86683
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221275"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85357853"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>段階的なロールアウトを使用してクラウド認証に移行する (プレビュー)
 
@@ -82,8 +82,6 @@ ms.locfileid: "84221275"
 
 - 段階的なロールアウトで、セキュリティ グループを初めて追加する時点では、UX タイムアウトを回避するために、200 ユーザーに制限されます。グループを追加した後、必要に応じて、そのグループにさらにユーザーを直接追加できます。
 
->[!NOTE]
-> テナント化されたエンドポイントはログイン ヒントを送信しないため、段階的なロールアウトではサポートされていません。 
 
 ## <a name="get-started-with-staged-rollout"></a>段階的なロールアウトを使ってみる
 

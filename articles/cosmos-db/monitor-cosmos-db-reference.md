@@ -4,17 +4,17 @@ description: Azure Cosmos DB からのデータを監視するためのログと
 author: bwren
 services: azure-monitor
 ms.service: azure-monitor
-ms.topic: reference
+ms.topic: how-to
 ms.date: 11/11/2019
 ms.author: bwren
 ms.custom: subject-monitoring
 ms.subservice: logs
-ms.openlocfilehash: d243224192b5761af45d387690f5fb41b84481e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 446d876033b09728ebcbec43c6300884a5c29cd3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77588724"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85262737"
 ---
 # <a name="azure-cosmos-db-monitoring-data-reference"></a>Azure Cosmos DB 監視データのリファレンス
 この記事では、Azure Cosmos DB のパフォーマンスと可用性を分析する目的で収集されるログとメトリック データのリファレンスを提供します。 Azure Cosmos DB の監視データの収集と分析の詳細については、[Cosmos DB の監視](monitor-cosmos-db.md)に関するページを参照してください。
@@ -42,6 +42,7 @@ ms.locfileid: "77588724"
 | **requestLength** | **requestLength_s** | 要求の長さ (バイト単位)。 |
 | **responseLength** | **responseLength_s** | 応答の長さ (バイト単位)。|
 | **resourceTokenUserRid** | **resourceTokenUserRid_s** | [リソース トークン](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#resource-tokens)が認証に使われると、この値は空ではありません。 値は、ユーザーのリソース ID を示します。 |
+| **responseLength** | **responseLength_s** | 応答の長さ (バイト単位)。|
 
 すべての Azure Monitor ログ カテゴリと関連スキーマのリンクの一覧については、[Azure Monitor のログ カテゴリとスキーマ](../azure-monitor/platform/diagnostic-logs-schema.md)に関するページを参照してください。 
 

@@ -1,18 +1,16 @@
 ---
 title: Azure Service Bus を Azure Private Link サービスと統合する
 description: Azure Service Bus を Azure Private Link サービスと統合する方法を説明します
-services: service-bus-messaging
 author: spelluru
 ms.author: spelluru
-ms.date: 03/13/2020
-ms.service: service-bus-messaging
+ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: a78375a3acf5c56d9a59c0f4b6113a063f8c431a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4516405472abf733c8ef06fb5ee5855f8e97d396
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650954"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340443"
 ---
 # <a name="integrate-azure-service-bus-with-azure-private-link"></a>Azure Service Bus を Azure Private Link と統合する
 
@@ -70,7 +68,7 @@ Service Bus 名前空間を Azure Private Link と統合するには、次のエ
     2. プライベート エンドポイント リソース用の**リソース グループ**を選択します。
     3. プライベート エンドポイントの**名前**を入力します。 
     5. プライベート エンドポイントの**リージョン**を選択します。 プライベート エンドポイントが存在するリージョンは仮想ネットワークと同じでなければなりませんが、接続しようとしているプライベート リンク リソースのリージョンとは異なっていても構いません。 
-    6. **[次へ: リソース >]** ボタンがページの下部にあるのでクリックします。
+    6. **Next:次へ: リソース >** ボタンがページの下部にあるのでクリックします。
 
         ![[プライベート エンドポイントの作成 - 基本] ページ](./media/private-link-service/create-private-endpoint-basics-page.png)
 8. **[リソース]** ページで、次の手順を行います。
@@ -79,7 +77,7 @@ Service Bus 名前空間を Azure Private Link と統合するには、次のエ
         2. **リソースの種類**については、 **[リソースの種類]** で **[Microsoft.ServiceBus/namespaces]** を選択します。
         3. **[リソース]** については、ドロップダウン リストから Service Bus 名前空間を選択します。 
         4. **[ターゲット サブリソース]** が **[名前空間]** に設定されていることを確認します。
-        5. **[次へ: 構成 >]** ボタンがページの下部にあるのでクリックします。 
+        5. **Next:次へ: 構成 >** ボタンがページの下部にあるのでクリックします。 
         
             ![[プライベート エンドポイントの作成 - リソース] ページ](./media/private-link-service/create-private-endpoint-resource-page.png)
     2. **[リソース ID またはエイリアスを使って Azure リソースに接続します]** を選択した場合は、次の手順に従います。
@@ -92,7 +90,7 @@ Service Bus 名前空間を Azure Private Link と統合するには、次のエ
 9. **[構成]** ページで、プライベート エンドポイントのデプロイ先とする仮想ネットワーク内のサブネットを選択します。 
     1. **[仮想ネットワーク]** を選択します。 ドロップダウン リストには、現在選択されているサブスクリプションおよび場所内の仮想ネットワークのみが一覧表示されます。 
     2. 選択した仮想ネットワーク内の**サブネット**を選択します。 
-    3. **[次へ: タグ >]** ボタンがページの下部にあるので選択します。 
+    3. **Next:次へ: タグ >** ボタンがページの下部にあるので選択します。 
 
         ![[プライベート エンドポイントの作成 - 構成] ページ](./media/private-link-service/create-private-endpoint-configuration-page.png)
 10. **[タグ]** ページでは、プライベート エンドポイント リソースに関連付ける任意のタグ (名前と値) を作成します。 次に、ページの下部にある **[確認と作成]** ボタンを選択します。 

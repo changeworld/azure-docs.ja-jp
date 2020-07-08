@@ -1,20 +1,14 @@
 ---
 title: Azure Service Bus のよく寄せられる質問 (FAQ) | Microsoft Docs
 description: この記事では、Azure Service Bus に関連する、よく寄せられる質問 (FAQ) の一部の回答を示します。
-services: service-bus-messaging
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 3cd4e69481fb452391e6dc027cb41fd6dae71b7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/23/2020
+ms.openlocfilehash: 35721d174ec4b840185727efe5fb384015040b80
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76760251"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341455"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure Service Bus - よく寄せられる質問 (FAQ)
 
@@ -63,7 +57,7 @@ Azure Service Bus でメッセージを送受信する場合、次のプロト�
 1. コマンド プロンプトで、次のコマンドを実行します。 
 
     ```
-    nslookup <YourNamespaceName>.servicebus.windows.net
+    nslookup <YourNamespaceName>.cloudapp.net
     ```
 2. `Non-authoritative answer` で返された IP アドレスをメモします。 この IP アドレスは静的です。 これが変更されるのは、名前空間を別のクラスターに復元した場合のみです。
 
@@ -72,14 +66,14 @@ Azure Service Bus でメッセージを送受信する場合、次のプロト�
 1. まず、名前空間に対して nslookup を実行します。
 
     ```
-    nslookup <yournamespace>.servicebus.windows.net
+    nslookup <yournamespace>.cloudapp.net
     ```
 2. **non-authoritative answer** セクションの名前をメモします。これは、次のいずれかの形式になります。 
 
     ```
-    <name>-s1.servicebus.windows.net
-    <name>-s2.servicebus.windows.net
-    <name>-s3.servicebus.windows.net
+    <name>-s1.cloudapp.net
+    <name>-s2.cloudapp.net
+    <name>-s3.cloudapp.net
     ```
 3. s1、s2、s3 のサフィックスが付いているそれぞれについて nslookup を実行し、3 つの可用性ゾーンで実行されている 3 つのインスタンスすべての IP アドレスを取得します。 
 
@@ -91,7 +85,7 @@ Azure Service Bus でメッセージを送受信する場合、次のプロト�
 ### <a name="what-should-i-know-before-creating-entities"></a>エンティティを作成する前に知っておく必要があることは何ですか。
 キューとトピックの次のプロパティは変更できません。 エンティティをプロビジョニングするときはこの制限を考慮してください。代替の新しいエンティティを作成しない限り、これらのプロパティは変更できません。
 
-* [パーティション分割]
+* パーティション分割
 * セッション
 * 重複検出
 * Express エンティティ
@@ -122,13 +116,6 @@ Azure Service Bus は最近、課金コンポーネントをアップグレー�
 ## <a name="quotas"></a>Quotas (クォータ)
 
 Service Bus の制限とクォータの一覧については、[Service Bus のクォータの概要][Quotas overview]に関するページを参照してください。
-
-### <a name="does-service-bus-have-any-usage-quotas"></a>Service Bus に使用量クォータはありますか
-マイクロソフトは、既定で、任意のクラウド サービスに関して、お客様の全サブスクリプション全体で算出される月単位の総使用量クォータを設定しています。 上限を超える量が必要な場合は、カスタマー サービスまでお問い合わせください。お客様に必要な使用量を確認したうえで、これらの上限を適切に調整させていただきます。 Service Bus の場合、総使用量クォータは、1 か月あたり 50 億メッセージです。
-
-マイクロソフトは、ある月に使用量クォータを超えた場合に、お客様のアカウントを無効にする権利を保有しています。その場合は電子メールでお客様にその旨をお知らせし、何度かお客様に連絡を試みたうえで、措置を講じることといたします。 そのクォータを超えたお客様についても、その超過分は課金の対象となります。
-
-Azure の他のサービスと同様、Service Bus では、リソースが公平に使用されるように一連のクォータを適用します。 これらのクォータの詳細については、「[Service Bus のクォータ][Quotas overview]」を参照してください。
 
 ### <a name="how-to-handle-messages-of-size--1-mb"></a>1 MB を超えるサイズのメッセージを処理する方法を教えてください
 Service Bus メッセージング サービス (キューおよびトピック/サブスクリプション) では、アプリケーションは、最大 256 KB (Standard レベル) または 1 MB (Premium レベル) のサイズのメッセージを送信できます。 1 MB を超えるサイズのメッセージを扱う場合は、[このブログの投稿](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern)で説明されている要求チェック パターンを使用します。

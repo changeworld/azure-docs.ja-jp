@@ -1,18 +1,14 @@
 ---
 title: Azure Relay と Azure Private Link サービスの統合
 description: Azure Relay を Azure Private Link サービスと統合する方法を説明します
-services: service-bus-relay
-author: spelluru
-ms.author: spelluru
-ms.date: 05/13/2020
-ms.service: service-bus-relay
+ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: 3c2426b65e16d8d6bcdd9733280c8f97f4aa79d6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a113e52b892a25fd2b12a18d73df443d9a9866f2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657583"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85317321"
 ---
 # <a name="integrate-azure-relay-with-azure-private-link-preview"></a>Azure Relay と Azure Private Link (プレビュー) の統合
 Azure **Private Link サービス**を使用すると、仮想ネットワーク内のプライベート エンドポイントを介して、Azure サービス (Azure Relay、Azure Service Bus、Azure Event Hubs、Azure Storage、Azure Cosmos DB など) や、Azure でホストされている顧客またはパートナーのサービスにアクセスできます。 詳細については、「[Azure Private Link とは (プレビュー)](../private-link/private-link-overview.md)」を参照してください。
@@ -56,19 +52,19 @@ Azure Relay 名前空間を Azure Private Link (プレビュー) と統合する
     2. プライベート エンドポイント リソース用の**リソース グループ**を選択します。
     3. プライベート エンドポイントの**名前**を入力します。 
     5. プライベート エンドポイントの**リージョン**を選択します。 プライベート エンドポイントは仮想ネットワークと同じリージョンに存在する必要がありますが、接続しようとしている Azure Relay 名前空間とは異なるリージョンでも構いません。 
-    6. **[次へ: リソース >]** ボタンがページの下部にあるのでクリックします。
+    6. **Next:次へ: リソース >** ボタンがページの下部にあるのでクリックします。
 
         ![[プライベート エンドポイントの作成 - 基本] ページ](./media/private-link-service/create-private-endpoint-basics-page.png)
 8. **[リソース]** ページで、次の手順を行います。
-    1. 接続方法として **[マイ ディレクトリ内の Azure リソースに接続します]** を選択し、名前空間に対する所有者または共同作成者のアクセス権があり、その名前空間がプライベート エンドポイントと同じディレクトリ内にある場合は、次の手順に従います。 
+    1. 接続方法として **[マイ ディレクトリ内の Azure リソースに接続します]** を選択し、名前空間に対する所有者または共同作成者のアクセス権があり、その名前空間がプライベート エンドポイントと同じディレクトリ内にある場合は、次の手順を行います。 
         1. **Azure Relay 名前空間**が存在する **Azure サブスクリプション**を選択します。 
         2. **リソースの種類**については、 **[リソースの種類]** で **[Microsoft.Relay/namespaces]** を選択します。
         3. **[リソース]** で、ドロップダウン リストから Relay 名前空間を選択します。 
         4. **[ターゲット サブリソース]** が **[名前空間]** に設定されていることを確認します。
-        5. **[次へ: 構成 >]** ボタンがページの下部にあるのでクリックします。 
+        5. **Next:次へ: 構成 >** ボタンがページの下部にあるのでクリックします。 
         
             ![[プライベート エンドポイントの作成 - リソース] ページ](./media/private-link-service/create-private-endpoint-resource-page.png)    
-    2. 名前空間がプライベート エンドポイントと同じディレクトリにないために、 **[リソース ID またはエイリアスを使って Azure リソースに接続します]** を選択した場合は、次の手順に従います。
+    2. 名前空間がプライベート エンドポイントと同じディレクトリにないために **[リソース ID またはエイリアスを使って Azure リソースに接続します]** を選択した場合は、次の手順を行います。
         1. **リソース ID** または**別名**を入力します。 それは誰かが自分と共有しているリソース ID または別名とすることができます。 リソース ID を取得する最も簡単な方法は、Azure portal で Azure Relay 名前空間に移動し、`/subscriptions/` から始まる URI の部分をコピーすることです。 たとえば、`/subscriptions/000000000-0000-0000-0000-000000000000000/resourceGroups/myresourcegroup/providers/Microsoft.Relay/namespaces/myrelaynamespace.` をコピーします。 
         2. **[ターゲット サブリソース]** では、「**名前空間**」と入力します。 これは、ご自分のプライベート エンドポイントでアクセスできるサブリソースの種類です。
         3. (省略可能) **要求メッセージ**を入力します。 このメッセージは、プライベート エンドポイント接続の管理中にリソース所有者に表示されます。
@@ -81,7 +77,7 @@ Azure Relay 名前空間を Azure Private Link (プレビュー) と統合する
     3. プライベート エンドポイントをプライベート DNS ゾーンと統合する場合は、 **[プライベート DNS ゾーンとの統合]** を有効にします。 
     
         プライベート エンドポイントに非公開で接続するには、DNS レコードが必要です。 プライベート エンドポイントと**プライベート DNS ゾーン**を統合することをお勧めします。 また、独自の DNS サーバーを利用したり、仮想マシン上のホスト ファイルを使用して DNS レコードを作成したりすることもできます。 詳細については、「[Azure プライベート エンドポイントの DNS 構成](../private-link/private-endpoint-dns.md)」をご覧ください。 この例では、 **[プライベート DNS ゾーンと統合する]** オプションが選択されており、プライベート DNS ゾーンが自動的に作成されます。 
-    3. **[次へ: タグ >]** ボタンがページの下部にあるので選択します。 
+    3. **Next:次へ: タグ >** ボタンがページの下部にあるので選択します。 
 
         ![[プライベート エンドポイントの作成 - 構成] ページ](./media/private-link-service/create-private-endpoint-configuration-page.png)
 10. **[タグ]** ページでは、プライベート エンドポイントおよびプライベート DNS ゾーン (オプションを有効にした場合) と関連付けるタグ (名前と値) を作成します。 次に、ページの下部にある **[確認と作成]** ボタンを選択します。 
@@ -217,7 +213,7 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName  `
 
 **[ネットワーク]** タブで、次の操作を行います。 
 
-1. **[仮想ネットワーク]** と **[サブネット]** を指定します。 プライベート エンドポイントをデプロイした Virtual Network を選択する必要があります。
+1. **[仮想ネットワーク]** と **[サブネット]** を指定します。 プライベート エンドポイントをデプロイした仮想ネットワークを選択する必要があります。
 2. **[パブリック IP]** リソースを指定します。
 3. **[NIC ネットワーク セキュリティ グループ]** で **[なし]** を選択します。
 4. **[負荷分散]** で **[いいえ]** を選択します。

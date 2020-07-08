@@ -1,18 +1,14 @@
 ---
 title: Azure Event Hubs のネットワーク セキュリティ
 description: この記事では、プライベート エンドポイントからのアクセスを構成する方法について説明します。
-services: event-hubs
-author: spelluru
-ms.service: event-hubs
 ms.topic: conceptual
-ms.date: 03/11/2020
-ms.author: spelluru
-ms.openlocfilehash: 46e6a9ecc2ed09aed1076f12c1f61a966485bdad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: de4c5c6ddc658aab549ccf6960edbca3285e338d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80422779"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85312838"
 ---
 # <a name="network-security-for-azure-event-hubs"></a>Azure Event Hubs のネットワーク セキュリティ 
 この記事では、Azure Event Hubs で次のセキュリティ機能を使用する方法について説明します。 

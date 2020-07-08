@@ -11,16 +11,16 @@ ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/15/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 635924d16fb9baee40fbc076cf8ace1cf26fb511
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3d3e952d79698d128b5f2b7d9a8ac465c57754bc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80331511"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85359247"
 ---
 # <a name="azure-active-directory-connect-health-alert-catalog"></a>Azure Active Directory Connect Health のアラート カタログ 
 
