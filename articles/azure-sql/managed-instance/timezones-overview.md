@@ -2,7 +2,8 @@
 title: Azure SQL Managed Instance のタイム ゾーン
 description: Azure SQL Managed Instance のタイム ゾーンの詳細について説明します
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
+ms.subservice: operations
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
@@ -10,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
 ms.date: 05/25/2020
-ms.openlocfilehash: df4d91cf6dffaeb9309c5304382b415f7adde8b5
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 84df755d4a89b83a0842a74a619fad5275396dec
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309681"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711359"
 ---
 # <a name="time-zones-in-azure-sql-managed-instance"></a>Azure SQL Managed Instance のタイム ゾーン
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

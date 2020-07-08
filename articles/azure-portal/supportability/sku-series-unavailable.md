@@ -4,15 +4,15 @@ description: 一部の SKU シリーズは、このリージョンについて�
 services: Azure Supportability
 author: stevendotwang
 ms.service: azure-supportability
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 01/27/2020
 ms.author: xingwan
-ms.openlocfilehash: 6a88cb4ff2385edd3c867c84774df1d0e21422be
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 87533b2e0c1397d0b8b2e9a89450a80a75c5e348
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835990"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763824"
 ---
 # <a name="region-or-sku-unavailable"></a>リージョンまたは SKU が利用できない
 

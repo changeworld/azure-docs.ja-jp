@@ -2,7 +2,7 @@
 title: Azure SQL Managed Instance のパブリック エンドポイントを保護する
 description: マネージド インスタンスを使用して Azure SQL Managed Instance のパブリック エンドポイントを安全に使用する
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: sqldbrb=1
 ms.topic: conceptual
@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/08/2019
-ms.openlocfilehash: 3fa59620c07cc17435ca29bffbc98e88e35b0ca7
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: a3339d03607c2286dabbac73fd0b683c61552dc0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310140"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708605"
 ---
 # <a name="use-azure-sql-managed-instance-securely-with-public-endpoints"></a>パブリック エンドポイントで安全に Azure SQL Managed Instance を使用する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

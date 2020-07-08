@@ -4,15 +4,15 @@ description: このページでは、サイト間 VPN を使用して Azure Expr
 services: networking
 author: rambk
 ms.service: expressroute
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/05/2020
 ms.author: rambala
-ms.openlocfilehash: a6a22b667bc66d6ee69bfbd7ad1db88f72d8df0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb6ebdcae837216efac5b9333789dee032219251
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687818"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738092"
 ---
 # <a name="using-s2s-vpn-as-a-backup-for-expressroute-private-peering"></a>ExpressRoute プライベート ピアリングのバックアップとしてのサイト間 VPN の使用
 

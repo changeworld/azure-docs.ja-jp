@@ -2,7 +2,7 @@
 title: SQL Managed Instance の監査
 description: T-SQL を使って Azure SQL Managed Instance の監査を始める方法について説明します
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: sqldbrb=1
 ms.devlang: ''
@@ -13,12 +13,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 05/26/2020
-ms.openlocfilehash: 03d296b9525b2f3afb3eb5a1692b72aa8556fd0f
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 6599963b216409103f72b4e46a30961c6d60e32c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219786"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84695557"
 ---
 # <a name="get-started-with-azure-sql-managed-instance-auditing"></a>Azure SQL Database Managed Instance の監査の概要
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

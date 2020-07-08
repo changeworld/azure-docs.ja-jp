@@ -3,7 +3,7 @@ title: PowerShell:Bring Your Own Key (BYOK) TDE を有効にする
 titleSuffix: Azure SQL Managed Instance
 description: PowerShell を使用して、保存時の暗号化に Bring Your Own Key (BYOK) Transparent Data Encryption (TDE) を使用するように Azure SQL Managed Instance を構成する方法について説明します。
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: sqldbrb=1
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: vanto, carlrab
 ms.date: 11/05/2019
-ms.openlocfilehash: 348b69933ae6b3706cf16642a138f1b00247cb5a
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: eba53254d58ddfa2577212723b7234bbb5939a6b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219188"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708437"
 ---
 # <a name="transparent-data-encryption-in-sql-managed-instance-using-your-own-key-from-azure-key-vault"></a>Azure Key Vault の独自のキーを使用した SQL Managed Instance での Transparent Data Encryption
 
