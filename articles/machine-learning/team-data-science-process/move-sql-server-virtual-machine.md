@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: be1abe415955b52cbd639faef703e5c2fbd257b6
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 82ef70677dd0ede4ddfdd0899747c18f335da5a7
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194365"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077033"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Azure 仮想マシン上の SQL Server にデータを移動する
 
@@ -187,11 +187,11 @@ SSIS は 2 つの Studio 環境で使用できます。 詳細については、
 
     SQL Server コンピューターから BCP を実行する場合のフォーマット ファイルの生成
 
-        bcp dbname..tablename format nul -c -x -f exportformatfilename.xml -S servername\sqlinstance -T -t \t -r \n
+    `bcp dbname..tablename format nul -c -x -f exportformatfilename.xml -S servername\sqlinstance -T -t \t -r \n`
 
     SQL Server に対して BCP をリモート実行する場合のフォーマット ファイルの生成
 
-        bcp dbname..tablename format nul -c -x -f  exportformatfilename.xml  -U username@servername.database.windows.net -S tcp:servername -P password  --t \t -r \n
+    `bcp dbname..tablename format nul -c -x -f  exportformatfilename.xml  -U username@servername.database.windows.net -S tcp:servername -P password  --t \t -r \n`
 4. 「[ファイル ソースからのデータの移動](#filesource_to_sqlonazurevm) 」セクションで説明されているいずれかの方法を使用して、フラット ファイルのデータを SQL Server に移動します。
 
 ### <a name="sql-database-migration-wizard"></a><a name="sql-migration"></a>SQL Database 移行ウィザード

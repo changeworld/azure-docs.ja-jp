@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 873bc4ab5e435b91ff4400a39c92db0d0bb9baa8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3ad06d0e37b7cf464c311e28e546e1b7f1ebd183
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74968767"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058250"
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>Apple FairPlay または Microsoft PlayReady による HLS コンテンツの保護
 
@@ -127,7 +127,7 @@ FairPlay で暗号化されたストリームを再生するには、まず実�
 ## <a name="use-fairplay-key-delivery-by-player-apps"></a>プレーヤー アプリによる FairPlay キー配信の使用
 プレーヤー アプリは、iOS SDK を使用して開発できます。 FairPlay コンテンツを再生できるようにするには、ライセンス交換プロトコルを実装する必要があります。 このプロトコルは、Apple によって指定されていません。 キー配信の要求を送信する方法は、各アプリに従います。 Media Services FairPlay キー配信サービスでは、SPC が www-form-url でエンコードされた投稿メッセージとなることが想定されます。これは次のような形式になります。
 
-    spc=<Base64 encoded SPC>
+`spc=<Base64 encoded SPC>`
 
 > [!NOTE]
 > Azure Media Player は FairPlay の再生をサポートします。 詳しくは、[Azure Media Player のドキュメント](https://amp.azure.net/libs/amp/latest/docs/index.html)をご覧ください。

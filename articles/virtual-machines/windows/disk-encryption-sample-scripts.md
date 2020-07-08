@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: e5e0a970df680df43a7bd303636b3d81bda3e141
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: 1a0bac96c3daa0d81786b1a3facf6ccd328cd579
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82085707"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076761"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure Disk Encryption のサンプル スクリプト 
 
@@ -76,22 +76,30 @@ Azure Disk Encryption の前提条件に既に精通している場合は、[Azu
 ### <a name="install-bitlocker-feature-components"></a>BitLocker 機能コンポーネントのインストール
 Windows Server 2012 以降の場合は、次のコマンドを使用します。
 
-    dism /online /Enable-Feature /all /FeatureName:BitLocker /quiet /norestart
+```console
+dism /online /Enable-Feature /all /FeatureName:BitLocker /quiet /norestart
+```
 
 Windows Server 2008 R2 の場合は、次のコマンドを使用します。
 
-    ServerManagerCmd -install BitLockers
+```console
+ServerManagerCmd -install BitLockers
+```
 
 ### <a name="prepare-the-os-volume-for-bitlocker-by-using-bdehdcfg"></a>`bdehdcfg` を使用して BitLocker の OS ボリュームを準備する
 OS のパーティションを圧縮して、BitLocker 用にコンピューターを準備するには、必要に応じて、[bdehdcfg](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-basic-deployment) を実行します。
 
-    bdehdcfg -target c: shrink -quiet 
+```console
+bdehdcfg -target c: shrink -quiet 
+```
 
 ### <a name="protect-the-os-volume-by-using-bitlocker"></a>BitLocker を使用して OS ボリュームを保護する
 ブート ボリュームでの暗号化を、外部キーの保護機能を使用して有効化するには、[`manage-bde`](https://technet.microsoft.com/library/ff829849.aspx) コマンドを使用します。 また、外部ドライブまたは外部ボリューム上に外部キー (.bek ファイル) を配置します。 システム/ブート ボリュームでの暗号化は、次回のリブート後に有効になります。
 
-    manage-bde -on %systemdrive% -sk [ExternalDriveOrVolume]
-    reboot
+```console
+manage-bde -on %systemdrive% -sk [ExternalDriveOrVolume]
+reboot
+```
 
 > [!NOTE]
 > BitLocker を使用して外部キーを取得する場合は、そのためのデータ/リソース VHD を別個に使用して VM を準備してください。

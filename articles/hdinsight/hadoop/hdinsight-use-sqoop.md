@@ -5,14 +5,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/06/2019
-ms.openlocfilehash: 091ce1cc0b2540a02e62e1e85c5515f6aa62b93c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 165b7d00c3cf307e7996e84a35bb2a202f448cc0
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84018839"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076880"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>HDInsight の Hadoop での Apache Sqoop の使用
 
