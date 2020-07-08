@@ -66,6 +66,8 @@
       href: load-balancer-standard-availability-zones.md
     - name: 組み込みのセキュリティ制御
       href: load-balancer-security-controls.md
+    - name: バックエンド プールの管理
+      href: backend-pool-management.md
 - name: 方法
   items:
     - name: 仮想マシン スケール セット

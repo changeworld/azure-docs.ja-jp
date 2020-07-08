@@ -91,7 +91,7 @@
       href: service-bus-outages-disasters.md
     - name: Throttling
       href: service-bus-throttling.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: 認証と権限承認
           href: service-bus-authentication-and-authorization.md
@@ -182,6 +182,10 @@
           href: service-bus-nodejs-how-to-use-queues.md
         - name: メッセージの発行とサブスクライブ (レガシ azure-sb)
           href: service-bus-nodejs-how-to-use-topics-subscriptions.md
+    - name: 統合
+      items:
+        - name: RabbitMQ との統合
+          href: service-bus-integrate-with-rabbitmq.md
     - name: 管理する
       items:
         - name: メッセージング ユニットを自動的に更新する
