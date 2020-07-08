@@ -123,7 +123,7 @@
           href: partitioning-overview.md
         - name: パーティション分割と水平スケーリング
           href: partition-data.md
-        - name: 合成パーティション キーの作成
+        - name: 合成パーティション キー
           href: synthetic-partition-keys.md
     - name: プロビジョニング スループット
       items:

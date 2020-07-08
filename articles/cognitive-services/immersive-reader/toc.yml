@@ -11,6 +11,10 @@
       href: ./quickstarts/client-libraries.md
 - name: チュートリアル
   items:
+    - name: イマーシブ リーダーの起動 (Android)
+      href: tutorial-android.md
+    - name: イマーシブ リーダーの起動 (iOS)
+      href: tutorial-ios.md
     - name: イマーシブ リーダーの起動 (Python)
       href: tutorial-python.md
     - name: 複数のイマーシブ リーダー リソースの使用

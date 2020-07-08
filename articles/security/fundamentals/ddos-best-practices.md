@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: terrylan
-ms.openlocfilehash: 8be1f1161ac1c4611ddb2a5ec61592394014c488
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9d44c1da27a1440e105ce76436bc284a537503c7
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548676"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054442"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS Protection - 回復性の高いソリューションの設計
 
@@ -269,7 +269,5 @@ Application Gateway WAF SKU (禁止モード) を構成して、レイヤー 7 (
 ## <a name="next-steps"></a>次のステップ
 
 * [クラウドにおける共同責任](shared-responsibility.md)
-
 * [Azure DDoS Protection 製品のページ](https://azure.microsoft.com/services/ddos-protection/)
-
 * [Azure DDoS Protection のドキュメント](/azure/virtual-network/ddos-protection-overview)
