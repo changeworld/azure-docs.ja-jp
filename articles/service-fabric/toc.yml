@@ -278,6 +278,8 @@
               href: service-fabric-backup-restore-service-trigger-restore.md
             - name: パーティションのオンデマンド バックアップ
               href: service-fabric-backup-restore-service-ondemand-backup.md
+            - name: リライアブル コレクションのバックアップをオフラインで表示および編集する
+              href: backup-explorer.md
         - name: 初期化子 CodePackage
           href: initializer-codepackages.md
         - name: RunToCompletion
