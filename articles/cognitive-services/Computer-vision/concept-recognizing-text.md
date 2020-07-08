@@ -1,96 +1,97 @@
 ---
-title: 印刷されたテキストと手書きのテキストの認識 - Computer Vision
+title: 光学式文字認識 (OCR) - Computer Vision
 titleSuffix: Azure Cognitive Services
-description: 画像に含まれる印刷されたテキストと手書きのテキストの Computer Vision API を使用した認識に関する概念。
+description: 印刷されたテキストと手書きのテキストが含まれる画像やドキュメントからの、Computer Vision API を使用した光学式文字認識 (OCR) に関連する概念です。
 services: cognitive-services
-author: PatrickFarley
-manager: nitinme
+author: msbbonsu
+manager: netahw
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 04/17/2019
-ms.author: pafarley
+ms.date: 06/23/2020
+ms.author: t-bebon
 ms.custom: seodec18
-ms.openlocfilehash: 5d0a9771e5b999028996676ea72f8def3c5d63cf
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: d1c642a660b24cfc54c9c4308b8956582e13d50a
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589858"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954742"
 ---
-# <a name="recognize-printed-and-handwritten-text"></a>印刷されたテキストと手書きのテキストの認識
+# <a name="optical-character-recognition-ocr"></a>光学式文字認識 (OCR)
 
-Computer Vision では、画像に出現する印刷されたテキストまたは手書きのテキストを検出して抽出する複数のサービスが提供されています。 これは、ノート取り、医療記録、セキュリティ、銀行取引などのさまざまなシナリオで役立ちます。 以下の 3 つのセクションでは、3 つの異なるテキスト認識 API の詳細を説明します。それぞれ、異なるユース ケースに最適化されています。
+Computer Vision には、画像や PDF ドキュメントから印刷されたテキストまたは手書きのテキストを抽出する、ディープ ラーニング ベースの新しい光学式文字認識 (OCR) 機能が含まれます。 Computer Vision を使うと、アナログ ドキュメント (画像、スキャンされたドキュメント) とデジタル化されたドキュメントの両方からテキストを抽出できます。 ライセンス プレートの写真やシリアル番号の付いたコンテナーなど、整っていない画像からでも、ドキュメント (請求書、請求書、財務報告、記事など) からでも、テキストを抽出することができます。 この OCR 機能は、クラウドまたはオンプレミス (コンテナー) の管理サービスの一部として利用できます。 また、エンタープライズ グレードのコンプライアンスとプライバシーのニーズに対応するため、仮想ネットワークとプライベート エンドポイントもサポートされています。
 
-## <a name="read-api"></a>Read API
+## <a name="read-api"></a>Read API 
 
-Read API では、最新の認識モデルを使用して画像内のテキスト コンテンツが検出され、識別されたテキストはコンピューターで読み取り可能な文字ストリームに変換されます。 これは、テキストが多く含まれる画像 (デジタル スキャンされたドキュメントなど) や、視覚ノイズが多く含まれる画像向けに最適化されています。 各テキスト行に対してどの認識モデルを使用するかが決定されるため、印刷されたテキストと手書きのテキストの両方を含む画像がサポートされます。 大きなドキュメントは結果を返すまでに数分かかる場合があるため、Read API は非同期的に実行されます。
+Computer Vision の [Read API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) は、印刷されたテキスト (7 つの言語)、手書きのテキスト (英語のみ)、数字、通貨記号を、画像や複数ページの PDF ドキュメントから抽出する、Microsoft の最新の OCR テクノロジです。 整然としていないテキストの多い画像や、言語が混ざっている複数ページの PDF ドキュメントからテキストを抽出するように最適化されています。 同じ画像またはドキュメントからの、印刷されたテキストと手書きのテキスト (英語のみ) の検出がサポートされています。 サポートされている言語の完全な一覧については、「[Computer Vision の言語サポート](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#text-recognition)」を参照してください。
 
-読み取り操作では、認識された単語の元の行グループが出力で維持されます。 各行は境界ボックスの座標を持ち、行内の各単語もそれ自体の座標を持っています。 単語が低い信頼度で認識された場合は、その情報も伝えられます。 詳細については、[Read API v2.0 のリファレンス ドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)と [Read API v3.0 のリファレンス ドキュメント](https://aka.ms/computer-vision-v3-ref)をご覧ください。
+### <a name="how-it-works"></a>しくみ
 
-Read 操作では、英語、スペイン語、ドイツ語、フランス語、イタリア語、ポルトガル語、およびオランダ語のテキストを認識できます。
+[Read API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) では、最大 2,000 ページまでのテキストの多いドキュメントがサポートされているため、非同期的に実行されます。 最初のステップは、読み取り操作を呼び出すことです。 読み取り操作では、入力として画像または PDF ドキュメントが取得されて、操作 ID が返されます。 
 
-### <a name="image-requirements"></a>イメージの要件
+2 番目のステップは、[結果の取得](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750)操作を呼び出すことです。 この操作では、読み取り操作によって作成された操作 ID が取得されます。 その後、画像またはドキュメントから抽出されたテキスト コンテンツが JSON 形式で返されます。 JSON の応答では、認識された単語の元の行グループが維持されます。 抽出されたテキスト行とその境界ボックスの座標が含まれます。 各テキスト行には、抽出されたすべての単語と、その座標および信頼度スコアが含まれています。
 
-Read API は、次の要件を満たす画像で動作します。
+次の図に示されているように、Read では、必要に応じて、画像の水平軸を中心とした回転のオフセットを度数で返すことによって、認識されたページの回転が修正されます。
 
-- 画像は、JPEG、PNG、BMP、PDF、または TIFF 形式である必要があります。
-- 画像の寸法は、50 x 50 から 10000 x 10000 ピクセルの間である必要があります。 PDF ページは、17 x 17 インチ以下である必要があります。
-- 画像のファイル サイズは、20 メガバイト (MB) 未満である必要があります。
+![回転されている画像と、読み取られて輪郭が描かれたテキスト](./Images/vision-overview-ocr-read.png)
 
-### <a name="limitations"></a>制限事項
+C# と REST API を使用した OCR の実装については、[印刷されたテキストと手書きテキストの抽出](./QuickStarts/CSharp-hand-text.md)に関するクイックスタートに従ってください。
 
-Free レベルのサブスクリプションを使用している場合、Read API では PDF または TIFF ドキュメントの最初の 2 ページのみが処理されます。 有料サブスクリプションでは、最大 200 ページが処理されます。 また、API で検出される行数は、1 ページあたり最大 300 行であることにも注意してください。
+### <a name="input-requirements"></a>入力の要件
 
-## <a name="ocr-optical-character-recognition-api"></a>OCR (光学式文字認識) API
+Read API は、次の入力を受け取ります。
+* サポートされているファイル形式: JPEG、PNG、BMP、PDF、TIFF
+* PDF と TIFF については、最大 2,000 ページまで処理されます。 Free レベルのサブスクライバーの場合は、最初の 2 ページだけが処理されます。
+* ファイル サイズは 50 MB 未満でなければならず、寸法は 50 x 50 ピクセル以上 10,000 x 10,000 ピクセル以下です。
+* PDF の寸法は、17 x 17 インチ以下である必要があります (リーガル サイズまたは A3 サイズ以下の用紙に対応します)。
 
-Computer Vision の光学式文字認識 (OCR) API は Read API に似ていますが、同期的に実行され、大きいドキュメントには最適化されていません。 以前の認識モデルを使用しますが、より多くの言語で動作します。サポートされている言語の完全な一覧については、[言語サポート](language-support.md#text-recognition)に関するページを参照してください。
 
-必要に応じて、OCR は、イメージの水平軸を中心とした回転のオフセットを度数で返すことによって、認識されたテキストの回転を修正します。 また、OCR では、以下の図に示すように、各単語のフレーム座標も提供されます。
+### <a name="text-from-images"></a>画像からのテキスト
 
-![回転されている画像と、読み取られて輪郭が描かれたテキスト](./Images/vision-overview-ocr.png)
+次の Read API の出力では、さまざまな角度、色、フォントのテキストが含まれる画像から抽出されたテキスト行と単語が示されています
 
-詳しくは、[OCR のリファレンス ドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc)をご覧ください。
+![回転されている画像と、読み取られて輪郭が描かれたテキスト](./Images/text-from-images-example.png)
 
-### <a name="image-requirements"></a>イメージの要件
+### <a name="text-from-documents"></a>ドキュメントからのテキスト
 
-OCR API は、次の要件を満たす画像で動作します。
+画像に加えて、Read API は PDF ドキュメントを入力として受け取ります。
 
-* 画像は、JPEG、PNG、GIF、または BMP 形式になっている必要があります。
-* 入力イメージのサイズは、50 x 50 から 4200 x 4200 ピクセルまでにする必要があります。
-* イメージ内のテキストは、90 度の倍数に、40 度までの小角度を加えた度数で回転させることができます。
+![回転されている画像と、読み取られて輪郭が描かれたテキスト](./Images/text-from-documents-example.png)
 
-### <a name="limitations"></a>制限事項
 
-テキストが主な写真では、部分的に認識された単語により誤検知が発生する場合があります。 一部の写真、特にテキストのない写真では、イメージの種類によって、精度が異なる場合があります。
+### <a name="handwritten-text-in-english"></a>英語の手書きテキスト
 
-## <a name="recognize-text-api"></a>Recognize Text API
+現在、読み取り操作の手書きテキストの抽出でサポートされてるのは、英語だけです。
 
-> [!NOTE]
-> Recognize Text API は非推奨であり、Read API が優先されます。 Read API は同様の機能を備え、PDF、TIFF、および複数ページのファイルを処理するように更新されています。
+![回転されている画像と、読み取られて輪郭が描かれたテキスト](./Images/handwritten-example.png)
 
-Recognize Text API は OCR に似ていますが、非同期的に実行され、更新された認識モデルを使用します。 詳しくは、[Recognize Text API のリファレンス ドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200)をご覧ください。
+### <a name="printed-text-in-supported-languages"></a>サポートされている言語での印刷テキスト
 
-### <a name="image-requirements"></a>イメージの要件
+Read API の印刷テキストの抽出でサポートされている言語は、英語、スペイン語、ドイツ語、フランス語、イタリア語、ポルトガル語、オランダ語です。 さらに多くの言語をサポートする必要があるシナリオの場合は、このドキュメントの「OCR API」で概要を参照してください。 すべての[サポートされている言語](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#text-recognition)の一覧を参照してください
 
-Recognize Text API は、次の要件を満たす画像で動作します。
+![回転されている画像と、読み取られて輪郭が描かれたテキスト](./Images/supported-languages-example.png)
 
-- 画像は、JPEG、PNG、または BMP 形式になっている必要があります。
-- 画像の寸法は、50 x 50 から 4200 x 4200 ピクセルの間である必要があります。
-- 画像のファイル サイズは、4 メガバイト (MB) 未満である必要があります。
+### <a name="mixed-languages-support"></a>混合言語のサポート
 
-## <a name="limitations"></a>制限事項
+Read API では、複数の言語が含まれる画像とドキュメントがサポートされており、一般に混合言語ドキュメントと呼ばれます。 これは、テキスト コンテンツを抽出する前に、ドキュメントの各テキスト行を検出された言語に分類することによって行われます。
 
-テキスト認識操作の精度は、画像の品質によって異なります。 次の要因によって読み取りが不正確になる可能性があります。
+![回転されている画像と、読み取られて輪郭が描かれたテキスト](./Images/mixed-language-example.png)
 
-* ぼやけたイメージ。
-* 手書きまたは筆記体のテキスト。
-* アーティスティックなフォント スタイル。
-* 小さなテキスト サイズ。
-* 複雑な背景、影、テキスト上のグレア、射影ひずみ。
-* 単語の先頭の大文字のサイズが大きすぎるか欠落している。
-* 下付き、上付き、または取り消し線テキスト。
+### <a name="data-privacy-and-security"></a>データのプライバシーとセキュリティ
+
+Cognitive Services 全般に言えることですが、Read サービスを使用する開発者は、顧客データに関する Microsoft のポリシーに留意する必要があります。 詳細については、[Microsoft セキュリティ センター](https://www.microsoft.com/en-us/trust-center/product-overview)の Cognitive Services のページを参照してください。
+
+### <a name="deploy-on-premises"></a>オンプレミスに展開する
+
+Read は Docker コンテナー (プレビュー) としても利用でき、独自の環境に新しい OCR 機能を展開できます。 コンテナーは、特定のセキュリティ要件とデータ ガバナンス要件に適しています。 [Read コンテナーをインストールして実行する方法](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers)に関するページを参照してください。
+
+
+## <a name="ocr-api"></a>OCR API
+
+[OCR API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) では、古い認識モデルが使用されており、画像のみがサポートされ、同期的に実行されて、検出されたテキストは直ちに返されます。 Read API より[多くの言語](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#text-recognition)がサポートされています。
 
 ## <a name="next-steps"></a>次のステップ
 
-[テキストの抽出 (読み取り)](./QuickStarts/CSharp-hand-text.md) に関するクイック スタートに従って、簡単な C# アプリにテキスト認識を実装します。
+- [Read 3.0 REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) について学習します。
+- [テキストの抽出](./QuickStarts/CSharp-hand-text.md)に関するクイックスタートに従い、C#、Java、JavaScript、または Python と REST API を使用して、OCR を実装します。
