@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/12/2019
-ms.openlocfilehash: 58f7d99af638c8d03bbce46b7fcf8204aaca11d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bef655c4dd30147733b28252199a7d8b58df42f8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75435746"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085992"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>HDInsight に含まれる MapReduce サンプルを実行する
 

@@ -5,15 +5,15 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: 299d242c38152db6a471159d1f3d2803598c1832
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b2a195e0a3145e97bf101b3354c2781fff15801
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75744861"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085975"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Azure Active Directory ユーザーを HDInsight クラスターに同期する
 
