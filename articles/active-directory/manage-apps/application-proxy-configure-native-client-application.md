@@ -114,7 +114,7 @@ if (authResult != null)
 | 必要な情報 | Azure AD ポータルで見つける方法 |
 | --- | --- |
 | \<Tenant ID> | **[Azure Active Directory]**  >  **[プロパティ]**  >  **[ディレクトリ ID]** |
-| \<App ID of the Native app> | **[アプリケーションの登録] > ** *ネイティブ アプリケーション* >  **[概要]**  >  **[アプリケーション ID]** |
+| \<App ID of the Native app> | **[アプリケーションの登録]**  > *ネイティブ アプリケーション* >  **[概要]**  >  **[アプリケーション ID]** |
 | \<スコープ > | **[アプリケーション 登録]**  > *ネイティブ アプリケーション* >  **[API 権限]** > Permisson API (user_impersonation) をクリックします > 右側に、**user_impersonation** というキャプション付きのパネルが表示されます。 > スコープは、編集ボックスの URL です。
 | \<プロキシ アプリの Url> | API への外部 URL とパス
 
