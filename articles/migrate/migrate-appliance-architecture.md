@@ -2,13 +2,13 @@
 title: Azure Migrate アプライアンスのアーキテクチャ
 description: サーバーの評価と移行に使用される Azure Migrate アプライアンスの概要について説明します。
 ms.topic: conceptual
-ms.date: 03/23/2020
-ms.openlocfilehash: d55d123bb056b46b5e78dd8ac836eeaf9b42fe70
-ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
+ms.date: 06/09/2020
+ms.openlocfilehash: 0752f7afa7ff8d25f938084fd9e6e863d885f9aa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80389020"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84770902"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Azure Migrate アプライアンスのアーキテクチャ
 
@@ -51,8 +51,8 @@ Azure Migrate アプライアンスは、次のシナリオで使用します。
 **操作** | **詳細** | **アクセス許可**
 --- | --- | ---
 **ソース プロバイダーの登録** | これらのリソース プロバイダーは、アプライアンスのセットアップ時に選択した次のサブスクリプションに登録されます。Microsoft.OffAzure、Microsoft.Migrate、および Microsoft.KeyVault。<br/><br/> リソース プロバイダーの登録によって、サブスクリプションがリソース プロバイダーと連携するように構成されます。 | リソースプロバイダーを登録するには、サブスクリプションの共同作成者または所有者のロールが必要です。
-**Azure AD アプリ通信を作成する** | Azure Migrate によって、アプライアンス上で実行されているエージェントと Azure 上で実行されているそれぞれのサービスとの間の通信 (認証と承認) に使用される Azure Active Directory (Azure AD) アプリが作成されます。<br/><br/> このアプリには、任意のリソースに対して Azure Resource Manager 呼び出しや RBAC アクセスを行うための特権はありません。 | Azure Migrate でアプリを作成するには、[これらのアクセス許可](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance)が必要です。
-**Azure AD アプリの作成 - Key Vault** | このアプリは、VMware VM を Azure にエージェントレスで移行する場合にのみ作成されます。<br/><br/> エージェントレス移行の目的でユーザーのサブスクリプション内に作成されたキー コンテナーにアクセスするためにのみ使用されます。<br/><br/> アプライアンスから検出が開始されると、(顧客のテナント内で作成された) Azure キー コンテナーで RBAC アクセスが可能になります。 | Azure Migrate でアプリを作成するには、[これらのアクセス許可](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance)が必要です。
+**Azure AD アプリ通信を作成する** | Azure Migrate によって、アプライアンス上で実行されているエージェントと Azure 上で実行されているそれぞれのサービスとの間の通信 (認証と承認) に使用される Azure Active Directory (Azure AD) アプリが作成されます。<br/><br/> このアプリには、任意のリソースに対して Azure Resource Manager 呼び出しや RBAC アクセスを行うための特権はありません。 | Azure Migrate でアプリを作成するには、[これらのアクセス許可](tutorial-prepare-vmware.md#assign-permissions-to-create-azure-ad-apps)が必要です。
+**Azure AD アプリの作成 - Key Vault** | このアプリは、VMware VM を Azure にエージェントレスで移行する場合にのみ作成されます。<br/><br/> エージェントレス移行の目的でユーザーのサブスクリプション内に作成されたキー コンテナーにアクセスするためにのみ使用されます。<br/><br/> アプライアンスから検出が開始されると、(顧客のテナント内で作成された) Azure キー コンテナーで RBAC アクセスが可能になります。 | Azure Migrate でアプリを作成するには、[これらのアクセス許可](tutorial-prepare-vmware.md#assign-permissions-to-create-a-key-vault)が必要です。
 
 
 
