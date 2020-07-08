@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5ca9b1d9fbd18f60de80a80c932f0e27b8dc8583
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: b1f848b5e6fa053d81754d441fd4845c1a24ee5b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701051"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361491"
 ---
 # <a name="authentication-and-user-permissions"></a>認証とユーザーのアクセス許可
 
@@ -24,7 +24,7 @@ Azure Analysis Services では、[Azure AD B2B コラボレーション](../acti
 
 ## <a name="authentication"></a>認証
 
-すべてのクライアント アプリケーションとツールは、Analysis Services [クライアント ライブラリ](analysis-services-data-providers.md) (AMO、MSOLAP、ADOMD) の 1 つ以上を使ってサーバーに接続します。 
+すべてのクライアント アプリケーションとツールは、Analysis Services [クライアント ライブラリ](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) (AMO、MSOLAP、ADOMD) の 1 つ以上を使ってサーバーに接続します。 
 
 3 つのクライアント ライブラリはすべて、Azure AD の対話型フローと非対話型認証方法の両方をサポートします。 2 つの非対話型方法である Active Directory パスワード認証方法と Active Directory 統合認証方法は、AMOMD と MSOLAP を利用しているアプリケーションで使用できます。 これら 2 つの方式では、ポップアップ ダイアログ ボックスは表示されません。
 

@@ -12,12 +12,13 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/19/2015
 ms.author: gwallace
-ms.openlocfilehash: edbc9eef6b5f0af2e70152b66228cdf09ef31110
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: tracking-python
+ms.openlocfilehash: 3b5c48053f7015e2bd46045d376cde27ca07d4a7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72242181"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84907042"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>Twilio を使用して音声通話と SMS を実行する方法 (Python)
 このガイドでは、Azure の Twilio API サービスを使用して一般的なプログラミング タスクを実行する方法を紹介します。 電話の発信と Short Message Service (SMS) メッセージの送信の各シナリオについて説明します。 Twilio の詳細、およびアプリケーションで音声と SMS を使用する方法については、「 [次のステップ](#NextSteps) 」を参照してください。
@@ -61,10 +62,12 @@ TwiML は、Twilio 動詞に基づいた XML ベースの命令のセットで�
 
 たとえば、次の TwiML は、テキスト **Hello World** を音声に変換します。
 
-    <?xml version="1.0" encoding="UTF-8" ?>
-    <Response>
-      <Say>Hello World</Say>
-    </Response>
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+  <Response>
+    <Say>Hello World</Say>
+  </Response>
+```
 
 アプリケーションで Twilio API を呼び出す場合は、API パラメーターの 1 つである URL によって TwiML 応答が返されます。 開発用には、Twilio から提供される URL を使用して、アプリケーションで使用する TwiML 応答を提供することができます。 また、独自に URL をホストして、TwiML 応答を生成することもできます。別のオプションとして、`TwiMLResponse` オブジェクトを使用することもできます。
 
@@ -99,17 +102,17 @@ Python 用 Twilio ライブラリを使用するようにアプリケーショ�
 
 * Pip パッケージとして Python 用 Twilio ライブラリをインストールします。 インストールには、次のコマンドを使用できます。
    
-        $ pip install twilio
+  `$ pip install twilio`
 
     \- または -
 
 * GitHub ([https://github.com/twilio/twilio-python][twilio_python]) から Python 用の Twilio ライブラリをダウンロードし、それを次のようにインストールします。
 
-        $ python setup.py install
+  `$ python setup.py install`
 
 Python 用 Twilio ライブラリをインストールしたら、Python ファイルで `import` を行うことができます。
 
-        import twilio
+  `import twilio`
 
 詳細については、「[twilio_github_readme](https://github.com/twilio/twilio-python/blob/master/README.md)」を参照してください。
 

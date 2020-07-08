@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8b0362f9bb80af9f98dad032790a9e88651284a1
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 1ea11008155899e09bf461e56a8bb4981d37238d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298875"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85385418"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Azure AD B2C を使用して Azure API Management API をセキュリティで保護する
 
@@ -171,7 +171,7 @@ API を呼び出すには、Azure AD B2C によって発行されたアクセス
 
 1. Postman で **[送信]** ボタンを選択して、要求を実行します。 すべてを正しく構成した場合は、次に示すように、カンファレンス講演者のコレクションを含む JSON 応答が表示されます (ここでは省略されています)。
 
-    ```JSON
+    ```json
     {
       "collection": {
         "version": "1.0",
@@ -206,7 +206,7 @@ API を呼び出すには、Azure AD B2C によって発行されたアクセス
 
 1. **[送信]** ボタンを選択して、要求を実行します。 無効なトークンを使用した場合に想定される結果として、`401` (予期しない) 状態コードが返されます。
 
-    ```JSON
+    ```json
     {
         "statusCode": 401,
         "message": "Unauthorized. Access token is missing or invalid."
@@ -219,7 +219,7 @@ API を呼び出すには、Azure AD B2C によって発行されたアクセス
 
 通常は、複数のアプリケーションが 1 つの REST API でやりとりします。 複数のアプリケーションを対象とするトークンを API で受け取れるようにするには、APIM 受信ポリシーの `<audiences>` 要素にアプリケーション ID を追加します。
 
-```XML
+```xml
 <!-- Accept tokens intended for these recipient applications -->
 <audiences>
     <audience>44444444-0000-0000-0000-444444444444</audience>
@@ -229,7 +229,7 @@ API を呼び出すには、Azure AD B2C によって発行されたアクセス
 
 同様に、複数のトークン発行者をサポートするには、APIM 受信ポリシーの `<issuers>` 要素にエンドポイント URI を追加します。
 
-```XML
+```xml
 <!-- Accept tokens from multiple issuers -->
 <issuers>
     <issuer>https://<tenant-name>.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/</issuer>
@@ -249,7 +249,7 @@ API を呼び出すには、Azure AD B2C によって発行されたアクセス
 
 次の APIM 受信ポリシーの例では、b2clogin.com と login.microsoftonline.com の両方によって発行されたトークンを受け入れる方法を示しています。 また、2 つのアプリケーションからの API 要求もサポートされています。
 
-```XML
+```xml
 <policies>
     <inbound>
         <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">

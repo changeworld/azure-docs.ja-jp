@@ -1,21 +1,14 @@
 ---
 title: Azure Service Bus 用の仮想ネットワーク サービス エンドポイントを構成する
 description: この記事では、Microsoft.ServiceBus サービス エンドポイントを仮想ネットワークに追加する方法について説明します。
-services: service-bus
-documentationcenter: ''
-author: axisc
-editor: spelluru
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2019
-ms.author: aschhab
-ms.openlocfilehash: d1766ffb579bb1a86da91ac73a396ce0d008f89e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 2b3e7d23dcfd3f932aefa3809ebd13b9cfee0c69
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117626"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340978"
 ---
 # <a name="configure-virtual-network-service-endpoints-for-azure-service-bus"></a>Azure Service Bus 用の仮想ネットワーク サービス エンドポイントを構成する
 

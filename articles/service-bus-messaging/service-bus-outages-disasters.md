@@ -1,20 +1,14 @@
 ---
 title: 障害と災害に対する Azure Service Bus アプリケーションの保護
 description: この記事では、発生する可能性がある Azure Service Bus の障害からアプリケーションを保護するために使用できる手法について説明します。
-services: service-bus-messaging
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 01/27/2020
-ms.author: aschhab
-ms.openlocfilehash: 56e3737b992664f031189c9ac243101eef922731
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 06/23/2020
+ms.openlocfilehash: e6dba5e6cf4700dfab354a434ac4d48f9a95b76a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020202"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85339659"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Service Bus の障害および災害に対するアプリケーションの保護のベスト プラクティス
 

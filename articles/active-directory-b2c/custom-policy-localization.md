@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: reference
+ms.topic: how-to
 ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 090fecea44c7881920fcd087304f33f935a5e907
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 8939d4546657b049b61eb31c08844dac07c67ae2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83636256"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389090"
 ---
 # <a name="localize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用してアプリケーションのユーザー インターフェイスをローカライズする
 
@@ -33,7 +33,7 @@ Azure Active Directory B2C (Azure AD B2C) の言語のカスタマイズを使�
 1. `Localization` 要素を、サポートされている言語である英語 (既定) とスペイン語を指定して追加します。  
 
 
-```XML
+```xml
 <Localization Enabled="true">
   <SupportedLanguages DefaultLanguage="en" MergeBehavior="ReplaceAll">
     <SupportedLanguage>en</SupportedLanguage>
@@ -51,7 +51,7 @@ Azure Active Directory B2C (Azure AD B2C) の言語のカスタマイズを使�
 > [!NOTE]
 > 次の例では、各行の先頭にシャープ記号 (`#`) を追加したため、ローカライズされたラベルを画面上で簡単に見つけることができます。
 
-```XML
+```xml
 <!--Local account sign-up or sign-in page English-->
 <LocalizedResources Id="api.signuporsignin.en">
   <LocalizedStrings>
@@ -218,7 +218,7 @@ Azure Active Directory B2C (Azure AD B2C) の言語のカスタマイズを使�
 
 次の例では、英語 (en) とスペイン語 (es) のカスタム文字列がサインアップまたはサインイン ページと、ローカル アカウント サインアップ ページに追加されています。 各 **LocalizedResourcesReference** の **LocalizedResourcesReferenceId** は、それらのロケールと同じですが、識別子として任意の文字列を使用できます。 言語とページの組み合わせごとに、以前に作成した対応する **LocalizedResources** をポイントします。
 
-```XML
+```xml
 <ContentDefinitions>
   <ContentDefinition Id="api.signuporsignin">
     <LocalizedResourcesReferences MergeBehavior="Prepend">

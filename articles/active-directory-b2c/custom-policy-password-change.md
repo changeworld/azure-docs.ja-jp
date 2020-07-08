@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/13/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2c351f8a95110a32c53c68c5eb6095918578bc5b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c159e78d0aa065b53b1164e01309e770302fb1ad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78189176"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389022"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用してパスワードの変更を構成する
 
@@ -32,7 +32,7 @@ Azure Active Directory B2C (Azure AD B2C) では、ローカル アカウント�
 
 1. ご自身の *TrustframeworkExtensions.xml* ファイルを開き、識別子が `oldPassword` の次の **ClaimType** 要素を、[ClaimsSchema](claimsschema.md) 要素に追加します。
 
-    ```XML
+    ```xml
     <BuildingBlocks>
       <ClaimsSchema>
         <ClaimType Id="oldPassword">
@@ -47,7 +47,7 @@ Azure Active Directory B2C (Azure AD B2C) では、ローカル アカウント�
 
 2. [ClaimsProvider](claimsproviders.md) 要素には、ユーザーを認証する技術プロファイルが含まれています。 **ClaimsProviders** 要素に次の要素プロバイダーを追加します。
 
-    ```XML
+    ```xml
     <ClaimsProviders>
       <ClaimsProvider>
         <DisplayName>Local Account SignIn</DisplayName>
@@ -125,7 +125,7 @@ Azure Active Directory B2C (Azure AD B2C) では、ローカル アカウント�
 
 3. [UserJourney](userjourneys.md) 要素は、ユーザーがアプリケーションとやり取りするときに取るパスを定義します。 `PasswordChange` として識別される **UserJourney** に存在していない場合は、**UserJourneys** 要素を追加します。
 
-    ```XML
+    ```xml
     <UserJourneys>
       <UserJourney Id="PasswordChange">
         <OrchestrationSteps>

@@ -1,25 +1,14 @@
 ---
 title: スケーラビリティ - Azure Event Hubs | Microsoft Docs
 description: この記事では、パーティションとスループット ユニットを使用して Azure Event Hubs をスケーリングする方法について説明します。
-services: event-hubs
-documentationcenter: na
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.custom: seodec18
-ms.date: 06/18/2019
-ms.author: shvija
-ms.openlocfilehash: 2b36faef8c39a8e9b02a056576ae7f5a77b1f6bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/23/2020
+ms.openlocfilehash: 6d1c7bc5a0206b634e5a85243f25b2c926762d7e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236231"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85315471"
 ---
 # <a name="scaling-with-event-hubs"></a>Event Hubs によるスケーリング
 

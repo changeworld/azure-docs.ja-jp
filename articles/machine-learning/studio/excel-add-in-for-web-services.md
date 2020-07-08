@@ -5,17 +5,17 @@ description: コードを作成することなく、Excel から直接 Azure Mac
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: ae51ed2ce39705e66e82ee28442374e8bcd0f901
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 8565e3c62ea1b74879f2e127abed772576563886
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118458"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85211325"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>Azure Machine Learning Studio (クラシック) Web サービスの Excel アドイン
 
@@ -83,4 +83,4 @@ Web サービスの API キーを取得します。 取得元は、クラシッ�
 ## <a name="sharing-your-workbook"></a>ブックを共有する
 ブックを保存すると、追加した Web サービス用の API/主キーも保存されます。 このため、信頼できる個人とのみブックを共有することをお勧めします。
 
-ご質問は、次のコメント セクション、または[フォーラム](https://go.microsoft.com/fwlink/?LinkID=403669&clcid=0x409)までお寄せください。
+ご質問は、次のコメント セクション、または[フォーラム](https://docs.microsoft.com/answers/topics/azure-machine-learning.html)までお寄せください。
