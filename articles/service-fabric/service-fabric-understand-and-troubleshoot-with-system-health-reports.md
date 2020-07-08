@@ -1,16 +1,16 @@
 ---
 title: システム正常性レポートを使用したトラブルシューティング
 description: Azure Service Fabric のコンポーネントによって送信される正常性レポートと、クラスターやアプリケーションの問題をトラブルシューティングするための使い方について説明します。
-author: oanapl
+author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
-ms.author: oanapl
-ms.openlocfilehash: a76ae803b1283ce50d2f4e259943ce5ffcf0274c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: gwallace
+ms.openlocfilehash: a3b2f7c22c1afd0a24aafa3bcd9dc9a6c3f725f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236559"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392575"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>システム正常性レポートを使用したトラブルシューティング
 Azure Service Fabric コンポーネントは、追加の設定なしで、クラスター内のすべてのエンティティについてのシステム正常性レポートを提供します。 [正常性ストア](service-fabric-health-introduction.md#health-store) は、システム レポートに基づいてエンティティを作成および削除します。 さらに、エンティティの相互作用をキャプチャする階層で、それらを編成します。
@@ -651,7 +651,7 @@ HealthEvents          :
 
 - **IReplicator.CatchupReplicaSet**: この警告は、次の 2 つのいずれかを示します。 1 つは、十分な数の実行中のレプリカがないことです。 これに該当するかを確認するには、パーティションのレプリカのレプリカ状態を調べるか、スタック再構成の System.FM 正常性レポートを調べます。 もう 1 つは、レプリカが操作を認識できないことです。 PowerShell コマンドレット `Get-ServiceFabricDeployedReplicaDetail` を使用すると、すべてのレプリカの進行状況を判断できます。 問題があるレプリカの `LastAppliedReplicationSequenceNumber` 値は、プライマリの `CommittedSequenceNumber` 値の後ろにあります。
 
-- **IReplicator.BuildReplica(\<リモート ReplicaId>)** :この警告は、ビルド プロセスに問題があることを示します。 詳細については、[レプリカのライフサイクル](service-fabric-concepts-replica-lifecycle.md)に関する記事をご覧ください。 レプリカ アドレスが正しく構成されていないことが原因の可能性があります。 詳細については、「[ステートフル Reliable Services の構成](service-fabric-reliable-services-configuration.md)」および「[サービス マニフェストにリソースを指定する](service-fabric-service-manifest-resources.md)」をご覧ください。 リモート ノードに問題があることもあります。
+- **IReplicator.BuildReplica(\<Remote ReplicaId>)** : この警告は、ビルド プロセスに問題があることを示します。 詳細については、[レプリカのライフサイクル](service-fabric-concepts-replica-lifecycle.md)に関する記事をご覧ください。 レプリカ アドレスが正しく構成されていないことが原因の可能性があります。 詳細については、「[ステートフル Reliable Services の構成](service-fabric-reliable-services-configuration.md)」および「[サービス マニフェストにリソースを指定する](service-fabric-service-manifest-resources.md)」をご覧ください。 リモート ノードに問題があることもあります。
 
 ### <a name="replicator-system-health-reports"></a>レプリケーター システム正常性レポート
 **レプリケーション キュー満杯:** 

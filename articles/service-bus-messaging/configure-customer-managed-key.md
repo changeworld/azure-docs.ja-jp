@@ -1,19 +1,14 @@
 ---
 title: Azure Service Bus 保存データの暗号化用に独自のキーを構成する
 description: この記事では、Azure Service Bus の保存データを暗号化するための独自のキーを構成する方法について説明します。
-services: service-bus-messaging
-ms.service: service-bus
-documentationcenter: ''
-author: axisc
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.author: aschhab
-ms.openlocfilehash: 82a5fbef8c307d60d82b147f04a2a687b8b0433e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: ca1597f26ec1c7ccaa578d4e7dcd68e0ef54f60c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81459068"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85475987"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Azure portal を使用して Azure Service Bus 保存データの暗号化用のカスタマー マネージド キーを構成する
 Azure Service Bus Premium では、Azure Storage Service Encryption (Azure SSE) による保存データの暗号化が提供されます。 Service Bus Premium では、データを格納するために Azure Storage が使用されます。既定では、Azure Storage を使用して格納されるすべてのデータは、Microsoft のマネージド キーを使用して暗号化されます。 
@@ -98,7 +93,7 @@ Azure portal でカスタマー マネージド キーを有効にするには�
 
 ## <a name="rotate-your-encryption-keys"></a>暗号化キーのローテーション
 
-Azure Key Vault のローテーション メカニズムを使用して、キー コンテナー内のキーをローテーションできます。 詳細については、[キー ローテーションと監査を設定する](../key-vault/secrets/key-rotation-log-monitoring.md)方法に関するページを参照してください。 アクティブ化と有効期限の日付を設定してキー ローテーションを自動化することもできます。 Service Bus サービスによって新しいキーのバージョンが検出され、それらの使用が自動的に開始されます。
+Azure Key Vault のローテーション メカニズムを使用して、キー コンテナー内のキーをローテーションできます。 アクティブ化と有効期限の日付を設定してキー ローテーションを自動化することもできます。 Service Bus サービスによって新しいキーのバージョンが検出され、それらの使用が自動的に開始されます。
 
 ## <a name="revoke-access-to-keys"></a>キーへのアクセスの取り消し
 

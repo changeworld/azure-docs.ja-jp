@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 8d074c12f28abdc61f4d70356c2a7aa264deb44c
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 744b186b32927f81be21ff067c9195bddb33c416
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871867"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85362093"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>ビルド タスクを構成およびカスタマイズする
 
@@ -107,36 +107,6 @@ BinSkim のコマンドライン引数、ID ごとのルール、終了コード
   - **バージョン**:Azure DevOps 内でのビルド タスクのバージョンです。 このオプションを使用することはあまりありません。
 
 このタスクの YAML 構成については、[Credential Scanner の YAML オプション](yaml-configuration.md#credential-scanner-task)に関するセクションを参照してください
-
-## <a name="microsoft-security-risk-detection-task"></a>Microsoft Security Risk Detection タスク
-
-> [!NOTE]
-> Microsoft Security Risk Detection (MSRD) タスクを使用する前に、MSRD サービスでアカウントを作成して構成する必要があります。 このサービスは、個別のオンボード プロセスを必要とします。 この拡張機能の他のほとんどのタスクとは異なり、このタスクには MSRD での別のサブスクリプションが必要です。
->
-> その手順については、[Microsoft Security Risk Detection](https://aka.ms/msrddocs) に関するページと [Microsoft Security Risk Detection の使い方](https://docs.microsoft.com/security-risk-detection/how-to/)に関するページを参照してください。
-
-次の一覧ではこのタスクの構成の詳細を示します。 UI 要素については、その要素の上にマウスポインターを置くとヘルプが表示されます。
-
-   - **[Azure DevOps Service Endpoint Name for MSRD]\(MSRD 用 Azure DevOps サービス エンドポイント名\)** : Azure DevOps サービス エンドポイントのジェネリック型には、オンボードされた MSRD インスタンスの URL と REST API アクセス トークンが格納されます。 そのようなエンドポイントを作成してある場合は、ここで指定できます。 それ以外の場合は、 **[Manage]\(管理\)** リンクを選択して、この MSRD タスク用の新しいサービス エンドポイントを作成して構成します。
-   - **[アカウント ID]** : MSRD アカウントの URL から取得できる GUID です。
-   - **[URLs to Binaries]\(バイナリの URL\)** : パブリックに使用できる URL のセミコロン区切りリストです。 ファジー テスト マシンでは、これらの URL を使用してバイナリがダウンロードされます。
-   - **[URLs of the Seed Files]\(シード ファイルの URL\)** : パブリックに使用できる URL のセミコロン区切りリストです。 ファジー テスト マシンでは、これらの URL を使用してシードがダウンロードされます。 シード ファイルがバイナリと一緒にダウンロードされる場合、この値の指定は省略可能です。
-   - **[OS Platform Type]\(OS プラットフォーム タイプ\)** : ファジー テスト ジョブが実行されるマシンのオペレーティング システム (OS) プラットフォームです。 使用できる値は、**Windows** と **Linux** です。
-   - **[Windows Edition / Linux Edition]\(Windows エディション/Linux エディション\)** : ファジー テスト ジョブが実行されるマシンの OS エディションです。 マシンの OS エディションが既定値と異なる場合は、既定値を上書きできます。
-   - **[Package Installation Script]\(パッケージ インストール スクリプト\)** : テスト マシンで実行するスクリプトです。 このスクリプトでは、ファジー テスト ジョブが送信される前に、テスト ターゲット プログラムとその依存関係がインストールされます。
-   - **[Job Submission Parameters]\(ジョブ送信パラメーター\)** :
-       - **[Seed Directory]\(シード ディレクトリ\)** : シードが格納されるファジー テスト マシン上のディレクトリのパスです。
-       - **[Seed Extension]\(シード拡張子\)** : シードのファイル名拡張子です。
-       - **[Test Driver Executable]\(テスト ドライバー実行可能ファイル\)** : ファジー テスト マシン上のターゲット実行可能ファイルへのパスです。
-       - **[Test Driver Executable Architecture]\(テスト ドライバー実行可能ファイル アーキテクチャ\)** : ターゲット実行可能ファイルのアーキテクチャです。 使用できる値は **x86** と **amd64** です。
-       - **[Test Driver Arguments]\(テスト ドライバー引数\)** : テスト実行可能ファイルに渡されるコマンド ライン引数です。 引数 "%testfile%" (引用符を含む) は、ターゲット ファイルへの完全パスに自動的に置き換えられます。 このファイルは、テスト ドライバーによって解析され、必須です。
-       - **[Test Driver Process Exits Upon Test Completion]\(テストの完了時にテスト ドライバー プロセスを終了する\)** : 完了時にテスト ドライバーを終了する場合は、このチェック ボックスをオンにします。 テスト ドライバーを強制的に閉じる必要がある場合はオフにします。
-       - **[Maximum Duration (in seconds)]\(最大継続期間 (秒)\)** : ターゲット プログラムで入力ファイルを解析するのに必要であると合理的に考えられる最大推定時間です。 この推定の精度が高いほど、ファジー テスト アプリの実行効率が上がります。
-       - **[Test Driver Can Be Run Repeatedly]\(テスト ドライバーは繰り返し実行可能\)** : 永続化または共有されたグローバルな状態に依存することなくテスト ドライバーを繰り返し実行できる場合は、このチェック ボックスをオンにします。
-       - **[Test Driver Can Be Renamed]\(テスト ドライバーは名前の変更が可能\)** : テスト ドライバー実行可能ファイルの名前を変更しても正しく動作する場合は、このチェック ボックスをオンにします。
-       - **[The Fuzzing Application Runs as a Single OS Process]\(ファジー テスト アプリケーションが単一の OS プロセスとして動作する\)** : テスト ドライバーが 1 つの OS プロセスで実行される場合は、このチェック ボックスをオンにします。 テスト ドライバーによって追加のプロセスが生成される場合は、オフにします。
-
-このタスクの YAML 構成については、[Microsoft Security Risk Detection の YAML オプション](yaml-configuration.md#microsoft-security-risk-detection-task)に関するセクションを参照してください
 
 ## <a name="roslyn-analyzers-task"></a>Roslyn Analyzers タスク
 

@@ -2,17 +2,15 @@
 title: プレビュー - Azure Kubernetes Service (AKS) クラスターにスポット ノード プールを追加する
 description: Azure Kubernetes Service (AKS) クラスターにスポット ノード プールを追加する方法について説明します。
 services: container-service
-author: zr-msft
 ms.service: container-service
 ms.topic: article
 ms.date: 02/25/2020
-ms.author: zarhoads
-ms.openlocfilehash: 466ad7c88547b6676ba0ae263b74d14059322f1c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce2871883300e9eb135b51fdb2f5566e451084f6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77622037"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85374612"
 ---
 # <a name="preview---add-a-spot-node-pool-to-an-azure-kubernetes-service-aks-cluster"></a>プレビュー - Azure Kubernetes Service (AKS) クラスターにスポット ノード プールを追加する
 
@@ -43,9 +41,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ### <a name="register-spotpoolpreview-preview-feature"></a>spotpoolpreview プレビュー機能を登録する
 
 スポット ノード プールを使用する AKS クラスターを作成するには、サブスクリプションで *spotpoolpreview* 機能フラグを有効にする必要があります。 この機能は、クラスターを構成するときに、最新のサービス拡張機能のセットを提供します。
-
-> [!CAUTION]
-> サブスクリプションで機能を登録する場合、現時点ではその機能を登録解除することはできません。 一部のプレビュー機能を有効にした後、すべての AKS クラスターに対して既定値が使用され、サブスクリプション内に作成されます。 運用サブスクリプションではプレビュー機能を有効にしないでください。 プレビュー機能をテストし、フィードバックを集めるには、別のサブスクリプションを使用してください。
 
 次の例に示すように、[az feature register][az-feature-register] コマンドを使用して *spotpoolpreview* 機能フラグを登録します。
 

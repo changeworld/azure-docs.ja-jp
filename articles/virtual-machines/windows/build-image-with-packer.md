@@ -8,17 +8,17 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 02/22/2019
 ms.author: cynthn
-ms.openlocfilehash: 4180f62e589ef79227d8e60ca19661e1c65f0097
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: ec6fcfbc171b7227c79741c00adbc16be4c7ce87
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773323"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85445527"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Packer を使用して Azure に Windows 仮想マシンのイメージを作成する方法
 Azure の各仮想マシン (VM) は、Windows ディストリビューションと OS のバージョンを定義するイメージから作成されます。 イメージには、プリインストールされているアプリケーションと構成を含めることができます。 Azure Marketplace には、ほとんどの OS およびアプリケーション環境用の自社製およびサード パーティ製のイメージが数多く用意されています。また、ニーズに合わせて独自のイメージを作成することもできます。 この記事では、オープン ソース ツール [Packer](https://www.packer.io/) を使用して Azure に独自のイメージを定義およびビルドする方法について、詳しく説明します。
 
-この記事は、2019 年 2 月 21 日に [Az PowerShell モジュール](https://docs.microsoft.com/powershell/azure/install-az-ps) バージョン 1.3.0 と [Packer](https://www.packer.io/docs/install/index.html) バージョン 1.3.4 を使用して最後にテストされました。
+この記事は、2019 年 2 月 21 日に [Az PowerShell モジュール](https://docs.microsoft.com/powershell/azure/install-az-ps) バージョン 1.3.0 と [Packer](https://www.packer.io/docs/install) バージョン 1.3.4 を使用して最後にテストされました。
 
 > [!NOTE]
 > Azure では、お客様独自のカスタム イメージを定義して作成できるサービス (Azure Image Builder (プレビュー)) が提供されるようになっています。 Azure Image Builder は Packer が基になっているため、既存の Packer シェル プロビジョナー スクリプトを使うこともできます。 Azure Image Builder の概要については、「[Azure Image Builder で Windows VM を作成する](image-builder.md)」をご覧ください。
@@ -122,7 +122,7 @@ Get-AzSubscription
 
 
 ## <a name="build-packer-image"></a>Packer イメージをビルドする
-まだローカル コンピューターに Packer がインストールされていない場合は、[手順に従って Packer をインストールしてください](https://www.packer.io/docs/install/index.html)。
+まだローカル コンピューターに Packer がインストールされていない場合は、[手順に従って Packer をインストールしてください](https://learn.hashicorp.com/packer/getting-started/install)。
 
 コマンド プロンプトを開き、次のように Packer テンプレート ファイルを指定して、イメージをビルドします。
 
