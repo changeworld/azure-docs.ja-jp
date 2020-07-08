@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: ccd729510341a9232764b1c211aa18c197ad5a37
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 29c04fc8f6af016200e06ad239095a3665de5869
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248636"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086434"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight クラスターを自動的にスケール調整する
 

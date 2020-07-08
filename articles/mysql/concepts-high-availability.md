@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: a793de35ffff84009d362f005e599b4419f0763f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50bf1502589ea0932fd45367c039e6e37135d761
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79532775"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086060"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mysql"></a>Azure Database for MySQL での高可用性の概念
 Azure Database for MySQL サービスは、保証された高いレベルの可用性を提供します。 財務的な裏付けのあるサービス レベル アグリーメント (SLA) は、一般公開時に 99.99% です。 このサービスを使用すると、アプリケーション ダウンタイムはほぼ存在しません。
@@ -29,7 +29,7 @@ Azure では内部的に、接続を新しいインスタンスにリダイレ�
 ## <a name="scaling-up-or-down"></a>スケールアップまたはスケールダウン
 HA モデルと同様に、Azure Database for MySQL がスケールアップまたはスケールダウンされると、指定されたサイズの新しいサーバー インスタンスが作成されます。 既存のデータ ストレージは元のインスタンスからデタッチされ、新しいインスタンスに接続されます。
 
-スケール操作中、データベース接続の中断が発生します。 クライアント アプリケーションは切断され、未処理のコミットされていないトランザクションは取り消されます。 クライアント アプリケーションが接続を再試行するか、または新しい接続を作成すると、ゲートウェイはその接続を新しくサイズ設定されたインスタンスに転送します。 
+スケール操作中、データベース接続の中断が発生します。 クライアント アプリケーションは切断され、未処理のコミットされていないトランザクションは取り消されます。 クライアント アプリケーションが接続を再試行するか、または新しい接続を作成すると、ゲートウェイはその接続を新しくサイズ設定されたインスタンスに転送します。
 
 ## <a name="next-steps"></a>次のステップ
 - [一時的な接続エラーへの対処](concepts-connectivity.md)について学習する

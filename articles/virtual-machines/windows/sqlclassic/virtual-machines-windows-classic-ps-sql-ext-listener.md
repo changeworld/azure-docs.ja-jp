@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: ca13d5e8369d007188a17352913519172ed8744e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4517a600acaf581ad240d634e89bba3984f835db
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75978176"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087335"
 ---
 # <a name="configure-an-external-listener-for-availability-groups-on-azure-sql-server-vms"></a>Azure SQL Server VM での可用性グループの外部リスナーの構成
 > [!div class="op_single_selector"]
@@ -62,22 +62,26 @@ Azure レプリカをホストする各 VM に負荷分散されたエンドポ�
 5. **Azure PowerShell**を起動します。 Azure 管理モジュールが読み込まれた状態で新しい PowerShell セッションが開きます。
 6. **Get-AzurePublishSettingsFile**を実行します。 このコマンドレットにより、ブラウザーで発行設定ファイルをローカル ディレクトリにダウンロードするよう指示されます。 Azure サブスクリプションのログイン資格情報の入力を求められる場合があります。
 7. ダウンロードした発行設定ファイルのパスを指定して、 **Import-AzurePublishSettingsFile** コマンドを実行します。
-   
-        Import-AzurePublishSettingsFile -PublishSettingsFile <PublishSettingsFilePath>
-   
+
+    ```powershell
+    Import-AzurePublishSettingsFile -PublishSettingsFile <PublishSettingsFilePath>
+    ```
+
     発行設定ファイルがインポートされたら、PowerShell セッションで、Azure サブスクリプションを管理できます。
     
 1. 次の PowerShell スクリプトをテキスト エディターにコピーし、環境に合わせて変数の値を設定します (一部のパラメーターには既定値が指定されています)。 可用性グループが複数の Azure リージョンにまたがっている場合、各データセンターにおいて、そのデータセンターに存在するクラウド サービスおよびノードごとにスクリプトを 1 回ずつ実行する必要があることに注意してください。
+
+    ```powershell
+    # Define variables
+    $ServiceName = "<MyCloudService>" # the name of the cloud service that contains the availability group nodes
+    $AGNodes = "<VM1>","<VM2>","<VM3>" # all availability group nodes containing replicas in the same cloud service, separated by commas
    
-        # Define variables
-        $ServiceName = "<MyCloudService>" # the name of the cloud service that contains the availability group nodes
-        $AGNodes = "<VM1>","<VM2>","<VM3>" # all availability group nodes containing replicas in the same cloud service, separated by commas
-   
-        # Configure a load balanced endpoint for each node in $AGNodes, with direct server return enabled
-        ForEach ($node in $AGNodes)
-        {
-            Get-AzureVM -ServiceName $ServiceName -Name $node | Add-AzureEndpoint -Name "ListenerEndpoint" -Protocol "TCP" -PublicPort 1433 -LocalPort 1433 -LBSetName "ListenerEndpointLB" -ProbePort 59999 -ProbeProtocol "TCP" -DirectServerReturn $true | Update-AzureVM
-        }
+    # Configure a load balanced endpoint for each node in $AGNodes, with direct server return enabled
+    ForEach ($node in $AGNodes)
+    {
+        Get-AzureVM -ServiceName $ServiceName -Name $node | Add-AzureEndpoint -Name "ListenerEndpoint" -Protocol "TCP" -PublicPort 1433 -LocalPort 1433 -LBSetName "ListenerEndpointLB" -ProbePort 59999 -ProbeProtocol "TCP" -DirectServerReturn $true | Update-AzureVM
+    }
+    ```
 
 2. 変数の設定後、スクリプトを、テキスト エディターからそれを実行する Azure PowerShell セッションにコピーします。 プロンプトにまだ >> が表示される場合、スクリプトの実行が確実に開始されるようにするため、Enter キーを再度押します。
 
@@ -98,18 +102,21 @@ Azure レプリカをホストする各 VM に負荷分散されたエンドポ�
 1. 外部負荷分散の場合、レプリカが含まれるクラウド サービスのパブリック仮想 IP アドレスを取得する必要があります。 Azure Portal にログインします。 可用性グループの VM が含まれるクラウド サービスに移動します。 **[ダッシュボード]** ビューを開きます。
 2. **[パブリック仮想 IP (VIP) アドレス]** に表示されているアドレスをメモします。 ソリューションが複数の VNet にまたがっている場合は、レプリカをホストする VM が含まれるクラウド サービスごとにこの手順を繰り返します。
 3. VM のいずれかで、次の PowerShell スクリプトをテキスト エディターにコピーし、変数を先ほどメモした値に設定します。
+
+    ```powershell
+    # Define variables
+    $ClusterNetworkName = "<ClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
+    $IPResourceName = "<IPResourceName>" # the IP Address resource name
+    $CloudServiceIP = "<X.X.X.X>" # Public Virtual IP (VIP) address of your cloud service
    
-        # Define variables
-        $ClusterNetworkName = "<ClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
-        $IPResourceName = "<IPResourceName>" # the IP Address resource name
-        $CloudServiceIP = "<X.X.X.X>" # Public Virtual IP (VIP) address of your cloud service
+    Import-Module FailoverClusters
    
-        Import-Module FailoverClusters
+    # If you are using Windows Server 2012 or higher, use the Get-Cluster Resource command. If you are using Windows Server 2008 R2, use the cluster res command. Both commands are commented out. Choose the one applicable to your environment and remove the # at the beginning of the line to convert the comment to an executable line of code.
    
-        # If you are using Windows Server 2012 or higher, use the Get-Cluster Resource command. If you are using Windows Server 2008 R2, use the cluster res command. Both commands are commented out. Choose the one applicable to your environment and remove the # at the beginning of the line to convert the comment to an executable line of code.
-   
-        # Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$CloudServiceIP";"ProbePort"="59999";"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"OverrideAddressMatch"=1;"EnableDhcp"=0}
-        # cluster res $IPResourceName /priv enabledhcp=0 overrideaddressmatch=1 address=$CloudServiceIP probeport=59999  subnetmask=255.255.255.255
+    # Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$CloudServiceIP";"ProbePort"="59999";"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"OverrideAddressMatch"=1;"EnableDhcp"=0}
+    # cluster res $IPResourceName /priv enabledhcp=0 overrideaddressmatch=1 address=$CloudServiceIP probeport=59999  subnetmask=255.255.255.255
+    ```
+
 4. 変数の設定後、管理者特権で Windows PowerShell ウィンドウを開いて、スクリプトをテキスト エディターからコピーし、それを実行する Azure PowerShell セッションに貼り付けます。 プロンプトにまだ >> が表示される場合、スクリプトの実行が確実に開始されるようにするため、Enter キーを再度押します。
 5. 各 VM で、これを繰り返します。 このスクリプトでは、クラウド サービスの IP アドレスを使用して IP アドレス リソースを構成し、プローブ ポートなどの他のパラメーターを設定します。 IP アドレス リソースがオンラインになると、プローブ ポートにおいて、このチュートリアルで先ほど作成した負荷分散エンドポイントからのポーリングに応答できます。
 
@@ -125,7 +132,9 @@ Azure レプリカをホストする各 VM に負荷分散されたエンドポ�
 ## <a name="test-the-availability-group-listener-over-the-internet"></a>可用性グループ リスナー(インターネット経由) をテストする
 仮想ネットワークの外部からリスナーにアクセスするには、同じ VNet 内のみアクセス可能な ILB ではなく、外部/公開負荷分散 (このトピックで説明) を使用している必要があります。 接続文字列で、クラウド サービス名を指定します。 たとえば、クラウド サービスの名前が *mycloudservice*の場合、sqlcmd ステートメントは次のようになります。
 
-    sqlcmd -S "mycloudservice.cloudapp.net,<EndpointPort>" -d "<DatabaseName>" -U "<LoginId>" -P "<Password>"  -Q "select @@servername, db_name()" -l 15
+```console
+sqlcmd -S "mycloudservice.cloudapp.net,<EndpointPort>" -d "<DatabaseName>" -U "<LoginId>" -P "<Password>"  -Q "select @@servername, db_name()" -l 15
+```
 
 呼び出し元はインターネット経由で windows 認証を使用できないため、前の例とは異なり SQL 認証を使用する必要があります。 詳細については、「 [AlwaysOn Availability Group in Azure VM: Client Connectivity Scenarios (Azure VM での AlwaysOn 可用性グループ: クライアント接続のシナリオ)](https://blogs.msdn.com/b/sqlcat/archive/2014/02/03/alwayson-availability-group-in-windows-azure-vm-client-connectivity-scenarios.aspx)」をご覧ください。 SQL 認証を使用する場合は、両方のレプリカで必ず同じログインを作成します。 可用性グループのログインに関するトラブルシューティングの詳細については、「 [How to map logins or use contained SQL database user to connect to other replicas and map to availability databases (ログインをマップするか、または 包含 SQL データベース ユーザーを使用して他のレプリカに接続し、可用性データベースにマップする方法)](https://blogs.msdn.com/b/alwaysonpro/archive/2014/02/19/how-to-map-logins-or-use-contained-sql-database-user-to-connect-to-other-replicas-and-map-to-availability-databases.aspx)」を参照してください。
 

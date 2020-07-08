@@ -9,18 +9,18 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 8bcce81808530c124b73b3527609a08f869b99c4
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 28362a81461b63440ad752071f11b3603a979995
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83997526"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86100363"
 ---
 作成したリソースのキーとエンドポイントを使用して、認証用に 2 つの環境変数を作成します。
 
 * `FORM_RECOGNIZER_KEY` - 要求を認証するためのリソース キー。
 * `FORM_RECOGNIZER_ENDPOINT` - API 要求を送信するためのリソース エンドポイント。 以下のようになります。 
-  * `https://<your-custom-subdomain>.api.cognitive.microsoft.com` 
+  * `https://<your-custom-subdomain>.cognitiveservices.azure.com`
 
 >[!NOTE]
 > 2019 年 7 月 1 日より後に作成された非試用版リソースのエンドポイントでは、次に示すカスタム サブドメイン形式を使用します。 リージョンのエンドポイントの詳細および全一覧については、「[Cognitive Services のカスタム サブドメイン名](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains)」を参照してください。 

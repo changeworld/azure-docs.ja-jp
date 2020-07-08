@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: a2d4c9ad5a64fecaad023907351101942c4edac2
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: a83020af17758b570030a4c6129ffdd7dec58094
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84188305"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087080"
 ---
 # <a name="data-management-gateway"></a>Data Management Gateway
 > [!NOTE]
@@ -247,7 +247,9 @@ Azure ポータルでオンプレミスのリンクされたサービスを設�
 
 サードパーティ製のファイアウォールを使用する場合は、ポート 8050 を手動で開くことができます。 ゲートウェイの設定中にファイアウォールの問題が発生した場合は、次のコマンドを使用すると、ファイアウォールを構成せずにゲートウェイをインストールできます。
 
-    msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
+```cmd
+msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
+```
 
 ゲートウェイ コンピューター上でポート 8050 を開かない場合は、 **資格情報の設定** アプリケーション以外のメカニズムを使用して、データ ストア資格情報を構成する必要があります。 たとえば、[New-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) PowerShell コマンドレットを使用できます。 データ ストア資格情報を設定する方法については、「資格情報とセキュリティの設定」に関するセクションを参照してください。
 
