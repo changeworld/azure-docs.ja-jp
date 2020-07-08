@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: conceptual
-ms.date: 09/23/2019
+ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 21b05631f1c225c9c4b1f7c65d18588900850b8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 19f06893c862e1e34cd79a42c428d202918f92e2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77911738"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84817714"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box のセキュリティとデータ保護
 
@@ -45,7 +45,6 @@ Data Box は、承認済みのエンティティ以外データの閲覧、変�
 Data Box デバイスは、次の機能によって保護されます。
 
 - 衝撃や、劣悪な輸送および環境条件に耐える頑丈なデバイス梱包。 
-- 輸送中のデバイス不正開封を示す不正開封証拠シール。
 - ハードウェアおよびソフトウェアの不正開封を検出し、デバイスに対するそれ以上の操作を防ぎます。
 - Data Box 固有のソフトウェアのみを実行します。
 - ロック状態で起動します。
@@ -57,7 +56,7 @@ Data Box デバイスは、次の機能によって保護されます。
 Data Box に対する入出力データは、次の機能によって保護されます。
 
 - 保存データの AES 256 ビット暗号化。
-- 輸送中データのための暗号化プロトコルを使用できます。
+- 輸送中データのための暗号化プロトコルを使用できます。 データ サーバーからデータをコピーする場合は、そのデータを保護するために暗号化付き SMB 3.0 を使用することをお勧めします。
 - Azure へのアップロードが完了したデータは、デバイスから確実に消去されます。 データ消去は、[NIST 800-88r1 標準の ATA ハード ディスク ドライブに関する付録 A](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf) のガイドラインに従っています。 データ消去イベントは[注文履歴](data-box-logs.md#download-order-history)に記録されます。
 
 ### <a name="data-box-service-protection"></a>Data Box サービスの保護

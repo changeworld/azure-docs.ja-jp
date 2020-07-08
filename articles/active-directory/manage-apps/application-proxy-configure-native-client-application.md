@@ -3,25 +3,25 @@ title: ネイティブ クライアント アプリの発行 - Azure AD | Micros
 description: ネイティブ クライアント アプリケーションが Azure AD Application Proxy Connector と通信して、オンプレミス アプリケーションに対して安全なリモート アクセスを提供する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/12/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 442e1515159afc1df79bb6f5f1f747ce0800fef7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ca5cdb592de29f8c5396a68a7c36e6994df906cc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647236"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764810"
 ---
 # <a name="how-to-enable-native-client-applications-to-interact-with-proxy-applications"></a>ネイティブ クライアント アプリケーションからプロキシ アプリケーションを操作できるようにする方法
 
@@ -115,8 +115,8 @@ if (authResult != null)
 | --- | --- |
 | \<Tenant ID> | **[Azure Active Directory]**  >  **[プロパティ]**  >  **[ディレクトリ ID]** |
 | \<App ID of the Native app> | **[アプリケーションの登録]**  > *ネイティブ アプリケーション* >  **[概要]**  >  **[アプリケーション ID]** |
-| \<スコープ > | **[アプリケーション 登録]**  > *ネイティブ アプリケーション* >  **[API 権限]** > Permisson API (user_impersonation) をクリックします > 右側に、**user_impersonation** というキャプション付きのパネルが表示されます。 > スコープは、編集ボックスの URL です。
-| \<プロキシ アプリの Url> | API への外部 URL とパス
+| \<Scope> | **[アプリケーション 登録]**  > *ネイティブ アプリケーション* >  **[API 権限]** > Permisson API (user_impersonation) をクリックします > 右側に、**user_impersonation** というキャプション付きのパネルが表示されます。 > スコープは、編集ボックスの URL です。
+| \<Proxy App Url> | API への外部 URL とパス
 
 これらのパラメーターで MSAL コードを編集した後は、会社のネットワークの外部のユーザーであっても、ネイティブ クライアント アプリケーションに対して認証を行うことができるようになります。
 
