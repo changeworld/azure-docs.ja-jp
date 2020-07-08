@@ -105,9 +105,6 @@
           href: luis-concept-test.md
         - name: バッチ テスト
           href: luis-concept-batch-test.md
-    - name: オーサリング キーとランタイム キー
-      displayName: 'shared, transfer, ownership, author, access, import'
-      href: luis-concept-keys.md
     - name: データ管理
       items:
         - name: データの変更

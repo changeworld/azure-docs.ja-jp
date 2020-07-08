@@ -60,8 +60,6 @@
       href: ddos-best-practices.md
     - name: 未解決の DNS とサブドメインの引き継ぎ
       href: subdomain-takeover.md
-    - name: DDoS Protection のセキュリティ ベースライン
-      href: ddos-protection-security-baseline.md
     - name: セキュリティ保護されたハイブリッド ネットワーク アーキテクチャ
       href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
 - name: IaaS セキュリティ

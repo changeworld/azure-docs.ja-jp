@@ -4,12 +4,12 @@ description: IntelliJ IDEA を使用して最初の Azure Resource Manager テ�
 ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: conceptual
-ms.openlocfilehash: a5015a018f905b4353afd6bf25a48a2d942b3b97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa09fbe8d239bbe10c0762d3aad7e19df23a9044
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153354"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057451"
 ---
 # <a name="create-and-deploy-arm-templates-by-using-the-intellij-idea"></a>IntelliJ IDEA を使用して ARM テンプレートを作成およびデプロイする
 
@@ -86,4 +86,4 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 > [初心者向けチュートリアル](./template-tutorial-create-first-template.md)
 
 > [!div class="nextstepaction"]
-> [Azure デベロッパー センターで Java にアクセスする](https://docs.microsoft.com/azure/java)
+> [Azure デベロッパー センターで Java にアクセスする](/azure/java)

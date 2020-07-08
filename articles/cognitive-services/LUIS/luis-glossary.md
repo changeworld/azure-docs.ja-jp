@@ -3,12 +3,12 @@ title: 用語集 - LUIS
 description: 用語集では、LUIS API サービスの使用中に目にする可能性のある用語について説明します。
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: 1513099decc21a7d219bfcb84563619640028550
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 93e3df755596f7f77d2cd11edfa616c44d1f6c16
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681621"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056380"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>一般的な用語や概念に関する Language Understanding の用語集
 Language Understanding (LUIS) 用語集では、LUIS サービスの使用中に目にする可能性のある用語について説明します。
@@ -38,11 +38,11 @@ HR ボットを構築している場合は、"休暇の予定を立てる"、"�
 
 ### <a name="authoring-key"></a>オーサリング キー
 
-[オーサリング キー](luis-concept-keys.md)はアプリの作成に使用されます。 運用レベルのエンドポイント クエリでは使用されません。 詳細については、「[キーの制限](luis-limits.md#key-limits)」を参照してください。
+[オーサリング キー](luis-how-to-azure-subscription.md)はアプリの作成に使用されます。 運用レベルのエンドポイント クエリでは使用されません。 詳細については、「[キーの制限](luis-limits.md#key-limits)」を参照してください。
 
 ### <a name="authoring-resource"></a>作成リソース
 
-LUIS の[作成リソース](luis-concept-keys.md#azure-resources-for-luis)は、Azure を通じて利用できる管理可能な項目です。 リソースは、Azure サービスの関連する作成、トレーニング、および公開機能に対するアクセスです。 リソースには、関連する Azure サービスにアクセスするために必要な認証、承認、セキュリティ情報が含まれています。
+LUIS の[作成リソース](luis-how-to-azure-subscription.md#azure-resources-for-luis)は、Azure を通じて利用できる管理可能な項目です。 リソースは、Azure サービスの関連する作成、トレーニング、および公開機能に対するアクセスです。 リソースには、関連する Azure サービスにアクセスするために必要な認証、承認、セキュリティ情報が含まれています。
 
 作成 リソースには、`LUIS-Authoring` という Azure の "種類" があります。
 
@@ -234,7 +234,7 @@ LUIS では、エンティティを含む意図の例の発話に含まれる単
 
 ### <a name="prediction-key"></a>予測キー
 
-[予測キー](luis-concept-keys.md) (旧称はサブスクリプション キー) は、予測エンドポイントの使用を承認する、Azure で作成した LUIS サービスに関連付けられたキーです。
+[予測キー](luis-how-to-azure-subscription.md) (旧称はサブスクリプション キー) は、予測エンドポイントの使用を承認する、Azure で作成した LUIS サービスに関連付けられたキーです。
 
 このキーはオーサリング キーではありません。 予測エンドポイント キーがある場合は、それをオーサリング キーの代わりに、すべてのエンドポイント要求に対して使用してください。 現在の予測キーは、LUIS Web サイトの Azure リソース ページの下部にあるエンドポイント URL 内に表示されます。 これは、subscription-key の名前/値ペアの値です。
 

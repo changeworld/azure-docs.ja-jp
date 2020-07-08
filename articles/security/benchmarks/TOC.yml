@@ -41,10 +41,14 @@
       href: ../../automation/security-baseline.md
     - name: Azure Cache for Redis のセキュリティ ベースライン
       href: ../../azure-cache-for-redis/security-baseline.md
+    - name: Azure Policy のセキュリティ ベースライン
+      href: ../../governance/policy/concepts/azure-security-benchmark-baseline.md
     - name: Backup のセキュリティ ベースライン
       href: ../../backup/security-baseline.md
     - name: Batch のセキュリティ ベースライン
       href: ../../batch/security-baseline.md
+    - name: Cognitive Services のセキュリティ ベースライン
+      href: ../../cognitive-services/security-baseline.md
     - name: Container Instances のセキュリティ ベースライン
       href: ../../container-instances/security-baseline.md
     - name: Container Registry のセキュリティ ベースライン
@@ -53,7 +57,7 @@
       href: ../../cosmos-db/security-baseline.md
     - name: カスタマー ロックボックスのセキュリティ ベースライン
       href: ../fundamentals/customer-lockbox-security-baseline.md
-    - name: Databox のセキュリティ ベースライン
+    - name: Data Box のセキュリティ ベースライン
       href: ../../databox/security-baseline.md
     - name: データ エクスプローラーのセキュリティ ベースライン
       href: /azure/data-explorer/security-baseline
@@ -87,3 +91,5 @@
       href: ../../stream-analytics/security-baseline.md
     - name: Storage のセキュリティ ベースライン
       href: ../../storage/common/security-baseline.md
+    - name: Synapse Analytics のセキュリティ ベースライン
+      href: ../../synapse-analytics/security-baseline.md
