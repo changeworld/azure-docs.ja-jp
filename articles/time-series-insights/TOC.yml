@@ -49,16 +49,26 @@
               href: time-series-insights-parameterized-urls.md
     - name: Azure Time Series Insights プレビュー
       items:
-        - name: 環境を計画する
-          href: time-series-insights-update-plan.md
-        - name: データ ストレージとイングレス
-          href: time-series-insights-update-storage-ingress.md
         - name: ユース ケース
           href: time-series-insights-update-use-cases.md
+        - name: 環境を計画する
+          href: time-series-insights-update-plan.md
+        - name: インジェストの概要
+          href: concepts-ingestion-overview.md
+        - name: サポートされるデータ型
+          href: concepts-supported-data-types.md
+        - name: ストリーミング インジェストのイベント ソース
+          href: concepts-streaming-ingestion-event-sources.md
+        - name: JSON のフラット化とエスケープの規則
+          href: concepts-json-flattening-escaping-rules.md
+        - name: ストリーミング イングレスのスループットの制限
+          href: concepts-streaming-throughput-limitations.md
+        - name: ストレージ
+          href: concepts-storage.md
         - name: タイム シリーズ モデル
-          href: time-series-insights-update-tsm.md
+          href: concepts-model-overview.md
         - name: タイム シリーズ クエリ
-          href: time-series-insights-update-tsq.md
+          href: concepts-query-overview.md
         - name: エクスプローラー プレビューでデータを視覚化する
           href: time-series-insights-update-explorer.md
         - name: 開発
