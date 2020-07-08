@@ -5,14 +5,14 @@ author: nis-goel
 ms.author: nisgoel
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: fa90c3579e241fd6b7dc53c9df7d996402fc78a5
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 6ee1c70ec02af2a24f7867a6e6b06593361612b2
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84296889"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083119"
 ---
 # <a name="integrate-apache-zeppelin-with-hive-warehouse-connector-in-azure-hdinsight"></a>Azure HDInsight で Apache Zeppelin と Hive Warehouse Connector を統合する
 

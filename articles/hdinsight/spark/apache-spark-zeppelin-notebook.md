@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: 931114a56d774c506b0b33fe4f4fc39e564c06c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a692f4dd86d110f7f0a91a862a7b16ac28345de5
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195096"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084530"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Azure HDInsight 上の Apache Spark クラスターで Apache Zeppelin Notebook を使用する
 
@@ -33,7 +33,7 @@ HDInsight Spark クラスターには、[Apache Zeppelin](https://zeppelin.apach
    >
    > `https://CLUSTERNAME.azurehdinsight.net/zeppelin`
 
-2. 新しい Notebook を作成します。 ヘッダー ウィンドウから、 **[Notebook]** >  **[新しいメモを作成します]** の順に移動します。
+2. 新しい Notebook を作成します。 ヘッダー ウィンドウから、 **[Notebook]**  >  **[新しいメモを作成します]** の順に移動します。
 
     ![新しい Zeppelin ノートブックの作成](./media/apache-spark-zeppelin-notebook/hdinsight-create-zeppelin-notebook.png "新しい Zeppelin Notebook を作成します")
 
@@ -141,7 +141,9 @@ HDInsight 上の Apache Spark クラスター内の Zeppelin Notebook では、�
 
     c. 3 つの値をコロン ( **:** ) で区切って連結します。
 
-        com.databricks:spark-csv_2.10:1.4.0
+    ```
+    com.databricks:spark-csv_2.10:1.4.0
+    ```
 
 ## <a name="where-are-the-zeppelin-notebooks-saved"></a>Zeppelin Notebook の保存場所
 
@@ -214,7 +216,7 @@ Ambari からサービスを検証するには、`https://CLUSTERNAME.azurehdins
 
 1. `https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary` に移動します。ここで、CLUSTERNAME はクラスターの名前です。
 
-1. **[CONFIGS]\(構成\)** >  **[Advanced zeppelin-log4j-properties]\(詳細 zeppelin-log4j-properties\)** >  **[log4j_properties_content]** に移動します。
+1. **[CONFIGS]\(構成\)**  >  **[Advanced zeppelin-log4j-properties]\(詳細 zeppelin-log4j-properties\)**  >  **[log4j_properties_content]** に移動します。
 
 1. `log4j.appender.dailyfile.Threshold = INFO` を `log4j.appender.dailyfile.Threshold = DEBUG` に変更します。
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 4b314fbdb9cbc0c0b797cbee8e92ee4702bbea81
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f41f3bd38013cb0ebd2cad55168551c303c1d231
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77919466"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084329"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Azure VM でリモート デスクトップ サービスが起動しない
 
@@ -47,7 +47,9 @@ VM に接続しようとすると、次のシナリオが発生します。
 
     次のクエリを実行して、これらのエラーを検索するシリアル アクセス コンソール機能を使用することもできます。 
 
-        wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Service Control Manager'] and EventID=7022 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more 
+    ```console
+   wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Service Control Manager'] and EventID=7022 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
+    ```
 
 ## <a name="cause"></a>原因
  
@@ -179,22 +181,37 @@ VM に接続しようとすると、次のシナリオが発生します。
 
 1. この問題は、このサービスの開始アカウントが変更された場合に発生します。 これを既定値に戻します。 
 
-        sc config TermService obj= 'NT Authority\NetworkService'
+    ```console
+    sc config TermService obj= 'NT Authority\NetworkService'
+    ```
+
 2. サービスを開始します。
 
-        sc start TermService
+    ```console
+    sc start TermService
+    ```
+
 3. リモート デスクトップを使用して VM に接続してみます。
 
 #### <a name="termservice-service-crashes-or-hangs"></a>TermService サービスがクラッシュまたはハングする
 1. サービスの状態が**開始中**または**停止中**のままになっている場合は、サービスを停止してみてください。 
 
-        sc stop TermService
+    ```console
+    sc stop TermService
+    ```
+
 2. サービスをそれ自体の 'svchost' コンテナーで切り離します。
 
-        sc config TermService type= own
+    ```console
+    sc config TermService type= own
+    ```
+
 3. サービスを開始します。
 
-        sc start TermService
+    ```console
+    sc start TermService
+    ```
+
 4. それでもサービスを開始できない場合は、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
 
 ### <a name="repair-the-vm-offline"></a>VM をオフライン修復する

@@ -5,14 +5,14 @@ author: nis-goel
 ms.author: nisgoel
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/22/2020
-ms.openlocfilehash: 999c58871ed811d91fd96d158ea6f65db6c718f3
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: ed3dbe4cb5b9d8b50c028a68feeded170130bfb8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83853754"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085839"
 ---
 # <a name="apache-spark-operations-supported-by-hive-warehouse-connector-in-azure-hdinsight"></a>Azure HDInsight の Hive Warehouse Connector でサポートされる Apache Spark の操作
 
