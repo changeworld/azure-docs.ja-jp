@@ -6,12 +6,11 @@ ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
-ms.openlocfilehash: 0a6a1bd5e56f94a97779a85eafd0d46473cc2d0c
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
-ms.translationtype: HT
+ms.openlocfilehash: 227e60486f0a6712b0d29de47983bad737481bd4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262431"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800547"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>ローカルでの開発とテストに Azure Cosmos Emulator を使用する
 
@@ -233,7 +232,9 @@ Python SDK および Node.js SDK からエミュレーターに接続すると�
 
 ### <a name="command-line-syntax"></a>コマンドライン構文
 
-    Microsoft.Azure.Cosmos.Emulator.exe [/Shutdown] [/DataPath] [/Port] [/MongoPort] [/DirectPorts] [/Key] [/EnableRateLimiting] [/DisableRateLimiting] [/NoUI] [/NoExplorer] [/EnableMongoDbEndpoint] [/?]
+```cmd
+Microsoft.Azure.Cosmos.Emulator.exe [/Shutdown] [/DataPath] [/Port] [/MongoPort] [/DirectPorts] [/Key] [/EnableRateLimiting] [/DisableRateLimiting] [/NoUI] [/NoExplorer] [/EnableMongoDbEndpoint] [/?]
+```
 
 オプションの一覧を表示するには、コマンド プロンプトで「 `Microsoft.Azure.Cosmos.Emulator.exe /?` 」と入力します。
 
@@ -418,7 +419,7 @@ cd $env:LOCALAPPDATA\CosmosDBEmulator\bind-mount
 
 データ エクスプローラーを開くには、ブラウザーで次の URL に移動します。 上記の応答メッセージにエミュレーター エンドポイントが表示されます。
 
-    https://<emulator endpoint provided in response>/_explorer/index.html
+**https\://** \<emulator endpoint provided in response> **/_explorer/index.html**
 
 Linux Docker コンテナーで実行されている .NET クライアント アプリケーションがあり、ホスト マシン上で Azure Cosmos エミュレーターを実行している場合は、以下のセクションの Linux に関する説明に従って、Linux Docker コンテナーに証明書をインポートしてください。
 
@@ -511,7 +512,7 @@ Mac 環境では、次の手順に従います。
 デバッグ トレースを収集するには、管理コマンド プロンプトから次のコマンドを実行します。
 
 1. `cd /d "%ProgramFiles%\Azure Cosmos DB Emulator"`
-2. `Microsoft.Azure.Cosmos.Emulator.exe /shutdown` プログラムがシャットダウンしたことをシステム トレイで確認します。シャットダウンに 1 分かかる場合があります。 Azure Cosmos Emulator のユーザー インターフェイスで **[終了]** をクリックするだけでもかまいません。
+2. `Microsoft.Azure.Cosmos.Emulator.exe /shutdown`. プログラムがシャットダウンしたことをシステム トレイで確認します。シャットダウンに 1 分かかる場合があります。 Azure Cosmos Emulator のユーザー インターフェイスで **[終了]** をクリックするだけでもかまいません。
 3. `Microsoft.Azure.Cosmos.Emulator.exe /startwprtraces`
 4. `Microsoft.Azure.Cosmos.Emulator.exe`
 5. 問題を再現します。 データ エクスプローラーが動作していない場合は、エラーを捕捉するために、ブラウザーが開くまで数秒間待つだけです。
