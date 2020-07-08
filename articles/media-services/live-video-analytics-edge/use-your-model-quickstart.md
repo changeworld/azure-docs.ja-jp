@@ -3,12 +3,12 @@ title: 独自のモデルを使用してライブ ビデオを分析する - Azu
 description: このクイックスタートでは、コンピューター ビジョンを適用して、(シミュレートされた) IP カメラからのライブ ビデオ フィードを分析します。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 73b8f83b9e3c450612c742a831ac800343b3bbbc
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: e19c5bd6b44f9a4dd225f6a849ee9aaf62fa6273
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84816694"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027666"
 ---
 # <a name="quickstart-analyze-live-video-by-using-your-own-model"></a>クイック スタート:独自のモデルを使用してライブ ビデオを分析する
 
@@ -190,7 +190,7 @@ Live Video Analytics デバイスを右クリックし、 **[組み込みイベ�
 
 ### <a name="mediasessionestablished-event"></a>MediaSessionEstablished イベント
 
-メディア グラフがインスタンス化されると、RTSP ソース ノードは、rtspsim-live55 コンテナーで実行されている RTSP サーバーへの接続を試みます。 接続に成功すると、次のイベントが出力されます。 イベントの種類は `Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished` です。
+メディア グラフがインスタンス化されると、RTSP ソース ノードは、rtspsim-live555 コンテナーで実行されている RTSP サーバーへの接続を試みます。 接続に成功すると、次のイベントが出力されます。 イベントの種類は `Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished` です。
 
 ```
 [IoTHubMonitor] [9:42:18 AM] Message received from [lvaedgesample/lvaEdge]:
