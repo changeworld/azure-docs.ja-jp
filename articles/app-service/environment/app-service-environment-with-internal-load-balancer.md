@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 0c03905017629e28e41cce2adaa65eac347b8185
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 009b1ff08f9a3a0b840a20a01be5b16cd28d4533
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294733"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833105"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>App Service 環境での内部ロード バランサーの使用
 
@@ -68,7 +68,7 @@ ILB ASE でのアプリの作成は、通常の ASE でのアプリの作成と�
 3. サブスクリプションを選択します。
 4. リソース グループを選択または作成します。
 5. App Service プラン (ASP) を選択または作成します。 新しい ASP を作成している場合は、ASE を場所として選択し、ASP を作成するワーカー プールを選択します。 ASP を作成するときに、場所として ASE を選択し、ワーカー プールを選択します。 アプリの名前を指定すると、アプリ名の下のサブドメインが、ASE のサブドメインによって置き換えられます。 
-6. **作成** を選択します。 アプリをダッシュボードに表示する場合は、必ず **[ダッシュボードにピン留めする]** チェック ボックスをオンにします。 
+6. **［作成］** を選択します アプリをダッシュボードに表示する場合は、必ず **[ダッシュボードにピン留めする]** チェック ボックスをオンにします。 
 
 ![][2]
 
@@ -118,9 +118,10 @@ ILB ASE の管理は、通常の ASE の管理方法とほぼ同じです。 ホ
 #### <a name="dns-configuration"></a>DNS の構成
 外部 VIP を使用する場合、DNS は Azure によって管理されます。 ASE に作成されるすべてのアプリは、Azure DNS (パブリック DNS) に自動的に追加されます。 ILB ASE では、独自の DNS を管理する必要があります。 contoso.corp.net など特定のサブドメインについて、次のように ILB アドレスを示す DNS A レコードを作成します。
 
-    * 
-    *.scm ftp publish 
-
+- \*
+- *.scm
+- ftp
+- [発行]
 
 ## <a name="getting-started"></a>作業の開始
 App Service 環境の使用を開始するには、「[App Service 環境の概要][WhatisASE]」をご覧ください。
