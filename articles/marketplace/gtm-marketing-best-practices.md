@@ -1,18 +1,18 @@
 ---
 title: マーケティングのベスト プラクティス - Microsoft 商業マーケットプレース
 description: Microsoft AppSource や Azure Marketplace にオファーを公開するパートナー向けの、マーケティングのベスト プラクティスに関するリソースを入手してください。
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 04/16/2020
-ms.author: dsindona
-ms.openlocfilehash: 1955dd9dda75906e52007958fe7b4385e657444c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: dbe43bac3155290ea809b47f7c280cabc51fc73d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658027"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106887"
 ---
 # <a name="marketing-best-practices"></a>マーケティングのベスト プラクティス
 

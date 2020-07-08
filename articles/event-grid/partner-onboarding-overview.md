@@ -1,18 +1,14 @@
 ---
 title: Azure Event Grid パートナーとしてオンボードする
 description: Azure Event Grid のパートナー トピックの種類としてオンボードします。 パートナー トピックのリソース モデルと発行フローについて説明します。
-services: event-grid
-author: femila
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.author: femila
-ms.openlocfilehash: 47576feb7f3e4f2794aa06d52b4f5504c633ce96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 8003e3e6a28b0e6a05d553be01c171029e244d74
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560324"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116116"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner"></a>Azure Event Grid パートナーとしてオンボードする
 

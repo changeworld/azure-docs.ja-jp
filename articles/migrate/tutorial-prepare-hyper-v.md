@@ -4,12 +4,12 @@ description: Azure Migrate を使用した評価と移行に向けて Hyper-V VM
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: ca9020a9c306eea39d75c15c96b5f9fe9bcc11fe
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 5f669de6bd8d767ca7b947fca883187dad9fe29d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84770545"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109622"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Hyper-V VM の評価および Azure への移行を準備する
 
@@ -74,13 +74,13 @@ Azure Migrate プロジェクトを作成するためのアクセス許可があ
     ![Azure AD のアクセス許可](./media/tutorial-prepare-hyper-v/aad.png)
 
 > [!NOTE]
-> これは、重要ではない既定の設定です。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance)。
+> これは、重要ではない既定の設定です。 [詳細については、こちらを参照してください](../active-directory/develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance)。
 
 
 
 #### <a name="assign-application-developer-role"></a>アプリケーション開発者ロールの割り当て
 
-テナントおよびグローバル管理者は、アプリケーション開発者ロールをアカウントに割り当てることができます。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)。
+テナントおよびグローバル管理者は、アプリケーション開発者ロールをアカウントに割り当てることができます。 [詳細については、こちらを参照してください](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)。
 
 ### <a name="assign-azure-account-permissions"></a>Azure アカウントのアクセス許可を割り当てる
 
@@ -106,7 +106,7 @@ Hyper-V の VM 評価を、手動で、または構成スクリプトを使用�
 **PowerShell のバージョンを確認する** | サポートされている PowerShell バージョンでスクリプトが実行されていることを確認します。 | Hyper-V ホストで PowerShell バージョン4.0 以降が実行されていることを確認します。
 **アカウントの作成** | 自分 (スクリプトを実行しているユーザー) が Hyper-V ホストの管理特権を持っていることを確認します。<br/><br/>  Hyper-V ホストと通信するために Azure Migrate サービスによって使用されるローカル ユーザー アカウント (管理者ではありません) を作成できるようにします。 このユーザー アカウントは、ホスト上のこれらのグループに追加されます。<br/><br/> - リモート管理ユーザー<br/><br/> - Hyper-V 管理者<br/><br/>- パフォーマンス モニター ユーザー | Hyper-V ホストおよびクラスターに対する管理者アクセス許可を備えた、ドメインまたはローカルのユーザー アカウントを設定します。<br/><br/> - 検出に含めるすべてのホストとクラスターに対して 1 つのアカウントが必要です。<br/><br/> - アカウントは、ローカル アカウントでもドメイン アカウントでもかまいません。 Hyper-V ホストまたはクラスターに対する管理者アクセス許可を用意することをお勧めします。<br/><br/> または、管理者アクセス許可を割り当てたくない場合、以下のアクセス許可が必要です。リモート管理ユーザー、Hyper-V 管理者、パフォーマンス モニター ユーザー。
 **PowerShell リモート処理を有効にする** | ホスト上で PowerShell リモート処理を有効にして、Azure Migrate アプライアンスが WinRM 接続を介してホスト上で PowerShell コマンドを実行できるようにします。| 設定するには、各ホスト上で、管理者として PowerShell コンソールを開き、次のコマンドを実行します。<br/><br/>``` Enable-PSRemoting -force ```
-**Hyper-V 統合サービスの設定** | ホストによって管理されているすべての VM で Hyper-V 統合サービスが有効になっていることを確認します。 |  各 VM で [Hyper-V 統合サービスを有効にします](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)。<br/><br/> Windows Server 2003 を実行している場合は、[これらの手順に従います](prepare-windows-server-2003-migration.md)。
+**Hyper-V 統合サービスの設定** | ホストによって管理されているすべての VM で Hyper-V 統合サービスが有効になっていることを確認します。 |  各 VM で [Hyper-V 統合サービスを有効にします](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)。<br/><br/> Windows Server 2003 を実行している場合は、[これらの手順に従います](prepare-windows-server-2003-migration.md)。
 **VM ディスクがリモート SMB 共有に配置されている場合に資格情報を委任する** | スクリプトにより資格情報が委任されます。 | [CredSSP を有効にして](#enable-credssp-to-delegate-credentials)資格情報を委任します。
 
 ### <a name="run-the-script"></a>スクリプトを実行する

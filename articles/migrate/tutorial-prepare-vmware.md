@@ -4,12 +4,12 @@ description: Azure Migrate を使用した評価と移行に向けて VMware VM 
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: mvc
-ms.openlocfilehash: f3bfaf7c2396e0f1091299375aae4bfaa1d7e8ff
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 8b812924c0922d460c631baec8b0e13a9f45cd76
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84771191"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109577"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>評価および Azure への移行のために VMware VM を準備する
 
@@ -64,7 +64,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 アカウントにアクセス許可を付与するには、次の手順を実行します。
 
 1. 自分がテナントまたは全体管理者であることを確認します。その後、Azure AD で **[Azure Active Directory]**  >  **[ユーザー]**  >  **[ユーザー設定]** の順に移動します。
-2. **[アプリの登録]** を **[はい]** に設定します。 これは、重要ではない既定の設定です。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance)。
+2. **[アプリの登録]** を **[はい]** に設定します。 これは、重要ではない既定の設定です。 [詳細については、こちらを参照してください](../active-directory/develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance)。
 
     ![Azure AD のアクセス許可](./media/tutorial-prepare-vmware/aad.png)
 
@@ -72,7 +72,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 #### <a name="method-2-assign-application-developer-role"></a>方法 2:アプリケーション開発者ロールの割り当て
 
-テナントおよびグローバル管理者は、アプリケーション開発者ロールをアカウントに割り当てることもできます。 ロールの割り当てについての[詳しい情報](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)をご覧ください。
+テナントおよびグローバル管理者は、アプリケーション開発者ロールをアカウントに割り当てることもできます。 ロールの割り当てについての[詳しい情報](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)をご覧ください。
 
 ### <a name="assign-permissions-to-create-a-key-vault"></a>キー コンテナーを作成するためのアクセス許可を割り当てる
 

@@ -1,18 +1,16 @@
 ---
 title: 一般的な認証エラーのトラブルシューティング | Azure Marketplace
 description: Cloud パートナー ポータル API を使用するときの一般的な認証エラーについて説明します。
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.author: dsindona
-ms.openlocfilehash: 7684e097118fce4dcd471257ec0d9d476ce342be
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 8c9bd6dbe54f797090c5f7405ad709db954f8fb9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964925"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115470"
 ---
 # <a name="troubleshooting-common-authentication-errors"></a>一般的な認証エラーのトラブルシューティング
 

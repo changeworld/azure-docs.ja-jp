@@ -8,12 +8,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 45a61b5bc6f1082b84bf94db7e8ad5ce49ec068f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac6a00efa7db848e4c05703c81ba835fbf5f77e3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83648061"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103791"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>ハイブリッド マシンを大規模に Azure に接続する
 
@@ -86,7 +86,7 @@ PowerShell を使用してサービス プリンシパルを作成するには�
 * `location`:[サポート対象の Azure リージョン](overview.md#supported-regions)に関するページを参照してください。 この場所は、リソース グループの場所と同じ場合も異なる場合もあります。
 * `resource-name`:(*省略可能*) オンプレミス マシンの Azure リソースの表記に使用されます。 この値を指定しない場合は、マシンのホスト名が使用されます。
 
-`azcmagent` コマンドライン ツールの詳細は、[Azcmagent のリファレンス](azcmagent-reference.md)に関するページを参照して確認することができます。
+`azcmagent` コマンドライン ツールの詳細は、[Azcmagent のリファレンス](./manage-agent.md)に関するページを参照して確認することができます。
 
 ### <a name="windows-installation-script"></a>Windows インストール スクリプト
 

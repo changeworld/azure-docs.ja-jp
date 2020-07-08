@@ -4,14 +4,14 @@ description: この記事では、Azure Database for PostgreSQL - Single Server 
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 7dcc6f9ece407bee20ed344d91ee95e34f8f4c0a
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 9b0e263d3b8bce9e04548f5e8433ff90d2bda274
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848192"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116355"
 ---
 # <a name="optimize-autovacuum-on-an-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server 上で自動バキュームを最適化する
 この記事では、Azure Database for PostgreSQL サーバー上で自動バキュームを効率的に最適化する方法について説明します。
@@ -22,20 +22,25 @@ PostgreSQL は、MVCC (MultiVersion Concurrency Control) を使用して、デ�
 バキューム ジョブは、手動または自動でトリガーできます。 データベースで更新や削除の操作が大量に発生している場合、使用不能タプルの数は多くなります。 データベースがアイドル状態の場合、使用不能タプルの数は少なくなります。 データベースの負荷が高くなると、バキュームを頻繁に実行する必要があります。このような場合、バキューム ジョブの "*手動*" 実行は不便になります。
 
 自動バキュームは、構成することが可能で、チューニングによるメリットがあります。 PostgreSQL 出荷時の既定値は、どのような種類のデバイスでも製品が確実に機能するように設定されています。 たとえば、Raspberry Pi などのデバイスです。 最適な構成値は、次の条件によって変わります。
+
 - SKU やストレージ サイズなど、使用可能な合計リソース。
 - リソースの使用状況。
 - 個々のオブジェクトの特性。
 
 ## <a name="autovacuum-benefits"></a>自動バキュームのメリット
+
 バキュームを随時実行しないと、使用不能タプルの蓄積によって、以下のような結果が生じる可能性があります。
+
 - データベースやテーブルの拡大など、データの肥大化。
 - 最適とはいえないインデックスの増大。
 - I/O の増加。
 
 ## <a name="monitor-bloat-with-autovacuum-queries"></a>自動バキューム クエリによる肥大化を監視する
 次のサンプル クエリは、XYZ という名前のテーブルで、使用不能タプルとライブ タプルの数を識別するために設計されています。
- 
-    'SELECT relname, n_dead_tup, n_live_tup, (n_dead_tup/ n_live_tup) AS DeadTuplesRatio, last_vacuum, last_autovacuum FROM pg_catalog.pg_stat_all_tables WHERE relname = 'XYZ' order by n_dead_tup DESC;'
+
+```sql
+SELECT relname, n_dead_tup, n_live_tup, (n_dead_tup/ n_live_tup) AS DeadTuplesRatio, last_vacuum, last_autovacuum FROM pg_catalog.pg_stat_all_tables WHERE relname = 'XYZ' order by n_dead_tup DESC;
+```
 
 ## <a name="autovacuum-configurations"></a>自動バキュームの構成
 自動バキュームを制御する構成パラメーターは、次の 2 つの重要な問いに基づいています。
@@ -56,6 +61,7 @@ autovacuum_max_workers|任意の時点で実行できる (自動バキューム 
 個々のテーブルの設定をオーバーライドするには、テーブル ストレージのパラメーターを変更します。 
 
 ## <a name="autovacuum-cost"></a>自動バキュームのコスト
+
 バキューム操作実行時の "コスト" を次に示します。
 
 - バキューム実行対象のデータ ページはロックされます。
@@ -64,6 +70,7 @@ autovacuum_max_workers|任意の時点で実行できる (自動バキューム 
 そのため、バキューム ジョブの実行頻度を極端に上げたり下げたりしないでください。 バキューム ジョブはワークロードに応じて調整する必要があります。 それぞれにトレードオフがあるため、すべての自動バキューム パラメーターの変更をテストしてください。
 
 ## <a name="autovacuum-start-trigger"></a>自動バキュームの開始トリガー
+
 自動バキュームは、使用不能タプルの数が、autovacuum_vacuum_threshold + autovacuum_vacuum_scale_factor * reltuples を超えるとトリガーされます。 この reltuples は定数です。
 
 自動バキュームからのクリーンアップは、データベースの負荷に合わせて実行する必要があります。 そうしないと、ストレージが不足し、クエリが全般的に遅くなる可能性があります。 時間の経過と共に調整を進めて、バキューム操作で使用不能タプルをクリーンアップする速度が、使用不能タプルが作られる速度と等しくなる必要があります。
@@ -91,7 +98,9 @@ autovacuum_max_workers パラメーターは、同時に実行できる自動バ
 PostgreSQL では、テーブル レベルまたはインスタンス レベルでこれらのパラメーターを設定できます。 Azure Database for PostgreSQL では、現在、これらのパラメーターはテーブル レベルでのみ設定できます。
 
 ## <a name="optimize-autovacuum-per-table"></a>テーブルごとに自動バキュームを最適化する
+
 前述のすべての構成パラメーターは、テーブルごとに構成できます。 次に例を示します。
+
 ```sql
 ALTER TABLE t SET (autovacuum_vacuum_threshold = 1000);
 ALTER TABLE t SET (autovacuum_vacuum_scale_factor = 0.1);
@@ -102,7 +111,8 @@ ALTER TABLE t SET (autovacuum_vacuum_cost_delay = 10);
 自動バキュームは、テーブルごとの同期プロセスです。 テーブルにある使用不能タプルの割合が増えるにつれて、自動バキュームを行う "コスト" が高くなります。 更新と削除の頻度が高いテーブルは、複数のテーブルに分割できます。 テーブルを分割することで、自動バキュームを並列化し、1 つのテーブルで自動バキュームを完了するための "コスト" を削減できます。 並列の自動バキューム worker の数を増やし、worker が豊富にスケジュールされるようにすることもできます。
 
 ## <a name="next-steps"></a>次のステップ
+
 自動バキュームの使用方法と調整方法の詳細については、以下の PostgreSQL ドキュメントを参照してください。
 
- - [第 18 章、サーバー構成](https://www.postgresql.org/docs/9.5/static/runtime-config-autovacuum.html)
- - [第 24 章、日常のデータベース メンテナンス タスク](https://www.postgresql.org/docs/9.6/static/routine-vacuuming.html)
+- [第 18 章、サーバー構成](https://www.postgresql.org/docs/9.5/static/runtime-config-autovacuum.html)
+- [第 24 章、日常のデータベース メンテナンス タスク](https://www.postgresql.org/docs/9.6/static/routine-vacuuming.html)

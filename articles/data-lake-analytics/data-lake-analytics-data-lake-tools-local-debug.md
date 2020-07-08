@@ -7,15 +7,15 @@ ms.author: yanacai
 ms.reviewer: jasonwhowell
 ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: big-data
 ms.date: 07/03/2018
-ms.openlocfilehash: 0827311218202de447e5cf27356e00c4da020e94
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 580f23fa2b4fc9c5afee4eb8435e74a8bfa1fbe9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61472993"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106953"
 ---
 # <a name="debug-azure-data-lake-analytics-code-locally"></a>ローカルで Azure Data Lake Analytics コードをデバッグする
 
@@ -42,8 +42,10 @@ Azure Data Lake Analytics サービスに提出し、登録しなくても C# �
 1. C# アセンブリ プロジェクトを作成してビルドし、出力 **DLL** ファイルを生成します。
 2. U-SQL ステートメントを使用して **DLL** ファイルを登録します。
 
-        CREATE ASSEMBLY assemblyname FROM @"..\..\path\to\output\.dll";
-        
+   ```sql
+   CREATE ASSEMBLY assemblyname FROM @"..\..\path\to\output\.dll";
+   ```
+   
 3. C# コードにブレークポイントを設定します。
 4. **F5** キーを選択し、C# **DLL** ファイルをローカルで参照してスクリプトをデバッグします。
 

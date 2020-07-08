@@ -9,12 +9,12 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: artek
-ms.openlocfilehash: 9c5b1d38e32ff0a0d0954064c8a2511d898d16e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 36e6b39aaf481abaabe4fb5a4a71a527d1e74749
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84462925"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109452"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Data Lake Storage Gen2 で HDFS CLI を使用する
 
@@ -46,7 +46,7 @@ hdfs dfs -mkdir /samplefolder
 
 ## <a name="create-a-container"></a>コンテナーを作成する
 
-    hdfs dfs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/
+`hdfs dfs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/`
 
 * `<container-name>` プレースホルダーを、ご自身のコンテナーに付ける名前に置き換えます。
 
@@ -54,7 +54,7 @@ hdfs dfs -mkdir /samplefolder
 
 ## <a name="get-a-list-of-files-or-directories"></a>ファイルまたはディレクトリの一覧を取得する
 
-    hdfs dfs -ls <path>
+`hdfs dfs -ls <path>`
 
 `<path>` プレースホルダーを、コンテナーまたはコンテナー フォルダーの URI に置き換えます。
 
@@ -62,7 +62,7 @@ hdfs dfs -mkdir /samplefolder
 
 ## <a name="create-a-directory"></a>ディレクトリを作成する
 
-    hdfs dfs -mkdir [-p] <path>
+`hdfs dfs -mkdir [-p] <path>`
 
 `<path>` プレースホルダーを、ルート コンテナー名またはお使いのコンテナー内のフォルダーに置き換えます。
 
@@ -70,7 +70,7 @@ hdfs dfs -mkdir /samplefolder
 
 ## <a name="delete-a-file-or-directory"></a>ファイルまたはディレクトリを削除する
 
-    hdfs dfs -rm <path>
+`hdfs dfs -rm <path>`
 
 `<path>` プレースホルダーを、削除するファイルまたはフォルダーの URI に置き換えます。
 
@@ -78,7 +78,7 @@ hdfs dfs -mkdir /samplefolder
 
 ## <a name="display-the-access-control-lists-acls-of-files-and-directories"></a>ファイルとディレクトリのアクセス制御リスト (ACL) を表示する
 
-    hdfs dfs -getfacl [-R] <path>
+`hdfs dfs -getfacl [-R] <path>`
 
 例:
 
@@ -88,7 +88,7 @@ hdfs dfs -mkdir /samplefolder
 
 ## <a name="set-acls-of-files-and-directories"></a>ファイルとディレクトリの ACL を設定する
 
-    hdfs dfs -setfacl [-R] [-b|-k -m|-x <acl_spec> <path>]|[--set <acl_spec> <path>]
+`hdfs dfs -setfacl [-R] [-b|-k -m|-x <acl_spec> <path>]|[--set <acl_spec> <path>]`
 
 例:
 
@@ -98,19 +98,19 @@ hdfs dfs -mkdir /samplefolder
 
 ## <a name="change-the-owner-of-files"></a>ファイルの所有者を変更する
 
-    hdfs dfs -chown [-R] <new_owner>:<users_group> <URI>
+`hdfs dfs -chown [-R] <new_owner>:<users_group> <URI>`
 
 「[chown](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html#chown)」を参照
 
 ## <a name="change-group-association-of-files"></a>ファイルのグループの関連付けを変更する
 
-    hdfs dfs -chgrp [-R] <group> <URI>
+`hdfs dfs -chgrp [-R] <group> <URI>`
 
 「[chgrp](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html#chgrp)」を参照
 
 ## <a name="change-the-permissions-of-files"></a>ファイルのアクセス許可を変更する
 
-    hdfs dfs -chmod [-R] <mode> <URI>
+`hdfs dfs -chmod [-R] <mode> <URI>`
 
 「[chmod](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html#chmod)」を参照
 

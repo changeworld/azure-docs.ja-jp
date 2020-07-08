@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/18/2020
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 0b43bb92a58af58ae5924610f0667e9796a426e6
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 459360e72c2d35cafedb0291642bf081bfcad96c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193737"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103995"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Azure portal からハイブリッド マシンを Azure に接続する
 
@@ -40,9 +40,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     >[!NOTE]
     >Azure Arc for servers (プレビュー) では、次のリージョンのみがサポートされます。
+    >- EastUS
     >- WestUS2
     >- 西ヨーロッパ
-    >- WestAsia
+    >- SoutheastAsia
     >
     >リージョンを選択時のその他の考慮事項については、概要記事の[こちら](overview.md#supported-regions)を参照してください。
 
@@ -66,7 +67,7 @@ Windows インストーラー パッケージ *AzureConnectedMachineAgent.msi* �
 
 マシンがプロキシ サーバーを介してサービスと通信する必要がある場合は、エージェントをインストールした後、この記事で後ほど説明するコマンドを実行する必要があります。 これにより、プロキシ サーバーのシステム環境変数 `https_proxy` が設定されます。
 
-Windows インストーラー パッケージのコマンドライン オプションに詳しくない場合は、[Msiexec の標準コマンドライン オプション](https://docs.microsoft.com/windows/win32/msi/standard-installer-command-line-options)と [Msiexec のコマンドライン オプション](https://docs.microsoft.com/windows/win32/msi/command-line-options)に関するページを参照してください。
+Windows インストーラー パッケージのコマンドライン オプションに詳しくない場合は、[Msiexec の標準コマンドライン オプション](/windows/win32/msi/standard-installer-command-line-options)と [Msiexec のコマンドライン オプション](/windows/win32/msi/command-line-options)に関するページを参照してください。
 
 たとえば、ヘルプとクイック リファレンスのオプションを確認するには、`/?` パラメーターを指定してインストール プログラムを実行します。 
 

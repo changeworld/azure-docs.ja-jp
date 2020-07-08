@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7b02560d1e7b7c34a4d87dbdc468a85362aca4f7
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 7c4a148d68de8c57ed9237c05ba11eaf6c5e81e3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82993808"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103961"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>旧バージョンの Azure Migrate を使用する
 
@@ -92,7 +92,7 @@ Azure に未対応 |  この VM は Azure では起動しません。 たとえ�
 --- | --- | ---
 **ブートの種類** | BIOS がサポートされています。 UEFI はサポートされていません。 | ブートの種類が UEFI の場合は条件付きで対応します。
 **コア** | マシンのコア数が、Azure VM でサポートされる最大コア数 (128) 以下。<br/><br/> パフォーマンス履歴が使用可能な場合、Azure Migrate では、使用されているコアの数が考慮されます。<br/>アセスメント設定で快適性係数が指定されている場合、使用されているコアの数に快適性係数が乗算されます。<br/><br/> パフォーマンス履歴がない場合は、快適性係数を適用せずに、割り当てられているコアの数が使用されます。 | 制限以下の場合は対応します。
-**[メモリ]** | マシンのメモリ サイズが、Azure VM の最大メモリ (Azure M シリーズ Standard_M128m&nbsp;<sup>2</sup> で 3,892 GB) 以下。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)。<br/><br/> パフォーマンス履歴が使用可能な場合、Azure Migrate では、使用されているメモリの数が考慮されます。<br/><br/>快適性係数が指定されている場合、使用されているメモリに快適性係数が乗算されます。<br/><br/> 履歴がない場合は、快適性係数は適用されず、割り当てられているメモリが使用されます。<br/><br/> | 制限内であれば対応します。
+**[メモリ]** | マシンのメモリ サイズが、Azure VM の最大メモリ (Azure M シリーズ Standard_M128m&nbsp;<sup>2</sup> で 3,892 GB) 以下。 [詳細については、こちらを参照してください](../virtual-machines/windows/sizes.md)。<br/><br/> パフォーマンス履歴が使用可能な場合、Azure Migrate では、使用されているメモリの数が考慮されます。<br/><br/>快適性係数が指定されている場合、使用されているメモリに快適性係数が乗算されます。<br/><br/> 履歴がない場合は、快適性係数は適用されず、割り当てられているメモリが使用されます。<br/><br/> | 制限内であれば対応します。
 **ストレージ ディスク** | ディスクの割り当てサイズは、4 TB (4,096 GB) 以下である必要があります。<br/><br/> マシンに接続されているディスクの数は、OS ディスクを含めて 65 個以下である必要があります。 | 制限内であれば対応します。
 **ネットワーク** | マシンに接続されている NIC の数は、32 個以下である必要があります。 | 制限内であれば対応します。
 
@@ -114,8 +114,8 @@ Windows Server 2008 R2 および全 SP | Azure は完全サポートを提供し
 Windows Server 2008 (32 ビットおよび 64 ビット) | Azure は完全サポートを提供します。 | Azure に対応
 Windows Server 2003、2003 R2 | サポート対象外。Azure でサポートを受けるには[カスタム サポート契約 (CSA)](https://aka.ms/WSosstatement) が必要になります。 | Azure 条件付きで対応。Azure に移行する前に OS のアップグレードを検討してください。
 Windows 2000、98、95、NT、3.1、MS-DOS | サポート対象外。 マシンが Azure で起動する可能性はありますが、Azure による OS サポートは提供されません。 | Azure に条件付きで対応。Azure に移行する前に OS のアップグレードをお勧めします。
-Windows Client 7、8、10 | Azure は、[Visual Studio サブスクリプション](https://docs.microsoft.com/azure/virtual-machines/windows/client-images)にのみサポートを提供します。 | Azure に条件付きで対応
-Windows 10 Pro デスクトップ | Azure は、[マルチ テナント ホスティング権限](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment)にサポートを提供します。 | Azure に条件付きで対応
+Windows Client 7、8、10 | Azure は、[Visual Studio サブスクリプション](../virtual-machines/windows/client-images.md)にのみサポートを提供します。 | Azure に条件付きで対応
+Windows 10 Pro デスクトップ | Azure は、[マルチ テナント ホスティング権限](../virtual-machines/windows/windows-desktop-multitenant-hosting-deployment.md)にサポートを提供します。 | Azure に条件付きで対応
 Windows Vista、XP Professional | サポート対象外。 マシンが Azure で起動する可能性はありますが、Azure による OS サポートは提供されません。 | Azure に条件付きで対応。Azure に移行する前に OS のアップグレードをお勧めします。
 Linux | Azure はこれらの [Linux オペレーティング システム](../virtual-machines/linux/endorsed-distros.md)をサポートしています。 他の Linux オペレーティング システムも Azure で起動する可能性はありますが、Azure に移行する前に、サポート対象バージョンへの OS のアップグレードをお勧めします。 | Azure に対応 (バージョンがサポートされている場合)。<br/><br/>条件付きで対応 (バージョンがサポートされていない場合)。
 他のオペレーティング システム<br/><br/> 例: Oracle Solaris、Apple Mac OS、FreeBSD など | Azure では、これらのオペレーティング システムはサポートされません。 マシンは Azure で起動できますが、Azure による OS サポートは提供されません。 | Azure に条件付きで対応。Azure に移行する前にサポート対象の OS のインストールをお勧めします。  
@@ -240,11 +240,11 @@ Linux マシンにエージェントをインストールするには、次の�
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
-MMA でサポートされる Linux オペレーティング システムの一覧は、[ここ](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems)をご覧ください。
+MMA でサポートされる Linux オペレーティング システムの一覧は、[ここ](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)をご覧ください。
 
 ### <a name="install-the-mma-agent-on-a-machine-monitored-by-operations-manager"></a>Operations Manager による監視対象マシンに MMA エージェントをインストールする
 
-System Center Operations Manager 2012 R2 以降によって監視されているマシンの場合、MMA エージェントをインストールする必要はありません。 必要な依存関係データを収集するために、Service Map が Operations Manager の MMA と統合されています。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites)。 依存関係エージェントはインストールする必要があります。
+System Center Operations Manager 2012 R2 以降によって監視されているマシンの場合、MMA エージェントをインストールする必要はありません。 必要な依存関係データを収集するために、Service Map が Operations Manager の MMA と統合されています。 [詳細については、こちらを参照してください](../azure-monitor/insights/service-map-scom.md#prerequisites)。 依存関係エージェントはインストールする必要があります。
 
 ### <a name="install-the-dependency-agent"></a>依存関係エージェントをインストールする
 
@@ -274,7 +274,7 @@ System Center Operations Manager 2012 R2 以降によって監視されている
 4. 時間の範囲のラベルで期間をクリックすると、さまざまな期間の依存関係を確認できます。 既定では、範囲は 1 時間です。 時間の範囲を変更することも、開始日と終了日および期間を指定することもできます。
 
    > [!NOTE]
-   >    最大で 1 時間の時間の範囲がサポートされています。 長期間にわたって[依存関係データを照会する](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies)には、Azure Monitor ログを使用してください。
+   >    最大で 1 時間の時間の範囲がサポートされています。 長期間にわたって[依存関係データを照会する](./how-to-create-group-machine-dependencies.md)には、Azure Monitor ログを使用してください。
 
 5. グループ化する依存関係のあるマシンを特定したら、マップ上で Ctrl キーを押しながらクリックして複数のマシンを選択し、 **[グループ マシン]** をクリックします。
 6. グループ名を指定します。 依存するマシンが Azure Migrate によって検出されていることを確認します。
@@ -289,7 +289,7 @@ System Center Operations Manager 2012 R2 以降によって監視されている
 
 ## <a name="query-dependency-data-from-azure-monitor-logs"></a>Azure Monitor ログから依存関係データにクエリを実行する
 
-Service Map によってキャプチャされた依存関係データは、Azure Migrate プロジェクトに関連付けられている Log Analytics ワークスペースでのクエリに使用できます。 Azure Monitor ログ内でクエリを実行する Service Map データ テーブルの[詳細を参照してください](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records)。 
+Service Map によってキャプチャされた依存関係データは、Azure Migrate プロジェクトに関連付けられている Log Analytics ワークスペースでのクエリに使用できます。 Azure Monitor ログ内でクエリを実行する Service Map データ テーブルの[詳細を参照してください](../azure-monitor/insights/service-map.md#log-analytics-records)。 
 
 Kusto クエリを実行するには:
 
@@ -299,15 +299,15 @@ Kusto クエリを実行するには:
 4. Azure Monitor ログを使用して依存関係データを収集するためのクエリを作成します。 次のセクションでサンプル クエリを見つけます。
 5. [実行] をクリックしてクエリを実行します。 
 
-Kusto クエリの作成方法の[詳細を参照してください](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)。 
+Kusto クエリの作成方法の[詳細を参照してください](../azure-monitor/log-query/get-started-portal.md)。 
 
 ### <a name="sample-azure-monitor-logs-queries"></a>Azure Monitor ログのサンプル クエリ
 
-依存関係データを抽出するために使用できるサンプル クエリは次のとおりです。 クエリを変更して、目的のデータ ポイントを抽出できます。 依存関係データ レコード内のフィールドの完全なリストは、[こちら](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records)で入手できます。 その他のサンプル クエリについては、[こちら](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches)を参照してください。
+依存関係データを抽出するために使用できるサンプル クエリは次のとおりです。 クエリを変更して、目的のデータ ポイントを抽出できます。 依存関係データ レコード内のフィールドの完全なリストは、[こちら](../azure-monitor/insights/service-map.md#log-analytics-records)で入手できます。 その他のサンプル クエリについては、[こちら](../azure-monitor/insights/service-map.md#sample-log-searches)を参照してください。
 
 #### <a name="summarize-inbound-connections-on-a-set-of-machines"></a>一連のマシンの受信接続を集計する
 
-接続メトリック用のテーブル (VMConnection) 内にあるレコードは、個々の物理ネットワーク接続を表すものではありません。 複数の物理ネットワーク接続は、論理接続にグループ化されます。 物理ネットワーク接続データがどのように VMConnection 内の単一の論理レコードに集約されるかについては、[詳細を確認](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#connections)してください。 
+接続メトリック用のテーブル (VMConnection) 内にあるレコードは、個々の物理ネットワーク接続を表すものではありません。 複数の物理ネットワーク接続は、論理接続にグループ化されます。 物理ネットワーク接続データがどのように VMConnection 内の単一の論理レコードに集約されるかについては、[詳細を確認](../azure-monitor/insights/service-map.md#connections)してください。 
 
 ```
 // the machines of interest

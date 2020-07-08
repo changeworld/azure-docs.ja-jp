@@ -1,18 +1,16 @@
 ---
 title: パートナー センターでコマーシャル マーケットプレース アカウントを作成する
 description: パートナー センターで Microsoft コマーシャル マーケットプレースアカウントを作成する方法を説明します。
-author: qianw211
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
 ms.date: 04/14/2020
-ms.openlocfilehash: 2a1a6963a540f3e7384f73067af336b53b29134d
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 4a178feb4bdf0bc361185e21e47ccdceac3a7f21
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856690"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110013"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>パートナー センターでコマーシャル マーケットプレース アカウントを作成する
 

@@ -3,12 +3,12 @@ title: Azure Migrate での移行に向けた Windows Server 2003 サーバー�
 description: Azure Migrate での移行に向けて Windows Server 2003 サーバーを準備する方法について説明します。
 ms.topic: how-to
 ms.date: 05/27/2020
-ms.openlocfilehash: 33519764b138c7711e6c03a85aa33ec6f936a748
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 5e33742d59972d491c1efb8d0f1453c1226d4625
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84172127"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103944"
 ---
 # <a name="prepare-windows-server-2003-machines-for-migration"></a>移行に向けた Windows Server 2003 コンピューターの準備
 
@@ -25,7 +25,7 @@ ms.locfileid: "84172127"
 
 移行の前に、Hyper-V 統合サービスがインストールされているかどうかを確認し、必要に応じてインストールします。
 
-1. インストールされているかどうかを確認するには、[次の手順](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#turn-an-integration-service-on-or-off-using-hyper-v-manager)に従います。
+1. インストールされているかどうかを確認するには、[次の手順](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#turn-an-integration-service-on-or-off-using-hyper-v-manager)に従います。
 2. インストールされていない場合は、Hyper-V ロールを持つ Windows Server 2012 R2/Windows Server 2012 を実行しているコンピューターにサインインします。
 3. インストール ファイル **C:\Windows\System32\vmguest.iso** を探し、ファイルをマウントします。
 2. インストール フォルダーを Windows Server 2003 コンピューターにコピーし、統合サービスをインストールします。

@@ -1,17 +1,15 @@
 ---
 title: Microsoft コマーシャル マーケットプレースでの支払いの受け取り
 description: Microsoft コマーシャル マーケットプレースで収益の支払いを受け取る方法について説明します。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 12/10/2019
-ms.openlocfilehash: d34687703506db89b524ad7510d4946df8ac5360
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 06/09/2020
+ms.openlocfilehash: 604d5c93ca87831b1feb76095da694b4be402ad9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849027"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121692"
 ---
 # <a name="getting-paid-in-the-commercial-marketplace"></a>コマーシャル マーケットプレースでの支払いの受け取り
 
@@ -27,21 +25,6 @@ ms.locfileid: "83849027"
 料金は、[Microsoft Azure Marketplace 発行者契約](https://go.microsoft.com/fwlink/p/?LinkID=699560)に正式に定義されています。 問題がある場合は、必ずそのドキュメントを確認してください。
 
 Microsoft Store 料金は、アドオンを含む、コマーシャル マーケットプレースによって収集されたすべてのオファー売上に適用されます。
-
-## <a name="price-tiers"></a>価格レベル
-
-選択した価格レベルによって、オファーの配信先として選択したすべての国または地域の販売価格が設定されます。 また、市場ごとに異なる価格を選択するなど、追加の価格設定機能を使用することもできます。
-
-アプリを無料で提供することも、顧客がオファーを取得するために支払う必要がある価格を選択することもできます。 価格レベルは、0.99 米国ドルから始まり、1.09 米国ドル、1.19 米国ドルのように増分します。 価格が高くなるにつれ、価格レベル間の増分が増加します。
-
-> [!NOTE] 
-> これらの価格レベルは、オファー内から提供されるアドオンにも適用されます。
-
-各価格レベルには、Microsoft Store によって提供される各通貨に対応する値があります。 この値は、世界中の同等の価格ポイントでオファーを販売するのに役立ちます。 ただし、外国為替レートの変動により、正確な販売額は、通貨によって多少異なる場合があります。
-
-また、特定の市場の現地通貨で選択した自由形式の価格を入力するオプションもあります。 この場合、新しい価格で更新を送信しない限り、(換算レートが変動しても) 価格は調整されません。 
-
-選択した価格によっては、顧客が売上税または付加価値税を支払わなければならない場合があることに注意してください。 詳細については、[有料オファーの税の詳細](tax-details-paid-transactions.md)に関するページを参照してください。
 
 ## <a name="payout-reporting"></a>支払いレポート
 

@@ -1,18 +1,18 @@
 ---
 title: Azure Marketplace の IoT Edge モジュール オファー
 description: Azure Marketplace での IoT Edge モジュール オファーの公開について説明します。
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 04/15/2020
-ms.author: dsindona
-ms.openlocfilehash: 9783eb1dbcbfc3ee01008dfa33ff2429a87cf62a
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 0b707b2aed68359f8c04f6cd6bee6c95b495178b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963378"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119482"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge のモジュール
 
