@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/28/2020
-ms.openlocfilehash: 9f280aafabd59878ee24a9c3fe809dd027a97284
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/09/2020
+ms.openlocfilehash: e8efb43ac0711bac1324ac2c9e3b59373ce59419
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187853"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84635129"
 ---
 # <a name="what-are-mapping-data-flows"></a>マッピング データ フローとは
 
@@ -22,6 +22,8 @@ ms.locfileid: "82187853"
 マッピング データ フローは、Azure Data Factory における視覚的に設計されたデータ変換です。 データ フローを使用すると、データ エンジニアは、コードを記述することなくグラフィカルなデータ変換ロジックを開発できます。 生成されたデータ フローは、スケールアウトされた Apache Spark クラスターを使用する Azure Data Factory パイプライン内のアクティビティとして実行されます。 データ フロー アクティビティは、既存の Data Factory のスケジュール設定、制御、フロー、および監視機能を通して実施することができます。
 
 マッピング データ フローは、コーディングを必要としない、完全に視覚的なエクスペリエンスを提供します。 データ フローは実行クラスター上で実行されるため、データ処理をスケールアウトできます。 コードの翻訳、パスの最適化、データ フロー ジョブの実行はすべて、Azure Data Factory によって処理されます。
+
+![アーキテクチャ](media/data-flow/adf-data-flows.png "アーキテクチャ")
 
 ## <a name="getting-started"></a>作業の開始
 

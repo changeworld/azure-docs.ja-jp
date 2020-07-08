@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: alkohli
 ms.subservice: pod
-ms.openlocfilehash: 6f543b3f5c2bb7d4949c431580771c4b0d965e4d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 4bcd8deef28f8e0123e6e2171b3ab24d6ac49292
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125492"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84635001"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-azure-data-box"></a>Azure Key Vault のカスタマー マネージド キーを Azure Data Box に使用する
 
@@ -103,7 +103,7 @@ Azure Data Box のカスタマー マネージド キーの構成は省略可能
 
 カスタマー マネージド キーに関連するエラーが発生した場合は、次の表を使用してトラブルシューティングを行ってください。
 
-| エラー コード| エラー メッセージ| 詳細|
+| エラー コード| エラーの詳細| 回復可能かどうか|
 |-------------|--------------|---------|
 | SsemUserErrorEncryptionKeyDisabled| カスタマー マネージド キーが無効化されたため、パスキーをフェッチできませんでした。| 回復可能 (キー バージョンを有効にした場合)。|
 | SsemUserErrorEncryptionKeyExpired| カスタマー マネージド キーの有効期限が切れたため、パスキーをフェッチできませんでした。| 回復可能 (キー バージョンを有効にした場合)。|
