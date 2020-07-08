@@ -8,10 +8,9 @@ ms.author: kaib
 ms.date: 03/11/2020
 ms.custom: seodec18
 ms.openlocfilehash: e2916a71f167c415f6bf1dde8ff82a38b0e0557c
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: HT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83873998"
 ---
 # <a name="verify-encryption-status-for-linux"></a>Linux の暗号化の状態を確認する 
@@ -280,7 +279,7 @@ az storage account list --query [].[id] -o tsv
 ```
 ストレージ アカウントの ID が、次の形式で一覧表示されます。
 
-/subscriptions/\<サブスクリプション ID>/resourceGroups/\<リソース グループ名>/providers/Microsoft.Storage/storageAccounts/\<ストレージ アカウント名>
+/subscriptions/\<subscription id>/resourceGroups/\<resource group name>/providers/Microsoft.Storage/storageAccounts/\<storage account name>
 
 適切な ID を選択して変数に格納します。
 ```bash
