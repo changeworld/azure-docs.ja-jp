@@ -10,19 +10,19 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: 39ebbf99ad31cce20eabc20fbdc056c889235713
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2fa56217c54ac662a62a5ce835d75e3d85f05bfa
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77470753"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86041474"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューでのデータ モデリング
 
 この記事では、Azure Time Series Insights プレビューでタイム シリーズ モデルを操作する方法について説明します。 いくつかの一般的なデータ シナリオについて詳しく説明します。
 
 > [!TIP]
-> * プレビューの[タイム シリーズ モデル](time-series-insights-update-tsm.md)について参照してください。
+> * プレビューの[タイム シリーズ モデル](concepts-model-overview.md)について参照してください。
 > * 「[Azure Time Series Insights プレビュー エクスプローラー](./time-series-insights-update-explorer.md)」で、プレビュー UI での移動について確認してください。
 
 ## <a name="instances"></a>Instances
@@ -168,7 +168,7 @@ Azure Time Series Insights エクスプローラーでは、ブラウザー内�
 
 ## <a name="next-steps"></a>次のステップ
 
-- タイム シリーズ モデルの詳細については、[データ モデリング](./time-series-insights-update-tsm.md)に関する記事を参照してください。
+- タイム シリーズ モデルの詳細については、[データ モデリング](./concepts-model-overview.md)に関する記事を参照してください。
 
 - プレビューの詳細については、「[Visualize data in the Azure Time Series Insights Preview explorer](./time-series-insights-update-explorer.md)」(Azure Time Series Insights プレビュー エクスプローラーでデータを視覚化する) をご覧ください。
 

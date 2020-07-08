@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 88e9cdfa8ea4554a44ddfc25cde2b0eb2aed7a57
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9528b31bfd1be40b478f3c47fd0a16047a7f6ff
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83682709"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86028118"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>データ サイエンス プロジェクトのためのプラットフォームとツール
 
@@ -110,16 +110,18 @@ Microsoft の TDSP チームは、SQL Server 2016 R Services でデータ サイ
 
 **Windows** で TDSP に従う場合、Git リポジトリと通信するために **Git Credential Manager (GCM)** をインストールする必要があります。 GCM をインストールするには、最初に **Chocolaty** をインストールする必要があります。 Chocolaty と GCM をインストールするには、Windows PowerShell で**管理者**として次のコマンドを実行します。  
 
-    iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
-    choco install git-credential-manager-for-windows -y
-    
+```powershell
+iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
+choco install git-credential-manager-for-windows -y
+```  
 
 ### <a name="install-git-on-linux-centos-machines"></a>Linux (CentOS) マシンへの Git のインストール
 
 Linux (CentOS) マシンに Git をインストールするには、次の Bash コマンドを実行します。
 
-    sudo yum install git
-
+```powershell
+sudo yum install git
+```
 
 ### <a name="generate-public-ssh-key-on-linux-centos-machines"></a>Linux (CentOS) マシンでの SSH 公開キーの生成
 

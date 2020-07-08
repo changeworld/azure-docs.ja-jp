@@ -9,12 +9,12 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: bb66e90f1d835a6341b47bb698cf05bc442e0ac0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 69c921ba67159d28a913173cee5e90fb04dcbf0a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82129250"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85561035"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>不変ストレージを使用してビジネスに不可欠な BLOB データを保存する
 
@@ -22,7 +22,7 @@ Azure Blob Storage の不変ストレージを使用すると、ユーザーは�
 
 Azure portal、PowerShell、または Azure CLI を使用して、訴訟ホールドを設定またはクリアしたり、時間ベースの保持ポリシーを作成したりする方法については、「[BLOB ストレージの不変ポリシーを設定および管理する](storage-blob-immutability-policies-manage.md)」を参照して ください。
 
-[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="about-immutable-blob-storage"></a>不変 BLOB ストレージについて
 

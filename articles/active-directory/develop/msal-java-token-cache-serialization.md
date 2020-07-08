@@ -7,18 +7,18 @@ author: sangonzal
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 11/07/2019
 ms.author: sagonzal
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: bcb34d83365112b97769186ad74dfd762b05c2e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 31b908eacd5f9f8610ad2c0a985fa7e0be8d1505
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76696165"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85479336"
 ---
 # <a name="custom-token-cache-serialization-in-msal-for-java"></a>MSAL for Java でのカスタム トークン キャッシュのシリアル化
 

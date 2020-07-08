@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 1fa9581f1a7968a1bfd6df0fb82383dd45e70f54
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e6c766008faa6bbe53a4af69f7da9325cb9ff6a8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663180"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559867"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity-preview"></a>マネージド ID を使用して、Azure ストレージ アカウントへの接続を設定する (プレビュー)
 
@@ -83,7 +83,7 @@ Azure BLOB ストレージと Azure Data Lake Storage Gen2 に接続する場合
 [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) を使用して BLOB データ ソース オブジェクトを作成する方法の例:
 
 ```
-POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
+POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
 Content-Type: application/json
 api-key: [admin key]
 
@@ -103,7 +103,7 @@ Azure portal と [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azur
 
 ここでは、BLOB から抽出されたテキストを格納するために、検索可能な `content` フィールドを含むインデックスを作成する方法を示します。   
 
-    POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -125,7 +125,7 @@ Azure portal と [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azur
 
 BLOB インデクサーのインデクサー定義の例:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 

@@ -4,7 +4,7 @@ description: ご自身の Azure AD アプリにゲストがサインインでき
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/01/2019
 ms.author: mimart
 author: msmimart
@@ -12,18 +12,17 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e350d6338b6ca589ab18d068ef6a314363fe205c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1b3d7c47ff0a2c533bf12a67958a913b22915f75
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74272827"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551515"
 ---
 # <a name="example-direct-federation-with-active-directory-federation-services-ad-fs-preview"></a>例:Active Directory フェデレーション サービス (AD FS) との直接フェデレーション (プレビュー)
-|     |
-| --- |
-| 直接フェデレーションは、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
-|     |
+
+> [!NOTE]
+> 直接フェデレーションは、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 この記事では、Active Directory フェデレーション サービス (AD FS) を SAML 2.0 または WS-Fed ID プロバイダーとして使用して[直接フェデレーション](direct-federation.md)を設定する方法について説明します。 直接フェデレーションをサポートするには、ID プロバイダーに特定の属性と要求を構成する必要があります。 直接フェデレーション用の ID プロバイダーを構成する方法を示すために、例として Active Directory フェデレーション サービス (AD FS) を使用します。 AD FS を SAML ID プロバイダーとして設定する方法と、WS-Fed ID プロバイダーとして設定する方法の両方を紹介します。
 

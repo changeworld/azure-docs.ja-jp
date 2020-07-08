@@ -4,26 +4,24 @@ description: パートナー、販売代理店、仕入先、製造元、およ�
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/12/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 783fc0fa6f6c4e6c918fa3ff5fe0b53a71fa0178
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: c03c2c55988df04cc45ef4a1d66d959513c1626d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81680170"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551365"
 ---
 # <a name="invite-internal-users-to-b2b-collaboration"></a>内部ユーザーを B2B コラボレーションに招待する
 
-|     |
-| --- |
-| B2B コラボレーションを使用するための内部ユーザーの招待は、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。 |
-|     |
+> [!NOTE]
+> B2B コラボレーションを使用するための内部ユーザーの招待は、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 Azure AD B2B コラボレーションが利用できるようになる前は、組織は販売代理店、仕入先、製造元、およびその他のゲスト ユーザーの内部資格情報を設定することによって、これらのユーザーと共同作業を行うことができていました。 このような内部ゲスト ユーザーがいる場合は、これらのユーザーを B2B コラボレーションを使用するように招待して、Azure AD B2B のベネフィットを利用することができます。 B2B ゲスト ユーザーが独自の ID と資格情報を使用してサインインできるようになるため、パスワードやアカウントのライフサイクルを管理する必要がなくなります。
 
@@ -62,7 +60,7 @@ PowerShell または招待 API を使用して、B2B 招待を内部ユーザー
 ```powershell
 Uninstall-Module AzureADPreview
 Install-Module AzureADPreview
-$ADGraphUser = Get-AzureADUser -searchstring "<<external email>>"
+$ADGraphUser = Get-AzureADUser -objectID "UPN of Internal User"
 $msGraphUser = New-Object Microsoft.Open.MSGraph.Model.User -ArgumentList $ADGraphUser.ObjectId
 New-AzureADMSInvitation -InvitedUserEmailAddress <<external email>> -SendInvitationMessage $True -InviteRedirectUrl "http://myapps.microsoft.com" -InvitedUser $msGraphUser
 ```

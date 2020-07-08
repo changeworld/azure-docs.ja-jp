@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: d7c00a2cd8363ae67a7a82d54e1b779bec9e94b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 843727c005fefdc2ca0484492a1feafe2a291b46
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84984685"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040753"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>異なるデプロイ モデルの仮想ネットワークを PowerShell を使用して接続する
 
@@ -99,44 +99,50 @@ Gateway IP addressing configuration = gwipconfig
 
 **例:**
 
-    <VirtualNetworkSites>
-      <VirtualNetworkSite name="ClassicVNet" Location="West US">
-        <AddressSpace>
-          <AddressPrefix>10.0.0.0/24</AddressPrefix>
-        </AddressSpace>
-        <Subnets>
-          <Subnet name="Subnet-1">
-            <AddressPrefix>10.0.0.0/27</AddressPrefix>
-          </Subnet>
-          <Subnet name="GatewaySubnet">
-            <AddressPrefix>10.0.0.32/29</AddressPrefix>
-          </Subnet>
-        </Subnets>
-      </VirtualNetworkSite>
-    </VirtualNetworkSites>
+```xml
+<VirtualNetworkSites>
+  <VirtualNetworkSite name="ClassicVNet" Location="West US">
+    <AddressSpace>
+      <AddressPrefix>10.0.0.0/24</AddressPrefix>
+    </AddressSpace>
+    <Subnets>
+      <Subnet name="Subnet-1">
+        <AddressPrefix>10.0.0.0/27</AddressPrefix>
+      </Subnet>
+      <Subnet name="GatewaySubnet">
+        <AddressPrefix>10.0.0.32/29</AddressPrefix>
+      </Subnet>
+    </Subnets>
+  </VirtualNetworkSite>
+</VirtualNetworkSites>
+```
 
 ### <a name="3-add-the-local-network-site"></a>3.ローカル ネットワーク サイトを追加する
 追加するローカル ネットワーク サイトは、接続先の RM VNet を表します。 まだ存在していない場合は、**LocalNetworkSites** 要素をファイルに追加します。 構成のこの時点では、Resource Manager の VNet のゲートウェイをまだ作成していないため、VPNGatewayAddress は任意の有効なパブリック IP アドレスにすることができます。 ゲートウェイを作成したら、このプレースホルダー IP アドレスを、RM ゲートウェイに割り当てられている正しいパブリック IP アドレスに置き換えます。
 
-    <LocalNetworkSites>
-      <LocalNetworkSite name="RMVNetLocal">
-        <AddressSpace>
-          <AddressPrefix>192.168.0.0/16</AddressPrefix>
-        </AddressSpace>
-        <VPNGatewayAddress>13.68.210.16</VPNGatewayAddress>
-      </LocalNetworkSite>
-    </LocalNetworkSites>
+```xml
+<LocalNetworkSites>
+  <LocalNetworkSite name="RMVNetLocal">
+    <AddressSpace>
+      <AddressPrefix>192.168.0.0/16</AddressPrefix>
+    </AddressSpace>
+    <VPNGatewayAddress>13.68.210.16</VPNGatewayAddress>
+  </LocalNetworkSite>
+</LocalNetworkSites>
+```
 
 ### <a name="4-associate-the-vnet-with-the-local-network-site"></a>4.VNet をローカル ネットワーク サイトに関連付ける
 このセクションでは、VNet の接続先のローカル ネットワーク サイトを指定します。 ここでは、先ほど参照した Resource Manager の VNet が該当します。 名前が一致することを確認します。 この手順では、ゲートウェイは作成しません。 ゲートウェイの接続先となるローカル ネットワークを指定します。
 
-        <Gateway>
-          <ConnectionsToLocalNetwork>
-            <LocalNetworkSiteRef name="RMVNetLocal">
-              <Connection type="IPsec" />
-            </LocalNetworkSiteRef>
-          </ConnectionsToLocalNetwork>
-        </Gateway>
+```xml
+<Gateway>
+  <ConnectionsToLocalNetwork>
+    <LocalNetworkSiteRef name="RMVNetLocal">
+      <Connection type="IPsec" />
+    </LocalNetworkSiteRef>
+  </ConnectionsToLocalNetwork>
+</Gateway>
+```
 
 ### <a name="5-save-the-file-and-upload"></a>5.ファイルを保存してアップロードする
 ファイルを保存してから、次のコマンドを実行して Azure にインポートします。 必要に応じて、ファイル パスを環境に合わせて変更してください。
@@ -147,9 +153,11 @@ Set-AzureVNetConfig -ConfigurationPath C:\AzureNet\NetworkConfig.xml
 
 インポートが成功したことを示す同様の結果が表示されます。
 
-        OperationDescription        OperationId                      OperationStatus                                                
-        --------------------        -----------                      ---------------                                                
-        Set-AzureVNetConfig        e0ee6e66-9167-cfa7-a746-7casb9    Succeeded 
+```output
+OperationDescription        OperationId                      OperationStatus                                                
+--------------------        -----------                      ---------------                                                
+Set-AzureVNetConfig        e0ee6e66-9167-cfa7-a746-7casb9    Succeeded 
+```
 
 ### <a name="6-create-the-gateway"></a>6.ゲートウェイを作成する
 

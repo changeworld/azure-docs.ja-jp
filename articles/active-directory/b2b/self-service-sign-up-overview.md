@@ -11,18 +11,17 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98456f26fbc7ca3955883eb283b54084bd86d503
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 34b08e2e530843dd98c87e424812706247388228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83737760"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551323"
 ---
 # <a name="self-service-sign-up-preview"></a>セルフサービス サインアップ (プレビュー)
-|     |
-| --- |
-| セルフサービス サインアップは、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
-|     |
+
+> [!NOTE]
+> セルフサービス サインアップは、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 アプリケーションを外部ユーザーと共有する場合、アプリケーションにアクセスする必要があるユーザーが常に事前にわかっているとは限りません。 個人に招待を直接送信する代わりに、セルフサービス サインアップを有効にすることで、外部ユーザーが自分で特定のアプリケーションにサインアップできるようにすることができます。 セルフサービス サインアップのユーザー フローをカスタマイズすることにより、個人用に設定されたサインアップ エクスペリエンスを作成できます。 たとえば、Azure AD またはソーシャル ID プロバイダーにサインアップするオプションを提供したり、サインアップ プロセス中にユーザーに関する情報を収集したりできます。
 

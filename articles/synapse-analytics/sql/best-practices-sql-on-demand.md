@@ -6,16 +6,16 @@ author: filippopovic
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 79318ab67ec58ed10520365a366785ea0de41666
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 7bebfeba6da1493557d51777ba8438747e160750
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836330"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85476276"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics の SQL オンデマンド (プレビュー) のベスト プラクティス
 
@@ -52,7 +52,7 @@ SQL オンデマンドを使用すると、Azure ストレージ アカウント
 
 ## <a name="push-wildcards-to-lower-levels-in-the-path"></a>パスの下位階層にワイルドカードを指定する
 
-ご自分のパスでワイルドカードを使用して、[複数のファイルとフォルダー](develop-storage-files-overview.md#query-multiple-files-or-folders)にクエリを実行できます。 SQL オンデマンドは、ストレージ API を使用して、ストレージ アカウントのファイルを最初の * から一覧表示します。 指定したパスと一致しないファイルは除外します。 最初のワイルドカードまで、指定したパスに一致するファイルが多数ある場合は、ファイルの最初の一覧を減らすことで、パフォーマンスが向上する可能性があります。
+ご自分のパスでワイルドカードを使用して、[複数のファイルとフォルダー](query-data-storage.md#query-multiple-files-or-folders)にクエリを実行できます。 SQL オンデマンドは、ストレージ API を使用して、ストレージ アカウントのファイルを最初の * から一覧表示します。 指定したパスと一致しないファイルは除外します。 最初のワイルドカードまで、指定したパスに一致するファイルが多数ある場合は、ファイルの最初の一覧を減らすことで、パフォーマンスが向上する可能性があります。
 
 ## <a name="use-appropriate-data-types"></a>適切なデータ型を使用する
 
@@ -113,7 +113,7 @@ FROM
 
 多くの場合、データはパーティションに編成されます。 特定のフォルダーやファイルに対してクエリを実行するよう、SQL オンデマンドに指示することができます。 こうすることで、クエリで読み取りおよび処理する必要があるファイルの数とデータの量が減ります。 副次的効果として、パフォーマンスが向上します。
 
-詳細については、[filename](develop-storage-files-overview.md#filename-function) 関数、[filepath](develop-storage-files-overview.md#filepath-function) 関数、および[特定のファイルにクエリを実行する](query-specific-files.md)例を参照してください。
+詳細については、[filename](query-data-storage.md#filename-function) 関数、[filepath](query-data-storage.md#filepath-function) 関数、および[特定のファイルにクエリを実行する](query-specific-files.md)例を参照してください。
 
 > [!TIP]
 > filepath 関数と filename 関数の結果は、常に適切なデータ型にキャストしてください。 文字データ型を使用する場合は、適切な長さを確実に使用します。

@@ -5,14 +5,14 @@ author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/16/2020
-ms.openlocfilehash: c03b9fbd06b0a9bc4a70b0fb3a78bc9ce136b704
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 1493a15a97ca88d0ed914f78b1906088c03dff10
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835582"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037411"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>Azure Machine Learning Studio (クラシック) 関数を使用した Stream Analytics ジョブのスケーリング
 

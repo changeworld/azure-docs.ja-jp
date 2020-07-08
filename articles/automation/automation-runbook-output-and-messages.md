@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2018
 ms.topic: conceptual
-ms.openlocfilehash: fb7ddce34a32d7108587bf1a3d47be4b31214535
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 387e100a05cb51eb034f737b259bad4e5812465c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832284"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557876"
 ---
 # <a name="monitor-runbook-output"></a>Runbook 出力を監視する
 
@@ -88,7 +88,7 @@ Runbook を発行したら、それを開始する前に、詳細ストリーム
 
 #### <a name="declare-output-data-type-in-a-workflow"></a>ワークフローで出力のデータ型を宣言する
 
-ワークフローでは、[OutputType 属性](https://technet.microsoft.com/library/hh847785.aspx)を使用して、その出力のデータ型を指定します。 この属性は実行時に影響はありませんが、設計時にユーザーに Runbook の予想される出力を示します。 Runbook 用のツール セットは進化し続けるため、設計時に出力のデータ型を宣言することの重要性が高まります。 したがって、ベスト プラクティスは、作成するすべての Runbook にこの宣言を含めることです。
+ワークフローでは、[OutputType 属性](/powershell/module/microsoft.powershell.core/about/about_functions_outputtypeattribute)を使用して、その出力のデータ型を指定します。 この属性は実行時に影響はありませんが、設計時にユーザーに Runbook の予想される出力を示します。 Runbook 用のツール セットは進化し続けるため、設計時に出力のデータ型を宣言することの重要性が高まります。 したがって、ベスト プラクティスは、作成するすべての Runbook にこの宣言を含めることです。
 
 次のサンプル Runbook は、文字列オブジェクトを出力し、その出力の型宣言が含まれています。 Runbook が特定の型の配列を出力する場合でも、型の配列ではなく、型を指定してください。
 

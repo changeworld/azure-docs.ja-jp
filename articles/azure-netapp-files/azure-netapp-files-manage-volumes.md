@@ -11,15 +11,15 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: c8ac14f11d7f2eeed050997de42da4f512b46bc5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 64d83cc88f66eefad8980bead7fe37ad1782873f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60254740"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85483552"
 ---
 # <a name="manage-volumes-by-using-azure-netapp-files"></a>Azure NetApp Files を使用してボリュームを管理する
 ボリュームを表示、更新、または削除して、ボリュームを管理できます。 

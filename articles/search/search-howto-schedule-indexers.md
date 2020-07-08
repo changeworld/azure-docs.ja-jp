@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 72326413d463d449d339b1f3fd241ba2c27b4b6b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 72a0812f8064174b539a1ea39fc0017a4e00a341
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74112954"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565760"
 ---
 # <a name="how-to-schedule-indexers-in-azure-cognitive-search"></a>Azure Cognitive Search のインデクサーをスケジュールする方法
 
@@ -68,7 +68,7 @@ ms.locfileid: "74112954"
 
 REST API を使用してインデクサーのスケジュールを定義できます。 そのためには、インデクサーを作成または更新するときに、**schedule** プロパティを含めます。 次の例では、既存のインデクサーを更新する PUT 要求を示します。
 
-    PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2019-05-06
+    PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2020-06-30
     Content-Type: application/json
     api-key: admin-key
 

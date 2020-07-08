@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 37fc78971124240077a59d4ad99aa06cc408dbae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9448b7df8855f7cf2883f6cf8bd7f2ce465038cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74533966"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563559"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>Azure Cognitive Search で BLOB インデクサーを使用して JSON BLOB のインデックスを作成する方法
 
@@ -149,7 +149,7 @@ Azure Blob Storage 内の JSON BLOB は、通常は、単一の JSON ドキュ�
 
 サービス名、管理者キー、ストレージ アカウント、およびアカウント キーのプレースホルダーを有効な値を置き換えてください。
 
-    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
+    POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key for Azure Cognitive Search]
 
@@ -168,7 +168,7 @@ Azure Blob Storage 内の JSON BLOB は、通常は、単一の JSON ドキュ�
 
 [インデックス作成](https://docs.microsoft.com/rest/api/searchservice/create-index)要求の例を次に示します。 インデックスには、BLOB から抽出されたテキストを格納するための、検索可能な `content` フィールドが含まれます。   
 
-    POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key for Azure Cognitive Search]
 
@@ -185,7 +185,7 @@ Azure Blob Storage 内の JSON BLOB は、通常は、単一の JSON ドキュ�
 
 インデックスおよびデータ ソースと同様に、インデクサーも Azure Cognitive Search サービス上に作成して再利用する名前付きオブジェクトです。 インデクサーを作成するための完全に指定された要求は次のようになります。
 
-    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key for Azure Cognitive Search]
 
@@ -212,7 +212,7 @@ Azure Blob Storage 内の JSON BLOB は、通常は、単一の JSON ドキュ�
 
 すべてのインデクサーには、既存のデータへの接続情報を提供するデータ ソース オブジェクトが必要です。 
 
-    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
+    POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key for Azure Cognitive Search]
 
@@ -228,7 +228,7 @@ Azure Blob Storage 内の JSON BLOB は、通常は、単一の JSON ドキュ�
 
 すべてのインデクサーには、データを受信するターゲット インデックスが必要です。 要求の本文には、検索可能なインデックスで目的の動作をサポートする属性が設定されたフィールドで構成されるインデックス スキーマを定義します。 インデクサーが実行される時点で、このインデックスは空である必要があります。 
 
-    POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key for Azure Cognitive Search]
 
@@ -247,7 +247,7 @@ Azure Blob Storage 内の JSON BLOB は、通常は、単一の JSON ドキュ�
 
 Azure Cognitive Search 上にインデクサーを作成すると、データのインポートがトリガーされます。 それはすぐに実行されます。スケジュールが指定されている場合は、スケジュールに従って実行されます。
 
-    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key for Azure Cognitive Search]
 
@@ -328,7 +328,7 @@ BLOB インデクサーでは、JSON ドキュメントが 1 つの Azure Cognit
 
 JSON 配列の場合、インデクサーの定義は次の例のようになります。 parsingMode パラメーターで `jsonArray` パーサーが指定されていることに注意してください。 JSON BLOB のインデックスを作成するための配列に固有の要件は、適切なパーサーを指定することと、適切なデータを入力することの 2 つだけです。
 
-    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 
@@ -375,7 +375,7 @@ BLOB に改行で分離された複数の JSON エンティティが含まれ、
 
 JSON 行では、インデクサーの定義は次の例のようになります。 parsingMode パラメーターで `jsonLines` パーサーが指定されていることに注意してください。 
 
-    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
 

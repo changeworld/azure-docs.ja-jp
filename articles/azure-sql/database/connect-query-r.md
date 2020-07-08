@@ -14,12 +14,12 @@ ms.reviewer: davidph, carlrab
 manager: cgronlun
 ms.date: 05/29/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7bfc00566ef24fb6d6851a7cdee402598fe15951
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: adc3cbd7b98d915a0b598227b459891cb0e0bfff
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84052619"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042511"
 ---
 # <a name="quickstart-use-r-with-azure-sql-database-machine-learning-services-preview-to-query-a-database"></a>クイック スタート:Azure SQL Database Machine Learning Services (プレビュー) で R を使用してデータベースに対してクエリを実行する 
 
@@ -85,4 +85,3 @@ Azure SQL Database のデータベースに接続するために必要な接続�
 - [Azure SQL Database で最初のデータベースを設計する](design-first-database-tutorial.md)
 - [Azure SQL Database の Machine Learning Services と R (プレビュー)](machine-learning-services-overview.md)
 - [Azure SQL Database Machine Learning Services (プレビュー) で簡単な R スクリプトを作成して実行する](r-script-create-quickstart.md)
-- [Machine Learning Services (プレビュー) を使用して Azure SQL Database に高度な R 関数を記述する](machine-learning-services-functions.md)

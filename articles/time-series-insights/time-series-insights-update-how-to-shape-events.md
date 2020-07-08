@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 99a2f32c3f76d7fec475c9b299f7208b4db29cfe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd2c58b07f3be5d5fa6d99d0c8c64906b81e7de4
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77650925"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86036986"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューでのイベントの調整
 
@@ -33,7 +33,7 @@ Time Series Insights プレビュー環境にイベントを送信する方法�
 最適なクエリ パフォーマンスを得るには、次のルールに従うことをお勧めします。
 
 * 不要なプロパティを送信しない。 Time Series Insights プレビューは、従量課金制です。 クエリを実行するデータを格納して処理することをお勧めします。
-* 静的データにインスタンス フィールドを使用する。 この手法によって、ネットワーク上で静的なデータを送信しないようにできます。 インスタンス フィールドはタイム シリーズ モデルのコンポーネントであり、一般に利用できる Time Series Insights サービスで参照データのように動作します。 インスタンス フィールドの詳細については、[タイム シリーズ モデル](./time-series-insights-update-tsm.md)に関する記事を参照してください。
+* 静的データにインスタンス フィールドを使用する。 この手法によって、ネットワーク上で静的なデータを送信しないようにできます。 インスタンス フィールドはタイム シリーズ モデルのコンポーネントであり、一般に利用できる Time Series Insights サービスで参照データのように動作します。 インスタンス フィールドの詳細については、[タイム シリーズ モデル](./concepts-model-overview.md)に関する記事を参照してください。
 * 2 つ以上のイベント間でディメンション プロパティを共有します。 この手法によって、ネットワーク経由でより効率的にデータを送信できます。
 * 深い入れ子の配列を使用しない。 Time Series Insights プレビューでは、オブジェクトを含む最大 2 つのレベルの入れ子配列がサポートされます。 Time Series Insights プレビューでは、メッセージ内の配列は、プロパティ値のペアを使用する複数のイベントにフラット化されます。
 * すべて、またはほとんどのイベントに対して数個のメジャーのみが存在する場合は、これらのメジャーを同じオブジェクト内の個別のプロパティとして送信することをお勧めします。 個別に送信することでイベントの数が減少し、処理する必要があるイベントが少なくなるため、クエリのパフォーマンスが向上する可能性があります。
@@ -95,7 +95,7 @@ Time Series Insights プレビュー環境にイベントを送信する方法�
 
 **重要なポイント:**
 
-* JSON の例には、[時系列インスタンス](./time-series-insights-update-tsm.md#time-series-model-instances) データを使用してメッセージの効率を向上させる外部配列があります。 時系列インスタンスでは、デバイス メタデータが変更される可能性はありませんが、多くの場合、データ分析に便利なプロパティが提供されます。
+* JSON の例には、[時系列インスタンス](./concepts-model-overview.md#time-series-model-instances) データを使用してメッセージの効率を向上させる外部配列があります。 時系列インスタンスでは、デバイス メタデータが変更される可能性はありませんが、多くの場合、データ分析に便利なプロパティが提供されます。
 
 * JSON は、2 つ以上のメッセージ (各デバイスから 1 つ) を結合して、時間の経過と共に帯域幅に対して 1 つのペイロードを保存します。
 
@@ -106,7 +106,7 @@ Time Series Insights プレビュー環境にイベントを送信する方法�
 
 #### <a name="time-series-instance"></a>Time Series Instance 
 
-[時系列インスタンス](./time-series-insights-update-tsm.md#time-series-model-instances) を使用して、JSON をより最適に整形する方法について詳しく見ていきましょう。 
+[時系列インスタンス](./concepts-model-overview.md#time-series-model-instances) を使用して、JSON をより最適に整形する方法について詳しく見ていきましょう。 
 
 > [!NOTE]
 > 次の[時系列 ID](./time-series-insights-update-how-to-id.md) は、 *deviceIds*です。

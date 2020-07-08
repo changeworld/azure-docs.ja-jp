@@ -5,16 +5,16 @@ services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: e8d7301799bfb4af9a0f5a6f242be929e8253d7c
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: bf62d57aab07f5b1f2839b9e6e45c42e6b1b2c51
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744211"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85478418"
 ---
 # <a name="using-file-metadata-in-queries"></a>クエリでファイルのメタデータを使用する
 
@@ -22,7 +22,7 @@ SQL オンデマンド クエリ サービスを使用すれば、[フォルダ�
 
 場合によっては、結果セット内の特定の行に関連するファイル ソースまたはフォルダー ソースを把握しておく必要があります。
 
-関数 `filepath` および `filename` を使用すれば、結果セット内にファイル名およびそのパスを返すことができます。 また、それらを使用することで、ファイル名やフォルダー パスに基づいてデータをフィルター処理することもできます。 これらの関数については、「[filename 関数](develop-storage-files-overview.md#filename-function)」と「[filepath 関数](develop-storage-files-overview.md#filepath-function)」の構文セクションで説明されています。 以下で、サンプルに沿って簡単に説明します。
+関数 `filepath` および `filename` を使用すれば、結果セット内にファイル名およびそのパスを返すことができます。 また、それらを使用することで、ファイル名やフォルダー パスに基づいてデータをフィルター処理することもできます。 これらの関数については、「[filename 関数](query-data-storage.md#filename-function)」と「[filepath 関数](query-data-storage.md#filepath-function)」の構文セクションで説明されています。 以下で、サンプルに沿って簡単に説明します。
 
 ## <a name="prerequisites"></a>前提条件
 

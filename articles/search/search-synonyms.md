@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: aa573e84fa9fff83bd6a894f516ce5f67b3afa79
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 23c7913fbe9b3943559d36f5cbf2a21d7ed63dbe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78194344"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563453"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Azure Cognitive Search でのシノニム
 
@@ -51,7 +51,7 @@ Azure Cognitive Search でのシノニムのサポートは、定義してサー
 
 次の例のように、HTTP POST を使用して、新しいシノニム マップを作成できます。
 
-    POST https://[servicename].search.windows.net/synonymmaps?api-version=2019-05-06
+    POST https://[servicename].search.windows.net/synonymmaps?api-version=2020-06-30
     api-key: [admin key]
 
     {
@@ -64,7 +64,7 @@ Azure Cognitive Search でのシノニムのサポートは、定義してサー
 
 または、PUT を使用し、URI にシノニム マップ名を指定できます。 シノニム マップが存在しない場合、作成されます。
 
-    PUT https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2019-05-06
+    PUT https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2020-06-30
     api-key: [admin key]
 
     {
@@ -90,24 +90,24 @@ Washington, Wash., WA => WA
 
 #### <a name="list-synonym-maps-under-your-service"></a>サービスのシノニム マップを一覧表示します。
 
-    GET https://[servicename].search.windows.net/synonymmaps?api-version=2019-05-06
+    GET https://[servicename].search.windows.net/synonymmaps?api-version=2020-06-30
     api-key: [admin key]
 
 #### <a name="get-a-synonym-map-under-your-service"></a>サービスのシノニム マップを取得します。
 
-    GET https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2019-05-06
+    GET https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2020-06-30
     api-key: [admin key]
 
 #### <a name="delete-a-synonyms-map-under-your-service"></a>サービスのシノニム マップを削除します。
 
-    DELETE https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2019-05-06
+    DELETE https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2020-06-30
     api-key: [admin key]
 
 ### <a name="configure-a-searchable-field-to-use-the-synonym-map-in-the-index-definition"></a>インデックス定義でシノニム マップを使用するように、検索可能フィールドを構成します。
 
 新しいフィールド プロパティ **synonymMaps** を使用して、検索可能フィールドに使用するシノニム マップを指定できます。 シノニム マップは、サービス レベル リソースであり、そのサービスに属するインデックスの任意のフィールドによって参照できます。
 
-    POST https://[servicename].search.windows.net/indexes?api-version=2019-05-06
+    POST https://[servicename].search.windows.net/indexes?api-version=2020-06-30
     api-key: [admin key]
 
     {

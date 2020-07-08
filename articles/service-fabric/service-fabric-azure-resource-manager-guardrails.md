@@ -7,12 +7,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: pepogors
-ms.openlocfilehash: 04c6444723180c34f6605810260f5f865dff2d12
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: f8d8d5ae677ea438de4baed7d6636c2087277427
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790917"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85602705"
 ---
 # <a name="service-fabric-guardrails"></a>Service Fabric のガードレール 
 Service Fabric クラスターをデプロイするとき、ガードレールが設定されています。これにより、無効なクラスター構成の場合、Azure Resource Manager のデプロイは失敗します。 以下のセクションでは、クラスター構成に関する一般的な問題の概要と、これらの問題を軽減するために必要な手順について説明します。 
@@ -68,7 +68,7 @@ Service Fabric ノード タイプの持続性の値は、Azure Resource Manager
 
 ## <a name="seed-node-deletion"></a>シード ノードの削除 
 ### <a name="overview"></a>概要
-Service Fabric クラスターには、クラスターのプライマリ ノード タイプで実行されるシステムサービスのレプリカ数を決定するために使用される [信頼性レベル](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster) プロパティがあります。 必要なレプリカの数によって、クラスターのプライマリ ノード タイプで維持する必要があるノードの最小数が決まります。 プライマリ ノード タイプのノード数が信頼性レベルで必要な最小値を下回ると、クラスターが不安定になります。  
+Service Fabric クラスターには、クラスターのプライマリ ノード タイプで実行されるシステムサービスのレプリカ数を決定するために使用される [信頼性レベル](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#reliability-characteristics-of-the-cluster) プロパティがあります。 必要なレプリカの数によって、クラスターのプライマリ ノード タイプで維持する必要があるノードの最小数が決まります。 プライマリ ノード タイプのノード数が信頼性レベルで必要な最小値を下回ると、クラスターが不安定になります。  
 
 ### <a name="error-messages"></a>エラー メッセージ 
 シード ノードの削除操作が検出されたため、拒否されます。 
