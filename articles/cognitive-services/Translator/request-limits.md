@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 05/26/2020
+ms.date: 06/29/2020
 ms.author: swmachan
-ms.openlocfilehash: 100084a244944bcaf0d566e347d56dd4a03ecfae
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: d9fda476a184731cd00317facbeceaf7bdf55edf
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995787"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85561465"
 ---
 # <a name="request-limits-for-translator"></a>Translator に対する要求の制限
 
@@ -66,14 +66,13 @@ Translator の最大待ち時間は、標準モデルを使用した場合は 15
 
 | Language | コード | 文字数制限 |
 |----------|------|-----------------|
-| Chinese | zh | 132 |
-| ドイツ語 | de | 290 |
-| イタリア語 | it | 280 |
-| 日本語 | ja | 150 |
-| Portuguese | pt | 290 |
-| スペイン語 | es | 280 |
-| イタリア語 | it | 280 |
-| タイ語 | th | 258 |
+| Chinese | zh | 166 |
+| ドイツ語 | de | 800 |
+| イタリア語 | it | 800 |
+| 日本語 | ja | 166 |
+| Portuguese | pt | 800 |
+| スペイン語 | es | 800 |
+| タイ語 | th | 180 |
 
 > [!NOTE]
 > この制限は、翻訳には適用されません。

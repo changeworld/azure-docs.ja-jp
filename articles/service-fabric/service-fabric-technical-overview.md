@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: masnider
 ms.custom: sfrev
-ms.openlocfilehash: a9266c2a8d2ad179cfdb12e367a14f37d1abc9b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dc429500081e65bf3fdf4d7f7557d2423f56ee23
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229243"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611732"
 ---
 # <a name="service-fabric-terminology-overview"></a>Service Fabric の用語の概要
 
@@ -116,7 +116,7 @@ Image Store サービスの詳細については、「[ImageStoreConnectionStrin
 
 **Repair Manager サービス**:これは、安全で、自動化可能、かつ透過的な方法でクラスター上で修復アクションを実行できるようにする、省略可能なシステム サービスです。 Repair Manager は、次の操作で使用されます。
 
-   - [Silver および Gold 持続性](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) Azure Service Fabric クラスター上での Azure メンテナンス修復の実行。
+   - [Silver および Gold 持続性](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) Azure Service Fabric クラスター上での Azure メンテナンス修復の実行。
    - [パッチ オーケストレーション アプリケーション](service-fabric-patch-orchestration-application.md)のための修復アクションの実行
 
 ## <a name="deployment-and-application-models"></a>デプロイとアプリケーション モデル
@@ -169,7 +169,7 @@ Service Fabric はオープンソースのプラットフォーム テクノロ�
 
 次の表では、Service Fabric に対してさまざまなアプリケーション モデルとそのツールをまとめています。
 
-| アプリケーションの種類 | 記述モデル | Visual Studio | Eclipse | SFCTL | AZ CLI | Powershell|
+| アプリケーションの種類 | 記述モデル | Visual Studio | Eclipse | SFCTL | AZ CLI | PowerShell|
 |---|---|---|---|---|---|---|
 | Service Fabric Mesh アプリケーション | リソース モデル (YAML と JSON) | VS 2017 |サポートされていません |サポートされていません | サポートされています - Mesh 環境のみ | サポートされていません|
 |Service Fabric ネイティブ アプリケーション | ネイティブ アプリケーション モデル (XML) | VS 2017 と VS 2015| サポートされています|サポートされています|サポートされています|サポートされています|

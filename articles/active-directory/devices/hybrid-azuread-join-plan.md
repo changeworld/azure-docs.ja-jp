@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22ab3e7403069ed1b579631b88c2ac2c41191ecd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf21f2ea5aacb36f3a76034e99b748bf4c6c363b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181326"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554776"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>方法:Hybrid Azure Active Directory 参加の実装を計画する
 
@@ -41,13 +41,12 @@ Azure AD にデバイスを設定して、クラウドとオンプレミスの�
 
 ハイブリッド Azure AD の実装を計画するには、以下を理解する必要があります。
 
-|   |   |
-| --- | --- |
-| ![○][1] | サポート対象デバイスを確認する |
-| ![○][1] | 知っておくべきことを確認する |
-| ![○][1] | ハイブリッド Azure AD 参加の制御された検証を確認する |
-| ![○][1] | ID インフラストラクチャに基づいてシナリオを選択する |
-| ![○][1] | ハイブリッド Azure AD 参加でのオンプレミス AD UPN サポートを確認する |
+> [!div class="checklist"]
+> - サポート対象デバイスを確認する
+> - 知っておくべきことを確認する
+> - ハイブリッド Azure AD 参加の制御された検証を確認する
+> - ID インフラストラクチャに基づいてシナリオを選択する
+> - ハイブリッド Azure AD 参加でのオンプレミス AD UPN サポートを確認する
 
 ## <a name="review-supported-devices"></a>サポート対象デバイスを確認する
 

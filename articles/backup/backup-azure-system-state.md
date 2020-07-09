@@ -1,17 +1,16 @@
 ---
 title: Windows のシステム状態を Azure にバックアップする
 description: Windows Server コンピューターまたは Windows コンピューターのシステム状態を Azure にバックアップする方法を紹介します。
-ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: 4089815f8f76d9868f8fa56f8b2eab3de89541d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4319e03f9673baa2be01c1650ac1929204741087
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128153"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611443"
 ---
-# <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>Windows のシステム状態を Resource Manager デプロイメントにバックアップする
+# <a name="back-up-windows-system-state-to-azure"></a>Windows のシステム状態を Azure にバックアップする
 
 この記事では、Windows Server のシステム状態を Azure にバックアップする方法について説明します。 ここでは基本事項について説明します。
 
@@ -19,49 +18,9 @@ Azure Backup の詳細については、こちらの [概要記事](backup-overv
 
 Azure サブスクリプションがない場合は、すべての Azure サービスにアクセスできる [無料アカウント](https://azure.microsoft.com/free/) を作成します。
 
-## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーの作成
+[!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
-Windows Server のシステム状態をバックアップするには、データを保存するリージョンに Recovery Services コンテナーを作成する必要があります。 また、ストレージのレプリケート方法を決定する必要もあります。
-
-### <a name="to-create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成するには
-
-1. まだサインインしていない場合は、Azure サブスクリプションを使用して [Azure Portal](https://portal.azure.com/) にサインインします。
-2. ハブ メニューの **[すべてのサービス]** をクリックし、リソースの一覧で「**Recovery Services**」と入力して、 **[Recovery Services コンテナー]** をクリックします。
-
-    ![Create Recovery Services Vault step 1](./media/backup-azure-system-state/open-rs-vault-list.png)
-
-    サブスクリプションに Recovery Services コンテナーがある場合は、そのコンテナーが一覧表示されます。
-3. **[Recovery Services コンテナー]** メニューの **[追加]** をクリックします。
-
-    ![Create Recovery Services Vault step 2](./media/backup-try-azure-backup-in-10-mins/rs-vault-menu.png)
-
-    [Recovery Services コンテナー] ブレードが開き、 **[名前]** 、 **[サブスクリプション]** 、 **[リソース グループ]** 、 **[場所]** を指定するよう求められます。
-
-    ![Recovery Services コンテナーの作成手順 3](./media/backup-try-azure-backup-in-10-mins/rs-vault-step-3.png)
-
-4. **[名前]** ボックスに、コンテナーを識別する表示名を入力します。 名前は Azure サブスクリプションに対して一意である必要があります。 2 ～ 50 文字の名前を入力します。 名前の先頭にはアルファベットを使用する必要があります。また、名前に使用できるのはアルファベット、数字、ハイフンのみです。
-
-5. **[サブスクリプション]** セクションで、ドロップダウン メニューを使用して Azure サブスクリプションを選択します。 サブスクリプションが 1 つのみの場合は、そのサブスクリプションが表示されるので、次の手順に進んでください。 どのサブスクリプションを使用すればよいかがわからない場合は、既定 (または推奨) のサブスクリプションを使用してください。 組織のアカウントが複数の Azure サブスクリプションに関連付けられている場合に限り、複数の選択肢が存在します。
-
-6. **[リソース グループ]** セクションで、次のことを行います。
-
-    * リソース グループを作成する場合は、 **[新規作成]** を選択します。
-    または
-    * 使用可能なリソース グループの一覧を表示するには、 **[既存のものを使用]** を選択し、ドロップダウン メニューをクリックします。
-
-   リソース グループの詳細については、「[Azure Resource Manager の概要](../azure-resource-manager/management/overview.md)」をご覧ください。
-
-7. **[場所]** をクリックして、コンテナーの地理的リージョンを選択します。 この選択により、バックアップ データの送信先となるリージョンが決まります。
-
-8. [Recovery Services コンテナー] ブレードの下部にある **[作成]** をクリックします。
-
-    Recovery Services コンテナーの作成には数分かかることがあります。 ポータルの右上の領域に状態が通知され、確認することが出来ます。 コンテナーが作成されると、Recovery Services コンテナーの一覧に表示されます。 数分経過してもコンテナーが表示されない場合は、 **[最新の情報に更新]** をクリックしてください。
-
-    ![[最新の情報に更新] ボタンをクリックする](./media/backup-try-azure-backup-in-10-mins/refresh-button.png)</br>
-
-    Recovery Services コンテナーの一覧にコンテナーが表示されたら、ストレージ冗長性を設定する準備が整いました。
-
-### <a name="set-storage-redundancy-for-the-vault"></a>コンテナーのストレージ冗長性を設定する
+## <a name="set-storage-redundancy-for-the-vault"></a>コンテナーのストレージ冗長性を設定する
 
 Recovery Services コンテナーを作成する際は、必要に応じてストレージの冗長性が構成されるようにしてください。
 

@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: c47016d0b82a4e4ed084f5d82394d91fd2b46be1
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 8916f4b9824f88361fdeb9d866f84adb71e8138e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697713"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563794"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>Azure Cosmos DB の変更フィード プル モデル
 
@@ -164,7 +164,7 @@ Cosmos コンテナーが存在する限り、FeedIterator の継続トークン
 
 変更フィード プロセッサとプル モデルの主な違いを次に示します。
 
-|  | 変更フィード プロセッサ| プル モデル |
+|特徴量  | 変更フィード プロセッサ| プル モデル |
 | --- | --- | --- |
 | 変更フィード処理の現在位置の追跡 | リース (Azure Cosmos DB コンテナーに保存) | 継続トークン (メモリに保存または手動で保持) |
 | 過去の変更の再生機能 | あり。プッシュ モデルを使用 | あり。プル モデルを使用|
