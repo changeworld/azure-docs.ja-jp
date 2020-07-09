@@ -4,12 +4,12 @@ description: Azure Batch のアプリケーション パッケージ機能を使
 ms.topic: how-to
 ms.date: 04/26/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cebb7bf001d16e1024ed466268758f0b1bc92c6c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 328b08acbc6d13dd03956bb501b4d4a51310c9c0
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955032"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147225"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Batch アプリケーション パッケージを使用したコンピューティング ノードへのアプリケーションのデプロイ
 
@@ -57,7 +57,7 @@ Batch 内のアプリケーションは、1 つ以上のアプリケーション
 ### <a name="benefits-of-application-packages"></a>アプリケーション パッケージの利点
 アプリケーション パッケージは、Batch ソリューションのコードを簡略化すると共に、タスクが実行されるアプリケーションの管理に必要なオーバーヘッドを軽減します。
 
-アプリケーション パッケージでは、ノードにインストールする多数のリソース ファイルをプールの開始タスクで指定する必要がありません。 Azure Storage やノードで、アプリケーション ファイルの複数のバージョンを手動で管理する必要もありません。 さらに、ストレージ アカウント内のファイルへのアクセスを提供する [SAS URL](../storage/common/storage-dotnet-shared-access-signature-part-1.md) の生成に苦労することもありません。 Batch は、バックグラウンドで Azure Storage と連携して、アプリケーション パッケージを保存し、コンピューティング ノードにデプロイします。
+アプリケーション パッケージでは、ノードにインストールする多数のリソース ファイルをプールの開始タスクで指定する必要がありません。 Azure Storage やノードで、アプリケーション ファイルの複数のバージョンを手動で管理する必要もありません。 さらに、ストレージ アカウント内のファイルへのアクセスを提供する [SAS URL](../storage/common/storage-sas-overview.md) の生成に苦労することもありません。 Batch は、バックグラウンドで Azure Storage と連携して、アプリケーション パッケージを保存し、コンピューティング ノードにデプロイします。
 
 > [!NOTE] 
 > 開始タスクの合計サイズは、リソース ファイルと環境変数を含め、32,768 文字以下であることが必要です。 開始タスクがこの制限を超える場合は、別のオプションとしてアプリケーション パッケージの使用があります。 リソース ファイルを含む zip アーカイブを作成し、Azure Storage に BLOB としてアップロードし、開始タスクのコマンド ラインから解凍することもできます。 

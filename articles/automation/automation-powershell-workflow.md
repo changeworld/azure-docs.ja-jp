@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/14/2018
 ms.topic: conceptual
-ms.openlocfilehash: 741569740713fef72f714f7cbce38a3c6f075684
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: f175e495af8e925c0d5a6c61669a5e2f44f73ae7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836687"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186004"
 ---
 # <a name="learn-powershell-workflow-for-azure-automation"></a>Azure Automation の PowerShell ワークフローについて
 
@@ -21,7 +21,7 @@ Azure Automation の Runbook は、Windows PowerShell ワークフロー、つ�
 > [!NOTE]
 > PowerShell ワークフロー スクリプトは Windows PowerShell スクリプトと非常に似ていますが、新規ユーザーにはわかりにくい大きな違いがいくつかあります。 そのため、[チェックポイント](#use-checkpoints-in-a-workflow)を使用する必要がある場合にのみ、PowerShell ワークフローを使用して Runbook を作成することをお勧めします。 
 
-この記事のトピックに関する詳細については、「[Windows PowerShell ワークフローについて](https://technet.microsoft.com/library/jj134242.aspx)」をご覧ください。
+この記事のトピックに関する詳細については、「[Windows PowerShell ワークフローについて](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj134242(v=ws.11))」をご覧ください。
 
 ## <a name="use-workflow-keyword"></a>ワークフロー キーワードを使用する
 
@@ -46,9 +46,9 @@ PowerShell ワークフローのコードは PowerShell スクリプト コー�
 
 アクティビティは、シーケンス内で実行されるワークフロー内の特定のタスクです。 Windows PowerShell ワークフローでは、ワークフローの実行時に Windows PowerShell コマンドレットの多くが自動でアクティビティに変換されます。 Runbook でこれらのコマンドレットのいずれかを指定すると、対応するアクティビティは、Windows Workflow Foundation で実行されます。 
 
-対応するアクティビティがコマンドレットにない場合、Windows PowerShell ワークフローは [InlineScript](#use-inlinescript) アクティビティ内でそのコマンドレットを自動的に実行します。 コマンドレットの中には、InlineScript ブロックに明示的に含めないと除外され、ワークフローでは使用できないものもあります。 詳細については、「[スクリプト ワークフローでのアクティビティの使用](https://technet.microsoft.com/library/jj574194.aspx)」を参照してください。
+対応するアクティビティがコマンドレットにない場合、Windows PowerShell ワークフローは [InlineScript](#use-inlinescript) アクティビティ内でそのコマンドレットを自動的に実行します。 コマンドレットの中には、InlineScript ブロックに明示的に含めないと除外され、ワークフローでは使用できないものもあります。 詳細については、「[スクリプト ワークフローでのアクティビティの使用](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj574194(v=ws.11))」を参照してください。
 
-ワークフロー アクティビティは、操作を構成するための一連の共通パラメーターを共有します。 「[about_WorkflowCommonParameters](https://technet.microsoft.com/library/jj129719.aspx)」を参照してください。
+ワークフロー アクティビティは、操作を構成するための一連の共通パラメーターを共有します。 「[about_WorkflowCommonParameters](/powershell/module/psworkflow/about/about_workflowcommonparameters)」を参照してください。
 
 ### <a name="positional-parameters"></a>位置指定パラメーター
 
@@ -151,7 +151,7 @@ InlineScript アクティビティは特定のワークフローで不可欠な�
 * InlineScript ブロックの内部で[並列実行](#use-parallel-processing)を使用することはできません。
 * InlineScript は、InlineScript ブロックの長さ全体について Windows PowerShell セッションを保持するため、ワークフローの拡張性に影響します。
 
-InlineScript の使用について詳しくは、「[ワークフローでの Windows PowerShell コマンドの実行](https://technet.microsoft.com/library/jj574197.aspx)」および「[about_InlineScript](https://technet.microsoft.com/library/jj649082.aspx)」をご覧ください。
+InlineScript の使用について詳しくは、「[ワークフローでの Windows PowerShell コマンドの実行](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj574197(v=ws.11))」および「[about_InlineScript](/powershell/module/psworkflow/about/about_inlinescript)」をご覧ください。
 
 ## <a name="use-parallel-processing"></a>並列処理を使用する
 
@@ -261,7 +261,7 @@ Workflow Copy-Files
 }
 ```
 
-ユーザー名資格情報は、[Suspend-Workflow](https://technet.microsoft.com/library/jj733586.aspx) アクティビティを呼び出した後、または最後のチェックポイントの後は保持されないため、資格情報を null に設定し、`Suspend-Workflow` またはチェックポイントが呼び出された後にアセット ストアから再取得する必要があります。  そうしないと、次のエラー メッセージが表示される場合があります。`The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
+ユーザー名資格情報は、[Suspend-Workflow](/powershell/module/psworkflow/about/about_suspend-workflow) アクティビティを呼び出した後、または最後のチェックポイントの後は保持されないため、資格情報を null に設定し、`Suspend-Workflow` またはチェックポイントが呼び出された後にアセット ストアから再取得する必要があります。  そうしないと、次のエラー メッセージが表示される場合があります。`The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
 
 次の同じコードは、PowerShell ワークフロー Runbook でこの状況を処理する方法を示しています。
 
@@ -290,9 +290,9 @@ workflow CreateTestVms
 ```
 
 > [!NOTE]
-> 非グラフィカル PowerShell Runbook の場合、`Add-AzAccount` と `Add-AzureRMAccount` は [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) のエイリアスです。 これらのコマンドレットを使用するか、Automation アカウントの[モジュール最新バージョンに更新](automation-update-azure-modules.md)することができます。 Automation アカウントを作成したばかりのときでも、モジュールを更新する必要がある場合があります。 サービス プリンシパルで構成された実行アカウントを使用して認証を行う場合は、これらのコマンドレットを使用する必要ありません。
+> 非グラフィカル PowerShell Runbook の場合、`Add-AzAccount` と `Add-AzureRMAccount` は [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) のエイリアスです。 これらのコマンドレットを使用するか、Automation アカウントの[モジュール最新バージョンに更新](automation-update-azure-modules.md)することができます。 Automation アカウントを作成したばかりのときでも、モジュールを更新する必要がある場合があります。 サービス プリンシパルで構成された実行アカウントを使用して認証を行う場合は、これらのコマンドレットを使用する必要ありません。
 
-チェックポイントの詳細については、「[スクリプト ワークフローへのチェックポイントの追加](https://technet.microsoft.com/library/jj574114.aspx)」を参照してください。
+チェックポイントの詳細については、「[スクリプト ワークフローへのチェックポイントの追加](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj574114(v=ws.11))」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

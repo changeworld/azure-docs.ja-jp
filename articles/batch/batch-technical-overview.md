@@ -3,12 +3,12 @@ title: クラウドでの Azure Batch による大規模な並列ジョブの実
 description: 大規模な並列ワークロードと HPC ワークロードに関する Azure Batch サービスの使用方法について説明します。
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 134706622655029c6673aea5dd04a9284155be6f
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 03c958f44f707e7c5b6ac5c4414bdb5fd4963635
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965078"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142802"
 ---
 # <a name="what-is-azure-batch"></a>Azure Batch とは
 
@@ -34,7 +34,7 @@ Batch で実行できる本質的に並列なワークロードの例を、次�
 * データの取り込み、処理、および ETL 操作
 * ソフトウェアのテストの実行
 
-また、Batch を使用して、[密接に結合されたワークロード](batch-mpi.md)を実行することもできます。これらのワークロードでは、アプリケーションが独立して実行されるのではなく、互いに通信する必要があります。 密接に結合されたアプリケーションは、通常、Message Passing Interface (MPI) API を使用します。 [Microsoft MPI](/message-passing-interface/microsoft-mpi) または Intel MPI を使用して、密接に結合されたワークロードを Batch で実行できます。 専用の [HPC](../virtual-machines/linux/sizes-hpc.md) および [GPU に最適な](../virtual-machines/linux/sizes-gpu.md) VM のサイズで、アプリケーションのパフォーマンスを向上させます。
+また、Batch を使用して、[密接に結合されたワークロード](batch-mpi.md)を実行することもできます。これらのワークロードでは、アプリケーションが独立して実行されるのではなく、互いに通信する必要があります。 密接に結合されたアプリケーションは、通常、Message Passing Interface (MPI) API を使用します。 [Microsoft MPI](/message-passing-interface/microsoft-mpi) または Intel MPI を使用して、密接に結合されたワークロードを Batch で実行できます。 専用の [HPC](../virtual-machines/sizes-hpc.md) および [GPU に最適な](../virtual-machines/sizes-gpu.md) VM のサイズで、アプリケーションのパフォーマンスを向上させます。
 
 密接に結合されたワークロードのいくつかの例を次に示します。
 * 有限要素の分析
@@ -83,4 +83,3 @@ Batch の一般的なシナリオでは、3D シーンの画像のレンダリ�
 * [Azure Portal で最初の Batch ジョブを実行する](quick-create-portal.md)
 * [.NET API を使用して最初の Batch ジョブを実行する](quick-run-dotnet.md)
 * [Python API を使用して最初の Batch ジョブを実行する](quick-run-python.md)
-

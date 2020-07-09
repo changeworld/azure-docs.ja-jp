@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 53a7e113d64ea4cf7018d51a44f9488342f1470f
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: bb8fa53fa07d666693ae545c193faaf3d6d0a30c
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715632"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187151"
 ---
 # <a name="troubleshoot-startstop-vms-during-off-hours-issues"></a>Start/Stop VMs during off-hours の問題のトラブルシューティング
 
@@ -99,7 +99,7 @@ Start/Stop VMs during off-hours を構成したが、すべての VM が起動�
 
 考えられる解決策について、次の一覧を確認してください。
 
-* Start/Stop VMs during off-hours のスケジュールが適切に構成されていることを確認します。 スケジュールを構成する方法については、「[スケジュール](../automation-schedules.md)」を参照してください。
+* Start/Stop VMs during off-hours のスケジュールが適切に構成されていることを確認します。 スケジュールを構成する方法については、「[スケジュール](../shared-resources/schedules.md)」を参照してください。
 
 * [ジョブ ストリーム](../automation-runbook-execution.md#job-statuses)を確認してエラーを探します。 次のいずれかの Runbook からジョブを探します。
 

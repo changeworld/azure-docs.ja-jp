@@ -4,12 +4,12 @@ description: Batch は、Batch サービスからの認証に Azure AD をサポ
 ms.topic: how-to
 ms.date: 01/28/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: ed2bfb8e0fbaff0b7ad0ded734e33512c82a4040
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: a8601c69c37e973118a7ec9521070864caffb101
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958210"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170311"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch サービスの認証に Active Directory を使用する
 
@@ -63,7 +63,7 @@ Batch アプリケーションを登録するには、「[Azure Active Directory
 
 ![Azure AD に Batch アプリケーションを登録する](./media/batch-aad-auth/app-registration-data-plane.png)
 
-Azure AD にアプリケーションを登録する詳細については、「[Azure AD の認証シナリオ](../active-directory/develop/authentication-scenarios.md)」を参照してください。
+Azure AD にアプリケーションを登録する詳細については、「[Azure AD の認証シナリオ](../active-directory/develop/authentication-vs-authorization.md)」を参照してください。
 
 ## <a name="get-the-tenant-id-for-your-active-directory"></a>Active Directory のテナント ID を取得する
 
@@ -427,8 +427,8 @@ credentials = ServicePrincipalCredentials(
 
 - Azure AD トークンを使用して認証される Batch クライアントを作成する方法を示す Python の例については、サンプルの「[Python スクリプトを使用して Azure Batch のカスタム イメージをデプロイする](https://github.com/azurebigcompute/recipes/blob/master/Azure%20Batch/CustomImages/CustomImagePython.md)」を参照してください。
 
-[aad_about]:../active-directory/fundamentals/active-directory-whatis.md "Azure Active Directory とは"
-[aad_adal]: ../active-directory/active-directory-authentication-libraries.md
-[aad_auth_scenarios]: ../active-directory/active-directory-authentication-scenarios.md "Azure AD の認証シナリオ"
-[aad_integrate]: ../active-directory/active-directory-integrating-applications.md "Azure Active Directory とアプリケーションの統合"
+[aad_about]: ../active-directory/fundamentals/active-directory-whatis.md "Azure Active Directory とは"
+[aad_adal]: ../active-directory/azuread-dev/active-directory-authentication-libraries.md
+[aad_auth_scenarios]: ../active-directory/develop/authentication-vs-authorization.md "Azure AD の認証シナリオ"
+[aad_integrate]: ../active-directory/develop/quickstart-register-app.md "Azure Active Directory とアプリケーションの統合"
 [azure_portal]: https://portal.azure.com

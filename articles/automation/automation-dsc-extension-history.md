@@ -9,12 +9,12 @@ services: automation
 ms.service: automation
 ms.subservice: dsc
 ms.topic: conceptual
-ms.openlocfilehash: b55280dd8ed5ea82cf861e300306db5a787c31e8
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 0bb82ce92a151bd8e955c136751d8e7f307bbf1b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836925"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186420"
 ---
 # <a name="work-with-azure-desired-state-configuration-extension-version-history"></a>Azure Desired State Configuration 拡張機能のバージョン履歴を使用する
 
@@ -99,7 +99,7 @@ Azure、Windows Server、および Windows Management Framework (WMF) (Windows P
 - **環境:** Azure
 - **備考:** このバージョンでは、Windows Server 2016 に含まれる DSC を使用しています。他の Windows OS の場合は、[Windows Management Framework 5.1](https://devblogs.microsoft.com/powershell/wmf-5-1-releasing-january-2017/) がインストールされます (WMF をインストールするには再起動が必要です)。 Nano Server の場合は、DSC ロールが VM にインストールされます。
 - **新機能:**
-  - ポータルの UI と Resource Manager テンプレートで DSC Azure Automation を使いやすくなるバグ修正と改善。 詳細については、DSC 拡張機能ドキュメントの「[既定の構成スクリプト](/azure/virtual-machines/extensions/dsc-overview)」を参照してください。
+  - ポータルの UI と Resource Manager テンプレートで DSC Azure Automation を使いやすくなるバグ修正と改善。 詳細については、DSC 拡張機能ドキュメントの「[既定の構成スクリプト](../virtual-machines/extensions/dsc-overview.md)」を参照してください。
 
 ### <a name="version-226"></a>バージョン 2.26
 
@@ -250,6 +250,6 @@ Azure、Windows Server、および Windows Management Framework (WMF) (Windows P
 ## <a name="next-steps"></a>次のステップ
 
 - PowerShell DSC の詳細については、[PowerShell ドキュメント センター](/powershell/scripting/dsc/overview/overview)を参照してください。
-- [DSC 拡張機能用の Resource Manager テンプレート](/azure/virtual-machines/extensions/dsc-template)を確認します。
+- [DSC 拡張機能用の Resource Manager テンプレート](../virtual-machines/extensions/dsc-template.md)を確認します。
 - PowerShell DSC で管理できる機能とリソースの詳細については、[PowerShell ギャラリー](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0)を閲覧してください。
-- 機密パラメーターを構成に渡す方法の詳細については、[DSC 拡張機能ハンドラーで資格情報を安全に管理する方法](/azure/virtual-machines/extensions/dsc-credentials)に関するページを参照してください。
+- 機密パラメーターを構成に渡す方法の詳細については、[DSC 拡張機能ハンドラーで資格情報を安全に管理する方法](../virtual-machines/extensions/dsc-credentials.md)に関するページを参照してください。

@@ -3,12 +3,12 @@ title: Azure Resource Manager テンプレート サンプル
 description: さまざまな構成で Azure Container Instances をデプロイする Azure Resource Manager テンプレートのサンプルを見つける
 ms.topic: article
 ms.date: 03/07/2019
-ms.openlocfilehash: 7208e1b4b67879979507cc451d40a188a84373de
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 6c487087b39244178643fd81364150ceb3ac4a63
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299759"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169648"
 ---
 # <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Azure Container Instances のための Azure Resource Manager テンプレート
 
@@ -18,7 +18,7 @@ ms.locfileid: "84299759"
 
 ## <a name="sample-templates"></a>サンプル テンプレート
 
-| | |
+| Template | 説明 |
 |-|-|
 | **アプリケーション** ||
 | [WordPress][app-wp] | コンテナー グループに WordPress Web サイトと、MySQL データベースを作成します。 WordPress サイトのコンテンツと MySQL データベースは、Azure Files 共有で永続化されます。 WordPress へのパブリック ネットワーク アクセスを公開するアプリケーション ゲートウェイも作成します。 |

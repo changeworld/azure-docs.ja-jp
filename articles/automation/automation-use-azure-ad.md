@@ -4,16 +4,16 @@ description: この記事では、Azure Automation 内で Azure AD を Azure へ
 services: automation
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 017341fd72329d0538a3cf2a6ec20d03ee6152cc
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 9c81e3389f2cc96f2581b8edee5f528237cb9eca
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830567"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185672"
 ---
 # <a name="use-azure-ad-to-authenticate-to-azure"></a>Azure AD を使用して Azure に対する認証を行う
 
-[Azure Active Directory (AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) サービスを使用すると、ユーザー管理、ドメイン管理、シングル サインオン構成などの多くの管理タスクを実行できます。 この記事では、Azure Automation 内で Azure AD を Azure への認証プロバイダーとして使用する方法について説明します。 
+[Azure Active Directory (AD)](../active-directory/fundamentals/active-directory-whatis.md) サービスを使用すると、ユーザー管理、ドメイン管理、シングル サインオン構成などの多くの管理タスクを実行できます。 この記事では、Azure Automation 内で Azure AD を Azure への認証プロバイダーとして使用する方法について説明します。 
 
 ## <a name="install-azure-ad-modules"></a>Azure AD モジュールをインストールする
 
@@ -39,14 +39,14 @@ ms.locfileid: "83830567"
 >[!NOTE]
 >これらのモジュールを使用するには、64 ビット バージョンの Windows に PowerShell バージョン 5.1 以降を使用する必要があります。 
 
-1. Windows Management Framework (WMF) 5.1 をインストールします。 「[WMF 5.1 のインストールと構成](https://docs.microsoft.com/powershell/scripting/wmf/setup/install-configure?view=powershell-7)」を参照してください。
+1. Windows Management Framework (WMF) 5.1 をインストールします。 「[WMF 5.1 のインストールと構成](/powershell/scripting/wmf/setup/install-configure?view=powershell-7)」を参照してください。
 
-2. 「[PowerShellGet を使用した Windows への Azure PowerShell のインストール](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.13.0)」の手順に従って AzureRM または Az をインストールします。
+2. 「[PowerShellGet を使用した Windows への Azure PowerShell のインストール](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.13.0)」の手順に従って AzureRM または Az をインストールします。
 
 ### <a name="install-the-msonline-module"></a>MSOnline モジュールをインストールする
 
 >[!NOTE]
->MSOnline モジュールをインストールするには、Office 365 管理者ロールのメンバーである必要があります。 「[管理者ロールについて](https://docs.microsoft.com/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide)」を参照してください。
+>MSOnline モジュールをインストールするには、Office 365 管理者ロールのメンバーである必要があります。 「[管理者ロールについて](/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide)」を参照してください。
 
 1. コンピューターで Microsoft .NET Framework 3.5.x 機能が有効であることを確認します。 コンピューターに新しいバージョンがインストールされている可能性がありますが、.NET Framework の以前のバージョンとの下位互換性を有効または無効にすることができます。 
 
@@ -62,7 +62,7 @@ ms.locfileid: "83830567"
 
 ### <a name="install-support-for-pscredential"></a>PSCredential のサポートをインストールする
 
-Azure Automation では、[PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?view=pscore-6.2.0) クラスを使用して資格情報資産を表します。 スクリプトで `Get-AutomationPSCredential` コマンドレットを使用して `PSCredential` オブジェクトを取得します。 詳細については、「[Azure Automation での資格情報資産](shared-resources/credentials.md)」を参照してください。
+Azure Automation では、[PSCredential](/dotnet/api/system.management.automation.pscredential?view=pscore-6.2.0) クラスを使用して資格情報資産を表します。 スクリプトで `Get-AutomationPSCredential` コマンドレットを使用して `PSCredential` オブジェクトを取得します。 詳細については、「[Azure Automation での資格情報資産](shared-resources/credentials.md)」を参照してください。
 
 ## <a name="assign-a-subscription-administrator"></a>サブスクリプション管理者を割り当てる
 
@@ -80,7 +80,7 @@ Azure AD ユーザーのパスワードを変更するには:
 
 ## <a name="configure-azure-automation-to-manage-the-azure-subscription"></a>Azure サブスクリプションを管理するように Azure Automation を構成する
 
-Azure Automation と Azure AD が通信するには、Azure の Azure AD との接続に関連付けられている資格情報を取得する必要があります。 このような資格情報の例としては、テナント ID、サブスクリプション ID などがあります。 Azure と Azure AD 間の接続の詳細については、「[Azure Active Directory に組織を接続する](https://docs.microsoft.com/azure/devops/organizations/accounts/connect-organization-to-azure-ad?view=azure-devops)」を参照してください。
+Azure Automation と Azure AD が通信するには、Azure の Azure AD との接続に関連付けられている資格情報を取得する必要があります。 このような資格情報の例としては、テナント ID、サブスクリプション ID などがあります。 Azure と Azure AD 間の接続の詳細については、「[Azure Active Directory に組織を接続する](/azure/devops/organizations/accounts/connect-organization-to-azure-ad?view=azure-devops)」を参照してください。
 
 ## <a name="create-a-credential-asset"></a>資格情報資産を作成する
 
@@ -92,11 +92,11 @@ Azure portal を使用して、資格情報資産を作成することができ�
 
 ### <a name="create-the-credential-asset-with-windows-powershell"></a>Windows PowerShell を使用して資格情報資産を作成する
 
-Windows PowerShell で新しい資格情報資産を準備するために、スクリプトでは、まず割り当てられたユーザー名とパスワードを使用して `PSCredential` オブジェクトを作成します。 次に、このスクリプトでは、このオブジェクトを使用し、[New-AzureAutomationCredential](https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-4.0.0) コマンドレットを呼び出して資産を作成します。 または、スクリプトで [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) コマンドレットを呼び出し、ユーザーに名前とパスワードの入力を求めることができます。 「[Azure Automation での資格情報資産](shared-resources/credentials.md)」を参照してください。 
+Windows PowerShell で新しい資格情報資産を準備するために、スクリプトでは、まず割り当てられたユーザー名とパスワードを使用して `PSCredential` オブジェクトを作成します。 次に、このスクリプトでは、このオブジェクトを使用し、[New-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-4.0.0) コマンドレットを呼び出して資産を作成します。 または、スクリプトで [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) コマンドレットを呼び出し、ユーザーに名前とパスワードの入力を求めることができます。 「[Azure Automation での資格情報資産](shared-resources/credentials.md)」を参照してください。 
 
 ## <a name="manage-azure-resources-from-an-azure-automation-runbook"></a>Azure Automation Runbook からの Azure リソースの管理
 
-Azure Automation Runbook から資格情報資産を使用して Azure リソースを管理できます。 Azure サブスクリプションで仮想マシンを停止および開始するために使用する資格情報資産を収集する PowerShell Runbook の例を次に示します。 この Runbook では、まず `Get-AutomationPSCredential` を使用して、Azure への認証に使用する資格情報を取得します。 次に、[Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.6.1) コマンドレットを呼び出し、資格情報を使用して Azure に接続します。 このスクリプトでは、[Select-AzureSubscription](https://docs.microsoft.com/powershell/module/servicemanagement/azure/select-azuresubscription?view=azuresmps-4.0.0) コマンドレットを使用して、使用するサブスクリプションを選択します。 
+Azure Automation Runbook から資格情報資産を使用して Azure リソースを管理できます。 Azure サブスクリプションで仮想マシンを停止および開始するために使用する資格情報資産を収集する PowerShell Runbook の例を次に示します。 この Runbook では、まず `Get-AutomationPSCredential` を使用して、Azure への認証に使用する資格情報を取得します。 次に、[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.6.1) コマンドレットを呼び出し、資格情報を使用して Azure に接続します。 このスクリプトでは、[Select-AzureSubscription](/powershell/module/servicemanagement/azure/select-azuresubscription?view=azuresmps-4.0.0) コマンドレットを使用して、使用するサブスクリプションを選択します。 
 
 ```azurepowershell
 Workflow Stop-Start-AzureVM 
@@ -162,4 +162,4 @@ Workflow Stop-Start-AzureVM
 * 資格情報の使用について詳しくは、「[Azure Automation で資格情報を管理する](shared-resources/credentials.md)」を参照してください。
 * モジュールの詳細については、「[Azure Automation でモジュールを管理する](shared-resources/modules.md)」を参照してください。
 * Runbook を開始する必要がある場合は、「[Azure Automation で Runbook を開始する](start-runbooks.md)」を参照してください。
-* PowerShell の詳細については、[PowerShell のドキュメント](https://docs.microsoft.com/powershell/scripting/overview)を参照してください。
+* PowerShell の詳細については、[PowerShell のドキュメント](/powershell/scripting/overview)を参照してください。

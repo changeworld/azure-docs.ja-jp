@@ -4,12 +4,12 @@ description: .NET 用の Azure Batch ファイル規則ライブラリを使用�
 ms.topic: how-to
 ms.date: 11/14/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ba1b35bd8f2a4cc58558607581d10b598d23058c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 2e06bc90c95f9951895e0434ec8a8a7defaa6156
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965197"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147164"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>.NET 用の Batch ファイル規則ライブラリを使用した Azure Storage へのジョブおよびタスクのデータの保持
 
@@ -55,7 +55,7 @@ Azure Batch は、タスクの出力を保持するために複数の方法を�
 
 ファイル規則ライブラリを利用してジョブとタスク出力のデータを保存する場合、Azure Storage にコンテナーを作成し、そのコンテナーに出力を保存します。 タスク出力をコンテナーにアップロードするには、タスク コードで [.NET 用 Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage)を使用します。
 
-Azure Storage でのコンテナーと BLOB の操作の詳細については、「[.NET を使用して Azure Blob Storage を使用する](../storage/blobs/storage-dotnet-how-to-use-blobs.md)」を参照してください。
+Azure Storage でのコンテナーと BLOB の操作の詳細については、「[.NET を使用して Azure Blob Storage を使用する](../storage/blobs/storage-quickstart-blobs-dotnet.md)」を参照してください。
 
 > [!WARNING]
 > ファイル規則ライブラリを使用したジョブとタスクの出力はすべて同じコンテナーに格納されるため、 大量のタスクで同時にファイルを保持しようとすると、Azure Storage の調整の制限が適用される場合があります。 調整の制限の詳細については、「[BLOB ストレージのパフォーマンスとスケーラビリティのチェックリスト](../storage/blobs/storage-performance-checklist.md)」を参照してください。

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 06/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0eebd626013614bb6240fc0e6530a358a2b86d1c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eab509e389c074232526aa93fcebb72f3bc986c0
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781193"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185604"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Change Tracking と Inventory の管理
 
@@ -79,10 +79,10 @@ Change Tracking とインベントリを使用して、ファイルとフォル�
 
 ## <a name="track-file-contents"></a>ファイル コンテンツを追跡する
 
-ファイル コンテンツの追跡により、追跡された変更の前後のファイルのコンテンツを表示できます。 この機能では、変更が発生するたびにファイル コンテンツを[ストレージ アカウント](https://docs.microsoft.com/azure/storage/common/storage-account-overview)に保存します。 ファイル コンテンツを追跡するためのいくつかの規則を次に示します。
+ファイル コンテンツの追跡により、追跡された変更の前後のファイルのコンテンツを表示できます。 この機能では、変更が発生するたびにファイル コンテンツを[ストレージ アカウント](../storage/common/storage-account-overview.md)に保存します。 ファイル コンテンツを追跡するためのいくつかの規則を次に示します。
 
 * ファイル コンテンツの格納には、Resource Manager デプロイ モデルを使用している Standard ストレージ アカウントが必要です。 
-* Premium およびクラシック デプロイ モデルのストレージ アカウントは使用しないでください。 [Azure Storage アカウントの概要](../storage/common/storage-create-storage-account.md)に関する記事をご覧ください。
+* Premium およびクラシック デプロイ モデルのストレージ アカウントは使用しないでください。 [Azure Storage アカウントの概要](../storage/common/storage-account-create.md)に関する記事をご覧ください。
 * ストレージ アカウントを接続できるのは、1 つの Automation アカウントだけです。
 * ご自分の Automation アカウントで [Change Tracking とインベントリ](change-tracking.md)を有効にする必要があります。
 
@@ -170,7 +170,7 @@ Azure Monitor ログに対して、変更レコードのさまざまな検索を
 ## <a name="next-steps"></a>次のステップ
 
 * スコープ構成の詳細については、「[Change Tracking とインベントリのデプロイのスコープを制限する](automation-scope-configurations-change-tracking.md)」を参照してください。
-* Log Analytics ワークスペースに格納されているログを検索する必要がある場合は、[Azure Monitor ログでのログ検索](../log-analytics/log-analytics-log-searches.md)に関する記事を参照してください。
+* Log Analytics ワークスペースに格納されているログを検索する必要がある場合は、[Azure Monitor ログでのログ検索](../azure-monitor/log-query/log-query-overview.md)に関する記事を参照してください。
 * デプロイが完了したら、[Change Tracking とインベントリの Automation アカウントからワークスペースをリンク解除する方法](automation-unlink-workspace-change-tracking.md)についてのページを参照してください。
 * Change Tracking とインベントリから VM を削除する方法については、「[Change Tracking とインベントリから VM を削除する](automation-remove-vms-from-change-tracking.md)」を参照してください。
 * 機能のエラーのトラブルシューティングを行うには、「[Change Tracking と Inventory に関する問題のトラブルシューティング](troubleshoot/change-tracking.md)」を参照してください。

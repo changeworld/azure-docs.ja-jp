@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/28/2020
-ms.openlocfilehash: 7a7fe3f7e1c39837106471d118a8b1bb770a524e
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 75db20bdb746e7d15bef56ce7ac0a064993d3f3a
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045826"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187763"
 ---
 # <a name="deploy-an-azure-stream-analytics-job-using-cicd-npm-package"></a>CI/CD npm パッケージを使用して Azure Stream Analytics ジョブをデプロイする 
 
@@ -41,15 +41,11 @@ Stream Analytics Visual Studio Code プロジェクトが正常にビルドさ�
 
 * Resource Manager テンプレート ファイル
 
-   ```
-   [ProjectName].JobTemplate.json 
-   ```
+   `[ProjectName].JobTemplate.json`
 
 * Resource Manager パラメーター ファイル
 
-   ```
-   [ProjectName].JobTemplate.parameters.json
-   ```   
+   `[ProjectName].JobTemplate.parameters.json`   
 
 parameters.json ファイルの既定のパラメーターは、Visual Studio Code プロジェクトの設定から取得されます。 別の環境にデプロイする場合は、パラメーターを適宜置換します。
 

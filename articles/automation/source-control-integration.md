@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3cc75fb34f0a828eccfed3951e84a1c463d4cfb7
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 37df5ae8e88bf7832fbbeae37555d60943fca446
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828884"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187304"
 ---
 # <a name="use-source-control-integration"></a>ソース管理の統合を使用する
 
@@ -73,8 +73,7 @@ Azure portal を使用してソース管理を構成するには、次の手順�
 
 ### <a name="configure-source-control-in-powershell"></a>PowerShell でソース管理を構成する
 
-PowerShell を使用して Azure Automation のソース管理を構成することもできます。 この操作に PowerShell コマンドレットを使用するには、個人用アクセス トークン (PAT) が必要です。 [New-AzAutomationSourceControl](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationsourcecontrol?view=azps-3.5.0
-) コマンドレットを使用してソース管理接続を作成します。 このコマンドレットでは、PAT に対するセキュリティで保護された文字列が必要です。 セキュリティで保護された文字列を作成する方法については、「[ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-6)」を参照してください。
+PowerShell を使用して Azure Automation のソース管理を構成することもできます。 この操作に PowerShell コマンドレットを使用するには、個人用アクセス トークン (PAT) が必要です。 [New-AzAutomationSourceControl](/powershell/module/az.automation/new-azautomationsourcecontrol?view=azps-3.5.0) コマンドレットを使用してソース管理接続を作成します。 このコマンドレットでは、PAT に対するセキュリティで保護された文字列が必要です。 セキュリティで保護された文字列を作成する方法については、「[ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-6)」を参照してください。
 
 次のサブセクションは、PowerShell による GitHub、Azure Repos (Git)、および Azure Repos (TFVC) のソース管理接続の作成について説明しています。 
 
@@ -123,7 +122,7 @@ New-AzAutomationSourceControl -Name SCReposTFVC -RepoUrl https://dev.azure.com/<
 
 ##### <a name="minimum-pat-permissions-for-azure-repos"></a>Azure Repos の PAT に対する最小限のアクセス許可
 
-次のリストは、Azure Repos で必要な PAT の最小限のアクセス許可を定義したものです。 Azure Repos で PAT を作成する方法について詳しくは、「[個人用アクセス トークンによるアクセスの認証](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=preview-page)」をご覧ください。
+次のリストは、Azure Repos で必要な PAT の最小限のアクセス許可を定義したものです。 Azure Repos で PAT を作成する方法について詳しくは、「[個人用アクセス トークンによるアクセスの認証](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=preview-page)」をご覧ください。
 
 | Scope  |  アクセスの種類  |
 |---------| ----------|
@@ -196,14 +195,14 @@ New-AzAutomationSourceControl -Name SCReposTFVC -RepoUrl https://dev.azure.com/<
 
 ## <a name="handle-encoding-issues"></a>エンコードに関する問題を処理する
 
-ソース管理リポジトリで複数のユーザーがさまざまなエディターを使用して Runbook を編集していると、エンコードの問題が発生する可能性があります。 この状況について詳しくは、「[エンコード問題の一般的な原因](https://docs.microsoft.com/powershell/scripting/components/vscode/understanding-file-encoding?view=powershell-7#common-causes-of-encoding-issues)」をご覧ください。
+ソース管理リポジトリで複数のユーザーがさまざまなエディターを使用して Runbook を編集していると、エンコードの問題が発生する可能性があります。 この状況について詳しくは、「[エンコード問題の一般的な原因](/powershell/scripting/components/vscode/understanding-file-encoding?view=powershell-7#common-causes-of-encoding-issues)」をご覧ください。
 
 ## <a name="update-the-pat"></a>PAT を更新する
 
 現時点では、ソース管理の PAT を更新するために Azure portal を使用できません。 PAT が有効期限切れになったり取り消されたりしたら、以下のいずれかの方法で、新しいアクセス トークンを使用してソース管理を更新できます。
 
-* [REST API](https://docs.microsoft.com/rest/api/automation/sourcecontrol/update) を使用する。
-* [Update-AzAutomationSourceControl](https://docs.microsoft.com//powershell/module/az.automation/update-azautomationsourcecontrol) コマンドレットを使用する。
+* [REST API](/rest/api/automation/sourcecontrol/update) を使用する。
+* [Update-AzAutomationSourceControl](//powershell/module/az.automation/update-azautomationsourcecontrol) コマンドレットを使用する。
 
 ## <a name="next-steps"></a>次のステップ
 

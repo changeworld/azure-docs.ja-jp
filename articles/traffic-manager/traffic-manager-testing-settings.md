@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: rohink
-ms.openlocfilehash: b2ac056ef9140b4187eeb1850e56ba09b9755abb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 894f01244fef94e9f5a60823ba06ff38c01288a1
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704031"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186998"
 ---
 # <a name="verify-traffic-manager-settings"></a>Traffic Manager の設定の検証
 
@@ -35,7 +35,9 @@ DNS 名がプロファイル内のエンドポイントの IP アドレスに解
 2. 「`ipconfig /flushdns`」と入力して、DNS リゾルバー キャッシュをフラッシュします。
 3. 「`nslookup <your Traffic Manager domain name>`. たとえば、次のコマンドは、プレフィックスが *myapp.contoso* のドメインを確認します。
 
-        nslookup myapp.contoso.trafficmanager.net
+    ```powershell
+    nslookup myapp.contoso.trafficmanager.net
+    ```
 
     通常の結果では、次の情報が表示されます。
 

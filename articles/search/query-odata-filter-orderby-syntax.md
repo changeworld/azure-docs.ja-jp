@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f3a1be435e297ab4a9ba7f8bfbd5f3ce3451d8a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 07f3e270e799753a582227abe53223bd05755eb5
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77153878"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165211"
 ---
 # <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>Azure Cognitive Search での `$filter`、`$orderby`、および `$select` 用の OData 言語の概要
 
@@ -83,7 +83,9 @@ identifier ::= [a-zA-Z_][a-zA-Z_0-9]*
 
 `Address/City` というフィールド パスを検討します。 フィルターでは、これは現在のドキュメントの単一の都市、たとえば "San Francisco" (サンフランシスコ) を参照します。 一方、`Rooms/Type` は、多数の客室の `Type` サブフィールド (第 1 室は "標準"、第 2 室は "デラックス"、以下同様) を参照します。 `Rooms/Type` では、`Type` サブフィールドの "*単一のインスタンス*" は参照されないため、フィルター内で直接使用することはできません。 代わりに、客室の種類でフィルター処理するには、次のように[ラムダ式](search-query-odata-collection-operators.md)と範囲変数を使用します。
 
-    Rooms/any(room: room/Type eq 'deluxe')
+```odata
+Rooms/any(room: room/Type eq 'deluxe')
+```
 
 この例では、範囲変数 `room` が `room/Type` フィールド パスで使用されます。 これにより、`room/Type` で、現在のドキュメント内の現在の客室の種類が参照されます。 これは `Type` サブ フィールドの単一のインスタンスであるため、フィルター内で直接使用することができます。
 

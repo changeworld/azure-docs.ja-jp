@@ -9,12 +9,12 @@ ms.author: snmuvva
 ms.date: 01/11/2020
 ms.topic: conceptual
 manager: kmadnani
-ms.openlocfilehash: 1cb70109657343f41a1b3a19f3426377d97e261e
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 7d59ca60c7f90c227885927086511bd1f8ac7ca1
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830125"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185842"
 ---
 # <a name="encryption-of-secure-assets-in-azure-automation"></a>Azure Automation でのセキュリティで保護された資産の暗号化
 
@@ -52,12 +52,12 @@ Automation アカウントのカスタマー マネージド キーを有効に�
 
  - カスタマー マネージド キーが Azure Key Vault に格納されていること。 
  - Key Vault で **[論理的な削除]** と **[Do Not Purge]\(消去しない\)** の両方のプロパティを有効にします。 これらの機能は、誤削除が発生した場合にキーの復旧を許可するために必要です。
- - Azure Automation の暗号化では RSA キーのみがサポートされています。 キーの詳細については、[Azure Key Vault のキー、シークレット、および証明書の概要](../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)に関するページを参照してください。
+ - Azure Automation の暗号化では RSA キーのみがサポートされています。 キーの詳細については、[Azure Key Vault のキー、シークレット、および証明書の概要](../key-vault/general/about-keys-secrets-certificates.md)に関するページを参照してください。
 - Automation アカウントとキー コンテナーは異なるサブスクリプションにあってもかまいませんが、同じ Azure Active Directory テナントに存在する必要があります。
 
 ### <a name="assignment-of-an-identity-to-the-automation-account"></a>Automation アカウントへの ID の割り当て
 
-Automation アカウントでカスタマー マネージド キーを使用するには、その Automation アカウントが、カスタマー マネージド キーを格納しているキー コンテナーに対して認証する必要があります。 Azure Automation では、 Azure Key Vault でアカウントを認証するためにシステム割り当てマネージド ID が使用されます。 マネージド ID の詳細については、「[Azure リソースのマネージド ID とは](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)」を参照してください。
+Automation アカウントでカスタマー マネージド キーを使用するには、その Automation アカウントが、カスタマー マネージド キーを格納しているキー コンテナーに対して認証する必要があります。 Azure Automation では、 Azure Key Vault でアカウントを認証するためにシステム割り当てマネージド ID が使用されます。 マネージド ID の詳細については、「[Azure リソースのマネージド ID とは](../active-directory/managed-identities-azure-resources/overview.md)」を参照してください。
 
 Automation アカウントのシステム割り当てマネージド ID は、次の REST API 呼び出しを使用して構成します。
 
@@ -185,7 +185,7 @@ Azure Key Vault のカスタマー マネージド キーは、お使いのコ�
 
 ## <a name="revocation-of-access-to-a-customer-managed-key"></a>カスタマー マネージド キーの失効
 
-カスタマー マネージド キーへのアクセス権を取り消すには、PowerShell または Azure CLI を使用します。 詳細については、[Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/az.keyvault/) に関する記事、または [Azure Key Vault CLI](https://docs.microsoft.com/cli/azure/keyvault) に関する記事を参照してください。 アクセス権を取り消すと、Azure Automation が暗号化キーにアクセスできなくなるため、Automation アカウントのセキュリティで保護されたすべての資産へのアクセスが実質的にブロックされます。
+カスタマー マネージド キーへのアクセス権を取り消すには、PowerShell または Azure CLI を使用します。 詳細については、[Azure Key Vault PowerShell](/powershell/module/az.keyvault/) に関する記事、または [Azure Key Vault CLI](/cli/azure/keyvault) に関する記事を参照してください。 アクセス権を取り消すと、Azure Automation が暗号化キーにアクセスできなくなるため、Automation アカウントのセキュリティで保護されたすべての資産へのアクセスが実質的にブロックされます。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 3369a807410e9e959e8091d5b16c8480803d26bb
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 38963a8e1bfdbde50439ed871aa33e9aaa830d35
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830584"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185655"
 ---
 # <a name="track-updated-files-with-a-watcher-task"></a>監視タスクによる更新されたファイルの追跡
 
@@ -20,7 +20,7 @@ Azure Automation では、PowerShell Runbook で監視タスクを使用して�
 > Azure China Vianet 21 では、監視タスクはサポートされていません。
 
 > [!IMPORTANT]
-> 2020 年 5 月から、イベントの監視、定期的なタスクのスケジュール、およびアクションのトリガーを行う方法として Azure Logic Apps の使用がサポートされるようになりました。 「[Azure Logic Apps で自動化された定期的なタスク、プロセス、ワークフローのスケジュールを設定して実行する](https://docs.microsoft.com/azure/logic-apps/concepts-schedule-automated-recurring-tasks-workflows)」を参照してください。
+> 2020 年 5 月から、イベントの監視、定期的なタスクのスケジュール、およびアクションのトリガーを行う方法として Azure Logic Apps の使用がサポートされるようになりました。 「[Azure Logic Apps で自動化された定期的なタスク、プロセス、ワークフローのスケジュールを設定して実行する](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)」を参照してください。
 
 このチュートリアルでは、ディレクトリへの新しいファイルの追加を監視する監視タスクの作成手順について説明します。 学習内容は次のとおりです。
 
@@ -37,7 +37,7 @@ Azure Automation では、PowerShell Runbook で監視タスクを使用して�
 このチュートリアルを完了するには、以下が必要です。
 
 * Azure のサブスクリプション。 まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)にサインアップしてください。
-* 監視およびアクションの Runbook と監視タスクを保持する、[Automation アカウント](automation-offering-get-started.md)。
+* 監視およびアクションの Runbook と監視タスクを保持する、[Automation アカウント](./index.yml)。
 * 監視タスクが実行される、[Hybrid Runbook Worker](automation-hybrid-runbook-worker.md)。
 * PowerShell Runbook。 PowerShell ワークフロー Runbook は、監視タスクではサポートされていません。
 
@@ -61,7 +61,7 @@ Azure Automation では、PowerShell Runbook で監視タスクを使用して�
 
 ## <a name="create-an-automation-variable"></a>Automation 変数を作成する
 
-[Automation 変数](automation-variables.md)を使用して、上述の Runbook が各ファイルから読み取って保存するタイムスタンプを格納します。
+[Automation 変数](./shared-resources/variables.md)を使用して、上述の Runbook が各ファイルから読み取って保存するタイムスタンプを格納します。
 
 1. **[共有リソース]** の **[変数]** を選択し、 **[+ 変数の追加]** をクリックします。
 1. 名前に「Watch-NewFileTimestamp」と入力します。

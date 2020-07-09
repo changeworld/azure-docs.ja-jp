@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: mvc
-ms.openlocfilehash: 79cffa7aedd0fc04dd4a747ef28bc67cacf37905
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: a701a5a9fd77bd801bb535fe1f26bfa17c97757b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204890"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185791"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Azure VM の更新プログラムとパッチの管理
 
@@ -206,7 +206,7 @@ REST API を使用して更新プログラムの展開を作成する方法に�
 ## <a name="next-steps"></a>次のステップ
 
 * スコープ構成の詳細については、「[Update Management のスコープ構成を操作する](automation-scope-configurations-update-management.md)」を参照してください。
-* Log Analytics ワークスペースに格納されているログを検索する必要がある場合は、[Azure Monitor ログでのログ検索](../log-analytics/log-analytics-log-searches.md)に関する記事を参照してください。
+* Log Analytics ワークスペースに格納されているログを検索する必要がある場合は、[Azure Monitor ログでのログ検索](../azure-monitor/log-query/log-query-overview.md)に関する記事を参照してください。
 * 展開が終了した場合は、「[Update Management の Automation アカウントからワークスペースのリンクを解除する](automation-unlink-workspace-update-management.md)」を参照してください。
 * Update Management から VM を削除するには、「[Update Management から VM を削除する](automation-remove-vms-from-update-management.md)」を参照してください。
 * Update Management の一般的なエラーのトラブルシューティングについては、「[Update Management ソリューションに関する問題のトラブルシューティング](troubleshoot/update-management.md)」を参照してください。
