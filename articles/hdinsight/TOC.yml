@@ -428,8 +428,6 @@
               href: ./spark/apache-spark-troubleshoot-job-fails-noclassdeffounderror.md
             - name: Apache Spark ジョブが失敗する - InvalidClassException
               href: ./spark/apache-spark-troubleshoot-job-fails-invalidclassexception.md
-            - name: Apache Spark ジョブが遅い - listStatus
-              href: ./spark/apache-spark-troubleshoot-job-slowness-liststatus.md
             - name: Apache Spark ジョブが遅い - ストレージ コンテナー
               href: ./spark/apache-spark-troubleshoot-job-slowness-container.md
             - name: IllegalArgumentException 例外
@@ -723,8 +721,6 @@
               href: ./hbase/hbase-troubleshoot-pegged-cpu-region-server.md
             - name: '"hbase hbck" コマンドの使用時のタイムアウト'
               href: ./hbase/hbase-troubleshoot-timeouts-hbase-hbck.md
-            - name: Apache HBase のトラブルシューティング
-              href: ./hbase/apache-troubleshoot-hbase.md
             - name: Apache HBase を照会するための REST API
               href: ./hbase/troubleshoot-rest-api.md
 - name: Interactive Query

@@ -222,12 +222,6 @@
         - name: Deployment Manager の正常性チェックの使用
           displayName: adm
           href: deployment-manager-tutorial-health-check.md
-- name: サンプル
-  items:
-    - name: Azure のクイック スタート テンプレート
-      href: 'https://azure.microsoft.com/resources/templates/'
-    - name: テンプレートのサンプル
-      href: template-samples.md
 - name: 概念
   items:
     - name: テンプレートのベスト プラクティス
@@ -299,16 +293,6 @@
             - name: 出力
               displayName: 'iteration,copy'
               href: copy-outputs.md
-    - name: オーサリング ツールを使用する
-      items:
-        - name: VS Code
-          href: use-vs-code-to-create-template.md
-        - name: "Visual\_Studio"
-          href: create-visual-studio-deployment-project.md
-        - name: VS デプロイ スクリプトを Az モジュールに更新する
-          href: update-visual-studio-deployment-script.md
-        - name: IntelliJ IDEA
-          href: create-templates-use-intellij.md
     - name: テンプレートのプロパティの確認
       items:
         - name: テンプレートをエクスポートする
@@ -344,6 +328,8 @@
           href: rollback-on-error.md
         - name: SAS トークンによるテンプレートのセキュリティ保護
           href: secure-template-with-sas-token.md
+        - name: デプロイ履歴を表示する
+          href: deployment-history.md
     - name: スコープ付きのデプロイ
       items:
         - name: サブスクリプション
@@ -367,8 +353,14 @@
           href: add-template-to-azure-pipelines.md
         - name: デプロイ - GitHub Actions
           href: deploy-github-actions.md
-    - name: デプロイ履歴を表示する
-      href: deployment-history.md
+    - name: オーサリング ツールを使用する
+      items:
+        - name: "Visual\_Studio"
+          href: create-visual-studio-deployment-project.md
+        - name: VS デプロイ スクリプトを Az モジュールに更新する
+          href: update-visual-studio-deployment-script.md
+        - name: IntelliJ IDEA
+          href: create-templates-use-intellij.md
     - name: デプロイのトラブルシューティング
       items:
         - name: デプロイ エラーのトラブルシューティング
@@ -441,6 +433,8 @@
       href: /python/api/overview/azure/resources?view=azure-python
 - name: リソース
   items:
+    - name: Azure のクイック スタート テンプレート
+      href: 'https://azure.microsoft.com/resources/templates/'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'
     - name: 料金計算ツール

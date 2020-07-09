@@ -4,16 +4,16 @@ description: Windows Virtual Desktop でセキュリティを強化するため�
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a769b5584abbd6da89ccb6032e5f0c5ac8ea1cb1
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 16abe8d155a0d7d7f65c69e6305da62bd8813ea4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930524"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361151"
 ---
 # <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>Windows Virtual Desktop 用に Azure Multi-Factor Authentication を有効にする
 
@@ -47,8 +47,9 @@ Windows Virtual Desktop 用の Windows クライアントは、Windows Virtual D
    - **[Done]** を選択します。
 6. **[クラウド アプリまたはアクション]**  >  **[Include]\(含める\)** で、 **[アプリを選択]** を選択します。
    - **[Windows Virtual Desktop]** (App ID 9cdead84-a844-4324-93f2-b2e6bb768d07) を選択し、 **[選択]** 、 **[完了]** の順に選択します。
-   
-     ![[クラウド アプリまたは操作] ページのスクリーンショット。 Windows Virtual Desktop および Windows Virtual Desktop Client アプリが赤色で強調表示されています。](media/cloud-apps-enterprise.png)
+
+     > [!div class="mx-imgBorder"]
+     > ![[クラウド アプリまたはアクション] ページのスクリーンショット。 Windows Virtual Desktop および Windows Virtual Desktop Client アプリが赤色で強調表示されています。](media/cloud-apps-enterprise.png)
 
      >[!NOTE]
      >選択するアプリのアプリ ID を検索するには、 **[エンタープライズ アプリケーション]** に移動し、[アプリケーションの種類] ドロップダウン メニューから **[Microsoft アプリケーション]** を選択します。

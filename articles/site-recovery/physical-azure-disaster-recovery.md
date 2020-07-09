@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 2f92c2b800c6d30cc5f365e6d24925a70d3db55a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3d4a2120f86a03508b91d4b2dea52e629dc0f79
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699908"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130181"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Azure にオンプレミス物理サーバーのディザスター リカバリーを設定する
 
@@ -119,7 +119,7 @@ VM を Azure にレプリケートするアクセス許可がお使いの Azure 
 開始する前に次の作業を行います。 
 
 #### <a name="verify-time-accuracy"></a>時間の精度を検証する
-構成サーバー マシンのシステム クロックが[タイム サーバー](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service)と同期していることを確認します。 これは一致している必要があります。 15 分進んでいるか遅れている場合は、セットアップが失敗する可能性があります。
+構成サーバー マシンのシステム クロックが[タイム サーバー](/windows-server/networking/windows-time-service/windows-time-service-top)と同期していることを確認します。 これは一致している必要があります。 15 分進んでいるか遅れている場合は、セットアップが失敗する可能性があります。
 
 #### <a name="verify-connectivity"></a>接続を検証する
 コンピューターが、環境に基づいて次の URL にアクセスできることを確認します。 

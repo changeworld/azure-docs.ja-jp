@@ -57,7 +57,11 @@
             - name: 動的データ マスク
               href: database/dynamic-data-masking-overview.md
             - name: SQL 脆弱性評価
-              href: database/sql-vulnerability-assessment.md
+              items:
+                - name: SQL 脆弱性評価
+                  href: database/sql-vulnerability-assessment.md
+                - name: 脆弱性評価のルール
+                  href: database/sql-database-vulnerability-assessment-rules.md
             - name: ログイン、ユーザー アカウント、ロール、およびアクセス許可
               href: database/logins-create-manage.md
             - name: Azure AD Authentication
@@ -606,6 +610,9 @@
           href: database/powershell-script-content-guide.md?tabs=single-database
         - name: Azure Resource Manager
           href: database/arm-templates-content-guide.md?tabs=single-database
+        - name: Azure Policy の組み込み
+          displayName: 'samples, policies, definitions'
+          href: ./database/policy-samples.md
         - name: コード サンプル
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
 - name: SQL Managed Instance (SQL MI)
@@ -833,6 +840,9 @@
           href: database/powershell-script-content-guide.md?tabs=managed-instance
         - name: Azure Resource Manager
           href: database/arm-templates-content-guide.md?tabs=managed-instance
+        - name: Azure Policy の組み込み
+          displayName: 'samples, policies, definitions'
+          href: ./database/policy-samples.md
         - name: コード サンプル
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
 - name: Azure VM 上の SQL Server
@@ -974,8 +984,6 @@
                       items:
                         - name: FCI の DNN を作成する
                           href: virtual-machines/windows/hadr-distributed-network-name-dnn-configure.md
-                        - name: DNN との機能の相互運用性
-                          href: virtual-machines/windows/failover-cluster-instance-dnn-interoperability.md
                         - name: FCI DNN と SQL Server の機能
                           href: virtual-machines/windows/failover-cluster-instance-dnn-interoperability.md
                 - name: 接続の構成

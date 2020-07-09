@@ -216,8 +216,8 @@
               href: ./partner-center-portal/commercial-marketplace-co-sell-countries.md
             - name: 状態コード
               href: ./partner-center-portal/commercial-marketplace-co-sell-states.md
-    - name: 発行状態
-      href: ./partner-center-portal/publishing-status.md
+    - name: レビューと発行
+      href: review-publish-offer.md
     - name: 既存のオファーを更新する
       href: ./partner-center-portal/update-existing-offer.md
     - name: ベネフィットのアクティブ化

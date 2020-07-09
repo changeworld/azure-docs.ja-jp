@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: ramamill
-ms.openlocfilehash: ec4d1cfbe0c76c8245c4beeaa7c044d76d917a7a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: d73e2776d0d9c86fe0331f9804bfeade3f1de676
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81259802"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131788"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>VMware VM と物理サーバーのためのモビリティ サービスについて
 
@@ -186,8 +186,8 @@ ms.locfileid: "81259802"
 
 ## <a name="azure-virtual-machine-agent"></a>Azure 仮想マシン エージェント
 
-- **Windows VM**:モビリティ サービスのバージョン 9.7.0.0 以降、[Azure VM エージェント](/azure/virtual-machines/extensions/features-windows#azure-vm-agent)がモビリティ サービス インストーラーによってインストールされます。 これにより、マシンが Azure にフェールオーバーするとき、Azure VM は確実に、VM 拡張機能を使用するためのエージェント インストールの前提条件を満たすようになります。
-- **Linux VM**:フェールオーバー後、[WALinuxAgent](/azure/virtual-machines/extensions/update-linux-agent) を Azure VM に手動インストールする必要があります。
+- **Windows VM**:モビリティ サービスのバージョン 9.7.0.0 以降、[Azure VM エージェント](../virtual-machines/extensions/features-windows.md#azure-vm-agent)がモビリティ サービス インストーラーによってインストールされます。 これにより、マシンが Azure にフェールオーバーするとき、Azure VM は確実に、VM 拡張機能を使用するためのエージェント インストールの前提条件を満たすようになります。
+- **Linux VM**:フェールオーバー後、[WALinuxAgent](../virtual-machines/extensions/update-linux-agent.md) を Azure VM に手動インストールする必要があります。
 
 ## <a name="locate-installer-files"></a>インストーラー ファイルを検索する
 
