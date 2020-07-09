@@ -65,6 +65,10 @@
     - name: スロットルされた要求に関するガイダンス
       displayName: 'pagination, batching, throttling, parallel'
       href: ./concepts/guidance-for-throttled-requests.md
+    - name: セキュリティ
+      items:
+        - name: Azure セキュリティ ベンチマーク用のセキュリティ ベースライン
+          href: ./concepts/azure-security-benchmark-baseline.md
 - name: 操作方法ガイド
   items:
     - name: リソースの変更の取得

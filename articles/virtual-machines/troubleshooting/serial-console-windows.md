@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: c555b058e6d0b8c110a3273525b5a8c58baaff61
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 0fd2bcfb32524c6911a70157f58cea1e48b7bea9
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309783"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135245"
 ---
 # <a name="azure-serial-console-for-windows"></a>Windows 用 Azure シリアル コンソール
 
@@ -102,15 +102,15 @@ Windows ブート ローダーのプロンプトを有効にしてシリアル �
 
     ![SAC に接続する](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
 
-1.    「`cmd`」と入力して、CMD インスタンスがあるチャネルを作成します。
+1. 「`cmd`」と入力して、CMD インスタンスがあるチャネルを作成します。
 
-1.    「`ch -si 1`」と入力するか、`<esc>+<tab>` のショートカット キーを押して、CMD インスタンスを実行しているチャネルに切り替えます。
+1. 「`ch -si 1`」と入力するか、`<esc>+<tab>` のショートカット キーを押して、CMD インスタンスを実行しているチャネルに切り替えます。
 
-1.    **Enter** キーを押して、管理アクセス許可を持つサインイン資格情報を入力します。
+1. **Enter** キーを押して、管理アクセス許可を持つサインイン資格情報を入力します。
 
-1.    有効な資格情報を入力すると、CMD インスタンスが開きます。
+1. 有効な資格情報を入力すると、CMD インスタンスが開きます。
 
-1.    PowerShell インスタンスを起動するには、CMD インスタンスに「`PowerShell`」と入力し、**Enter** キーを押します。
+1. PowerShell インスタンスを起動するには、CMD インスタンスに「`PowerShell`」と入力し、**Enter** キーを押します。
 
     ![PowerShell インスタンスを開く](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: f68221666f370f87af7539d9302aaa3ed472d5e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: daf3e3aaa95734c79e513c16e5d41aeb0bf894dc
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82883143"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135270"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-fstab-errors"></a>fstab エラーによる Linux VM の起動に関する問題のトラブルシューティング
 
@@ -192,16 +192,16 @@ Give root password for maintenance
 
 2. システム ディスクをデータ ディスクとして復旧 VM にマウントしたら、変更を加える前に fstab ファイルをバックアップしてから、次の手順に従って fstab ファイルを修正します。
 
-3.    ディスクがマウントされなかったことを示すエラーを探します。 次の例では、もはや存在しないディスクにシステムが接続しようとしました。
+3. ディスクがマウントされなかったことを示すエラーを探します。 次の例では、もはや存在しないディスクにシステムが接続しようとしました。
 
-    ```
-    [DEPEND] Dependency failed for /datadisk1.
-    [DEPEND] Dependency failed for Local File Systems.
-    [DEPEND] Dependency failed for Relabel all filesystems, if necessary.
-    [DEPEND] Dependency failed for Migrate local... structure to the new structure.
-    Welcome to emergency mode! After logging in, type "journalctl -xb" to view system logs, "systemctl reboot" to reboot, "systemctl default" or ^D to try again to boot into default mode.
-    Give root password for maintenance (or type Control-D to continue):
-    ```
+   ```output
+   [DEPEND] Dependency failed for /datadisk1.
+   [DEPEND] Dependency failed for Local File Systems.
+   [DEPEND] Dependency failed for Relabel all filesystems, if necessary.
+   [DEPEND] Dependency failed for Migrate local... structure to the new structure.
+   Welcome to emergency mode! After logging in, type "journalctl -xb" to view system logs, "systemctl reboot" to reboot, "systemctl default" or ^D to try again to boot into default mode.
+   Give root password for maintenance (or type Control-D to continue):
+   ```
 
 4. ルート パスワード (Red Hat ベースの VM) を使用して VM に接続します。
 

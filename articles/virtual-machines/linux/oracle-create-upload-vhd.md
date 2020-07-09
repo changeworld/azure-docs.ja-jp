@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: guybo
-ms.openlocfilehash: fd6d17709cc3e5e9f6bb89ed7480fcd9ee80fd97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e144f63358275292ec224a63ed3ca61f809297a
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81759392"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135303"
 ---
 # <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>Azure 用の Oracle Linux 仮想マシンの準備
 
@@ -35,66 +35,95 @@ Azure 上で実行する仮想マシンのオペレーティング システム�
 1. Hyper-V マネージャーの中央のウィンドウで仮想マシンを選択します。
 2. **[接続]** をクリックすると、仮想マシンのウィンドウが開きます。
 3. 次のコマンドを実行して NetworkManager をアンインストールします。
-   
-        # sudo rpm -e --nodeps NetworkManager
-   
+
+    ```console
+    # sudo rpm -e --nodeps NetworkManager
+    ```
+
     **注:** パッケージがまだインストールされていない場合、このコマンドは失敗してエラー メッセージが表示されます。 これは予期されることです。
 4. `/etc/sysconfig/` ディレクトリに **network** という名前のファイルを作成し、次のテキストを追加します。
-   
-        NETWORKING=yes
-        HOSTNAME=localhost.localdomain
+
+    ```config   
+    NETWORKING=yes
+    HOSTNAME=localhost.localdomain
+    ```
+
 5. `/etc/sysconfig/network-scripts/` ディレクトリに **ifcfg-eth0** という名前のファイルを作成し、次のテキストを追加します。
-   
-        DEVICE=eth0
-        ONBOOT=yes
-        BOOTPROTO=dhcp
-        TYPE=Ethernet
-        USERCTL=no
-        PEERDNS=yes
-        IPV6INIT=no
+
+    ```config
+    DEVICE=eth0
+    ONBOOT=yes
+    BOOTPROTO=dhcp
+    TYPE=Ethernet
+    USERCTL=no
+    PEERDNS=yes
+    IPV6INIT=no
+    ```
+
 6. udev ルールを編集して、イーサネット インターフェイスの静的ルールが生成されないようにします。 これらのルールは、Microsoft Azure または Hyper-V で仮想マシンを複製する際に問題の原因となる可能性があります。
-   
-        # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
-        # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
+
+    ```console
+    # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
+    # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
+    ```
+
 7. 次のコマンドを実行して、起動時にネットワーク サービスが開始されるようにします。
-   
-        # chkconfig network on
+
+    ```console
+    # chkconfig network on
+    ```
+
 8. 次のコマンドを実行して python-pyasn1 をインストールします。
-   
-        # sudo yum install python-pyasn1
+
+    ```console
+    # sudo yum install python-pyasn1
+    ```
+
 9. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 これを行うには、テキスト エディターで "/boot/grub/menu.lst" を開き、カーネルに次のパラメーターが含まれていることを確認します。
-   
-        console=ttyS0 earlyprintk=ttyS0 rootdelay=300
-   
+
+    ```config-grub
+    console=ttyS0 earlyprintk=ttyS0 rootdelay=300
+    ```
+
    これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。
    
    上記のほかに、次のパラメーターを *削除* することをお勧めします。
-   
-        rhgb quiet crashkernel=auto
-   
+
+    ```config-grub
+    rhgb quiet crashkernel=auto
+    ```
+
    クラウド環境では、すべてのログをシリアル ポートに送信するため、グラフィカル ブートおよびクワイエット ブートは役立ちません。
    
    必要に応じて `crashkernel` オプションは構成したままにすることができますが、このパラメーターにより、VM 内の使用可能なメモリ量が 128 MB 以上減少するため、比較的小さなサイズの VM では問題となる可能性がある点に注意してください。
 10. SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。  通常これが既定です。
 11. 次のコマンドを実行して Azure Linux エージェントをインストールします。 最新バージョンは 2.0.15 です。
-    
-        # sudo yum install WALinuxAgent
-    
+
+    ```console
+    # sudo yum install WALinuxAgent
+    ```
+
     手順 2. で説明したように NetworkManager パッケージおよび NetworkManager-gnome パッケージがまだ削除されていない場合、WALinuxAgent パッケージをインストールすると、これらのパッケージが削除されることに注意してください。
 12. OS ディスクにスワップ領域を作成しないでください。
     
     Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。 ローカル リソース ディスクは *一時* ディスクであるため、VM のプロビジョニングが解除されると空になることに注意してください。 Azure Linux エージェントのインストール後に (前の手順を参照)、/etc/waagent.conf にある次のパラメーターを適切に変更します。
-    
-        ResourceDisk.Format=y
-        ResourceDisk.Filesystem=ext4
-        ResourceDisk.MountPoint=/mnt/resource
-        ResourceDisk.EnableSwap=y
-        ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+
+    ```config-conf
+    ResourceDisk.Format=y
+    ResourceDisk.Filesystem=ext4
+    ResourceDisk.MountPoint=/mnt/resource
+    ResourceDisk.EnableSwap=y
+    ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+    ```
+
 13. 次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
-    
-        # sudo waagent -force -deprovision
-        # export HISTSIZE=0
-        # logout
+
+    ```console
+    # sudo waagent -force -deprovision
+    # export HISTSIZE=0
+    # logout
+    ```
+
 14. Hyper-V マネージャーで **[アクション]、[シャットダウン]** の順にクリックします。 これで、Linux VHD を Azure にアップロードする準備が整いました。
 
 ---
@@ -113,64 +142,98 @@ Azure 用の Oracle Linux 7 仮想マシンを準備する手順は、Oracle Lin
 1. Hyper-V マネージャーで仮想マシンを選択します。
 2. **[接続]** をクリックすると、仮想マシンのコンソール ウィンドウが開きます。
 3. `/etc/sysconfig/` ディレクトリに **network** という名前のファイルを作成し、次のテキストを追加します。
-   
-        NETWORKING=yes
-        HOSTNAME=localhost.localdomain
+
+    ```config
+    NETWORKING=yes
+    HOSTNAME=localhost.localdomain
+    ```
+
 4. `/etc/sysconfig/network-scripts/` ディレクトリに **ifcfg-eth0** という名前のファイルを作成し、次のテキストを追加します。
-   
-        DEVICE=eth0
-        ONBOOT=yes
-        BOOTPROTO=dhcp
-        TYPE=Ethernet
-        USERCTL=no
-        PEERDNS=yes
-        IPV6INIT=no
+
+    ```config
+    DEVICE=eth0
+    ONBOOT=yes
+    BOOTPROTO=dhcp
+    TYPE=Ethernet
+    USERCTL=no
+    PEERDNS=yes
+    IPV6INIT=no
+    ```
+
 5. udev ルールを編集して、イーサネット インターフェイスの静的ルールが生成されないようにします。 これらのルールは、Microsoft Azure または Hyper-V で仮想マシンを複製する際に問題の原因となる可能性があります。
-   
-        # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
+
+    ```console
+    # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
+    ```
+
 6. 次のコマンドを実行して、起動時にネットワーク サービスが開始されるようにします。
-   
-        # sudo chkconfig network on
+
+    ```console
+    # sudo chkconfig network on
+    ```
+
 7. 次のコマンドを実行して python-pyasn1 パッケージをインストールします。
-   
-        # sudo yum install python-pyasn1
+
+    ```console
+    # sudo yum install python-pyasn1
+    ```
+
 8. 次のコマンドを実行して、現在の yum メタデータをクリアし、更新をインストールします。
-   
-        # sudo yum clean all
-        # sudo yum -y update
+
+    ```console 
+    # sudo yum clean all
+    # sudo yum -y update
+    ```
+
 9. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 これを行うには、テキスト エディターで "/etc/default/grub" を開き、次のように、 `GRUB_CMDLINE_LINUX` パラメーターを編集します。
-   
-        GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
-   
+
+    ```config-grub
+    GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
+    ```
+
    これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。 また、これにより、Unbreakable Enterprise Kernel を使用する Oracle Linux 7 で NIC の名前付け規則がオフになります。 上記のほかに、次のパラメーターを *削除* することをお勧めします。
-   
+
+    ```config-grub
        rhgb quiet crashkernel=auto
-   
+    ```
+ 
    クラウド環境では、すべてのログをシリアル ポートに送信するため、グラフィカル ブートおよびクワイエット ブートは役立ちません。
    
    必要に応じて `crashkernel` オプションは構成したままにすることができますが、このパラメーターにより、VM 内の使用可能なメモリ量が 128 MB 以上減少するため、比較的小さなサイズの VM では問題となる可能性がある点に注意してください。
 10. 上記のとおりに "/etc/default/grub" の編集を終了したら、次のコマンドを実行して GRUB 構成をリビルドします。
-    
-        # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+
+    ```console
+    # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+    ```
+
 11. SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。  通常これが既定です。
 12. 次のコマンドを実行して Azure Linux エージェントをインストールします。
-    
-        # sudo yum install WALinuxAgent
-        # sudo systemctl enable waagent
+
+    ```console
+    # sudo yum install WALinuxAgent
+    # sudo systemctl enable waagent
+    ```
+
 13. OS ディスクにスワップ領域を作成しないでください。
     
     Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。 ローカル リソース ディスクは *一時* ディスクであるため、VM のプロビジョニングが解除されると空になることに注意してください。 Azure Linux エージェントのインストール後に (前の手順を参照)、/etc/waagent.conf にある次のパラメーターを適切に変更します。
-    
-        ResourceDisk.Format=y
-        ResourceDisk.Filesystem=ext4
-        ResourceDisk.MountPoint=/mnt/resource
-        ResourceDisk.EnableSwap=y
-        ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+
+    ```config-conf
+    ResourceDisk.Format=y
+    ResourceDisk.Filesystem=ext4
+    ResourceDisk.MountPoint=/mnt/resource
+    ResourceDisk.EnableSwap=y
+    ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+    ```
+
 14. 次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
     
-        # sudo waagent -force -deprovision
-        # export HISTSIZE=0
-        # logout
+    ```console
+    # sudo waagent -force -deprovision
+    # export HISTSIZE=0
+    # logout
+    ```
+
 15. Hyper-V マネージャーで **[アクション]、[シャットダウン]** の順にクリックします。 これで、Linux VHD を Azure にアップロードする準備が整いました。
 
 ## <a name="next-steps"></a>次のステップ

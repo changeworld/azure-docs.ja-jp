@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: mayg
-ms.openlocfilehash: 269ae7059ff3d2c5b130604435735525d6022d3d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: d333972ea5f74d1676e5e4b4e1417c6bf5d87b79
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113311"
+ms.locfileid: "86135345"
 ---
 # <a name="troubleshoot-vcenter-server-discovery-failures"></a>vCenter Server の検出エラーをトラブルシューティングする
 
@@ -81,4 +81,4 @@ DRA プロキシ構成の場合
 
 ## <a name="next-steps"></a>次のステップ
 
-[VMware VM のディザスター リカバリー用の構成サーバーを管理する](https://docs.microsoft.com/azure/site-recovery/vmware-azure-manage-configuration-server#refresh-configuration-server) 
+[VMware VM のディザスター リカバリー用の構成サーバーを管理する](./vmware-azure-manage-configuration-server.md#refresh-configuration-server) 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: weixu
-ms.openlocfilehash: b8b874888d3a46a855c3d76d520d390725c40898
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: fc22dea201ccd19c4e7bee92a1092b4ff50117db
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735404"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134947"
 ---
 # <a name="real-time-conversation-transcription-preview"></a>リアルタイムでの会話の文字起こし (プレビュー)
 
@@ -140,7 +140,7 @@ public class MyConversationTranscriber
             using (var conversation = await Conversation.CreateConversationAsync(config, meetingId).ConfigureAwait(false))
             {
                 // Create a conversation transcriber using audio stream input
-                using (var conversationTranscriber = new ConversationTranscriber    (audioInput))
+                using (var conversationTranscriber = new ConversationTranscriber(audioInput))
                 {
                     await conversationTranscriber.JoinConversationAsync(conversation);
 

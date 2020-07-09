@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: b4b92b907d9cd6d469163bc7bf457da42e9b673c
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 22848d84896989b1872c55e687c4a5e73da31de8
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299784"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134038"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>一般的な質問:Azure から Azure へのディザスター リカバリー
 
@@ -89,7 +89,7 @@ Site Recovery では、レプリケートされた VM からディスクを "ホ
 
 ### <a name="how-often-can-i-replicate-to-azure"></a>どのくらいの頻度で Azure にレプリケートできますか?
 
-Azure VM を別の Azure リージョンにレプリケートするときは、レプリケーションは継続的に行われます。 詳しくは、[Azure から Azure へのレプリケーション アーキテクチャ](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-architecture#replication-process)に関する記事をご覧ください。
+Azure VM を別の Azure リージョンにレプリケートするときは、レプリケーションは継続的に行われます。 詳しくは、[Azure から Azure へのレプリケーション アーキテクチャ](./azure-to-azure-architecture.md#replication-process)に関する記事をご覧ください。
 
 ### <a name="can-i-replicate-virtual-machines-within-a-region-i-need-this-functionality-to-migrate-vms"></a>リージョン内で仮想マシンをレプリケートできますか? VM を移行するためにこの機能が必要です。
 
@@ -97,17 +97,17 @@ Azure 間のディスク回復ソリューションを使用し、リージョ�
 
 ### <a name="can-i-replicate-vm-instances-to-any-azure-region"></a>VM インスタンスを任意の Azure リージョンにレプリケートできますか?
 
-Site Recovery を使用することで、同じ地理クラスター内の 2 つのリージョン間で VM をレプリケートして復旧できます。 地理クラスターは、データの遅延と主権を念頭に置きながら定義されます。 詳しくは、Site Recovery の[リージョンのサポート マトリックス](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support)をご覧ください。
+Site Recovery を使用することで、同じ地理クラスター内の 2 つのリージョン間で VM をレプリケートして復旧できます。 地理クラスターは、データの遅延と主権を念頭に置きながら定義されます。 詳しくは、Site Recovery の[リージョンのサポート マトリックス](./azure-to-azure-support-matrix.md#region-support)をご覧ください。
 
 ### <a name="does-site-recovery-require-internet-connectivity"></a>Site Recovery にはインターネット接続が必要ですか?
 
-いいえ、Site Recovery にはインターネット接続は必要ありません。 ただし、「[Azure VM ディザスター リカバリーのネットワークについて](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-urls)」で説明されているように、Site Recovery の URL と IP 範囲にアクセスする必要があります。
+いいえ、Site Recovery にはインターネット接続は必要ありません。 ただし、「[Azure VM ディザスター リカバリーのネットワークについて](./azure-to-azure-about-networking.md#outbound-connectivity-for-urls)」で説明されているように、Site Recovery の URL と IP 範囲にアクセスする必要があります。
 
 ### <a name="can-i-replicate-an-application-that-has-a-separate-resource-group-for-separate-tiers"></a>階層ごとにリソース グループが分かれているアプリケーションをレプリケートできますか?
 
 はい、アプリケーションをレプリケートし、同時に、リソース グループ別にディザスター リカバリー構成を保持することは可能です。
 
-ご利用のアプリケーションでたとえば、各層のアプリケーション、データベース、Web が別々のリソース グループに入っている場合、すべての層を保護するには[レプリケーション ウィザード](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication#enable-replication)を 3 回選択する必要があります。 Site Recovery によって、これら 3 つの層が 3 つの異なるリソース グループにレプリケートされます。
+ご利用のアプリケーションでたとえば、各層のアプリケーション、データベース、Web が別々のリソース グループに入っている場合、すべての層を保護するには[レプリケーション ウィザード](./azure-to-azure-how-to-enable-replication.md#enable-replication)を 3 回選択する必要があります。 Site Recovery によって、これら 3 つの層が 3 つの異なるリソース グループにレプリケートされます。
 
 ### <a name="can-i-move-storage-accounts-across-resource-groups"></a>リソース グループとの間でストレージ アカウントを移動できますか?
 
@@ -122,7 +122,7 @@ Site Recovery を使用することで、同じ地理クラスター内の 2 つ
 - 復旧ポイントの保持履歴は 24 時間。
 - アプリ整合性スナップショットの頻度は 60 分。
 
-[レプリケーション設定についてはこちらをご覧ください](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#configure-replication-settings)。
+[レプリケーション設定についてはこちらをご覧ください](./azure-to-azure-tutorial-enable-replication.md#configure-replication-settings)。
 
 ### <a name="what-is-a-crash-consistent-recovery-point"></a>クラッシュ整合性復旧ポイントとは何ですか?
 
@@ -183,7 +183,7 @@ Site Recovery では、5 分ごとにクラッシュ整合性復旧ポイント�
 
 ### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>Linux サーバーでアプリの整合性を使用してレプリケーションを有効にすることはできますか?
 
-はい。 Linux オペレーティング システム用の Azure Site Recovery では、アプリの整合性を保つためのアプリケーション カスタム スクリプトがサポートされています。 アプリの整合性を保つときに、Azure Site Recovery モビリティ エージェントによって、プリオプションとポストオプションを含むカスタム スクリプトが使用されます。 [詳細情報](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#can-i-enable-replication-with-app-consistency-in-linux-servers)
+はい。 Linux オペレーティング システム用の Azure Site Recovery では、アプリの整合性を保つためのアプリケーション カスタム スクリプトがサポートされています。 アプリの整合性を保つときに、Azure Site Recovery モビリティ エージェントによって、プリオプションとポストオプションを含むカスタム スクリプトが使用されます。 [詳細情報](./site-recovery-faq.md#can-i-enable-replication-with-app-consistency-in-linux-servers)
 
 ## <a name="multi-vm-consistency"></a>マルチ VM 整合性
 
@@ -195,7 +195,7 @@ Site Recovery には **マルチ VM 整合性**オプションがあります。
 
 仮想マシンをフェールオーバーすると、仮想マシン間でクラッシュ整合性復旧ポイントとアプリ整合性復旧ポイントが共有されます。
 
-[マルチ VM 整合性の有効化](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#enable-replication-for-a-vm)に関するチュートリアルをご覧ください。
+[マルチ VM 整合性の有効化](./azure-to-azure-tutorial-enable-replication.md#enable-replication-for-a-vm)に関するチュートリアルをご覧ください。
 
 ### <a name="can-i-fail-over-a-single-virtual-machine-within-a-multi-vm-consistency-replication-group"></a>マルチ VM 整合性レプリケーション グループ内の単一の仮想マシンをフェールオーバーできますか?
 
@@ -291,11 +291,11 @@ Site Recovery での復旧計画は、VM のフェールオーバーの復旧を
 
 ### <a name="i-failed-over-from-the-primary-region-to-a-disaster-recovery-region-are-vms-in-a-dr-region-protected-automatically"></a>プライマリ リージョンからディザスター リカバリー リージョンにフェールオーバーしました。 DR リージョンの VM は自動的に保護されますか?
 
-いいえ。 あるリージョンから別のリージョンに Azure VM を[フェールオーバー](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback)すると、その VM は DR リージョン内で保護されていない状態で起動されます。 プライマリ リージョンに VM をフェールバックするには、セカンダリ リージョン内の VM を[再保護](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect)する必要があります。
+いいえ。 あるリージョンから別のリージョンに Azure VM を[フェールオーバー](./azure-to-azure-tutorial-failover-failback.md)すると、その VM は DR リージョン内で保護されていない状態で起動されます。 プライマリ リージョンに VM をフェールバックするには、セカンダリ リージョン内の VM を[再保護](./azure-to-azure-how-to-reprotect.md)する必要があります。
 
 ### <a name="at-the-time-of-reprotection-does-site-recovery-replicate-complete-data-from-the-secondary-region-to-the-primary-region"></a>再保護時に、Site Recovery ではセカンダリ リージョンからプライマリ リージョンに完全なデータがレプリケートされますか?
 
-状況によって異なります。 ソース リージョンの VM が存在している場合、ソース ディスクとターゲット ディスクの間の変更のみが同期されます。 Site Recovery では、ディスクを比較することで差分が計算された後、データが転送されます。 通常、このプロセスには数時間かかります。 再保護中に行われることについて詳しくは、[プライマリ リージョンに対してフェールオーバーされた Azure VM インスタンスを再保護する](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect#what-happens-during-reprotection)方法に関するページをご覧ください。
+状況によって異なります。 ソース リージョンの VM が存在している場合、ソース ディスクとターゲット ディスクの間の変更のみが同期されます。 Site Recovery では、ディスクを比較することで差分が計算された後、データが転送されます。 通常、このプロセスには数時間かかります。 再保護中に行われることについて詳しくは、[プライマリ リージョンに対してフェールオーバーされた Azure VM インスタンスを再保護する](./azure-to-azure-how-to-reprotect.md#what-happens-during-reprotection)方法に関するページをご覧ください。
 
 ### <a name="how-much-time-does-it-take-to-fail-back"></a>フェールバックにはどのくらい時間がかかりますか?
 
@@ -321,10 +321,10 @@ Site Recovery は ISO 27001:2013、27018、HIPAA、DPA 認定です。 このサ
 
 ### <a name="does-site-recovery-encrypt-replication"></a>Site Recovery はレプリケーションを暗号化しますか。
 
-はい、転送中の暗号化と [Azure に保存中の暗号化](https://docs.microsoft.com/azure/storage/storage-service-encryption)の両方がサポートされています。
+はい、転送中の暗号化と [Azure に保存中の暗号化](../storage/common/storage-service-encryption.md)の両方がサポートされています。
 
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure 間サポートの要件を確認します](azure-to-azure-support-matrix.md)。
 - [Azure 間レプリケーションを設定します](azure-to-azure-tutorial-enable-replication.md)。
-- この記事の内容について質問がある場合は、[Azure Recovery Services に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)に投稿してください。
+- この記事の内容について質問がある場合は、[Azure Recovery Services に関する Microsoft Q&A 質問ページ](/answers/topics/azure-site-recovery.html)に投稿してください。

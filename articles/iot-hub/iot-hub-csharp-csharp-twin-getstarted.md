@@ -10,20 +10,18 @@ ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: robinsh
 ms.custom: mqtt
-ms.openlocfilehash: 620e0213733d278a28ec1bcad4b031f5764ccda9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 91cebee1196dc38af8ece4086b6e6ab66fdc14da
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81733131"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135546"
 ---
 # <a name="get-started-with-device-twins-net"></a>デバイス ツインの使用 (.NET)
 
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
 
 このチュートリアルでは、次の .NET コンソール アプリを作成します。
-
-* **CreateDeviceIdentity**。 このアプリでは、デバイス ID および関連するセキュリティ キーを作成し、シミュレートされたデバイス アプリに接続します。
 
 * **AddTagsAndQuery**。 このバックエンド アプリでは、タグを追加し、デバイス ツインのクエリを行います。
 
