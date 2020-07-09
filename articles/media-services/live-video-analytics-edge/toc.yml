@@ -1,7 +1,5 @@
 - name: Live Video Analytics on IoT Edge (プレビュー) のドキュメント
   href: index.yml
-- name: Azure Media Services v3 のドキュメントに切り替える
-  href: ../latest/index.yml
 - name: 概要
   items:
     - name: Live Video Analytics on IoT Edge について
@@ -34,7 +32,7 @@
       href: playback-multi-day-recordings-tutorial.md
 - name: サンプル
   items:
-    - name: 'Live Video Analytics on IoT Edge の C# サンプル'
+    - name: Live Video Analytics on IoT Edge の C# サンプル
       href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp'
 - name: 概念
   items:
