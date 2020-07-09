@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: d67e2639c2d4b168babeb7c29ef977d39d9e11cb
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 456a7e4f07b2416e1d2037205574f2e7149e70e2
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855304"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185944"
 ---
 # <a name="deploy-an-amazon-web-services-vm-with-a-runbook"></a>Runbook を使用してアマゾン ウェブ サービスの VM をデプロイする
 
@@ -101,7 +101,6 @@ AWS PowerShell モジュールが Azure Automation にインポートされて�
  
 * サポートされる Runbook については、「[Azure Automation の Runbook の種類](automation-runbook-types.md)」を参照してください。
 * Runbook を使った作業については、「[Azure Automation で Runbook を管理する](manage-runbooks.md)」を参照してください。
-* PowerShell の詳細については、[PowerShell のドキュメント](https://docs.microsoft.com/powershell/scripting/overview)を参照してください。
+* PowerShell の詳細については、[PowerShell のドキュメント](/powershell/scripting/overview)を参照してください。
 * スクリプトのサポートについては、[Azure Automation でのネイティブ PowerShell スクリプトのサポート](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)に関するページを参照してください。
-* PowerShell コマンドレットのリファレンスについては、「[Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-)」をご覧ください。
+* PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)」をご覧ください。

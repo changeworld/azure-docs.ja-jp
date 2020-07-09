@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: de46f4e2fd53b888981076256fda28a2a14995af
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 3bb42886c653afbdf8975b532bd2e1e1c3c63ce9
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837044"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186539"
 ---
 # <a name="compile-dsc-configurations-in-azure-automation-state-configuration"></a>Azure Automation State Configuration で DSC 構成をコンパイルする
 
@@ -27,7 +27,7 @@ Azure Automation State Configuration では、以下の方法で Desired State C
   - 大規模なノード データと非ノード データの操作
   - パフォーマンスの大幅な向上
 
-Azure Resource Manager テンプレートと Azure Desired State Configuration (DSC) 拡張機能を使用して、構成を Azure VM にプッシュすることもできます。 Azure DSC 拡張機能は、Azure VM エージェント フレームワークを使用して、Azure VM で実行される DSC 構成の配布、適用、およびレポート作成を行います。 Azure Resource Manager テンプレートを使用するコンパイルについて詳しくは、「[Azure Resource Manager テンプレートを使用した Desired State Configuration 拡張機能](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template#details)」をご覧ください。 
+Azure Resource Manager テンプレートと Azure Desired State Configuration (DSC) 拡張機能を使用して、構成を Azure VM にプッシュすることもできます。 Azure DSC 拡張機能は、Azure VM エージェント フレームワークを使用して、Azure VM で実行される DSC 構成の配布、適用、およびレポート作成を行います。 Azure Resource Manager テンプレートを使用するコンパイルについて詳しくは、「[Azure Resource Manager テンプレートを使用した Desired State Configuration 拡張機能](../virtual-machines/extensions/dsc-template.md#details)」をご覧ください。 
 
 ## <a name="compile-a-dsc-configuration-in-azure-state-configuration"></a>Azure State Configuration での DSC 構成のコンパイル
 
@@ -63,7 +63,7 @@ $CompilationJob | Get-AzAutomationDscCompilationJobOutput –Stream Any
 
 ### <a name="declare-basic-parameters"></a>基本パラメーターの宣言
 
-DSC 構成のパラメーターの宣言 (パラメーターの種類、プロパティなど) は、Azure Automation Runbook と同じように動作します。 Runbook のパラメーターの詳細については、「 [Azure Automation での Runbook を開始する](automation-starting-a-runbook.md) 」を参照してください。
+DSC 構成のパラメーターの宣言 (パラメーターの種類、プロパティなど) は、Azure Automation Runbook と同じように動作します。 Runbook のパラメーターの詳細については、「 [Azure Automation での Runbook を開始する](./start-runbooks.md) 」を参照してください。
 
 次の例では、`FeatureName` および `IsPresent` パラメーターを使用して、コンパイル時に生成された **ParametersExample.sample** ノード構成のプロパティの値を特定します。
 
@@ -123,7 +123,7 @@ Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -Automa
 **複合リソース**機能によって、構成の内側で、入れ子のリソースとして DSC 構成を使用できます。 この機能により、1 つのリソースに複数の構成を適用できます。 「[Composite resources: Using a DSC configuration as a resource](/powershell/scripting/dsc/resources/authoringresourcecomposite)」 (複合リソース: リソースとしての DSC 構成の使用) を参照して、複合リソースの詳細について確認してください。
 
 > [!NOTE]
-> 複合リソースを含む構成が正しくコンパイルされるように、その複合リソースが依存するすべての DSC リソースを、まず Azure Automation にインポートする必要があります。 DSC 複合リソースの追加は、Azure Automation に任意の PowerShell モジュールを追加するのと同じです。 このプロセスは、「[Azure Automation でモジュールを管理する](/azure/automation/shared-resources/modules)」に記載されています。
+> 複合リソースを含む構成が正しくコンパイルされるように、その複合リソースが依存するすべての DSC リソースを、まず Azure Automation にインポートする必要があります。 DSC 複合リソースの追加は、Azure Automation に任意の PowerShell モジュールを追加するのと同じです。 このプロセスは、「[Azure Automation でモジュールを管理する](./shared-resources/modules.md)」に記載されています。
 
 ### <a name="manage-configurationdata-when-compiling-configurations-in-azure-automation"></a>Azure Automation で構成をコンパイルするときに ConfigurationData を管理する
 
@@ -184,10 +184,10 @@ Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -Automa
 
 資産の参照方法は、Azure Automation State Configuration と Runbook の両方で同じです。 詳細については、「
 
-- [証明書](automation-certificates.md)
+- [証明書](./shared-resources/certificates.md)
 - [接続](automation-connections.md)
-- [資格情報](automation-credentials.md)
-- [変数](automation-variables.md)
+- [資格情報](./shared-resources/credentials.md)
+- [変数](./shared-resources/variables.md)
 
 #### <a name="credential-assets"></a>資格情報資産
 
@@ -278,7 +278,6 @@ Import-AzAutomationDscNodeConfiguration -AutomationAccountName 'MyAutomationAcco
 
 - 使用を開始するには、「[Azure Automation State Configuration の使用を開始する](automation-dsc-getting-started.md)」をご覧ください。
 - DSC 構成をコンパイルしてターゲット ノードに割り当てる方法の詳細については、「[Azure Automation State Configuration で DSC 構成をコンパイルする](automation-dsc-compile.md)」をご覧ください。
-- PowerShell コマンドレットのリファレンスについては、「[Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-)」をご覧ください。
+- PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)」をご覧ください。
 - 料金情報については、[Azure Automation State Configuration の価格](https://azure.microsoft.com/pricing/details/automation/)に関するページをご覧ください。
 - 継続的なデプロイ パイプラインで State Configuration を使う例については、「[Chocolatey を使用して継続的配置を設定する](automation-dsc-cd-chocolatey.md)」をご覧ください。

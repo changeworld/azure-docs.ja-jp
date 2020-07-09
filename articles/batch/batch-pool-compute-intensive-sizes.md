@@ -3,12 +3,12 @@ title: Batch でのコンピューティング集中型 Azure VM の使用
 description: Azure Batch プールで HPC および GPU の仮想マシン サイズを利用する方法。 OS の依存関係について学習し、シナリオ例をいくつか確認してください。
 ms.topic: how-to
 ms.date: 12/17/2018
-ms.openlocfilehash: acc56679d8be157541b0d7c056e57659584645be
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 016da7669c9e6a6586a53d379f9665c9ea048b64
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962511"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147343"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Batch プールで RDMA または GPU インスタンスを使用する
 
@@ -20,9 +20,9 @@ ms.locfileid: "85962511"
 
 この記事では、Batch プールで Azure の特殊なサイズを使用するためのガイダンスと例を示します。 仕様と背景については、以下をご覧ください。
 
-* ハイ パフォーマンス コンピューティング VM のサイズ ([Linux](../virtual-machines/linux/sizes-hpc.md)、[Windows](../virtual-machines/windows/sizes-hpc.md)) 
+* ハイ パフォーマンス コンピューティング VM のサイズ ([Linux](../virtual-machines/sizes-hpc.md)、[Windows](../virtual-machines/sizes-hpc.md)) 
 
-* GPU 対応 VM サイズ ([Linux](../virtual-machines/linux/sizes-gpu.md)、[Windows](../virtual-machines/windows/sizes-gpu.md)) 
+* GPU 対応 VM サイズ ([Linux](../virtual-machines/sizes-gpu.md)、[Windows](../virtual-machines/sizes-gpu.md)) 
 
 > [!NOTE]
 > 特定の VM サイズは、Batch アカウントを作成したリージョンで使用できない場合があります。 特定のサイズが使用可能かどうかを確認するには、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」および [Batch プールの VM サイズの選択](batch-pool-vm-sizes.md)に関するページをご覧ください。
@@ -35,7 +35,7 @@ Batch のコンピューティング集中型サイズの RDMA または GPU の
 
 | サイズ | 機能 | オペレーティング システム | 必要なソフトウェア | プールの設定 |
 | -------- | -------- | ----- |  -------- | ----- |
-| [H16r、H16mr、A8、A9](../virtual-machines/linux/sizes-hpc.md)<br/>[NC24r、NC24rs_v2、NC24rs_v3、ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Ubuntu 16.04 LTS、または<br/>CentOS-based HPC<br/>(Azure Marketplace) | Intel MPI 5<br/><br/>Linux RDMA ドライバー | ノード間通信を有効にし、同時実行タスクの実行を無効にする |
+| [H16r、H16mr、A8、A9](../virtual-machines/sizes-hpc.md)<br/>[NC24r、NC24rs_v2、NC24rs_v3、ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Ubuntu 16.04 LTS、または<br/>CentOS-based HPC<br/>(Azure Marketplace) | Intel MPI 5<br/><br/>Linux RDMA ドライバー | ノード間通信を有効にし、同時実行タスクの実行を無効にする |
 | [NC、NCv2、NCv3、NDv2 シリーズ](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla GPU (シリーズによって異なります) | Ubuntu 16.04 LTS、または<br/>CentOS 7.3 または 7.4<br/>(Azure Marketplace) | NVIDIA CUDA または CUDA Toolkit ドライバー | 該当なし | 
 | [NV、NVv2 シリーズ](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS、または<br/>CentOS 7.3<br/>(Azure Marketplace) | NVIDIA GRID ドライバー | 該当なし |
 

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 548cd488bc811ad16cd84950ce3819f2e1f3ddbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10e6d0a183afdda2bf89014bb72f58d03a3013ec
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080715"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171892"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-3"></a>Azure Search .NET SDK バージョン 3 へのアップグレード
 
@@ -57,7 +57,9 @@ NuGet が新しいパッケージとその依存関係をダウンロードし�
 
 ビルドが失敗した場合は、次のようにビルド エラーが表示されます。
 
-    Program.cs(31,45,31,86): error CS0266: Cannot implicitly convert type 'Microsoft.Azure.Search.ISearchIndexClient' to 'Microsoft.Azure.Search.SearchIndexClient'. An explicit conversion exists (are you missing a cast?)
+```output
+Program.cs(31,45,31,86): error CS0266: Cannot implicitly convert type 'Microsoft.Azure.Search.ISearchIndexClient' to 'Microsoft.Azure.Search.SearchIndexClient'. An explicit conversion exists (are you missing a cast?)
+```
 
 次の手順として、このビルド エラーを修正します。 エラーの原因と修正方法については、「[バージョン 3 における重大な変更](#ListOfChanges)」をご覧ください。
 

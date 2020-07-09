@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8ea32b2e393a13f1725ff7a83f4b4f2191b59ddb
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 22ab982abe9f73aa77cb9bb2c8d3eaa383bc42fb
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835310"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186216"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker での Runbook の実行
 
@@ -22,7 +22,7 @@ Hybrid Runbook Worker で実行される Runbook を作成するときは、work
 
 Azure Automation による Hybrid Runbook Worker でのジョブの処理は、Azure サンドボックスで実行されるジョブとは若干異なります。 実行時間の長い Runbook がある場合、起こりうる再起動に対して回復性があることを確認します。 ジョブの動作の詳細については、「[Hybrid Runbook Worker ジョブ](automation-hybrid-runbook-worker.md#hybrid-runbook-worker-jobs)」を参照してください。
 
-Hybrid Runbook Worker のジョブは、Windows ではローカルの**システム**アカウントで実行され、Linux では **nxautomation** アカウントで実行されることに注意してください。 Linux の場合、Runbook モジュールが格納されている場所に **nxautomation** アカウントがアクセスできることを確認します。 [Install-Module](/powershell/module/powershellget/install-module) コマンドレットを使用するときは、`Scope` パラメーターに対して AllUsers を指定し、**nxautomation** アカウントがアクセスできるようにします。 Linux での PowerShell に関する詳細については、「[Windows 以外のプラットフォームでの PowerShell に関する既知の問題](https://docs.microsoft.com/powershell/scripting/whats-new/known-issues-ps6?view=powershell-6#known-issues-for-powershell-on-non-windows-platforms)」を参照してください。
+Hybrid Runbook Worker のジョブは、Windows ではローカルの**システム**アカウントで実行され、Linux では **nxautomation** アカウントで実行されることに注意してください。 Linux の場合、Runbook モジュールが格納されている場所に **nxautomation** アカウントがアクセスできることを確認します。 [Install-Module](/powershell/module/powershellget/install-module) コマンドレットを使用するときは、`Scope` パラメーターに対して AllUsers を指定し、**nxautomation** アカウントがアクセスできるようにします。 Linux での PowerShell に関する詳細については、「[Windows 以外のプラットフォームでの PowerShell に関する既知の問題](/powershell/scripting/whats-new/known-issues-ps6?view=powershell-6#known-issues-for-powershell-on-non-windows-platforms)」を参照してください。
 
 ## <a name="set-up-runbook-permissions"></a>Runbook のアクセス許可を設定する
 
@@ -34,7 +34,7 @@ Hybrid Runbook Worker で実行する Runbook Worker のアクセス許可は、
 
 ## <a name="use-runbook-authentication-to-local-resources"></a>ローカル リソースに Runbook 認証を使用する
 
-リソースへの独自の認証方法を使用する Runbook を準備する場合は、Runbook の[資格情報](automation-credentials.md)資産と[証明書](automation-certificates.md)資産を使用します。 Runbook を使用して異なるリソースに対して認証できるように、資格情報を指定できるコマンドレットがいくつかあります。 次の例は、コンピューターを再起動する Runbook の一部を示しています。 資格情報資産から資格情報を取得し、変数資産からはコンピューター名を取得して、`Restart-Computer` コマンドレットでこれらの値を使用します。
+リソースへの独自の認証方法を使用する Runbook を準備する場合は、Runbook の[資格情報](./shared-resources/credentials.md)資産と[証明書](./shared-resources/certificates.md)資産を使用します。 Runbook を使用して異なるリソースに対して認証できるように、資格情報を指定できるコマンドレットがいくつかあります。 次の例は、コンピューターを再起動する Runbook の一部を示しています。 資格情報資産から資格情報を取得し、変数資産からはコンピューター名を取得して、`Restart-Computer` コマンドレットでこれらの値を使用します。
 
 ```powershell
 $Cred = Get-AutomationPSCredential -Name "MyCredential"
@@ -59,7 +59,7 @@ Hybrid Runbook Worker 上の Azure リソースに対してマネージド ID �
 2. VM で Azure リソース用のマネージド ID を構成します。 「[Azure portal を使用して Azure VM で Azure リソースのマネージド ID を構成する](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-on-an-existing-vm)」をご覧ください。
 3. Resource Manager で VM にリソース グループへのアクセス権を付与します。 「[Windows VM のシステム割り当てマネージド ID を使用して Resource Manager にアクセスする](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager)」をご覧ください。
 4. Hybrid Runbook Worker を VM にインストールします。 「[Windows Hybrid Runbook Worker をデプロイする](automation-windows-hrw-install.md)」または「[Linux Hybrid Runbook Worker を展開する](automation-linux-hrw-install.md)」を参照してください。
-5. [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) コマンドレットと `Identity` パラメーターを使用して Azure リソースに対する認証を行うように、Runbook を更新します。 この構成により、実行アカウントを使用し、関連するアカウントを管理を実行する必要性が減ります。
+5. [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) コマンドレットと `Identity` パラメーターを使用して Azure リソースに対する認証を行うように、Runbook を更新します。 この構成により、実行アカウントを使用し、関連するアカウントを管理を実行する必要性が減ります。
 
     ```powershell
     # Connect to Azure using the managed identities for Azure resources identity configured on the Azure VM that is hosting the hybrid runbook worker
@@ -74,7 +74,7 @@ Hybrid Runbook Worker 上の Azure リソースに対してマネージド ID �
 
 ## <a name="use-runbook-authentication-with-run-as-account"></a>実行アカウントで Runbook 認証を使用する
 
-Runbook でローカル リソースに独自の認証を提供するのではなく、Hybrid Runbook Worker グループに対して実行アカウントを指定することができます。 これを行うには、ローカル リソースにアクセスできる[資格情報資産](automation-credentials.md)を定義する必要があります。 これらのリソースには証明書ストアが含まれており、すべての Runbook はグループ内の Hybrid Runbook Worker 上でこれらの資格情報を使用して実行されます。
+Runbook でローカル リソースに独自の認証を提供するのではなく、Hybrid Runbook Worker グループに対して実行アカウントを指定することができます。 これを行うには、ローカル リソースにアクセスできる[資格情報資産](./shared-resources/credentials.md)を定義する必要があります。 これらのリソースには証明書ストアが含まれており、すべての Runbook はグループ内の Hybrid Runbook Worker 上でこれらの資格情報を使用して実行されます。
 
 資格情報のユーザー名は、次の形式にする必要があります。
 
@@ -84,7 +84,7 @@ Runbook でローカル リソースに独自の認証を提供するのでは�
 
 Hybrid Runbook Worker グループの実行アカウントを指定するには、以下の手順のようにします。
 
-1. ローカル リソースに対するアクセス権を持つ [資格情報資産](automation-credentials.md) を作成します。
+1. ローカル リソースに対するアクセス権を持つ [資格情報資産](./shared-resources/credentials.md) を作成します。
 2. Azure ポータルで Automation アカウントを開きます。
 3. **[ハイブリッド Worker グループ]** を選択し、特定のグループを選択します。
 4. **[すべての設定]** を選択し、 **[ハイブリッド Worker グループの設定]** を選択します。
@@ -299,7 +299,7 @@ gpg –-clear-sign <runbook name>
 
 Azure portal で Runbook を開始するときは、 **[実行場所を選択して実行]** オプションで **[Azure]** または **[ハイブリッド worker]** を選択できます。 **[ハイブリッド worker]** を選択した場合は、ドロップダウンから Hybrid Runbook Worker グループを選択できます。
 
-PowerShell を使用して Runbook を開始する場合は、`RunOn` パラメーターを [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0) コマンドレットで使用します。 次の例では、Windows PowerShell を使用して、MyHybridGroup という名前の Hybrid Runbook Worker グループで **Test-Runbook** という名前の Runbook を開始しています。
+PowerShell を使用して Runbook を開始する場合は、`RunOn` パラメーターを [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0) コマンドレットで使用します。 次の例では、Windows PowerShell を使用して、MyHybridGroup という名前の Hybrid Runbook Worker グループで **Test-Runbook** という名前の Runbook を開始しています。
 
 ```azurepowershell-interactive
 Start-AzAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -RunOn "MyHybridGroup"
@@ -308,5 +308,5 @@ Start-AzAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name
 ## <a name="next-steps"></a>次のステップ
 
 * Runbook が正常に完了しない場合は、[Runbook の実行エラー](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails)に関するトラブルシューティング ガイドを参照してください。
-* PowerShell (言語リファレンス、学習モジュールを含む) の詳細については、[PowerShell ドキュメント](https://docs.microsoft.com/powershell/scripting/overview)に関するページを参照してください。
-* PowerShell コマンドレットのリファレンスについては、「[Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)」をご覧ください。
+* PowerShell (言語リファレンス、学習モジュールを含む) の詳細については、[PowerShell ドキュメント](/powershell/scripting/overview)に関するページを参照してください。
+* PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)」をご覧ください。

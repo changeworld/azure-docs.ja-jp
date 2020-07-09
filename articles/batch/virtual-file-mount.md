@@ -3,12 +3,12 @@ title: 仮想ファイル システムをプールにマウントする
 description: 仮想ファイル システムを Batch プールにマウントする方法について説明します。
 ms.topic: how-to
 ms.date: 08/13/2019
-ms.openlocfilehash: 80acf5df0cf5262249b2eac584152744a4224a35
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 3f948f8441208f4a8741949e65afc8032f0a5080
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954674"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144420"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>仮想ファイル システムを Batch プールにマウントする
 
@@ -77,7 +77,7 @@ new PoolAddParameter
 
 ### <a name="azure-blob-file-system"></a>Azure Blob ファイル システム
 
-もう 1 つの選択肢は、[blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md) を介して Azure Blob ストレージを使用することです。 BLOB ファイル システムをマウントするには、ストレージ アカウントに `AccountKey` または `SasKey` が必要です。 これらのキーを取得する方法の詳細については、[ストレージ アカウント アクセス キーの管理](../storage/common/storage-account-keys-manage.md)または[共有アクセス署名 (SAS) の使用](../storage/common/storage-dotnet-shared-access-signature-part-1.md)に関するページを参照してください。 blobfuse の使用方法の詳細については、[blobfuse のトラブルシューティングの FAQ](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ) ページを参照してください。 blobfuse でマウントされたディレクトリへの既定のアクセスを取得するには、**Administrator** としてタスクを実行します。 blobfuse によってディレクトリはユーザー空間にマウントされ、プールの作成時にルートとしてマウントされます。 Linux では、すべての **Administrator** タスクがルートになります。 FUSE モジュールのすべてのオプションについては、[FUSE のリファレンス ページ](https://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html)で説明されています。
+もう 1 つの選択肢は、[blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md) を介して Azure Blob ストレージを使用することです。 BLOB ファイル システムをマウントするには、ストレージ アカウントに `AccountKey` または `SasKey` が必要です。 これらのキーを取得する方法の詳細については、[ストレージ アカウント アクセス キーの管理](../storage/common/storage-account-keys-manage.md)または[共有アクセス署名 (SAS) の使用](../storage/common/storage-sas-overview.md)に関するページを参照してください。 blobfuse の使用方法の詳細については、[blobfuse のトラブルシューティングの FAQ](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ) ページを参照してください。 blobfuse でマウントされたディレクトリへの既定のアクセスを取得するには、**Administrator** としてタスクを実行します。 blobfuse によってディレクトリはユーザー空間にマウントされ、プールの作成時にルートとしてマウントされます。 Linux では、すべての **Administrator** タスクがルートになります。 FUSE モジュールのすべてのオプションについては、[FUSE のリファレンス ページ](https://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html)で説明されています。
 
 現在の blobfuse の問題と解決策を確認するには、トラブルシューティング ガイドだけでなく、GitHub の blobfuse リポジトリの問題も役立ちます。 詳細については、[blobfuse の問題](https://github.com/Azure/azure-storage-fuse/issues)のページを参照してください。
 

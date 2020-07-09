@@ -3,12 +3,12 @@ title: Jupyter ノートブックを作成および複製する - Azure Notebook
 description: Azure Notebooks プレビュー プロジェクトでは、別のソースから新規作成または複製できるノートブックや関連するファイルのコレクションを管理できます。
 ms.topic: how-to
 ms.date: 02/25/2019
-ms.openlocfilehash: e1321afc2ce294c8a39ba8d55574e2ca949f632e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a51f9b12ca24d16858b41357627ff26d233357f
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831286"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86181500"
 ---
 # <a name="create-and-clone-projects-in-azure-notebooks-preview"></a>Azure Notebooks プレビューでプロジェクトを作成および複製する
 
@@ -68,13 +68,33 @@ Azure Notebooks プロジェクトがまだない場合は、次のテンプレ�
 
 以下の予約語は、そのものはプロジェクト ID としては使用できません。 ただし、これらの予約語は、より長いプロジェクト ID の一部として使用できます。
 
-| | | | | | |
-| --- | --- | --- | --- | --- | --- |
-| about | account | administration | api | blog | classroom |
-| content | dashboard | explore | faq | help | html |
-| home | import | library | management | new | ノートブック |
-| notebooks | pdf | preview | 価格 | profile | 検索 |
-| status | support | テスト | | | |
+- about
+- account
+- administration
+- api
+- blog
+- classroom
+- content
+- dashboard
+- explore
+- faq
+- help
+- html
+- home
+- import
+- library
+- management
+- new
+- ノートブック
+- notebooks
+- pdf
+- preview
+- 価格
+- profile
+- 検索
+- status
+- support
+- テスト
 
 これらの語のいずれかをプロジェクト ID として使用しようとすると、「**新しいプロジェクトの作成**」および「**プロジェクトの設定**」ポップアップに「Library id is a reserved identifier.(ライブラリ ID は予約済み ID です)」と表示されます。
 

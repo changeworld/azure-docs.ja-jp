@@ -8,12 +8,12 @@ ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 5b87a98ed38e3af315789adffc11824f2522b802
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c6bdc09d37cf29458346eaea360b4cd9e0d1226f
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680890"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187168"
 ---
 # <a name="troubleshoot-shared-resource-issues"></a>共有リソースの問題のトラブルシューティング
 
@@ -33,7 +33,7 @@ PowerShell モジュールのインポートは複雑なマルチステップ �
 
 #### <a name="resolution"></a>解像度
 
-この問題を解決するには、[Remove-AzAutomationModule](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationModule?view=azps-3.7.0) コマンドレットを使用して、停止しているモジュールを削除する必要があります。 その後、モジュールのインポートを再試行できます。
+この問題を解決するには、[Remove-AzAutomationModule](/powershell/module/Az.Automation/Remove-AzAutomationModule?view=azps-3.7.0) コマンドレットを使用して、停止しているモジュールを削除する必要があります。 その後、モジュールのインポートを再試行できます。
 
 ```azurepowershell-interactive
 Remove-AzAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
@@ -70,7 +70,7 @@ Automation アカウントで AzureRM モジュールを更新するには、英
 * その構造が、Automation で必要な構造と一致しません。
 * Automation アカウントにデプロイされていない別のモジュールにモジュールが依存しています。
 * モジュールのフォルダーにその依存関係がありません。
-* モジュールのアップロードに [New-AzAutomationModule](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationModule?view=azps-3.7.0) コマンドレットを使用していますが、完全なストレージ パスを指定していないか、パブリックにアクセスできる URL でモジュールを読み込んでいません。
+* モジュールのアップロードに [New-AzAutomationModule](/powershell/module/Az.Automation/New-AzAutomationModule?view=azps-3.7.0) コマンドレットを使用していますが、完全なストレージ パスを指定していないか、パブリックにアクセスできる URL でモジュールを読み込んでいません。
 
 #### <a name="resolution"></a>解像度
 

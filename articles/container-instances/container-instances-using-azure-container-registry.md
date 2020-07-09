@@ -3,15 +3,15 @@ title: Azure Container Registry からコンテナー イメージをデプロ�
 description: Azure コンテナー レジストリからコンテナー イメージをプルして、Azure Container Instances にコンテナーをデプロイする方法について説明します。
 services: container-instances
 ms.topic: article
-ms.date: 02/18/2020
+ms.date: 07/02/2020
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 212624b857d65297830995018603c2627f83369b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8a82b0b70b7be8897d8f85cabea2ee21ce84d913
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81453525"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169614"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Azure Container Registry から Azure Container Instances へのデプロイ
 
@@ -136,7 +136,7 @@ az container create \
 [...]
 ```
 
-コンテナー グループ設定の詳細については、[Resource Manager テンプレート リファレンス](/azure/templates/Microsoft.ContainerInstance/2018-10-01/containerGroups)を参照してください。    
+コンテナー グループ設定の詳細については、[Resource Manager テンプレート リファレンス](/azure/templates/Microsoft.ContainerInstance/2019-12-01/containerGroups)を参照してください。    
 
 Resource Manager テンプレートでの Azure キー コンテナーシークレットの参照については、「[デプロイ時に Azure キー コンテナーを使用して、セキュリティで保護されたパラメーター値を渡す](../azure-resource-manager/templates/key-vault-parameter.md)」を参照してください。
 

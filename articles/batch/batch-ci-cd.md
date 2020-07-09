@@ -5,12 +5,12 @@ author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: how-to
-ms.openlocfilehash: d6b68a8448d8b644500b62e54ab763838d707c66
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 3569e5cc25491fd408f7aec57a51d11f56dbd1fe
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956663"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145265"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Azure Pipelines を使用する HPC ソリューションの構築とデプロイ
 
@@ -189,7 +189,7 @@ Azure Pipelines では、ソフトウェアの構築、デプロイ、テスト�
 
 最後に、オーケストレーターのように機能するテンプレートがあります。 このテンプレートには、機能テンプレートをデプロイする役割があります。
 
-[リンクされた Azure Resource Manager テンプレートの作成](../azure-resource-manager/templates/template-tutorial-create-linked-templates.md)については別の記事でも詳しく説明しています。
+[リンクされた Azure Resource Manager テンプレートの作成](../azure-resource-manager/templates/deployment-tutorial-linked-template.md)については別の記事でも詳しく説明しています。
 
 ```json
 {

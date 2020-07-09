@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 15d2a7a2ad00f7f9b5db59d3d4803f60508b7b2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd102706d1fa6c33d8962a5d1caf5aa3e41b231d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85561585"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146183"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Azure Cognitive Search での検索結果の操作方法
 
@@ -55,20 +55,26 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
  
 次の例は、重複がどのように発生するかを示しています。 4 つのドキュメントを含む次のインデックスがあるとします。
 
-    { "id": "1", "rating": 5 }
-    { "id": "2", "rating": 3 }
-    { "id": "3", "rating": 2 }
-    { "id": "4", "rating": 1 }
+```text
+{ "id": "1", "rating": 5 }
+{ "id": "2", "rating": 3 }
+{ "id": "3", "rating": 2 }
+{ "id": "4", "rating": 1 }
+```
  
 ここでは、結果を一度に 2 つ、評価の順序で返してもらいたいとします。 結果の最初のページを取得するために `$top=2&$skip=0&$orderby=rating desc` というクエリを実行すると、次の結果が生成されます。
 
-    { "id": "1", "rating": 5 }
-    { "id": "2", "rating": 3 }
+```text
+{ "id": "1", "rating": 5 }
+{ "id": "2", "rating": 3 }
+```
  
 このサービスでは、クエリ呼び出しの間に `{ "id": "5", "rating": 4 }` という 5 番目のドキュメントがインデックスに追加されたとします。  その後すぐに、2 ページ目をフェッチするために `$top=2&$skip=2&$orderby=rating desc` というクエリを実行すると、次の結果が得られます。
 
-    { "id": "2", "rating": 3 }
-    { "id": "3", "rating": 2 }
+```text
+{ "id": "2", "rating": 3 }
+{ "id": "3", "rating": 2 }
+```
  
 ドキュメント 2 が 2 回フェッチされることに注意してください。 これは、新しいドキュメント 5 の方が評価の値が大きいため、ドキュメント 2 の前に並べ替えられ、最初のページに割り当てられるためです。 この動作は予期されない可能性がありますが、検索エンジンの動作としては一般的なものです。
 

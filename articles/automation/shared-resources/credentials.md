@@ -9,16 +9,16 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 540ae25b22b2c134a47f91ad5b8b19089c7f2acb
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 23f12278d02715bd94f1ea26abf2bd4b2b03caf1
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744997"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187406"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>Azure Automation で資格情報を管理する
 
-Automation 資格情報資産は、ユーザー名とパスワードなどのセキュリティ資格情報を含むオブジェクトを保持しています。 Runbook と DSC 構成では、認証のための [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?view=pscore-6.2.0) オブジェクトを受け入れるコマンドレットを使用します。 または、`PSCredential` オブジェクトのユーザー名とパスワードを抽出して、認証を必要とする一部のアプリケーションまたはサービスに提供することもできます。 
+Automation 資格情報資産は、ユーザー名とパスワードなどのセキュリティ資格情報を含むオブジェクトを保持しています。 Runbook と DSC 構成では、認証のための [PSCredential](/dotnet/api/system.management.automation.pscredential?view=pscore-6.2.0) オブジェクトを受け入れるコマンドレットを使用します。 または、`PSCredential` オブジェクトのユーザー名とパスワードを抽出して、認証を必要とする一部のアプリケーションまたはサービスに提供することもできます。 
 
 >[!NOTE]
 >Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。 これらの資産は、各 Automation アカウント用に生成された一意のキーを使って暗号化され、Azure Automation に保存されます。 Azure Automation では、キーはシステムによって管理される Key Vault に格納されます。 セキュリティで保護された資産を保存する前に、Automation によって Key Vault からキーが読み込まれ、それを使用して資産が暗号化されます。 
@@ -31,7 +31,7 @@ PowerShell を使用して Automation 資格情報を作成および管理する
 
 | コマンドレット | 説明 |
 |:--- |:--- |
-| [Get-AzAutomationCredential](/powershell/module/az.automation/get-azautomationcredential?view=azps-3.3.0) |資格情報に関するメタデータを格納している [CredentialInfo](https://docs.microsoft.com/dotnet/api/microsoft.azure.commands.automation.model.credentialinfo?view=azurerm-ps) オブジェクトを取得します。 このコマンドレットは `PSCredential` オブジェクト自体を取得しません。  |
+| [Get-AzAutomationCredential](/powershell/module/az.automation/get-azautomationcredential?view=azps-3.3.0) |資格情報に関するメタデータを格納している [CredentialInfo](/dotnet/api/microsoft.azure.commands.automation.model.credentialinfo?view=azurerm-ps) オブジェクトを取得します。 このコマンドレットは `PSCredential` オブジェクト自体を取得しません。  |
 | [New-AzAutomationCredential](/powershell/module/az.automation/new-azautomationcredential?view=azps-3.3.0) |新しい Automation 資格情報を作成します。 |
 | [Remove-AzAutomationCredential](/powershell/module/az.automation/remove-azautomationcredential?view=azps-3.3.0) |Automation 資格情報を削除します。 |
 | [Set-AzAutomationCredential](/powershell/module/az.automation/set-azautomationcredential?view=azps-3.3.0) |既存の Automation 資格情報のプロパティを設定します。 |
@@ -43,8 +43,8 @@ PowerShell を使用して Automation 資格情報を作成および管理する
 | コマンドレット | 説明 |
 |:--- |:--- |
 | `Get-AutomationPSCredential` |Runbook または DSC 構成で使用する `PSCredential` オブジェクトを取得します。 `Get-AzAutomationCredential` コマンドレットは資格情報を取得するだけなので、ほとんどの場合、代わりにこの[内部コマンドレット](modules.md#internal-cmdlets)を使用する必要があります。 通常、この情報は別のコマンドレットに渡す場合には役に立ちません。 |
-| [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) |ユーザー名とパスワードの入力を求めるプロンプトが表示された資格情報を取得します。 このコマンドレットは既定の Microsoft.PowerShell.Security モジュールの一部です。 「[既定のモジュール](modules.md#default-modules)」を参照してください。|
-| [New-AzureAutomationCredential](https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-4.0.0) | 資格情報資産を作成します。 このコマンドレットは、既定の Azure モジュールの一部です。 「[既定のモジュール](modules.md#default-modules)」を参照してください。|
+| [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) |ユーザー名とパスワードの入力を求めるプロンプトが表示された資格情報を取得します。 このコマンドレットは既定の Microsoft.PowerShell.Security モジュールの一部です。 「[既定のモジュール](modules.md#default-modules)」を参照してください。|
+| [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-4.0.0) | 資格情報資産を作成します。 このコマンドレットは、既定の Azure モジュールの一部です。 「[既定のモジュール](modules.md#default-modules)」を参照してください。|
 
 コード内の `PSCredential` オブジェクトを取得するには、`Orchestrator.AssetManagement.Cmdlets` モジュールをインポートする必要があります。 詳細については、「[Azure Automation でモジュールを管理する](modules.md)」をご覧ください。
 
@@ -104,7 +104,7 @@ Runbook または DSC 構成では、内部の `Get-AutomationPSCredential` コ�
 > [!NOTE]
 > `Get-AzAutomationCredential` コマンドレットでは、認証に使用できる `PSCredential` オブジェクトを取得しません。 資格情報に関する情報が提供されるだけです。 Runbook で資格情報を使用する必要がある場合は、`Get-AutomationPSCredential` を使用して `PSCredential` オブジェクトとして取得する必要があります。
 
-または、[GetNetworkCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential.getnetworkcredential?view=pscore-6.2.0) メソッドを使用して、安全ではないバージョンのパスワードを表す [NetworkCredential](/dotnet/api/system.net.networkcredential) オブジェクトを取得することもできます。
+または、[GetNetworkCredential](/dotnet/api/system.management.automation.pscredential.getnetworkcredential?view=pscore-6.2.0) メソッドを使用して、安全ではないバージョンのパスワードを表す [NetworkCredential](/dotnet/api/system.net.networkcredential) オブジェクトを取得することもできます。
 
 ### <a name="textual-runbook-example"></a>テキスト形式の Runbook の例
 

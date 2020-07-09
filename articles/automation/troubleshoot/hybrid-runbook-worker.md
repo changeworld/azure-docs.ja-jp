@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 28b6b09c679e37ca4ecd901371e65bffb27ecba4
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 2149fd68cdf5f2991d6035f245f70515e920045c
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681009"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187202"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Hybrid Runbook Worker の問題のトラブルシューティング
 
@@ -58,7 +58,7 @@ Hybrid Runbook Worker の機能を実行するコンピューターがハード�
 
 #### <a name="issue"></a>問題
 
-Hybrid Runbook Worker で、クエリ結果が有効でないことを示すイベント 15011 が受信されます。 ワーカーで [SignalR サーバー](https://docs.microsoft.com/aspnet/core/signalr/introduction?view=aspnetcore-3.1)との接続を開こうとするときに、次のエラーが表示されます。
+Hybrid Runbook Worker で、クエリ結果が有効でないことを示すイベント 15011 が受信されます。 ワーカーで [SignalR サーバー](/aspnet/core/signalr/introduction?view=aspnetcore-3.1)との接続を開こうとするときに、次のエラーが表示されます。
 
 ```error
 [AccountId={c7d22bd3-47b2-4144-bf88-97940102f6ca}]
@@ -238,7 +238,7 @@ PowerShell で次のコマンドを入力して、このエージェントが実
 
 #### <a name="issue"></a>問題
 
-Windows Hybrid Runbook Worker で実行されるスクリプトを、想定どおりに Orchestrator サンドボックスの Office 365 に接続できません。 スクリプトでは、接続に [Connect-MsolService](https://docs.microsoft.com/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) を使用しています。 
+Windows Hybrid Runbook Worker で実行されるスクリプトを、想定どおりに Orchestrator サンドボックスの Office 365 に接続できません。 スクリプトでは、接続に [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) を使用しています。 
 
 **Orchestrator.Sandbox.exe.config** を調整してプロキシとバイパス リストを設定しても、サンドボックスに正常に接続されません。 プロキシとバイパス リストの設定が同じ **Powershell_ise.exe.config** ファイルは、想定したとおり機能しているようです。 Service Management Automation (SMA) ログと PowerShell ログでは、プロキシに関する情報が提供されません。
 
@@ -248,9 +248,9 @@ Windows Hybrid Runbook Worker で実行されるスクリプトを、想定ど�
 
 #### <a name="resolution"></a>解決策
 
-PowerShell コマンドレットのスクリプトを、MSOnline モジュールではなく Azure Active Directory モジュールを使用するように移行することで、Orchestrator サンドボックスの問題を解決できます。 詳細については、「[Orchestrator から Azure Automation (ベータ版) へ移行する](https://docs.microsoft.com/azure/automation/automation-orchestrator-migration)」を参照してください。
+PowerShell コマンドレットのスクリプトを、MSOnline モジュールではなく Azure Active Directory モジュールを使用するように移行することで、Orchestrator サンドボックスの問題を解決できます。 詳細については、「[Orchestrator から Azure Automation (ベータ版) へ移行する](../automation-orchestrator-migration.md)」を参照してください。
 
-引き続き MSOnline モジュールのコマンドレットを使用する場合は、[Invoke-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7) を使用するようにスクリプトを変更します。 `ComputerName` パラメーターと `Credential` パラメーターの値を指定します。 
+引き続き MSOnline モジュールのコマンドレットを使用する場合は、[Invoke-Command](/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7) を使用するようにスクリプトを変更します。 `ComputerName` パラメーターと `Credential` パラメーターの値を指定します。 
 
 ```powershell
 $Credential = Get-AutomationPSCredential -Name MyProxyAccessibleCredential

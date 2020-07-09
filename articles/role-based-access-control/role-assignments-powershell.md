@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 46aea9ab113a0c75ed24497ee39793d08c4f7165
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9b0df4337a5e5faff3427222fb66caf8e02184a3
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84790893"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146661"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-azure-powershell"></a>Azure PowerShell を使用して Azure ロールの割り当てを追加または削除する
 
@@ -109,7 +109,7 @@ CanDelegate        : False
 ロール名ではなく一意のロール ID を使用してロールの割り当てを追加するには、[New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) を使用します。
 
 ```azurepowershell
-New-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionId <role_id> -ResourceGroupName <resource_group_name>
+New-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionId <role_id> -Scope <resource_group_name/resource/management groups>
 ```
 
 次の例では、*pharma-sales* リソース グループで、*alain\@example.com* ユーザーに[仮想マシンの共同作成者](built-in-roles.md#virtual-machine-contributor)ロールを付与します。 一意のロール ID を取得するには、[Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) を使用するか、「[Azure 組み込みロール](built-in-roles.md)」を参照してください。
