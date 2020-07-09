@@ -5,15 +5,15 @@ ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9d4df4efc6dbee88e80e620860487636cc9210dd
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 5213a13539ac028d3e2bfec3bc7476ac645f615b
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837214"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043480"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics on IoT Edge
  
@@ -43,13 +43,12 @@ ASA では、IoT ハブを使用してエッジ ジョブをデバイスに展�
 
 ### <a name="installation-instructions"></a>インストール手順
 手順の概要を次の表に示します。 詳細については、以降のセクションを参照してください。
-
-|      |手順   | Notes   |
-| ---   | ---   |  ---      |
-| 1   | **ストレージ コンテナーを作成する**   | ストレージ コンテナーを使用してジョブ定義を保存します。コンテナーには、IoT デバイスからアクセスできます。 <br>  既存のストレージ コンテナーを再利用できます。     |
-| 2   | **ASA エッジ ジョブを作成する**   |  新しいジョブを作成し、**ホスティング環境**として **Edge** を選択します。 <br> このジョブはクラウドから作成および管理され、お使いの IoT Edge デバイスで実行されます。     |
-| 3   | **デバイス上に IoT Edge 環境を設定する**   | [Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) または [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux) 用の手順。          |
-| 4   | **ASA を IoT Edge デバイスに展開する**   |  ASA ジョブ定義は、先ほど作成したストレージ コンテナーにエクスポートされます。       |
+|手順   | Notes   |
+| ---   |  ---      |
+| **ストレージ コンテナーを作成する**   | ストレージ コンテナーを使用してジョブ定義を保存します。コンテナーには、IoT デバイスからアクセスできます。 <br>  既存のストレージ コンテナーを再利用できます。     |
+| **ASA エッジ ジョブを作成する**   |  新しいジョブを作成し、**ホスティング環境**として **Edge** を選択します。 <br> このジョブはクラウドから作成および管理され、お使いの IoT Edge デバイスで実行されます。     |
+| **デバイス上に IoT Edge 環境を設定する**   | [Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) または [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux) 用の手順。          |
+| **ASA を IoT Edge デバイスに展開する**   |  ASA ジョブ定義は、先ほど作成したストレージ コンテナーにエクスポートされます。       |
 
 最初の ASA ジョブを IoT Edge に展開するには、[順を追って解説したこちらのチュートリアル](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)に従ってください。 次のビデオは、IoT Edge デバイスで Stream Analytics ジョブを実行するプロセスを理解するのに役立ちます。  
 

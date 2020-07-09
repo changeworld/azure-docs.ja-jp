@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 9fb2f3374d635d8086bac5fe02ecf3b7f819ea65
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: ebc6ff2c7c0d72dff318c7582d9ae5339682bc95
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85100876"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86028225"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>ご使用の Form Recognizer モデルのバックアップと復旧
 
@@ -88,7 +88,7 @@ Operation-Location: https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecog
 
 ### <a name="common-errors"></a>一般的なエラー
 
-|エラー|解決策|
+|エラー|解決方法|
 |:--|:--|
 | 400 / `"code:" "1002"` が指定された無効な要求 | 検証エラーまたはコピー要求の形式が正しくないことを示します。 一般的な問題には次のようなものがあります。a) 無効または変更された `copyAuthorization` ペイロード。 b) `expirationDateTimeTicks` トークンの期限切れの値 (`copyAuhtorization` ペイロードは 24 時間有効です)。 c) 無効またはサポートされていない `targetResourceRegion`。 d) 無効または形式が正しくない `targetResourceId` 文字列。
 |
@@ -112,7 +112,7 @@ Content-Type: application/json; charset=utf-8
 
 ### <a name="common-errors"></a>一般的なエラー
 
-|エラー|解決策|
+|エラー|解決方法|
 |:--|:--|
 |"errors":[{"code":"AuthorizationError",<br>"message":"Authorization failure due to <br>missing or invalid authorization claims."}] (承認要求が見つからないか無効であるため承認が失敗しました)   | `copyAuthorization` ペイロードまたは内容が `copyAuthorization` API によって返されたものから変更されたときに発生します。 ペイロードが、前の `copyAuthorization` の呼び出しから返されたものと確実にまったく同じ内容であるようにします。|
 |"errors":[{"code":"AuthorizationError",<br>"message":"Could not retrieve authorization <br>metadata. If this issue persists use a different <br>target model to copy into."}] (承認メタデータを取得できませんでした。この問題が解決しない場合は、コピー先として異なるターゲット モデルをお使いください。) | `copyAuthorization` ペイロードがコピー要求で再利用されていることを示します。 コピー要求が成功した場合、同じ `copyAuthorization` ペイロードを使用したそれ以上の要求は許可されません。 次に示すような別のエラーが発生した後に、同じ承認ペイロードでコピーを再試行すると、このエラーが発生します。 この解決策は、新しい `copyAuthorization` ペイロードを生成してから、コピー要求を再発行することです。|
@@ -162,4 +162,4 @@ curl -i GET "https://<SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT>/formrecognizer/v
 ## <a name="next-steps"></a>次のステップ
 
 このガイドでは、コピー API を使用して、ご使用のカスタム モデルをセカンダリ Form Recognizer リソースにバックアップする方法について説明しました。 次に、API リファレンス ドキュメントを参照して、Form Recognizer を使用して他にできることを確認します。
-* [REST API リファレンス ドキュメント](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)
+* [REST API リファレンス ドキュメント](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)
