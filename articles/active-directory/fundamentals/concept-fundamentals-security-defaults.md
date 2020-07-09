@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 62933a0e83a7494bc208068cb418f9ccc29ba637
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 385107f3bb5dd30a118d3a5f7a5f14213f0ad1c8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266357"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554529"
 ---
 # <a name="what-are-security-defaults"></a>セキュリティの既定値群とは
 
@@ -92,7 +92,7 @@ Microsoft は、誰もがセキュリティの既定値群を利用できるよ�
 > [!WARNING]
 > セキュリティの既定値群を有効にする前に、管理者が古い認証プロトコルを使用していないことを確認してください。 詳細については、[レガシ認証から移行する方法](concept-fundamentals-block-legacy-authentication.md)に関するページを参照してください。
 
-- [Office 365 および Microsoft 365 を使用して電子メールを送信するように多機能機器またはアプリケーションを設定する方法](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-office-3)
+- [Office 365 および Microsoft 365 を使用して電子メールを送信するように多機能機器またはアプリケーションを設定する方法](https://docs.microsoft.com/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-microsoft-365-or-office-365)
 
 ### <a name="protecting-privileged-actions"></a>特権アクションの保護
 
@@ -122,7 +122,7 @@ Azure Resource Manager にアクセスして構成を更新しようとするユ
 
 これらの無料のセキュリティの既定値群を使用すると、**通知を使用する Microsoft Authenticator アプリのみを使用して**、Azure Multi-Factor Authentication の登録と使用を行うことができます。 条件付きアクセスでは、管理者が有効にする任意の認証方法を使用できます。
 
-|   | セキュリティの既定値群 | 条件付きアクセス |
+| Method | セキュリティの既定値群 | 条件付きアクセス |
 | --- | --- | --- |
 | モバイル アプリでの通知 | X | X |
 | モバイル アプリからの確認コードまたはハードウェア トークン | X** | X |

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef127d120b32f5344bce0f68d79f48401087f0ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0f905b3eb6d1675f0bc252c3500169b3144287d9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231015"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550705"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>組織内の不適切なパスワードを排除する
 
@@ -158,7 +158,7 @@ Microsoft のグローバル禁止リストは一部のサード パーティ製
 
 ## <a name="license-requirements"></a>ライセンスの要件
 
-|   | グローバル禁止パスワード リストを使用した Azure AD パスワードの保護 | カスタム禁止パスワード リストを使用した Azure AD パスワードの保護|
+| ユーザー | グローバル禁止パスワード リストを使用した Azure AD パスワードの保護 | カスタム禁止パスワード リストを使用した Azure AD パスワードの保護|
 | --- | --- | --- |
 | クラウド専用ユーザー | Azure AD Free | Azure AD Premium P1 または P2 |
 | オンプレミスの Windows Server Active Directory から同期されたユーザー | Azure AD Premium P1 または P2 | Azure AD Premium P1 または P2 |
