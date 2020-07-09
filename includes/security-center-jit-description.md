@@ -4,20 +4,18 @@ ms.author: memildin
 manager: rkarlin
 ms.date: 02/24/2020
 ms.topic: include
-ms.openlocfilehash: 78bf29a170152666d82ec26504ee8f61ed90636a
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: 5efa8b845952c8ab5b66b781fb534c3754239b4e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615995"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84677434"
 ---
 ## <a name="attack-scenario"></a>攻撃シナリオ
 
 ブルート フォース攻撃では、VM にアクセスする手段として一般に管理ポートがターゲットとされます。 アクセスに成功した場合、攻撃者は VM の制御を奪い、攻撃対象の環境への足掛かりを築くことができます。
 
 ブルート フォース攻撃への露出を減らす方法の 1 つとして、ポートの開放時間を制限するという方法があります。 管理ポートを常に開放しておく必要はありません。 管理ポートを開放しておく必要があるのは、管理タスクやメンテナンス タスクを実行する場合など、VM に接続している間だけです。 Just-In-Time が有効になっている場合、Security Center では[ネットワーク セキュリティ グループ](../articles/virtual-network/security-overview.md#security-rules) (NSG) および Azure Firewall ルールが使用されます。このルールにより管理ポートへのアクセスが制限されるため、攻撃者は管理ポートをターゲットにすることができなくなります。
-
-![Just-In-Time のシナリオ](../articles/security-center/media/security-center-just-in-time/just-in-time-scenario.png)
 
 ## <a name="how-does-jit-access-work"></a>JIT アクセスはどのように機能しますか?
 

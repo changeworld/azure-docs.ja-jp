@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 4c7eb5e4f22cb432a9d17e6eafa653e62e1f9129
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d3b65558a12fb6b20f449f5386c0ce7e598433b6
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79529902"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110302"
 ---
 # <a name="choose-the-right-mariadb-server-option-in-azure"></a>Azure で適切な MariaDB サーバーオプションを選択する
 
@@ -31,7 +31,7 @@ Azure では、MariaDB サーバーのワークロードをホスト型仮想マ
 
 これらのオプションの主な違いを次の表に示します。
 
-|            | Azure Database for MariaDB | Azure VM 上の MariaDB    |
+| 属性          | Azure Database for MariaDB | Azure VM 上の MariaDB    |
 |:-------------------|:-----------------------------|:--------------------|
 | サービス レベル アグリーメント (SLA)                | 99.99% の可用性の SLA を提供| 同じ可用性セットに 2 つ以上のインスタンスがある場合、最大 99.95% の可用性。<br/><br/>Premium Storage を使用した単一インスタンス VM の場合、99.9% の可用性。<br/><br/>複数の可用性セット内の複数のインスタンスで Availability Zones を使用した場合、99.99%。<br/><br/>「[Virtual Machines の SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)」を参照してください。 |
 | オペレーティング システムの修正プログラムの適用        | 自動  | お客様が管理 |

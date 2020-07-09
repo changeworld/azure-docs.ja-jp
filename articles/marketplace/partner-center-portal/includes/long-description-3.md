@@ -1,18 +1,18 @@
 ---
 title: インクルード ファイル
 description: file
-author: anbene
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: include
+author: anbene
+ms.author: mingshen
 ms.date: 05/19/2020
-ms.openlocfilehash: 6713d93400bc391f4de7e07cc024ff9df2849a39
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 91c27143b4b122b1913429879d227125e1b2169c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700940"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109666"
 ---
 説明がより関心を引くものになるように、HTML タグを使用して書式を設定します。 この表に示すように、ほとんどのタグには、開始と終了の両方のコンポーネントが必要です。
 
