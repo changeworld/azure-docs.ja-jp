@@ -4,18 +4,18 @@ description: Azure CLI を使用して Azure Active Directory 対応の Azure Ku
 services: container-service
 ms.topic: article
 ms.date: 04/16/2019
-ms.openlocfilehash: dba6590daf5c64dd1e53663e71a0cc27941b1470
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 85441b53b22b4d33ee2ff967d777cc3267e171da
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779945"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106103"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Azure CLI を使用して Azure Active Directory と Azure Kubernetes Service を統合する
 
 Azure Kubernetes Service (AKS) は、ユーザー認証に Azure Active Directory (AD) を使うように構成することができます。 この構成では、Azure AD 認証トークンを使って AKS クラスターにログインできます。 また、クラスター オペレーターが、ユーザーの ID またはディレクトリ グループ メンバーシップに基づいて、Kubernetes のロールベースのアクセス制御 (RBAC) を構成することもできます。
 
-この記事では、必要な Azure AD コンポーネントを作成してから、Azure AD 対応クラスターをデプロイして AKS クラスターで基本的な RBAC ロールを作成する方法について説明します。 [これらの手順は、Azure portal を使用して完了][azure-ad-portal]することもできます。
+この記事では、必要な Azure AD コンポーネントを作成してから、Azure AD 対応クラスターをデプロイして AKS クラスターで基本的な RBAC ロールを作成する方法について説明します。
 
 この記事で使用されているサンプル スクリプトの完成版については、[Azure CLI のサンプルの AKS と Azure AD の統合][complete-script]に関するページを参照してください。
 
@@ -276,6 +276,6 @@ ID とリソース管理に関するベスト プラクティスについては�
 [azure-ad-portal]: azure-ad-integration.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az-ad-sp-credential-reset
-[rbac-authorization]: concepts-identity.md#role-based-access-controls-rbac
+[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-controls-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
