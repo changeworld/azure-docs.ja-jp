@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2020
 ms.author: jehollan, glenga
 ms.custom: include file
-ms.openlocfilehash: c53486bf3368039f172c7a13420e2291dd9c9892
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 4dc85988d904fdec72e1e6d92f03582a2a8f1427
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83122683"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85121553"
 ---
 1. Azure portal メニューまたは **[ホーム]** ページで、 **[リソースの作成]** を選択します。
 
@@ -32,17 +32,17 @@ ms.locfileid: "83122683"
 
     ![基本ページ](./media/functions-premium-create/function-app-create-basics.png)
 
-1. **ホスティング** を選択します。 **[ホスティング]** ページで、次の設定を入力します。
+1. **[Next:ホスティング]** を選択します。 **[ホスティング]** ページで、次の設定を入力します。
 
     | 設定      | 推奨値  | 説明 |
     | ------------ | ---------------- | ----------- |
     | **[ストレージ アカウント](../articles/storage/common/storage-account-create.md)** |  グローバルに一意の名前 |  Function App で使用されるストレージ アカウントを作成します。 ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用できます。 既存のアカウントを使用することもできますが、[ストレージ アカウントの要件](../articles/azure-functions/functions-scale.md#storage-account-requirements)を満たしている必要があります。 |
-    |**オペレーティング システム**| 優先オペレーティング システム | オペレーティング システムは、ランタイム スタックの選択に基づいてあらかじめ選択されますが、必要に応じて設定を変更できます。 |
-    | **[プラン](../articles/azure-functions/functions-scale.md)** | Premium | Function App にどのようにリソースが割り当てられるかを定義するホスティング プラン。 **[Premium]** を選択し、 **[Windows プラン]** および **[SKU とサイズ]** で既定値を選択します。 |
+    |**オペレーティング システム**| 優先オペレーティング システム | オペレーティング システムは、ランタイム スタックの選択に基づいてあらかじめ選択されますが、必要に応じて設定を変更できます。 Python は Linux でのみサポートされています。 |
+    | **[プラン](../articles/azure-functions/functions-scale.md)** | Premium | Function App にどのようにリソースが割り当てられるかを定義するホスティング プラン。 **[Premium]** を選択します。 既定では、新しい App Service プランが作成されます。 既定の **SKU とサイズ**は **EP1** です。ここで、EP は "_エラスティック Premium_" を表します。 詳細については、[Premium SKU の一覧](../articles/azure-functions/functions-premium-plan.md#available-instance-skus)を参照してください。<br/>Premium プランで JavaScript 関数を実行する場合は、vCPU の少ないインスタンスを選ぶ必要があります。 詳しくは、[シングルコア Premium プランの選択](../articles/azure-functions/functions-reference-node.md#considerations-for-javascript-functions)に関する記事をご覧ください。  |
 
     ![[ホスティング] ページ](./media/functions-premium-create/function-app-premium-create-hosting.png)
 
-1. **監視** を選択します。 **[監視]** ページで、次の設定を入力します。
+1. **[Next:監視]** を選択します。 **[監視]** ページで、次の設定を入力します。
 
     | 設定      | 推奨値  | 説明 |
     | ------------ | ---------------- | ----------- |
