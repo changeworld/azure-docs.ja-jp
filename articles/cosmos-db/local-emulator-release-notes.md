@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: milismsft
 ms.author: adrianmi
 ms.date: 06/20/2019
-ms.openlocfilehash: ab31daafe496f1aaad2bbc8075b2514d9e57e997
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 12e1c79e610526dec11467cc08c753bf90daa095
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84687176"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083459"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos Emulator - リリース ノートとダウンロード情報
 
@@ -26,7 +26,11 @@ ms.locfileid: "84687176"
 
 ## <a name="release-notes"></a>リリース ノート
 
-### <a name="2111"></a>2.11.1
+### <a name="2112-07072020"></a>2.11.2 (2020 年 7 月 7 日)
+
+- このリリースでは、Cosmos エミュレーターのトラブルシューティング時に必要となる ETL トレースの収集方法が変更されています。 WPR (Windows Performance Runtime ツール) が ETL ベース トレースのキャプチャ用の既定のツールとなり、以前の LOGMAN ベースのキャプチャは非推奨になりました。 この変更が必要となった 1 つの理由は、Cosmos エミュレーターを介して LOGMAN を実行した場合の動作に、最新の Windows セキュリティ更新プログラムが予期しない影響を与えたためです。
+
+### <a name="2111-06102020"></a>2.11.1 (2020 年 6 月 10 日)
 
 - このリリースでは、エミュレーターのデータ エクスプローラーに関連して、2 つのバグが修正されています。 Web ブラウザーからエミュレーターのデータ エクスプローラーを使用しているとき、一部のケースで、Cosmos エミュレーターのエンドポイントへの接続に失敗し、関連するすべてのアクション (データベースの作成など) が失敗するか、またはコンテナーのエラーが発生することがあります。 また、データ エクスプローラーのアップロード アクションを使用して JSON ファイルからアイテムを作成する際の問題も解決されています。
 

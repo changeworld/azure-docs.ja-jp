@@ -7,20 +7,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: f0b6e66a0d3a78a62fe105a175a7a519d0b37ccd
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: afeac24a5d3c21fce120512813d68c49a505c6c1
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84733417"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024606"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>チュートリアル:Azure Active Directory Domain Services のマネージド ドメインを構成および管理するための管理 VM を作成する
 
 Azure Active Directory Domain Services (Azure AD DS) では、Windows Server Active Directory と完全に互換性のあるマネージド ドメイン サービス (ドメイン参加、グループ ポリシー、LDAP、Kerberos 認証、NTLM 認証など) が提供されます。 このマネージド ドメインは、オンプレミスの Active Directory Domain Services ドメインの場合と同じリモート サーバー管理ツール (RSAT) を使用して管理します。 Azure AD DS はマネージド サービスであるため、リモート デスクトップ プロトコル (RDP) を使用してドメイン コントローラーに接続するなど、ユーザーが実行できない管理タスクもいくつか存在します。
 
-このチュートリアルでは、Windows Server VM を Azure に作成し、Azure AD DS のマネージド ドメインを管理するために必要なツールをインストールする方法を紹介します。
+このチュートリアルでは、Windows Server VM を Azure に構成し、Azure AD DS のマネージド ドメインを管理するために必要なツールをインストールする方法を紹介します。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -75,7 +75,7 @@ Azure AD DS では、ユーザー、アプリケーション、サービスで�
 
 ## <a name="sign-in-to-the-windows-server-vm"></a>Windows Server VM にサインインする
 
-前のチュートリアルでは、Windows Server VM を作成してマネージド ドメインに参加させました。 その VM を使用して管理ツールをインストールしましょう。 必要であれば、[チュートリアルの手順に従って Windows Server VM を作成し、マネージド ドメインに参加][create-join-windows-vm]させてください。
+前のチュートリアルでは、Windows Server VM を作成してマネージド ドメインに参加させました。 その VM を使用して管理ツールをインストールします。 必要であれば、[チュートリアルの手順に従って Windows Server VM を作成し、マネージド ドメインに参加][create-join-windows-vm]させてください。
 
 > [!NOTE]
 > このチュートリアルでは、マネージド ドメインに参加している Azure の Windows Server VM を使用します。 マネージド ドメインに参加している Windows クライアント (Windows 10 など) を使用することもできます。
@@ -97,7 +97,7 @@ Azure AD DS では、ユーザー、アプリケーション、サービスで�
 
 ## <a name="install-active-directory-administrative-tools"></a>Active Directory 管理ツールをインストールする
 
-マネージド ドメインは、Active Directory 管理センター (ADAC) や AD PowerShell など、オンプレミス AD DS 環境と同じ管理ツールを使用して管理します。 Windows Server コンピューターとクライアント コンピューターには、リモート サーバー管理ツール (RSAT) 機能の一部としてこれらのツールをインストールできます。 その後、*AAD DC Administrators* グループのメンバーは、マネージド ドメインに参加しているコンピューターから、それらの AD 管理ツールを使用してマネージド ドメインをリモートから管理することができます。
+Active Directory 管理センター (ADAC) や AD PowerShell など、オンプレミス AD DS 環境と同じ管理ツールをマネージド ドメイン内で使用して管理します。 Windows Server コンピューターとクライアント コンピューターには、リモート サーバー管理ツール (RSAT) 機能の一部としてこれらのツールをインストールできます。 その後、*AAD DC Administrators* グループのメンバーは、マネージド ドメインに参加しているコンピューターから、それらの AD 管理ツールを使用してマネージド ドメインをリモートから管理することができます。
 
 ドメイン参加済み VM に Active Directory 管理ツールをインストールするには、次の手順を実行します。
 
@@ -125,7 +125,7 @@ Azure AD DS では、ユーザー、アプリケーション、サービスで�
     ![サーバーにインストールされている管理ツール](./media/tutorial-create-management-vm/list-admin-tools.png)
 
 1. **[Active Directory 管理センター]** を選択します。
-1. マネージド ドメインの詳細を確認するために、左ペインでドメイン名を選択します (例: *aaddscontoso.com*)。 一覧の先頭に *AADDC Computers* および *AADDC Users* という名前の 2 つのコンテナーがあります。
+1. マネージド ドメインの詳細を確認するために、左ペインでドメイン名を選択します (例: *aaddscontoso*)。 一覧の先頭に *AADDC Computers* および *AADDC Users* という名前の 2 つのコンテナーがあります。
 
     ![マネージド ドメインで使用できるコンテナーの一覧](./media/tutorial-create-management-vm/active-directory-administrative-center.png)
 
@@ -135,7 +135,7 @@ Azure AD DS では、ユーザー、アプリケーション、サービスで�
 
     ![Active Directory 管理センターで Azure AD DS ドメイン ユーザーの一覧を表示する](./media/tutorial-create-management-vm/list-azure-ad-users.png)
 
-1. マネージド ドメインに参加しているコンピューターを表示するには、 **[AADDC Computers]** コンテナーを選択します。 現在の仮想マシンのエントリ (例: *myVM*) が表示されます。 マネージド ドメインに参加しているすべてのコンピューターのコンピューター アカウントが、この *AADDC Computers* コンテナーに格納されます。
+1. マネージド ドメインに参加しているコンピューターを表示するには、 **[AADDC Computers]** コンテナーを選択します。 現在の仮想マシンのエントリ (例: *myVM*) が表示されます。 マネージド ドメインに参加しているすべてのデバイスのコンピューター アカウントが、この *AADDC Computers* コンテナーに格納されます。
 
 Active Directory 管理センターの一般的な操作 (ユーザー アカウント パスワードのリセット、グループ メンバーシップの管理など) が利用できます。 これらの操作は、マネージド ドメインに直接作成されたユーザーとグループに対してのみ機能します。 ID 情報は、Azure AD "*から*" Azure AD DS へのみ同期されます。 Azure AD DS から Azure AD への書き戻しはありません。 Azure AD から同期されたユーザーのパスワードまたは管理対象グループ メンバーシップを変更し、それらの変更を同期して戻すことはできません。
 
@@ -150,7 +150,7 @@ Active Directory 管理センターの一般的な操作 (ユーザー アカウ
 > * Windows Server VM に Active Directory 管理ツールをインストールする
 > * Active Directory 管理センターを使用して一般的なタスクを実行する
 
-マネージド ドメインを安全に操作するには、セキュリティで保護されたライトウェイト ディレクトリ アクセス プロトコル (LDAPS) を有効にしてください。
+他のアプリケーションからマネージド ドメインを安全に操作するには、セキュリティで保護されたライトウェイト ディレクトリ アクセス プロトコル (LDAPS) を有効にしてください。
 
 > [!div class="nextstepaction"]
 > [マネージド ドメイン用に Secure LDAP を構成する](tutorial-configure-ldaps.md)

@@ -4,14 +4,14 @@ description: App Service の一般的なシナリオをピックアップした 
 tags: azure-service-management
 ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
 ms.topic: sample
-ms.date: 03/08/2017
+ms.date: 07/07/2020
 ms.custom: mvc
-ms.openlocfilehash: 6300b9fe10d7b12d71f87adec85d3a86658a8c97
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 51693ad4d233ea180607bc7358a0847e23688099
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254482"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057910"
 ---
 # <a name="powershell-samples-for-azure-app-service"></a>Azure App Service の PowerShell サンプル
 
@@ -25,6 +25,7 @@ ms.locfileid: "85254482"
 | [アプリを作成し、FTP を使用してコードをデプロイする](./scripts/powershell-deploy-ftp.md?toc=%2fpowershell%2fmodule%2ftoc.json) | App Service アプリを作成し、FTP を使用してローカル ディレクトリからファイルをアップロードします。 |
 | [アプリを作成してローカル Git リポジトリからコードをデプロイする](./scripts/powershell-deploy-local-git.md?toc=%2fpowershell%2fmodule%2ftoc.json) | App Service アプリを作成し、ローカル Git リポジトリからのコードのプッシュを構成します。 |
 | [アプリを作成してステージング環境にコードをデプロイする](./scripts/powershell-deploy-staging-environment.md?toc=%2fpowershell%2fmodule%2ftoc.json) | コードの変更をステージングするためのデプロイ スロットを備える App Service アプリを作成します。 |
+|  [アプリを作成してプライベート エンドポイントでアプリを公開する](./scripts/powershell-deploy-private-endpoint.md?toc=%2fpowershell%2fmodule%2ftoc.json) | プライベート エンドポイントを使用して App Service アプリを作成します。 |
 |**アプリケーションの構成**||
 | [アプリにカスタム ドメインをマップする](./scripts/powershell-configure-custom-domain.md?toc=%2fpowershell%2fmodule%2ftoc.json)| App Service アプリを作成し、カスタム ドメイン名をマップします。 |
 | [カスタム TLS/SSL 証明書をアプリにバインドする](./scripts/powershell-configure-ssl-certificate.md?toc=%2fpowershell%2fmodule%2ftoc.json)| App Service アプリを作成し、カスタム ドメイン名の TLS/SSL 証明書をバインドします。 |

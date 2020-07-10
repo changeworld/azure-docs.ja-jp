@@ -6,11 +6,12 @@ ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
-ms.openlocfilehash: 227e60486f0a6712b0d29de47983bad737481bd4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e06a2eac5387cd02e95d8252ae04edc356683ed9
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85800547"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86028245"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>ローカルでの開発とテストに Azure Cosmos Emulator を使用する
 
@@ -63,9 +64,11 @@ Azure Cosmos Emulator のハードウェア要件とソフトウェア要件は�
 
 Azure Cosmos Emulator を起動するには、[スタート] ボタンをクリックするか、Windows キーを押します。 「**Azure Cosmos Emulator**」と入力して、アプリケーションの一覧からエミュレーターを選択します。
 
-![[スタート] ボタンを選択するか Windows キーを押して「**Azure Cosmos Emulator**」と入力し、アプリケーションの一覧からエミュレーターを選択する](./media/local-emulator/database-local-emulator-start.png)
+:::image type="content" source="./media/local-emulator/database-local-emulator-start.png" alt-text="[スタート] ボタンを選択するか Windows キーを押して「Azure Cosmos Emulator」と入力し、アプリケーションの一覧からエミュレーターを選択する":::
 
-エミュレーターの実行中は、Windows タスク バーの通知領域にアイコンが表示されます。 ![Azure Cosmos DB ローカル エミュレーターのタスク バーの通知](./media/local-emulator/database-local-emulator-taskbar.png)
+エミュレーターの実行中は、Windows タスク バーの通知領域にアイコンが表示されます。 
+
+:::image type="content" source="./media/local-emulator/database-local-emulator-taskbar.png" alt-text="Azure Cosmos DB ローカル エミュレーターのタスク バーの通知":::
 
 Azure Cosmos Emulator は、既定ではポート 8081 でリッスンしているローカル コンピューター ("localhost") で実行されます。
 
@@ -221,7 +224,7 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 
 Windows 証明書ストアと統合されていない言語およびランタイムで使用する証明書を取得するには、Windows 証明書マネージャーを使用して証明書をエクスポートする必要があります。 これは certlm.msc を実行することで開始できます。または、[Azure Cosmos Emulator 証明書のエクスポート](./local-emulator-export-ssl-certificates.md)に関するページに記載されている手順に従ってください。 証明書マネージャーの実行中、次に示すように Personal フォルダーの Certificates を開き、"DocumentDBEmulatorCertificate" というフレンドリ名の証明書を BASE-64 encoded X.509 (.cer) ファイルとしてエクスポートします。
 
-![Azure Cosmos DB ローカル エミュレーターの TLS/SSL 証明書](./media/local-emulator/database-local-emulator-ssl_certificate.png)
+:::image type="content" source="./media/local-emulator/database-local-emulator-ssl_certificate.png" alt-text="Azure Cosmos DB ローカル エミュレーターの TLS/SSL 証明書":::
 
 X.509 証明書を Java 証明書ストアにインポートするには、「[証明書を Java CA 証明書ストアに追加する方法](https://docs.microsoft.com/azure/java-add-certificate-ca-store)」の手順に従います。 証明書を証明書ストアにインポートすると、SQL API および Azure Cosmos DB の MongoDB 用 API のクライアントが Azure Cosmos Emulator に接続できるようになります。
 
@@ -469,7 +472,7 @@ Linux 環境では、.NET が OpenSSL を使用して検証を行います。
    update-ca-certificates
    ```
 
-### <a name="mac-os"></a>Mac OS
+### <a name="macos"></a>macOS
 
 Mac 環境では、次の手順に従います。
 

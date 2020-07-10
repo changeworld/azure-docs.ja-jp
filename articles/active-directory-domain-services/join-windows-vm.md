@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: ac7af2f4500f6702dcacad546b0985e41159dc6e
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 8123608cbf2c1a4cbe0dc51d81d42b288bf2a91d
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734675"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024929"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>チュートリアル:Azure Active Directory Domain Services のマネージド ドメインに Windows Server 仮想マシンを参加させる
 
@@ -110,7 +110,7 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
 
 1. サブネットの作成には数秒かかります。 作成されたら、 *[X]* を選択してサブネット ウィンドウを閉じます。
 1. **[ネットワーク]** ウィンドウに戻って VM を作成し、ドロップダウン メニューから作成したサブネットを選択します (例: *management*)。 ここでも、適切なサブネットを選択します。マネージド ドメインと同じサブネットには VM をデプロイしないでください。
-1. **[パブリック IP]** については、ドロップダウン メニューから *[なし]* を選択します。これは、ユーザーは Azure Bastion を使用して管理に接続し、パブリック IP アドレスが割り当てられている必要はないためです。
+1. **[パブリック IP]** には、ドロップダウン メニューから *[なし]* を選択します。 このチュートリアルでは、Azure Bastion を使用して "management" に接続するため、VM にパブリック IP アドレスを割り当てる必要はありません。
 1. 他のオプションは既定値のままにして、 **[管理]** を選択します。
 1. **[ブート診断]** を *[オフ]* に設定します。 他のオプションは既定値のままにして、 **[確認と作成]** を選択します。
 1. VM の設定を確認して、 **[作成]** を選択します。
@@ -121,7 +121,7 @@ VM の作成には数分かかります。 Azure portal に、デプロイの状
 
 ## <a name="connect-to-the-windows-server-vm"></a>Windows Server VM に接続する
 
-VM に対して安全に接続するために、Azure Bastion ホストを使用します。 Azure Bastion では、仮想ネットワークにマネージド ホストがデプロイされ、VM への Web ベースの RDP 接続または SSH 接続は、そのマネージド ホストによって提供されます。 VM にパブリック IP アドレスは不要であり、外部のリモート トラフィック向けにネットワーク セキュリティ グループの規則を開放する必要もありません。 VM には、Web ブラウザーから Azure portal を使用して接続します。
+VM に対して安全に接続するために、Azure Bastion ホストを使用します。 Azure Bastion では、仮想ネットワークにマネージド ホストがデプロイされ、VM への Web ベースの RDP 接続または SSH 接続は、そのマネージド ホストによって提供されます。 VM にパブリック IP アドレスは不要であり、外部のリモート トラフィック向けにネットワーク セキュリティ グループの規則を開放する必要もありません。 VM には、Web ブラウザーから Azure portal を使用して接続します。 必要に応じて [Azure Bastion ホストを作成][azure-bastion]してください。
 
 要塞ホストを使用して VM に接続するには、次の手順を実行します。
 
@@ -152,7 +152,9 @@ VM を作成し、Azure Bastion を使用して Web ベースの RDP 接続を�
 
     ![参加するマネージド ドメインを指定する](./media/join-windows-vm/join-domain.png)
 
-1. ドメインの資格情報を入力してドメインに参加します。 マネージド ドメインの一部であるユーザーの資格情報を使用します。 アカウントはマネージド ドメインまたは Azure AD テナントの一部である必要があります。Azure AD テナントに関連付けられている外部ディレクトリのアカウントが、ドメイン参加プロセス中に正しく認証を行うことはできません。 アカウントの資格情報は、次のいずれかの方法で指定できます。
+1. ドメインの資格情報を入力してドメインに参加します。 マネージド ドメインの一部であるユーザーの資格情報を指定します。 アカウントはマネージド ドメインまたは Azure AD テナントの一部である必要があります。Azure AD テナントに関連付けられている外部ディレクトリのアカウントが、ドメイン参加プロセス中に正しく認証を行うことはできません。
+
+    アカウントの資格情報は、次のいずれかの方法で指定できます。
 
     * **UPN 形式** (推奨) - Azure AD で構成したように、ユーザー アカウントのユーザー プリンシパル名 (UPN) サフィックスを入力します。 たとえば、ユーザー *contosoadmin* の UPN サフィックスは `contosoadmin@aaddscontoso.onmicrosoft.com` になります。 *SAMAccountName* 形式ではなく UPN 形式を使用するとドメインに確実にサインインできる一般的なユースケースが 2 つあります。
         * ユーザーの UPN プレフィックスが長い場合 (例: *deehasareallylongname*)、*SAMAccountName* が自動生成される場合があります。
@@ -174,13 +176,13 @@ VM を作成し、Azure Bastion を使用して Web ベースの RDP 接続を�
 >
 > VM に接続したり手動で接続を構成したりすることなく VM をドメインに参加させるには、[Set-AzVmAdDomainExtension][set-azvmaddomainextension] Azure PowerShell コマンドレットを使用できます。
 
-Windows Server VM が再起動すると、マネージド ドメインで適用されているすべてのポリシーが、VM にプッシュされます。 また、適切なドメイン資格情報を使用して Windows Server VM にサインインすることもできます。
+Windows Server VM が再起動すると、マネージド ドメインで適用されているすべてのポリシーが VM にプッシュされます。 また、適切なドメイン資格情報を使用して Windows Server VM にサインインすることもできます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 次のチュートリアルでは、この Windows Server VM を使用して、マネージド ドメインを管理できる管理ツールをインストールします。 このチュートリアル シリーズを続けない場合は、次のクリーンアップ手順を確認して、[VM を削除](#delete-the-vm)します。 そうでない場合は、[次のチュートリアルを続けます](#next-steps)。
 
-### <a name="un-join-the-vm-from-the-managed-domain"></a>マネージド ドメインへの VM の参加を解除する
+### <a name="unjoin-the-vm-from-the-managed-domain"></a>マネージド ドメインへの VM の参加を解除する
 
 マネージド ドメインから VM を削除するには、もう一度、[VM をドメインに参加させる](#join-the-vm-to-the-managed-domain)ための手順を実行します。 このとき、マネージド ドメインに参加させる代わりに、ワークグループ (既定の "*ワークグループ*" など) に参加させることを選択します。 VM が再起動すると、コンピューター オブジェクトがマネージド ドメインから削除されます。
 
@@ -220,7 +222,7 @@ Windows Server VM が再起動すると、マネージド ドメインで適用�
 * 指定するユーザー アカウントがマネージド ドメインに属していることを確認します。
 * アカウントがマネージド ドメインまたは Azure AD テナントの一部であることを確認してください。 Azure AD テナントに関連付けられている外部ディレクトリのアカウントが、ドメイン参加プロセス中に正しく認証を行うことはできません。
 * UPN 形式を使用して資格情報を指定します (例: `contosoadmin@aaddscontoso.onmicrosoft.com`)。 たくさんのユーザーがテナントで同じ UPN プレフィックスを使用している場合、または UPN プレフィックスが最大文字数を超えている場合は、アカウントの *SAMAccountName* が自動生成される可能性があります。 そのような場合、アカウントの *SAMAccountName* 形式が、想定されている形式やオンプレミス ドメインで使用されている形式と異なる可能性があります。
-* マネージド ドメインとの[パスワード同期を有効にしている][password-sync]ことを確認します。 この構成手順を行わないと、サインインの試行を正しく認証するために必要なパスワード ハッシュが、マネージド ドメインに存在しません。
+* マネージド ドメインとの[パスワード同期を有効にしている][password-sync]ことを確認します。 この構成手順を行わないと、サインインの試行を正しく認証するために必要なパスワード ハッシュがマネージド ドメインに存在しなくなります。
 * パスワード同期が完了するまで待ちます。 ユーザー アカウントのパスワードが変更されると、Azure AD からの自動バックグラウンド同期によって、Azure AD DS 内のパスワードが更新されます。 ドメインへの参加にパスワードを使用できるようになるまでに、しばらく時間がかかります。
 
 ## <a name="next-steps"></a>次のステップ

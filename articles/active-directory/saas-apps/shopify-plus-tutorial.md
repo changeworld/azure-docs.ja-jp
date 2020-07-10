@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/18/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebbb73b6fc4e2a934c7c4235cfcdc39b8fa81b60
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 18dc2e4393175751f5ac52d53e0c331c82fce7e8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85127192"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078155"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-shopify-plus"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Shopify Plus の統合
 
@@ -103,7 +103,8 @@ Shopify Plus との Azure AD SSO を構成し、テストするには、以下�
     | ---------------| --------------- | --------- |
     | email | | User.mail |
 
-1. **[Set up single sign-on with SAML]\(SAML でシングル サインオンをセットアップします\)** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーして、お使いのコンピューターに保存します。
+1. **[名前 ID]** の形式を **[永続的]** に変更します。 **[一意のユーザー識別子 (名前 ID)]** オプションを選択し、 **[名前識別子]** 形式を選択します。 このオプションに **[永続的]** を選択します。 変更を保存します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページの **[SAML 署名証明書]** セクションで、コピー ボタンを選択して **[アプリのフェデレーション メタデータ URL]** をコピーし、コンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/copy-metadataurl.png)
 
@@ -139,11 +140,31 @@ Shopify Plus との Azure AD SSO を構成し、テストするには、以下�
 
 ## <a name="configure-shopify-plus-sso"></a>Shopify Plus SSO の構成
 
-**Shopify Plus** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Shopify Plus サポート チーム](mailto:plus-user-management@shopify.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+完全な手順を確認するには、[SAML 統合の設定に関する Shopify のドキュメント](https://help.shopify.com/en/manual/shopify-plus/saml)を参照してください。
+
+**Shopify Plus** 側でシングルサインオンを構成するには、**アプリのフェデレーション メタデータ URL** を Azure Active Directory からコピーします。 次に、[組織の管理者](https://shopify.plus)にログインし、 **[Users]\(ユーザー\)**  >  **[Security]\(セキュリティ\)** に移動します。 **[Set up configuration]\(構成の設定\)** を選択し、 **[Identity provider metadata URL]\(ID プロバイダー メタデータ URL\)** にアプリのフェデレーション メタデータ URL を貼り付けます。 **[Add]\(追加\)** を選択してこの手順を完了します。
 
 ### <a name="create-shopify-plus-test-user"></a>Shopify Plus テスト ユーザーの作成
 
-このセクションでは、Shopify Plus で B.Simon というユーザーを作成します。  [Shopify Plus サポート チーム](mailto:plus-user-management@shopify.com) と協力して、Shopify Plus プラットフォームでユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Shopify Plus で B.Simon というユーザーを作成します。 **[Users]\(ユーザー\)** セクションに戻り、電子メールとアクセス許可を入力してユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+
+### <a name="enforce-saml-authentication"></a>SAML 認証の適用
+
+> [!NOTE]
+> 個々のユーザーを使用して統合をテストしてから、広く適用することをお勧めします。
+
+個々のユーザー:
+1. Azure AD によって管理され、Shopify Plus で検証済みのメール ドメインを使用して Shopify Plus の個々のユーザーのページに移動します。
+1. SAML 認証セクションで、 **[Edit]\(編集\)** を選択し、 **[Required]\(必須\)** を選択してから、 **[Save]\(保存\)** を選択します。
+1. このユーザーが idP-initiated および SP-initiated フローを使用して正常にサインインできることをテストします。
+
+メール ドメインのすべてのユーザー:
+1. **[Security]\(セキュリティ\)** ページに戻ります。
+1. SAML 認証設定に **[Required]\(必須\)** を選択します。 これにより、Shopify Plus 全体でそのメール ドメインを使用するすべてのユーザーに SAML が適用されます。
+1. **[保存]** を選択します。
+
+> [!IMPORTANT]
+> メール ドメインのすべてのユーザーに対して SAML を有効にすると、このアプリケーションを使用するすべてのユーザーに影響します。 ユーザーは、通常のサインイン ページを使用してサインインすることはできません。 Azure Active Directory を介してのみアプリにアクセスできます。 Shopify には、ユーザーが通常のユーザー名とパスワードを使用してサインインできるバックアップ サインイン URL は用意されていません。 必要に応じて、Shopify サポートに連絡して SAML を無効にできます。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
@@ -155,7 +176,7 @@ Shopify Plus との Azure AD SSO を構成し、テストするには、以下�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

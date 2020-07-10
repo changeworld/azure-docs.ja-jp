@@ -4,12 +4,12 @@ description: Azure Resource Manager テンプレートを継続的にビルド�
 ms.date: 04/22/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: dacbdbcbebbbd696c14745e055ed9f7bd7905b1d
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: b8163c357f184ac41ce72dc8c89fcc5030c3180d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731936"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118921"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>チュートリアル:Azure Pipelines を使用した Azure Resource Manager テンプレートの継続的インテグレーション
 
@@ -39,8 +39,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 * テンプレートのリポジトリの作成に使用する **GitHub アカウント**。 持っていない場合は、[無料で作成](https://github.com)できます。 GitHub リポジトリの使用に関する詳細については、[GitHub リポジトリの構築](/azure/devops/pipelines/repos/github)に関するページを参照してください。
 * **Git をインストールします**。 このチュートリアルの手順では、*Git Bash* または *Git Shell* を使用します。 手順については、[Git のインストールに関するページ]( https://www.atlassian.com/git/tutorials/install-git)を参照してください。
-* **Azure DevOps 組織**。 ない場合は、無料で作成できます。 [組織またはプロジェクト コレクションの作成]( https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization?view=azure-devops)に関するページを参照してください。
-* (省略可能) **Visual Studio Code と Resource Manager ツール拡張機能**。 「[Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](use-vs-code-to-create-template.md)」を参照してください。
+* **Azure DevOps 組織**。 ない場合は、無料で作成できます。 [組織またはプロジェクト コレクションの作成](/azure/devops/organizations/accounts/create-organization?view=azure-devops)に関するページを参照してください。
+* (省略可能) **Visual Studio Code と Resource Manager ツール拡張機能**。 「[クイック スタート:Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
 
 ## <a name="prepare-a-github-repository"></a>GitHub レポジトリを準備する
 

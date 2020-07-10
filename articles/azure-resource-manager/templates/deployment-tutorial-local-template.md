@@ -4,12 +4,12 @@ description: ローカル コンピューターから Azure Resource Manager テ
 ms.date: 05/20/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 01f04d18ae54c3c512010dd005e9d820b914e536
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 3112c3940f9d2668f4825de3c2e57a63af009d92
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714068"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118904"
 ---
 # <a name="tutorial-deploy-a-local-azure-resource-manager-template"></a>チュートリアル:ローカル Azure Resource Manager テンプレートをデプロイする
 
@@ -33,7 +33,7 @@ Azure PowerShell または Azure CLI をインストールした後で、初回�
 
 ### <a name="editor-optional"></a>エディター (省略可能)
 
-テンプレートは JSON ファイルです。 テンプレートを確認または編集するには、適切な JSON エディターが必要です。 Visual Studio Code と Resource Manager Tools 拡張機能をお勧めします。 これらのツールをインストールする必要がある場合は、「[Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](use-vs-code-to-create-template.md)」を参照してください。
+テンプレートは JSON ファイルです。 テンプレートを確認または編集するには、適切な JSON エディターが必要です。 Visual Studio Code と Resource Manager Tools 拡張機能をお勧めします。 これらのツールをインストールする必要がある場合は、「[クイックスタート: Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
 
 ## <a name="review-template"></a>テンプレートを確認する
 
