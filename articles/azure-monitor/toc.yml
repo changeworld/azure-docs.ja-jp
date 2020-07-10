@@ -81,6 +81,10 @@
               href: samples/resource-manager-alerts-metric.md
             - name: アクション グループ
               href: samples/resource-manager-action-groups.md
+        - name: Application Insights
+          items:
+            - name: リソースの作成
+              href: samples/resource-manager-app-resource.md
         - name: 診断設定
           href: samples/resource-manager-diagnostic-settings.md
         - name: Log Analytics ワークスペース
