@@ -276,7 +276,7 @@
     - name: Batch Shipyard
       href: 'https://github.com/Azure/batch-shipyard'
     - name: ブログ
-      href: 'https://blogs.technet.microsoft.com/windowshpc/'
+      href: /archive/blogs/windowshpc/
     - name: Azure での HPC
       href: /azure/architecture/topics/high-performance-computing/
     - name: 価格

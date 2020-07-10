@@ -349,7 +349,7 @@
               href: backup-azure-arm-userestapi-managejobs.md
         - name: Resource Manager テンプレート
           href: backup-rm-template-samples.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: 概要
           href: security-overview.md
@@ -369,8 +369,10 @@
           href: backup-azure-security-feature.md
         - name: プライベート エンドポイント
           href: private-endpoints.md
-        - name: 暗号化
+        - name: Azure Backup での暗号化
           href: backup-encryption.md
+        - name: カスタマー マネージド キーを使用した暗号化
+          href: encryption-at-rest-with-cmk.md
         - name: 組み込みのセキュリティ制御
           href: backup-security-controls.md
         - name: セキュリティ ベースライン
