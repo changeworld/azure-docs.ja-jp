@@ -1,18 +1,19 @@
 ---
-title: Shared Image Gallery を使用してカスタム プールを作成する
-description: カスタム イメージは、Batch ワークロードを実行するコンピューティング ノードを構成するための効率的な方法です。
+title: Shared Image Gallery を使用してカスタム イメージ プールを作成する
+description: カスタム イメージ プールは、Batch ワークロードを実行する計算ノードを構成するための効率的な方法です。
 ms.topic: conceptual
-ms.date: 05/22/2020
-ms.openlocfilehash: 6731086bfcbe6a671c579593791fb7467b280bca
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 07/01/2020
+ms.custom: tracking-python
+ms.openlocfilehash: 962b3c84e7f3cecc5f4d64febbfca635733a0bae
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83844490"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851717"
 ---
-# <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>Shared Image Gallery を使用してカスタム プールを作成する
+# <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Shared Image Gallery を使用してカスタム イメージ プールを作成する
 
-仮想マシンの構成を使用して Azure Batch プールを作成するときは、プールの各コンピューティング ノードにオペレーティング システムを提供する VM イメージを指定します。 サポートされている Azure Marketplace イメージを使用するか、[Shared Image Gallery](../virtual-machines/windows/shared-image-galleries.md) を使用してカスタム イメージを作成するかのいずれかの方法で、仮想マシンのプールを作成することができます。
+仮想マシンの構成を使用して Azure Batch プールを作成するときは、プールの各コンピューティング ノードにオペレーティング システムを提供する VM イメージを指定します。 サポートされている Azure Marketplace イメージを使用するか、[Shared Image Gallery のイメージ](../virtual-machines/windows/shared-image-galleries.md)を使用してカスタム イメージを作成するかのいずれかの方法で、仮想マシンのプールを作成することができます。
 
 ## <a name="benefits-of-the-shared-image-gallery"></a>Shared Image Gallery の利点
 
@@ -29,7 +30,7 @@ ms.locfileid: "83844490"
 - **アプリケーションの事前インストール。** OS ディスクにアプリケーションを事前インストールすると、開始タスクを使用してコンピューティング ノードをプロビジョニングしてからアプリケーションをインストールするよりも、効率的で、エラーが発生しにくくなります。
 - **大量のデータを一度にコピー。** マネージド共有イメージの静的データの部分を、マネージド イメージのデータ ディスクにコピーすることで作成できます。 この作業は 1 回行うだけで、プールの各ノードでデータを使用できるようになります。
 - **プールのサイズを拡張する。** Shared Image Gallery を使用すれば、より多くの共有イメージ レプリカに加えてカスタマイズされたイメージを使用して、より大きなプールを作成できます。
-- **カスタム イメージよりも優れたパフォーマンス。** 共有イメージを使用すると、プールが安定した状態になるまでにかかる時間は最大 25% 速くなり、VM のアイドル待機時間は最大で 30% 短くなります。
+- **マネージド イメージだけをカスタム イメージとして使用するよりもパフォーマンスが向上します。** Shared Image のカスタム イメージ プールの場合、安定状態になるまでの時間は最大 25% 速くなり、VM のアイドル待機時間は最大で 30% 短くなります。
 - **管理を容易にするイメージのバージョン管理とグループ化。** イメージのグループ化の定義には、イメージが作成された理由、対象の OS、イメージの使用に関する情報などの情報が含まれます。 イメージをグループ化すると、イメージを簡単に管理できるようになります。 詳細については、「[イメージ定義](../virtual-machines/windows/shared-image-galleries.md#image-definitions)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -44,9 +45,11 @@ ms.locfileid: "83844490"
 > [!NOTE]
 > 共有イメージは、Batch アカウントと同じサブスクリプションに存在する必要があります。 Batch アカウントと同じリージョンにレプリカがある限り、イメージを異なるリージョンに配置できます。
 
-## <a name="prepare-a-custom-image"></a>カスタム イメージを準備する
+Azure AD アプリケーションを使用して Shared Image Gallery のイメージを持つカスタム イメージ プールを作成する場合、そのアプリケーションに Shared Image へのアクセスを許可する [Azure 組み込みロール](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles)が付与されている必要があります。 Azure portal でこのアクセス権を付与するには、Shared Image に移動し、 **[アクセス制御 (IAM)]** を選択して、アプリケーションにロールの割り当てを追加します。
 
-Azure では、次のものからカスタム イメージを準備できます。
+## <a name="prepare-a-shared-image"></a>Shared Image を準備する
+
+Azure では、以下から作成できるマネージド イメージから共有イメージを準備できます。
 
 - Azure VM の OS とデータ ディスクのスナップショット
 - マネージド ディスクで汎用化された Azure VM

@@ -72,6 +72,8 @@
           href: cognitive-search-tutorial-blob-python.md
     - name: スキルセットをデバッグする
       href: cognitive-search-tutorial-debug-sessions.md
+    - name: カスタム アナライザーを作成する
+      href: tutorial-create-custom-analyzer.md
     - name: Power Apps からのクエリ
       href: search-howto-powerapps.md
 - name: サンプル

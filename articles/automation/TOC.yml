@@ -41,7 +41,7 @@
       href: automation-runbook-types.md
     - name: PowerShell DSC
       href: /powershell/scripting/dsc/overview/overview
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -308,7 +308,7 @@
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=management-tools&query=automation'
     - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/en-us/answers/topics/azure-automation.html'
+      href: /answers/topics/azure-automation.html
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/automation/'
     - name: 料金計算ツール

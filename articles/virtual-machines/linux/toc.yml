@@ -511,6 +511,8 @@
                       href: ../vm-specialized-image-version-powershell.md
                 - name: イメージ リソースを更新する
                   href: ../update-image-resources-powershell.md
+                - name: 共有のためのアプリの登録
+                  href: ../windows/share-images-across-tenants.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: ポータル
               items:
                 - name: ギャラリー、イメージ、VM の作成
@@ -947,8 +949,6 @@
           items:
             - name: Azure Site Recovery を使用した Premium Storage への移行
               href: migrate-to-premium-storage-using-azure-site-recovery.md
-            - name: サーバー側の暗号化への変換
-              href: disks-ade-sse-conversion-cli.md
             - name: 管理ディスクに変換する
               href: convert-unmanaged-to-managed-disks.md
             - name: Standard と Premium 間でディスクを変換する
