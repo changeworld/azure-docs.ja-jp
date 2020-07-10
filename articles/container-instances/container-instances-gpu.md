@@ -2,13 +2,13 @@
 title: GPU 対応コンテナー インスタンスをデプロイする
 description: GPU リソースを使用してコンピューティング集中型コンテナー アプリを実行するために、Azure コンテナー インスタンスをデプロイする方法について説明します。
 ms.topic: article
-ms.date: 02/19/2020
-ms.openlocfilehash: 0f1d21c62be5d7ae099faa2c6fcc440829bb451f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/02/2020
+ms.openlocfilehash: 78b67843978583dd6b0f0aee2c1d8ad0e5a7ca77
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77525289"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169750"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>GPU リソースを使用するコンテナー インスタンスをデプロイする
 
@@ -73,7 +73,7 @@ GPU リソースを追加するには、[YAML ファイル](container-instances-
 
 ```YAML
 additional_properties: {}
-apiVersion: '2018-10-01'
+apiVersion: '2019-12-01'
 name: gpucontainergroup
 properties:
   containers:
@@ -139,7 +139,7 @@ GPU リソースでコンテナー グループをデプロイするには、[Re
       {
         "name": "[parameters('containerGroupName')]",
         "type": "Microsoft.ContainerInstance/containerGroups",
-        "apiVersion": "2018-10-01",
+        "apiVersion": "2019-12-01",
         "location": "[resourceGroup().location]",
         "properties": {
             "containers": [
@@ -168,10 +168,10 @@ GPU リソースでコンテナー グループをデプロイするには、[Re
 }
 ```
 
-[az group deployment create][az-group-deployment-create] コマンドで、テンプレートをデプロイします。 GPU リソースをサポートしているリージョン (*eastus* など) で作成されたリソース グループの名前を指定する必要があります。
+[az deployment group create][az-deployment-group-create] コマンドを使用してテンプレートをデプロイします。 GPU リソースをサポートしているリージョン (*eastus* など) で作成されたリソース グループの名前を指定する必要があります。
 
 ```azurecli-interactive
-az group deployment create --resource-group myResourceGroup --template-file gpudeploy.json
+az deployment group create --resource-group myResourceGroup --template-file gpudeploy.json
 ```
 
 デプロイが完了するまで、数分間かかります。 その後、コンテナーが起動し、TensorFlow ジョブが実行されます。 [az container logs][az-container-logs] コマンドを実行して、ログの出力を表示します。
@@ -240,4 +240,4 @@ az container delete --resource-group myResourceGroup --name gpucontainergrouprm 
 [az-container-show]: /cli/azure/container#az-container-show
 [az-container-logs]: /cli/azure/container#az-container-logs
 [az-container-show]: /cli/azure/container#az-container-show
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create

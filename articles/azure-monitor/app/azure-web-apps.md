@@ -3,12 +3,12 @@ title: Azure App Services のパフォーマンスを監視する | Microsoft Do
 description: Azure App Services のアプリケーション パフォーマンスの監視。 チャートの読み込みおよび応答時間、依存関係の情報やパフォーマンス警告を設定します。
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 0f4d4dedab30839db56cb47ac7ac103413f2d4be
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 574aefa4d554be7b0027c921289d8d15cffb8e49
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82733452"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169937"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service のパフォーマンスの監視
 
@@ -58,7 +58,7 @@ Azure App Services がホストするアプリケーションについてアプ�
  
  それぞれのルートで収集されるデータは次のとおりです。
         
-|  | .NET 基本収集 | .NET 推奨収集 |
+| Data | .NET 基本収集 | .NET 推奨収集 |
 | --- | --- | --- |
 | CPU、メモリ、および I/O の使用状況の傾向が追加されます |はい |はい |
 | 使用状況の傾向が収集され、可用性の結果からトランザクションへの相関関係が有効になります | はい |はい |
