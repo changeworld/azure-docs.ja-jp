@@ -68,6 +68,8 @@
       href: How-tos/text-analytics-how-to-keyword-extraction.md
     - name: 名前付きエンティティの認識
       href: How-tos/text-analytics-how-to-entity-linking.md
+    - name: Text Analytics for Health
+      href: How-tos/text-analytics-for-health.md
     - name: コンテナーの使用
       items:
         - name: コンテナーのインストールと実行

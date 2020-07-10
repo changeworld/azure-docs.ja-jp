@@ -12,18 +12,21 @@
       href: quickstart-load-balancer-standard-public-portal.md
     - name: ロード バランサーの作成 - Azure CLI
       href: quickstart-load-balancer-standard-public-cli.md
-    - name: ロード バランサーの作成 - PowerShell
+    - name: ロード バランサーの作成 - Azure PowerShell
       href: quickstart-create-standard-load-balancer-powershell.md
     - name: ロード バランサーの作成 - ARM テンプレート
-      displayName: Resource Manager
       href: quickstart-load-balancer-standard-public-template.md
+    - name: 内部ロード バランサーの作成 - ポータル
+      href: tutorial-load-balancer-standard-internal-portal.md
+    - name: 内部ロード バランサーの作成 - Azure CLI
+      href: load-balancer-get-started-ilb-arm-cli.md
+    - name: 内部ロード バランサーの作成 - Azure PowerShell
+      href: load-balancer-get-started-ilb-arm-ps.md
+    - name: 内部ロード バランサーの作成 - Resource Manager テンプレート
+      href: load-balancer-get-started-ilb-arm-template.md
   expanded: true
 - name: チュートリアル
   items:
-    - name: VM へのインターネット トラフィックの負荷分散を行う
-      href: tutorial-load-balancer-standard-manage-portal.md
-    - name: VM への内部トラフィックの負荷分散を行う
-      href: tutorial-load-balancer-standard-internal-portal.md
     - name: 可用性ゾーン間で VM の負荷分散を行う
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: 特定の可用性ゾーン内で VM の負荷分散を行う
@@ -78,17 +81,17 @@
           href: configure-vm-scale-set-powershell.md
         - name: 既存の Azure Load Balancer での使用 - CLI
           href: configure-vm-scale-set-cli.md
-    - name: Basic Load Balancer を Standard Load Balancer にアップグレードする
+    - name: Basic から Standard Load Balancer へのアップグレード
       items:
         - name: Basic Public Load Balancer のアップグレード
           href: upgrade-basic-standard.md
-        - name: Basic Internal Load Balancer のアップグレード - 送信接続は不要
+        - name: 内部ロード バランサーのアップグレード - 送信接続は不要
           href: upgrade-basicInternal-standard.md
-        - name: Basic Internal Load Balancer のアップグレード - 送信接続が必要
+        - name: 内部ロード バランサーのアップグレード - 送信接続が必要
           href: upgrade-InternalBasic-To-PublicStandard.md
     - name: 送信の規則を構成する
       items:
-        - name: Azure portal
+        - name: ポータル
           href: configure-load-balancer-outbound-portal.md
         - name: Azure CLI
           href: configure-load-balancer-outbound-cli.md
@@ -103,35 +106,25 @@
         - name: Azure Resource Manager テンプレート
           href: 'https://docs.microsoft.com/azure/virtual-network/ipv6-configure-standard-load-balancer-template-json'
           displayName: ARM
-    - name: 内部ロード バランサーを構成する
-      items:
-        - name: Azure portal
-          href: tutorial-load-balancer-standard-internal-portal.md
-        - name: Azure CLI
-          href: load-balancer-get-started-ilb-arm-cli.md
-        - name: Azure PowerShell
-          href: load-balancer-get-started-ilb-arm-ps.md
-        - name: Azure Resource Manager テンプレート
-          href: load-balancer-get-started-ilb-arm-template.md
-          displayName: ARM
     - name: Load Balancer の TCP アイドル タイムアウトを構成する
       href: load-balancer-tcp-idle-timeout.md
     - name: Load Balancer の分散モードを構成する
       href: load-balancer-distribution-mode.md
     - name: 複数の IP 構成の使用
-      href: load-balancer-multiple-ip.md
       items:
+        - name: ポータル
+          href: load-balancer-multiple-ip.md
         - name: Azure CLI
           href: load-balancer-multiple-ip-cli.md
         - name: Azure PowerShell
           href: load-balancer-multiple-ip-powershell.md
     - name: リージョン間で移動する
       items:
-        - name: 外部ロード バランサー - ポータル
+        - name: パブリック ロード バランサー - ポータル
           href: move-across-regions-external-load-balancer-portal.md
-        - name: 外部ロード バランサー - PowerShell
+        - name: パブリック ロード バランサー - PowerShell
           href: move-across-regions-external-load-balancer-powershell.md
-        - name: 内部ロード バランサー - ポータル
+        - name: パブリック ロード バランサー - ポータル
           href: move-across-regions-internal-load-balancer-portal.md
         - name: 内部ロード バランサー - PowerShell
           href: move-across-regions-internal-load-balancer-powershell.md

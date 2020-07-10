@@ -11,12 +11,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: d3f3842265e0c8a36c7eb4b14abca771bd3d38f2
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: b8263e0445f7997469ba9165decbaccfa9ed2d6e
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85918936"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027852"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>チュートリアル:Azure Databricks を使用した、ストリーミング データの異常検出
 
@@ -41,7 +41,7 @@ ms.locfileid: "85918936"
 
 > [!Note]
 > * このチュートリアルでは、Anomaly Detector API について推奨される[ソリューション アーキテクチャ](https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/)を実装するための方法を紹介します。
-> * このチュートリアルは、Anomaly Detector API または Azure Databricks の無料試用版では完了できません。 
+> * このチュートリアルは、Anomaly Detector API または Azure Databricks の Free レベル (`F0`) のサブスクリプションでは実行できません。 
 
 まだお持ちでない場合は、[Azure サブスクリプション](https://azure.microsoft.com/free/)を作成します。
 
@@ -51,7 +51,7 @@ ms.locfileid: "85918936"
 
 - Event Hubs 名前空間にアクセスするための[接続文字列](../../../event-hubs/event-hubs-get-connection-string.md)。 接続文字列は次のような形式になります。
 
-    `Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<key name>;SharedAccessKey=<key value>` 
+    `Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<key name>;SharedAccessKey=<key value>`. 
 
 - Event Hubs の共有アクセス ポリシー名とポリシー キー。
 

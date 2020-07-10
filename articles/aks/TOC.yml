@@ -51,7 +51,7 @@
       href: concepts-clusters-workloads.md
     - name: アクセスと ID
       href: concepts-identity.md
-    - name: Security
+    - name: セキュリティ
       href: concepts-security.md
       items: null
     - name: ネットワーク
@@ -228,6 +228,8 @@
           href: control-kubeconfig-access.md
         - name: ネットワーク ポリシーによるポッドのトラフィックのセキュリティ保護
           href: use-network-policies.md
+        - name: Azure Policy を使用したポッドのセキュリティ保護 (プレビュー)
+          href: use-pod-security-on-azure-policy.md
         - name: ポッド セキュリティ ポリシーの使用 (プレビュー)
           href: use-pod-security-policies.md
         - name: API サーバーの許可された IP 範囲の定義
@@ -244,6 +246,8 @@
               href: managed-aad.md
             - name: Azure CLI の使用
               href: azure-ad-integration-cli.md
+        - name: Kubernetes 承認での Azure RBAC の使用 (プレビュー)
+          href: manage-azure-rbac.md
         - name: Azure AD の統合での Kubernetes RBAC の使用
           href: azure-ad-rbac.md
           maintainContext: true

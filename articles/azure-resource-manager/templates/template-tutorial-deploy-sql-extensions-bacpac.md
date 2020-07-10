@@ -5,12 +5,12 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e17bad915fd913f6e3894ed386e914e65aa46c01
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 6a56602ad5217af07d9e35872a26ddb478146d0e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85250334"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101887"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>チュートリアル:ARM テンプレートを使用して SQL BACPAC ファイルをインポートする
 
@@ -34,14 +34,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この記事を完了するには、以下が必要です。
 
-* Visual Studio Code と Resource Manager ツール拡張機能。 [Visual Studio Code を使って ARM テンプレートを作成する方法](./use-vs-code-to-create-template.md)に関するページを参照してください。
+* Visual Studio Code と Resource Manager ツール拡張機能。 「[クイック スタート:Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](./quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
 * セキュリティを向上させるために、生成されたパスワードをサーバー管理者アカウントに対して使用します。 パスワードを生成するために使用できるサンプルを次に示します。
 
     ```console
     openssl rand -base64 32
     ```
 
-    Azure Key Vault は、暗号化キーおよびその他のシークレットを保護するために設計されています。 詳細については、「[チュートリアル:ARM テンプレートのデプロイで Azure Key Vault を統合する](./template-tutorial-use-key-vault.md)」を参照してください。 パスワードは 3 か月ごとに更新することをお勧めします。
+    Azure Key Vault は、暗号化キーおよびその他のシークレットを保護するために設計されています。 詳細については、[ARM テンプレートのデプロイで Azure Key Vault を統合する](./template-tutorial-use-key-vault.md)」を参照してください。 パスワードは 3 か月ごとに更新することをお勧めします。
 
 ## <a name="prepare-a-bacpac-file"></a>BACPAC ファイルを準備する
 
@@ -112,8 +112,8 @@ BACPAC ファイルは、ARM テンプレートを使用してインポートす
 
     テンプレートで定義されている 2 つのリソースがあります。
 
-   * `Microsoft.Sql/servers` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/servers)をご覧ください。
-   * `Microsoft.SQL.servers/databases` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases)をご覧ください。
+   * `Microsoft.Sql/servers` [テンプレート リファレンス](/azure/templates/microsoft.sql/servers)をご覧ください。
+   * `Microsoft.SQL.servers/databases` [テンプレート リファレンス](/azure/templates/microsoft.sql/servers/databases)をご覧ください。
 
         カスタマイズする前にテンプレートの基本をある程度理解することは役に立ちます。
 1. **[ファイル]**  >  **[Save As]\(名前を付けて保存\)** を選択し、このファイルのコピーを *azuredeploy.json* という名前でローカル コンピューターに保存します。
@@ -194,7 +194,7 @@ BACPAC ファイルは、ARM テンプレートを使用してインポートす
 
         ![SQL Database 拡張機能を含むテンプレート](./media/template-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac.png)
 
-        リソース定義を理解するには、[SQL Database 拡張機能のリファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases/extensions)に関するページを参照してください。 以下にいくつかの重要な要素を示します。
+        リソース定義を理解するには、[SQL Database 拡張機能のリファレンス](/azure/templates/microsoft.sql/servers/databases/extensions)に関するページを参照してください。 以下にいくつかの重要な要素を示します。
 
         * **dependsOn**:拡張機能リソースは、データベースが作成された後に作成される必要があります。
         * **storageKeyType**:使用するストレージ キーの種類を指定します。 値は `StorageAccessKey` と `SharedAccessKey` のいずれかにできます。 このチュートリアルでは `StorageAccessKey` を使用します。

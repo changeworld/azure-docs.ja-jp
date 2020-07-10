@@ -8,23 +8,23 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 1e408f27d4c9b2686bd9f56ca754f5553a446440
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b247a72b5d7db9892c6a2a763b7b71dc5f972d95
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014912"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045299"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>チュートリアル:Azure HDInsight を使用してデータの抽出、変換、読み込みを行う
 
-このチュートリアルでは、ETL (データの抽出、変換、読み込み) 操作を実行します。 生の CSV データ ファイルを取得して Azure HDInsight クラスターにインポートした後、Apache Hive を使用して変換し、Apache Sqoop を使用して Azure SQL データベースに読み込みます。
+このチュートリアルでは、ETL (データの抽出、変換、読み込み) 操作を実行します。 生の CSV データ ファイルを取得して Azure HDInsight クラスターにインポートした後、Apache Hive を使用して変換し、Apache Sqoop を使用して Azure SQL Database に読み込みます。
 
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * データを抽出し、HDInsight クラスターにアップロードする。
 > * Apache Hive を使用してデータを変換する。
-> * Sqoop を使用して Azure SQL データベースにデータを読み込む。
+> * Sqoop を使用して Azure SQL Database にデータを読み込む。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
@@ -38,7 +38,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     「[クイック スタート:Azure portal を使用して Azure HDInsight で Apache Hadoop と Apache Hive を使用する](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal)」を参照してください。
 
-* **Azure SQL Database**:保存先データ ストアとして Azure SQL データベースを使用します。 SQL データベースがない場合は、「[Azure Portal で Azure SQL データベースを作成する](../../sql-database/sql-database-get-started.md)」を参照してください。
+* **Azure SQL Database**:保存先データ ストアとして Azure SQL Database を使用します。 SQL Database のデータベースがない場合は、[Azure portal での Azure SQL Database のデータベースの作成](../../sql-database/sql-database-get-started.md)に関するページを参照してください。
 
 * **Azure CLI**:Azure CLI をインストールしていない場合は、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)」を参照してください。
 
@@ -224,7 +224,7 @@ Apache Hive ジョブの一環として、.csv ファイルから **delays** と
 
 ## <a name="create-a-sql-database-table"></a>SQL データベース テーブルの作成
 
-この操作には、SQL データベースのサーバー名が必要になります。 サーバー名を確認するには、次の手順に従います。
+この操作には、SQL Database のサーバー名が必要になります。 サーバー名を確認するには、次の手順に従います。
 
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。
 
@@ -300,7 +300,7 @@ Apache Hive ジョブの一環として、.csv ファイルから **delays** と
 
 ## <a name="export-and-load-the-data"></a>データのエクスポートと読み込み
 
-これまでのセクションで、変換済みデータを `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` という場所にコピーしました。 このセクションでは、Sqoop を使用して、`abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` のデータを、Azure SQL データベースに作成したテーブルにエクスポートします。
+これまでのセクションで、変換済みデータを `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` という場所にコピーしました。 このセクションでは、Sqoop を使用して、`abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` のデータを、Azure SQL Database に作成したテーブルにエクスポートします。
 
 1. 次のコマンドを使用して、Sqoop が SQL データベースを認識できることを確認します。
 

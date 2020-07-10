@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 04/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3ccb9c7aff6eb59c4883bc3218e205fb7877e86e
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 08649a537ac8f9de5f444ca3e4fe5ed509910294
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618365"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045843"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>チュートリアル:Azure Time Series Insights プレビューの環境を設定する
 
@@ -96,7 +96,7 @@ ms.locfileid: "80618365"
     |**Enable warm store (\ウォーム ストアを有効にする\)**|**[はい]** を選択して、ウォーム ストアを有効にします。 後で戻ってこの設定を有効にすることができます。 |
     |**Data retention (in days) \(データ保有期間 (日数)\)**|既定のオプションである 7 日を選択します。 |
 
-    **Event Source\(次へ: イベント ソース\)** をクリックします。
+    **次へ:Event Source\(次へ: イベント ソース\)** をクリックします。
 
    [![新しい Time Series Insights の環境構成。](media/v2-update-provision/tsi-environment-configuration.png)](media/v2-update-provision/tsi-environment-configuration.png#lightbox)
 
@@ -204,7 +204,7 @@ Time Series Insights 環境をデプロイできたので、分析のために�
 
 ## <a name="define-and-apply-a-model"></a>モデルを定義して適用する
 
-このセクションでは、モデルを適用してデータを構造化します。 モデルを完成させるには、タイプ、階層、およびインスタンスを定義します。 データ モデリングの詳細については、[時系列モデル](./time-series-insights-update-tsm.md)に関するページを参照してください。
+このセクションでは、モデルを適用してデータを構造化します。 モデルを完成させるには、タイプ、階層、およびインスタンスを定義します。 データ モデリングの詳細については、[時系列モデル](./concepts-model-overview.md)に関するページを参照してください。
 
 1. エクスプローラーで、 **[Model]\(モデル\)** タブを選択します。
 
@@ -349,15 +349,15 @@ Time Series Insights 環境をデプロイできたので、分析のために�
 
 Azure Time Series Insights プレビュー環境を自分で作成する方法がわかったので、Azure Time Series Insights の主要な概念について詳しく学習してください。
 
-Azure Time Series Insights のストレージ構成について読む。
+Azure Time Series Insights のインジェストについて読む。
 
 > [!div class="nextstepaction"]
-> [Azure Time Series Insights プレビューのストレージとイングレス](./time-series-insights-update-storage-ingress.md)
+> [Azure Time Series Insights のデータ インジェストの概要](./concepts-ingestion-overview.md)
 
 時系列モデルの詳細を確認する。
 
 > [!div class="nextstepaction"]
-> [Azure Time Series Insights プレビューのデータ モデリング](./time-series-insights-update-tsm.md)
+> [Azure Time Series Insights プレビューのデータ モデリング](./concepts-model-overview.md)
 
 Power BI への環境の接続について詳細を確認する。
 

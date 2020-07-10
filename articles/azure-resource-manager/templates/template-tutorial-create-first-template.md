@@ -5,12 +5,12 @@ author: mumian
 ms.date: 06/10/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e2419e8ee9f8648ae8f929638ac2c85ea8b67a0f
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 1e286a3b59279ed9658a373210f1425ece05eff4
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84676150"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102089"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>チュートリアル:初めての ARM テンプレートを作成してデプロイする
 
@@ -28,7 +28,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="editor"></a>エディター
 
-テンプレートは JSON ファイルです。 テンプレートを作成するには、適切な JSON エディターが必要です。 Visual Studio Code と Resource Manager Tools 拡張機能をお勧めします。 これらのツールをインストールする必要がある場合は、[Visual Studio Code を使って ARM テンプレートを作成する方法](use-vs-code-to-create-template.md)に関するページを参照してください。
+テンプレートは JSON ファイルです。 テンプレートを作成するには、適切な JSON エディターが必要です。 Visual Studio Code と Resource Manager Tools 拡張機能をお勧めします。 これらのツールをインストールする必要がある場合は、「[クイックスタート: Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
 
 ### <a name="command-line-deployment"></a>コマンド ライン デプロイ
 

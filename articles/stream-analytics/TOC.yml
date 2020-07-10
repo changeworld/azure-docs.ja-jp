@@ -88,7 +88,7 @@
           href: stream-analytics-edge-csharp-udf-methods.md
         - name: Machine Learning UDF
           href: machine-learning-udf.md
-        - name: UDF と更新のデバッグ
+        - name: UDF のデバッグ
           href: debug-user-defined-functions.md
     - name: Stream Analytics のジョブを最適化する
       items:

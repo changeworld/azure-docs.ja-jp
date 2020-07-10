@@ -7,18 +7,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 1e3b94208c3ead6e7ed4e15dac7c32b50025064a
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: e0d2b235f671ca9b30bf61aef254cb850b25373e
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84733808"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024776"
 ---
 # <a name="tutorial-configure-virtual-networking-for-an-azure-active-directory-domain-services-managed-domain"></a>チュートリアル:Azure Active Directory Domain Services のマネージド ドメイン用の仮想ネットワークを構成する
 
-ユーザーとアプリケーションへの接続を提供するために、Azure Active Directory Domain Services (Azure AD DS) マネージド ドメインは Azure 仮想ネットワーク サブネットにデプロイされています。 この仮想ネットワーク サブネットは、Azure プラットフォームによって提供されるマネージド ドメイン リソースのみに使用する必要があります。 独自の VM とアプリケーションを作成した場合、それらを同じ仮想ネットワーク サブネットにデプロイしないでください。 代わりに、アプリケーションを作成したら、個別の仮想ネットワーク サブネットにデプロイするか、Azure AD DS 仮想ネットワークにピアリングされている個別の仮想ネットワークにデプロイする必要があります。
+ユーザーとアプリケーションへの接続を提供するために、Azure Active Directory Domain Services (Azure AD DS) マネージド ドメインは Azure 仮想ネットワーク サブネットにデプロイされています。 この仮想ネットワーク サブネットは、Azure プラットフォームによって提供されるマネージド ドメイン リソースのみに使用する必要があります。
+
+独自の VM とアプリケーションを作成した場合、それらを同じ仮想ネットワーク サブネットにデプロイしないでください。 代わりに、アプリケーションを作成したら、個別の仮想ネットワーク サブネットにデプロイするか、Azure AD DS 仮想ネットワークにピアリングされている個別の仮想ネットワークにデプロイする必要があります。
 
 このチュートリアルでは、専用の仮想ネットワーク サブネットを作成して構成する方法、または別のネットワークを Azure AD DS マネージド ドメインの仮想ネットワークにピアリングする方法について説明します。
 
@@ -39,7 +41,7 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
     * Azure サブスクリプションをお持ちでない場合は、[アカウントを作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。
 * ご利用のサブスクリプションに関連付けられた Azure Active Directory テナント (オンプレミス ディレクトリまたはクラウド専用ディレクトリと同期されていること)。
     * 必要に応じて、[Azure Active Directory テナントを作成][create-azure-ad-tenant]するか、[ご利用のアカウントに Azure サブスクリプションを関連付け][associate-azure-ad-tenant]ます。
-* Azure AD DS を有効にするには、Azure AD テナントに "*全体管理者*" 特権が必要です。
+* Azure AD DS を構成するには、Azure AD テナントでの "*全体管理者*" 特権が必要です。
 * 必要な Azure AD DS リソースを作成するためには、ご利用の Azure サブスクリプションに "*共同作成者*" 特権が必要です。
 * Azure AD テナントで有効化され、構成された Azure Active Directory Domain Services のマネージド ドメイン。
     * 必要であれば、1 つ目のチュートリアルで [Azure Active Directory Domain Services のマネージド ドメインを作成して構成][create-azure-ad-ds-instance]します。
@@ -54,16 +56,20 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
 
 このマネージド ドメインを使用する必要がある VM を作成して実行する際は、ネットワーク接続を提供する必要があります。 このネットワーク接続は、次のいずれかの方法で提供できます。
 
-* 既定のマネージド ドメインの仮想ネットワーク内に追加の仮想ネットワーク サブネットを作成します。 この追加のサブネットは、VM を作成して接続する場所です。
+* マネージド ドメインの仮想ネットワーク内に追加の仮想ネットワーク サブネットを作成します。 この追加のサブネットは、VM を作成して接続する場所です。
     * VM は同じ仮想ネットワークに属しているため、自動的に名前解決を実行し、Azure AD DS ドメイン コントローラーと通信することができます。
 * マネージド ドメインの仮想ネットワークから 1 つ以上の個別の仮想ネットワークへの Azure 仮想ネットワーク ピアリングを構成します。 これらの個別の仮想ネットワークでは、VM を作成して接続します。
     * 仮想ネットワーク ピアリングを構成するときに、Azure AD DS ドメイン コントローラーへの名前解決も使用するよう DNS 設定を構成する必要があります。
 
-通常、これらのネットワーク接続オプションのいずれかのみを使用します。 多くの場合、個別の Azure リソースをどのように管理するかに応じて選択します。 Azure AD DS と接続済みの VM を 1 つのリソース グループとして管理する場合は、VM 用に追加の仮想ネットワーク サブネットを作成できます。 Azure AD DS と接続済みの VM の管理を切り離す場合は、仮想ネットワーク ピアリングを使用できます。 また、既存の仮想ネットワークに接続されている、Azure 環境内の既存の VM への接続を提供するには、仮想ネットワーク ピアリングの使用を選ぶこともできます。
+通常、これらのネットワーク接続オプションのいずれかのみを使用します。 多くの場合、個別の Azure リソースをどのように管理するかに応じて選択します。
+
+* Azure AD DS と接続済みの VM を 1 つのリソース グループとして管理する場合は、VM 用に追加の仮想ネットワーク サブネットを作成できます。
+* Azure AD DS と接続済みの VM の管理を切り離す場合は、仮想ネットワーク ピアリングを使用できます。
+    * また、既存の仮想ネットワークに接続されている、Azure 環境内の既存の VM への接続を提供するには、仮想ネットワーク ピアリングの使用を選ぶこともできます。
 
 このチュートリアルで必要なのは、これらの仮想ネットワーク接続オプションのいずれかを構成することだけです。
 
-仮想ネットワークの計画および構成方法の詳細については、[Azure Active Directory Domain Services のネットワークに関する考慮事項][network-considerations]に関するページを参照してください。
+仮想ネットワークを計画および構成する方法の詳細については、[Azure Active Directory Domain Services のネットワークに関する考慮事項][network-considerations]の記事を参照してください。
 
 ## <a name="create-a-virtual-network-subnet"></a>仮想ネットワーク サブネットを作成する
 
@@ -95,7 +101,9 @@ VM およびアプリケーション ワークロード用に仮想ネットワ�
 
 VM 用の既存の Azure 仮想ネットワークがある場合や、マネージド ドメインの仮想ネットワークを分離しておきたい場合があります。 マネージド ドメインを使用するには、他の仮想ネットワーク内の VM では Azure AD DS ドメイン コントローラーと通信する手段が必要になります。 この接続は、Azure 仮想ネットワーク ピアリングを使用して提供できます。
 
-Azure 仮想ネットワーク ピアリングを使用すると、仮想プライベート ネットワーク (VPN) デバイスを必要とすることなく、2 つの仮想ネットワークが相互に接続されます。 ネットワーク ピアリングにより、すばやく仮想ネットワークを接続し、Azure 環境全体のトラフィック フローを定義できます。 ピアリングの詳細については、[Azure 仮想ネットワーク ピアリングの概要][peering-overview]に関するページを参照してください。
+Azure 仮想ネットワーク ピアリングを使用すると、仮想プライベート ネットワーク (VPN) デバイスを必要とすることなく、2 つの仮想ネットワークが相互に接続されます。 ネットワーク ピアリングにより、すばやく仮想ネットワークを接続し、Azure 環境全体のトラフィック フローを定義できます。
+
+ピアリングの詳細については、[Azure 仮想ネットワーク ピアリングの概要][peering-overview]に関するページを参照してください。
 
 仮想ネットワークをマネージド ドメインの仮想ネットワークにピアリングするには、次の手順を実行します。
 
@@ -159,3 +167,4 @@ Azure 仮想ネットワーク ピアリングを使用すると、仮想プラ�
 [create-azure-ad-ds-instance]: tutorial-create-instance.md
 [create-join-windows-vm]: join-windows-vm.md
 [peering-overview]: ../virtual-network/virtual-network-peering-overview.md
+[network-considerations]: network-considerations.md

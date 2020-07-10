@@ -116,6 +116,12 @@
           href: how-to-virtual-hub-routing.md
         - name: 仮想ハブの有効なルートを表示する方法
           href: effective-routes-virtual-hub.md
+        - name: 仮想ハブから NVA にトラフィックをルーティングする (レガシ)
+          items:
+            - name: Azure portal
+              href: virtual-wan-route-table-nva-portal.md
+            - name: Azure PowerShell
+              href: virtual-wan-route-table-nva.md
     - name: セキュリティ
       items:
         - name: Azure Firewall をハブにデプロイする

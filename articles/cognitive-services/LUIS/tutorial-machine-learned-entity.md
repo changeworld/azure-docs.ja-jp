@@ -3,12 +3,12 @@ title: 'チュートリアル: 機械学習エンティティを使用して構�
 description: 機械学習エンティティを使用して発話から構造化データを抽出します。 抽出精度を高めるには、特徴量を含むサブエンティティを追加します。
 ms.topic: tutorial
 ms.date: 05/08/2020
-ms.openlocfilehash: e16badfb2e024c5d82f1aed8a02aa901dca2c2a9
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: eb9761a3d3a98a3318fe0adc6fa170652639a9a1
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611018"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045605"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learning-entities-in-language-understanding-luis"></a>チュートリアル:Language Understanding (LUIS) で機械学習エンティティを使用して、ユーザーの発話から構造化データを抽出する
 
@@ -108,7 +108,7 @@ ms.locfileid: "85611018"
 
 1. 左側のメニューから **[エンティティ]** を選択して、 **[+ 作成]** を選択します。
 
-1. エンティティ名を `SizeListentity` として設定します。これにより、前のセクションで作成した `SizePhraselist` と比べて容易に識別することができます。
+1. エンティティ名を `SizeListentity` とし、型を **[リスト]** として設定します。これにより、前のセクションで作成した `SizePhraselist` と比べて容易に識別することができます。
 
 1. クライアント アプリケーションで想定されるサイズ (`Small`、`Medium`、`Large`、および `XLarge`) を追加してから、それぞれにシノニムを追加します。 シノニムは、ユーザーがチャット ボットに入力する用語とする必要があります。 エンティティは、正規化された値またはシノニムと正確に一致すると、リスト エンティティと共に抽出されます。
 

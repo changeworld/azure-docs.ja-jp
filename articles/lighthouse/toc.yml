@@ -41,7 +41,7 @@
       href: ./concepts/managed-applications.md
 - name: 操作方法ガイド
   items:
-    - name: Azure の委任されたリソース管理に顧客をオンボードする
+    - name: Azure Lighthouse への顧客のオンボード
       displayName: resource management
       href: ./how-to/onboard-customer.md
     - name: Azure Marketplace へのマネージド サービス オファーの公開

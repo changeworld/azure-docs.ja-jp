@@ -4,12 +4,12 @@ ms.service: azure-resource-manager
 ms.topic: include
 ms.date: 02/24/2020
 ms.author: tomfitz
-ms.openlocfilehash: c883383d3c870689bb95f808f6f60c5185c165c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33a63280f6973d2c5e29db29f7a6f3fc68c57c77
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334716"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84424745"
 ---
 | リソース | 制限 |
 | --- | --- |
@@ -22,7 +22,7 @@ ms.locfileid: "80334716"
 | タグ キーの長さ |512 |
 | タグ値の長さ |256 |
 
-<sup>1</sup> リソース グループあたり 800 のデプロイという上限に達した場合、不要になった履歴からデプロイを削除します。 デプロイ履歴からエントリを削除しても、デプロイ リソースには影響しません。 詳細については、「[デプロイ数が 800 を超えたときのエラーを解決する](../articles/azure-resource-manager/templates/deployment-quota-exceeded.md)」を参照してください。
+<sup>1</sup>2020 年 6 月から、この制限に近づくと、デプロイは履歴から自動的に削除されます。 デプロイ履歴からエントリを削除しても、デプロイ リソースには影響しません。 詳細については、「[デプロイ履歴からの自動削除](../articles/azure-resource-manager/templates/deployment-history-deletions.md)」を参照してください。
 
 #### <a name="template-limits"></a>テンプレートの制限
 
