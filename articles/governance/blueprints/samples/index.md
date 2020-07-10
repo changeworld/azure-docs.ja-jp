@@ -3,11 +3,12 @@ title: ブループリント サンプルの一覧
 description: Azure Blueprints を使用して環境、ポリシー、クラウド導入フレームワークの基礎をデプロイするためのコンプライアンスおよび標準サンプルのインデックス。
 ms.date: 07/01/2020
 ms.topic: sample
-ms.openlocfilehash: 7e45cbbbf7cf6c2e267156dbb0087a19d8288aa2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef85ef0615fa0817a574240e65b7670daeaff33b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85832323"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86181558"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints サンプル
 
@@ -15,7 +16,7 @@ ms.locfileid: "85832323"
 
 ## <a name="standards-based-blueprint-samples"></a>標準ベースのブループリント サンプル
 
-|  |  |
+| サンプル | 説明 |
 |---------|---------|
 | [Australian Government ISM PROTECTED](./ism-protected/control-mapping.md) | Australian Government ISM PROTECTED に準拠するための規定を提供します。 |
 | [Azure セキュリティ ベンチマーク](./azure-security-benchmark.md) | [Azure セキュリティ ベンチマーク](../../../security/benchmarks/overview.md)に準拠するための規定を提供します。 |
