@@ -50,24 +50,24 @@ Azure Monitor でのメトリックの使用は現在、プレビュー段階に
 
 | メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
-| ListenerConnections-Success  | 指定された期間に成功した Azure リレーに対するリスナーの接続数。 <br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-|ListenerConnections-ClientError |指定された期間にリスナー接続で発生したクライアント エラー数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-|ListenerConnections-ServerError |指定された期間にリスナー接続で発生したサーバー エラー数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-|SenderConnections-Success |指定された期間に成功した送信側の接続数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-|SenderConnections-ClientError |指定された期間に送信側の接続で発生したクライアント エラー数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-|SenderConnections-ServerError |指定された期間に送信側の接続で発生したサーバー エラー数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-|ListenerConnections-TotalRequests |指定された期間のリスナー接続数の合計。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-|SenderConnections-TotalRequests |指定された期間に送信側が行った接続要求数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-|ActiveConnections |アクティブな接続の数。 この値は、特定の時点の値です。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-|ActiveListeners |アクティブなリスナーの数。 この値は、特定の時点の値です。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-|ListenerDisconnects |指定された期間に切断されたリスナー数。<br/><br/> 単位: バイト <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-|SenderDisconnects |指定された期間に切断された送信側数。<br/><br/> 単位: バイト <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
+| ListenerConnections-Success  | 指定された期間に成功した Azure リレーに対するリスナーの接続数。 <br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|ListenerConnections-ClientError |指定された期間にリスナー接続で発生したクライアント エラー数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|ListenerConnections-ServerError |指定された期間にリスナー接続で発生したサーバー エラー数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|SenderConnections-Success |指定された期間に成功した送信側の接続数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|SenderConnections-ClientError |指定された期間に送信側の接続で発生したクライアント エラー数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|SenderConnections-ServerError |指定された期間に送信側の接続で発生したサーバー エラー数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|ListenerConnections-TotalRequests |指定された期間のリスナー接続数の合計。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|SenderConnections-TotalRequests |指定された期間に送信側が行った接続要求数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|ActiveConnections |アクティブな接続の数。 この値は、特定の時点の値です。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|ActiveListeners |アクティブなリスナーの数。 この値は、特定の時点の値です。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|ListenerDisconnects |指定された期間に切断されたリスナー数。<br/><br/> 単位:バイト <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|SenderDisconnects |指定された期間に切断された送信側数。<br/><br/> 単位:バイト <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
 
 ## <a name="memory-usage-metrics"></a>メモリ使用状況のメトリック
 
 | メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
-|BytesTransferred |指定された期間に転送されたバイト数。<br/><br/> 単位: バイト <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
+|BytesTransferred |指定された期間に転送されたバイト数。<br/><br/> 単位:バイト <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
 
 ## <a name="metrics-dimensions"></a>メトリックのディメンション
 
