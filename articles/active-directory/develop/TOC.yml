@@ -4,8 +4,6 @@
   items:
     - name: Microsoft ID プラットフォームとは
       href: v2-overview.md
-    - name: Microsoft ID プラットフォームの進化
-      href: about-microsoft-identity-platform.md
 - name: クイックスタート
   expanded: true
   items:
