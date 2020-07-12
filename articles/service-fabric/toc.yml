@@ -111,7 +111,7 @@
 - name: サンプル
   items:
     - name: コード サンプル
-      href: 'https://docs.microsoft.com/samples/browse/'
+      href: /samples/browse/
     - name: Azure PowerShell
       href: service-fabric-powershell-samples.md
     - name: Service Fabric CLI
@@ -491,7 +491,7 @@
             - name: ReliableDictionaryActorStateProvider の構成
               href: service-fabric-reliable-actors-reliabledictionarystateprovider-configuration.md
         - name: ASP.NET Core サービスの構築
-          href: service-fabric-add-a-web-frontend.md
+          href: ./service-fabric-reliable-services-communication-aspnetcore.md
         - name: Linux での Apache Tomcat サーバー コンテナーの構築
           href: service-fabric-get-started-tomcat.md
         - name: セキュリティを構成する
@@ -628,7 +628,7 @@
         - name: 継続的インテグレーションのセットアップ
           items:
             - name: Azure Pipelines を使用した継続的インテグレーションの設定
-              href: service-fabric-set-up-continuous-integration.md
+              href: ./service-fabric-tutorial-deploy-app-with-cicd-vsts.md
             - name: Jenkins を使用した Linux アプリケーションのデプロイ
               href: service-fabric-cicd-your-linux-applications-with-jenkins.md
     - name: リバース プロキシの設定と構成
@@ -897,7 +897,7 @@
     - name: 一般的な質問
       href: service-fabric-common-questions.md
     - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-service-fabric.html'
+      href: /answers/topics/azure-service-fabric.html
     - name: Azure Resource Manager デプロイのガードレール
       href: service-fabric-azure-resource-manager-guardrails.md
     - name: 価格
