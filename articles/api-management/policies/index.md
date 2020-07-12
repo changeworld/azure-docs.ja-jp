@@ -13,12 +13,12 @@ ms.topic: sample
 ms.date: 10/31/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: b8f97bb27b3eb45c731b20ad51e35fde9b6a394a
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 252e7b8d13cf53a98ea1f25b207740c0e623f92c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85126902"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242969"
 ---
 # <a name="api-management-policy-samples"></a>API Management ポリシーのサンプル
 
@@ -34,7 +34,7 @@ ms.locfileid: "85126902"
 | [外部承認者を使用して要求を承認する](./authorize-request-using-external-authorizer.md)                                                   | API のアクセスを保護するための外部承認者の使用方法を示します。                                                                                                                                                               |
 | [Google OAuth トークンを使用してアクセスを承認する](./use-google-as-oauth-token-provider.md)                                            | OAuth トークン プロバイダーに Google を使用して、エンドポイントへのアクセスを承認する方法を示します。                                                                                                                                    |
 | [Application Gateway を使用する際に IP アドレスをフィルター処理する](./filter-ip-addresses-when-using-appgw.md) | Application Gateway を介して API Management インスタンスにアクセスするときに、ポリシー内で IP フィルターを使用する方法を示します
-| [Shared Access Signature を生成して Azure ストレージへ要求を転送する](./generate-shared-access-signature.md)                  | 式を使用して [Shared Access Signature](../../storage/storage-dotnet-shared-access-signature-part-1.md) を生成し、rewrite-uri ポリシーを使用して Azure ストレージに要求を転送する方法を示します。 |
+| [Shared Access Signature を生成して Azure ストレージへ要求を転送する](./generate-shared-access-signature.md)                  | 式を使用して [Shared Access Signature](../../storage/common/storage-sas-overview.md) を生成し、rewrite-uri ポリシーを使用して Azure ストレージに要求を転送する方法を示します。 |
 | [AAD から OAuth2 アクセス トークンを取得してバックエンドに転送する](./use-oauth2-for-authorization.md)                             | ゲートウェイとバックエンドとの間の承認に OAuth2 を使用する例を示します。 AAD からアクセス トークンを取得してバックエンドに転送する方法を示します。                                                    |
 | [送信要求ポリシーを使用して SAP ゲートウェイから X-CSRF トークンを取得する](./get-x-csrf-token-from-sap-gateway.md)                           | 多くの API で使用される X-CSRF パターンを実装する方法を示します。 この例は SAP ゲートウェイに固有のものです。                                                                                                                           |
 | [本文のサイズに基づいて要求をルーティングする](./route-requests-based-on-size.md)                                            | 本文のサイズに基づいて要求をルーティングする方法を示します。                                                                                                                                                       |
