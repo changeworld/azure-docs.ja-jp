@@ -12,8 +12,6 @@
       href: tutorial-hybrid-portal.md
     - name: DNAT で受信トラフィックをフィルター処理する
       href: tutorial-firewall-dnat.md
-    - name: 診断ログの監視
-      href: tutorial-diagnostics.md
 - name: クイックスタート
   expanded: true
   items:
@@ -86,6 +84,8 @@
       href: protect-azure-kubernetes-service.md
     - name: DNS の設定
       href: dns-settings.md
+    - name: 診断ログの監視
+      href: firewall-diagnostics.md
 - name: リファレンス
   items:
     - name: Azure CLI

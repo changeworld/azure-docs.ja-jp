@@ -72,7 +72,7 @@
           href: pause-and-resume-compute-powershell.md
 - name: 概念
   items:
-    - name: Security
+    - name: セキュリティ
       items:
         - name: 概要
           href: sql-data-warehouse-overview-manage-security.md
@@ -258,7 +258,7 @@
           href: sql-data-warehouse-concept-resource-utilization-query-activity.md
         - name: データ保護
           href: backup-and-restore.md
-        - name: Recommendations
+        - name: 推奨事項
           href: sql-data-warehouse-concept-recommendations.md
         - name: トラブルシューティング
           href: sql-data-warehouse-troubleshoot.md
@@ -295,7 +295,7 @@
         - name: サンプル
           items:
             - name: New York Taxi
-              href: load-data-from-azure-blob-storage-using-polybase.md
+              href: load-data-from-azure-blob-storage-using-copy.md
             - name: Contoso
               href: sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
             - name: Wide World Importers
