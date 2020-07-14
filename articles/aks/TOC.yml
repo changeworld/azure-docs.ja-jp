@@ -257,6 +257,8 @@
           href: private-clusters.md
         - name: ディスクの BYOK
           href: azure-disk-customer-managed-keys.md
+        - name: ホストベースの暗号化の有効化
+          href: enable-host-encryption.md
     - name: 監視およびログ記録
       items:
         - name: コンテナーに対する Azure Monitor
@@ -282,9 +284,9 @@
         - name: Kubernetes ダッシュボードの使用
           href: kubernetes-dashboard.md
         - name: Windows Server コンテナー用の Dockerfile の作成
-          href: 'https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/manage-windows-dockerfile?context=/azure/aks/context/aks-context'
+          href: /virtualization/windowscontainers/manage-docker/manage-windows-dockerfile?context=/azure/aks/context/aks-context
         - name: Windows Server コンテナー用の Dockerfile の最適化
-          href: 'https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/optimize-windows-dockerfile?context=/azure/aks/context/aks-context'
+          href: /virtualization/windowscontainers/manage-docker/optimize-windows-dockerfile?context=/azure/aks/context/aks-context
     - name: アプリケーションの開発と実行
       items:
         - name: Visual Studio Code を使用して Local Process with Kubernetes を利用する (プレビュー)

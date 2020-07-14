@@ -477,6 +477,8 @@
                   items:
                     - name: VM から
                       href: ../image-version-vm-cli.md
+                    - name: VHD またはスナップショットから
+                      href: ../image-version-snapshot-cli.md
                     - name: マネージド イメージから移行する
                       href: ../image-version-managed-image-cli.md
                     - name: 別のギャラリーからコピーする
@@ -499,6 +501,8 @@
                   items:
                     - name: VM から
                       href: ../image-version-vm-powershell.md
+                    - name: VHD またはスナップショットから
+                      href: ../image-version-snapshot-powershell.md
                     - name: マネージド イメージから移行する
                       href: ../image-version-managed-image-powershell.md
                     - name: 別のギャラリーからコピーする
@@ -547,6 +551,8 @@
               href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
         - name: イメージを検索および使用する
           href: cli-ps-findimage.md
+        - name: 購入プラン情報
+          href: ../marketplace-images.md
         - name: VM をマネージド イメージにキャプチャする
           href: capture-image.md
         - name: Packer でイメージを作成する
@@ -945,6 +951,16 @@
           href: disks-incremental-snapshots-portal.md
         - name: 非管理対象ディスクのバックアップ
           href: incremental-snapshots.md
+        - name: 暗号化
+          items:
+            - name: ホスト時の暗号化を有効にする - CLI
+              href: disks-enable-host-based-encryption-cli.md
+            - name: カスタマー マネージド キーを有効にする - CLI
+              href: disks-enable-customer-managed-keys-cli.md
+            - name: カスタマー マネージド キーを有効にする - ポータル
+              href: disks-enable-customer-managed-keys-portal.md
+            - name: 保存時の二重暗号化を有効にする
+              href: disks-enable-double-encryption-at-rest-cli.md
         - name: 移行と変換
           items:
             - name: Azure Site Recovery を使用した Premium Storage への移行

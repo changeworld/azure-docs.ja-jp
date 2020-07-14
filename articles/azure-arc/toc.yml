@@ -56,3 +56,7 @@
               href: ./servers/manage-vm-extensions.md
             - name: エージェントの管理
               href: ./servers/manage-agent.md
+        - name: トラブルシューティング
+          items:
+            - name: エージェントの接続に関する問題
+              href: ./servers/troubleshoot-agent-onboard.md

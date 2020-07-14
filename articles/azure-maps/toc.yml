@@ -232,6 +232,24 @@
           href: how-to-add-tile-layer-android-map.md
         - name: トラフィック データを表示する
           href: how-to-show-traffic-android.md
+    - name: Power BI で Azure Maps を使用する
+      items:
+        - name: 作業の開始
+          href: power-bi-visual-getting-started.md
+        - name: レイヤーの理解
+          href: power-bi-visual-understanding-layers.md
+        - name: バブル レイヤーを追加する
+          href: power-bi-visual-add-bubble-layer.md
+        - name: 横棒グラフ レイヤーを追加する
+          href: power-bi-visual-add-bar-chart-layer.md
+        - name: 参照レイヤーを追加する
+          href: power-bi-visual-add-reference-layer.md
+        - name: タイル レイヤーを追加する
+          href: power-bi-visual-add-tile-layer.md
+        - name: リアルタイム トラフィックを表示する
+          href: power-bi-visual-show-real-time-traffic.md
+        - name: アクセスを管理する
+          href: power-bi-visual-manage-access.md
     - name: データのフィードバックを提供する
       href: how-to-use-feedback-tool.md
 - name: リファレンス

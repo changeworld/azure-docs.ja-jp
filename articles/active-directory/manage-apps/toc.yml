@@ -5,6 +5,8 @@
   items:
     - name: アプリケーション管理とは
       href: what-is-application-management.md
+    - name: シングル サインオン (SSO) とは
+      href: what-is-single-sign-on.md
 - name: クイックスタート
   items:
     - name: アプリを表示する
@@ -19,6 +21,8 @@
       href: delete-application-portal.md
 - name: チュートリアル
   items:
+    - name: ギャラリーに記載されていないアプリの追加
+      href: add-non-gallery-app.md
     - name: 統合されたギャラリー アプリ (ServiceNow、Salesforce、Dropbox など)
       href: /azure/active-directory/saas-apps/
     - name: アプリケーション プロキシを使用してオンプレミス アプリを追加する
@@ -46,8 +50,6 @@
               href: developer-guidance-for-integrating-applications.md
         - name: シングル サインオン
           items:
-            - name: シングル サインオンとは
-              href: what-is-single-sign-on.md
             - name: マルチテナント アプリケーションの SSO を有効にする
               href: isv-sso-content.md
             - name: マルチテナント アプリケーション用に Azure テナントを作成する
@@ -103,10 +105,6 @@
   items:
     - name: クラウド アプリとシングル サインオン
       items:
-        - name: クラウド アプリの追加
-          items:
-            - name: ギャラリー以外のアプリの追加
-              href: add-non-gallery-app.md
         - name: Configure single sign-on
           items:
             - name: SAML ベースのシングル サインオンの構成
@@ -143,6 +141,8 @@
               href: configure-admin-consent-workflow.md
             - name: ユーザーまたはグループをアプリに割り当てる
               href: assign-user-or-group-access-portal.md
+            - name: アプリに付与されるアクセス許可の確認
+              href: manage-application-permissions.md
             - name: マイ アプリでのコレクションの作成
               href: access-panel-collections.md
             - name: セルフサービス アプリ アクセスの使用
