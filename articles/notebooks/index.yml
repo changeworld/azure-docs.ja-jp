@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure Notebooks プレビューのドキュメント
-summary: Azure Notebooks プレビューは、インストールせずにクラウド上で Jupyter ノートブックを作成、実行するための無料でホストされているサービスです。 Jupyter (旧称 IPython) はオープン ソース プロジェクトで、マークダウン テキスト、実行可能コード (Python、R、F#)、永続的なデータ、グラフィックス、視覚化を組み合わせて、ノートブックと呼ばれる 1 つの共有可能なキャンバスに簡単にまとめることができます。
+summary: Azure Notebooks のパブリック プレビュー サイトは 2020 年 10 月 9 日に廃止され、Visual Studio、Azure、GitHub の統合サービスで置き換えられます。 お客様のオプションと Microsoft のその他のノートブック エクスペリエンスについて、https://notebooks.azure.com/Content/alternatives.html をご覧ください。
 metadata:
   title: Azure Notebooks プレビューのドキュメント
   description: ホストされている Azure Notebooks プレビュー サービスを使用して Jupyter ノートブックを作成、実行、共有する方法について説明します。
@@ -9,12 +9,12 @@ metadata:
   author: JoshuaPartlow
   ms.author: joshuapa
   ms.date: 06/17/2020
-  ms.openlocfilehash: 96fd38e081105b6fc43cc2fc00d52bcf17b20074
-  ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
-  ms.translationtype: 
+  ms.openlocfilehash: 0065b8b609ca9ef29365127333ad1a39f3327c1b
+  ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+  ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/01/2020
-  ms.locfileid: "85799413"
+  ms.lasthandoff: 07/09/2020
+  ms.locfileid: "86181422"
 landingContent:
 - title: Azure Notebooks について
   linkLists:

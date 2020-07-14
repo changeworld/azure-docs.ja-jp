@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: 061907783d21372f0e926e529730e9e82b7a4ddb
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: 632071c2a9597fc11ab4ffc0971493ef5b52d807
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488768"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083561"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure Cognitive Search インデックスを作成する
 > [!div class="op_single_selector"]
@@ -150,7 +150,7 @@ ms.locfileid: "84488768"
 
    ![[Search エクスプローラー] コマンド](media/search-get-started-portal/search-explorer-cmd.png)
 
-2. **[インデックス]** ドロップダウンで *hotels-sample-index* を選択します。 **[API バージョン]** ドロップダウンをクリックして、REST API が使用可能であることを確認します。 以下のクエリでは、一般公開バージョン (2019-05-06) を使います。
+2. **[インデックス]** ドロップダウンで *hotels-sample-index* を選択します。 **[API バージョン]** ドロップダウンをクリックして、REST API が使用可能であることを確認します。 以下のクエリでは、一般公開バージョン (2020-06-30) を使用します。
 
    ![インデックスと API のコマンド](media/search-get-started-portal/search-explorer-changeindex.png)
 
@@ -275,4 +275,9 @@ Azure portal の **Search エクスプローラー**を使って、フィルタ�
 ポータルのウィザードを使用して、ブラウザーで動作するすぐに使用できる Web アプリを生成します。 このウィザードを、先ほど作成した小さなインデックスで試すか、またはいずれかのビルトイン サンプル データ セットを使用して充実した検索環境を実現することができます。
 
 > [!div class="nextstepaction"]
-> [ポータルで検索アプリを作成する](search-create-app-portal.md)
+> [ポータルでデモ アプリを作成する](search-create-app-portal.md)
+
+クラウドの支出を最適化して節約することをご希望ですか?
+
+> [!div class="nextstepaction"]
+> [Cost Management を使用してコスト分析を開始する](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

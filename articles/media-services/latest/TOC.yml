@@ -159,6 +159,8 @@
           href: streaming-policy-concept.md
         - name: コンテンツ キー ポリシー
           href: content-key-policy-concept.md
+        - name: Azure AD によるコンテンツの保護
+          href: azure-ad-content-protection.md
     - name: 監視
       items:
         - name: Event Grid を使用したイベント

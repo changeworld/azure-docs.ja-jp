@@ -443,6 +443,9 @@
     - name: リソース クォータを管理する
       displayName: limits
       href: how-to-manage-quotas.md
+    - name: リソースの管理 (VS Code)
+      displayName: 'vscode,resources'
+      href: how-to-manage-resources-vscode.md
     - name: データをエクスポートおよび削除する
       displayName: GDPR
       href: how-to-export-delete-data.md
@@ -495,3 +498,6 @@
     - name: デザイナーのユーザー補助機能
       displayName: 'accessibility, designer, visual interface, screen reader, keyboard shortcuts'
       href: designer-accessibility.md
+    - name: キュレーションされた環境
+      displayName: 'environments, curated environments'
+      href: resource-curated-environments.md

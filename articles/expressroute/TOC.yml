@@ -40,6 +40,8 @@
       items:
         - name: 回線とピアリングについて
           href: expressroute-circuit-peerings.md
+        - name: 回線帯域幅のアップグレードについて
+          href: about-upgrade-circuit-bandwidth.md
         - name: クラシックから Resource Manager への回線の移行
           href: expressroute-move.md
     - name: ExpressRoute 経由での BFD
@@ -54,7 +56,7 @@
       href: expressroute-global-reach.md
     - name: ExpressRoute の暗号化について
       href: expressroute-about-encryption.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md

@@ -2,18 +2,16 @@
 title: Marketplace Rewards - 商用マーケットプレースのベネフィット | Azure
 description: Marketplace Rewards は、成長の各段階でお客様をサポートするように設計されています。
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security, Partner Center
-author: MaggiePucciEvans
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 01/18/2019
-ms.author: evansma
-ms.openlocfilehash: 3d250ce3960bdc7687babb08ee6a6c52bb2cd15d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e393b6a499ad2b84f25ca1a1c062ca4ef2eec21c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195766"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120740"
 ---
 # <a name="marketplace-rewards"></a>Marketplace 報酬
 
@@ -21,7 +19,7 @@ Marketplace 報酬は、認識アクティビティから始めて最初の顧�
 
 プログラムでは正のフィードバック ループが作成されます。成長の各段階でのベネフィットは、次の段階に進むように設計されており、パートナーは、Microsoft の現場と協力し、商用マーケットプレースをラットフォームとして利用することで Microsoft のチャネルを通して、Microsoft の顧客に対するビジネスを拡大できます。 
 
-ベネフィットは、オファーが[リスト、試用版、トランザクション](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type#choose-a-publishing-option)のいずれであるかによって異なります。
+ベネフィットは、オファーが[リスト、試用版、トランザクション](../determine-your-listing-type.md#choose-a-publishing-option)のいずれであるかによって異なります。
 
 パートナーがオファーを発行すると、資格に基づいて、報酬チームのメンバーから連絡があります。 
 

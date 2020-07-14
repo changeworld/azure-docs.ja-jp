@@ -1,16 +1,16 @@
 ---
 title: Azure 管理の概要 - Azure のガバナンス
 description: Azure 管理ツールに関するコンテンツへのリンクを含む、Azure のアプリケーションおよびリソースの管理の領域の概要です。
-ms.date: 05/22/2020
+ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: e293ab743b7c3b49a13cab97200c136a9bd044f5
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 81d655db706a7330fc541724d490a4885cc2fe8b
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828149"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86041916"
 ---
-# <a name="overview-of-management-services-in-azure"></a>Azure の管理サービスの概要
+# <a name="what-are-the-azure-management-areas"></a>Azure 管理の領域とは
 
 Azure のガバナンスには、その一部として監視が含まれています。 この記事では、Azure にリソースをデプロイして保守する際のさまざまな管理の領域について説明します。
 
@@ -26,7 +26,7 @@ Azure のガバナンスには、その一部として監視が含まれてい�
 
 ## <a name="monitor"></a>モニター
 
-監視とは、リソースのパフォーマンス、正常性、および可用性を監査するために、データを収集して分析することです。 効果的な監視戦略によって、コンポーネントの運用を理解すると共に、通知を利用して稼働時間を向上させることができます。 [Azure アプリケーションとリソースの監視](../monitoring/monitoring-overview.md)に使用されるさまざまなサービスを紹介した監視の概要を確認してください。
+監視とは、リソースのパフォーマンス、正常性、および可用性を監査するために、データを収集して分析することです。 効果的な監視戦略によって、コンポーネントの運用を理解すると共に、通知を利用して稼働時間を向上させることができます。 [Azure アプリケーションとリソースの監視](../azure-monitor/overview.md)に使用されるさまざまなサービスを紹介した監視の概要を確認してください。
 
 ## <a name="configure"></a>構成
 
@@ -46,9 +46,16 @@ Azure におけるガバナンスは、主に 2 つのサービスで実装さ�
 
 ## <a name="protect"></a>保護
 
-保護とは、ユーザーが制御できない障害が発生した場合にも、お使いのアプリケーションとデータを継続的に使用可能にすることです。 Azure における保護は、2 つのサービスによって実現されます。 [Azure Backup](../backup/backup-introduction-to-azure-backup.md) は、クラウドまたはオンプレミスで、データのバックアップと回復を実現します。 [Azure Site Recovery](../site-recovery/site-recovery-overview.md) は、障害時のビジネス継続性と迅速な回復を実現します。
+保護とは、ユーザーが制御できない障害が発生した場合にも、お使いのアプリケーションとデータを継続的に使用可能にすることです。 Azure における保護は、2 つのサービスによって実現されます。 [Azure Backup](../backup/backup-overview.md) は、クラウドまたはオンプレミスで、データのバックアップと回復を実現します。 [Azure Site Recovery](../site-recovery/site-recovery-overview.md) は、障害時のビジネス継続性と迅速な回復を実現します。
 
 ## <a name="migrate"></a>移行
 
 移行とは、現在オンプレミスで実行されているワークロードを Azure クラウドに切り替えることを指します。
-[Azure Migrate](../migrate/migrate-overview.md) は、オンプレミスの仮想マシンを Azure に移行する場合の適合性を評価できるサービスです。 Azure Site Recovery は、[オンプレミス](../site-recovery/migrate-tutorial-on-premises-azure.md)または[アマゾン ウェブ サービス](../site-recovery/migrate-tutorial-aws-azure.md)から仮想マシンを移行します。 [Azure Database Migration](../dms/dms-overview.md) は、データベース ソースを Azure データ プラットフォームに移行する際に便利です。
+[Azure Migrate](../migrate/migrate-services-overview.md) は、オンプレミスの仮想マシンを Azure に移行する場合の適合性を評価できるサービスです。 Azure Site Recovery は、[オンプレミス](../site-recovery/migrate-tutorial-on-premises-azure.md)または[アマゾン ウェブ サービス](../site-recovery/migrate-tutorial-aws-azure.md)から仮想マシンを移行します。 [Azure Database Migration](../dms/dms-overview.md) は、データベース ソースを Azure データ プラットフォームに移行する際に便利です。
+
+## <a name="next-steps"></a>次の手順
+
+Azure のガバナンスの詳細については、次の記事を参照してください。
+
+- [Azure のガバナンスのハブ](./index.yml)に関するページを参照してください。
+- 「[Azure 向けの Microsoft クラウド導入フレームワークのガバナンス](/azure/cloud-adoption-framework/govern/)」を参照してください。

@@ -1,5 +1,5 @@
 ---
-title: アプリケーションへのシングル サインオン - Azure Active Directory | Microsoft Docs
+title: Azure シングル サインオン (SSO) とは
 description: Azure Active Directory (Azure AD) でアプリケーションを構成するときに、シングル サインオンの方法を選択する方法について説明します。 ユーザーがすべてのアプリケーションのパスワードを覚えておく必要がないようにシングル サインオンを使用し、アカウント管理の管理を簡素化します。
 services: active-directory
 author: kenwith
@@ -12,14 +12,14 @@ ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd8b20d7d285f30eb0aa9ba5ac22739b57856d6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a50f2cf6fc00189c8cc764a132b550153b80b52e
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85479710"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144596"
 ---
-# <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Azure Active Directory でのアプリケーションへのシングル サインオン
+# <a name="what-is-single-sign-on-sso"></a>シングル サインオン (SSO) とは
 
 シングル サインオン (SSO) によって、ユーザーが Azure Active Directory (Azure AD) 内のアプリケーションにサインオンするときのセキュリティと利便性が向上します。 この記事では、シングル サインオンの方法について説明します。アプリケーションを構成するときに最適な SSO 方法を選択するために役立ちます。
 
@@ -99,8 +99,8 @@ SAML プロトコルの詳細については、「[シングル サインオン�
 - Microsoft Edge - Windows 10 Anniversary Edition 以降
 - iOS と Android 用 Microsoft Edge
 - Intune Managed Browser
-- Chrome - Windows 7 以降、MacOS X 以降
-- Firefox 26.0 以降 - Windows XP SP2 以降、Mac os X 10.6 以降
+- Chrome - Windows 7 以降および Mac OS X 以降
+- Firefox 26.0 以降 - Windows XP SP2 以降および Mac OS X 10.6 以降
 
 パスワードベースのシングル サインオン用にクラウド アプリケーションを構成するには、「[パスワードベースのシングル サインオンの構成](configure-password-single-sign-on-non-gallery-applications.md)」を参照してください。
 

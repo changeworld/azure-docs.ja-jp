@@ -106,6 +106,8 @@
           href: how-to-connect-install-express.md
         - name: Azure AD Connect フェデレーションやカスタム設定などのインストール
           href: how-to-connect-install-custom.md
+        - name: 構成設定のインポートおよびエクスポート
+          href: how-to-connect-import-export-config.md
         - name: パススルー認証 (PTA) を使用した Azure AD Connect のインストール
           href: how-to-connect-pta-quick-start.md
         - name: Azure AD Connect Health のインストール

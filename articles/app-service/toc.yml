@@ -74,9 +74,9 @@
       href: operating-system-functionality.md
     - name: デプロイのベスト プラクティス
       href: deploy-best-practices.md
-    - name: Security
+    - name: セキュリティ
       items:
-        - name: Recommendations
+        - name: 推奨事項
           href: security-recommendations.md
         - name: 認証と権限承認
           href: overview-authentication-authorization.md
@@ -176,6 +176,8 @@
               href: configure-authentication-provider-microsoft.md
             - name: Twitter による認証
               href: configure-authentication-provider-twitter.md
+            - name: OpenID Connect プロバイダーを使用した認証 (プレビュー)
+              href: configure-authentication-provider-openid-connect.md
         - name: 高度な認証
           href: app-service-authentication-how-to.md
         - name: アクセスを制限する

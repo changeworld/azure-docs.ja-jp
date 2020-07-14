@@ -1,18 +1,16 @@
 ---
 title: Microsoft 商業マーケットプレース用に新しい SaaS プランを作成する
 description: Microsoft パートナー センターの Microsoft 商業マーケットプレース プログラムを使用して、Microsoft AppSource、Azure Marketplace、またはクラウド ソリューション プロバイダー (CSP) プログラムでリスト登録または販売を行うために新しいサービスとしてのソフトウェア (SaaS) プランを作成する方法。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/01/2020
-ms.openlocfilehash: 3c922675619fc877d9d97a43b69a15f5ca4f393e
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 06/17/2020
+ms.openlocfilehash: a233f3594ace74a6bfeca90ffccfbcb233e5d890
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849112"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121889"
 ---
 # <a name="create-a-new-saas-offer-in-the-commercial-marketplace"></a>コマーシャル マーケットプレースで新しい SaaS オファーを作成する
 
@@ -76,15 +74,15 @@ Microsoft を通じた販売では、顧客による発見率と購入率が高�
 パートナー センターの商業マーケットプレースを使用してサービスとしてのソフトウェア (SaaS) オファーをリスト登録するには、次の基準を満たす必要があります。
 
 - オファーで ID の管理と認証に [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) が使用されている必要があります。
-- Azure Marketplace と統合するために [SaaS Fulfillment API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2) シリーズがオファーで使用されている必要があります。
+- Azure Marketplace と統合するために [SaaS Fulfillment API](pc-saas-fulfillment-api-v2.md) シリーズがオファーで使用されている必要があります。
 
 #### <a name="saas-pricing-and-billing-options"></a>SaaS の価格と課金のオプション
 
-SaaS ソリューションが公開元の Azure サブスクリプションで実行されている場合、お客様が支払うライセンス料金には、ソフトウェアがデプロイされるインフラストラクチャのコストが含まれます。 Azure インフラストラクチャの使用量は、お客様 (パートナー) が直接管理し、お客様に直接課金されます。 実際のインフラストラクチャの使用料金は、顧客には提示されません。 公開元は、Azure インフラストラクチャの使用料をソフトウェア ライセンス料金にバンドルする必要があります。 
+SaaS ソリューションが公開元の Azure サブスクリプションで実行されている場合、お客様が支払うライセンス料金には、ソフトウェアがデプロイされるインフラストラクチャのコストが含まれます。 Azure インフラストラクチャの使用量は、お客様 (パートナー) が直接管理し、お客様に直接課金されます。 実際のインフラストラクチャの使用料金は、顧客には提示されません。 公開元は、Azure インフラストラクチャの使用料をソフトウェア ライセンス料金にバンドルする必要があります。
 
 SaaS オファーでは、定額料金、ユーザー単位、または従量制課金サービスを使用する従量課金に基づいた月次または年次請求がサポートされます。 Microsoft の商用マーケットプレースは代理店モデルで運営されます。そのため、公開元で価格が設定され、Microsoft からお客様に請求され、公開元に収益が支払われると同時に、代理店手数料が減額されます。
 
-これは、代理店モデルについて説明するための、コストと支払いの内訳例です。
+代理店モデルについて説明するための、コストと支払いの内訳例を次に示します (表示されている価格は例示のみを目的としており、実際のコストを反映することを意図していません)。
 
 |**ライセンス コスト**|**1 か月あたり $100**|
 |:---|:---|
@@ -96,10 +94,9 @@ SaaS オファーでは、定額料金、ユーザー単位、または従量制
 |Microsoft は、ライセンス コストの 80% をパブリッシャーに支払います <br>**対象となる SaaS アプリの場合、Microsoft がライセンス コストの 90% を支払います*|1 か月あたり $80.00 <br>*$* 1 か月あたり $90.00*|
 
 - この例では、Microsoft はソフトウェア ライセンスについてお客様に $100.00 を請求し、公開元に $80.00 を支払います。
-- **Marketplace サービス手数料の減額**の対象となっているパートナーには、2019 年 5 月から 2020 年 6 月まで、SaaS オファーに対するトランザクション料金の減額が表示されます。 このシナリオでは、Microsoft はソフトウェア ライセンスに $100.00 を課金し、公開元に $90.00 を支払います。
 
 > [!NOTE]
-> **Marketplace サービス料金の減額** – Microsoft のコマーシャル マーケットプレースでお客様が公開する特定の SaaS オファーについて、Microsoft は、Marketplace サービス料金を 20% (Microsoft 公開元契約の説明に従う) から 10% に減額します。 お客様のオファーが対象となるには、少なくとも 1 つのオファーが、IP 共同販売準備完了または IP 共同販売優先のどちらかとして、Microsoft によって指定されている必要があります。 この Marketplace サービス料金の減額をある月に受け取るには、各カレンダー月の月末までに少なくとも 5 営業日、適格性を満たす必要があります。  Marketplace サービス料金の減額は、VM、マネージド アプリ、または Microsoft の商業マーケットプレースを通じて公開された他の製品には適用されません。 Marketplace サービス料金の減額は、2019 年 5 月 1 日から 2020 年 6 月 30日までに Microsoft によって収集されるライセンス料金について、対象となるオファーでのみ利用できます。 その後は、Marketplace サービス料金は通常の金額に戻ります。
+> **Marketplace サービス料金の減額** – コマーシャル マーケットプレースでお客様が公開する特定の SaaS オファーについて、Microsoft では、Marketplace サービス料金が 20% (Microsoft 公開元契約の説明に従う) から 10% に減額されます。 お客様のオファーが対象となるには、Microsoft によって、オファーが IP 共同販売準備完了または IP 共同販売優先のどちらかとして指定されている必要があります。 ある月に Marketplace サービス料金の減額を受け取るには、各カレンダー月の月末から少なくとも 5 営業日前に資格を満たす必要があります。 Marketplace サービス料金の減額は、VM、マネージド アプリ、またはコマーシャル マーケットプレースを通じて公開された他の製品には適用されません。
 
 ### <a name="list-through-microsoft"></a>Microsoft を通じたリスト登録
 
@@ -109,11 +106,11 @@ SaaS オファーでは、定額料金、ユーザー単位、または従量制
 
 #### <a name="get-it-now-free"></a>Get it now (今すぐ入手する) (無料)
 
-有効なアドレス (*http* または *https* で始まる) を提供して、顧客に無料のオファーを一覧で示します。顧客は、そのアドレスから、[Azure Active Directory (Azure AD) を使用したワンクリック認証](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials)で試用版を入手することができます。 たとえば、「 `https://contoso.com/saas-app` 」のように入力します。
+有効なアドレス (*http* または *https* で始まる) を提供して、顧客に無料のオファーを一覧で示します。顧客は、そのアドレスから、[Azure Active Directory (Azure AD) を使用したワンクリック認証](../marketplace-saas-applications-technical-publishing-guide.md#using-azure-active-directory-to-enable-trials)) で試用版を入手することができます。 たとえば、「 `https://contoso.com/saas-app` 」のように入力します。
 
 #### <a name="free-trial-listing"></a>Free trial (無料試用版) (一覧)
 
-有効なアドレス (*http* または *https* で始まる) を提供して、無料試用版へのリンクとして顧客にオファーを一覧で示します。顧客は、そのアドレスから、[Azure Active Directory (Azure AD) を使用したワンクリック認証](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials)で試用版を入手することができます。 たとえば、「 `https://contoso.com/trial/saas-app` 」のように入力します。 オファー登録情報の無料試用版がご利用のサービスによって作成、管理、および構成され、Microsoft によって管理されるサブスクリプションはありません。
+有効なアドレス (*http* または *https* で始まる) を提供して、無料試用版へのリンクとして顧客にオファーを一覧で示します。顧客は、そのアドレスから、[Azure Active Directory (Azure AD) を使用したワンクリック認証](../marketplace-saas-applications-technical-publishing-guide.md#using-azure-active-directory-to-enable-trials)) で試用版を入手することができます。 たとえば、「 `https://contoso.com/trial/saas-app` 」のように入力します。 オファー登録情報の無料試用版がご利用のサービスによって作成、管理、および構成され、Microsoft によって管理されるサブスクリプションはありません。
 
 > [!NOTE]
 > 試用版リンクからアプリケーションが受信するトークンは、そのアプリのアカウント作成を自動化するためのユーザー情報を Azure AD を介して取得するためだけに使用できます。 このトークンを使用した認証には、Microsoft アカウント (MSA) はサポートされません。
@@ -124,19 +121,48 @@ SaaS オファーでは、定額料金、ユーザー単位、または従量制
 
 #### <a name="example-marketplace-offer-listing"></a>マーケットプレース オファーの一覧表示の例
 
-![マーケットプレース オファーの一覧表示の例 (説明付き)](./media/marketplace-offer.svg)
+<!-- ![Example marketplace offer listing with notes](./media/marketplace-offer.svg) -->
+
+Microsoft AppSource でのオファー情報の表示例を次に示します。
+
+:::image type="content" source="media/example-appsource-saas.png" alt-text="Microsoft AppSource でこのオファーがどのように表示されるかを示しています。":::
+
+#### <a name="call-out-descriptions"></a>コールアウトの説明
+
+1. 大型のロゴ
+2. Categories
+3. 業界
+4. サポートのアドレス (リンク)
+5. 使用条件
+6. プライバシー ポリシー
+7. プラン名
+8. まとめ
+9. 説明
+10. スクリーンショット/ビデオ
+11. Documents
+
+<br>Azure portal でのオファー情報の表示例を次に示します。
+
+:::image type="content" source="media/example-virtual-machine-container-iot-edge-saas.png" alt-text="Azure portal でこのオファーがどのように表示されるかを示しています。":::
+
+#### <a name="call-out-descriptions"></a>コールアウトの説明
+
+1. タイトル
+2. 説明
+3. 便利なリンク
+4. Screenshots (スクリーンショット)
 
 ## <a name="enable-a-test-drive"></a>体験版を有効にする
 
-体験版は、購入前に試用するオプションを提供することで潜在顧客へのオファーを披露し、その結果、コンバージョンが増加し、見込みの高いリードが生成される優れた方法です。 [体験版の詳細を確認してください](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)。
+体験版は、購入前に試用するオプションを提供することで潜在顧客へのオファーを披露し、その結果、コンバージョンが増加し、見込みの高いリードが生成される優れた方法です。 [体験版の詳細を確認してください](../what-is-test-drive.md)。
 
 一定期間、体験版を有効にするには、 **[体験版を有効にする]** チェック ボックスをオンにします。 オファーから体験版を削除するには、このチェック ボックスをオフにします。
 
-詳細については、[コマーシャル マーケットプレースでのオファーの体験版](https://docs.microsoft.com/azure/marketplace/partner-center-portal/test-drive)に関するページを参照してください。
+詳細については、[コマーシャル マーケットプレースでのオファーの体験版](test-drive.md)に関するページを参照してください。
 
 ### <a name="test-drive-resources"></a>体験版リソース
 
-- [マーケティングのベスト プラクティス](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
+- [体験版とは](../what-is-test-drive.md)
 - [技術的なベスト プラクティス](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [概要](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) (PDF、ポップアップ ブロックがオフになっていることを確認してください)
 
@@ -145,8 +171,8 @@ SaaS オファーでは、定額料金、ユーザー単位、または従量制
 [!INCLUDE [Connect lead management](./includes/connect-lead-management-a.md)]
 
 #### <a name="additional-lead-management-resources"></a>リード管理に関するその他のリソース
-- [リード管理に関する FAQ](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [一般的なリード構成エラー](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
+- [リード管理に関する FAQ](../lead-management-for-cloud-marketplace.md#frequently-asked-questions))
+- [一般的なリード構成エラー](../lead-management-for-cloud-marketplace.md#publishing-config-errors))
 - [1 ページにまとめたリード管理の概要](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)
 
 続行する前に、 **[下書きの保存]** を選択します。
@@ -157,11 +183,18 @@ SaaS オファーでは、定額料金、ユーザー単位、または従量制
 
 ### <a name="category"></a>カテゴリ
 
-オファーを適切なマーケットプレース検索領域にグループ化するには、少なくとも 1 つ、最大 3 つのカテゴリを選択します。 オファーがこれらのカテゴリにどのように対応しているかを、オファーの説明に記載します。
+お客様のオファーは、オファーに関連付けられたトランザクション機能とお客様のカテゴリ選択に応じて、AppSource または Azure Marketplace に公開されます。 詳細については、「[Microsoft AppSource と Azure Marketplace の比較](../comparing-appsource-azure-marketplace.md)」をご覧ください。 お客様のオファーと対象ユーザーに最適なカテゴリとサブカテゴリを選択します。 選択:
+
+- 少なくとも 1 つ、最大で 2 つのカテゴリ。プライマリ カテゴリとセカンダリ カテゴリを含みます (省略可能)。
+- プライマリ カテゴリ、セカンダリ カテゴリ、またはその両方についてそれぞれ最大 2 つのサブカテゴリ。 オファーに適用できるサブカテゴリがない場合は、 **[該当なし]** を選択します。
+
+各ネットショップに適用されるカテゴリとサブカテゴリの完全な一覧については、「[オファーの掲載のベスト プラクティス](../gtm-offer-listing-best-practices.md)」を参照してください。
 
 ### <a name="industries"></a>業界
 
 [!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
+
+業界の選択は、AppSource に公開されたオファーに対してのみ適用されます。
 
 ### <a name="app-version"></a>アプリのバージョン
 
@@ -194,12 +227,12 @@ Standard Contract Amendments (標準契約の修正) を使用すると、発行
 >[!NOTE]
 > これらの 2 種類の修正は、互いに重なり合っています。 カスタム修正の対象となるお客様には、購入中に標準契約へのユニバーサル修正も示されます。
 
-**[Universal amendment terms to the Standard Contract for Microsoft's commercial marketplace]\(Microsoft のコマーシャル マーケットプレース向け標準契約へのユニバーサル変更条件\)** - このボックスには、ユニバーサルな修正条項を入力します。 オファーごとに 1 つのユニバーサル修正を提供できます。 このボックスに入力できる文字数は無制限です。 これらの条項は、AppSource、Azure Marketplace、Azure portal で、発見と購入のフロー中に顧客に表示されます。
+**[Universal amendment terms to the Standard Contract for Microsoft's commercial marketplace]\(Microsoft のコマーシャル マーケットプレース向け標準契約へのユニバーサル変更条件\)** - このボックスには、ユニバーサルな修正条項を入力します。 オファーごとに 1 つのユニバーサル修正を提供できます。 このボックスに入力できる文字数は無制限です。 これらの条件は、AppSource、Azure Marketplace、Azure portal で、発見と購入のフロー中に顧客に表示されます。
 
 **[Custom amendment terms to the Standard Contract for Microsoft's commercial marketplace]\(Microsoft のコマーシャル マーケットプレース向け標準契約のカスタム変更条件\)** - まず、 **[Add custom amendment terms]\(カスタム変更条件の追加\)** を選択します。 オファーごとに 10 件までのカスタム修正条項を提供できます。
 
 - **[カスタム変更条件]** – カスタム変更条件をカスタム変更条件ボックスに入力します。 このボックスに入力できる文字数は無制限です。 Azure portal では、これらのカスタム修正条項に対して指定したテナント ID の顧客にのみ、オファーの購入フローでカスタム修正条項が提示されます。  
-- **[テナント ID]** (必須) – それぞれのカスタム修正で対象にできるテナント ID は 20 個までです。 カスタム修正を追加する場合、少なくとも 1 つのテナント ID を指定する必要があります。 テナント ID は Azure で顧客を識別します。 この ID は顧客に問い合わせることができ、顧客は portal.azure.com > [Azure Active Directory] > [プロパティ] にアクセスして ID を確認できます。 ディレクトリ ID の値はテナント ID です (例: 50c464d3-4930-494c-963c-1e951d15360e)。 [[What is my Microsoft Azure and Office 365 tenant ID?]\(Microsoft Azure および Office 365 テナント ID の確認\)](https://www.whatismytenantid.com) で、顧客のドメイン名 URL を使用して顧客の組織のテナント ID を検索することもできます。
+- **[テナント ID]** (必須) – それぞれのカスタム修正で対象にできるテナント ID は 20 個までです。 カスタム修正を追加する場合、少なくとも 1 つのテナント ID を指定する必要があります。 テナント ID は Azure で顧客を識別します。 この ID は顧客に問い合わせることができ、顧客は portal.azure.com > [Azure Active Directory] > [プロパティ] にアクセスして ID を確認できます。 ディレクトリ ID の値はテナント ID です (例: 50c464d3-4930-494c-963c-1e951d15360e)。 「[Microsoft Azure と Office 365 のテナント ID の確認](https://www.whatismytenantid.com)」で、顧客のドメイン名 URL を使用して顧客の組織のテナント ID を検索することもできます。
 - **[説明]** (省略可能) – 必要に応じて、修正の対象となる顧客を特定しやすくするために、テナント ID のわかりやすい説明を入力します。
 
 #### <a name="terms-and-conditions"></a>使用条件
@@ -223,7 +256,7 @@ Standard Contract Amendments (標準契約の修正) を使用すると、発行
 
 - **[名前]** (必須) – ここで定義した名前は、お客様が選択したマーケットプレース上でオファーのリスト登録のタイトルとして表示されます。 名前は、前の **[新しいオファー]** のエントリに基づいて事前入力されます。 この名前は商標登録されている場合があります。 これは、絵文字 (商標および著作権マークの場合を除く) を含むことができず、50 文字以下にする必要があります。
 - **[概要]** (必須) – マーケットプレースのリスト登録の検索結果で使用される、お客様のオファーの簡単な説明を入力します。 このフィールドには、最大で 100 文字のテキストを入力できます。
-- **[説明]** (必須) – マーケットプレースのリスト登録の概要で表示される、お客様のオファーの説明を入力します。 価値提案、主なメリット、カテゴリまたは業界との関連性、アプリ内の購入機会、必要な情報開示、詳細情報へのリンクを含めることを検討してください。 このフィールドには、マークアップを含めて最大で 3,000 文字のテキストを入力できます。 その他のヒントについては、「[人の心をつかむアプリの説明を書く](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description)」を参照してください。
+- **[説明]** (必須) – マーケットプレースのリスト登録の概要で表示される、お客様のオファーの説明を入力します。 価値提案、主なメリット、カテゴリまたは業界との関連性、アプリ内の購入機会、必要な情報開示、詳細情報へのリンクを含めることを検討してください。 このフィールドには、マークアップを含めて最大で 3,000 文字のテキストを入力できます。 その他のヒントについては、「[人の心をつかむアプリの説明を書く](/windows/uwp/publish/write-a-great-app-description)」を参照してください。
 - **[検索キーワード]** – マーケットプレースで顧客がお客様のオファーを見つけるために使用できる検索キーワードを最大 3 つ入力します。
 - **[作業を開始するための手順]** (必須) – お客様のアプリを構成して使用を開始する方法を潜在顧客に対して説明します。  このクイック スタートには、より詳細なオンライン ドキュメントへのリンクを含めることができます。 このフィールドには、最大で 3,000 文字のテキストを入力できます。
 
@@ -238,7 +271,7 @@ Standard Contract Amendments (標準契約の修正) を使用すると、発行
 #### <a name="links"></a>リンク
 
 - **[プライバシー ポリシー]** (必須) – お客様の組織のプライバシー ポリシーへのリンク。 プライバシーに関する法律および規制にアプリが準拠していることを保証し、有効なプライバシー ポリシーを提供する責任があります。
-- **[CSP プログラムのマーケティング資料]** (省略可能) – オファーを[クラウド ソリューション プロバイダー (CSP)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers) プログラムに拡張する場合、マーケティング資料へのリンクを入力します。 CSP では、CSP パートナーがお客様のオファーのバンドル、宣伝、再販を行えるようになり、オファーの対象となる顧客の範囲が広がります。 これらのリセラーには、お客様のオファーを宣伝するための資料へのアクセスが必要になります。 詳細については、「[Go-To-Market サービス](https://partner.microsoft.com/reach-customers/gtm)」を参照してください。
+- **[CSP プログラムのマーケティング資料]** (省略可能) – オファーを[クラウド ソリューション プロバイダー (CSP)](../cloud-solution-providers.md) プログラムに拡張する場合、マーケティング資料へのリンクを入力します。 CSP では、CSP パートナーがお客様のオファーのバンドル、宣伝、再販を行えるようになり、オファーの対象となる顧客の範囲が広がります。 これらのリセラーには、お客様のオファーを宣伝するための資料へのアクセスが必要になります。 詳細については、「[Go-To-Market サービス](https://partner.microsoft.com/reach-customers/gtm)」を参照してください。
 - **[役に立つリンク]** (省略可能) – **タイトル**と **URL** を入力することで表示される、お客様のアプリまたは関連サービスに関する省略可能な補助的オンライン ドキュメント。 **+ [URL の追加]** をクリックして、その他の役に立つリンクを追加します。
 
 #### <a name="contact-information"></a>連絡先情報
@@ -258,9 +291,8 @@ Standard Contract Amendments (標準契約の修正) を使用すると、発行
     - **中** (90 x 90、必須)
     - **大** (216 x 216、必須)
     - **ワイド** (255 x 115)
-    - **ヒーロー** (815 x 290)
 
-- **[スクリーンショット]** (必須) – お客様のオファーについて説明しているスクリーンショットを追加します。 最大 5 つのスクリーンショットを追加できます。サイズは 1,280 x 720 ピクセルにする必要があります。 すべての画像は .PNG 形式である必要があります。
+- **[スクリーンショット]** (必須) – お客様のオファーについて説明するスクリーンショット (1280 x 720 ピクセルのサイズ) を、最大で 5 つ追加します。 すべての画像は .PNG 形式である必要があります。
 - **[ビデオ]** (省略可能) – お客様のオファーについて説明しているビデオへのリンクを追加します。 顧客へのオファーと共に表示される YouTube や Vimeo のビデオへのリンクを使用できます。 また、ビデオのサムネイル画像を入力する必要があります。PNG 形式で、サイズは 1,280 x 720 ピクセルにします。 オファーごとに最大 4 つのビデオを表示できます。
 
 >[!NOTE]
@@ -268,7 +300,7 @@ Standard Contract Amendments (標準契約の修正) を使用すると、発行
 
 #### <a name="additional-marketplace-listing-resources"></a>マーケットプレースのリスト登録に関するその他のリソース
 
-- [マーケットプレース オファーのリスト登録に関するベスト プラクティス](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
+- [マーケットプレース オファーのリスト登録に関するベスト プラクティス](../gtm-offer-listing-best-practices.md)
 
 続行する前に、 **[下書きの保存]** を選択します。
 
@@ -290,18 +322,26 @@ Standard Contract Amendments (標準契約の修正) を使用すると、発行
 
 ## <a name="technical-configuration"></a>技術的な構成
 
-このページでは、オファーへの接続に使用される技術的な詳細 (URL パス、Webhook、テナント ID、およびアプリ ID) を定義します。 この接続によって、最終顧客がオファーを取得することを選択した場合、Microsoft は最終顧客向けにオファーをプロビジョニングできます。 収集されたフィールドの使用方法が説明されている図については、「[SaaS Fulfillment API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2)」のドキュメントをご覧ください。
-
-- **[ランディング ページの URL]** (必須) – 顧客がマーケットプレースからお客様のオファーを取得した後で移動するサイトの URL を定義します。 この URL は、顧客がページにルーティングされるときにトークンを受け取るエンドポイントです。 そのトークンを交換し、Fulfillment API での解決を使って詳細をプロビジョニングできます。 それらの詳細およびお客様が収集した他の情報を、エクスペリエンスに構築される顧客対話型 Web ページの一部として使って、購入の登録とアクティブ化を完了できます。
-
-- **[接続 Webhook]** (必須) – Microsoft が顧客に代わってパートナーに送信する必要があるすべての非同期イベント (例: SaaS サブスクリプションが無効になった) のために、パートナーは Microsoft に接続 Webhook を提供する必要があります。 Webhook システムをまだ導入していない場合、最も簡単な構成は、ポストされているイベントをリッスンして、それらを適切に処理する HTTP エンドポイント ロジック アプリを用意することです (例: https:\//prod-1westus.logic.azure.com:443/work)。 詳しくは、「[ロジック アプリで HTTP エンドポイントを通じてワークフローを呼び出し、トリガーし、入れ子にする](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint)」をご覧ください。
-
-- **[Azure AD テナント ID]** (必須) – Azure portal 内では、認証済みの通信の背後で Microsoft の 2 つのサービス間の接続が行われることを Microsoft が検証できるように、[Azure Active Directory (AD) アプリを作成](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)する必要があります。 [テナント ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) を見つけるには、Azure Active Directory に移動して **[プロパティ]** を選択し、表示される**ディレクトリ ID** 番号 (例: 50c464d3-4930-494c-963c-1e951d15360e) を探します。
-
-- **[Azure AD アプリ ID]** (必須) – また、自分の[アプリケーション ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) と認証キーも必要です。 これらの値を取得するには、Azure Active Directory に移動して **[アプリの登録]** を選択し、表示される**アプリケーション ID** 番号 (例: 50c464d3-4930-494c-963c-1e951d15360e) を探します。 認証キーを見つけるには、 **[設定]** に移動して **[キー]** を選択します。 説明と期間を入力する必要があります。その後、数値が提供されます。
+**[技術的な構成]** タブでは、お客様の SaaS サービスと通信するためにマーケットプレースによって使用される技術的な詳細を定義します。 最終顧客がオファーを取得し、管理することを選択した場合、Microsoft ではこの接続を使用して、最終顧客にオファーをプロビジョニングします。 
 
 >[!Note]
->Azure アプリケーション ID は自分の公開元 ID に関連付けられているため、自分のすべてのオファーで同じアプリケーション ID が使用されるようにしてください。
+>[SaaS Fulfillment API](./pc-saas-fulfillment-api-v2.md) との統合を実装してから、オファーの詳細でこれらの詳細を構成する必要があります。
+
+収集されたフィールドの使用方法を示す図と詳細な説明については、[API](./pc-saas-fulfillment-api-v2.md) に関するドキュメントをご覧ください。
+
+- **[ランディング ページの URL]** (必須) – 最終顧客が、マーケットプレースからオファーを取得し、新しく作成された SaaS サブスクリプションから構成プロセスをトリガーした後にアクセスする、SaaS サイトの URL (例: `https://contoso.com/signup`) を定義します。  この URL は、特定の最終顧客の SaaS 購入を一意に識別する、マーケットプレース購入識別トークン パラメーターと共に呼び出されます。  お客様は、[resolve](./pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) API を使用して、このトークンを対応する SaaS サブスクリプションの詳細に交換する必要があります。  これらの詳細情報と、収集したいその他の情報を、エクスペリエンスに組み込まれる顧客対話型 Web ページの一部として使用して、最終顧客の登録を完了し、購入をアクティブにします。  このページでは、ユーザーは Azure Active Directory (Azure AD) を使用してワンクリック認証でサインアップする必要があります。 <br> <br> マーケットプレース購入識別トークン パラメーターを含むこの URL は、最終顧客が Azure portal または M365 管理センターからマネージド SaaS エクスペリエンスを起動したときにも呼び出されます。 お客様は、新しい顧客に対して購入後に初めてトークンが提供される場合と、自分の SaaS を管理している既存の顧客に対して提供される場合の両方のフローを処理する必要があります。 <br> <br> ここで構成するランディング ページは、24 時間 365 日稼働している必要があります。 これは、マーケットプレースでのお客様の SaaS オファーの新しい購入について、またはオファーのアクティブなサブスクリプションの構成要求について、通知を受ける唯一の方法です。
+
+- **[接続 Webhook]** (必須) – Microsoft からお客様に送信する必要があるすべての非同期イベント (例: SaaS サブスクリプションが取り消された) のために、お客様は接続 Webhook の URL を指定する必要があります。 イベントについてお客様に通知するために、Microsoft によってこの URL が呼び出されます。 <br> <br> お客様が指定する Webhook は、24 時間 365 日稼働している必要があります。マーケットプレースを介して購入された顧客の SaaS サブスクリプションに関する更新について、お客様が通知を受け取る唯一の方法であるためです。  Webhook システムをまだ導入していない場合、最も簡単な構成は、送信されたすべてのイベントをリッスンする HTTP エンドポイント ロジック アプリを用意し、イベントを適切に処理することです (例: `https://prod-1westus.logic.azure.com:443/work`)。 詳しくは、「[ロジック アプリで HTTP エンドポイントを通じてワークフローを呼び出し、トリガーし、入れ子にする](../../logic-apps/logic-apps-http-endpoint.md)」をご覧ください。
+
+- **[Azure AD テナント ID]** (必須) – Azure portal 内では、認証済みの通信の背後で Microsoft の 2 つのサービス間の接続が行われることを Microsoft が検証できるように、[Azure Active Directory (AD) アプリを作成](../../active-directory/develop/howto-create-service-principal-portal.md)する必要があります。 [テナント ID](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) を見つけるには、Azure Active Directory に移動して **[プロパティ]** を選択し、表示される**ディレクトリ ID** 番号 (例: 50c464d3-4930-494c-963c-1e951d15360e) を探します。
+
+- **[Azure AD アプリ ID]** (必須) – ご自分の[アプリケーション ID](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) も必要です。 その値を取得するには、Azure Active Directory に移動して **[アプリの登録]** を選択し、表示される**アプリケーション ID** 番号 (例: `50c464d3-4930-494c-963c-1e951d15360e`) を探します。
+
+>[!Note]
+>Azure AD アプリ ID は、パートナー センター アカウントの公開元 ID に関連付けられます。  お客様のすべてのオファーで同じアプリケーション ID が使用されていることを確認してください。
+
+>[!Note]
+>公開元がパートナー センターに 2 つ以上の異なるアカウントを持っている場合は、2 つ以上の異なる Azure AD アプリ ID (1 つのアカウントに対して 1 つ) を使用する必要があります。 パートナー センターの各パートナー アカウントでは、このアカウントを使用して公開されるすべての SaaS オファーに対して、一意の Azure AD アプリ ID を使用する必要があります。
 
 続行する前に、 **[下書きの保存]** を選択します。
 
@@ -350,7 +390,7 @@ Standard Contract Amendments (標準契約の修正) を使用すると、発行
 
 ##### <a name="pricing-model"></a>価格モデル
 
-**[定額]** – 月額制または年額制の単一の定額料金で、オファーにアクセスできるようにします。 これはサイトベースの価格とも呼ばれます。 この価格モデルでは、必要に応じてマーケットプレースの測定サービス API を使用して非標準ユニットに従ってお客様に課金する従量制課金プランを定義できます。  従量制課金の詳細については、「[マーケットプレース測定サービスを使用した従量制課金](./saas-metered-billing.md)」を参照してください。
+**[定額]** – 月額制または年額制の単一の定額料金で、オファーにアクセスできるようにします。 これはサイトベースの価格とも呼ばれます。 この価格モデルでは、必要に応じてマーケットプレースの測定サービス API を使用して非標準ユニットに従ってお客様に課金する従量制課金プランを定義できます。  従量制課金の詳細については、「[マーケットプレース測定サービスを使用した従量制課金](./saas-metered-billing.md)」を参照してください。  また、お客様の SaaS サービスに対する利用行動が急増している場合も、このオプションを使用する必要があります。  プランを毎日のように、または数時間ごとに頻繁に切り替えることはお勧めしません。
 
 **[ユーザーごと]** – オファーにアクセスする (つまり、シートを所有する) ユーザーの数に基づいた価格で、オファーにアクセスできるようにします。 このユーザー ベースのモデルでは、価格に基づいて許可される最小および最大のユーザー数を設定できます。 そのため、複数のプランを構成することで、ユーザーの数に基づいてさまざまな価格ポイントを構成できます。  これらのフィールドは省略可能です。 選択しない場合、ユーザー数は制限がないものとして解釈されることになります (最小は 1、最大はシステムでサポートできる数)。 これらのフィールドは、プランを更新する一環として編集できます。
 
@@ -375,7 +415,7 @@ USD (USD = 米国ドル) で設定された価格は、保存時の最新の為�
 
 #### <a name="free-trial"></a>無料試用版
 
-商業マーケットプレース経由で提供される SaaS オファーでは、Microsoft を通じて販売した場合に 1 か月間の無料試用版を提供できます。 従量制課金プランを除くすべての課金モデルと課金条件で、無料試用版がサポートされます。 このオプションにより、1 か月間の無料アクセスが得られるため、お客様の負担が軽減されます。  オファー内のプランの無料試用版を有効にすることを選択した場合、お客様は最初の 1 か月の期間が終了する前に有料サブスクリプションに変換することはできません。  この期間中、オファーを購入したお客様は、無料試用が有効なサポートされるすべてのプランを試すことができ、別のプランに変換できます。  有料サブスクリプションへの変換は、期間の終了時に自動的に実行されます。
+コマーシャル マーケットプレース経由で提供される SaaS オファーでは、Microsoft を通じて販売した場合に 1 か月間の無料試用版を提供できます。 従量制課金プランを除くすべての課金モデルと課金条件で、無料試用版がサポートされます。 このオプションにより、1 か月間の無料アクセスが得られるため、お客様の負担が軽減されます。  オファー内のプランの無料試用版を有効にすることを選択した場合、お客様は最初の 1 か月の期間が終了する前に有料サブスクリプションに変換することはできません。  この期間中、オファーを購入したお客様は、無料試用が有効なサポートされるすべてのプランを試すことができ、別のプランに変換できます。  有料サブスクリプションへの変換は、期間の終了時に自動的に実行されます。
 
 >[!NOTE]
 >お客様が無料試用版を使用しないプランに変換する場合、変換は行われますが、無料試用は直ちに無効になります。 また、お客様がプランの支払いを開始した後は、無料試用版をサポートする SKU に変換した場合でも、同じサブスクリプションで無料試用版を再取得することはできなくなります。
@@ -387,7 +427,7 @@ USD (USD = 米国ドル) で設定された価格は、保存時の最新の為�
 >[!NOTE]
 >取引可能なプランが無料試用版で公開されると、そのプランに対しては無効にできなくなります。 プランを再作成する必要がないように、最初の公開でこの設定が正しいことを確認してください。
 
-無料試用版に現在参加しているお客様のサブスクリプションに関する情報を取得するには、新しい API プロパティの `isFreeTrial` を使用します。このプロパティは、true または false としてマークされます。 詳細については、[SaaS サブスクリプションの取得 API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription) に関する記事を参照してください。
+無料試用版に現在参加しているお客様のサブスクリプションに関する情報を取得するには、新しい API プロパティの `isFreeTrial` を使用します。このプロパティは、true または false としてマークされます。 詳細については、[SaaS サブスクリプションの取得 API](pc-saas-fulfillment-api-v2.md#get-subscription) に関する記事を参照してください。
 
 >[!NOTE]
 >マーケットプレース測定サービスを利用するプランでは、無料試用版はサポートされていません。
@@ -415,7 +455,14 @@ SaaS オファーではテナント ID を使用してプライベート対象�
 
 ## <a name="example-list-of-plans-within-a-marketplace-offer"></a>マーケットプレース オファー内のプランの一覧の例
 
-![マーケットプレース プランの一覧表示の例 (説明付き)](./media/marketplace-plan.svg)
+:::image type="content" source="media/marketplace-plan.png" alt-text="マーケットプレース プランの一覧表示の例 (説明付き)。":::
+
+#### <a name="call-out-descriptions"></a>コールアウトの説明
+
+1. プラン名
+2. プラン説明
+
+<br>
 
 ## <a name="cloud-solution-provider-csp-reseller-audience"></a>クラウド ソリューション プロバイダー (CSP) リセラーの対象
 
@@ -434,7 +481,7 @@ SaaS オファーではテナント ID を使用してプライベート対象�
     - **[未完了]** – 修正が必要なエラーがセクションにあり、追加の情報を入力する必要があります。 セクションに戻って更新する必要があります。
     - **[完了]** – セクションが完了しています。必須のデータはすべて入力済みであり、エラーはありません。 オファーを送信するには、オファーのセクションがすべて完了状態でなければなりません。
 - アプリの理解に役立つ補足事項に加えて、テストの指示を認定チームに提供し、アプリが正しくテストされるようにする。
-- **[送信]** を選択して、公開するためにオファーを送信する。 お客様が確認して承認できるようにオファーのプレビュー バージョンが利用可能になったら、それを知らせるメールが Microsoft から届きます。 パートナー センターに戻ってそのオファーで **[一般公開する]** を選択し、自分のオファーをパブリックに公開する必要があります (プライベート オファーの場合、プライベート対象ユーザーに公開)。
+- **[送信]** を選択して、公開するためにオファーを送信する。 お客様が確認して承認できるようにオファーのプレビュー バージョンが利用可能になったら、それを知らせるメールが Microsoft から届きます。 パートナー センターに戻り、 **[一般公開する]** を選択して、ご自分のオファーを一般に公開します (プライベート オファーの場合はプライベート対象ユーザーに公開されます)。
 
 ## <a name="next-step"></a>次のステップ
 

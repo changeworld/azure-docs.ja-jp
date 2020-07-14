@@ -3,12 +3,12 @@ title: Azure Batch のノードとプール
 description: コンピューティング ノードとプールについて、およびそれらが Azure Batch ワークフローで開発の観点からどのように使用されるかについて説明します。
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: f71be75c0358dbc7f76a61680df2c54f44bc4173
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 5707d834a7d99e147a81ee2b39952863a63ed695
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964044"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144929"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Azure Batch のノードとプール
 
@@ -111,7 +111,7 @@ Batch API を使用して仮想マシン構成プールを作成するときに�
 
 ## <a name="node-size"></a>ノード サイズ
 
-Azure Batch プールを作成する場合に、Azure で使用可能なほぼすべての VM ファミリとサイズを選択することができます。 Azure には、さまざまなワークロードに対応した各種の VM サイズが用意されています。たとえば、特殊な [HPC](../virtual-machines/linux/sizes-hpc.md) または [GPU 対応の](../virtual-machines/linux/sizes-gpu.md) VM サイズなどです。 
+Azure Batch プールを作成する場合に、Azure で使用可能なほぼすべての VM ファミリとサイズを選択することができます。 Azure には、さまざまなワークロードに対応した各種の VM サイズが用意されています。たとえば、特殊な [HPC](../virtual-machines/sizes-hpc.md) または [GPU 対応の](../virtual-machines/sizes-gpu.md) VM サイズなどです。 
 
 詳細については、「[Choose a VM size for compute nodes in an Azure Batch pool (Azure Batch プールのコンピューティング ノード用の VM サイズを選択する)](batch-pool-vm-sizes.md)」を参照してください。
 

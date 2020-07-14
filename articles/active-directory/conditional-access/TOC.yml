@@ -104,6 +104,18 @@
           href: troubleshoot-conditional-access-what-if.md
         - name: よく寄せられる質問
           href: faqs.md
+- name: リファレンス
+  items:
+    - name: ベータ版 Graph API
+      items:
+        - name: conditionalAccessPolicy API
+          href: /graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta
+        - name: namedLocation API
+          href: /graph/api/resources/namedlocation?view=graph-rest-beta
+        - name: countryNamedLocation API
+          href: /graph/api/resources/countrynamedlocation?view=graph-rest-beta
+        - name: ipNamedLocation API
+          href: /graph/api/resources/ipnamedlocation?view=graph-rest-beta
 - name: リソース
   items:
     - name: Azure フィードバック フォーラム

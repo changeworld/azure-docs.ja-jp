@@ -1,21 +1,21 @@
 ---
-title: チュートリアル - Azure Database for MySQL インスタンスを Azure Spring Cloud アプリケーションにバインドする方法
-description: このチュートリアルでは、Azure Database for MySQL インスタンスを Azure Spring Cloud アプリケーションにバインドする方法について説明します
+title: Azure Database for MySQL インスタンスを Azure Spring Cloud アプリケーションにバインドする方法
+description: Azure Database for MySQL インスタンスを Azure Spring Cloud アプリケーションにバインドする方法を説明します
 author: bmitchell287
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: 657aa70d77fd1af9fd2121a3e98ea3aca7773642
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6f2c9a46d8b17a53d2dc43c0c8313c9357f502a1
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76277551"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142162"
 ---
-# <a name="tutorial-bind-an-azure-database-for-mysql-instance-to-your-azure-spring-cloud-application"></a>チュートリアル:Azure Database for MySQL インスタンスを Azure Spring Cloud アプリケーションにバインドする 
+# <a name="bind-an-azure-database-for-mysql-instance-to-your-azure-spring-cloud-application"></a>Azure Database for MySQL インスタンスを Azure Spring Cloud アプリケーションにバインドする 
 
-Azure Spring Cloud では、Spring Boot アプリケーションを手動で構成せずに、選択した Azure サービスをアプリケーションに自動的にバインドできます。 このチュートリアルでは、アプリケーションを Azure Database for MySQL インスタンスにバインドする方法について説明します。
+Azure Spring Cloud では、Spring Boot アプリケーションを手動で構成せずに、選択した Azure サービスをアプリケーションに自動的にバインドできます。 この記事では、アプリケーションを Azure Database for MySQL インスタンスにバインドする方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -23,7 +23,7 @@ Azure Spring Cloud では、Spring Boot アプリケーションを手動で構�
 * Azure Database for MySQL アカウント
 * Azure CLI
 
-デプロイされている Azure Spring Cloud インスタンスがない場合は、「[クイックスタート: Azure portal を使用して Azure Spring Cloud アプリケーションを起動する](spring-cloud-quickstart-launch-app-portal.md)」の手順に従って、初めての Spring Cloud アプリをデプロイしてください。
+デプロイされている Azure Spring Cloud インスタンスがない場合は、[Azure portal を使用して Azure Spring Cloud アプリケーションを起動する方法に関するクイックスタート](spring-cloud-quickstart-launch-app-portal.md)の手順に従って、初めての Spring Cloud アプリをデプロイしてください。
 
 ## <a name="bind-your-app-to-your-azure-database-for-mysql-instance"></a>アプリを Azure Database for MySQL インスタンスにバインドする
 
@@ -61,7 +61,4 @@ Azure Spring Cloud では、Spring Boot アプリケーションを手動で構�
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure Spring Cloud アプリケーションを Azure Database for MySQL インスタンスにバインドする方法について学習しました。  Azure Spring Cloud サービスの管理の詳細を確認するには、サービスの検出と登録に関する記事を参照してください。
-
-> [!div class="nextstepaction"]
-> [Spring Cloud Service Registry を使用してサービスの検出と登録を有効にする](spring-cloud-service-registration.md)
+この記事では、Azure Spring Cloud アプリケーションを Azure Database for MySQL インスタンスにバインドする方法について学習しました。 サービスをアプリケーションにバインドする方法の詳細については、[Azure Cosmos DB データベースを Azure Spring Cloud アプリケーションにバインドする方法](spring-cloud-tutorial-bind-cosmos.md)に関する記事を参照してください。
