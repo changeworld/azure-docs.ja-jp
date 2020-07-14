@@ -434,6 +434,8 @@
                   items:
                     - name: VM から
                       href: ../image-version-vm-powershell.md
+                    - name: VHD またはスナップショットから
+                      href: ../image-version-snapshot-powershell.md
                     - name: マネージド イメージから移行する
                       href: ../image-version-managed-image-powershell.md
                     - name: 別のギャラリーからコピーする
@@ -454,6 +456,8 @@
                   items:
                     - name: VM から
                       href: ../image-version-vm-cli.md
+                    - name: VHD またはスナップショットから
+                      href: ../image-version-snapshot-cli.md
                     - name: マネージド イメージから移行する
                       href: ../image-version-managed-image-cli.md
                     - name: 別のギャラリーからコピーする
@@ -508,6 +512,8 @@
               href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
         - name: イメージを検索および使用する
           href: cli-ps-findimage.md
+        - name: 購入プラン情報
+          href: ../marketplace-images.md
         - name: アップロード用に VM を準備する
           href: prepare-for-upload-vhd-image.md
         - name: VM をイメージにキャプチャする
@@ -853,10 +859,18 @@
           href: disks-incremental-snapshots-portal.md
         - name: 非管理対象ディスクのバックアップ
           href: incremental-snapshots.md
+        - name: 暗号化
+          items:
+            - name: ホストベースの暗号化を有効にする - PowerShell
+              href: disks-enable-host-based-encryption-powershell.md
+            - name: カスタマー マネージド キーを有効にする - PowerShell
+              href: disks-enable-customer-managed-keys-powershell.md
+            - name: カスタマー マネージド キーを有効にする - ポータル
+              href: disks-enable-customer-managed-keys-portal.md
+            - name: 保存時の二重暗号化を有効にする
+              href: disks-enable-double-encryption-at-rest-powershell.md
         - name: 移行と変換
           items:
-            - name: サーバー側の暗号化への変換
-              href: disks-ade-sse-conversion-powershell.md
             - name: Standard と Premium 間でディスクを変換する
               href: convert-disk-storage.md
             - name: Azure Site Recovery を使用した Premium Storage への移行

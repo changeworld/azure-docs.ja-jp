@@ -111,6 +111,8 @@
                   href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
             - name: アカウントの暗号化キー モデルの確認
               href: ../common/storage-encryption-key-model-get.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+            - name: ストレージ アカウントのインフラストラクチャの暗号化を有効にする
+              href: ../common/infrastructure-encryption-enable.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
         - name: クライアント側の暗号化の構成
           items:
             - name: .NET
@@ -125,8 +127,12 @@
               href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
             - name: 安全な転送が必要
               href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-            - name: トランスポート層セキュリティの有効化
-              href: ../common/storage-security-tls.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+            - name: トランスポート層セキュリティ (TLS) を構成する
+              items:
+                - name: ストレージ アカウントの最小 TLS バージョンを構成する
+                  href: ../common/transport-layer-security-configure-minimum-version.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+                - name: クライアント アプリケーションの TLS を構成する
+                  href: ../common/transport-layer-security-configure-client-version.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
     - name: データの冗長性を管理する
       items:
         - name: データのレプリケート方法の変更

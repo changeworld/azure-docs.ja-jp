@@ -5,6 +5,8 @@
   items:
     - name: Cognitive Services とは
       href: Welcome.md
+    - name: Cognitive Services ドキュメントの新着情報
+      href: whats-new-docs.md
     - name: Cognitive Services と機械学習
       href: cognitive-services-and-machine-learning.md
     - name: Cognitive Services のカスタム サブドメイン
@@ -26,7 +28,7 @@
   items:
     - name: Azure Policy の組み込み
       href: ./policy-samples.md
-- name: Security
+- name: セキュリティ
   items:
     - name: Cognitive Services のセキュリティ
       href: cognitive-services-security.md
@@ -64,6 +66,24 @@
           href: ../container-registry/container-registry-get-started-azure-cli.md
         - name: Azure Kubernetes Service (AKS)
           href: ../aks/tutorial-kubernetes-prepare-app.md
+- name: ビッグ データ
+  items:
+    - name: ビッグ データの Cognitive Services
+      href: ./big-data/cognitive-services-for-big-data.md
+    - name: 作業の開始
+      href: ./big-data/getting-started.md
+    - name: サンプル
+      items:
+        - name: Python
+          href: ./big-data/samples-python.md
+        - name: Scala
+          href: ./big-data/samples-scala.md
+    - name: レシピ
+      items:
+        - name: 'レシピ:Anomaly Detector'
+          href: ./big-data/recipes/anomaly-detection.md
+        - name: 'レシピ:アート エクスプローラー'
+          href: ./big-data/recipes/art-explorer.md
 - name: リソース
   items:
     - name: Azure のロードマップ

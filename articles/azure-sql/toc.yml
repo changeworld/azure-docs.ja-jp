@@ -921,6 +921,8 @@
                   href: virtual-machines/windows/storage-configuration.md
                 - name: Azure Key Vault の統合
                   href: virtual-machines/windows/azure-key-vault-integration-configure.md
+                - name: 記憶域を UltraSSD に移行する
+                  href: virtual-machines/windows/storage-migrate-to-ultradisk.md
                 - name: SQL VM RP への登録
                   displayName: 'resource provider, registration'
                   items:
