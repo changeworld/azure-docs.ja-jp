@@ -11,43 +11,39 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 06/22/2020
-ms.openlocfilehash: 01c6c37d31d41f88b370face372555536724adde
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: eed333b5e6a83b140df515fc02767b8a7c7a63c7
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85256076"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506641"
 ---
-# <a name="quickstart-create-an-azure-sql-managed-instance-using-an-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用した Azure SQL マネージド インスタンスの作成
+# <a name="quickstart-create-an-azure-sql-managed-instance-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure SQL Managed Instance を作成する
 
-このクイック スタートでは、Resource Manager テンプレートをデプロイして Azure SQL マネージド インスタンスと vNet を作成する過程を中心に取り上げます。
+このクイック スタートでは、Azure Resource Manager テンプレート (ARM テンプレート) をデプロイして Azure SQL Managed Instance と VNet を作成する過程を中心に取り上げます。 [Azure SQL マネージド インスタンス](sql-managed-instance-paas-overview.md)は、完全に管理されたインテリジェントでスケーラブルなクラウド データベースであり、SQL Server データベース エンジンとほぼ 100% の機能パリティを備えています。
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-Azure サブスクリプションをお持ちでない場合は、[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
+
+[![Azure へのデプロイ](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-sqlmi-new-vnet%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
-[なし] :
+Azure サブスクリプションをお持ちでない場合は、[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
-## <a name="create-an-azure-sql-managed-instance"></a>Azure SQL マネージド インスタンスの作成
+## <a name="review-the-template"></a>テンプレートを確認する
 
-[Azure SQL マネージド インスタンス](sql-managed-instance-paas-overview.md)は、完全に管理されたインテリジェントでスケーラブルなクラウド データベースであり、SQL Server データベース エンジンとほぼ 100% の機能パリティを備えています。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/)からのものです。
 
-### <a name="review-the-template"></a>テンプレートを確認する
-
-このクイック スタートで使用されるテンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/)からのものです。
-
-:::code language="json" source="~/quickstart-templates/101-sqlmi-new-vnet/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/101-sqlmi-new-vnet/azuredeploy.json" range="001-249" highlight="113,178,188,226":::
 
 テンプレートでは、次のリソースが定義されています。
 
-- [**Microsoft.Sql/managedinstances**](/azure/templates/microsoft.sql/managedinstances)
-- [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.Network/virtualNetworks)
-- [**Microsoft.Network/routeTables**](/azure/templates/microsoft.Network/routeTables)
 - [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.Network/networkSecurityGroups)
-
-
+- [**Microsoft.Network/routeTables**](/azure/templates/microsoft.Network/routeTables)
+- [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.Network/virtualNetworks)
+- [**Microsoft.Sql/managedinstances**](/azure/templates/microsoft.sql/managedinstances)
 
 その他のテンプレート サンプルについては、「[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sql&pageNumber=1&sort=Popular)」を参照してください。
 
@@ -73,7 +69,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 Read-Host -Prompt "Press [ENTER] to continue ..."
 ```
 
-# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 read -p "Enter a project name that is used for generating resource names:" projectName &&
@@ -86,7 +82,7 @@ echo "Press [ENTER] to continue ..." &&
 read
 ```
 
-* * *
+---
 
 ## <a name="review-deployed-resources"></a>デプロイされているリソースを確認する
 
@@ -109,7 +105,7 @@ $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 Remove-AzResourceGroup -Name $resourceGroupName
 ```
 
-# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -117,7 +113,7 @@ read resourceGroupName &&
 az group delete --name $resourceGroupName
 ```
 
-* * *
+---
 
 ## <a name="next-steps"></a>次のステップ
 

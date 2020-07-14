@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: jrasnick
 ms.date: 06/09/2020
-ms.openlocfilehash: 766a41b61f32804c7d7f59c946530f8e1a7b869a
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 3f84cd92a4c4f96831d39cac783df6710c5ea5f4
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85296272"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513425"
 ---
 # <a name="quickstart-create-an-azure-synapse-analytics-sql-pool-by-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure Synapse Analytics SQL プールを作成する
 
-このテンプレートを使用すると、Transparent Data Encryption が有効な Azure Synapse Analytics SQL プールを作成できます。 Synapse SQL プールは、Azure Synapse で一般提供されているエンタープライズ データ ウェアハウス機能を指します。
+この Azure Resource Manager テンプレート (ARM テンプレート) を使用すると、Transparent Data Encryption を有効にした Azure Synapse Analytics SQL プールを作成できます。 Synapse SQL プールは、Azure Synapse で一般提供されているエンタープライズ データ ウェアハウス機能を指します。
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -107,8 +107,8 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、Azure Resource Manager テンプレートを使用して Azure Synapse Analytics SQL プールを作成し、デプロイを検証しました。 Azure Synapse Analytics と Azure Resource Manager の詳細については、以下の記事に進んでください。
+このクイックスタートでは、ARM テンプレートを使用して Azure Synapse Analytics SQL プールを作成し、デプロイを検証しました。 Azure Synapse Analytics と Azure Resource Manager の詳細については、以下の記事に進んでください。
 
 - [Azure Synapse Analytics の概要](sql-data-warehouse-overview-what-is.md)を読む
 - [Azure Resource Manager](../../azure-resource-manager/management/overview.md) の詳細を確認する
-- [初めての Azure Resource Manager テンプレートを作成およびデプロイする](../../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+- [初めての ARM テンプレートを作成してデプロイする](../../azure-resource-manager/templates/template-tutorial-create-first-template.md)
