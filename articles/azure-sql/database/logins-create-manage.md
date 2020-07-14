@@ -4,7 +4,7 @@ titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse Analytics
 description: Azure SQL Database、SQL Managed Instance、Azure Synapse Analytics がログインとユーザー アカウントを使用して、アクセスのためにユーザーを認証する方法について説明します。 また、ログインとユーザーを承認してアクションを実行したりデータを照会できるように、データベース ロールと明示的な権限を付与する方法についても説明します。
 keywords: SQL Database のセキュリティ,データベース セキュリティ管理,ログイン セキュリティ,データベース セキュリティ,データベース アクセス
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: sqldbrb=3
 ms.devlang: ''
@@ -13,12 +13,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/23/2020
-ms.openlocfilehash: 296bf84c22313723c328e1775f697ee19dcb8f04
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: fbcec1ace45927561c56449cd8ca0c8d3306b3bd
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220548"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986285"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>SQL Database、SQL Managed Instance、Azure Synapse Analytics へのデータベース アクセスを承認する
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -85,13 +85,13 @@ Azure SQL を初めてデプロイするときに、管理者ログインと、�
 
   - マスター データベース内に追加の SQL ログインを作成します。
   - [ALTER SERVER ROLE](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql) ステートメントを使用して、[sysadmin 固定サーバー ロール](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles)にログインを追加します。 このログインは、完全な管理アクセス許可を持つことになります。
-  - または、[CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) 構文を使用して、[Azure AD ログイン](authentication-aad-configure.md)#provision-azure-ad-admin-sql-managed-instance) を作成します。
+  - または、[CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) 構文を使用して [Azure AD ログイン](authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance)を作成します。
 
 - **SQL Database で、管理権限が制限された SQL ログインを作成する**
 
   - マスター データベース内に追加の SQL ログインを作成します。
   - この新しいログインに関連付けられているマスター データベース内に、ユーザー アカウントを作成します。
-  - [ALTER SERVER ROLE](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql) ステートメントを使用して、`master` データベース内の `dbmanager` ロールと `loginmanager` ロールのいずれかまたは両方にユーザー アカウントを追加します (Azure Synapse の場合は、[sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) ステートメントを使用します)。
+  - [ALTER ROLE](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql) ステートメントを使用して、ユーザー アカウントを `master` データベース内の `dbmanager` ロールと `loginmanager` ロールのいずれかまたは両方に追加します (Azure Synapse の場合は、[sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) ステートメントを使用します)。
 
   > [!NOTE]
   > `dbmanager` ロールと `loginmanager` ロールは、SQL Managed Instance のデプロイには関係**ありません**。
@@ -155,7 +155,7 @@ Azure SQL を初めてデプロイするときに、管理者ログインと、�
 
 効率的なアクセス管理では、個々のユーザーに対してではなく、Active Directory セキュリティ グループや、固定ロールまたはカスタム ロールに割り当てられたアクセス許可を使用します。
 
-- Azure Active Directory 認証を使用する場合は、Azure Active Directory ユーザーを Azure Active Directory セキュリティ グループに所属させます。 そのグループ用に包含データベース ユーザーを作成します。 1 人以上のデータベース ユーザーを、そのユーザー グループにとって適切な特定のアクセス許可を持つカスタム データベース ロールに配置します。
+- Azure Active Directory 認証を使用する場合は、Azure Active Directory ユーザーを Azure Active Directory セキュリティ グループに所属させます。 そのグループ用に包含データベース ユーザーを作成します。 1 人以上のデータベース ユーザーを、そのユーザー グループにとって適切な特定のアクセス許可を持つカスタムまたは組み込みのデータベース ロールにメンバーとして追加します。
 
 - SQL 認証の使用時は、データベース内に包含データベース ユーザーを作成します。 1 人以上のデータベース ユーザーを、そのユーザー グループにとって適切な特定のアクセス許可を持つカスタム データベース ロールに配置します。
 

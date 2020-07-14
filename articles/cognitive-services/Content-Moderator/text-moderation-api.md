@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 31bd6a2680d8c71df6b6030187ff44ca10d09440
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: fa292f0441369ed13f3f85035a2ec8cc3f5c6723
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561042"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800093"
 ---
 # <a name="learn-text-moderation-concepts"></a>テキスト モデレーションの概念を確認する
 
@@ -36,13 +36,15 @@ Content Moderator のテキスト モデレーション モデルを使用して
 
 API が、いずれかの[サポートされる言語](Text-Moderation-API-Languages.md)で何らかの不適切な用語を検出した場合、それらの用語が応答に含められます。 また、応答には、元のテキストの場所 (`Index`) も含まれます。 以下のサンプル JSON にある `ListId` は、[カスタム用語一覧](try-terms-list-api.md)で検出された用語を参照しています (利用可能な場合)。
 
-    "Terms": [
+```json
+"Terms": [
     {
         "Index": 118,
         "OriginalIndex": 118,
         "ListId": 0,
         "Term": "crap"
     }
+```
 
 > [!NOTE]
 > **language** パラメーターについては、`eng` を割り当てるか、パラメーターを空のままにして、コンピューター支援による**分類**応答を表示します (プレビュー機能)。 **この機能でサポートされているのは英語のみです**。
@@ -55,18 +57,20 @@ Content Moderator のコンピューター支援型**テキスト分類機能**�
 
 JSON の次の抽出箇所は、出力例を示しています。
 
-    "Classification": {
-        "ReviewRecommended": true,
-        "Category1": {
-              "Score": 1.5113095059859916E-06
-            },
-        "Category2": {
-              "Score": 0.12747249007225037
-            },
-        "Category3": {
-              "Score": 0.98799997568130493
-        }
+```json
+"Classification": {
+    "ReviewRecommended": true,
+    "Category1": {
+        "Score": 1.5113095059859916E-06
+    },
+    "Category2": {
+        "Score": 0.12747249007225037
+    },
+    "Category3": {
+        "Score": 0.98799997568130493
     }
+}
+```
 
 ### <a name="explanation"></a>説明
 
@@ -127,11 +131,11 @@ JSON の次の抽出箇所は、出力例を示しています。
 
 次のような入力テキストについて考えます ('lzay' および 'f0x' は意図的です)。
 
-    The qu!ck brown f0x jumps over the lzay dog.
+> The qu!ck brown f0x jumps over the lzay dog.
 
 自動修正を要求した場合、応答には修正されたバージョンのテキストが含まれます。
 
-    The quick brown fox jumps over the lazy dog.
+> The quick brown fox jumps over the lazy dog.
 
 ## <a name="creating-and-managing-your-custom-lists-of-terms"></a>カスタム用語一覧の作成と管理
 
@@ -143,13 +147,15 @@ JSON の次の抽出箇所は、出力例を示しています。
 
 次の例では、一致するリスト ID を示しています。
 
-    "Terms": [
+```json
+"Terms": [
     {
         "Index": 118,
         "OriginalIndex": 118,
         "ListId": 231.
         "Term": "crap"
     }
+```
 
 Content Moderator は、[用語一覧の API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) にカスタム用語一覧を管理する操作を提供します。 [用語一覧の API コンソール](try-terms-list-api.md) を起動して、REST API コード サンプルを使用してください。 また、Visual Studio および C# に精通している場合は、[用語一覧に関する .NET のクイックスタート](term-lists-quickstart-dotnet.md)を確認してください。
 

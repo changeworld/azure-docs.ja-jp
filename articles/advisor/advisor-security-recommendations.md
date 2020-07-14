@@ -3,12 +3,12 @@ title: Azure Advisor を使用してリソースのセキュリティを向上�
 description: Azure Advisor を使用して、Azure のデプロイのセキュリティを向上させます。
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 5a4b7e9a9d9a7919155db361fd2c96ed98e6e5a4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bf7a316c893600bed18b9392404af5792e2e31f7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75443037"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85113859"
 ---
 # <a name="make-resources-more-secure-with-azure-advisor"></a>Azure Advisor を使用してリソースのセキュリティを向上させる
 
@@ -31,7 +31,7 @@ Advisor の推奨事項の詳細については、以下を参照してくださ
 * [Advisor の使用を開始する](advisor-get-started.md)
 * [Advisor のコストに関する推奨事項](advisor-cost-recommendations.md)
 * [Advisor のパフォーマンスに関する推奨事項](advisor-performance-recommendations.md)
-* [Advisor の高可用性に関する推奨事項](advisor-high-availability-recommendations.md)
-* [Advisor の優れた運用の推奨事項](advisor-operational-excellence-recommendations.md)
-
+* [Advisor の信頼性に関する推奨事項](advisor-high-availability-recommendations.md)
+* [Advisor のオペレーショナル エクセレンスに関する推奨事項](advisor-operational-excellence-recommendations.md)
+* [Advisor REST API](https://docs.microsoft.com/rest/api/advisor/)
  

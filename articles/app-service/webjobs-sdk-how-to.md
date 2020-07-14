@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: e4a7ae00edd8ff86e27037df1a26828c400f6ccf
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 97b17f7e80590b9b907b8dc25253e6d706117357
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774233"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807980"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理に Azure WebJobs SDK を使用する方法
 
@@ -750,7 +750,7 @@ public static async Task ProcessImage([BlobTrigger("images")] Stream image)
 これらの設定を使用すると、単一のインスタンスで、関数がシングルトンとして実行されるようになります。 Web アプリが複数のインスタンスにスケールアウトするとき、関数の単一のインスタンスのみが実行されるようにするには、関数にリスナー レベルのシングルトン ロック (`[Singleton(Mode = SingletonMode.Listener)]`) を適用します。 リスナー ロックは、JobHost の起動時に取得されます。 3 つのスケール アウト インスタンスのすべてが同時に開始すると、1 つのインスタンスのみがロックを取得して、1 つのみがリスナーを開始します。
 
 > [!NOTE]
-> SingletonMode.Function の機能の詳細については、この [Github リポジトリ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/SingletonMode.cs)を参照してください。
+> SingletonMode.Function の機能の詳細については、この [GitHub リポジトリ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/SingletonMode.cs)を参照してください。
 
 ### <a name="scope-values"></a>スコープ値
 
@@ -959,7 +959,7 @@ static async Task Main()
 
 #### <a name="version-2x"></a>バージョン 2.*x*
 
-バージョン 2.*x* では、WebJobs SDK 用に Application Insights プロバイダーによって内部で作成された [`TelemetryClient`] では、[`ServerTelemetryChannel`](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/.publicApi/Microsoft.AI.ServerTelemetryChannel.dll) が使用されます。 Application Insights のエンドポイントが使用できない、または着信要求のスロットリングが行われている場合、このチャンネルが [Web アプリのファイル システムで要求を保存して、後でこれらを再送信](https://apmtips.com/blog/2015/09/03/more-telemetry-channels)します。
+バージョン 2.*x* では、WebJobs SDK 用に Application Insights プロバイダーによって内部で作成された [`TelemetryClient`] では、[`ServerTelemetryChannel`](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/.publicApi/Microsoft.AI.ServerTelemetryChannel.dll) が使用されます。 Application Insights のエンドポイントが使用できない、または着信要求のスロットリングが行われている場合、このチャンネルが [Web アプリのファイル システムで要求を保存して、後でこれらを再送信](https://apmtips.com/posts/2015-09-03-more-telemetry-channels/)します。
 
 [`TelemetryClient`] は、`ITelemetryClientFactory` を実装するクラスによって作成されます。 既定で、これは [`DefaultTelemetryClientFactory`](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/) です。
 

@@ -3,23 +3,23 @@ title: Azure Cosmos DB .NET SDK の使用時の問題を診断しトラブルシ
 description: クライアント側のログや他のサード パーティ製ツールなどの機能を使って、.NET SDK 使用時の Azure Cosmos DB の問題を特定、診断、およびトラブルシューティングします。
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 05/06/2020
+ms.date: 06/16/2020
 ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 55c462795b29cd678a5fd7816211bce720d554e1
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 0eb5d9cd86be05e5ad69bc9543231987e3c1dd2c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170360"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85799267"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Azure Cosmos DB .NET SDK の使用時の問題を診断しトラブルシューティングする
 
 > [!div class="op_single_selector"]
 > * [Java SDK v4](troubleshoot-java-sdk-v4-sql.md)
-> * [非同期の Java SDK v2](troubleshoot-java-async-sdk.md)
+> * [Async Java SDK v2](troubleshoot-java-async-sdk.md)
 > * [.NET](troubleshoot-dot-net-sdk.md)
 > 
 
@@ -32,10 +32,10 @@ ms.locfileid: "84170360"
 *    最新の [SDK](sql-api-sdk-dotnet-standard.md) を使用します。 プレビュー SDK は運用環境で使用しないでください。 これにより、既に修正されている既知の問題の発生が防止されます。
 *    [パフォーマンスに関するヒント](performance-tips.md)を確認し、推奨される方法に従います。 これは、スケーリング、待機時間、その他のパフォーマンス上の問題の防止に役立ちます。
 *    問題のトラブルシューティングに役立つ SDK のログ機能を有効にします。 ログ機能を有効にするとパフォーマンスに影響することがあるため、問題のトラブルシューティング時にのみ有効にすることをお勧めします。 次のログを有効にできます。
-    *    Azure portal を使用して[メトリックを記録します](monitor-accounts.md)。 ポータルのメトリックは Azure Cosmos DB テレメトリを表示します。これは、問題が Azure Cosmos DB に対応したものか、クライアント側から発生したものかを判断する場合に役立ちます。
-    *    ポイント操作応答から、V2 SDK では[診断文字列](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring)、V3 SDK では[診断](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics)をログに記録します。
-    *    すべてのクエリ応答からの [SQL クエリ メトリック](sql-api-query-metrics.md)を記録します 
-    *    [SDK ログ記録]( https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/docs/documentdb-sdk_capture_etl.md)の設定に従います
+*    Azure portal を使用して[メトリックを記録します](monitor-accounts.md)。 ポータルのメトリックは Azure Cosmos DB テレメトリを表示します。これは、問題が Azure Cosmos DB に対応したものか、クライアント側から発生したものかを判断する場合に役立ちます。
+*    ポイント操作応答から、V2 SDK では[診断文字列](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring)、V3 SDK では[診断](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics)をログに記録します。
+*    すべてのクエリ応答からの [SQL クエリ メトリック](sql-api-query-metrics.md)を記録します 
+*    [SDK ログ記録]( https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/docs/documentdb-sdk_capture_etl.md)の設定に従います
 
 この記事の[一般的な問題と対処法](#common-issues-workarounds)のセクションを確認します。
 
@@ -87,7 +87,7 @@ ResponseTime: 2020-03-09T22:44:49.9279906Z, StoreResult: StorePhysicalAddress: r
 
 ### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Azure SNAT (PAT) ポート不足
 
-[パブリック IP アドレスを使用しない Azure Virtual Machines](../load-balancer/load-balancer-outbound-connections.md#defaultsnat) にアプリをデプロイした場合、既定では、[Azure SNAT ポート](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)によって VM 外の任意のエンドポイントへの接続が確立されます。 VM から Azure Cosmos DB エンドポイントへの許可される接続の数は、[Azure SNAT 構成](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)によって制限されます。 このような状況では、接続の調整、接続の終了、または上記の[要求タイムアウト](#request-timeouts)が発生する可能性があります。
+[パブリック IP アドレスを使用しない Azure Virtual Machines](../load-balancer/load-balancer-outbound-connections.md) にアプリをデプロイした場合、既定では、[Azure SNAT ポート](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)によって VM 外の任意のエンドポイントへの接続が確立されます。 VM から Azure Cosmos DB エンドポイントへの許可される接続の数は、[Azure SNAT 構成](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)によって制限されます。 このような状況では、接続の調整、接続の終了、または上記の[要求タイムアウト](#request-timeouts)が発生する可能性があります。
 
  Azure SNAT ポートが使用されるのは、プライベート IP アドレスを持つ VM がパブリック IP アドレスに接続しようとしている場合に限られます。 Azure SNAT の制限を回避するには、次の 2 つの回避策があります (アプリケーション全体で 1 つのクライアント インスタンスを既に使用している場合)。
 
@@ -113,9 +113,11 @@ HTTP プロキシを使用する場合は、SDK `ConnectionPolicy` で構成さ�
 
 1. キーがローテーションされたが、[ベスト プラクティス](secure-access-to-data.md#key-rotation)に従っていなかった。 通常は、これが該当します。 Cosmos DB アカウントのキーのローテーションには、Cosmos DB アカウントのサイズに応じて、数秒から数日かかる場合があります。
    1. 401 MAC 署名は、キーのローテーションの直後に見られ、最終的には変更なしに停止します。 
-2. アプリケーションでキーが正しく構成されていないため、キーがアカウントと一致しない。
+1. アプリケーションでキーが正しく構成されていないため、キーがアカウントと一致しない。
    1. 401 MAC 署名の問題は、すべての呼び出しで一貫して発生します
-3. コンテナーの作成で競合状態がある。 コンテナーの作成が完了する前に、アプリケーション インスタンスがコンテナーにアクセスしようとしています。 これに対する最も一般的なシナリオは、アプリケーションが実行されている場合に、アプリケーションの実行中にコンテナーが削除され、同じ名前で再作成されるというものです。 SDK は新しいコンテナーを使用しようとしますが、コンテナーの作成はまだ進行中であるため、キーがありません。
+1. アプリケーションでは、書き込み操作に[読み取り専用キー](secure-access-to-data.md#master-keys)が使用されています。
+   1. 401 MAC 署名の問題は、アプリケーションが書き込み要求を行っている場合にのみ発生しますが、読み取り要求は成功します。
+1. コンテナーの作成で競合状態がある。 コンテナーの作成が完了する前に、アプリケーション インスタンスがコンテナーにアクセスしようとしています。 これに対する最も一般的なシナリオは、アプリケーションが実行されている場合に、アプリケーションの実行中にコンテナーが削除され、同じ名前で再作成されるというものです。 SDK は新しいコンテナーを使用しようとしますが、コンテナーの作成はまだ進行中であるため、キーがありません。
    1. 401 MAC 署名の問題は、コンテナーの作成直後に見られ、コンテナーの作成が完了するまでしか発生しません。
  
  ### <a name="http-error-400-the-size-of-the-request-headers-is-too-long"></a>HTTP エラー 400。 要求ヘッダーのサイズが長すぎます。

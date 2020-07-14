@@ -3,12 +3,12 @@ title: よく寄せられる質問に対する回答
 description: '一般的な質問への回答:Recovery Services コンテナーを含む Azure Backup の機能、バックアップの対象、しくみ、暗号化、制限。 '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 04921cd617a688ebcf31bcec29cf26681914f44b
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 96733ffaae101bb2cf716fda7500a8269ce8e357
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84247667"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970486"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - よく寄せられる質問
 
@@ -27,7 +27,7 @@ ms.locfileid: "84247667"
 ### <a name="how-many-datasourcesitems-can-be-protected-in-a-vault"></a>コンテナーで保護できるデータソース/項目の数はいくつですか。
 
 すべてのワークロード (IaaS VM、SQL、AFS など) にわたる最大 2000 のデータソース/項目をコンテナーで保護することができます。
-たとえば、既に 500 個の VM と 400 個の Azure Files 共有がコンテナーで保護されている場合、そこで保護できる SQL データベースの数は最大 1100 個だけです。
+たとえば、既に 500 台の VM と 400 個の Azure Files 共有がコンテナーで保護されている場合、そこで保護できる SQL データベースの数は最大 1100 個だけです。
 
 ### <a name="how-many-policies-can-i-create-per-vault"></a>コンテナーごとに作成できるポリシーはいくつですか。
 
@@ -47,7 +47,11 @@ ms.locfileid: "84247667"
 
 ### <a name="can-i-change-from-grs-to-lrs-after-a-backup"></a>バックアップ後に GRS から LRS へ変更することはできますか?
 
-いいえ。 Recovery Services コンテナーでは、バックアップが保存される前にしか、ストレージ オプションを変更できません。
+既定では、ストレージ レプリケーションの種類は geo 冗長ストレージ (GRS) に設定されています。 バックアップを構成すると、変更オプションは無効になり、変更できなくなります。
+
+![ストレージ レプリケーションの種類](./media/backup-azure-backup-faq/storage-replication-type.png)
+
+既にバックアップを構成していて、GRS から LRS に移行する必要がある場合は、[バックアップの構成後に GRS から LRS に変更する方法](backup-create-rs-vault.md#how-to-change-from-grs-to-lrs-after-configuring-backup)に関する記事を参照してください。
 
 ### <a name="can-i-do-an-item-level-restore-ilr-for-vms-backed-up-to-a-recovery-services-vault"></a>Recovery Services コンテナーにバックアップした VM でアイテム レベルの復元 (ILR) を行うことはできますか。
 
@@ -116,7 +120,7 @@ Azure VM | [Azure VM バックアップのサポート マトリックス](https
 **データ ソース** | **詳細**
 --- | ---
 ボリューム |バックアップ対象の VM の 1 つのボリュームからバックアップされるデータの量。
-SQL Server データベース |バックアップされる 1 つの SQL データベースのサイズ。
+SQL Server データベース |バックアップされる単一データベースのサイズ。
 SharePoint | バックアップ対象の SharePoint ファーム内のコンテンツと構成データベースの合計。
 Exchange |バックアップ対象の Exchange サーバー内のすべての Exchange データベースの合計。
 BMR/システム状態 |バックアップ対象のコンピューターの BMR またはシステム状態の個々のコピー。

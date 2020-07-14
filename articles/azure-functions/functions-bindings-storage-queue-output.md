@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
-ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: dd8442c00e2b7685b0dc1a7bd5150c87f2c27b7c
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.custom: cc996988-fb4f-47, tracking-python
+ms.openlocfilehash: eb61cad5f505e6895b550adca3e9f156222d6d30
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891449"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84559972"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>Azure Functions における Azure Queue storage の出力バインド
 

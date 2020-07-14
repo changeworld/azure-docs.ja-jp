@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/10/2020
-ms.openlocfilehash: b398f739189232f39a2fee06fc6e6ff0d53348f0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ca4e79977132586c619f323015f9d915e04707f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656615"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84449517"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB の自動スケーリングでプロビジョニングされたスループットについてよく寄せられる質問
 
@@ -86,6 +86,10 @@ Azure Cosmos DB で自動スケーリング プロビジョニング スルー�
 
 ### <a name="what-is-the-number-of-allowed-containers-per-shared-throughput-database-when-autoscale-is-enabled"></a>自動スケーリングが有効になっているとき、Shared スループット データベースごとに許可されるコンテナーの数はどのくらいですか?
 Azure Cosmos DB では、Shared スループット データベースあたり 25 個のコンテナーという上限が適用され、これが自動スケーリングまたは Standard (手動) スループットのデータベースに適用されます。 
+
+### <a name="what-is-the-impact-of-autoscale-on-database-consistency-level"></a>データベースの整合性レベルでの自動スケーリングの影響はどのようなものですか?
+データベースの整合性レベルでの自動スケーリングの影響はありません。
+使用可能な整合性レベルの詳細については、[整合性レベル](consistency-levels.md)に関する記事を参照してください。
 
 ### <a name="what-is-the-storage-limit-associated-with-each-max-rus-option"></a>各最大 RU/秒オプションに関連付けられたストレージの上限はどれだけですか?  
 最大 RU/秒ごとのストレージの上限 (GB) は次のとおりです: データベースまたはコンテナーの最大 RU/秒 / 100。 たとえば、最大 RU/秒が 20,000 RU/秒の場合、リソースは 200 GB のストレージをサポートできます。 使用可能な最大 RU/秒およびストレージ オプションについては、[自動スケーリングの制限](provision-throughput-autoscale.md#autoscale-limits)に関する記事を参照してください。 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: b8c4fd3804bfa02b86f62912641eb936ff8cd15e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 94022b9959b6a7f2bc30e31f918f2f5a916ccd8c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83662930"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85116810"
 ---
 # <a name="how-to-choose-between-standard-manual-and-autoscale-provisioned-throughput"></a>標準 (手動) および自動スケーリングのプロビジョニング スループットから選択する方法 
 
@@ -61,7 +61,7 @@ Azure Cosmos DB では、標準 (手動) と自動スケーリングの 2 つの
 
 自動スケーリングを利用している場合は、Azure Monitor を使用して、プロビジョニングされた自動スケーリングの最大 RU/秒 (**自動スケーリングの最大スループット**) と、システム上で現在スケーリングされている RU/秒 (**プロビジョニングされているスループット**) を確認します。 以下に示す例は、ワークロードが変動するかまたは予測できず、自動スケーリングを使用している場合です。 トラフィックが存在しないときは、システム上で RU/秒が最大 RU/秒のうちの最小 10% までスケーリングされることに注意してください (ここでは、それぞれ 50,000 RU/秒と 5,000 RU/秒です)。 
 
-![自動スケーリングを使用したワークロードの例](media/how-to-choose-offer/autoscale-metrics-azure-monitor.png)
+:::image type="content" source="media/how-to-choose-offer/autoscale-metrics-azure-monitor.png" alt-text="自動スケーリングを使用したワークロードの例":::
 
 > [!NOTE]
 > 標準 (手動) のプロビジョニング スループットを使用する場合、**プロビジョニングされたスループット**のメトリックとは、ユーザーが設定した値のことを言います。 自動スケーリングのスループットを使用する場合、このメトリックは、システム上で現在スケーリングされている RU/秒のことです。

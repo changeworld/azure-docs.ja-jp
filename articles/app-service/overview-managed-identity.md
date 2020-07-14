@@ -6,12 +6,13 @@ ms.topic: article
 ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: d206ff114cd08f2ab3f2068076bf7cadb047a689
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.custom: tracking-python
+ms.openlocfilehash: 87e4d67086ea9f260becb2d63765e807e2b73546
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84258460"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985754"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>App Service と Azure Functions でマネージド ID を使用する方法
 
@@ -42,7 +43,7 @@ ms.locfileid: "84258460"
 
 
 > [!NOTE] 
-> Azure portal で、お使いの Web またはスロット アプリのマネージド ID を探すには、エンタープライズ アプリケーションの [ユーザー設定] セクションに移動します。
+> Azure portal で Web アプリまたはスロット アプリのマネージド ID を検索するには、 **[エンタープライズアプリケーション]** の下にある **[ユーザー設定]** セクションを確認します。 通常、スロット名は `<app name>/slots/<slot name>` に似ています。
 
 
 ### <a name="using-the-azure-cli"></a>Azure CLI の使用

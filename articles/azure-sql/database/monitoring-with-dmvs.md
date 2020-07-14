@@ -3,7 +3,7 @@ title: DMV を使用してパフォーマンスを監視する
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: 動的管理ビューを使用して Microsoft Azure SQL Database および Azure SQL Managed Instance を監視することで、一般的なパフォーマンスの問題を検出および診断する方法について説明します。
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 04/19/2020
-ms.openlocfilehash: 68ae42faaf4f3aea851fa1649ba033f60f2b199a
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: f0a9e36113226a40f4bd21a7b171ca7a65930f95
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193917"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85987239"
 ---
 # <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>動的管理ビューを使用した Microsoft Azure SQL Database および Azure SQL Managed Instance のパフォーマンスの監視
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -364,7 +364,7 @@ GROUP BY wait_type
 ORDER BY SUM(wait_time) DESC;
 ```
 
-### <a name="identity-high-memory-consuming-statements"></a>大量のメモリを消費するステートメントの特定
+### <a name="identify-high-memory-consuming-statements"></a>大量のメモリを消費するステートメントの特定
 
 大量のメモリを消費するステートメントを特定するには、次のクエリを使用します。
 

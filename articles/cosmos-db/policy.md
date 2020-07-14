@@ -6,12 +6,12 @@ ms.author: paelaz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 2249dbdebecc52a8f5d6decccb83d3b1fc0777f7
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: a1b1c01f7cf720690decd9c7aac5fb14b92121ec
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747374"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84431984"
 ---
 # <a name="use-azure-policy-to-implement-governance-and-controls-for-azure-cosmos-db-resources"></a>Azure Policy を使用して Azure Cosmos DB リソースのガバナンスとコントロールを実装する
 
@@ -79,21 +79,24 @@ az provider show --namespace Microsoft.DocumentDB --expand "resourceTypes/aliase
 
 [カスタム ポリシー定義のルール](../governance/policy/tutorials/create-custom-policy-definition.md#policy-rule)では、これらのプロパティ エイリアス名をどれでも使用できます。
 
-次に示すポリシー定義の例では、Azure Cosmos DB SQL データベースのプロビジョニング スループットが最大許容値の 400 RU/秒を超えているかどうかをチェックします。 カスタム ポリシー定義には 2 つのルールが含まれています。1 つは特定の種類のプロパティ エイリアスをチェックするルールで、もう 1 つはその種類の特定のプロパティをチェックするルールです。 どちらのルールもエイリアス名を使用します。
+次に示すのは、Azure Cosmos DB アカウントが複数の書き込み場所で構成されているかどうかを確認するポリシー定義の例です。 カスタム ポリシー定義には 2 つのルールが含まれています。1 つは特定の種類のプロパティ エイリアスをチェックするルールで、もう 1 つはその種類の特定のプロパティをチェックするルールです。この場合は、複数の書き込み場所の設定を格納するフィールドです。 どちらのルールもエイリアス名を使用します。
 
 ```json
 "policyRule": {
   "if": {
     "allOf": [
       {
-      "field": "type",
-      "equals": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/throughputSettings"
+        "field": "type",
+        "equals": "Microsoft.DocumentDB/databaseAccounts"
       },
       {
-      "field": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/throughputSettings/default.resource.throughput",
-      "greater": 400
+        "field": "Microsoft.DocumentDB/databaseAccounts/enableMultipleWriteLocations",
+        "notEquals": true
       }
     ]
+  },
+  "then": {
+    "effect": "Audit"
   }
 }
 ```
@@ -106,21 +109,26 @@ az provider show --namespace Microsoft.DocumentDB --expand "resourceTypes/aliase
 
 コンプライアンスの結果と修復の詳細は、[Azure portal](../governance/policy/how-to/get-compliance-data.md#portal)、[Azure CLI](../governance/policy/how-to/get-compliance-data.md#command-line)、または [Azure Monitor ログ](../governance/policy/how-to/get-compliance-data.md#azure-monitor-logs)で確認できます。
 
-次のスクリーンショットは、2 つのポリシー割り当ての例を示しています。 一方の割り当ては組み込みポリシー定義に基づいており、Azure Cosmos DB リソースが許可された Azure リージョンのみにデプロイされているかをチェックします。 もう一方の割り当ては、カスタム ポリシー定義に基づいています。 この割り当ては、Azure Cosmos DB リソースのプロビジョニング スループットが指定された上限を超えていないかをチェックします。
+次のスクリーンショットは、2 つのポリシー割り当ての例を示しています。
 
-ポリシー割り当てが展開されると、コンプライアンス ダッシュボードに評価結果が表示されます。 これには、ポリシー割り当てを展開してから最大で 30 分かかる場合があることに注意してください。
+一方の割り当ては組み込みポリシー定義に基づいており、Azure Cosmos DB リソースが許可された Azure リージョンのみにデプロイされているかをチェックします。 リソース コンプライアンスは、スコープ内リソースのポリシー評価結果 (準拠または非準拠) を表示します。
 
-スクリーンショットに示されているコンプライアンスの評価結果は次のとおりです。
+もう一方の割り当ては、カスタム ポリシー定義に基づいています。 この割り当てでは、Cosmos DB アカウントが複数の書き込み場所で構成されていることを確認します。
 
-- 指定したスコープにある 1 個の Azure Cosmos DB アカウントのうち 0 個が、許可されたリージョンにリソースがデプロイされたことをチェックするポリシー割り当てに準拠しています。
-- 指定したスコープにある 2 個の Azure Cosmos DB データベース リソースまたはコレクション リソースのうち 1 個が、指定の上限を超えているプロビジョニング スループットをチェックするポリシー割り当てに準拠しています。
+ポリシー割り当てが展開されると、コンプライアンス ダッシュボードに評価結果が表示されます。 これには、ポリシー割り当てを展開してから最大で 30 分かかる場合があることに注意してください。 また、ポリシーの割り当てを作成した直後に、[ポリシー評価スキャンをオンデマンドで開始する](../governance/policy/how-to/get-compliance-data.md#on-demand-evaluation-scan)こともできます。
 
-:::image type="content" source="./media/policy/compliance.png" alt-text="Azure Cosmos DB の組み込みポリシー定義の検索":::
+スクリーンショットには、以下のスコープ内 Azure Cosmos DB アカウントのコンプライアンス評価結果が示されています。
 
-準拠していないリソースの修復方法については、[Azure Policy での修復](../governance/policy/how-to/remediate-resources.md)に関する記事を参照してください。
+- 2 つのアカウントのうち、Virtual Network (VNet) フィルタリングを構成する必要があるポリシーに準拠しているのは 0 個です。
+- 2 つのアカウントのうち、アカウントを複数の書き込み場所で構成する必要があるポリシーに準拠しているのは 0 個です。
+- 2 つのアカウントのうち、許可されている Azure リージョンにリソースがデプロイされたポリシーに準拠しているのは 0 個です。
 
-## <a name="next-steps"></a>次の手順
+:::image type="content" source="./media/policy/compliance.png" alt-text="リストされている Azure Policy の割り当てに関するコンプライアンス結果":::
 
-- [Azure Cosmos DB 用のカスタム ポリシー定義の例を確認する](https://github.com/Azure/azure-policy/tree/master/samples/CosmosDB)
+準拠していないリソースを修復するには、[Azure Policy でのリソースの修復方法](../governance/policy/how-to/remediate-resources.md)に関する記事を参照してください。
+
+## <a name="next-steps"></a>次のステップ
+
+- [Azure Cosmos DB のカスタム ポリシー定義のサンプルを確認](https://github.com/Azure/azure-policy/tree/master/samples/CosmosDB)します。これには、上に示した複数の書き込み場所と VNet フィルターのポリシーが含まれています。
 - [Azure portal でポリシー割り当てを作成する](../governance/policy/assign-policy-portal.md)
 - [Azure Cosmos DB 用の Azure Policy 組み込みポリシー定義を確認する](./policy-samples.md)

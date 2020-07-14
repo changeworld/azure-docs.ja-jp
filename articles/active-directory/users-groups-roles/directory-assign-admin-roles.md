@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63a4285725db4dcb41affa93261fbbc03d11598e
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 70d53bf3d97f27caae7d3dee7cd03a4606d6761c
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310752"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921748"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory での管理者ロールのアクセス許可
 
@@ -173,7 +173,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 このロールのユーザーは、デスクトップ Analytics および Office のカスタマイズとポリシーのサービスを管理できます。 デスクトップ Analytics の場合、これには、資産インベントリの表示、デプロイ プランの作成、デプロイと正常性の状態の表示に対する権限が含まれます。 Office のカスタマイズとポリシーのサービスの場合、このロールによりユーザーは Office のポリシーを管理することができます。
 
-### <a name="device-administrator"></a>[デバイス管理者](#device-administrators-permissions)
+### <a name="device-administrators"></a>[デバイス管理者](#device-administrators-permissions)
 
 この役割は、[デバイス設定](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/)の追加のローカル管理者としてのみ割り当て可能です。 このロールのユーザーは、Azure Active Directory に参加しているすべての Windows 10 デバイスのローカル マシン管理者になります。 Azure Active Directory 内のデバイス オブジェクトを管理することはできません。
 
@@ -209,7 +209,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 ### <a name="external-id-user-flow-administrator"></a>[外部 ID ユーザー フロー管理者](#external-id-user-flow-administrator-permissions)
 
-このロールが割り当てられたユーザーは、Azure portal で B2C ユーザー フロー ("組み込み" ポリシーとも呼ばれます) を作成および管理することができます。 これらのユーザーは、ユーザー フローを作成または編集することで、ユーザー エクスペリエンスの html/CSS/javascript コンテンツの変更、ユーザー フローごとの MFA 要件の変更、トークンの要求の変更、Azure AD 組織内のすべてのポリシー用のセッション設定の調整を行うことができます。 その一方で、このロールには、ユーザーのデータを確認したり、組織スキーマに含まれている属性を変更したりする機能は含まれていません。 Identity Experience Framework (カスタムとも呼ばれます) ポリシーの変更もこのロールの範囲外です。
+このロールが割り当てられたユーザーは、Azure portal でユーザー フロー ("組み込み" ポリシーとも呼ばれます) を作成および管理することができます。 これらのユーザーは、HTML/CSS/JavaScript コンテンツのカスタマイズ、MFA 要件の変更、トークン内のクレームの選択、API コネクタの管理、および Azure AD 組織内のすべてのユーザー フローのセッション設定の構成を行うことができます。 その一方で、このロールには、ユーザーのデータを確認したり、組織スキーマに含まれている属性を変更したりする機能は含まれていません。 Identity Experience Framework ポリシー (カスタム ポリシーとも呼ばれます) の変更も、このロールの範囲外です。
 
 ### <a name="external-id-user-flow-attribute-administrator"></a>[外部 ID ユーザー フロー属性管理者](#external-id-user-flow-attribute-administrator-permissions)
 
@@ -224,7 +224,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 ### <a name="global-administrator--company-administrator"></a>[全体管理者/会社の管理者](#company-administrator-permissions)
 
-このロールが割り当てられたユーザーは、Azure Active Directory のすべての管理機能と、Azure Active Directory の ID を使用するサービス (Microsoft 365 セキュリティ センター、Microsoft 365 security center コンプライアンス センター、Exchange Online、SharePoint Online、Skype for Business Online など) にアクセスできます。 Azure AD 組織にサインアップしたユーザーがグローバル管理者になります。 会社に複数の全体管理者が存在してかまいません。 すべてのユーザーと他のすべての管理者のパスワードをリセットできます。
+このロールが割り当てられたユーザーは、Azure Active Directory のすべての管理機能と、Azure Active Directory の ID を使用するサービス (Microsoft 365 セキュリティ センター、Microsoft 365 security center コンプライアンス センター、Exchange Online、SharePoint Online、Skype for Business Online など) にアクセスできます。 さらに全体管理者は、[アクセスを昇格させる](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin)ことで、すべての Azure サブスクリプションと管理グループを管理できます。 これにより、全体管理者は各 Azure AD テナントを使用して、すべての Azure リソースに対するフル アクセスを取得できます。 Azure AD 組織にサインアップしたユーザーがグローバル管理者になります。 会社に複数の全体管理者が存在してかまいません。 すべてのユーザーと他のすべての管理者のパスワードをリセットできます。
 
 > [!NOTE]
 > Microsoft Graph API と Azure AD PowerShell では、このロールは "社内管理者" として識別されます。 [Azure Portal](https://portal.azure.com) では、"全体管理者" になります。
@@ -389,7 +389,7 @@ Modern Commerce 管理者ロールを持つユーザーは、通常、他の Mic
 
 ### <a name="search-administrator"></a>[Search 管理者](#search-administrator-permissions)
 
-このロールのユーザーには、Microsoft 365 管理センター内のすべての Microsoft Search 管理機能へのフル アクセスがあります。 Search 管理者は、Search 管理者ロールと Search エディター ロールをユーザーに委任し、ブックマーク、Q&A、場所のようなコンテンツを作成および管理できます。 さらに、これらのユーザーは、メッセージ センターを表示し、サービス正常性を監視し、サービス要求を作成することができます。
+このロールのユーザーには、Microsoft 365 管理センター内のすべての Microsoft Search 管理機能へのフル アクセスがあります。 さらに、これらのユーザーは、メッセージ センターを表示し、サービス正常性を監視し、サービス要求を作成することができます。
 
 ### <a name="search-editor"></a>[Search エディター](#search-editor-permissions)
 
@@ -1349,8 +1349,7 @@ Office 365 メッセージ センター内でのみ自分の組織のメッセ�
 | --- | --- |
 | microsoft.commerce.billing/partners/read | O365 課金のパートナー プロパティを読み取ります。 |
 | microsoft.commerce.volumeLicenseServiceCenter/allEntities/allTasks | ボリューム ライセンス サービス センターのすべての側面を管理します。 |
-| microsoft.directory/organization/basic/update | Azure Active Directory での organization の基本プロパティの更新。 |
-| microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
+| microsoft.office365.supportTickets/allEntities/allTasks | 独自の Office 365 サポート チケットを作成して表示します。 |
 | microsoft.office365.webPortal/allEntities/basic/read | microsoft.office365.webPortal のすべてのリソースの基本的なプロパティの読み取り。 |
 
 

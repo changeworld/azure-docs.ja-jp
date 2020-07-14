@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 921a9c5f7136713f278d9c50bf67f02d9742a470
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: e2ded81c3525de6f9c49d774594c73f9da2b5696
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309137"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84430666"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>IoT Edge デバイスの機能をテストするためのデモ用の証明書を作成する
 
@@ -272,7 +272,7 @@ New-CACertsEdgeDeviceIdentity "<name>"
 ## <a name="create-downstream-device-certificates"></a>ダウンストリーム デバイス証明書の作成
 
 ゲートウェイ シナリオのためにダウンストリーム IoT デバイスを設定しており、X.509 認証を使用する場合は、ダウンストリーム デバイスのためのデモ用証明書を生成できます。
-対称キー認証を使用する場合は、ダウンストリーム デバイスの証明書は必要ありません。
+対称キー認証を使用する場合は、ダウンストリーム デバイスの追加の証明書を作成する必要はありません。
 X.509 証明書を使用して IoT デバイスを認証する方法は 2 つあります。自己署名証明書を使用する方法、または証明機関 (CA) の署名付き証明書を使用する方法です。
 X.509 自己署名認証 (拇印認証とも呼ばれます) の場合、お使いの IoT デバイス上に配置する新しい証明書を作成する必要があります。
 これらの証明書には、認証のために IoT Hub と共有する拇印が含まれています。

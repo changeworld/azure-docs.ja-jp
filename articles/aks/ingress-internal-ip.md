@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) クラスターで内部のプライベート ネットワーク用の NGINX イングレス コントローラーをインストールして構成する方法を説明します。
 services: container-service
 ms.topic: article
-ms.date: 04/27/2020
-ms.openlocfilehash: 749c9904244dd702e41a63e0266c5ff6b1344261
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.date: 07/02/2020
+ms.openlocfilehash: 8f1a538364284863cbfe3786213434b14918f214
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561949"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920241"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で内部の仮想ネットワークにイングレス コントローラーを作成する
 
@@ -59,6 +59,9 @@ controller:
 # Create a namespace for your ingress resources
 kubectl create namespace ingress-basic
 
+# Add the official stable repository
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+
 # Use Helm to deploy an NGINX ingress controller
 helm install nginx-ingress stable/nginx-ingress \
     --namespace ingress-basic \
@@ -68,7 +71,13 @@ helm install nginx-ingress stable/nginx-ingress \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
-次の出力例に示すように、NGINX イングレス コントローラー用の Kubernetes ロード バランサー サービスが作成されると、内部 IP アドレスが割り当てられます。
+NGINX イングレス コントローラー用の Kubernetes ロード バランサー サービスが作成されると、内部 IP アドレスが割り当てられます。 パブリック IP アドレスを取得するには、`kubectl get service` コマンドを使います。
+
+```console
+kubectl get service -l app=nginx-ingress --namespace ingress-basic
+```
+
+次の出力例に示すように、IP アドレスがサービスに割り当てられるまでに、少し時間がかかる場合があります。
 
 ```
 $ kubectl get service -l app=nginx-ingress --namespace ingress-basic
@@ -201,6 +210,12 @@ spec:
 
 `kubectl apply -f hello-world-ingress.yaml` コマンドを使用してイングレス リソースを作成します。
 
+```console
+kubectl apply -f hello-world-ingress.yaml
+```
+
+次の出力例は、イングレス リソースが作成されたことを示しています。
+
 ```
 $ kubectl apply -f hello-world-ingress.yaml
 
@@ -267,7 +282,13 @@ kubectl delete namespace ingress-basic
 
 ### <a name="delete-resources-individually"></a>リソースを個々に削除する
 
-作成したリソースを個々に削除するという、きめ細かな方法もあります。 `helm list` コマンドを使用して、Helm リリースを一覧表示します。 次の出力例に示すように、*nginx-ingress* および *aks-helloworld* という名前のグラフを探します。
+作成したリソースを個々に削除するという、きめ細かな方法もあります。 `helm list` コマンドを使用して、Helm リリースを一覧表示します。 
+
+```console
+helm list --namespace ingress-basic
+```
+
+次の出力例に示すように、*nginx-ingress* および *aks-helloworld* という名前のグラフを探します。
 
 ```
 $ helm list --namespace ingress-basic
@@ -276,7 +297,13 @@ NAME                    NAMESPACE       REVISION        UPDATED                 
 nginx-ingress           ingress-basic   1               2020-01-06 19:55:46.358275 -0600 CST    deployed        nginx-ingress-1.27.1    0.26.1  
 ```
 
-`helm uninstall` コマンドを使用してそれらのリリースをアンインストールします。 次の例では、NGINX イングレスのデプロイをアンインストールします。
+`helm uninstall` コマンドを使用してそれらのリリースをアンインストールします。
+
+```console
+helm uninstall nginx-ingress --namespace ingress-basic
+```
+
+次の例では、NGINX イングレスのデプロイをアンインストールします。
 
 ```
 $ helm uninstall nginx-ingress --namespace ingress-basic

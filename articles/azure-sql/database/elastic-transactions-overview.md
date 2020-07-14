@@ -1,6 +1,6 @@
 ---
 title: クラウド データベースにまたがる分散トランザクション
-description: Azure SQL Database を使用した Elastic Database トランザクションの概要
+description: Azure SQL Database を使用した Elastic Database トランザクションの概要。
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -11,25 +11,25 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: c1ecd5e66986df6affc186770b9da0decf2e92c6
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 5c94234644fcefb70a40ba0b2c21e6e205be0e65
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84031383"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829416"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>クラウド データベースにまたがる分散トランザクション
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Azure SQL Database のエラスティック データベース トランザクションは、SQL Database 内の複数のデータベースにまたがるトランザクションを実行する機能です。 SQL Database の Elastic Database トランザクションは、.NET アプリケーションから ADO .NET を介して利用できます。[System.Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) クラスを使用することで、これまでに培ったプログラミングの経験を活かすことが可能です。 ライブラリを入手するには、[.NET Framework 4.6.1 (Web インストーラー)](https://www.microsoft.com/download/details.aspx?id=49981) をご覧ください。
 
-従来、このようなシナリオをオンプレミスで実現するためには通常、Microsoft 分散トランザクション コーディネーター (MSDTC) が必要でした。 Azure における PaaS (Platform-as-a-Service) アプリケーションでは MSDTC が利用できないため、分散トランザクションの調整機能が SQL Database に直接統合されました。 アプリケーションは、任意の SQL Database に接続して分散トランザクションを開始できます。すると、いずれかのデータベースによって分散トランザクションが透過的に調整されます。そのようすを示したのが次の図です。
+従来、このようなシナリオをオンプレミスで実現するためには通常、Microsoft 分散トランザクション コーディネーター (MSDTC) が必要でした。 Azure における PaaS (Platform-as-a-Service) アプリケーションでは MSDTC が利用できないため、分散トランザクションの調整機能が SQL Database に直接統合されました。 アプリケーションは、SQL Database の任意のデータベースに接続して分散トランザクションを開始できます。すると、いずれかのデータベースによって分散トランザクションが透過的に調整されます。そのようすを示したのが次の図です。
 
   ![エラスティック データベース トランザクションを使用した Azure SQL Database での分散トランザクション ][1]
 
 ## <a name="common-scenarios"></a>一般的なシナリオ
 
-SQL Database のエラスティック データベース トランザクションの特長は、複数の異なる SQL Database に格納されているデータに対して不可分な変更をアプリケーションから実行できることです。 プレビュー版では、C# と .NET によるクライアント側の開発に重点が置かれています。 T-SQL を使用したサーバー側の開発も今後予定されています。  
+SQL Database のエラスティック データベース トランザクションの特長は、SQL Database の複数の異なるデータベースに格納されているデータに対して不可分な変更をアプリケーションから実行できることです。 プレビュー版では、C# と .NET によるクライアント側の開発に重点が置かれています。 T-SQL を使用したサーバー側の開発も今後予定されています。  
 エラスティック データベース トランザクションが想定しているシナリオは次のとおりです。
 
 * Azure におけるマルチデータベース アプリケーション:このシナリオでは、データが垂直にパーティション分割され、SQL Database 内の複数のデータベースに格納されます (各データベースに異なる種類のデータが格納されます)。 場合によっては、特定の操作で変更対象となるデータが複数のデータベースにまたがって保存されていることがあります。 そこでアプリケーションからエラスティック データベース トランザクションを使用し、複数のデータベースに対する変更を調整し、原子性 (不可分な状態) を維持します。
@@ -50,6 +50,7 @@ SQL Database のエラスティック データベース トランザクショ�
 
 次のサンプル コードは、.NET System.Transactions を使ったなじみ深いプログラミング技法によって記述しています。 TransactionScope クラスは、.NET でアンビエント トランザクションを確立するものです。 ("アンビエント トランザクション" とは現在のスレッドで実行されているトランザクションです。)TransactionScope 内で開かれたすべての接続はトランザクションに参加します。 複数の異なるデータベースが参加した場合、そのトランザクションは自動的に分散トランザクションに昇格されます。 トランザクションの最終的な結果は、スコープの完了 (コミットを意味する) を設定することによって制御します。
 
+```csharp
     using (var scope = new TransactionScope())
     {
         using (var conn1 = new SqlConnection(connStrDb1))
@@ -70,12 +71,14 @@ SQL Database のエラスティック データベース トランザクショ�
 
         scope.Complete();
     }
+```
 
 ### <a name="sharded-database-applications"></a>シャード化されたデータベース アプリケーション
 
 SQL Database のエラスティック データベース トランザクションで、分散トランザクションの調整を行うこともできます。この場合、スケール アウトされたデータ層に使用する接続は、エラスティック データベース クライアント ライブラリの OpenConnectionForKey メソッドを使用して開きます。 たとえば、複数の異なるシャーディング キー値に対する変更で、トランザクションの一貫性を保証するとします。 異なるシャーディング キー値を持ったシャードに対する接続は、OpenConnectionForKey を使って取得することができます。 一般に、トランザクションの保証に分散トランザクションが伴うように、異なるシャードへの接続が取得されます。
 次のコード サンプルに、この方法を示します。 ここでは、エラスティック データベース クライアント ライブラリのシャード マップを shardmap という変数で表しています。
 
+```csharp
     using (var scope = new TransactionScope())
     {
         using (var conn1 = shardmap.OpenConnectionForKey(tenantId1, credentialsStr))
@@ -96,6 +99,7 @@ SQL Database のエラスティック データベース トランザクショ�
 
         scope.Complete();
     }
+```
 
 ## <a name="net-installation-for-azure-cloud-services"></a>Azure Cloud Services の .NET インストール
 
@@ -105,6 +109,7 @@ Azure App Services では、ゲスト OS のアップグレードは現在サポ
 
 .NET 4.6.1 のインストーラーは、Azure クラウド サービスでのブートストラップ プロセス中に、.NET 4.6 のインストーラーよりも一時的なストレージを多く必要とする場合があることに注意してください。 正常かつ確実にインストールするには、次の例に示すように、ServiceDefinition.csdef ファイルの LocalResources セクションと、スタートアップ タスクの環境設定で、Azure クラウド サービスの一時的なストレージを増やす必要があります。
 
+```xml
     <LocalResources>
     ...
         <LocalStorage name="TEMP" sizeInMB="5000" cleanOnRoleRecycle="false" />
@@ -123,6 +128,7 @@ Azure App Services では、ゲスト OS のアップグレードは現在サポ
             </Environment>
         </Task>
     </Startup>
+```
 
 ## <a name="transactions-across-multiple-servers"></a>複数のサーバーにまたがるトランザクション
 
@@ -134,7 +140,7 @@ Azure App Services では、ゲスト OS のアップグレードは現在サポ
 
 次の PowerShell コマンドレットを使って、エラスティック データベースのトランザクション用のサーバー間通信リレーションシップを管理できます。
 
-* **New-AzSqlServerCommunicationLink**:このコマンドレットを使用して Azure SQL Database で 2 つのサーバー間に新しい通信リレーションシップを構築します。 リレーションシップは対象です。つまり、いずれのサーバーも他方のサーバーとのトランザクションを開始できます。
+* **New-AzSqlServerCommunicationLink**:このコマンドレットを使用して Azure SQL Database で 2 つのサーバー間に新しい通信リレーションシップを構築します。 リレーションシップは対称です。つまり、いずれのサーバーも他方のサーバーとのトランザクションを開始できます。
 * **Get-AzSqlServerCommunicationLink**:このコマンドレットを使用して既存の通信リレーションシップとそのプロパティを取得します。
 * **Remove-AzSqlServerCommunicationLink**:このコマンドレットを使用して既存の通信リレーションシップを削除します。
 
@@ -158,7 +164,8 @@ SQL Database のエラスティック データベース トランザクショ�
 
 ## <a name="next-steps"></a>次のステップ
 
-ご質問がある場合は、[SQL Database に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-sql-database.html)を参照してください。機能に関するご要望は、[SQL Database に関するフィードバック フォーラム](https://feedback.azure.com/forums/217321-sql-database/)にお寄せください。
+質問がある場合は、[SQL Database に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-sql-database.html)から Microsoft にご連絡ください。 機能に関する要望については、[SQL Database フィードバック フォーラム](https://feedback.azure.com/forums/217321-sql-database/)に追加してください。
 
 <!--Image references-->
 [1]: ./media/elastic-transactions-overview/distributed-transactions.png
+ 

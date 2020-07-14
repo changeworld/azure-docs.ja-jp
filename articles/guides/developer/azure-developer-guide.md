@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: d74fd2e3f6b5cc090c6313aba67a1e139c713b85
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c4121482c37afcda0f580656bbe583128b7720fe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225171"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829399"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 開発者向けファースト ステップ ガイド
 
@@ -124,13 +124,13 @@ Azure には、アプリケーションのホスティングと共に、機能�
 
   > **いつ使用するか**: キーと値のペア (テーブル)、BLOB、ファイル共有、メッセージ (キュー) など、非リレーショナル データを格納するアプリケーションの場合。
   >
-  > **作業開始**: [BLOB](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)、[テーブル](../../cosmos-db/table-storage-how-to-use-dotnet.md)、[クエリ](../../storage/queues/storage-dotnet-how-to-use-queues.md)、または[ファイル](../../storage/files/storage-dotnet-how-to-use-files.md)のいずれかの記憶域から選択します。
+  > **作業開始**: [BLOB](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)、[テーブル](../../cosmos-db/table-storage-how-to-use-dotnet.md)、[クエリ](../../storage/queues/storage-dotnet-how-to-use-queues.md)、または[ファイル](../../storage/files/storage-dotnet-how-to-use-files.md)のいずれかのストレージの種類から選択します。
 
 - **Azure SQL Database**:クラウドにリレーショナル表形式データを格納する Azure ベース バージョンの Microsoft SQL Server エンジンです。 SQL Database は、予測可能なパフォーマンス、ダウンタイムなしのスケーラビリティ、ビジネス継続性、データ保護を提供しています。
 
   > **いつ使用するか**: 参照整合性、トランザクションのサポート、および TSQL クエリのサポートがあるデータ記憶域が必要なアプリケーションの場合。
   >
-  > **作業開始**: [Azure portal を使用して数分で SQL データベースを作成できます](../../sql-database/sql-database-get-started.md)。
+  > **作業開始**: [Azure portal を使用して、数分で Azure SQL Database でデータベースを作成します](../../sql-database/sql-database-get-started.md)。
 
 
 [Azure Data Factory](../../data-factory/introduction.md) を使用して既存のオンプレミス データを Azure に移行することができます。 データをクラウドに移動する準備ができていない場合は、Azure App Service の[ハイブリッド接続](../../app-service/app-service-hybrid-connections.md)を使用して、App Service でホストされているアプリをオンプレミス リソースに接続できます。 また、オンプレミス アプリケーションから Azure データと記憶域サービスに接続することもできます。
@@ -255,7 +255,7 @@ Azure は、Azure Portal UI をサポートする REST API のセットに基づ
 REST API だけでなく、多くの Azure サービスでも、次の開発プラットフォーム用 SDK を含め、プラットフォーム固有の Azure SDK を使用して、アプリケーションのリソースをプログラムで管理できます。
 
 -   [.NET](https://go.microsoft.com/fwlink/?linkid=834925)
--   [Node.js](https://docs.microsoft.com/azure/javascript/)
+-   [Node.js](https://docs.microsoft.com/azure/developer/javascript/)
 -   [Java](https://docs.microsoft.com/java/azure)
 -   [PHP](https://github.com/Azure/azure-sdk-for-php/blob/master/README.md)
 -   [Python](/azure/python/)
@@ -268,7 +268,7 @@ REST API だけでなく、多くの Azure サービスでも、次の開発プ�
 
 Azure でのアプリの実行には、複数の Azure サービスの使用を伴う可能性があります。 これらのサービスは同じライフサイクルに従うため、論理ユニットと考えることができます。 たとえば、Web アプリでは、Web Apps、SQL Database、Storage、Azure Cache for Redis、Azure Content Delivery Network サービスを使用する可能性があります。 [Azure Resource Manager](../../azure-resource-manager/management/overview.md) を使用すると、アプリケーション内の複数リソースを 1 つのグループとして操作できます。 これらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。
 
-Azure Resource Manager では、関連するリソースを論理的にグループ化して管理できるだけでなく、関連するリソースのデプロイと構成をカスタマイズできるデプロイ機能があります。 たとえば、Resource Manager を使用してアプリケーションをデプロイし、構成することができます。 このアプリケーションでは、複数の仮想マシン、ロードバランサー、Azure SQL データベースを、1 つのユニットとして構成できます。
+Azure Resource Manager では、関連するリソースを論理的にグループ化して管理できるだけでなく、関連するリソースのデプロイと構成をカスタマイズできるデプロイ機能があります。 たとえば、Resource Manager を使用してアプリケーションをデプロイし、構成することができます。 このアプリケーションでは、複数の仮想マシン、ロードバランサー、Azure SQL Database のデータベースを、1 つのユニットとして構成できます。
 
 このようなデプロイは、JSON 形式のドキュメントである Azure Resource Manager テンプレートを使用して開発できます。 テンプレートでは、スクリプトではなく宣言型テンプレートを使用してデプロイを定義し、アプリケーションを管理できます。 テンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。 たとえば、テンプレートを使用して、1 回のクリックでリポジトリのコードを Azure サービスのセットにデプロイするボタンを GitHub リポジトリに追加できます。
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: srchi
-ms.openlocfilehash: f00acf3580130d85d6eaeaee4d52eb748d20aa7b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a6f486f15fb5967dfb14508115e2340e4953be81
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656630"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85116028"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Azure Cosmos DB の分析ストア (プレビュー) とは
 
@@ -44,7 +44,7 @@ Azure Cosmos DB コンテナーで分析ストアを有効にすると、コン�
 
 たとえば、オペレーショナル テーブルが次のような形式になっているとします。
 
-![オペレーショナル テーブルの例](./media/analytical-store-introduction/sample-operational-data-table.png)
+:::image type="content" source="./media/analytical-store-introduction/sample-operational-data-table.png" alt-text="オペレーショナル テーブルの例" border="false":::
 
 行ストアでは、上記のデータが、行ごとにシリアル化された形式で、ディスクに保持されます。 この形式を使用すると、トランザクションの読み取り、書き込み、操作クエリ ("Product1 に関する情報の取得" など) を高速化できます。 ただし、データセットが大きくなるため、データに対して複雑な分析クエリを実行する場合は、コストが高くなる可能性があります。 たとえば、"異なる事業単位と月についての、'機材' というカテゴリに属する製品の売上動向" を取得するには、複雑なクエリを実行する必要があります。 このデータセットの大規模なスキャンでは、プロビジョニングされたスループットに関して高コストになる可能性があり、リアルタイムのアプリケーションやサービスに利用されるトランザクション ワークロードのパフォーマンスにも影響する場合があります。
 
@@ -52,7 +52,7 @@ Azure Cosmos DB コンテナーで分析ストアを有効にすると、コン�
 
 次の図では、Azure Cosmos DB でのトランザクション行ストアと分析列ストアの比較を示します。
 
-![Azure Cosmos DB でのトランザクション行ストアと分析列ストアの比較](./media/analytical-store-introduction/transactional-analytical-data-stores.png)
+:::image type="content" source="./media/analytical-store-introduction/transactional-analytical-data-stores.png" alt-text="Azure Cosmos DB でのトランザクション行ストアと分析列ストアの比較" border="false":::
 
 ### <a name="decoupled-performance-for-analytical-workloads"></a>分析ワークロードの分離されたパフォーマンス
 
@@ -110,7 +110,7 @@ Azure Cosmos DB 内のすべてのオペレーショナル データが分析用
 
 グローバルに分散された Azure Cosmos DB アカウントがある場合、コンテナーの分析ストアを有効にした後、そのアカウントのすべてのリージョンでそれを使用できるようになります。  オペレーショナル データに対する変更はすべて、すべてのリージョンにグローバルにレプリケートされます。 Azure Cosmos DB のデータの最も近いリージョン コピーに対して、分析クエリを効率的に実行できます。
 
-### <a name="security"></a>Security
+### <a name="security"></a>セキュリティ
 
 分析ストアでの認証は、特定のデータベースに対するトランザクション ストアと同じです。 認証にはマスター キーまたは読み取り専用キーを使用できます。 Synapse Studio のリンクされたサービスを利用して、Azure Cosmos DB のキーが Spark ノートブックに貼り付けられないようにすることができます。 このリンクされたサービスへのアクセスは、ワークスペースにアクセスできるすべてのユーザーが利用できます。
 

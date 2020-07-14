@@ -1,14 +1,14 @@
 ---
 title: クエリ言語を理解する
 description: Resource Graph テーブルと、Azure Resource Graph で使用可能な Kusto データ型、演算子、関数について説明します。
-ms.date: 03/07/2020
+ms.date: 06/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 944d0f2676f1a82c80be33a6c1a91d34bc8a32f7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4c545a8a5113f800545660a3ea812b61711630c2
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654458"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970452"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Azure Resource Graph クエリ言語の概要
 
@@ -17,12 +17,13 @@ Azure Resource Graph のクエリ言語では、さまざまな演算子と関�
 この記事では、Resource Graph でサポートされる言語コンポーネントについて説明します。
 
 - [Resource Graph テーブル](#resource-graph-tables)
+- [Resource Graph のカスタム言語要素](#resource-graph-custom-language-elements)
 - [サポートされる KQL 言語要素](#supported-kql-language-elements)
 - [エスケープ文字](#escape-characters)
 
 ## <a name="resource-graph-tables"></a>Resource Graph テーブル
 
-Resource Graph には、Resource Manager のリソースの種類とそのプロパティに関するデータ用のテーブルがいくつか用意されています。 これらのテーブルを `join` または `union` 演算子と共に使用して、関連するリソースの種類からプロパティを取得できます。 Resource Graph で使用できるテーブルの一覧を次に示します。
+Resource Graph には、Azure Resource Manager のリソースの種類とそのプロパティに関するデータ用のテーブルがいくつか用意されています。 これらのテーブルを `join` または `union` 演算子と共に使用して、関連するリソースの種類からプロパティを取得できます。 Resource Graph で使用できるテーブルの一覧を次に示します。
 
 |Resource Graph テーブル |説明 |
 |---|---|
@@ -61,6 +62,33 @@ Resources
 
 > [!NOTE]
 > `project` を使用して `join` の結果を制限する場合は、2 つのテーブルを関連付けるために `join` によって使用されるプロパティ (上記の例の _subscriptionId_) が `project` に含まれている必要があります。
+
+## <a name="resource-graph-custom-language-elements"></a>Resource Graph のカスタム言語要素
+
+### <a name="shared-query-syntax-preview"></a><a name="shared-query-syntax"></a>共有クエリ構文 (プレビュー)
+
+プレビュー機能として、[共有クエリ](../tutorials/create-share-query.md)には、Resource Graph クエリで直接アクセスできます。 このシナリオにより、標準クエリを共有クエリとして作成し、再利用することができます。 Resource Graph クエリ内で共有クエリを呼び出すには、`{{shared-query-uri}}` 構文を使用します。 共有クエリの URI は、そのクエリの **[設定]** ページにある共有クエリの _[リソース ID]_ です。 この例では、共有クエリ URI は `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SharedQueries/providers/Microsoft.ResourceGraph/queries/Count VMs by OS` です。
+この URI は、サブスクリプション、リソース グループ、および別のクエリで参照する共有クエリの完全な名前を指します。 このクエリは、[チュートリアル:クエリの作成と共有](../tutorials/create-share-query.md)で作成したものと同じです。
+
+> [!NOTE]
+> 共有クエリを参照するクエリを共有クエリとして保存することはできません。
+
+例 1:共有クエリのみを使用する
+
+この Resource Graph クエリの結果は、共有クエリに格納されているクエリと同じです。
+
+```kusto
+{{/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SharedQueries/providers/Microsoft.ResourceGraph/queries/Count VMs by OS}}
+```
+
+例 2:より大きいクエリの一部として共有クエリを含める
+
+このクエリでは、最初に共有クエリを使用し、次に `limit` を使用して結果をさらに制限します。
+
+```kusto
+{{/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SharedQueries/providers/Microsoft.ResourceGraph/queries/Count VMs by OS}}
+| where properties_storageProfile_osDisk_osType =~ 'Windows'
+```
 
 ## <a name="supported-kql-language-elements"></a>サポートされる KQL 言語要素
 

@@ -5,25 +5,22 @@ description: Azure Blob Storage で Azure Machine Learning の入力モデル �
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: laobri
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 44acc81df9eb6dc6a6af28b5b0f4730aa93adffc
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 75402c71316f7cc7d068c12a240f3123569a00ea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475426"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84432996"
 ---
 # <a name="collect-data-for-models-in-production"></a>実稼働環境でモデルのデータを収集する
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
-
->[!IMPORTANT]
-> Azure Machine Learning Monitoring SDK は、間もなく廃止されます。 この SDK はまだ、同 SDK を使用してモデルのデータ ドリフトを監視している開発者には適しています。 しかし、新規の利用者には、シンプルな [Application Insights によるデータ監視](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights)の使用をお勧めします。
 
 この記事では、Azure Machine Learning から入力モデル データを収集する方法を示します。 また、入力データを Azure Kubernetes Service (AKS) クラスターにデプロイし、出力データを Azure Blob Storage に格納する方法も示します。
 
