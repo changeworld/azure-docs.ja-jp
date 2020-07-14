@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: 5862a446b1522926f8241959d5e1cff66e4da06b
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 7172fe1f7eb81bbd00e7efa611111e04cc96abd3
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85079386"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083578"
 ---
 # <a name="quickstart-create-a-search-index-in-net"></a>クイック スタート:.NET で検索インデックスを作成する
 > [!div class="op_single_selector"]
@@ -38,7 +38,7 @@ Visual Studio と [Azure Cognitive Search .NET SDK](https://docs.microsoft.com/d
 
 + アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/)。
 
-+ Azure Cognitive Search サービス。 [サービスを作成する](search-create-service-portal.md)か、現在のサブスクリプションで[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。 
++ Azure Cognitive Search サービス。 [サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを検索](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)します。 このクイック スタート用には、無料のサービスを使用できます。 
 
 + [Visual Studio](https://visualstudio.microsoft.com/downloads/) (任意のエディション)。 サンプル コードと手順については、無料の Community エディションでテストされています。
 
@@ -567,3 +567,8 @@ Azure Cognitive Search では、ドキュメントにはインデックス作成
 
 > [!div class="nextstepaction"]
 > [.NET で開発する方法](search-howto-dotnet-sdk.md)
+
+クラウドの支出を最適化して節約しますか?
+
+> [!div class="nextstepaction"]
+> [Cost Management を使用してコスト分析を開始する](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

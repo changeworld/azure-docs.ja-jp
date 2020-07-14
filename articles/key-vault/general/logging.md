@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b62d69220a931bef8d91a85bcbbaedfbce86110a
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: b3f337798525860748cf7b535c2bce478dad8e27
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85211394"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043004"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault のログ記録
 
@@ -105,15 +105,17 @@ Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Ena
 
 出力は次のようになります。
 
-    StorageAccountId   : /subscriptions/<subscription-GUID>/resourceGroups/ContosoResourceGroup/providers/Microsoft.Storage/storageAccounts/ContosoKeyVaultLogs
-    ServiceBusRuleId   :
-    StorageAccountName :
-        Logs
-        Enabled           : True
-        Category          : AuditEvent
-        RetentionPolicy
-        Enabled : False
-        Days    : 0
+```output
+StorageAccountId   : /subscriptions/<subscription-GUID>/resourceGroups/ContosoResourceGroup/providers/Microsoft.Storage/storageAccountContosoKeyVaultLogs
+ServiceBusRuleId   :
+StorageAccountName :
+    Logs
+    Enabled           : True
+    Category          : AuditEvent
+    RetentionPolicy
+    Enabled : False
+    Days    : 0
+```
 
 この出力を見れば、ログ記録がキー コンテナーに対して有効になっていることと、ストレージ アカウントに情報が保存されることを確認できます。
 
@@ -330,5 +332,3 @@ Azure Monitor ログの Key Vault ソリューションを使用して、Key Vau
 プログラミング リファレンスについては、「 [Azure Key Vault 開発者ガイド](developers-guide.md)」を参照してください。
 
 Azure Key Vault の Azure PowerShell 1.0 のコマンドレットの一覧については、[Azure Key Vault コマンドレット](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)に関するページを参照してください。
-
-Azure Key Vault を使用したキーのローテーションとログの監査のチュートリアルについては、[エンド ツー エンドのキー ローテーションと監査での Key Vault の設定](../secrets/key-rotation-log-monitoring.md)に関するページを参照してください。

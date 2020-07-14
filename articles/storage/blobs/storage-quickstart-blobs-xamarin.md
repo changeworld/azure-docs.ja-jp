@@ -7,12 +7,12 @@ ms.date: 05/08/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: e0845e7cdc2ce6dc57ed5a18d263f117f0c2005c
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: c66766b39ae104cf4a031c3fd73c173e81d47fb8
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83006388"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563488"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>クイック スタート:Azure Blob Storage クライアント ライブラリ v12 と Xamarin
 
@@ -151,7 +151,7 @@ protected async override void OnAppearing()
 次のコード スニペット:
 
 1. テキストの `MemoryStream` を作成します。
-1. [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient) クラスの [UploadAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.uploadblobasync?view=azure-dotnet#Azure_Storage_Blobs_BlobContainerClient_UploadBlobAsync_System_String_System_IO_Stream_System_Threading_CancellationToken_) 関数を呼び出し、クラス レベルの変数に定義されたファイル名とテキストの `MemoryStream` の両方を渡して、テキストを BLOB にアップロードします。 このメソッドは、BLOB がまだ存在しない場合は作成し、既に存在する場合は上書きします。
+1. [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient) クラスの [UploadAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.uploadblobasync?view=azure-dotnet#Azure_Storage_Blobs_BlobContainerClient_UploadBlobAsync_System_String_System_IO_Stream_System_Threading_CancellationToken_) 関数を呼び出し、ファイル名とテキストの `MemoryStream` の両方でそれを渡してテキストを BLOB にアップロードします。 このメソッドは、BLOB がまだ存在しない場合は作成し、既に存在する場合は上書きします。
 
 次のコードを *MainPage.xaml.cs* ファイルに追加します。
 

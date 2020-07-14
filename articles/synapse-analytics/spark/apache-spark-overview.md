@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 1f1a83bce3a8b46bb49bf78917690851390408e0
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 0a9a89b6ff3d0e2d3987d4b4281b9e4e1605475f
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194690"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476786"
 ---
 # <a name="what-is-apache-spark-in-azure-synapse-analytics"></a>Azure Synapse Analytics の Apache Spark とは
 
@@ -32,7 +32,7 @@ Apache Spark には、クラスターの計算処理をインメモリで行う�
 
 Azure Synapse の Spark プールでは、フル マネージドの Spark サービスを利用できます。 以下の一覧は、Synapse Analytics で Spark プールを作成する利点をまとめたものです。
 
-| 機能 | 説明 |
+| 特徴量 | 説明 |
 | --- | --- |
 | スピードと効率 |Spark インスタンスの起動時間は、60 ノード未満の場合で約 2 分、それより多いの場合には約 5 分となります。 インスタンスの既定のシャットダウン時間は、ノートブック接続によって生存状態になっている場合を除き、最後のジョブが実行されてから 5 分です。 |
 | 作成のしやすさ |Azure Synapse には、Azure portal、Azure PowerShell、Synapse Analytics .NET SDK のいずれかを使用して新しい Spark プールを数分で作成できます。 [Synapse Analytics の Spark プールの概要](../quickstart-create-apache-spark-pool-studio.md)に関するページを参照してください。 |
@@ -60,7 +60,7 @@ SparkContext は、アプリケーション間でリソースを割り当てる�
 
 SparkContext は、ユーザーの main 関数を実行し、ノードでさまざまな並列処理を実行します。 その後、SparkContext は操作の結果を収集します。 ノードによるデータの読み取りと書き込みは、ファイル システムとの間で行われます。 また、ノードは、変換後のデータを Resilient Distributed Dataset (RDD) としてメモリ内にキャッシュします。
 
-SparkContext は Spark プールに接続し、有向グラフ (DAG) にアプリケーションを変換する処理を担います。 グラフは、ノードの Executor プロセス内で実行される個々のタスクから成ります。 アプリケーションはそれぞれ独自の Executor プロセスを取得し、そのプロセスが、アプリケーション全体が終了するまで稼働し続けながら、複数のスレッドでタスクを実行します。
+SparkContext は Spark プールに接続し、有向非巡回グラフ (DAG) にアプリケーションを変換する処理を担います。 グラフは、ノードの Executor プロセス内で実行される個々のタスクから成ります。 アプリケーションはそれぞれ独自の Executor プロセスを取得し、そのプロセスが、アプリケーション全体が終了するまで稼働し続けながら、複数のスレッドでタスクを実行します。
 
 ## <a name="apache-spark-in-synapse-analytics-use-cases"></a>Synapse Analytics の Apache Spark のユース ケース
 

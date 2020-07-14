@@ -11,12 +11,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: vanto, carlrab
 ms.date: 02/11/2019
-ms.openlocfilehash: 8b340bdbd4bea4fcd865d6c27d688e5dbed86bb8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 6a449c078b18b5bc9e005a873c51d92ad29417f6
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84052344"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084989"
 ---
 # <a name="quickstart-create-a-server-level-firewall-rule-using-the-azure-portal"></a>クイック スタート:Azure Portal でサーバーレベルのファイアウォール規則を作成する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -33,12 +33,12 @@ ms.locfileid: "84052344"
 
 ## <a name="create-a-server-level-ip-firewall-rule"></a>サーバーレベルの IP ファイアウォール規則を作成する
 
- SQL Database は、単一およびプールされたデータベースに対して、サーバー レベルのファイアウォールを作成します。 このファイアウォールは、ファイアウォールを開くための IP ファイアウォール規則が作成されない限り、クライアント アプリケーションがサーバーまたはその単一データベースやプールされたデータベースに接続できないようにします。 Azure の外部 IP アドレスからの接続については、接続できるようにする特定の IP アドレスまたはアドレス範囲を対象とするファイアウォール規則を作成します。 サーバーレベルおよびデータベースレベルの IP ファイアウォール規則の詳細については、[サーバーレベルおよびデータベースレベルの IP ファイアウォール規則](firewall-configure.md)に関するページを参照してください。
+ SQL Database は、単一およびプールされたデータベースに対して、サーバー レベルのファイアウォールを作成します。 このファイアウォールは、ファイアウォールを開くための IP ファイアウォール規則が作成されない限り、クライアント アプリケーションがサーバーまたはそのデータベースに接続できないようにします。 Azure の外部 IP アドレスからの接続については、接続できるようにする特定の IP アドレスまたはアドレス範囲を対象とするファイアウォール規則を作成します。 サーバーレベルおよびデータベースレベルの IP ファイアウォール規則の詳細については、[サーバーレベルおよびデータベースレベルの IP ファイアウォール規則](firewall-configure.md)に関するページを参照してください。
 
 > [!NOTE]
 > Azure SQL Database の通信は、ポート 1433 上で行われます。 企業ネットワーク内から接続しようとしても、ポート 1433 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、会社の IT 部門によってポート 1433 が開放されない限り、サーバーに接続することはできません。
 > [!IMPORTANT]
-> 0\.0.0.0 のファイアウォール規則では、すべての Azure サービスがサーバーレベルのファイアウォール規則をパススルーし、サーバーを介して単一データベースまたはプールされたデータベースへの接続を試行できます。
+> 0\.0.0.0 のファイアウォール規則では、すべての Azure サービスがサーバー レベルのファイアウォール規則をパススルーし、サーバーを介してデータベースへの接続を試行できます。
 
 以下の手順に従い、クライアントの IP アドレスに対してサーバーレベルの IP ファイアウォール規則を作成し、その IP アドレスのみが Azure SQL Database ファイアウォールを介して外部接続できるようにします。
 

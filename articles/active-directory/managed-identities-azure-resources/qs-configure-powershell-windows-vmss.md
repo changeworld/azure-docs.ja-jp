@@ -1,6 +1,6 @@
 ---
 title: PowerShell を使用して仮想マシン スケール セット上にマネージド ID を構成する - Azure AD
-description: PowerShell を使用して、仮想マシン スケール セット上にシステム割り当てマネージド ID とユーザー割り当てマネージド ID を構成するための順を追った説明。
+description: PowerShell を使用して、仮想マシン スケール セット上にシステム割り当てマネージド ID とユーザー割り当てマネージド ID を構成するための詳細な手順について説明します。
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -9,18 +9,18 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 755aee312fd0492fd57a82cb7a437b04ebf72987
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 23d549d3b59eabbeab6b8a892cb6800f0088ece2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74547266"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85609070"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-virtual-machine-scale-sets-using-powershell"></a>PowerShell を使用して仮想マシン スケール セット上に Azure リソースのマネージド ID を構成する方法
 
@@ -36,9 +36,9 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure リソースのマネージド ID の基本点な事柄については、[概要](overview.md)に関するセクションを参照してください。 **[システム割り当てマネージド ID とユーザー割り当てマネージド ID の違い](overview.md#how-does-the-managed-identities-for-azure-resources-work)を確認してください**。
+- Azure リソースのマネージド ID の基本点な事柄については、[概要](overview.md)に関するセクションを参照してください。 **[システム割り当てマネージド ID とユーザー割り当てマネージド ID の違い](overview.md#managed-identity-types)を確認してください**。
 - まだ Azure アカウントを持っていない場合は、[無料のアカウントにサインアップ](https://azure.microsoft.com/free/)してから先に進んでください。
-- この記事の管理操作を実行するアカウントには、次の Azure のロール ベースのアクセス制御の割り当てが必要です。
+- この記事の管理操作を実行するアカウントには、次の Azure のロールベースのアクセス制御の割り当てが必要です。
 
     > [!NOTE]
     > Azure AD ディレクトリ ロールを追加で割り当てる必要はありません。

@@ -2,42 +2,43 @@
 title: クイック スタート:コンシューマー グループを含むイベント ハブを作成する - Azure Event Hubs
 description: クイック スタート:イベント ハブとコンシューマー グループを含んだ Event Hubs 名前空間を Azure Resource Manager テンプレートで作成する
 ms.topic: quickstart
+ms.custom: subject-armqs
 ms.date: 06/23/2020
-ms.openlocfilehash: 6ddf17030da8b0ff50f10938221b9c1dba08084d
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 1aa1dc0a4be8c74651a764788184ae1eefe17e75
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964296"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86038091"
 ---
-# <a name="quickstart-create-an-event-hub-by-using-an-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用してイベント ハブを作成する
+# <a name="quickstart-create-an-event-hub-by-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用したイベント ハブの作成
 
-Azure Event Hubs はビッグ データ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 Event Hubs の詳しい概要については、[Event Hubs の概要](event-hubs-about.md)と [Event Hubs の機能](event-hubs-features.md)に関するページをご覧ください。 このクイック スタートでは、[Azure Resource Manager テンプレート](../azure-resource-manager/management/overview.md)を使用してイベント ハブを作成します。 Azure Resource Manager テンプレートをデプロイして、イベント ハブを 1 つ含む [Event Hubs](event-hubs-what-is-event-hubs.md) 型の名前空間を作成します。
+Azure Event Hubs はビッグ データ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 Event Hubs の詳しい概要については、[Event Hubs の概要](event-hubs-about.md)と [Event Hubs の機能](event-hubs-features.md)に関するページをご覧ください。 このクイックスタートでは、[Azure Resource Manager テンプレート (ARM テンプレート)](../azure-resource-manager/management/overview.md) を使用してイベント ハブを作成します。 ARM テンプレートをデプロイして、イベント ハブを 1 つ含む [Event Hubs](event-hubs-what-is-event-hubs.md) 型の名前空間を作成します。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
+
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-eventhubs-create-namespace-and-eventhub%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
-[なし] :
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
-## <a name="create-an-event-hub"></a>イベント ハブの作成
+## <a name="review-the-template"></a>テンプレートを確認する
 
-### <a name="review-the-template"></a>テンプレートを確認する
-
-このクイック スタートで使用されるテンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-eventhubs-create-namespace-and-eventhub/)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-eventhubs-create-namespace-and-eventhub/)からのものです。
 
 :::code language="json" source="~/quickstart-templates/101-eventhubs-create-namespace-and-eventhub/azuredeploy.json" range="1-61" highlight="32-59":::
 
-テンプレートに定義されているリソースは次のとおりです。
+このテンプレートに定義されているリソースは次のとおりです。
 
 - [**Microsoft.EventHub/namespaces**](/azure/templates/microsoft.eventhub/namespaces)
 - [**Microsoft.EventHub/namespaces/eventhubs**](/azure/templates/microsoft.eventhub/namespaces/eventhubs)
 
 テンプレートのその他のサンプルについては、「[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?term=eventhub&pageNumber=1&sort=Popular)」をご覧ください。
 
-### <a name="deploy-the-template"></a>テンプレートのデプロイ
+## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
 テンプレートをデプロイするには、次の手順に従います。
 
@@ -60,9 +61,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. **[コピー]** を選択し、PowerShell スクリプトがコピーされます。
 1. シェル コンソールを右クリックし、 **[貼り付け]** を選択します。
 
-## <a name="verify-the-deployment"></a>デプロイを検証する
+## <a name="validate-the-deployment"></a>デプロイの検証
 
-デプロイを検証するには、[Azure portal](https://portal.azure.com) からリソース グループを開くか、次の Azure PowerShell スクリプトを使用します。  Cloud Shell がまだ開いている場合は、最初の行 (Read-Host) をコピー/実行する必要はありません。
+デプロイを検証するには、[Azure portal](https://portal.azure.com) からリソース グループを開くか、次の Azure PowerShell スクリプトを使用します。 Cloud Shell がまだ開いている場合は、最初の行 (Read-Host) をコピー/実行する必要はありません。
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name that you used in the last procedure"

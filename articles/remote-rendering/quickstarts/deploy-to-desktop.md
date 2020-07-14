@@ -5,12 +5,12 @@ author: christophermanthei
 ms.author: chmant
 ms.date: 03/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: 4e9ddeddf616c581b116d48738e110dd8cdac2d3
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: dc566d2702fb24ef551e4900bed7b828d2597383
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84659932"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85557064"
 ---
 # <a name="quickstart-deploy-unity-sample-to-desktop"></a>クイック スタート:Unity のサンプルをデスクトップにデプロイする
 

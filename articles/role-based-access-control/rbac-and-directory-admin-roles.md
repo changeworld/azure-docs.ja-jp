@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 02/27/2020
+ms.date: 07/07/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 70baddf86207c490d3b85e0f584525592f8a7ad7
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 64b4b0bd8c1e387229144e02293b573062ab196c
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735813"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087828"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>従来のサブスクリプション管理者ロール、Azure ロール、および Azure AD ロール
 
@@ -120,7 +120,7 @@ Azure portal では、Azure AD ロールの一覧が **[ロールと管理者]**
 
 ### <a name="do-azure-roles-and-azure-ad-roles-overlap"></a>Azure ロールと Azure AD ロールは重なり合うか
 
-既定では、Azure ロールと Azure AD ロールは、Azure と Azure AD にまたがっていません。 ただし、全体管理者が Azure portal で **[全体管理者は、Azure サブスクリプションと管理グループを管理できます]** スイッチを選択して自分のアクセスを昇格させた場合、全体管理者は特定のテナントのすべてのサブスクリプションに対する[ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)ロール (Azure ロール) を許可されます。 ユーザー アクセス管理者ロールを使用すると、ユーザーは他のユーザーに Azure リソースに対するアクセス権を付与できます。 このスイッチは、サブスクリプションへのアクセス権を回復する場合に便利です。 詳細については、「[Azure のすべてのサブスクリプションと管理グループを管理する目的でアクセス権限を昇格させる](elevate-access-global-admin.md)」を参照してください。
+既定では、Azure ロールと Azure AD ロールは、Azure と Azure AD にまたがっていません。 ただし、全体管理者が Azure portal で **[Azure リソースのアクセス管理]** スイッチを選択して自分のアクセスを昇格させた場合、全体管理者は特定のテナントのすべてのサブスクリプションに対する[ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)ロール (Azure ロール) を許可されます。 ユーザー アクセス管理者ロールを使用すると、ユーザーは他のユーザーに Azure リソースに対するアクセス権を付与できます。 このスイッチは、サブスクリプションへのアクセス権を回復する場合に便利です。 詳細については、「[Azure のすべてのサブスクリプションと管理グループを管理する目的でアクセス権限を昇格させる](elevate-access-global-admin.md)」を参照してください。
 
 いくつかの Azure AD ロール (全体管理者ロールやユーザー管理者ロールなど) は、Azure AD と Microsoft Office 365 にまたがっています。 たとえば、全体管理者ロールのメンバーであれば、Azure AD および Office 365 で全体管理者機能を持っています。たとえば、Microsoft Exchange や Microsoft SharePoint を変更する機能などです。 ただし、既定では、全体管理者は Azure リソースにアクセスできません。
 

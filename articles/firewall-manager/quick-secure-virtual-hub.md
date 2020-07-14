@@ -1,27 +1,27 @@
 ---
-title: クイック スタート:Azure Firewall Manager プレビューを使用して仮想ハブをセキュリティで保護する - Resource Manager テンプレート
-description: Azure Firewall Manager プレビューを使用して仮想ハブをセキュリティで保護する方法を学習します。
+title: クイック スタート:Azure Firewall Manager を使用して仮想ハブをセキュリティで保護する - Resource Manager テンプレート
+description: Azure Firewall Manager を使用して仮想ハブをセキュリティで保護する方法を学習します。
 services: firewall-manager
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 05/19/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 9c51fdb5142159e390ac4fcf59a04aa3dd747469
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 6641cc29025d39ddff33e706dd9b1b0da517b884
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167198"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563688"
 ---
 # <a name="quickstart-secure-your-virtual-hub-using-azure-firewall-manager---resource-manager-template"></a>クイック スタート:Azure Firewall Manager を使用して仮想ハブをセキュリティで保護する - Resource Manager テンプレート
 
-このクイック スタートでは、Resource Manager テンプレートを使用し、Azure Firewall Manager プレビューを使用して仮想ハブをセキュリティで保護します。 展開されたファイアウォールには、`www.microsoft.com` への接続を許可するアプリケーション ルールがあります。 ファイアウォールをテストするために、2 つの Windows Server 2019 仮想マシンが展開されています。 ワークロード サーバーへの接続には、1 台のジャンプ サーバーが使用されます。 ワークロード サーバーからは、`www.microsoft.com` にのみ接続できます。
+このクイック スタートでは、Resource Manager テンプレートを使用し、Azure Firewall Manager を使用して仮想ハブをセキュリティで保護します。 展開されたファイアウォールには、`www.microsoft.com` への接続を許可するアプリケーション ルールがあります。 ファイアウォールをテストするために、2 つの Windows Server 2019 仮想マシンが展開されています。 ワークロード サーバーへの接続には、1 台のジャンプ サーバーが使用されます。 ワークロード サーバーからは、`www.microsoft.com` にのみ接続できます。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Azure Firewall Manager プレビューの詳細については、「[Azure Firewall Manager プレビューとは](overview.md)」を参照してください。
+Azure Firewall Manager の詳細については、[Azure Firewall Manager の概要](overview.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -29,7 +29,7 @@ Azure Firewall Manager プレビューの詳細については、「[Azure Firew
 
 ## <a name="create-a-secured-virtual-hub"></a>セキュリティ保護付き仮想ハブを作成する
 
-このテンプレートによって、Azure Firewall Manager プレビューを使用してセキュリティ保護付き仮想ハブと、そのシナリオをサポートするために必要なリソースが作成されます。
+このテンプレートによって、Azure Firewall Manager を使用してセキュリティ保護付き仮想ハブと、そのシナリオをサポートするために必要なリソースが作成されます。
 
 ### <a name="review-the-template"></a>テンプレートを確認する
 
@@ -101,4 +101,4 @@ Remove-AzResourceGroup -Name "<your resource group name>"
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [信頼されたセキュリティ パートナーについて学習する](trusted-security-partners.md)
+> [セキュリティ パートナー プロバイダーについて](trusted-security-partners.md)

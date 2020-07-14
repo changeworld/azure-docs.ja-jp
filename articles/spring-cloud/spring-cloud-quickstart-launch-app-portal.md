@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 02/15/2020
 ms.author: brendm
-ms.openlocfilehash: 9cd59fdf81e9b5d56872d20c76e8ea177b3c8577
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e4ea76a888ba51b3560139e9efc3df512c4fbadf
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79470896"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120944"
 ---
 # <a name="quickstart-launch-an-existing-azure-spring-cloud-application-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して既存の Azure Spring Cloud アプリケーションを起動する
 
@@ -134,7 +134,13 @@ az extension add --name spring-cloud
     az configure --defaults spring-cloud=<service instance name>
     ```
 
-4. `gateway` アプリケーションを作成し、JAR ファイルをデプロイします。
+4. `gateway` アプリケーションを作成し、JAR ファイルをデプロイします。  次の手順では、Spring Cloud 拡張機能が必要です。 前提条件としてインストールしていない場合は、次のコマンドを実行します。
+
+    ```azurecli
+    az extension add --name spring-cloud
+    ```
+
+    Spring Cloud 拡張機能を使用して、アプリを作成します。
 
     ```azurecli
     az spring-cloud app create -n gateway

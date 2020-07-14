@@ -4,12 +4,12 @@ description: Azure Migrate サービスの最新の情報や最近行われた�
 ms.topic: overview
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: be617590ce0c96c3ec8ea705732534c8395ac0ce
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 58c77dccd1e43ed497cd56b2831eb2ab914d8d5d
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85052332"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85556920"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure Migrate の新着情報
 
@@ -17,6 +17,7 @@ ms.locfileid: "85052332"
 
 ## <a name="update-june-2020"></a>更新 (2020 年 6 月)
 
+- オンプレミス VMware VM を [Azure VMware Solution (AVS)](https://go.microsoft.com/fwlink/?linkid=2132637) に移行するための評価がサポートされるようになりました。 [詳細情報](how-to-create-azure-vmware-solution-assessment.md)
 - 物理サーバーを検出するための、アプライアンスでの複数の資格情報のサポート。
 - テナント制限が構成されているテナントのアプライアンスからの Azure ログインを許可するためのサポート。
 - 以下に示す Azure Migrate アプライアンスの新しいバージョン。

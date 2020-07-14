@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.author: banders
-ms.openlocfilehash: 4721d8dbe5973baf2ac82124ff516a89398227cb
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: acb818cf2a892a3a71f2f59b0a44041767b846d0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298195"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044925"
 ---
 # <a name="azure-marketplace"></a>Azure Marketplace
 
@@ -20,7 +20,7 @@ ms.locfileid: "84298195"
 
 ## <a name="azure-marketplace-for-ea-customers"></a>EA お客様向け Azure Marketplace
 
-ダイレクトのお客様の場合、Azure Marketplace の料金は Azure エンタープライズ ポータルに表示されます。 Azure Marketplace での購入および消費については、年額コミットメントとは別に、四半期ごとまたは月単位で未払い分が請求されます。
+ダイレクトのお客様の場合、Azure Marketplace の料金は Azure エンタープライズ ポータルに表示されます。 Azure Marketplace での購入および消費については、Azure 前払いとは別に、四半期ごとまたは月単位で未払い分が請求されます。
 
 インダイレクトのお客様は、Azure エンタープライズ ポータルの **[サブスクリプションの管理]** ページで Azure Marketplace のサブスクリプションを確認できますが、価格は非表示になります。 Azure Marketplace の料金については、ライセンス ソリューション プロバイダー (LSP) にお問い合わせください。
 
@@ -28,7 +28,7 @@ ms.locfileid: "84298195"
 
 既存の、毎月の定期的な料金は引き続き、各カレンダー月の最初の日に更新されます。 年間料金は、購入日の応当日に更新されます。
 
-Azure Marketplace で利用可能な一部のサードパーティ リセラー サービスでは、エンタープライズ契約 (EA) の年額コミットメント残高が消費されるようになりました。 従来、これらのサービスは EA 年額コミットメント以外で課金され、個別に請求されていました。 Azure Marketplace のこれらのサービスの EA 年額コミットメントは、お客様の購入と支払管理を簡素化するのに役立ちます。 年額コミットメントが消費されるようになったサービスの完全なリストについては、[Azure Web サイト (更新日: 2018 年 3 月 6 日)](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/) を参照してください。
+Azure Marketplace で利用可能な一部のサードパーティ リセラー サービスでは、エンタープライズ契約 (EA) の Azure 前払い残高が消費されるようになりました。 従来、これらのサービスは EA Azure 前払い以外で課金され、個別に請求されていました。 Azure Marketplace のこれらのサービスの EA Azure 前払いは、お客様の購入と支払管理を簡素化するのに役立ちます。 Azure 前払いが消費されるようになったサービスの完全なリストについては、[Azure Web サイト (更新日: 2018 年 3 月 6 日)](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/) を参照してください。
 
 ### <a name="partners"></a>パートナー
 
@@ -75,41 +75,41 @@ Azure Marketplace での購入を有効にするには、次のようにしま�
 
 ## <a name="azure-marketplace-faq"></a>Azure Marketplace に関する FAQ
 
-このセクションでは、Azure Marketplace で一部のサードパーティ リセラー サービスに Azure 年額コミットメントがどのように適用される可能性があるかについて説明します。
+このセクションでは、Azure Marketplace で一部のサードパーティ リセラー サービスに Azure 前払いがどのように適用される可能性があるかについて説明します。
 
-### <a name="what-changed-with-azure-marketplace-services-and-ea-monetary-commitment"></a>Azure Marketplace サービスと EA 年額コミットメントに関してはどのような変更がありますか?
+### <a name="what-changed-with-azure-marketplace-services-and-azure-ea-prepayment"></a>Azure Marketplace サービスと Azure EA 前払いに関してはどのような変更がありますか?
 
-2018 年 3 月 1 日の時点では、一部のサードパーティ リセラー サービスで、EA 年額コミットメント (MC) が使用されています。 Azure 予約 VM インスタンス (RI) を除き、サービスは以前は、EA 年額コミットメントとは別に課金され、個別に請求されていました。
+2018 年 3 月 1 日より、一部のサードパーティ リセラー サービスで、Azure EA 前払いが使用されています。 Azure 予約 VM インスタンス (RI) を除き、サービスは以前は、Azure EA 前払いとは別に課金され、個別に請求されていました。
 
-弊社では MC の使用を拡大し、最も頻繁に購入される、サードパーティが公開している Azure Marketplace サービスの一部が含まれるようにしました。 Azure Marketplace のこれらのサービスの EA 年額コミットメントは、購入と支払管理を簡素化するのに役立ちます。
+弊社では Azure 前払いの使用を拡大し、最も頻繁に購入される、サードパーティが公開している Azure Marketplace サービスの一部が含まれるようにしました。 Azure Marketplace のこれらのサービスの Azure EA 前払いは、購入と支払管理を簡素化するのに役立ちます。
 
 ### <a name="why-did-we-make-this-change"></a>なぜこの変更が行われたのですか?
 
-お客様は、MC の前払いを利用するための追加の方法を絶えず探しています。 この変更はお客様によって頻繁に要求されたものであり、Azure Marketplace のお客様の大部分に影響を与えました。
+お客様は、Azure 前払いを利用するための追加の方法を絶えず探しています。 この変更はお客様によって頻繁に要求されたものであり、Azure Marketplace のお客様の大部分に影響を与えました。
 
 ### <a name="how-do-you-benefit"></a>どのようなメリットがありますか?
 
-よりシンプルな課金エクスペリエンスが得られ、EA 年額コミットメントを利用しやすくなります。 これらのサービスは前払いの MC に含まれているため、EA の年額コミットメントはより価値のあるものになります。
+よりシンプルな課金エクスペリエンスが得られ、Azure EA 前払いを利用しやすくなります。 これらのサービスは Azure 前払いに含まれているため、Azure EA 前払いはより価値のあるものになります。
 
-### <a name="what-azure-marketplace-services-use-ea-monetary-commitment-and-how-do-i-know"></a>EA 年額コミットメントを使用する Azure Marketplace サービスは何ですか? また、どうすれば確認できますか?
+### <a name="what-azure-marketplace-services-use-azure-ea-prepayment-and-how-do-i-know"></a>Azure EA 前払いを使用する Azure Marketplace サービスは何ですか? また、どうすれば確認できますか?
 
-MC を使用するサービスを購入すると、Azure Marketplace で免責事項が示されます。 Red Hat、SUSE、Autodesk、および Oracle によって公開されている、いくつかのサービスがサポートされます。 現在、他のパーティによって公開されている同じような名前のサービスは、MC から差し引かれません。 完全なリストはこの FAQ の最後にあります。
+Azure 前払いを使用するサービスを購入すると、Azure Marketplace で免責事項が示されます。 Red Hat、SUSE、Autodesk、および Oracle によって公開されている、いくつかのサービスがサポートされます。 現在、他のパーティによって公開されている同じような名前のサービスは、Azure 前払いから差し引かれません。 完全なリストはこの FAQ の最後にあります。
 
-### <a name="what-if-my-ea-monetary-commitment-runs-out"></a>EA 年額コミットメントを使い切った場合はどうなりますか?
+### <a name="what-if-my-azure-ea-prepayment-runs-out"></a>Azure EA 前払いで超過が発生した場合はどうすればよいですか?
 
-すべての MC を消費し、超過した場合、これらのサービスに関連する料金が、その他の従量課金サービスと共に次の超過分の請求書に表示されます。 2018 年 3 月 1 日の変更の前までは、これらの料金は他の Azure Marketplace サービスと共に請求されました。
+すべての Azure 前払いを消費し、超過した場合、これらのサービスに関連する料金が、その他の従量課金サービスと共に次の超過分の請求書に表示されます。 2018 年 3 月 1 日の変更の前までは、これらの料金は他の Azure Marketplace サービスと共に請求されました。
 
-### <a name="why-dont-all-azure-marketplaces-consume-ea-monetary-commitment"></a>すべての Azure Marketplace で EA の年額コミットメントが消費されないのはなぜですか?
+### <a name="why-dont-all-azure-marketplaces-consume-azure-ea-prepayment"></a>すべての Azure Marketplace で Azure EA 前払いが消費されないのはなぜですか?
 
-弊社は、EA の年額コミットメントに関連する最高のカスタマー エクスペリエンスを提供するために頻繁に取り組んでいます。 この変更により、Azure Marketplace における多くのお客様と総支出の大部分に対応できました。 その他のサービスは今後、追加される可能性があります。
+弊社は、Azure EA 前払いに関連する最高のカスタマー エクスペリエンスを提供するための取り組みを頻繁に行っています。 この変更により、Azure Marketplace における多くのお客様と総支出の大部分に対応できました。 その他のサービスは今後、追加される可能性があります。
 
 ### <a name="how-does-this-impact-indirect-enrollment-and-partners"></a>これはダイレクトの加入契約とパートナーにどのように影響しますか?
 
-ダイレクトのお客様やパートナーには影響しません。 これらのサービスは、他の従量課金サービスと同じパートナー マークアップ機能の対象となります。 唯一の変更点は、料金が異なる請求書に表示されることと、料金の支払いがお客様の EA 年額コミットメントからであることです。
+ダイレクトのお客様やパートナーには影響しません。 これらのサービスは、他の従量課金サービスと同じパートナー マークアップ機能の対象となります。 唯一の変更点は、料金が異なる請求書に表示されることと、料金の支払いがお客様の Azure EA 前払いからであることです。
 
-### <a name="is-there-a-list-of-azure-marketplace-services-that-consume-ea-monetary-commitment"></a>EA の年額コミットメントを消費する Azure Marketplace サービスのリストはありますか?
+### <a name="is-there-a-list-of-azure-marketplace-services-that-consume-azure-ea-prepayment"></a>Azure EA 前払いを消費する Azure Marketplace サービスのリストはありますか?
 
-特定の Azure Marketplace オファーでは、年額コミットメント資金を使用できます。 このプログラムに参加している製品の完全なリストについては、[年額コミットメントを使用するサードパーティ サービス](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment)に関するページを参照してください。
+特定の Azure Marketplace オファーでは、Azure 前払い資金を使用できます。 このプログラムに参加している製品の完全なリストについては、[Azure 前払いを使用するサードパーティ サービス](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

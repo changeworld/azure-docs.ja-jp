@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 2f61345cd55fc9541f9e1b707389d0b9d06685b0
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: ae6205db4e120f0496fa47be6788887b155361b0
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873428"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077160"
 ---
 # <a name="understand-and-work-with-scopes"></a>スコープを理解して使用する
 
@@ -67,7 +67,7 @@ Cost Management の各スコープでは、次の組み込みロールがサポ�
 
 Cost Management 共同作成者は、最低限の特権を持つ推奨ロールです。 予算を作成および管理し、コストをより効果的に監視してレポートできるようにエクスポートすることができます。 Cost Management 共同作成者は、エンド ツー エンドのコスト管理シナリオをサポートする追加のロールが必要になることがあります。 以下のようなシナリオが考えられます。
 
-- **リソースの使用状況に関するレポート** – Azure Cost Management は、Azure portal でコストを表示します。また、API とダウンロードのすべての使用状況と課金にも関連しているため、使用状況も併せて表示します。より深く把握するには、Azure Monitor で使用状況メトリックを詳しく確認することもできます。 詳細な使用状況メトリックに関するレポートも必要な場合は、スコープで[監視閲覧者](../../role-based-access-control/built-in-roles.md#monitoring-reader)を付与することを検討してください。
+- **リソースの使用状況を報告する** – Azure Cost Management では、コストが Azure portal に表示されます。これには、すべての使用パターンのコストに関連する使用状況が含まれます。 このレポートには、API とダウンロード料金も表示されますが、さらに理解を深めるために、Azure Monitor の詳細な使用状況メトリックを表示する必要がある場合もあります。 詳細な使用状況メトリックに関するレポートも必要な場合は、スコープで[監視閲覧者](../../role-based-access-control/built-in-roles.md#monitoring-reader)を付与することを検討してください。
 - **予算を超過したときに対応する** – Cost Management 共同作成者は、予算超過に自動的に対応するために、アクション グループを作成および管理するアクセス権も必要です。 予算のしきい値を超えたときに使用するアクション グループを含むリソース グループに対して、[監視の共同作成者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)を付与することを検討してください。 特定のアクションを自動化するには、使用する特定のサービス (Automation や Azure Functions など) の追加のロールが必要です。
 - **コスト データのエクスポートをスケジュールする** – Cost Management 共同作成者は、ストレージ アカウントにデータをコピーするエクスポートをスケジュールするために、ストレージ アカウントを管理するアクセス権も必要です。 コスト データのエクスポート先となるストレージ アカウントを含むリソース グループに対して、[ストレージ アカウントの共同作成者](../../role-based-access-control/built-in-roles.md#storage-account-contributor)を付与することを検討してください。
 - **コスト削減の推奨事項を表示する** – Cost Management 閲覧者と Cost Management 共同作成者は、コストの推奨事項を*表示する*ためのアクセス権を既定で所有しています。 ただし、コストの推奨事項に従って操作するためのアクセスでは、個々のリソースに対するアクセス権が必要です。 コストの推奨事項に従って操作したい場合は、[サービス固有のロール](../../role-based-access-control/built-in-roles.md#all)の付与を検討してください。

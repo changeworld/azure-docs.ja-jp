@@ -3,16 +3,16 @@ title: 初めての自動化されたワークフローの作成
 description: クイックスタート - システム統合と Enterprise Application Integration (EAI) ソリューション向けに Azure Logic Apps を使用して、初めての自動化されたワークフローを構築します
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: 555230499ebda106cbca616b779ae632d65349ab
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 0b3559a27fe9fae6c34b07c648a289d205560bd8
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84807868"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321581"
 ---
 # <a name="quickstart-create-your-first-workflow-by-using-azure-logic-apps---azure-portal"></a>クイック スタート:Azure Logic Apps を使用して初めてのワークフローを作成する - Azure portal
 
@@ -74,13 +74,13 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    ![[フィード項目が発行される場合] トリガーを選択する](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-new-feed-item.png)
 
-1. トリガーに関する情報を次のように入力します。
+1. 下の表の説明に基づき、トリガーの情報を指定します。
 
    ![RSS フィード、頻度、および間隔を指定してトリガーを設定する](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-settings.png)
 
    | プロパティ | 値 | 説明 |
    |----------|-------|-------------|
-   | **RSS フィードの URL** | `http://feeds.reuters.com/reuters/topNews` | 監視する RSS フィードのリンク |
+   | **RSS フィードの URL** | <*RSS-feed-URL*> | 監視する RSS フィードのリンク。 この例では、`http://feeds.reuters.com/reuters/topNews` を使用します。 |
    | **間隔** | 1 | チェックの間隔 (単位数) |
    | **頻度** | 分 | チェックの間隔に使う時間の単位  |
    ||||

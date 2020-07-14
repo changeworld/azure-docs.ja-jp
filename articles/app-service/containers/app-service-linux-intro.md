@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 27f085543869b1a77db9c97ca2e7ae7d3d3b7b88
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 891e0c18b3f95dca905fbc14b957af773135eeec
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80046412"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85557896"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Azure App Service on Linux の概要
 
@@ -54,7 +54,7 @@ App Service on Linux では、開発者の生産性を向上させるために�
 
 Azure Portal では、Web App for Containers で現在使用できる機能のみが表示されます。 他の機能は、有効になったときにポータルに表示されるようになります。
 
-App Service on Linux は [Free、Basic、Standard、および Premium](https://azure.microsoft.com/pricing/details/app-service/plans/) App Service プランでのみサポートされており、[Shared](https://azure.microsoft.com/pricing/details/app-service/plans/) レベルはありません。 Linux 以外の Web アプリを既にホストしている App Service プランで Linux Web アプリを作成することはできません。  
+App Service on Linux は [Free、Basic、Standard、Premium、Isolated](https://azure.microsoft.com/pricing/details/app-service/plans/) App Service プランでのみサポートされており、[Shared](https://azure.microsoft.com/pricing/details/app-service/plans/) レベルはありません。 Linux 以外の Web アプリを既にホストしている App Service プランで Linux Web アプリを作成することはできません。  
 
 現在の制限に基づいて、同じリソース グループの場合、Windows アプリと Linux アプリを同じリージョン内に混在させることはできません。
 

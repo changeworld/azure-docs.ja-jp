@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 ms.date: 03/15/2019
 ms.author: wesmc
-ms.openlocfilehash: 67d56429f092343193fe5c1e3449aff033673320
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 3a7d6f08870495044c4aef0dc21181feda7eb7ab
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83727174"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86041287"
 ---
 # <a name="quickstart-send-iot-telemetry-from-an-android-device"></a>クイック スタート:IoT の利用統計情報を Android デバイスから送信する
 
@@ -81,9 +81,7 @@ az extension add --name azure-iot
 
 ## <a name="send-simulated-telemetry"></a>シミュレートされたテレメトリの送信
 
-1. GitHub のサンプル Android プロジェクトを Android Studio で開きます。 このプロジェクトは、複製またはダウンロードした [azure-iot-sample-java](https://github.com/Azure-Samples/azure-iot-samples-java) リポジトリのコピーの次のディレクトリにあります。
-
-        \azure-iot-samples-java\iot-hub\Samples\device\AndroidSample
+1. GitHub のサンプル Android プロジェクトを Android Studio で開きます。 このプロジェクトは、複製またはダウンロードした [azure-iot-sample-java](https://github.com/Azure-Samples/azure-iot-samples-java) リポジトリのコピーの次のディレクトリにあります: *\azure-iot-samples-java\iot-hub\Samples\device\AndroidSample*
 
 2. Android Studio でサンプル プロジェクトの *gradle.properties* を開き、**Device_Connection_String** プレースホルダーを、先ほどメモした自分のデバイスの接続文字列に置き換えます。
 

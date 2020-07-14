@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door | Microsoft Docs
-description: この記事では、Azure Front Door の概要を示します。 実際のアプリケーションのユーザー トラフィックを負荷分散するための選択肢として適切かどうかを見極めましょう。
+title: Azure Front Door
+description: この記事では、Azure Front Door ルール エンジンでできるさまざまなアクションの一覧を提供します。
 services: frontdoor
 documentationcenter: ''
 author: megan-beatty
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: 3e7c9606a17736ea45b09a4d6981b4d55fa6dee6
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: e11555e883a323bcb5b0be1c62b2825bce77524e
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82515807"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314003"
 ---
 # <a name="azure-front-door-rules-engine-actions"></a>Azure Front Door ルール エンジンのアクション
 
 [AFD ルール エンジン](front-door-rules-engine.md)では、ルールは 0 個以上の一致条件とアクションで構成されます。 この記事では、AFD ルール エンジンで使用できるアクションについて詳しく説明します。
 
-アクションは、1 つの一致条件または一致条件のセットによって識別される要求の種類に適用される動作を定義します。 AFD ルール エンジンでは、1 つのルールに最大 5 つのアクションを含めることができ、そのうちの 1 つのみをルート構成オーバーライド アクション (転送またはリダイレクト) にすることができます。 
+アクションは、1 つの一致条件または一致条件のセットによって識別される要求の種類に適用される動作を定義します。 AFD ルール エンジンでは、1 つのルールに最大 5 つのアクションを含めることができ、そのうちの 1 つのみをルート構成オーバーライド アクション (転送またはリダイレクト) にすることができます。
 
 Azure Front Door ルール エンジンでは、次のアクションを使用できます。  
 

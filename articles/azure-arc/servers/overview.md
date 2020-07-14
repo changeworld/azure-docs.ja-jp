@@ -9,14 +9,14 @@ ms.author: magoedte
 keywords: azure automation, DSC, powershell, 望ましい状態の構成, 更新管理, 変更追跡, インベントリ, Runbook, Python, グラフィカル, ハイブリッド
 ms.date: 03/24/2020
 ms.topic: overview
-ms.openlocfilehash: c9e69e221dc21baae96ab814cb9fb0b65ce98126
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: e775945526a5453085946ed4eea2a2e19761ba78
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449483"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482192"
 ---
-# <a name="what-is-azure-arc-for-servers-preview"></a>Azure Arc for servers (プレビュー) とは
+# <a name="what-is-azure-arc-for-servers-preview"></a>Azure Arc for servers (プレビュー) とは?
 
 Azure Arc for servers (プレビュー) を使用すると、Azure の外部 (企業ネットワークや Azure 以外のクラウド プロバイダー) でホストされている Windows や Linux のマシンを、ネイティブの Azure 仮想マシンと同じように管理することができます。 ハイブリッド マシンは、Azure に接続されると接続済みマシンになり、Azure 内のリソースとして扱われます。 接続済みマシンにはそれぞれリソース ID があり、サブスクリプション内のリソース グループの一部として管理されます。また、Azure Policy やタグの適用などの標準的な Azure のコンストラクトの利点も活用できます。
 

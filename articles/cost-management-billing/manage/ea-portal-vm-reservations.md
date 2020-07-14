@@ -3,16 +3,16 @@ title: Azure EA VM 予約インスタンス
 description: この記事では、VM 予約インスタンスに対する Azure 予約が、エンタープライズ登録にかかる金額の節約にどのように役立つかについて説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 06/11/2020
+ms.date: 07/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: a06f416ed1d4df33cc6777eba878eee2b4f6b047
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: b78abeaac3066839636918923636f4b7bdf9ee35
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84735423"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044857"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Azure EA VM 予約インスタンス
 
@@ -83,9 +83,9 @@ Azure ハイブリッド特典を使用せずに Azure 予約 VM インスタン
 
 ### <a name="reserved-instance-billing"></a>予約インスタンスの課金
 
-エンタープライズ カスタマーの場合は、年額コミットメントを利用して Azure 予約 VM インスタンスを購入します。 加入契約の年額コミットメントに、予約インスタンスを購入できる十分な残高が残っている場合、予約インスタンスの金額は年額コミットメントの残高から差し引かれ、購入分の請求書は送付されません。
+エンタープライズ カスタマーの場合は、Azure 前払いを利用して Azure 予約 VM インスタンスを購入します。 加入契約の Azure 前払いに、予約インスタンスを購入できる十分な残高が残っている場合、予約インスタンスの金額は Azure 前払いの残高から差し引かれ、購入分の請求書は送付されません。
 
-Azure EA のお客様がお持ちの年額コミットメントが全額使用されている場合でも、予約インスタンスを購入することができます。この購入に対しては、次回の超過分請求で請求されます。 予約インスタンスの超過分がある場合は、通常の超過分請求に含まれます。
+Azure EA のお客様がお持ちの Azure 前払いが全額使用されている場合でも、予約インスタンスを購入することができます。この購入に対しては、次回の超過分請求で請求されます。 予約インスタンスの超過分がある場合は、通常の超過分請求に含まれます。
 
 ### <a name="reserved-instance-expiration"></a>予約インスタンスの有効期限
 

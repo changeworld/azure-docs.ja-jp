@@ -3,16 +3,16 @@ title: タスクを自動化してエンタープライズ統合を実現する
 description: Azure Logic Apps を使用し、アプリ、データ、サービス、システムを最小限のコードで統合することによってエンタープライズ統合を実現するワークフローの自動化について説明します。
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: overview
 ms.custom: mvc
 ms.date: 03/11/2020
-ms.openlocfilehash: 789ddf39e4493d11d63a07f2341ab36ac161f32d
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 08b3863ac9a03cda2659cf4934b781eeb9330e17
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84659602"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563810"
 ---
 # <a name="overview---what-is-azure-logic-apps"></a>概要 - Azure Logic Apps とは
 
@@ -32,7 +32,7 @@ Azure Logic Apps を使用してエンタープライズ統合ソリューショ
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Introducing-Azure-Logic-Apps/player]
 
-## <a name="how-does-logic-apps-work"></a>Logic Apps のしくみ 
+## <a name="how-do-logic-apps-work"></a>ロジック アプリのしくみ 
 
 ロジック アプリを使ったワークフローはいずれも、トリガーによって起動します。そして、トリガーは特定のイベントが発生するか、新たに利用可能になったデータが特定の条件を満たした時点で起動します。 Logic Apps のコネクタによって提供される多くのトリガーには、ワークロードの実行頻度を設定できる基本的なスケジューリング機能が備わっています。 より複雑なスケジューリングや高度な繰り返しの場合は、ワークフローの最初のステップとして繰り返しトリガーを使用できます。 詳細については、[スケジュールベースのワークフロー](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)に関するページを参照してください。
 
@@ -42,7 +42,7 @@ Azure Logic Apps を使用してエンタープライズ統合ソリューショ
 
 ロジック アプリは、Logic Apps デザイナーを使って視覚的に作成できます。Logic Apps デザイナーは、ブラウザーを通じて Azure portal で使用できるほか、Visual Studio でも使用できます。 ロジック アプリをさらにカスタマイズするときは、"コード ビュー" エディターを使うと、JavaScript Object Notation (JSON) でロジック アプリの定義を作成したり編集したりすることができます。 一定のタスクについては、Azure PowerShell コマンドや Azure Resource Manager テンプレートを使用することもできます。 ロジック アプリは Azure のクラウドにデプロイされ、そこで実行されます。 さらに詳細な概要については、ビデオ「[Use Azure Enterprise Integration Services to run cloud apps at scale (Azure のエンタープライズ統合サービスを使って大規模なクラウド アプリを実行する)](https://channel9.msdn.com/Events/Connect/2017/T119/)」を参照してください。
 
-## <a name="why-use-logic-apps"></a>Logic Apps を使う理由
+## <a name="why-use-logic-apps"></a>ロジック アプリを使う理由
 
 ロジック アプリなら Microsoft のマネージド コネクタとして事前構築済みの API が用意されているため、ビジネスのデジタル化が進む中でも、従来のシステムと最新のシステムと最先端のシステムを簡単にすばやく接続できます。 このため、アプリのビジネス ロジックと機能に集中できます。 アプリのビルド、ホスティング、スケール、管理、メンテナンス、監視に関する心配は無用です。 そのような問題は、Logic Apps が代わりに処理してくれます。 さらに、支払いは従量[課金モデル](../logic-apps/logic-apps-pricing.md)に基づき、使用した分のみとなります。
 

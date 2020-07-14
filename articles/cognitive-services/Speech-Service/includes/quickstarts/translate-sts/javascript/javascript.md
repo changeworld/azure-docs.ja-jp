@@ -3,13 +3,13 @@ author: IEvangelist
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
-ms.author: dapine
-ms.openlocfilehash: a204940c316304290f32417f7e5d3cb058992e1f
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.author: trbye
+ms.openlocfilehash: abd34ddf39bd8e64740d3edd4a2bf4f44851c07e
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82978974"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035822"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -41,7 +41,7 @@ Speech SDK を [.zip パッケージ](https://aka.ms/csspeech/jsbrowserpackage)�
 Web サーバーで Web ページをホストする場合は、デモ アプリケーションに対するトークン ソースを必要に応じて指定できます。
 これにより、サブスクリプション キーはサーバーに常に存在するようになり、ユーザーは自分で承認コードを入力しなくても音声機能を使用できます。
 
-`token.php` という名前で新しいファイルを作成します。 この例では、Web サーバーが PHP スクリプト言語をサポートするものと想定します。 次のコードを入力します。
+`token.php` という名前で新しいファイルを作成します。 この例では、Web サーバーが PHP スクリプト言語をサポートし、curl が有効になっているものと想定します。 次のコードを入力します。
 
 ```php
 <?php
@@ -67,11 +67,11 @@ echo curl_exec($ch);
 
 ## <a name="build-and-run-the-sample-locally"></a>サンプルをビルドしてローカルに実行する
 
-アプリを起動するには、index.html ファイルをダブルクリックするか、または好みの Web ブラウザーで index.html を開きます。 簡単な GUI が表示されるので、サブスクリプション キーと[リージョン](../../../../regions.md)を入力して、入力テキストの合成をトリガーします。
+アプリを起動するには、index.html ファイルをダブルクリックするか、または好みの Web ブラウザーで index.html を開きます。 簡単な GUI が表示されるので、サブスクリプション キーと[リージョン](../../../../regions.md)を入力し、入力音声のテキスト文字起こしをトリガーできます。
 
 ## <a name="build-and-run-the-sample-via-a-web-server"></a>Web サーバーからサンプルをビルドして実行する
 
-アプリを起動するには、適当な Web ブラウザーを開き、フォルダーをホストしているパブリック URL にアクセスして、[リージョン](../../../../regions.md)を入力し、入力テキストの合成をトリガーします。 構成した場合、トークン ソースからトークンが取得されます。
+アプリを起動するには、適切な Web ブラウザーを開き、フォルダーをホストしているパブリック URL にアクセスして、[リージョン](../../../../regions.md)を入力し、入力音声のテキスト文字起こしをトリガーします。 構成した場合、トークン ソースからトークンが取得されます。
 
 ## <a name="next-steps"></a>次のステップ
 

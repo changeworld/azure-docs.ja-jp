@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: include
-ms.date: 06/10/2018
+ms.date: 06/23/2020
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: 1aaec104e9130eeef723c6505e04e3317271566b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c8c51d671cd98a606c11a39b6cf489aa288d71b3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80234173"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85292103"
 ---
 **構成およびプロセス サーバーの要件**
 
@@ -52,14 +52,12 @@ NIC の種類 | VMXNET3 (構成サーバーが VMware VM である場合)
  |
 **インターネット アクセス** (サーバーは、直接またはプロキシ経由で次の URL にアクセスする必要があります):|
 \*.backup.windowsazure.com | レプリケートされたデータの転送と調整に使用
-\*.store.core.windows.net | レプリケートされたデータの転送と調整に使用
-\*.blob.core.windows.net | レプリケートされたデータを格納するストレージ アカウントへのアクセスに使用
+\*.blob.core.windows.net | レプリケートされたデータを格納するストレージ アカウントへのアクセスに使用。 キャッシュ ストレージ アカウントの特定の URL を指定できます。
 \*.hypervrecoverymanager.windowsazure.com | レプリケーション管理操作と調整に使用
-https:\//management.azure.com | レプリケーション管理操作と調整に使用 
-*.services.visualstudio.com | テレメトリの目的で使用 (省略可能)
+https:\//login.microsoftonline.com | レプリケーション管理操作と調整に使用 
 time.nist.gov | システム時刻とグローバル時刻間の時刻同期の確認に使用
 time.windows.com | システム時刻とグローバル時刻間の時刻同期の確認に使用
-| <ul> <li> https:\//login.microsoftonline.com </li><li> https:\//secure.aadcdn.microsoftonline-p.com </li><li> https:\//login.live.com </li><li> https:\//graph.windows.net </li><li> https:\//login.windows.net </li><li> https:\//www.live.com </li><li> https:\//www.microsoft.com </li></ul> | OVF の設定では、次の URL にアクセスできる必要があります。 Azure Active Directory によるアクセス制御と ID 管理に使用されます。
+| <ul> <li> https:\//management.azure.com </li><li> https:\//secure.aadcdn.microsoftonline-p.com </li><li> https:\//login.live.com </li><li> https:\//graph.windows.net </li><li> https:\//login.windows.net </li><li> *.services.visualstudio.com (省略可能) </li><li> https:\//www.live.com </li><li> https:\//www.microsoft.com </li></ul> | OVF の設定では、次の追加 URL にアクセスできる必要があります。 Azure Active Directory によるアクセス制御と ID 管理に使用されます。
 https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi  | MySQL のダウンロードを完了するためのものです。 </br> いくつかのリージョンでは、ダウンロードが CDN URL にリダイレクトされる可能性があります。 必要に応じて、CDN URL もホワイトリストに登録されていることを確認してください。
 |
 

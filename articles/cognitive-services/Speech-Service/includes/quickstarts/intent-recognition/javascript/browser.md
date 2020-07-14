@@ -3,13 +3,13 @@ author: IEvangelist
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
-ms.author: dapine
-ms.openlocfilehash: 904144b044a0a0223d4807372407b5ce0b9f127b
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.author: trbye
+ms.openlocfilehash: 4889d9b0f142206bf26a69f275cb60598fba577f
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85570224"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035784"
 ---
 ## <a name="start-with-some-boilerplate-code"></a>定型コードを使用して開始する
 
@@ -245,7 +245,7 @@ ms.locfileid: "85570224"
 Web サーバーで Web ページをホストする場合は、デモ アプリケーションに対するトークン ソースを必要に応じて指定できます。
 これにより、サブスクリプション キーはサーバーに常に存在するようになり、ユーザーは自分で承認コードを入力しなくても音声機能を使用できます。
 
-`token.php` という名前で新しいファイルを作成します。 この例では、Web サーバーが PHP スクリプト言語をサポートするものと想定します。 次のコードを入力します。
+`token.php` という名前で新しいファイルを作成します。 この例では、Web サーバーが PHP スクリプト言語をサポートし、curl が有効になっているものと想定します。 次のコードを入力します。
 
 ```php
 <?php

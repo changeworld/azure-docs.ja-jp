@@ -1,26 +1,16 @@
 ---
-title: Azure Lab Services の概要 | Microsoft Docs
-description: Lab Services を利用すると、開発者、テスト担当者、教育者、学生、その他のユーザーが使用できるラボを仮想マシンで簡単に作成、管理、セキュリティ保護できることを説明します。
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: Azure Lab Services と Azure DevTest Labs
+description: Azure DevTest Labs と Azure Lab Services を比較します。
 ms.topic: overview
-ms.date: 02/03/2020
-ms.author: spelluru
-ms.openlocfilehash: a1e42a415e99bfaec1c48204efdaacd178005705
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: b1cd476faf6c457033ffeace03cd2e37b51e8578
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899372"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85480084"
 ---
-# <a name="an-introduction-to-azure-lab-services"></a>Azure Lab Services の概要
+# <a name="compare-azure-devtest-labs-and-azure-lab-services"></a>Azure DevTest Labs と Azure Lab Services を比較する
 Azure には、クラウドにラボ環境を設定することができるサービスが 2 つあります。 
 
 - **Azure DevTest Labs** - このサービスでは、チーム用の環境 (クラウドでの開発環境、テスト環境など) を短時間で設定することができます。 ラボの所有者は、ラボを作成し、Windows または Linux の仮想マシンをプロビジョニングし、必要なソフトウェアとツールをインストールして、ラボのユーザーがそれらを利用できるようにします。 ラボのユーザーは、ラボ内の仮想マシン (VM) に接続して、日常の作業、短期的なプロジェクトなどに利用します。 ユーザーがラボ内のリソースの利用を始めたら、ラボの管理者は、複数のラボについてコストと使用状況を分析し、全体的なポリシーを設定して、組織やチームのコストを最適化できます。
@@ -104,7 +94,7 @@ Azure Lab Services では、Azure によって管理されるインフラスト�
 ## <a name="managed-lab-types-vs-devtest-labs"></a>マネージド ラボの種類と DevTest Labs
 次の表では、Azure Lab Services によってサポートされている 2 種類のラボを比較します。 
 
-| 機能 | マネージド ラボの種類 | DevTest Labs |
+| 特徴 | マネージド ラボの種類 | DevTest Labs |
 | -------- | ----------------- | ---------- |
 | ラボ内の Azure インフラストラクチャの管理 |  サービスによって自動的に管理されます | ユーザーが自分で管理します  |
 | インフラストラクチャの問題に対する組み込みの回復性 | サービスによって自動的に処理されます | ユーザーが自分で管理します  |

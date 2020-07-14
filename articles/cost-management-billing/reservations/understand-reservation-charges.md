@@ -1,20 +1,20 @@
 ---
-title: Azure SQL データベースに対する予約割引について | Microsoft Docs
-description: 実行中の Azure SQL データベースに予約割引がどのように適用されるかについて説明します。
+title: Azure SQL Database に対する予約割引について | Microsoft Docs
+description: 実行中の Azure SQL Database に予約割引がどのように適用されるかについて説明します。
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: banders
-ms.openlocfilehash: e402eabce5fd7af6ca9f51a1d67175cd8e5e1ce4
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 736e046b5254de9aa18c898994d7df11efc98a9a
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84726062"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037989"
 ---
-# <a name="how-a-reservation-discount-is-applied-to-azure-sql-databases"></a>Azure SQL データベースに対する予約割引の適用方法
+# <a name="how-a-reservation-discount-is-applied-to-azure-sql-database"></a>Azure SQL Database に対する予約割引の適用方法
 
 Azure SQL Database の予約容量を購入すると、予約の属性や数量に合致する SQL データベースに対して予約割引が自動的に適用されます。 予約購入分は、ご利用の SQL データベースの計算コストに充当されます。 ソフトウェア、ストレージ、ネットワークについては、通常料金が適用されます。 [Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)を SQL データベースのライセンス コストに充当することができます。
 
@@ -28,7 +28,7 @@ Azure SQL Database の予約容量を購入すると、予約の属性や数量�
 
 リソースをシャットダウンすると、予約割引は、指定されたスコープ内の別の一致するリソースに自動的に適用されます。 指定したスコープ内に一致するリソースが見つからない場合、予約済み時間は "*失われます*"。
 
-## <a name="discount-applied-to-sql-databases"></a>SQL データベースに適用される割引
+## <a name="discount-applied-to-running-sql-databases"></a>SQL データベースの実行に適用される割引
 
  SQL Database の予約容量割引は、実行中の SQL データベースに 1 時間単位で適用されます。 購入した予約は、実行中の SQL データベースによる計算の使用量と照合されます。 実行時間が 1 時間に満たない SQL データベースの場合、その予約は予約の属性に一致する他の SQL データベースに自動的に適用されます。 この割引は、同時に実行されている SQL データベースに適用されます。 予約の属性に一致する SQL データベースのうち、実行時間が 1 時間を超える SQL データベースがない場合は、その時間について予約割引の特典を完全に活用することができません。
 

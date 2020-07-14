@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein, carlrab
 ms.date: 09/26/2019
-ms.openlocfilehash: 906bcf97ad070eb8c2dfe3266bccf05db1598935
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: e4b4b6f21d158a758c2ff77db6660bbb44696d90
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84708894"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086689"
 ---
 # <a name="quickstart-create-a-managed-instance-of-sql-managed-instance"></a>クイック スタート:SQL Managed Instance のマネージド インスタンスを作成する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -36,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 1. Azure portal の左側のメニューにある **[Azure SQL]** を選択します。 **[Azure SQL]** が一覧にない場合は、 **[すべてのサービス]** を選択し、検索ボックスに「**Azure SQL**」と入力します。
-1. **[+ 追加]** を選択して、 **[Select SQL deployment option]\(SQL デプロイ オプションの選択\)** ページを開きます。 **[SQL Managed Instance]** タイルの **[詳細の表示]** を選択すると、Azure SQL Managed Instance に関する追加情報を表示できます。
+1. **[+ 追加]** を選択して、 **[Select SQL deployment option]\(SQL デプロイ オプションの選択\)** ページを開きます。 **[SQL マネージド インスタンス]** タイルの **[詳細の表示]** を選択すると、Azure SQL Managed Instance に関する追加情報を表示できます。
 1. **［作成］** を選択します
 
    ![マネージド インスタンスを作成する](./media/instance-create-quickstart/create-managed-instance.png)

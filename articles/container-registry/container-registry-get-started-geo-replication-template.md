@@ -1,5 +1,5 @@
 ---
-title: クイックスタート - geo レプリケーションされたレジストリを作成する - Resource Manager テンプレート
+title: クイックスタート - geo レプリケーションされたレジストリを作成する - Azure Resource Manager テンプレート
 description: Azure Resource Manager テンプレートを使用して geo レプリケーション Azure コンテナー レジストリを作成する方法を説明します。
 services: azure-resource-manager
 author: dlepow
@@ -8,28 +8,28 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: danlep
 ms.date: 05/26/2020
-ms.openlocfilehash: c94cd3b4b455691e85e7525007fcdf7a056a2b28
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 3ed160780e15cc36648f7e2ad77e726901ee86c3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558077"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119856"
 ---
-# <a name="quickstart-create-a-geo-replicated-container-registry-by-using-a-resource-manager-template"></a>クイック スタート:Resource Manager テンプレートを使用して geo レプリケーション コンテナー レジストリを作成する
+# <a name="quickstart-create-a-geo-replicated-container-registry-by-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して geo レプリケーション コンテナー レジストリを作成する
 
-このクイックスタートでは、Azure Resource Manager テンプレートを使用して Azure Container Registry インスタンスを作成する方法について説明します。 このテンプレートは、[geo レプリケーション](container-registry-geo-replication.md) レジストリを設定します。このレジストリでは、レジストリの内容が複数の Azure リージョン間で自動的に同期されます。 geo レプリケーションを使用すると、単一の管理エクスペリエンスを提供しつつ、リージョン デプロイからイメージへのネットワーク的に近接するアクセスができます。 これは、[Premium](container-registry-skus.md) レジストリ サービス レベルの機能です。 
+このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、Azure Container Registry インスタンスを作成する方法を示します。 このテンプレートは、[geo レプリケーション](container-registry-geo-replication.md) レジストリを設定します。このレジストリでは、レジストリの内容が複数の Azure リージョン間で自動的に同期されます。 geo レプリケーションを使用すると、単一の管理エクスペリエンスを提供しつつ、リージョン デプロイからイメージへのネットワーク的に近接するアクセスができます。 これは、[Premium](container-registry-skus.md) レジストリ サービス レベルの機能です。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
+環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
+
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-container-registry-geo-replication%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
-[なし] :
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
-## <a name="create-a-geo-replicated-registry"></a>geo レプリケーション レジストリを作成する
-
-### <a name="review-the-template"></a>テンプレートを確認する
+## <a name="review-the-template"></a>テンプレートを確認する
 
 このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-container-registry-geo-replication/)からのものです。 テンプレートは、レジストリと追加のリージョン レプリカを設定します。
 
@@ -42,7 +42,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 その他の Azure Container Registry テンプレートのサンプルについては、[クイックスタート テンプレート ギャラリー](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Containerregistry&pageNumber=1&sort=Popular)を参照してください。
 
-### <a name="deploy-the-template"></a>テンプレートのデプロイ
+## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
  1. Azure にサインインし、テンプレートを開くには次のイメージを選択します。
 
@@ -86,7 +86,7 @@ Azure portal またはツール (Azure CLI など) を使用して、コンテ�
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、Resource Manager テンプレートを使用して Azure Container Registry を作成し、別の場所にレジストリ レプリカを構成しました。 Azure Container Registry のチュートリアルに進んで、ACR についての理解を深めましょう。
+このクイックスタートでは、ARM テンプレートを使用して Azure Container Registry を作成し、別の場所にレジストリ レプリカを構成しました。 Azure Container Registry のチュートリアルに進んで、ACR についての理解を深めましょう。
 
 > [!div class="nextstepaction"]
 > [Azure Container Registry のチュートリアル](container-registry-tutorial-prepare-registry.md)
@@ -94,4 +94,4 @@ Azure portal またはツール (Azure CLI など) を使用して、コンテ�
 テンプレートの作成手順について説明したチュートリアルについては、次のページを参照してください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル:初めての Azure Resource Manager テンプレートを作成およびデプロイする](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+> [チュートリアル:初めての ARM テンプレートを作成してデプロイする](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 65df89aff0232d7bf9809cdffc4262d1a640a5a1
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 1869671b465b7175cf3160c41debc66cbd0818ad
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84771123"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367106"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Azure HDInsight のエンタープライズ セキュリティの概要
 
@@ -81,6 +81,7 @@ Azure コンプライアンス認証は、正式な認定資格を含むさま�
 |  | Cosmos DB と [Azure SQL DB](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) 用に [Azure 仮想ネットワーク サービス エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)を構成する | Customer |
 |  | 転送中のデータに対して [TLS 暗号化](../../storage/common/storage-security-tls.md)が有効になっていることを確認する。 | Customer |
 |  | Azure Storage 暗号化用に[顧客管理のキー](../../storage/common/storage-encryption-keys-portal.md)を構成する | Customer |
+|  | [カスタマー ロックボックス](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)を使用し、Azure サポートによりデータ アクセスを制御する | Customer |
 | アプリケーションとミドルウェアのセキュリティ | AAD-DS と統合して[認証を構成する](apache-domain-joined-configure-using-azure-adds.md) | Customer |
 |  | [Apache Ranger 認証](apache-domain-joined-run-hive.md)ポリシーを構成する | Customer |
 |  | [Azure Monitor ログ](../hdinsight-hadoop-oms-log-analytics-tutorial.md)を使用する | Customer |
