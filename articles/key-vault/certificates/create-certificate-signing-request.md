@@ -10,16 +10,16 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: 9772ea320ff28325ffdc8cdcb6e35947b182d1b3
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: ae2d6259bac6a2034edc98de9b0405f32f17fbc3
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85095517"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849484"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>Key Vault での CSR の作成とマージ
 
-Azure Key Vault は、公開キーと秘密キーのペアで証明書署名要求を作成し、任意の証明機関によって署名された証明書を取得することをサポートしています。 内部のエンタープライズ CA または外部の公開 CA を使用できます。 証明書署名要求 (CSR または証明書要求) は、デジタル証明書の発行を要求するためにユーザーから証明機関 (CA) に送信されるメッセージです。
+Azure Key Vault を使用すると、任意の証明機関によって発行されたデジタル証明書を、キー コンテナーに格納することができます。 公開キーと秘密キーのペアを使用して証明書署名要求を作成できます。また、証明書には任意の証明機関の署名を使用できます。 内部のエンタープライズ CA または外部の公開 CA を使用できます。 証明書署名要求 (CSR または証明書要求) は、デジタル証明書の発行を要求するためにユーザーから証明機関 (CA) に送信されるメッセージです。
 
 証明書の一般的な情報については、[Azure Key Vault 証明書](/azure/key-vault/certificates/about-certificates)に関するページを参照してください。
 

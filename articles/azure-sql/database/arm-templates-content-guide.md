@@ -1,9 +1,8 @@
 ---
-title: Azure Resource Manager のテンプレート
-titleSuffix: Azure SQL Database & SQL Managed Instance
+title: Azure Resource Manager テンプレート - Azure SQL Database および SQL Managed Instance
 description: Azure Resource Manager テンプレートを使用して、Azure SQL Database と Azure SQL Managed Instance を作成および構成します。
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: service
 ms.custom: overview-samples sqldbrb=2
 ms.devlang: ''
@@ -12,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/04/2019
-ms.openlocfilehash: 76b9b1301a0aeee24b698b15a3871754de8ca0b9
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: ee2c6580285246d3b170602e507aed038b2507f4
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84718803"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85983640"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database--sql-managed-instance"></a>Azure SQL Database および SQL Managed Instance 用 Azure Resource Manager テンプレート
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -28,10 +27,10 @@ Azure Resource Manager テンプレートを使用すると、インフラスト
 
 次の表は、Azure SQL Database 用の Azure Resource Manager テンプレートのリンク一覧です。
 
-| |  |
+|Link |説明|
 |---|---|
 | [SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-database-transparent-encryption-create) | この Azure Resource Manager テンプレートでは、Azure SQL Database に単一データベースを作成し、サーバーレベルの IP ファイアウォール規則を構成します。 |
-| [[サーバー]](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-logical-server) | この Azure Resource Manager テンプレートでは、Azure SQL Database 用のサーバーを作成します。 |
+| [サーバー](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-logical-server) | この Azure Resource Manager テンプレートでは、Azure SQL Database 用のサーバーを作成します。 |
 | [エラスティック プール](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-elastic-pool-create) | このテンプレートを使用すると、エラスティック プールをデプロイして、そこにデータベースを割り当てることができます。 |
 | [フェールオーバー グループ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-with-failover-group) | このテンプレートは、2 つのサーバー、単一データベース、フェールオーバー グループを Azure SQL Database に作成します。|
 | [脅威の検出](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-threat-detection-db-policy-multiple-databases) | このテンプレートを使用すると、サーバーと、脅威検出が有効になっているデータベースのセット、および各データベースのアラート用のメール アドレスをデプロイできます。 脅威検出は、SQL Advanced Threat Protection (ATP) サービスの一部であり、サーバーおよびデータベースに対する潜在的な脅威に対応するためのセキュリティ層を提供します。|
@@ -47,7 +46,7 @@ Azure Resource Manager テンプレートを使用すると、インフラスト
 
 次の表は、Azure SQL Managed Instance 用の Azure Resource Manager テンプレートのリンク一覧です。
 
-| |  |
+|Link|説明|
 |---|---|
 | [新しい VNet の SQL Managed Instance](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet) | この Azure Resource Manager テンプレートでは、新しい構成済みの Azure 仮想ネットワークを作成し、その仮想ネットワーク内にマネージド インスタンスを作成します。 |
 | [SQL Managed Instance のネットワーク環境](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment) | このデプロイでは、2 つのサブネットを持つ構成済み Azure 仮想ネットワークが作成されます。1 つのサブネットはマネージド インスタンス専用で、もう 1 つには他のリソース (VM、App Service 環境など) を配置できます。 このテンプレートでは、マネージド インスタンスをデプロイすることができる、適切に構成されたネットワーク環境が作成されます。 |

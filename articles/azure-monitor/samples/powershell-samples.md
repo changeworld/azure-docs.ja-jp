@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 2/14/2018
-ms.openlocfilehash: 14fe27c28e2eb6a527dc6f026916002cfb5b0147
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.openlocfilehash: 4313d9fec9e858a5d30cfea2bbe7372e6a96169c
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84945258"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413894"
 ---
 # <a name="azure-monitor-powershell-samples"></a>Azure Monitor PowerShell のサンプル
 この記事では、Azure Monitor の機能にアクセスするために役立つ PowerShell のサンプル コマンドを紹介します。
@@ -220,6 +220,10 @@ Set-AzActivityLogAlert -Location 'Global' -Name 'alert on VM create' -ResourceGr
 その他の webhook プロパティは省略可能です。 `Get-AzActivityLogAlert` を使用して、アクティビティ ログ アラートの内容を戻すことができます。
 
 ## <a name="create-and-manage-autoscale-settings"></a>自動スケール設定の作成と管理
+
+> [!NOTE] 
+> Cloud Services (Microsoft.ClassicCompute) では、自動スケーリングでサポートされる時間グレインは 5 分 (PT5M) です。 その他のサービスでは、自動スケーリングでサポートされる最小時間グレインは 1 分 (PT1M) です。
+
 リソース (Web アプリ、VM、Cloud Services、または仮想マシン スケール セット) は、そのリソース用に構成された自動スケール設定を 1 つだけ使用できます。
 ただし、各自動スケール設定では複数のプロファイルを使用できます。 たとえば、パフォーマンス ベースのスケール プロファイルを使用し、2 つ目のプロファイルとしてスケジュール ベースのプロファイルを使用できます。 各プロファイルには、複数のルールを構成できます。 自動スケールの詳細については、 [アプリケーションの自動スケールの方法](../../cloud-services/cloud-services-how-to-scale-portal.md)に関する記事を参照してください。
 

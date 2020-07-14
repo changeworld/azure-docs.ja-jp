@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/12/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc1cc89beb1e704428fdb4e10868e72e837804d3
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 0b5a52d0a54a9671052b9b7d46810cc65c22951f
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84765260"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799898"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hub-planner"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Hub Planner の統合
 
@@ -43,7 +43,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Hub Planner では、**SP** Initiated SSO がサポートされます
+* Hub Planner では、**SP** Initiated SSO がサポートされます。
 * Hub Planner を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-hub-planner-from-the-gallery"></a>ギャラリーからの Hub Planner の追加
@@ -85,9 +85,9 @@ Hub Planner で Azure AD SSO を構成してテストするには、次の構成
 
     a. **[サインオン URL]** ボックスに、`https://<SUBDOMAIN>.hubplanner.com` という形式で URL を入力します。
 
-    b. **[識別子]** ボックスに、`https://<SUBDOMAIN>.hubplanner.com/sso/metadata` という形式で URL を入力します。
+    b. **[識別子]** ボックスに、`https://app.hubplanner.com/sso/metadata` という形式で URL を入力します。
 
-    c. **[応答 URL]** ボックスに、`https://<SUBDOMAIN>.hubplanner.com/sso/callback` のパターンを使用して URL を入力します
+    c. **[応答 URL]** ボックスに、`https://app.hubplanner.com/sso/callback` のパターンを使用して URL を入力します
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 これらの値を取得するには、[Hub Planner クライアント サポート チーム](mailto:hello@hubplanner.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -133,9 +133,29 @@ Hub Planner で Azure AD SSO を構成してテストするには、次の構成
 
 **Hub Planner** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** と Azure portal からコピーした適切な URL を [Hub Planner サポート チーム](mailto:hello@hubplanner.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
+### <a name="install-the-extension-in-hub-planner"></a>Hub Planner に拡張機能をインストールする
+
+SSO 機能を有効にするには、まず拡張機能を有効にする必要があります。 アカウント オーナーとして、または同等のアクセス許可があるアカウントで、次の手順を実行します。
+
+1. **[設定]** に移動します。
+1. サイド メニューで、 **[拡張機能の管理]**  >  **[Add/Remove Extensions]\(拡張機能の追加と削除\)** を選択します。
+1. シングル サインオンの拡張機能を見つけて追加するか、無料で試します。
+1. 確認を求められたら、利用条件に同意して **[今すぐ追加]** を選択します。
+
+### <a name="enable-sso"></a>SSO を有効にする
+
+拡張機能を有効にしたら、アカウントの SSO を有効にする必要があります。 
+
+1. **[設定]** に移動します。
+1. サイド メニューで、 **[認証]** を選択します。
+1. **[SSO (Single Sign-On)]\(SSO (シングル サインオン)\)** を選択します。
+1. 次の図のように詳しい認証情報を入力して、 **[保存]** を選択します。
+
+![SSO の設定のスクリーンショット](media/hub-planner-tutorial/sso-settings.png)
+
 ### <a name="create-hub-planner-test-user"></a>Hub Planner のテスト ユーザーの作成
 
-このセクションでは、Hub Planner で Britta Simon というユーザーを作成します。  [Hub Planner サポート チーム](mailto:hello@hubplanner.com)と協力して、Hub Planner プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+他のユーザーを追加したい場合は、 **[設定]**  >  **[リソースの管理]** に移動し、そこからユーザーを追加します。 必ずそれらのユーザーのメール アドレスを追加して招待してください。 招待されたユーザーはメールを受信したうえで、SSO を介してアクセスできるようになります。 
 
 ## <a name="test-sso"></a>SSO のテスト 
 

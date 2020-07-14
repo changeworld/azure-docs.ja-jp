@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f33992c7aa205e503c7de150adad7180ff823881
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: c0a8185d81966932c17fd3b0590b5f8ef2f7b6df
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85099659"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85479795"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ibm-digital-business-automation-on-cloud"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と IBM Digital Business Automation on Cloud の統合
 
@@ -93,7 +93,7 @@ IBM Digital Business Automation on Cloud に対する Azure AD SSO を構成し�
     > **識別子**と**応答 URL** の値が自動的に設定されない場合は、要件に応じて手動で値を入力してください。
 
     > [!Note]
-    > お客様の Cloud サブスクリプションのメタデータ ファイルは [DBAoC DevOps チーム](mailto:supportbpmoncloud@us.ibm.com)から入手できます。
+    > お客様の Cloud サブスクリプションのメタデータ ファイルは、[IBM Digital Business Automation on Cloud クライアント サポート チーム](mailto:supportbpmoncloud@us.ibm.com)から入手できます。
 
 1. **サービス プロバイダーのメタデータ ファイル**がなければ、 **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
 

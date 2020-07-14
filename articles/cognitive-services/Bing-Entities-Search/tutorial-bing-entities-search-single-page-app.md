@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 33c5cbd47213d021d374f52c1dadaf20d508ae37
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: a376c5d223121774b6c707b3bdc8edce42649e42
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 07/01/2020
-ms.locfileid: "85608570"
+ms.locfileid: "85800059"
 ---
 # <a name="tutorial-single-page-web-app"></a>チュートリアル:単一ページの Web アプリ
 
@@ -540,15 +540,18 @@ Bing Search API からの応答には、`X-MSEdge-ClientID` ヘッダーが含�
 
 CORS プロキシをインストールして、チュートリアル アプリがクライアント ID ヘッダーにアクセスできるようにするのは簡単です。 まず、[Node.js をインストールします](https://nodejs.org/en/download/) (まだインストールしていない場合)。 さらに、コマンド ウィンドウで次のコマンドを発行します。
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
-次に、HTML ファイル内の Bing Web Search エンドポイントを次のように変更します。
-
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
+次に、HTML ファイル内の Bing Web Search エンドポイントを次のように変更します。\
+`http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search`
 
 最後に、次のコマンドを使用して、CORS プロキシを開始します。
 
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 チュートリアル アプリを使用している間はコマンド ウィンドウを開いたままにしておいてください。ウィンドウを閉じるとプロキシが停止します。 検索結果の下の展開可能な HTTP ヘッダー セクションに、`X-MSEdge-ClientID` ヘッダー (など) が表示され、各要求で同じであることを確認できます。
 

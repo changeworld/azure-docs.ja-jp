@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: dfcde775780cdb42f9df1d677ff2f2475de92843
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 9b2ef5ddb56e3d0422a2a876993ddda0bd97e4ff
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85115280"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961100"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>チュートリアル:Azure Cosmos DB でデータを分析して視覚化するノートブックを作成する
 
@@ -235,7 +235,7 @@ df_cosmos.head(10)
 
    出力には、世界地図がさまざまな色で表示されます。 色が濃いほど収益が高い国または地域を、色が薄いほど収益が低い国または地域を表します。
 
-   ![各国または地域での収益を視覚化した地図](./media/create-notebook-visualize-data/countries-revenue-map-visualization.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/countries-revenue-map-visualization.png" alt-text="各国または地域での収益を視覚化した地図":::
 
 1. データを視覚化するケースをもう 1 つ見てみましょう。 WebsiteData コンテナーには、項目を表示し、カートに追加し、購入したユーザーのレコードが含まれています。 購入された項目のコンバージョン率をプロットしてみましょう。 新しいセルで次のコードを実行すると、各項目のコンバージョン率が視覚化されます。
 

@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 11/04/2019
+ms.date: 06/29/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: b4278cb2e8c5152f522258a37c37acda5efbacf8
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 13949bef7b26058c577a3ab85b4fb2e736bba8f5
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84687924"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85562989"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>チュートリアル:Azure Virtual WAN を使用してサイト間接続を作成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "84687924"
 > * VPN サイトをハブに接続する
 > * VNet をハブに接続する
 > * 構成ファイルをダウンロードする
-> * 仮想 WAN を表示する
+> * VPN ゲートウェイを構成する
 
 > [!NOTE]
 > 通常、多くのサイトがある場合は、[Virtual WAN パートナー](https://aka.ms/virtualwan)を利用してこの構成を作成します。 ただし、ネットワークに慣れていて、独自の VPN デバイスの構成に熟練している場合は、この構成を自分で作成することができます。
@@ -251,11 +251,20 @@ ms.locfileid: "84687924"
 * 新しい仮想 WAN は、IKEv1 と IKEv2 の両方をサポートできます。
 * Virtual WAN では、ポリシー ベースとルート ベースの両方の VPN デバイスとデバイスの手順を使用できます。
 
-## <a name="view-your-virtual-wan"></a><a name="viewwan"></a>仮想 WAN を表示する
+## <a name="configure-your-vpn-gateway"></a><a name="gateway-config"></a>VPN ゲートウェイを構成する
 
-1. 仮想 WAN に移動します。
-2. **[概要]** ページで、マップ上の各ポイントはハブを表します。 任意のポイントにマウス ポインターを置くと、ハブの正常性の概要、接続の状態、および入出力バイト数が表示されます。
-3. ハブと接続のセクションでは、ハブの状態、VPN サイトなどを表示できます。特定のハブ名をクリックすると、VPN サイトに移動して追加の詳細を表示できます。
+VPN ゲートウェイの設定は、 **[表示/構成]** を選択することでいつでも確認、構成することができます。
+
+:::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-1.png" alt-text="構成を表示する" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-1-expand.png":::
+
+**[VPN Gateway の編集]** ページでは、次の設定を確認できます。
+
+* VPN Gateway のパブリック IP アドレス (Azure によって割り当てられます)
+* VPN Gateway のプライベート IP アドレス (Azure によって割り当てられます)
+* VPN Gateway の既定の BGP IP アドレス (Azure によって割り当てられます)
+* カスタム BGP IP アドレスの構成オプション: このフィールドは APIPA (Automatic Private IP Addressing) 用に予約されています。 Azure では、169.254.21.* から 169.254.22.* の範囲の BGP IP がサポートされます。
+
+   :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-2.png" alt-text="構成を表示する" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-2-expand.png":::
 
 ## <a name="next-steps"></a>次のステップ
 

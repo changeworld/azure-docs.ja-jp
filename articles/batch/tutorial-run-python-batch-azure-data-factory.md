@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 12/11/2019
 ms.author: komammas
 ms.custom: mvc, tracking-python
-ms.openlocfilehash: c60f9df87930519684c6c29b1194624342b11528
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: a8f6fe49faf0624f6ef6d4fa8a346e22c69da599
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84555051"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851728"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>チュートリアル:Azure Batch を使用して Azure Data Factory から Python スクリプトを実行する
 
@@ -116,27 +116,27 @@ python main.py
 1. **[Factory Resources]\(Factory リソース\)** ボックスの + (正符号) ボタンを選択し、 **[パイプライン]** を選択します。
 1. **[全般]** タブで、パイプラインの名前を「Run Python」に設定します。
 
-    ![](./media/run-python-batch-azure-data-factory/create-pipeline.png)
+    ![[全般] タブで、パイプラインの名前を「Run Python」に設定する](./media/run-python-batch-azure-data-factory/create-pipeline.png)
 
 1. **[アクティビティ]** ボックスの **[Batch サービス]** を展開します。 **[アクティビティ]** ツールボックスからパイプライン デザイナー サーフェスにカスタム アクティビティをドラッグします。
 1. **[全般]** タブで、[名前] に「**testPipeline**」と指定します。
 
-    ![](./media/run-python-batch-azure-data-factory/create-custom-task.png)
+    ![[全般] タブで、[名前] に「testPipeline」を指定する](./media/run-python-batch-azure-data-factory/create-custom-task.png)
 1. **[Azure Batch]** タブで、前の手順で作成した **Batch アカウント**を追加し、**接続をテスト**して成功することを確認します。
 
-    ![](./media/run-python-batch-azure-data-factory/integrate-pipeline-with-azure-batch.png)
+    ![[Azure Batch] タブで、前の手順で作成した Batch アカウントを追加し、接続をテストする](./media/run-python-batch-azure-data-factory/integrate-pipeline-with-azure-batch.png)
 
 1. **[設定]** タブで「`python main.py`」というコマンドを入力します。
 1. **[Resource Linked Service]\(リソースのリンクされたサービス\)** で、前の手順で作成したストレージ アカウントを追加します。 接続をテストしてその成功を確認します。
 1. **[フォルダーのパス]** で、Python スクリプトおよび関連する入力が格納されている **[Azure Blob Storage]** コンテナーの名前を選択します。 これで、Python スクリプトの実行前に、選択したファイルがコンテナーからプールのノード インスタンスにダウンロードされます。
 
-    ![](./media/run-python-batch-azure-data-factory/create-custom-task-py-script-command.png)
+    ![[フォルダーのパス] で、Azure Blob Storage コンテナーの名前を選択する](./media/run-python-batch-azure-data-factory/create-custom-task-py-script-command.png)
 1. キャンバスの上にあるパイプライン ツール バーの **[検証]** をクリックして、パイプライン設定を検証します。 パイプラインが正常に検証されたことを確認します。 検証出力を閉じるには、&gt;&gt; (右矢印) ボタンを選択します。
 1. **[デバッグ]** をクリックしてパイプラインをテストし、正しく動作することを確認します。
 1. **[発行]** をクリックしてパイプラインを発行します。
 1. **[トリガー]** をクリックすると、バッチ処理の一部として Python スクリプトが実行されます。
 
-    ![](./media/run-python-batch-azure-data-factory/create-custom-task-py-success-run.png)
+    ![[トリガー] をクリックすると、バッチ処理の一部として Python スクリプトが実行される](./media/run-python-batch-azure-data-factory/create-custom-task-py-success-run.png)
 
 ### <a name="monitor-the-log-files"></a>ログ ファイルを監視する
 

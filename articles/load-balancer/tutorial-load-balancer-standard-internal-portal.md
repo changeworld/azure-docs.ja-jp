@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 918a7700df6b5be3ebca7949875127e42f8d3a91
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b8fcef13fbe41ac26b2a31d6871896428649eaa1
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75780697"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920849"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-standard-load-balancer-in-the-azure-portal"></a>チュートリアル:Azure portal の Standard ロードバランサーを使用して内部トラフィックの負荷を分散する
 
@@ -92,7 +92,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    
 2. **[ロード バランサーの作成]** ページの **[基本]** タブで、次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[確認と作成]** を選択します。
 
-    | 設定                 | Value                                              |
+    | 設定                 | 値                                              |
     | ---                     | ---                                                |
     | サブスクリプション               | サブスクリプションを選択します。    |    
     | Resource group         | **[新規作成]** を選択して、テキスト ボックスに「*MyResourceGroupLB*」と入力します。|
@@ -180,6 +180,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    - **[バックエンド プール]** : **[MyBackendPool]** を選択します。
    - **[正常性プローブ]** : **[MyHealthProbe]** を選択します。 
    
+Azure portal を使用して[高可用性ポート](load-balancer-ha-ports-overview.md)を構成するには、 **[HA ポート]** チェック ボックスをオンにします。 このオプションを選択すると、関連するポートとプロトコルの構成が自動的に設定されます。 
+
 1. **[OK]** を選択します。
    
    ![ロード バランサー規則の追加](./media/tutorial-load-balancer-basic-internal-portal/5-load-balancing-rules.png)

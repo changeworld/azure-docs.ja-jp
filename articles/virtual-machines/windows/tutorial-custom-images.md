@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1ded745b5a734fd92a8ace851e3ecfc4a7a487d5
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: e8d68e5f2eeeb7363469535c027f258fbc9d7ed1
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636395"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85480492"
 ---
 # <a name="tutorial-create-windows-vm-images-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して Windows VM イメージを作成する
 
@@ -54,7 +54,7 @@ Cloud Shell を開くには、コード ブロックの右上隅にある **[使
 
 ## <a name="get-the-vm"></a>VM を取得する
 
-リソース グループで利用できる VM は、[Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) を使用して一覧表示できます。 VM の名前とリソース グループがわかったら、もう一度 `Get-AzVM` を使用して VM オブジェクトを取得し、後で使用できるよう変数に格納することができます。 この例では、*sourceVM* という名前の VM を "myResourceGroup" リソース グループから取得し、変数 *$vm* に割り当てています。 
+リソース グループで利用できる VM は、[Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) を使用して一覧表示できます。 VM の名前とリソース グループがわかったら、もう一度 `Get-AzVM` を使用して VM オブジェクトを取得し、後で使用できるよう変数に格納することができます。 この例では、*sourceVM* という名前の VM を "myResourceGroup" リソース グループから取得し、変数 *$sourceVM* に割り当てています。 
 
 ```azurepowershell-interactive
 $sourceVM = Get-AzVM `
@@ -131,7 +131,7 @@ New-AzGalleryImageVersion `
    -ResourceGroupName $resourceGroup.ResourceGroupName `
    -Location $resourceGroup.Location `
    -TargetRegion $targetRegions  `
-   -Source $vm.Id.ToString() `
+   -Source $sourceVM.Id.ToString() `
    -PublishingProfileEndOfLifeDate '2020-12-01'
 ```
 

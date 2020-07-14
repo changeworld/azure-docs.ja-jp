@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 06/02/2020
+ms.date: 06/19/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 310023893d25a484cf05dac00628c632a4421edb
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: d8f65236fee57b4dc3e2bb012d8cdd222f431ec0
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84719952"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482617"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smartkargo"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SmartKargo の統合
 
@@ -83,22 +83,18 @@ SmartKargo で Azure AD SSO を構成してテストするには、次の構成�
 
 1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<CUSTOMER_NAME>.smartkargo.com/`
+    a. **[サインオン URL]** ボックスに、`https://<CUSTOMER_NAME>.smartkargo.com/` という形式で URL を入力します。
 
     b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<CUSTOMER_NAME>.smartkargo.com/`
 
     c. **[応答 URL]** ボックスに、`https://<CUSTOMER_NAME>.smartkargo.com/SamlResponse.aspx` のパターンを使用して URL を入力します
 
     > [!NOTE]
-    > これらは実際の値ではありません。 これらの値を実際のサインオン URL、応答 URL、識別子で更新してください。 これらの値を取得するには、[SmartKargo クライアント サポート チーム](https://www.smartkargo.com/company/contact-2/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際のサインオン URL、応答 URL、および識別子で値を更新します。 これらの値を取得するには、[SmartKargo クライアント サポート チーム](https://www.smartkargo.com/company/contact-2/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. **[SAML 署名証明書]** セクションで **[編集]** ボタンをクリックして、 **[SAML 署名証明書]** ダイアログを開きます。
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
-    ![SAML 署名証明書の編集](common/edit-certificate.png)
-
-1. **[SAML 署名証明書]** セクションで **[Thumbprint Value]\(拇印の値\)** をコピーし、お使いのコンピューターに保存します。
-
-    ![[Thumbprint]\(拇印\) の値をコピーする](common/copy-thumbprint.png)
+    ![証明書のダウンロードのリンク](common/metadataxml.png)
 
 1. **[SmartKargo の設定]** セクションで、要件に基づいて適切な URL をコピーします。
 
@@ -136,7 +132,7 @@ SmartKargo で Azure AD SSO を構成してテストするには、次の構成�
 
 ## <a name="configure-smartkargo-sso"></a>SmartKargo の SSO の構成
 
-**SmartKargo** 側でシングル サインオンを構成するには、**サムプリントの値**と Azure portal からコピーした適切な URL を [SmartKargo プラットフォーム サポート チーム](https://www.smartkargo.com/company/contact-2/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**SmartKargo** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [SmartKargo プラットフォーム サポート チーム](https://www.smartkargo.com/company/contact-2/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-smartkargo-test-user"></a>SmartKargo のテスト ユーザーの作成
 

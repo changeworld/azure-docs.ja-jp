@@ -8,14 +8,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 05/12/2020
+ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 2fab23e9f765d9ab4908cc4be69d8b747c6856b9
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: 7068c1e795e7a607776c48d1b026562a1be6b25d
+ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84790536"
+ms.lasthandoff: 06/29/2020
+ms.locfileid: "85517641"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>チュートリアル:デザイナーを使用して自動車の価格を予測する (プレビュー)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -107,8 +107,8 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 1. キャンバスの右側にある [モジュールの詳細] ペインで **[Outputs + log]\(出力 + ログ\)** を選択します。
 
 1. グラフ アイコンを選択してデータを視覚化します。
-
-    ![データの視覚化](./media/tutorial-designer-automobile-price-train-score/visualize-data.png)
+    
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/visualize-data.png"alt-text="ここに代替テキストを追加。":::
 
 1. データ ウィンドウで別の列を選択して、それぞれの情報を表示します。
 
@@ -180,8 +180,8 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 1. キャンバスの右側にある [モジュールの詳細] ペインで **[コメント]** ボックスを選択し、「*Remove missing value rows*」と入力します。 
 
     これでパイプラインは次のようになっているはずです。
-    
-    ![Select-column](./media/tutorial-designer-automobile-price-train-score/pipeline-clean.png)
+
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-clean.png"alt-text="Select-column":::
 
 ## <a name="train-a-machine-learning-model"></a>機械学習モデルのトレーニング
 
@@ -229,7 +229,7 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
     > [!IMPORTANT]
     > **[Train Model]\(モデルのトレーニング\)** には必ず、 **[Split Data]\(データの分割\)** の左側の出力ポートを接続してください。 トレーニング セットは、左側のポートに格納されます。 右側のポートには、テスト セットが格納されます。
 
-    ![Train Model (モデルのトレーニング) モジュールの正しい構成を示すスクリーンショット。 Linear Regression (線形回帰) モジュールが、Train Model (モデルのトレーニング) モジュールの左側のポートに接続され、Split Data (データの分割) モジュールが、Train Model (モデルのトレーニング) モジュールの右側のポートに接続されています。](./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png)
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png"alt-text="Train Model (モデルのトレーニング) モジュールの正しい構成を示すスクリーンショット。Linear Regression (線形回帰) モジュールが、Train Model (モデルのトレーニング) モジュールの左側のポートに接続され、Split Data (データの分割) モジュールが、Train Model (モデルのトレーニング) モジュールの右側のポートに接続されています。":::
 
 1. **Train Model** (モデルのトレーニング) モジュールを選択します。
 
@@ -244,7 +244,7 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
     パイプラインは次のようになっているはずです。
 
-    ![[Train Model]\(モデルのトレーニング\) モジュールを追加した後のパイプラインの正しい構成を示すスクリーンショット。](./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png)
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png"alt-text="[Train Model]\(モデルのトレーニング\) モジュールを追加した後のパイプラインの正しい構成を示すスクリーンショット。":::
 
 ### <a name="add-the-score-model-module"></a>[Score Model]\(モデルのスコア付け\) モジュールを追加する
 
@@ -264,7 +264,7 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
     最終的なパイプラインは次のようになっているはずです。
 
-    ![パイプラインの正しい構成を示すスクリーンショット。](./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png)
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png"alt-text="パイプラインの正しい構成を示すスクリーンショット。":::
 
 ## <a name="submit-the-pipeline"></a>パイプラインを送信する
 
@@ -295,7 +295,7 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
     ここでは、予測された価格と、データのテストによる実際の価格を確認できます。
 
-    ![Scored Label (スコア付けラベル) 列が強調表示された状態の出力の視覚化のスクリーンショット](./media/tutorial-designer-automobile-price-train-score/score-result.png)
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/score-result.png"alt-text="Scored Label (スコア付けラベル) 列が強調表示された状態の出力の視覚化のスクリーンショット":::
 
 ### <a name="evaluate-models"></a>モデルを評価する
 

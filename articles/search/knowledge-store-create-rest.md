@@ -1,24 +1,21 @@
 ---
-title: REST を使用してナレッジ ストア (プレビュー) を作成する
+title: REST を使用してナレッジ ストアを作成する
 titleSuffix: Azure Cognitive Search
-description: REST API と Postman を使用して Azure Cognitive Search のナレッジ ストアを作成し、AI エンリッチメント パイプラインのエンリッチメントを永続化します。 現在、この機能はパブリック プレビュー段階にあります。
+description: REST API と Postman を使用して Azure Cognitive Search のナレッジ ストアを作成し、AI エンリッチメント パイプラインのエンリッチメントを永続化します。
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/23/2020
-ms.openlocfilehash: f030fc81ab33ecd0531040662346e1ed44f5d17c
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.date: 06/30/2020
+ms.openlocfilehash: f496413cf1a5175cee65bce46a2f7f6260d5451d
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85263026"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565223"
 ---
 # <a name="create-a-knowledge-store-using-rest-and-postman"></a>REST と Postman を使用してナレッジ ストアを作成する
-
-> [!IMPORTANT] 
-> ナレッジ ストアは現在、パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 プレビュー機能は [REST API バージョン 2019-05-06-Preview](search-api-preview.md) で提供しています。 現時点でポータルによるサポートは一部のみにとどまります。また、.NET SDK によるサポートはありません。
 
 ナレッジ ストアには、Azure Cognitive Search のエンリッチメント パイプラインからの出力が、後から下流で行われる分析などの処理に使用できるよう格納されます。 AI エンリッチ パイプラインは、画像ファイルや構造化されていないテキスト ファイルを受け取って、Azure Cognitive Search を使用してそのインデックスを作成し、Cognitive Services の AI エンリッチメント (画像分析、自然言語処理など) を適用したうえで、Azure Storage 内のナレッジ ストアにその結果を保存します。 Azure portal で Power BI や Storage Explorer などのツールを使用して、ナレッジ ストアを調べることができます。
 
@@ -81,7 +78,7 @@ Postman をインストールして設定します。
 | 変数    | 情報の入手元 |
 |-------------|-----------------|
 | `admin-key` | Azure Cognitive Search サービスの **[キー]** ページ上。  |
-| `api-version` | **2019-05-06-Preview** のままにします。 |
+| `api-version` | **2020-06-30** のままにします。 |
 | `datasource-name` | **hotel-reviews-ds** のままにします。 | 
 | `indexer-name` | **hotel-reviews-ixr** のままにします。 | 
 | `index-name` | **hotel-reviews-ix** のままにします。 | 

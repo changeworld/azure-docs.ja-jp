@@ -8,22 +8,20 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 14760eaef309ec5695b423b98e59a8ae1ab5cacb
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 35590fd8aefb8b6a90adeef52fabe773663403c2
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84886744"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510990"
 ---
 # <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>チュートリアル:スキルセットに対する診断、修復、および変更のコミットを行う
 
 この記事では、Azure portal を使用してデバッグ セッションにアクセスし、指定されたスキルセットの問題を修復します。 このスキルセットには、対処する必要があるいくつかのエラーがあります。 このチュートリアルでは、デバッグ セッションを通じて、スキルの入力と出力に関する問題を特定し、解決します。
 
 > [!Important]
-> Azure Cognitive Search のデバッグ セッションのサポートは、アクセスを制限されたプレビューとして、[要求に応じて](https://aka.ms/DebugSessions)利用できます。 このプレビュー機能は、サービス レベル アグリーメントなしで提供されています。したがってプロダクション ワークロードへの使用は推奨しません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+> デバッグ セッションは、サービス レベル アグリーメントなしで提供されるプレビュー機能です。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 >
-> プレビューへのアクセスが許可されると、Azure portal を使用して、サービスのデバッグ セッションにアクセスして利用できるようになります。
->   
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -85,7 +83,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 コレクションには、このセクションを完了するために使用される 4 種類の REST 呼び出しが含まれています。
 
-最初の呼び出しでは、データ ソースが作成されます。 `clinical-trials-ds` 2 つ目の呼び出しでは、スキルセット `clinical-trials-ss` が作成されます。 3 つ目の呼び出しでは、インデックスの `clinical-trials` が作成されます。 最後の 4 つ目の呼び出しでは、インデクサーの `clinical-trials-idxr` が作成されます。 コレクション内のすべての呼び出しが完了したら、Postman を閉じて Azure portal に戻ります。
+最初の呼び出しでは、データ ソースが作成されます。 `clinical-trials-ds`. 2 つ目の呼び出しでは、スキルセット `clinical-trials-ss` が作成されます。 3 つ目の呼び出しでは、インデックスの `clinical-trials` が作成されます。 最後の 4 つ目の呼び出しでは、インデクサーの `clinical-trials-idxr` が作成されます。 コレクション内のすべての呼び出しが完了したら、Postman を閉じて Azure portal に戻ります。
 
 > [!div class="mx-imgBorder"]
 > ![Postman を使用してデータ ソースを作成する](media/cognitive-search-debug/postman-create-data-source.png)

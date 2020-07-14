@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd3d3aeecb66ba332d9c32c944d527ac3a07f2fe
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 13be33843172f505ed8f12293137c0808e9bd2a0
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014317"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920384"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>チュートリアル:Windows VM のシステム割り当てマネージド ID を使用して Azure SQL にアクセスする
 
@@ -66,10 +66,10 @@ VM にデータベースへのアクセス権を付与するには次の 2 つ�
 
 このセクションでは、VM のシステム割り当て ID を表す包含ユーザーをデータベースに作成する方法を説明します。 このステップでは、[Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) が必要になります。 始める前に、Azure AD 統合の背景について次の記事で確認しておくことも有益です。
 
-* [SQL Database と SQL Data Warehouse でのユニバーサル認証 (MFA 対応の SSMS サポート)](/azure/sql-database/sql-database-ssms-mfa-authentication)
-* [SQL Database または SQL Data Warehouse で Azure Active Directory 認証を構成して管理する](/azure/sql-database/sql-database-aad-authentication-configure)
+- [SQL Database と Azure Synapse Analytics を使用したユニバーサル認証 (SSMS での MFA のサポート)](/azure/sql-database/sql-database-ssms-mfa-authentication)
+- [SQL Database または Azure Synapse Analytics を使用した Azure Active Directory 認証の構成と管理](/azure/sql-database/sql-database-aad-authentication-configure)
 
-SQL Database では、一意の AAD 表示名が必要です。 これにより、ユーザー、グループ、サービス プリンシパル (アプリケーション)、およびマネージド ID 用に有効化された VM 名などの AAD アカウントの表示名を、AAD で一意に定義する必要があります。 SQL Database では、このようなユーザーの T-SQL の作成時に AAD 表示名がチェックされ、一意でない場合には、指定したアカウントに一意の AAD 表示名を指定するように要求するコマンドが失敗します。
+SQL DB では、一意の AAD 表示名が必要です。 このため、ユーザー、グループ、サービス プリンシパル (アプリケーション)、およびマネージド ID 用に有効化された VM 名などの AAD アカウントの表示名は、AAD 内で一意に定義する必要があります。 SQL DB では、このようなユーザーの T-SQL の作成時に AAD 表示名がチェックされ、一意でない場合には、指定したアカウントに一意の AAD 表示名を指定するように要求するコマンドが失敗します。
 
 **包含ユーザーを作成するには:**
 

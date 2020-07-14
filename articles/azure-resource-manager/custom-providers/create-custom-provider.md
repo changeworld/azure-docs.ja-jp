@@ -3,26 +3,38 @@ title: リソース プロバイダーを作成する
 description: リソース プロバイダーを作成し、そのカスタム リソースの種類をデプロイする方法について説明します。
 author: MSEvanhi
 ms.topic: tutorial
-ms.date: 06/19/2020
+ms.date: 06/24/2020
 ms.author: evanhi
-ms.openlocfilehash: ce547c010d3cc814d4e6f6182c19572248228fc3
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 541d140716e52b4fe1db4bc999682914a380a5f0
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85125012"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85368109"
 ---
-# <a name="quickstart-create-custom-provider-and-deploy-custom-resources"></a>クイック スタート:カスタム プロバイダーの作成とカスタム リソースのデプロイ
+# <a name="quickstart-create-a-custom-provider-and-deploy-custom-resources"></a>クイック スタート:カスタム プロバイダーの作成とカスタム リソースのデプロイ
 
 このクイックスタートでは、独自のリソース プロバイダーを作成し、そのリソース プロバイダーのカスタム リソースの種類をデプロイします。 カスタム プロバイダーの詳細については、「[Azure Custom Providers プレビューの概要](overview.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイックスタートの手順を完了するには、`REST` 操作を呼び出す必要があります。 [REST 要求を送信するさまざまな方法](/rest/api/azure/)があります。
+- Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+- このクイックスタートの手順を完了するには、`REST` 操作を呼び出す必要があります。 [REST 要求を送信するさまざまな方法](/rest/api/azure/)があります。
 
-Azure CLI のコマンドを実行するには、[Azure Cloud Shell の Bash](/azure/cloud-shell/quickstart) を使用します。 [custom-providers](/cli/azure/ext/custom-providers/custom-providers/resource-provider) コマンドには拡張機能が必要です。 詳細については、「[Azure CLI で拡張機能を使用する](/cli/azure/azure-cli-extensions-overview)」を参照してください。
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-PowerShell コマンドをローカルで実行するには、PowerShell 7 以降と Azure PowerShell モジュールを使用します。 詳しくは、[Azure PowerShell のインストール](/powershell/azure/install-az-ps)に関する記事をご覧ください。 `REST` 操作用のツールがまだない場合は、[ARMClient](https://github.com/projectkudu/ARMClient) をインストールしてください。 これは、Azure Resource Manager API の呼び出しを簡略化する、オープン ソースのコマンドライン ツールです。
+- [custom-providers](/cli/azure/ext/custom-providers/custom-providers/resource-provider) コマンドには拡張機能が必要です。 詳細については、「[Azure CLI で拡張機能を使用する](/cli/azure/azure-cli-extensions-overview)」を参照してください。
+- Azure CLI の例では、`REST` 要求に `az rest` を使用しています。 詳細については、「[az rest](/cli/azure/reference-index#az-rest)」を参照してください。
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+- PowerShell コマンドは、PowerShell 7 以降と Azure PowerShell モジュールを使用してローカルで実行します。 詳しくは、[Azure PowerShell のインストール](/powershell/azure/install-az-ps)に関する記事をご覧ください。
+- `REST` 操作用のツールがまだない場合は、[ARMClient](https://github.com/projectkudu/ARMClient) をインストールしてください。 これは、Azure Resource Manager API の呼び出しを簡略化する、オープン ソースのコマンドライン ツールです。
+- **ARMClient** のインストール後は、PowerShell コマンド プロンプトから「`armclient.exe`」と入力することによって、使用法についての情報を表示できます。 または、[ARMClient wiki](https://github.com/projectkudu/ARMClient/wiki) にアクセスしてください。
+
+---
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="deploy-custom-provider"></a>カスタム プロバイダーをデプロイする
 
@@ -30,14 +42,16 @@ PowerShell コマンドをローカルで実行するには、PowerShell 7 以�
 
 テンプレートをデプロイすると、お使いのサブスクリプションに次のリソースが作成されます。
 
-* リソースおよびアクションの操作が含まれている関数アプリ。
-* カスタム プロバイダーを通じて作成されたユーザーを格納するためのストレージ アカウント。
-* カスタム リソースの種類とアクションを定義するカスタム プロバイダー。 これは、要求を送信するために、関数アプリ エンドポイントを使用します。
-* カスタム プロバイダーからのカスタム リソース。
+- リソースおよびアクションの操作が含まれている関数アプリ。
+- カスタム プロバイダーを通じて作成されたユーザーを格納するためのストレージ アカウント。
+- カスタム リソースの種類とアクションを定義するカスタム プロバイダー。 これは、要求を送信するために、関数アプリ エンドポイントを使用します。
+- カスタム プロバイダーからのカスタム リソース。
 
-カスタム プロバイダーをデプロイするには、Azure CLI または PowerShell を使用します。
+カスタム プロバイダーをデプロイするには、Azure CLI、PowerShell、または Azure portal を使用します。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+この例では、リソース グループ、場所、プロバイダーの関数アプリ名を入力するように求められます。 これらの名前は変数に格納され、他のコマンドで使用されます。 リソースは、[az group create](/cli/azure/group#az-group-create) コマンドと [az deployment group create](/cli/azure/deployment/group#az-deployment-group-create) コマンドでデプロイします。
 
 ```azurecli-interactive
 read -p "Enter a resource group name:" rgName &&
@@ -52,6 +66,8 @@ read
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
+この例では、リソース グループ、場所、プロバイダーの関数アプリ名を入力するように求められます。 これらの名前は変数に格納され、他のコマンドで使用されます。 [az group create](/powershell/module/az.resources/new-azresourcegroup) コマンドと [az deployment group create](/powershell/module/az.resources/new-azresourcegroupdeployment) コマンドによってリソースがデプロイされます。
+
 ```powershell
 $rgName = Read-Host -Prompt "Enter a resource group name"
 $location = Read-Host -Prompt "Enter the location (i.e. eastus)"
@@ -64,7 +80,7 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
 ---
 
-または、次のボタンを使用して、Azure portal からソリューションをデプロイできます。
+Azure portal からソリューションをデプロイすることもできます。 **[Azure へのデプロイ]** ボタンを選択すると、Azure portal でテンプレートが表示されます。
 
 [![Azure へのデプロイ](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-docs-json-samples%2Fmaster%2Fcustom-providers%2Fcustomprovider.json)
 
@@ -252,7 +268,7 @@ armclient PUT $addURI $requestBody
 
 ### <a name="list-custom-resource-providers"></a>カスタム リソース プロバイダーの一覧表示
 
-サブスクリプション内のすべてのカスタム リソース プロバイダーを一覧表示します。 既定では、現在のサブスクリプションのカスタム リソース プロバイダーが一覧表示されますが、`--subscription` パラメーターを指定することもできます。 リソース グループに対して一覧表示するには、`--resource-group` パラメーターを使用します。
+サブスクリプション内のカスタム リソースプロバイダーをすべて表示するには、`list` コマンドを使用します。 既定では、現在のサブスクリプションのカスタム リソースプロバイダーが一覧表示されますが、`--subscription` パラメーターを指定することもできます。 リソース グループに対して一覧表示するには、`--resource-group` パラメーターを使用します。
 
 ```azurecli-interactive
 az custom-providers resource-provider list --subscription $subID
@@ -289,7 +305,7 @@ az custom-providers resource-provider list --subscription $subID
 
 ### <a name="show-the-properties"></a>プロパティの表示
 
-カスタム リソース プロバイダーのプロパティを表示します。 出力形式は `list` の出力に似ています。
+カスタム リソースプロバイダーのプロパティを表示するには、`show` コマンドを使用します。 出力形式は `list` の出力に似ています。
 
 ```azurecli-interactive
 az custom-providers resource-provider show --resource-group $rgName --name $funcName

@@ -8,24 +8,24 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/10/2020
-ms.openlocfilehash: 1ff29be9cde4a2bd53f0edbe57f3eab603c1796f
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: f673fd4b49a33c2faf6bc8b489520f2a877b0689
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84739496"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513807"
 ---
 # <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>チュートリアル:Azure Machine Learning を使用してカスタム スキルを作成およびデプロイする 
 
-このチュートリアルでは、[ホテルのレビューのデータセット](https://www.kaggle.com/datafiniti/hotel-reviews) (クリエイティブ コモンズの [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt) ライセンス下で配布) を使用して、Azure Machine Learning を使用してレビューからアスペクトベースのセンチメントを抽出する[カスタム スキル](https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-interface)を作成します。 これにより、同じレビュー内の肯定的および否定的なセンチメントを、スタッフ、部屋、ロビー、プールなどの識別されたエンティティに正しく割り当てることができます。
+このチュートリアルでは、[ホテルのレビューのデータセット](https://www.kaggle.com/datafiniti/hotel-reviews) (クリエイティブ コモンズの [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt) ライセンス下で配布) を使用して、Azure Machine Learning を使用してレビューからアスペクトベースのセンチメントを抽出する[カスタム スキル](https://docs.microsoft.com/azure/search/cognitive-search-aml-skill)を作成します。 これにより、同じレビュー内の肯定的および否定的なセンチメントを、スタッフ、部屋、ロビー、プールなどの識別されたエンティティに正しく割り当てることができます。
 
-アスペクトベースのセンチメント モデルをトレーニングするには、[nlp レシピ リポジトリ](https://github.com/microsoft/nlp-recipes/tree/master/examples/sentiment_analysis/absa)を使用します。 その後、そのモデルは Azure Kubernetes クラスター上にエンドポイントとしてデプロイされます。 デプロイされたモデルは、Cognitive Search サービスで使用するためのカスタム スキルとしてエンリッチメント パイプラインに追加されます。
+Azure Machine Learning でアスペクトベースのセンチメント モデルをトレーニングするには、[nlp レシピ リポジトリ](https://github.com/microsoft/nlp-recipes/tree/master/examples/sentiment_analysis/absa)を使用します。 その後、そのモデルは Azure Kubernetes クラスター上にエンドポイントとしてデプロイされます。 デプロイされたエンドポイントは、Cognitive Search サービスで使用するための AML スキルとしてエンリッチメント パイプラインに追加されます。
 
 提供されるデータセットは 2 つあります。 モデルを自分でトレーニングする場合は、hotel_reviews_1000.csv ファイルが必要です。 トレーニング手順をスキップする場合は、 hotel_reviews_100.csv をダウンロードします。
 
 > [!div class="checklist"]
 > * Azure Cognitive Search インスタンスを作成する
-> * Azure Machine Learning ワークスペースの作成
+> * Azure Machine Learning ワークスペースを作成する (検索サービスとワークスペースが同じサブスクリプションに存在する必要があります)
 > * モデルをトレーニングして Azure Kubernetes クラスターにデプロイする
 > * デプロイされたモデルに AI エンリッチメント パイプラインをリンクする
 > * デプロイされたモデルからの出力をカスタム スキルとして取り込む

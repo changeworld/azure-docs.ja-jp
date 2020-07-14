@@ -4,14 +4,14 @@ description: このチュートリアルでは、Azure の Service Fabric クラ
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 6e8dbb5a56bf313bf35ad97ec6ea7df8ce483be9
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: ed212083a29836e1da593ec42c31bbf86b907546
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82788826"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611647"
 ---
-# <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>チュートリアル: Azure で Service Fabric クラスターをスケーリングする
+# <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>チュートリアル:Azure で Service Fabric クラスターのスケーリングを行う
 
 このチュートリアルはシリーズ第 3 部で、既存のクラスターをスケールアウトおよびスケールインする方法を示します。 このチュートリアルを終了すると、クラスターをスケールする方法や残ったリソースをクリーンアップする方法について知ることができます。  Azure 内で実行されているクラスターのスケーリングの詳細については、[Service Fabric クラスターのスケーリング](service-fabric-cluster-scaling.md)に関するページを参照してください。
 
@@ -833,13 +833,12 @@ Foreach($node in $nodes)
 ```
 
 ## <a name="increase-node-resources"></a>ノード リソースを増加する 
-Service Fabric クラスターを作成した後は、クラスターのノード タイプを垂直方向にスケーリング (ノードのリソースを変更) するか、そのノード タイプの VM のオペレーティング システムをアップグレードすることができます。  
+Service Fabric クラスターを作成した後は、クラスターのノード タイプを垂直方向にスケーリング (ノードのリソースを変更) したり、元のノード タイプを (VM SKU または OS イメージを更新した) 新しいノード タイプに置き換えることによってそのノード タイプの VM のオペレーティング システムをアップグレードしたりすることができます。 詳細については、[Azure Service Fabric ノード タイプのスケールアップ](service-fabric-scale-up-node-type.md)に関するページを参照してください。
 
-> [!WARNING]
-> Silver 以上の持続性で実行されている場合を除き、スケール セット/ノード タイプの VM SKU は変更しないことをお勧めします。 VM SKU のサイズ変更は、データを破壊する、インプレース インフラストラクチャ操作です。 この変更を遅らせたり監視したりする機能がないと、この操作により、ステートフル サービスのデータの消失が発生する可能性があります。また、ステートレス ワークロードに対しても、他の予期できない運用上の問題が発生する可能性があります。
+> [!IMPORTANT]
+> VM SKU や OS イメージをインプレースで変更することは避けてください。これは危険な操作でありサポートされません。
 
-> [!WARNING]
-> プライマリ ノード タイプの VM SKU は変更しないことをお勧めします。これは危険な操作で、サポートされていません。  クラスター容量を増やす必要がある場合、VM インスタンスまたは別のノード タイプを追加できます。  それが不可能な場合は、新しいクラスターを作成し、古いクラスターから[アプリケーション状態を復元する](service-fabric-reliable-services-backup-restore.md)ことができます (妥当な場合)。  それが不可能な場合は、[プライマリ ノード タイプの VM SKU を変更](service-fabric-scale-up-node-type.md)できます。
+それが不可能な場合は、新しいクラスターを作成し、古いクラスターから[アプリケーション状態を復元する](service-fabric-reliable-services-backup-restore.md) ことができます (妥当な場合)。 システム サービスの状態を復元する必要はありません。それらは新しいクラスターにアプリケーションをデプロイしたときに再作成されます。 クラスターでステートレス アプリケーションだけを実行していた場合、実行するのはアプリケーションの新しいクラスターへのデプロイのみであり、復元するものはありません。
 
 ### <a name="update-the-template"></a>テンプレートを更新する
 
@@ -873,19 +872,7 @@ az group deployment create --resource-group sfclustertutorialgroup --template-fi
 > [!div class="nextstepaction"]
 > [クラスターのランタイムをアップグレードする](service-fabric-tutorial-upgrade-cluster.md)
 
-[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
-[reliability]: service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster
-[template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
-[parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json
-
-> * ノード タイプを追加および削除する (スケールアウトおよびスケールイン)
-> * ノード リソースを増加する (スケールアップ)
-
-次のチュートリアルでは、クラスターのランタイムをアップグレードする方法について説明します。
-> [!div class="nextstepaction"]
-> [クラスターのランタイムをアップグレードする](service-fabric-tutorial-upgrade-cluster.md)
-
-[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
-[reliability]: service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster
+[durability]: service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster
+[reliability]: service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster
 [template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
 [parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json

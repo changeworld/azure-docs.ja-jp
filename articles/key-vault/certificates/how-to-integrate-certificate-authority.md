@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: d6cb8d386efbcdaf053f0740d955b249c0e636b4
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 7627625a917a8f652da62d4197368f023ad8c110
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84907829"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964500"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>Key Vault と DigiCert 証明機関の統合
 

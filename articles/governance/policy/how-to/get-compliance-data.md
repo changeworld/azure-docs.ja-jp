@@ -3,12 +3,12 @@ title: ポリシーのコンプライアンス データを取得する
 description: Azure Policy の評価と効果によって、コンプライアンスが決まります。 Azure リソースのコンプライアンスの詳細を取得する方法を説明します。
 ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: e4d63355b793f69ccc2ed7aaa44bfb60a3a8440e
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 53c946c59862451859616cb87d1101ae8fd5f15b
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204839"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045197"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure リソースのコンプライアンス データを取得する
 
@@ -34,7 +34,7 @@ Azure Policy の最大の利点の 1 つは、サブスクリプション内の�
 
 - 既にスコープに割り当てられているポリシーまたはイニシアティブが更新される。 このシナリオでの評価サイクルとタイミングは、スコープへの新しい割り当ての場合と同じです。
 
-- Resource Manager、REST、Azure CLI、または Azure PowerShell を介した割り当てで、リソースがスコープにデプロイされる。 このシナリオでは、個々のリソースに対する効果的なイベント (追加、監査、拒否、展開) とコンプライアンス ステータスの情報が、約 15 分後にポータルおよび SDKで利用可能です。 このイベントによって、他のリソースの評価が行われることはありません。
+- Azure Resource Manager、REST、Azure CLI、または Azure PowerShell を介した割り当てで、リソースがスコープにデプロイされます。 このシナリオでは、個々のリソースに対する効果的なイベント (追加、監査、拒否、展開) とコンプライアンス ステータスの情報が、約 15 分後にポータルおよび SDKで利用可能です。 このイベントによって、他のリソースの評価が行われることはありません。
 
 - 標準コンプライアンス評価サイクル。 24 時間に 1 回、割り当てが自動的に再評価されます。 多くのリソースの大きなポリシーまたはイニシアティブでは時間がかかることがあるため、評価サイクルがいつ完了するかを事前に予想することはできません。 完了すると、更新されたコンプライアンス結果をポータルと SDK で使用できるようになります。
 
@@ -429,7 +429,7 @@ Trent Baker
 
 ## <a name="azure-monitor-logs"></a>Azure Monitor ログ
 
-サブスクリプションに関連付けられた [Activity Log Analytics ソリューション](../../../azure-monitor/platform/activity-log-collect.md)からの `AzureActivity` を使用した [Log Analytics ワークスペース](../../../log-analytics/log-analytics-overview.md)がある場合は、単純な Kusto クエリと `AzureActivity` テーブルを使用して、評価サイクルでの非準拠の結果を表示することもできます。 Azure Monitor ログの詳細情報を使用して、非準拠を監視するようにアラートを構成できます。
+サブスクリプションに関連付けられた [Activity Log Analytics ソリューション](../../../azure-monitor/platform/activity-log.md)からの `AzureActivity` を使用した [Log Analytics ワークスペース](../../../azure-monitor/log-query/log-query-overview.md)がある場合は、単純な Kusto クエリと `AzureActivity` テーブルを使用して、評価サイクルでの非準拠の結果を表示することもできます。 Azure Monitor ログの詳細情報を使用して、非準拠を監視するようにアラートを構成できます。
 
 :::image type="content" source="../media/getting-compliance-data/compliance-loganalytics.png" alt-text="Azure Monitor ログを使用した Azure Policy のコンプライアンス" border="false":::
 

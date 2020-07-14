@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/07/2017
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 3d1efc0a116a38686fa929a2058fa88e4c2cfa82
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 0023308c74d58b1c94bf13fcb47ffb8aa7ade1d6
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85119479"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85557628"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Azure Cosmos DB Table API アカウントにデータを移行する
 
@@ -45,26 +45,26 @@ ms.locfileid: "85119479"
     dt.exe [/<option>:<value>] /s:<source-name> [/s.<source-option>:<value>] /t:<target-name> [/t.<target-option>:<value>] 
    ```
 
-コマンドのオプションは次のとおりです。
+このコマンドでサポートされているオプションは次のとおりです。
 
-    /ErrorLog: Optional. Name of the CSV file to redirect data transfer failures
-    /OverwriteErrorLog: Optional. Overwrite error log file
-    /ProgressUpdateInterval: Optional, default is 00:00:01. Time interval to refresh on-screen data transfer progress
-    /ErrorDetails: Optional, default is None. Specifies that detailed error information should be displayed for the following errors: None, Critical, All
-    /EnableCosmosTableLog: Optional. Direct the log to a cosmos table account. If set, this defaults to destination account connection string unless /CosmosTableLogConnectionString is also provided. This is useful if multiple instances of DT are being run simultaneously.
-    /CosmosTableLogConnectionString: Optional. ConnectionString to direct the log to a remote cosmos table account. 
+* **/ErrorLog:** 省略可能。 データ転送エラーをリダイレクトする CSV ファイルの名前。
+* **/OverwriteErrorLog:** 省略可能。 エラー ログ ファイルを上書きします。
+* **/ProgressUpdateInterval:** 省略可能。既定値は 00:00:01 です。 画面上でデータ転送の進行状況を更新する間隔を指定します。
+* **/ErrorDetails:** 省略可能。既定値は None です。 特定のエラー (None、Critical、All) に関して、詳細なエラー情報を表示するよう指定します。
+* **/EnableCosmosTableLog:** 省略可能。 Cosmos テーブル アカウントにログを送信します。 設定した場合、送信先アカウントの接続文字列が既定値となります (/CosmosTableLogConnectionString を一緒に指定した場合を除く)。 DT のインスタンスが複数同時に実行されている場合に役立ちます。
+* **/CosmosTableLogConnectionString:** 省略可能。 リモート Cosmos テーブル アカウントにログを送信するための接続文字列です。
 
 ### <a name="command-line-source-settings"></a>コマンドラインのソース設定
 
 移行のソースとして Azure Table Storage または Table API プレビュー を定義する場合は、次のソース オプションを使用します。
 
-    /s:AzureTable: Reads data from Azure Table storage
-    /s.ConnectionString: Connection string for the table endpoint. This can be retrieved from the Azure portal
-    /s.LocationMode: Optional, default is PrimaryOnly. Specifies which location mode to use when connecting to Azure Table storage: PrimaryOnly, PrimaryThenSecondary, SecondaryOnly, SecondaryThenPrimary
-    /s.Table: Name of the Azure Table
-    /s.InternalFields: Set to All for table migration as RowKey and PartitionKey are required for import.
-    /s.Filter: Optional. Filter string to apply
-    /s.Projection: Optional. List of columns to select
+* **/s:AzureTable:** Azure Table Storage からデータを読み取ります。
+* **/s.ConnectionString:** テーブル エンドポイントの接続文字列。 Azure portal から取得できます。
+* **/s.LocationMode:** 省略可能。既定値は PrimaryOnly です。 Azure Table Storage に接続するときに使用する配置モードを指定します (PrimaryOnly、PrimaryThenSecondary、SecondaryOnly、SecondaryThenPrimary)。
+* **/s.Table:** Azure テーブルの名前。
+* **/s.InternalFields:** テーブルの移行では、RowKey と PartitionKey がインポートに必要となるため、All に設定されます。
+* **/s.Filter:** 省略可能。 適用するフィルター文字列です。
+* **/s.Projection:** 省略可能。 選択する列の一覧です。
 
 Azure Table Storage からインポートする場合にソースの接続文字列を取得するには、Azure Portal を開き、 **[ストレージ アカウント]**  >  **[アカウント]**  >  **[アクセス キー]** の順にクリックし、[コピー] ボタンを使用して **[接続文字列]** をコピーします。
 
@@ -82,28 +82,29 @@ Azure Cosmos DB Table API (プレビュー) からインポートする場合に
 
 移行のターゲットとして Azure Cosmos DB Table API を定義する場合は、次のターゲット オプションを使用します。
 
-    /t:TableAPIBulk: Uploads data into Azure CosmosDB Table in batches
-    /t.ConnectionString: Connection string for the table endpoint
-    /t.TableName: Specifies the name of the table to write to
-    /t.Overwrite: Optional, default is false. Specifies if existing values should be overwritten
-    /t.MaxInputBufferSize: Optional, default is 1GB. Approximate estimate of input bytes to buffer before flushing data to sink
-    /t.Throughput: Optional, service defaults if not specified. Specifies throughput to configure for table
-    /t.MaxBatchSize: Optional, default is 2MB. Specify the batch size in bytes
+* **/t:TableAPIBulk:** Azure CosmosDB Table にデータを一括アップロードします。
+* **/t.ConnectionString:** テーブル エンドポイントの接続文字列。
+* **/t.TableName:** 書き込み先となるテーブルの名前を指定します。
+* **/t.Overwrite:** 省略可能。既定値は false です。 既存の値を上書きするかどうかを指定します。
+* **/t.MaxInputBufferSize:** 省略可能。既定値は 1 GB です。 バッファーに入力するバイト数の概算値を指定します。この値を超えると、シンクにデータがフラッシュされます。
+* **/t.Throughput:** 省略可能。指定しなかった場合、サービスの既定値が使用されます。 テーブルに対して構成するスループットを指定します。
+* **/t.MaxBatchSize:** 省略可能。既定値は 2 MB です。 バッチ サイズ (バイト単位) を指定します。
 
 <a id="azure-table-storage"></a>
 ### <a name="sample-command-source-is-azure-table-storage"></a>サンプル コマンド:ソースが Azure Table Storage
 
 Azure Table Storage から Table API にインポートするコマンドライン サンプルを以下に示します。
 
-```
+```bash
 dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Table storage account name>;AccountKey=<Account Key>;EndpointSuffix=core.windows.net /s.Table:<Table name> /t:TableAPIBulk /t.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Cosmos DB account name>;AccountKey=<Azure Cosmos DB account key>;TableEndpoint=https://<Account name>.table.cosmosdb.azure.com:443 /t.TableName:<Table name> /t.Overwrite
 ```
+
 <a id="table-api-preview"></a>
 ### <a name="sample-command-source-is-azure-cosmos-db-table-api-preview"></a>サンプル コマンド:ソースが Azure Cosmos DB Table API (プレビュー)
 
 Table API プレビュー から Table API GA にインポートするコマンドライン サンプルを以下に示します。
 
-```
+```bash
 dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Table API preview account name>;AccountKey=<Table API preview account key>;TableEndpoint=https://<Account Name>.documents.azure.com; /s.Table:<Table name> /t:TableAPIBulk /t.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Cosmos DB account name>;AccountKey=<Azure Cosmos DB account key>;TableEndpoint=https://<Account name>.table.cosmosdb.azure.com:443 /t.TableName:<Table name> /t.Overwrite
 ```
 
@@ -115,7 +116,7 @@ Azure Cosmos DB へのインポートを実行する場合は、次のサンプ�
 
 インポート コマンド例:
 
-```
+```bash
 AzCopy /Source:C:\myfolder\ /Dest:https://myaccount.table.cosmosdb.windows.net/mytable1/ /DestKey:key /Manifest:"myaccount_mytable_20140103T112020.manifest" /EntityOperation:InsertOrReplace
 ```
 
@@ -123,7 +124,6 @@ AzCopy /Source:C:\myfolder\ /Dest:https://myaccount.table.cosmosdb.windows.net/m
 
 > [!WARNING]
 > 一般公開のテーブルを活用したい場合は、このセクションの説明に従って既存のプレビュー テーブルを移行してください。手動で移行しない場合、今後数週間以内に既存のプレビュー ユーザーについて自動移行が実行される予定です。ただし、自動移行されたプレビュー テーブルには、新規作成のテーブルにはない特定の制限が課せられます。
-> 
 
 Table API は一般公開 (GA) されました。 プレビュー バージョンと GA バージョンのテーブルには違いがあります。違いは、クラウドで実行されるコードだけでなく、クライアントで実行されるコードにもあります。 そのため、プレビューの SDK クライアントと GA Table API アカウントを混在させることはお勧めしません。 Table API プレビューを使用していて、既存のテーブルを運用環境でも引き続き使用するには、プレビューから GA 環境に移行するか、自動移行を待つ必要があります。 自動移行を待つ場合、移行されたテーブルに課せられる制限が通知されます。 移行後は、既存のアカウントを使用して制限なしで新しいテーブルを作成できるようになります (移行されたテーブルのみに制限が課せられます)。
 
