@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 9262d01e35bd03a9116a30b070b023f578f0b15a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/03/2020
+ms.openlocfilehash: 402fae5622219b14cfdab921ebe1a78ad5dd111e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74112561"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84462840"
 ---
 # <a name="set-rbac-roles-for-administrative-access-to-azure-cognitive-search"></a>Azure Cognitive Search 管理アクセス用の RBAC ロールを設定する
 
@@ -35,7 +35,22 @@ Azure Cognitive Search の場合、ロールは次の管理タスクをサポー
 
 ロールは、サービス エンドポイントへのアクセス権を付与しません。 インデックスの管理、インデックスの作成、検索データのクエリなど、検索サービスの操作は、ロールではなく API キーによって制御されます。 詳細については、「[API キーを管理する](search-security-api-keys.md)」をご覧ください。
 
-## <a name="see-also"></a>参照
+## <a name="permissions-table"></a>アクセス許可の表
+
+次の表では、Azure Cognitive Search で許可される操作のほか、特定の操作へのアクセスを有効にするキーについてまとめています。
+
+| 操作 | アクセス許可 |
+|-----------|-------------------------|
+| サービスの作成 | Azure サブスクリプション所有者 |
+| サービスのスケーリング | 管理者キー、リソースに対する RBAC 所有者または RBAC 共同作成者  |
+| サービスの削除 | 管理者キー、リソースに対する RBAC 所有者または RBAC 共同作成者 |
+| サービス上のオブジェクトの作成、変更、削除: <br>インデックスとコンポーネント部分 (アナライザーの定義、スコアリング プロファイル、CORS オプションなど)、インデクサー、データ ソース、シノニム、サジェスター | 管理者キー、リソースに対する RBAC 所有者または RBAC 共同作成者 |
+| インデックスのクエリ | 管理者キーまたはクエリ キー (RBAC は適用不可) |
+| クエリ システム情報 (オブジェクトの統計、カウント、一覧を返す操作など) | 管理者キー、リソースに対する RBAC (所有者、共同作成者、閲覧者) |
+| 管理者キーの管理 | 管理者キー、リソースに対する RBAC 所有者または RBAC 共同作成者 |
+| クエリ キーの管理 |  管理者キー、リソースに対する RBAC 所有者または RBAC 共同作成者  |
+
+## <a name="see-also"></a>関連項目
 
 + [PowerShell を使用した管理](search-manage-powershell.md) 
 + [Azure Cognitive Search のパフォーマンスと最適化](search-performance-optimization.md)

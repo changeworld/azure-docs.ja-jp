@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 06/24/2019
 ms.author: banders
-ms.openlocfilehash: e65637f20d14b93c212b1af2f20695ff5dfeb350
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e238a409adda674e1182c0ffd40a4f666d362731
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199689"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361508"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>Microsoft 顧客契約の Azure クレジット残高を追跡する
 
@@ -21,13 +21,16 @@ Microsoft 顧客契約の課金アカウントの Azure クレジット残高は
 
 Microsoft 顧客契約の課金アカウントでは、クレジットが課金プロファイルに割り当てられます。 それぞれの課金プロファイルには、その請求書上の料金に自動的に適用される固有のクレジットが存在します。 課金プロファイルの Azure クレジット残高を表示するには、課金プロファイルの所有者、共同作成者、閲覧者、請求書管理者のいずれかのロール、または課金アカウントの所有者、共同作成者、閲覧者のいずれかのロールが必要となります。 ロールの詳細については、「[Azure での Microsoft 顧客契約の管理ロールを理解する](understand-mca-roles.md)」を参照してください。
 
+> [!NOTE]
+> 新しいクレジットが Azure portal に表示されるまでに最長で 24 時間かかることがあります。 新しいクレジットを取得してもポータルに表示されない場合、24 時間後にはクレジットが表示されます。
+
 この記事では、Microsoft 顧客契約の課金アカウントについて説明します。 [Microsoft 顧客契約にアクセスできるかどうかを確認してください](#check-access-to-a-microsoft-customer-agreement)。
 
 ## <a name="check-your-credit-balance"></a>クレジット残高を確認する
 
 ### <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 2. "**コスト管理 + 請求**" を検索します。
 

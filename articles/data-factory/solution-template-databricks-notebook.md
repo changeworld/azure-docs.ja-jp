@@ -132,7 +132,7 @@ ms.locfileid: "82857645"
 
 1. **データ コピー** アクティビティの **[file-to-blob]** で、 **[ソース]** タブと **[シンク]** タブを確認します。 必要に応じて設定を変更します。
 
-   - **[ソース]![ タブ** ソース タブ](media/solution-template-Databricks-notebook/copy-source-settings.png)
+   - **[ソース]** タブ ![ソース タブ](media/solution-template-Databricks-notebook/copy-source-settings.png)
 
    - **[シンク]** タブ ![シンク タブ](media/solution-template-Databricks-notebook/copy-sink-settings.png)
 

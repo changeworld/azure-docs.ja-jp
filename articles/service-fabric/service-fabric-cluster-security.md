@@ -4,12 +4,12 @@ description: Azure Service Fabric クラスターのセキュリティ シナリ
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: c43cfbd4468a64867d50482d9c8055622602f159
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ba1565c31e8a3ce3f25501f0cad321d5413dc962
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461584"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85080676"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric クラスターのセキュリティに関するシナリオ
 
@@ -33,13 +33,18 @@ Azure で実行するクラスターおよび Windows で実行するスタン�
 
 Service Fabric では、クラスターを作成するときにノード タイプの構成で指定した X.509 サーバー証明書を使用します。 これらの証明書の概要とその入手または作成方法はこの記事の最後に記載されています。
 
-証明書セキュリティは、Azure Portal、Azure Resource Manager テンプレート、またはスタンドアロン JSON テンプレートを使用して、クラスターを作成する際に設定します。 Service Fabric SDK の既定の動作では、有効期限が最も先の証明書がデプロイおよびインストールされます。以前の動作では、手動で開始されるロールオーバーを許可するために、プライマリおよびセカンダリの証明書の定義が認められていました。新しい機能でなく、以前の機能を使用することは推奨されません。 使用されるプライマリ証明書は、有効期限が最も先であり、[クライアントとノードの間のセキュリティ](#client-to-node-security)に設定した管理用クライアント証明書および読み取り専用クライアント証明書とは異なるものである必要があります。
+証明書セキュリティは、Azure Portal、Azure Resource Manager テンプレート、またはスタンドアロン JSON テンプレートを使用して、クラスターを作成する際に設定します。 Service Fabric SDK の既定の動作では、有効期限が最も先の証明書がデプロイおよびインストールされます。従来の動作では、手動で開始されるロールオーバーを許可するために、プライマリおよびセカンダリの証明書の定義が認められていました。新しい機能でなく、従来の機能を使用することは推奨されません。 使用されるプライマリ証明書は、有効期限が最も先であり、[クライアントとノードの間のセキュリティ](#client-to-node-security)に設定した管理用クライアント証明書および読み取り専用クライアント証明書とは異なるものである必要があります。
 
 Azure 用にクラスターで証明書セキュリティを設定する方法については、「[Azure Resource Manager を使用して Service Fabric クラスターを作成する](service-fabric-cluster-creation-via-arm.md)」を参照してください。
 
 スタンドアロン Windows Server クラスター用にクラスターで証明書セキュリティを設定する方法については、「[X.509 証明書を使用した Windows でのスタンドアロン クラスターの保護](service-fabric-windows-cluster-x509-security.md)」を参照してください。
 
 ### <a name="node-to-node-windows-security"></a>ノード間の Windows セキュリティ
+
+> [!NOTE]
+> Windows 認証は Kerberos に基づいています。 認証の種類として NTLM はサポートされていません。
+>
+> Service Fabric クラスターでは、可能な限り x.509 証明書認証を使用してください。
 
 スタンドアロン Windows Server クラスター用に Windows セキュリティを設定する方法については、「[Windows セキュリティを使用して Windows 上のスタンドアロン クラスターを保護する](service-fabric-windows-cluster-windows-security.md)」を参照してください。
 
@@ -49,7 +54,7 @@ Azure 用にクラスターで証明書セキュリティを設定する方法�
 
 ![クライアントとノードの間の通信の図][Client-to-Node]
 
-Azure で実行するクラスターおよび Windows で実行するスタンドアロン クラスターのいずれにも、[証明書セキュリティ](https://msdn.microsoft.com/library/ff649801.aspx)または [Windows セキュリティ](https://msdn.microsoft.com/library/ff649396.aspx)を利用できます。
+Azure で実行するクラスターと Windows で実行するスタンドアロン クラスターでは、両方とも[証明書セキュリティ](https://msdn.microsoft.com/library/ff649801.aspx)または [Windows セキュリティ](https://msdn.microsoft.com/library/ff649396.aspx)を使用できますが、推奨されるのは、可能な場合は常に X.509 証明書認証を使用することです。
 
 ### <a name="client-to-node-certificate-security"></a>クライアントとノードの間の証明書セキュリティ
 

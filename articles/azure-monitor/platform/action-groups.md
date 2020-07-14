@@ -3,15 +3,15 @@ title: Azure Portal でのアクション グループの作成および管理
 description: Azure Portal でアクション グループを作成および管理する方法について説明します。
 author: dkamstra
 ms.topic: conceptual
-ms.date: 4/17/2020
+ms.date: 6/5/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: b88b6d1ea4b9d9fc2b33849157968ee1c2f8c620
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: dbc810ad7227d9d47099fe85e89a92c8fa750302
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170462"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84465254"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure Portal でのアクション グループの作成および管理
 アクション グループは、Azure サブスクリプションの所有者によって定義された通知設定のコレクションです。 Azure Monitor および Service Health のアラートでは、アクション グループを使用して、アラートがトリガーされたことをユーザーに通知します。 ユーザーの要件に応じて、さまざまなアラートで同じアクション グループを使用することも、異なるアクション グループを使用することもあります。 1 つのサブスクリプションで最大 2,000 のアクション グループを構成できます。
@@ -217,7 +217,12 @@ Write-Host $myApp.AppRoles
 サポートされている国/地域における価格については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」ページを参照してください。
 
 ### <a name="webhook"></a>Webhook
-Webhook は、次のルールを使用して再試行されます。 Webhook の呼び出しが最大 2 回再試行されるのは、HTTP 状態コードの 408、429、503、504 が返されるか、または HTTP エンドポイントが応答しない場合です。 1 回目の再試行は 10 秒後に実行されます。 2 回目の再試行は 100 秒後に実行されます。 2 回失敗した後の 30 分間、エンドポイントはアクション グループから呼び出されません。 
+Webhook は、次のルールを使用して再処理されます。
+- Webhook 呼び出しは、最大 3 回試行されます。
+- タイムアウト期間内に応答が受信されない場合、または次の HTTP 状態コードのいずれかが返された場合、呼び出しは再試行されます: 408、429、503、または 504。
+- 最初の呼び出しでは、応答が返るまで 10 秒間待機します。
+- 2 回目と 3 回目の試行では、応答が返るまで 30 秒間待機します。
+- Webhook の呼び出しを 3 回試行して失敗した後、アクション グループで 15 分間エンドポイントが呼び出されることはありません。
 
 発信元 IP アドレスの範囲
  - 13.72.19.232

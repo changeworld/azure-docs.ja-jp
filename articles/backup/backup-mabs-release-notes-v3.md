@@ -2,14 +2,14 @@
 title: Microsoft Azure Backup Server v3 のリリース ノート
 description: この記事では、Microsoft Azure Backup Server (MABS) v3 の既知の問題と回避策に関する情報を提供します。
 ms.topic: conceptual
-ms.date: 11/22/2018
+ms.date: 06/03/2020
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: a5c99bcb95fde39bddc9e9db9ab000881c89081a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2f67b73612bd970c903b179a4a02c787ee0320b0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82185627"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84629177"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Microsoft Azure Backup Server のリリース ノート
 
@@ -71,6 +71,40 @@ ms.locfileid: "82185627"
 
 9. MSDPM サービスを開始します。
 
+## <a name="after-installing-ur1-the-mabs-reports-arent-updated-with-new-rdl-files"></a>UR1 をインストールした後、MABS レポートが新しい RDL ファイルで更新されない
+
+**説明**:UR1 では、MABS レポートの書式設定の問題は、更新された RDL ファイルを使用して修正されます。 新しい RDL ファイルによって既存のファイルが自動的に置き換えられることはありません。
+
+**回避策**:RDL ファイルを置き換えるには、次の手順に従います。
+
+1. MABS コンピューター上で、SQL Reporting Services Web ポータルの URL を開きます。
+1. Web ポータルの URL では、DPMReports フォルダーは **`DPMReports_<GUID>`** の形式で表示されます。
+
+    >[!NOTE]
+    >この名前付け規則を持つフォルダーは、常に 1 つだけ存在します。 MABS が前のバージョンからアップグレードされている場合は、別の古いフォルダーも存在する可能性がありますが、開くことはできません。
+
+    ![DPMReports フォルダー](./media/backup-mabs-release-notes-v3/dpm-reports-folder.png)
+
+1. **`DPMReports_<GUID>`** フォルダーを選択して開きます。 個々のレポート ファイルが次のように一覧表示されます。
+
+    ![個々のレポート ファイルの一覧](./media/backup-mabs-release-notes-v3/individual-report-files.png)
+
+1. **Report** で終わっていないレポート ファイルを選択します。 **[オプション]** を右クリックし、 **[管理]** を選択します。
+
+    ![レポートファイルの [管理] を選択する](./media/backup-mabs-release-notes-v3/manage-files.png)
+
+1. 新しいページで、 **[置換]** オプションを選択して、ファイルを最新のレポート ファイルに置き換えます。
+
+    最新のレポートファイルは、パス `<MABS Installation Directory>\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\DpmReports` にあります。
+
+    例: `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\DpmReports`
+
+    ![ファイルを最新のレポート ファイルに置き換える](./media/backup-mabs-release-notes-v3/replace-files.png)
+
+    ファイルが置き換えられたら、 **[名前]** と **[説明]** に変化がないこと、空白ではないことを確認します。
+
+1. ファイルが置き換えられたら、MABS サービスを再起動し、レポート ファイルを使用します。
+
 ## <a name="next-steps"></a>次のステップ
 
-[MABS V3 の新機能](backup-mabs-whats-new-mabs.md)
+[MABS の新機能](backup-mabs-whats-new-mabs.md)

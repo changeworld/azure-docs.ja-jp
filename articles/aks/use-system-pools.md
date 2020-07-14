@@ -3,17 +3,18 @@ title: Azure Kubernetes Service (AKS) でシステム ノード プールを使�
 description: Azure Kubernetes Service (AKS) でシステム ノード プールを作成および管理する方法について学習します
 services: container-service
 ms.topic: article
-ms.date: 04/28/2020
-ms.openlocfilehash: 85cc699d6ef8c632663775e91f2b5cad6ca7a7b6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/18/2020
+ms.author: mlearned
+ms.openlocfilehash: 9b6270f81e7af8bd508d29510698e6cf9a5a2010
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125249"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85052652"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でシステム ノード プールを管理する
 
-Azure Kubernetes Service (AKS) で同じ構成のノードは、*ノード プール*にグループ化できます。 ノード プールには、お使いのアプリケーションを実行する基になる VM が含まれます。 お使いの AKS クラスターには、システム ノード プールとユーザー ノードプールの 2 つの異なるノード プールのモードがあります。 システム ノード プールは、CoreDNS や tunnelfront などの重要なシステム ポッドをホストするという主要な目的を果たします。 ユーザー ノード プールは、アプリケーション ポッドをホストするという主要な目的を果たします。 ただし、AKS クラスター内のプールを 1 つだけにする場合は、システム ノード プールでアプリケーション ポッドをスケジュールすることができます。 各 AKS クラスターには、少なくとも 1 つのノードを含むシステム ノード プールが、少なくとも 1 つ含まれている必要があります。 
+Azure Kubernetes Service (AKS) で同じ構成のノードは、*ノード プール*にグループ化できます。 ノード プールには、お使いのアプリケーションを実行する基になる VM が含まれます。 お使いの AKS クラスターには、システム ノード プールとユーザー ノードプールの 2 つの異なるノード プールのモードがあります。 システム ノード プールは、CoreDNS や tunnelfront などの重要なシステム ポッドをホストするという主要な目的を果たします。 ユーザー ノード プールは、アプリケーション ポッドをホストするという主要な目的を果たします。 ただし、AKS クラスター内のプールを 1 つだけにする場合は、システム ノード プールでアプリケーション ポッドをスケジュールすることができます。 各 AKS クラスターには、少なくとも 1 つのノードを含むシステム ノード プールが、少なくとも 1 つ含まれている必要があります。
 
 > [!Important]
 > 運用環境内のお使いの AKS クラスターで 1 つのシステム ノード プールを実行する場合、そのノード プールには少なくとも 3 つのノードを使用することをお勧めします。
@@ -29,7 +30,7 @@ Azure Kubernetes Service (AKS) で同じ構成のノードは、*ノード プ�
 * 「[Azure Kubernetes Service (AKS) のクォータ、仮想マシンのサイズの制限、およびリージョンの可用性][quotas-skus-regions]」を参照してください。
 * AKS クラスターは、VM の種類として仮想マシン スケール セットを使用して構築する必要があります。
 * ノード プールの名前は、小文字の英数字のみを含めることができ、小文字で始める必要があります。 Linux のノード プールの長さは、1 から 12 文字の範囲内である必要があります。 Windows のノード プールの長さは、1 から 6 文字の範囲内である必要があります。
-* ノード プール モードを設定するには、2020-03-01 以上の API バージョンを使用する必要があります。
+* ノード プール モードを設定するには、2020-03-01 以上の API バージョンを使用する必要があります。 2020-03-01 より前の API バージョンで作成されたクラスターにはユーザー ノード プールのみが含まれますが、[プール モードの更新手順](#update-existing-cluster-system-and-user-node-pools)に従って、システム ノード プールを含むように移行できます。
 * ノード プールのモードは必須プロパティであり、ARM テンプレートまたは API 呼び出しを直接行う場合は、明示的に設定する必要があります。
 
 ## <a name="system-and-user-node-pools"></a>システムおよびユーザー ノード プール
@@ -115,7 +116,10 @@ az aks nodepool show -g myResourceGroup --cluster-name myAKSCluster -n mynodepoo
 }
 ```
 
-## <a name="update-system-and-user-node-pools"></a>システムおよびユーザー ノード プールを更新する
+## <a name="update-existing-cluster-system-and-user-node-pools"></a>既存のクラスターのシステムおよびユーザー ノード プールを更新する
+
+> [!NOTE]
+> システム ノード プール モードを設定するには、2020-03-01 以降の API バージョンを使用する必要があります。 2020-03-01 より前の API バージョンで作成されたクラスターには、結果としてユーザー ノード プールのみが含まれます。 以前のクラスターでシステム ノード プールの機能とメリットを使用するには、次のコマンドを使用して、既存のノード プールのモードを最新の Azure CLI バージョンに更新します。
 
 システムおよびユーザー ノード プールのいずれもモードを変更できます。 システム ノード プールをユーザー プールに変更できるのは、AKS クラスターに別のシステム ノード プールが既に存在する場合のみです。
 

@@ -13,15 +13,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
 ms.author: memildin
-ms.openlocfilehash: 46ff4d9c941af25fcec3a70d7a2e6da95da59f32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c58f70126c72a84b09f6eadc251949a0f0021657
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106697"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84628287"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure Security Center のファイルの整合性の監視
 このチュートリアルを使用して、Azure Security Center のファイルの整合性の監視 (FIM) を構成する方法を説明します。
+
+
+## <a name="availability"></a>可用性
+
+- リリース状態: **一般提供**
+- 必要なロール: **ワークスペースの所有者**は、FIM を有効/無効にすることができます (詳細については、[Log Analytics での Azure のロール](https://docs.microsoft.com/services-hub/health/azure-roles#azure-roles)に関する記事を参照してください)。 **閲覧者**は結果を表示できます。
+- クラウド:
+    - ✔ 商用クラウド
+    - ✔ US Gov クラウド
+    - ✘ China Gov / その他の Gov
+
 
 ## <a name="what-is-fim-in-security-center"></a>Security Center の FIM とは
 ファイルの整合性の監視 (FIM) は変更の監視とも呼ばれ、オペレーティング システムやアプリケーション ソフトウェアなどのファイルとレジストリを調べて、攻撃の兆候となる変更を確認します。 比較方式を使用して、ファイルの現在の状態がファイルの前回のスキャンと異なっているかどうかが判別されます。 この比較を利用して、有効なものであれ、疑わしいものであれ、ファイルに変更が加えられていないかを判別できます。

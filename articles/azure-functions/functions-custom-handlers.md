@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.author: cshoe
 ms.date: 3/18/2020
 ms.topic: article
-ms.openlocfilehash: f0b738f394c4a544ddb31e25b4570890ccfa9235
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: cdbb5bbde1e5efef9bef992a62a54f1525a16df7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995872"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85052587"
 ---
 # <a name="azure-functions-custom-handlers-preview"></a>Azure Functions のカスタム ハンドラー (プレビュー)
 
@@ -447,9 +447,14 @@ func host start
 
 カスタム ハンドラーは、ほぼすべての Azure Functions ホスティング オプションに配置できます ([の制限](#restrictions)を参照してください)。 ハンドラーがカスタム依存関係 (言語のランタイムなど) を必要とする場合は、[カスタム コンテナー](./functions-create-function-linux-custom-image.md)を使用する必要がある場合があります。
 
+Azure Functions Core Tools を使用してカスタム ハンドラー アプリをデプロイするには、次のコマンドを実行します。
+
+```bash
+func azure functionapp publish $functionAppName --no-build --force
+```
+
 ## <a name="restrictions"></a>制限
 
-- カスタム ハンドラーは、Linux 従量課金プランではサポートされていません。
 - Web サーバーは 60 秒以内に開始する必要があります。
 
 ## <a name="samples"></a>サンプル
