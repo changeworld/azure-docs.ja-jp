@@ -1,23 +1,25 @@
 ---
-title: Azure portal で検索アプリを作成する
+title: Azure portal でデモ アプリを作成する
 titleSuffix: Azure Cognitive Search
-description: アプリの作成 (プレビュー) ウィザードを実行して、運用 Web アプリ用の HTML ページとスクリプトを生成します。 このページは、検索バー、結果領域、サイド バーを備えているほか、先行入力に対応しています。
+description: デモ アプリの作成 (プレビュー) ウィザードを実行して、運用 Web アプリ用の HTML ページとスクリプトを生成します。 このページは、検索バー、結果領域、サイド バーを備えているほか、先行入力に対応しています。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/07/2020
-ms.openlocfilehash: 6c956c937027b16d51141ded4de5ff9b019c37d4
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.date: 07/01/2020
+ms.openlocfilehash: 11dd12fce669d6b6a027eb182d5f9e6e493577ad
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488173"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955694"
 ---
-# <a name="quickstart-create-a-search-app-in-the-portal-azure-cognitive-search"></a>クイック スタート:ポータルで検索アプリを作成する (Azure Cognitive Search)
+# <a name="quickstart-create-a-demo-app-in-the-portal-azure-cognitive-search"></a>クイック スタート:ポータルでデモ アプリを作成する (Azure Cognitive Search)
 
-ブラウザーで動作する "localhost" スタイルのダウンロード可能な Web アプリを生成するには、Azure portal の**検索アプリの作成**ウィザードを使用します。 その構成にもよりますが、生成されたアプリはリモート インデックスへのライブ接続を備え、そのままで実用性があります。 既定のアプリは、検索バーや結果領域、サイド バーのフィルターを備えているほか、先行入力をサポートします。
+ブラウザーで動作する "localhost" スタイルのダウンロード可能な Web アプリを生成するには、Azure portal の**デモ アプリの作成**ウィザードを使用します。 その構成にもよりますが、生成されたアプリは、リモート インデックスへのライブ読み取り専用接続を備えており、そのままで実用性があります。 既定のアプリは、検索バーや結果領域、サイド バーのフィルターを備えているほか、先行入力をサポートします。
+
+デモ アプリは、インデックスがクライアント アプリでどのように機能するかを視覚化するのに役立ちますが、運用環境のシナリオ向けではありません。 クライアント アプリには、生成された HTML ページでは提供されないセキュリティ、エラー処理、およびホスティング ロジックを含める必要があります。 クライアント アプリを作成する準備ができたら、次の手順について、「[.NET SDK を使用して最初の検索アプリを作成する](tutorial-csharp-create-first-app.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -45,7 +47,7 @@ ms.locfileid: "84488173"
 
 1. 既存のインデックスの一覧から *[realestate-us-sample-index]* を選択します。
 
-1. インデックス ページの上部にある **[検索アプリの作成 (プレビュー)]** を選択してウィザードを開始します。
+1. インデックス ページの上部にある、 **[Create demo app (preview)]\(デモ アプリの作成 (プレビュー)\)** を選択してウィザードを開始します。
 
 1. 最初のウィザード ページで **[Enable Cross Origin Resource Sharing (CORS)]\(クロス オリジン リソース共有 (CORS) を有効にする\)** を選択して、CORS のサポートをインデックスの定義に追加します。 この手順は省略できますが、省略した場合は、ローカル Web アプリがリモート インデックスに接続できなくなります。
 
@@ -85,7 +87,7 @@ Azure Cognitive Search のファセット ナビゲーションは、累積的�
 
 ## <a name="create-download-and-execute"></a>作成、ダウンロード、実行する
 
-1. **[検索アプリの作成]** を選択して HTML ファイルを生成します。
+1. **[Create demo app ]\(デモ アプリの作成\)** を選択して、HTML ファイルを生成します。
 
 1. 確認を求められたら、 **[Download your app]\(アプリのダウンロード\)** を選択してファイルをダウンロードします。
 

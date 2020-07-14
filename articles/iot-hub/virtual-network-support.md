@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 05/25/2020
+ms.date: 06/16/2020
 ms.author: jlian
-ms.openlocfilehash: 7d7e04c526f7327a000ac26e255d2c8363c01f5c
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 32ff08c62e53384b64981e1c40a3485b17a8ce11
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871235"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85918766"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>Private Link とマネージド ID を使用した仮想ネットワークの IoT Hub サポート
 
@@ -69,8 +69,8 @@ ms.locfileid: "83871235"
 IoT Hub の [IP フィルター](iot-hub-ip-filtering.md) でも、組み込みのエンドポイントへのパブリック アクセスは制御されません。 IoT ハブへのパブリック ネットワーク アクセスを完全にブロックするには、次のことを行う必要があります。 
 
 1. IoT Hub 用にプライベート エンドポイント アクセスを構成する
-1. すべての IP をブロックする IP フィルターを使用してパブリック ネットワーク アクセスを無効にする
-1. [データを送信しないようにルーティングを設定](iot-hub-devguide-messages-d2c.md)して、組み込みのイベント ハブ エンドポイントを無効にする
+1. [パブリック ネットワーク アクセスを無効にする](iot-hub-public-network-access.md)、または IP フィルターを使用してすべての IP をブロックする
+1. [データを送信しないようにルーティングを設定](iot-hub-devguide-messages-d2c.md)して、組み込みのイベント ハブ エンドポイントの使用を停止する
 1. [フォールバック ルート](iot-hub-devguide-messages-d2c.md#fallback-route)を無効にする
 1. [信頼された Microsoft サービス](#egress-connectivity-from-iot-hub-to-other-azure-resources)を使用して他の Azure リソースへのエグレスを構成する
 
@@ -91,6 +91,76 @@ IoT Hub は、リソースのパブリック エンドポイントを経由し�
 1. **[状態]** の下で **[オン]** を選択し、 **[保存]** をクリックします。
 
     :::image type="content" source="media/virtual-network-support/managed-identity.png" alt-text="IoT Hub のマネージド ID を有効にする方法を示すスクリーンショット":::
+
+### <a name="assign-managed-identity-to-your-iot-hub-at-creation-time-using-arm-template"></a>ARM テンプレートを使用して、作成時にマネージド ID を IoT ハブに割り当てる
+
+リソースのプロビジョニング時にマネージド ID を IoT ハブに割り当てるには、次の ARM テンプレートを使用します。
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "type": "Microsoft.Devices/IotHubs",
+      "apiVersion": "2020-03-01",
+      "name": "<provide-a-valid-resource-name>",
+      "location": "<any-of-supported-regions>",
+      "identity": {
+        "type": "SystemAssigned"
+      },
+      "sku": {
+        "name": "<your-hubs-SKU-name>",
+        "tier": "<your-hubs-SKU-tier>",
+        "capacity": 1
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2018-02-01",
+      "name": "updateIotHubWithKeyEncryptionKey",
+      "dependsOn": [
+        "<provide-a-valid-resource-name>"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "0.9.0.0",
+          "resources": [
+            {
+              "type": "Microsoft.Devices/IotHubs",
+              "apiVersion": "2020-03-01",
+              "name": "<provide-a-valid-resource-name>",
+              "location": "<any-of-supported-regions>",
+              "identity": {
+                "type": "SystemAssigned"
+              },
+              "sku": {
+                "name": "<your-hubs-SKU-name>",
+                "tier": "<your-hubs-SKU-tier>",
+                "capacity": 1
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+```
+
+リソースの `name`、`location`、`SKU.name`、`SKU.tier` の値を置き換えた後、以下の Azure CLI を使用して、既存のリソース グループにリソースをデプロイすることができます。
+
+```azurecli-interactive
+az deployment group create --name <deployment-name> --resource-group <resource-group-name> --template-file <template-file.json>
+```
+
+リソースが作成された後、以下の Azure CLI を使用して、ハブに割り当てられたマネージド サービス ID を取得できます。
+
+```azurecli-interactive
+az resource show --resource-type Microsoft.Devices/IotHubs --name <iot-hub-resource-name> --resource-group <resource-group-name>
+```
 
 ### <a name="pricing-for-managed-identity"></a>マネージド ID の価格
 

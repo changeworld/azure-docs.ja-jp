@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: banders
-ms.openlocfilehash: 8552b6732736d1d10711479639fa45114f8b039b
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 5fb8a9cd5e00bf3a6ebeddaf44a09ac48b94fe7c
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298006"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849083"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Azure サブスクリプションの請求書による支払い
 
@@ -42,28 +42,28 @@ ms.locfileid: "85298006"
 
 5. **[詳細]** ボックスに次の情報を入力し、 **[次へ]** を選択します。
 
-         New or existing customer:
-         If existing, current payment method:
-         Order ID (requesting for invoice option):
-         Account Admins Live ID (or Org ID) (should be company domain):
-         Commerce Account ID:
-         Company Name (as registered under VAT or Government Website):
-         Company Address (as registered under VAT or Government Website):
-         Company Website:
-         Country:
-         TAX ID/ VAT ID:
-         Company Established on (Year):
-         Any prior business with Microsoft:
-         Contact Name:
-         Contact Phone:
-         Contact Email:
-         Justification on why you prefer Invoice option over credit card:
+     新規または既存のお客様:<br>
+     既存のお客様の場合は現在のお支払い方法:<br>
+     注文 ID (請求書オプションを要求する):<br>
+     アカウント管理者の Live ID (または組織 ID) (会社のドメインである必要があります):<br>
+     コマース アカウント ID:<br>
+     会社の名前 (VAT または政府機関の Web サイトで登録されているもの):<br>
+     会社の住所 (VAT または政府機関の Web サイトで登録されているもの):<br>
+     会社の Web サイト:<br>
+     国:<br>
+     税 ID/ VAT ID:<br>
+     会社の設立日 (年):<br>
+     これまでの Microsoft とのお取引:<br>
+     連絡先の名前:<br>
+     連絡先の電話番号:<br>
+     連絡先の電子メール:<br>
+     クレジット カードではなく請求書オプションを使用する正当な理由:<br>
 
-         For cores increase, provide the following additional information:
+     コアのを増加する場合は、次の追加情報を入力してください。<br>
 
-         (Old quota) Existing Cores:
-         (New quota) Requested cores:
-         Specific region & series of Subscription:
+     (これまでのクォータ) 既存のコア:<br>
+     (新しいクォータ) 要求したコア:<br>
+     サブスクリプションの具体的なリージョンおよびシリーズ:<br>
 
     - **[会社名]** と **[会社の住所]** は、Azure アカウントに指定した情報と一致させる必要があります。 情報を表示または更新するには、「[Azure アカウントのプロファイル情報を変更する](change-azure-account-profile.md)」を参照してください。
     - 与信限度額を承認する前に、Azure portal で請求連絡先情報を追加します。 連絡先の詳細を会社の買掛金または財務部門に関連付ける必要があります。 請求連絡先情報を更新するには、[Azure アカウント センター](https://account.azure.com/Profile)に移動します。

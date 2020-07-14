@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: memildin
-ms.openlocfilehash: 843cd74c85c619dbbd2b11a32fccf75d030b5613
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: be212de7a24b416ad4e5dc08998ba1147c6f3753
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772966"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855937"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure Security Center でのデータ収集
 Security Center では、セキュリティの脆弱性と脅威を監視するために、Azure 仮想マシン (VM)、仮想マシン スケール セット、IaaS コンテナー、非 Azure (オンプレミスを含む) コンピューターからデータを収集します。 データは、Log Analytics エージェントを使用して収集されます。このエージェントは、セキュリティ関連のさまざまな構成とイベント ログをマシンから読み取り、分析のためにデータをワークスペースにコピーします。 このようなデータの例として、オペレーティング システムの種類とバージョン、オペレーティング システム ログ (Windows イベント ログ)、実行中のプロセス、マシン名、IP アドレス、ログイン ユーザーなどがあります。
@@ -237,58 +237,44 @@ Log Analytics エージェントの手動インストールには、いくつか
 ### <a name="operations-management-suite-vm-extension-deployment"></a>Operations Management Suite VM 拡張機能のデプロイ 
 
 Log Analytics エージェントを手動でインストールして、Security Center で、VM からセキュリティ データが収集され、推奨と通知が提供されるようにできます。
-1. 自動プロビジョニングのオフを選択します。
-2. ワークスペースを作成し、Log Analytics エージェントを設定するワークスペースの価格レベルを設定します。
 
-   a.  Security Center のメイン メニューで、 **[セキュリティ ポリシー]** を選択します。
-     
-   b.  エージェントを接続するワークスペースを選択します。 ワークスペースが存在するサブスクリプションが Security Center で使用しているサブスクリプションと同じであること、またそのワークスペースに対する読み取り/書き込みのアクセス許可があることを確認します。
-       ![ワークスペースを選択][8]
-3. 価格レベルを設定します。
-   ![価格レベルの選択][9] 
-   >[!NOTE]
-   >対象のワークスペースで **Security** ソリューションまたは **SecurityCenterFree** ソリューションが既に有効になっている場合、価格は自動的に設定されます。 
+1. 自動プロビジョニングを無効にします。
+
+1. 必要に応じて、ワークスペースを作成します。
+
+1. Log Analytics エージェントをインストールしているワークスペースを、Standard 価格レベルに設定します。
+
+    1. Security Center のメニューから、 **[価格と設定]** を選択します。
+
+    1. エージェントをインストールするワークスペースを設定します。 ワークスペースが存在するサブスクリプションが Security Center で使用しているサブスクリプションと同じであること、またそのワークスペースに対する読み取り/書き込みのアクセス許可があることを確認します。
+
+    1. Standard 価格レベルを設定して、 **[保存]** を選択します。
+
+        ![ワークスペースを Standard 価格レベルに設定する](.\media\security-center-enable-data-collection\workspace-to-standard-tier.gif)
+
+       >[!NOTE]
+       >対象のワークスペースで **Security** ソリューションまたは **SecurityCenterFree** ソリューションが既に有効になっている場合、価格は自動的に設定されます。 
    > 
 
-4. Resource Manager テンプレートを使用して新しい VM にエージェントをデプロイする場合は、OMS 仮想マシン拡張機能をインストールします。
+1. Resource Manager テンプレートを使用して新しい VM にエージェントをデプロイする場合は、Log Analytics エージェントをインストールします。
 
-   a.  [Windows 用の OMS 仮想マシン拡張機能のインストール](../virtual-machines/extensions/oms-windows.md)
+   a.  [Windows 用 Log Analytics エージェントをインストールする](../virtual-machines/extensions/oms-windows.md)
     
-   b.  [Linux 用の OMS 仮想マシン拡張機能のインストール](../virtual-machines/extensions/oms-linux.md)
-5. 既存の VM に拡張機能をデプロイする場合は、「[Azure Virtual Machines に関するデータの収集](../azure-monitor/learn/quick-collect-azurevm.md)」の手順に従います。
+   b.  [Linux 用 Log Analytics エージェントをインストールする](../virtual-machines/extensions/oms-linux.md)
+
+1. 既存の VM に拡張機能をデプロイする場合は、「[Azure Virtual Machines に関するデータの収集](../azure-monitor/learn/quick-collect-azurevm.md)」の手順に従います。
 
    > [!NOTE]
    > 「**イベントとパフォーマンス データを収集する**」セクションは省略してもかまいません。
    >
-6. PowerShell を使用して拡張機能をデプロイするには、PowerShell の次の例を使用します。
-   
-   [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-   
-   1. **[Log Analytics]** に移動し、 **[詳細設定]** をクリックします。
-    
-      ![ログ分析の設定][11]
 
-   2. **ワークスペース ID** と**プライマリ キー**の値をコピーします。
-  
-      ![値をコピーする][12]
+1. PowerShell を使用して拡張機能をデプロイするには、仮想マシンのドキュメントの手順を使用します。
 
-   3. public config と private config に次の値を設定します。
-     
-           $PublicConf = @{
-               "workspaceId"= "<WorkspaceID value>"
-           }
- 
-           $PrivateConf = @{
-               "workspaceKey"= "<Primary key value>"
-           }
+    - [Windows マシンの場合](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#powershell-deployment)
 
-      - Windows VM にインストールする場合:
-        
-            Set-AzVMExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Name "MicrosoftMonitoringAgent" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "MicrosoftMonitoringAgent" -TypeHandlerVersion '1.0' -Location $vm.Location -settings $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True 
-    
-      - Linux VM にインストールする場合:
-        
-            Set-AzVMExtension -ResourceGroupName $vm1.ResourceGroupName -VMName $vm1.Name -Name "OmsAgentForLinux" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "OmsAgentForLinux" -TypeHandlerVersion '1.0' -Location $vm.Location -Settingstring $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True`
+    - [Linux マシンの場合](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-linux?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#azure-cli-deployment)
+
+
 
 > [!NOTE]
 > PowerShell を使用して Security Center をオンボードする方法については、「[Automate onboarding of Azure Security Center using PowerShell](security-center-powershell-onboarding.md)」 (PowerShell を使用して Azure Security Center のオンボードを自動化する) を参照してください。

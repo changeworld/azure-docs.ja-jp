@@ -4,12 +4,12 @@ description: Azure ファイル共有をバックアップする際のサポー�
 ms.topic: conceptual
 ms.date: 5/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: 8198c06c1151dd86d99bc64f825764d0a4988287
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 5670f4702a8e8d199b9762d87793a053cf6e53b1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193862"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85806873"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Azure ファイル共有のバックアップのサポート マトリックス
 
@@ -23,7 +23,7 @@ Azure ファイル共有のバックアップは、以下を**除く**すべて�
 
 ### <a name="supported-regions-for-accidental-delete-protection"></a>誤削除からの保護のサポート対象リージョン
 
-米国中西部
+米国中西部、オーストラリア南東部、カナダ中部
 
 ## <a name="supported-storage-accounts"></a>サポートされるストレージ アカウント
 
@@ -32,6 +32,7 @@ Azure ファイル共有のバックアップは、以下を**除く**すべて�
 | アカウントの種類            | Azure Backup は、汎用 v1、汎用 v2、およびファイル ストレージの種類のストレージ アカウントに存在する Azure ファイル共有をサポートしています |
 | パフォーマンス              | Azure Backup は、Standard および Premium Storage アカウントの両方でファイル共有をサポートしています |
 | レプリケーション              | ストレージ アカウントでは、任意のレプリケーションの種類の Azure ファイル共有がサポートされています |
+| ファイアウォールが有効         | Microsoft Azure サービスにストレージ アカウントへのアクセスを許可するファイアウォール規則があるストレージ アカウントでの Azure ファイル共有がサポートされています|
 
 ## <a name="supported-file-shares"></a>サポートされているファイル共有
 
@@ -46,14 +47,16 @@ Azure ファイル共有のバックアップは、以下を**除く**すべて�
 
 | 設定                                                      | 制限 |
 | ------------------------------------------------------------ | ----- |
-| コンテナーごとの 1 日あたりで保護できるファイル共有の最大数 | 200   |
+| コンテナーごとに保護できる 1 日あたりのファイル共有の最大数| 200   |
 | コンテナーごとの 1 日あたりで登録できるストレージ アカウントの最大数 | 50    |
+| コンテナーごとに保護できるファイル共有の最大数 | 2000   |
+| コンテナーごとに登録できるストレージ アカウントの最大数 | 200   |
 
 ## <a name="backup-limits"></a>Backup の制限
 
 | 設定                                      | 制限 |
 | -------------------------------------------- | ----- |
-| 1 日あたりのオンデマンド バックアップの最大数 | 4     |
+| 1 日あたりのオンデマンド バックアップの最大数 | 10   |
 | 1 日あたりのスケジュールされたバックアップの最大数 | 1     |
 
 ## <a name="restore-limits"></a>復元の制限

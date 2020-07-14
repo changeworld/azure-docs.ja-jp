@@ -3,31 +3,42 @@ title: データへのアクセスをセキュリティで保護する
 description: Azure Logic Apps で、入力、出力、要求ベースのトリガー、実行履歴、管理タスク、その他のリソースへのアクセスをセキュリティで保護します
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 8fe53b7a27c922462f9134bc78ff648aca3aca62
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.date: 07/03/2020
+ms.openlocfilehash: 769d82cae6b5f9039587018ba5a7cde407f74e4c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715547"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964245"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps におけるアクセスとデータのセキュリティ保護
 
-Azure Logic Apps におけるアクセスを制御し、機密データを保護するために、次の領域のセキュリティを設定できます。
+Azure Logic Apps では、[Azure Storage](https://docs.microsoft.com/azure/storage/) を利用して、データが格納され、自動的に[保存データが暗号化](../security/fundamentals/encryption-atrest.md)されます。 この暗号化によってデータが保護され、組織のセキュリティとコンプライアンスの要件を満たすことができます。 既定では、Azure Storage は Microsoft マネージド キーを使用してデータを暗号化します。 詳細については、「[保存データ向け Azure ストレージの暗号化](../storage/common/storage-service-encryption.md)」をご覧ください。
+
+Azure Logic Apps 内の機密データへのアクセスをさらに制御し保護するために、次の領域のセキュリティを追加して設定できます。
 
 * [要求ベースのトリガーへのアクセス](#secure-triggers)
 * [ロジック アプリの操作へのアクセス](#secure-operations)
 * [実行履歴の入出力へのアクセス](#secure-run-history)
 * [パラメーターの入力へのアクセス](#secure-action-parameters)
 * [ロジック アプリから呼び出されたサービスとシステムへのアクセス](#secure-outbound-requests)
+* [特定のコネクタに対する接続の作成のブロック](#block-connections)
+* [ロジック アプリの分離に関するガイダンス](#isolation-logic-apps)
+* [Azure Logic Apps に対する Azure セキュリティ ベースライン](../logic-apps/security-baseline.md)
+
+Azure でのセキュリティの詳細については、次のトピックを参照してください。
+
+* [Azure 暗号化の概要](../security/fundamentals/encryption-overview.md)
+* [保存時の Azure Disk Encryption](../security/fundamentals/encryption-atrest.md)
+* [Azure セキュリティ ベンチマーク](../security/benchmarks/overview.md)
 
 <a name="secure-triggers"></a>
 
 ## <a name="access-to-request-based-triggers"></a>要求ベースのトリガーへのアクセス
 
-着信した呼び出しや要求を受け取る要求ベースのトリガー ([Request](../connectors/connectors-native-reqres.md) トリガーや [Webhook](../connectors/connectors-native-webhook.md) トリガーなど) がロジック アプリで使用されている場合、承認されたクライアントだけがそのロジック アプリを呼び出すことができるように、アクセスを制限できます。 ロジック アプリで受信するすべての要求は、これまではSecure Sockets Layer (SSL) プロトコルと呼ばれていたトランスポート層セキュリティ (TLS) で暗号化され、セキュリティ保護されます。
+着信した呼び出しや要求を受け取る要求ベースのトリガー ([Request](../connectors/connectors-native-reqres.md) トリガーや [Webhook](../connectors/connectors-native-webhook.md) トリガーなど) がロジック アプリで使用されている場合、承認されたクライアントだけがそのロジック アプリを呼び出すことができるように、アクセスを制限できます。 ロジック アプリで受信するすべての要求は、これまではSecure Sockets Layer (SSL) と呼ばれていたトランスポート層セキュリティ (TLS) プロトコルで暗号化され、セキュリティ保護されます。
 
 この種類のトリガーへのアクセスをセキュリティで保護するためのオプションを次に示します。
 
@@ -99,17 +110,13 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 ### <a name="enable-azure-active-directory-oauth"></a>Azure Active Directory OAuth の有効化
 
-Request トリガーで開始するロジック アプリの場合は、[Azure Active Directory Open Authentication](../active-directory/develop/about-microsoft-identity-platform.md) (Azure AD OAuth) を有効にして Request トリガーへの受信呼び出しを承認することができます。 この認証を有効にする前に、次の考慮事項を確認してください。
+[Request トリガー](../connectors/connectors-native-reqres.md)で開始されるロジック アプリの場合は、Request トリガーへの受信呼び出しに対する承認ポリシーを作成することで、[Azure Active Directory Open Authentication](../active-directory/develop/about-microsoft-identity-platform.md) (Azure AD OAuth) を有効にすることができます。 この認証を有効にする前に、次の考慮事項を確認してください。
+
+* ロジック アプリへの受信呼び出しには、Azure AD OAuth または [Shared Access Signature (SAS)](#sas) のいずれか 1 つの認証スキームのみを使用できます。 OAuth トークンに対しては[ベアラー型](../active-directory/develop/active-directory-v2-protocols.md#tokens)の承認スキームのみがサポートされ、これは Request トリガーに対してのみサポートされます。
 
 * ロジック アプリは、承認ポリシーの最大数に制限されている必要があります。 各承認ポリシーには、[クレーム](../active-directory/develop/developer-glossary.md#claim)の最大数もあります。 詳細については、[Azure Logic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md#authentication-limits)に関するページを参照してください。
 
-* 承認ポリシーには、少なくとも**発行者**のクレームが含まれている必要があります。発行者のクレームには、`https://sts.windows.net/` で始まる値が指定されている Azure AD の発行者 ID があります。
-
-* ロジック アプリへの受信呼び出しには、Azure AD OAuth または [Shared Access Signature (SAS)](#sas) のいずれか 1 つの認証スキームのみを使用できます。
-
-* OAuth トークンは、Request トリガーに対してのみサポートされています。
-
-* OAuth トークンに対してサポートされているのは、[ベアラー型](../active-directory/develop/active-directory-v2-protocols.md#tokens)の認証スキームだけです。
+* 承認ポリシーには、少なくとも**発行者**要求が含まれている必要があり、その Azure AD 発行者 ID の値は `https://sts.windows.net/` または `https://login.microsoftonline.com/` (OAuth V2) で始まっています。 アクセス トークンの詳細については、「[Microsoft ID プラットフォーム アクセス トークン](../active-directory/develop/access-tokens.md)」を参照してください。
 
 Azure AD OAuth を有効にするには、次の手順に従って、ロジック アプリに 1 つ以上の承認ポリシーを追加します。
 
@@ -126,7 +133,7 @@ Azure AD OAuth を有効にするには、次の手順に従って、ロジッ�
    | プロパティ | 必須 | 説明 |
    |----------|----------|-------------|
    | **ポリシー名** | はい | 承認ポリシーに使用する名前 |
-   | **請求** | はい | ロジック アプリが受信呼び出しで指定できるクレームの種類と値。 使用可能なクレームの種類は次のとおりです。 <p><p>- **発行者** <br>- **対象ユーザー** <br>- **件名** <br>- **JWT ID** (JSON Web Token ID) <p><p>**クレーム**の一覧には、少なくとも**発行者**のクレームが含まれている必要があります。発行者のクレームには、`https://sts.windows.net/`Azure AD 発行者 ID で始まる値が指定されています。 これらのクレームの種類の詳細については、「[Azure AD のセキュリティ トークンの要求](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens)」を参照してください。 独自のクレームの種類と値を指定することもできます。 |
+   | **請求** | はい | ロジック アプリが受信呼び出しで指定できるクレームの種類と値。 使用可能なクレームの種類は次のとおりです。 <p><p>- **発行者** <br>- **対象ユーザー** <br>- **件名** <br>- **JWT ID** (JSON Web Token ID) <p><p>**要求**の一覧には、少なくとも**発行者**の要求が含まれている必要があります。その値は、Azure AD 発行者 ID として `https://sts.windows.net/` または `https://login.microsoftonline.com/` で始まっています。 これらのクレームの種類の詳細については、「[Azure AD のセキュリティ トークンの要求](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens)」を参照してください。 独自のクレームの種類と値を指定することもできます。 |
    |||
 
 1. 別のクレームを追加するには、次のオプションから選択します。
@@ -188,7 +195,7 @@ Azure AD OAuth を有効にするには、次の手順に従って、ロジッ�
 
 ### <a name="restrict-inbound-ip-addresses"></a>受信 IP アドレスの制限
 
-Shared Access Signature (SAS) と共に、ロジック アプリを呼び出すことができるクライアントを明確に制限したい場合があります。 たとえば、Azure API Management を使用して要求エンドポイントを管理する場合は、API Management インスタンスの IP アドレスからの要求のみを受け入れるようお使いのロジック アプリを制限できます。
+Shared Access Signature (SAS) と共に、ロジック アプリを呼び出すことができるクライアントを明確に制限したい場合があります。 たとえば、[Azure API Management](../api-management/api-management-key-concepts.md) を使用して要求エンドポイントを管理する場合は、[作成した API Management サービス インスタンス](../api-management/get-started-create-service-instance.md)の IP アドレスからの要求のみを受け入れるようお使いのロジック アプリを制限できます。
 
 #### <a name="restrict-inbound-ip-ranges-in-azure-portal"></a>Azure portal で受信 IP 範囲を制限する
 
@@ -205,7 +212,7 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 お使いのロジック アプリを、入れ子にされたロジック アプリとしてのみトリガーするようにしたい場合は、 **[許可された着信 IP アドレス]** の一覧で **[他のロジック アプリのみ]** を選択します。 このオプションにより、ロジック アプリのリソースに空の配列が書き込まれます。 そのため、入れ子にされたロジック アプリをトリガーできるのは、Logic Apps サービス (親ロジック アプリ) からの呼び出しだけになります。
 
 > [!NOTE]
-> IP アドレスに関わらず、Azure REST API または API Management を通じて `/triggers/<trigger-name>/run` を使用することで、要求ベースのトリガーを備えたロジック アプリを引き続き実行できます。 ただし、このシナリオでも Azure REST API に対する[認証](../active-directory/develop/authentication-scenarios.md)が必要です。 すべてのイベントが Azure の監査ログに表示されます。 アクセス制御ポリシーを適切に設定するようにしてください。
+> IP アドレスに関わらず、[Logic Apps REST API: Workflow Triggers - Run](https://docs.microsoft.com/rest/api/logic/workflowtriggers/run) 要求または API Management を使用することで、要求ベースのトリガーを備えたロジック アプリを引き続き実行できます。 ただし、このシナリオでも Azure REST API に対する[認証](../active-directory/develop/authentication-scenarios.md)が必要です。 すべてのイベントが Azure の監査ログに表示されます。 アクセス制御ポリシーを適切に設定するようにしてください。
 
 #### <a name="restrict-inbound-ip-ranges-in-azure-resource-manager-template"></a>Azure Resource Manager テンプレートで受信 IP 範囲を制限する
 
@@ -690,18 +697,41 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 
   * Azure API Management での接続
 
-    [Azure API Management](../api-management/api-management-key-concepts.md) には、オンプレミス システムへのプロキシと通信のセキュリティ保護を実現するためのサイト間仮想プライベート ネットワークと ExpressRoute の統合など、オンプレミス接続オプションが用意されています。 オンプレミスのシステムには、API Management が公開している API を介してすばやくアクセスできます。ロジック アプリ デザイナーで、ロジック アプリのワークフローからこの API を選択できます。
+    [Azure API Management](../api-management/api-management-key-concepts.md) には、オンプレミス システムへのプロキシと通信のセキュリティ保護を実現するためのサイト間仮想プライベート ネットワークと [ExpressRoute](../expressroute/expressroute-introduction.md) の統合など、オンプレミス接続オプションが用意されています。 オンプレミスのシステムへのアクセスを提供する API があり、[API Management サービス インスタンス](../api-management/get-started-create-service-instance.md)を作成することでその API を公開した場合は、ロジック アプリ デザイナーで組み込みの API Management トリガーまたはアクションを選択することにより、ロジック アプリのワークフローでその API を呼び出すことができます。
+
+    > [!NOTE]
+    > コネクタには、ユーザーが表示と接続のアクセス許可を持っている API Management サービスのみが表示され、消費量ベースの API Management サービスは表示されません。
+
+    1. ロジック アプリ デザイナーの検索ボックスに「`api management`」と入力します。 トリガーとアクションのどちらを追加するかに基づいてステップを選択します。<p>
+
+       * 常にワークフローの最初のステップであるトリガーを追加する場合は、 **[Azure API Management トリガーを選択する]** を選択します。
+
+       * アクションを追加する場合は、 **[Azure API Management アクションを選択する]** を選択します。
+
+       次の例では、トリガーを追加します。
+
+       ![Azure API Management トリガーを追加する](./media/logic-apps-securing-a-logic-app/select-api-management.png)
+
+    1. 前に作成した API Management サービス インスタンスを選択します。
+
+       ![API Management サービス インスタンスを選択する](./media/logic-apps-securing-a-logic-app/select-api-management-service-instance.png)
+
+    1. 使用する API 呼び出しを選択します。
+
+       ![既存の API を選択する](./media/logic-apps-securing-a-logic-app/select-api.png)
 
 <a name="add-authentication-outbound"></a>
 
 ## <a name="add-authentication-to-outbound-calls"></a>送信呼び出しに認証を追加する
 
-HTTP および HTTPS エンドポイントでは、さまざまな種類の認証がサポートされています。 これらのエンドポイントにアクセスする送信呼び出しまたは送信要求を行うために使用するトリガーまたはアクションに基づいて、さまざまな認証の種類から選択できます。 ロジック アプリで処理される機密情報を確実にセキュリティで保護するには、セキュリティで保護されたパラメーターを使用し、必要に応じてデータをエンコードします。 パラメーターの使用とセキュリティ保護の詳細については、「[パラメーターの入力へのアクセス](#secure-action-parameters)」を参照してください。
+HTTP および HTTPS エンドポイントでは、さまざまな種類の認証がサポートされています。 これらのエンドポイントへの送信呼び出しまたは要求の送信に使用するトリガーとアクションによっては、認証の種類を指定できます。 ロジック アプリ デザイナーでは、認証の種類の選択がサポートされているトリガーとアクションには、 **[認証]** プロパティがあります。 ただし、このプロパティが既定で常に表示されるとは限りません。 このような場合は、トリガーまたはアクションで **[新しいパラメーターの追加]** の一覧を開き、 **[認証]** を選択します。
 
-> [!NOTE]
-> ロジック アプリ デザイナーでは、認証の種類を指定できる一部のトリガーやアクションで、 **[認証]** プロパティが表示されていない場合があります。 このような場合にプロパティを表示するには、トリガーまたはアクションで **[新しいパラメーターの追加]** の一覧を開き、 **[認証]** を選択します。 詳細については、「[マネージド ID を使用してアクセスを認証する](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity)」を参照してください。
+> [!IMPORTANT]
+> ロジック アプリで処理される機密情報を保護するには、セキュリティで保護されたパラメーターを使用し、必要に応じてデータをエンコードします。 パラメーターの使用とセキュリティ保護の詳細については、「[パラメーターの入力へのアクセス](#secure-action-parameters)」を参照してください。
 
-| 認証の種類 | サポートしているもの |
+次の表では、認証の種類を選択できるトリガーとアクションで使用できる認証の種類を示します。
+
+| 認証の種類 | 可用性 |
 |---------------------|--------------|
 | [Basic](#basic-authentication) | Azure API Management、Azure App Service、HTTP、HTTP + Swagger、HTTP Webhook |
 | [クライアント証明書](#client-certificate-authentication) | Azure API Management、Azure App Service、HTTP、HTTP + Swagger、HTTP Webhook |
@@ -749,7 +779,7 @@ HTTP および HTTPS エンドポイントでは、さまざまな種類の認�
 
 | プロパティ (デザイナー) | プロパティ (JSON) | 必須 | 値 | 説明 |
 |---------------------|-----------------|----------|-------|-------------|
-| **認証** | `type` | はい | **クライアント証明書** <br>or <br>`ClientCertificate` | TLS/SSL クライアント証明書に使用する認証の種類 <p><p>**注**:自己署名証明書はサポートされていますが、TLS/SSL 用の自己署名証明書はサポートされていません。 HTTP コネクタは、中間 TLS/SSL 証明書をサポートしていません。 |
+| **認証** | `type` | はい | **クライアント証明書** <br>or <br>`ClientCertificate` | 使用する認証の種類。 [Azure API Management](../api-management/api-management-howto-mutual-certificates.md) で証明書を管理できます。 <p></p>**注**:カスタム コネクタでは、受信と送信両方の呼び出しに対して証明書ベースの認証はサポートされていません。 |
 | **Pfx** | `pfx` | はい | <*encoded-pfx-file-content*> | Base64 でエンコードされた Personal Information Exchange (PFX) ファイルのコンテンツ <p><p>PFX ファイルを Base64 でエンコードされた形式に変換するには、次の手順に従って PowerShell を使用します。 <p>1.証明書の内容を変数に保存します。 <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2.`ToBase64String()` 関数を使用して証明書の内容を変換し、その内容をテキスト ファイルに保存します。 <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
 | **パスワード** | `password`| いいえ | <*password-for-pfx-file*> | PFX ファイルにアクセスするためのパスワード |
 |||||
@@ -867,7 +897,7 @@ Raw 認証をサポートするトリガーまたはアクションでは、次�
 
 ### <a name="managed-identity-authentication"></a>マネージド ID の認証
 
-[[マネージド ID]](../active-directory/managed-identities-azure-resources/overview.md) オプションが使用可能な場合、ロジック アプリでは、サインインせずに Azure Active Directory (Azure AD) で保護された他のリソースにアクセスするための認証用に、システム割り当ての ID、または手動で作成されたユーザー割り当ての*単一の* ID を使用できます。 この ID は、ユーザーの代わりに Azure で管理されます。ユーザーがシークレットを提供したりローテーションしたりする必要がないため、資格情報の保護に役立ちます。 [Azure AD 認証用のマネージド ID がサポートされているサービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)の詳細をご覧ください。
+[[マネージド ID]](../active-directory/managed-identities-azure-resources/overview.md) オプションが使用可能な場合、ロジック アプリでは、サインインせずに Azure Active Directory (Azure AD) で保護された他のリソースにアクセスするための認証用に、システム割り当ての ID、または手動で作成されたユーザー割り当ての "*単一の*" ID を使用できます。 この ID は、ユーザーの代わりに Azure で管理されます。ユーザーがシークレットを提供したりローテーションしたりする必要がないため、資格情報の保護に役立ちます。 [Azure AD 認証用のマネージド ID がサポートされているサービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)の詳細をご覧ください。
 
 1. ロジック アプリでマネージド ID を使用するには、その前に「[Azure Logic Apps でマネージド ID を使用して認証し、リソースにアクセスする](../logic-apps/create-managed-service-identity.md)」の手順に従います。 これらの手順により、ロジック アプリでマネージド ID が有効になり、ターゲットの Azure リソースに対するその ID のアクセスが設定されます。
 
@@ -900,9 +930,43 @@ Raw 認証をサポートするトリガーまたはアクションでは、次�
    }
    ```
 
+<a name="block-connections"></a>
+
+## <a name="block-creating-connections"></a>接続の作成をブロックする
+
+Azure Logic Apps でコネクタを使用して特定のリソースに接続することが組織で許可されていない場合は、[Azure Policy](../governance/policy/overview.md) を使用して、ロジック アプリのワークフロー内の特定のコネクタについて、[接続を作成する機能をブロックする](../logic-apps/block-connections-connectors.md)ことができます。 詳細については、[Azure Logic Apps での特定のコネクタによって作成される接続のブロック](../logic-apps/block-connections-connectors.md)に関するページを参照してください。
+
+<a name="isolation-logic-apps"></a>
+
+## <a name="isolation-guidance-for-logic-apps"></a>ロジック アプリの分離に関するガイダンス
+
+[Azure Government 影響レベル 5 分離ガイダンス](../azure-government/documentation-government-impact-level-5.md#azure-logic-apps)および[米国国防総省クラウド コンピューティング セキュリティ要件ガイド (SRG)](https://dl.dod.cyber.mil/wp-content/uploads/cloud/SRG/index.html) に関するページで説明されているリージョンでのすべての影響レベルをサポートする Azure Logic Apps を [Azure Government](../azure-government/documentation-government-welcome.md) で使用できます。 これらの要件を満たすため、ロジック アプリで他の Azure テナントによるパフォーマンスへの影響が軽減され、コンピューティング リソースが他のテナントと共有されないよう、Logic Apps では、専用リソースを持つ環境でワークフローを作成および実行する機能がサポートされています。
+
+* 独自のコードを実行したり、XML 変換を実行したりするには、それぞれ[インライン コード機能](../logic-apps/logic-apps-add-run-inline-code.md)を使用したり、[マップとして使用するアセンブリ](../logic-apps/logic-apps-enterprise-integration-maps.md)を提供したりするのではなく、[Azure 関数を作成して呼び出します](../logic-apps/logic-apps-azure-functions.md)。 また、分離要件に準拠するように、関数アプリのホスティング環境を設定します。
+
+  たとえば、影響レベル 5 の要件を満たすには、[**Isolated** 価格レベル](../app-service/overview-hosting-plans.md) と共にやはり **Isolated** 価格レベルである [App Service Environment (ASE)](../app-service/environment/intro.md) を使用する [App Service プラン](../azure-functions/functions-scale.md#app-service-plan)で関数アプリを作成します。 この環境では、関数アプリは専用の Azure 仮想マシンと専用の Azure 仮想ネットワーク上で実行されます。これにより、アプリのコンピューティング分離と最大スケールアウト機能を基にしてネットワークの分離が提供されます。 詳細については、[Azure Government 影響レベル 5 分離ガイダンス - Azure Functions](../azure-government/documentation-government-impact-level-5.md#azure-functions) に関するページを参照してください。
+
+  詳細については、以下のトピックを参照してください。<p>
+
+  * [Azure App Service プラン](../app-service/overview-hosting-plans.md)
+  * [Azure Functions のネットワーク オプション](../azure-functions/functions-networking-options.md)
+  * [仮想マシン用 Azure 専用ホスト](../virtual-machines/windows/dedicated-hosts.md)
+  * [Azure における仮想マシンの分離性](../virtual-machines/windows/isolation.md)
+  * [仮想ネットワークに専用の Azure サービスをデプロイする](../virtual-network/virtual-network-for-azure-services.md)
+
+* 専用リソース上で実行され、Azure 仮想ネットワークによって保護されたリソースにアクセスできるロジック アプリを作成するには、[統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) を作成できます。
+
+  * 一部の Azure 仮想ネットワークでは、プライベート エンドポイント ([Azure Private Link](../private-link/private-link-overview.md)) を使用して、Azure でホストされている Azure Storage、Azure Cosmos DB、Azure SQL Database、パートナー サービス、カスタマー サービスなどの Azure PaaS サービスへのアクセスが提供されます。 ロジック アプリでプライベート エンドポイントを使用する仮想ネットワークにアクセスする必要がある場合は、ISE の内部でそれらのロジック アプリを作成、デプロイ、実行する必要があります。
+
+  * Azure Storage によって使用される暗号化キーをより詳細に制御するには、[Azure Key Vault](../key-vault/general/overview.md) を使用して、独自のキーを設定、使用、管理できます。 この機能は "Bring Your Own Key" (BYOK) とも呼ばれ、キーは "カスタマー マネージド キー" と呼ばれます。 詳細については、「[Azure Logic Apps の統合サービス環境 (ISE) の保存データを暗号化するためにカスタマー マネージド キーを設定する](../logic-apps/customer-managed-keys-integration-service-environment.md)」を参照してください。
+
+詳細については、以下のトピックを参照してください。
+
+* [Azure パブリック クラウドでの分離](../security/fundamentals/isolation-choices.md)
+* [Azure における機密性の高い IaaS アプリのセキュリティ](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/high-security-iaas)
+
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Logic Apps のデプロイを自動化する](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)  
-* [ロジック アプリの監視](../logic-apps/monitor-logic-apps-log-analytics.md)  
-* [ロジック アプリの障害と問題の診断](../logic-apps/logic-apps-diagnosing-failures.md)  
-* [ロジック アプリ デプロイを自動化する](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
+* [Azure Logic Apps に対する Azure セキュリティ ベースライン](../logic-apps/security-baseline.md)
+* [Azure Logic Apps のデプロイを自動化する](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
+* [ロジック アプリの監視](../logic-apps/monitor-logic-apps-log-analytics.md)

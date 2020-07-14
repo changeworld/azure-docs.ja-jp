@@ -3,16 +3,16 @@ title: Azure エンタープライズ ポータルを使い始める
 description: この記事では、Azure Enterprise Agreement (Azure EA) のお客様が Azure エンタープライズ ポータルを使用する方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 06/01/2020
+ms.date: 06/29/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 7983afa32ff8104d181fbcdc75a50d12e2240128
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 6b31f3cd8ca6baa2d20d0281de51ed83424eca17
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298110"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85560360"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Azure エンタープライズ ポータルを使い始める
 
@@ -471,6 +471,7 @@ Azure エンタープライズ ポータルでは、非アクティブな加入�
 
 ### <a name="enrollment-statuses"></a>加入契約の状態
 
+- **新規**: この状態は、過去 24 時間以内に作成された登録に割り当てられ、24 時間以内に保留中の状態に更新されます。
 - **Pending**: 登録管理者は Azure エンタープライズ ポータルにサインインする必要があります。 サインインすると、加入契約がアクティブな状態に切り替わります。
 - **[アクティブ]** : 加入契約はアクティブであり、Azure エンタープライズ ポータルでアカウントとサブスクリプションを作成できます。 加入契約は、Enterprise Agreement の終了日までアクティブな状態が維持されます。
 - **無期限の延長期間**:Enterprise Agreement の終了日に達した後、無期限の延長期間の状態になります。 これにより、拡張期間にオプトインした Azure EA のお客様は、Enterprise Agreement の終了後に、Azure サービスを引き続き無期限に使用できます。

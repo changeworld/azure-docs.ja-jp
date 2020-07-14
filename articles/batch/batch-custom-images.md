@@ -1,21 +1,23 @@
 ---
-title: マネージド イメージからカスタム プールをプロビジョニングする
-description: マネージド イメージ リソースから Batch プールを作成して、アプリケーション用のソフトウェアとデータを含むコンピューティング ノードをプロビジョニングします。
+title: マネージド イメージを使用してカスタム イメージ プールを作成する
+description: マネージド イメージから Batch カスタム イメージ プールを作成して、アプリケーション用のソフトウェアとデータを含むコンピューティング ノードをプロビジョニングします。
 ms.topic: conceptual
-ms.date: 05/22/2020
-ms.openlocfilehash: fbb336ff9d3d53cc53004c577e291afdba7702f6
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 07/01/2020
+ms.openlocfilehash: 45bf0f8b3cb335b7025ff06189bf6bc4e0a896ad
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847992"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851295"
 ---
-# <a name="use-a-managed-image-to-create-a-pool-of-virtual-machines"></a>マネージド イメージを使用して仮想マシンのプールを作成する
+# <a name="use-a-managed-image-to-create-a-custom-image-pool"></a>マネージド イメージを使用してカスタム イメージ プールを作成する
 
-Batch プールの仮想マシン (VM) のカスタム イメージを作成するために、マネージド イメージを使用して [Shared Image Gallery](batch-sig-images.md) を作成できます。 マネージド イメージだけを使用することもできますが、2019-08-01 以前の API バージョンでのみサポートされます。
+Batch プールの仮想マシン (VM) のカスタム イメージ プールを作成するために、マネージド イメージを使用して [Shared Image Gallery イメージ](batch-sig-images.md)を作成できます。 マネージド イメージだけを使用することもできますが、2019-08-01 以前の API バージョンでのみサポートされます。 
 
 > [!IMPORTANT]
 > ほとんどの場合、Shared Image Gallery を使用してカスタム イメージを作成する必要があります。 Shared Image Gallery を使用すると、プールを迅速にプロビジョニングしたり、VM の数を増やしたり、VM のプロビジョニング時に信頼性を向上させたりすることができます。 詳細については、「[Shared Image Gallery を使用してカスタム プールを作成する](batch-sig-images.md)」を参照してください。
+
+このトピックでは、マネージド イメージだけを使用してカスタム イメージ プールを作成する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -26,7 +28,7 @@ Batch プールの仮想マシン (VM) のカスタム イメージを作成す�
 
 - **Azure Active Directory (Azure AD) 認証**。 Batch クライアント API では、Azure AD 認証を使用する必要があります。 Azure AD の Azure Batch のサポートについては、「[Batch サービスの認証に Active Directory を使用する](batch-aad-auth.md)」に記載されています。
 
-## <a name="prepare-a-custom-image"></a>カスタム イメージを準備する
+## <a name="prepare-a-managed-image"></a>マネージド イメージを準備する
 
 Azure では、次のものからマネージド イメージを準備できます。
 
@@ -57,7 +59,7 @@ Azure では、次のものからマネージド イメージを準備できま�
 
 スナップショットからマネージド イメージを作成するには、[az image create](/cli/azure/image) コマンドなどの Azure コマンドライン ツールを使用します。 イメージを作成する際には、OS ディスクのスナップショットを指定し、必要に応じて 1 つ以上のデータ ディスク スナップショットを指定することができます。
 
-## <a name="create-a-pool-from-a-custom-image"></a>カスタム イメージからプールを作成する
+## <a name="create-a-pool-from-a-managed-image"></a>マネージド イメージからプールを作成する
 
 マネージド イメージのリソース ID が見つかったら、そのイメージからカスタム イメージ プールを作成します。 次の手順では、Batch サービスまたは Batch Management を使用してカスタム イメージ プールを作成する方法を説明します。
 

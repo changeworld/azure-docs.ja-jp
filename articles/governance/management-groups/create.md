@@ -3,12 +3,12 @@ title: 管理グループを作成してリソースを整理する - Azure の�
 description: ポータル、Azure PowerShell、および Azure CLI を使用して、複数のリソースを管理する Azure 管理グループを作成する方法について説明します。
 ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0abecf02062dd4461274a9bc3722d46e6e7cc3d1
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 6fe7f2ea74c697701084321e068042b36acbdb11
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220753"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971137"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>リソースの整理と管理のための管理グループを作成する
 
@@ -21,7 +21,7 @@ ms.locfileid: "84220753"
 テナント内のすべての Azure AD ユーザーは、そのユーザーに割り当てられた管理グループの書き込みアクセス許可なしで管理グループを作成できます。 この新しい管理グループは、ルート管理グループの子になり、作成者には "所有者" ロールの割り当てが付与されます。 管理グループ サービスでは、この機能が許可されるため、ルート レベルでのロールの割り当ては必要ありません。 ルート管理グループには、その作成時に、どのユーザーもアクセスできません。 管理グループの使用を開始する場合に Azure AD の全体管理者を見つけるという困難を回避するために、ルート  
 レベルでの最初の管理グループの作成が許可されています。
 
-管理グループを作成するには、ポータル、[Resource Manager テンプレート](../../azure-resource-manager/templates/deploy-to-tenant.md#create-management-group)、PowerShell、または Azure CLI を使用します。
+管理グループを作成するには、ポータル、[Azure Resource Manager テンプレート](../../azure-resource-manager/templates/deploy-to-tenant.md#create-management-group)、PowerShell、または Azure CLI を使用します。
 
 ### <a name="create-in-portal"></a>ポータルで作成する
 

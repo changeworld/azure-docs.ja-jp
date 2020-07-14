@@ -7,14 +7,14 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: errobin
-ms.openlocfilehash: 94a2398879007e7ecd6d2f1920157eb4627f33cb
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 205a4bd119a7324c4e6524a0e29d432aa57bf315
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014929"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848214"
 ---
-# <a name="frequently-asked-questions"></a>よく寄せられる質問
+# <a name="load-balancer-frequently-asked-questions"></a>Load Balancer に関してよく寄せられる質問
 
 ## <a name="what-types-of-load-balancer-exist"></a>Azure Load Balancer には、どんな種類がありますか?
 VNET 内のトラフィックを負荷分散する内部ロード バランサーと、インターネットに接続されたエンドポイントとの間のトラフィックを負荷分散する外部ロード バランサーがあります。 詳細については、[Load Balancer の種類](components.md#frontend-ip-configurations)に関するページを参照してください。 
@@ -35,6 +35,19 @@ NAT 規則は、トラフィックをルーティングするバックエンド 
 
 ## <a name="what-is-ip-1686312916"></a>IP 168.63.129.16 とは何か?
 Azure の正常性プローブが開始される Azure インフラストラクチャのロード バランサーとしてタグ付けされたホストの仮想 IP アドレスです。 バックエンド インスタンスを構成するとき、正常性プローブに正常に応答するために、この IP アドレスからのトラフィックを許可する必要があります。 この規則は、Load Balancer フロントエンドへのアクセスには影響しません。 Azure ロード バランサーを使用していない場合は、この規則を無視できます。 サービス タグの詳細については、[こちら](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags)を参照してください。
+
+## <a name="can-i-use-global-vnet-peering-with-basic-load-balancer"></a>Basic Load Balancer でグローバル VNET ピアリングを使用できますか?
+いいえ。 Basic Load Balancer では、グローバル VNET ピアリングはサポートされていません。 代わりに Standard ロード バランサーを使用できます。 シームレスなアップグレードについては、[Basic から Standard へのアップグレード](upgrade-basic-standard.md)に関する記事を参照してください。
+
+## <a name="how-can-i-discover-the-public-ip-that-an-azure-vm-uses"></a>Azure VM で使用されているパブリック IP を検出するにはどうすればよいですか?
+
+送信接続のパブリック ソース IP アドレスを判別する方法は多数あります。 OpenDNS によって提供されるサービスで、VM のパブリック IP アドレスを表示できます。
+nslookup コマンドを使用することで、名前 myip.opendns.com に関する DNS クエリを OpenDNS Resolver に送信できます。 このサービスは、クエリの送信に使用されたソース IP アドレスを返します。 VM から次のクエリを実行すると、その VM で使用されるパブリック IP が応答として返されます。
+
+ ```nslookup myip.opendns.com resolver1.opendns.com```
+
+## <a name="how-do-connections-to-azure-storage-in-the-same-region-work"></a>同じリージョン内の Azure Storage への接続はどのように機能しますか?
+上記のシナリオでの送信接続の使用では、VM と同じリージョン内の Storage に接続する必要はありません。 これを望まない場合は、前述のようにネットワーク セキュリティ グループ (NSG) を使用します。 他のリージョン内の Storage への接続では、送信接続が必要です。 同じリージョン内の VM から Storage に接続する場合、Storage 診断ログ内のソース IP アドレスは、VM のパブリック IP アドレスではなく、内部プロバイダー アドレスになることに注意してください。 お使いの Storage アカウントへのアクセスを、同じリージョン内の 1 つ以上の仮想ネットワーク サブネット内の VM に制限する場合は、ストレージ アカウントのファイアウォールを構成するときに、パブリック IP アドレスではなく、[仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)を使用します。 サービス エンドポイントを構成すると、診断ログには、内部プロバイダー アドレスではなく、お使いの仮想ネットワークのプライベート IP アドレスが表示されます。
 
 ## <a name="next-steps"></a>次の手順
 ご不明な点が上記の一覧にない場合は、このページに関するフィードバックにご質問を添えてお送りください。 お送りいただくと、製品チームでは、お客様からの貴重なご質問すべてにお答えできるよう、GitHub 問題を作成しています。

@@ -2,7 +2,8 @@
 title: ジョブの自動化
 description: ジョブの自動化を使用して、一連のデータベース全体に Transact-SQL (T-SQL) スクリプトを実行します
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
+ms.subservice: features
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: overview
@@ -10,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 03/10/2020
-ms.openlocfilehash: 1b27eac1a8b5989734d3451bf21c5b13dd5cc0af
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 537c989271800c15444d5323cfce8e133c8eeeba
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220563"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984661"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>データベース ジョブを使用して管理タスクを自動化する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -54,8 +55,8 @@ SQL エージェント (オンプレミスでも SQL Managed Instance の一部�
 
 | |エラスティック ジョブ |SQL エージェント |
 |---------|---------|---------|
-|Scope | ジョブ エージェントと同じ Azure クラウド内に存在する Azure SQL Database やデータ ウェアハウスの任意の数のデータベース。 サーバー、サブスクリプション、またはリージョンが異なっていてもターゲットとすることができます。 <br><br>ターゲット グループを構成するメンバーには、個々のデータベースまたはデータ ウェアハウスのほか、サーバー、プール、またはシャードマップに含まれるすべてのデータベースを指定できます (ジョブの実行時に動的に列挙されます)。 | SQL エージェントと同じインスタンス内の個々のデータベース。 |
-|サポートされる API とツール | ポータル、PowerShell、T-SQL、Azure Resource Manager | T-SQL、SQL Server Management Studio (SSMS) |
+|**スコープ** | ジョブ エージェントと同じ Azure クラウド内に存在する Azure SQL Database やデータ ウェアハウスの任意の数のデータベース。 サーバー、サブスクリプション、またはリージョンが異なっていてもターゲットとすることができます。 <br><br>ターゲット グループを構成するメンバーには、個々のデータベースまたはデータ ウェアハウスのほか、サーバー、プール、またはシャードマップに含まれるすべてのデータベースを指定できます (ジョブの実行時に動的に列挙されます)。 | SQL エージェントと同じインスタンス内の個々のデータベース。 |
+|**サポートされる API とツール** | ポータル、PowerShell、T-SQL、Azure Resource Manager | T-SQL、SQL Server Management Studio (SSMS) |
 
 ## <a name="sql-agent-jobs"></a>SQL エージェント ジョブ
 

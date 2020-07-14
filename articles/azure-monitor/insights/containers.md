@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 07/22/2019
-ms.openlocfilehash: 171f897f6e110e8f759281c139addab477ecede3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/06/2020
+ms.openlocfilehash: fe8d2a2c083072ebc717b7476bb0738bb83301f1
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77664696"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984626"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Azure Monitor のコンテナー監視ソリューション
 
@@ -618,7 +618,6 @@ Log Analytics が開き、コンテナーの状態に関する情報が表示さ
 - **KubeEvents_CL** – Kubernetes イベントを確認するときに使用します。
 - **KubePodInventory_CL** – クラスター階層に関する情報を把握したいときに使用します。
 
-
 ### <a name="to-query-logs-for-container-data"></a>コンテナー データのログをクエリするには
 
 * 最近失敗したことがわかっているイメージを選択し、そのエラー ログを見つけます。 まず、**ContainerInventory** 検索で、そのイメージを実行しているコンテナー名を特定します。 たとえば、`ContainerInventory | where Image == "ubuntu" and ContainerState == "Failed"` を検索します。  
@@ -628,7 +627,7 @@ Log Analytics が開き、コンテナーの状態に関する情報が表示さ
 
 ## <a name="example-log-queries"></a>ログ クエリの例
 
-クエリの作成の際には、多くの場合、1 ～ 2 個の例で始め、その後環境に合わせて変更するとうまくいきます。 まず、 **[サンプル クエリ]** エリアで試すと、より高度なクエリを作成しやすくなります。
+クエリの作成の際には、多くの場合、1 ～ 2 個の例で始め、その後環境に合わせて変更するとうまくいきます。 出発点として、ソリューション ページの右端にある **[サンプル クエリ]** 領域で実験を行うと、より高度なクエリを作成するのに役立ちます。
 
 ![コンテナーのクエリ](./media/containers/containers-queries.png)
 

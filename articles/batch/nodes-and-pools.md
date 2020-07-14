@@ -2,13 +2,13 @@
 title: Azure Batch のノードとプール
 description: コンピューティング ノードとプールについて、およびそれらが Azure Batch ワークフローで開発の観点からどのように使用されるかについて説明します。
 ms.topic: conceptual
-ms.date: 05/12/2020
-ms.openlocfilehash: eadc5236926fed12ebee087f7354c492ae5fc745
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.date: 06/16/2020
+ms.openlocfilehash: f71be75c0358dbc7f76a61680df2c54f44bc4173
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83790919"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964044"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Azure Batch のノードとプール
 
@@ -27,6 +27,8 @@ Batch のすべてのコンピューティング ノードには、次の要素�
 - 標準的な[フォルダー構造](files-and-directories.md)と、それに関連付けられた (タスクから参照できる) [環境変数](jobs-and-tasks.md)。
 - **ファイアウォール** 設定。
 - [リモート アクセス](error-handling.md#connect-to-compute-nodes) 。
+
+既定では、ノードは相互に通信できますが、同じプールに属していない仮想マシンとは通信できません。 ノードが他の仮想マシン、またはオンプレミス ネットワークと安全に通信できるようにするために、プールを [Azure 仮想ネットワーク (VNet) のサブネット内](batch-virtual-network.md)にプロビジョニングできます。 そのようにすると、パブリック IP アドレスを通してノードにアクセスできるようになります。 これらのパブリック IP アドレスは Batch によって作成され、プールの有効期間中に変化する可能性があります。 また、ユーザーが制御する[静的パブリック IP アドレスを使用してプールを作成する](create-pool-public-ip.md)こともできます。このようにすると、予期せず変更されることがなくなります。
 
 ## <a name="pools"></a>プール
 
@@ -78,7 +80,7 @@ Cloud Services 内の worker ロールと同様、"*OS バージョン*" を指�
 
 ### <a name="node-agent-skus"></a>ノード エージェント SKU
 
-プールを作成するときは、VHD のベース イメージの OS に応じて、適切な **nodeAgentSkuId** を選択する必要があります。 [サポートされるノード エージェント SKU をリスト表示する](https://docs.microsoft.com/rest/api/batchservice/list-supported-node-agent-skus)操作を呼び出して、使用可能なノード エージェント SKU ID と OS イメージ参照のマッピングを取得できます。
+プールを作成するときは、VHD のベース イメージの OS に応じて、適切な **nodeAgentSkuId** を選択する必要があります。 [サポートされるノード エージェント SKU をリスト表示する](/rest/api/batchservice/list-supported-node-agent-skus)操作を呼び出して、使用可能なノード エージェント SKU ID と OS イメージ参照のマッピングを取得できます。
 
 ### <a name="custom-images-for-virtual-machine-pools"></a>仮想マシン プールのカスタム イメージ
 
@@ -127,7 +129,7 @@ Azure Batch プールを作成する場合に、Azure で使用可能なほぼ�
 - **リソース メトリック** : CPU 使用量、帯域幅使用量、メモリ使用量、およびノードの数に基づきます。
 - **タスク メトリック**: "*アクティブ*" (キューに登録済み)、"*実行中*"、"*完了*" などのタスクの状態に基づきます。
 
-プール内のコンピューティング ノードの数が自動スケールによって縮小される場合、その縮小操作のタイミングで実行されているタスクの扱いを考慮に入れる必要があります。 その点に対応するために、Batch には式に含めることができる[*ノードの割り当て解除オプション*](https://docs.microsoft.com/rest/api/batchservice/pool/removenodes#computenodedeallocationoption)が用意されています。 たとえば、実行中のタスクを即座に停止したうえで再度キューに登録して別のノードで実行するか、完了するまで待ってノードをプールから削除するかを指定できます。 ノードの割り当て解除オプションを `taskcompletion` または `retaineddata` として設定すると、それぞれすべてのタスクが完了するまで、またはすべてのタスク保持期間が経過するまで、プールのサイズ変更操作ができなくなります。
+プール内のコンピューティング ノードの数が自動スケールによって縮小される場合、その縮小操作のタイミングで実行されているタスクの扱いを考慮に入れる必要があります。 その点に対応するために、Batch には式に含めることができる[*ノードの割り当て解除オプション*](/rest/api/batchservice/pool/removenodes#computenodedeallocationoption)が用意されています。 たとえば、実行中のタスクを即座に停止したうえで再度キューに登録して別のノードで実行するか、完了するまで待ってノードをプールから削除するかを指定できます。 ノードの割り当て解除オプションを `taskcompletion` または `retaineddata` として設定すると、それぞれすべてのタスクが完了するまで、またはすべてのタスク保持期間が経過するまで、プールのサイズ変更操作ができなくなります。
 
 アプリケーションの自動的なスケーリングの詳細については、「 [Azure Batch プール内のコンピューティング ノードの自動スケール](batch-automatic-scaling.md)」を参照してください。
 
@@ -162,13 +164,16 @@ Batch でプール内のすべてのノードにタスクを均等に配分す�
 
 ## <a name="virtual-network-vnet-and-firewall-configuration"></a>仮想ネットワーク (VNet) とファイアウォールの構成
 
-コンピューティング ノードのプールを Batch でプロビジョニングする際に、プールを Azure [仮想ネットワーク (VNet)](../virtual-network/virtual-networks-overview.md) のサブネットに関連付けることができます。 Azure VNet を使用するには、Batch クライアント API で Azure Active Directory (AD) 認証を使用する必要があります。 Azure AD の Azure Batch のサポートについては、「[Batch サービスの認証に Active Directory を使用する](batch-aad-auth.md)」に記載されています。  
+コンピューティング ノードのプールを Batch でプロビジョニングする際に、プールを Azure [仮想ネットワーク (VNet)](../virtual-network/virtual-networks-overview.md) のサブネットに関連付けることができます。 Azure VNet を使用するには、Batch クライアント API で Azure Active Directory (AD) 認証を使用する必要があります。 Azure AD の Azure Batch のサポートについては、「[Batch サービスの認証に Active Directory を使用する](batch-aad-auth.md)」に記載されています。
 
 ### <a name="vnet-requirements"></a>VNet に関する要件
 
 [!INCLUDE [batch-virtual-network-ports](../../includes/batch-virtual-network-ports.md)]
 
 VNet で Batch プールを設定する方法の詳細については、[仮想ネットワークでの仮想マシンのプールの作成](batch-virtual-network.md)に関するページを参照してください。
+
+> [!TIP]
+> ノードへのアクセスに使用されるパブリック IP アドレスが変更されないようにするには、[ユーザーが制御するパブリック IP アドレスを指定してプールを作成する](create-pool-public-ip.md)ことができます。
 
 ## <a name="pool-and-compute-node-lifetime"></a>プールとコンピューティング ノードの有効期間
 
@@ -184,7 +189,7 @@ Azure Batch ソリューションを設計するときは、いつ、どのよ�
 
 証明書を使用する必要があるのは、通常、[Azure Storage アカウント](accounts.md#azure-storage-accounts)のキーなど、タスクの機密情報を暗号化または復号化するときです。 このようなときは、ノードに証明書をインストールすることで対応できます。 暗号化された機密情報は、コマンド ライン パラメーターを通じてタスクに渡されるか、タスク リソースの 1 つに埋め込まれます。インストールされた証明書を使用して、機密情報を復号化できます。
 
-[証明書の追加](https://docs.microsoft.com/rest/api/batchservice/certificate/add)操作 (Batch REST) または [CertificateOperations.CreateCertificate](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.certificateoperations) メソッド (Batch .NET) を使用して、Batch アカウントに証明書を追加できます。 次に、新規または既存のプールに証明書を関連付けることができます。
+[証明書の追加](/rest/api/batchservice/certificate/add)操作 (Batch REST) または [CertificateOperations.CreateCertificate](/dotnet/api/microsoft.azure.batch.certificateoperations) メソッド (Batch .NET) を使用して、Batch アカウントに証明書を追加できます。 次に、新規または既存のプールに証明書を関連付けることができます。
 
 証明書がプールに関連付けられると、Batch サービスは、プール内の各ノードに証明書をインストールします。 Batch サービスはノードの起動時、いずれかのタスク ([開始タスク](jobs-and-tasks.md#start-task)、[ジョブ マネージャー タスク](jobs-and-tasks.md#job-manager-task)も含まれます) を起動する前に、適切な証明書をインストールします。
 

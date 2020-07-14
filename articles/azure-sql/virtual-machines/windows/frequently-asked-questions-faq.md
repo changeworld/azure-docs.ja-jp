@@ -4,7 +4,6 @@ description: この記事では、Azure VM で SQL Server を実行すること�
 services: virtual-machines-windows
 documentationcenter: ''
 author: MashaMSFT
-manager: felixwu
 editor: ''
 tags: azure-service-management
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
@@ -14,21 +13,21 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 278f3a5109e638530a55f4b2a77cd6d28aa7ca54
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 7a44e9c6b0545bce83f17c3bf85149d4ebe95dc1
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84035263"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955677"
 ---
-# <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Azure の Windows 仮想マシン上で実行されている SQL Server についてよく寄せられる質問
+# <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Azure VM における SQL Server についてよく寄せられる質問
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!div class="op_single_selector"]
 > * [Windows](frequently-asked-questions-faq.md)
 > * [Linux](../linux/frequently-asked-questions-faq.md)
 
-この記事では、[Azure の Windows 仮想マシン上の SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) に関して特に多く寄せられる質問への回答を示します。
+この記事では、[Windows Azure Virtual Machines (VM) における SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) に関して特に多く寄せられる質問への回答を示します。
 
 [!INCLUDE [support-disclaimer](../../../../includes/support-disclaimer.md)]
 
@@ -51,15 +50,15 @@ ms.locfileid: "84035263"
 
    はい、PowerShell を使用します。 PowerShell を使用して SQL Server VM をデプロイする方法の詳細については、「[Azure PowerShell を使用して SQL Server 仮想マシンをプロビジョニングする方法](create-sql-vm-powershell.md)」をご覧ください。
    
-1. **SQL Server VM の一般化された Azure SQL Server Marketplace イメージを作成し、それを使用して VM をデプロイできますか?**
+1. **SQL Server VM の一般化された Azure Marketplace SQL Server イメージを作成し、それを使用して VM をデプロイできますか?**
 
    はい。ただし、ポータルで SQL Server VM を管理したり、修正プログラムの自動適用や自動バックアップなどの機能を利用したりするには、[各 SQL Server VM を SQL Server VM リソース プロバイダーに登録する](sql-vm-resource-provider-register.md)必要があります。 リソース プロバイダーに登録するとき、各 SQL Server VM のライセンスの種類も指定する必要があります。
 
 1. **Azure VM で SQL Server を一般化し、それを使用して新しい VM をデプロイするにはどうすればよいですか?**
 
-   (SQL Server がインストールされていない) Windows Server VM をデプロイし、[SQL sysprep](/sql/database-engine/install-windows/install-sql-server-using-sysprep?view=sql-server-ver15) プロセスを使用し、SQL Server インストール メディアを使用して Azure VM (Windows) 上の SQL Server を一般化できます。 [ソフトウェア アシュアランス](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot%3aprimaryr3)をお持ちのお客様は、[ボリューム ライセンス サービス センター](https://www.microsoft.com/Licensing/servicecenter/default.aspx)からインストール メディアを入手できます。 ソフトウェア アシュアランスをお持ちでないお客様は、目的のエディションを含む Marketplace SQL Server VM イメージからセットアップ メディアを使用できます。
+   (SQL Server がインストールされていない) Windows Server VM をデプロイし、[SQL sysprep](/sql/database-engine/install-windows/install-sql-server-using-sysprep?view=sql-server-ver15) プロセスを使用し、SQL Server インストール メディアを使用して Azure VM (Windows) 上の SQL Server を一般化できます。 [ソフトウェア アシュアランス](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot%3aprimaryr3)をお持ちのお客様は、[ボリューム ライセンス サービス センター](https://www.microsoft.com/Licensing/servicecenter/default.aspx)からインストール メディアを入手できます。 ソフトウェア アシュアランスをお持ちでないお客様は、目的のエディションを含む Azure Marketplace の SQL Server VM イメージから、セットアップ メディアを使用できます。
 
-   または、Azure マーケットプレースのいずれかの SQL Server イメージを使用して、Azure VM 上の SQL Server を一般化します。 独自のイメージを作成する前に、ソース イメージの次のレジストリ キーを削除する必要があることに注意してください。 そうしないと、SQL Server のセットアップ ブートストラップ フォルダーのサイズが大きくなったり、SQL IaaS 拡張機能が失敗した状態になる可能性があります。
+   または、Azure Marketplace のいずれかの SQL Server イメージを使用して、Azure VM 上の SQL Server を一般化します。 独自のイメージを作成する前に、ソース イメージの次のレジストリ キーを削除する必要があることに注意してください。 そうしないと、SQL Server のセットアップ ブートストラップ フォルダーのサイズが大きくなったり、SQL IaaS 拡張機能が失敗した状態になる可能性があります。
 
    レジストリ キーのパス:  
    `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Setup\SysPrepExternal\Specialize`
@@ -71,9 +70,9 @@ ms.locfileid: "84035263"
 
    はい。ただし、ポータルで SQL Server VM を管理したり、修正プログラムの自動適用や自動バックアップなどの機能を利用したりするには、[各 SQL Server VM を SQL Server VM リソース プロバイダーに登録する](sql-vm-resource-provider-register.md)必要があります。
 
-1. **仮想マシン ギャラリーに表示されていない構成 (Windows 2008 R2  + SQL Server 2012 など) をセットアップすることはできますか?**
+1. **仮想マシン ギャラリーに表示されていない構成 (Windows 2008 R2 + SQL Server 2012 など) をセットアップすることはできますか?**
 
-   いいえ。 SQL Server を含む仮想マシン ギャラリー イメージでは、Azure portal または [PowerShell](create-sql-vm-powershell.md) を使用して、提供されているイメージのいずれかを選択する必要があります。 ただし、Windows VM をデプロイしたり、それに SQL Server を自己インストールしたりできます。 その後、ポータルで SQL Server VM を管理したり、修正プログラムの自動適用や自動バックアップなどの機能を利用したりするには、[各 SQL Server VM を SQL Server VM リソース プロバイダーに登録する](sql-vm-resource-provider-register.md)必要があります。 
+   いいえ。 SQL Server を含む仮想マシン ギャラリー イメージでは、Azure portal または [PowerShell](create-sql-vm-powershell.md) を使用して、提供されているイメージのいずれかを選択する必要があります。 ただし、Windows VM をデプロイしたり、それに SQL Server を自己インストールしたりできます。 その後、Azure portal で SQL Server VM を管理したり、修正プログラムの自動適用や自動バックアップなどの機能を利用したりするには、[各 SQL Server VM を SQL Server VM リソース プロバイダーに登録する](sql-vm-resource-provider-register.md)必要があります。 
 
 
 ## <a name="creation"></a>作成
@@ -100,7 +99,7 @@ ms.locfileid: "84035263"
 
    いいえ。 [ライセンス モデルの変更](licensing-model-azure-hybrid-benefit-ahb-change.md)は、即座に有効になり、VM を再起動する必要はないため、SQL Server のダウンタイムは必要ありません。 ただし、SQL Server VM を SQL Server VM リソース プロバイダーに登録するには、[SQL IaaS 拡張機能](sql-server-iaas-agent-extension-automate-management.md)が前提条件です。SQL IaaS 拡張機能を_完全_モードでインストールすると、SQL Server サービスが再起動します。 そのため、SQL IaaS 拡張機能をインストールする必要がある場合、機能が制限される_軽量_モードでインストールするか、メンテナンス期間中であれば_完全_モードでインストールしてください。 _軽量_モードでインストールされた SQL IaaS 拡張機能はいつでも_完全_モードにアップグレードできますが、SQL Server サービスを再起動する必要があります。 
    
-1. **クラシック モデルを使用してデプロイされた SQL Server VM でライセンス モデルを切り替えることはできますか。**
+1. **クラシック モデルを使用してデプロイされた SQL Server VM でライセンス モデルを切り替えることはできますか?**
 
    いいえ。 クラシック VM では、ライセンス モデルの変更はサポートされていません。 VM を Azure Resource Manager モデルに移行し、SQL Server VM リソース プロバイダーに登録できます。 VM が SQL Server VM リソース プロバイダーに登録されたら、VM でライセンス モデルを変更できます。
 
@@ -133,7 +132,7 @@ ms.locfileid: "84035263"
 
 1. **ディザスター リカバリー (DR) 特典はどのサブスクリプションでサポートされていますか?**
 
-   ソフトウェア アシュアランスと同等のサブスクリプション権限を固定した特典として提供する包括的なプログラムでは、DR 特典がサポートされます。 これには、 オープン バリュー (OV)、オープン バリュー サブスクリプション (OVS)、Enterprise Agreement (EA)、エンタープライズ サブスクリプション契約 (EAS)、およびサーバーおよびクラウド加入契約 (SCE) が含まれますが、これに限定されるものではありません。 詳細については、[製品の使用条件](https://www.microsoft.com/licensing/product-licensing/products)を参照し、ライセンスの担当者またはアカウント マネージャーにお問い合わせください。 
+   ソフトウェア アシュアランスと同等のサブスクリプション権限を固定した特典として提供する包括的なプログラムでは、DR 特典がサポートされます。 これには、 オープン バリュー (OV)、オープン バリュー サブスクリプション (OVS)、Enterprise Agreement (EA)、エンタープライズ契約サブスクリプション (EAS)、およびサーバーおよびクラウド加入契約 (SCE) が含まれますが、これに限定されるものではありません。 詳細については、[製品の使用条件](https://www.microsoft.com/licensing/product-licensing/products)を参照し、ライセンスの担当者またはアカウント マネージャーにお問い合わせください。 
 
    
  ## <a name="resource-provider"></a>リソース プロバイダー
@@ -189,7 +188,7 @@ ms.locfileid: "84035263"
 
 1. **SQL Server のエディションやバージョンを変更するためのセットアップ メディアはどこで入手できますか?**
 
-   [ソフトウェア アシュアランス](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default)をお持ちのお客様は、[ボリューム ライセンス サービス センター](https://www.microsoft.com/Licensing/servicecenter/default.aspx)からインストール メディアを入手できます。 ソフトウェア アシュアランスをお持ちでないお客様は、目的のエディションを持つ Marketplace SQL Server VM イメージからセットアップ メディアを使用できます。
+   [ソフトウェア アシュアランス](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default)をお持ちのお客様は、[ボリューム ライセンス サービス センター](https://www.microsoft.com/Licensing/servicecenter/default.aspx)からインストール メディアを入手できます。 ソフトウェア アシュアランスをお持ちでないお客様は、目的のエディションを持つ Azure Marketplace SQL Server VM イメージからセットアップ メディアを使用できます。
    
 1. **SQL Server VM に更新プログラムと Service Pack を適用するにはどうすればよいですか?**
 
@@ -201,7 +200,7 @@ ms.locfileid: "84035263"
 
 1. **サポートが終了した SQL Server 2008 および SQL Server 2008 R2 インスタンスの無料の延長セキュリティ更新プログラムを取得するどうすればよいですか?**
 
-   SQL Server をそのまま Azure SQL 仮想マシンに移行することによって、[無料の延長セキュリティ更新プログラム](sql-server-2008-extend-end-of-support.md)を取得できます。 詳細については、[サポート終了オプション](/sql/sql-server/end-of-support/sql-server-end-of-life-overview)に関するページを参照してください。 
+   SQL Server をそのまま Azure 仮想マシンに移行することによって、[無料の延長セキュリティ更新プログラム](sql-server-2008-extend-end-of-support.md)を取得できます。 詳細については、[サポート終了オプション](/sql/sql-server/end-of-support/sql-server-end-of-life-overview)に関するページを参照してください。 
   
    
 
@@ -216,7 +215,7 @@ ms.locfileid: "84035263"
 
 1. **SQL Server VM と SQL Database サービスの違いは何ですか?**
 
-   概念上、Azure 仮想マシンで SQL Server を実行することは、リモート データ センターで SQL Server を実行することと違いません。 これに対し、 [SQL Database](../../database/sql-database-paas-overview.md) はサービスとしてデータベースを提供します。 SQL Database では、データベースをホストするマシンにアクセスできません。 詳細な比較については、[クラウド SQL Server オプションであるAzure SQL (PaaS) Database および Azure VM (IaaS) の SQL Server の選択](../../azure-sql-iaas-vs-paas-what-is-overview.md)に関するページを参照してください。
+   概念上、Azure 仮想マシンで SQL Server を実行することは、リモート データ センターで SQL Server を実行することと違いません。 これに対し、[Azure SQL Database](../../database/sql-database-paas-overview.md) ではサービスとしてのデータベースが提供されます。 SQL Database では、データベースをホストするマシンにアクセスできません。 詳細な比較については、[クラウド SQL Server オプションであるAzure SQL (PaaS) Database および Azure VM (IaaS) の SQL Server の選択](../../azure-sql-iaas-vs-paas-what-is-overview.md)に関するページを参照してください。
 
 1. **Azure VM に SQL データ ツールをインストールするにはどうすればよいですか?**
 
@@ -231,15 +230,15 @@ ms.locfileid: "84035263"
 **Windows VM**:
 
 * [Windows VM における SQL Server の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)
-* [SQL Server Windows VM のプロビジョニング](create-sql-vm-portal.md)
+* [Windows VM での SQL Server のプロビジョニング](create-sql-vm-portal.md)
 * [Azure VM の SQL Server へのデータベースの移行](migrate-to-vm-from-sql-server.md)
-* [Azure 仮想マシンにおける SQL Server の高可用性と障害復旧](business-continuity-high-availability-disaster-recovery-hadr-overview.md)
+* [Azure 仮想マシンにおける SQL Server の高可用性とディザスター リカバリー](business-continuity-high-availability-disaster-recovery-hadr-overview.md)
 * [Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](performance-guidelines-best-practices.md)
 * [Azure Virtual Machines における SQL Server のアプリケーション パターンと開発計画](application-patterns-development-strategies.md)
 
 **Linux VM**:
 
 * [Linux VM における SQL Server の概要](../linux/sql-server-on-linux-vm-what-is-iaas-overview.md)
-* [SQL Server Linux VM のプロビジョニング](../linux/sql-vm-create-portal-quickstart.md)
+* [Linux VM での SQL Server のプロビジョニング](../linux/sql-vm-create-portal-quickstart.md)
 * [よく寄せられる質問 (Linux)](../linux/frequently-asked-questions-faq.md)
 * [SQL Server on Linux のドキュメント](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 8885f66b3501217ead302486d2e5ef7de63f5f47
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 2193bd85265103957c5cafad10a243b266f7e5bc
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563251"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026884"
 ---
 # <a name="what-is-form-recognizer"></a>Form Recognizer とは
 
@@ -57,18 +57,20 @@ Form Recognizer は、高精細の光学式文字認識 (OCR) を使用して、
 
 クイックスタートに従って、フォームからのデータの抽出を開始します。 テクノロジを学習している場合は、無料のサービスを使用することをお勧めします。 無料のページは 1 か月あたり 500 ページに制限されていることに注意してください。
 
-* カスタム - 実際のフォームに合わせてモデルをトレーニングします。
-  * ラベルを使用しないトレーニング
-    * [クイック スタート: cURL で REST API を使用して Form Recognizer モデルをトレーニングし、フォーム データを抽出する](quickstarts/curl-train-extract.md)
-    * [クイック スタート: Python で REST API を使用して Form Recognizer モデルをトレーニングし、フォーム データを抽出する](quickstarts/python-train-extract.md)
-  * ラベルを使用したトレーニング
-    * [サンプル ラベル付けツールを使用したラベルによる Form Recognizer モデルのトレーニング](quickstarts/label-tool.md)
-    * [REST API と Python でラベルを使用して Form Recognizer モデルをトレーニングする](quickstarts/python-labeled-data.md)
-* あらかじめ構築されたレシート - 米国のレシートからデータを抽出します。
-  * [クイック スタート: cURL を使用してレシートのデータを抽出する](quickstarts/curl-receipts.md)
-  * [クイック スタート: Python を使用してレシートのデータを抽出する](quickstarts/python-receipts.md)
-* レイアウト - テキストとテーブル構造をフォームから抽出します。
-  * [クイック スタート: Python を使用してレイアウト データを抽出する](quickstarts/python-layout.md)
+* [クライアント ライブラリのクイックスタート](./quickstarts/client-library.md) (すべての言語、複数のシナリオ)
+* Web UI クイックスタート
+  * [ラベルを使用したトレーニング - サンプル ラベル付けツール](quickstarts/label-tool.md)
+* REST クイック スタート
+  * カスタム モデルをトレーニングしてフォーム データを抽出する
+    * [ラベルを使用しないトレーニング - cURL](quickstarts/curl-train-extract.md)
+    * [ラベルを使用しないトレーニング - Python](quickstarts/python-train-extract.md)
+    * [ラベルを使用したトレーニング - Python](quickstarts/python-labeled-data.md)
+  * 米国のレシートからデータを抽出する
+    * [レシートのデータを抽出する - cURL](quickstarts/curl-receipts.md)
+    * [レシートのデータを抽出する - Python](quickstarts/python-receipts.md)
+  * テキストとテーブル構造をフォームから抽出する
+    * [レイアウト データを抽出する - Python](quickstarts/python-layout.md)
+
 
 ### <a name="review-the-rest-apis"></a>REST API を確認します
 
@@ -81,7 +83,7 @@ Form Recognizer は、高精細の光学式文字認識 (OCR) を使用して、
 | **Analyze Receipt** |単一のレシート ドキュメントを分析し、レシート内の主要な情報とその他のテキストを抽出します。|
 | **Analyze Layout** |フォームのレイアウトを分析してテキストとテーブル構造を抽出します。|
 
-詳しくは、[REST API のリファレンス ドキュメント](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)をご覧ください。 以前のバージョンの API をご利用の方は、「[新機能](./whats-new.md)」の記事で、レシートに関する最新の変更点をご確認ください。
+詳しくは、[REST API のリファレンス ドキュメント](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)をご覧ください。 以前のバージョンの API をご利用の方は、「[新機能](./whats-new.md)」の記事で、レシートに関する最新の変更点をご確認ください。
 
 ## <a name="input-requirements"></a>入力の要件
 ### <a name="custom-model"></a>カスタム モデル
@@ -104,4 +106,4 @@ Cognitive Services 全般に言えることですが、Form Recognizer サービ
 
 ## <a name="next-steps"></a>次のステップ
 
-[クイック スタート](quickstarts/curl-train-extract.md)をすべて終え、[Form Recognizer API シリーズ](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)の使用を開始します。
+[クイック スタート](quickstarts/curl-train-extract.md)をすべて終え、[Form Recognizer API シリーズ](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)の使用を開始します。

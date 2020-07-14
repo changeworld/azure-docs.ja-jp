@@ -3,16 +3,17 @@ title: 仮想マシンのコンテンツの監査を学習する
 description: Azure Policy がゲスト構成エージェントを使用して仮想マシン内の設定を監査するしくみについて説明します。
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: f37364f62550a76360ea0dbb35b92f8aac67f22f
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: ec2a9f53fbe2ad0201af0250b0dcfa8dc4d519f0
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259152"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971098"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure Policy のゲストの構成の理解
 
-Azure Policy では、マシン内の設定を監査できます。 検証は、クライアントとゲスト構成拡張機能によって実行されます。 クライアントを介した拡張機能によって、次のような設定が検証されます。
+Azure Policy では、Azure 内で実行するマシンと [Arc に接続されたマシン](../../../azure-arc/servers/overview.md)の両方に対して、マシン内の設定を監査できます。
+検証は、クライアントとゲスト構成拡張機能によって実行されます。 クライアントを介した拡張機能によって、次のような設定が検証されます。
 
 - オペレーティング システムの構成
 - アプリケーションの構成または存在
@@ -21,13 +22,17 @@ Azure Policy では、マシン内の設定を監査できます。 検証は、
 現在、Azure Policy ゲスト構成のほとんどのポリシーでは、マシン内の設定の監査のみが行われます。
 構成は適用されません。 例外は、[以下で参照されている](#applying-configurations-using-guest-configuration) 1 つの組み込みポリシーです。
 
+## <a name="enable-guest-configuration"></a>ゲスト構成を有効にする
+
+環境内のマシン (Azure 内のマシンと Arc に接続されたマシンを含む) の状態を監査するには、以下の詳細を確認してください。
+
 ## <a name="resource-provider"></a>リソース プロバイダー
 
 ゲストの構成を使用するには、リソース プロバイダーを登録する必要があります。 ポータルを使用してゲスト構成ポリシーを割り当てる場合、リソース プロバイダーは自動的に登録されます。 [ポータル](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)、[Azure PowerShell](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell)、または [Azure CLI](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli) を使用して手動で登録できます。
 
-## <a name="extension-and-client"></a>拡張機能とクライアント
+## <a name="deploy-requirements-for-azure-virtual-machines"></a>Azure 仮想マシンの要件をデプロイする
 
-マシン内の設定を監査するには、[仮想マシン拡張機能](../../../virtual-machines/extensions/overview.md)を有効にします。 拡張機能は、適用可能なポリシーの割り当てと、対応する構成定義をダウンロードします。
+マシン内の設定を監査するには、[仮想マシン拡張機能](../../../virtual-machines/extensions/overview.md)を有効にします。また、マシンにはシステム マネージド ID が必要です。 拡張機能は、適用可能なポリシーの割り当てと、対応する構成定義をダウンロードします。 ID は、ゲスト構成サービスに対して読み取りと書き込みを行うときに、マシンを認証するために使用されます。 Arc に接続されたマシンは Arc に接続されたマシンのエージェントに含まれているため、この拡張機能は必要ありません。
 
 > [!IMPORTANT]
 > Azure の仮想マシンで監査を実行するには、ゲスト構成拡張機能が必要です。 拡張機能を大規模にデプロイするには、次のポリシー定義を割り当てます。 
@@ -36,13 +41,13 @@ Azure Policy では、マシン内の設定を監査できます。 検証は、
 
 ### <a name="limits-set-on-the-extension"></a>拡張機能に設定されている制限
 
-拡張機能のマシン内で実行されているアプリケーションへの影響を制限するために、ゲスト構成が CPU の 5% を超えることは許可されていません。 この制限は、組み込み定義とカスタム定義の両方に存在します。
+拡張機能のマシン内で実行されているアプリケーションへの影響を制限するために、ゲスト構成が CPU の 5% を超えることは許可されていません。 この制限は、組み込み定義とカスタム定義の両方に存在します。 これは、Arc に接続されたマシンのエージェントのゲスト構成サービスにも当てはまります。
 
 ### <a name="validation-tools"></a>検証ツール
 
 マシン内では、ゲスト構成クライアントによりローカル ツールを使用して監査が実行されます。
 
-次の表では、サポートされている各オペレーティング システムで使用するローカルのツールの一覧を示します。
+次の表では、サポートされている各オペレーティング システム上で使用されるローカル ツールの一覧を示します。 組み込みコンテンツの場合、ゲスト構成によってこれらのツールの読み込みが自動的に処理されます。
 
 |オペレーティング システム|検証ツール|Notes|
 |-|-|-|
@@ -65,14 +70,10 @@ Azure Policy では、マシン内の設定を監査できます。 検証は、
 |Microsoft|Windows Server|2012 以降|
 |Microsoft|Windows クライアント|Windows 10|
 |OpenLogic|CentOS|7.3 以降|
-|Red Hat|Red Hat Enterprise Linux|7.4 以降|
+|Red Hat|Red Hat Enterprise Linux|7.4 - 7.8、9.0 以降|
 |Suse|SLES|12 SP3 以降|
 
 カスタム仮想マシン イメージについては、上記の表にあるいずれかのオペレーティング システムであれば、ゲスト構成ポリシーでサポートされます。
-
-### <a name="unsupported-client-types"></a>サポートされていないクライアントの種類
-
-Windows Server Nano Server はどのバージョンでもサポートされていません。
 
 ## <a name="guest-configuration-extension-network-requirements"></a>ゲスト構成拡張機能のネットワーク要件
 
@@ -116,7 +117,7 @@ Azure Policy の 1 つのイニシアティブでは、"ベースライン" に�
 
 一部のパラメーターは、整数の値範囲をサポートしています。 たとえば、[パスワードの有効期間] の設定では、有効なグループ ポリシー設定を監査できます。 "1,70" の範囲では、ユーザーがパスワードを 1 ～ 70 日ごとに変更する必要があることを確認します。
 
-Azure Resource Manager デプロイ テンプレートを使用してポリシーを割り当てる場合は、パラメーター ファイルを使用して例外を管理します。 これらのファイルを Git などのバージョン管理システムにチェックインします。 ファイル変更に関するコメントによって、なぜ割り当てが予測される値の例外であるかの根拠が示されます。
+Azure Resource Manager テンプレート (ARM テンプレート) を使用してポリシーを割り当てる場合は、パラメーター ファイルを使用して例外を管理します。 これらのファイルを Git などのバージョン管理システムにチェックインします。 ファイル変更に関するコメントによって、なぜ割り当てが予測される値の例外であるかの根拠が示されます。
 
 #### <a name="applying-configurations-using-guest-configuration"></a>ゲスト構成を使用して構成を適用する
 
