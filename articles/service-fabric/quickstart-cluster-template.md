@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: edoyle
 ms.date: 04/24/2020
-ms.openlocfilehash: 1cb6dc56a5d4fa975f68c1dea08920a7c7db3904
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 70b5387e5e58bd30aa61feefc1bf4e5e98af9b1d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119499"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259354"
 ---
 # <a name="quickstart-create-a-service-fabric-cluster-using-arm-template"></a>クイック スタート:ARM テンプレートを使用して Service Fabric クラスターを作成する
 
@@ -36,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 * [Service Fabric SDK と PowerShell モジュール](service-fabric-get-started.md)をインストールします。
 
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)をインストールします。
+* [Azure PowerShell](/powershell/azure/install-az-ps)をインストールします。
 
 ### <a name="download-the-sample-template-and-certificate-helper-script"></a>サンプル テンプレートと証明書ヘルパー スクリプトをダウンロードする
 

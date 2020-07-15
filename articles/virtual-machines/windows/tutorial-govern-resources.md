@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: b4ce4cd53f9dda3d0f96e892128d543e59c83b26
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fce613da352e55bae64db2912af23a07f4bf954f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100364"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200681"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用した Windows 仮想マシンの管理方法の説明
 
@@ -63,7 +63,7 @@ New-AzRoleAssignment -ObjectId $adgroup.id `
   -RoleDefinitionName "Virtual Machine Contributor"
 ```
 
-"**プリンシパル \<guid> がディレクトリにありません**" というエラー メッセージが表示される場合は、まだ新しいグループが Azure Active Directory 全体に伝達されていません。 そのときは、コマンドをもう一度実行してみます。
+"**プリンシパル \<guid> がディレクトリ**  にありません" というエラーが発生した場合、まだ新しいグループが Azure Active Directory 全体に伝達されていません。 そのときは、コマンドをもう一度実行してみます。
 
 通常は、デプロイされたリソースを管理するユーザーが確実に割り当てられるようにするために、このプロセスを*ネットワークの共同作業者*と*ストレージ アカウントの共同作業者*に対して繰り返します。 この記事では、これらの手順を省略できます。
 
@@ -217,6 +217,10 @@ Remove-AzResourceLock -LockName LockNSG `
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup
 ```
+
+## <a name="manage-costs"></a>コストを管理する
+
+[!INCLUDE [cost-management-horizontal](../../../includes/cost-management-horizontal.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

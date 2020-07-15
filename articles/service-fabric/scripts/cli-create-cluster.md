@@ -13,12 +13,12 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 2ef8f322ff17eeb5d75d3cc8e4f8604f02d4ef0e
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: b454ab7396b8185e344944d7ff526414540032e2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366534"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258932"
 ---
 # <a name="create-a-secure-service-fabric-linux-cluster-in-azure"></a>セキュリティで保護された Service Fabric Linux クラスターを Azure に作成する
 
@@ -45,7 +45,7 @@ az group delete --name $ResourceGroupName
 
 | command | Notes |
 |---|---|
-| [az sf cluster create](https://docs.microsoft.com/cli/azure/sf/cluster?view=azure-cli-latest) | 新しい Service Fabric クラスターを作成します。  |
+| [az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest) | 新しい Service Fabric クラスターを作成します。  |
 
 ## <a name="next-steps"></a>次のステップ
 

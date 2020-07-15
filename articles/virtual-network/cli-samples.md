@@ -15,18 +15,18 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 7193a186359de2e19f1e1c56a7c2ee3ac2695e1d
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 03041f7c0172312828487d934ab540972dc5e2c9
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84707567"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232102"
 ---
 # <a name="azure-cli-samples-for-virtual-network"></a>仮想ネットワーク用の Azure CLI サンプル
 
 次の表には、Azure CLI コマンドを使用する Bash スクリプトへのリンクが含まれています。
 
-| | |
+| スクリプト | 説明 |
 |----|----|
 | [多層アプリケーション用の仮想ネットワークの作成](./scripts/virtual-network-cli-sample-multi-tier-application.md) | フロントエンド サブネットとバックエンド サブネットを含む仮想ネットワークを作成します。 フロントエンド サブネットへのトラフィックは HTTP と SSH に制限され、バックエンド サブネットへのトラフィックは MySQL、ポート 3306 に制限されます。 |
 | [2 つの仮想ネットワークのピアリング](./scripts/virtual-network-cli-sample-peer-two-virtual-networks.md) | 同じリージョンに 2 つの仮想ネットワークを作成し、接続します。 |

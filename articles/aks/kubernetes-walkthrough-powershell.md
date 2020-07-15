@@ -4,12 +4,12 @@ description: Kubernetes クラスターの作成、アプリケーションの�
 services: container-service
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: 74a71bdc4c9aef9a6964f0c9120a902262a50526
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: e786b64554b5fbaf5bb7051e09daca8fb1eaf049
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85207143"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251479"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-powershell"></a>クイック スタート:PowerShell を使用して Azure Kubernetes Service クラスターをデプロイする
 
@@ -37,7 +37,7 @@ Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[Azure リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)は、Azure リソースが展開され管理される論理グループです。 リソース グループを作成する際は、場所を指定するよう求められます。 この場所は、リソース グループのメタデータが格納される場所です。リソースの作成時に別のリージョンを指定しない場合は、Azure でリソースが実行される場所でもあります。 [New-AzResourceGroup][new-azresourcegroup] コマンドレットを使用してリソース グループを作成します。
+[Azure リソース グループ](../azure-resource-manager/management/overview.md)は、Azure リソースが展開され管理される論理グループです。 リソース グループを作成する際は、場所を指定するよう求められます。 この場所は、リソース グループのメタデータが格納される場所です。リソースの作成時に別のリージョンを指定しない場合は、Azure でリソースが実行される場所でもあります。 [New-AzResourceGroup][new-azresourcegroup] コマンドレットを使用してリソース グループを作成します。
 
 次の例では、**myResourceGroup** という名前のリソース グループを**米国東部**リージョンに作成します。
 
@@ -57,12 +57,12 @@ ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000/resource
 
 ## <a name="create-aks-cluster"></a>AKS クラスターの作成
 
-`ssh-keygen` コマンドライン ユーティリティを使用して、SSH キー ペアを生成します。 詳細については、「[簡単な手順: Azure 内に Linux VM 用の SSH 公開/秘密キーのペアを作成して使用する](/azure/virtual-machines/linux/mac-create-ssh-keys)」を参照してください。
+`ssh-keygen` コマンドライン ユーティリティを使用して、SSH キー ペアを生成します。 詳細については、「[簡単な手順: Azure 内に Linux VM 用の SSH 公開/秘密キーのペアを作成して使用する](../virtual-machines/linux/mac-create-ssh-keys.md)」を参照してください。
 
 AKS クラスターを作成するには、[New-AzAks][new-azaks] コマンドレットを使用します。 次の例では、**myAKSCluster** という名前のクラスターを 1 つのノードで作成します。 Azure Monitor for Containers も既定で有効になっています。 この操作は、完了するまでに数分かかります。
 
 > [!NOTE]
-> AKS クラスターを作成すると、AKS リソースを保存するための 2 つ目のリソース グループが自動的に作成されます。 詳細については、「[AKS と一緒にリソース グループが 2 つ作成されるのはなぜでしょうか?](https://docs.microsoft.com/azure/aks/faq#why-are-two-resource-groups-created-with-aks)」を参照してください。
+> AKS クラスターを作成すると、AKS リソースを保存するための 2 つ目のリソース グループが自動的に作成されます。 詳細については、「[AKS と一緒にリソース グループが 2 つ作成されるのはなぜでしょうか?](./faq.md#why-are-two-resource-groups-created-with-aks)」を参照してください。
 
 ```azurepowershell-interactive
 New-AzAks -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeCount 1
@@ -266,7 +266,7 @@ AKS の詳細を参照し、デプロイの例の完全なコードを確認す�
 <!-- LINKS - external -->
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
-[azure-dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/
+[azure-dev-spaces]: ../dev-spaces/index.yml
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [azure-vote-app]: https://github.com/Azure-Samples/azure-voting-app-redis.git
 

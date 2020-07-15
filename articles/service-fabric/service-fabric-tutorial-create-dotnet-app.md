@@ -4,12 +4,12 @@ description: このチュートリアルでは、ASP.NET Core のフロントエ
 ms.topic: tutorial
 ms.date: 07/10/2019
 ms.custom: mvc
-ms.openlocfilehash: f7bad66d15cc2f9fb1885e440f95e76e12ea458a
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: dc869dce536449a901826db3b0d964bf17abbbec
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85214028"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257123"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>チュートリアル:ASP.NET Core Web API フロントエンド サービスとステートフルなバックエンド サービスを含むアプリケーションを作成およびデプロイする
 
@@ -41,7 +41,7 @@ ms.locfileid: "85214028"
 
 ## <a name="create-an-aspnet-web-api-service-as-a-reliable-service"></a>ASP.NET Web API サービスをリライアブル サービスとして作成する
 
-まず、ASP.NET Core を使用して投票アプリケーション Web フロントエンドを作成します。 ASP.NET Core は軽量のクロスプラットフォーム Web 開発フレームワークであり、これを使用すると、最新の Web UI と Web API を作成できます。 Service Fabric と ASP.NET Core を統合する方法を十分に理解するには、「[Service Fabric リライアブル サービスでの ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)」の記事全体を読むことを強くお勧めします。 ここでは、このチュートリアルに従って、すぐに開始することができます。 ASP.NET Core の詳細については、[ASP.NET Core のドキュメント](https://docs.microsoft.com/aspnet/core/)を参照してください。
+まず、ASP.NET Core を使用して投票アプリケーション Web フロントエンドを作成します。 ASP.NET Core は軽量のクロスプラットフォーム Web 開発フレームワークであり、これを使用すると、最新の Web UI と Web API を作成できます。 Service Fabric と ASP.NET Core を統合する方法を十分に理解するには、「[Service Fabric リライアブル サービスでの ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)」の記事全体を読むことを強くお勧めします。 ここでは、このチュートリアルに従って、すぐに開始することができます。 ASP.NET Core の詳細については、[ASP.NET Core のドキュメント](/aspnet/core/)を参照してください。
 
 1. Visual Studio を**管理者**として起動します。
 

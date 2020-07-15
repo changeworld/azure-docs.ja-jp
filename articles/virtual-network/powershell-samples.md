@@ -15,18 +15,18 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: f4ba3754467efda852573989aa89bc8a4a99c469
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 1e1bac855ef943bdddcc82966ff3b824bcbe2ad0
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84688266"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232221"
 ---
 # <a name="azure-powershell-samples-for-virtual-network"></a>仮想ネットワーク用の Azure PowerShell サンプル
 
 次の表には、Azure PowerShell スクリプトへのリンクが含まれています。
 
-| | |
+| スクリプト | 説明 |
 |----|----|
 | [多層アプリケーション用の仮想ネットワークの作成](./scripts/virtual-network-powershell-sample-multi-tier-application.md) | フロントエンド サブネットとバックエンド サブネットを含む仮想ネットワークを作成します。 フロントエンド サブネットへのトラフィックは HTTP に制限され、バックエンド サブネットへのトラフィックは SQL、ポート 1433 に制限されます。 |
 | [2 つの仮想ネットワークのピアリング](./scripts/virtual-network-powershell-sample-peer-two-virtual-networks.md) | 同じリージョンに 2 つの仮想ネットワークを作成し、接続します。 |

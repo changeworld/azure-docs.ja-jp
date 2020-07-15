@@ -3,16 +3,16 @@ title: コンテナー内の .NET アプリを Azure Service Fabric にデプロ
 description: Visual Studio を使って既存の .NET アプリケーションをコンテナーに格納し、Service Fabric 内のコンテナーをローカルでデバッグする方法を紹介します。 コンテナーに格納されたアプリケーションは Azure のコンテナー レジストリにプッシュされ、Service Fabric クラスターにデプロイされます。 Azure にデプロイされたアプリケーションは、データの保持に Azure SQL DB を使用します。
 ms.topic: tutorial
 ms.date: 07/08/2019
-ms.openlocfilehash: aa99897da99ff1a1443e548e98ae415b6a8d49f5
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 4970cf6492da38ad76a51df88eeb73538c850c67
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234235"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258868"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>チュートリアル:Windows コンテナー内の .NET アプリケーションを Azure Service Fabric にデプロイする
 
-このチュートリアルでは、既存の ASP.NET アプリケーションをコンテナーに格納して Service Fabric アプリケーションとしてパッケージ化する方法を説明します。  ローカルの Service Fabric 開発クラスターでコンテナーを実行した後、アプリケーションを Azure にデプロイします。  アプリケーションは、[Azure SQL Database](/azure/sql-database/sql-database-technical-overview) にデータを保持します。
+このチュートリアルでは、既存の ASP.NET アプリケーションをコンテナーに格納して Service Fabric アプリケーションとしてパッケージ化する方法を説明します。  ローカルの Service Fabric 開発クラスターでコンテナーを実行した後、アプリケーションを Azure にデプロイします。  アプリケーションは、[Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md) にデータを保持します。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -55,7 +55,7 @@ ms.locfileid: "84234235"
 
 運用環境で Fabrikam Fiber CallCenter アプリケーションを実行するときは、データベースにデータを保持する必要があります。 現在コンテナー内のデータの永続化を保証する方法はありません。そのため、コンテナー内に SQL Server の運用データを格納することはできません。
 
-Microsoft では、[Azure SQL Database](/azure/sql-database/sql-database-get-started-powershell) の使用をお勧めしています。 Azure でマネージド SQL Server DB を設定して実行するには、次のスクリプトを実行します。  スクリプトは必要に応じて変更してください。 *clientIP* は、開発用コンピューターの IP アドレスです。 スクリプトから出力されたサーバーの名前はメモしておいてください。
+Microsoft では、[Azure SQL Database](../azure-sql/database/powershell-script-content-guide.md) の使用をお勧めしています。 Azure でマネージド SQL Server DB を設定して実行するには、次のスクリプトを実行します。  スクリプトは必要に応じて変更してください。 *clientIP* は、開発用コンピューターの IP アドレスです。 スクリプトから出力されたサーバーの名前はメモしておいてください。
 
 ```powershell
 $subscriptionID="<subscription ID>"
@@ -126,7 +126,7 @@ Write-Host "Server name is $servername"
 
 ## <a name="create-a-container-registry"></a>コンテナー レジストリの作成
 
-アプリケーションをローカルで実行できたので、Azure にデプロイする準備を始めましょう。  コンテナー レジストリにコンテナー イメージを格納する必要があります。  次のスクリプトを使って、[Azure コンテナー レジストリ](/azure/container-registry/container-registry-intro)を作成します。 コンテナー レジストリ名は他の Azure サブスクリプションからも表示できるため、一意にする必要があります。
+アプリケーションをローカルで実行できたので、Azure にデプロイする準備を始めましょう。  コンテナー レジストリにコンテナー イメージを格納する必要があります。  次のスクリプトを使って、[Azure コンテナー レジストリ](../container-registry/container-registry-intro.md)を作成します。 コンテナー レジストリ名は他の Azure サブスクリプションからも表示できるため、一意にする必要があります。
 Azure にアプリケーションをデプロイする前に、このレジストリにコンテナー イメージをプッシュします。  Azure 内のクラスターにアプリケーションをデプロイすると、このレジストリからコンテナー イメージがプルされます。
 
 ```powershell
@@ -179,7 +179,7 @@ Service Fabric アプリケーションは、ネットワークに接続され�
 
 ## <a name="allow-your-application-running-in-azure-to-access-sql-database"></a>Azure で実行しているアプリケーションに SQL Database へのアクセスを許可する
 
-ローカルで実行しているアプリケーションにアクセス権を付与するための SQL ファイアウォール規則は、既に作成しました。  次は、Azure で実行しているアプリケーションが SQL DB にアクセスできるようにする必要があります。  Service Fabric クラスターの[仮想ネットワーク サービス エンドポイント](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)を作成してから、そのエンドポイントに対して SQL DB へのアクセスを許可する規則を作成します。 クラスターを作成する際にメモしておいたクラスター リソース グループ変数を指定してください。
+ローカルで実行しているアプリケーションにアクセス権を付与するための SQL ファイアウォール規則は、既に作成しました。  次は、Azure で実行しているアプリケーションが SQL DB にアクセスできるようにする必要があります。  Service Fabric クラスターの[仮想ネットワーク サービス エンドポイント](../azure-sql/database/vnet-service-endpoint-rule-overview.md)を作成してから、そのエンドポイントに対して SQL DB へのアクセスを許可する規則を作成します。 クラスターを作成する際にメモしておいたクラスター リソース グループ変数を指定してください。
 
 ```powershell
 # Create a virtual network service endpoint

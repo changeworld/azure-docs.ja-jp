@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:R を使用して機械学習モデルを作成する
+title: チュートリアル:R を使用して機械学習モデルを作成する (プレビュー)
 titleSuffix: Azure Machine Learning
 description: このチュートリアルでは、Azure Machine Learning R SDK を使用して、自動車事故における死亡の可能性を予測するロジスティック回帰モデルを作成します。
 services: machine-learning
@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: d95c0fc9baf1e53e6643660726c72660719908ba
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: cb4afac3b1e73a95fa3fe703fc5bd9d3f621f23a
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85483382"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134685"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>チュートリアル:R を使用して機械学習モデルを作成する (プレビュー)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

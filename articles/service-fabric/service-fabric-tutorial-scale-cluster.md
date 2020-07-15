@@ -4,12 +4,12 @@ description: このチュートリアルでは、Azure の Service Fabric クラ
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: ed212083a29836e1da593ec42c31bbf86b907546
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 05fd29f874d59601942216f907010b94bb7c4058
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611647"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257106"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>チュートリアル:Azure で Service Fabric クラスターのスケーリングを行う
 
@@ -38,7 +38,7 @@ ms.locfileid: "85611647"
 このチュートリアルを開始する前に
 
 * Azure サブスクリプションを持っていない場合は[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成する
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) または [Azure CLI](/cli/azure/install-azure-cli) をインストールします。
+* [Azure PowerShell](/powershell/azure/install-az-ps) または [Azure CLI](/cli/azure/install-azure-cli) をインストールします。
 * セキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)を Azure に作成します
 
 ## <a name="important-considerations-and-guidelines"></a>重要な考慮事項とガイドライン
@@ -64,7 +64,7 @@ Azure クラスターをスケーリングするときには、次のガイド�
 
 ## <a name="export-the-template-for-the-resource-group"></a>リソース グループのテンプレートをエクスポートする
 
-セキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)を作成し、リソース グループを正常に設定したら、リソース グループの Resource Manager テンプレートをエクスポートします。 テンプレートをエクスポートすると、クラスターとそのリソースの将来のデプロイを簡単に自動化できます。これは、テンプレートに完全なインフラストラクチャが含まれているためです。  テンプレートのエクスポートの詳細については、「[Manage Azure Resource Manager resource groups by using the Azure portal (Azure portal を使用して Azure Resource Manager リソース グループを管理する)](/azure/azure-resource-manager/manage-resource-groups-portal)」を参照してください。
+セキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)を作成し、リソース グループを正常に設定したら、リソース グループの Resource Manager テンプレートをエクスポートします。 テンプレートをエクスポートすると、クラスターとそのリソースの将来のデプロイを簡単に自動化できます。これは、テンプレートに完全なインフラストラクチャが含まれているためです。  テンプレートのエクスポートの詳細については、「[Manage Azure Resource Manager resource groups by using the Azure portal (Azure portal を使用して Azure Resource Manager リソース グループを管理する)](../azure-resource-manager/management/manage-resource-groups-portal.md)」を参照してください。
 
 1. [Azure portal](https://portal.azure.com) で、目的のクラスターを含むリソース グループ (このチュートリアルに従っている場合は **sfclustertutorialgroup**) に移動します。 
 

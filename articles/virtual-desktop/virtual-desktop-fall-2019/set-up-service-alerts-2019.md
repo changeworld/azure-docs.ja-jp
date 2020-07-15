@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 29e1bb33b98b1fbc8fcfcd541d0014ca1bc75d8d
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: f2eead8dfd1f4d88d28de1f70134dcfcad8471d3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84114131"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259758"
 ---
 # <a name="tutorial-set-up-service-alerts"></a>チュートリアル:サービス アラートを設定する
 
@@ -61,4 +61,4 @@ Azure Service Health の詳細については、[Azure Health のドキュメン
 このチュートリアルでは、Azure Service Health を設定および使用して Windows Virtual Desktop のサービスの問題と正常性に関するアドバイザリを監視する方法について学習しました。 Windows Virtual Desktop にサインインする方法について詳しくは、引き続き Windows Virtual Desktop への接続方法に関するページを参照してください。
 
 > [!div class="nextstepaction"]
-> [Windows 7 および Windows 10 上でリモート デスクトップ クライアントに接続する](../connect-windows-7-and-10.md)
+> [Windows 7 および Windows 10 上でリモート デスクトップ クライアントに接続する](connect-windows-7-10-2019.md)

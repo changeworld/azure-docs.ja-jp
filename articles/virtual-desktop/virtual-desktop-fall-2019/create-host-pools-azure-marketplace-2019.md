@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: cd309b7c3b37e338b1d8e69635247cc90511b34f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4472baa51bb0b8806c7ad617c0fc1001c800ff0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204746"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256851"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>チュートリアル:Azure Marketplace を使用してホスト プールを作成する
 
@@ -154,7 +154,7 @@ Azure Marketplace でプールの作成が完了したら、さらに多くの�
 
 現在サポートされているクライアントは次のとおりです。
 
-* [Windows 7 および Windows 10 用のリモート デスクトップ クライアント](../connect-windows-7-and-10.md)
+* [Windows 7 および Windows 10 用のリモート デスクトップ クライアント](connect-windows-7-10-2019.md)
 * [Windows Virtual Desktop Web クライアント](connect-web-2019.md)
 
 ## <a name="next-steps"></a>次のステップ
