@@ -3,20 +3,23 @@ title: Azure Automation の Start/Stop VMs during off-hours の概要
 description: この記事では、VM を日程に基づいて開始または停止し、Azure Monitor ログで VM を率先して監視する Start/Stop VMs during off-hours 機能について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 04/28/2020
+ms.date: 06/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7c0cc2b4996c1002aae0656234c356c805923811
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 3b4358651b811ba5c1e7644333a1e9f5a8da2990
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84205128"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84424076"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>Start/Stop VMs during off-hours の概要
 
 Start/Stop VMs during off-hours 機能は、有効になっている Azure VM を開始または停止するものです。 ユーザー定義のスケジュールでマシンを開始または停止し、Azure Monitor ログを介して分析情報を取得し、[アクション グループ](../azure-monitor/platform/action-groups.md)を使用してオプションのメールを送信することができます。 この機能は、ほとんどのシナリオにおいて、Azure Resource Manager とクラシック VM の両方で有効にできます。 
 
-この機能では、[Start-AzureRmVM](https://docs.microsoft.com/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0) コマンドレットを使用して VM を開始します。 VM を停止するためには、[Stop-AzureRmVM](https://docs.microsoft.com/powershell/module/AzureRM.Compute/Stop-AzureRmVM?view=azurermps-6.13.0) を使用します。
+この機能では、[Start-AzVm](https://docs.microsoft.com/powershell/module/az.compute/start-azvm) コマンドレットを使用して VM を開始します。 VM を停止するためには、[Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) を使用します。
+
+> [!NOTE]
+> Runbook は、新しい Azure Az モジュール コマンドレットを使用するように更新されていますが、AzureRM プレフィックス エイリアスを使用します。
 
 > [!NOTE]
 > Start/Stop VMs during off-hours は、利用可能な最新バージョンの Azure モジュールをサポートするように更新されています。 AzureRM から Az モジュールに移行したため、この機能の更新版 (Marketplace から入手可能) では、AzureRM モジュールはサポートされません。
@@ -88,7 +91,7 @@ VM の Start/Stop VMs during off-hours 機能は Automation アカウントと L
 | Microsoft.Automation/automationAccounts/write | リソース グループ |
 | Microsoft.OperationalInsights/workspaces/write | リソース グループ |
 
-## <a name="components"></a>Components
+## <a name="components"></a>コンポーネント
 
 Start/Stop VMs during off-hours 機能には、構成済みの Runbook、スケジュール、Azure Monitor ログとの統合が含まれています。 これらの要素を使用して、ビジネス ニーズに合わせて VM のスタートアップとシャットダウンを調整できます。
 
@@ -132,7 +135,7 @@ Start/Stop VMs during off-hours 機能には、構成済みの Runbook、スケ�
 |External_AutoStop_TimeAggregationOperator | 条件を評価するために選択した時間枠のサイズに適用される時間の集計演算子。 使用できる値は、`Average`、`Minimum`、`Maximum`、`Total`、および `Last` です。|
 |External_AutoStop_TimeWindow | アラートをトリガーするために選択されたメトリックを Azure で分析する時間枠のサイズ。 このパラメーターは、timespan 形式で入力を受け入れます。 使用可能な値は、5 分 ～ 6 時間です。|
 |External_EnableClassicVMs| クラシック VM が機能の対象であるかどうかを指定する値。 既定値は True です。 Azure クラウド ソリューション プロバイダー (CSP) サブスクリプションの場合は、この変数を False に設定します。 クラシック VM には[クラシック実行アカウント](automation-create-standalone-account.md#create-a-classic-run-as-account)が必要です。|
-|External_ExcludeVMNames | 除外する VM 名のコンマ区切りリスト。上限は 140 VM です。 一覧に 140 個を超える VM を追加すると、除外するように設定した VM が誤って開始または停止される可能性があります。|
+|External_ExcludeVMNames | 除外する VM 名のコンマ区切りリスト。上限は 140 VM です。 一覧に 140 個を超える VM を追加すると、除外を指定した VM が誤って開始または停止される可能性があります。|
 |External_Start_ResourceGroupNames | 開始アクションの対象となる 1 つまたは複数のリソース グループのコンマ区切りリスト。|
 |External_Stop_ResourceGroupNames | 停止アクションの対象となる 1 つまたは複数のリソース グループのコンマ区切りリスト。|
 |External_WaitTimeForVMRetrySeconds |VM 上で **SequencedStartStop_Parent** Runbook に対して実行されるアクションの待機時間 (秒)。 この変数を使用すると、Runbook で次のアクションに進む前に、指定された秒数の間、子操作を待機できます。 最大待機時間は 10800 (3 時間) です。 既定値は 2100 秒です。|

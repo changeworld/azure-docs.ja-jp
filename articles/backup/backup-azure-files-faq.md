@@ -3,12 +3,12 @@ title: Azure Files のバックアップに関する FAQ
 description: この記事では、Azure Backup サービスを使用して Azure ファイル共有を保護する方法に関してよく寄せられる質問への回答を示します。
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 70ed8594be09ab74478f4703aa632b9ce966b5ee
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: ded1551dad1be34c116e61b9bf59f372169bca5c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118006"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84488700"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Azure Files のバックアップに関する質問
 
@@ -56,7 +56,7 @@ ms.locfileid: "84118006"
 
 ### <a name="can-i-recover-from-a-deleted-azure-file-share"></a>削除した Azure ファイル共有から復旧できますか。
 
-Azure ファイル共有を削除するときは、削除されるバックアップの一覧が表示され、確認が要求されます。 現在、削除した Azure ファイル共有を復元することはできません。
+ファイル共有が論理的に削除された状態にある場合、復元操作を実行するには、ファイル共有の削除を先に取り消しておく必要があります。 削除の取り消し操作によって、ファイル共有がアクティブ状態になり、任意の時点への復元を実行できるようになります。 ファイル共有の削除を取り消す方法については、[こちらのリンク](https://docs.microsoft.com/azure/storage/files/storage-files-enable-soft-delete?tabs=azure-portal#restore-soft-deleted-file-share)をクリックするか、または[ファイル共有の削除を取り消すためのスクリプト](./scripts/backup-powershell-script-undelete-file-share.md)を参照してください。 ファイル共有が完全に削除されると、コンテンツとスナップショットを復元することはできなくなります。
 
 ### <a name="can-i-restore-from-backups-if-i-stopped-protection-on-an-azure-file-share"></a>Azure ファイル共有の保護を停止した場合、バックアップから復元することはできますか。
 

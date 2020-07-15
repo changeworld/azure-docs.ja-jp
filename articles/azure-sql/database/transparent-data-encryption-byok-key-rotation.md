@@ -1,7 +1,7 @@
 ---
-title: TDE 保護機能のローテーション (PowerShell と Azure CLI)
+title: TDE 保護機能をローテーションする (PowerShell と Azure CLI)
 titleSuffix: Azure SQL Database & Azure Synapse Analytics
-description: PowerShell と Azure CLI を使用して、Azure SQL Database や Azure Synapse Analytics で使用される、Azure 内のサーバーの Transparent Data Encryption (TDE) 保護機能をローテーションする方法について説明します。
+description: PowerShell と Azure CLI を使用して、Azure SQL Database や Azure Synapse Analytics によって使用される Azure 内のサーバーの Transparent Data Encryption (TDE) 保護機能をローテーションする方法について説明します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,18 +12,18 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 36706372f4b49150aad5511e3d8c6c23f5be12ec
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b2729975db154fbaf4569afc5aa9b5eaab358146
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84039863"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84321356"
 ---
 # <a name="rotate-the-transparent-data-encryption-tde-protector"></a>Transparent Data Encryption (TDE) 保護機能をローテーションする
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 
-この記事では、Azure Key Vault から TDE 保護機能を使用して[サーバー](logical-servers.md)のキーをローテーションする方法について説明します。 サーバーの論理 TDE 保護機能をローテーションすることは、サーバー上のデータベースを保護する新しい非対称キーに切り替えることを意味します。 キー ローテーションはオンラインで行われ、データベース全体ではなくデータべースのデータ暗号化キーを復号化して再暗号化するのみであるため、完了までに数秒しかかかりません。
+この記事では、Azure Key Vault から TDE 保護機能を使用して[サーバー](logical-servers.md)のキーをローテーションする方法について説明します。 サーバーの論理的な TDE 保護機能のローテーションは、サーバー上のデータベースを保護する新しい非対称キーに切り替えることを示します。 キー ローテーションはオンラインで行われ、データベース全体ではなくデータべースのデータ暗号化キーを復号化して再暗号化するのみであるため、完了までに数秒しかかかりません。
 
 このガイドでは、サーバーの TDE 保護機能をローテーションする 2 つのオプションについて説明します。
 
@@ -35,7 +35,7 @@ ms.locfileid: "84039863"
 
 ## <a name="prerequisites"></a>前提条件
 
-- このハウツー ガイドは、Azure SQL Database または Azure Synapse の TDE 保護機能として、Azure Key Vault のキーを既に使用していることを前提としています。 [BYOK をサポートする Transparent Data Encryption](transparent-data-encryption-byok-overview.md) に関する記事をご覧ください。
+- このハウツー ガイドでは、Azure Key Vault のキーを Azure SQL Database または Azure Synapse Analytics の TDE 保護機能として既に使用していることを前提としています。 [BYOK をサポートする Transparent Data Encryption](transparent-data-encryption-byok-overview.md) に関する記事をご覧ください。
 - Azure PowerShell がインストールされ、実行されている必要があります。
 - [推奨ただし省略可能] まず TDE 保護機能のキー素材をハードウェア セキュリティ モジュール (HSM) またはローカル キー ストアで作成し、そのキー素材を Azure Key Vault にインポートします。 詳しくは、[ハードウェア セキュリティ モジュール (HSM) と Key Vault の使用手順](https://docs.microsoft.com/azure/key-vault/key-vault-get-started)をご覧ください。
 
@@ -46,9 +46,9 @@ Az モジュールのインストール手順については、[Azure PowerShell
 > [!IMPORTANT]
 > PowerShell Azure Resource Manager (RM) モジュールは引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 AzureRM モジュールのバグ修正は、少なくとも 2020 年 12 月までは引き続き受け取ることができます。  Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。 その互換性の詳細については、「[新しい Azure PowerShell Az モジュールの概要](/powershell/azure/new-azureps-module-az)」を参照してください。
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-インストールについては、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+インストールについては、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
 
 * * *
 
@@ -75,7 +75,7 @@ Set-AzSqlServerTransparentDataEncryptionProtector -Type AzureKeyVault -KeyId <ke
    -ServerName <logicalServerName> -ResourceGroup <SQLDatabaseResourceGroupName>
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 [az keyvault key create](/cli/azure/keyvault/key#az-keyvault-key-create)、[az sql server key create](/cli/azure/sql/server/key#az-sql-server-key-create)、および [az sql server tde-key set](/cli/azure/sql/server/tde-key#az-sql-server-tde-key-set) のコマンドを使用します。
 
@@ -110,7 +110,7 @@ az sql server tde-key set --server-key-type AzureKeyVault --kid <keyVaultKeyId> 
        -ServerName <logicalServerName> -ResourceGroup <SQLDatabaseResourceGroupName>
    ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 次の例では [az sql server tde-key set](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) を使用します。
 
@@ -132,4 +132,4 @@ az sql server tde-key set --server-key-type AzureKeyVault --kid <keyVaultKeyId> 
 
 - セキュリティ リスクに備えて、侵害された可能性のある TDE 保護機能を削除する方法を確認する:[侵害された可能性のあるキーを削除する](transparent-data-encryption-byok-remove-tde-protector.md)
 
-- TDE のために Azure Key Vault の統合と Bring Your Own Key サポートの使用を開始する:[PowerShell で Key Vault の独自のキーを使用して TDE を有効にする](transparent-data-encryption-byok-configure.md)
+- TDE のために Azure Key Vault の統合と Bring Your Own Key サポートの使用を開始する:[PowerShell で Key Vault の独自のキーを使用して TDE を有効にする](transparent-data-encryption-byok-configure.md)。

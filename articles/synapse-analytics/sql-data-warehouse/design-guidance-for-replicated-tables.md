@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 6f3418d73496ae25782b57a43e3357dc0bc7131a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 8328750849f5466c8754499694a41615776ff3da
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660029"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201703"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-synapse-sql-pool"></a>Synapse SQL プールでレプリケート テーブルを使用するための設計ガイダンス
 
@@ -126,7 +126,7 @@ WHERE d.FiscalYear = 2004
 
 SQL プールでは、テーブルのマスター バージョンを保持することによってレプリケート テーブルが実装されます。 そのマスター バージョンは、各コンピューティング ノード上の最初のディストリビューション データベースにコピーされます。 変更がある場合、最初にマスター バージョンが更新され、次に各コンピューティング ノードのテーブルが再構築されます。 レプリケート テーブルの再構築では、すべての Compute ノードにテーブルがコピーされ､インデックスが再構築されます｡  たとえば､DW2000c 上のレプリケート テーブルには､データのコピーが 5 つあります｡  各 Compute ノードにマスター コピー 1 部と完全コピー 1 部  すべてのデータは分散データベースに格納されます｡ SQL プールでは、このモデルを使用して、データ変更ステートメントの高速処理と柔軟なスケーリング操作がサポートされます。
 
-再構築が必要になるのは、次の操作の後です。
+非同期の再構築は、次の後のレプリケート テーブルに対する最初のクエリによってトリガーされます。
 
 - データが読み込まれるまたは変更される
 - Synapse SQL インスタンスが別のレベルにスケーリングされる

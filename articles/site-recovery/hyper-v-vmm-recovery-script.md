@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: 14c2a9a2ad818cc358535a91f9a6813ec7b91a6f
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83826283"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>復旧計画への VMM スクリプトの追加
@@ -60,9 +60,9 @@ ms.locfileid: "83826283"
 
 VMM ソース サイトが存在する場合、VMM サーバー上にスクリプトを作成できます。 また、そのスクリプトを復旧計画に含めることができます。
 
-1. ライブラリ共有内に、新しいフォルダーを作成します。 たとえば、\<VMM サーバー名>\MSSCVMMLibrary\RPScripts を作成します。 このフォルダーを、ソース VMM サーバーとターゲット VMM サーバーに配置します。
+1. ライブラリ共有内に、新しいフォルダーを作成します。 たとえば、\<VMM server name>\MSSCVMMLibrary\RPScripts とします。 このフォルダーを、ソース VMM サーバーとターゲット VMM サーバーに配置します。
 1. スクリプトを作成します。 たとえば、スクリプトに RPScript と名前を付けます。 スクリプトが期待どおりに動作することを確認します。
-1. ソース VMM サーバーとターゲット VMM サーバーの \<VMM サーバー名>\MSSCVMMLibrary フォルダーにスクリプトを配置します。
+1. ソース VMM サーバーとターゲット VMM サーバーの \<VMM server name>\MSSCVMMLibrary フォルダーにスクリプトを配置します。
 
 ## <a name="add-the-script-to-a-recovery-plan"></a>復旧計画へのスクリプトの追加
 

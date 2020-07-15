@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: b82d415d5e0cf18250123f3483e196aa040285dd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83656826"
 ---
 # <a name="troubleshoot"></a>トラブルシューティング
@@ -110,7 +110,7 @@ ms.locfileid: "83656826"
 > [!NOTE]
 > 関心のあるセンサー パートナーのパートナー ID。
 
-3. パートナー API に戻り、 **[Get/\<ID>]\(<ID> を取得\)** を選択します。
+3. パートナー API に戻り、 **[Get/\<ID>] (<ID> を取得)** を選択します。
 4. 手順 3. のパートナー ID を指定して、 **[Execute]\(実行\)** を選択します。
 
    API の応答に、Event Hubs の接続文字列が含まれているはずです。
@@ -250,7 +250,7 @@ ms.locfileid: "83656826"
 
 ### <a name="sentinel-maximum-number-of-connections-reached"></a>Sentinel: 接続数の上限に到達した
 
-**ジョブ エラー メッセージ**:"Maximum number of two concurrent flows achieved by the user '\<username>'. (ユーザー "<ユーザー名>" の同時実行フロー数が上限の 2 個に達しました。)"
+**ジョブ エラー メッセージ**:"ユーザー '\<username>' が実行できる 2 つの同時実行フローの最大数。"
 
 **意味**:接続数の上限に到達したためにジョブが失敗した場合、同じ Sentinel アカウントが複数のジョブで使用されています。
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
 ms.openlocfilehash: 9ab4db53086046ff831fe91d003599841aa8148c
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83829785"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>フェールバック用の Linux マスター ターゲット サーバーをインストールする
@@ -244,7 +244,7 @@ Linux を使用してこれをダウンロードするには、次のように�
 
     ![マルチパス ID](./media/vmware-azure-install-linux-master-target/image27.png)
 
-3. ドライブをフォーマットし、新しいドライブにファイル システムを作成します。**mkfs.ext4 /dev/mapper/\<リテンション ディスクのマルチパス ID>**
+3. ドライブをフォーマットし、**mkfs.ext4 /dev/mapper/\<Retention disk's multipath id>** の新しいドライブにファイル システムを作成します。
     
     ![ファイル システム](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 

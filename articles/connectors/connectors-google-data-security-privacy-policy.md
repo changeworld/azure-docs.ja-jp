@@ -4,18 +4,18 @@ description: Azure Logic Apps において、Google のセキュリティとプ�
 services: logic-apps
 ms.suite: integration
 ms.reviewer: divswa, logicappspm
-ms.topic: article
-ms.date: 04/24/2020
-ms.openlocfilehash: 590ad6a52d768c7e59d8d97691e146205e43cadd
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.topic: conceptual
+ms.date: 06/05/2020
+ms.openlocfilehash: 384335898c7cd6b379c6107152b49e9931cf513a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628710"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85194974"
 ---
 # <a name="data-security-and-privacy-policies-for-google-connectors-in-azure-logic-apps"></a>Azure Logic Apps における Google コネクタのデータ セキュリティとプライバシー ポリシー
 
-**2020 年 5 月 1 日**以降、Google の[データ セキュリティとプライバシー ポリシー](https://www.blog.google/technology/safety-security/project-strobe/)による変更が、[Gmail コネクタ](https://docs.microsoft.com/connectors/gmail/)を使用するロジック アプリのワークフローに影響を与える可能性があります。 ロジック アプリで Gmail コンシューマー アカウント (@gmail.com または @googlemail.com で終わる電子メール アドレス) を使用して Gmail コネクタを使用している場合、ロジック アプリで使用できるのは、特定の [Google によって承認されたトリガー、アクション、およびコネクタ](#approved-connectors)のみになります。 
+**2020 年 5 月 1 日**以降、Google の[データ セキュリティとプライバシー ポリシー](https://www.blog.google/technology/safety-security/project-strobe/)による変更が、[Gmail コネクタ](https://docs.microsoft.com/connectors/gmail/)を使用するロジック アプリのワークフローに影響を与える可能性があります。 ロジック アプリで Gmail コンシューマー アカウント (@gmail.com または @googlemail.com で終わる電子メール アドレス) を使用して Gmail コネクタを使用している場合、ロジック アプリで使用できるのは、特定の [Google によって承認されたトリガー、アクション、およびコネクタ](#approved-connectors)のみになります。
 
 > [!NOTE]
 > ロジック アプリで、G-Suite ビジネス アカウント (カスタム ドメインを使用した電子メール アドレス) を使用して Gmail コネクタを使用している場合、ロジック アプリは影響を受けず、Gmail コネクタの使用に関する制限はありません。
@@ -36,11 +36,31 @@ Gmail コネクタを使用するロジック アプリがある場合は、影�
 
 * Logic Apps の組み込みのトリガーとアクション:バッチ、コントロール、データの操作、日付/時刻、フラット ファイル、Liquid、要求、スケジュール、変数、XML
 
+  アプリはどこからでもデータを送受信できるため、Google によって承認されていない組み込みのトリガーとアクション (HTTP、Azure Functions、Azure Logic Apps など) によって、ロジック アプリが Gmail コネクタに非準拠になります。
+
 * Google サービス:Gmail、Google カレンダー、Google コンタクト、Google Drive、Google スプレッドシート、および Google Tasks
 
 * 承認された Microsoft サービス:Dynamics 365、Excel Online、Microsoft Teams、Office 365、OneDrive、および SharePoint Online
 
 * カスタマー マネージド データ ソースのコネクタ:FTP、RSS、SFTP、SMTP、および SQL Server
+
+## <a name="non-compliant-examples"></a>非準拠の例
+
+Google によって承認されていない組み込みのトリガーとアクションまたはマネージド コネクタで Gmail コネクタを使用するいくつかの例を次に示します。
+
+* このロジック アプリは、HTTP 組み込みトリガーで Gmail コネクタを使用します。
+
+  ![非準拠のロジック アプリ - 例 1](./media/connectors-google-data-security-privacy-policy/not-compliant-logic-app-1.png)
+  
+  このロジック アプリはまた、承認されている Google カレンダー コネクタも使用します。
+
+* このロジック アプリは、Azure Blob Storage コネクタで Gmail コネクタを使用します。
+
+  ![非準拠のロジック アプリ - 例 2](./media/connectors-google-data-security-privacy-policy/not-compliant-logic-app-2.png)
+
+* このロジック アプリは、Twitter コネクタで Gmail コネクタを使用します。
+
+  ![非準拠のロジック アプリ - 例 3](./media/connectors-google-data-security-privacy-policy/not-compliant-logic-app-3.png)
 
 最新情報については、[Gmail コネクタのテクニカル リファレンス ドキュメント](https://docs.microsoft.com/connectors/gmail/)を参照してください。
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
 ms.openlocfilehash: 55373f71c78b6d45b9c78c52dea61a37b89b4a00
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81383055"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Azure Kubernetes Service で HDInsight 上の Apache Kafka を使用する
@@ -37,7 +37,7 @@ Azure Kubernetes Service (AKS) で HDInsight クラスター上の [Apache Kafka
 
 またこのドキュメントでは、読者が「[Azure Kubernetes Service tutorial (Azure Container Service チュートリアル)](../../aks/tutorial-kubernetes-prepare-app.md)」を学習済みであることを前提としています。 この記事では、コンテナー サービス、Kubernetes クラスター、コンテナー レジストリを作成し、`kubectl` ユーティリティを構成しています。
 
-## <a name="architecture"></a>Architecture
+## <a name="architecture"></a>アーキテクチャ
 
 ### <a name="network-topology"></a>ネットワーク トポロジ
 
@@ -92,9 +92,9 @@ AKS クラスターがまだない場合は、次のいずれかのドキュメ�
 
     |プロパティ |値 |
     |---|---|
-    |\<この VN> からリモート仮想ネットワークへのピアリングの名前|このピアリング構成の一意の名前を入力します。|
+    |\<this VN> からリモート仮想ネットワークへのピアリングの名前|このピアリング構成の一意の名前を入力します。|
     |仮想ネットワーク|**AKS クラスター**用の仮想ネットワークを選択します。|
-    |\<AKS VN> から \<この VN> へのピアリングの名前|一意の名前を入力します。|
+    |\<AKS VN> から \<this VN> へのピアリングの名前|一意の名前を入力します。|
 
     その他のフィールドはすべて既定値のままにし、 __[OK]__ を選択してピアリングを構成します。
 

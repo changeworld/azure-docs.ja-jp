@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 65bbc9f66ceb732a8f773f0b49cd46f99750a7d5
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 871ea665d23a5fba644448ddb6c596179d47bb3f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196306"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85106409"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-managed-instance"></a>Azure SQL Managed Instance へのオンライン移行に関する既知の問題と移行の制限事項
 
@@ -62,6 +62,6 @@ ms.locfileid: "84196306"
 
 - **デプロイ**
 
-    SQL Managed Instance は、自動修正とバージョン更新プログラムを含む PaaS サービスです。 ご自分の SQL マネージド インスタンスの移行中、重要でない更新プログラムは最大 36 時間利用できます。 その後 (および重要な更新プログラムの場合)、移行が中断された場合、プロセスは完全復元状態にリセットされます。
+    SQL Managed Instance は、自動修正とバージョン更新プログラムを含む PaaS サービスです。 SQL マネージド インスタンスの移行中、重要でない更新プログラムは最大 36 時間保持されます。 その後 (および重要な更新プログラムの場合)、移行が中断されると、プロセスは完全な復元状態にリセットされます。
 
     完全バックアップが復元され、すべてのログ バックアップに追いついた後にのみ、移行のカットオーバーを呼び出すことができます。 運用環境への移行のカットオーバーが影響を受ける場合は、[Azure DMS フィードバックのエイリアス](mailto:dmsfeedback@microsoft.com)にお問い合わせください。

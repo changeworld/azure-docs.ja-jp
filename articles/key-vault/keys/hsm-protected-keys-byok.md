@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: b03e9c6148243376c5e1c588e2b4a82e1a1adb40
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 52214d42467dfa86b5e085a660a9416904b7de59
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298892"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84416700"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-byok"></a>HSM で保護されたキーを Key Vault にインポートする (BYOK)
 
@@ -59,7 +59,7 @@ Azure Key Vault の詳細と、Key Vault の使用を開始するチュートリ
 |ベンダー名|ベンダーの種類|サポートされている HSM モデル|詳細情報|
 |---|---|---|---|
 |nCipher|製造元、<br/>サービスとしての HSM|<ul><li>HSM の nShield ファミリ</li><li>サービスとしての nShield</ul>|[nCipher の新しい BYOK ツールとドキュメント](https://www.ncipher.com/products/key-management/cloud-microsoft-azure)|
-|Thales|Manufacturer|<ul><li>ファームウェアのバージョンが 7.3 以降の SafeNet Luna HSM 7 ファミリ</li></ul>| [SafeNet Luna の BYOK ツールとドキュメント](https://supportportal.thalesgroup.com/csm?id=kb_article_view&sys_kb_id=3892db6ddb8fc45005c9143b0b961987&sysparm_article=KB0021016)|
+|Thales|Manufacturer|<ul><li>ファームウェア バージョンが 7.3 以降の Luna HSM 7 ファミリ</li></ul>| [Luna の BYOK ツールとドキュメント](https://supportportal.thalesgroup.com/csm?id=kb_article_view&sys_kb_id=3892db6ddb8fc45005c9143b0b961987&sysparm_article=KB0021016)|
 |Fortanix|製造元、<br/>サービスとしての HSM|<ul><li>Self-Defending Key Management Service (SDKMS)</li><li>Equinix SmartKey</li></ul>|[SDKMS キーを BYOK 用クラウド プロバイダーにエクスポートする - Azure Key Vault](https://support.fortanix.com/hc/en-us/articles/360040071192-Exporting-SDKMS-keys-to-Cloud-Providers-for-BYOK-Azure-Key-Vault)|
 |Marvell|Manufacturer|以下を含む LiquidSecurity のすべての HSM<ul><li>ファームウェア バージョン 2.0.4 以降</li><li>ファームウェア バージョン 3.2 以降</li></ul>|[Marvell の BYOK ツールとドキュメント](https://www.marvell.com/products/security-solutions/nitrox-hs-adapters/exporting-marvell-hsm-keys-to-cloud-azure-key-vault.html)|
 |Cryptomathic|ISV (エンタープライズ キー管理システム)|以下を含む複数の HSM ブランドおよびモデル<ul><li>nCipher</li><li>Thales</li><li>Utimaco</li></ul>詳細については、[Cryptomathic のサイト](https://www.cryptomathic.com/azurebyok)を参照してください|[Cryptomathic の BYOK ツールとドキュメント](https://www.cryptomathic.com/azurebyok)|
@@ -68,7 +68,7 @@ Azure Key Vault の詳細と、Key Vault の使用を開始するチュートリ
 
 ## <a name="supported-key-types"></a>サポートされているキーの種類
 
-|キー名|キーの種類|キー サイズ|Origin (配信元)|説明|
+|キー名|キーの種類|キー サイズ|出発地|説明|
 |---|---|---|---|---|
 |キー交換キー (KEK)|RSA| 2,048 ビット<br />3,072 ビット<br />4,096 ビット|Azure Key Vault HSM|Azure Key Vault で生成される、HSM で保護された RSA キー ペア|
 |ターゲット キー|RSA|2,048 ビット<br />3,072 ビット<br />4,096 ビット|ベンダー HSM|Azure Key Vault HSM に転送されるキー|
@@ -119,7 +119,7 @@ BYOK ツールをダウンロードしてインストールする方法につい
 > [!NOTE] 
 > 1,024 ビットの RSA キーのインポートはサポートされていません。 現時点では、楕円曲線 (EC) キーのインポートはサポートされていません。
 > 
-> **既知の問題**:SafeNet Luna Hsm からの RSA 4K ターゲット キーのインポートは、ファームウェア v7.4.0 以降でのみサポートされています。
+> **既知の問題**:Luna HSM からの RSA 4K ターゲット キーのインポートは、ファームウェア 7.4.0 以降でのみサポートされています。
 
 ### <a name="step-4-transfer-your-key-to-azure-key-vault"></a>手順 4:キーを Azure Key Vault に転送する
 

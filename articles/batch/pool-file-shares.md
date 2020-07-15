@@ -4,10 +4,10 @@ description: Azure Batch の Linux または Windows プールの計算ノード
 ms.topic: how-to
 ms.date: 05/24/2018
 ms.openlocfilehash: cb7e6f158e246319e851ee2edd5b21bae33c3723
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83780284"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>Batch プールと共に Azure ファイル共有を使用する
@@ -40,7 +40,7 @@ Batch では、タスクが Windows ノード上で実行されるたびに共�
 たとえば、各タスクのコマンド ラインの一部としてファイル共有をマウントするための `net use` コマンドを含めます。 ファイル共有をマウントするには、次の資格情報が必要になります。
 
 * **ユーザー名**:AZURE\\\<storageaccountname\> (たとえば、AZURE\\*mystorageaccountname*)
-* **パスワード**:\<StorageAccountKeyWhichEnds in==> (たとえば、*XXXXXXXXXXXXXXXXXXXXX==* )
+* **パスワード**: \<StorageAccountKeyWhichEnds in==>、たとえば *XXXXXXXXXXXXXXXXXXXXX==*
 
 次のコマンドは、ストレージ アカウント *mystorageaccountname* にあるファイル共有 *myfileshare* を *S:* ドライブとしてマウントします。
 
@@ -117,7 +117,7 @@ apt-get update && apt-get install cifs-utils && sudo mkdir -p /mnt/MyAzureFileSh
 次に、以下の資格情報を指定して、`mount` コマンドを実行してファイル共有をマウントします。
 
 * **ユーザー名**: \<storageaccountname\> (たとえば、*mystorageaccountname*)
-* **パスワード**:\<StorageAccountKeyWhichEnds in==> (たとえば、*XXXXXXXXXXXXXXXXXXXXX==* )
+* **パスワード**: \<StorageAccountKeyWhichEnds in==>、たとえば *XXXXXXXXXXXXXXXXXXXXX==*
 
 次のコマンドは、ストレージ アカウント *mystorageaccountname* にあるファイル共有 *myfileshare* を */mnt/MyAzureFileShare* でマウントします。 
 

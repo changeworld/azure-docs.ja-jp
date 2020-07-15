@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
 ms.date: 03/10/2020
-ms.openlocfilehash: edf22c7f1086c1d13717adaff514c42aab3a4cfd
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b33d8db9d43b151cb0405ea24e0bea87e21cbdc9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84033793"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84345344"
 ---
 # <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>Azure SQL Database での検出可能なクエリ パフォーマンス ボトルネックの種類
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -153,11 +153,11 @@ RECOMPILE ヒントを使用した場合、プランはキャッシュされま�
 - [Intelligent Insights](database/intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) を使用してリソース制限を検出する
 - [DMV ](database/monitoring-with-dmvs.md)を使用してリソースの問題を検出する。
 
-  - [sys.dm_db_resource_stats](database/monitoring-with-dmvs.md#monitor-resource-use) DMV は、SQL データベースの CPU、I/O、およびメモリ使用量を返します。 データベースにアクティビティがない場合でも、15 秒の間隔ごとに 1 つの行が存在します。 履歴データは 1 時間保持されます。
+  - [sys.dm_db_resource_stats](database/monitoring-with-dmvs.md#monitor-resource-use) DMV は、データベースの CPU、I/O、およびメモリ使用量を返します。 データベースにアクティビティがない場合でも、15 秒の間隔ごとに 1 つの行が存在します。 履歴データは 1 時間保持されます。
   - [sys.resource_stats](database/monitoring-with-dmvs.md#monitor-resource-use) DMV は、Azure SQL Database の CPU 使用率とストレージ データを返します。 データは 5 分間隔で収集され、集計されます。
   - [多数の個別のクエリで、CPU が高い使用率で累積的に消費されている](database/monitoring-with-dmvs.md#many-individual-queries-that-cumulatively-consume-high-cpu)
 
-問題がリソース不足であると特定した場合、リソースをアップグレードして SQL データベースの容量を増やし、CPU 要件に対応することができます。 詳細については、「[Azure SQL Database で単一データベースのリソースをスケーリングする](database/single-database-scale.md)」および「[Azure SQL Database でエラスティック プールのリソースをスケーリングする](database/elastic-pool-scale.md)」を参照してください。 マネージド インスタンスのスケーリングについては、[サービス レベルのリソース制限](managed-instance/resource-limits.md#service-tier-characteristics)に関するセクションを参照してください
+この問題をリソース不足として識別した場合は、リソースをアップグレードして、CPU 要件を満たすようにデータベースの容量を増やすことができます。 詳細については、「[Azure SQL Database で単一データベースのリソースをスケーリングする](database/single-database-scale.md)」および「[Azure SQL Database でエラスティック プールのリソースをスケーリングする](database/elastic-pool-scale.md)」を参照してください。 マネージド インスタンスのスケーリングについては、[サービス レベルのリソース制限](managed-instance/resource-limits.md#service-tier-characteristics)に関するセクションを参照してください
 
 ## <a name="performance-problems-caused-by-increased-workload-volume"></a>ワークロード ボリュームの増加が原因で発生したパフォーマンスの問題
 

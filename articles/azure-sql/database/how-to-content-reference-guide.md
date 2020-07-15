@@ -11,14 +11,14 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 01/14/2020
-ms.openlocfilehash: 6f7c90791025f14e743a83693503fe235792c603
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e5fd842e47c606c8f41aafe72253c1c4a1e885f3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84040983"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84324397"
 ---
-# <a name="configure--manage-content-reference---azure-sql-database"></a>構成および管理に関するコンテンツ参照 - Azure SQL Database
+# <a name="configure-and-manage-content-reference---azure-sql-database"></a>構成と管理に関するコンテンツ参照 - Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 この記事には、Azure SQL Database を管理および構成する際に役立つさまざまなガイド、スクリプト、説明へのコンテンツ参照が含まれています。 
@@ -26,7 +26,7 @@ ms.locfileid: "84040983"
 ## <a name="load-data"></a>データの読み込み
 
 - [SQL データベースへの移行](migrate-to-database-from-sql-server.md)
-- [移行後に SQL データベースを管理](manage-data-after-migrating-to-database.md)する方法について確認する。
+- [移行後に SQL Database を管理する](manage-data-after-migrating-to-database.md)方法を確認する。
 - [データベースをコピーする](database-copy.md)
 - [BACPAC からの DB のインポート](database-import.md)
 - [BACPAC への DB のエクスポート](database-export.md)
@@ -35,10 +35,10 @@ ms.locfileid: "84040983"
 
 ## <a name="configure-features"></a>機能の構成
 
-- [Azure AD 認証の構成](authentication-aad-configure.md)
+- [Azure Active Directory (Azure AD) 認証を構成する](authentication-aad-configure.md)
 - [条件付きアクセスを構成する](conditional-access-configure.md)
-- [多要素 AAD 認証](authentication-mfa-ssms-overview.md)
-- [多要素認証の構成](authentication-mfa-ssms-configure.md)
+- [Multi-factor Azure AD 認証](authentication-mfa-ssms-overview.md)
+- [Multi-Factor Authentication を構成する](authentication-mfa-ssms-configure.md)
 - [一時的なアイテム保持ポリシーの構成](temporal-tables-retention-policy.md)
 - [BYOK を使用した TDE の構成](transparent-data-encryption-byok-configure.md)
 - [TDE BYOK キーの回転](transparent-data-encryption-byok-key-rotation.md)
@@ -128,11 +128,12 @@ ms.locfileid: "84040983"
 - [エラスティック プールの設計](disaster-recovery-strategies-for-applications-with-elastic-pool.md)
 - [アプリのアップグレードの設計](manage-application-rolling-upgrade.md)
 
-### <a name="design-multi-tenant-saas-applications"></a>マルチテナント SaaS アプリケーションの設計
+### <a name="design-multi-tenant-software-as-a-service-saas-applications"></a>マルチテナント SaaS (サービスとしてのソフトウェア) アプリケーションを設計する
 
 - [SaaS の設計パターン](saas-tenancy-app-design-patterns.md)
 - [SaaS Video Indexer](saas-tenancy-video-index-wingtip-brk3120-20171011.md)
 - [SaaS アプリのセキュリティ](saas-tenancy-elastic-tools-multi-tenant-row-level-security.md)
 
 ## <a name="next-steps"></a>次のステップ
-- [SQL Managed Instance の攻略ガイド](../managed-instance/how-to-content-reference-guide.md)の詳細を確認する
+
+- [Azure SQL Managed Instance の攻略ガイド](../managed-instance/how-to-content-reference-guide.md)の詳細を確認する

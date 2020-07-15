@@ -1,16 +1,16 @@
 ---
-title: セキュリティ コントロール
+title: Azure App Service のセキュリティ コントロール
 description: 組織で Azure App Service を評価するためのセキュリティ コントロールのチェックリストを示します。
 author: msmbaldwin
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2586821c4c48f809efb5408c3cdae5e42e3b3fcf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9b0c336d9d9c463a7ed7acf42eaf292ecce4f1bb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74671450"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831150"
 ---
 # <a name="security-controls-for-azure-app-service"></a>Azure App Service のセキュリティ コントロール
 
@@ -39,8 +39,8 @@ ms.locfileid: "74671450"
 
 | セキュリティ コントロール | はい/いいえ | Notes |  ドキュメント
 |---|---|--|
-| 認証| はい | お客様は、[Azure Active Directory (Azure AD)](../active-directory/index.yml) および OAuth と互換性のある他の ID プロバイダーと自動的に統合される App Service でアプリケーションを構築できます。App Service 資産への管理アクセスでは、Azure AD で認証されたプリンシパルと Azure Resource Manager RBAC ロールの組み合わせによって、すべてのアクセスが制御されます。 | [Azure App Service での認証および承認](overview-authentication-authorization.md)
-| 承認| はい | App Service 資産へのアクセス管理では、Azure AD で認証されたプリンシパルと Azure Resource Manager の RBAC ロールの組み合わせによって、すべてのアクセスが制御されます。  | [Azure App Service での認証および承認](overview-authentication-authorization.md)
+| 認証| はい | お客様は、[Azure Active Directory (Azure AD)](../active-directory/index.yml) および OAuth と互換性のある他の ID プロバイダーと自動的に統合される App Service でアプリケーションを構築できます。App Service 資産への管理アクセスでは、Azure AD で認証されたプリンシパルと Azure RBAC の組み合わせによって、すべてのアクセスが制御されます。 | [Azure App Service での認証および承認](overview-authentication-authorization.md)
+| 承認| はい | App Service 資産への管理アクセスでは、Azure AD で認証されたプリンシパルと Azure RBAC の組み合わせによって、すべてのアクセスが制御されます。  | [Azure App Service での認証および承認](overview-authentication-authorization.md)
 
 ## <a name="data-protection"></a>データ保護
 

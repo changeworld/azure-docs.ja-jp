@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Jive を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
+title: チュートリアル:Jive を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure Active Directory と Jive の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 602eed65745eea1fd9096508c442a27ea79bcba9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77057736"
 ---
-# <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>チュートリアル: Jive を構成し、自動ユーザー プロビジョニングに対応させる
+# <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>チュートリアル:Jive を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルでは、Azure AD から Jive にユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除するうえで Jive と Azure AD で実行する必要がある手順について説明します。
 
@@ -80,7 +80,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
       
       > [!NOTE]
       > Jive テナント URL は、組織が Jive にログインするために使用する URL です。  
-      > 通常、URL の形式は **www.\<<組織名>\>.jive.com** のようになります。          
+      > 通常、URL の形式は **www.\<organization\>.jive.com** のようになります。          
 
 1. Azure Portal で、 **[テスト接続]** をクリックして Azure AD が Jive アプリに接続できることを確認します。
 

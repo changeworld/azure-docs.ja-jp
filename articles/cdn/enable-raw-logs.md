@@ -7,15 +7,15 @@ manager: danielgi
 ms.service: azure-cdn
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/23/2020
 ms.author: sohamnc
-ms.openlocfilehash: f4693cdac2d5d3a57987cc692797756314ded11e
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: a2522eba17574246ab99a0d47a42f128d5f61ace
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747315"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84888648"
 ---
 # <a name="azure-cdn-http-raw-logs"></a>Azure CDN HTTP 生ログ
 生ログは、監査やトラブルシューティングにとって重要な操作とエラーに関する豊富な情報を提供します。 生ログは、アクティビティ ログとは異なります。 アクティビティ ログは、Azure リソースに対して行われた操作を可視化します。 生ログからは、リソースの操作記録が提供されます。
@@ -33,7 +33,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 Microsoft プロファイルから Azure CDN の生ログを構成するには: 
 
-1. Azure portal メニューから **[すべてのリソース]** を選択し、 **\<自分の CDN プロファイル>** を選択します。
+1. Azure portal メニューから、 **[すべてのリソース]**  >>  **\<your-CDN-profile>** を選択します。
 
 2. **[監視]** で **[診断設定]** を選択します。
 

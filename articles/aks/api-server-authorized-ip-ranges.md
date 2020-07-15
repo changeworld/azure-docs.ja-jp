@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) で API サーバーへのアクセ�
 services: container-service
 ms.topic: article
 ms.date: 11/05/2019
-ms.openlocfilehash: 45f82d5a6531b2a9584140d6ff309a799656926a
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 4d9030e21c3b8f31c18c26fc54dc76d5b8d84a17
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299572"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85100057"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で許可された IP アドレス範囲を使用して API サーバーへのアクセスをセキュリティで保護する
 
@@ -22,7 +22,7 @@ Kubernetes では、API サーバーは、リソースの作成やノードの�
 
 ## <a name="before-you-begin"></a>開始する前に
 
-API サーバーの許可された IP 範囲は、作成する新しい AKS クラスターに対してのみ機能します。 この記事では、Azure CLI を使用して AKS クラスターを作成する方法について説明します。
+この記事では、Azure CLI を使用して AKS クラスターを作成する方法について説明します。
 
 Azure CLI バージョン 2.0.76 以降がインストールされて構成されている必要があります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
 
@@ -36,10 +36,10 @@ API サーバーやその他のクラスター コンポーネントの詳細に
 
 ## <a name="create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled"></a>API サーバーの許可された IP 範囲を有効にした AKS クラスターを作成する
 
-API サーバーの許可された IP の範囲は、新しい AKS クラスターに対してのみ機能し、プライベート AKS クラスターではサポートされていません。 [az aks create][az-aks-create] を使用してクラスターを作成し、 *--api-server-authorized-ip-ranges* パラメーターを使用して、許可された IP アドレス範囲のリストを指定します。 これらの IP アドレス範囲は通常、オンプレミス ネットワークまたはパブリック IP によって使用されるアドレス範囲です。 CIDR 範囲を指定する場合は、その範囲内の最初の IP アドレスから始めます。 たとえば、*137.117.106.90/29* は有効な範囲ですが、範囲内の最初の IP アドレス (*137.117.106.88/29* など) を指定するようにしてください。
+API サーバーの許可された IP の範囲は、新しい AKS クラスターに対してのみ機能し、プライベート AKS クラスターではサポートされていません。 [az aks create][az-aks-create] を使用してクラスターを作成し、 *`--api-server-authorized-ip-ranges`* パラメーターを使用して、許可された IP アドレス範囲のリストを指定します。 これらの IP アドレス範囲は通常、オンプレミス ネットワークまたはパブリック IP によって使用されるアドレス範囲です。 CIDR 範囲を指定する場合は、その範囲内の最初の IP アドレスから始めます。 たとえば、*137.117.106.90/29* は有効な範囲ですが、範囲内の最初の IP アドレス (*137.117.106.88/29* など) を指定するようにしてください。
 
 > [!IMPORTANT]
-> 既定では、クラスターは [Standard SKU ロード バランサー][standard-sku-lb]を使用します。これを使用して、アウトバウンド ゲートウェイを構成できます。 クラスターの作成時に API サーバーの許可された IP 範囲を有効にすると、指定した範囲の他に、クラスターのパブリック IP も既定で許可されます。 *--api-server-authorized-ip-ranges* に *""* を指定するか、値を指定しなかった場合、API サーバーの許可された IP 範囲は無効になります。 PowerShell を使用している場合は、解析の問題を回避するために、 *--api-server-authorized-ip-ranges=""* (等号付き) を使用することに注意してください。
+> 既定では、クラスターは [Standard SKU ロード バランサー][standard-sku-lb]を使用します。これを使用して、アウトバウンド ゲートウェイを構成できます。 クラスターの作成時に API サーバーの許可された IP 範囲を有効にすると、指定した範囲の他に、クラスターのパブリック IP も既定で許可されます。 *`--api-server-authorized-ip-ranges`* に *""* を指定するか、値を指定しなかった場合、API サーバーの許可された IP 範囲は無効になります。 PowerShell を使用している場合は、解析の問題を回避するために、 *`--api-server-authorized-ip-ranges=""`* (等号付き) を使用することに注意してください。
 
 次の例では、*myResourceGroup* という名前のリソース グループに *myAKSCluster* という名前の単一ノードのクラスターを作成し、API サーバーの許可された IP 範囲を有効にします。 許可される IP アドレス範囲は、*73.140.245.0/24* です。
 
@@ -78,13 +78,13 @@ az aks create \
     --generate-ssh-keys
 ```
 
-上の例で、パラメーター *--load-balancer-outbound-ip-prefixes* で指定されたすべての IP は、 *--api-server-authorized-ip-ranges* パラメーターの IP と共に許可されます。
+上の例では、パラメーター *`--load-balancer-outbound-ip-prefixes`* に指定されているすべての IP が、 *`--api-server-authorized-ip-ranges`* パラメーターの IP と共に使用できます。
 
-また、 *--load-balancer-outbound-ip-prefixes* パラメーターを指定して、アウトバウンド ロード バランサー IP プレフィックスを許可することもできます。
+また、 *`--load-balancer-outbound-ip-prefixes`* パラメーターを指定して、アウトバウンド ロード バランサー IP プレフィックスを許可することもできます。
 
 ### <a name="allow-only-the-outbound-public-ip-of-the-standard-sku-load-balancer"></a>Standard SKU ロード バランサーのアウトバウンド パブリック IP のみを許可する
 
-クラスターの作成時に API サーバーの許可された IP 範囲を有効にすると、指定した範囲の他に、クラスターの Standard SKU ロード バランサーのアウトバウンド パブリック IP も既定で許可されます。 Standard SKU ロード バランサーのアウトバウンド パブリック IP のみを許可するには、 *--api-server-authorized-ip-ranges* パラメーターを指定するときに、*0.0.0.0/32* を使用します。
+クラスターの作成時に API サーバーの許可された IP 範囲を有効にすると、指定した範囲の他に、クラスターの Standard SKU ロード バランサーのアウトバウンド パブリック IP も既定で許可されます。 Standard SKU ロード バランサーのアウトバウンド パブリック IP のみを許可するには、 *`--api-server-authorized-ip-ranges`* パラメーターを指定するときに、*0.0.0.0/32* を使用します。
 
 次の例では、Standard SKU ロード バランサーのアウトバウンド パブリック IP のみが許可されており、クラスター内のノードからのみ API サーバーにアクセスできます。
 
@@ -101,7 +101,7 @@ az aks create \
 
 ## <a name="update-a-clusters-api-server-authorized-ip-ranges"></a>クラスターの、API サーバーの許可された IP 範囲を更新する
 
-既存のクラスター上で、API サーバーの許可された IP 範囲を更新するには、[az aks update][az-aks-update] コマンドを使用し、 *--api-server-authorized-ip-ranges*、 *--load-balancer-outbound-ip-prefixes*、 *--load-balancer-outbound-ips*、または *--load-balancer-outbound-ip-prefixes* パラメーターを使用します。
+既存のクラスター上で、API サーバーの許可された IP 範囲を更新するには、[az aks update][az-aks-update] コマンドを使用し、 *`--api-server-authorized-ip-ranges`* 、--load-balancer-outbound-ip-prefixes *、 *`--load-balancer-outbound-ips`* 、または --load-balancer-outbound-ip-prefixes* パラメーターを使用します。
 
 次の例では、*myResourceGroup* という名前のリソース グループ内の *myAKSCluster* という名前のクラスターで API サーバーの許可された IP 範囲を更新します。 許可する IP アドレス範囲は、*73.140.245.0/24* です。
 
@@ -112,7 +112,7 @@ az aks update \
     --api-server-authorized-ip-ranges  73.140.245.0/24
 ```
 
-Standard SKU ロード バランサーのパブリック IP のみを許可するために、 *--api-server-authorized-ip-ranges* パラメーターを指定するときに、*0.0.0.0/32* を使用することもできます。
+Standard SKU ロード バランサーのパブリック IP のみを許可するために、 *`--api-server-authorized-ip-ranges`* パラメーターを指定するときに、*0.0.0.0/32* を使用することもできます。
 
 ## <a name="disable-authorized-ip-ranges"></a>許可された IP 範囲を無効にする
 

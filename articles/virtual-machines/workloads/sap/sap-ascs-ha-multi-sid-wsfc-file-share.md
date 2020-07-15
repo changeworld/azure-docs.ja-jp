@@ -17,10 +17,10 @@ ms.date: 02/03/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1de9c07c99666ed4011214bd9b426eac8f494991
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82978180"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-file-share-on-azure"></a>Azure での Windows Server フェールオーバー クラスタリングとファイル共有による SAP ASCS/SCS インスタンスのマルチ SID 高可用性
@@ -70,7 +70,7 @@ _**図 1:** 2 つのクラスターにデプロイされた SAP ASCS/SCS イン�
 
 _**図 2:** 2 つのクラスターの SAP マルチ SID 構成_
 
-追加の **SAP \<SID2>** システムのインストールは、1 つの \< SID> システムのインストールと同じです。 ASCS/SCS クラスターとファイル共有 SOFS クラスターでは、さらに 2 つの準備手順が必要です。
+追加の **SAP \<SID2>** システムのインストールは、1 つの \<SID> システムのインストールと同じです。 ASCS/SCS クラスターとファイル共有 SOFS クラスターでは、さらに 2 つの準備手順が必要です。
 
 ## <a name="prepare-the-infrastructure-for-an-sap-multi-sid-scenario"></a>SAP マルチ SID シナリオのインフラストラクチャを準備する
 
@@ -100,7 +100,7 @@ _**図 3:** マルチ SID の SOFS は SAP グローバル ホスト名と同じ
 >第 2 の**SAP \<SID2>** システムには、同じ Volume1 と同じ **\<SAPGlobalHost>** ネットワーク名を使います。
 >さまざまな SAP システムの共有名として **SAPMNT** を既に設定してあるので、 **\<SAPGlobalHost>** ネットワーク名を再利用するには、同じ **Volume1** を使う必要があります。
 >
->\<SID2> グローバル ホストのファイル パスは、C:\ClusterStorage\\**Volume1**\usr\sap\<SID2>\SYS\. です
+>\<SID2> グローバル ホストのファイル パスは、C:\ClusterStorage\\**Volume1**\usr\sap\<SID2>\SYS\. です。
 >
 
 \<SID2> システムの場合は、SAP グローバル ホスト ..\SYS\.. フォルダーを SOFS クラスターに準備する必要があります。

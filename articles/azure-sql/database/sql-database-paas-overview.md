@@ -12,17 +12,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: 643c94736d6ee519907913bc9ec59f808081f089
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: fcad4f02f3fdfcbdc95617da7344d06feb70d1af
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84216400"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84343253"
 ---
 # <a name="what-is-azure-sql-database"></a>Azure SQL Database とは
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Azure SQL Database は、フルマネージド PaaS (サービスとしてのプラットフォーム) データべース エンジンであり、アップグレード、修正プログラムの適用、監視などのデータベース管理機能の大半をユーザーの介入なしで処理します。 Azure SQL Database は、安定した最新バージョンの SQL Server データベース エンジンとパッチ適用済み OS 上で常に実行され、99.99% の可用性があります。 Azure SQL Database に組み込まれている PaaS 機能により、ビジネスにとって重要なドメイン固有のデータベース管理や最適化アクティビティに焦点を絞ることができます。
+Azure SQL Database は、アップグレード、修正プログラムの適用、バックアップ、監視などのほとんどのデータベース管理機能をユーザーの介入なしで処理する、フル マネージドの PaaS (サービスとしてのプラットフォーム) データベース エンジンです。 Azure SQL Database は常に、最新の安定したバージョンの SQL Server データベース エンジンおよびパッチが適用された OS 上で実行され、99.99% の可用性を備えています。 Azure SQL Database に組み込まれた PaaS 機能により、お客様は、ビジネスにとって不可欠なドメイン固有のデータベース管理や最適化アクティビティに集中することができます。
 
 Azure SQL Database を使用すると、Azure のアプリケーションやソリューションのための高可用性かつ高パフォーマンスのデータ ストレージ層を作成できます。 SQL Database を使用することで、グラフ、JSON、空間、XML などのリレーショナル データと[非リレーショナル構造](../multi-model-features.md)の両方を処理できるようになるため、さまざまな最新のクラウド アプリケーションに適しています。
 
@@ -34,18 +34,18 @@ SQL Database を使用すると、2 つの異なる購入モデル ([仮想コ�
 
 Azure SQL Database には、データベースのデプロイに関して次の選択肢があります。
 
-- [単一データベース](single-database-overview.md)は、フル マネージドの分離されたデータベースを表します。 このオプションは、信頼性の高い 1 つのデータ ソースを必要とする最新のクラウド アプリケーションとマイクロサービスがある場合に使用できます。 単一データベースは [Microsoft SQL Server データベース エンジン](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json)の[包含データベース](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases?toc=/azure/sql-database/toc.json)に似ています。
+- [単一データベース](single-database-overview.md)は、フル マネージドの分離されたデータベースを表します。 このオプションは、信頼性の高い 1 つのデータ ソースを必要とする最新のクラウド アプリケーションとマイクロサービスがある場合に使用できます。 単一データベースは、[SQL Server データベース エンジン](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json)内の[包含データベース](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases?toc=/azure/sql-database/toc.json)に似ています。
 - [エラスティック プール](elastic-pool-overview.md)は、CPU やメモリなどのリソースの共有セットを含む[単一データベース](single-database-overview.md)のコレクションです。 単一データベースはエラスティック プールの内外に移動できます。
 
 > [!IMPORTANT]
 > SQL Database と SQL Server の機能面の違い、また Azure SQL Database の各種オプション間の違いについては、[SQL Database の機能](features-comparison.md)に関するページを参照してください。
 
-SQL Database では、複数のリソースの種類、サービス レベル、コンピューティング サイズを使用して予測可能なパフォーマンスが提供されます。 ダウンタイムのない動的スケーラビリティ、組み込みのインテリジェントな最適化、グローバルなスケーラビリティと可用性、高度なセキュリティ オプションが提供されます。 これらの機能を使用すると、仮想マシンとインフラストラクチャの管理ではなく、迅速なアプリケーション開発や、製品化に要する時間の短縮化に専念することができます。 SQL Database サービスは現在、世界中の 38 のデータセンターにあるため、お近くのデータセンターでご自分のデータベースを実行できます。
+SQL Database では、複数のリソースの種類、サービス レベル、コンピューティング サイズを使用して予測可能なパフォーマンスが提供されます。 ダウンタイムのない動的スケーラビリティ、組み込みのインテリジェントな最適化、グローバルなスケーラビリティと可用性、高度なセキュリティ オプションが提供されます。 これらの機能を使用すると、仮想マシンとインフラストラクチャの管理ではなく、迅速なアプリケーション開発や、製品化に要する時間の短縮化に専念することができます。 SQL Database は現在、世界中の 38 のデータセンターにあるため、お近くのデータセンターでご自分のデータベースを実行できます。
 
 ## <a name="scalable-performance-and-pools"></a>スケーラブルなパフォーマンスとプール
 
 割り当てられるリソースの量を定義できます。 
-- 単一データベースでは、各データベースが他のデータベースから分離されており、移植することができます。 それぞれが独自に、コンピューティング、メモリ、およびストレージ リソースの保証された量を持ちます。 データベースに割り当てられているリソースの量は、そのデータベース専用であり、Azure 内の他のデータベースとは共有されません。 [単一データベース リソースを動的にスケールアップおよびスケールダウン](single-database-scale.md)することができます。 単一データベース オプションでは、さまざまなニーズに応じて、さまざまなコンピューティング、メモリ、およびストレージ リソースが提供されます。 たとえば、1 から 80 の仮想コアや、32 GB から 4 TB を取得できます。 単一データベース用の[ハイパースケール サービス レベル](service-tier-hyperscale.md)では、100 TB までのスケーリングが可能であり、高速バックアップおよび復元機能を備えています。
+- 単一データベースでは、各データベースが他のデータベースから分離されており、移植することができます。 それぞれが独自に、コンピューティング、メモリ、およびストレージ リソースの保証された量を持ちます。 データベースに割り当てられているリソースの量は、そのデータベース専用であり、Azure 内の他のデータベースとは共有されません。 [単一データベース リソースを動的にスケールアップおよびスケールダウン](single-database-scale.md)することができます。 単一データベース オプションでは、さまざまなニーズに応じて、さまざまなコンピューティング、メモリ、およびストレージ リソースが提供されます。 たとえば、1 から 80 の仮想コアや、32 GB から 4 TB を取得できます。 単一データベース用の[ハイパースケール サービス レベル](service-tier-hyperscale.md)は 100 TB へのスケーリングが可能であり、高速バックアップと復元機能を備えています。
 - エラスティック プールを使用すると、プール内のすべてのデータベースによって共有されるリソースを割り当てることができます。 リソース プールにデータベースを新規作成または既存の単一データベースを移動することで、リソースの使用を最大化してコストを削減できます。 このオプションにより、[エラスティック プール リソースを動的にスケールアップおよびスケールダウン](elastic-pool-scale.md)することもできます。
 
 汎用サービス レベルで、1 か月あたりのコストが低い小規模な単一データベースに最初のアプリを作成することができます。 サービス レベルは、ソリューションのニーズを満たすため、手動またはプログラムによってビジネスクリティカルなサービス レベルにいつでも変更できます。 アプリにも顧客にもダウンタイムを発生させずにパフォーマンスを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができます。 必要なときに必要な分のリソースにのみ課金されます。
@@ -76,7 +76,7 @@ Azure SQL Database には、さまざまな種類のアプリケーション向�
 
 [プールに対してデータベースの追加および削除を行う](elastic-pool-overview.md)ことで、完全に設定予算内で、アプリケーションを数個のデータベースから何千ものデータベースに及ぶ範囲でスケーリングすることができます。 また、プール内のデータベースが使用できるリソースの下限と上限を制御して、プール内のいずれかのデータベースがプールのすべてのリソースを使用してしまわないようにしたり、すべてのプールされたデータベースに最小限のリソースが確保されるようにしたりすることもできます。 エラスティック プールを使用するサービスとしてのソフトウェア (SaaS) アプリケーションの設計パターンの詳細については、「[SQL Database を使用したマルチテナント SaaS アプリケーションの設計パターン](saas-tenancy-app-design-patterns.md)」を参照してください。
 
-スクリプトは、エラスティック プールの監視とスケールに役立ちます。 例については、「[PowerShell を使用し、Azure SQL Database の SQL エラスティック プールを監視し、スケーリングする](scripts/monitor-and-scale-pool-powershell.md)」を参照してください。
+スクリプトは、エラスティック プールの監視とスケールに役立ちます。 例については、「[PowerShell を使用して Azure SQL Database のエラスティック プールを監視およびスケールする](scripts/monitor-and-scale-pool-powershell.md)」を参照してください。
 
 
 ### <a name="blend-single-databases-with-pooled-databases"></a>単一データベースとプールされたデータベースの組み合わせ
@@ -119,7 +119,7 @@ Azure Availability Zones は、1 つのリージョン内の 1 つのデータ�
 
 - [ポイントインタイム リストア](recovery-using-backups.md):
 
-  すべての SQL Database デプロイ オプションは、あらゆる SQL データベースについて、自動バックアップのリテンション期間内の任意の時点への復旧をサポートします。
+  どの SQL Database デプロイ オプションも、すべてのデータベースについて、自動バックアップのリテンション期間内の任意の時点への復旧をサポートします。
 - [アクティブ geo レプリケーション](active-geo-replication-overview.md):
 
   単一データベースおよびプールされたデータベースのオプションでは、同じ Azure データ センターまたは世界各地に分散された Azure データセンター内に、最大 4 つの読み取り可能なセカンダリ データベースを構成することができます。 たとえば、カタログ データベースを使用する SaaS アプリケーションで大量の同時実行の読み取り専用トランザクションが行われる場合は、アクティブ geo レプリケーションを使用してグローバル読み取りスケールを有効にします。 これにより、読み取りワークロードによるプライマリ上のボトルネックを取り除くことができます。 マネージド インスタンスについては、自動フェールオーバー グループを使用します。
@@ -128,7 +128,7 @@ Azure Availability Zones は、1 つのリージョン内の 1 つのデータ�
   すべての SQL Database デプロイ オプションでは、フェールオーバー グループを使用して、グローバル規模で高可用性と負荷分散を有効にすることができます。 これには、透過的な geo レプリケーションと、大規模なデータベース、エラスティック プール、およびマネージド インスタンスのフェールオーバーが含まれます。 フェールオーバー グループを使用すると、管理オーバーヘッドを最小限に抑えながら、グローバルに分散した SaaS アプリケーションを作成できます。 これにより、すべての複雑な監視、ルーティング、およびフェールオーバー オーケストレーションが SQL Database で行われます。
 - [ゾーン冗長データベース](high-availability-sla.md):
 
-  SQL Database では、プレミアムまたはビジネス クリティカルのデータベースまたはエラスティック プールを複数の可用性ゾーンにわたってプロビジョニングすることができます。 これらのデータベースとエラスティック プールには高可用性を目的とする複数の冗長レプリカがあるため、これらのレプリカを複数の可用性ゾーンに配置することで、回復性が向上します。 これには、データ損失を発生させることなく、データセンター規模の障害から自動的に復旧する機能が含まれます。
+  SQL Database では、Premium または Business Critical のデータベースまたはエラスティック プールを複数の可用性ゾーンにわたってプロビジョニングすることができます。 これらのデータベースとエラスティック プールには高可用性を目的とする複数の冗長レプリカがあるため、これらのレプリカを複数の可用性ゾーンに配置することで、回復性が向上します。 これには、データ損失を発生させることなく、データセンター規模の障害から自動的に復旧する機能が含まれます。
 
 ## <a name="built-in-intelligence"></a>組み込みのインテリジェンス
 
@@ -138,7 +138,7 @@ SQL Database では、データベースの実行と管理にかかるコスト�
 
 SQL Database は、監視する必要があるクエリの詳細な洞察を提供します。 SQL Database は、データベースのパターンについて学習し、データベース スキーマをワークロードに適応させることができます。 SQL Database は[パフォーマンスのチューニングに関する推奨事項](database-advisor-implement-performance-recommendations.md)を提示します。チューニング アクションを確認してそれらを適用できます。
 
-ただし、データベースを常に監視することは厄介で面倒なタスクであり、多数のデータベースを処理する場合は特にそうなります。 [Intelligent Insights](intelligent-insights-overview.md) は、SQL Database のパフォーマンスを大規模に自動的に監視することで、ユーザーに代わってこのジョブを実行します。 パフォーマンス低下の問題を通知し、各問題の根本原因を特定し、可能であればパフォーマンスの向上に関する推奨事項を提供します。
+ただし、特に多数のデータベースに対処している場合、データベースの常時監視は厄介で、かつ面倒なタスクです。 [Intelligent Insights](intelligent-insights-overview.md) は、SQL Database のパフォーマンスを大規模に自動的に監視することで、ユーザーに代わってこのジョブを実行します。 これは、パフォーマンス低下の問題をユーザーに通知し、各問題の根本原因を識別して、可能な場合はパフォーマンスの向上に関する推奨事項を提供します。
 
 膨大な数のデータベースを管理することは、SQL Database と Azure が提供するすべての使用可能なツールとレポートを使用しても、効率的に実行するのは不可能な場合があります。 データベースの監視とチューニングを手動で行う代わりに、[自動チューニング](automatic-tuning-overview.md)を使用して、監視とチューニング アクションの一部を SQL Database に委任することも検討できます。 SQL Database は、推奨事項を自動的に適用し、テストを行い、パフォーマンスが確実に向上し続けるように、各チューニング アクションを検証します。 このように、SQL Database は、制御された安全な方法で、ワークロードに自動的に適応します。 自動チューニングは、データベースのパフォーマンスを注意深く監視し、すべてのチューニング アクションの実行前と実行後のパフォーマンスを比較します。 パフォーマンスが向上しない場合、チューニング アクションは元に戻されます。
 
@@ -195,7 +195,7 @@ SQL Database は、アプリケーションの開発と管理をより簡単で�
 |[Azure ポータル](https://portal.azure.com/)|すべての Azure サービスを管理するための Web ベースのアプリケーションです。|
 |[Azure Data Studio](/sql/azure-data-studio/)|Windows、MacOS、Linux で実行されるクロスプラットフォーム データベース ツールです。|
 |[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)|SQL Server から SQL Database まで、あらゆる SQL インフラストラクチャを管理するための、無料でダウンロードできるクライアント アプリケーションです。|
-|[Visual Studio の SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)|SQL Server リレーショナル データベース、Microsoft Azure SQL データベース、Integration Services パッケージ、Analysis Services データ モデル、および Reporting Services レポートを開発するための、無料でダウンロードできるクライアント アプリケーションです。|
+|[Visual Studio の SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)|SQL Server リレーショナル データベース、Azure SQL Database 内のデータベース、Integration Services パッケージ、Analysis Services データ モデル、Reporting Services レポートを開発するための、ダウンロード可能な無料のクライアント アプリケーションです。|
 |[Visual Studio Code](https://code.visualstudio.com/docs)|Windows、macOS、Linux 向けの無料でダウンロードできるオープンソースのコード エディターです。 Microsoft SQL Server、Azure SQL Database、および Azure SQL Data Warehouse のデータを照会するための [mssql 拡張機能](https://aka.ms/mssql-marketplace)を含む拡張機能をサポートします。|
 
 SQL Database は、macOS、Linux、および Windows での Python、Java、Node.js、PHP、Ruby、および .NET によるアプリケーションの構築をサポートします。 SQL Database は、SQL Server と同じ[接続ライブラリ](connect-query-content-reference-guide.md#libraries)をサポートします。
@@ -223,9 +223,9 @@ SQL Database は、macOS、Linux、および Windows での Python、Java、Node
 - 単一データベースとエラスティック プールに関するコストの比較と計算については、[価格に関するページ](https://azure.microsoft.com/pricing/details/sql-database/)を参照してください。
 - すぐに始めるには、次のクイックスタートをご覧ください。
 
-  - [Azure Portal で SQL データベースを作成する](single-database-create-quickstart.md)  
-  - [Azure CLI で SQL データベースを作成する](az-cli-script-samples-content-guide.md)
-  - [PowerShell を使用して SQL データベースを作成する](powershell-script-content-guide.md)
+  - [Azure portal でデータベースを作成する](single-database-create-quickstart.md)  
+  - [Azure CLI でデータベースを作成する](az-cli-script-samples-content-guide.md)
+  - [PowerShell を使用してデータベースを作成する](powershell-script-content-guide.md)
 
 - Azure CLI と PowerShell の各種サンプルについては、以下のページをご覧ください。
   - [Azure SQL Database 用の Azure CLI サンプル](az-cli-script-samples-content-guide.md)

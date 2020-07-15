@@ -7,10 +7,10 @@ ms.date: 11/04/2019
 ms.author: v-umha
 ms.custom: has-adal-ref
 ms.openlocfilehash: 3833b27e9f90cbffa2320c84877d4eb5bb6520f7
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82613270"
 ---
 # <a name="ingest-historical-telemetry-data"></a>過去のテレメトリ データの取り込み
@@ -27,7 +27,7 @@ ms.locfileid: "82613270"
 
 Azure FarmBeats インスタンスへのパートナー統合を有効にする必要があります。 この手順では、デバイス パートナーとして Azure FarmBeats インスタンスにアクセスできるクライアントを作成し、以降の手順で必要となる以下の値を指定します。
 
-- API エンドポイント:これはデータハブの URL です (たとえば、 https://\<datahub>.azurewebsites.net)
+- API エンドポイント:データ ハブの URL (例: https://\<datahub>.azurewebsites.net)
 - テナント ID
 - クライアント ID
 - クライアント シークレット
@@ -44,7 +44,7 @@ Azure FarmBeats インスタンスへのパートナー統合を有効にする�
 
       a.  **[Azure Active Directory]**  >  **[アプリの登録]** の順に進みます。
 
-      b. FarmBeats デプロイの一部として作成された **[アプリの登録]** をクリックします。 それは、FarmBeats データ ハブと同じ名前になります。
+      b. FarmBeats デプロイの一部として作成された **[アプリの登録]** を選択します。 それは、FarmBeats データ ハブと同じ名前になります。
 
       c. **[API の公開]** を選択し、 **[クライアント アプリケーションの追加]** を選択し、「**04b07795-8ddb-461a-bbee-02f9e1bf7b46**」と入力し、 **[Authorize Scope]\(スコープの承認\)** をオンにします。 これにより、Azure CLI (Cloud Shell) にアクセスして、次の手順を実行することができます。
 
@@ -140,7 +140,7 @@ Azure FarmBeats インスタンスへのパートナー統合を有効にする�
 
 ### <a name="api-request-to-create-metadata"></a>メタデータを作成するための API 要求
 
-API 要求を行うには、HTTP (POST) メソッド、API サービスの URL、クエリ、データの送信、要求の作成または削除の対象となるリソースの URI を結合します。 その後、1 つまたは複数の HTTP 要求ヘッダーを追加します。 API サービスの URL は、API エンドポイント、つまりデータ ハブの URL (https://\<お使いのデータ ハブ>.azurewebsites.net) です。
+API 要求を行うには、HTTP (POST) メソッド、API サービスの URL、クエリ、データの送信、要求の作成または削除の対象となるリソースの URI を結合します。 その後、1 つまたは複数の HTTP 要求ヘッダーを追加します。 API サービスの URL は API エンドポイント、つまり、データ ハブの URL (https://\<yourdatahub>.azurewebsites.net) です。
 
 ### <a name="authentication"></a>認証
 

@@ -4,10 +4,10 @@ description: Application Insights で Web と worker ロールを効果的に監
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.openlocfilehash: 17813d17a1c40caac5587e37e279be6376992b90
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81537595"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure クラウド サービス向けの Application Insights
@@ -82,7 +82,7 @@ Application Insights を使ってクラウド サービスを監視する最も�
 ## <a name="set-up-azure-diagnostics-for-each-role"></a>Set up Azure Diagnostics for each role (各ロール用の Azure 診断を設定する)
 このオプションは、Application Insights でアプリを監視する場合に設定します。 Web ロールの場合は、このオプションによってパフォーマンスの監視、アラート、診断、使用状況の分析が提供されます。 その他のロールの場合は、再起動、パフォーマンス カウンター、System.Diagnostics.Trace への呼び出しなど、Azure 診断を検索して監視できます。 
 
-1. Visual Studio ソリューション エクスプローラーの **[\<YourCloudService>]**  >  **[ロール]** で、各ロールのプロパティを開きます。
+1. Visual Studio ソリューション エクスプローラーの **\<YourCloudService>**  >  **[ロール]** で、各ロールのプロパティを開きます。
 
 1. **[構成]** で **[診断データを Application Insights に送信する]** チェック ボックスをオンにしてから、お客様が先ほど作成した Application Insights リソースを選択します。
 

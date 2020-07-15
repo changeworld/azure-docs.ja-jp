@@ -4,22 +4,23 @@ description: Windows Virtual Desktop の MSIX アプリのアタッチを設定�
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
-ms.date: 05/11/2020
+ms.topic: how-to
+ms.date: 06/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c23528fbb60b471a7613f372fe5316a4883ae733
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 76edc88f127d7e52514ab72539f7212ac982b5e4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310616"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85204474"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX アプリのアタッチを設定する
 
 > [!IMPORTANT]
 > 現在、MSIX アプリのアタッチはパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
+> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 このトピックでは、Windows Virtual Desktop 環境で MSIX アプリのアタッチを設定する方法について説明します。
 
@@ -29,11 +30,29 @@ ms.locfileid: "84310616"
 
 - Windows Insider ポータルにアクセスして、MSIX アプリのアタッチ API をサポートする Windows 10 のバージョンを取得する。
 - 機能する Windows Virtual Desktop のデプロイ。 Windows Virtual Desktop Fall 2019 リリースのデプロイ方法については、「[Windows Virtual Desktop でテナントを作成する](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)」を参照してください。 Windows Virtual Desktop Spring 2020 のデプロイ方法については、「[Azure portal を使用してホスト プールを作成する](./create-host-pools-azure-marketplace.md)」を参照してください。
+- MSIX パッケージ化ツール。
+- MSIX パッケージが格納される Windows Virtual Desktop デプロイ内のネットワーク共有。
 
-- MSIX パッケージ作成ツール
-- MSIX パッケージが保存される Windows Virtual Desktop のデプロイのネットワーク共有
+## <a name="get-the-os-image"></a>OS ディスク名を取得する
 
-## <a name="get-the-os-image-from-the-technology-adoption-program-tap-portal"></a>Technology Adoption Program (TAP) ポータルから OS イメージを取得する
+まず、OS イメージを取得する必要があります。 OS イメージは、Azure portal から取得できます。 ただし、Windows Insider プログラムのメンバーである場合は、代わりに Windows Insider ポータルを使用するオプションがあります。
+
+### <a name="get-the-os-image-from-the-azure-portal"></a>Azure portal から OS イメージを取得する
+
+Azure portal から OS イメージを取得するには、次のようにします。
+
+1. [Azure portal](https://portal.azure.com) を開き、サインインします。
+
+2. **[仮想マシンの作成]** に移動します。
+
+3. **[基本]** タブで、 **[Windows 10 enterprise multi-session, version 2004]** を選択します。
+
+4. 残りの手順に従って、仮想マシンの作成を完了します。
+
+     >[!NOTE]
+     >この VM を使用して、MSIX アプリのアタッチを直接テストできます。 詳細については、「[MSIX 用の VHD または VHDX パッケージを生成する](#generate-a-vhd-or-vhdx-package-for-msix)」に進んでください。 それ以外の場合は、このセクションを読み続けてください。
+
+### <a name="get-the-os-image-from-the-windows-insider-portal"></a>Windows Insider ポータルから OS イメージを取得する
 
 Windows Insider ポータルから OS イメージを取得するには、次のようにします。
 
@@ -45,30 +64,15 @@ Windows Insider ポータルから OS イメージを取得するには、次の
 2. **[エディションの選択]** セクションまで下にスクロールし、 **[Windows 10 Insider Preview Enterprise (FAST) – ビルド 19041]** 以降のビルドを選択します。
 
 3. **[確認]** を選択し、使用する言語を選択してから、 **[確認]** をもう一度選択します。
-    
+
      >[!NOTE]
      >現時点では、この機能でテストされた言語は英語のみです。 他の言語は、選択はできますが、意図したとおりに表示されない場合があります。
-    
+
 4. ダウンロード リンクが生成されたら、 **[64 ビットのダウンロード]** を選択し、ローカル ハード ディスクに保存します。
 
-## <a name="get-the-os-image-from-the-azure-portal"></a>Azure portal から OS イメージを取得する
+## <a name="prepare-the-vhd-image-for-azure"></a>Azure の VHD イメージを準備する
 
-Azure portal から OS イメージを取得するには、次のようにします。
-
-1. [Azure portal](https://portal.azure.com) を開き、サインインします。
-
-2. **[仮想マシンの作成]** に移動します。
-
-3. **[基本]** タブで、 **[Windows 10 enterprise multi-session, version 2004]** を選択します。
-      
-4. 残りの手順に従って、仮想マシンの作成を完了します。
-
-     >[!NOTE]
-     >この VM を使用して、MSIX アプリのアタッチを直接テストできます。 詳細については、「[MSIX 用の VHD または VHDX パッケージを生成する](#generate-a-vhd-or-vhdx-package-for-msix)」に進んでください。 それ以外の場合は、このセクションを読み続けてください。
-
-## <a name="prepare-the-vhd-image-for-azure"></a>Azure の VHD イメージを準備する 
-
-手順を開始する前に、マスター VHD イメージを作成する必要があります。 マスター VHD イメージをまだ作成していない場合は、「[マスター VHD イメージを準備してカスタマイズする](set-up-customize-master-image.md)」に進んで、記載されている手順に従ってください。 
+次に、マスター VHD イメージを作成する必要があります。 マスター VHD イメージをまだ作成していない場合は、「[マスター VHD イメージを準備してカスタマイズする](set-up-customize-master-image.md)」に進んで、記載されている手順に従ってください。
 
 マスター VHD イメージを作成した後は、MSIX アプリのアタッチ アプリケーションの自動更新を無効にする必要があります。 自動更新を無効にするには、管理者特権でのコマンド プロンプトで次のコマンドを実行する必要があります。
 
@@ -90,7 +94,7 @@ rem Disable Windows Update:
 sc config wuauserv start=disabled
 ```
 
-自動更新を無効にしたら、Hyper-V を有効にする必要があります。これは、今後 Mount-VHD コマンドを使用してステージングを行い、Dismount-VHD コマンドを使用してステージング解除を行うからです。 
+自動更新を無効にしたら、後で Mount-VHD コマンドを使用したステージングや Dismount-VHD を使用したステージング解除を行うため、Hyper-V を有効にする必要があります。
 
 ```powershell
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
@@ -102,7 +106,7 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 
 VHD を Azure にアップロードしたら、チュートリアル「[Azure Marketplace を使用してホスト プールを作成する](create-host-pools-azure-marketplace.md)」の手順に従って、この新しいイメージに基づくホスト プールを作成します。
 
-## <a name="prepare-the-application-for-msix-app-attach"></a>MSIX アプリのアタッチ用のアプリケーションを準備する 
+## <a name="prepare-the-application-for-msix-app-attach"></a>MSIX アプリのアタッチ用のアプリケーションを準備する
 
 既に MSIX パッケージがある場合は、「[Windows Virtual Desktop インフラストラクチャの構成](#configure-windows-virtual-desktop-infrastructure)」に進んでください。 レガシ アプリケーションをテストする場合は、「[VM 上でデスクトップ インストーラーからの MSIX パッケージを作成する](/windows/msix/packaging-tool/create-app-package-msi-vm/)」の手順に従って、レガシ アプリケーションを MSIX パッケージに変換します。
 
@@ -185,7 +189,7 @@ MSIX 用の VHD または VHDX パッケージを生成するには、次の手�
 - 共有は SMB と互換性があります。
 - セッション ホスト プールの一部である VM には、共有に対する NTFS アクセス許可があります。
 
-### <a name="set-up-an-msix-app-attach-share"></a>MSIX アプリのアタッチの共有を設定する 
+### <a name="set-up-an-msix-app-attach-share"></a>MSIX アプリのアタッチの共有を設定する
 
 Windows Virtual Desktop 環境で、ネットワーク共有を作成し、パッケージをそこに移動します。
 
@@ -426,16 +430,16 @@ rmdir $packageName -Force -Verbose
 
 ## <a name="use-packages-offline"></a>パッケージをオフラインで使用する
 
-ネットワーク内、またはインターネットに接続されていないデバイス上の[ビジネス向け Microsoft Store](https://businessstore.microsoft.com/) または [教育機関向け Microsoft Store](https://educationstore.microsoft.com/) のパッケージを使用する場合、アプリを正常に実行するには、Microsoft Store からパッケージ ライセンスを取得して、デバイス上にインストールする必要があります。 デバイスがオンラインであり、ビジネス向け Microsoft Store に接続できる場合は、必要なライセンスが自動的にダウンロードされますが、オフラインになっている場合はライセンスを手動で設定する必要があります。 
+ネットワーク内、またはインターネットに接続されていないデバイス上の[ビジネス向け Microsoft Store](https://businessstore.microsoft.com/) または [教育機関向け Microsoft Store](https://educationstore.microsoft.com/) のパッケージを使用する場合、アプリを正常に実行するには、Microsoft Store からパッケージ ライセンスを取得して、デバイス上にインストールする必要があります。 デバイスがオンラインであり、ビジネス向け Microsoft Store に接続できる場合は、必要なライセンスが自動的にダウンロードされますが、オフラインになっている場合はライセンスを手動で設定する必要があります。
 
-ライセンス ファイルをインストールするには、WMI ブリッジプロバイダーで MDM_EnterpriseModernAppManagement_StoreLicenses02_01 クラスを呼び出す PowerShell スクリプトを使用する必要があります。  
+ライセンス ファイルをインストールするには、WMI ブリッジプロバイダーで MDM_EnterpriseModernAppManagement_StoreLicenses02_01 クラスを呼び出す PowerShell スクリプトを使用する必要があります。
 
-オフラインで使用するためにライセンスを設定するには、次の手順を実行します。 
+オフラインで使用するためにライセンスを設定するには、次の手順を実行します。
 
 1. アプリ パッケージ、ライセンス、および必要なフレームワークをビジネス向け Microsoft Store からダウンロードします。 エンコードされたライセンス ファイルとエンコードされていないライセンス ファイルの両方が必要です。 ダウンロードの詳細な手順については、[こちら](/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app)を確認してください。
 2. 手順 3 のスクリプトで次の変数を更新します。
       1. `$contentID` は、エンコードされていないライセンス ファイル (.xml) の ContentID 値です。 ライセンス ファイルは任意のテキスト エディターで開くことができます。
-      2. `$licenseBlob` は、エンコードされたライセンス ファイル (.bin) のライセンス BLOB の文字列全体です。 エンコードされたライセンス ファイルは、任意のテキスト エディターで開くことができます。 
+      2. `$licenseBlob` は、エンコードされたライセンス ファイル (.bin) のライセンス BLOB の文字列全体です。 エンコードされたライセンス ファイルは、任意のテキスト エディターで開くことができます。
 3. 管理者 PowerShell プロンプトから次のスクリプトを実行します。 ライセンスのインストールを実行するのに適した場所は、[ステージング スクリプト](#stage-the-powershell-script)の最後です。これも管理者プロンプトから実行する必要があります。
 
 ```powershell
@@ -450,14 +454,14 @@ $contentID = "{'ContentID'_in_unencoded_license_file}"
 #TODO - Update $licenseBlob with the entire String in the encoded license file (.bin)
 $licenseBlob = "{Entire_String_in_encoded_license_file}"
 
-$session = New-CimSession 
+$session = New-CimSession
 
 #The final string passed into the AddLicenseMethod should be of the form <License Content="encoded license blob" />
-$licenseString = '<License Content='+ '"' + $licenseBlob +'"' + ' />' 
+$licenseString = '<License Content='+ '"' + $licenseBlob +'"' + ' />'
 
 $params = New-Object Microsoft.Management.Infrastructure.CimMethodParametersCollection
 $param = [Microsoft.Management.Infrastructure.CimMethodParameter]::Create("param",$licenseString ,"String", "In")
-$params.Add($param) 
+$params.Add($param)
 
 
 try
@@ -469,7 +473,7 @@ try
 catch [Exception]
 {
      write-host $_ | out-string
-}  
+}
 ```
 
 ## <a name="next-steps"></a>次のステップ

@@ -3,12 +3,12 @@ title: Azure Backup のレポートを構成する
 description: Log Analytics と Azure ブックを使用して Azure Backup のレポートを構成および表示する
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: e0c7418d7141a3b12f367f1b12ee740eaac64703
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 20dcf7f3f9bbc5626c4a05ef064203b3ae5020cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83797528"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84484973"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup のレポートを構成する
 
@@ -22,7 +22,7 @@ ms.locfileid: "83797528"
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 
-- バックアップ レポートは、Azure VM、Azure VM の SQL、Azure VM の SAP HANA、Microsoft Azure Recovery Services (MARS) エージェント、Microsoft Azure Backup Server (MABS)、System Center Data Protection Manager (DPM) でサポートされています。 Azure ファイル共有のバックアップのデータは現在、バックアップ レポートには表示されません。
+- バックアップ レポートは、Azure VM、Azure VM の SQL、Azure VM の SAP HANA、Microsoft Azure Recovery Services (MARS) エージェント、Microsoft Azure Backup Server (MABS)、System Center Data Protection Manager (DPM) でサポートされています。 Azure ファイル共有のバックアップの場合は、2020 年 6 月 1 日以降に作成されたすべてのレコードのデータが表示されます。
 - DPM ワークロードの場合、バックアップ レポートは DPM バージョン 5.1.363.0 以降、およびエージェント バージョン 2.0.9127.0 以降でサポートされています。
 - MABS ワークロードの場合、バックアップ レポートは MABS バージョン 13.0.415.0 以降、およびエージェント バージョン 2.0.9170.0 以降でサポートされています。
 - バックアップ レポートは、ユーザーがアクセスできる Log Analytics ワークスペースにデータが送信されている限り、すべてのバックアップ項目、コンテナー、サブスクリプション、およびリージョンにわたって表示できます。 一連のコンテナーのレポートを表示するには、コンテナーがデータを送信している Log Analytics ワークスペースへの閲覧者アクセス権のみが必要です。 個々のコンテナーへのアクセス権は必要ありません。

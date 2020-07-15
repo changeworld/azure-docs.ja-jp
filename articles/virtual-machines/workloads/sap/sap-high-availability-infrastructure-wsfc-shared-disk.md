@@ -17,10 +17,10 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f5e0eda72f39a70f02b596a8fd69728336eac333
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82594816"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>SAP ASCS/SCS 用の Windows フェールオーバー クラスターと共有ディスクを使用して SAP HA 向けに Azure インフラストラクチャを準備する
@@ -194,28 +194,28 @@ _**図 1:** SAP 高可用性 Azure Resource Manager パラメーターを設定�
   テンプレートによって次のものが作成されます。
 
   * **仮想マシン**:
-    * SAP アプリケーション サーバーの仮想マシン: \<SAP システムの SID\>-di-\<番号\>
-    * ASCS/SCS クラスターの仮想マシン: \<SAP システムの SID\>-ascs-\<番号\>
-    * DBMS クラスター: \<SAP システムの SID\>-db-\<番号\>
+    * SAP アプリケーション サーバーの仮想マシン: \<SAPSystemSID\>-di-\<Number\>
+    * ASCS/SCS クラスターの仮想マシン: \<SAPSystemSID\>-ascs-\<Number\>
+    * DBMS クラスター: \<SAPSystemSID\>-db-\<Number\>
 
   * **すべての仮想マシンのネットワーク カードと、関連付けられている IP アドレス**:
-    * \<SAP システムの SID\>-nic-di-\<番号\>
-    * \<SAP システムの SID\>-nic-ascs-\<番号\>
-    * \<SAP システムの SID\>-nic-db-\<番号\>
+    * \<SAPSystemSID\>-nic-di-\<Number\>
+    * \<SAPSystemSID\>-nic-ascs-\<Number\>
+    * \<SAPSystemSID\>-nic-db-\<Number\>
 
   * **Azure ストレージ アカウント (非管理対象ディスクのみ)** :
 
   * 次のものの**可用性グループ**:
-    * SAP アプリケーション サーバーの仮想マシン: \<SAP システムの SID\>-avset di
-    * SAP ASCS/SCS クラスターの仮想マシン: \<SAP システムの SID\>-avset-ascs
-    * DBMS クラスターの仮想マシン: \<SAP システムの SID\>-avset-db
+    * SAP アプリケーション サーバーの仮想マシン: \<SAPSystemSID\>-avset-di
+    * SAP ASCS/SCS クラスターの仮想マシン: \<SAPSystemSID\>-avset-ascs
+    * DBMS クラスターの仮想マシン: \<SAPSystemSID\>-avset-db
 
   * **Azure 内部ロード バランサー**:
-    * ASCS/SCS インスタンスのすべてのポートと IP アドレス: \<SAP システムの SID\>-lb-ascs
-    * SQL Server DBMS のすべてのポートと IP アドレス: \<SAP システムの SID\>-lb-db
+    * ASCS/SCS インスタンスのすべてのポートと IP アドレス: \<SAPSystemSID\>-lb-ascs
+    * SQL Server DBMS のすべてのポートと IP アドレス: \<SAPSystemSID\>-lb-db
 
-  * **[ネットワーク セキュリティ グループ]** : \<SAP システムの SID\>-nsg-ascs-0  
-    * \<SAP システムの SID\>-ascs-0 仮想マシンに対して開かれた外部リモート デスクトップ プロトコル (RDP) ポート
+  * **ネットワーク セキュリティ グループ**: \<SAPSystemSID\>-nsg-ascs-0  
+    * \<SAPSystemSID\>-ascs-0 仮想マシンに対して開かれた外部リモート デスクトップ プロトコル (RDP) ポート
 
 > [!NOTE]
 > ネットワーク カードと Azure 内部ロード バランサーのすべての IP アドレスは、既定では動的です。 これらを、静的な IP アドレスに変更します。 この方法については、この記事の後の方で説明します。
@@ -305,7 +305,7 @@ ASCS/SCS マルチ SID テンプレートを設定するには、[ASCS/SCS マ�
 - **[New Or Existing Subnet]\(新規または既存のサブネット\)** : 新しい仮想ネットワークとサブネットを作成するか、既存のサブネットを使うかを設定します。 オンプレミス ネットワークに接続している仮想ネットワークが既にある場合は、 **[existing (既存)]** を選択します。
 - **[Subnet Id]\(サブネット ID\)** : VM を既存の VNet にデプロイする場合、その VNet で VM の割り当て先サブネットが定義されているときは、その特定のサブネットの ID を指定します。 ID は、通常、次のようになります。
 
-  /subscriptions/\<サブスクリプション ID\>/resourceGroups/\<リソース グループ名\>/providers/Microsoft.Network/virtualNetworks/\<仮想ネットワーク名\>/subnets/\<サブネット名\>
+  /subscriptions/\<subscription id\>/resourceGroups/\<resource group name\>/providers/Microsoft.Network/virtualNetworks/\<virtual network name\>/subnets/\<subnet name\>
 
 テンプレートは 1 つの Azure Load Balancer インスタンスをデプロイし、これにより、複数の SAP システムがサポートされます。
 
@@ -479,15 +479,15 @@ SAP ASCS/SCS インスタンスをインストールするときは、ABAP ASCS 
 
 | サービス/負荷分散規則名 | 既定のポート番号 | (インスタンス番号が 00 の ASCS インスタンス) (インスタンス番号が 10 の ERS) の具体的なポート |
 | --- | --- | --- |
-| エンキュー サーバー/*lbrule3200* |32\<インスタンス番号\> |3200 |
-| ABAP メッセージ サーバー/*lbrule3600* |36\<インスタンス番号\> |3600 |
-| 内部 ABAP メッセージ/*lbrule3900* |39\<インスタンス番号\> |3900 |
-| メッセージ サーバー HTTP/*Lbrule8100* |81\<インスタンス番号\> |8100 |
-| SAP 起動サービス ASCS HTTP/*Lbrule50013* |5\<インスタンス番号\>13 |50013 |
-| SAP 起動サービス ASCS HTTPS/*Lbrule50014* |5\<インスタンス番号\>14 |50014 |
-| エンキュー レプリケーション/*Lbrule50016* |5\<インスタンス番号\>16 |50016 |
-| SAP 起動サービス ERS HTTP/*Lbrule51013* |5\<インスタンス番号\>13 |51013 |
-| SAP 起動サービス ERS HTTP/*Lbrule51014* |5\<インスタンス番号\>14 |51014 |
+| エンキュー サーバー/*lbrule3200* |32\<InstanceNumber\> |3200 |
+| ABAP メッセージ サーバー/*lbrule3600* |36\<InstanceNumber\> |3600 |
+| 内部 ABAP メッセージ/*lbrule3900* |39\<InstanceNumber\> |3900 |
+| メッセージ サーバー HTTP/*Lbrule8100* |81\<InstanceNumber\> |8100 |
+| SAP 起動サービス ASCS HTTP/*Lbrule50013* |5\<InstanceNumber\>13 |50013 |
+| SAP 起動サービス ASCS HTTPS/*Lbrule50014* |5\<InstanceNumber\>14 |50014 |
+| エンキュー レプリケーション/*Lbrule50016* |5\<InstanceNumber\>16 |50016 |
+| SAP 起動サービス ERS HTTP/*Lbrule51013* |5\<InstanceNumber\>13 |51013 |
+| SAP 起動サービス ERS HTTP/*Lbrule51014* |5\<InstanceNumber\>14 |51014 |
 | Windows リモート管理 (WinRM)/*Lbrule5985* | |5985 |
 | ファイル共有/*Lbrule445* | |445 |
 
@@ -497,15 +497,15 @@ SAP ASCS/SCS インスタンスをインストールするときは、ABAP ASCS 
 
 | サービス/負荷分散規則名 | 既定のポート番号 | (インスタンス番号が 01 の SCS インスタンス) (インスタンス番号が 11 の ERS) の具体的なポート |
 | --- | --- | --- |
-| エンキュー サーバー/*lbrule3201* |32\<インスタンス番号\> |3201 |
-| ゲートウェイ サーバー/*lbrule3301* |33\<インスタンス番号\> |3301 |
-| Java メッセージ サーバー/*lbrule3900* |39\<インスタンス番号\> |3901 |
-| メッセージ サーバー HTTP/*Lbrule8101* |81\<インスタンス番号\> |8101 |
-| SAP 起動サービス SCS HTTP/*Lbrule50113* |5\<インスタンス番号\>13 |50113 |
-| SAP 起動サービス SCS HTTPS/*Lbrule50114* |5\<インスタンス番号\>14 |50114 |
-| エンキュー レプリケーション/*Lbrule50116* |5\<インスタンス番号\>16 |50116 |
-| SAP 起動サービス ERS HTTP/*Lbrule51113* |5\<インスタンス番号\>13 |51113 |
-| SAP起動サービス ERS HTTP/*Lbrule51114* |5\<インスタンス番号\>14 |51114 |
+| エンキュー サーバー/*lbrule3201* |32\<InstanceNumber\> |3201 |
+| ゲートウェイ サーバー/*lbrule3301* |33\<InstanceNumber\> |3301 |
+| Java メッセージ サーバー/*lbrule3900* |39\<InstanceNumber\> |3901 |
+| メッセージ サーバー HTTP/*Lbrule8101* |81\<InstanceNumber\> |8101 |
+| SAP 起動サービス SCS HTTP/*Lbrule50113* |5\<InstanceNumber\>13 |50113 |
+| SAP 起動サービス SCS HTTPS/*Lbrule50114* |5\<InstanceNumber\>14 |50114 |
+| エンキュー レプリケーション/*Lbrule50116* |5\<InstanceNumber\>16 |50116 |
+| SAP 起動サービス ERS HTTP/*Lbrule51113* |5\<InstanceNumber\>13 |51113 |
+| SAP起動サービス ERS HTTP/*Lbrule51114* |5\<InstanceNumber\>14 |51114 |
 | WinRM/*Lbrule5985* | |5985 |
 | ファイル共有/*Lbrule445* | |445 |
 
@@ -521,7 +521,7 @@ _**図 5:** Azure 内部ロード バランサーの既定の ASCS/SCS 負荷分
 
 SAP ASCS または SCS インスタンスに別の番号を使う場合は、それらのポートの名前と値を既定値から変更する必要があります。
 
-1. Azure Portal で、 **\<[\>** SID > -lb-ascs ロード バランサー] **[負荷分散規則]** の順に選びます。
+1. Azure portal で、 **\<SID\>-lb-ascs ロード バランサー** >  **[負荷分散規則]** の順に選びます。
 2. SAP ASCS または SCS インスタンスに属するすべての負荷分散規則について、以下の値を変更します。
 
    * 名前

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: dekapur
 ms.openlocfilehash: c2973428354f101b5b546128b08bf67587923a8e
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82793076"
 ---
 # <a name="upgrade-the-configuration-of-a-cluster-in-azure"></a>Azure でクラスターの構成をアップグレードする 
@@ -27,7 +27,7 @@ ms.locfileid: "82793076"
 Azure クラスターは、JSON の Resource Manager テンプレートを使って構成できます。 さまざまな設定の詳細については、[クラスターの構成設定](service-fabric-cluster-fabric-settings.md)に関する記事をご覧ください。 例として、次の手順はで、Azure Resource Explorer を使って *MaxDiskQuotaInMB* という新しい設定を *Diagnostics* セクションに追加する方法を示します。
 
 1. [https://resources.azure.com](https://resources.azure.com ) に移動します
-2. **[サブスクリプション]**  ->  **\<ご使用のサブスクリプション>**  ->  **[resourceGroups]**  ->  **\<ご使用のリソース グループ>**  ->  **[プロバイダー]**  ->  **[Microsoft.ServiceFabric]**  ->  **[クラスター]**  ->  **\<ご使用のクラスター名 >** の順に展開して、サブスクリプションに移動します
+2. **[サブスクリプション]**  ->  **\<Your Subscription>**  ->  **[resourceGroups]**  ->  **\<Your Resource Group>**  ->  **[プロバイダー]**  ->  **[Microsoft.ServiceFabric]**  ->  **[クラスター]**  ->  **\<Your Cluster Name>** の順に展開してサブスクリプションに移動します
 3. 右上隅の **[読み取り/書き込み]** を選択します。
 4. **[編集]** を選択して `fabricSettings` JSON 要素を更新し、新しい要素を追加します。
 

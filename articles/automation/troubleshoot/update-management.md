@@ -5,12 +5,12 @@ services: automation
 ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: 95e3fc12a77124c32e220d700a112f52cbad08fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74250a54d7b835ceb37614450de07e9e3baefd83
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801888"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86183156"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Update Management に関する問題のトラブルシューティング
 
@@ -53,7 +53,7 @@ Error details: Failed to enable the Update solution
 
 ### <a name="issue"></a>問題
 
-古い更新プログラムは、置き換え済みであっても、Automation アカウントで不足として表示されます。 同じ脆弱性を修正しているより新しい更新プログラムを利用できるので、置き換え済みの更新プログラムは、インストールする必要がないものです。 Update Management では、置き換えが行われる更新プログラムを優先し、置き換え済みの更新プログラムは無視して適用しません。 関連する問題の詳細については、「[更新プログラムが置き換えられている](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer)」を参照してください。
+古い更新プログラムは、置き換え済みであっても、Automation アカウントで不足として表示されます。 同じ脆弱性を修正しているより新しい更新プログラムを利用できるので、置き換え済みの更新プログラムは、インストールする必要がないものです。 Update Management では、置き換えが行われる更新プログラムを優先し、置き換え済みの更新プログラムは無視して適用しません。 関連する問題の詳細については、「[更新プログラムが置き換えられている](/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer)」を参照してください。
 
 ### <a name="cause"></a>原因
 
@@ -156,7 +156,7 @@ Automation リソース プロバイダーを登録するには、Azure portal �
 
 4. リソース プロバイダーの一覧で、Microsoft.Automation リソース プロバイダーが登録されていることを確認します。
 
-5. 一覧に表示されていない場合は、「[リソース プロバイダーの登録エラーの解決](/azure/azure-resource-manager/resource-manager-register-provider-errors)」の手順に従って、Microsoft.Automation プロバイダーを登録します。
+5. 一覧に表示されていない場合は、「[リソース プロバイダーの登録エラーの解決](../../azure-resource-manager/templates/error-register-resource-provider.md)」の手順に従って、Microsoft.Automation プロバイダーを登録します。
 
 ## <a name="scenario-scheduled-update-with-a-dynamic-schedule-missed-some-machines"></a><a name="scheduled-update-missed-machines"></a>シナリオ:動的スケジュールでスケジュールされた更新で一部のマシンが見つからない
 
@@ -178,7 +178,7 @@ Automation リソース プロバイダーを登録するには、Azure portal �
 
 サブスクリプションが Automation リソース プロバイダー用に構成されていない場合、そのサブスクリプション内のマシンの情報をクエリまたはフェッチすることはできません。 サブスクリプションの登録を確認するには、次の手順のようにします。
 
-1. [Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal) で、Azure サービス一覧にアクセスします。
+1. [Azure portal](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) で、Azure サービス一覧にアクセスします。
 
 2. **[すべてのサービス]** を選択し、[全般] サービス グループで **[サブスクリプション]** を選択します。 
 
@@ -188,7 +188,7 @@ Automation リソース プロバイダーを登録するには、Azure portal �
 
 5. Microsoft.Automation リソース プロバイダーが登録されていることを確認します。
 
-6. 一覧に表示されていない場合は、「[リソース プロバイダーの登録エラーの解決](/azure/azure-resource-manager/resource-manager-register-provider-errors)」の手順に従って、Microsoft.Automation プロバイダーを登録します。
+6. 一覧に表示されていない場合は、「[リソース プロバイダーの登録エラーの解決](../../azure-resource-manager/templates/error-register-resource-provider.md)」の手順に従って、Microsoft.Automation プロバイダーを登録します。
 
 #### <a name="machines-not-available-or-not-tagged-correctly-when-schedule-executed"></a>スケジュールの実行時に、マシンが使用できない、またはマシンに正しくタグが付けられていない
 
@@ -196,9 +196,9 @@ Automation リソース プロバイダーを登録するには、Azure portal �
 
 1. Azure portal で、Automation アカウントを開き、 **[更新の管理]** を選択します。
 
-2. [Update Management の履歴](https://docs.microsoft.com/azure/automation/manage-update-multi#view-results-of-an-update-deployment)を調べて、更新プログラムのデプロイが実行された正確な時刻を確認します。 
+2. [Update Management の履歴](../manage-update-multi.md#view-results-of-an-update-deployment)を調べて、更新プログラムのデプロイが実行された正確な時刻を確認します。 
 
-3. Update Management によって検出されない疑いのあるマシンについて、Azure Resource Graph (ARG) を使用して[マシンの変更を特定](https://docs.microsoft.com/azure/governance/resource-graph/how-to/get-resource-changes#find-detected-change-events-and-view-change-details)します。 
+3. Update Management によって検出されない疑いのあるマシンについて、Azure Resource Graph (ARG) を使用して[マシンの変更を特定](../../governance/resource-graph/how-to/get-resource-changes.md#find-detected-change-events-and-view-change-details)します。 
 
 4. 更新プログラムのデプロイが実行される前のある程度の期間 (1 日など) について、変更を検索します。
 
@@ -226,13 +226,13 @@ Automation リソース プロバイダーを登録するには、Azure portal �
 
 #### <a name="incorrect-access-on-selected-scopes"></a>選択したスコープに対する正しくないアクセス権
 
-Azure portal には、ユーザーが特定のスコープで書き込みアクセス権を持っているマシンのみが表示されます。 スコープに対する適切なアクセス権がない場合は、「[チュートリアル: RBAC と Azure portal を使用して Azure リソースへのアクセス権をユーザーに付与する](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)」を参照してください。
+Azure portal には、ユーザーが特定のスコープで書き込みアクセス権を持っているマシンのみが表示されます。 スコープに対する適切なアクセス権がない場合は、「[チュートリアル: RBAC と Azure portal を使用して Azure リソースへのアクセス権をユーザーに付与する](../../role-based-access-control/quickstart-assign-role-user-portal.md)」を参照してください。
 
 #### <a name="arg-query-doesnt-return-expected-machines"></a>ARG クエリで予期されるマシンが返されない
 
 以下の手順のようにして、クエリが正常に機能しているかどうかを確認します。
 
-1. Azure portal の Resource Graph エクスプローラー ブレードで、次のように書式設定された ARG クエリを実行します。 このクエリでは、Update Management で動的グループを作成したときに選択したフィルターが模倣されます。 「[Update Management を利用して動的グループを使用する](https://docs.microsoft.com/azure/automation/automation-update-management-groups)」を参照してください。 
+1. Azure portal の Resource Graph エクスプローラー ブレードで、次のように書式設定された ARG クエリを実行します。 このクエリでは、Update Management で動的グループを作成したときに選択したフィルターが模倣されます。 「[Update Management を利用して動的グループを使用する](../automation-update-management-groups.md)」を参照してください。 
 
     ```kusto
     where (subscriptionId in~ ("<subscriptionId1>", "<subscriptionId2>") and type =~ "microsoft.compute/virtualmachines" and properties.storageProfile.osDisk.osType == "<Windows/Linux>" and resourceGroup in~ ("<resourceGroupName1>","<resourceGroupName2>") and location in~ ("<location1>","<location2>") )
@@ -267,7 +267,7 @@ Azure portal には、ユーザーが特定のスコープで書き込みアク�
 
 4. そのマシンにハイブリッド worker が存在することを確認します。
 
-5. マシンがハイブリッド worker として設定されていない場合は、「[Hybrid Runbook Worker を使用してデータ センターまたはクラウドのリソースを自動化する](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker)」の手順を使用して調整します。
+5. マシンがハイブリッド worker として設定されていない場合は、「[Hybrid Runbook Worker を使用してデータ センターまたはクラウドのリソースを自動化する](../automation-hybrid-runbook-worker.md)」の手順を使用して調整します。
 
 6. マシンを Hybrid Runbook Worker グループに参加させます。
 
@@ -343,7 +343,7 @@ The client has permission to perform action 'Microsoft.Compute/virtualMachines/w
 
 ### <a name="resolution"></a>解決方法
 
-次の回避策を使用して、これらの項目をスケジュールします。 スケジュールを作成するには、`ForUpdateConfiguration` パラメーターを指定して [New-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationschedule?view=azps-3.7.0) コマンドレットを使用します。 次に、[New-AzAutomationSoftwareUpdateConfiguration](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) コマンドレットを使用して、他のテナントのマシンを `NonAzureComputer` パラメーターに渡します。 以下の例は、その方法を示しています。
+次の回避策を使用して、これらの項目をスケジュールします。 スケジュールを作成するには、`ForUpdateConfiguration` パラメーターを指定して [New-AzAutomationSchedule](/powershell/module/az.automation/new-azautomationschedule?view=azps-3.7.0) コマンドレットを使用します。 次に、[New-AzAutomationSoftwareUpdateConfiguration](/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) コマンドレットを使用して、他のテナントのマシンを `NonAzureComputer` パラメーターに渡します。 以下の例は、その方法を示しています。
 
 ```azurepowershell-interactive
 $nonAzurecomputers = @("server-01", "server-02")
@@ -421,7 +421,7 @@ Windows では、更新プログラムは、使用可能になるとすぐに自
 
 Update Management クライアントの場合は、このキーを 3: `auto download but do not auto install` に設定することをお勧めします。
 
-詳細については、[自動更新の構成](https://docs.microsoft.com/windows/deployment/update/waas-wu-settings#configure-automatic-updates)に関する記事を参照してください。
+詳細については、[自動更新の構成](/windows/deployment/update/waas-wu-settings#configure-automatic-updates)に関する記事を参照してください。
 
 ## <a name="scenario-machine-is-already-registered-to-a-different-account"></a><a name="machine-already-registered"></a>シナリオ:マシンが違うアカウントに既に登録されている
 
@@ -575,9 +575,9 @@ HRESULT が表示される場合は、赤で表示された例外をダブルク
 
 ### <a name="machines-dont-install-updates"></a>マシンで更新プログラムがインストールされない
 
-マシン上で直接更新プログラムを実行してみてください。 マシンで更新プログラムを適用できない場合は、[トラブルシューティング ガイドで、発生する可能性のあるエラーの一覧](https://docs.microsoft.com/azure/automation/troubleshoot/update-management#hresult)をご覧ください。
+マシン上で直接更新プログラムを実行してみてください。 マシンで更新プログラムを適用できない場合は、[トラブルシューティング ガイドで、発生する可能性のあるエラーの一覧](#hresult)をご覧ください。
 
-更新プログラムがローカルで実行される場合は、[Update Management からの VM の削除](https://docs.microsoft.com/azure/automation/automation-onboard-solutions-from-browse#clean-up-resources)に関する記事のガイダンスに従って、マシン上でエージェントを削除し、再インストールしてみてください。
+更新プログラムがローカルで実行される場合は、[Update Management からの VM の削除](../automation-remove-vms-from-update-management.md)に関する記事のガイダンスに従って、マシン上でエージェントを削除し、再インストールしてみてください。
 
 ### <a name="i-know-updates-are-available-but-they-dont-show-as-available-on-my-machines"></a>更新プログラムを利用できることはわかっているが、自分のマシンに利用可能として表示されない
 
@@ -593,11 +593,11 @@ WSUS と SCCM 用にマシンが構成されているかどうかを確認する
 
 ### <a name="updates-show-as-installed-but-i-cant-find-them-on-my-machine"></a>インストールされると更新プログラムが表示されますが、コンピューター上で検索できない
 
-更新プログラムは多くの場合、他の更新プログラムによって置き換えられます。 詳細については、Windows Update のトラブルシューティング ガイドの「[更新プログラムは置き換えられました](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer)」を参照してください。
+更新プログラムは多くの場合、他の更新プログラムによって置き換えられます。 詳細については、Windows Update のトラブルシューティング ガイドの「[更新プログラムは置き換えられました](/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer)」を参照してください。
 
 ### <a name="installing-updates-by-classification-on-linux"></a>Linux での更新プログラムの分類別インストール
 
-分類 ([緊急更新プログラムとセキュリティ更新プログラム]) 別に Linux に更新プログラムを展開する場合、特に CentOS に関する重要な注意事項があります。 これらの制限事項は、[Update Management の概要に関するページ](https://docs.microsoft.com/azure/automation/automation-update-management#linux-2)に記載されています。
+分類 ([緊急更新プログラムとセキュリティ更新プログラム]) 別に Linux に更新プログラムを展開する場合、特に CentOS に関する重要な注意事項があります。 これらの制限事項は、[Update Management の概要に関するページ](../automation-update-management.md#linux)に記載されています。
 
 ### <a name="kb2267602-is-consistently-missing"></a>KB2267602 が常に欠落している
 

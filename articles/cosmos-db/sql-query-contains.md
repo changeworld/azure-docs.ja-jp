@@ -4,19 +4,19 @@ description: Azure Cosmos DB の CONTAINS SQL システム関数で、1 つ目�
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2020
+ms.date: 06/02/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: a08fe47122d7e9ddd1c9038bb5f15ebbb0be30fa
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 4877272fc2db521977a4111317118380399d27c5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848976"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84322705"
 ---
 # <a name="contains-azure-cosmos-db"></a>CONTAINS (Azure Cosmos DB)
 
- 1 つ目の文字列式に 2 つ目の文字列式が含まれているかどうかを示すブール値を返します。  
+1 つ目の文字列式に 2 つ目の文字列式が含まれているかどうかを示すブール値を返します。  
   
 ## <a name="syntax"></a>構文
   
@@ -75,6 +75,8 @@ SELECT CONTAINS("abc", "ab", false) AS c1, CONTAINS("abc", "A", false) AS c2, CO
 ```
 
 最初のクエリの方が 2 番目のクエリよりも多くの RU を使用すると思われます。これは、town のカーディナリティの方が country よりも多いためです。
+
+CONTAINS のプロパティ サイズが一部のドキュメントで 1 KB より大きい場合、クエリ エンジンはこれらのドキュメントを読み込む必要があります。 この場合、クエリ エンジンは、インデックスで CONTAINS を完全には評価できなくなります。 プロパティ サイズが 1 KB より大きいドキュメントが多数ある場合、CONTAINS の RU 料金は高くなります。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: efb873f8e66c3ab71b5b7345d776629fbe603af3
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 2d8d4c369cef8bf996628e8c89a424f04dcdbe71
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193417"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84888063"
 ---
 # <a name="object-replication-for-block-blobs-preview"></a>ブロック BLOB のオブジェクト レプリケーション (プレビュー)
 
@@ -44,7 +44,7 @@ ms.locfileid: "84193417"
 
 オブジェクト レプリケーションを構成すると、Azure Storage リソース プロバイダー経由でソース アカウントと宛先アカウントの両方にレプリケーション ポリシーが作成されます。 レプリケーション ポリシーは、ポリシー ID で識別されます。 レプリケーションを実行するには、ソースと宛先のアカウントのポリシーに、同じポリシー ID が設定されている必要があります。
 
-1 つのストレージ アカウントを、最大 2 つの宛先アカウントのソース アカウントとして使用できます。 ソースと宛先のアカウントがすべて異なるリージョンに存在していてもかまいません。 それぞれの宛先アカウントにデータをレプリケートするように、個別のレプリケーション ポリシーを構成できます。
+1 つのストレージ アカウントを、最大 2 つの宛先アカウントのソース アカウントとして使用できます。 また、宛先アカウントにはソース アカウントを最大 2 つまで含めることができます。 ソースと宛先のアカウントがすべて異なるリージョンに存在していてもかまいません。 それぞれの宛先アカウントにデータをレプリケートするように、個別のレプリケーション ポリシーを構成できます。
 
 ### <a name="replication-rules"></a>レプリケーション ルール
 

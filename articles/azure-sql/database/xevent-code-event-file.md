@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
-ms.date: 03/12/2019
-ms.openlocfilehash: f409a4c27e2b69993406f95301d21f05b547aed6
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 06/06/2020
+ms.openlocfilehash: 7c451deb04c9fd8b394512979668ad266cadf02d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84033913"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84485463"
 ---
 # <a name="event-file-target-code-for-extended-events-in-azure-sql-database"></a>Azure SQL Database の拡張イベントのためのイベント ファイル ターゲット コード
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -31,7 +31,6 @@ Microsoft SQL Server では、イベント出力をローカル ハード ドラ
 
 - PowerShell。クラウドで Azure Storage コンテナーを作成します。
 - Transact-SQL:
-  
   - イベント ファイル ターゲットに Azure Storage コンテナーを割り当てます。
   - イベント セッションを作成し、開始するなどを行います。
 
@@ -71,7 +70,7 @@ Microsoft SQL Server では、イベント出力をローカル ハード ドラ
 
    - セッションを妨げずにスクリプトを再実行するために、 **Add-AzureAccount** コマンドをコメントアウトする便利なオプションがあります。
 
-![Azure モジュールがインストールされ、スクリプトの実行準備が整っている PowerShell ISE。][30_powershell_ise]
+![Azure モジュールがインストールされ、スクリプトの実行準備が整っている PowerShell ISE。](./media/xevent-code-event-file/event-file-powershell-ise-b30.png)
 
 ### <a name="powershell-code"></a>PowerShell コード
 
@@ -232,6 +231,15 @@ Now shift to the Transact-SQL portion of the two-part code sample!';
 ```
 
 PowerShell スクリプトが終了したら、出力された名前付きの値を書き留めます。 後続の第 2 段階で、これらの値を使用するように Transact-SQL スクリプトを編集する必要があります。
+
+<!--
+TODO:   Consider whether the preceding PowerShell code example deserves to be updated to the latest package (AzureRM.SQL?).
+2020/June/06   Adding the !NOTE below about "ADLS Gen2 storage accounts".
+Related to   https://github.com/MicrosoftDocs/azure-docs/issues/56520
+-->
+
+> [!NOTE]
+> 前の PowerShell のコード例で、SQL 拡張イベントは ADLS Gen2 ストレージ アカウントと互換性がありません。
 
 ## <a name="phase-2-transact-sql-code-that-uses-azure-storage-container"></a>フェーズ 2:Azure Storage コンテナーを使用する Transact-SQL コード
 
@@ -514,6 +522,3 @@ Azure ストレージ サービスのアカウントとコンテナーに関す�
 - [レッスン 1:保存されているアクセス ポリシーと Shared Access Signature を Azure コンテナー上に作成する](https://msdn.microsoft.com/library/dn466430.aspx)
   - [レッスン 2:Shared Access Signature を使用して SQL Server 資格情報を作成する](https://msdn.microsoft.com/library/dn466435.aspx)
 - [Microsoft SQL Server の拡張イベント](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events)
-
-<!-- Image references. -->
-[30_powershell_ise]: ./media/xevent-code-event-file/event-file-powershell-ise-b30.png

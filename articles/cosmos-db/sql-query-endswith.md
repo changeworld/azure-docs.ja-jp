@@ -4,19 +4,19 @@ description: 1 つ目の文字列式が 2 つ目で終了しているかどう�
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2020
+ms.date: 06/02/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 0cd927af50eca04aa8162d9d8f292077d9e4165c
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 3d37786c7364b07228d1d8d6540e7b6d8a174eb5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83844966"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84322688"
 ---
 # <a name="endswith-azure-cosmos-db"></a>ENDSWITH (Azure Cosmos DB)
 
- 1 つ目の文字列式が 2 つ目の文字列で終了しているかどうかを示すブール値を返します。  
+1 つ目の文字列式が 2 つ目の文字列で終了しているかどうかを示すブール値を返します。  
   
 ## <a name="syntax"></a>構文
   
@@ -75,6 +75,8 @@ SELECT ENDSWITH("abc", "b", false) AS e1, ENDSWITH("abc", "bC", false) AS e2, EN
 ```
 
 最初のクエリの方が 2 番目のクエリよりも多くの RU を使用すると思われます。これは、town のカーディナリティの方が country よりも多いためです。
+
+EndsWith のプロパティ サイズが一部のドキュメントで 1 KB より大きい場合、クエリ エンジンはこれらのドキュメントを読み込む必要があります。 この場合、クエリ エンジンは、インデックスで EndsWith を完全には評価できなくなります。 プロパティ サイズが 1 KB より大きいドキュメントが多数ある場合、EndsWith の RU 料金は高くなります。
 
 ## <a name="next-steps"></a>次のステップ
 

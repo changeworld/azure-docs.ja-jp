@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: adsasine
 ms.openlocfilehash: 6ff33bd594181aabc4fd7d55ce33f780a0d06086
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74122194"
 ---
 # <a name="failover-and-patching-for-azure-cache-for-redis"></a>Azure Cache for Redis のフェールオーバーと修正プログラムの適用
@@ -65,7 +65,7 @@ Azure Cache for Redis サービスでは、お使いのキャッシュを最新�
 
 クライアント アプリケーションで見られるエラーの数は、フェールオーバー時にその接続で保留されていた操作の数によって異なります。 切断されたノード経由でルーティングされている接続で、エラーは発生します。 多くのクライアント ライブラリは、切断時に、タイムアウト例外、接続例外、またはソケット例外など、さまざまな種類のエラーをスローする場合があります。 例外の数と種類は、キャッシュで接続が閉じられたときの要求のコード パス内の場所によって異なります。 たとえば、要求を送信した操作が、フェールオーバーの発生で応答を受信しない場合、タイムアウト例外を取得する可能性があります。 接続が閉じられたオブジェクトは、再接続が正常に行われるまで、新しい要求で接続例外を受け取ります。
 
-ほとんどのクライアント ライブラリは、構成されている場合、キャッシュへの再接続を試みます。 ただし、予期しないバグによってライブラリ オブジェクトが回復不能な状態になることがあります。 エラーが事前構成された時間を超えて続く場合は、接続オブジェクトを再作成する必要があります。 Microsoft .NET およびその他のオブジェクト指向言語では、[Lazy\<T\> パターン](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#reconnecting-with-lazyt-pattern)を使用することで、アプリケーションを再起動せずに接続を再作成できます。
+ほとんどのクライアント ライブラリは、構成されている場合、キャッシュへの再接続を試みます。 ただし、予期しないバグによってライブラリ オブジェクトが回復不能な状態になることがあります。 エラーが事前構成された時間を超えて続く場合は、接続オブジェクトを再作成する必要があります。 Microsoft.NET やその他のオブジェクト指向言語では、アプリケーションの再起動を必要としない接続の再作成は [Lazy\<T\> パターン](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#reconnecting-with-lazyt-pattern)を使用して実現できます。
 
 ### <a name="how-do-i-make-my-application-resilient"></a>アプリケーションの回復性を高める方法
 

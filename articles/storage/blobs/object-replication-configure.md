@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/28/2020
+ms.date: 06/16/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 89a4c934a0245c39f6015a43d9de16db800691d8
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 9cb9f1a33c37487f4bfb1419d45d4e42a862d815
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170632"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84888111"
 ---
 # <a name="configure-object-replication-for-block-blobs-preview"></a>ブロック BLOB のオブジェクト レプリケーションを構成する (プレビュー)
 
@@ -28,7 +28,9 @@ ms.locfileid: "84170632"
 
 オブジェクト レプリケーションを構成する前に、ソースと宛先のストレージ アカウントがまだ存在しない場合は作成します。 どちらのアカウントも汎用 v2 ストレージ アカウントである必要があります。 詳細については、[Azure Storage アカウントの作成](../common/storage-account-create.md)に関するページを参照してください。
 
-また、次の機能のプレビューに登録していることを確認します。
+1 つのストレージ アカウントを、最大 2 つの宛先アカウントのソース アカウントとして使用できます。 また、宛先アカウントにはソース アカウントを最大 2 つまで含めることができます。 ソースと宛先のアカウントがすべて異なるリージョンに存在していてもかまいません。 それぞれの宛先アカウントにデータをレプリケートするように、個別のレプリケーション ポリシーを構成できます。
+
+開始する前に、次の機能プレビューに登録していることを確認してください。
 
 - [オブジェクト レプリケーション (プレビュー)](object-replication-overview.md)
 - [BLOB のバージョン管理 (プレビュー)](versioning-overview.md)
@@ -41,7 +43,7 @@ Azure portal でオブジェクト レプリケーションを構成する前に
 Azure portal でレプリケーション ポリシーを作成するには、次の手順を実行します。
 
 1. Azure portal でソース ストレージ アカウントに移動します。
-1. **[設定]** で、 **[オブジェクト レプリケーション]** を選択します。
+1. **[Blob service]** で、 **[オブジェクト レプリケーション]** を選択します。
 1. **[レプリケーションのセットアップ]** を選択します。
 1. 宛先サブスクリプションとストレージ アカウントを選択します。
 1. **[Container pairs]\(コンテナー ペア\)** セクションで、ソース アカウントからソース コンテナーを選択し、宛先アカウントから宛先コンテナーを選択します。 1 つのレプリケーション ポリシーにつき最大 10 個のコンテナー ペアを作成できます。

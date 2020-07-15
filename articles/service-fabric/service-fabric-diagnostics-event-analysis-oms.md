@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: srrengar
 ms.openlocfilehash: 40dd930aa21e3056d5ecc908359215d6874ed8ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75464743"
 ---
 # <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Azure Monitor ログを使用したイベントの分析と視覚化
@@ -34,7 +34,7 @@ Azure Monitor ログによってデータが受信されたら、Azure に用意
 
 [Azure Portal](https://portal.azure.com) で、Service Fabric Analytics ソリューションを作成したリソース グループに移動します。
 
-リソースの [**ServiceFabric\<nameOfOMSWorkspace\>** ] を選択します。
+リソース **ServiceFabric\<nameOfOMSWorkspace\>** を選択します。
 
 `Summary` に、有効なソリューションごとのグラフ形式のタイルが表示されます (Service Fabric のタイルも含まれています)。 **[Service Fabric]** グラフをクリックして、Service Fabric Analytics ソリューションを継続します。
 

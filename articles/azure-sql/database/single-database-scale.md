@@ -11,19 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/30/2020
-ms.openlocfilehash: cbd15e2356e9ceb781d7314cb9a0114d2d47d412
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 84e9593884f40fce8affce628b7817c528b3c31d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84026453"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84343287"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Azure SQL Database で単一データベースのリソースをスケーリングする
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 この記事では、プロビジョニングされたコンピューター レベルで Azure SQL データベース用に使用できるコンピューティング リソースとストレージ リソースをスケーリングする方法について説明します。 また、[サーバーレス コンピューティング レベル](serverless-tier-overview.md)は、コンピューティングの自動スケーリングと、使用されたコンピューティングの 1 秒あたりの請求額を提供します。
 
-最初に仮想コア数または DTU 数を選択すると、[Azure portal](single-database-manage.md#azure-portal)、[Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1)、[PowerShell](/powershell/module/az.sql/set-azsqldatabase)、[Azure CLI](/cli/azure/sql/db#az-sql-db-update)、または [REST API](https://docs.microsoft.com/rest/api/sql/databases/update) を使い、実際のエクスペリエンスに基づいて、単一データベースを動的にスケールアップまたはスケールダウンできます。
+最初に仮想コア数または DTU 数を選択すると、[Azure portal](single-database-manage.md#the-azure-portal)、[Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1)、[PowerShell](/powershell/module/az.sql/set-azsqldatabase)、[Azure CLI](/cli/azure/sql/db#az-sql-db-update)、または [REST API](https://docs.microsoft.com/rest/api/sql/databases/update) を使い、実際のエクスペリエンスに基づいて、単一データベースを動的にスケールアップまたはスケールダウンできます。
 
 次のビデオでは、サービス レベルとコンピューティング サイズを動的に変更して単一データベースで使用可能な DTU を増やす方法を示します。
 
@@ -36,11 +35,11 @@ ms.locfileid: "84026453"
 
 サービス レベルまたはコンピューティング サイズの変更には、主に次の手順を実行するサービスが含まれます。
 
-1. データベース用に新しいコンピューティング インスタンスを作成する  
+1. データベース用に新しいコンピューティング インスタンスを作成する 
 
     要求されたサービス レベルとコンピューティング サイズを持つ新しいコンピューティング インスタンスが作成されます。 サービス レベルとコンピューティング サイズの変更の組み合わせの中には、新しいコンピューティング インスタンスにデータベースのレプリカを作成する必要があるものがあります。これにはデータのコピーも含まれ、全体の待機時間に大きく影響する場合があります。 いずれにしても、この手順の間、データベースはオンラインのままで、接続は元のコンピューティング インスタンスのデータベースに引き続き向けられます。
 
-2. 接続のルーティングを新しいコンピューティング インスタンスに切り替える
+2. 接続のルーティングを新しいコンピューティング インスタンスに切り替えます。
 
     元のコンピューティング インスタンス内のデータベースへの既存の接続が削除されます。 新しいコンピューティング インスタンス内のデータベースへの新しい接続が確立されます。 サービス レベルとコンピューティング サイズの一部の組み合わせの変更では、データベース ファイルがデタッチされ、切り替え時に再アタッチされます。  いずれにしても、切り替えにより、データベースが使用できなくなる短時間の中断が発生する場合があります。中断は通常は 30 秒未満で、多くの場合はほんの数秒です。 接続が削除されたときに長時間実行されているトランザクションがあると、切断されたトランザクションを復旧するために、この手順の所要時間が長くなる場合があります。 [高速データベースの復旧](../accelerated-database-recovery.md)により、長時間実行されているトランザクションの中断による影響を軽減できます。
 
@@ -78,7 +77,7 @@ WHERE s.type_desc IN ('ROWS', 'LOG');
 
 サービス レベルの変更またはコンピューティングの再スケーリング操作を取り消すことができます。
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="the-azure-portal"></a>Azure ポータル
 
 [データベースの概要] ブレードで、 **[通知]** に移動し、進行中の操作があることを示すタイルをクリックします。
 
@@ -115,13 +114,13 @@ else {
 
 ## <a name="billing"></a>課金
 
-使用状況やデータベースがアクティブであったのが 1 時間未満であったことに関係なく、データベースが存在していた 1 時間単位で、その時間に使用された最上位のサービス階層とコンピューティング サイズで課金は行われます。 たとえば、Single Database を作成し、それを 5 分後に削除した場合、請求書にはデータベース時間として 1 時間の請求が表示されます。
+使用状況や、データベースのアクティブな期間が 1 時間未満だったかどうかには関係なく、データベースが存在する 1 時間ごとに、その 1 時間の間に適用された最も高いサービス レベル + コンピューティング サイズを使用して課金されます。 たとえば、Single Database を作成し、それを 5 分後に削除した場合、請求書にはデータベース時間として 1 時間の請求が表示されます。
 
 ## <a name="change-storage-size"></a>ストレージ サイズの変更
 
 ### <a name="vcore-based-purchasing-model"></a>仮想コアベースの購入モデル
 
-- ストレージは、データ ストレージの最大サイズの上限に達するまで、1 GB ずつ増分しプロビジョニングできます。 構成可能な最小データ ストレージは 1 GB です。 リソース制限のドキュメント ページにて、[単一データベース](resource-limits-vcore-single-databases.md)および[エラスティック プール](resource-limits-vcore-elastic-pools.md)の各サービス目標におけるデータ ストレージの最大サイズの制限をご確認ください。
+- ストレージは、1 GB の増分値を使用して、データ ストレージの最大サイズの上限までプロビジョニングできます。 構成可能な最小データ ストレージは 1 GB です。 リソース制限のドキュメント ページにて、[単一データベース](resource-limits-vcore-single-databases.md)および[エラスティック プール](resource-limits-vcore-elastic-pools.md)の各サービス目標におけるデータ ストレージの最大サイズの制限をご確認ください。
 - 単一データベースのストレージは、[Azure portal](https://portal.azure.com)、[Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1)、[PowerShell](/powershell/module/az.sql/set-azsqldatabase)、[Azure CLI](/cli/azure/sql/db#az-sql-db-update)、または [REST API](https://docs.microsoft.com/rest/api/sql/databases/update) を使って最大サイズを増減してプロビジョニングできます。 バイトで指定する最大サイズの値は、1 GB (1073741824 バイト) の倍数である必要があります。
 - データベースのデータ ファイルに格納できるデータ量は、データ ストレージに構成されている最大サイズによって制限されます。 Azure SQL Database では、この記憶域のほかに 30% さらに多いストレージを、トランザクション ログで使用するために自動的に割り当てます。
 - Azure SQL Database では、`tempdb` データベースの仮想コアごとに 32 GB が自動的に割り当てられます。 `tempdb` は、すべてのサービス レベルのローカル SSD ストレージにあります。
@@ -147,12 +146,13 @@ else {
 
 現在、1 TB を超える Premium レベルのストレージは、中国東部、中国北部、ドイツ中部、ドイツ北東部、米国中西部、US DoD の各リージョンと、US Gov 中部を除くすべてのリージョンで利用できます。 これらのリージョンでは、Premium レベルのストレージの最大容量は 1 TB です。 最大サイズが 1 TB を超える P11 および P15 データベースには、次の考慮事項と制限事項が適用されます。
 
-- P11 または P15 のデータベースの最大サイズが 1 TB を超える値に設定されていた場合、P11 または P15 のデータベースにしか復元またはコピーできません。  その後、再スケーリング操作の時に割り当てられた領域の量が新しいコンピューティング サイズの最大サイズ制限を超えなければ、データベースを異なるコンピューティング サイズに再スケーリングすることができます。
+- P11 または P15 のデータベースの最大サイズが 1 TB を超える値に設定されていた場合、P11 または P15 のデータベースにしか復元またはコピーできません。  その後、再スケーリング操作の時点で割り当てられた領域の量が新しいコンピューティング サイズの最大サイズの上限を超えなければ、データベースを異なるコンピューティング サイズに再スケーリングできます。
 - アクティブ geo レプリケーションのシナリオの場合:
-  - geo レプリケーションのリレーションシップの設定:プライマリ データベースが P11 または P15 の場合は、セカンダリも P11 または P15 である必要があります。つまり、下位のコンピューティング サイズは、1 TB を超えるサイズをサポートできないため、セカンダリとして拒否されます。
-  - geo レプリケーションのリレーションシップでのプライマリ データベースのアップグレード:プライマリ データベースで最大サイズを 1 TB 超に変更すると、セカンダリ データベースでも同じ変更がトリガーされます。 プライマリに対する変更を有効にするには、両方のアップグレードが正常に完了する必要があります。 1 TB を超えるオプションに関するリージョンの制限が適用されます。 1 TB 超をサポートしていないリージョンにセカンダリが存在する場合、プライマリはアップグレードされません。
-- 1 TB を超える P11/P15 データベースの読み込みに Import/Export サービスを使うことはサポートされていません。 SqlPackage.exe を使用して、データを[インポート](database-import.md)および[エクスポート](database-export.md)してください。
+  - geo レプリケーションのリレーションシップの設定:プライマリ データベースが P11 または P15 である場合は、セカンダリも P11 または P15 である必要があります。 コンピューティング サイズが小さい場合は、1 TB を超える領域をサポートできないため、セカンダリとして拒否されます。
+  - geo レプリケーションのリレーションシップでのプライマリ データベースのアップグレード:プライマリ データベースで最大サイズを 1 TB 超に変更すると、セカンダリ データベースでも同じ変更がトリガーされます。 プライマリに対する変更を有効にするには、両方のアップグレードが正常に完了する必要があります。 1 TB を超えるオプションに関するリージョンの制限が適用されます。 セカンダリが 1 TB を超える領域をサポートしないリージョンにある場合、プライマリはアップグレードされません。
+- 1 TB を超える P11/P15 データベースの読み込みに Import/Export サービスを使用することはサポートされていません。 SqlPackage.exe を使用して、データを[インポート](database-import.md)および[エクスポート](database-export.md)してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 全体的なリソースの制限については、[Azure SQL Database の仮想コアベースのリソース制限 - 単一データベース](resource-limits-vcore-single-databases.md)および [Azure SQL Database の DTU ベースのリソース制限 - 単一データベース](resource-limits-dtu-single-databases.md)に関するページを参照してください。
+ 

@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 415f76fc7c8b52a79bc864e61e1f85759e3f5d1f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 523fd3103585865a969f6463b3dc41fe362b9130
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84028733"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84324727"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database-azure-sql-database"></a>チュートリアル:geo 分散型データベースを実装する (Azure SQL Database)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -42,8 +42,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 - [Azure PowerShell](/powershell/azureps-cmdlets-docs)
 - Azure SQL Database 内の単一データベース。 次の方法で作成します。
-  - [ポータル](single-database-create-quickstart.md)
-  - [CLI](az-cli-script-samples-content-guide.md)
+  - [Azure Portal](single-database-create-quickstart.md)
+  - [Azure CLI](az-cli-script-samples-content-guide.md)
   - [PowerShell](powershell-script-content-guide.md)
 
   > [!NOTE]
@@ -92,7 +92,7 @@ Get-AzSqlDatabase -ResourceGroupName $resourceGroup -ServerName $server -Databas
     Add-AzSqlDatabaseToFailoverGroup -ResourceGroupName $resourceGroup -ServerName $server -FailoverGroupName $failoverGroup
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 > [!IMPORTANT]
 > `az login` を実行して Azure にサインインします。
@@ -344,7 +344,7 @@ geo レプリケーションの設定は、Azure portal でデータベースを
     -ServerName $server -FailoverGroupName $failoverGroup
    ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 次のコマンドを使用して、テスト中にディザスター リカバリー サーバーのロールを確認することができます。
 
@@ -370,7 +370,7 @@ az sql failover-group show --name $failoverGroup --resource-group $resourceGroup
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure SQL Database とアプリケーションをリモート リージョンにフェールオーバーするよう構成し、フェールオーバー計画をテストしました。 以下の方法を学習しました。
+このチュートリアルでは、Azure SQL Database 内のデータベースとアプリケーションをリモート リージョンにフェールオーバーするように構成し、フェールオーバー計画をテストしました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 >
@@ -378,7 +378,7 @@ az sql failover-group show --name $failoverGroup --resource-group $resourceGroup
 > - SQL Database 内のデータベースを照会する Java アプリケーションを実行する
 > - [テスト フェールオーバー]
 
-Azure SQL Managed Instance をフェールオーバー グループに追加する方法については、次のチュートリアルに進んでください。
+Azure SQL Managed Instance のインスタンスをフェールオーバー グループに追加する方法については、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [Azure SQL Managed Instance をフェールオーバー グループに追加する](../managed-instance/failover-group-add-instance-tutorial.md)
+> [Azure SQL Managed Instance のインスタンスをフェールオーバー グループに追加する](../managed-instance/failover-group-add-instance-tutorial.md)

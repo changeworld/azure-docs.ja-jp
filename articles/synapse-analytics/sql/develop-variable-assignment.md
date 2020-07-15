@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: b2a596b71ee7e5f58e01d5bc10b330f6f54a69d2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 91e251c8274ad85fcb0b3a65a3bdbcc660ceba00
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81426659"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85101003"
 ---
 # <a name="assigning-variables-with-synapse-sql"></a>変数への Synapse SQL の代入
 
@@ -37,7 +37,7 @@ DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 
 ;
 ```
 
-同じ DECLARE ステートメントで変数を初期化して使用することはできません。 説明のため、次の例では、同じ DECLARE ステートメントで *@p1* の初期化と使用の両方が行われます。このようなステートメントは使用できません。 次の例は、エラーが発生します。
+同じ DECLARE ステートメントで変数を初期化して使用することはできません。 たとえば、次の例は、 *\@p1* が同じ DECLARE ステートメントで初期化して使用されているため許可されません。 次の例は、エラーが発生します。
 
 ```sql
 DECLARE @p1 int = 0

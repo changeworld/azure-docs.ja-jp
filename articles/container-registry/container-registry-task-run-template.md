@@ -4,10 +4,10 @@ description: Azure Resource Manager テンプレートを使用して、イメ�
 ms.topic: article
 ms.date: 04/22/2020
 ms.openlocfilehash: 7ad40d2e925d5e1443af9bce4115d45b0e8c06e1
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82927770"
 ---
 # <a name="run-acr-tasks-using-resource-manager-templates"></a>Resource Manager テンプレートを使用して ACR タスクを実行する
@@ -187,7 +187,7 @@ az role assignment create \
 |userAssignedIdentity |このタスクで有効にするユーザー割り当て ID のリソース ID|
 |customRegistryIdentity | カスタム レジストリでの認証に使用される、タスクで有効にするユーザー割り当て ID のクライアント ID |
 |customRegistry |タスクでアクセスするカスタム レジストリのログイン サーバー名 (たとえば *mybaseregistry.azurecr.io*)|
-|sourceLocation     |ビルド タスクのリモート コンテキスト (たとえば *https://github.com/\<your-GitHub-ID\>/acr-build-helloworld-node* )。 |
+|sourceLocation     |ビルド タスクのリモート コンテキスト (たとえば *https://github.com/\<your-GitHub-ID\> /acr-build-helloworld-node*)。 |
 |dockerFilePath | イメージのビルドに使用する、リモート コンテキストの Dockerfile へのパス |
 
 ### <a name="deploy-the-template"></a>テンプレートのデプロイ

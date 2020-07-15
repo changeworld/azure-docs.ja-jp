@@ -15,16 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 3acc2c271e590bddb13aaa01498f404da4340036
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a8aaa82a3913bcafbe8f86b85d63c39d44f08ac9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77058446"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84323758"
 ---
 # <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>チュートリアル:Dropbox for Business を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルの目的は、ユーザーまたはグループを Dropbox for Business に自動的にプロビジョニングおよびプロビジョニング解除するよう Azure AD を構成するために、Dropbox for Business と Azure Active Directory (Azure AD) で実行される手順を示すことです。
+
+> [!IMPORTANT]
+> Microsoft と Dropbox は、2021 年 4 月 1 日付けで古くなった Dropbox 統合を廃止します。 サービスの中断を回避するには、グループをサポートする新しい Dropbox 統合に移行することをお勧めします。 新しい Dropbox 統合に移行するには、次の手順を使用して、Azure AD テナントでのプロビジョニング用に Dropbox の新しいインスタンスを追加して構成します。 新しい Dropbox 統合を構成したら、以前の Dropbox 統合でのプロビジョニングを無効にして、プロビジョニングの競合を回避します。
 
 > [!NOTE]
 > このチュートリアルでは、Azure AD ユーザー プロビジョニング サービスの上にビルドされるコネクタについて説明します。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)」を参照してください。

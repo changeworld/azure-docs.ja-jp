@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: victorh
 ms.openlocfilehash: e1afc389508eb75313d046b759bcc9c03a50daad
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83648410"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Application Gateway による正常性監視の概要
@@ -97,7 +97,7 @@ Application Gateway のすべてのインスタンスは、互いに独立して
 
 > [!IMPORTANT]
 > Application Gateway を単一のサイトで構成する場合、既定ではホスト名は "127.0.0.1" と指定する必要があります (カスタム プローブで構成する場合は除く)。
-> プローブは、\<protocol\>://\<host\>:\<port\>\<path\> に送信されます。 使用されるポートは、バックエンドの HTTP 設定で定義されているものと同じポートになります。
+> 参考までに、カスタム プローブは \<protocol\>://\<host\>:\<port\>\<path\> に送信されます。 使用されるポートは、バックエンドの HTTP 設定で定義されているものと同じポートになります。
 
 ## <a name="nsg-considerations"></a>NSG に関する考慮事項
 

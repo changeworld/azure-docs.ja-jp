@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: f5cc4339d7d6dce6d49c8d3eb744fca7fa5774d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8ed9e23b178b8eeefbd3c3a690491124e6901180
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240426"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85112924"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Azure Cosmos DB でのオンライン バックアップとオンデマンドのデータ復元
 
@@ -34,7 +34,7 @@ Azure Cosmos DB では、データだけでなく、データのバックアッ�
 
 次の図は、3 つのプライマリ物理パーティションがすべて米国西部にある Azure Cosmos コンテナーを、米国西部のリモートの Azure Blob Storage アカウントにバックアップした後、米国東部にレプリケートするようすを示しています。
 
-![GRS Azure Storage 内のすべての Cosmos DB エンティティの定期的な完全バックアップ](./media/online-backup-and-restore/automatic-backup.png)
+:::image type="content" source="./media/online-backup-and-restore/automatic-backup.png" alt-text="GRS Azure Storage 内のすべての Cosmos DB エンティティの定期的な完全バックアップ" border="false":::
 
 ## <a name="options-to-manage-your-own-backups"></a>独自のバックアップを管理するためのオプション
 

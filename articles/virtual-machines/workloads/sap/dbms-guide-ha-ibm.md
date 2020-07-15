@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 03/06/2020
 ms.author: juergent
 ms.openlocfilehash: a9041b373c215ac226764b737ee3bf35b008e5db
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82978384"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-suse-linux-enterprise-server-with-pacemaker"></a>Pacemaker による SUSE Linux Enterprise Server 上の Azure VM での IBM Db2 LUW の高可用性
@@ -541,7 +541,7 @@ SAP システムにおける最初の状態は、次のイメージに示され�
 > テストを開始する前に、次のことを確認します。
 > * Pacemaker に失敗したアクションがない (crm status)。
 > * 場所の制約 (移行テストの残り) がない
-> * IBM Db2 HADR 同期が動作している。 ユーザー db2\<sid> で確認します。 <pre><code>db2pd -hadr -db \<DBSID></code></pre>
+> * IBM Db2 HADR 同期が動作している。 ユーザー db2\<sid> で確認します <pre><code>db2pd -hadr -db \<DBSID></code></pre>
 
 
 次のコマンドを実行して、プライマリ Db2 データベースを実行しているノードを移行します。

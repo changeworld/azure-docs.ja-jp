@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: c232ab06d2b3a28dad7ae98a8f22f457778fd3e6
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: b138d93b400c16837c250ede1e264b54a851327c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83874084"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84488751"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Azure Stream Analytics と Azure Machine Learning の統合 (プレビュー)
 
@@ -24,7 +24,7 @@ ms.locfileid: "83874084"
 
 1. Azure Machine Learning を使用して、[モデルを Web サービスとしてデプロイ](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)します。
 
-2. スコアリング スクリプトには、スキーマ仕様を生成するために Azure Machine Learning によって使用される[サンプルの入力と出力](../machine-learning/how-to-deploy-and-where.md#example-entry-script)が必要です。 Stream Analytics は、スキーマを使用して Web サービスの関数シグネチャを理解します。
+2. スコアリング スクリプトには、スキーマ仕様を生成するために Azure Machine Learning によって使用される[サンプルの入力と出力](../machine-learning/how-to-deploy-and-where.md#example-entry-script)が必要です。 Stream Analytics は、スキーマを使用して Web サービスの関数シグネチャを理解します。 この[サンプルの Swagger 定義](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/AzureML/swagger-example.json)を、それが正しく設定されていることを確認するための参照として使用できます。
 
 3. Web サービスが JSON シリアル化データを受け入れて返すことを確認します。
 

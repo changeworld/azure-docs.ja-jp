@@ -2,13 +2,13 @@
 title: リソース ログの収集と分析
 description: 認証、イメージのプッシュ、イメージのプルなど、Azure Container Registry のリソース ログ イベントを記録および分析します。
 ms.topic: article
-ms.date: 01/03/2020
-ms.openlocfilehash: 00f9468721126bd166051df47cec1596356e9b54
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/01/2020
+ms.openlocfilehash: b41b1001a669fe42721471bc196e7628eabff983
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79409645"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84343185"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>診断の評価と監査のための Azure Container Registry ログ
 
@@ -24,12 +24,14 @@ Azure Monitor を使用してリソース ログ データを収集すると、�
 
 現在、イメージとその他の成果物に対して次のリポジトリレベル イベントがログに記録されています。
 
-* **プッシュ イベント**
-* **プル イベント**
-* **タグの解除イベント**
-* **削除イベント** (リポジトリの削除イベントを含む)
+* **プッシュ**
+* **プル**
+* **タグの解除**
+* **削除** (リポジトリの削除イベントを含む)
+* **タグの消去**および**マニフェストの消去**
 
-現在ログに記録されていないリポジトリレベル イベント: 消去イベント。
+> [!NOTE]
+> 消去イベントは、レジストリ[保持ポリシー](container-registry-retention-policy.md)が構成されている場合にのみ記録されます。
 
 ## <a name="registry-resource-logs"></a>レジストリのリソース ログ
 
@@ -83,16 +85,58 @@ Azure portal での Log Analytics の使用に関するチュートリアルに�
 
 ログ クエリの詳細については、「[Azure Monitor のログ クエリの概要](../azure-monitor/log-query/log-query-overview.md)」を参照してください。
 
-### <a name="additional-query-examples"></a>追加のクエリの例
+## <a name="query-examples"></a>クエリのサンプル
 
-#### <a name="100-most-recent-registry-events"></a>直近の 100 件のレジストリ イベント
+### <a name="error-events-from-the-last-hour"></a>過去 1 時間のエラー イベント
+
+```Kusto
+union Event, Syslog // Event table stores Windows event records, Syslog stores Linux records
+| where TimeGenerated > ago(1h)
+| where EventLevelName == "Error" // EventLevelName is used in the Event (Windows) records
+    or SeverityLevel== "err" // SeverityLevel is used in Syslog (Linux) records
+```
+
+### <a name="100-most-recent-registry-events"></a>直近の 100 件のレジストリ イベント
 
 ```Kusto
 ContainerRegistryRepositoryEvents
 | union ContainerRegistryLoginEvents
 | top 100 by TimeGenerated
-| project TimeGenerated, LoginServer , OperationName , Identity , Repository , DurationMs , Region , ResultType
+| project TimeGenerated, LoginServer, OperationName, Identity, Repository, DurationMs, Region , ResultType
 ```
+
+### <a name="identity-of-user-or-object-that-deleted-repository"></a>リポジトリを削除したユーザーまたはオブジェクトの ID
+
+```Kusto
+ContainerRegistryRepositoryEvents
+| where OperationName contains "Delete"
+| project LoginServer, OperationName, Repository, Identity, CallerIpAddress
+```
+
+### <a name="identity-of-user-or-object-that-deleted-tag"></a>タグを削除したユーザーまたはオブジェクトの ID
+
+```Kusto
+ContainerRegistryRepositoryEvents
+| where OperationName contains "Untag"
+| project LoginServer, OperationName, Repository, Tag, Identity, CallerIpAddress
+```
+
+### <a name="reposity-level-operation-failures"></a>リポジトリ レベルの操作エラー
+
+```kusto
+ContainerRegistryRepositoryEvents 
+| where ResultDescription contains "40"
+| project TimeGenerated, OperationName, Repository, Tag, ResultDescription
+```
+
+### <a name="registry-authentication-failures"></a>レジストリ認証エラー
+
+```kusto
+ContainerRegistryLoginEvents 
+| where ResultDescription != "200"
+| project TimeGenerated, Identity, CallerIpAddress, ResultDescription
+```
+
 
 ## <a name="additional-log-destinations"></a>追加のログの保存先
 

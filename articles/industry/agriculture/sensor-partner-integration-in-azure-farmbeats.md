@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 37a387b93f1c6b3796b66993405787cf43990bc4
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83684007"
 ---
 # <a name="sensor-partner-integration"></a>センサー パートナーの統合
@@ -101,7 +101,7 @@ Accept | 応答形式。 FarmBeats Datahub API の場合、形式は JSON です
 
 **API 要求**
 
-REST API 要求を行うには、HTTP (GET、POST、または PUT) メソッド、API サービスへの URL、リソース (クエリ、データ送信、更新、削除の対象となるリソース) の Uniform Resource Identifier (URI)、1 つ以上の HTTP 要求ヘッダーを組み合わせます。 API サービスの URL は、お客様が提供する API エンドポイントです。 次はその例です: https://\<Datahub Web サイトの名前>.azurewebsites.net
+REST API 要求を行うには、HTTP (GET、POST、または PUT) メソッド、API サービスへの URL、リソース (クエリ、データ送信、更新、削除の対象となるリソース) の Uniform Resource Identifier (URI)、1 つ以上の HTTP 要求ヘッダーを組み合わせます。 API サービスの URL は、お客様が提供する API エンドポイントです。 例として、 https://\<yourdatahub-website-name>.azurewebsites.net があります。
 
 必要に応じて、GET 呼び出しにクエリ パラメーターを追加して、応答のデータのフィルター処理、サイズ制限、並べ替えを行うことができます。
 

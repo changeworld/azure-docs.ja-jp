@@ -10,12 +10,12 @@ ms.author: daperlov
 ms.reviewer: ''
 manager: anandsub
 ms.date: 05/15/2020
-ms.openlocfilehash: 79b89c6a6a7598dd3fbdfc5030fd59fe1aab6625
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ac51fd63adcc0328ff67f5fbe13dbfdb768f4bfe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832784"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84343117"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Azure Data Factory でのビジュアルの作成
 
@@ -42,6 +42,12 @@ Azure Data Factory ユーザー インターフェイス エクスペリエン�
 ![作成キャンバス](media/author-visually/properties-pane.png)
 
 プロパティ ペインは、既定ではリソースの作成時にのみ表示されます。 編集するには、キャンバスの右上隅にあるプロパティ ペイン アイコンをクリックします。
+
+## <a name="management-hub"></a>管理ハブ
+
+Azure Data Factory UX の *[管理]* タブによってアクセスされる管理ハブは、データ ファクトリのグローバル管理アクションをホストするポータルです。 ここでは、データ ストアと外部コンピューティングへの接続、ソース管理の構成、およびトリガーの設定を管理できます。 詳細については、[管理ハブ](author-management-hub.md)の機能に関するページを参照してください。
+
+![リンクされたサービスの管理](media/author-management-hub/management-hub-linked-services.png)
 
 ## <a name="expressions-and-functions"></a>式と関数
 

@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: 770187693e5bac6e059dfd20455099fcc695b74b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ef746186717f3eb6bb93263c7f86c26606f65ea9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76715034"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84322517"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Azure Functions における Microsoft Graph のバインド
 
@@ -40,11 +40,11 @@ Microsoft Graph の拡張機能には、次のバインドが用意されてい�
 
 Microsoft Graph のバインドは、_バインド拡張機能_ から入手できます。 バインド拡張機能は、Azure Functions ランタイム向けのオプション コンポーネントです。 このセクションでは、Microsoft Graph と認証トークンの拡張機能を設定する方法を示します。
 
-### <a name="enabling-functions-20-preview"></a>Functions 2.0 プレビューを有効にする
+### <a name="enabling-functions-20"></a>Functions 2.0 を有効にする
 
-バインド拡張機能は、Azure Functions 2.0 プレビューでのみ使用できます。 
+バインド拡張機能は、Azure Functions 2.0 でのみ使用できます。 
 
-Functions ランタイムのプレビュー版の 2.0 バージョンを使用するように関数アプリを設定する方法については、「[How to target Azure Functions runtime versions](set-runtime-version.md)」(Azure Functions ランタイム バージョンをターゲットにする方法) を参照してください。
+Functions ランタイムの 2.0 バージョンを使用するように関数アプリを設定する方法については、「[How to target Azure Functions runtime versions](set-runtime-version.md)」(Azure Functions ランタイム バージョンをターゲットにする方法) を参照してください。
 
 ### <a name="installing-the-extension"></a>拡張機能のインストール
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/01/2020
+ms.date: 06/06/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 007d613a1f170a0ee278a838c92ade2fce9c6dec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7c292f939339add06168c55236f8666651e4aace
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80529199"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201278"
 ---
 # <a name="boolean-claims-transformations"></a>ブール値要求変換
 
@@ -36,7 +36,7 @@ ms.locfileid: "80529199"
 
 次の要求変換は、2 つのブール値 ClaimTypes (`isEmailNotExist` および `isSocialAccount`) を AND 演算する方法が示されています。 両方の入力要求の値が `true` である場合、出力要求 `presentEmailSelfAsserted` は `true` に設定されます。 ソーシャル アカウントの電子メールが空の場合、オーケストレーションのステップで、事前条件を使用してセルフアサート ページをプリセットできます。
 
-```XML
+```xml
 <ClaimsTransformation Id="CheckWhetherEmailBePresented" TransformationMethod="AndClaims">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="isEmailNotExist" TransformationClaimType="inputClaim1" />
@@ -48,7 +48,7 @@ ms.locfileid: "80529199"
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>例
+### <a name="example-of-andclaims"></a>Analytics の例
 
 - 入力要求:
     - **inputClaim1**: true
@@ -72,7 +72,7 @@ ms.locfileid: "80529199"
 
 次の要求変換は、`true` 値でブール値 ClaimType の値をチェックする方法を示しています。 `accountEnabled` ClaimType の値が false の場合、エラー メッセージがスローされます。
 
-```XML
+```xml
 <ClaimsTransformation Id="AssertAccountEnabledIsTrue" TransformationMethod="AssertBooleanClaimIsEqualToValue">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="accountEnabled" TransformationClaimType="inputClaim" />
@@ -85,7 +85,8 @@ ms.locfileid: "80529199"
 
 
 `login-NonInteractive` 検証技術プロファイルによって、`AssertAccountEnabledIsTrue` 要求変換が呼び出されます。
-```XML
+
+```xml
 <TechnicalProfile Id="login-NonInteractive">
   ...
   <OutputClaimsTransformations>
@@ -96,7 +97,7 @@ ms.locfileid: "80529199"
 
 セルフアサート技術プロファイルによって **login-NonInteractive** 検証技術プロファイルが呼び出されます。
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
   <Metadata>
     <Item Key="UserMessageIfClaimsTransformationBooleanValueIsNotEqual">Custom error message if account is disabled.</Item>
@@ -107,7 +108,7 @@ ms.locfileid: "80529199"
 </TechnicalProfile>
 ```
 
-### <a name="example"></a>例
+### <a name="example-of-assertbooleanclaimisequaltovalue"></a>AssertBooleanClaimIsEqualToValue の例
 
 - 入力要求:
     - **inputClaim**: false
@@ -124,10 +125,9 @@ ms.locfileid: "80529199"
 | InputParameter |valueToCompareTo | boolean | 比較される値 (true または false)。 |
 | OutputClaim | compareResult | boolean | この ClaimsTransformation が呼び出された後に生成される ClaimType。 |
 
-
 次の要求変換は、`true` 値でブール値 ClaimType の値をチェックする方法を示しています。 `IsAgeOver21Years` ClaimType の値が `true` と等しい場合、要求変換では `true` を返します。それ以外の場合は `false` を返します。
 
-```XML
+```xml
 <ClaimsTransformation Id="AssertAccountEnabled" TransformationMethod="CompareBooleanClaimToValue">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="IsAgeOver21Years" TransformationClaimType="inputClaim" />
@@ -141,7 +141,7 @@ ms.locfileid: "80529199"
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>例
+### <a name="example-of-comparebooleanclaimtovalue"></a>CompareBooleanClaimToValue の例
 
 - 入力要求:
     - **inputClaim**: false
@@ -149,8 +149,6 @@ ms.locfileid: "80529199"
     - **valueToCompareTo**: true
 - 出力要求:
     - **compareResult**: false
-
-
 
 ## <a name="notclaims"></a>NotClaims
 
@@ -163,7 +161,7 @@ ms.locfileid: "80529199"
 
 この要求変換を使用して、要求に対して論理否定を実行します。
 
-```XML
+```xml
 <ClaimsTransformation Id="CheckWhetherEmailBePresented" TransformationMethod="NotClaims">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="userExists" TransformationClaimType="inputClaim" />
@@ -174,7 +172,7 @@ ms.locfileid: "80529199"
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>例
+### <a name="example-of-notclaims"></a>NotClaims の例
 
 - 入力要求:
     - **inputClaim**: false
@@ -193,7 +191,7 @@ ms.locfileid: "80529199"
 
 次の要求変換は、2 つのブール値 ClaimTypes を `Or` 演算する方法が示されています。 いずれかの要求の値が `true` である場合、オーケストレーション ステップで、事前条件を使用してセルフアサート ページをプリセットできます。
 
-```XML
+```xml
 <ClaimsTransformation Id="CheckWhetherEmailBePresented" TransformationMethod="OrClaims">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="isLastTOSAcceptedNotExists" TransformationClaimType="inputClaim1" />
@@ -205,7 +203,7 @@ ms.locfileid: "80529199"
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>例
+### <a name="example-of-orclaims"></a>OrClaims の例
 
 - 入力要求:
     - **inputClaim1**: true

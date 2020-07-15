@@ -5,45 +5,56 @@ services: logic-apps
 ms.suite: integration
 ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/28/2020
+ms.date: 05/29/2020
 tags: connectors
-ms.openlocfilehash: a44e0e9f2427fc5fcb44a78fb0a1798b219f9200
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 9f3f361b3e9fafdb350f943c0a8adcd87fa06c78
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84249163"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84325135"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Azure Logic Apps で受信 HTTPS 要求を受信して応答する
 
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) および組み込みの Request トリガーと Response アクションを使用すると、受信 HTTPS 要求を受け取ってそれに応答する、自動化されたタスクおよびワークフローを作成することができます。 たとえば、次のようなロジック アプリを作成できます。
 
 * オンプレミス データベース内のデータに対する HTTPS 要求を受信して応答する。
+
 * 外部 Webhook イベントが発生したときにワークフローをトリガーする。
+
 * 別のロジック アプリからの HTTPS 呼び出しを受信して応答する。
 
 Request トリガーは、ロジック アプリへの受信呼び出しの承認のために [Azure Active Directory Open Authentication](../active-directory/develop/about-microsoft-identity-platform.md) (Azure AD OAuth) をサポートしています。 この認証を有効にする方法の詳細については、[Azure Logic Apps でのセキュリティで保護されたアクセスとデータ - Azure AD OAuth 認証を有効にする](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth)方法に関する記事を参照してください。
-
-> [!NOTE]
-> Request トリガーでは、受信呼び出しに対してトランスポート層セキュリティ (TLS) 1.2 *のみ*がサポートされます。 発信呼び出しでは、TLS 1.0、1.1、および 1.2 がサポートされます。 詳細については、[TLS 1.0 の問題の解決](https://docs.microsoft.com/security/solving-tls1-problem) を参照してください。
->
-> TLS ハンドシェイク エラーが発生する場合は、TLS 1.2 を使用していることを確認してください。 
-> 着信呼び出しの場合、サポートされている暗号スイートは次のとおりです。
->
-> * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
-> * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
-> * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-> * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-> * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
-> * TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
-> * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
-> * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション。 サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)できます。
 
 * [ロジック アプリ](../logic-apps/logic-apps-overview.md)に関する基本的な知識。 ロジック アプリを初めて使用する場合は、[初めてのロジック アプリを作成する方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)を学習してください。
+
+<a name="tls-support"></a>
+
+## <a name="transport-layer-security-tls"></a>トランスポート層セキュリティ (TLS)
+
+* 受信呼び出しでは、トランスポート層セキュリティ (TLS) 1.2 *のみ*をサポートしています。 TLS ハンドシェイク エラーが発生する場合は、TLS 1.2 を使用していることを確認してください。 詳細については、[TLS 1.0 の問題の解決](https://docs.microsoft.com/security/solving-tls1-problem) を参照してください。 送信呼び出しでは、ターゲット エンドポイントの機能に応じて TLS 1.0、1.1、1.2 をサポートしています。
+
+* 受信呼び出しでは、次の暗号スイートをサポートしています。
+
+  * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+
+  * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+
+  * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+
+  * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+
+  * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+
+  * TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+
+  * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+
+  * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
 <a name="add-request"></a>
 

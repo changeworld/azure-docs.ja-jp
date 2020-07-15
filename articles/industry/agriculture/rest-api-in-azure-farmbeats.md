@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
-ms.openlocfilehash: 717a09d8377a7b95fe24300cc65222f307e7419f
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: c3a70ed905edfcf1dc60e0a12f50aca19060230f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437522"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84488037"
 ---
 # <a name="references"></a>References
 
@@ -82,7 +82,7 @@ Accept | 応答形式。 Azure FarmBeats Datahub API の場合、形式は JSON 
 
 REST API 要求を行うには、HTTP (GET、POST、PUT、または DELETE) メソッド、API サービスの URL、(クエリ、データの送信、更新、または削除対象の) リソースの URI を結合し、1 つ以上の HTTP 要求ヘッダーを追加します。
 
-API サービスの URL は、Datahub の URL です。たとえば、 https://\<Datahub Web サイトの名前>.azurewebsites.net のようになります。
+API サービスの URL はデータ ハブの URL (例: https://\<yourdatahub-website-name>.azurewebsites.net) です。
 
 必要に応じて、GET 呼び出しにクエリ パラメーターを追加して、応答のデータのフィルター処理、サイズ制限、並べ替えを行うことができます。
 
@@ -165,6 +165,15 @@ Azure FarmBeats API は、Azure Active Directory のユーザーまたはアプ�
 4. Datahub Swagger (https://<yourdatahub>.azurewebsites.net/swagger/index.html) にアクセスし、次の手順を実行します。
     - **RoleAssignment API** に移動します。
     - POST を実行し、先ほど作成した **[オブジェクト ID]** の **RoleAssignment** オブジェクトを作成します。
+ 
+```json
+{
+  "roleDefinitionId": "a400a00b-f67c-42b7-ba9a-f73d8c67e433",
+  "objectId": "objectId from step 3 above",
+  "objectIdType": "ServicePrincipalId",
+  "tenantId": "tenant id of your Azure subscription"
+}
+```
 
   > [!NOTE]
   > ユーザーと Active Directory 登録の追加方法については、[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) に関する記事を参照してください。
