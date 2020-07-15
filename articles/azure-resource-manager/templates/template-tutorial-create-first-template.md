@@ -2,15 +2,15 @@
 title: チュートリアル - テンプレートの作成とデプロイ
 description: 初めての Azure Resource Manager テンプレートを作成します。 このチュートリアルでは、テンプレート ファイルの構文とストレージ アカウントのデプロイ方法について説明します。
 author: mumian
-ms.date: 05/29/2020
+ms.date: 06/10/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: dff1dd15f7f161f25ef7de54e36fa83e3e0036d2
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 1e286a3b59279ed9658a373210f1425ece05eff4
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235209"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102089"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>チュートリアル:初めての ARM テンプレートを作成してデプロイする
 
@@ -28,7 +28,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="editor"></a>エディター
 
-テンプレートは JSON ファイルです。 テンプレートを作成するには、適切な JSON エディターが必要です。 Visual Studio Code と Resource Manager Tools 拡張機能をお勧めします。 これらのツールをインストールする必要がある場合は、[Visual Studio Code を使って ARM テンプレートを作成する方法](use-vs-code-to-create-template.md)に関するページを参照してください。
+テンプレートは JSON ファイルです。 テンプレートを作成するには、適切な JSON エディターが必要です。 Visual Studio Code と Resource Manager Tools 拡張機能をお勧めします。 これらのツールをインストールする必要がある場合は、「[クイックスタート: Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
 
 ### <a name="command-line-deployment"></a>コマンド ライン デプロイ
 
@@ -37,6 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 - [Azure PowerShell をインストールするには](/powershell/azure/install-az-ps)
 - [Windows での Azure CLI のインストール](/cli/azure/install-azure-cli-windows)
 - [Linux での Azure CLI のインストール](/cli/azure/install-azure-cli-linux)
+- [macOS での Azure CLI のインストール](/cli/azure/install-azure-cli-macos)
 
 Azure PowerShell または Azure CLI をインストールした後で、初回サインインを行います。 ヘルプ情報については、[PowerShell でのサインイン](/powershell/azure/install-az-ps#sign-in)または [Azure CLI でのサインイン](/cli/azure/get-started-with-azure-cli#sign-in)に関するセクションを参照してください。
 

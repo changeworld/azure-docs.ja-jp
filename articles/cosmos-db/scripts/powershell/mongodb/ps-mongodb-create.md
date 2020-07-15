@@ -1,18 +1,18 @@
 ---
-title: Azure Cosmos DB の MongoDB 用 API でデータベースとコレクションを作成する PowerShell スクリプト
-description: Azure PowerShell スクリプト - Azure Cosmos DB MongoDB API のデータベースとコレクションを作成する
+title: Azure Cosmos MongoDB API のデータベースとコレクションを作成するための PowerShell スクリプト
+description: Azure PowerShell スクリプト - Azure Cosmos MongoDB API のデータベースとコレクションを作成する
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: sample
 ms.date: 05/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 806af217fe17402398888ec93521494b82c83d38
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 1c3e4816e5bf2d104557fa3ed5ef2923d075e237
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659968"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125568"
 ---
 # <a name="create-a-database-and-collection-for-azure-cosmos-db---mongodb-api"></a>Azure Cosmos DB - MongoDB API のデータベースとコレクションを作成する
 

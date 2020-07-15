@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: d5dde8c45331cf8c443aba86c96ba12c8277472c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 44262c30dc49182314fb70dbb814be25c49e9d50
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192486"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080008"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>HDInsight にストレージ アカウントを追加する
 
@@ -133,14 +133,6 @@ foreach ($name in $value ) { $name.Name.Split(".")[4]}
 
 > [!IMPORTANT]  
 > クラスターに接続されているプライマリ ストレージ アカウントのストレージ キーのローテーションはサポートされていません。
-
-### <a name="poor-performance"></a>パフォーマンスが低い
-
-ストレージ アカウントが HDInsight クラスターとは異なるリージョンにある場合は、パフォーマンスが低下することがあります。 別のリージョンのデータにアクセスすると、リージョンの Azure データ センター外にネットワーク トラフィックが送信されます。 パブリック インターネットを経由するため、待機時間が生じる可能性があります。
-
-### <a name="additional-charges"></a>追加料金が発生する
-
-ストレージ アカウントが HDInsight クラスターとは異なるリージョンにある場合は、Azure の課金にエグレス料金が追加されていることがあります。 データが地域データ センターを離れると、エグレス料金が適用されます。 この料金は、トラフィックが他のリージョンの別の Azure データ センター宛てであっても適用されます。
 
 ## <a name="next-steps"></a>次のステップ
 

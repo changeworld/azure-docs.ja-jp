@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/28/2020
-ms.openlocfilehash: cab996eb7c0bfccf31ed49294c6aa4b3e8cefc8f
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 06/23/2020
+ms.openlocfilehash: cf0c2c75b795fcca347439714e163d4022b79fa4
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780761"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261020"
 ---
 # <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>チュートリアル:.NET SDK を使用して Azure SQL データにインデックスを付ける
 
 Azure SQL データベースから検索可能なデータを抽出し、それを Azure Cognitive Search の検索インデックスに送信するように[インデクサー](search-indexer-overview.md)を構成します。 
 
-このチュートリアルでは、C# と [.NET SDK](https://aka.ms/search-sdk) を使用して次のタスクを実行します。
+このチュートリアルでは、C# と [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) を使用して次のタスクを実行します。
 
 > [!div class="checklist"]
 > * Azure SQL Database に接続するデータ ソースを作成する

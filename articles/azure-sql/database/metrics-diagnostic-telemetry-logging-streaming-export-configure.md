@@ -2,7 +2,7 @@
 title: メトリックとリソース ログのストリーミング エクスポートを構成する
 description: メトリックとリソース ログのストリーミング エクスポートを構成する方法について説明します。これには、Azure SQL Database および Azure SQL Managed Instance から任意の宛先へ送信されるインテリジェントな診断分析が含まれ、リソース使用率とクエリ実行統計の情報が格納されています。
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: seoapril2019
 ms.devlang: sqldbrb=2
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 04/06/2020
-ms.openlocfilehash: 87a30544378936f8408f187f6b9ad67edb8dce12
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 1a7a45433c2db71cbfaf16ab7107f233f1dd0eb9
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117753"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985518"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-and-sql-managed-instance-diagnostic-telemetry"></a>Azure SQL Database および SQL Managed Instance 診断テレメトリのストリーミング エクスポートを構成する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

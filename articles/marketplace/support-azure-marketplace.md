@@ -1,18 +1,18 @@
 ---
 title: Microsoft コマーシャル マーケットプレースのサポート - Azure Marketplace
 description: パートナー センター内の Azure Marketplace と AppSource のサポート情報とリンク
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 04/14/2020
-ms.author: dsindona
-ms.openlocfilehash: bd973a859ce1fa6a9ce5566b1403331988630960
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 1e4539dcec1f3f57f7fcc0ca0b8d8c266dc1bc99
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828102"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121505"
 ---
 # <a name="support-for-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースのサポート
 
@@ -43,10 +43,9 @@ Microsoft コマーシャル マーケットプレースの発行元としての
 | 電子メール： [gtm@microsoft.com](mailto:gtm@microsoft.com) | GTM の特典とプログラムに関する質問へのサポート。 | 営業時間は、太平洋標準時ゾーンで示されています。 |  
 | 電子メール： [cebrand@microsoft.com](mailto:cebrand@microsoft.com) | Azure ロゴの使用とブランド化に関する質問にお答えします。 |  |  
 
-
 ## <a name="next-steps"></a>次のステップ
 
-* [コマーシャル マーケットプレース公開ガイドのページ](https://docs.microsoft.com/azure/marketplace/)を参照してください。
-* 詳細については、「[パートナー センターでのコマーシャル マーケットプレース プログラムのサポート](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)」を参照してください。
+* [コマーシャル マーケットプレース公開ガイドのページ](index.yml)を参照してください。
+* 詳細については、「[パートナー センターでのコマーシャル マーケットプレース プログラムのサポート](partner-center-portal/support.md)」を参照してください。
 
 ---

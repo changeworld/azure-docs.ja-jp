@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: ac762450b19f2d3f82b6859de23e07afe2d10629
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 9e4050a4a75432e8bcc840a2406660dce268c5a4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780343"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84339554"
 ---
 # <a name="monitor-your-azure-stack-edge"></a>Azure Stack Edge を監視する
 

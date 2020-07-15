@@ -5,18 +5,18 @@ author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
 ms.date: 05/25/2020
-ms.openlocfilehash: 1a9e38d2718643212848105e09c60d93f497a34a
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: c125f11400a75d221a62aa62020001104e05d167
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193544"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134888"
 ---
 # <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>近接配置グループで実行されている Azure 仮想マシンを別のリージョンにレプリケートする
 
 この記事では、近接配置グループで実行されている仮想マシンをセカンダリ リージョンにレプリケート、フェールオーバー、およびフェールバックする方法について説明します。
 
-[近接配置グループ](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups-portal)は Azure 仮想マシンの論理的なグループ化機能であり、これを使用してアプリケーションに関連する VM 間のネットワーク待機時間を減らすことができます。 同じ近接配置グループ内にデプロイされている VM は、可能な限り物理的に接近させて配置されています。 近接配置グループが特に役立つのは、待機時間の影響を受けやすいワークロードの要件に対応する場合です。
+[近接配置グループ](../virtual-machines/windows/proximity-placement-groups-portal.md)は Azure 仮想マシンの論理的なグループ化機能であり、これを使用してアプリケーションに関連する VM 間のネットワーク待機時間を減らすことができます。 同じ近接配置グループ内にデプロイされている VM は、可能な限り物理的に接近させて配置されています。 近接配置グループが特に役立つのは、待機時間の影響を受けやすいワークロードの要件に対応する場合です。
 
 ## <a name="disaster-recovery-with-proximity-placement-groups"></a>近接配置グループでのディザスター リカバリー
 
@@ -33,21 +33,21 @@ ms.locfileid: "84193544"
 
 ## <a name="prerequisites"></a>前提条件
 
-1. Azure PowerShell Az モジュールがあることを確認します。 Azure PowerShell をインストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストールと構成のガイド](https://docs.microsoft.com/powershell/azure/install-az-ps)に関するページをご覧ください。
+1. Azure PowerShell Az モジュールがあることを確認します。 Azure PowerShell をインストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストールと構成のガイド](/powershell/azure/install-az-ps)に関するページをご覧ください。
 
 ## <a name="set-up-site-recovery-for-virtual-machines-in-proximity-placement-group"></a>近接配置グループ内の仮想マシンに対する Site Recovery の設定
 
 ### <a name="azure-to-azure"></a>Azure から Azure
 
-1. お使いのアカウントに[サインイン](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#sign-in-to-your-microsoft-azure-subscription)し、サブスクリプションを設定します。
-2. レプリケートする予定の仮想マシンの詳細を取得します ([こちら](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#get-details-of-the-virtual-machine-to-be-replicated)を参照)。
-3. Recovery Services のコンテナーを[作成](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-a-recovery-services-vault)し、コンテナーのコンテキストを[設定](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#set-the-vault-context)します。
-4. 仮想マシンのレプリケートを開始するようにコンテナーを準備します。 その際に、プライマリ リージョンと復旧リージョンの両方に対して[サービス ファブリック オブジェクト](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-a-site-recovery-fabric-object-to-represent-the-primary-source-region)を作成します。
-5. プライマリ ファブリックと復旧ファブリックの両方に対して Site Recovery 保護コンテナーを[作成](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-a-site-recovery-protection-container-in-the-primary-fabric)します。
-6. レプリケーション ポリシーを[作成](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-a-replication-policy)します。
-7. プライマリ保護コンテナーと復旧保護コンテナーの間の保護コンテナー マッピングを作成し (手順は[こちら](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-a-protection-container-mapping-between-the-primary-and-recovery-protection-container))、フェールバック用の保護コンテナー マッピングを作成します ([こちら](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover)を参照)。
-8. キャッシュ ストレージ アカウントを作成します (手順は[こちら](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-cache-storage-account-and-target-storage-account))。
-9. 必要なネットワーク マッピングを作成します ([こちら](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#create-network-mappings)を参照)。
+1. お使いのアカウントに[サインイン](./azure-to-azure-powershell.md#sign-in-to-your-microsoft-azure-subscription)し、サブスクリプションを設定します。
+2. レプリケートする予定の仮想マシンの詳細を取得します ([こちら](./azure-to-azure-powershell.md#get-details-of-the-virtual-machine-to-be-replicated)を参照)。
+3. Recovery Services のコンテナーを[作成](./azure-to-azure-powershell.md#create-a-recovery-services-vault)し、コンテナーのコンテキストを[設定](./azure-to-azure-powershell.md#set-the-vault-context)します。
+4. 仮想マシンのレプリケートを開始するようにコンテナーを準備します。 その際に、プライマリ リージョンと復旧リージョンの両方に対して[サービス ファブリック オブジェクト](./azure-to-azure-powershell.md#create-a-site-recovery-fabric-object-to-represent-the-primary-source-region)を作成します。
+5. プライマリ ファブリックと復旧ファブリックの両方に対して Site Recovery 保護コンテナーを[作成](./azure-to-azure-powershell.md#create-a-site-recovery-protection-container-in-the-primary-fabric)します。
+6. レプリケーション ポリシーを[作成](./azure-to-azure-powershell.md#create-a-replication-policy)します。
+7. プライマリ保護コンテナーと復旧保護コンテナーの間の保護コンテナー マッピングを作成し (手順は[こちら](./azure-to-azure-powershell.md#create-a-protection-container-mapping-between-the-primary-and-recovery-protection-container))、フェールバック用の保護コンテナー マッピングを作成します ([こちら](./azure-to-azure-powershell.md#create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover)を参照)。
+8. キャッシュ ストレージ アカウントを作成します (手順は[こちら](./azure-to-azure-powershell.md#create-cache-storage-account-and-target-storage-account))。
+9. 必要なネットワーク マッピングを作成します ([こちら](./azure-to-azure-powershell.md#create-network-mappings)を参照)。
 10. マネージド ディスクを使用する Azure 仮想マシンをレプリケートするには、次の PowerShell コマンドレットを使用します。 
 
 ```azurepowershell
@@ -61,7 +61,7 @@ $OSdiskId = $vm.StorageProfile.OsDisk.ManagedDisk.Id
 $RecoveryOSDiskAccountType = $vm.StorageProfile.OsDisk.ManagedDisk.StorageAccountType
 $RecoveryReplicaDiskAccountType = $vm.StorageProfile.OsDisk.ManagedDisk.StorageAccountType
 
-$OSDiskReplicationConfig = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $EastUSCacheStorageAccount.Id ` -DiskId $OSdiskId -RecoveryResourceGroupId  $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType ` -RecoveryTargetDiskAccountType $RecoveryOSDiskAccountType -RecoveryProximityPlacementGroupId $recPpg.Id
+$OSDiskReplicationConfig = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $EastUSCacheStorageAccount.Id ` -DiskId $OSdiskId -RecoveryResourceGroupId  $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType ` -RecoveryTargetDiskAccountType $RecoveryOSDiskAccountType
 
 # Data disk
 $datadiskId1 = $vm.StorageProfile.DataDisks[0].ManagedDisk.Id
@@ -91,8 +91,8 @@ $TempASRJob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -A
 Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $PrimaryProtContainer | Select FriendlyName, ProtectionState, ReplicationHealth
 ```
 
-11. テスト フェールオーバーを実行し、検証して、クリーンアップします (手順は[こちら](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#do-a-test-failover-validate-and-cleanup-test-failover))。
-12. フェールオーバーを実行します (手順は[こちら](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#fail-over-to-azure))。
+11. テスト フェールオーバーを実行し、検証して、クリーンアップします (手順は[こちら](./azure-to-azure-powershell.md#do-a-test-failover-validate-and-cleanup-test-failover))。
+12. フェールオーバーを実行します (手順は[こちら](./azure-to-azure-powershell.md#fail-over-to-azure))。
 13. 次の PowerShell コマンドレットを使用して、ソース リージョンを再保護します。
 
 ```azurepowershell
@@ -103,16 +103,16 @@ $WestUSCacheStorageAccount = New-AzStorageAccount -Name "a2acachestoragewestus" 
 #Use the recovery protection container, new cache storage account in West US and the source region VM resource group 
 Update-AzRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $ReplicationProtectedItem -AzureToAzure -ProtectionContainerMapping $WusToEusPCMapping -LogStorageAccountId $WestUSCacheStorageAccount.Id -RecoveryResourceGroupID $sourceVMResourcegroup.ResourceId -RecoveryProximityPlacementGroupId $vm.ProximityPlacementGroup.Id
 ```
-14. レプリケーションを無効にします (手順は[こちら](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#disable-replication))。
+14. レプリケーションを無効にします (手順は[こちら](./azure-to-azure-powershell.md#disable-replication))。
 
 ### <a name="vmware-to-azure"></a>VMware から Azure
 
-1. Azure へのディザスター リカバリーのために[オンプレミス VMware サーバーを準備](https://docs.microsoft.com/azure/site-recovery/vmware-azure-tutorial-prepare-on-premises)してください。
-2. お使いのアカウントにサインインし、[こちら](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#log-into-azure)で指定されているようにサブスクリプションを設定します。
-3. Recovery Services のコンテナーを[設定](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#set-up-a-recovery-services-vault)し、[コンテナーのコンテキストを設定](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#set-the-vault-context)します。
-4. コンテナーの登録を[検証](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#validate-vault-registration)します。
-5. レプリケーション ポリシーを[作成](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#create-a-replication-policy)します。
-6. vCenter Server を[追加](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#add-a-vcenter-server-and-discover-vms)し、仮想マシンを検出し、レプリケーション用にストレージ アカウントを[作成](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#create-storage-accounts-for-replication)します。
+1. Azure へのディザスター リカバリーのために[オンプレミス VMware サーバーを準備](./vmware-azure-tutorial-prepare-on-premises.md)してください。
+2. お使いのアカウントにサインインし、[こちら](./vmware-azure-disaster-recovery-powershell.md#log-into-azure)で指定されているようにサブスクリプションを設定します。
+3. Recovery Services のコンテナーを[設定](./vmware-azure-disaster-recovery-powershell.md#set-up-a-recovery-services-vault)し、[コンテナーのコンテキストを設定](./vmware-azure-disaster-recovery-powershell.md#set-the-vault-context)します。
+4. コンテナーの登録を[検証](./vmware-azure-disaster-recovery-powershell.md#validate-vault-registration)します。
+5. レプリケーション ポリシーを[作成](./vmware-azure-disaster-recovery-powershell.md#create-a-replication-policy)します。
+6. vCenter Server を[追加](./vmware-azure-disaster-recovery-powershell.md#add-a-vcenter-server-and-discover-vms)し、仮想マシンを検出し、レプリケーション用にストレージ アカウントを[作成](./vmware-azure-disaster-recovery-powershell.md#create-storage-accounts-for-replication)します。
 7. 次の PowerShell コマンドレットを使用して、VMware 仮想マシンをレプリケートします。詳細は以下をご覧ください。
 
 ```azurepowershell
@@ -137,18 +137,18 @@ $Job_EnableReplication1 = New-AzRecoveryServicesAsrReplicationProtectedItem -VMw
 ```azurepowershell
 Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $ProtectionContainer | Select FriendlyName, ProtectionState, ReplicationHealth
 ```
-9. フェールオーバーの設定を構成します (手順は[こちら](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#configure-failover-settings))。
-10. テスト フェールオーバーを[実行](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#run-a-test-failover)します。 
-11. Azure にフェールオーバーします (手順は[こちら](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell#fail-over-to-azure))。
+9. フェールオーバーの設定を構成します (手順は[こちら](./vmware-azure-disaster-recovery-powershell.md#configure-failover-settings))。
+10. テスト フェールオーバーを[実行](./vmware-azure-disaster-recovery-powershell.md#run-a-test-failover)します。 
+11. Azure にフェールオーバーします (手順は[こちら](./vmware-azure-disaster-recovery-powershell.md#fail-over-to-azure))。
 
 ### <a name="hyper-v-to-azure"></a>Hyper-V から Azure
 
-1. Azure へのディザスター リカバリーのために[オンプレミス Hyper-V サーバーを準備](https://docs.microsoft.com/azure/site-recovery/hyper-v-prepare-on-premises-tutorial)します。
-2. Azure に[サインイン](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-1-sign-in-to-your-azure-account)します。
-3. コンテナーを[設定](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-2-set-up-the-vault)し、Recovery Services コンテナーのコンテキストを[設定](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-3-set-the-recovery-services-vault-context)します。
-4. Hyper-V サイトを[作成](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-4-create-a-hyper-v-site)します。
-5. プロバイダーとエージェントを[インストール](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-5-install-the-provider-and-agent)します。
-6. レプリケーション ポリシーを[作成](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-6-create-a-replication-policy)します。
+1. Azure へのディザスター リカバリーのために[オンプレミス Hyper-V サーバーを準備](./hyper-v-prepare-on-premises-tutorial.md)します。
+2. Azure に[サインイン](./hyper-v-azure-powershell-resource-manager.md#step-1-sign-in-to-your-azure-account)します。
+3. コンテナーを[設定](./hyper-v-azure-powershell-resource-manager.md#step-2-set-up-the-vault)し、Recovery Services コンテナーのコンテキストを[設定](./hyper-v-azure-powershell-resource-manager.md#step-3-set-the-recovery-services-vault-context)します。
+4. Hyper-V サイトを[作成](./hyper-v-azure-powershell-resource-manager.md#step-4-create-a-hyper-v-site)します。
+5. プロバイダーとエージェントを[インストール](./hyper-v-azure-powershell-resource-manager.md#step-5-install-the-provider-and-agent)します。
+6. レプリケーション ポリシーを[作成](./hyper-v-azure-powershell-resource-manager.md#step-6-create-a-replication-policy)します。
 7. 次の手順に従ってレプリケーションを有効にします。 
     
     a. 次のように、保護する VM に対応する保護可能な項目を取得します。
@@ -188,13 +188,13 @@ Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $Protecti
 
     Get-AzRecoveryServicesAsrJob -Job $job | Select-Object -ExpandProperty state
     ```
-8. テスト [フェールオーバー](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-8-run-a-test-failover)を実行します。
+8. テスト [フェールオーバー](./hyper-v-azure-powershell-resource-manager.md#step-8-run-a-test-failover)を実行します。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-VMware の再保護と Azure へのフェールバックを実行する場合は、[こちら](https://docs.microsoft.com/azure/site-recovery/vmware-azure-prepare-failback)で説明されている手順に従います。
+VMware の再保護と Azure へのフェールバックを実行する場合は、[こちら](./vmware-azure-prepare-failback.md)で説明されている手順に従います。
 
-Hyper-V から Azure へのフェールオーバーを実行する場合は[こちら](https://docs.microsoft.com/azure/site-recovery/site-recovery-failover)で説明されている手順に従い、フェールバックを実行する場合は[こちら](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-failback)で説明されている手順に従います。
+Hyper-V から Azure へのフェールオーバーを実行する場合は[こちら](./site-recovery-failover.md)で説明されている手順に従い、フェールバックを実行する場合は[こちら](./hyper-v-azure-failback.md)で説明されている手順に従います。
 
 詳しくは、「[Site Recovery でのフェールオーバー](site-recovery-failover.md)」をご覧ください。

@@ -4,12 +4,12 @@ description: ポータル開発用に Azure Functions の Durable Functions 拡�
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.reviewer: azfuncdf
-ms.openlocfilehash: a1d0e428da18d44705f4deaf6da3299957076d87
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 7eee3c36620d0cc9f5906e355b76e7418c61b477
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171397"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807963"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Azure portal を使用して Durable Functions を作成する
 
@@ -83,7 +83,7 @@ JavaScript Durable Functions を作成する場合、[`durable-functions` npm �
 1. Postman や cURL などの HTTP ツールを使用して、コピーした URL に POST 要求を送信します。 次の例は、Durable Functions に POST 要求を送信する cURL コマンドです。
 
     ```bash
-    curl -X POST https://{your-function-app-name}.azurewebsites.net/api/orchestrators/HelloSequence
+    curl -X POST https://{your-function-app-name}.azurewebsites.net/api/orchestrators/HelloSequence --header "Content-Length: 0"
     ```
 
     この例では、`{your-function-app-name}` は対象の関数アプリの名前であるドメインです。 応答メッセージには、実行を監視および管理するために使用できる、一連の URI エンドポイントが含まれます。次の例のようになります。

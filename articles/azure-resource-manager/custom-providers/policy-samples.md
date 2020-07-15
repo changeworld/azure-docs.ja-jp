@@ -1,23 +1,23 @@
 ---
 title: Azure カスタム リソース プロバイダーの組み込みポリシー定義
 description: Azure カスタム リソース プロバイダー用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 05/29/2020
+ms.date: 06/23/2020
 ms.topic: sample
 author: jjbfour
 ms.author: jobreen
 ms.custom: subject-policy-samples
-ms.openlocfilehash: be617496855a4194bf527019c1374938647e0faa
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 3ff2095c3b3676facf82c8022896e918726767d3
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234584"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314753"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-custom-resource-providers"></a>Azure カスタム リソース プロバイダー用の Azure Policy 組み込みポリシー定義
+# <a name="azure-policy-built-in-definitions-for-azure-custom-resource-providers"></a>Azure カスタム リソースプロバイダー用の Azure Policy 組み込み定義
 
 このページは、Azure カスタム リソース プロバイダー用の [Azure Policy](../../governance/policy/overview.md) 組み込みポリシー定義のインデックスです。 他のサービス用の Azure Policy 組み込みについては、[Azure Policy 組み込み定義](../../governance/policy/samples/built-in-policies.md)に関するページをご覧ください。
 
-各組み込みポリシー定義の名前は、Azure portal のポリシー定義にリンクしています。 **[GitHub]** 列のリンクを使用すると、[Azure Policy GitHub リポジトリ](https://github.com/Azure/azure-policy)のソースを表示できます。
+各組み込みポリシー定義の名前は、Azure portal のポリシー定義にリンクしています。 **[バージョン]** 列のリンクを使用すると、[Azure Policy GitHub リポジトリ](https://github.com/Azure/azure-policy)のソースを表示できます。
 
 ## <a name="azure-custom-resource-providers"></a>Azure カスタム リソース プロバイダー
 

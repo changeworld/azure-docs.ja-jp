@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/15/2020
 ms.author: lbosq
 ms.custom: include file
-ms.openlocfilehash: 0f471c5aefdb39396ea189984d32a9e8f5419182
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 8d12645bd302a7ea808f13c07e2a72f66846bad7
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84200425"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85121347"
 ---
 Azure portal でデータ エクスプローラー ツールを使用して、Azure Cosmos DB の MongoDB データベースとコンテナー用の API を作成できるようになりました。 
 
@@ -21,7 +21,7 @@ Azure portal でデータ エクスプローラー ツールを使用して、Az
     
     **[コンテナーの追加]** 領域が右端に表示されます。表示するには、右へスクロールする必要がある場合があります。
 
-    ![Azure portal の [データ エクスプローラー] の [コンテナーの追加] ウィンドウ](./media/cosmos-db-create-collection/azure-cosmosdb-mongodb-data-explorer.png)
+    :::image type="content" source="./media/cosmos-db-create-collection/azure-cosmosdb-mongodb-data-explorer.png" alt-text="Azure portal の [データ エクスプローラー] の [コンテナーの追加] ウィンドウ":::
 
 2. **[コンテナーの追加]** ページで、新しいコンテナーの設定を入力します。
 

@@ -4,12 +4,12 @@ description: このチュートリアルでは、PowerShell を使用して Wind
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 2d170057a85a8e223fa9d1bc2bfc17e0c284afcd
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: dfcee93ffa5eea0b2aa0b9a93ff53ad7b61ea245
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756044"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611664"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>チュートリアル:Azure 仮想ネットワークに Windows を実行する Service Fabric クラスターをデプロイする
 
@@ -48,7 +48,7 @@ ms.locfileid: "80756044"
 
 * Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 * [Service Fabric SDK と PowerShell モジュール](service-fabric-get-started.md)をインストールします。
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) をインストールします。
+* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)をインストールします。
 * [Azure クラスター](service-fabric-azure-clusters-overview.md)の主要な概念を確認します。
 * 運用環境用のクラスターのデプロイを[計画して準備します](service-fabric-cluster-azure-deployment-preparation.md)。
 
@@ -73,8 +73,8 @@ ms.locfileid: "80756044"
 * 証明書のセキュリティ保護 (テンプレート パラメーターで構成可能)。
 * [リバース プロキシ](service-fabric-reverseproxy.md)が有効。
 * [DNS サービス](service-fabric-dnsservice.md)が有効。
-* ブロンズ[持続性レベル](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) (テンプレート パラメーターで構成可能)。
-* シルバー[信頼性レベル](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) (テンプレート パラメーターで構成可能)。
+* ブロンズ[持続性レベル](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) (テンプレート パラメーターで構成可能)。
+* シルバー[信頼性レベル](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster) (テンプレート パラメーターで構成可能)。
 * クライアント接続エンドポイント: 19000 (テンプレート パラメーターで構成可能)。
 * HTTP ゲートウェイ エンドポイント: 19080 (テンプレート パラメーターで構成可能)。
 

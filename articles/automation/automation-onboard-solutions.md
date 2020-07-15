@@ -5,12 +5,12 @@ services: automation
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 95370a45b9fce69e5c1d06ac9bb987e1bfcfba4f
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: d55a47e4eb921c71ff3539d34b6db514684da073
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204074"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186131"
 ---
 # <a name="enable-update-management-from-a-runbook"></a>Runbook から Update Management を有効にする
 
@@ -22,7 +22,7 @@ ms.locfileid: "84204074"
 ## <a name="prerequisites"></a>前提条件
 
 * Azure のサブスクリプション。 まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)にサインアップしてください。
-* マシンを管理する [Automation アカウント](automation-offering-get-started.md)。
+* マシンを管理する [Automation アカウント](./index.yml)。
 * [仮想マシン](../virtual-machines/windows/quick-create-portal.md)。
 
 ## <a name="enable-update-management"></a>Update Management の有効化
@@ -50,7 +50,7 @@ Update Management が有効になると、更新プログラムを受け取る A
 
 ## <a name="install-and-update-modules"></a>モジュールのインストールと更新
 
-VM の Update Management を正常に有効にするには、最新の Azure モジュールに更新し、[Az.OperationalInsights](https://docs.microsoft.com/powershell/module/az.operationalinsights/?view=azps-3.7.0) モジュールをインポートする必要があります。
+VM の Update Management を正常に有効にするには、最新の Azure モジュールに更新し、[Az.OperationalInsights](/powershell/module/az.operationalinsights/?view=azps-3.7.0) モジュールをインポートする必要があります。
 
 1. Automation アカウントで、 **[共有リソース]** の **[モジュール]** を選択します。 
 2. **[Azure モジュールの更新]** を選択して、Azure モジュールを最新バージョンに更新します。 

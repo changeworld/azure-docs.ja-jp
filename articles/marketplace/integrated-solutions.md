@@ -1,18 +1,18 @@
 ---
 title: 統合ソリューション - Microsoft コマーシャル マーケットプレース
 description: コマーシャル マーケットプレースで統合ソリューションを提供する場合の利点、リソース、および次の手順について説明します。
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: vikrambmsft
+ms.author: vikramb
 ms.date: 04/15/2020
-ms.author: dsindona
-ms.openlocfilehash: bf20473b407db1804a4275fdc6dd3d528de1f189
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 8e029d888b963fd10e7198486a973766755c9812
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658000"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119516"
 ---
 # <a name="integrated-solutions-in-the-commercial-marketplace"></a>コマーシャル マーケットプレースでの統合ソリューション
 統合ソリューションによって、Microsoft パートナーが提供する最善のテクノロジーと、エキスパートであるサービス プロバイダーによって提供されるコンサルテーション、デプロイ、およびサポートがひとつにまとまります。

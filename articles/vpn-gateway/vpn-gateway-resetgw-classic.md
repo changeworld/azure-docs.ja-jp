@@ -4,15 +4,15 @@ description: この記事では、Azure VPN Gateway をリセットして IPsec 
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: e3a5807a0ccfa39cc80acacedaa5fb4d3afaaed3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 90a01e4ee3ddf7b100ef51e55b9917c709a05864
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79224991"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84982902"
 ---
 # <a name="reset-a-vpn-gateway"></a>VPN Gateway のリセット
 

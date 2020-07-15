@@ -1,23 +1,14 @@
 ---
 title: Azure のメッセージング サービス - Service Manager から Resource Manager へ
 description: この記事では、非推奨になった Azure Service Manager の REST API と PowerShell コマンドレットから Resource Manager の REST API と PowerShell コマンドレットへの対応について説明します。
-services: service-bus-messaging, event-hubs, event-grid
-documentationcenter: na
-author: spelluru
-editor: ''
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/22/2020
-ms.author: spelluru
-ms.openlocfilehash: 714d881f34cace928be5d66973f15fa47cf68f72
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.date: 06/23/2020
+ms.openlocfilehash: 7ef744a3a35888be9d72addca61ef389f2cf97cc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259492"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340766"
 ---
 # <a name="deprecation-of-azure-service-manager-support-for-azure-service-bus-relay-and-event-hubs"></a>Azure Service Bus、Relay、Event Hubs に対する Azure Service Manager のサポートの非推奨化
 

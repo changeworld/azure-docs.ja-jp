@@ -3,12 +3,12 @@ title: Azure Site Recovery を使用した Hyper-V のディザスター リカ�
 description: この記事では、Azure Site Recovery サイトを使用したオンプレミス Hyper-V VM の Azure へのディザスター リカバリーを設定する場合によくある質問をまとめます。
 ms.date: 11/12/2019
 ms.topic: conceptual
-ms.openlocfilehash: b175e7157364f0471192dd713db8767e074dd483
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: b3d806908ce2274d07e6b508c8cc269b553e684f
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195253"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132666"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>よくある質問 - Hyper-V から Azure へのディザスター リカバリー
 
@@ -32,17 +32,17 @@ Azure Site Recovery のトランザクションは大量にあるため、通常
 
 Hyper-V ホスト サーバーに必要なものは、デプロイ シナリオによって異なります。 以下の Hyper-V に関する前提条件を参照してください。
 
-* [Hyper-V VM を (VMM なしで) Azure にレプリケートする](site-recovery-hyper-v-site-to-azure.md)
-* [Hyper-V VM を (VMM を使って) Azure にレプリケートする](site-recovery-vmm-to-azure.md)
-* [Hyper-V VM をセカンダリ データセンターにレプリケートする](site-recovery-vmm-to-vmm.md)
-* セカンダリ データセンターにレプリケートする場合は、「 [Hyper-V VM 用のサポートされているゲスト オペレーティング システム](https://technet.microsoft.com/library/mt126277.aspx)」をご覧ください。
-* Azure にレプリケーションする場合、Site Recovery は [Azure でサポートされている](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx)すべてのゲスト オペレーティング システムをサポートします。
+* [Hyper-V VM を (VMM なしで) Azure にレプリケートする](./hyper-v-azure-tutorial.md)
+* [Hyper-V VM を (VMM を使って) Azure にレプリケートする](./hyper-v-vmm-disaster-recovery.md)
+* [Hyper-V VM をセカンダリ データセンターにレプリケートする](./hyper-v-vmm-disaster-recovery.md)
+* セカンダリ データセンターにレプリケートする場合は、「 [Hyper-V VM 用のサポートされているゲスト オペレーティング システム](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/mt126277(v=ws.11))」をご覧ください。
+* Azure にレプリケーションする場合、Site Recovery は [Azure でサポートされている](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc794868(v=ws.10))すべてのゲスト オペレーティング システムをサポートします。
 
 ### <a name="can-i-protect-vms-when-hyper-v-is-running-on-a-client-operating-system"></a>クライアント オペレーティング システムで Hyper-V が実行されているときに VM を保護できますか。
-いいえ。VM は、サポートされている Windows Server マシンで実行されている Hyper-V ホスト サーバーに配置されている必要があります。 クライアント コンピューターを保護する必要がある場合は、物理マシンとして [Azure](site-recovery-vmware-to-azure.md)、または[セカンダリ データセンター](site-recovery-vmware-to-vmware.md)にレプリケートできます。
+いいえ。VM は、サポートされている Windows Server マシンで実行されている Hyper-V ホスト サーバーに配置されている必要があります。 クライアント コンピューターを保護する必要がある場合は、物理マシンとして [Azure](./vmware-azure-tutorial.md)、または[セカンダリ データセンター](./vmware-physical-secondary-disaster-recovery.md)にレプリケートできます。
 
 ### <a name="do-hyper-v-hosts-need-to-be-in-vmm-clouds"></a>Hyper-V ホストを VMM クラウドに配置する必要がありますか。
-セカンダリ データセンターにレプリケートする場合は、VMM クラウドの Hyper-V ホスト サーバーに Hyper-V VM を配置する必要があります。 Azure にレプリケートする場合は、VMM クラウド内にあるかどうかに関係なく、VM をレプリケートできます。 Azure への Hyper-V のレプリケーションについて詳しくは、[こちら](tutorial-hyper-v-to-azure.md)をご覧ください。
+セカンダリ データセンターにレプリケートする場合は、VMM クラウドの Hyper-V ホスト サーバーに Hyper-V VM を配置する必要があります。 Azure にレプリケートする場合は、VMM クラウド内にあるかどうかに関係なく、VM をレプリケートできます。 Azure への Hyper-V のレプリケーションについて詳しくは、[こちら](./hyper-v-azure-tutorial.md)をご覧ください。
 
 
 ### <a name="can-i-replicate-hyper-v-generation-2-virtual-machines-to-azure"></a>Hyper-V 第 2 世代仮想マシンを Azure にレプリケートできますか。
@@ -71,7 +71,7 @@ Site Recovery は ISO 27001:2013、27018、HIPAA、DPA の認証を受けてお�
 はい。 リージョンにコンテナーを作成するとき、Site Recovery によって使われるすべてのメタデータは、そのリージョンの地理的な境界内に維持されます。
 
 ### <a name="does-site-recovery-encrypt-replication"></a>Site Recovery はレプリケーションを暗号化しますか。
-はい、転送中の暗号化と [Azure での暗号化](https://docs.microsoft.com/azure/storage/storage-service-encryption)の両方がサポートされています。
+はい、転送中の暗号化と [Azure での暗号化](../storage/common/storage-service-encryption.md)の両方がサポートされています。
 
 
 ## <a name="deployment"></a>デプロイ

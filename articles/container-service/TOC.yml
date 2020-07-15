@@ -1,7 +1,7 @@
 - name: Kubernetes
-  href: kubernetes/container-service-kubernetes-walkthrough.md
+  href: /previous-versions/azure/container-service/kubernetes/container-service-kubernetes-walkthrough
 - name: DC/OS と Docker Swarm
-  href: dcos-swarm/container-service-dcos-quickstart.md
+  href: /previous-versions/azure/container-service/dcos-swarm/container-service-dcos-quickstart
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける

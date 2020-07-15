@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 2c5b0556554d280e57b2df51875e1b057b5fb4a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 278d976f044deb8a7387763306cf07f8b6b55d90
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75749893"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087794"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>DHCP クライアント サービスが無効になっているために Azure 仮想マシンに RDP で接続できない
 
@@ -40,7 +40,9 @@ Azure 内の VM で DHCP クライアント サービスが無効になってい
 
 Resource Manager VM では、シリアル アクセス コンソール機能を使って次のコマンドでイベント ログ 7022 のクエリを行うことができます。
 
-    wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Service Control Manager'] and EventID=7022 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
+```console
+wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Service Control Manager'] and EventID=7022 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
+```
 
 クラシック VM の場合は、オフライン モードで作業して、手動でログを収集する必要があります。
 
@@ -63,14 +65,21 @@ DHCP クライアント サービスが VM で実行されていません。
 )。 VM でシリアル コンソールが有効になっていない場合は、「[ネットワーク インターフェイスをリセットする](reset-network-interface.md)」をご覧ください。
 2. ネットワーク インターフェイスで DHCP が無効になっているかどうかを確認します。
 
-        sc query DHCP
+    ```console
+    sc query DHCP
+    ```
+
 3. DHCP が停止されている場合は、サービスの開始を試みます
 
-        sc start DHCP
+    ```console
+    sc start DHCP
+    ```
 
 4. サービスが正常に開始されているかどうかを確認するために、サービスに対してもう一度クエリを実行します。
 
-        sc query DHCP
+    ```console
+    sc query DHCP
+    ```
 
     VM への接続を試みて、問題が解決されるかどうかを確認します。
 5. サービスが開始しない場合は、受け取ったエラー メッセージに基づいて、以下の適切な解決策を使用します。
@@ -157,23 +166,38 @@ DHCP クライアント サービスが VM で実行されていません。
 
 1. この問題は、このサービスの開始アカウントが変更された場合に発生するので、アカウントを既定の状態に戻します。
 
-        sc config DHCP obj= 'NT Authority\Localservice'
+    ```console
+    sc config DHCP obj= 'NT Authority\Localservice'
+    ```
+
 2. サービスを開始します。
 
-        sc start DHCP
+    ```console
+    sc start DHCP
+    ```
+
 3. リモート デスクトップを使用して VM に接続してみます。
 
 #### <a name="dhcp-client-service-crashes-or-hangs"></a>DHCP クライアント サービスがクラッシュまたはハングする
 
 1. サービスの状態が**開始中**または**停止中**のままになっている場合は、サービスを停止してみます。
 
-        sc stop DHCP
+    ```console
+    sc stop DHCP
+    ```
+
 2. サービスをそれ自体の 'svchost' コンテナーで切り離します。
 
-        sc config DHCP type= own
+    ```console
+    sc config DHCP type= own
+    ```
+
 3. サービスを開始します。
 
-        sc start DHCP
+    ```console
+    sc start DHCP
+    ```
+
 4. それでもサービスが開始されない場合は、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
 
 ### <a name="repair-the-vm-offline"></a>VM をオフライン修復する

@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: 73762c431c84de01ce3561d586c5a12bfd26ac81
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: beebe60d70b7e4908bd3e9348fe815036d6955c3
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310127"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920078"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>クラウド サービス共通のスタートアップ タスク
 この記事では、クラウド サービスで実行できる共通のスタートアップ タスクの例を示します。 ロールが開始する前に、スタートアップ タスクを使用して操作を実行できます。 対象となる操作としては、コンポーネントのインストール、COM コンポーネントの登録、レジストリ キーの設定、実行時間の長いプロセスの開始などがあります。 
@@ -377,9 +377,7 @@ EXIT /B 0
 ここでは、お使いの Web ロールや worker ロールのタスクを構成するときに従う必要があるいくつかのベスト プラクティスを紹介します。
 
 ### <a name="always-log-startup-activities"></a>常にスタートアップ アクティビティをログに記録する
-Visual Studio にはバッチ ファイルを順番に実行するデバッガーが用意されていないため、バッチ ファイルの操作に関するデータをできる限り多く入手することをお勧めします。 バッチ ファイル (**stdout** と **stderr** の両方) の出力をログ記録すると、バッチ ファイルのデバッグと修正に役立つ重要な情報を入手できます。 **%TEMP%** 環境変数で指定されたディレクトリにある StartupLog.txt に **stdout** と **stderr** の両方をログに記録するには、ログに記録する特定の行の末尾にテキスト `>>  "%TEMP%\\StartupLog.txt" 2>&1` を追加します。 たとえば、 **%PathToApp1Install%** ディレクトリで setup.exe を実行するには、次のようにします。
-
-    "%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1
+Visual Studio にはバッチ ファイルを順番に実行するデバッガーが用意されていないため、バッチ ファイルの操作に関するデータをできる限り多く入手することをお勧めします。 バッチ ファイル (**stdout** と **stderr** の両方) の出力をログ記録すると、バッチ ファイルのデバッグと修正に役立つ重要な情報を入手できます。 **%TEMP%** 環境変数で指定されたディレクトリにある StartupLog.txt に **stdout** と **stderr** の両方をログに記録するには、ログに記録する特定の行の末尾にテキスト `>>  "%TEMP%\\StartupLog.txt" 2>&1` を追加します。 たとえば、 **%PathToApp1Install%** ディレクトリで setup.exe を実行するには、次のようにします: `"%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1`
 
 xml を単純化するために、すべてのスタートアップ タスクをログと共に呼び出し、子タスクが常に同じ環境変数を共有するラッパー *cmd* ファイルを作成できます。
 

@@ -15,7 +15,7 @@ ms.locfileid: "81400288"
 
 このタブをクリックした場合、お気に入りのプログラミング言語でクイックスタートが表示されないことがあります。 ご安心ください。GitHub で入手できる追加のクイックスタートの素材とコード サンプルを用意しています。 この表を使用して、お使いのプログラミング言語とプラットフォーム/OS の組み合わせに適したサンプルを見つけます。
 
-| 言語 | その他のクイックスタート | コード サンプル |
+| Language | その他のクイックスタート | コード サンプル |
 |--|--|--|
 | C# | [スピーカーへ][1-speaker] | [.NET Framework][dotnet]、[.NET Core][netcore]、[UWP][uwp]、[Unity][unity]、[Xamarin][xamarin] |
 | C++ | [スピーカーへ][2-speaker] | [Windows][cpp-windows]、[Linux][cpp-linux]、[macOS][cpp-mac] |

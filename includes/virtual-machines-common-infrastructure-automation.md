@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: a2083de1ddf400b368815877725d3b8dd446156b
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 3733989ad6eed113e37c87eb7da6748cec10e34d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82844620"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84485763"
 ---
 Azure の仮想マシン (VM) を一貫した方法で大規模に作成および管理するには、一般的に、何らかの形で自動化することが必要です。 Azure インフラストラクチャのデプロイと管理のライフサイクル全体を自動化できるツールやソリューションはたくさんあります。 この記事では、Azure で使用できるインフラストラクチャ自動化ツールの一部を紹介します。 これらのツールは、一般的に、次のいずれかのアプローチに適しています。
 
@@ -100,7 +100,7 @@ DSC 構成では、マシンにインストールするものと、ホストを�
 
 具体的には、次の方法を学習します。
 
-- [Azure で Terraform をインストールして構成する](/azure/developer/terraform/install-configure)。
+- [Azure で Terraform をインストールして構成する](/azure/developer/terraform/getting-started-cloud-shell)。
 - [Terraform を使用して Azure インフラストラクチャを作成する](/azure/developer/terraform/create-linux-virtual-machine-with-infrastructure)。
 
 

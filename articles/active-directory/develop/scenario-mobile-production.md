@@ -14,10 +14,10 @@ ms.author: jmprieur
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 28ace84f9a80b71209d7963d02b66317292b151b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80882541"
 ---
 # <a name="prepare-mobile-apps-for-production"></a>モバイル アプリを実稼働用に準備する

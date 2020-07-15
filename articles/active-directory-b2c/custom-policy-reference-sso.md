@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4aa9f4839c8bfc04cee4bb03ea0eac98cb8b25c0
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 4824b64236270c422f22809e9eeb191ee3be27fa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926121"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85202570"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのシングル サインオン管理
 
@@ -57,7 +57,7 @@ SSO 管理クラスは、技術プロファイルの `<UseTechnicalProfileForSes
 
 名前が示すように、このプロバイダーは何もしません。 このプロバイダーは、特定の技術プロファイルの SSO 動作を抑制するために使用できます。 次の `SM-Noop` 技術プロファイルは、[カスタム ポリシー スターター パック](custom-policy-get-started.md#custom-policy-starter-pack)に含まれています。
 
-```XML
+```xml
 <TechnicalProfile Id="SM-Noop">
   <DisplayName>Noop Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.NoopSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -68,7 +68,7 @@ SSO 管理クラスは、技術プロファイルの `<UseTechnicalProfileForSes
 
 このプロバイダーは、要求をセッション内に保存するために使用できます。 通常、このプロバイダーは、ローカル アカウントおよびフェデレーション アカウントの管理に使用される技術プロファイル内で参照されます。 次の `SM-AAD` 技術プロファイルは、[カスタム ポリシー スターター パック](custom-policy-get-started.md#custom-policy-starter-pack)に含まれています。
 
-```XML
+```xml
 <TechnicalProfile Id="SM-AAD">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.DefaultSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -89,7 +89,7 @@ SSO 管理クラスは、技術プロファイルの `<UseTechnicalProfileForSes
 
 次の `SM-MFA` 技術プロファイルは、[カスタム ポリシー スターター パック](custom-policy-get-started.md#custom-policy-starter-pack)`SocialAndLocalAccountsWithMfa`に含まれています。 この技術プロファイルでは、多要素認証セッションを管理します。
 
-```XML
+```xml
 <TechnicalProfile Id="SM-MFA">
   <DisplayName>Session Mananagement Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.DefaultSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -106,7 +106,7 @@ SSO 管理クラスは、技術プロファイルの `<UseTechnicalProfileForSes
 
 このプロバイダーは、"ID プロバイダーの選択" 画面とフェデレーション ID プロバイダーからのサインアウトを抑制するために使用されます。 これは通常、フェデレーション ID プロバイダー (Facebook や Azure Active Directory など) 用に構成された技術プロファイルで参照されます。 次の `SM-SocialLogin` 技術プロファイルは、[カスタム ポリシー スターター パック](custom-policy-get-started.md#custom-policy-starter-pack)に含まれています。
 
-```XML
+```xml
 <TechnicalProfile Id="SM-SocialLogin">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.ExternalLoginSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -140,7 +140,7 @@ SSO 管理クラスは、技術プロファイルの `<UseTechnicalProfileForSes
 
 このプロバイダーは、証明書利用者アプリケーションまたはフェデレーション SAML ID プロバイダー間で、Azure AD B2C SAML セッションを管理するために使用されます。 SAML ID プロバイダー セッションを保存するために SSO プロバイダーを使用する場合、`RegisterServiceProviders` を `false` に設定する必要があります。 次の `SM-Saml-idp` 技術プロファイルは、[SAML ID プロバイダー技術プロファイル](saml-identity-provider-technical-profile.md)によって使用されます。
 
-```XML
+```xml
 <TechnicalProfile Id="SM-Saml-idp">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -154,7 +154,7 @@ B2C SAML セッションを保存するためにプロバイダーを使用す�
 
 次の `SM-Saml-issuer` 技術プロファイルは、[SAML 発行者技術プロファイル](saml-issuer-technical-profile.md)によって使用されます。
 
-```XML
+```xml
 <TechnicalProfile Id="SM-Saml-issuer">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>

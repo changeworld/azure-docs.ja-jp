@@ -4,14 +4,16 @@ description: Azure Notebooks プレビューで Jupyter ノートブックをす
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.custom: tracking-python
-ms.openlocfilehash: 01d1035f794287e679b6ebc84fa9498b184b4791
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 809cb006e1ea40e31d079b40febee6a09714731f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561088"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85832102"
 ---
 # <a name="quickstart-create-and-share-a-notebook-in-azure-notebooks-preview"></a>クイック スタート:Azure Notebooks プレビューでノートブックを作成して共有する
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 このクイックスタートでは、Azure Notebooks で Jupyter ノートブックを作成、実行した後、そのノートブックを他のユーザーと共有します。 Jupyter では、Markdown テキスト、実行可能コード、永続データ、グラフィックス、視覚エフェクトを 1 つの共有可能なキャンバス (ノートブック) に簡単に組み合わせることができます。 Azure Notebooks は、インストールせずにクラウド上で Jupyter ノートブックを作成、実行するための無料でホストされているサービスです。
 
@@ -19,8 +21,6 @@ ms.locfileid: "84561088"
 [なし] :
 
 ## <a name="create-a-new-project-and-notebook"></a>新しいプロジェクトとノートブックを作成する
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 1. [Azure Notebooks サイト (https://notebooks.azure.com)](https://notebooks.azure.com) に移動してサインインします。 詳しくは、[クイック スタート - Azure Notebooks にサインインする](quickstart-sign-in-azure-notebooks.md)に関する記事を参照してください。
 

@@ -3,12 +3,12 @@ title: Azure Service Fabric のネットワーク パターン
 description: Service Fabric の一般的なネットワーク パターンと、Azure のネットワーク機能を使用してクラスターを作成する方法について説明します。
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 065c311fffe409b20e02a3fddf1e9e7e6a82a2a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b9114be5498bcb7fdec4e105ad6e3ff9fcc03a7c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75466280"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85106626"
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric のネットワーク パターン
 Azure Service Fabric クラスターを Azure の他のネットワーク機能と統合できます。 この記事では、次の機能を使用するクラスターを作成する方法について説明します。
@@ -171,7 +171,7 @@ DnsSettings              : {
     C:>\Users\users>ping NOde1000000 -n 1
     ```
 
-別の例については、[Service Fabric に固有でない例](https://github.com/gbowerman/azure-myriad/tree/master/existing-vnet)をご覧ください。
+別の例については、[Service Fabric に固有でない例](https://github.com/gbowerman/azure-myriad/tree/main/existing-vnet)をご覧ください。
 
 
 <a id="staticpublicip"></a>

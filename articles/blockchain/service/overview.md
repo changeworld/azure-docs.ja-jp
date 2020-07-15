@@ -4,12 +4,12 @@ description: Azure Blockchain Service の概要です
 ms.date: 05/22/2020
 ms.topic: overview
 ms.reviewer: ravastra
-ms.openlocfilehash: 8a73ed45279ce224441ea9c021b565e63bc4fc63
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: d7aedbc837a58a65fe4c29dbdeed8662d94fc534
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84432229"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214079"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Azure Blockchain Service とは
 
@@ -59,7 +59,7 @@ Azure Log Analytics により、ユーザーは、Quorum 台帳に関するロ�
 
 ## <a name="develop-using-familiar-development-tools"></a>使い慣れた開発ツールを使用して開発する
 
-オープンソースの Quorum Ethereum 台帳に基づき、既存の Ethereum アプリケーションと同じ方法で、Azure Blockchain Service 用のアプリケーションを開発できます。 業界の最先端のパートナーとの協力による Azure Blockchain Development Kit Visual Studio Code 拡張機能を使用して、開発者は Truffle Suite などの使い慣れたツールでスマート コントラクトを構築できます。 Azure Blockchain Development Kit 拡張機能を使用すると、開発者は、コンソーシアムを作成するか、または既存のコンソーシアムに接続して、スマート コントラクトのビルドとデプロイのすべてを 1 つの IDE から実行できます。 Azure Blockchain Visual Studio Code 拡張機能を使用すると、コンソーシアムを作成するか、または既存のコンソーシアムに接続して、スマート コントラクトのビルドと配置のすべてを 1 つの IDE から実行できます。 詳しくは、[VS Code マーケットプレースの Azure Blockchain 開発キット](https://aka.ms/vscodebcextension)のページと [Azure Blockchain 開発キットのユーザー ガイド](https://aka.ms/vscodebcextensionwiki)を参照してください。
+オープンソースの Quorum Ethereum 台帳に基づき、既存の Ethereum アプリケーションと同じ方法で、Azure Blockchain Service 用のアプリケーションを開発できます。 業界の最先端のパートナーとの協力による Azure Blockchain Development Kit Visual Studio Code 拡張機能を使用して、開発者は Truffle Suite などの使い慣れたツールでスマート コントラクトを構築できます。 Azure Blockchain Visual Studio Code 拡張機能を使用すると、コンソーシアムを作成するか、または既存のコンソーシアムに接続して、スマート コントラクトのビルドと配置のすべてを 1 つの IDE から実行できます。 詳しくは、[VS Code マーケットプレースの Azure Blockchain 開発キット](https://aka.ms/vscodebcextension)のページと [Azure Blockchain 開発キットのユーザー ガイド](https://aka.ms/vscodebcextensionwiki)を参照してください。
 
 ## <a name="publish-blockchain-data"></a>ブロックチェーン データの公開
 

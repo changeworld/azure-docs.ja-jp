@@ -2,23 +2,23 @@
 title: Microsoft Azure Active Directory シングル サインオンのデプロイ計画
 description: 組織内での SSO を計画、デプロイ、管理できるようにガイドします。
 services: active-directory
-author: jeevansd
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/22/2019
+ms.date: 06/10/2020
 ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 4b5836ffe721aa3e329651c3709ce64344363728
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 75e3f7fc98072957f571937a1627247cdc4a9e7e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197865"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85374443"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>シングル サインオンのデプロイを計画する
 
@@ -194,8 +194,6 @@ Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オ
    お使いのアプリケーションが見つからない場合は、[カスタム アプリケーションに関するドキュメント](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-federated-sso-non-gallery)を参照してください。 ここでは、Azure AD ギャラリーにないアプリケーションを追加する方法を学びます。
 
    必要に応じて、[Microsoft のガイダンス ドキュメント](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)を使用して、エンタープライズ アプリケーションの SAML トークンで発行された要求を使用できます。 これが、お使いのアプリケーションの SAML 応答で受信されると想定されるものにマッピングされていることを確認します。 構成中に問題が発生した場合は、[SSO 統合をデバッグする方法](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)に関するガイダンスを使用します。
-
-カスタム アプリケーションのオンボードは、Azure AD Premium P1 または P2 のライセンス機能です。
 
 ### <a name="provide-sso-change-communications-to-end-users"></a>エンドユーザーに SSO の変更を連絡する
 

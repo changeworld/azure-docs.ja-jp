@@ -5,17 +5,17 @@ description: Azure Machine Learning SDK を使用して、モデルから得ら�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
-ms.date: 04/02/2020
-ms.openlocfilehash: f4210352a9d8cd3cd9cb9afda7d9a4798d96f44b
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.date: 06/30/2020
+ms.openlocfilehash: 97401b2bdbcc2dc1379505f8dade443a4f1eb318
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982889"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601685"
 ---
 # <a name="model-interpretability-in-azure-machine-learning"></a>Azure Machine Learning でのモデルの解釈可能性
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -44,9 +44,7 @@ ms.locfileid: "82982889"
 
 * `azureml.contrib.interpret`。試すことができるプレビュー機能と実験的機能。
 
-* `azureml.train.automl.automlexplainer`。自動化された機械学習モデルを解釈するためのパッケージ。
-
-一般的な用途には `pip install azureml-interpret` と `pip install azureml-interpret-contrib` を使用し、解釈可能パッケージを取得するための AutoML には `pip install azureml-interpret-contrib` を使用します。
+一般的な用途には `pip install azureml-interpret` と `pip install azureml-interpret-contrib` を使用し、解釈可能パッケージを取得するための AutoML には `pip install azureml-contrib-interpret` を使用します。
 
 
 > [!IMPORTANT]

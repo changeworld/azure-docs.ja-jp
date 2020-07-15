@@ -1,25 +1,14 @@
 ---
 title: Azure Relay .NET Standard API の概要 | Microsoft Docs
 description: この記事は、Azure Relay ハイブリッド接続 .NET Standard API の主な概要についてまとめてあります。
-services: service-bus-relay
-documentationcenter: na
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: b1da9ac1-811b-4df7-a22c-ccd013405c40
-ms.service: service-bus-relay
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/23/2018
-ms.author: spelluru
-ms.openlocfilehash: 18eaf2d2daae817107be6cdb0da9359bb5f9b4e9
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 578d0fd2bbf8b9bb897a79e88399dee3711f5990
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83204626"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85316843"
 ---
 # <a name="azure-relay-hybrid-connections-net-standard-api-overview"></a>Azure Relay ハイブリッド接続 .NET Standard API の概要
 
@@ -127,7 +116,7 @@ var data = Encoding.UTF8.GetBytes("hello");
 await clientConnection.WriteAsync(data, 0, data.Length);
 ```
 
-ただし、毎回文字列をエンコードすることなく、テキストを直接送信する場合は、`hybridConnectionStream`StreamWriter[ オブジェクトを使用して ](https://msdn.microsoft.com/library/system.io.streamwriter(v=vs.110).aspx) オブジェクトをラップすることができます。
+ただし、毎回文字列をエンコードすることなく、テキストを直接送信する場合は、[StreamWriter](https://msdn.microsoft.com/library/system.io.streamwriter(v=vs.110).aspx) オブジェクトを使用して `hybridConnectionStream` オブジェクトをラップすることができます。
 
 ```csharp
 // The StreamWriter object only needs to be created once

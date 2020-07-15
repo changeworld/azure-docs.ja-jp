@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d28f93f316ac2a63be6b3a8eb0b80678bd7607f
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: aa25cffd84ee9255fed8bbaa0f2fb6adf762b47e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81271405"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84483779"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication についてよく寄せられる質問
 
@@ -163,7 +163,7 @@ MFA プロバイダーの詳細については、「[Azure Multi-Factor Auth プ
 
 ### <a name="what-if-a-user-cant-sign-in-to-non-browser-apps"></a>ユーザーがブラウザー以外のアプリにサインインできない場合はどうすればよいですか。
 
-組織でまだ従来型クライアントを使用しており、かつ[アプリ パスワードの使用を許可している](howto-mfa-mfasettings.md#app-passwords)場合、ユーザーがこのような従来型のクライアントにユーザー名とパスワードでサインインすることはできません。 代わりに、ユーザーは[アプリ パスワードを設定する](../user-help/multi-factor-authentication-end-user-app-passwords.md)必要があります。 ユーザーはサインイン情報をクリア (削除) してアプリを再起動し、ユーザー名と、通常のパスワードではなく "*アプリ パスワード*" を使用してサインインしなければなりません。
+組織でまだ従来型クライアントを使用しており、かつ[アプリ パスワードの使用を許可している](howto-mfa-app-passwords.md)場合、ユーザーがこのような従来型のクライアントにユーザー名とパスワードでサインインすることはできません。 代わりに、ユーザーは[アプリ パスワードを設定する](../user-help/multi-factor-authentication-end-user-app-passwords.md)必要があります。 ユーザーはサインイン情報をクリア (削除) してアプリを再起動し、ユーザー名と、通常のパスワードではなく "*アプリ パスワード*" を使用してサインインしなければなりません。
 
 組織で従来型クライアントを使用していない場合は、アプリ パスワードの作成をユーザーに許可しないようにしてください。
 

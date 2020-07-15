@@ -4,15 +4,16 @@ description: Azure Synapse ワークスペースのマネージド ID につい�
 author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: overview
+ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: ee0e6249acf3fbbab369d42ae691a5a826df1ee8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ffffe0889831cff239cafdc4d18d44f7bdaf4c45
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81421606"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194384"
 ---
 # <a name="azure-synapse-workspace-managed-identity-preview"></a>Azure Synapse ワークスペース マネージド ID (プレビュー)
 

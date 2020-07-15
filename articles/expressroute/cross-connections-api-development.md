@@ -20,7 +20,7 @@ ExpressRoute Partner Resource Manager API を利用すると、ExpressRoute パ�
 
 ## <a name="workflow"></a>ワークフロー
 
-expressRouteCrossConnections リソースは、ExpressRoute 回路に対するシャドウ リソースです。 Azure の顧客が ExpressRoute 回路を作成し、特定の ExpressRoute パートナーを選択した場合、Microsoft ではパートナーの Azure ExpressRoute 管理サブスクリプションに expressRouteCrossConnections リソースを作成します。 その際に、Microsoft では expressRouteCrossConnections リソースが作成されるリソース グループを定義します。 リソース グループの名前付けの標準は、**CrossConnection-* PeeringLocation*** です。PeeringLocation = ExpressRoute の場所となります。 たとえば、顧客がデンバーに ExpressRoute 回線を作成した場合、次のリソース グループ内でパートナーの Azure サブスクリプションに CrossConnection が作成されます。**CrossConnnection-Denver**。
+expressRouteCrossConnections リソースは、ExpressRoute 回路に対するシャドウ リソースです。 Azure の顧客が ExpressRoute 回路を作成し、特定の ExpressRoute パートナーを選択した場合、Microsoft ではパートナーの Azure ExpressRoute 管理サブスクリプションに expressRouteCrossConnections リソースを作成します。 その際に、Microsoft では expressRouteCrossConnections リソースが作成されるリソース グループを定義します。 リソース グループの名前付けの標準は、**CrossConnection-* PeeringLocation* ** です。PeeringLocation = ExpressRoute の場所となります。 たとえば、顧客がデンバーに ExpressRoute 回線を作成した場合、次のリソース グループ内でパートナーの Azure サブスクリプションに CrossConnection が作成されます。**CrossConnnection-Denver**。
 
 ExpressRoute パートナーは、expressRouteCrossConnections リソースに対して REST 操作を発行することで、レイヤー 2 とレイヤー 3 構成を管理します。
 

@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 05/14/2020
+ms.date: 06/29/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 8bdba64445212c564a3d4762bc8497be15f7d9a0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: bae8fa97d075784bba1d2f75cc06cfa3f801c052
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657014"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027207"
 ---
 # <a name="about-azure-virtual-wan"></a>Azure Virtual WAN の概要
 
@@ -64,7 +64,7 @@ Azure リージョンは、接続先として選択できるハブとして機�
 
 **追加の Virtual WAN リソース**
 
-  * **サイト:** このリソースは、サイト間接続にのみ使用されます。 サイト リソースは **vpnsite** です。 これは、オンプレミスの VPN デバイスとその設定を表します。 Virtual WAN パートナーと連携することで、この情報を Azure に自動的にエクスポートする組み込みのソリューションが得られます。
+* **サイト:** このリソースは、サイト間接続にのみ使用されます。 サイト リソースは **vpnsite** です。 これは、オンプレミスの VPN デバイスとその設定を表します。 Virtual WAN パートナーと連携することで、この情報を Azure に自動的にエクスポートする組み込みのソリューションが得られます。
 
 ## <a name="types-of-connectivity"></a><a name="connectivity"></a>接続の種類
 
@@ -72,21 +72,9 @@ Virtual WAN では、次の種類の接続を使用できます。サイト間 V
 
 ### <a name="site-to-site-vpn-connections"></a><a name="s2s"></a>サイト間 VPN 接続
 
-![Virtual WAN のダイアグラム](./media/virtual-wan-about/virtualwan.png)
+サイト間 IPsec または IKE (IKEv2) 接続を使用して、Azure 内のリソースに接続することができます。 詳細については、[Virtual WAN を使用したサイト間接続の作成](virtual-wan-site-to-site-portal.md)に関するページを参照してください。 
 
-仮想 WAN サイト間接続を作成するときに、利用可能なパートナーと連携できます。 パートナーを利用しない場合は、手動で接続を構成できます。 詳細については、[Virtual WAN を使用したサイト間接続の作成](virtual-wan-site-to-site-portal.md)に関するページを参照してください。
-
-#### <a name="virtual-wan-partner-workflow"></a><a name="s2spartner"></a>Virtual WAN パートナーのワークフロー
-
-Virtual WAN パートナーと連携する場合のワークフローは、次のとおりです。
-
-1. ブランチ デバイス (VPN/SDWAN) コントローラーが、[Azure サービス プリンシパル](../active-directory/develop/howto-create-service-principal-portal.md)を使用してサイト中心の情報を Azure にエクスポートするために認証を受けます。
-2. ブランチ デバイス (VPN/SDWAN) コントローラーが、Azure 接続構成を取得し、ローカル デバイスを更新します。 これにより、オンプレミス VPN デバイスの構成のダウンロード、編集、および更新が自動化されます。
-3. デバイスに適切な Azure 構成が設定されると、Azure WAN に対してサイト間接続 (2 つのアクティブなトンネル) が確立されます。 Azure では、IKEv1 と IKEv2 の両方がサポートされています。 BGP はオプションです。
-
-#### <a name="partners-for-site-to-site-virtual-wan-connections"></a><a name="partners"></a>サイト間仮想 WAN 接続のパートナー
-
-利用可能なパートナーと場所の一覧については、[Virtual WAN のパートナーと場所](virtual-wan-locations-partners.md)に関する記事を参照してください。
+この種類の接続には、VPN デバイスまたは Virtual WAN パートナー デバイスが必要です。 Virtual WAN パートナーは、デバイス情報を Azure にエクスポートし、Azure 構成をダウンロードして、Azure Virtual WAN ハブへの接続を確立できる、接続の自動化を提供しています。 利用可能なパートナーと場所の一覧については、[Virtual WAN のパートナーと場所](virtual-wan-locations-partners.md)に関する記事を参照してください。 VPN または SD-WAN デバイス プロバイダーが前述のリンク先に記載されていない場合は、[Virtual WAN を使用したサイト間接続の作成](virtual-wan-site-to-site-portal.md)に関するページの手順を行って簡単に接続を設定できます。
 
 ### <a name="user-vpn-point-to-site-connections"></a><a name="uservpn"></a>ユーザー VPN (ポイント対サイト) 接続
 
@@ -95,9 +83,50 @@ IPsec/IKE (IKEv2) 接続または OpenVPN 接続を使用して、Azure 内の�
 ### <a name="expressroute-connections"></a><a name="er"></a>ExpressRoute 接続
 ExpressRoute を使用すると、プライベート接続を介してオンプレミス ネットワークを Azure に接続できます。 接続を作成するには、[Virtual WAN を使用した ExpressRoute 接続の作成](virtual-wan-expressroute-portal.md)に関するページを参照してください。
 
+### <a name="hub-to-vnet-connections"></a><a name="hub"></a>ハブから VNet への接続
+
+Azure 仮想ネットワークを仮想ハブに接続することができます。 詳細については、[VNet のハブへの接続](virtual-wan-site-to-site-portal.md#vnet)に関するセクションを参照してください。
+
+### <a name="transit-connectivity"></a><a name="transit"></a>トランジット接続
+
+#### <a name="transit-connectivity-between-vnets"></a><a name="transit-vnet"></a>VNet 間のトランジット接続
+
+Virtual WAN では、VNet 間のトランジット接続が可能です。 VNet では、仮想ネットワーク接続を介して仮想ハブに接続します。 すべての仮想ハブにはルーターが存在するため、**Standard Virtual WAN** の VNet 間でトランジット接続が有効になります。 このルーターは、仮想ハブが最初に作成されたときにインスタンス化されます。
+
+ルーターには 4 つのルーティング状態があります。プロビジョニング済み、プロビジョニング中、失敗、または、なしです。 Azure portal で [仮想ハブ] ページに移動すると、 **[Routing status]\(ルーティングの状態\)** が表示されます。
+
+* **なし**状態は、仮想ハブでルーターがプロビジョニングされなかったことを示します。 これは、Virtual WAN の種類が *Basic* の場合、またはサービスが利用可能になる前に仮想ハブがデプロイされた場合に発生する可能性があります。
+* **失敗**状態は、インスタンス化中の失敗を示します。 ルーターをインスタンス化またはリセットするには、Azure portal の仮想ハブの [概要] ページに移動し、 **[Reset Router]\(ルーターのリセット\)** オプションを見つけます。
+
+各仮想ハブ ルーターは、最大 50 Gbps の集約スループットをサポートしています。 仮想ネットワーク接続間の接続では、Virtual WAN 内のすべての VNet 全体で合計 2,000 VM のワークロードを想定しています。
+
+#### <a name="transit-connectivity-between-vpn-and-expressroute"></a><a name="transit-er"></a>VPN と ExpressRoute 間のトランジット接続
+
+Virtual WAN では、VPN と ExpressRoute 間のトランジット接続が可能です。 これは、VPN 接続サイトまたはリモート ユーザーが ExpressRoute 接続サイトと通信できることを意味します。 また、**ブランチ間フラグ**が有効であることが暗黙で想定されています。 このフラグは、Azure portal の Azure Virtual WAN 設定にあります。 すべてのルート管理は仮想ハブ ルーターによって提供されます。これにより、仮想ネットワーク間のトランジット接続も可能になります。
+
+### <a name="custom-routing"></a><a name="routing"></a>カスタム ルーティング
+
+Virtual WAN には、高度なルーティング機能強化があります。 カスタム ルート テーブルの設定、ルートの関連付けと伝達による仮想ネットワーク ルーティングの最適化、ラベルを使用したルート テーブルの論理的なグループ化、多数のネットワーク仮想アプライアンスまたは共有サービスのルーティング シナリオを簡素化する機能があります。
+
+### <a name="global-vnet-peering"></a><a name="global"></a>グローバル VNET ピアリング
+
+グローバル VNet ピアリングには、異なるリージョンにある 2 つの VNet を接続するメカニズムが用意されています。 Virtual WAN では、仮想ネットワーク接続によって VNet が仮想ハブと接続されます。 ユーザーはグローバル VNet ピアリングを明示的に設定する必要がありません。 仮想ハブに接続された VNet は、VNet ピアリング料金が発生する同じリージョンにあります。 別のリージョンの仮想ハブに接続された VNet には、グローバル VNet ピアリング料金が発生します。
+
+### <a name="expressroute-traffic-encryption"></a><a name="encryption"></a>ExpressRoute トラフィックの暗号化
+
+Azure Virtual WAN には、ExpressRoute トラフィックを暗号化する機能があります。 この手法により、パブリック インターネットを経由したり、パブリック IP アドレスを使用したりすることなく、ExpressRoute を経由してオンプレミス ネットワークと Azure 仮想ネットワークの間で暗号化されたトランジットを提供できます。 詳細については、[Virtual WAN 向けの ExpressRoute 経由の IPsec](vpn-over-expressroute.md)に関するページを参照してください。
+
 ## <a name="locations"></a><a name="locations"></a>場所
 
 場所の情報については、[Virtual WAN のパートナーと場所](virtual-wan-locations-partners.md)に関する記事を参照してください。
+
+## <a name="route-tables-in-basic-and-standard-virtual-wans"></a><a name="route"></a>Basic および Standard Virtual WAN のルート テーブル
+
+ルート テーブルに、関連付けと伝達の機能が備わりました。 既存のルート テーブルは、これらの機能を持たないルート テーブルです。 ハブ ルーティングに既存のルートがあり、新しい機能を使用したい場合は、以下を考慮してください。
+
+* **仮想ハブに既存のルートがある Standard Virtual WAN のお客様**:新しいルート テーブルの機能を使用するには、Azure でのロールアウトが完了する 8 月 3 日の週までお待ちください。 Azure portal のハブの [ルーティング] セクションにルートが既にある場合、まずそれらを削除してから、(Azure portal のハブの [ルート テーブル] セクションにある) 新しいルート テーブルを作成する必要があります。
+
+* **仮想ハブに既存のルートがある Basic Virtual WAN のお客様**:新しいルート テーブルの機能を使用するには、Azure でのロールアウトが完了する 8 月 3 日の週までお待ちください。 Azure portal のハブの [ルーティング] セクションにルートが既にある場合、まずそれらを削除してから、お使いの Basic Virtual WAN を Standard Virtual WAN に**アップグレード**します。 「[Virtual WAN を Basic から Standard にアップグレードする](upgrade-virtual-wan.md)」を参照してください。
 
 ## <a name="faq"></a><a name="faq"></a>FAQ
 

@@ -3,14 +3,14 @@ title: Azure Automation の変更履歴とインベントリの概要
 description: この記事では、環境内のソフトウェアや Microsoft サービスの変更を特定するのに役立つ、Change Tracking とインベントリの機能について説明します。
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 01/28/2019
+ms.date: 06/08/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7a1c5d5371663f3520e76060c9c2a8df0a18449c
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 192fd0fe73a34ca4d6ffc49badeac7ca8a080793
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117541"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185587"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>変更履歴とインベントリの概要
 
@@ -33,26 +33,29 @@ ms.locfileid: "84117541"
 
 現在、変更履歴とインベントリでは、次の項目がサポートされていません。
 
-* Windows レジストリ追跡用の再帰
-* ネットワーク ファイル システム
-* さまざまなインストール方法
-* *Windows 用の **.exe** ファイル
+- Windows レジストリ追跡用の再帰
+- ネットワーク ファイル システム
+- さまざまなインストール方法
+- *Windows 用の **.exe** ファイル
 
 その他の制限事項:
 
-* **[最大ファイル サイズ]** 列と値は現在の実装では使用されません。
-* 30 分間の収集サイクルで収集するファイル数が 2,500 を超えると、Change Tracking とインベントリのパフォーマンスが低下する可能性があります。
-* ネットワーク トラフィックが高いとき、変更レコードが表示されるまでに最大 6 時間かかることがあります。
-* コンピューターのシャットダウン中に構成を変更した場合、そのコンピューターから前の構成に対応する変更が送信される可能性があります。
+- **[最大ファイル サイズ]** 列と値は現在の実装では使用されません。
+- 30 分間の収集サイクルで収集するファイル数が 2,500 を超えると、Change Tracking とインベントリのパフォーマンスが低下する可能性があります。
+- ネットワーク トラフィックが高いとき、変更レコードが表示されるまでに最大 6 時間かかることがあります。
+- コンピューターのシャットダウン中に構成を変更した場合、そのコンピューターから前の構成に対応する変更が送信される可能性があります。
 
 現在、変更履歴とインベントリでは、次の問題が発生しています。
 
-* Windows Server 2016 Core RS3 マシンについては、修正プログラムの更新は収集されません。
-* Linux デーモンでは、変更が発生していなくても、変更された状態が表示される場合があります。 この問題は、Azure Monitor [ConfigurationChange](https://docs.microsoft.com/azure/azure-monitor/reference/tables/configurationchange) ログの `SvcRunLevels` データがキャプチャされる方法が原因で発生します。
+- Windows Server 2016 Core RS3 マシンについては、修正プログラムの更新は収集されません。
+
+- Linux デーモンでは、変更が発生していなくても、変更された状態が表示される場合があります。 この問題は、Azure Monitor [ConfigurationChange](/azure/azure-monitor/reference/tables/configurationchange) ログの `SvcRunLevels` データがキャプチャされる方法が原因で発生します。
 
 ## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
-変更履歴とインベントリは、Log Analytics エージェントの要件を満たすすべてのオペレーティング システムでサポートされます。 オペレーティング システムの正式なバージョンは、Windows Server 2008 SP1 以降と Windows 7 SP1 以降です。 この機能は、多くの Linux オペレーティング システムでもサポートされています。 Log Analytics をサポートするオペレーティング システムについては、「[Log Analytics エージェントの概要](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)」を参照してください。 
+変更履歴とインベントリは、Log Analytics エージェントの要件を満たすすべてのオペレーティング システムでサポートされます。 オペレーティング システムの正式なバージョンは、Windows Server 2008 SP1 以降と Windows 7 SP1 以降です。 この機能は、多くの Linux オペレーティング システムでもサポートされています。 Log Analytics をサポートするオペレーティング システムについては、「[Log Analytics エージェントの概要](../azure-monitor/platform/log-analytics-agent.md)」を参照してください。
+
+TLS 1.2 のクライアント要件を理解するには、「[Azure Automation に対する TLS 1.2 の強制](automation-managing-data.md#tls-12-enforcement-for-azure-automation)」を参照してください。
 
 ## <a name="network-requirements"></a>ネットワークの要件
 
@@ -75,12 +78,12 @@ Azure portal の変更履歴とインベントリを使用して、監視対象�
 
 変更またはイベントをクリックすると、その詳細が表示されます。 使用できる変更の種類は次のとおりです。
 
-* events
-* デーモン
-* ファイル
-* レジストリ
-* ソフトウェア
-* Microsoft サービス
+- events
+- デーモン
+- ファイル
+- レジストリ
+- ソフトウェア
+- Microsoft サービス
 
 各変更を追加、変更、または削除することができます。 次の例は、サービスの起動の種類が [手動] から [自動] に変更されたことを示しています。
 
@@ -88,7 +91,7 @@ Azure portal の変更履歴とインベントリを使用して、監視対象�
 
 ## <a name="fim-support-in-azure-security-center"></a>Azure Security Center での FIM のサポート
 
-変更履歴とインベントリでは、[Azure Security Center のファイルの整合性の監視 (FIM)](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring) が使用されます。 FIM ではファイルとレジストリのみが監視されますが、変更履歴とインベントリの完全な機能には次の追跡も含まれます。
+変更履歴とインベントリでは、[Azure Security Center のファイルの整合性の監視 (FIM)](../security-center/security-center-file-integrity-monitoring.md) が使用されます。 FIM ではファイルとレジストリのみが監視されますが、変更履歴とインベントリの完全な機能には次の追跡も含まれます。
 
 - ソフトウェアの変更
 - Microsoft サービス
@@ -103,7 +106,7 @@ Windows と Linux の両方でファイルの変更を追跡する場合、変�
 
 ## <a name="tracking-of-file-content-changes"></a>ファイル コンテンツの変更履歴
 
-Change Tracking とインベントリを使用すると、Windows または Linux のファイルのコンテンツを表示できます。 ファイルを変更するたびに、変更履歴とインベントリによって、[Azure Storage アカウント](../storage/common/storage-create-storage-account.md)にファイルのコンテンツが格納されます。 ファイルを追跡しているときに、変更前後のそのコンテンツを表示できます。 ファイルのコンテンツは、インラインで、または並べて表示できます。 
+Change Tracking とインベントリを使用すると、Windows または Linux のファイルのコンテンツを表示できます。 ファイルを変更するたびに、変更履歴とインベントリによって、[Azure Storage アカウント](../storage/common/storage-account-create.md)にファイルのコンテンツが格納されます。 ファイルを追跡しているときに、変更前後のそのコンテンツを表示できます。 ファイルのコンテンツは、インラインで、または並べて表示できます。 
 
 ![ファイル内の変更を表示する](./media/change-tracking/view-file-changes.png)
 
@@ -135,10 +138,13 @@ Change Tracking とインベントリを使用すると、Windows レジスト�
 
 変更履歴とインベントリでは再帰がサポートされているので、ワイルドカードを指定して、ディレクトリ全体の追跡を簡略化できます。 また、再帰では環境変数も提供されています。これにより、複数のドライブ名またはダイナミック ドライブ名を持つ環境間でファイルを追跡できます。 次の一覧に、再帰を構成するときに知っておくべき基本的な情報を示します。
 
-* 複数のファイルを追跡するにはワイルドカードが必要です。
-* ワイルドカードを使用できるのは、**c:\folder\\file*** や **/etc/*.conf** など、ファイル パスの最後のセグメントでのみです。
-* 環境変数に無効なパスが存在する場合、検証は成功しますが、実行時にそのパスはエラーになります。
-* パスを設定するときは、漠然としたパス名は避けてください。そのような設定により、走査対象のフォルダー数が膨大になる可能性があるためです。
+- 複数のファイルを追跡するにはワイルドカードが必要です。
+
+- ワイルドカードを使用できるのは、**c:\folder\\file*** や **/etc/*.conf** など、ファイル パスの最後のセグメントでのみです。
+
+- 環境変数に無効なパスが存在する場合、検証は成功しますが、実行時にそのパスはエラーになります。
+
+- パスを設定するときは、漠然としたパス名は避けてください。そのような設定により、走査対象のフォルダー数が膨大になる可能性があるためです。
 
 ## <a name="change-tracking-and-inventory-data-collection"></a>変更履歴とインベントリのデータ収集
 
@@ -165,7 +171,7 @@ Change Tracking とインベントリを使用すると、Windows レジスト�
 |サービス|250|
 |デーモン|250|
 
-変更履歴とインベントリを使用しているマシンでの Log Analytics の平均データ使用量は、1 か月あたり約 40 MB です (環境によって異なります)。 Log Analytics ワークスペースの使用量と推定コスト機能を使用して、Change Tracking とインベントリによって取り込まれたデータを使用状況グラフに表示できます。 このデータ ビューを使用して、データの使用量を評価し、それが請求にどのように影響しているかを判断します。 「[ご自分の使用量を理解してコストを見積もる](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs)」を参照してください。 
+変更履歴とインベントリを使用しているマシンでの Log Analytics の平均データ使用量は、1 か月あたり約 40 MB です (環境によって異なります)。 Log Analytics ワークスペースの使用量と推定コスト機能を使用して、Change Tracking とインベントリによって取り込まれたデータを使用状況グラフに表示できます。 このデータ ビューを使用して、データの使用量を評価し、それが請求にどのように影響しているかを判断します。 「[ご自分の使用量を理解してコストを見積もる](../azure-monitor/platform/manage-cost-storage.md#understand-your-usage-and-estimate-costs)」を参照してください。
 
 ### <a name="microsoft-service-data"></a>Microsoft サービス データ
 
@@ -180,13 +186,13 @@ Microsoft サービスに対する既定の収集の頻度は 30 分です。 **
 
 ## <a name="support-for-alerts-on-configuration-state"></a>構成状態のアラートのサポート
 
-変更履歴とインベントリの主な機能は、ハイブリッド環境の構成状態への変更に関するアラートを生成することです。 アラートに応答して、多くの便利なアクションをトリガーできます。たとえば、Azure Functions、Automation Runbook、Webhook などのアクションがあります。 マシンの **c:\windows\system32\drivers\etc\hosts** ファイルへの変更に関するアラートは、Change Tracking とインベントリのデータに関するアラートを適切に適用した一例です。 次の表で定義されているクエリのシナリオなど、警告のシナリオは他にも多数あります。 
+変更履歴とインベントリの主な機能は、ハイブリッド環境の構成状態への変更に関するアラートを生成することです。 アラートに応答して、多くの便利なアクションをトリガーできます。たとえば、Azure Functions、Automation Runbook、Webhook などのアクションがあります。 マシンの **c:\windows\system32\drivers\etc\hosts** ファイルへの変更に関するアラートは、Change Tracking とインベントリのデータに関するアラートを適切に適用した一例です。 次の表で定義されているクエリのシナリオなど、警告のシナリオは他にも多数あります。
 
 |クエリ  |説明  |
 |---------|---------|
 |ConfigurationChange <br>&#124; where ConfigChangeType == "Files" and FileSystemPath contains " c:\\windows\\system32\\drivers\\"|システムの重要なファイルに対する変更を追跡するのに役立ちます。|
 |ConfigurationChange <br>&#124; where FieldsChanged contains "FileContentChecksum" and FileSystemPath == "c:\\windows\\system32\\drivers\\etc\\hosts"|キー構成ファイルに対する変更を追跡するのに役立ちます。|
-|ConfigurationChange <br>&#124; where ConfigChangeType == "Microsoft services" and SvcName contains "w3svc" and SvcState == "Stopped"|システムに不可欠なサービスに対する変更を追跡するのに役立ちます。|
+|ConfigurationChange <br>&#124; where ConfigChangeType == "WindowsServices" and SvcName contains "w3svc" and SvcState == "Stopped"|システムに不可欠なサービスに対する変更を追跡するのに役立ちます。|
 |ConfigurationChange <br>&#124; where ConfigChangeType == "Daemons" and SvcName contains "ssh" and SvcState!= "Running"|システムに不可欠なサービスに対する変更を追跡するのに役立ちます。|
 |ConfigurationChange <br>&#124; where ConfigChangeType == "Software" and ChangeCategory == "Added"|ロックダウンされたソフトウェア構成が必要な環境で役立ちます。|
 |ConfigurationData <br>&#124; where SoftwareName contains "Monitoring Agent" and CurrentVersion!= "8.0.11081.0"|古いソフトウェア バージョンや非準拠のソフトウェア バージョンがインストールされているマシンを確認するのに役立ちます。 このクエリでは、変更は報告されず、最後に報告された構成の状態が報告されます。|
@@ -195,7 +201,10 @@ Microsoft サービスに対する既定の収集の頻度は 30 分です。 **
 
 ## <a name="next-steps"></a>次のステップ
 
-* Automation アカウントで機能を有効にするには、「[Automation アカウントで変更履歴とインベントリを有効にする](automation-enable-changes-from-auto-acct.md)」を参照してください。
-* Azure portal にブラウザーでアクセスすることによってこの機能を有効にするには、「[Azure portal での Change Tracking とインベントリの有効化](automation-onboard-solutions-from-browse.md)に関する記事を参照してください。
-* Runbook で機能を有効にするには、「[Runbook で変更履歴とインベントリを有効にする](automation-enable-changes-from-runbook.md)」を参照してください。
-* Azure VM で機能を有効にするには、「[Azure VM で変更履歴とインベントリを有効にする](automation-enable-changes-from-vm.md)」を参照してください。
+- Automation アカウントで機能を有効にするには、「[Automation アカウントで変更履歴とインベントリを有効にする](automation-enable-changes-from-auto-acct.md)」を参照してください。
+
+- Azure portal にブラウザーでアクセスすることによってこの機能を有効にするには、「[Azure portal での Change Tracking とインベントリの有効化](automation-onboard-solutions-from-browse.md)に関する記事を参照してください。
+
+- Runbook で機能を有効にするには、「[Runbook で変更履歴とインベントリを有効にする](automation-enable-changes-from-runbook.md)」を参照してください。
+
+- Azure VM で機能を有効にするには、「[Azure VM で変更履歴とインベントリを有効にする](automation-enable-changes-from-vm.md)」を参照してください。

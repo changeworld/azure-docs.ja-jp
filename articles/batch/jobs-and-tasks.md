@@ -3,12 +3,12 @@ title: Azure Batch でのジョブとタスク
 description: ジョブとタスク、および Azure Batch ワークフローでのそれらの使用方法について、開発の観点から説明します。
 ms.topic: conceptual
 ms.date: 05/12/2020
-ms.openlocfilehash: aeffd05a26066675ca320ab4b3c3c09e6807e6df
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 5120b76f34e81c2ceeba88767a656b5ee0d40c2f
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83790809"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955371"
 ---
 # <a name="jobs-and-tasks-in-azure-batch"></a>Azure Batch でのジョブとタスク
 
@@ -22,7 +22,7 @@ Azure Batch では、*タスク*は計算の単位を表します。 *ジョブ*
 
 ### <a name="job-priority"></a>ジョブの優先順位
 
-作成するジョブには、オプションの優先順位を割り当てることができます。 Batch サービスは、ジョブの優先順位値を使用して、アカウント内のジョブ スケジューリングの順序を決定します ([スケジュールされたジョブ](#scheduled-jobs)と混同しないでください)。 優先順位として、-1000 ～ 1000 の値を使用します。-1000 は最も低い優先順位を示し、1000 は最も高い優先順位を示します。 ジョブの優先順位を更新するには、[ジョブのプロパティの更新](https://docs.microsoft.com/rest/api/batchservice/job/update)操作 (Batch REST) を呼び出すか、[CloudJob.Priority](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudjob) プロパティ (Batch .NET) を変更します。
+作成するジョブには、オプションの優先順位を割り当てることができます。 Batch サービスは、ジョブの優先順位値を使用して、アカウント内のジョブ スケジューリングの順序を決定します ([スケジュールされたジョブ](#scheduled-jobs)と混同しないでください)。 優先順位として、-1000 ～ 1000 の値を使用します。-1000 は最も低い優先順位を示し、1000 は最も高い優先順位を示します。 ジョブの優先順位を更新するには、[ジョブのプロパティの更新](/rest/api/batchservice/job/update)操作 (Batch REST) を呼び出すか、[CloudJob.Priority](/dotnet/api/microsoft.azure.batch.cloudjob) プロパティ (Batch .NET) を変更します。
 
 同じアカウント内で、優先順位の高いジョブは優先順位の低いジョブよりも優先的にスケジュールされます。 あるアカウントの優先順位値が高いジョブが、異なるアカウントの優先順位値が低い別のジョブよりも優先的にスケジュールされることはありません。 既に実行されている優先順位の低いジョブのタスクが、優先順位の高いタスクに入れ替わることはありません。
 
@@ -39,13 +39,13 @@ Azure Batch では、*タスク*は計算の単位を表します。 *ジョブ*
 
 クライアント アプリケーションでジョブにタスクを追加するか、[ジョブ マネージャー タスク](#job-manager-task)を指定することができます。 ジョブ マネージャー タスクには、ジョブに必要なタスクを作成するための情報と、プール内のいずれかのコンピューティング ノードで実行されているジョブ マネージャー タスクが含まれます。 ジョブ マネージャー タスクは Batch によってのみ処理されます。ジョブが作成されるとすぐにキューに配置され、失敗すると再開されます。 [ジョブ スケジュール](#scheduled-jobs)によって作成されたジョブには、ジョブ マネージャー タスクが必要です。ジョブ マネージャー タスク以外では、ジョブがインスタンス化される前にタスクを定義できないためです。
 
-既定では、ジョブ内のすべてのタスクが完了しても、ジョブはアクティブな状態のままとなります。 この動作は変更可能です。ジョブ内のすべてのタスクが完了したときにジョブが自動的に終了するように設定できます。 ジョブの **onAllTasksComplete** プロパティ (Batch .NET の [OnAllTasksComplete](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudjob)) を *terminatejob* に設定することで、ジョブのすべてのタスクが完了状態になったときに、ジョブを自動的に終了できます。
+既定では、ジョブ内のすべてのタスクが完了しても、ジョブはアクティブな状態のままとなります。 この動作は変更可能です。ジョブ内のすべてのタスクが完了したときにジョブが自動的に終了するように設定できます。 ジョブの **onAllTasksComplete** プロパティ (Batch .NET の [OnAllTasksComplete](/dotnet/api/microsoft.azure.batch.cloudjob)) を *terminatejob* に設定することで、ジョブのすべてのタスクが完了状態になったときに、ジョブを自動的に終了できます。
 
 Batch サービスでは、タスクの "*ない*" ジョブを考慮して、そのすべてのタスクを完了させます。 したがって、このオプションは、 [ジョブ マネージャー タスク](#job-manager-task)で最も一般的に使用されます。 ジョブ マネージャーを使用せずにジョブの自動終了を使用するには、最初に新しいジョブの **onAllTasksComplete** プロパティを *noaction* に設定し、ジョブにタスクを追加し終えた後でのみ *terminatejob* に設定する必要があります。
 
 ### <a name="scheduled-jobs"></a>スケジュールされたジョブ
 
-[ジョブ スケジュール](https://docs.microsoft.com/rest/api/batchservice/jobschedule)を使用すると、Batch サービス内に、繰り返し発生するジョブを作成できます。 ジョブ スケジュールは、ジョブをいつ実行するかを指定し、実行されるジョブの仕様を持っています。 スケジュールがスケジュール期間 (スケジュールが有効になる時点とその期間) と、その期間中にどのくらいの頻度でジョブを作成するかを指定することができます。
+[ジョブ スケジュール](/rest/api/batchservice/jobschedule)を使用すると、Batch サービス内に、繰り返し発生するジョブを作成できます。 ジョブ スケジュールは、ジョブをいつ実行するかを指定し、実行されるジョブの仕様を持っています。 スケジュールがスケジュール期間 (スケジュールが有効になる時点とその期間) と、その期間中にどのくらいの頻度でジョブを作成するかを指定することができます。
 
 ## <a name="tasks"></a>タスク
 
@@ -153,11 +153,11 @@ Batch .NET ライブラリを使用して MPI ジョブを Batch で実行する
 
 ### <a name="environment-settings-for-tasks"></a>タスクの環境設定
 
-Batch サービスによって実行されるすべてのタスクは、コンピューティング ノード上に設定されている環境変数を利用することができます。 これには、Batch サービスによって定義された ([サービス定義](https://docs.microsoft.com/azure/batch/batch-compute-node-environment-variables)) 環境変数のほか、ユーザーがタスクに対して定義するカスタム環境変数が含まれます。 これらの環境変数は、タスクによって実行されるアプリケーションやスクリプトから実行中に利用することができます。
+Batch サービスによって実行されるすべてのタスクは、コンピューティング ノード上に設定されている環境変数を利用することができます。 これには、Batch サービスによって定義された ([サービス定義](./batch-compute-node-environment-variables.md)) 環境変数のほか、ユーザーがタスクに対して定義するカスタム環境変数が含まれます。 これらの環境変数は、タスクによって実行されるアプリケーションやスクリプトから実行中に利用することができます。
 
-カスタム環境変数は、タスクまたはジョブの *環境設定* プロパティを設定することで、タスク レベルまたはジョブ レベルで設定できます。 詳細については、[ジョブへのタスクの追加](https://docs.microsoft.com/rest/api/batchservice/task/add?)操作 (Batch REST API) に関するページ、または [CloudTask.EnvironmentSettings](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask) プロパティと [CloudJob.CommonEnvironmentSettings](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudjob) プロパティ (Batch .NET) に関するページをご覧ください。
+カスタム環境変数は、タスクまたはジョブの *環境設定* プロパティを設定することで、タスク レベルまたはジョブ レベルで設定できます。 詳細については、[ジョブへのタスクの追加](/rest/api/batchservice/task/add?)操作 (Batch REST API) に関するページ、または [CloudTask.EnvironmentSettings](/dotnet/api/microsoft.azure.batch.cloudtask) プロパティと [CloudJob.CommonEnvironmentSettings](/dotnet/api/microsoft.azure.batch.cloudjob) プロパティ (Batch .NET) に関するページをご覧ください。
 
-クライアント アプリケーションまたはサービスからタスクのサービス定義またはカスタムの環境変数を取得するには、[タスクに関する情報の取得](https://docs.microsoft.com/rest/api/batchservice/task/get)操作 (Batch REST) を使用するか、[CloudTask.EnvironmentSettings](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask) プロパティ (Batch .NET) にアクセスします。 コンピューティング ノードで実行されるプロセスは、たとえば `%VARIABLE_NAME%` (Windows) や `$VARIABLE_NAME` (Linux) という一般的な構文を使用して、ノード上のこうしたさまざまな環境変数を利用することができます。
+クライアント アプリケーションまたはサービスからタスクのサービス定義またはカスタムの環境変数を取得するには、[タスクに関する情報の取得](/rest/api/batchservice/task/get)操作 (Batch REST) を使用するか、[CloudTask.EnvironmentSettings](/dotnet/api/microsoft.azure.batch.cloudtask) プロパティ (Batch .NET) にアクセスします。 コンピューティング ノードで実行されるプロセスは、たとえば `%VARIABLE_NAME%` (Windows) や `$VARIABLE_NAME` (Linux) という一般的な構文を使用して、ノード上のこうしたさまざまな環境変数を利用することができます。
 
 サービス定義の環境変数をすべて網羅した一覧を、[コンピューティング ノードの環境変数](batch-compute-node-environment-variables.md)に関するページで確認できます。
 

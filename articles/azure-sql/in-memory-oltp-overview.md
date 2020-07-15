@@ -1,9 +1,9 @@
 ---
 title: インメモリ テクノロジ
-description: インメモリは、Azure SQL Database と Azure SQL Managed Instance のトランザクション ワークロードと分析ワークロードのパフォーマンスを大幅に向上するテクノロジです。
+description: インメモリ テクノロジを使用すると、Azure SQL Database と Azure SQL Managed Instance のトランザクション ワークロードと分析ワークロードのパフォーマンスが大幅に向上します。
 services: sql-database
-ms.service: sql-database
-ms.subservice: development
+ms.service: sql-db-mi
+ms.subservice: ''
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,14 +11,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/19/2019
-ms.openlocfilehash: c9b25912e1386520d61412a8ba05f6b02224fbe6
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 43527e8e5860e0bbfc50643210156be943d2f174
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84033753"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985192"
 ---
-# <a name="optimize-performance-by-using-in-memory-technologies-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database と Azure SQL Managed Instance でのインメモリ テクノロジを使用したパフォーマンスの最適化
+# <a name="optimize-performance-by-using-in-memory-technologies-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database と Azure SQL Managed Instance でインメモリ テクノロジを使用してパフォーマンスを最適化する
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
 インメモリ テクノロジにより、アプリケーションのパフォーマンスを向上させることができ、また、データベースのコストを削減できる可能性があります。
@@ -46,17 +46,17 @@ Azure SQL Database と Azure SQL Managed Instance には、次のインメモリ
 
 ## <a name="benefits-of-in-memory-technology"></a>インメモリ テクノロジの利点
 
-クエリとトランザクションの処理が効率化するため、インメモリ テクノロジはコストの低減にも役立ちます。 通常は、パフォーマンスの向上を実現するためにデータベースの価格レベルをアップグレードする必要はありません。 場合によっては、インメモリ テクノロジでパフォーマンスを向上させながら価格レベルを下げられる場合さえあります。
+クエリとトランザクションの処理が効率化するため、インメモリ テクノロジはコストの削減にも役立ちます。 通常は、パフォーマンスの向上を実現するためにデータベースの価格レベルをアップグレードする必要はありません。 場合によっては、インメモリ テクノロジでパフォーマンスを向上させながら価格レベルを下げられる場合さえあります。
 
 インメモリ OLTP がパフォーマンスの著しい向上を促した例を 2 つ紹介します。
 
-- インメモリ OLTP を利用することで、[クォーラム ビジネス ソリューションで DTU を 70% 向上させながら、ワークロードを倍増させることができました](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)。
+- インメモリ OLTP を利用することで、[クォーラム ビジネス ソリューションで DTU を 70% 向上させながら、ワークロードを倍増させることができました](https://resources.quorumsoftware.com/case-studies/quorum-doubles-key-database-s-workload-while-lowering-dtu)。
 - サンプル ワークロードでリソースの消費量が大幅に向上したことが、[インメモリ OLTP](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB) に関するビデオで示されています。 詳細については、[インメモリ OLTP](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
 
 > [!NOTE]  
 > インメモリ テクノロジは、Premium レベルと Business Critical レベルで使用できます。
 
-次のビデオでは、インメモリ テクノロジ使用によるパフォーマンス向上の可能性について説明します。 表示されるパフォーマンスの向上は、常にさまざまな要因 (ワークロードとデータの性質、データベースのアクセス パターンなど) に依存していることに注意してください。
+次のビデオでは、インメモリ テクノロジによるパフォーマンス向上の可能性について説明されています。 表示されるパフォーマンスの向上は、常にさまざまな要因 (ワークロードとデータの性質、データベースのアクセス パターンなど) に依存していることに注意してください。
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-In-Memory-Technologies/player]
 >
@@ -111,7 +111,7 @@ SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 
 ### <a name="data-size-and-storage-cap-for-in-memory-oltp"></a>インメモリ OLTP のデータのサイズとストレージ上限
 
-インメモリ OLTP には、ユーザー データの格納に使用されるメモリ最適化テーブルが含まれています。 これらのテーブルは、メモリに格納する必要があります。 メモリは SQL Database サービスで直接管理するため、ユーザー データについてクォータの概念があります。 この考え方は、"*インメモリ OLTP ストレージ*" と呼ばれます。
+インメモリ OLTP には、ユーザー データの格納に使用されるメモリ最適化テーブルが含まれています。 これらのテーブルは、メモリに格納する必要があります。 メモリは SQL Database で直接管理するため、ユーザー データについてクォータの概念があります。 この考え方は、"*インメモリ OLTP ストレージ*" と呼ばれます。
 
 サポートされている各単一データベースの価格レベルと各エラスティック プールの価格レベルには、一定量のインメモリ OLTP ストレージが含まれます。
 
@@ -149,7 +149,7 @@ SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 
 データベースを General Purpose、Standard または Basic にダウングレードする前に、すべてのメモリ最適化テーブルとテーブルの種類に加えて、すべてのネイティブ コンパイル T-SQL モジュールを削除してください。
 
-*Business Critical レベルのリソースのスケール ダウン*:メモリ最適化テーブルのデータは、データベースのレベルや Managed Instance に関連付けられているか、あるいはエラスティック プールで使用可能な、インメモリ OLTP ストレージ内に格納する必要があります。 レベルをスケールダウンしようとしたり、使用できるインメモリ OLTP ストレージが十分ではないプールにデータベースを移動しようとしたりすると、操作が失敗します。
+*Business Critical レベルのリソースのスケール ダウン*:メモリ最適化テーブルのデータは、データベースのレベルやマネージド インスタンスに関連付けられているか、またはエラスティック プールで使用可能な、インメモリ OLTP ストレージ内に格納する必要があります。 レベルをスケールダウンしようとしたり、使用できるインメモリ OLTP ストレージが十分ではないプールにデータベースを移動しようとしたりすると、操作が失敗します。
 
 ## <a name="in-memory-columnstore"></a>インメモリ列ストア
 
@@ -183,7 +183,7 @@ SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 **クラスター化された**列ストア インデックスがある場合、ダウングレード後はテーブル全体が使用できなくなります。 そのため、サポートされていないレベルにデータベースをダウングレードする前に、*クラスター化された* 列ストア インデックスをすべて削除することをお勧めします。
 
 > [!Note]
-> Managed Instance では、すべてのレベルの列ストア インデックスがサポートされます。
+> SQL Managed Instance では、すべてのレベルの列ストア インデックスがサポートされます。
 
 <a id="install_oltp_manuallink" name="install_oltp_manuallink"></a>
 

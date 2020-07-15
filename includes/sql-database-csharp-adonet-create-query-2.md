@@ -4,18 +4,18 @@ ms.service: sql-database
 ms.topic: include
 ms.date: 12/10/2018
 ms.author: genemi
-ms.openlocfilehash: e30651cb0ed7d74082163a92acbc428c21018255
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7943ea13d93fa68b76d333bda5438fb5738f5cd1
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67181253"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050242"
 ---
 ## <a name="c-program-example"></a>C# プログラムの例
 
-この記事の以降のセクションでは、ADO.NET を使って SQL データベースに Transact-SQL (T-SQL) ステートメントを送る C# プログラムを紹介します。 C# プログラムは、以下の操作を行います。
+この記事の以降のセクションでは、ADO.NET を使って SQL Database に Transact-SQL (T-SQL) ステートメントを送る C# プログラムを紹介します。 C# プログラムは、以下の操作を行います。
 
-- [ADO.NET を使用して SQL データベースに接続する](#cs_1_connect)
+- [ADO.NET を使用して SQL Database に接続する](#cs_1_connect)
 - [T-SQL ステートメントを返すメソッド](#cs_2_return)
     - テーブルの作成
     - テーブルへのデータの読み込み
@@ -82,7 +82,7 @@ C# プログラムは論理的には 1 つの .cs ファイルですが、物理
 
 <a name="cs_1_connect"/>
 
-### <a name="connect-to-sql-database-using-adonet"></a>ADO.NET を使用して SQL データベースに接続する
+### <a name="connect-to-sql-database-using-adonet"></a>ADO.NET を使用して SQL Database に接続する
 
 ```csharp
 using System;

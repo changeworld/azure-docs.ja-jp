@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 9/11/2018
 ms.author: dekapur
-ms.openlocfilehash: 6a00b7d1b72d594c08021982b2448de6275414c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 495949d1a4ec927c601f174521c360f51034a2fb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75610065"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85079344"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Service Fabric スタンドアロン クラスターのデプロイの計画と準備
 
@@ -51,7 +51,7 @@ FD と UD の詳細については、「[Service Fabric クラスターの記述
 
 ## <a name="prepare-the-machines-that-will-serve-as-nodes"></a>ノードとして機能するマシンを準備する
 
-クラスターに追加する各マシンの推奨仕様の一部を次に示します。
+Service Fabric クラスター内のマシンに対して推奨される仕様を次に示します。
 
 * 16 GB 以上の RAM
 * 40 GB 以上の使用可能なディスク領域
@@ -61,9 +61,11 @@ FD と UD の詳細については、「[Service Fabric クラスターの記述
 * [.NET Framework 4.5.1 以降](https://www.microsoft.com/download/details.aspx?id=40773) (フル インストール)
 * [Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/install/installing-windows-powershell)
 * [RemoteRegistry サービス](https://technet.microsoft.com/library/cc754820)がすべてのマシンで実行されている必要があります。
-* Service Fabric のインストール ドライブは、NTFS ファイル システムでなければなりません
+* **Service Fabric のインストール ドライブは、NTFS ファイル システムである必要があります**
+* **Windows サービスの "*パフォーマンス ログとアラート*" と "*Windows イベント ログ*" が[有効である](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc755249(v=ws.11))必要があります**。
 
-クラスターのデプロイと構成を行うクラスター管理者には、個々のマシンに対する [管理者特権](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) が必要です。 ドメイン コントローラーに Service Fabric をインストールすることはできません。
+> [!IMPORTANT]
+> クラスターのデプロイと構成を行うクラスター管理者には、個々のマシンに対する [管理者特権](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) が必要です。 ドメイン コントローラーに Service Fabric をインストールすることはできません。
 
 ## <a name="download-the-service-fabric-standalone-package-for-windows-server"></a>Windows Server 用の Service Fabric スタンドアロン パッケージをダウンロードする
 [Windows Server 用の Service Fabric スタンドアロン パッケージをダウンロード](https://go.microsoft.com/fwlink/?LinkId=730690)し、クラスターに属していないデプロイ用のマシンか、これからクラスターに追加するマシンのいずれかにパッケージ ファイルを解凍します。

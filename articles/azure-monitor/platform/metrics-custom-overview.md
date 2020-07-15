@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.subservice: metrics
-ms.openlocfilehash: 2aca113e21d759416580c8876ec2092762893da5
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 930e32cfc57cb5b48180c7695b7b6c7d11df8caa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299827"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85506975"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Azure Monitor のカスタム メトリック (プレビュー)
 
@@ -189,28 +189,28 @@ Azure Monitor では、すべてのメトリックを 1 分刻みの間隔で保
 |Azure リージョン |リージョンのエンドポイントのプレフィックス|
 |---|---|
 | **米国およびカナダ** | |
-|米国中西部 | https:\//westcentralus.monitoring.azure.com/ |
-|米国西部 2       | https:\//westus2.monitoring.azure.com/ |
+|米国中西部 | https:\//westcentralus.monitoring.azure.com |
+|米国西部 2       | https:\//westus2.monitoring.azure.com |
 |米国中北部 | https:\//northcentralus.monitoring.azure.com
-|米国中南部| https:\//southcentralus.monitoring.azure.com/ |
+|米国中南部| https:\//southcentralus.monitoring.azure.com |
 |米国中部      | https:\//centralus.monitoring.azure.com |
-|カナダ中部 | https:\//canadacentral.monitoring.azure.comc
-|米国東部| https:\//eastus.monitoring.azure.com/ |
-|米国東部 2 | https:\//eastus2.monitoring.azure.com/
+|カナダ中部 | https:\//canadacentral.monitoring.azure.com |
+|米国東部| https:\//eastus.monitoring.azure.com |
+|米国東部 2 | https:\//eastus2.monitoring.azure.com |
 | **ヨーロッパ** | |
-|北ヨーロッパ    | https:\//northeurope.monitoring.azure.com/ |
-|西ヨーロッパ     | https:\//westeurope.monitoring.azure.com/ |
+|北ヨーロッパ    | https:\//northeurope.monitoring.azure.com |
+|西ヨーロッパ     | https:\//westeurope.monitoring.azure.com |
 |英国南部 | https:\//uksouth.monitoring.azure.com
 |フランス中部 | https:\//francecentral.monitoring.azure.com |
 | **アフリカ** | |
-|南アフリカ北部 | https:\//southafricanorth.monitoring.azure.com
+|南アフリカ北部 | https:\//southafricanorth.monitoring.azure.com |
 | **アジア** | |
-|インド中部 | https:\//centralindia.monitoring.azure.com
-|オーストラリア東部 | https:\//australiaeast.monitoring.azure.com
-|東日本 | https:\//japaneast.monitoring.azure.com
+|インド中部 | https:\//centralindia.monitoring.azure.com |
+|オーストラリア東部 | https:\//australiaeast.monitoring.azure.com |
+|東日本 | https:\//japaneast.monitoring.azure.com |
 |東南アジア  | https:\//southeastasia.monitoring.azure.com |
-|東アジア | https:\//eastasia.monitoring.azure.com
-|韓国中部   | https:\//koreacentral.monitoring.azure.com
+|東アジア | https:\//eastasia.monitoring.azure.com |
+|韓国中部   | https:\//koreacentral.monitoring.azure.com |
 
 ## <a name="latency-and-storage-retention"></a>待機時間とストレージのリテンション期間
 

@@ -8,16 +8,16 @@ ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 06/05/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 14a6d2b448bb943356ae1738c3d53d9c6fee1a98
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: bab0487b09d7088e75ce762c9e4f0338cea507eb
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84484670"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391895"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>チュートリアル:Table API を使って Azure Cosmos DB に対するクエリを実行する
 
-Azure Cosmos DB [Table API](table-introduction.md) では、キー/値 (テーブル) データに対する OData クエリと [LINQ](https://docs.microsoft.com/rest/api/storageservices/fileservices/writing-linq-queries-against-the-table-service) クエリがサポートされます。  
+Azure Cosmos DB [Table API](table-introduction.md) では、キー/値 (テーブル) データに対する OData クエリと [LINQ](/rest/api/storageservices/fileservices/writing-linq-queries-against-the-table-service) クエリがサポートされます。  
 
 この記事に含まれるタスクは次のとおりです。
 
@@ -32,7 +32,7 @@ Azure Cosmos DB [Table API](table-introduction.md) では、キー/値 (テー�
 | Smith | Ben | Ben@contoso.com| 425-555-0102 |
 | Smith | Jeff | Jeff@contoso.com| 425-555-0104 |
 
-Table API を使用してクエリを実行する方法の詳細については、[テーブルおよびエンティティのクエリ](https://docs.microsoft.com/rest/api/storageservices/fileservices/querying-tables-and-entities)に関するページを参照してください。
+Table API を使用してクエリを実行する方法の詳細については、[テーブルおよびエンティティのクエリ](/rest/api/storageservices/fileservices/querying-tables-and-entities)に関するページを参照してください。
 
 Azure Cosmos DB が提供する Premium 機能の詳細については、[Azure Cosmos DB: Table API](table-introduction.md) に関するページや [Table API を使用した .NET での開発](tutorial-develop-table-dotnet.md)に関するページをご覧ください。
 
@@ -65,7 +65,7 @@ https://<mytableendpoint>/People(PartitionKey='Harp',RowKey='Walter')
 * OData プロトコル仕様で定義された論理演算子を使用して、プロパティと値を比較します。 プロパティは動的な値とは比較できないので注意してください。 式の片方は、定数である必要があります。
 * プロパティ名、演算子、および定数値は、URL でエンコードされた空白で区切る必要があります。 空白は URL エンコードでは `%20` となります。
 * フィルター文字列のすべての要素は大文字と小文字が区別されます。
-* フィルターで有効な結果を得るためには、定数値をプロパティと同じデータ型にする必要があります。 サポートされているプロパティ型の詳細については、 [Table サービス データ モデル](https://docs.microsoft.com/rest/api/storageservices/understanding-the-table-service-data-model)に関するページを参照してください。
+* フィルターで有効な結果を得るためには、定数値をプロパティと同じデータ型にする必要があります。 サポートされているプロパティ型の詳細については、 [Table サービス データ モデル](/rest/api/storageservices/understanding-the-table-service-data-model)に関するページを参照してください。
 
 OData `$filter` を使用して、PartitionKey と Email プロパティによってフィルター処理する方法を、次のサンプル クエリで示します。
 
@@ -75,7 +75,7 @@ OData `$filter` を使用して、PartitionKey と Email プロパティによ�
 https://<mytableapi-endpoint>/People()?$filter=PartitionKey%20eq%20'Smith'%20and%20Email%20eq%20'Ben@contoso.com'
 ```
 
-さまざまなデータ型のフィルター式の作成方法の詳細については、「[Querying Tables and Entities (テーブルとエンティティのクエリ)](https://docs.microsoft.com/rest/api/storageservices/querying-tables-and-entities)」をご覧ください。
+さまざまなデータ型のフィルター式の作成方法の詳細については、「[Querying Tables and Entities (テーブルとエンティティのクエリ)](/rest/api/storageservices/querying-tables-and-entities)」をご覧ください。
 
 **結果**
 

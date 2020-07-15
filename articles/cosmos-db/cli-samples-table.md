@@ -4,21 +4,21 @@ description: Azure Cosmos DB Table API 用の Azure CLI サンプル
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
-ms.topic: sample
+ms.topic: how-to
 ms.date: 06/03/2020
 ms.author: mjbrown
-ms.openlocfilehash: 09abbfd44b76fd24dede4276c00e7f58907c3995
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: 8c6456074e29efe47819e4f31235d957bde81cfb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84509442"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560622"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-table-api"></a>Azure Cosmos DB Table API 用の Azure CLI サンプル
 
 次の表には、Azure Cosmos DB Table API 用の Azure CLI サンプル スクリプトへのリンクが含まれています。 Azure Cosmos DB CLI のすべてのコマンドのリファレンス ページは、[Azure CLI リファレンス](/cli/azure/cosmosdb)で確認できます。 Azure Cosmos DB CLI のすべてのサンプル スクリプトについては、[Azure Cosmos DB CLI GitHub リポジトリ](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb)をご覧ください。
 
-| |  |
+|タスク | 説明 |
 |---|---|
 | [Azure Cosmos アカウントとテーブルを作成する](scripts/cli/table/create.md?toc=%2fcli%2fazure%2ftoc.json)| Table API 用の Azure Cosmos DB アカウントとテーブルを作成します。 |
 | [スループットを変更する](scripts/cli/table/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | テーブルの RU/秒を更新します。|

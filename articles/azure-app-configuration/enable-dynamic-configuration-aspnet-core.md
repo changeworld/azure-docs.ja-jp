@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: e9df6d2e7a8219d16e7b60f7c3b8d826a87e6110
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 5ac09aae724cf7481245ba9e898b52945b394cae
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80348848"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856533"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>チュートリアル:ASP.NET Core アプリで動的な構成を使用する
 
@@ -310,11 +310,16 @@ App Configuration では、構成ストアへの呼び出しが多くなりす�
 
 1. .NET Core CLI を使用してアプリケーションをビルドするには、コマンド シェルで次のコマンドを実行します。
 
+```console
         dotnet build
+```
 
 1. ビルドが正常に完了したら、次のコマンドを実行して、Web アプリをローカルで実行します。
 
+```console
         dotnet run
+```
+
 1. ブラウザー ウィンドウを開いて、`dotnet run` 出力に表示される URL に移動します。
 
     ![クイックスタート アプリをローカルで起動する](./media/quickstarts/aspnet-core-app-launch-local-before.png)

@@ -9,12 +9,12 @@ ms.author: migreene
 ms.topic: conceptual
 ms.date: 07/17/2019
 manager: nirb
-ms.openlocfilehash: ff785bf3ace7c65f83fe8e505f0544edd24776d8
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 4430b8cdfe9414ddbfd7aad3c3fe7827adbc8705
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836857"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186369"
 ---
 # <a name="remediate-noncompliant-azure-automation-state-configuration-servers"></a>非準拠の Azure Automation State Configuration サーバーを修復する
 
@@ -25,7 +25,7 @@ Azure コンピューティングでは、ユーザーが仮想マシン内で�
 
 ## <a name="correct-drift-of-windows-virtual-machines-using-powershell"></a>PowerShell を使用して Windows 仮想マシンのドリフトを補正する
 
-`Run` コマンドの機能を使用して、Windows 仮想マシンのドリフトを補正することができます。 「[実行コマンドを使用して Windows VM で PowerShell スクリプトを実行する](/azure/virtual-machines/windows/run-command)」を参照してください。
+`Run` コマンドの機能を使用して、Windows 仮想マシンのドリフトを補正することができます。 「[実行コマンドを使用して Windows VM で PowerShell スクリプトを実行する](../virtual-machines/windows/run-command.md)」を参照してください。
 
 Azure Automation State Configuration ノードで強制的に最新の構成をダウンロードして適用するには、[Update-DscConfiguration](/powershell/module/psdesiredstateconfiguration/update-dscconfiguration) コマンドレットを使用します。
 
@@ -43,5 +43,5 @@ Azure ノードの場合は、Azure portal から、または Az モジュール
 
 ## <a name="next-steps"></a>次のステップ
 
-- PowerShell コマンドレットのリファレンスについては、「[Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)」をご覧ください。
+- PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)」をご覧ください。
 - 継続的なデプロイ パイプラインで Azure Automation State Configuration を使う例については、「[Chocolatey を使用して継続的配置を設定する](automation-dsc-cd-chocolatey.md)」をご覧ください。

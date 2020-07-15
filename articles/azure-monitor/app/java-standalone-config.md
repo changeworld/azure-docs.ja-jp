@@ -3,12 +3,12 @@ title: 任意の場所の Java アプリケーションを監視する - Azure M
 description: アプリをインストルメント化することなく、任意の環境で実行されている Java アプリケーションのアプリケーション パフォーマンスをコード不要で監視します。 分散トレースとアプリケーション マップを使用して、問題の根本原因を見つけます。
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 478e42669339ac015076c89da103d91080090685
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 0c66ad01f265dde7da2f48b17b3ad4438d59a0ae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509212"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85319688"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>構成オプション - Azure Monitor Application Insights の Java スタンドアロン エージェント
 
@@ -33,14 +33,14 @@ ms.locfileid: "82509212"
 
 ## <a name="configuration-file-path"></a>構成ファイルのパス
 
-既定では Application Insights Java 3.0 Preview は、構成ファイルが `ApplicationInsights.json` という名前で、`applicationinsights-agent-3.0.0-PREVIEW.4.jar` と同じディレクトリに配置されていることが想定されています。
+既定では Application Insights Java 3.0 Preview は、構成ファイルが `ApplicationInsights.json` という名前で、`applicationinsights-agent-3.0.0-PREVIEW.5.jar` と同じディレクトリに配置されていることが想定されています。
 
 独自の構成ファイルのパスを指定するには、以下のいずれかを使用します
 
 * `APPLICATIONINSIGHTS_CONFIGURATION_FILE`環境変数、または
 * `applicationinsights.configurationFile` Java システム プロパティ
 
-相対パスを指定すると、`applicationinsights-agent-3.0.0-PREVIEW.4.jar` が配置されているディレクトリからの相対でパスが解決されます。
+相対パスを指定すると、`applicationinsights-agent-3.0.0-PREVIEW.5.jar` が配置されているディレクトリからの相対でパスが解決されます。
 
 ## <a name="connection-string"></a>接続文字列
 

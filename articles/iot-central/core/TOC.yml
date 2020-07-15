@@ -10,8 +10,8 @@
       href: overview-iot-central-developer.md
     - name: 最新の更新
       items:
-        - name: 2020 年 5 月の更新
-          href: 'https://azure.microsoft.com/updates/azure-iot-central-may-2020-updates/'
+        - name: 2020 年 5 月のジョブとメトリックの更新
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-jobs-and-metrics-feature-updates-may-2020/'
         - name: 2020 年 5 月のダッシュボード更新
           href: 'https://azure.microsoft.com/updates/azure-iot-central-may-2020-dashboard-updates/'
         - name: 2020 年 4 月の新機能
@@ -57,7 +57,7 @@
           href: 'https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/'
 - name: 概念
   items:
-    - name: Architecture
+    - name: アーキテクチャ
       href: concepts-architecture.md
     - name: アプリケーション テンプレートとは
       href: concepts-app-templates.md
@@ -133,6 +133,8 @@
               href: howto-use-app-templates.md
             - name: アプリケーションの正常性を監視する
               href: howto-monitor-application-health.md
+            - name: アプリケーションに関する情報
+              href: howto-get-app-info.md
         - name: 他の場所からの管理
           items:
             - name: Azure portal からの管理
@@ -151,6 +153,10 @@
               href: howto-manage-preferences.md
             - name: ライブ チャットの切り替え
               href: howto-show-hide-chat.md
+- name: リファレンス
+  items:
+    - name: Azure CLI
+      href: /cli/azure/azure-cli-reference-for-IoT
 - name: リソース
   items:
     - name: サポート オプションとヘルプ オプション

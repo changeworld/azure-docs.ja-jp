@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: f1aed6b1c03a2b83e3b4fd91f1106614adb5a701
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: d1f534b801ec3a71e891bf654628f9e49fc04b0d
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344392"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055632"
 ---
 # <a name="add-contributors-to-your-app"></a>アプリに共同作成者を追加する
 
@@ -97,6 +97,6 @@ Azure Active Directory ユーザーと同意の詳細を確認します。
 ## <a name="next-steps"></a>次のステップ
 
 * [バージョンを使用](luis-how-to-manage-versions.md)してアプリのライフ サイクルを制御する方法を確認します。
-* [オーサリング リソース](luis-concept-keys.md#authoring-key)やそのリソースの[共同作成者](luis-concept-keys.md#contributions-from-other-authors)などの概念を理解します。
+* [オーサリング リソース](luis-how-to-azure-subscription.md#authoring-key)やそのリソースの[共同作成者](luis-how-to-azure-subscription.md#contributions-from-other-authors)などの概念を理解します。
 * オーサリング リソースとランタイム リソースの[作成方法](luis-how-to-azure-subscription.md)を確認します
 * 新しい[オーサリング リソース](luis-migration-authoring.md)に移行します

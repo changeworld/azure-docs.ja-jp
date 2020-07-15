@@ -37,7 +37,7 @@
           href: database/scale-resources.md
         - name: 読み取りスケールアウト
           href: database/read-scale-out.md
-        - name: Security
+        - name: セキュリティ
           items:
             - name: 概要
               href: database/security-overview.md
@@ -57,7 +57,11 @@
             - name: 動的データ マスク
               href: database/dynamic-data-masking-overview.md
             - name: SQL 脆弱性評価
-              href: database/sql-vulnerability-assessment.md
+              items:
+                - name: SQL 脆弱性評価
+                  href: database/sql-vulnerability-assessment.md
+                - name: 脆弱性評価のルール
+                  href: database/sql-database-vulnerability-assessment-rules.md
             - name: ログイン、ユーザー アカウント、ロール、およびアクセス許可
               href: database/logins-create-manage.md
             - name: Azure AD Authentication
@@ -132,7 +136,7 @@
               href: database/temporal-tables-retention-policy.md
             - name: Azure Blob Storage を使用したバックアップ保有期間の構成
               href: database/long-term-backup-retention-configure.md
-        - name: Security
+        - name: セキュリティ
           items:
             - name: BYOK を使用した TDE の構成
               href: database/transparent-data-encryption-byok-configure.md
@@ -208,14 +212,14 @@
       items:
         - name: SQL Database とは
           href: database/sql-database-paas-overview.md
+        - name: 新機能
+          href: database/doc-changes-updates-release-notes.md?&tabs=single-database
         - name: Single Database
           href: database/single-database-overview.md
         - name: エラスティック プール
           href: database/elastic-pool-overview.md
         - name: 論理 SQL サーバー
           href: database/logical-servers.md
-        - name: リリース ノート
-          href: database/doc-changes-updates-release-notes.md?&tabs=single-database
         - name: サービス レベル
           items:
             - name: サーバーレス
@@ -262,7 +266,7 @@
               href: database/geo-distributed-application-configure-tutorial.md
             - name: アクティブな地理的レプリケーション
               href: database/active-geo-replication-configure-portal.md
-        - name: Security
+        - name: セキュリティ
           items:
             - name: セキュリティを構成する
               href: database/secure-database-tutorial.md
@@ -328,7 +332,7 @@
               href: database/sql-data-sync-best-practices.md
             - name: データ同期のトラブルシューティング
               href: database/sql-data-sync-troubleshoot.md
-        - name: Security
+        - name: セキュリティ
           items:
             - name: Azure SQL 監査
               href: database/auditing-overview.md
@@ -342,44 +346,6 @@
               href: database/vnet-service-endpoint-rule-overview.md
             - name: Private Link
               href: database/private-endpoint-overview.md
-        - name: Machine Learning サービス
-          items:
-            - name: 概要
-              href: database/machine-learning-services-overview.md
-            - name: 主な相違点
-              href: database/machine-learning-services-differences.md
-            - name: クイックスタート
-              items:
-                - name: R スクリプトの作成
-                  href: database/r-script-create-quickstart.md
-                - name: モデルのトレーニングとスコア付け
-                  href: database/r-train-score-model-create-quickstart.md
-            - name: チュートリアル
-              items:
-                - name: R で予測モデルを作成する
-                  items:
-                    - name: 1 - データの準備
-                      href: database/predictive-model-prepare-data-tutorial.md
-                    - name: 2 - モデルの作成
-                      href: database/predictive-model-build-compare-tutorial.md
-                    - name: 3 - モデルのデプロイ
-                      href: database/predictive-model-deploy-tutorial.md
-                - name: R でクラスタリング モデルを作成する
-                  items:
-                    - name: 1 - データの準備
-                      href: database/clustering-model-prepare-data-tutorial.md
-                    - name: 2 - モデルの作成
-                      href: database/clustering-model-build-tutorial.md
-                    - name: 3 - モデルのデプロイ
-                      href: database/clustering-model-deploy-tutorial.md
-            - name: 方法
-              items:
-                - name: 高度な R 関数の記述
-                  href: database/machine-learning-services-functions.md
-                - name: R および SQL データの処理
-                  href: database/machine-learning-services-data-issues.md
-                - name: R パッケージの追加
-                  href: database/machine-learning-services-add-r-packages.md
         - name: データベース シャーディング
           items:
             - name: データベース シャーディング
@@ -407,7 +373,7 @@
             - name: アドホック クエリの作成と実行
               items:
                 - name: Azure Data Studio
-                  href: 'https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json'
+                  href: /sql/azure-data-studio/quickstart-sql-database?toc=%2Fazure%2Fazure-sql%2Ftoc.json
                 - name: SSMS
                   href: database/connect-query-ssms.md
                 - name: Azure portal
@@ -644,6 +610,9 @@
           href: database/powershell-script-content-guide.md?tabs=single-database
         - name: Azure Resource Manager
           href: database/arm-templates-content-guide.md?tabs=single-database
+        - name: Azure Policy の組み込み
+          displayName: 'samples, policies, definitions'
+          href: ./database/policy-samples.md
         - name: コード サンプル
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
 - name: SQL Managed Instance (SQL MI)
@@ -654,22 +623,25 @@
       items:
         - name: SQL Managed Instance とは
           href: managed-instance/sql-managed-instance-paas-overview.md
+        - name: 新機能
+          href: database/doc-changes-updates-release-notes.md?&tabs=managed-instance
         - name: インスタンス プール
           href: managed-instance/instance-pools-overview.md
         - name: よく寄せられる質問
           displayName: faq
           href: managed-instance/frequently-asked-questions-faq.md
-        - name: リリース ノート
-          href: database/doc-changes-updates-release-notes.md?&tabs=managed-instance
     - name: クイックスタート
       href: managed-instance/quickstart-content-reference-guide.md
       items:
-        - name: 作成
+        - name: SQL マネージド インスタンスの作成
           items:
-            - name: Azure Portal の使用
+            - name: Azure portal
               href: managed-instance/instance-create-quickstart.md
-            - name: PowerShell の使用
+            - name: PowerShell
               href: managed-instance/scripts/create-configure-managed-instance-powershell.md
+            - name: ARM テンプレート
+              displayName: Resource Manager
+              href: managed-instance/create-template-quickstart.md
             - name: インスタンス プールの作成
               href: managed-instance/instance-pools-configure.md
         - name: 構成
@@ -818,7 +790,7 @@
               href: 'https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-service-broker?toc=/azure/azure-sql/toc.json'
             - name: データベース メール
               href: 'https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail?toc=/azure/azure-sql/toc.json'
-        - name: Security
+        - name: セキュリティ
           items:
             - name: パブリック エンドポイントのセキュリティ保護
               href: managed-instance/public-endpoint-overview.md
@@ -868,6 +840,9 @@
           href: database/powershell-script-content-guide.md?tabs=managed-instance
         - name: Azure Resource Manager
           href: database/arm-templates-content-guide.md?tabs=managed-instance
+        - name: Azure Policy の組み込み
+          displayName: 'samples, policies, definitions'
+          href: ./database/policy-samples.md
         - name: コード サンプル
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
 - name: Azure VM 上の SQL Server
@@ -880,89 +855,101 @@
           items:
             - name: SQL Server VM とは
               href: virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
-            - name: ドキュメントの変更
+            - name: 新機能
               href: virtual-machines/windows/doc-changes-updates-release-notes.md
         - name: クイックスタート
           items:
-            - name: SQL VM の作成 - ポータル
+            - name: SQL VM の作成
+              items: null
+            - name: ポータル
               href: virtual-machines/windows/sql-vm-create-portal-quickstart.md
-            - name: SQL VM の作成 - PowerShell
+            - name: PowerShell
               href: virtual-machines/windows/sql-vm-create-powershell-quickstart.md
+            - name: ARM テンプレート
+              href: virtual-machines/windows/create-sql-vm-resource-manager-template.md
         - name: 概念
           items:
-            - name: ベスト プラクティス
-              items:
-                - name: パフォーマンスのベスト プラクティス
-                  href: virtual-machines/windows/performance-guidelines-best-practices.md
-                - name: セキュリティに関する考慮事項
-                  href: virtual-machines/windows/security-considerations-best-practices.md
-                - name: アプリケーション パターン
-                  href: virtual-machines/windows/application-patterns-development-strategies.md
             - name: ビジネス継続性
               items:
-                - name: 高可用性のオプション
+                - name: 概要
                   href: virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
-                - name: Always On 可用性グループ
-                  href: virtual-machines/windows/availability-group-overview.md
                 - name: バックアップと復元
                   href: virtual-machines/windows/backup-restore.md
-                - name: SQL Server 2014 の自動バックアップ
-                  href: virtual-machines/windows/automated-backup-sql-2014.md
-                - name: SQL Server 2016 以降の自動バックアップ
-                  href: virtual-machines/windows/automated-backup.md
+                - name: バックアップ用の Azure Storage
+                  href: virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md
+                - name: Always On 可用性グループ
+                  href: virtual-machines/windows/availability-group-overview.md
+                - name: フェールオーバー クラスター インスタンス
+                  href: virtual-machines/windows/failover-cluster-instance-overview.md
+            - name: ベスト プラクティス
+              items:
+                - name: パフォーマンス
+                  href: virtual-machines/windows/performance-guidelines-best-practices.md
+                - name: セキュリティ
+                  href: virtual-machines/windows/security-considerations-best-practices.md
+                - name: クラスター構成
+                  href: virtual-machines/windows/hadr-cluster-best-practices.md
+                - name: アプリケーション パターン
+                  href: virtual-machines/windows/application-patterns-development-strategies.md
             - name: 管理
               items:
                 - name: 専用ホスト
                   href: virtual-machines/windows/dedicated-host.md
-                - name: Azure Portal の場合
-                  href: virtual-machines/windows/manage-sql-vm-portal.md
                 - name: SQL 2008 および R2 のサポートの延長
                   href: virtual-machines/windows/sql-server-2008-extend-end-of-support.md
-                - name: VM への接続
-                  href: virtual-machines/windows/ways-to-connect-to-sql.md
-                - name: 記憶域を構成する
-                  href: virtual-machines/windows/storage-configuration.md
-                - name: 管理タスクの自動化
-                  items:
-                    - name: SQL Server IaaS Agent 拡張機能の使用
-                      href: virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md
-                    - name: 自動修正
-                      href: virtual-machines/windows/automated-patching.md
-                    - name: Azure Key Vault 統合の構成
-                      href: virtual-machines/windows/azure-key-vault-integration-configure.md
         - name: 操作方法ガイド
           items:
-            - name: SQL VM の作成
+            - name: SQL Server VM への接続
+              href: virtual-machines/windows/ways-to-connect-to-sql.md
+            - name: SQL Server VM の作成
               items:
                 - name: ポータルの使用
                   href: virtual-machines/windows/create-sql-vm-portal.md
                 - name: Azure PowerShell の使用
                   href: virtual-machines/windows/create-sql-vm-powershell.md
-            - name: SQL VM RP への登録
-              displayName: 'resource provider, registration'
-              items:
-                - name: 単一の VM
-                  href: virtual-machines/windows/sql-vm-resource-provider-register.md
-                - name: 複数の VM の一括登録
-                  href: virtual-machines/windows/sql-vm-resource-provider-bulk-register.md
             - name: 管理する
               items:
+                - name: Azure Portal の場合
+                  href: virtual-machines/windows/manage-sql-vm-portal.md
                 - name: ライセンス モデル
                   displayName: 'ahb, ahub, payg, change, modify, update'
                   href: virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change.md
                 - name: Edition
                   displayName: 'change, modify, update'
                   href: virtual-machines/windows/change-sql-server-edition.md
-                - name: バックアップと復元用の Azure Storage
-                  href: virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md
+                - name: ストレージ
+                  href: virtual-machines/windows/storage-configuration.md
+                - name: Azure Key Vault の統合
+                  href: virtual-machines/windows/azure-key-vault-integration-configure.md
+                - name: 記憶域を UltraSSD に移行する
+                  href: virtual-machines/windows/storage-migrate-to-ultradisk.md
+                - name: SQL VM RP への登録
+                  displayName: 'resource provider, registration'
+                  items:
+                    - name: 単一の VM
+                      href: virtual-machines/windows/sql-vm-resource-provider-register.md
+                    - name: 複数の VM の一括登録
+                      href: virtual-machines/windows/sql-vm-resource-provider-bulk-register.md
+                - name: 管理タスクの自動化
+                  items:
+                    - name: SQL Server IaaS Agent 拡張機能の使用
+                      href: virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md
+                    - name: 自動修正
+                      href: virtual-machines/windows/automated-patching.md
             - name: 移行
               items:
                 - name: SQL Server データベースを VM へ
                   href: virtual-machines/windows/migrate-to-vm-from-sql-server.md
                 - name: VM を新しいリージョンへ
                   href: virtual-machines/windows/move-sql-vm-different-region.md
-            - name: 高可用性の構成
+            - name: ビジネス継続性
               items:
+                - name: バックアップと復元
+                  items:
+                    - name: 自動バックアップ (SQL 2016 以降)
+                      href: virtual-machines/windows/automated-backup.md
+                    - name: 自動バックアップ (SQL 2014)
+                      href: virtual-machines/windows/automated-backup-sql-2014.md
                 - name: Always On 可用性グループ
                   items:
                     - name: Azure SQL VM CLI
@@ -983,12 +970,28 @@
                           href: virtual-machines/windows/availability-group-load-balancer-portal-configure.md
                         - name: ロード バランサー - Azure PowerShell
                           href: virtual-machines/windows/availability-group-listener-powershell-configure.md
-                - name: フェールオーバー クラスター インスタンス
+                - name: フェールオーバー クラスター インスタンス (FCI)
                   items:
-                    - name: 記憶域スペース ダイレクトの使用
-                      href: virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md
-                    - name: Premium ファイル共有の使用
-                      href: virtual-machines/windows/failover-cluster-instance-premium-file-share-manually-configure.md
+                    - name: FCI 用に VM を準備する
+                      href: virtual-machines/windows/failover-cluster-instance-prepare-vm.md
+                    - name: FCI を作成する
+                      items:
+                        - name: Azure 共有ディスク (SQL2019 以降)
+                          href: virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure.md
+                        - name: 記憶域スペース ダイレクト (Win2016 以降)
+                          href: virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md
+                        - name: Premium ファイル共有 (Win2012 以降)
+                          href: virtual-machines/windows/failover-cluster-instance-premium-file-share-manually-configure.md
+                    - name: 分散ネットワーク名 (DNN)
+                      items:
+                        - name: FCI の DNN を作成する
+                          href: virtual-machines/windows/hadr-distributed-network-name-dnn-configure.md
+                        - name: FCI DNN と SQL Server の機能
+                          href: virtual-machines/windows/failover-cluster-instance-dnn-interoperability.md
+                - name: 接続の構成
+                  items:
+                    - name: 仮想ネットワーク名 (VNN)
+                      href: virtual-machines/windows/hadr-vnn-azure-load-balancer-configure.md
         - name: リファレンス
           items:
             - name: Azure PowerShell
@@ -1086,7 +1089,7 @@
       href: /sql/connect/sql-server-drivers
       items:
         - name: ADO.NET
-          href: /sql/connect/ado-net/microsoft-ado-net-for-sql-server
+          href: /sql/connect/ado-net/microsoft-ado-net-sql-server?view=sql-server-ver15
         - name: JDBC
           href: /sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server
         - name: Node.js

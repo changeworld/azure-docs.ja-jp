@@ -146,6 +146,10 @@
       href: preprocess-text.md
     - name: Latent Dirichlet Allocation
       href: latent-dirichlet-allocation.md
+    - name: Vowpal Wabbit モデルのスコアリング
+      href: score-vowpal-wabbit-model.md
+    - name: Vowpal Wabbit モデルのトレーニング
+      href: train-vowpal-wabbit-model.md
 - name: Computer Vision
   items:
     - name: イメージ変換の適用

@@ -3,7 +3,7 @@ title: ポイントインタイム リストア (PITR)
 titleSuffix: Azure SQL Managed Instance
 description: Azure SQL Managed Instance 上のデータベースを以前の時点に復元します。
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: 379d5e59024174c8f6cfbc185b3514287b7d5031
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 407d56c209f64d350906a17c0746b1c43f969d43
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310174"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708663"
 ---
 # <a name="restore-a-database-in-azure-sql-managed-instance-to-a-previous-point-in-time"></a>Azure SQL Managed Instance のデータベースを以前の時点に復元します
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

@@ -2,14 +2,14 @@
 title: Azure Files ボリュームをコンテナー グループにマウントする
 description: Azure Files ボリュームをマウントして、Azure Container Instances で状態を保持する方法について説明します
 ms.topic: article
-ms.date: 12/30/2019
+ms.date: 07/02/2020
 ms.custom: mvc
-ms.openlocfilehash: f66890c503de8de9160f11fb28795012ae57daeb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 593400f67db5018f1533dd37eed88ece7fd596c6
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75561339"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169580"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Azure Container Instances に Azure ファイル共有をマウントする
 
@@ -103,7 +103,7 @@ Azure CLI と [YAML テンプレート](container-instances-multi-container-yaml
 CLI の例のように、`dnsNameLabel` 値は、コンテナー インスタンスを作成する Azure リージョン内で一意である必要があります。 必要に応じて、YAML ファイル内の値を更新します。
 
 ```yaml
-apiVersion: '2018-10-01'
+apiVersion: '2019-12-01'
 location: eastus
 name: file-share-demo
 properties:
@@ -168,7 +168,7 @@ CLI と YAML によるデプロイに加え、Azure [Resource Manager テンプ�
     {
       "name": "file-share-demo",
       "type": "Microsoft.ContainerInstance/containerGroups",
-      "apiVersion": "2018-10-01",
+      "apiVersion": "2019-12-01",
       "location": "[resourceGroup().location]",
       "properties": {
         "containers": [

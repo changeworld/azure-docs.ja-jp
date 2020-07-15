@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3f6af5e8e1cfadd302eadfedf189a6710ac4aeca
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: a2f20a4521efe2806c4bc66e4612b99caf84382a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82943651"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85385265"
 ---
 # <a name="configure-session-behavior-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用してセッションの動作を構成する
 
@@ -36,7 +36,7 @@ Azure Active Directory B2C (Azure AD B2C) で[シングル サインオン (SSO)
 
 セッションの動作と SSO の構成を変更するには、[RelyingParty](relyingparty.md) 要素の内部に **UserJourneyBehaviors** 要素を追加します。  **UserJourneyBehaviors** 要素は、**DefaultUserJourney** の直後にする必要があります。 **UserJourneyBehavors** 要素は、次の例のようになります。
 
-```XML
+```xml
 <UserJourneyBehaviors>
    <SingleSignOn Scope="Application" />
    <SessionExpiryType>Absolute</SessionExpiryType>
@@ -60,7 +60,7 @@ Azure AD B2C のサインアウト エンドポイントにユーザーをリダ
 シングル サインアウトをサポートするには、JWT と SAML の両方のトークン発行者技術プロファイルで次を指定する必要があります。
 
 - プロトコル名 (`<Protocol Name="OpenIdConnect" />` など)
-- セッション技術プロファイルへの参照 (`UseTechnicalProfileForSessionManagement ReferenceId="SM-jwt-issuer" />` など)。
+- セッション技術プロファイルへの参照 (`UseTechnicalProfileForSessionManagement ReferenceId="SM-OAuth-issuer" />` など)。
 
 次の例は、シングル サインアウトでの JWT と SAML のトークン発行者を示しています。
 
@@ -74,7 +74,7 @@ Azure AD B2C のサインアウト エンドポイントにユーザーをリダ
       <Protocol Name="OpenIdConnect" />
       <OutputTokenFormat>JWT</OutputTokenFormat>
       ...    
-      <UseTechnicalProfileForSessionManagement ReferenceId="SM-jwt-issuer" />
+      <UseTechnicalProfileForSessionManagement ReferenceId="SM-OAuth-issuer" />
     </TechnicalProfile>
 
     <!-- Session management technical profile for OIDC based tokens -->

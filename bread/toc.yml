@@ -441,9 +441,9 @@
     - name: Cosmos DB
       tocHref: /azure/cosmos-db/
       topicHref: /azure/cosmos-db/
-    - name: Data Box ファミリ
-      tocHref: /azure/databox-family/
-      topicHref: /azure/databox-family/
+    - name: ストレージ
+      tocHref: /azure/storage/
+      topicHref: /azure/storage/
       items:
         - name: Data Box のオフライン転送
           tocHref: /azure/databox/
@@ -466,9 +466,9 @@
     - name: 専用 HSM
       tocHref: /azure/dedicated-hsm/
       topicHref: /azure/dedicated-hsm/
-    - name: Devtest ラボ
-      tocHref: /azure/devtest-lab/
-      topicHref: /azure/devtest-lab/
+    - name: DevTest Labs
+      tocHref: /azure/devtest-labs/
+      topicHref: /azure/devtest-labs/
     - name: FXT Edge Filer
       tocHref: /azure/fxt-edge-filer/
       topicHref: /azure/fxt-edge-filer/

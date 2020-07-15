@@ -7,12 +7,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
-ms.openlocfilehash: a7dfc58258c8c7c6e8bbf7567d743abf90d3a7e5
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 1fb4e7cf589d63e9e595a35c34a2728d564b309b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194908"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84609932"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Azure Storage で静的 Web サイトをホストする
 
@@ -153,13 +153,10 @@ Azure PowerShell モジュールを使用して、静的な Web サイトのホ�
 
 ソース ディレクトリから *$web* コンテナーにオブジェクトをアップロードします。
 
-> [!NOTE]
-> Azure Cloud Shell を使用している場合は、`$web` コンテナーを参照するときに、必ず `\` エスケープ文字を追加してください (例: `\$web`)。 Azure CLI のローカル インストールを使用している場合は、エスケープ文字を使用する必要はありません。
-
 この例では、Azure Cloud Shell セッションからコマンドを実行していることを前提としています。
 
 ```azurecli-interactive
-az storage blob upload-batch -s <source-path> -d \$web --account-name <storage-account-name>
+az storage blob upload-batch -s <source-path> -d '$web' --account-name <storage-account-name>
 ```
 
 > [!NOTE] 

@@ -7,19 +7,19 @@ author: MarkusVi
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d356f8c10ae3770d9f4ade100ab0496ee58d772f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33c4eeda7f7df1a8238f54fa1afd1bc069f64e96
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74008208"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608213"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Azure Portal でアクティビティ レポートを見つける
 
@@ -171,10 +171,10 @@ Azure Portal でいくつかの操作を実行したので、`Activity logs > Au
 
 操作はアクティビティ ログにすぐには表示されません。 アクティビティ ログの待ち時間を次の表に示します。 
 
-| レポート | &nbsp; | 待ち時間 (P95) | 待ち時間 (P99) |
-|--------|--------|---------------|---------------|
-| ディレクトリ監査 | &nbsp; | 2 分 | 5 分 |
-| サインイン アクティビティ | &nbsp; | 2 分 | 5 分 | 
+| レポート | 待ち時間 (P95) | 待ち時間 (P99) |
+|--------|---------------|---------------|
+| ディレクトリ監査 | 2 分 | 5 分 |
+| サインイン アクティビティ | 2 分 | 5 分 |
 
 #### <a name="resolution"></a>解決策
 
@@ -192,10 +192,10 @@ Azure Portal でいくつかの操作を実行したので、`Activity logs > Au
 
 操作はアクティビティ ログにすぐには表示されません。 アクティビティ ログの待ち時間を次の表に示します。 
 
-| レポート | &nbsp; | 待ち時間 (P95) | 待ち時間 (P99) |
-|--------|--------|---------------|---------------|
-| ディレクトリ監査 | &nbsp; | 2 分 | 5 分 |
-| サインイン アクティビティ | &nbsp; | 2 分 | 5 分 | 
+| レポート | 待ち時間 (P95) | 待ち時間 (P99) |
+|--------|---------------|---------------|
+| ディレクトリ監査 | 2 分 | 5 分 |
+| サインイン アクティビティ | 2 分 | 5 分 |
 
 #### <a name="resolution"></a>解決策
 
@@ -213,10 +213,10 @@ Azure portal で 30 日より前のサインイン データおよび監査デ�
 
 Azure Active Directory Actions には、ライセンスに応じて次の期間のアクティビティ レポートが保存されます。
 
-| レポート           | &nbsp; |  Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
-| ---              | ----   |  ---           | ---                 | ---                 |
-| 監査ログ  | &nbsp; |   7 日     | 30 日             | 30 日             |
-| サインイン | &nbsp; | 使用できません。 7 日間分のサインインについては、個人のユーザー プロファイル ブレードからアクセスできます | 30 日 | 30 日             |
+| レポート           | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
+| ---              | ---           | ---                 | ---
+| 監査ログ  | 7 日        | 30 日             | 30 日             |
+| サインイン | 使用できません。 7 日間分のサインインについては、個人のユーザー プロファイル ブレードからアクセスできます | 30 日 | 30 日             |
 
 詳細については、「[Azure Active Directory レポートのアイテム保持ポリシー](reference-reports-data-retention.md)」を参照してください。  
 

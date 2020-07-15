@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: 83e6498f47c36fa54890131922dc8d452a3d9220
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: e12f0cd44143621d34096a6c1161a22a89d21d9b
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560498"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077655"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>Azure portal を使用して Azure Data Factory パイプラインのアクティビティを分岐または連結する
 
@@ -44,7 +44,7 @@ ms.locfileid: "84560498"
 
 * **Azure サブスクリプション**。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 * **Azure Storage アカウント**。 BLOB ストレージを**ソース** データ ストアとして使用します。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md)」を参照してください。
-* **Azure SQL データベース**。 データベースを**シンク** データ ストアとして使用します。 Azure SQL データベースがない場合は、[Azure SQL データベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関する記事に書かれている手順を参照して作成してください。
+* **Azure SQL データベース**。 データベースを**シンク** データ ストアとして使用します。 Azure SQL Database のデータベースがない場合の作成手順については、[Azure SQL Database のデータベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関する記事を参照してください。
 
 ### <a name="create-blob-table"></a>BLOB テーブルを作成する
 
@@ -139,7 +139,8 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 
    Azure データ ファクトリの名前は **グローバルに一意**にする必要があります。 次のエラーが発生した場合は、データ ファクトリの名前を変更して (yournameADFTutorialDataFactory など) 作成し直してください。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事を参照してください。
 
-       `Data factory name “ADFTutorialDataFactory” is not available`
+   *データ ファクトリ名 "ADFTutorialDataFactory" は利用できません。*
+
 3. データ ファクトリを作成する Azure **サブスクリプション**を選択します。
 4. **[リソース グループ]** について、次の手順のいずれかを行います。
 
@@ -202,10 +203,12 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
    ![新しい Azure Storage のリンクされたサービス](./media/tutorial-control-flow-portal/new-azure-storage-linked-service.png)
 12. フォルダーには「`@pipeline().parameters.sourceBlobContainer`」、ファイル名には「`emp.txt`」と入力します。 sourceBlobContainer パイプライン パラメーターを使用して、データセットのフォルダー パスを設定します。
 
-   ![ソース データセットの設定](./media/tutorial-control-flow-portal/source-dataset-settings.png)
-13. **パイプライン**のタブに切り替えるか、またはツリービューにあるパイプラインをクリックします。 **[Source Dataset]\(ソース データセット\)** で **SourceBlobDataset** が選択されていることを確認します。
+    ![ソース データセットの設定](./media/tutorial-control-flow-portal/source-dataset-settings.png)
 
-    ![ソース データセット](./media/tutorial-control-flow-portal/pipeline-source-dataset-selected.png)
+13. **パイプライン**のタブに切り替えるか、またはツリービューにあるパイプラインをクリックします。 **[Source Dataset]\(ソース データセット\)** で **SourceBlobDataset** が選択されていることを確認します。
+      
+   ![ソース データセット](./media/tutorial-control-flow-portal/pipeline-source-dataset-selected.png)
+
 13. プロパティ ウィンドウで **[シンク]** タブに切り替えて、 **[Sink Dataset]\(シンク データセット\)** の **[+ 新規]** をクリックします。 ソース データセットの作成と同様のこの手順では、コピー アクティビティのシンク データセットを作成します。
 
     ![新しいシンク データセットのボタン](./media/tutorial-control-flow-portal/new-sink-dataset-button.png)

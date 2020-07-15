@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 2/14/2018
-ms.openlocfilehash: 6c00556bfbcd2108b3cb5bd2cfdf88a741f85a99
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 4313d9fec9e858a5d30cfea2bbe7372e6a96169c
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837246"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413894"
 ---
 # <a name="azure-monitor-powershell-samples"></a>Azure Monitor PowerShell のサンプル
 この記事では、Azure Monitor の機能にアクセスするために役立つ PowerShell のサンプル コマンドを紹介します。
@@ -52,7 +52,7 @@ Set-AzContext -SubscriptionId <subscriptionid>
 ```
 
 
-## <a name="retrieve-activity-log-for-a-subscription"></a>サブスクリプションのアクティビティ ログの取得
+## <a name="retrieve-activity-log"></a>アクティビティ ログの取得
 [Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) コマンドレットを使用します。  一般的な例を次に示します。 アクティビティ ログでは、過去 90 日間の操作が保持されます。 これより前の日付を使用すると、エラー メッセージが表示されます。  
 
 以降のコマンドでどのような時間を使用できるかを確認するために、現在の日付/時刻を表示します。
@@ -220,6 +220,10 @@ Set-AzActivityLogAlert -Location 'Global' -Name 'alert on VM create' -ResourceGr
 その他の webhook プロパティは省略可能です。 `Get-AzActivityLogAlert` を使用して、アクティビティ ログ アラートの内容を戻すことができます。
 
 ## <a name="create-and-manage-autoscale-settings"></a>自動スケール設定の作成と管理
+
+> [!NOTE] 
+> Cloud Services (Microsoft.ClassicCompute) では、自動スケーリングでサポートされる時間グレインは 5 分 (PT5M) です。 その他のサービスでは、自動スケーリングでサポートされる最小時間グレインは 1 分 (PT1M) です。
+
 リソース (Web アプリ、VM、Cloud Services、または仮想マシン スケール セット) は、そのリソース用に構成された自動スケール設定を 1 つだけ使用できます。
 ただし、各自動スケール設定では複数のプロファイルを使用できます。 たとえば、パフォーマンス ベースのスケール プロファイルを使用し、2 つ目のプロファイルとしてスケジュール ベースのプロファイルを使用できます。 各プロファイルには、複数のルールを構成できます。 自動スケールの詳細については、 [アプリケーションの自動スケールの方法](../../cloud-services/cloud-services-how-to-scale-portal.md)に関する記事を参照してください。
 

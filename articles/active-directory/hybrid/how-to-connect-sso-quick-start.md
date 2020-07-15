@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef603141129be6a73e018fb3e3dcabf9c5d7961f
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 58e779e6feeba27711a1746fbf7d6878725790fa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83993492"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358006"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory シームレス シングル サインオン:クイック スタート
 
@@ -100,9 +100,8 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
 
 ## <a name="step-3-roll-out-the-feature"></a>手順 3:機能をロールアウトする
 
-以下の指示に従い、シームレス SSO をユーザーに徐々にロールアウトできます。 まず、Active Directory でグループ ポリシーを利用し、すべてのユーザー、または選択したユーザーのイントラネット ゾーン設定に Azure AD の URL を追加します。
+以下の指示に従い、シームレス SSO をユーザーに徐々にロールアウトできます。 まず、Active Directory のグループ ポリシーを利用し、すべてのユーザー、または選択したユーザーのイントラネット ゾーン設定に次の Azure AD URL を追加します。
 
-- `https://aadg.windows.net.nsatc.net`
 - `https://autologon.microsoftazuread-sso.com`
 
 また、グループ ポリシーを使用して、 **[スクリプトを介したステータス バーの更新を許可する]** というイントラネットのゾーン ポリシー設定を有効にする必要があります。 

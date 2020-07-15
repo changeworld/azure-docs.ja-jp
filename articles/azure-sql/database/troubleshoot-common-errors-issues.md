@@ -1,25 +1,26 @@
 ---
 title: Azure SQL Database との接続に関する一般的な問題のトラブルシューティング
-description: Azure SQL Database の接続の問題をトラブルシューティングし、Azure SQL Database または SQL Managed Instance 固有のその他の問題を解決する手順について説明します
+description: Azure SQL Database の接続の問題をトラブルシューティングし、Azure SQL Database または Azure SQL Managed Instance 固有のその他の問題を解決する手順について説明します
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
+ms.subservice: development
 ms.topic: troubleshooting
 ms.custom: seo-lt-2019, OKR 11/2019, sqldbrb=1
 author: ramakoni1
 ms.author: ramakoni
 ms.reviewer: carlrab,vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: 0420138ac7366916e8b83cf40abcab1a376017bd
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: e1a018b06b7ee7230612d2ee6a582214a817547b
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116802"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985226"
 ---
-# <a name="troubleshooting-connectivity-issues-and-other-errors-with-sql-database-and-sql-managed-instance"></a>SQL Database および SQL Managed Instance の接続に関する問題とその他のエラーのトラブルシューティング
+# <a name="troubleshooting-connectivity-issues-and-other-errors-with-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database および Azure SQL Managed Instance の接続に関する問題とその他のエラーのトラブルシューティング
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Azure SQL Database または SQL Managed Instance への接続に失敗すると、エラー メッセージが表示されます。 これらの接続の問題は、再構成、ファイアウォールの設定、接続のタイムアウト、正しくないログイン情報、または[アプリケーション設計](develop-overview.md)プロセスの間にベスト プラクティスと設計ガイドラインが適用されなかったことが原因で発生する可能性があります。 また、一部の Azure SQL Database または SQL Managed Instance リソースの上限に達した場合、これ以上接続できなくなります。
+Azure SQL Database または Azure SQL Managed Instance への接続に失敗すると、エラー メッセージが表示されます。 これらの接続の問題は、再構成、ファイアウォールの設定、接続のタイムアウト、正しくないログイン情報、または[アプリケーション設計](develop-overview.md)プロセスの間にベスト プラクティスと設計ガイドラインが適用されなかったことが原因で発生する可能性があります。 また、一部の Azure SQL Database または SQL Managed Instance リソースの上限に達した場合、これ以上接続できなくなります。
 
 ## <a name="transient-fault-error-messages-40197-40613-and-others"></a>一時的な障害のエラー メッセージ (40197、40613、その他)
 
@@ -30,7 +31,7 @@ Azure インフラストラクチャには、SQL Database サービス内で負�
 | エラー コード | 重大度 | 説明 |
 | ---:| ---:|:--- |
 | 4060 |16 |ログインで要求されたデータベース "%.&#x2a;ls" を開くことができません。 ログインに失敗しました。 詳細については、[エラー 4000 から 4999](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999) を参照してください。|
-| 40197 |17 |要求の処理中にサービスでエラーが発生しました。 再試行してください。 エラー コード %d。<br/><br/>ソフトウェアやハードウェアのアップグレード、ハードウェアの障害、その他フェールオーバーに関する問題によってサービスがダウンしたときに、このエラーが発生します。 発生したエラーやフェールオーバーの種類に関する追加情報は、エラー 40197 のメッセージに埋め込まれたエラー コード (%d) から得られます。 エラー 40197 のメッセージ内に埋め込まれているエラー コードは、40020、40143、40166、40540 などです。<br/><br/>再接続すると、自動的にデータベースの正常なコピーに接続されます。 アプリケーションでエラー 40197 をキャッチし、メッセージに埋め込まれているエラー コード (%d) をログに記録してトラブルシューティングに備えたうえで、リソースが復旧して接続が再度確立されるまで SQL Database への再接続を試みる必要があります。 詳細については、「[一時エラー](troubleshoot-common-connectivity-issues.md#transient-errors-transient-faults)」を参照してください。|
+| 40197 |17 |要求の処理中にサービスでエラーが発生しました。 再試行してください。 エラー コード %d。<br/><br/>ソフトウェアやハードウェアのアップグレード、ハードウェアの障害、その他フェールオーバーに関する問題によってサービスがダウンしたときに、このエラーが発生します。 障害の種類や発生したフェールオーバーに関する詳細な情報は、エラー 40197 のメッセージに埋め込まれたエラー コード (%d) から得られます。 エラー 40197 のメッセージ内に埋め込まれているエラー コードは、40020、40143、40166、40540 などです。<br/><br/>再接続すると、自動的にデータベースの正常なコピーに接続されます。 アプリケーションでエラー 40197 をキャッチし、メッセージに埋め込まれているエラー コード (%d) をログに記録してトラブルシューティングに備えたうえで、リソースが復旧して接続が再度確立されるまで SQL Database への再接続を試みる必要があります。 詳細については、「[一時エラー](troubleshoot-common-connectivity-issues.md#transient-errors-transient-faults)」を参照してください。|
 | 40501 |20 |サービスは現在ビジー状態です。 10 秒後に要求を再試行してください。 インシデント ID: %ls。 コード: %d。 詳細については、次を参照してください。 <br/>&bull; &nbsp;[論理 SQL サーバー リソースの制限](resource-limits-logical-server.md)<br/>&bull; &nbsp;[単一データベースに関する DTU ベースの制限](service-tiers-dtu.md)<br/>&bull; &nbsp;[エラスティック プールに関する DTU ベースの制限](resource-limits-dtu-elastic-pools.md)<br/>&bull; &nbsp;[単一データベースに関する仮想コアベースの制限](resource-limits-vcore-single-databases.md)<br/>&bull; &nbsp;[エラスティック プールに関する仮想コアベースの制限](resource-limits-vcore-elastic-pools.md)<br/>&bull; &nbsp;[Azure SQL Managed Instance のリソースの制限](../managed-instance/resource-limits.md)。|
 | 40613 |17 |サーバー '%.&#x2a;ls' のデータベース '%.&#x2a;ls' は現在使用できません。 後で接続を再試行してください。 問題が解決しない場合は、'%.&#x2a;ls' のセッション トレース ID を控えてカスタマー サポートに問い合わせてください。<br/><br/> このエラーは、データベースに対して専用管理者接続 (DAC) が既に確立されている場合に発生する可能性があります。 詳細については、「[一時エラー](troubleshoot-common-connectivity-issues.md#transient-errors-transient-faults)」を参照してください。|
 | 49918 |16 |要求を処理できません。 要求を処理するリソースが十分ではありません。<br/><br/>サービスは現在ビジー状態です。 後で要求を再試行してください。 詳細については、次を参照してください。 <br/>&bull; &nbsp;[論理 SQL サーバー リソースの制限](resource-limits-logical-server.md)<br/>&bull; &nbsp;[単一データベースに関する DTU ベースの制限](service-tiers-dtu.md)<br/>&bull; &nbsp;[エラスティック プールに関する DTU ベースの制限](resource-limits-dtu-elastic-pools.md)<br/>&bull; &nbsp;[単一データベースに関する仮想コアベースの制限](resource-limits-vcore-single-databases.md)<br/>&bull; &nbsp;[エラスティック プールに関する仮想コアベースの制限](resource-limits-vcore-elastic-pools.md)<br/>&bull; &nbsp;[Azure SQL Managed Instance のリソースの制限](../managed-instance/resource-limits.md)。 |
@@ -390,4 +391,4 @@ ClientConnectionId:<Client connection ID>
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure SQL Database 接続アーキテクチャ](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture)
-- [Azure SQL Database および Data Warehouse のネットワーク アクセスの制御](https://docs.microsoft.com/azure/sql-database/sql-database-networkaccess-overview)
+- [Azure SQL Database と Azure Synapse Analytics のネットワーク アクセスの制御](https://docs.microsoft.com/azure/sql-database/sql-database-networkaccess-overview)

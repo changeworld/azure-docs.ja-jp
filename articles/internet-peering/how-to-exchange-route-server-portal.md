@@ -5,15 +5,15 @@ description: Azure portal を使用して、ルート サーバーとの Exchang
 services: internet-peering
 author: derekolo
 ms.service: internet-peering
-ms.topic: article
+ms.topic: how-to
 ms.date: 5/19/2020
 ms.author: derekol
-ms.openlocfilehash: 004479d7aa3ec46da4790c0d8dfa698c6d9fb986
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 1eaf7413b01bceacbcbf3640bfe654fdad026672
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84249357"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84700670"
 ---
 # <a name="create-or-modify-an-exchange-peering-with-route-server-in-azure-portal"></a>Azure portal でルート サーバーとの Exchange ピアリングを作成または変更する
 

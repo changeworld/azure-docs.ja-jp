@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ab1d0318464f6b44e1f46bd30dc76272584fde64
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 289cc463732ee6b612b67f6c408d9d7260016137
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929827"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125806"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Windows Virtual Desktop とは 
 
@@ -22,7 +22,7 @@ Windows Virtual Desktop は、クラウド上で実行されるデスクトッ�
 Azure 上の Windows Virtual Desktop でできることは次のとおりです。
 
 * マルチセッションの Windows 10 デプロイを設定し、スケーラビリティを備えた完全版の Windows 10 を提供
-* Office 365 ProPlus を仮想化および最適化し、マルチユーザーの仮想シナリオで運用
+* Microsoft 365 Apps for enterprise を仮想化および最適化し、マルチユーザーの仮想シナリオで運用
 * Windows 7 仮想デスクトップに無料の延長セキュリティ更新プログラムを提供
 * 既存のリモート デスクトップ サービス (RDS) と Windows Server のデスクトップやアプリをあらゆるコンピューターで利用
 * デスクトップとアプリの両方を仮想化
@@ -109,11 +109,11 @@ Windows Virtual Desktop 用に作成する Azure 仮想マシンには、次の 
 
 |Address|アウトバウンド TCP ポート|目的|サービス タグ|
 |---|---|---|---|
-|*.microsoftonline.com|443|MS オンライン サービスへの認証|なし|
+|*.microsoftonline.com|443|Microsoft オンライン サービスへの認証|なし|
 |*.events.data.microsoft.com|443|テレメトリ サービス|なし|
 |www.msftconnecttest.com|443|OS がインターネットに接続されているかどうかの検出|なし|
 |*.prod.do.dsp.mp.microsoft.com|443|Windows Update|なし|
-|login.windows.net|443|MS オンライン サービス、Office 365 へのログイン|なし|
+|login.windows.net|443|Microsoft Online Services、Microsoft 365 へのサインイン|なし|
 |*.sfx.ms|443|OneDrive クライアント ソフトウェアの更新|なし|
 |*.digicert.com|443|証明書失効の確認|なし|
 

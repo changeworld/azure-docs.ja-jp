@@ -1,24 +1,22 @@
 ---
-title: チュートリアル:Azure Firewall Manager プレビューを使用して仮想 WAN をセキュリティで保護する
-description: このチュートリアルでは、Azure portal を使用して Azure Firewall Manager で仮想 WAN にセキュリティを確保する方法について説明します。
+title: チュートリアル:Azure Firewall Manager を使用して仮想ハブのセキュリティを保護する
+description: このチュートリアルでは、Azure portal を使用して Azure Firewall Manager で仮想ハブのセキュリティを保護する方法について説明します。
 services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 05/01/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: b13f3b4eeb57c34f51152bb6d1914f6c80f31be1
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: c44daa67b4029c73c57ca82d72ee0a9759dd4c2d
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691034"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563657"
 ---
-# <a name="tutorial-secure-your-virtual-wan-using-azure-firewall-manager-preview"></a>チュートリアル:Azure Firewall Manager プレビューを使用して仮想 WAN をセキュリティで保護する 
+# <a name="tutorial-secure-your-virtual-hub-using-azure-firewall-manager"></a>チュートリアル:Azure Firewall Manager を使用して仮想ハブのセキュリティを保護する
 
-[!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
-
-Azure Firewall Manager Preview を使用して、セキュリティ保護付き仮想ハブを作成し、プライベート IP アドレス、Azure PaaS、およびインターネットに宛てたクラウド ネットワーク トラフィックをセキュリティで保護することができます。 ファイアウォールへのトラフィックのルーティングは自動化されているため、ユーザー定義ルート (UDR) を作成する必要はありません。
+Azure Firewall Manager を使用して、セキュリティ保護付き仮想ハブを作成し、プライベート IP アドレス、Azure PaaS、インターネットに宛てたクラウド ネットワーク トラフィックをセキュリティで保護することができます。 ファイアウォールへのトラフィックのルーティングは自動化されているため、ユーザー定義ルート (UDR) を作成する必要はありません。
 
 ![クラウド ネットワークをセキュリティで保護する](media/secure-cloud-network/secure-cloud-network.png)
 
@@ -46,7 +44,7 @@ Firewall Manager では、ハブ仮想ネットワーク アーキテクチャ�
 1. **[リソース グループ]** で、 **[新規作成]** を選択し、名前として「**FW-Manager**」と入力して **[OK]** を選びます。
 2. **[名前]** に、「**Spoke-01**」と入力します。
 3. **[リージョン]** で **[(米国) 米国東部]** を選択します。
-4. **[次へ: IP アドレス]** を選択します。
+4. **次へ:[次へ: IP アドレス]** を選択します。
 1. **[アドレス空間]** には、既定値の **10.0.0.0/16** をそのまま使用します。
 3. **[サブネット名]** で、 **[default]\(既定\)** を選択します。
 4. サブネット名を **Workload-SN** に変更します。
@@ -95,7 +93,7 @@ Firewall Manager を使用して、セキュリティ保護付き仮想ハブを
 5. **[ハブ]** で、 **[Hub-01]** を選択します。
 6. **[リソース グループ]** で、 **[FW-Manager]** を選択します。
 7. **[仮想ネットワーク]** で、 **[Spoke-01]** を選択します。
-8. **[OK]** を選択します。
+8. **［作成］** を選択します
 
 ## <a name="create-a-firewall-policy-and-secure-your-hub"></a>ファイアウォール ポリシーを作成してハブをセキュリティで保護する
 
@@ -111,16 +109,18 @@ Firewall Manager を使用して、セキュリティ保護付き仮想ハブを
 8. **[優先度]** に「**100**」と入力します。
 9. **[規則コレクション] アクション**が **[許可]** であることを確認します。
 10. 規則の **[名前]** に、「**Allow-msft**」と入力します。
-11. **[送信元アドレス]** に、「 **\*** 」と入力します。
-12. **[プロトコル]** に、「**http,https**」と入力します。
-13. **送信先の種類が **[FQDN]** であることを確認します。
-14. **[送信先]** に、「 **\*.microsoft.com**」と入力します。
-15. **[追加]** を選択します。
-16. **[次へ: ハブ]** を選択します。
-17. **[ハブ]** タブで、 **[Associate virtual hubs]\(仮想ハブの関連付け\)** を選択します。
-18. **[Hub-01]** を選択し、 **[追加]** を選択します。
-1. **[Review + create]\(レビュー + 作成\)** を選択します。
-2. **［作成］** を選択します
+11. **[Source type]\(送信元の種類\)** で、 **[IP アドレス]** を選択します。
+12. **[送信元]** に「 **\*** 」と入力します。
+13. **[プロトコル]** に、「**http,https**」と入力します。
+14. **[送信先の種類]** が **[FQDN]** であることを確認します。
+15. **[送信先]** に、「 **\*.microsoft.com**」と入力します。
+16. **[追加]** を選択します。
+17. **[次へ :脅威インテリジェンス**] を選択します。
+18. **次へ:[次へ: ハブ]** を選択します。
+19. **[ハブ]** タブで、 **[Associate virtual hubs]\(仮想ハブの関連付け\)** を選択します。
+20. **[Hub-01]** を選択し、 **[追加]** を選択します。
+21. **[Review + create]\(レビュー + 作成\)** を選択します。
+22. **［作成］** を選択します
 
 これには、完了までに約 5 分以上かかることがあります。
 
@@ -130,13 +130,11 @@ Firewall Manager を使用して、セキュリティ保護付き仮想ハブを
 
 1. Firewall Manager から、 **[セキュリティで保護された仮想ハブ]** を選択します。
 2. **[Hub-01]** を選択します。
-3. **[設定]** で、 **[Route settings]\(ルート設定\)** を選択します。
-4. **[インターネット トラフィック]** の **[仮想ネットワークからのトラフィック]** で、 **[Send via Azure Firewall]\(Azure Firewall 経由で送信\)** を選択します。
-5. **[Azure プライベート トラフィック]** の **[仮想ネットワークへのトラフィック]** で、 **[Send via Azure Firewall]\(Azure Firewall 経由で送信\)** を選択します。
-6. **[IP アドレス プレフィックスの編集]** を選択します。
-8. ワークロード サブネットのアドレスとして「**10.0.1.0/24**」と入力し、 **[保存]** を選択します。
-9. **[設定]** で、 **[接続]** を選択します。
+3. **[設定]** の **[セキュリティの構成]** を選択します。
+4. **[インターネット トラフィック]** の **[Azure Firewall]** を選択します。
+5. **[Private traffic]\(プライベート トラフィック\)** の **[Send via Azure Firewall]\(Azure Firewall 経由で送信\)** を選択します。
 10. **[hub-spoke]** 接続に **[インターネット トラフィック]** が **[セキュリティ保護]** として表示されていることを確認します。
+11. **[保存]** を選択します。
 
 
 ## <a name="test-your-firewall"></a>ファイアウォールをテストする

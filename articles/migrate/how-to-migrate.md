@@ -3,16 +3,16 @@ title: Azure Migrate に移行ツールを追加する
 description: Azure Migrate に移行ツールを追加する方法を説明します。
 ms.topic: article
 ms.date: 04/26/2020
-ms.openlocfilehash: 670341adca7ab2958d43132aab164d7bba0f87d0
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: b6ac8ed64d3f12783cc16f0428874a19d027adf9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195818"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109809"
 ---
 # <a name="add-migration-tools"></a>移行ツールの追加
 
-この記事では、[Azure Migrate](migrate-overview.md) 内で移行ツールを追加する方法について説明します。
+この記事では、[Azure Migrate](./migrate-services-overview.md) 内で移行ツールを追加する方法について説明します。
 
 - 移行ツールの追加を希望し、まだ Azure Migrate プロジェクトを設定していない場合は、この[記事](how-to-add-tool-first-time.md)に従ってください。
 - 移行に ISV ツールを追加した場合は、[手順に従って](prepare-isv-movere.md)、ツールを使用するための準備を行います。

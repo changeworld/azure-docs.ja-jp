@@ -4,15 +4,15 @@ description: VPN ユーザー用の多要素認証を有効にします。
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: alzam
-ms.openlocfilehash: 34ef1b73b06870fd4eaabe88147cd98b281c1f11
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 80a6b342990100b3e79cc8194722a6eb84080ef6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77472351"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987282"
 ---
 # <a name="enable-azure-multi-factor-authentication-mfa-for-vpn-users"></a>VPN ユーザーの Azure 多要素認証 (MFA)を有効にします。
 

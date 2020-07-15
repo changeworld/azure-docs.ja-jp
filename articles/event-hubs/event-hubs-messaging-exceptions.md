@@ -1,24 +1,14 @@
 ---
 title: Azure Event Hubs - 例外
 description: この記事では、Azure Event Hubs メッセージングの例外と推奨アクションの一覧を示します。
-services: event-hubs
-documentationcenter: na
-author: ShubhaVijayasarathy
-manager: timlt
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.custom: seodec18
-ms.date: 01/16/2020
-ms.author: shvija
-ms.openlocfilehash: d7f420b353361bdd4185958a1f66bfb68fd5decc
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: ce9e1bcd1f9e4d196d03d55374af8b1c86651851
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125640"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85314619"
 ---
 # <a name="event-hubs-messaging-exceptions---net"></a>Event Hubs メッセージングの例外 - .NET
 このセクションでは、.NET Framework API によって生成される .NET 例外を示します。 

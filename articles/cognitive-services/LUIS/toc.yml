@@ -30,9 +30,9 @@
     - name: REST API の使用
       items:
         - name: 意図の取得
-          href: luis-get-started-get-intent-from-rest.md
+          href: luis-get-started-rest-get-intent.md
         - name: モデルの変更
-          href: get-started-get-model-rest-apis.md
+          href: luis-get-started-rest-get-model.md
 - name: チュートリアル
   items:
     - name: 分解可能なアプリの作成
@@ -60,6 +60,8 @@
           href: luis-nodejs-tutorial-bf-v4.md
 - name: 概念
   items:
+    - name: 人工知能
+      href: artificial-intelligence.md
     - name: 開発ライフサイクル
       href: luis-concept-app-iteration.md
     - name: アプリの計画
@@ -103,9 +105,6 @@
           href: luis-concept-test.md
         - name: バッチ テスト
           href: luis-concept-batch-test.md
-    - name: オーサリング キーとランタイム キー
-      displayName: 'shared, transfer, ownership, author, access, import'
-      href: luis-concept-keys.md
     - name: データ管理
       items:
         - name: データの変更
@@ -194,11 +193,7 @@
         - name: 複合エンティティからの移行
           href: migrate-from-composite-entity.md
         - name: 作成リソースへの移行
-          items:
-            - name: 概要
-              href: luis-migration-authoring.md
-            - name: 移行方法
-              href: luis-migration-authoring-steps.md
+          href: luis-migration-authoring.md
         - name: V3 API への移行
           href: luis-migration-api-v3.md
     - name: アプリの管理
@@ -209,11 +204,7 @@
         - name: アプリとバージョンの設定
           href: how-to-application-settings-portal.md
         - name: 作成リソースへの移行
-          items:
-            - name: 概要
-              href: luis-migration-authoring.md
-            - name: 移行方法
-              href: luis-migration-authoring-steps.md
+          href: luis-migration-authoring.md
         - name: 作成者とコラボレーター
           displayName: 'access, transfer, AAD, tenant, Azure AD, consent, RBAC, admin, role-based access control, ownership, import'
           href: luis-how-to-collaborate.md
@@ -234,6 +225,12 @@
           href: luis-migration-api-v3.md
         - name: V2 API への移行
           href: luis-migration-api-v1-to-v2.md
+    - name: REST API の使用
+      items:
+        - name: 意図の取得
+          href: luis-get-started-get-intent-from-rest.md
+        - name: モデルの変更
+          href: get-started-get-model-rest-apis.md
     - name: コンテナーの使用
       items:
         - name: コンテナーのインストールと実行

@@ -5,15 +5,15 @@ description: Azure portal を使用してレガシの Exchange ピアリング�
 services: internet-peering
 author: derekolo
 ms.service: internet-peering
-ms.topic: article
+ms.topic: how-to
 ms.date: 5/21/2020
 ms.author: derekol
-ms.openlocfilehash: e4f9f5b59b61065c300b58fb1cdb88e12b7ddbe0
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 6249d68486af754f2d2980aaed9d5fd8287dcb5e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84247225"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84700163"
 ---
 # <a name="convert-a-legacy-exchange-peering-to-an-azure-resource-by-using-the-azure-portal"></a>Azure portal を使用してレガシの Exchange ピアリングを Azure リソースに変換する
 
@@ -48,7 +48,7 @@ ms.locfileid: "84247225"
   >[!IMPORTANT]  
   >選択できるのは、ピアリング要求を送信する前に ValidationState が "Approved" になっている ASN だけです。 PeerAsn 要求を送信した直後であれば、ASN の関連付けが承認されるまで 12 時間程度かかります。 選択した ASN が検証待ちの場合、エラー メッセージが表示されます。 選択する必要がある ASN が表示されない場合は、適切なサブスクリプションを選択しているかどうかを確認します。 選択している場合は、「 **[ピア ASN を Azure サブスクリプションに関連付ける](https://go.microsoft.com/fwlink/?linkid=2129592)** 」を参照して、PeerAsn を既に作成したかどうかを確認します。
 
-* **次へ: 構成** を選択して、続行します。
+* **次へ:構成** を選択して、続行します。
 
 
 #### <a name="configure-connections-and-submit"></a>接続を構成して送信する

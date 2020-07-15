@@ -1,18 +1,18 @@
 ---
 title: AppSource でソフトウェアを購入する方法 | Azure Marketplace
 description: AppSource でソフトウェアを購入するための手順 | Azure Marketplace。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 03/20/2020
-ms.openlocfilehash: 450a97b0be1b11980d65477d396431170180d00f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: e3faad025a794b0ae9905fa73b090b55799f3279
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746653"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103040"
 ---
 # <a name="how-to-purchase-software-on-microsoft-appsource"></a>Microsoft AppSource でソフトウェアを購入する方法
 
@@ -65,4 +65,4 @@ Microsoft 365 管理センターを通じて、[サポート チケットを送�
 
 ## <a name="next-steps"></a>次のステップ
 
-- 詳細については、[商業マーケットプレースのドキュメント](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview)を参照してください。
+- 詳細については、[商業マーケットプレースのドキュメント](partner-center-portal/commercial-marketplace-overview.md)を参照してください。

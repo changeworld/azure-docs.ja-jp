@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 03/03/2020
-ms.openlocfilehash: a0ed57657a461e4af8e58931b133437e5897796a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 06/08/2020
+ms.openlocfilehash: 2165efd6b522d3809dba285cf2c3050fc50b2d28
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022063"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660969"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>データのコピー ツールを使用して Azure Blob Storage から SQL データベースにデータをコピーする
 
@@ -156,11 +156,13 @@ ms.locfileid: "84022063"
     ![[列マッピング] ページ](./media/tutorial-copy-data-tool/column-mapping.png)
 
 1. **[設定]** ページで **[次へ]** を選択します。
-1. **[サマリー]** ページで設定を確認し、 **[次へ]** を選択します。
-1. **[Deployment]\(デプロイ\)** ページで **[監視]** を選択してパイプライン (タスク) を監視します。
- 
-    ![パイプラインを監視する](./media/tutorial-copy-data-tool/monitor-pipeline.png)
 
+1. **[サマリー]** ページで設定を確認し、 **[次へ]** を選択します。
+
+1. **[Deployment]\(デプロイ\)** ページで **[監視]** を選択してパイプライン (タスク) を監視します。
+
+    ![パイプラインを監視する](./media/tutorial-copy-data-tool/monitor-pipeline.png)
+    
 1. [パイプラインの実行] ページで、 **[最新の情報に更新]** を選択して一覧を更新します。 **[パイプライン名]** の下にあるリンクをクリックして、アクティビティの実行の詳細を表示するか、パイプラインを再実行します。 
     ![パイプラインの実行](./media/tutorial-copy-data-tool/pipeline-run.png)
 
@@ -168,9 +170,7 @@ ms.locfileid: "84022063"
 
     ![アクティビティの実行を監視する](./media/tutorial-copy-data-tool/activity-monitoring.png)
 
-
 1. SQL データベースの **dbo.emp** テーブルにデータが挿入されたことを確認します。
-
 
 1. 左側の **[作成者]** タブを選択して、編集モードに切り替えます。 ツールによって作成されたリンクされたサービス、データセット、パイプラインをエディターで更新できます。 Data Factory UI におけるこれらのエンティティの編集について詳しくは、[このチュートリアルの Azure Portal バージョン](tutorial-copy-data-portal.md)を参照してください。
 

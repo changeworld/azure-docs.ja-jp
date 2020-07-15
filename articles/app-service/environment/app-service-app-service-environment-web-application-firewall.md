@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: stefsch
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 33fd0b6a3a07fa4fbc5448a97ca93c75a3e239d5
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: d629aca791794de6c3e065fdc9f4a9e7f6d8a5df
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684217"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833183"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>App Service 環境の Web アプリケーション ファイアウォール (WAF) を構成する
 ## <a name="overview"></a>概要
@@ -26,7 +26,7 @@ Azure Application Gateway に加えて、[Azure 用 Barracuda WAF](https://www.b
 ## <a name="setup"></a>セットアップ
 このドキュメントでは、複数の負荷分散されたBarracuda WAF インスタンスの背後に App Service 環境を構成して、WAF からのトラフィックのみが App Service 環境に到着でき、DMZ からアクセスできないようにします。 さらに、Azure Traffic Manager を Barracuda WAF インスタンスの前に配置して、Azure のデータセンターとリージョン全体で負荷が分散されるようにします。 設定の概要図は次のようになります。
 
-![Architecture][Architecture] 
+![アーキテクチャ][Architecture] 
 
 > [!NOTE]
 > [App Service 環境での ILB のサポート](app-service-environment-with-internal-load-balancer.md)の導入により、ASE を DMZ からアクセスできないように設定し、プライベート ネットワークでのみ使用できるように構成することができます。 
@@ -89,9 +89,11 @@ Traffic Manager の ping を WAF からアプリケーションに転送する�
 ![Web サイトの変換][WebsiteTranslations]
 
 ## <a name="securing-traffic-to-app-service-environment-using-network-security-groups-nsg"></a>App Service 環境へのトラフィックをネットワーク セキュリティ グループ (NSG) を使用して保護する
-App Service 環境へのトラフィックを、クラウド サービスの VIP アドレスを使用して WAF からのトラフィックだけに制限する方法の詳細については、 [着信トラフィックの制御に関するドキュメント](app-service-app-service-environment-control-inbound-traffic.md) を参照してください。 このタスクを TCP ポート 80 に対して実行するサンプル Powershell コマンドを次に示します。
+App Service 環境へのトラフィックを、クラウド サービスの VIP アドレスを使用して WAF からのトラフィックだけに制限する方法の詳細については、 [着信トラフィックの制御に関するドキュメント](app-service-app-service-environment-control-inbound-traffic.md) を参照してください。 このタスクを TCP ポート 80 に対して実行するサンプル PowerShell コマンドを次に示します。
 
-    Get-AzureNetworkSecurityGroup -Name "RestrictWestUSAppAccess" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP Barracuda" -Type Inbound -Priority 201 -Action Allow -SourceAddressPrefix '191.0.0.1'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
+```azurepowershell-interactive
+Get-AzureNetworkSecurityGroup -Name "RestrictWestUSAppAccess" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP Barracuda" -Type Inbound -Priority 201 -Action Allow -SourceAddressPrefix '191.0.0.1'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
+```
 
 SourceAddressPrefix を、WAF のクラウド サービスの仮想 IP アドレス (VIP) に置き換えます。
 

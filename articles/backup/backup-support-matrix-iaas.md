@@ -3,12 +3,12 @@ title: Azure VM バックアップのサポート マトリックス
 description: Azure Backup サービスを使用して Azure VM をバックアップする場合のサポート設定と制限事項について概説します。
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: b331fe757fc18029aa270f805c72150161a38f47
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 904240e066a83fa1278d663b8614b5b9269ba4d3
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849418"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970673"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM バックアップのサポート マトリックス
 
@@ -17,7 +17,7 @@ ms.locfileid: "83849418"
 その他のサポート マトリックス:
 
 - Azure Backup の[一般的なサポート マトリックス](backup-support-matrix.md)
-- Azure Backup Server/System Center Data Protection Manager (DPM) を使用したバックアップの[サポート マトリックス](backup-support-matrix-mabs-dpm.md)
+- Azure Backup Server / System Center Data Protection Manager (DPM) を使用したバックアップの[サポート マトリックス](backup-support-matrix-mabs-dpm.md)
 - Microsoft Azure Recovery Services (MARS) エージェントを使用したバックアップの[サポート マトリックス](backup-support-matrix-mars-agent.md)
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
@@ -63,7 +63,7 @@ Windows Azure VM をバックアップする場合にサポートされるオペ
 
 **シナリオ** | **OS のサポート**
 --- | ---
-Azure VM エージェント拡張機能を使用したバックアップ | - Windows 10 クライアント (64 ビットのみ) <br/><br/>- Windows Server 2019 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2016 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> - Windows Server 2008 R2 (RTM および SP1 Standard)  <br/><br/> - Windows Server 2008 (64 ビットのみ)
+Azure VM エージェント拡張機能を使用したバックアップ | - Windows 10 クライアント (64 ビットのみ) <br/><br/>- Windows Server 2019 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2016 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> Windows Server 2012 (Datacenter /Standard) <br/><br/> - Windows Server 2008 R2 (RTM および SP1 Standard)  <br/><br/> - Windows Server 2008 (64 ビットのみ)
 MARS エージェントを使用したバックアップ | [サポートされている](backup-support-matrix-mars-agent.md#supported-operating-systems)オペレーティング システム。
 DPM/MABS を使用したバックアップ | [MABS](backup-mabs-protection-matrix.md) および [DPM](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-1807) を使用したバックアップでサポートされるオペレーティング システム。
 
@@ -153,12 +153,13 @@ Azure に移行済みの VM をバックアップする| サポートされて�
 [[診断設定]](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview) でバックアップする  | サポートされていません。 <br/><br/> 診断設定を使った Azure VM の復元が [[新規作成]](backup-azure-arm-restore-vms.md#create-a-vm) オプションを使用してトリガーされた場合、復元は失敗します。
 ゾーン固定 VM の復元 | サポートされています (2019 年 1 月以降にバックアップされた、[可用性ゾーン](https://azure.microsoft.com/global-infrastructure/availability-zones/)が使用可能な VM の場合)。<br/><br/>現在は、VM で固定されているものと同じゾーンへの復元がサポートされています。 ただし、ゾーンが使用できない場合、復元は失敗します。
 Gen2 VM | サポートされています <br> Azure Backup では、[Gen2 VM](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/) のバックアップと復元がサポートされます。 これらの VM は、復旧ポイントから復元されると、[Gen2 VM](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/) として復元されます。
+ロックされた Azure VM のバックアップ | アンマネージド VM では、サポートされていません。 <br><br> マネージド VM ではサポートされています。
 
 ## <a name="vm-storage-support"></a>VM ストレージのサポート
 
 **コンポーネント** | **サポート**
 --- | ---
-Azure VM のデータ ディスク数 | 最大 32 台のディスクを使用した Azure VM のバックアップのサポートは、[これらのリージョン](#backup-of-azure-virtual-machines-with-up-to-32-disks)でパブリック プレビュー段階にあります。<br><br> アンマネージド ディスクまたはクラシック VM を使用した Azure VM のバックアップは、最大 16 台のディスクしかサポートされません。
+Azure VM のデータ ディスク数 | 最大 32 ディスクの Azure VM のバックアップのサポートは、国内クラウド (Azure Government、Azure China、Azure Germany) を除くすべてのリージョンでパブリック プレビュー段階にあります。<br><br> アンマネージド ディスクまたはクラシック VM を使用した Azure VM のバックアップは、最大 16 台のディスクしかサポートされません。
 データ ディスク サイズ | 個々のディスク サイズは最大 32 TB で、VM 内のすべてのディスクに対して最大 256 TB となります。
 ストレージの種類 | Standard HDD、Standard SSD、Premium SSD。
 マネージド ディスク | サポートされています。
@@ -169,13 +170,6 @@ Azure VM のデータ ディスク数 | 最大 32 台のディスクを使用し
 保護された VM でディスクのサイズを変更する | サポートされています。
 共有ストレージ| クラスターの共有ボリューム (CSV) またはスケールアウト ファイル サーバーを使用した VM のバックアップはサポートされていません。 バックアップ中に CSV ライターが失敗する可能性があります。 また、復元時に CSV ボリュームを含むディスクが起動しない可能性があります。
 [共有ディスク](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared-enable) | サポートされていません。
-
-### <a name="backup-of-azure-virtual-machines-with-up-to-32-disks"></a>最大 32 台のディスクを使用した Azure 仮想マシンのバックアップ
-
-Azure Backup では現在、最大 32 台のディスクが接続された Azure VM のバックアップがサポートされています。  この機能は、米国中西部、カナダ中部、東南アジア、ブラジル南部、カナダ東部、フランス中部、フランス南部、インド中部、インド南部、東日本、西日本、韓国中部、韓国南部、南アフリカ北部、英国南部、英国西部、オーストラリア東部でパブリック プレビュー段階にあります。  他のリージョンでこの機能に関心がある場合は、AskAzureBackupTeam@microsoft.com にお問い合わせください。  
-
->[!NOTE]
->Azure Backup では、アンマネージド ディスクまたはクラシック VM を使用する Azure VM の最大 16 台のディスクしかサポートされません。
 
 ## <a name="vm-network-support"></a>VM ネットワークのサポート
 

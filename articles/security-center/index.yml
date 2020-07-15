@@ -11,12 +11,12 @@ metadata:
   author: memildin
   ms.author: memildin
   ms.date: 11/04/2019
-  ms.openlocfilehash: f564113f9a2bb92d1591ac0d3512ae460aa8f58d
-  ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+  ms.openlocfilehash: 13a7ca317630a5a1b0606fa0d2e2022f065fbd4d
+  ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/15/2020
-  ms.locfileid: "84783199"
+  ms.lasthandoff: 06/24/2020
+  ms.locfileid: "85317180"
 landingContent:
 - title: Security Center について
   linkLists:
@@ -30,18 +30,16 @@ landingContent:
   linkLists:
   - linkListType: whats-new
     links:
-    - text: コンテンツの保護
-      url: container-security.md
-    - text: VM 用の統合された脆弱性評価
-      url: built-in-vulnerability-assessment.md
-    - text: セキュリティ アラートのスキーマの確認
-      url: alerts-schemas.md
-    - text: アラートや推奨事項に対する応答の自動化
-      url: workflow-automation.md
-    - text: セキュリティ アラートと推奨事項のエクスポート
-      url: continuous-export.md
-    - text: Azure Key Vault の脅威の防止の設定
-      url: advanced-threat-protection-key-vault.md
+    - text: Security Center のリリース ノート
+      url: release-notes.md
+    - text: SQL マシン向けの Advanced Data Security
+      url: security-center-iaas-advanced-data.md
+    - text: アラートの抑制ルール
+      url: alerts-suppression-rules.md
+    - text: 新しいセキュリティ制御の詳細な説明
+      url: secure-score-security-controls.md#security-controls-and-their-recommendations
+    - text: 新しいセキュリティ スコア API
+      url: secure-score-security-controls.md#getting-your-secure-score-from-the-rest-api
 - title: はじめに
   linkLists:
   - linkListType: get-started
@@ -64,6 +62,8 @@ landingContent:
       url: tutorial-security-policy.md
     - text: 推奨事項を使用してセキュリティを強化する
       url: security-center-using-recommendations.md
+    - text: セキュア スコア API を使用して追跡する
+      url: secure-score-security-controls.md#getting-your-secure-score-from-the-rest-api
 - title: 脅威の軽減
   linkLists:
   - linkListType: how-to-guide

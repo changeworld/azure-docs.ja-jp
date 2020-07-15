@@ -2,26 +2,61 @@
   href: index.yml
 - name: 概要
   items:
-    - name: サーバー向け Azure Arc とは
+    - name: Kubernetes 向け Arc について
+      href: ./kubernetes/overview.md
+    - name: Azure Arc for servers について
       href: ./servers/overview.md
-- name: 操作方法ガイド
-  items:
-    - name: Azure Arc への接続
-      items:
-        - name: Connected Machine エージェントの概要
-          href: ./servers/agent-overview.md
-        - name: Azure portal から Azure Arc へのマシンの接続
-          href: ./servers/onboard-portal.md
-        - name: サービス プリンシパルを使用したマシンの大規模な接続
-          href: ./servers/onboard-service-principal.md
-        - name: PowerShell DSC を使用してマシンを Azure Arc に接続する
-          href: ./servers/onboard-dsc.md
-    - name: 管理する
-      items:
-        - name: エージェントの管理
-          href: ./servers/manage-agent.md
 - name: サンプル
   items:
     - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./servers/policy-samples.md
+      items:
+        - name: Kubernetes 向け Arc
+          href: ./kubernetes/policy-samples.md
+        - name: Arc for servers
+          href: ./servers/policy-samples.md
+- name: 操作方法ガイド
+  items:
+    - name: Kubernetes 向け Arc
+      items:
+        - name: クラスターの操作
+          items:
+            - name: クラスターの接続
+              href: ./kubernetes/connect-cluster.md
+            - name: 接続されたクラスターに GitOps を使用する
+              href: ./kubernetes/use-gitops-connected-cluster.md
+            - name: Helm で GitOps を使用する
+              href: ./kubernetes/use-gitops-with-helm.md
+            - name: Azure Policy を使用して GitOps を適用する
+              href: ./kubernetes/use-azure-policy.md
+            - name: コンテナーに対する Azure Monitor を利用した監視
+              href: ../azure-monitor/insights/container-insights-enable-arc-enabled-clusters.md
+            - name: Azure Policy を使用した受付制御ポリシー
+              href: ../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.json
+            - name: IoT ワークロードをデプロイする
+              href: ./kubernetes/deploy-azure-iot-edge-workloads.md
+            - name: サービス プリンシパルのオンボード
+              href: ./kubernetes/create-onboarding-service-principal.md
+            - name: トラブルシューティング
+              href: ./kubernetes/Troubleshooting.md
+    - name: Arc for servers
+      items:
+        - name: Azure Arc への接続
+          items:
+            - name: Connected Machine エージェントの概要
+              href: ./servers/agent-overview.md
+            - name: Azure portal から Azure Arc へのマシンの接続
+              href: ./servers/onboard-portal.md
+            - name: サービス プリンシパルを使用したマシンの大規模な接続
+              href: ./servers/onboard-service-principal.md
+            - name: PowerShell DSC を使用してマシンを Azure Arc に接続する
+              href: ./servers/onboard-dsc.md
+        - name: 管理する
+          items:
+            - name: Azure VM 拡張機能の管理と使用
+              href: ./servers/manage-vm-extensions.md
+            - name: エージェントの管理
+              href: ./servers/manage-agent.md
+        - name: トラブルシューティング
+          items:
+            - name: エージェントの接続に関する問題
+              href: ./servers/troubleshoot-agent-onboard.md

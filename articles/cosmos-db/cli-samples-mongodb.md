@@ -4,15 +4,15 @@ description: Azure Cosmos DB MongoDB API 用の Azure CLI サンプル
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
-ms.topic: sample
+ms.topic: how-to
 ms.date: 06/03/2020
 ms.author: mjbrown
-ms.openlocfilehash: af510e5d29e494e96f6df6143fe012db20fb6ca4
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: 7536a2e3fc32aeb330aad52625a5946e856d6646
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84509459"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85556038"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-mongodb-api"></a>Azure Cosmos DB MongoDB API 用の Azure CLI サンプル
 
@@ -21,7 +21,7 @@ ms.locfileid: "84509459"
 > [!NOTE]
 > 現在、PowerShell、CLI、および Resource Manager テンプレートを使用して、MongoDB アカウント用の Azure Cosmos DB の API の 3.2 バージョン (つまり、`*.documents.azure.com` 形式のエンドポイントを使用するアカウント) のみを作成できます。 アカウントの 3.6 バージョンを作成するには、代わりに Azure portal を使用します。
 
-| |  |
+|タスク | 説明 |
 |---|---|
 | [Azure Cosmos アカウント、データベース、およびコレクションを作成する](scripts/cli/mongodb/create.md?toc=%2fcli%2fazure%2ftoc.json)| MongoDB API 用の Azure Cosmos DB アカウント、データベース、およびコレクションを作成します。 |
 | [スループットを変更する](scripts/cli/mongodb/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | データベースとコレクションの RU/秒を更新します。|

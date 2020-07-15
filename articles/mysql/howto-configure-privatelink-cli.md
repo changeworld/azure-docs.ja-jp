@@ -179,7 +179,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 7. (省略可能) MySQL データベースから情報を作成または照会します。
 
-8. myVM へのリモート デスクトップ接続を閉じます。
+8. myVm へのリモート デスクトップ接続を閉じます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする 
 不要になったら、az group delete を使用して、リソース グループとそのすべてのリソースを削除できます。 

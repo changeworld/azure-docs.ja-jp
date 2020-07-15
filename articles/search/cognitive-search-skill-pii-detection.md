@@ -7,13 +7,13 @@ author: careyjmac
 ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 1/27/2020
-ms.openlocfilehash: f21200bc6f5b25f3330f5bb87c0843caa5a84e56
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/17/2020
+ms.openlocfilehash: bec993c2b59aa03195b78a02668baf3f5fac6695
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298891"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85080748"
 ---
 #    <a name="pii-detection-cognitive-skill"></a>PII 検出コグニティブ スキル
 
@@ -25,7 +25,7 @@ ms.locfileid: "80298891"
 > [!NOTE]
 > 処理の頻度を増やす、ドキュメントを追加する、または AI アルゴリズムを追加することによってスコープを拡大する場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、および Azure Cognitive Search のドキュメント解析段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
 >
-> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure Cognitive Search の価格](https://go.microsoft.com/fwlink/?linkid=2042400)に関するページで説明されています。
+> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure Cognitive Search の価格](https://azure.microsoft.com/pricing/details/search/)に関するページで説明されています。
 
 
 ## <a name="odatatype"></a>@odata.type  
@@ -40,25 +40,25 @@ Microsoft.Skills.Text.PIIDetectionSkill
 
 | パラメーター名     | 説明 |
 |--------------------|-------------|
-| defaultLanguageCode |    入力テキストの言語コード。 現時点では、`en` のみがサポートされています。 |
-| minimumPrecision | 0\.0 から 1.0 の値。 (`piiEntities` 出力の) 信頼度スコアが `minimumPrecision` の設定値よりも小さい場合は、エンティティは返されず、マスクもされません。 既定では、0.0 です。 |
-| maskingMode | 入力テキスト内で検出された PII をマスクするためのさまざまな方法を提供するパラメーター。 次のオプションがサポートされています。 <ul><li>`none` (既定値): これは、マスキングが実行されず、`maskedText` の出力が返されないことを意味します。 </li><li> `redact`:このオプションを選択すると、検出されたエンティティが入力テキストから削除され、何も置き換えられません。 この場合、`piiEntities` の出力のオフセットは、マスクされたテキストではなく元のテキストに関連することに注意してください。 </li><li> `replace`:このオプションは、検出されたエンティティを `maskingCharacter` パラメーターで指定された文字に置き換えます。  文字は検出されたエンティティの長さに繰り返されます。これにより、オフセットが入力テキストと出力 `maskedText` の両方に正しく対応するようになります。</li></ul> |
-| maskingCharacter | `maskingMode` パラメーターが `replace` に設定されている場合に、テキストをマスクするために使用される文字。 `*` (規定値)、`#`、`X` のオプションがサポートされています。 このパラメーターは、`maskingMode` が `replace` に設定されていない場合にのみ `null` できます。 |
+| `defaultLanguageCode` |    入力テキストの言語コード。 現時点では、`en` のみがサポートされています。 |
+| `minimumPrecision` | 0\.0 から 1.0 の値。 (`piiEntities` 出力の) 信頼度スコアが `minimumPrecision` の設定値よりも小さい場合は、エンティティは返されず、マスクもされません。 既定では、0.0 です。 |
+| `maskingMode` | 入力テキスト内で検出された PII をマスクするためのさまざまな方法を提供するパラメーター。 次のオプションがサポートされています。 <ul><li>`none` (既定値): これは、マスキングが実行されず、`maskedText` の出力が返されないことを意味します。 </li><li> `redact`:このオプションを選択すると、検出されたエンティティが入力テキストから削除され、何も置き換えられません。 この場合、`piiEntities` の出力のオフセットは、マスクされたテキストではなく元のテキストに関連することに注意してください。 </li><li> `replace`:このオプションは、検出されたエンティティを `maskingCharacter` パラメーターで指定された文字に置き換えます。  文字は検出されたエンティティの長さに繰り返されます。これにより、オフセットが入力テキストと出力 `maskedText` の両方に正しく対応するようになります。</li></ul> |
+| `maskingCharacter` | `maskingMode` パラメーターが `replace` に設定されている場合に、テキストをマスクするために使用される文字。 `*` (規定値)、`#`、`X` のオプションがサポートされています。 このパラメーターは、`maskingMode` が `replace` に設定されていない場合にのみ `null` できます。 |
 
 
 ## <a name="skill-inputs"></a>スキルの入力
 
 | 入力名      | 説明                   |
 |---------------|-------------------------------|
-| languageCode    | 省略可能。 既定値は `en` です。  |
-| text          | 分析するテキスト。          |
+| `languageCode`    | 省略可能。 既定値は `en` です。  |
+| `text`          | 分析するテキスト。          |
 
 ## <a name="skill-outputs"></a>スキルの出力
 
 | 出力名      | 説明                   |
 |---------------|-------------------------------|
-| piiEntities | 次のフィールドが含まれる複合型の配列。 <ul><li>テキスト (抽出された実際の PII)</li> <li>type</li><li>subType</li><li>スコア (値が高いほど、実際のエンティティに近づく可能性が高くなります)</li><li>オフセット (入力テキスト内)</li><li>length</li></ul> </br> [使用できる型と subTypes については、こちらを参照してください。](https://docs.microsoft.com/azure/cognitive-services/text-analytics/named-entity-types?tabs=personal) |
-| maskedText | `maskingMode` が `none` 以外の値に設定されている場合、この出力は、選択した `maskingMode` で説明されている入力テキストに対して実行されるマスクの結果の文字列になります。  `maskingMode` が `none` に設定されている場合、この出力は表示されません。 |
+| `piiEntities` | 次のフィールドが含まれる複合型の配列。 <ul><li>テキスト (抽出された実際の PII)</li> <li>type</li><li>subType</li><li>スコア (値が高いほど、実際のエンティティに近づく可能性が高くなります)</li><li>オフセット (入力テキスト内)</li><li>length</li></ul> </br> [使用できる型と subTypes については、こちらを参照してください。](https://docs.microsoft.com/azure/cognitive-services/text-analytics/named-entity-types?tabs=personal) |
+| `maskedText` | `maskingMode` が `none` 以外の値に設定されている場合、この出力は、選択した `maskingMode` で説明されている入力テキストに対して実行されるマスクの結果の文字列になります。  `maskingMode` が `none` に設定されている場合、この出力は表示されません。 |
 
 ##    <a name="sample-definition"></a>定義例
 

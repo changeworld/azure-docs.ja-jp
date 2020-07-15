@@ -5,18 +5,18 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: ed533f571ada4cacf053157b397cca07cd65e6f8
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 62669457f73ba78186614433fb6d10cc4dc01089
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300574"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565520"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>クイック スタート:Unity によるモデルのレンダリング
 
 このクイックスタートでは、Azure Remote Rendering (ARR) サービスを使用して、組み込みモデルをリモートでレンダリングする Unity サンプルを実行する方法について説明します。
 
-ARR API 自体、または新しい Unity プロジェクトの設定方法については詳しく説明しません。 これらのトピックについては、次のページで説明しています: 「[チュートリアル: Unity プロジェクトをゼロから設定する](../tutorials/unity/project-setup.md)」。
+ARR API 自体、または新しい Unity プロジェクトの設定方法については詳しく説明しません。 これらのトピックについては、次のページで説明しています: 「[チュートリアル: リモートでレンダリングされたモデルの表示](../tutorials/unity/view-remote-models/view-remote-models.md)」。
 
 このクイックスタートでは、次の方法について説明します。
 > [!div class="checklist"]
@@ -33,7 +33,7 @@ Azure Remote Rendering サービスにアクセスするには、まず[アカ�
 
 * Windows SDK 10.0.18362.0 [(ダウンロード)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
 * 最新バージョンの Visual Studio 2019 [(ダウンロード)](https://visualstudio.microsoft.com/vs/older-downloads/)
-* [Visual Studio tools for Mixed Reality](https://docs.microsoft.com/windows/mixed-reality/install-the-tools)。 具体的には、次の "*ワークロード*" のインストールが必須です。
+* [Visual Studio tools for Mixed Reality](https://docs.microsoft.com/windows/mixed-reality/install-the-tools)。 特に、次の*ワークロード*のインストールは必須です。
   * **C++ によるデスクトップ開発**
   * **ユニバーサル Windows プラットフォーム (UWP) の開発**
 * Git ([ダウンロード](https://git-scm.com/downloads))

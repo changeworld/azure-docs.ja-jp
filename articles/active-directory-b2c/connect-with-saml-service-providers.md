@@ -7,17 +7,17 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: reference
+ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 68143c4ac3851604996e1f7ba2adce48934e59c5
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: b9ea9e756587af124ca94518d9f15271310ddee3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84295390"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389380"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML アプリケーションを Azure AD B2C に登録する
 
@@ -119,7 +119,7 @@ SAML サービス プロバイダーと関連のメタデータ エンドポイ�
 
 `IssuerUri` メタデータの値を変更できます。 これは Azure AD B2C からの SAML 応答で返される発行者の URI です。 SAML アサーションの検証中に発行者の URI を受け入れるように証明書利用者アプリケーションを構成する必要があります。
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>Token Issuer</DisplayName>
   <TechnicalProfiles>
@@ -165,7 +165,7 @@ SAML サービス プロバイダーと関連のメタデータ エンドポイ�
 
 1. 次に示すように、ポリシーの `PolicyId` と `PublicPolicyUri` を _B2C_1A_signup_signin_saml_ と `http://tenant-name.onmicrosoft.com/B2C_1A_signup_signin_saml` に変更します。
 
-    ```XML
+    ```xml
     <TrustFrameworkPolicy
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
@@ -178,7 +178,7 @@ SAML サービス プロバイダーと関連のメタデータ エンドポイ�
 
 1. `<RelyingParty>` 要素の下に次の XML スニペットを追加します。 この XML により、_SignUpOrSignIn_ ユーザー体験のオーケストレーション ステップ番号 7 が上書きされます。 スターター パックの別のフォルダーから開始した場合、またはオーケストレーション ステップを追加または削除してユーザー体験をカスタマイズした場合は、番号 (`order` 要素内) が、ユーザー体験でトークン発行者ステップに対して指定されている番号と一致していることを確認します (たとえば、スターター パックの別のフォルダーで、`LocalAccounts` に対してステップ番号 4、`SocialAccounts` に対して 6、`SocialAndLocalAccountsWithMfa` に対して 9)。
 
-    ```XML
+    ```xml
     <UserJourneys>
       <UserJourney Id="SignUpOrSignIn">
         <OrchestrationSteps>
@@ -190,7 +190,7 @@ SAML サービス プロバイダーと関連のメタデータ エンドポイ�
 
 1. `<RelyingParty>` 要素の `<TechnicalProfile>` 要素全体を次のテクニカル プロファイル XML に置き換えます。
 
-    ```XML
+    ```xml
     <TechnicalProfile Id="PolicyProfile">
       <DisplayName>PolicyProfile</DisplayName>
       <Protocol Name="SAML2"/>
@@ -210,7 +210,7 @@ SAML サービス プロバイダーと関連のメタデータ エンドポイ�
 
 証明書利用者ポリシー ファイルは最終的に次のようになります。
 
-```XML
+```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <TrustFrameworkPolicy
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -297,7 +297,7 @@ SAML メタデータ URL とアプリケーションの登録のマニフェス�
 
 SAML テスト アプリケーションを使用するこのチュートリアルでは、`samlMetadataUrl` に次の値を使用します。
 
-```JSON
+```json
 "samlMetadataUrl":"https://samltestapp2.azurewebsites.net/Metadata",
 ```
 
@@ -309,7 +309,7 @@ SAML テスト アプリケーションを使用するこのチュートリア�
 
 このチュートリアルでは、SAML テスト アプリケーションを使用して、`replyUrlsWithType` の `url` プロパティを次の JSON スニペット内で示される値に設定します。
 
-```JSON
+```json
 "replyUrlsWithType":[
   {
     "url":"https://samltestapp2.azurewebsites.net/SP/AssertionConsumer",
@@ -324,7 +324,7 @@ SAML テスト アプリケーションを使用するこのチュートリア�
 
 SAML テスト アプリケーションを使用するこのチュートリアルでは、`logoutUrl` を `https://samltestapp2.azurewebsites.net/logout` に設定したままにします。
 
-```JSON
+```json
 "logoutUrl": "https://samltestapp2.azurewebsites.net/logout",
 ```
 

@@ -2,19 +2,17 @@
 title: インクルード ファイル
 description: Microsoft 商業マーケットプレース標準契約のテキストのインクルード ファイル
 documentationcenter: partner-center-commercial-marketplace
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: include
 ms.date: 01/22/2020
-ms.author: dsindona
 ms.custom: include file
-ms.openlocfilehash: e7692d8c90d71e76628ecb44ade529eabedfa909
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 5cbddaed1078ade005c3d60df3face9580bf6609
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691504"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121973"
 ---
 Microsoft では、商業マーケットプレース向けに標準契約テンプレートを提供しています。
 

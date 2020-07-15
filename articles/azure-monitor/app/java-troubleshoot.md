@@ -3,12 +3,12 @@ title: Java Web プロジェクトでの Application Insights のトラブルシ
 description: トラブルシューティング ガイド - Application Insights でライブ Java アプリケーションを監視します。
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 04e98938bc5dd17816ae873f122073212275a414
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ecc9a298d122919138683b48527574a1ff3e5edc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77657182"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84484795"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Java 用 Application Insights のトラブルシューティングおよび Q&A
 [Java 用 Azure Application Insights][java] について疑問または問題はありませんか。 ここでは、いくつかのヒントを紹介します。
@@ -33,7 +33,6 @@ ms.locfileid: "77657182"
 * バージョンの競合の問題を回避するには、同じバージョンの Application Insights のコア、Web、エージェント、およびログ アペンダーを使用していることを確認してください。
 
 #### <a name="i-used-to-see-data-but-it-has-stopped"></a>データが表示されていたのに停止しました。
-* [状態ブログ](https://blogs.msdn.com/b/applicationinsights-status/)をご確認ください。
 * データ ポイントの月間クォータに達していませんか? Open Settings/Quota and Pricing to find out.上限に達している場合は、プランをアップグレードするか、追加容量分を購入することができます。 「 [料金プラン](https://azure.microsoft.com/pricing/details/application-insights/)」をご覧ください。
 * 最近 SDK をアップグレードしましたか? プロジェクト ディレクトリ内に重複していない SDK jar ファイルのみがあることを確認してください。 2 種類のバージョンの SDK が存在することはできません。
 * 正しい AI リソースを見ていますか? アプリケーションの iKey を、テレメトリが必要なリソースに一致させてください。 これらが同じである必要があります。

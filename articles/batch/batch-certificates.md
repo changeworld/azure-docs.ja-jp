@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 02/17/2020
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 4da5fad63b148fa054eefb7f13424b46dc43bf29
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 96a3ada98bb41ea007eaaae2a40983d2448b38c2
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83764321"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960828"
 ---
 # <a name="using-certificates-with-batch"></a>Batch での証明書の使用
 
@@ -39,6 +39,6 @@ ms.locfileid: "83764321"
 
 ## <a name="next-steps"></a>次のステップ
 
-Batch には証明書 API の [AZ batch certificate create](https://docs.microsoft.com/cli/azure/batch/certificate?view=azure-cli-latest#az-batch-certificate-create) があります。
+Batch には証明書 API の [AZ batch certificate create](/cli/azure/batch/certificate?view=azure-cli-latest#az-batch-certificate-create) があります。
 
 Key Vault の使用方法の詳細については、「[Batch で Key Vault に安全にアクセスする](credential-access-key-vault.md)」を参照してください。

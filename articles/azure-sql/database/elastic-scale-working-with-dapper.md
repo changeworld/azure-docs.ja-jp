@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 95723bbcfc5573567bee4a433b9d33908b91f5f0
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b1bba5c4ff71806ac054b4d16585881570cf589a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84031403"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829365"
 ---
 # <a name="using-the-elastic-database-client-library-with-dapper"></a>Dapper でのエラスティック データベース クライアント ライブラリの使用
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -64,6 +64,7 @@ Dapper では、通常、基になるデータベースへの接続を作成し�
 
 次のコード例 (付属のサンプルからの抜粋) は、適切なシャードへの接続を仲介するために、アプリケーションがライブラリに対してシャーディング キーを提供するアプローチを示しています。   
 
+```csharp
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                      key: tenantId1,
                      connectionString: connStrBldr.ConnectionString,
@@ -76,6 +77,7 @@ Dapper では、通常、基になるデータベースへの接続を作成し�
                             VALUES (@name)", new { name = blog.Name }
                         );
     }
+```
 
 [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) API を呼び出すと、SQL Client 接続を作成する既定の操作と開く既定の操作が置き換えられます。 [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) の呼び出しは、データ依存ルーティングに必要な次の引数を受け取ります。 
 
@@ -87,6 +89,7 @@ Dapper では、通常、基になるデータベースへの接続を作成し�
 
 クエリの使用方法はまったく同じです。最初に、クライアント API から [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) を使用して接続を開きます。 次に、通常の Dapper 拡張メソッドを使用して、SQL クエリの結果を .NET オブジェクトにマップします。
 
+```csharp
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                     key: tenantId1,
                     connectionString: connStrBldr.ConnectionString,
@@ -104,6 +107,7 @@ Dapper では、通常、基になるデータベースへの接続を作成し�
                 Console.WriteLine(item.Name);
             }
     }
+```
 
 DDR 接続を含む **using** ブロックのスコープは、tenantId1 が保持されている 1 つのシャードに対する、そのブロック内のすべてのデータベース操作であることに注目してください。 このクエリが返すのは、現在のシャードに格納されているブログのみです。他のシャードに格納されているブログは返されません。 
 
@@ -112,6 +116,7 @@ Dapper には、データベース アプリケーションの開発時にデー
 
 アプリケーションで DapperExtensions を使用しても、データベース接続の作成と管理の方法は変わりません。 接続を開く操作は引き続きアプリケーションが担当し、通常の SQL クライアント接続オブジェクトが拡張メソッドによって使用されます。 既に説明したように、 [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) を利用できます。 次のコード サンプルに示すとおり、変更されたのは、ユーザーが T-SQL ステートメントを記述する必要がなくなった点のみです。
 
+```csharp
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                     key: tenantId2,
                     connectionString: connStrBldr.ConnectionString,
@@ -120,9 +125,11 @@ Dapper には、データベース アプリケーションの開発時にデー
            var blog = new Blog { Name = name2 };
            sqlconn.Insert(blog);
     }
+```
 
 クエリ用のコード サンプルを次に示します。 
 
+```csharp
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                     key: tenantId2,
                     connectionString: connStrBldr.ConnectionString,
@@ -136,12 +143,14 @@ Dapper には、データベース アプリケーションの開発時にデー
                Console.WriteLine(item.Name);
            }
     }
+```
 
 ### <a name="handling-transient-faults"></a>一時的エラーの処理
 Microsoft Patterns & Practices チームでは、「[Transient Fault Handling Application Block (一時的な障害処理アプリケーション ブロック)](https://msdn.microsoft.com/library/hh680934.aspx)」を公開しています。これは、クラウドでの実行時によく発生する一時的なエラー状態をアプリケーション開発者が軽減する際に役立ちます。 詳細については、「[Perseverance, Secret of All Triumphs:Using the Transient Fault Handling Application Block (成功のための耐力と秘密: 一時的な障害処理アプリケーション ブロック)](https://msdn.microsoft.com/library/dn440719.aspx)」を参照してください。
 
 次のコード サンプルでは、一時的エラーのライブラリを使用して一時的エラーを防ぎます。 
 
+```csharp
     SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
     {
        using (SqlConnection sqlconn =
@@ -151,6 +160,7 @@ Microsoft Patterns & Practices チームでは、「[Transient Fault Handling Ap
               sqlconn.Insert(blog);
           }
     });
+```
 
 上記のコードの **SqlDatabaseUtils.SqlRetryPolicy** は **SqlDatabaseTransientErrorDetectionStrategy** として定義され、再試行回数が 10 回、再試行間の待機時間が 5 秒に設定されています。 トランザクションを使用する場合は、一時的エラーの発生時に再試行のスコープがトランザクションの先頭に戻ることをご確認ください。
 

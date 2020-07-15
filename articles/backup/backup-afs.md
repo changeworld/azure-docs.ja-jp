@@ -3,14 +3,14 @@ title: Azure portal 内での Azure ファイル共有のバックアップ
 description: Recovery Services コンテナー内のバックアップされた Azure ファイル共有を、Azure portal を使用してバックアップする方法について説明します
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: a77f7fd0ec21eae60a7313a9ffa889fbef4372c6
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 76bf8e00dede5f227cb862f9c9474844e349e298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82978030"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85391157"
 ---
-# <a name="back-up-azure-file-shares-in-a-recovery-services-vault"></a>Recovery Services コンテナーに Azure ファイル共有をバックアップする
+# <a name="back-up-azure-file-shares"></a>Azure ファイル共有のバックアップ
 
 この記事では、Azure portal を使用して [Azure ファイル共有](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)をバックアップする方法について説明します。
 
@@ -26,27 +26,6 @@ ms.locfileid: "82978030"
 * [サポートされているストレージ アカウントの種類](azure-file-share-support-matrix.md)のいずれかにファイル共有が存在することを確認しておいてください。
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
-
-## <a name="modify-storage-replication"></a>ストレージ レプリケーションを変更する
-
-既定では、コンテナーには [geo 冗長ストレージ (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs) が使用されます。
-
-* コンテナーをプライマリ バックアップ メカニズムとする場合は、GRS を使用することをお勧めします。
-* 低コストのオプションとして[ローカル冗長ストレージ (LRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) を使用できます。
-
-ストレージ レプリケーションの種類を変更にするには:
-
-1. 新しいコンテナーで、 **[設定]** セクションから **[プロパティ]** を選択します。
-
-1. **[プロパティ]** ページで、 **[バックアップ構成]** から **[更新]** をクリックします。
-
-1. ストレージのレプリケーションの種類を選択し、 **[保存]** を選択します。
-
-    ![バックアップ構成の更新](./media/backup-afs/backup-configuration.png)
-
-> [!NOTE]
-> コンテナーを設定してバックアップ項目を格納した後で、ストレージ レプリケーションの種類を変更することはできません。 これを行う場合は、コンテナーを再作成する必要があります。
->
 
 ## <a name="discover-file-shares-and-configure-backup"></a>ファイル共有を検出してバックアップを構成する
 

@@ -1,8 +1,8 @@
 ---
 title: Azure PowerShell スクリプトの例
-description: Azure SQL Database と Azure SQL Managed Instance のリソースを作成、管理するための方法を紹介する Azure PowerShell サンプル スクリプト
+description: Azure PowerShell のサンプル スクリプトを使用して、Azure SQL Database と Azure SQL Managed Instance のリソースを作成、管理することができます。
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: development
 ms.custom: sqldbrb=2
 ms.devlang: PowerShell
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 93fac2e3ae8d83f0fa49f94a3ba7880a2ecc2b4c
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 77220fabc78dd10b4299219ef84c1f6eb32ba82e
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193905"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85987312"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database と Azure SQL Managed Instance の Azure PowerShell サンプル
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -32,13 +32,13 @@ PowerShell をインストールしてローカルで使用する場合、この
 
 次の表には、Azure SQL Database の Azure PowerShell スクリプトのサンプルへのリンクが含まれています。
 
-| |  |
+|Link|説明|
 |---|---|
 |**単一データベースとエラスティック プールを作成して構成する**||
 | [単一データベースを作成し、サーバーレベルのファイアウォール規則を構成する](scripts/create-and-configure-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | この PowerShell スクリプトでは、単一データベースを作成し、サーバーレベルの IP ファイアウォール規則を構成します。 |
 | [エラスティック プールを作成し、プールされたデータベースを移動する](scripts/move-database-between-elastic-pools-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | この PowerShell スクリプトでは、エラスティック プールを作成し、プールされたデータベースを移動して、コンピューティング サイズを変更します。|
 |**geo レプリケーションを構成しフェールオーバーする**||
-| [アクティブ geo レプリケーションを使用して、単一のデータベースを構成およびフェールオーバーする](scripts/setup-geodr-and-failover-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| この PowerShell スクリプトは、単一データベースのアクティブ geo レプリケーションを構成し、セカンダリ レプリカにフェールオーバーします。 |
+| [アクティブ geo レプリケーションを使用して、単一データベースを構成し、フェールオーバーする](scripts/setup-geodr-and-failover-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| この PowerShell スクリプトは、単一データベースのアクティブ geo レプリケーションを構成し、セカンダリ レプリカにフェールオーバーします。 |
 | [アクティブ geo レプリケーションを使用して、プールされたデータベースを構成およびフェールオーバーする](scripts/setup-geodr-and-failover-elastic-pool-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| この PowerShell スクリプトは、エラスティック プール内のデータベースのアクティブ geo レプリケーションを構成し、セカンダリ レプリカにフェールオーバーします。 |
 |**フェールオーバー グループを構成する**||
 | [単一データベースのフェールオーバー グループを構成する](scripts/add-database-to-failover-group-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | この PowerShell スクリプトでは、データベースとフェールオーバー グループを作成し、データベースをフェールオーバー グループに追加して、セカンダリ サーバーへのフェールオーバーをテストします。 |
@@ -53,8 +53,8 @@ PowerShell をインストールしてローカルで使用する場合、この
 | [新しいサーバーにデータベースをコピーする](scripts/copy-database-to-new-server-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| この PowerShell スクリプトでは、新しいサーバーに既存のデータベースのコピーを作成します。 |
 | [データベースを bacpac ファイルからインポートする](scripts/import-from-bacpac-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| この PowerShell スクリプトは、bacpac ファイルから Azure SQL Database にデータベースをインポートします。 |
 | **データベース間でデータを同期する**||
-| [SQL Database 間でデータを同期する](scripts/sql-data-sync-sync-data-between-sql-databases.md?toc=%2fpowershell%2fmodule%2ftoc.json) | この PowerShell スクリプトは、Azure SQL Database の複数のデータベース間で同期するデータ同期を構成します。 |
-| [SQL Database と SQL Server の間でデータを同期する](scripts/sql-data-sync-sync-data-between-azure-onprem.md?toc=%2fpowershell%2fmodule%2ftoc.json) | この PowerShell スクリプトは、Azure SQL Database のデータベースと SQL Server のデータベースとの間でデータ同期を構成します。 |
+| [データベース間でデータを同期する](scripts/sql-data-sync-sync-data-between-sql-databases.md?toc=%2fpowershell%2fmodule%2ftoc.json) | この PowerShell スクリプトは、Azure SQL Database の複数のデータベース間で同期するデータ同期を構成します。 |
+| [SQL Database とオンプレミスの SQL Server のデータを同期する](scripts/sql-data-sync-sync-data-between-azure-onprem.md?toc=%2fpowershell%2fmodule%2ftoc.json) | この PowerShell スクリプトは、Azure SQL Database のデータベースとオンプレミスの SQL Server データベースのデータ同期を構成します。 |
 | [SQL データ同期の同期スキーマを更新する](scripts/update-sync-schema-in-sync-group.md?toc=%2fpowershell%2fmodule%2ftoc.json) | この PowerShell スクリプトは、データ同期の同期スキーマから項目を追加または削除します。 |
 |||
 
@@ -64,19 +64,19 @@ PowerShell をインストールしてローカルで使用する場合、この
 
 次の表には、Azure SQL Managed Instance の Azure PowerShell サンプル スクリプトへのリンクが記載されています。
 
-| |  |
+|Link|説明|
 |---|---|
 |**マネージド インスタンスを作成して構成する**||
-| [マネージド インスタンスを作成して管理する](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | この PowerShell スクリプトでは、Azure PowerShell を使用してマネージド インスタンスを作成および管理する方法が示されます |
-| [Azure Resource Manager テンプレートを使用してマネージド インスタンスを作成および管理する](../managed-instance/scripts/create-powershell-azure-resource-manager-template.md?toc=%2fpowershell%2fmodule%2ftoc.json) | この PowerShell スクリプトは、Azure PowerShell と Azure Resource Manager テンプレートを使用してマネージド インスタンスを作成および管理する方法を示しています。|
+| [マネージド インスタンスを作成して管理する](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | この PowerShell スクリプトでは、Azure PowerShell を使用してマネージド インスタンスを作成、管理する方法を紹介します。 |
+| [Azure Resource Manager テンプレートを使用してマネージド インスタンスを作成および管理する](../managed-instance/scripts/create-powershell-azure-resource-manager-template.md?toc=%2fpowershell%2fmodule%2ftoc.json) | この PowerShell スクリプトでは、Azure PowerShell と Azure Resource Manager テンプレートを使用してマネージド インスタンスを作成、管理する方法を紹介します。|
 | [データベースを別の geo リージョンのマネージド インスタンスに復元する](../managed-instance/scripts/restore-geo-backup.md) | この PowerShell スクリプトでは、1 つのデータベースのバックアップが作成されて、別のリージョンに復元されます。 これは、geo リストア ディザスター リカバリー シナリオとして知られています。 |
-| **透過的なデータ暗号化 (TDE) の構成**||
-| [Azure Key Vault の独自のキーを使用してマネージド インスタンスで Transparent Data Encryption を管理する](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| この PowerShell スクリプトによって、Azure Key Vault のキーを使用し、Azure SQL マネージド インスタンスの Bring Your Own Key シナリオで Transparent Data Encryption (TDE) が構成されます。|
+| **Transparent Data Encryption を構成する**||
+| [Azure Key Vault の独自のキーを使用してマネージド インスタンスで Transparent Data Encryption を管理する](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| この PowerShell スクリプトによって、Azure Key Vault のキーを使用し、Azure SQL Managed Instance の Bring Your Own Key シナリオで Transparent Data Encryption が構成されます。|
 |**フェールオーバー グループを構成する**||
 | [マネージド インスタンスのフェールオーバー グループを構成する](../managed-instance/scripts/add-to-failover-group-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | この PowerShell スクリプトでは、2 つのマネージド インスタンスを作成し、それらをフェールオーバー グループに追加して、プライマリ マネージド インスタンスからセカンダリ マネージド インスタンスへのフェールオーバーをテストします。 |
 |||
 
-[Azure SQL Managed Instance の PowerShell コマンドレット](../managed-instance/api-references-create-manage-instance.md#powershell-create-and-manage-managed-instances)に関するセクションを参照してください。
+[Azure SQL Managed Instance の PowerShell コマンドレット](../managed-instance/api-references-create-manage-instance.md#powershell-create-and-configure-managed-instances)に関するセクションを参照してください。
 
 ---
 

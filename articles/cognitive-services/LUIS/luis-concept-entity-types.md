@@ -2,13 +2,13 @@
 title: エンティティの種類 - LUIS
 description: 予測ランタイム時に、エンティティによってユーザーの発話からデータが抽出されます。 "_オプション_" の副次的な目的は、エンティティを特徴量として使用することで、意図またはその他のエンティティの予測を強化することです。
 ms.topic: conceptual
-ms.date: 05/17/2020
-ms.openlocfilehash: a5e4812eab84650401dd19b0f8d7b361a5135dd3
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 06/10/2020
+ms.openlocfilehash: 61dc0688cd304a672321f846a3ae5798c271345d
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682175"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676490"
 ---
 # <a name="extract-data-with-entities"></a>エンティティを使用してデータを抽出する
 
@@ -32,7 +32,7 @@ ms.locfileid: "83682175"
 
 |発話|Entity|Data|
 |--|--|--|
-|ニューヨーク行きのチケットを 3 枚購入する|事前構築済みの数値<br>宛先|3<br>ニューヨーク|
+|ニューヨーク行きのチケットを 3 枚購入する|事前構築済みの数値<br>到着地|3<br>ニューヨーク|
 
 
 ### <a name="entities-are-optional-but-recommended"></a>エンティティは省略可能だが強く推奨される
@@ -41,7 +41,9 @@ ms.locfileid: "83682175"
 
 アプリケーションの開発に伴いデータの新しいニーズが特定されたら、適切なエンティティを LUIS モデルに後で追加することができます。
 
-## <a name="entity-compared-to-intent"></a>エンティティと意図の比較
+<a name="entity-compared-to-intent"></a>
+
+## <a name="entity-represents-data-extraction"></a>データ抽出を表すエンティティ
 
 エンティティは、_ユーザーの発話内_のデータの概念を表します。 意図は、_発話全体_を分類します。
 
@@ -53,6 +55,10 @@ ms.locfileid: "83682175"
 |Send something|sendSomething|-|何も抽出されません。 このモデルには、このコンテキストの `something` を抽出するための必須特徴量がなく、受領者が示されていません。|
 |Send Bob a present|sendSomething|`Bob`, `present`|このモデルでは、事前構築済みのエンティティ `personName` の必須特徴量を追加することで、`Bob` が抽出されます。 `present` を抽出するのに機械学習エンティティが使用されています。|
 |Send Bob a box of chocolates|sendSomething|`Bob`, `box of chocolates`|機械学習エンティティによって、データの 2 つの重要な部分である `Bob` と `box of chocolates` が抽出されています。|
+
+## <a name="label-entities-in-all-intents"></a>すべての意図のエンティティにラベルを付ける
+
+エンティティは、予測される意図に関係なくデータを抽出します。 すべての意図で、"_すべての_" 発話の例にラベルを付けるようにしてください。 エンティティのラベル付けがされていない `None` 意図によって、他の意図のトレーニング発話がはるかに多い場合でも混乱が生じます。
 
 ## <a name="design-entities-for-decomposition"></a>分解のためのエンティティの設計
 

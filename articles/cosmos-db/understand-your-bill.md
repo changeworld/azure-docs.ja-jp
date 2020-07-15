@@ -7,23 +7,23 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 9384b974463c963cc130e7ca0d4a9ee815a92e53
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 596296069686e843d0be1899cce8929417b70bcc
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647728"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964585"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Azure Cosmos DB の課金内容を理解する
 
 完全に管理されたクラウド ネイティブ データベース サービスとして、Azure Cosmos DB では、プロビジョニングされたスループットと使用ストレージに対してのみ課金することで、課金を簡略化します。 オンプレミスまたは IaaS でホストされている別のサービスに比べ、追加のライセンス料、ハードウェア、ユーティリティのコスト、設備のコストは発生しません。 Azure Cosmos DB の複数リージョンの機能を考えると、データベース サービスでは、既存のオンプレミスまたは IaaS ソリューションに比べ、コストが大幅に削減されます。
 
-Azure Cosmos DB では、プロビジョニングされたスループットと使用ストレージに基づき、時間単位で課金されます。 プロビジョニングされたスループットの場合、課金単位は 1 時間あたり 100 RU/秒となり、1 時間あたり $0.008 で課金されます。これは、標準的な一般価格と仮定した場合です ([価格ページ](https://azure.microsoft.com/pricing/details/cosmos-db/)を参照)。 使用ストレージの場合、1 か月あたり $0.25/GB で課金されます ([価格ページ](https://azure.microsoft.com/pricing/details/cosmos-db/)を参照)。 
+Azure Cosmos DB では、プロビジョニングされたスループットと使用ストレージに基づき、時間単位で課金されます。 プロビジョニングされたスループットの場合、課金の単位は 1 時間あたり 100 RU/秒です。最新の価格情報については、[価格に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)をご覧ください。 使用ストレージの場合、1 か月あたり 1 GB ごとに課金されます。最新の価格情報については、[価格に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)をご覧ください。
 
-この記事では、毎月の請求書に示される詳細を理解するのに役立つ例をいくつか使用します。 Azure Cosmos コンテナーにプロビジョニングされているスループットの量が異なる場合や、コンテナーが複数のリージョンにまたがっているか、1 か月に実行される対象が異なる場合は、例に示される数字が異なる可能性があります。
+この記事では、毎月の請求書に示される詳細を理解するのに役立つ例をいくつか使用します。 Azure Cosmos コンテナーにプロビジョニングされているスループットの量が異なる場合や、コンテナーが複数のリージョンにまたがっているか、1 か月に実行される対象が異なる場合は、例に示される数字が異なる可能性があります。 この記事のすべての例では、[価格に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)に表示されている価格情報に基づいて課金が計算されます。
 
 > [!NOTE]
-> 課金は、60 分という期間ではなく、実測時間に対して行われます。
+> 課金は、60 分という期間ではなく、実測時間に対して行われます。 このドキュメントに示されているすべての例は、米国の非政府リージョンにデプロイされている Azure Cosmos アカウントの価格に基づいています。 価格と計算は、お客様が使用しているリージョンによって異なります。最新の価格情報については、「[Azure Cosmos DB の価格](https://azure.microsoft.com/pricing/details/cosmos-db/)」ページをご覧ください。
 
 ## <a name="billing-examples"></a>課金の例
 
@@ -73,7 +73,7 @@ Azure Cosmos DB では、プロビジョニングされたスループットと�
 
 * 1 か月を 720 時間 (24 時間 * 30 日) として、500 時間分のスループットは 1,200 RU/秒でプロビジョニングして、残りの 220 時間分のスループットは 22,200 RU/秒でプロビジョニングした場合、1 か月の料金は、500 x $0.096/時間 + 220 x $1.776/時間 = $438.72/月となります。
 
-![専用スループットの課金の例](./media/understand-your-bill/bill-example1.png)
+:::image type="content" source="./media/understand-your-bill/bill-example1.png" alt-text="専用スループットの課金の例":::
 
 ### <a name="billing-example-containers-with-shared-throughput-mode"></a>課金の例: 共有スループット モードのコンテナー
 
@@ -87,7 +87,7 @@ Azure Cosmos DB では、プロビジョニングされたスループットと�
 
 * 1 か月を 720 時間として、300 時間分のスループットは 120-K RU/秒でプロビジョニングして、残りの 420 時間分のスループットは 155-K RU/秒でプロビジョニングした場合、1 か月の料金は、300 x $9.60/時間 + 420 x $12.40/時間 = $2,880 + $5,208 = $8,088/月となります。 
 
-![共有スループットの課金の例](./media/understand-your-bill/bill-example2.png)
+:::image type="content" source="./media/understand-your-bill/bill-example2.png" alt-text="共有スループットの課金の例":::
 
 ## <a name="billing-examples-with-geo-replication-and-multi-master"></a>geo レプリケーションとマルチマスターでの課金の例  
 
@@ -177,7 +177,7 @@ Azure Cosmos DB では、プロビジョニングされたスループットと�
 
 1 か月 720 時間の間にプロビジョニングされたスループットの合計の変化を視覚的に示すと、次の図のようになります。 
 
-![実際の例](./media/understand-your-bill/bill-example3.png)
+:::image type="content" source="./media/understand-your-bill/bill-example3.png" alt-text="実際の例":::
 
 月額の合計 (1 か月 30 日/720 時間と仮定) は次のように計算されます。
 
@@ -234,19 +234,18 @@ Azure Cosmos DB の Free レベルでは、アカウント レベルに適用さ
 
 月末までに請求額を事前に見積もりたい場合の別の例を考えてみましょう。 請求額は次のようにして見積もることができます。
 
-|**ストレージ コスト** | |
-|----|----|
-|レコードの平均サイズ (KB) |1 |
-|レコードの数  |100,000,000  |
-|ストレージの合計 (GB)  |100 |
-|毎月のコスト/GB  |$0.25  |
-|ストレージの予想される毎月のコスト   |$25.00  |
+**ストレージのコスト**
 
-<br>
+* レコードの平均サイズ (KB) = 1 
+* レコード数 = 100,000,000 
+* ストレージの合計 (GB) = 100 
+* 毎月のコスト/GB = $0.25 
+* ストレージの予想される毎月のコスト = $25.00 
 
-|**スループット コスト** | | | |
-|----|----|----|----|
+**スループット コスト**
+
 |操作の種類| 要求/秒| Avg.RU/要求| 必要な RU|
+|----|----|----|----|
 |Write| 100 | 5 | 500|
 |Read| 400| 1| 400|
 

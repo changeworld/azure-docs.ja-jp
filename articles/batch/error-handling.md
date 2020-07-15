@@ -3,12 +3,12 @@ title: Azure Batch でのエラー処理と検出
 description: Batch サービスのワークフローでのエラー処理について、開発の観点から説明します。
 ms.topic: article
 ms.date: 05/15/2020
-ms.openlocfilehash: 07b9d43ea9bdf21fe3188c4481e6dd0c86374607
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 3bd460598dae08fa18415e1c9865249f3ca4c9c2
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83790829"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964279"
 ---
 # <a name="error-handling-and-detection-in-azure-batch"></a>Azure Batch でのエラー処理と検出
 
@@ -23,13 +23,13 @@ ms.locfileid: "83790829"
 - Retry-after ヘッダーが付いた 429 や 503 の状態コードの HTTP 応答などの、調整関連のエラー。
 - AlreadyExists と InvalidOperation などの 4xx エラー。 これは、状態遷移でリソースが正しい状態にないことを意味します。
 
-REST API、Batch サービス、ジョブ タスク/スケジュールのエラー コードなどの具体的なエラー コードについては、「[バッチの状態とエラー コード](https://docs.microsoft.com/rest/api/batchservice/batch-status-and-error-codes)」を参照してください。
+REST API、Batch サービス、ジョブ タスク/スケジュールのエラー コードなどの具体的なエラー コードについては、「[バッチの状態とエラー コード](/rest/api/batchservice/batch-status-and-error-codes)」を参照してください。
 
 ## <a name="application-failures"></a>アプリケーション エラー
 
 アプリケーションの実行中に、問題のトラブルシューティングに利用できる診断情報が生成される場合があります。 「[ファイルとディレクトリ](files-and-directories.md)」で説明したように、Batch サービスは、コンピューティング ノードのタスク ディレクトリにある `stdout.txt` ファイルと `stderr.txt` ファイルに標準出力と標準エラー出力を書き込みます。
 
-これらのファイルは Azure Portal またはいずれかの Batch SDK を使用してダウンロードすることができます。 たとえば、Batch .NET ライブラリの [ComputeNode.GetNodeFile](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.computenode) や [CloudTask.GetNodeFile](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask) でこれらのファイルを取得して、トラブルシューティングに利用できます。
+これらのファイルは Azure Portal またはいずれかの Batch SDK を使用してダウンロードすることができます。 たとえば、Batch .NET ライブラリの [ComputeNode.GetNodeFile](/dotnet/api/microsoft.azure.batch.computenode) や [CloudTask.GetNodeFile](/dotnet/api/microsoft.azure.batch.cloudtask) でこれらのファイルを取得して、トラブルシューティングに利用できます。
 
 ## <a name="task-errors"></a>タスク エラー
 
@@ -73,10 +73,10 @@ REST API、Batch サービス、ジョブ タスク/スケジュールのエラ�
 
 ## <a name="connect-to-compute-nodes"></a>コンピューティング ノードへの接続
 
-リモートからコンピューティング ノードにサインインすることによって、さらに踏み込んだデバッグやトラブルシューティングを実行できます。 Azure Portal を使用して、Windows ノードのリモート デスクトップ プロトコル (RDP) ファイルをダウンロードしたり、Linux ノードの Secure Shell (SSH) 接続情報を取得したりすることができます。 このような操作は、Batch API ([Batch .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.computenode) や [Batch Python](batch-linux-nodes.md#connect-to-linux-nodes-using-ssh) など) で実行できます。
+リモートからコンピューティング ノードにサインインすることによって、さらに踏み込んだデバッグやトラブルシューティングを実行できます。 Azure Portal を使用して、Windows ノードのリモート デスクトップ プロトコル (RDP) ファイルをダウンロードしたり、Linux ノードの Secure Shell (SSH) 接続情報を取得したりすることができます。 このような操作は、Batch API ([Batch .NET](/dotnet/api/microsoft.azure.batch.computenode) や [Batch Python](batch-linux-nodes.md#connect-to-linux-nodes-using-ssh) など) で実行できます。
 
 > [!IMPORTANT]
-> RDP や SSH を通じてノードに接続するには、まず、ノード上にユーザーを作成する必要があります。 Azure portal から Batch REST API を使用して[ユーザー アカウントをノードに追加](https://docs.microsoft.com/rest/api/batchservice/computenode/adduser)し、Batch .NET の [ComputeNode.CreateComputeNodeUser](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.computenode) メソッドを呼び出すか、Batch Python モジュールの [add_user](batch-linux-nodes.md#connect-to-linux-nodes-using-ssh) メソッドを呼び出してください。
+> RDP や SSH を通じてノードに接続するには、まず、ノード上にユーザーを作成する必要があります。 Azure portal から Batch REST API を使用して[ユーザー アカウントをノードに追加](/rest/api/batchservice/computenode/adduser)し、Batch .NET の [ComputeNode.CreateComputeNodeUser](/dotnet/api/microsoft.azure.batch.computenode) メソッドを呼び出すか、Batch Python モジュールの [add_user](batch-linux-nodes.md#connect-to-linux-nodes-using-ssh) メソッドを呼び出してください。
 
 計算ノードへの RDP アクセスまたは SSH アクセスを制限または無効にする必要がある場合は、「[Configure or disable remote access to compute nodes in an Azure Batch pool (Azure Batch プールの計算ノードへのリモート アクセスを構成または無効にする)](pool-endpoint-configuration.md)」を参照してください。
 
@@ -84,21 +84,21 @@ REST API、Batch サービス、ジョブ タスク/スケジュールのエラ�
 
 一部のタスクが失敗する場合は、Batch クライアント アプリケーションまたはサービスで、失敗したタスクのメタデータを調べて、正常に動作していないノードを特定できます。 プール内のノードにはそれぞれ一意の ID があり、タスクが実行されるノードはタスクのメタデータに含まれています。 問題のあるノードが特定できたら、そのノードで以下に示すいくつかの対策を実行します。
 
-- **ノードを再起動する** ([REST](https://docs.microsoft.com/rest/api/batchservice/computenode/reboot) | [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.computenode.reboot)))
+- **ノードを再起動する** ([REST](/rest/api/batchservice/computenode/reboot) | [.NET](/dotnet/api/microsoft.azure.batch.computenode.reboot)))
 
     ノードを再起動すると、途中で停止したプロセスやクラッシュしたプロセスなどの潜在的な問題が解決することがあります。 プールで開始タスクを使用している場合や、ジョブでジョブ準備タスクを使用している場合、それらはノードの再起動時に実行されます。
-- **ノードを再イメージ化する** ([REST](https://docs.microsoft.com/rest/api/batchservice/computenode/reimage) | [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.computenode.reimage))
+- **ノードを再イメージ化する** ([REST](/rest/api/batchservice/computenode/reimage) | [.NET](/dotnet/api/microsoft.azure.batch.computenode.reimage))
 
     この操作では、ノード上のオペレーティング システムが再インストールされます。 ノードの再起動と同様、開始タスクとジョブ準備タスクはノードの再イメージ化後に再実行されます。
-- **プールからノードを削除する** ([REST](https://docs.microsoft.com/rest/api/batchservice/pool/removenodes) | [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations))
+- **プールからノードを削除する** ([REST](/rest/api/batchservice/pool/removenodes) | [.NET](/dotnet/api/microsoft.azure.batch.pooloperations))
 
     場合によっては、プールからノードを完全に削除する必要があります。
-- **ノードでタスク スケジュールを無効にする** ([REST](https://docs.microsoft.com/rest/api/batchservice/computenode/disablescheduling) | [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.computenode.disablescheduling))
+- **ノードでタスク スケジュールを無効にする** ([REST](/rest/api/batchservice/computenode/disablescheduling) | [.NET](/dotnet/api/microsoft.azure.batch.computenode.disablescheduling))
 
-    この操作では、ノードが実質的にオフラインになります。そのため、これ以上タスクが割り当てられなくなりますが、ノードをプール内で稼働したままにできます。 これにより、失敗したタスクのデータが失われず、これ以上ノードでタスクが失敗することもなくなり、エラーの原因を詳しく調査できます。 たとえば、ノードでタスク スケジュールを無効にした後、リモートからサインインして、ノードのイベント ログを確認したり、他のトラブルシューティングを実行したりできます。 ご自分の調査が完了したら、タスク スケジュール ([REST](https://docs.microsoft.com/rest/api/batchservice/computenode/enablescheduling) | [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.computenode.enablescheduling)) を有効にしたり、前述のいずれかのアクションを実行することで、ノードをオンラインに戻すことができます。
+    この操作では、ノードが実質的にオフラインになります。そのため、これ以上タスクが割り当てられなくなりますが、ノードをプール内で稼働したままにできます。 これにより、失敗したタスクのデータが失われず、これ以上ノードでタスクが失敗することもなくなり、エラーの原因を詳しく調査できます。 たとえば、ノードでタスク スケジュールを無効にした後、リモートからサインインして、ノードのイベント ログを確認したり、他のトラブルシューティングを実行したりできます。 ご自分の調査が完了したら、タスク スケジュール ([REST](/rest/api/batchservice/computenode/enablescheduling) | [.NET](/dotnet/api/microsoft.azure.batch.computenode.enablescheduling)) を有効にしたり、前述のいずれかのアクションを実行することで、ノードをオンラインに戻すことができます。
 
 > [!IMPORTANT]
-> 前述のアクションでは、ノードで現在実行中のタスクをアクションの実行時にどのように処理するかを指定できます。 たとえば、Batch .NET クライアント ライブラリを使用してノードでタスク スケジュールを無効にするときに、[DisableComputeNodeSchedulingOption](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.common.disablecomputenodeschedulingoption) 列挙値を指定して、実行中のタスクを終了するか (**Terminate**)、他のノードでスケジュールするためにキューに再登録するか (**Requeue**)、実行中のタスクが完了してからアクションを実行するか (**TaskCompletion**) を指定できます。
+> 前述のアクションでは、ノードで現在実行中のタスクをアクションの実行時にどのように処理するかを指定できます。 たとえば、Batch .NET クライアント ライブラリを使用してノードでタスク スケジュールを無効にするときに、[DisableComputeNodeSchedulingOption](/dotnet/api/microsoft.azure.batch.common.disablecomputenodeschedulingoption) 列挙値を指定して、実行中のタスクを終了するか (**Terminate**)、他のノードでスケジュールするためにキューに再登録するか (**Requeue**)、実行中のタスクが完了してからアクションを実行するか (**TaskCompletion**) を指定できます。
 
 ## <a name="retry-after-errors"></a>エラー後の再試行
 
@@ -110,4 +110,4 @@ Batch API では、発生したエラーが通知されます。 これらはす
 
 - [プールおよびノード エラーを確認する](batch-pool-node-error-checking.md)方法について学習します。
 - [ジョブおよびタスク エラーを確認する](batch-job-task-error-checking.md)方法について学習します。
-- [Batch の状態とエラー コード](https://docs.microsoft.com/rest/api/batchservice/batch-status-and-error-codes)の一覧を確認します。
+- [Batch の状態とエラー コード](/rest/api/batchservice/batch-status-and-error-codes)の一覧を確認します。

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: 59ef47ac67955ef5b9b7cb51ae6f39a9e0d30c3b
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 7172fe1f7eb81bbd00e7efa611111e04cc96abd3
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84634935"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083578"
 ---
 # <a name="quickstart-create-a-search-index-in-net"></a>クイック スタート:.NET で検索インデックスを作成する
 > [!div class="op_single_selector"]
@@ -25,7 +25,7 @@ ms.locfileid: "84634935"
 > * [Postman](search-get-started-postman.md)
 >*
 
-Visual Studio と [Azure Cognitive Search .NET SDK](https://aka.ms/search-sdk) を使用して Azure Cognitive Search インデックスの作成、読み込み、およびクエリの実行を行う .NET Core C# コンソール アプリケーションを C# で作成します。 
+Visual Studio と [Azure Cognitive Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) を使用して Azure Cognitive Search インデックスの作成、読み込み、およびクエリの実行を行う .NET Core C# コンソール アプリケーションを C# で作成します。 
 
 この記事では、アプリケーションを作成する方法について順を追って説明します。 コードにすぐ進みたい場合は、[完成したアプリケーションをダウンロードして実行する](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/Quickstart)こともできます。
 
@@ -38,7 +38,7 @@ Visual Studio と [Azure Cognitive Search .NET SDK](https://aka.ms/search-sdk) �
 
 + アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/)。
 
-+ Azure Cognitive Search サービス。 [サービスを作成する](search-create-service-portal.md)か、現在のサブスクリプションで[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。 
++ Azure Cognitive Search サービス。 [サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを検索](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)します。 このクイック スタート用には、無料のサービスを使用できます。 
 
 + [Visual Studio](https://visualstudio.microsoft.com/downloads/) (任意のエディション)。 サンプル コードと手順については、無料の Community エディションでテストされています。
 
@@ -64,7 +64,7 @@ Visual Studio と [Azure Cognitive Search .NET SDK](https://aka.ms/search-sdk) �
 
 ### <a name="install-nuget-packages"></a>NuGet パッケージのインストール
 
-[Azure Cognitive Search .NET SDK](https://aka.ms/search-sdk) は、NuGet パッケージとして配布されるいくつかのクライアント ライブラリで構成されています。
+[Azure Cognitive Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) は、NuGet パッケージとして配布されるいくつかのクライアント ライブラリで構成されています。
 
 このプロジェクトでは、バージョン 9 の `Microsoft.Azure.Search` NuGet パッケージと最新の `Microsoft.Extensions.Configuration.Json` NuGet パッケージを使用します。
 
@@ -567,3 +567,8 @@ Azure Cognitive Search では、ドキュメントにはインデックス作成
 
 > [!div class="nextstepaction"]
 > [.NET で開発する方法](search-howto-dotnet-sdk.md)
+
+クラウドの支出を最適化して節約しますか?
+
+> [!div class="nextstepaction"]
+> [Cost Management を使用してコスト分析を開始する](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

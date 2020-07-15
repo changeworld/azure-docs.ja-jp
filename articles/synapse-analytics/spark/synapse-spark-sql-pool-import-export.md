@@ -5,16 +5,16 @@ services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: 20b030079121104fe7bd75924a63ab0e12be9b19
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ebf948fdb1df76cb7bcb03ee5d85f581d856524f
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020865"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85918728"
 ---
 # <a name="introduction"></a>はじめに
 
@@ -30,7 +30,7 @@ Synapse SQL コネクタへの Azure Synapse の Apache Spark プールは、Apa
 
 ## <a name="authentication-in-azure-synapse-analytics"></a>Azure Synapse Analytics での認証
 
-システム間の認証は、Azure Synapse Analytics でシームレスに行われます。 Azure Active Directory に接続して、ストレージ アカウントまたはデータ ウェアハウス サーバーにアクセスするときに使用するセキュリティ トークンを取得するトークン サービスがあります。 
+システム間の認証は、Azure Synapse Analytics でシームレスに行われます。 Azure Active Directory に接続して、ストレージ アカウントまたはデータ ウェアハウス サーバーにアクセスするときに使用するセキュリティ トークンを取得するトークン サービスがあります。
 
 このため、ストレージ アカウントとデータ ウェアハウス サーバーで AAD 認証が構成されている限り、資格情報を作成したり、コネクタ API でそれらを指定したりする必要はありません。 そうでない場合は、SQL 認証を指定できます。 詳細については、「[使用法](#usage)」セクションを参照してください。
 
@@ -40,19 +40,27 @@ Synapse SQL コネクタへの Azure Synapse の Apache Spark プールは、Apa
 
 ## <a name="prerequisites"></a>前提条件
 
-- データの転送先および転送元となるデータベースおよび SQL プールに **db_exporter** ロールがあること。
+- データの転送先および転送元となるデータベースおよび SQL プールにある、**db_exporter** ロールのメンバーである必要があります。
+- 既定のストレージ アカウントのストレージ BLOB データ共同作成者ロールのメンバーである必要があります。
 
-ユーザーを作成するには、データベースに接続し、次の例に従います。
+ユーザーを作成するには、SQL プール データベースに接続し、これらの例に従います。
 
 ```sql
+--SQL User
 CREATE USER Mary FROM LOGIN Mary;
+
+--Azure Active Directory User
 CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 ```
 
 ロールを割り当てるには:
 
 ```sql
+--SQL User
 EXEC sp_addrolemember 'db_exporter', 'Mary';
+
+--Azure Active Directory User
+EXEC sp_addrolemember 'db_exporter',[mike@contoso.com]
 ```
 
 ## <a name="usage"></a>使用法
@@ -72,7 +80,7 @@ import ステートメントは必要はありません。ノートブック エ
 #### <a name="read-api"></a>Read API
 
 ```scala
-val df = spark.read.sqlanalytics("[DBName].[Schema].[TableName]")
+val df = spark.read.sqlanalytics("<DBName>.<Schema>.<TableName>")
 ```
 
 上記の API は、SQL プールの内部 (マネージド) テーブルと外部テーブルの両方に対して機能します。
@@ -80,17 +88,51 @@ val df = spark.read.sqlanalytics("[DBName].[Schema].[TableName]")
 #### <a name="write-api"></a>Write API
 
 ```scala
-df.write.sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
+df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
-ここで、TableType には Constants.INTERNAL または Constants.EXTERNAL を指定できます。
+Write API では、SQL プールにテーブルを作成してから、Polybase を呼び出してデータを読み込みます。  テーブルは SQL プールに存在することはできません。存在する場合、"... という名前のオブジェクトが既に存在します" を示すエラーが返されます。
+
+TableType の値
+
+- Constants.INTERNAL - SQL プール内のマネージド テーブル
+- Constants.EXTERNAL - SQL プール内の外部テーブル
+
+SQL プールのマネージド テーブル
 
 ```scala
-df.write.sqlanalytics("[DBName].[Schema].[TableName]", Constants.INTERNAL)
-df.write.sqlanalytics("[DBName].[Schema].[TableName]", Constants.EXTERNAL)
+df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", Constants.INTERNAL)
 ```
 
-ストレージと SQL Server に対する認証が行われます。
+SQL プールの外部テーブル
+
+SQL プールの外部テーブルに書き込むには、EXTERNAL DATA SOURCE と EXTERNAL FILE FORMAT が SQL プールに存在している必要があります。  詳細については、SQL プールでの[外部データ ソース](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)および[外部ファイル形式](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)の作成に関するページを参照してください。  SQL プールに外部データ ソースと外部ファイル形式を作成する例を以下に示します。
+
+```sql
+--For an external table, you need to pre-create the data source and file format in SQL pool using SQL queries:
+CREATE EXTERNAL DATA SOURCE <DataSourceName>
+WITH
+  ( LOCATION = 'abfss://...' ,
+    TYPE = HADOOP
+  ) ;
+
+CREATE EXTERNAL FILE FORMAT <FileFormatName>
+WITH (  
+    FORMAT_TYPE = PARQUET,  
+    DATA_COMPRESSION = 'org.apache.hadoop.io.compress.SnappyCodec'  
+);
+```
+
+ストレージ アカウントへの Azure Active Directory パススルー認証を使用する場合、EXTERNAL CREDENTIAL オブジェクトは必要ありません。  自分がストレージ アカウントの "Storage BLOB データ共同作成者" ロールのメンバーであることを確認します。
+
+```scala
+
+df.write.
+    option(Constants.DATA_SOURCE, <DataSourceName>).
+    option(Constants.FILE_FORMAT, <FileFormatName>).
+    sqlanalytics("<DBName>.<Schema>.<TableName>", Constants.EXTERNAL)
+
+```
 
 ### <a name="if-you-are-transferring-data-to-or-from-a-sql-pool-or-database-outside-the-workspace"></a>ワークスペース外の SQL プールまたはデータベースとの間でデータを転送する場合
 
@@ -114,8 +156,8 @@ sqlanalytics("<DBName>.<Schema>.<TableName>")
 
 ```scala
 df.write.
-option(Constants.SERVER, "[samplews].[database.windows.net]").
-sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
+option(Constants.SERVER, "samplews.database.windows.net").
+sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
 ### <a name="using-sql-auth-instead-of-aad"></a>AAD ではなく SQL 認証の使用
@@ -127,8 +169,8 @@ sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
 ```scala
 val df = spark.read.
 option(Constants.SERVER, "samplews.database.windows.net").
-option(Constants.USER, [SQLServer Login UserName]).
-option(Constants.PASSWORD, [SQLServer Login Password]).
+option(Constants.USER, <SQLServer Login UserName>).
+option(Constants.PASSWORD, <SQLServer Login Password>).
 sqlanalytics("<DBName>.<Schema>.<TableName>")
 ```
 
@@ -136,10 +178,10 @@ sqlanalytics("<DBName>.<Schema>.<TableName>")
 
 ```scala
 df.write.
-option(Constants.SERVER, "[samplews].[database.windows.net]").
-option(Constants.USER, [SQLServer Login UserName]).
-option(Constants.PASSWORD, [SQLServer Login Password]).
-sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
+option(Constants.SERVER, "samplews.database.windows.net").
+option(Constants.USER, <SQLServer Login UserName>).
+option(Constants.PASSWORD, <SQLServer Login Password>).
+sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
 ### <a name="using-the-pyspark-connector"></a>PySpark コネクタの使用
@@ -166,7 +208,7 @@ pysparkdftemptable.write.sqlanalytics("sqlpool.dbo.PySparkTable", Constants.INTE
 
 同様に、読み取りシナリオでは Scala を使用してデータを読み取り、それを一時テーブルに書き込んでから、PySpark の Spark SQL を使用して一時テーブルをデータフレームに照会します。
 
-## <a name="allowing-other-users-to-use-the-dw-connector-in-your-workspace"></a>他のユーザーが自分のワークスペースで DW コネクタを使用できるようにする
+## <a name="allowing-other-users-to-use-the-azure-synapse-apache-spark-to-synapse-sql-connector-in-your-workspace"></a>他のユーザーが Azure Synapse Apache Spark を使用して、ワークスペース内の Synapse SQL コネクタを使用できるようにする
 
 他のユーザーにアクセス許可がないように変更するには、ワークスペースに接続されている ADLS Gen2 ストレージ アカウントのストレージ BLOB データ所有者である必要があります。 そのワークスペースへのアクセス権とノートブックを実行するためのアクセス許可をそのユーザーが持っていることを確認します。
 
@@ -178,7 +220,7 @@ pysparkdftemptable.write.sqlanalytics("sqlpool.dbo.PySparkTable", Constants.INTE
 
 - フォルダー構造に次の ACL を指定する
 
-| Folder | / | synapse | workspaces  | <workspacename> | sparkpools | <sparkpoolname>  | sparkpoolinstances  |
+| Folder | / | synapse | workspaces  | \<workspacename> | sparkpools | \<sparkpoolname>  | sparkpoolinstances  |
 |--|--|--|--|--|--|--|--|
 | アクセス許可 | --X | --X | --X | --X | --X | --X | -WX |
 | 既定の権限 | ---| ---| ---| ---| ---| ---| ---|

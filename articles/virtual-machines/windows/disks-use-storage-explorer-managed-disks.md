@@ -4,16 +4,16 @@ description: Azure Storage Explorer を使用して、リージョン間で Azur
 author: roygara
 ms.author: rogarana
 ms.date: 09/25/2019
-ms.topic: article
+ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: windows
 ms.subservice: disks
-ms.openlocfilehash: 33f107bfbd4cc96a1103f0a310125b6c2f7013e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 50ea70c70b78a28d618677dcec3980707ca3a24f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74014623"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84660719"
 ---
 # <a name="use-azure-storage-explorer-to-manage-azure-managed-disks"></a>Azure Storage Explorer を使用して Azure マネージド ディスクを管理する
 [!INCLUDE [disks-upload-vhd-to-managed-disk-storage-explorer](../../../includes/disks-upload-vhd-to-managed-disk-storage-explorer.md)]

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/27/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 5dd35ed2f4533d19cc3a59788d6422416dce13f5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: cac17d15d792622d9a26ff7c228ce1f0ba76bbc4
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223249"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027581"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>チュートリアル:Azure で変更を監視し、Linux 仮想マシンを更新する
 
@@ -29,7 +29,7 @@ Azure Linux VM では、Azure [Change Tracking](../../automation/change-tracking
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-> * Windows 更新プログラムを管理する
+> * Linux の更新プログラムを管理する
 > * 変更とインベントリを監視する
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell を起動する

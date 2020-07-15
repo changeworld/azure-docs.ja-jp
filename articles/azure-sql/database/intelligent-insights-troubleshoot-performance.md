@@ -2,7 +2,7 @@
 title: Intelligent Insights を使用したパフォーマンスに関する問題のトラブルシューティング
 description: Intelligent Insights は Azure SQL Database と Azure SQL Managed Instance のパフォーマンスに関する問題のトラブルシューティングに役立ちます。
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: 2008dd5e1e583a99756f62bc25f27e8f9832646e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 06/12/2020
+ms.openlocfilehash: 0fd391bfb7ed8944866b80acb31d76ea43c77912
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84031913"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986388"
 ---
 # <a name="troubleshoot-azure-sql-database-and-azure-sql-managed-instance-performance-issues-with-intelligent-insights"></a>Azure SQL Database と Azure SQL Managed Instance のパフォーマンスに関する問題を Intelligent Insights でトラブルシューティングする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,6 +25,8 @@ ms.locfileid: "84031913"
 
 > [!NOTE]
 > Intelligent Insights を使ったパフォーマンスのトラブルシューティングに関するクイック ガイドについては、このドキュメントの「[推奨されるトラブルシューティングのフロー](intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow)」のフローチャートを参照してください。
+>
+> Intelligent Insights はプレビュー機能であり、次のリージョンでは利用できません。西ヨーロッパ、北ヨーロッパ、米国西部 1、米国東部 1。
 
 ## <a name="detectable-database-performance-patterns"></a>データベースの検出可能なパフォーマンス パターン
 
@@ -188,7 +190,7 @@ MAXDOP サーバー構成オプションを既定値のゼロ (0) に設定す�
 > パフォーマンスを継続的に最適化するには、[自動チューニング](automatic-tuning-overview.md)を有効にすることをお勧めします。 きわめて優れた組み込みのインテリジェンス機能によって、データベースが継続的に監視され、データベースのインデックスが自動的に調整されて作成されます。
 >
 
-## <a name="new-query"></a>新しいクエリ
+## <a name="new-query"></a>[新しいクエリ]
 
 ### <a name="what-is-happening"></a>状況
 

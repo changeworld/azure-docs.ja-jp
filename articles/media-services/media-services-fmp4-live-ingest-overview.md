@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 507afad294e8233ea4de4130795f29925870fcdf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3ff356ef67630429b72208107541b1696e4eceac
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74888055"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958567"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Azure Media Services の Fragmented MP4 ライブ インジェスト仕様 
 
@@ -56,7 +56,7 @@ Azure Media Services にライブ インジェストを適用する特殊形式�
 ## <a name="4-protocol-format--http"></a>4.プロトコル形式 - HTTP
 Media Services 用 ISO Fragmented MP4 ベースのライブ インジェストは、標準の長期間実行される HTTP POST 要求を使用して、Fragmented MP4 形式でパッケージ化されたエンコード済みメディア データをサービスに送信します。 各 HTTP POST は完全な Fragmented MP4 ビットストリーム ("stream") を送信します。これは、ヘッダー ボックス (**ftyp**、**Live Server Manifest Box**、**moov** ボックス) で開始し、フラグメント (**moof** ボックスと **mdat** ボックス) のシーケンスで継続します。 HTTP POST 要求の URL 構文については、[1] のセクション 9.2 をご覧ください。 POST URL の例は次のとおりです。 
 
-    http://customer.channel.mediaservices.windows.net/ingest.isml/streams(720p)
+`http://customer.channel.mediaservices.windows.net/ingest.isml/streams(720p)`
 
 ### <a name="requirements"></a>必要条件
 要件の詳細を以下に示します。

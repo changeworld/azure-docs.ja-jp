@@ -1,2 +1,200 @@
 - name: Azure Digital Twins
   href: index.yml
+- name: 概要
+  items:
+    - name: Azure Digital Twins について
+      href: overview.md
+    - name: 以前のリリースとの違い
+      href: overview-differences.md
+- name: チュートリアル
+  items:
+    - name: クライアント アプリをコーディングする
+      href: tutorial-code.md
+    - name: サンプル クライアント アプリを使用して基本事項を確認する
+      href: tutorial-command-line-app.md
+    - name: エンドツーエンドのソリューションを接続する
+      href: tutorial-end-to-end.md
+- name: 概念
+  items:
+    - name: カスタム モデル
+      href: concepts-models.md
+    - name: デジタル ツインとツイン グラフ
+      href: concepts-twins-graph.md
+    - name: クエリ言語
+      href: concepts-query-language.md
+    - name: 他のサービスとの統合
+      href: concepts-integration.md
+    - name: イベント ルート
+      href: concepts-route-events.md
+    - name: Azure Digital Twins ソリューションのセキュリティ
+      href: concepts-security.md
+- name: 操作方法ガイド
+  items:
+    - name: 開発
+      items:
+        - name: API と SDK を使用する
+          href: how-to-use-apis-sdks.md
+        - name: AutoRest を使用してカスタム SDK を作成する
+          href: how-to-create-custom-sdks.md
+    - name: 配置
+      items:
+        - name: Azure Digital Twins CLI を使用する
+          href: how-to-use-cli.md
+        - name: Azure Digital Twins インスタンスを作成する
+          href: how-to-set-up-instance.md
+        - name: クライアント アプリケーションを認証する
+          href: how-to-authenticate-client.md
+    - name: モデルを設計する
+      items:
+        - name: カスタム モデルを管理する
+          href: how-to-manage-model.md
+        - name: モデルを解析および検証する
+          href: how-to-use-parser.md
+    - name: ライブ実行環境を使用する
+      items:
+        - name: デジタル ツインを管理する
+          href: how-to-manage-twin.md
+        - name: リレーションシップを使ってツイン グラフを管理する
+          href: how-to-manage-graph.md
+        - name: イベント データを解釈する
+          href: how-to-interpret-event-data.md
+        - name: データを処理するための Azure 関数を設定する
+          href: how-to-create-azure-function.md
+        - name: ツイン グラフにクエリを実行する
+          href: how-to-query-graph.md
+    - name: 入力を接続する
+      items:
+        - name: IoT Hub からテレメトリを取り込む
+          href: how-to-ingest-iot-hub-data.md
+    - name: 出力を接続する
+      items:
+        - name: エンドポイントとルートを管理する
+          href: how-to-manage-routes.md
+        - name: Azure Maps と統合する
+          href: how-to-integrate-maps.md
+- name: リファレンス
+  items:
+    - name: Digital Twins サービスに関する制約
+      href: reference-service-limits.md
+    - name: API と SDK
+      items:
+        - name: REST API リファレンス
+          href: 'https://docs.microsoft.com/rest/api/azure-digitaltwins/'
+        - name: コントロール プレーン
+          items:
+            - name: Swagger
+              href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins'
+            - name: .NET (C#) SDK - NuGet
+              href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/1.0.0-preview.1'
+            - name: .NET (C#) SDK - リファレンス
+              href: 'https://docs.microsoft.com/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet-preview'
+            - name: .NET (C#) SDK - ソース
+              href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins'
+            - name: Java SDK
+              href: 'https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_03_01_preview/azure-mgmt-digitaltwins'
+            - name: Java SDK - リファレンス
+              href: 'https://docs.microsoft.com/java/api/overview/azure/digitaltwins/management?view=azure-java-preview'
+            - name: Java SDK - ソース
+              href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins'
+            - name: JavaScript SDK
+              href: 'https://www.npmjs.com/package/@azure/arm-digitaltwins'
+            - name: JavaScript SDK - ソース
+              href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins'
+            - name: Python SDK
+              href: 'https://pypi.org/project/azure-mgmt-digitaltwins/'
+            - name: Python SDK - ソース
+              href: 'https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-mgmt-digitaltwins'
+            - name: Go SDK - ソース
+              href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/digitaltwins/mgmt/2020-03-01-preview/digitaltwins'
+        - name: データ プレーン
+          items:
+            - name: Swagger
+              href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins'
+            - name: .NET (C#) SDK - NuGet
+              href: 'https://www.nuget.org/packages/Azure.DigitalTwins.Core'
+            - name: .NET (C#) SDK - リファレンス
+              href: 'https://docs.microsoft.com/dotnet/api/overview/azure/digitaltwins?view=azure-dotnet-preview'
+            - name: .NET (C#) SDK - ソース
+              href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core'
+    - name: Digital Twins CLI
+      items:
+        - name: Digital Twins CLI のリファレンス
+          href: /cli/azure/ext/azure-iot/dt?view=azure-cli-latest
+        - name: CLI パッケージ
+          href: 'https://github.com/Azure/azure-iot-cli-extension/releases'
+    - name: DTDL
+      items:
+        - name: DTDL v2 の仕様
+          href: 'https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md'
+        - name: VS Code 用の DTDL 拡張機能
+          href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl'
+        - name: DTDL パーサー ライブラリ - NuGet
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/'
+        - name: DTDL 検証ツール (サンプル)
+          href: 'https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator/'
+        - name: DTMI の仕様
+          href: 'https://github.com/Azure/digital-twin-model-identifier'
+    - name: ツールとサンプル プロジェクト
+      items:
+        - name: デバイス シミュレーター サービス
+          href: 'https://github.com/Azure/device-simulation-dotnet/tree/master'
+        - name: Azure Digital Twins サンプル
+          href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/'
+        - name: Azure Digital Twins エクスプローラー (サンプル)
+          href: 'https://github.com/Azure-Samples/digital-twins-explorer'
+        - name: DTDL 検証ツール (サンプル)
+          href: 'https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator/'
+    - name: Azure ツール
+      items:
+        - name: Azure Cloud Shell
+          href: 'https://shell.azure.com'
+        - name: Azure PowerShell
+          href: /powershell/module/az.iothub#iot
+        - name: Azure portal
+          href: 'https://portal.azure.com'
+    - name: Azure RBAC のドキュメント
+      href: /azure/role-based-access-control/overview
+- name: リソース
+  items:
+    - name: サポート オプションとヘルプ オプション
+      href: /azure/iot-fundamentals/iot-support-help
+    - name: 顧客事例
+      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20Digital%20Twins%22&ff=&p=0&so=story_publish_date%20desc'
+    - name: Channel 9 の動画
+      href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22'
+    - name: 顧客データ要求
+      href: resources-customer-data-requests.md
+    - name: 価格と可用性
+      items:
+        - name: 価格
+          href: 'https://azure.microsoft.com/pricing/details/digital-twins'
+        - name: リージョンと可用性
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins'
+- name: 関連項目
+  items:
+    - name: ソリューション
+      items:
+        - name: IoT ソリューション アクセラレータ
+          href: /azure/iot-suite
+        - name: IoT Central
+          href: /azure/iot-central/core/overview-iot-central
+    - name: プラットフォーム サービス
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: IoT プラグ アンド プレイ
+          href: /azure/iot-pnp
+        - name: IoT Hub Device Provisioning Service
+          href: /azure/iot-dps
+        - name: マップ
+          href: /azure/azure-maps
+        - name: サービス SDK
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Edge ソリューション
+      items:
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT デバイス SDK
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks

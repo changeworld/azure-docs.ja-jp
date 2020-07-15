@@ -102,7 +102,7 @@
       href: monitor-container-security.md
     - name: Microsoft Defender ATP を使用したサーバーの保護
       href: security-center-wdatp.md
-    - name: Azure VM 上の SQL 向けの Advanced Data Security の使用
+    - name: SQL マシン向けの Advanced Data Security の使用
       href: security-center-iaas-advanced-data.md
     - name: App Service を使用したアプリケーションの保護
       href: security-center-app-services.md

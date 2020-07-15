@@ -1,37 +1,37 @@
 ---
 title: 仮想コア購入モデルの概要
-titleSuffix: Azure SQL Database & SQL Managed Instance
+titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: 仮想コア購入モデルでは、Azure SQL Database と Azure SQL Managed Instance のコンピューティング リソースとストレージ リソースを個別にスケーリングし、オンプレミスのパフォーマンスと一致させて、価格を最適化することができます。
 services: sql-database
-ms.service: sql-database
-ms.subservice: service
+ms.service: sql-db-mi
+ms.subservice: features
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: 1a6546ad587fa308ab5559d04814191c503ecdc3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 7b5e4174da3ffa0dff5c840e5da1d98435e8d07b
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84029753"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985552"
 ---
-# <a name="vcore-model-overview---azure-sql-database--sql-managed-instance"></a>仮想コア モデルの概要 - Azure SQL Database & SQL Managed Instance 
+# <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>仮想コア モデルの概要 - Azure SQL Database および Azure SQL Managed Instance 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Azure SQL Database と Azure SQL Managed Instance で使用される仮想コア (vCore) 購入モデルには、いくつかの利点があります。
 
-- コンピューティング、メモリ、IO、およびストレージの上限が高くなります。
+- コンピューティング、メモリ、I/O、およびストレージの上限が高くなります。
 - ワークロードのコンピューティング要件とメモリ要件をより満たすようにハードウェアの世代を制御します。
 - [Azure ハイブリッド特典 (AHB)](../azure-hybrid-benefit.md) および[予約インスタンス (RI)](reserved-capacity-overview.md) に対する料金割引。
 - コンピューティングを強化するハードウェア詳細における透明性の向上。オンプレミスのデプロイからの移行計画を容易にします。
 
 ## <a name="service-tiers"></a>サービス階層
 
-仮想コア モデルのサービス レベルのオプションには、General Purpose、Business Critical、および Hyperscale があります。 サービス レベルでは、一般に、可用性とディザスター リカバリーに関連するストレージ アーキテクチャ、容量と IO の制限、およびビジネス継続性のオプションが定義されています。
+仮想コア モデルのサービス レベルのオプションには、General Purpose、Business Critical、および Hyperscale があります。 サービス レベルでは一般に、ストレージ アーキテクチャ、容量と I/O の制限、および可用性とディザスター リカバリーに関連するビジネス継続性のオプションが定義されています。
 
-||**汎用**|**Business Critical**|**Hyperscale**|
+|-|**汎用**|**Business Critical**|**Hyperscale**|
 |---|---|---|---|
 |最適な用途|ほとんどのビジネス ワークロード。 予算重視で、バランスのとれた、スケーラブルなコンピューティングおよびストレージ オプションを提供します。 |複数の分離されたレプリカを使用して、障害に対する最大の回復性をビジネス アプリケーションに提供し、データベース レプリカあたりの最大の I/O パフォーマンスを実現します。|高度にスケーラブルなストレージと読み取りスケールの要件を持つほとんどのビジネス ワークロード。  複数の分離されたデータベース レプリカを構成できるようにして、障害に対するより高い回復性を提供します。 |
 |ストレージ|リモート ストレージを使用します。<br/>**SQL Database がプロビジョニングされたコンピューティング**:<br/>5 GB – 4 TB<br/>**サーバーレス コンピューティング**:<br/>5 GB - 3 TB<br/>**SQL Managed Instance**:32 GB ～ 8 TB |ローカル SSD ストレージを使用します。<br/>**SQL Database がプロビジョニングされたコンピューティング**:<br/>5 GB – 4 TB<br/>**SQL Managed Instance**:<br/>32 GB ～ 4 TB |必要に応じた、ストレージの柔軟な自動拡張。 最大 100 TB のストレージをサポートします。 ローカル バッファー プール キャッシュとローカル データ ストレージにローカル SSD ストレージを使用します。 最終的な長期間のデータ ストアとして Azure リモート ストレージを使用します。 |
@@ -91,10 +91,11 @@ Fsv2 シリーズは、General Purpose レベルでのみサポートされて�
 - M シリーズは、Gen5 で提供されるよりも多くのメモリと高いコンピューティング制限を要求するワークロードのためのメモリ最適化のハードウェア オプションです。
 - M シリーズでは、仮想コアあたり 29 GB と 128 個の仮想コアを提供し、Gen5 に比べて、メモリ制限が 8 倍の 4 TB 近くまで増加します。
 
-M シリーズは Business Critical レベルでのみサポートされており、ゾーン冗長はサポートされていません。
+M シリーズは Business Critical レベルでのみサポートされており、ゾーン冗長はサポートされていません。  サブスクリプションの種類は、従量課金制やマイクロソフト エンタープライズ契約 (EA) を含む有料のオファーである必要があります。  M シリーズが利用可能なリージョンについては、[M シリーズの可用性](#m-series)に関するセクションを参照してください。
 
-サブスクリプションとリージョンで M シリーズ ハードウェアを有効にするには、サポート リクエストが開かれている必要があります。 サブスクリプションの種類は、従量課金制やマイクロソフト エンタープライズ契約 (EA) を含む有料のオファーである必要があります。  サポート リクエストが承認されると、M シリーズの選択とプロビジョニングのエクスペリエンスは、他のハードウェアの世代と同じパターンに従います。 M シリーズが利用可能なリージョンについては、[M シリーズの可用性](#m-series)に関するセクションを参照してください。
-
+<!--
+To enable M-series hardware for a subscription and region, a support request must be opened. The subscription must be a paid offer type including Pay-As-You-Go or Enterprise Agreement (EA).  If the support request is approved, then the selection and provisioning experience of M-series follows the same pattern as for other hardware generations. For regions where M-series is available, see [M-series availability](#m-series).
+-->
 
 ### <a name="compute-and-memory-specifications"></a>コンピューティングとメモリの仕様
 
@@ -112,7 +113,7 @@ M シリーズは Business Critical レベルでのみサポートされてお�
 
 ### <a name="selecting-a-hardware-generation"></a>ハードウェアの世代を選択する
 
-Azure portal では、作成時に SQL Database またはプールのハードウェアの世代を選択できます。また、既存の SQL データベースまたはプールのハードウェアの世代を変更することもできます。
+Azure portal では、SQL Database でデータベースまたはプールの作成時にハードウェアの世代を選択できます。また、既存のデータベースまたはプールのハードウェアの世代を変更することもできます。
 
 **SQL Database またはプールを作成するときにハードウェアの世代を選択するには**
 
@@ -147,7 +148,7 @@ Azure portal では、作成時に SQL Database またはプールのハード�
   
 **既存の SQL Managed Instance のハードウェア世代を変更するには**
 
-# <a name="portal"></a>[ポータル](#tab/azure-portal)
+# <a name="the-azure-portal"></a>[Azure ポータル](#tab/azure-portal)
 
 SQL Managed Instance のページで、[設定] セクションの下にある **[価格レベル]** リンクを選択します
 
@@ -165,7 +166,7 @@ Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" 
 
 詳細については [Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance) コマンドを調べてください。
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 次の CLI コマンドを使用します。
 
@@ -193,32 +194,33 @@ Fsv2 シリーズは、次のリージョンで使用できます: オースト�
 #### <a name="m-series"></a>M シリーズ
 
 M シリーズは、次のリージョンで使用できます: 米国東部、北ヨーロッパ、西ヨーロッパ、米国西部 2。
-また、M シリーズは、追加のリージョンでの使用が制限される場合があります。 ここに記載されているものとは別のリージョンを要求できますが、別のリージョンでのフルフィルメントができない場合があります。
+<!--
+M-series may also have limited availability in additional regions. You can request a different region than listed here, but fulfillment in a different region may not be possible.
 
-サブスクリプションで M シリーズの可用性を有効にするには、[新しいサポート リクエストをファイリング](#create-a-support-request-to-enable-m-series)してアクセスを要求する必要があります。
+To enable M-series availability in a subscription, access must be requested by [filing a new support request](#create-a-support-request-to-enable-m-series).
 
 
-##### <a name="create-a-support-request-to-enable-m-series"></a>M シリーズを有効にするサポート リクエストを作成します。 
+##### Create a support request to enable M-series: 
 
-1. ポータルで **[ヘルプとサポート]** を選択します。
-2. **[新しいサポート リクエスト]** を選択します。
+1. Select **Help + support** in the portal.
+2. Select **New support request**.
 
-**[基本]** ページで、以下を設定します。
+On the **Basics** page, provide the following:
 
-1. **[問題の種類]** で、 **[サービスとサブスクリプションの制限 (クォータ)]** を選択します。
-2. **[サブスクリプション]** で、M シリーズを有効にするサブスクリプションを選択します。
-3. **[クォータの種類]** で、 **[SQL データベース]** を選択します。
-4. **[次へ]** を選択して、 **[詳細]** ページに移動します。
+1. For **Issue type**, select **Service and subscription limits (quotas)**.
+2. For **Subscription** = select the subscription to enable M-series.
+3. For **Quota type**, select **SQL database**.
+4. Select **Next** to go to the **Details** page.
 
-**[詳細]** ページで、以下を設定します。
+On the **Details** page, provide the following:
 
-1. **[問題の詳細]** セクションで、 **[詳細の指定]** リンクを選択します。 
-2. **[SQL Database のクォータの種類]** で、 **[M シリーズ]** を選択します。
-3. **[リージョン]** で、M シリーズを有効にするリージョンを選択します。
-    M シリーズが利用可能なリージョンについては、[M シリーズの可用性](#m-series)に関するセクションを参照してください。
+1. In the **PROBLEM DETAILS** section select the **Provide details** link. 
+2. For **SQL Database quota type** select **M-series**.
+3. For **Region**, select the region to enable M-series.
+    For regions where M-series is available, see [M-series availability](#m-series).
 
-承認されたサポート リクエストは、通常、5 営業日以内に完了します。
-
+Approved support requests are typically fulfilled within 5 business days.
+-->
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -228,7 +230,7 @@ M シリーズは、次のリージョンで使用できます: 米国東部、�
 
 価格設定の詳細については、[Azure SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/single/)に関するページを参照してください。
 
-General Purpose サービス レベルおよび Business Critical サービス レベルで使用できる特定のコンピューティングおよびストレージ サイズの詳細については、以下を参照してください。 
+General Purpose サービス レベルおよび Business Critical サービス レベルで使用できる特定のコンピューティングおよびストレージ サイズの詳細については、以下を参照してください。
 
 - [Azure SQL Database の仮想コアベースのリソース制限](resource-limits-vcore-single-databases.md)
 - [プールされた Azure SQL Database の仮想コアベースのリソース制限](resource-limits-vcore-elastic-pools.md)

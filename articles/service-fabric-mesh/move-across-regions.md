@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/14/2020
 ms.custom: subject-moving-resources
 ms.openlocfilehash: 376808a6d8f61d4dc03d17061323a473d48053a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76907342"
 ---
 # <a name="move-a-service-fabric-mesh-application-to-another-azure-region"></a>Service Fabric Mesh アプリケーションを別の Azure リージョンに移動する
@@ -40,7 +40,7 @@ ms.locfileid: "76907342"
 
 3. [Azure ストレージ アカウント](../storage/common/storage-account-move.md)などの関連リソースの移動に関するガイダンスについては、「[リージョン間の Azure リソースの移動](../azure-resource-manager/management/move-region.md)」に記載されている各サービスのガイダンスを参照してください。
 
-## <a name="verify"></a>Verify (英語の可能性あり)
+## <a name="verify"></a>確認
 
 1. デプロイが完了したら、アプリケーション エンドポイントをテストして、アプリケーションの機能を確認します。
 

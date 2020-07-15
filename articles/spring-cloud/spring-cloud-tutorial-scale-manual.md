@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.author: brendm
 author: bmitchell287
 ms.date: 10/06/2019
-ms.openlocfilehash: f08a3b5d0a03b0e898457bbb783dd5031c4b0f27
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 93cefd0c71e2d51187e68c6f5f02777d158e95a4
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76277472"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84792066"
 ---
 # <a name="scale-an-application-in-azure-spring-cloud"></a>Azure Spring Cloud でアプリケーションをスケーリングする
 
@@ -58,6 +58,9 @@ ms.locfileid: "76277472"
 ![Azure portal のスケール サービス](media/spring-cloud-tutorial-scale-manual/scale-up-out.png)
 
 数秒後、行った変更が **[概要]** ページに表示され、詳細は **[アプリケーション インスタンス]** タブで確認できるようになります。スケーリングには、コードの変更や再デプロイは不要です。
+
+## <a name="upgrade-to-the-standard-tier"></a>Standard レベルにアップグレードする
+Basic レベルをご利用の場合で、かつ、少なくとも 1 つの[制限](spring-cloud-quotas.md)によって制約を受けている場合は、Standard レベルにアップグレードしてください。 そのためには、まず [Standard レベル] 列を選択し、 **[アップグレード]** ボタンをクリックして、[価格レベル] メニューに移動します。
 
 ## <a name="next-steps"></a>次のステップ
 

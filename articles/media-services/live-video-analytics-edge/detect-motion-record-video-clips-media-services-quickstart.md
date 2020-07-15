@@ -3,12 +3,12 @@ title: モーションの検出、Azure Media Services へのビデオの記録
 description: このクイックスタートでは、Live Video Analytics on IoT Edge を使用して、ライブ ビデオ ストリーム内のモーションを検出し、ビデオ クリップを Azure Media Services に記録する方法を示します。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: f0045f7fddfe6c544f10d280450cdafe8dca9e2d
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 0a81bebe7333266e1b70f97f8c712fccf392a464
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84261622"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84817310"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>クイック スタート:モーションの検出、Media Services へのビデオの記録
 
@@ -21,15 +21,15 @@ ms.locfileid: "84261622"
 * アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * [Visual Studio Code](https://code.visualstudio.com/)。[Azure IoT Tools 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)と共にマシンにインストールされている必要があります。
 * [「はじめに」のクイックスタート](get-started-detect-motion-emit-events-quickstart.md)をまだ完了していない場合は、次の手順に従ってください。
-    * [Azure リソースの設定](get-started-detect-motion-emit-events-quickstart.md#set-up-azure-resources)を完了する
+    * [Azure リソースの設定](get-started-detect-motion-emit-events-quickstart.md#set-up-azure-resources)
     * [モジュールをデプロイする](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
-    * [Visual Studio Code を構成する](get-started-detect-motion-emit-events-quickstart.md#configure-azure-iot-tools-extension-in-visual-studio-code)
+    * [Visual Studio Code を構成する](get-started-detect-motion-emit-events-quickstart.md#configure-the-azure-iot-tools-extension)
 
 ## <a name="review-the-sample-video"></a>サンプル ビデオを確認する
 
 Azure リソースを設定する上記の手順の一部として、駐車場の (短い) ビデオが、IoT Edge デバイスとして使用されている Azure の Linux VM にコピーされます。 このビデオ ファイルは、このチュートリアルのライブ ストリームをシミュレートするために使用されます。
 
-[VLC Player](https://www.videolan.org/vlc/) のようなアプリケーションを使用してそれを起動し、Ctrl キーを押しながら N キーを押し、[この](https://lvamedia.blob.core.windows.net/public/lots_015.mkv)リンクを駐車場ビデオに貼り付けると再生を開始できます。 だいたい 5 秒の地点で、白の車が駐車場を通って移動します。
+[VLC プレーヤー](https://www.videolan.org/vlc/)のようなアプリケーションを使用してそれを起動し、Ctrl を押しながら N キーを押し、[この](https://lvamedia.blob.core.windows.net/public/lots_015.mkv)リンクを駐機場ビデオに貼り付けると再生を開始できます。 だいたい 5 秒の地点で、白の車が駐車場を通って移動します。
 
 次の手順を完了すると、Live Video Analytics on IoT Edge を使用してその車の動きを検出し、その 5 秒の地点前後で始まるビデオ クリップが録画されます。 次の図は、フロー全体を視覚的に表したものです。
 
@@ -37,7 +37,7 @@ Azure リソースを設定する上記の手順の一部として、駐車場�
 
 ## <a name="use-direct-methods"></a>ダイレクト メソッドの使用
 
-ライブ ビデオ ストリームの分析は、モジュールを使用し、ダイレクト メソッドを呼び出すことによって行うことができます。 モジュールに用意されているすべてのダイレクト メソッドについては、[Live Video Analytics on IoT Edge のダイレクト メソッド](direct-methods.md)に関するページを参照してください。 
+ライブ ビデオ ストリームの分析は、モジュールを使用し、ダイレクト メソッドを呼び出すことによって行うことができます。 モジュールに用意されているすべてのダイレクト メソッドについては、[Live Video Analytics on IoT Edge のダイレクト メソッド](direct-methods.md)に関するページをご覧ください。 
 
 ### <a name="invoke-graphtopologylist"></a>GraphTopologyList を呼び出す
 このステップにより、モジュール内のすべての[グラフ トポロジ](media-graph-concept.md#media-graph-topologies-and-instances)が列挙されます。
@@ -65,7 +65,7 @@ Azure リソースを設定する上記の手順の一部として、駐車場�
     }
     ```
     
-    これは想定内の応答です。まだグラフ トポロジが作成されていないためです。
+    上記は想定内の応答です。まだグラフ トポロジが作成されていないためです。
 
 ### <a name="invoke-graphtopologyset"></a>GraphTopologySet を呼び出す
 
@@ -658,7 +658,7 @@ GraphTopologyList を呼び出したときと同じ手順で、次の JSON を�
 * 各メッセージに "body" セクションと "applicationProperties" セクションが存在します。 これらのセクションが表す内容については、「[IoT Hub メッセージを作成し、読み取る](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)」の記事を参照してください。
 * 最初のメッセージは Diagnostics イベントです。MediaSessionEstablished は、RTSP ソース ノード (subject) が RTSP シミュレーターとの接続を確立し、(シミュレートされた) ライブ フィードの受信を開始できたことを示します。
 * applicationProperties の "subject" が、メッセージの生成元となったグラフ トポロジ内のノードを参照しています。 このケースでは、RTSP ソース ノードからメッセージが生成されています。
-* applicationProperties の "eventType" を見ると、これは Diagnostics イベントであることがわかります。
+* applicationProperties の "eventType" には Diagnostics イベントであることが示されています。
 * イベントの発生時刻が "eventTime" に示されています。
 * 診断イベントに関するデータは "body" に含まれています。これは [SDP](https://en.wikipedia.org/wiki/Session_Description_Protocol) メッセージです。
 * 2 番目のメッセージは Analytics イベントです。 それが MediaSessionEstablished メッセージの約 5 秒後に送信されていることを確認できます。これはビデオの開始から、車が駐車場を通過するまでの待ち時間に相当します。

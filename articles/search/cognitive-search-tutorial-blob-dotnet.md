@@ -8,18 +8,18 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/05/2020
-ms.openlocfilehash: 57cb68726adf8818f9ef0c8804be9c388ea39ff5
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 25df5f37f8aef55bc025b579ec48a2fab7dd6b72
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872293"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080177"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>チュートリアル:.NET SDK を使用して Azure BLOB から AI で生成する検索可能なコンテンツ
 
 Azure Blob Storage に非構造化テキストまたは画像がある場合、[AI エンリッチメント パイプライン](cognitive-search-concept-intro.md)で情報を抽出し、フルテキスト検索やナレッジ マイニングのシナリオに役立つ新しいコンテンツを作成することができます。 この C# チュートリアルでは、画像に光学式文字認識 (OCR) を適用し、自然言語処理を実行して、クエリ、ファセット、フィルターで活用できる新しいフィールドを作成します。
 
-このチュートリアルでは、C# と [.NET SDK](https://aka.ms/search-sdk) を使用して次のタスクを実行します。
+このチュートリアルでは、C# と [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) を使用して次のタスクを実行します。
 
 > [!div class="checklist"]
 > * Azure Blob Storage にアプリケーション ファイルと画像を準備する。
@@ -127,7 +127,7 @@ AI エンリッチメントは、自然言語と画像の処理のための Text
 
 ### <a name="install-nuget-packages"></a>NuGet パッケージのインストール
 
-[Azure Cognitive Search .NET SDK](https://aka.ms/search-sdk) は､HTTP や JSON に関する詳しい知識がなくても､インデックスやデータ ソース､インデクサー､スキルセットの管理､ドキュメントのアップロードと管理､クエリの実行を行うことを可能にするいくつかのクライアント ライブラリから構成されています。 これらのクライアント ライブラリはすべて､NuGet パッケージとして配布されます｡
+[Azure Cognitive Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) は､HTTP や JSON に関する詳しい知識がなくても､インデックスやデータ ソース､インデクサー､スキルセットの管理､ドキュメントのアップロードと管理､クエリの実行を行うことを可能にするいくつかのクライアント ライブラリから構成されています。 これらのクライアント ライブラリはすべて､NuGet パッケージとして配布されます｡
 
 このプロジェクトでは、`Microsoft.Azure.Search` NuGet パッケージのバージョン 9 以降をインストールします。
 

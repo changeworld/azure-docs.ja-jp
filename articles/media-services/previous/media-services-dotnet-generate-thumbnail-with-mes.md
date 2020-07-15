@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 6bc29c098bcf7ef1d1a2e2532a00c95f0ec7e927
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c5e22c14d0df46ddac9a503f43df8d54c3c93d5
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61244231"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964755"
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>.NET で Media Encoder Standard を使用してサムネイルを生成する方法 
 
@@ -408,9 +408,12 @@ FileName で {Resolution} マクロを使用すると、出力画像のファイ
 * エンコード ジョブを作成します。
 * Media Encoder Standard エンコーダーの参照を取得します。
 * エンコード用のプリセットとサムネイルの生成に必要な情報を含む、プリセット [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) または [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) を読み込みます。 この [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) または [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) はファイルに保存して、次のコードを使用してファイルを読み込みます。
-  
-        // Load the XML (or JSON) from the local file.
-        string configuration = File.ReadAllText(fileName);  
+
+    ```csharp
+    // Load the XML (or JSON) from the local file.
+    string configuration = File.ReadAllText(fileName);  
+    ```
+
 * 1 つのエンコード タスクをジョブに追加します。 
 * エンコードする入力資産を指定します。
 * エンコードされた資産が含まれる出力資産を作成します。

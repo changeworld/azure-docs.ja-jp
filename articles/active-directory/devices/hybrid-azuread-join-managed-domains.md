@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5d631143b839e052316490d3b3b89ca10469cb1
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 2f3ea5f1810b5ca80e096b19e1dcf230e21eabcc
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83778828"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85317645"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>チュートリアル:マネージド ドメイン用のハイブリッド Azure Active Directory 参加の構成
 
@@ -70,9 +70,9 @@ Azure AD Connect で、ハイブリッド Azure AD 参加済みにするデバ�
 - `https://device.login.microsoftonline.com`
 - `https://autologon.microsoftazuread-sso.com` (シームレス SSO を使用しているか、使用する予定の場合)
 
-組織がアウトバウンド プロキシ経由でのインターネットへのアクセスを必要とする場合は、Windows 10 コンピューターを Azure AD にデバイス登録できるように、[Web プロキシ自動発見 (WPAD) を実装](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10))することを推奨します。 WPAD の構成と管理の問題に対処するには、「[自動検出のトラブルシューティング](/previous-versions/tn-archive/cc302643(v=technet.10))」を参照してください。
+組織がアウトバウンド プロキシ経由でのインターネットへのアクセスを必要とする場合は、Windows 10 コンピューターを Azure AD にデバイス登録できるように、[Web プロキシ自動発見 (WPAD) を実装](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10))することができます。 WPAD の構成と管理の問題に対処するには、「[自動検出のトラブルシューティング](/previous-versions/tn-archive/cc302643(v=technet.10))」を参照してください。 更新プログラム 1709 より前の Windows 10 デバイスでは、Hybrid Azure AD Join と連携するようにプロキシを構成するためのオプションとして WPAD のみを選択できます。 
 
-WPAD を使用しない場合は、Windows 10 1709 以降のコンピューター上でプロキシ設定を構成できます。 詳細については、「[GPO によってデプロイされる WinHTTP プロキシ設定](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/)」を参照してください。
+WPAD を使用しない場合は、Windows 10 1709 以降のコンピューター上で WinHTTP プロキシ設定を構成できます。 詳細については、「[GPO によってデプロイされる WinHTTP プロキシ設定](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/)」を参照してください。
 
 > [!NOTE]
 > WinHTTP 設定を使用して自分のコンピューター上でプロキシ設定を構成すると、構成されたプロキシに接続できないコンピューターは、インターネットに接続できなくなります。

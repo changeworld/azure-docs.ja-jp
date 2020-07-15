@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/30/2020
 ms.author: aahi
-ms.openlocfilehash: 04fb080d09b1945add7340db081ab49dd017731d
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: cd17bf6c97cb89984bf407552330fbe9bec36e3f
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84637489"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85292117"
 ---
 > [!NOTE]
 > `PHI` を検出するには、`domain=phi` パラメーターおよびモデル バージョン `2020-04-01` 以降を使用します。
@@ -40,7 +40,7 @@ ms.locfileid: "84637489"
 | DateTime | Date | カレンダーの日付。 | `2019-10-01` | `domain=phi` でも返されます。 |
 | Quantity | 該当なし | 数値と数量です。 | `2019-10-01` |  |
 | Quantity | Age | 年齢。 | `2019-10-01` | | |
-| 国際疾病分類 (ICD-10-CM) | 該当なし | 国際疾病分類第 9 版に関連するエンティティ。   | `2020-04-01` | |
+| 国際疾病分類 (ICD-9-CM) | 該当なし | 国際疾病分類第 9 版に関連するエンティティ。   | `2020-04-01` | |
 | 国際疾病分類 (ICD-10-CM) | 該当なし | 国際疾病分類第 10 版に関連するエンティティ。    | `2020-04-01` | |
 
 ## <a name="azure-information"></a>Azure の情報
@@ -51,7 +51,7 @@ ms.locfileid: "84637489"
 |---------------------------------------|-----------------------------------------------------------------------------|
 | Azure DocumentDB 認証キー             | Azure DocumentDB サーバーの認証キー。                           |
 | Azure IAAS データベース接続文字列および Azure SQL 接続文字列 | Azure サービスとしてのインフラストラクチャ (IaaS) データベースの接続文字列、および SQL 接続文字列。 |
-| Azure SQL 接続文字列           | Azure SQL データベースの接続文字列。                                |
+| Azure SQL 接続文字列           | Azure SQL Database 内のデータベースの接続文字列。                                |
 | Azure IoT 接続文字列           | Azure モノのインターネット (IoT) の接続文字列。                        |
 | Azure 発行設定パスワード        | Azure 発行設定のパスワード。                                        |
 | Azure Redis Cache 接続文字列   | Azure Cache for Redis の接続文字列。                             |

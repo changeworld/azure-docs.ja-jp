@@ -3,12 +3,12 @@ title: QnA Maker サービスを設定する - QnA Maker
 description: QnA Maker のナレッジ ベースを作成する前に、まず Azure で QnA Maker サービスをセットアップしておく必要があります。 QnA Maker サービスは、サブスクリプション内で新しいリソースを作成することが認可されているユーザーであれば、だれでもセットアップできます。
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: 106796533f42250a2656735d97878ea04d6fa57f
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 0a1b79c91e4e1bd9a57d6dcbb38432125573b9e6
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235515"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214130"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker のリソースを管理する
 
@@ -60,9 +60,9 @@ QnA Maker のナレッジ ベースを作成する前に、まず Azure で QnA 
     種類が _Cognitive Services_ であるリソースには、_サブスクリプション_ キーがあります。
 
 
-## <a name="find-subscription-keys-in-the-azure-portal"></a>Azure portal でサブスクリプション キーを確認する
+## <a name="find-authoring-keys-in-the-azure-portal"></a>Azure portal でオーサリング キーを確認する
 
-QnA Maker リソースを作成した Azure portal で、サブスクリプション キーの表示とリセットを実行できます。
+QnA Maker リソースを作成した Azure portal で、オーサリング キーの表示とリセットを実行できます。 これらのキーは、サブスクリプション キーと呼ばれる場合もあります。 
 
 1. Azure portal で QnA Maker リソースに移動し、種類が _Cognitive Services_ であるリソースを選択します。
 
@@ -72,7 +72,7 @@ QnA Maker リソースを作成した Azure portal で、サブスクリプシ�
 
     ![Subscription key](../media/qnamaker-how-to-key-management/subscription-key.PNG)
 
-## <a name="find-endpoint-keys-in-the-qna-maker-portal"></a>QnA Maker ポータルでエンドポイント キーを確認する
+## <a name="find-query-endpoint-keys-in-the-qna-maker-portal"></a>QnA Maker ポータルでクエリ エンドポイント キーを確認する
 
 ナレッジ ベースの呼び出しにはエンドポイント キーが使用されるため、エンドポイントはリソースと同じリージョンにあります。
 
@@ -213,7 +213,7 @@ Azure Resource Manager テンプレートを使用して QnA サービスを作�
 ## <a name="configure-app-service-environment-to-host-qna-maker-app-service"></a>Qna Maker App Service をホストするように App Service Environment を構成する
 App Service Environment を使用して、QnA Maker App Service をホストできます。 App Service Environment が内部の場合は、これらの手順を実行する必要があります。
 1. アプリ サービスと Azure Search サービスを作成します。
-2. パブリック DNS でアプリ サービスを公開し、QnA Maker サービス タグ CognitiveServicesManagement をホワイトリストに登録するか、インターネットに接続したままにします。
+2. パブリック DNS でアプリ サービスを公開し、QnA Maker サービス タグ: CognitiveServicesManagement をホワイトリストに登録するか、またはインターネットに接続したままにします。
 3. Azure Resource Manager を使用して QnA Maker Cognitive Services インスタンス (Microsoft.CognitiveServices/accounts) を作成します。QnA Maker エンドポイントは App Service Environment に設定する必要があります。 
 
 ## <a name="business-continuity-with-traffic-manager"></a>トラフィック マネージャーを使用したビジネス継続性

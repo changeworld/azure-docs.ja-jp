@@ -7,21 +7,19 @@ ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
-ms.date: 02/27/2020
-ms.openlocfilehash: d323d89b13a89a8dd9f2dac6292a01215bf6068a
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.date: 06/25/2020
+ms.openlocfilehash: cd4128328ac0c3e9f03ecc80abb6e7b17537b2ee
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343797"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483059"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>チュートリアル:Azure の RHEL 仮想マシンで SQL Server の可用性グループを構成する 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!NOTE]
-> 提供されているチュートリアルは**パブリック プレビュー**版です。 
->
-> このチュートリアルでは SQL Server 2017 と RHEL 7.6 を使用しますが、RHEL 7 または RHEL 8 で SQL Server 2019 を使用して高可用性を構成することもできます。 可用性グループ リソースを構成するためのコマンドは RHEL 8 で変更されています。適切なコマンドの詳細については、記事「[可用性グループのリソースを作成する](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource)」および RHEL 8 のリソースを参照してください。
+> このチュートリアルでは SQL Server 2017 と RHEL 7.6 を使用しますが、RHEL 7 または RHEL 8 で SQL Server 2019 を使用して高可用性を構成することもできます。 Pacemaker クラスターと可用性グループ リソースを構成するためのコマンドは RHEL 8 で変更されています。適切なコマンドの詳細については、記事「[可用性グループのリソースを作成する](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource)」および RHEL 8 のリソースを参照してください。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -105,32 +103,118 @@ az vm availability-set create \
 
     ```output
     [
-            {
-              "offer": "RHEL-HA",
-              "publisher": "RedHat",
-              "sku": "7.4",
-              "urn": "RedHat:RHEL-HA:7.4:7.4.2019062021",
-              "version": "7.4.2019062021"
-            },
-            {
-              "offer": "RHEL-HA",
-              "publisher": "RedHat",
-              "sku": "7.5",
-              "urn": "RedHat:RHEL-HA:7.5:7.5.2019062021",
-              "version": "7.5.2019062021"
-            },
-            {
-              "offer": "RHEL-HA",
-              "publisher": "RedHat",
-              "sku": "7.6",
-              "urn": "RedHat:RHEL-HA:7.6:7.6.2019062019",
-              "version": "7.6.2019062019"
-            }
+      {
+    "offer": "RHEL-HA",
+    "publisher": "RedHat",
+    "sku": "7.4",
+    "urn": "RedHat:RHEL-HA:7.4:7.4.2019062021",
+    "version": "7.4.2019062021"
+       },
+       {
+    "offer": "RHEL-HA",
+    "publisher": "RedHat",
+    "sku": "7.5",
+    "urn": "RedHat:RHEL-HA:7.5:7.5.2019062021",
+    "version": "7.5.2019062021"
+        },
+        {
+    "offer": "RHEL-HA",
+    "publisher": "RedHat",
+    "sku": "7.6",
+    "urn": "RedHat:RHEL-HA:7.6:7.6.2019062019",
+    "version": "7.6.2019062019"
+         },
+         {
+    "offer": "RHEL-HA",
+    "publisher": "RedHat",
+    "sku": "8.0",
+    "urn": "RedHat:RHEL-HA:8.0:8.0.2020021914",
+    "version": "8.0.2020021914"
+         },
+         {
+    "offer": "RHEL-HA",
+    "publisher": "RedHat",
+    "sku": "8.1",
+    "urn": "RedHat:RHEL-HA:8.1:8.1.2020021914",
+    "version": "8.1.2020021914"
+          },
+          {
+    "offer": "RHEL-HA",
+    "publisher": "RedHat",
+    "sku": "80-gen2",
+    "urn": "RedHat:RHEL-HA:80-gen2:8.0.2020021915",
+    "version": "8.0.2020021915"
+           },
+           {
+    "offer": "RHEL-HA",
+    "publisher": "RedHat",
+    "sku": "81_gen2",
+    "urn": "RedHat:RHEL-HA:81_gen2:8.1.2020021915",
+    "version": "8.1.2020021915"
+           }
     ]
     ```
 
-    このチュートリアルでは、イメージ `RedHat:RHEL-HA:7.6:7.6.2019062019` を選択しています。
+    このチュートリアルでは、RHEL 7 の例にはイメージ `RedHat:RHEL-HA:7.6:7.6.2019062019` を、RHEL 8 の例には `RedHat:RHEL-HA:8.1:8.1.2020021914` を選択しています。
+    
+    RHEL8-HA イメージにプレインストールされている SQL Server 2019 を選択することもできます。 これらのイメージの一覧を取得するには、次のコマンドを実行します。  
+    
+    ```azurecli-interactive
+    az vm image list --all --offer "sql2019-rhel8"
+    ```
 
+    次のような結果が表示されます。
+
+    ```output
+    [
+      {
+    "offer": "sql2019-rhel8",
+    "publisher": "MicrosoftSQLServer",
+    "sku": "enterprise",
+    "urn": "MicrosoftSQLServer:sql2019-rhel8:enterprise:15.0.200317",
+    "version": "15.0.200317"
+       },
+       }
+    "offer": "sql2019-rhel8",
+    "publisher": "MicrosoftSQLServer",
+    "sku": "enterprise",
+    "urn": "MicrosoftSQLServer:sql2019-rhel8:enterprise:15.0.200512",
+    "version": "15.0.200512"
+       },
+       {
+    "offer": "sql2019-rhel8",
+    "publisher": "MicrosoftSQLServer",
+    "sku": "sqldev",
+    "urn": "MicrosoftSQLServer:sql2019-rhel8:sqldev:15.0.200317",
+    "version": "15.0.200317"
+       },
+       {
+    "offer": "sql2019-rhel8",
+    "publisher": "MicrosoftSQLServer",
+    "sku": "sqldev",
+    "urn": "MicrosoftSQLServer:sql2019-rhel8:sqldev:15.0.200512",
+    "version": "15.0.200512"
+       },
+       {
+    "offer": "sql2019-rhel8",
+    "publisher": "MicrosoftSQLServer",
+    "sku": "standard",
+    "urn": "MicrosoftSQLServer:sql2019-rhel8:standard:15.0.200317",
+    "version": "15.0.200317"
+       },
+       {
+    "offer": "sql2019-rhel8",
+    "publisher": "MicrosoftSQLServer",
+    "sku": "standard",
+    "urn": "MicrosoftSQLServer:sql2019-rhel8:standard:15.0.200512",
+    "version": "15.0.200512"
+       }
+    ]
+    ```
+
+    上記のいずれかのイメージを使用して仮想マシンを作成した場合、SQL Server 2019 がプレインストールされています。 この記事の「[SQL Server と mssql-tools をインストールする](#install-sql-server-and-mssql-tools)」セクションはスキップしてください。
+    
+    
     > [!IMPORTANT]
     > 可用性グループを設定するには、マシン名が 15 文字未満である必要があります。 ユーザー名に大文字を含めることはできません。また、パスワードは 13 文字以上であることが必要です。
 
@@ -278,9 +362,22 @@ ssh <username>@publicipaddress
 
     - クラスター ノードを認証するための `pcs cluster auth` コマンドを実行すると、パスワードの入力を求められます。 前に作成した **hacluster** ユーザーのパスワードを入力します。
 
+    **RHEL7**
+
     ```bash
     sudo pcs cluster auth <VM1> <VM2> <VM3> -u hacluster
     sudo pcs cluster setup --name az-hacluster <VM1> <VM2> <VM3> --token 30000
+    sudo pcs cluster start --all
+    sudo pcs cluster enable --all
+    ```
+
+    **RHEL8**
+
+    RHEL 8 では、ノードを個別に認証する必要があります。 プロンプトが表示されたら、**hacluster** のユーザー名とパスワードを手動で入力します。
+
+    ```bash
+    sudo pcs host auth <node1> <node2> <node3>
+    sudo pcs cluster setup <clusterName> <node1> <node2> <node3>
     sudo pcs cluster start --all
     sudo pcs cluster enable --all
     ```
@@ -291,6 +388,8 @@ ssh <username>@publicipaddress
     sudo pcs status
     ```
 
+   **RHEL 7** 
+   
     すべてのノードがオンラインになっている場合、次のような出力が表示されます。
 
     ```output
@@ -317,7 +416,36 @@ ssh <username>@publicipaddress
           pacemaker: active/enabled
           pcsd: active/enabled
     ```
-
+   
+   **RHEL 8** 
+   
+    ```output
+    Cluster name: az-hacluster
+     
+    WARNINGS:
+    No stonith devices and stonith-enabled is not false
+     
+    Cluster Summary:
+    * Stack: corosync
+    * Current DC: <VM2> (version 1.1.19-8.el7_6.5-c3c624ea3d) - partition with quorum
+    * Last updated: Fri Aug 23 18:27:57 2019
+    * Last change: Fri Aug 23 18:27:56 2019 by hacluster via crmd on <VM2>
+    * 3 nodes configured
+    * 0 resource instances configured
+     
+   Node List:
+    * Online: [ <VM1> <VM2> <VM3> ]
+   
+   Full List of Resources:
+   * No resources
+     
+   Daemon Status:
+          corosync: active/enabled
+          pacemaker: active/enabled
+          pcsd: active/enabled
+    
+    ```
+    
 1. ライブ クラスターの期待される投票数を 3 に設定します。 このコマンドは、ライブ クラスターにのみ影響し、構成ファイルに変更を加えるものではありません。
 
     すべてのノードで、次のコマンドを使用して期待される投票数を設定します。
@@ -471,12 +599,18 @@ sudo firewall-cmd --reload
 ```
 
 ## <a name="install-sql-server-and-mssql-tools"></a>SQL Server と mssql-tools をインストールする
- 
-次のセクションを使用して、SQL Server と mssql-tools を VM にインストールします。 すべてのノードでこれらのアクションをそれぞれ実行します。 詳細については、[Red Hat VM への SQL Server のインストール](/sql/linux/quickstart-install-connect-red-hat)に関するページを参照してください。
+
+> [!NOTE]
+> SQL Server 2019 が RHEL8-HA にプレインストールされた VM を作成した場合、以下の SQL Server と mssql-tools をインストールする手順はスキップしてください。すべての VM で `sudo /opt/mssql/bin/mssql-conf set-sa-password` コマンドを実行し、すべての VM に sa パスワードを設定した後、「**可用性グループを構成する**」セクションに進んでください。
+
+次のセクションを使用して、SQL Server と mssql-tools を VM にインストールします。 以下のいずれかのサンプルを選択して、SQL Server 2017 を RHEL 7 にインストールするか、SQL Server 2019 を RHEL 8 にインストールしてください。 すべてのノードでこれらのアクションをそれぞれ実行します。 詳細については、[Red Hat VM への SQL Server のインストール](/sql/linux/quickstart-install-connect-red-hat)に関するページを参照してください。
+
 
 ### <a name="installing-sql-server-on-the-vms"></a>SQL Server を VM にインストールする
 
 SQL Server をインストールするには、次のコマンドを使用します。
+
+**RHEL 7 と SQL Server 2017** 
 
 ```bash
 sudo curl -o /etc/yum.repos.d/mssql-server.repo https://packages.microsoft.com/config/rhel/7/mssql-server-2017.repo
@@ -485,6 +619,14 @@ sudo /opt/mssql/bin/mssql-conf setup
 sudo yum install mssql-server-ha
 ```
 
+**RHEL 8 と SQL Server 2019** 
+
+```bash
+sudo curl -o /etc/yum.repos.d/mssql-server.repo https://packages.microsoft.com/config/rhel/8/mssql-server-2019.repo
+sudo yum install -y mssql-server
+sudo /opt/mssql/bin/mssql-conf setup
+sudo yum install mssql-server-ha
+```
 ### <a name="open-firewall-port-1433-for-remote-connections"></a>リモート接続用にファイアウォール ポート 1433 を開く
 
 リモートで接続するには、VM 上のポート 1433 を開く必要があります。 次のコマンドを使用して、各 VM のファイアウォールでポート 1433 を開きます。
@@ -498,8 +640,17 @@ sudo firewall-cmd --reload
 
 SQL Server コマンドライン ツールをインストールするには、次のコマンドを使用します。 詳細については、「[SQL Server コマンドライン ツールをインストールする](/sql/linux/quickstart-install-connect-red-hat#tools)」を参照してください。
 
+**RHEL 7** 
+
 ```bash
 sudo curl -o /etc/yum.repos.d/msprod.repo https://packages.microsoft.com/config/rhel/7/prod.repo
+sudo yum install -y mssql-tools unixODBC-devel
+```
+
+**RHEL 8** 
+
+```bash
+sudo curl -o /etc/yum.repos.d/msprod.repo https://packages.microsoft.com/config/rhel/8/prod.repo
 sudo yum install -y mssql-tools unixODBC-devel
 ```
  
@@ -798,26 +949,47 @@ SELECT DB_NAME(database_id) AS 'database', synchronization_state_desc FROM sys.d
 
 ### <a name="create-the-ag-cluster-resource"></a>AG クラスター リソースを作成する
 
-1. 次のコマンドを使用して、可用性グループ `ag1` に、リソース `ag_cluster` を作成します。
+1. 先ほど選択した環境に応じて次のいずれかのコマンドを使用し、可用性グループ `ag1` に `ag_cluster` リソースを作成します。
 
-    ```bash
-    sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s master notify=true
-    ```
+      **RHEL 7** 
+  
+        ```bash
+        sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s master notify=true
+        ```
 
-1. 次のコマンドを使用して、リソースがオンラインになっていることを確認してから、続行してください。
+      **RHEL 8** 
+  
+        ```bash
+        sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s promotable notify=true
+        ```
+
+2. 次のコマンドを使用して、リソースがオンラインになっていることを確認してから、続行してください。
 
     ```bash
     sudo pcs resource
     ```
 
     次の出力が表示されます。
-
+    
+    **RHEL 7** 
+    
     ```output
     [<username>@VM1 ~]$ sudo pcs resource
     Master/Slave Set: ag_cluster-master [ag_cluster]
     Masters: [ <VM1> ]
     Slaves: [ <VM2> <VM3> ]
     ```
+    
+    **RHEL 8** 
+    
+    ```output
+    [<username>@VM1 ~]$ sudo pcs resource
+    * Clone Set: ag_cluster-clone [ag_cluster] (promotable):
+    * ag_cluster             (ocf::mssql:ag) :            Slave VMrhel3 (Monitoring) 
+    * ag_cluster             (ocf::mssql:ag) :            Master VMrhel1 (Monitoring)
+    * ag_cluster             (ocf::mssql:ag) :            Slave VMrhel2 (Monitoring)
+    ```
+
 
 ### <a name="create-a-virtual-ip-resource"></a>仮想 IP リソースを作成する
 
@@ -829,13 +1001,13 @@ SELECT DB_NAME(database_id) AS 'database', synchronization_state_desc FROM sys.d
     # The above will scan for all IP addresses that are already occupied in the 10.0.0.x space.
     ```
 
-1. **stonith-enabled** プロパティを false に設定します
+2. **stonith-enabled** プロパティを false に設定します
 
     ```bash
     sudo pcs property set stonith-enabled=false
     ```
 
-1. 次のコマンドを使用して、仮想 IP リソースを作成します。
+3. 次のコマンドを使用して、仮想 IP リソースを作成します。
 
     - 次の `<availableIP>` 値は、使用されていない IP アドレスに置き換えてください。
 
@@ -847,23 +1019,41 @@ SELECT DB_NAME(database_id) AS 'database', synchronization_state_desc FROM sys.d
 
 1. IP アドレスと AG リソースが同じノードで実行するように、コロケーション制約を構成する必要があります。 次のコマンドを実行します。
 
+   **RHEL 7**
+  
     ```bash
     sudo pcs constraint colocation add virtualip ag_cluster-master INFINITY with-rsc-role=Master
     ```
 
-1. 順序制約を作成して、IP アドレスよりも前に AG リソースが稼働するようにします。 コロケーション制約により順序制約が暗黙に示されますが、これによって適用されます。
+   **RHEL 8**
+   
+    ```bash
+     sudo pcs constraint colocation add virtualip with master ag_cluster-clone INFINITY with-rsc-role=Master
+    ```
+  
+2. 順序制約を作成して、IP アドレスよりも前に AG リソースが稼働するようにします。 コロケーション制約により順序制約が暗黙に示されますが、これによって適用されます。
 
+   **RHEL 7**
+   
     ```bash
     sudo pcs constraint order promote ag_cluster-master then start virtualip
     ```
 
-1. 制約を確認するには、次のコマンドを実行します。
+   **RHEL 8**
+   
+    ```bash
+    sudo pcs constraint order promote ag_cluster-clone then start virtualip
+    ```
+  
+3. 制約を確認するには、次のコマンドを実行します。
 
     ```bash
     sudo pcs constraint list --full
     ```
 
     次の出力が表示されます。
+    
+    **RHEL 7**
 
     ```
     Location Constraints:
@@ -871,6 +1061,17 @@ SELECT DB_NAME(database_id) AS 'database', synchronization_state_desc FROM sys.d
           promote ag_cluster-master then start virtualip (kind:Mandatory) (id:order-ag_cluster-master-virtualip-mandatory)
     Colocation Constraints:
           virtualip with ag_cluster-master (score:INFINITY) (with-rsc-role:Master) (id:colocation-virtualip-ag_cluster-master-INFINITY)
+    Ticket Constraints:
+    ```
+    
+    **RHEL 8**
+    
+    ```output
+    Location Constraints:
+    Ordering Constraints:
+            promote ag_cluster-clone then start virtualip (kind:Mandatory) (id:order-ag_cluster-clone-virtualip-mandatory)
+    Colocation Constraints:
+            virtualip with ag_cluster-clone (score:INFINITY) (with-rsc-role:Master) (id:colocation-virtualip-ag_cluster-clone-INFINITY)
     Ticket Constraints:
     ```
 
@@ -919,12 +1120,22 @@ Daemon Status:
 
 1. 次のコマンドを実行して、プライマリ レプリカを `<VM2>` に手動でフェールオーバーします。 `<VM2>` は、実際のサーバー名の値に置き換えてください。
 
+   **RHEL 7**
+   
     ```bash
     sudo pcs resource move ag_cluster-master <VM2> --master
     ```
 
-1. もう一度制約を確認すると、手動フェールオーバーが理由で別の制約が追加されたことがわかります。
+   **RHEL 8**
+   
+    ```bash
+    sudo pcs resource move ag_cluster-clone <VM2> --master
+    ```
 
+2. もう一度制約を確認すると、手動フェールオーバーが理由で別の制約が追加されたことがわかります。
+    
+    **RHEL 7**
+    
     ```output
     [<username>@VM1 ~]$ sudo pcs constraint list --full
     Location Constraints:
@@ -937,10 +1148,32 @@ Daemon Status:
     Ticket Constraints:
     ```
 
-1. 次のコマンドを使用して、ID が `cli-prefer-ag_cluster-master` の制約を削除します。
+    **RHEL 8**
+    
+    ```output
+    [<username>@VM1 ~]$ sudo pcs constraint list --full
+    Location Constraints:
+          Resource: ag_cluster-master
+            Enabled on: VM2 (score:INFINITY) (role: Master) (id:cli-prefer-ag_cluster-clone)
+    Ordering Constraints:
+            promote ag_cluster-clone then start virtualip (kind:Mandatory) (id:order-ag_cluster-clone-virtualip-mandatory)
+    Colocation Constraints:
+            virtualip with ag_cluster-clone (score:INFINITY) (with-rsc-role:Master) (id:colocation-virtualip-ag_cluster-clone-INFINITY)
+    Ticket Constraints:
+    ```
+    
+3. 次のコマンドを使用して、ID が `cli-prefer-ag_cluster-master` の制約を削除します。
 
+    **RHEL 7**
+    
     ```bash
     sudo pcs constraint remove cli-prefer-ag_cluster-master
+    ```
+
+    **RHEL 8**
+    
+    ```bash
+    sudo pcs constraint remove cli-prefer-ag_cluster-clone
     ```
 
 1. コマンド `sudo pcs resource` を使用してクラスター リソースを確認すると、プライマリ インスタンスが `<VM2>` になっていることがわかります。

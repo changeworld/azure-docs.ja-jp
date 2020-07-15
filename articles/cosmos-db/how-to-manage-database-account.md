@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: mjbrown
-ms.openlocfilehash: 76e8167a5d0dc83a5cc1b238d3015594278e344d
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 35659eba274b4b93ca74e480f6ad2b5edfd2e293
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116710"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85116759"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Azure Cosmos アカウントを管理する
 
@@ -49,7 +49,7 @@ ms.locfileid: "84116710"
 
 1. 変更を保存するには、 **[OK]** を選択します。
 
-   ![リージョンの追加や削除を行うメニュー](./media/how-to-manage-database-account/add-region.png)
+   :::image type="content" source="./media/how-to-manage-database-account/add-region.png" alt-text="リージョンの追加や削除を行うメニュー":::
 
 単一リージョン書き込みモードでは、書き込みリージョンを削除できません。 その現在の書き込みリージョンを削除する前に、別のリージョンへのフェールオーバーを行う必要があります。
 
@@ -69,7 +69,7 @@ ms.locfileid: "84116710"
 
 **[データをグローバルにレプリケートする]** タブを開き、 **[有効]** を選択して複数リージョンの書き込みを有効にします。 複数リージョンの書き込みを有効にすると、アカウントで現在用意されているすべての読み取りリージョンが読み書きリージョンになります。
 
-![Azure Cosmos アカウントのマルチマスター構成のスクリーンショット](./media/how-to-manage-database-account/single-to-multi-master.png)
+:::image type="content" source="./media/how-to-manage-database-account/single-to-multi-master.png" alt-text="Azure Cosmos アカウントのマルチマスター構成のスクリーンショット":::
 
 ### <a name="azure-cli"></a><a id="configure-multiple-write-regions-cli"></a>Azure CLI
 
@@ -149,13 +149,13 @@ ms.locfileid: "84116710"
 
 2. ウィンドウの上部で、 **[自動フェールオーバー]** を選択します。
 
-   ![[データをグローバルにレプリケートする] メニュー](./media/how-to-manage-database-account/replicate-data-globally.png)
+   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="[データをグローバルにレプリケートする] メニュー":::
 
 3. **[自動フェールオーバー]** ウィンドウで、 **[自動フェールオーバーの有効化]** を **[ON]** に設定してください。 
 
 4. **[保存]** を選択します。
 
-   ![自動フェールオーバーのポータル メニュー](./media/how-to-manage-database-account/automatic-failover.png)
+   :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="自動フェールオーバーのポータル メニュー":::
 
 ### <a name="azure-cli"></a><a id="enable-automatic-failover-via-cli"></a>Azure CLI
 
@@ -178,7 +178,7 @@ Cosmos アカウントに自動フェールオーバーを構成した後、リ�
 
 2. ウィンドウの上部で、 **[自動フェールオーバー]** を選択します。
 
-   ![[データをグローバルにレプリケートする] メニュー](./media/how-to-manage-database-account/replicate-data-globally.png)
+   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="[データをグローバルにレプリケートする] メニュー":::
 
 3. **[自動フェールオーバー]** ウィンドウで、 **[自動フェールオーバーの有効化]** を **[ON]** に設定してください。
 
@@ -186,7 +186,7 @@ Cosmos アカウントに自動フェールオーバーを構成した後、リ�
 
 5. **[保存]** を選択します。
 
-   ![自動フェールオーバーのポータル メニュー](./media/how-to-manage-database-account/automatic-failover.png)
+   :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="自動フェールオーバーのポータル メニュー":::
 
 ### <a name="azure-cli"></a><a id="set-failover-priorities-via-cli"></a>Azure CLI
 
@@ -212,13 +212,13 @@ Cosmos アカウントに自動フェールオーバーを構成した後、リ�
 
 2. メニューの上部で、 **[手動フェールオーバー]** を選択します。
 
-   ![[データをグローバルにレプリケートする] メニュー](./media/how-to-manage-database-account/replicate-data-globally.png)
+   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="[データをグローバルにレプリケートする] メニュー":::
 
 3. **[手動フェールオーバー]** メニューで、新しい書き込みリージョンを選択します。 チェック ボックスをオンにして、このオプションによって書き込みリージョンが変更されることを理解していることを示します。
 
 4. フェールオーバーをトリガーするには、 **[OK]** を選択します。
 
-   ![手動フェールオーバーのポータル メニュー](./media/how-to-manage-database-account/manual-failover.png)
+   :::image type="content" source="./media/how-to-manage-database-account/manual-failover.png" alt-text="手動フェールオーバーのポータル メニュー":::
 
 ### <a name="azure-cli"></a><a id="enable-manual-failover-via-cli"></a>Azure CLI
 

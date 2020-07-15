@@ -3,16 +3,16 @@ title: Azure Migrate で評価/移行ツールを追加する
 description: Azure Migrate プロジェクトを作成し、評価/移行ツールを追加する方法について説明します。
 ms.topic: how-to
 ms.date: 04/16/2020
-ms.openlocfilehash: 1294831162df973e1f87052c1520d5d95990cf8f
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: a94e3cc18f46c457d6ed54ef88c62adefb07c5b9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901186"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102533"
 ---
 # <a name="add-an-assessmentmigration-tool-for-the-first-time"></a>評価/移行ツールの初回追加
 
-この記事では、評価ツールまたは移行ツールを [Azure Migrate](migrate-overview.md) プロジェクトに初めて追加する方法について説明します。  
+この記事では、評価ツールまたは移行ツールを [Azure Migrate](./migrate-services-overview.md) プロジェクトに初めて追加する方法について説明します。  
 Azure Migrate は、オンプレミスのアプリとワークロード、およびプライベート/パブリック クラウド VM の検出、評価、および Azure への移行を追跡するための中央ハブとなります。 このハブには、評価および移行のための Azure Migrate ツールのほか、他のツールや独立系ソフトウェア ベンダー (ISV) の[オファリング](migrate-services-overview.md#isv-integration)が用意されています。 
 
 ## <a name="check-permissions-to-create-project"></a>プロジェクトを作成するためのアクセス許可を確認する

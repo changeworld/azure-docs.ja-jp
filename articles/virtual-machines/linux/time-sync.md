@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 7c93c1f525713a90abd71c30a21401b9d1cfcb9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 25e8be28903d490a7a8c17e16d2beddc44c95c41
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81460904"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84782774"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Azure での Linux VM の時刻同期
 
@@ -25,10 +25,10 @@ ms.locfileid: "81460904"
 
 Azure は、Windows Server 2016 を実行しているインフラストラクチャによってサポートされます。 Windows Server 2016 では、時刻を修正し、ローカル クロックを調整して UTC と同期するために使用されるアルゴリズムが改善されています。  Windows Server 2016 の正確な時刻機能では、正確な時刻を確保するためにホストで VM を制御する VMICTimeSync サービスの動作が大幅に改善されています。 この改善には、VM の開始時や VM の復元時の初期時刻の精度の向上と、割り込み待ち時間の修正が含まれます。 
 
->[!NOTE]
->Windows Time サービスの概要については、こちらの[概要ビデオ](https://aka.ms/WS2016TimeVideo)をご覧ください。
+> [!NOTE]
+> Windows Time サービスの概要については、こちらの[概要ビデオ](https://aka.ms/WS2016TimeVideo)をご覧ください。
 >
-> 詳細については、「[Windows Server 2016 の正確な時刻](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)」を参照してください。 
+> 詳細については、「[Windows Server 2016 の正確な時刻](/windows-server/networking/windows-time-service/accurate-time)」を参照してください。 
 
 ## <a name="overview"></a>概要
 
@@ -140,9 +140,9 @@ refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0
 
 Ubuntu および NTP の詳細については、[時刻同期](https://help.ubuntu.com/lts/serverguide/NTP.html)に関するページを参照してください。
 
-Red Hat および NTP の詳細については、[NTP の構成](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/s1-configure_ntp)に関するページを参照してください。 
+Red Hat および NTP の詳細については、[NTP の構成](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_ntpd#s1-Configure_NTP)に関するページを参照してください。 
 
-chrony の詳細については、[chrony の使用](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-using_chrony)に関するページを参照してください。
+chrony の詳細については、[chrony の使用](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_the_chrony_suite#sect-Using_chrony)に関するページを参照してください。
 
 chrony および TimeSync ソースの両方が同時に有効になっている場合は、一方を**優先**としてマークし、もう一方のソースをバックアップとして設定することができます。 NTP サービスでは、長時間の経過後を除き、大きなスキューが発生した場合にクロックが更新されないため、VMICTimeSync によって、NTP ベースのツールを単独で使用する場合よりはるかに早く一時停止した VM イベントからクロックが回復されます。
 
@@ -164,6 +164,6 @@ systemctl restart chronyd
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、「[Windows Server 2016 の正確な時刻](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)」を参照してください。
+詳細については、「[Windows Server 2016 の正確な時刻](/windows-server/networking/windows-time-service/accurate-time)」を参照してください。
 
 

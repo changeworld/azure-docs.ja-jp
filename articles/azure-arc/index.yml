@@ -1,21 +1,20 @@
 ### YamlMime:Landing
 title: Azure Arc
-summary: Azure Arc は、Azure Resource Manager の機能を Linux および Windows サーバーに拡張するほか、オンプレミス、マルチクラウド、エッジにわたるあらゆるインフラストラクチャに Kubernetes クラスターを拡張します。 Azure Arc を使用すると、顧客は場所を問わず Azure データ サービスを実行できるため、データを常に最新の状態に保つ機能、(数時間ではなく) 数秒でのデプロイ、インフラストラクチャでの動的なスケーラビリティなど、クラウド イノベーションの利点を実感できます。 サーバー向け Azure Arc は現在、パブリック プレビュー段階にあります。
+summary: Azure Arc は、Azure Resource Manager の機能を Linux および Windows サーバーに拡張するほか、オンプレミス、マルチクラウド、エッジにわたるあらゆるインフラストラクチャに Kubernetes クラスターを拡張します。 Azure Arc を使用すると、顧客は場所を問わず Azure データ サービスを実行できるため、データを常に最新の状態に保つ機能、(数時間ではなく) 数秒でのデプロイ、インフラストラクチャでの動的なスケーラビリティなど、クラウド イノベーションの利点を実感できます。
 metadata:
   title: サーバー向け Azure Arc
   description: Azure でオンプレミスのマシンを管理する方法について説明します
-  author: bobbytreed
-  manager: carmonm
+  author: mgoedtel
   ms.service: azure-arc
   ms.topic: landing-page
-  ms.date: 11/04/2019
-  ms.author: robreed
-  ms.openlocfilehash: e80cdec365a14caee5c74900e1c21f7349165e66
-  ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+  ms.date: 06/26/2020
+  ms.author: magoedte
+  ms.openlocfilehash: 8493a5d90656206c5498fafbc2b0a2743cd973a7
+  ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/13/2020
-  ms.locfileid: "81261280"
+  ms.lasthandoff: 06/27/2020
+  ms.locfileid: "85482345"
 landingContent:
 - title: Azure Arc の概要
   linkLists:
@@ -37,3 +36,25 @@ landingContent:
       url: ./servers/onboard-service-principal.md
     - text: PowerShell DSC を使用してマシンを Azure に接続する
       url: ./servers/onboard-dsc.md
+- title: Azure Arc を使用して Kubernetes クラスターを Azure に接続する
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Arc 対応 Kubernetes とは
+      url: ./kubernetes/overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: クラスターの接続
+      url: ./kubernetes/connect-cluster.md
+    - text: 接続されたクラスターで GitOps を使用する
+      url: ./kubernetes/use-gitops-connected-cluster.md
+    - text: Helm で GitOps を使用する
+      url: ./kubernetes/use-gitops-with-helm.md
+    - text: Azure Monitor for containers を使用する
+      url: ../azure-monitor/insights/container-insights-enable-arc-enabled-clusters.md
+    - text: Azure Policy を使用する
+      url: ./kubernetes/use-azure-policy.md
+    - text: Azure IoT Edge ワークロードをデプロイする
+      url: ./kubernetes/deploy-azure-iot-edge-workloads.md
+    - text: サービス プリンシパルのオンボード
+      url: ./kubernetes/create-onboarding-service-principal.md

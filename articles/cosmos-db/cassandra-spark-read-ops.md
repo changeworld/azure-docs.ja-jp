@@ -7,15 +7,15 @@ ms.author: thvankra
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: c01d9970de1ab610333c129505cef75dfcaa35b1
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 4ecb7758ee5f58345fccc2c490cee4d23043a20c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309725"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85257416"
 ---
 # <a name="read-data-from-azure-cosmos-db-cassandra-api-tables-using-spark"></a>Spark を使用して Azure Cosmos DB の Cassandra API テーブルからデータを読み取る
 
@@ -105,7 +105,7 @@ readBooksDF.show
 
 物理プランの PushedFilters セクションには、GreaterThan プッシュ ダウン フィルターが含まれています。 
 
-![パーティション](./media/cassandra-spark-read-ops/pushdown-predicates.png)
+:::image type="content" source="./media/cassandra-spark-read-ops/pushdown-predicates.png" alt-text="パーティション":::
 
 ## <a name="rdd-api"></a>RDD API
 

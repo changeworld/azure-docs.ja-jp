@@ -4,15 +4,15 @@ description: ストレージ アカウントを表す Active Directory Domain Se
 author: roygara
 ms.service: storage
 ms.subservice: files
-ms.topic: conceptual
-ms.date: 05/29/2020
+ms.topic: how-to
+ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 936580f19d7370f72ebdc52cb39f9f5e1cb5984d
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: d16f11a85c6b370b0187975cce965bf3e1b5ba3f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84268330"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85510256"
 ---
 # <a name="update-the-password-of-your-storage-account-identity-in-ad-ds"></a>AD DS のストレージ アカウント ID のパスワードを更新する
 

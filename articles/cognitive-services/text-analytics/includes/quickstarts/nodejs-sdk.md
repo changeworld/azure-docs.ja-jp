@@ -6,15 +6,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 06/11/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
-ms.openlocfilehash: 0d2a4a8338880dc8063d6a3f088c0cd44e314e43
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 7f25c9c500615f376ffe2fee2483fbfbdc03f3b8
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84140732"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735565"
 ---
 <a name="HOLTop"></a>
 
@@ -61,7 +61,7 @@ npm init
 `@azure/ai-text-analytics` NPM パッケージをインストールします。
 
 ```console
-npm install --save @azure/ai-text-analytics@1.0.0-preview.5
+npm install --save @azure/ai-text-analytics@1.0.0
 ```
 
 > [!TIP]

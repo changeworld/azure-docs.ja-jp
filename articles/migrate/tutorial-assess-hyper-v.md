@@ -4,12 +4,12 @@ description: Azure Migrate Server Assessment を使用して Azure に移行す�
 ms.topic: tutorial
 ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 2c4233df6566f3187c8366188b0eb960189b43c5
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: 4c95916bf5f92f8a82b9dfae50aa311891857e7a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331765"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114246"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Azure Migrate Server Assessment を使用して Hyper-V VM を評価する
 
@@ -36,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 - このシリーズの最初のチュートリアルを[完了](tutorial-prepare-hyper-v.md)します。 そうしないと、このチュートリアルの手順はうまくいきません。
 - 最初のチュートリアルでは、以下のことを行ったはずです。
     - Azure Migrate と連携するように [Azure を準備](tutorial-prepare-hyper-v.md#prepare-azure)します。
-    - [Hyper-V のホストと VM の評価を準備](tutorial-prepare-hyper-v.md#prepare-hyper-v-for-assessment)します。
+    - [Hyper-V のホストと VM の評価を準備](tutorial-prepare-hyper-v.md#prepare-for-assessment)します。
     - Hyper-V の評価用の Azure Migrate アプライアンスをデプロイするために必要なものを[確認](tutorial-prepare-hyper-v.md#prepare-for-appliance-deployment)します。
 
 ## <a name="set-up-an-azure-migrate-project"></a>Azure Migrate プロジェクトを設定する
@@ -96,13 +96,13 @@ Azure Migrate:Server Assessment では、軽量の Azure Migrate アプライア
     - ```C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm]```
     - 使用例: ```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v1.19.06.27.zip -Algorithm SHA256```
 
-3.  最新のアプライアンス バージョンを確認し、次の値になっていることを確認します。
+3.  最新のアプライアンス バージョンとハッシュ値を確認します。
 
     - Azure パブリック クラウドの場合:
 
         **シナリオ** | **ダウンロード** | **SHA256**
         --- | --- | ---
-        Hyper-V (8.93 MB) | [最新バージョン](https://aka.ms/migrate/appliance/hyperv) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
+        Hyper-V (8.93 GB) | [最新バージョン](https://aka.ms/migrate/appliance/hyperv) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
 
     - Azure Government の場合:
 
@@ -130,7 +130,7 @@ Azure Migrate:Server Assessment では、軽量の Azure Migrate アプライア
 2. **[インポートの種類の選択]** で、 **[仮想マシンをコピーする (新しい一意な ID を作成する)]** をクリックします。 続けて、 **[次へ]** をクリックします。
 3. **[移動先の選択]** は、既定の設定のままにします。 **[次へ]** をクリックします。
 4. **[保存フォルダー]** は、既定の設定のままにします。 **[次へ]** をクリックします。
-5. **[ネットワークの選択]** で、VM によって使用される仮想スイッチを指定します。 このスイッチには、Azure にデータを送信するためのインターネット接続が必要です。 仮想スイッチの作成に関するページを[参照](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines)してください。
+5. **[ネットワークの選択]** で、VM によって使用される仮想スイッチを指定します。 このスイッチには、Azure にデータを送信するためのインターネット接続が必要です。 仮想スイッチの作成に関するページを[参照](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines)してください。
 6. **[概要]** で、設定を確認します。 **[完了]** をクリックします。
 7. Hyper-V マネージャーの **[仮想マシン]** で、VM を起動します。
 
@@ -174,10 +174,7 @@ Azure Migrate:Server Assessment では、軽量の Azure Migrate アプライア
 
 ### <a name="delegate-credentials-for-smb-vhds"></a>SMB VHD の資格情報を委任する
 
-SMB 上で VHD を実行している場合は、アプライアンスから Hyper-V ホストへの資格情報の委任を有効にする必要があります。 これには、以下が必要です。
-
-- 各ホストがアプライアンスの代理として機能できるようにします。 チュートリアルを順番に行っていれば、この操作は、前のチュートリアルで評価と移行のために Hyper-V を準備した時点で完了しています。 ホストの CredSSP を[手動で](tutorial-prepare-hyper-v.md#enable-credssp-on-hosts)設定したか、その操作を行う[スクリプトを実行して](tutorial-prepare-hyper-v.md#prepare-with-a-script)設定したはずです。
-- Azure Migrate アプライアンスがクライアントとして機能し、資格情報をホストに委任できるように、CredSSP 委任を有効にします。
+SMB 上で VHD を実行している場合は、アプライアンスから Hyper-V ホストへの資格情報の委任を有効にする必要があります。 これを行うには、各ホストがアプライアンスの代理として機能できるようにします。 チュートリアルを順番に行っていれば、この操作は、前のチュートリアルで評価と移行のために Hyper-V を準備した時点で完了しています。 ホストの CredSSP を[手動で](tutorial-prepare-hyper-v.md#enable-credssp-to-delegate-credentials)設定したか、その操作を行う[スクリプトを実行して](tutorial-prepare-hyper-v.md#run-the-script)設定したはずです。
 
 次のようにアプライアンス上で有効にします。
 
@@ -186,7 +183,7 @@ SMB 上で VHD を実行している場合は、アプライアンスから Hype
 アプライアンス VM 上で、このコマンドを実行します。 HyperVHost1/HyperVHost2 は、ホスト名の例です。
 
 ```
-Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force
+Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com, HyperVHost2.contoso.com, HyperVHost1, HyperVHost2 -Force
 ```
 
 例: ` Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force `

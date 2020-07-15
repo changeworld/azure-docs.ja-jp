@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 6ab303c06f1ca6c7ab6a7a192532b79505676811
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a4747fcd3a68c91e10d13a03adcbc4930bd9d759
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84033733"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84345259"
 ---
 # <a name="monitor-in-memory-oltp-storage-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database と Azure SQL Managed Instance のインメモリ OLTP ストレージを監視する
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "84033733"
 
 ## <a name="determine-whether-data-fits-within-the-in-memory-oltp-storage-cap"></a>データがインメモリ OLTP ストレージの上限に収まるかどうかを判断する
 
-さまざまなサービス レベルのストレージの上限を確認します。Premium および Business Critical サービス レベルには、それぞれインメモリ OLTP ストレージの最大サイズがあります。
+さまざまなサービス レベルのストレージの上限を確認します。 Premium および Business Critical サービス レベルには、それぞれインメモリ OLTP ストレージの最大サイズがあります。
 
 - [DTU ベースのリソース制限 - 単一データベース](database/resource-limits-dtu-single-databases.md)
 - [DTU ベースのリソース制限 - エラスティック プール](database/resource-limits-dtu-elastic-pools.md)

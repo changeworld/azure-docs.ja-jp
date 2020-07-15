@@ -1,9 +1,9 @@
 ---
-title: クイック スタート:Azure SQL Managed Instance を作成する (ポータル)
-description: このクイックスタートでは、Azure portal を使用して、Azure SQL Managed Instance、ネットワーク環境、アクセス用のクライアント VM を作成します。
+title: クイック スタート:SQL Managed Instance のマネージド インスタンスを作成する (ポータル)
+description: このクイックスタートでは、Azure portal を使用して、マネージド インスタンス、ネットワーク環境、アクセス用のクライアント VM を作成します。
 services: sql-database
-ms.service: sql-database
-ms.subservice: managed-instance
+ms.service: sql-managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
@@ -11,43 +11,43 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein, carlrab
 ms.date: 09/26/2019
-ms.openlocfilehash: cc3a25992297dd8deb02deb2c561cad4b53e318b
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: e4b4b6f21d158a758c2ff77db6660bbb44696d90
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84113739"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086689"
 ---
-# <a name="quickstart-create-an-azure-sql-managed-instance"></a>クイック スタート:Azure SQL マネージド インスタンスの作成
+# <a name="quickstart-create-a-managed-instance-of-sql-managed-instance"></a>クイック スタート:SQL Managed Instance のマネージド インスタンスを作成する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-このクイックスタートでは、[Azure SQL Managed Instance](sql-managed-instance-paas-overview.md) を Azure portal で作成する方法について説明します。
+このクイックスタートでは、[Azure SQL Managed Instance](sql-managed-instance-paas-overview.md) のマネージド インスタンスを Azure portal で作成する方法について説明します。
 
 > [!IMPORTANT]
 > 制限については、[サポートされているリージョン](resource-limits.md#supported-regions)と[サポートされているサブスクリプションの種類](resource-limits.md#supported-subscription-types)に関するセクションを参照してください。
 
-## <a name="create-sql-managed-instance"></a>SQL マネージド インスタンスの作成
+## <a name="create-a-managed-instance"></a>マネージド インスタンスを作成する
 
-Azure SQL Managed Instance を作成するには、次の手順に従います。 
+マネージド インスタンスを作成するには、次の手順に従います。 
 
-### <a name="sign-in-to-azure-portal"></a>Azure Portal にサインインする
+### <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
 Azure サブスクリプションをお持ちでない場合は、[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
-1. [Azure ポータル](https://portal.azure.com/)にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 1. Azure portal の左側のメニューにある **[Azure SQL]** を選択します。 **[Azure SQL]** が一覧にない場合は、 **[すべてのサービス]** を選択し、検索ボックスに「**Azure SQL**」と入力します。
-1. **[+ 追加]** を選択して、 **[Select SQL deployment option]\(SQL デプロイ オプションの選択\)** ページを開きます。 **[SQL Managed Instance]** タイルの **[詳細の表示]** を選択すると、Azure SQL Managed Instance に関する追加情報を表示できます。
+1. **[+ 追加]** を選択して、 **[Select SQL deployment option]\(SQL デプロイ オプションの選択\)** ページを開きます。 **[SQL マネージド インスタンス]** タイルの **[詳細の表示]** を選択すると、Azure SQL Managed Instance に関する追加情報を表示できます。
 1. **［作成］** を選択します
 
-   ![SQL Managed Instance を作成する](./media/instance-create-quickstart/create-managed-instance.png)
+   ![マネージド インスタンスを作成する](./media/instance-create-quickstart/create-managed-instance.png)
 
 4. **[Create Azure SQL Managed Instance]\(Azure SQL Managed Instance の作成\)** プロビジョニング フォーム上のタブを使用して、必須の情報と任意の情報を追加します。 以下のセクションで、これらのタブについて説明します。
 
 ### <a name="basics-tab"></a>[基本] タブ
 
-- **[基本]** タブで必須情報を記入します。これは、SQL Managed Instance をプロビジョニングするために必要な最小限の情報セットです。
+- **[基本]** タブで必須情報を記入します。これは、マネージド インスタンスをプロビジョニングするために必要な最小限の情報セットです。
 
-   ![SQL Managed Instance を作成するための [基本] タブ](./media/instance-create-quickstart/mi-create-tab-basics.png)
+   ![マネージド インスタンスを作成するための [基本] タブ](./media/instance-create-quickstart/mi-create-tab-basics.png)
 
    このタブで必要となる情報については、次の表を参考にしてください。
 
@@ -56,7 +56,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
    | **サブスクリプション** | 該当するサブスクリプション。 | 新しいリソースを作成するアクセス許可を与えるサブスクリプション。 |
    | **リソース グループ** | 新規または既存のリソース グループ。|有効なリソース グループ名については、[名前付け規則と制限](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。|
    | **マネージド インスタンス名** | 有効な名前。|有効な名前については、[名前付け規則と制限事項](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。|
-   | **リージョン** |SQL Managed Instance の作成先となるリージョン。|リージョンについては、「[Azure リージョン](https://azure.microsoft.com/regions/)」を参照してください。|
+   | **リージョン** |マネージド インスタンスの作成先となるリージョン。|リージョンについては、「[Azure リージョン](https://azure.microsoft.com/regions/)」を参照してください。|
    | **マネージド インスタンス管理者ログイン** | 有効なユーザー名。 | 有効な名前については、[名前付け規則と制限事項](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。 "serveradmin" は予約済みのサーバー レベルのロールであるため、使用しないでください。|
    | **パスワード** | 有効なパスワード。| パスワードは 16 文字以上で、[定義された複雑さの要件](../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
 
@@ -70,44 +70,44 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 - **[ネットワーク]** タブにオプションの情報を記入します。この情報を省略すると、ポータルによって既定の設定が適用されます。
 
-   ![SQL Managed Instance を作成するための [ネットワーク] タブ](./media/instance-create-quickstart/mi-create-tab-networking.png)
+   ![マネージド インスタンスを作成するための [ネットワーク] タブ](./media/instance-create-quickstart/mi-create-tab-networking.png)
 
    このタブで必要となる情報については、次の表を参考にしてください。
 
    | 設定| 推奨値 | 説明 |
    | ------ | --------------- | ----------- |
-   | **Virtual Network** | **[新しい仮想ネットワークの作成]** または有効な仮想ネットワークとサブネットを選択します。| ネットワークまたはサブネットが使用できない場合は、新しい SQL Managed Instance のターゲットとして選択する前に、[ネットワーク要件を満たすように変更する](vnet-existing-add-subnet.md)必要があります。 SQL Managed Instance のネットワーク環境を構成するための要件については、[SQL Managed Instance の仮想ネットワークの構成](connectivity-architecture-overview.md)に関する記事を参照してください。 |
+   | **Virtual Network** | **[新しい仮想ネットワークの作成]** または有効な仮想ネットワークとサブネットを選択します。| ネットワークまたはサブネットが使用できない場合は、新しいマネージド インスタンスのターゲットとして選択する前に、[ネットワーク要件を満たすように変更する](vnet-existing-add-subnet.md)必要があります。 SQL Managed Instance のネットワーク環境を構成するための要件については、[SQL Managed Instance の仮想ネットワークの構成](connectivity-architecture-overview.md)に関する記事を参照してください。 |
    | **接続の種類** | 接続の種類として、プロキシまたはリダイレクトを選択します。|接続の種類の詳細については、[Azure SQL Managed Instance の接続の種類](../database/connectivity-architecture.md#connection-policy)に関するセクションを参照してください。|
-   | **パブリック エンドポイント**  | **[有効化]** を選択します。 | パブリック データ エンドポイントを介して SQL Managed Instance にアクセスできるようにするには、このオプションを有効にする必要があります。 | 
-   | **許可するアクセス元** (**パブリック エンドポイント**が有効な場合) | いずれかのオプションを選択します。   |ポータルでの操作により、パブリック エンドポイントを使用するセキュリティ グループを構成できます。 </br> </br> 実際のシナリオに基づいて、次のいずれかのオプションを選択します。 </br> <ul> <li>**Azure サービス**:Power BI または別のマルチテナント サービスから接続する場合は、このオプションをお勧めします。 </li> <li> **インターネット**:SQL Managed Instance を迅速に作成する必要がある場合にテスト目的で使用します。 運用環境ではお勧めしません。 </li> <li> **アクセスなし**:このオプションでは**拒否**セキュリティ規則が作成されます。 パブリック エンドポイントを介して SQL Managed Instance にアクセスできるようにするには、この規則を変更します。 </li> </ul> </br> パブリック エンドポイントのセキュリティの詳細については、[パブリック エンドポイントで安全に Azure SQL Managed Instance を使用する](public-endpoint-overview.md)方法に関するページを参照してください。|
+   | **パブリック エンドポイント**  | **[有効化]** を選択します。 | パブリック データ エンドポイントを介してマネージド インスタンスにアクセスできるようにするには、このオプションを有効にする必要があります。 | 
+   | **許可するアクセス元** (**パブリック エンドポイント**が有効な場合) | いずれかのオプションを選択します。   |ポータルでの操作により、パブリック エンドポイントを使用するセキュリティ グループを構成できます。 </br> </br> 実際のシナリオに基づいて、次のいずれかのオプションを選択します。 </br> <ul> <li>**Azure サービス**:Power BI または別のマルチテナント サービスから接続する場合は、このオプションをお勧めします。 </li> <li> **インターネット**:マネージド インスタンスを迅速に作成する必要がある場合にテスト目的で使用します。 運用環境ではお勧めしません。 </li> <li> **アクセスなし**:このオプションでは**拒否**セキュリティ規則が作成されます。 パブリック エンドポイントを介してマネージド インスタンスにアクセスできるようにするには、この規則を変更します。 </li> </ul> </br> パブリック エンドポイントのセキュリティの詳細については、[パブリック エンドポイントで安全に Azure SQL Managed Instance を使用する](public-endpoint-overview.md)方法に関するページを参照してください。|
 
-- SQL Managed Instance を作成する前に選択内容を確認するには、 **[確認と作成]** を選択します。 または、さらにカスタム設定を構成します。これを行うには、 **[次へ: 追加設定]** を選択します。
+- マネージド インスタンスを作成する前に、 **[確認と作成]** を選択して、選択内容を確認できます。 または、さらにカスタム設定を構成します。これを行うには、 **[次へ: 追加設定]** を選択します。
 
 ### <a name="additional-settings"></a>追加設定
 
 - **[追加設定]** タブにオプションの情報を記入します。この情報を省略すると、ポータルによって既定の設定が適用されます。
 
-   ![SQL Managed Instance を作成するための [追加設定] タブ](./media/instance-create-quickstart/mi-create-tab-additional-settings.png)
+   ![マネージド インスタンスを作成するための [追加設定] タブ](./media/instance-create-quickstart/mi-create-tab-additional-settings.png)
 
    このタブで必要となる情報については、次の表を参考にしてください。
 
    | 設定| 推奨値 | 説明 |
    | ------ | --------------- | ----------- |
-   | **Collation** | SQL Managed Instance に対して使用する照合順序を選択します。 SQL Server からデータベースを移行する場合は、`SELECT SERVERPROPERTY(N'Collation')` を使用してソースの照合順序を確認し、その値を使用してください。| 照合順序の詳細については、「[サーバーの照合順序の設定または変更](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation)」を参照してください。|   
-   | **タイム ゾーン** | SQL Managed Instance で監視するタイム ゾーンを選択します。|詳細については、[タイム ゾーン](timezones-overview.md)に関するページを参照してください。|
-   | **フェールオーバー セカンダリとして使用する** | **[はい]** を選択します。 | SQL Managed Instance をフェールオーバー グループのセカンダリとして使用するには、このオプションを有効にします。|
-   | **プライマリ SQL Managed Instance** ( **[フェールオーバー セカンダリとして使用する]** が **[はい]** に設定されている場合) | 作成している SQL Managed Instance と同じ DNS ゾーンに参加することになる既存のプライマリ SQL Managed Instance を選択します。 | この手順により、フェールオーバー グループの作成後の構成が有効になります。 詳細については、「[チュートリアル:SQL Database SQL Managed Instance をフェールオーバー グループに追加する](failover-group-add-instance-tutorial.md)」を参照してください。|
+   | **Collation** | マネージド インスタンスに対して使用する照合順序を選択します。 SQL Server からデータベースを移行する場合は、`SELECT SERVERPROPERTY(N'Collation')` を使用してソースの照合順序を確認し、その値を使用してください。| 照合順序の詳細については、「[サーバーの照合順序の設定または変更](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation)」を参照してください。|   
+   | **タイム ゾーン** | マネージド インスタンスで監視するタイム ゾーンを選択します。|詳細については、[タイム ゾーン](timezones-overview.md)に関するページを参照してください。|
+   | **フェールオーバー セカンダリとして使用する** | **[はい]** を選択します。 | マネージド インスタンスをフェールオーバー グループのセカンダリとして使用するには、このオプションを有効にします。|
+   | **プライマリ SQL Managed Instance** ( **[フェールオーバー セカンダリとして使用する]** が **[はい]** に設定されている場合) | 作成しているマネージド インスタンスと同じ DNS ゾーンに参加することになる既存のプライマリ マネージド インスタンスを選択します。 | この手順により、フェールオーバー グループの作成後の構成が有効になります。 詳細については、[マネージド インスタンスをフェールオーバー グループに追加する方法に関するチュートリアル](failover-group-add-instance-tutorial.md)を参照してください。|
 
 ## <a name="review--create"></a>確認と作成
 
-1. SQL Managed Instance を作成する前に選択内容を確認するには、 **[確認と作成]** タブを選択します。
+1. マネージド インスタンスを作成する前に、 **[確認と作成]** タブを選択して、選択内容を確認します。
 
-   ![SQL Managed Instance を確認して作成するためのタブ](./media/instance-create-quickstart/mi-create-tab-review-create.png)
+   ![マネージド インスタンスを確認して作成するためのタブ](./media/instance-create-quickstart/mi-create-tab-review-create.png)
 
-1. **[作成]** を選択して、SQL Managed Instance のプロビジョニングを開始します。
+1. **[作成]** を選択して、マネージド インスタンスのプロビジョニングを開始します。
 
 > [!IMPORTANT]
-> SQL Managed Instance のデプロイは、実行時間の長い操作です。 サブネットへの最初のインスタンスのデプロイは、通常、既存の SQL Managed Instance が含まれるサブネットへのデプロイよりもはるかに時間がかかります。 平均的なプロビジョニング時間については、[SQL Managed Instance の管理操作](sql-managed-instance-paas-overview.md#management-operations)に関するセクションを参照してください。
+> マネージト インスタンスのデプロイは、実行時間の長い操作です。 サブネットへの最初のインスタンスのデプロイは、通常、既存のマネージド インスタンスが含まれるサブネットへのデプロイよりもはるかに長い時間がかかります。 平均的なプロビジョニング時間については、[SQL Managed Instance の管理操作](sql-managed-instance-paas-overview.md#management-operations)に関するセクションを参照してください。
 
 ## <a name="monitor-deployment-progress"></a>デプロイの進行状況を監視する
 
@@ -119,19 +119,19 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 > [!TIP]
 > Web ブラウザーを閉じているか、[デプロイの進行状況] 画面から移動している場合は、次の手順に従ってその画面を見つけます。
-> 1. Azure portal で、SQL Managed Instance をデプロイしている ( **[基本]** タブの) リソース グループを開きます。
+> 1. Azure portal で、SQL Managed Instance のデプロイ先となるリソース グループを ( **[基本]** タブで) 開きます。
 > 2. **[デプロイ]** を選択します。
 > 3. 進行中の SQL Managed Instance のデプロイ操作を選択します。
 
 > [!IMPORTANT]
-> SQL Managed Instance の作成の状態を取得できるようにするには、リソース グループに対する**読み取りアクセス許可**が必要です。 このアクセス許可がない場合、または SQL Managed Instance の作成プロセス中にこのアクセス許可を取り消した場合は、リソース グループのデプロイの一覧に SQL Managed Instance が表示されない可能性があります。
+> マネージド インスタンスの作成の状態を取得できるようにするには、リソース グループに対する**読み取りアクセス許可**が必要です。 このアクセス許可がない場合、またはマネージド インスタンスの作成プロセス中にこのアクセス許可を取り消した場合は、リソース グループのデプロイの一覧に SQL Managed Instance が表示されない可能性があります。
 >
 
 ## <a name="view-resources-created"></a>作成されたリソースを表示する
 
-SQL Managed Instance が正常にデプロイされた後、作成されたリソースを確認するには、次の手順に従います。
+マネージド インスタンスが正常にデプロイされた後、作成されたリソースを確認するには、次の手順に従います。
 
-1. SQL Managed Instance のリソース グループを開きます。 
+1. マネージド インスタンスのリソース グループを開きます。 
 
    ![SQL Managed Instance のリソース](./media/instance-create-quickstart/resources.png)
 
@@ -156,18 +156,18 @@ SQL Managed Instance が正常にデプロイされた後、作成されたリ�
    ![セキュリティ規則](./media/instance-create-quickstart/security-rules.png)
 
 > [!IMPORTANT]
-> SQL Managed Instance 用のパブリック エンドポイントを構成した場合は、パブリック インターネットから SQL Managed Instance に接続できるよう、ポートを開放してネットワーク トラフィックを許可する必要があります。詳細については、[SQL Managed Instance 用のパブリック エンドポイントの構成](public-endpoint-configure.md#allow-public-endpoint-traffic-on-the-network-security-group)に関するセクションを参照してください。
+> SQL Managed Instance 用のパブリック エンドポイントを構成した場合は、パブリック インターネットから SQL Managed Instance に接続できるよう、ポートを開放してネットワーク トラフィックを許可する必要があります。 詳細については、[SQL Managed Instance 用のパブリック エンドポイントの構成](public-endpoint-configure.md#allow-public-endpoint-traffic-on-the-network-security-group)に関するセクションを参照してください。
 >
 
 ## <a name="retrieve-connection-details-to-sql-managed-instance"></a>SQL Managed Instance への接続情報を取得する
 
 SQL Managed Instance に接続するには、次の手順に従って、ホスト名と完全修飾ドメイン名 (FQDN) を取得します。
 
-1. リソース グループに戻り、SQL Managed Instance を選択します。
+1. リソース グループに戻り、マネージド インスタンスを選択します。
 
-   ![リソース グループ内の SQL Managed Instance](./media/instance-create-quickstart/managed-instance.png)
+   ![リソース グループ内のマネージド インスタンス](./media/instance-create-quickstart/managed-instance.png)
 
-2. **[概要]** タブで、 **[ホスト]** プロパティを探します。 次のクイックスタートで使用する SQL Managed Instance のホスト名をコピーします。
+2. **[概要]** タブで、 **[ホスト]** プロパティを探します。 次のクイック スタートで使用するマネージド インスタンスのホスト名をコピーします。
 
    ![ホスト名](./media/instance-create-quickstart/host-name.png)
 

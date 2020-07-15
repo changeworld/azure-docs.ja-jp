@@ -1,18 +1,18 @@
 ---
-title: Components
+title: コンポーネント
 description: Azure Remote Rendering のスコープ内のコンポーネントの定義
 author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: conceptual
 ms.openlocfilehash: bd2a6e16d34bf6c5b59ce7fa5c99975d44947770
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84021672"
 ---
-# <a name="components"></a>Components
+# <a name="components"></a>コンポーネント
 
 Azure Remote Rendering では、[エンティティ コンポーネント システム](https://en.wikipedia.org/wiki/Entity_component_system)のパターンが使用されます。 [エンティティ](entities.md)は、オブジェクトの位置と階層構造を表し、コンポーネントで動作が実装されます。
 

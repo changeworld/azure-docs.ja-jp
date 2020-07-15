@@ -1,7 +1,7 @@
 ---
 title: Microsoft Security Code Analysis ドキュメントの FAQ
 description: この記事には、Microsoft Security Code Analysis 拡張機能に関する FAQ が記載されています。
-author: vharindra
+author: sukhans
 manager: sukhans
 ms.author: terrylan
 ms.date: 07/31/2019
@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 7a888d95a97e30e7d663b528e8d9941aec1f51e9
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 3d5eac2d3e2f3cd87ddad02aac68ce015163bd00
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015847"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85362076"
 ---
 # <a name="frequently-asked-questions"></a>よく寄せられる質問
 ご不明な点がある場合は、 詳細については、次の FAQ を参照してください。

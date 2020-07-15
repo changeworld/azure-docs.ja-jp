@@ -5,14 +5,15 @@ description: Azure Machine Learning のラベル付けプロジェクトでデ�
 author: lobrien
 ms.author: laobri
 ms.service: machine-learning
+ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 22b77b79ea3f8c6744c2eba064c52e6d9e29c2b9
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 0421e5ad164c440c1b841cae66e7dafc5deadb81
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758913"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025133"
 ---
 # <a name="tag-images-in-a-labeling-project-preview"></a>ラベル付けプロジェクトで画像にタグを付ける (プレビュー)
 

@@ -1,18 +1,18 @@
 ---
-title: Dav4 および Dasv4 シリーズ - Azure Virtual Machines
+title: Dav4 および Dasv4 シリーズ
 description: Dav4 および Dasv4 シリーズ VM の仕様。
-services: virtual-machines
 author: migerdes
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: c7a2fea94e0dc1ff868eff26399877cab66e6f66
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 5d8478d97ba2615836f3e121d9dd56d94fcd73fc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115352"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84678394"
 ---
 # <a name="dav4-and-dasv4-series"></a>Dav4 および Dasv4 シリーズ
 

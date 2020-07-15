@@ -1,18 +1,18 @@
 ---
 title: 支払いの概要の概説 - Azure Marketplace
 description: '[支払いの概要] には、プランで獲得した金額の詳細が表示されます。 また、支払いを受け取るタイミングと支払われる金額を確認することもできます。'
-author: mingshen
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: mingshen
+ms.author: mingshen
 ms.date: 04/24/2020
-ms.openlocfilehash: a872331238946de0d57e6d42164f1ce7fb1c7357
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 29a8eb72814d865cb02bd632e084cec0cc06a1ff
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746200"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118479"
 ---
 # <a name="payout-summary-overview"></a>支払いの概要の概説
 

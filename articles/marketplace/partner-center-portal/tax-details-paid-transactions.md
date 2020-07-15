@@ -2,16 +2,14 @@
 title: Microsoft コマーシャル マーケットプレースでの税金の詳細
 Description: 価格の選択、支払いの内訳、納税責任に関連した税金についての考慮事項を理解するには、配布を行う国/地域を以下の表でご覧ください。
 ms.topic: conceptual
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.date: 05/04/2020
-ms.openlocfilehash: c58f66ac06cca7146a28813406e74932046f6ee4
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 0949bd1234b28a9683e194d3b3f08511f7f17a26
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746677"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120689"
 ---
 # <a name="tax-details-for-commercial-marketplace-publishers"></a>コマーシャル マーケットプレース発行元向けの税の詳細
 

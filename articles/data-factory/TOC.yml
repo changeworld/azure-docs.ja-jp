@@ -26,7 +26,7 @@
     - name: データ ファクトリの作成 - Resource Manager テンプレート
       href: quickstart-create-data-factory-resource-manager-template.md
     - name: セキュリティ - カスタマー マネージド キーの暗号化を有効にする
-      href: quickstart-enable-customer-managed-key.md
+      href: enable-customer-managed-key.md
     - name: データ フローの作成
       href: data-flow-create.md
 - name: チュートリアル
@@ -162,7 +162,7 @@
       href: concepts-pipeline-execution-triggers.md
     - name: 統合ランタイム
       href: concepts-integration-runtime.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -194,30 +194,6 @@
               href: wrangling-data-flow-overview.md
             - name: サポートされる関数
               href: wrangling-data-flow-functions.md
-    - name: データ レイクおよび EDW のデータ移行
-      items:
-        - name: Azure Data Factory を選ぶ理由
-          href: data-migration-guidance-overview.md
-        - name: データを AWS S3 から Azure に移行する
-          href: data-migration-guidance-s3-azure-storage.md
-        - name: オンプレミスの Hadoop クラスターから Azure へのデータの移行
-          href: data-migration-guidance-hdfs-azure-storage.md
-        - name: オンプレミスの Netezza サーバーから Azure へのデータの移行
-          href: data-migration-guidance-netezza-azure-sqldw.md
-    - name: マッピング データ フローを使用した変換
-      items:
-        - name: 固定幅のテキスト ファイルを処理する
-          href: how-to-fixed-width.md
-        - name: エラー行の処理
-          href: how-to-data-flow-error-rows.md
-        - name: Azure SQL DB から CosmosDB へ
-          href: how-to-sqldb-to-cosmosdb.md
-    - name: オンプレミスからの SSIS の移行
-      items:
-        - name: SSIS の移行の概要
-          href: scenario-ssis-migration-overview.md
-        - name: Azure SQL Managed Instance への SSISDB の移行
-          href: scenario-ssis-migration-ssisdb-mi.md
     - name: ロールとアクセス許可
       href: concepts-roles-permissions.md
     - name: 名前付け規則
@@ -294,6 +270,8 @@
           href: connector-db2.md
         - name: 区切りテキスト形式
           href: format-delimited-text.md
+        - name: 差分形式
+          href: format-delta.md
         - name: Drill
           href: connector-drill.md
         - name: Dynamics 365
@@ -583,7 +561,7 @@
           href: control-flow-system-variables.md
         - name: マッピング データ フローをパラメーター化する
           href: parameters-data-flow.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: データ移動のセキュリティに関する考慮事項
           href: data-movement-security-considerations.md
@@ -600,19 +578,21 @@
         - name: Data Factory のマネージド ID
           href: data-factory-service-identity.md
         - name: カスタマー マネージド キーの暗号化
-          href: quickstart-enable-customer-managed-key.md
+          href: enable-customer-managed-key.md
     - name: 監視と管理
       items:
         - name: 視覚的な監視
           href: monitor-visually.md
         - name: Azure Monitor による監視
           href: monitor-using-azure-monitor.md
+        - name: Azure Monitor による SSIS の監視
+          href: monitor-using-azure-monitor.md#monitor-ssis-operations-with-azure-monitor
         - name: SDK を使用した監視
           href: monitor-programmatically.md
         - name: 統合ランタイムの監視
           href: monitor-integration-runtime.md
         - name: Azure-SSIS 統合ランタイムの監視
-          href: 'monitor-integration-runtime.md#azure-ssis-integration-runtime'
+          href: monitor-integration-runtime.md#azure-ssis-integration-runtime
         - name: Azure-SSIS 統合ランタイムの再構成
           href: manage-azure-ssis-integration-runtime.md
         - name: データ ファクトリのコピーまたは複製
@@ -683,6 +663,32 @@
           href: how-to-create-tumbling-window-trigger.md
         - name: タンブリング ウィンドウ トリガーの依存関係の作成
           href: tumbling-window-trigger-dependency.md
+    - name: シナリオ
+      items:
+        - name: データ レイクおよび EDW のデータ移行
+          items:
+            - name: Azure Data Factory を選ぶ理由
+              href: data-migration-guidance-overview.md
+            - name: データを AWS S3 から Azure に移行する
+              href: data-migration-guidance-s3-azure-storage.md
+            - name: オンプレミスの Hadoop クラスターから Azure へのデータの移行
+              href: data-migration-guidance-hdfs-azure-storage.md
+            - name: オンプレミスの Netezza サーバーから Azure へのデータの移行
+              href: data-migration-guidance-netezza-azure-sqldw.md
+        - name: マッピング データ フローを使用した変換
+          items:
+            - name: 固定幅のテキスト ファイルを処理する
+              href: how-to-fixed-width.md
+            - name: エラー行の処理
+              href: how-to-data-flow-error-rows.md
+            - name: Azure SQL DB から CosmosDB へ
+              href: how-to-sqldb-to-cosmosdb.md
+        - name: オンプレミスからの SSIS の移行
+          items:
+            - name: SSIS の移行の概要
+              href: scenario-ssis-migration-overview.md
+            - name: Azure SQL Managed Instance への SSISDB の移行
+              href: scenario-ssis-migration-ssisdb-mi.md
     - name: テンプレート
       items:
         - name: テンプレートの概要
@@ -723,6 +729,8 @@
           href: ssis-integration-runtime-management-troubleshoot.md
         - name: Azure-SSIS IR でのパッケージ実行
           href: ssis-integration-runtime-ssis-activity-faq.md
+        - name: Azure-SSIS IR での接続性の診断
+          href: ssis-integration-runtime-diagnose-connectivity-faq.md
 - name: リファレンス
   items:
     - name: データ フローのスクリプト

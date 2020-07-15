@@ -3,23 +3,25 @@ title: パートナー向け Azure Cost Management の利用を開始する
 description: この記事では、パートナーが Azure Cost Management の機能を使用する方法と、パートナーの顧客のために Cost Management アクセスを有効にする方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 06/08/2020
+ms.date: 07/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 08037cbd3723604720a273722bd5dbee3fb79b8e
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 0b0b5eb8ec41eccf99c23b671cef42a9c1bc8859
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84554554"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849872"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>パートナー向け Azure Cost Management の利用を開始する
 
-Azure Cost Management は、お客様を Microsoft 顧客契約にオンボードし、[Azure プランを購入](/partner-center/purchase-azure-plan)している直接パートナーがネイティブに使用できます。 この記事では、パートナーが [Azure Cost Management](../index.yml) 機能を使用して、Azure プランのサブスクリプションのコストを表示する方法について説明します。 また、パートナーが顧客のために Cost Management アクセスを有効にする方法についても説明します。
+Azure Cost Management は、お客様を Microsoft 顧客契約にオンボードし、[Azure プランを購入](/partner-center/purchase-azure-plan)している直接パートナーがネイティブに使用できます。 この記事では、パートナーが [Azure Cost Management](../index.yml) 機能を使用して、Azure プランのサブスクリプションのコストを表示する方法について説明します。 また、パートナーが、自分の顧客向けに Cost Management へのアクセスを有効にする方法についても説明します。
 
-直接パートナーおよび間接プロバイダーの場合、間接プロバイダーの全体管理者と管理者エージェントが、パートナー テナントの Cost Management にアクセスできます。 リセラーと顧客は、顧客テナントで Cost Management にアクセスし、サブスクリプションのコストを確認でき、コストは小売料金で計算されて表示されます。 ただし、コストを表示するためには、顧客テナントのサブスクリプションに対する RBAC アクセス権が必要です。 顧客テナントのプロバイダーによって、コスト可視性ポリシーが有効になっている必要があります。
+直接パートナーおよび間接プロバイダーの場合、全体管理者と管理者エージェントが、パートナー テナントの Cost Management にアクセスして請求価格のコストを管理できます。
+
+リセラーと顧客は、顧客テナントで Cost Management にアクセスし、サブスクリプションのコストを確認でき、コストは小売料金で計算されて表示されます。 ただし、コストを表示するためには、顧客テナントのサブスクリプションに対する RBAC アクセス権が必要です。 顧客テナントのプロバイダーによって、コスト可視性ポリシーが有効になっている必要があります。
 
 顧客は、CSP パートナーによって有効化された場合、Cost Management の機能を使用できます。
 
@@ -33,10 +35,12 @@ CSP パートナーは、次の目的に Cost Management を使用します。
 - 従量課金制サブスクリプションを使用して、そのコストと使用状況データをストレージ BLOB にエクスポートします。
 
 すべての顧客のコストを示す例を次に示します。
-![すべての顧客のコストを示す例](./media/get-started-partners/customer-costs1.png)
+
+[![すべての顧客のコストを示す例](./media/get-started-partners/customer-costs1.png)](./media/get-started-partners/customer-costs1.png#lightbox)
 
 1 人の顧客のコストを示す例を次に示します。
-![1 人の顧客のコストを示す例](./media/get-started-partners/customer-costs2.png)
+
+[![1 人の顧客のコストを示す例](./media/get-started-partners/customer-costs2.png)](./media/get-started-partners/customer-costs2.png#lightbox)
 
 Azure Cost Management で使用できるすべての機能は、REST API でも使用できます。 API を使用してコスト管理タスクを自動化します。
 
@@ -50,8 +54,7 @@ Azure Cost Management には、課金アカウントまたはサブスクリプ�
 
 課金アカウントでの Azure Cost Management へのアクセスの有効化と割り当ての詳細については、「[ユーザー ロールとアクセス許可の割り当て](/partner-center/permissions-overview)」を参照してください。 **全体管理者**ロールと**管理エージェント** ロールは、課金アカウントのコストを管理できます。
 
-サブスクリプション スコープで Azure Cost Management にアクセスする場合、サブスクリプションに対して RBAC アクセス権を持つユーザーは、小売 (従量課金制) レートでコストを表示できます。 ただし、顧客テナントのコスト可視性ポリシーが有効になっている必要があります。 サポートされているアカウントの種類の完全な一覧については、「[Cost Management のデータを理解する](understand-cost-mgt-data.md)」を参照してください。
-
+サブスクリプション スコープで Azure Cost Management にアクセスする場合、サブスクリプションに対して RBAC アクセス権を持つユーザーは、小売 (従量課金制) レートでコストを表示できます。 ただし、[顧客テナントのコスト可視性ポリシー](#enable-the-policy-to-view-azure-usage-charges)が有効になっている必要があります。 サポートされているアカウントの種類の完全な一覧については、「[Cost Management のデータを理解する](understand-cost-mgt-data.md)」を参照してください。
 
 ## <a name="how-cost-management-uses-scopes"></a>Cost Management でのスコープの使用方法
 
@@ -110,13 +113,13 @@ Azure Cost Management には、課金アカウントまたはサブスクリプ�
 
 **グローバル管理者**および**管理エージェント**のロールを持つユーザーのみが、パートナーの Azure テナントで直接、課金アカウント、課金プロファイル、顧客のコストを管理および表示できます。 パートナー センターのロールの詳細については、「[ユーザー ロールとアクセス許可の割り当て](/partner-center/permissions-overview)」を参照してください。
 
-## <a name="enable-cost-management-in-the-customer-tenant"></a>顧客テナントでコスト管理を有効にする
+## <a name="enable-cost-management-for-customer-tenant-subscriptions"></a>顧客テナントのサブスクリプションのコスト管理ができるようにする
 
 顧客が Microsoft 顧客契約にオンボードされた後、Cost Management へのアクセスをパートナーが有効化できます。 パートナーはその後、従量課金制の小売料金で計算された顧客コストを顧客が表示することを許可するポリシーを有効化できます。 コストは顧客の請求通貨で、RBAC サブスクリプションおよびリソース グループのスコープで顧客が使用した分量に対して示されます。
 
 コスト可視性のポリシーをパートナーが有効にすると、Azure Resource Manager でサブスクリプションにアクセスできるユーザーが、従量課金制の料金でコストを管理および分析できます。 実質的には、Azure サブスクリプションへの適切な RBAC アクセスを持つリセラーと顧客が、コストを表示できます。
 
-パートナーがサブスクリプションとリソース グループにアクセスできる場合、ポリシーに関係なく、パートナーもコストを表示できます。
+ポリシーに関係なく、プロバイダーのグローバル管理者と管理エージェントは、サブスクリプションとリソー スグループにアクセスできる場合、サブスクリプションのコストを表示できます。
 
 ### <a name="enable-the-policy-to-view-azure-usage-charges"></a>Azure の使用料金を表示するためのポリシーを有効にする
 
@@ -126,7 +129,7 @@ Azure portal で、パートナー テナントにサインインし、 **[Cost 
 
 顧客の一覧で、コストの表示を許可する顧客を選択します。
 
-![Cost Management で顧客を選択する](./media/get-started-partners/customer-list.png)
+[![Cost Management で顧客を選択する](./media/get-started-partners/customer-list.png)](./media/get-started-partners/customer-list.png#lightbox)
 
 **[設定]** で、 **[ポリシー]** を選択します。
 
@@ -139,16 +142,17 @@ Azure portal で、パートナー テナントにサインインし、 **[Cost 
 
 コスト可視性ポリシーが有効になっている場合、サブスクリプション使用量のあるすべてのサービスが、従量課金制の料金でコストを示します。 予約使用量は、実際のコストも償却済みコストも料金がゼロと表示されます。 購入およびエンタイトルメントは特定のサブスクリプションに関連付けられません。 そのため、サブスクリプション スコープでは購入は表示されません。
 
+### <a name="view-subscription-costs-in-the-customer-tenant"></a>顧客テナントのサブスクリプション コストを表示する
 
-### <a name="view-customer-costs"></a>顧客のコストを表示する
+サブスクリプションのコストを表示するには、顧客の Azure テナントで **[コストの管理と請求]** を開きます。 必要なサブスクリプションで **[コスト分析]** を選択し、コストの確認を開始します。 各サブスクリプションの消費コストは、個別に顧客テナントで確認できます。
 
-顧客テナントのコストを表示するには、 **[コストの管理と請求]** を開きます。 **[コスト分析]** を選択し、顧客テナントのサブスクリプションにスコープを変更して、コストの確認を始めます。
-
-![顧客としてコスト分析を表示する ](./media/get-started-partners/customer-tenant-view-cost-analysis.png)
+[![顧客としてコスト分析を表示する](./media/get-started-partners/subscription-costs.png)](./media/get-started-partners/subscription-costs.png#lightbox)
 
 コスト分析、予算、アラートは、従量課金制の料金に基づいたコストで、サブスクリプションとリソース グループの RBAC スコープで利用できます。
 
 RBAC スコープの予約インスタンスの償却ビューおよび実際のコストでは、料金がゼロと表示されます。 予約インスタンスのコストは、購入が行われた課金スコープでのみ表示されます。
+
+このビューに表示されるコスト計算に使用される小売料金は、すべてのお客様の Azure 料金計算ツールに表示される料金と同じです。 表示されるコストには、パートナーが持っているパートナー獲得クレジット、階層割引、グローバル サービス割引などの割引やクレジットは含まれません。
 
 ## <a name="analyze-costs-in-cost-analysis"></a>コスト分析でコストを分析する
 

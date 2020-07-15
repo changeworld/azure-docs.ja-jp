@@ -4,14 +4,14 @@ description: Azure Database for PostgreSQL での認証のための、マネー�
 author: lfittl-msft
 ms.author: lufittl
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: 01a27a9c98c1c429cdc381ba0c1e9ef4186c9e7a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ec9e53ecaa95f6407a00c149abb6ed7e4a671d74
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663350"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102295"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-postgresql"></a>マネージド ID を使用して Azure Database for PostgreSQL に接続する
 
@@ -82,9 +82,9 @@ CREATE ROLE myuser WITH LOGIN PASSWORD 'CLIENT_ID' IN ROLE azure_ad_user;
 * `resource` = `https://ossrdbms-aad.database.windows.net`
 * `client_id` = `CLIENT_ID` (前の手順で取得したもの)
 
-`access_token` フィールドを含む JSON の結果が返されます。この長いテキスト値がマネージド ID アクセス トークンで、データベースに接続する場合にこれをパスワードとして使用する必要があります。
+`access_token` フィールドを含む JSON の結果が返されます。この長いテキスト値がマネージド ID アクセス トークンで、データベースに接続する際にこれをパスワードとして使用する必要があります。
 
-テストのために、シェルで次のコマンドを実行できます。 `curl`、`jq`、および `psql` クライアントがインストールされている必要があることにご注意ください。
+テストのために、シェルで次のコマンドを実行できます。 `curl`、`jq`、`psql` クライアントがインストールされている必要があることにご注意ください。
 
 ```bash
 # Retrieve the access token
@@ -100,7 +100,7 @@ psql -h SERVER --user USER@SERVER DBNAME
 
 このセクションでは、VM のユーザー割り当てマネージド ID を使用してアクセス トークンを取得し、それを使用して Azure Database for PostgreSQL を呼び出す方法を説明します。 Azure Database for PostgreSQL では Azure AD 認証がネイティブにサポートされるため、Azure リソースのマネージド ID を使用して取得されたアクセス トークンを直接受け入れることができます。 PostgreSQL への接続を作成する場合は、[パスワード] フィールドにアクセス トークンを渡します。
 
-アクセス トークンを使用して PostgreSQL への接続を開く .NET のコード例を次に示します。 このコードは、VM のユーザー割り当てマネージド ID のエンドポイントにアクセスするため、VM 上で実行する必要があります。 アクセス トークン メソッドを使用するには、.NET Framework 4.6 以降または .NET Core 2.2 以降が必要です。 HOST、USER、DATABASE、CLIENT_ID の値は置き換えて使用してください。
+アクセス トークンを使用して PostgreSQL への接続を開く .NET のコード例を次に示します。 このコードは、VM のユーザー割り当てマネージド ID のエンドポイントにアクセスするため、VM 上で実行する必要があります。 アクセス トークン メソッドを使用するには、.NET Framework 4.6 以降または .NET Core 2.2 以降が必要です。 HOST、USER、DATABASE、CLIENT_ID の値は置き換えてご使用ください。
 
 ```csharp
 using System;

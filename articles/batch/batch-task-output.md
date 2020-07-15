@@ -4,12 +4,12 @@ description: Batch タスクやジョブから出力データを保持するさ�
 ms.topic: how-to
 ms.date: 11/14/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 492de237acdf2d6d42f27638bac3adc0f6549828
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 4ebe0b6d57225eff9f3f1251d5e491c95e9b7ffc
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726300"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965112"
 ---
 # <a name="persist-job-and-task-output"></a>ジョブとタスク出力を保持する
 
@@ -35,7 +35,7 @@ ms.locfileid: "83726300"
 
 ### <a name="use-the-batch-service-api"></a>Batch サービス API を使用する
 
-Batch サービスでは、[タスクをジョブに追加する](https://docs.microsoft.com/rest/api/batchservice/add-a-task-to-a-job)時点、または[タスクのコレクションをジョブに追加する](https://docs.microsoft.com/rest/api/batchservice/add-a-collection-of-tasks-to-a-job)時点で、タスク データ用に Azure Storage 内に出力ファイルを指定することができます。
+Batch サービスでは、[タスクをジョブに追加する](/rest/api/batchservice/add-a-task-to-a-job)時点、または[タスクのコレクションをジョブに追加する](/rest/api/batchservice/add-a-collection-of-tasks-to-a-job)時点で、タスク データ用に Azure Storage 内に出力ファイルを指定することができます。
 
 Batch サービス API を使用してタスク出力を保持することの詳細については、「[Persist task data to Azure Storage with the Batch service API](batch-task-output-files.md) (Batch サービス API を使用してタスクのデータを Azure Storage に保持する)」を参照してください。
 

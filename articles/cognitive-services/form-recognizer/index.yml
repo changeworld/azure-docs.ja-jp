@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/05/2019
-  ms.openlocfilehash: 953303c8726335c8f8cfdb0919fc33b724549974
-  ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+  ms.openlocfilehash: f90782dc2edc9ce21b82c6b18e4efe014d160c20
+  ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/27/2020
-  ms.locfileid: "83997113"
+  ms.lasthandoff: 07/08/2020
+  ms.locfileid: "86086740"
 landingContent:
 - title: Form Recognizer について
   linkLists:
@@ -119,15 +119,15 @@ landingContent:
   - linkListType: reference
     links:
     - text: Form Recognizer API v2.0
-      url: https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm
+      url: https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm
     - text: Form Recognizer API v1.0
       url: https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/AnalyzeWithCustomModel
     - text: .NET SDK
-      url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview
+      url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer
     - text: Azure PowerShell
       url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
     - text: Azure コマンド ライン インターフェイス (CLI)
-      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list
+      url: https://docs.microsoft.com/cli/azure/cognitiveservices#az-cognitiveservices-list
 - title: ヘルプとフィードバック
   linkLists:
   - linkListType: reference

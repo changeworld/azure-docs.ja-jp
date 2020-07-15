@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4d2ee2bccf94dca933981c3070323b659eab6cfa
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: f7bf1c8f3f1ecbb21207776a99bba99d123ea891
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836092"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171943"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Azure Cognitive Search へのファセット ナビゲーションの実装方法
 
@@ -284,10 +284,12 @@ if (businessTitleFacet != "")
 
 ファセットの結果は、ファセット語句に一致する検索結果で見つかったドキュメントです。 *cloud computing* の検索結果を示す次の例では、254 個の項目は Content type も *Internal specification* で一致しています。 項目は必ずしも相互に排他的ではありません。 1 つの項目が両方のフィルターの条件を満たしている場合、その項目はそれぞれにカウントされます。 この重複は、ドキュメントのタグ付けを実装するために使用されることの多い `Collection(Edm.String)` フィールドのファセット処理で発生する可能性があります。
 
-        Search term: "cloud computing"
-        Content type
-           Internal specification (254)
-           Video (10) 
+```output
+Search term: "cloud computing"
+Content type
+   Internal specification (254)
+   Video (10)
+```
 
 一般に、ファセットの結果がなかなか小さくならない場合は、フィルターを増やして、検索をさらに絞り込むためのオプションをユーザーに提供することをお勧めします。
 
@@ -321,7 +323,7 @@ if (businessTitleFacet != "")
 
 シャーディング アーキテクチャのために、ファセットの数が正しくなくなる可能性があります。 すべての検索インデックスに複数のシャードがあり、それぞれのシャードがドキュメント数によって上位 N ファセットを報告すると、単一の結果に結合されます。 一部のシャードの一致値が多く、他のシャードは少ない場合、一部のファセットの値が結果に含まれないか、または数が少なくなる可能性があります。
 
-この動作はいつでも変わる可能性がありますが、現在発生している場合は、カウント:\<数> の値を意図的に増やして各シャードから強制的に完全レポートすることによって回避できます。 count: の値がフィールドの固有の値の数と等しいかそれより大きい場合、正確な結果が保証されます。 ただし、ドキュメントの数が大きい場合はパフォーマンスが低下するので、このオプションは注意して使用する必要があります。
+この動作はいつでも変わる可能性がありますが、現在発生している場合は、count:\<number> を意図的に大きい値に増やして各シャードから強制的に完全にレポートすることによって回避できます。 count: の値がフィールドの固有の値の数と等しいかそれより大きい場合、正確な結果が保証されます。 ただし、ドキュメントの数が大きい場合はパフォーマンスが低下するので、このオプションは注意して使用する必要があります。
 
 ### <a name="user-interface-tips"></a>ユーザー インターフェイスのヒント
 **ファセット ナビゲーションの各フィールドのラベルを追加する**
@@ -345,7 +347,7 @@ $10 刻みの価格ファセットを設定するには、`&facet=price,interval
 
 上記のスクリーンショットのようなファセットの範囲を指定するには、値のリストを使用します。
 
-    facet=listPrice,values:10|25|100|500|1000|2500
+> `facet=listPrice,values:10|25|100|500|1000|2500`
 
 各範囲は始点として 0 を、終点としてリストの値を使用して作成され、前の範囲を除くことによって個別の間隔が作成されます。 Azure Cognitive Search は、ファセット ナビゲーションの一部としてこれらのことを行います。 各間隔を作成するためのコードを記述する必要はありません。
 

@@ -7,14 +7,15 @@ author: matt1883
 ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.assetid: d4213a19-4d0f-49c9-871c-9cd6ed7cf731
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/08/2018
-ms.openlocfilehash: d40658e1510c9ae8a2e3e1f865df7ac95f61abfb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: tracking-python
+ms.openlocfilehash: 23c2560d44dfeaa871c88d40175d60b3b29dc1b8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68355984"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121267"
 ---
 # <a name="manage-azure-data-lake-analytics-using-python"></a>Python を使用して Azure Data Lake Analytics を管理する
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -39,7 +40,7 @@ ms.locfileid: "68355984"
 
 最初に、次のコマンドを実行して最新の `pip` があることを確認します。
 
-```
+```console
 python -m pip install --upgrade pip
 ```
 
@@ -47,7 +48,7 @@ python -m pip install --upgrade pip
 
 コマンドラインからモジュールをインストールするには、次の `pip` コマンドを使用します。
 
-```
+```console
 pip install azure-mgmt-resource
 pip install azure-datalake-store
 pip install azure-mgmt-datalake-store

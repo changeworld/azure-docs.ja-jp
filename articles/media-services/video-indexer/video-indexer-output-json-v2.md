@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: juliako
-ms.openlocfilehash: 2fac5e07f9646c4fc0fac7b1be53b5a5ac1ea803
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e3501ea8bc327f0dd906a42702194abce18c5fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225455"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84656582"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>API によって生成される Video Indexer の出力の詳細
 
@@ -89,7 +89,7 @@ ms.locfileid: "79225455"
 |faces|0 以上の顔を含めることができます。 詳しくは、「[顔](#faces)」をご覧ください。|
 |keywords|0 個以上のキーワードを含めることができます。 詳しくは、「[キーワード](#keywords)」をご覧ください。|
 |sentiments|0 個以上のセンチメントを含めることができます。 詳しくは、「[センチメント](#sentiments)」をご覧ください。|
-|audioEffects| 0 個以上の audioEffects を含めることができます。 詳しくは、「[audioEffects](#audioEffects)」をご覧ください。|
+|audioEffects| 0 個以上の audioEffects を含めることができます。 詳しくは、「[audioEffects](#audioeffects)」をご覧ください。|
 |labels| 0 以上のラベルを含めることができます。 詳細については、「[ラベル](#labels)」をご覧ください。|
 |brands| 0 以上のブランドを含めることができます。 詳しくは、「[ブランド](#brands)」をご覧ください。|
 |statistics | 詳しくは、「[統計](#statistics)」をご覧ください。|
@@ -166,7 +166,7 @@ ms.locfileid: "79225455"
 |labels|[labels](#labels) 分析情報。|
 |shots|[shots](#shots) 分析情報。|
 |brands|[brands](#brands) 分析情報。|
-|audioEffects|[audioEffects](#audioEffects) 分析情報。|
+|audioEffects|[audioEffects](#audioeffects) 分析情報。|
 |sentiments|[sentiments](#sentiments) 分析情報。|
 |visualContentModeration|[visualContentModeration](#visualcontentmoderation) 分析情報。|
 |textualContentModeration|[textualContentModeration](#textualcontentmoderation) 分析情報。|
@@ -561,7 +561,7 @@ instances|このブロックの時間範囲の一覧|
 |SpeakerLongestMonolog|話者の最も長いモノローグ。 モノローグでの話者の沈黙がある場合、それも含まれます。 モノローグの先頭と末尾の無音は削除されます。| 
 |SpeakerTalkToListenRatio|計算は、ビデオの合計時間で割られた話者のモノローグに費やされた時間に基づきます (間の無音は含みません)。 時間は、小数点第 3 位に丸められます。|
 
-#### <a name="audioeffects"></a><a id="audioEffects"/>audioEffects
+#### <a name="audioeffects"></a>audioEffects
 
 |名前|説明|
 |---|---|

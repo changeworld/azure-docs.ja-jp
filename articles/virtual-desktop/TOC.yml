@@ -23,7 +23,7 @@
     - name: Windows Virtual Desktop リソースに接続する
       items:
         - name: Windows デスクトップ クライアントを使用して接続する
-          href: connect-windows-7-and-10.md
+          href: connect-windows-7-10.md
         - name: Web クライアントに接続する
           href: connect-web.md
         - name: Android クライアントに接続する
@@ -38,6 +38,8 @@
       items:
         - name: PowerShell
           href: create-host-pools-powershell.md
+        - name: Windows 7 仮想マシンをデプロイする
+          href: deploy-windows-7-virtual-machine.md
         - name: GPU ベースのセッション ホストをデプロイする
           href: configure-vm-gpu.md
         - name: 既存のホスト プールを展開する
@@ -90,6 +92,8 @@
       href: language-packs.md
 - name: 概念
   items:
+    - name: 安全な URL リスト
+      href: safe-url-list.md
     - name: Windows Virtual Desktop の環境
       href: environment-setup.md
     - name: ユーザー接続の待ち時間の特定
@@ -141,7 +145,9 @@
 - name: リソース
   items:
     - name: PowerShell
-      href: '/powershell/module/az.desktopvirtualization/?view=azps-4.2.0#desktopvirtualization'
+      href: /powershell/module/az.desktopvirtualization/?view=azps-4.2.0#desktopvirtualization
+    - name: REST API リファレンス
+      href: /rest/api/desktopvirtualization/
     - name: エクスペリエンス見積もりツール
       href: 'https://azure.microsoft.com/services/virtual-desktop/assessment/'
     - name: 料金計算ツール

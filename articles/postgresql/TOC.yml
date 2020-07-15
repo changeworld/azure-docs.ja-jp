@@ -112,6 +112,8 @@
               href: concepts-data-access-and-security-private-link.md
             - name: データの暗号化
               href: concepts-data-encryption-postgresql.md
+            - name: インフラストラクチャの二重暗号化
+              href: concepts-infrastructure-double-encryption.md
             - name: セキュリティ ベースライン
               href: security-baseline.md
         - name: ビジネス継続性
@@ -161,6 +163,10 @@
               href: concepts-read-replicas.md
             - name: 論理デコード
               href: concepts-logical.md
+        - name: リージョン間の移動
+          items:
+            - name: Azure portal
+              href: howto-move-regions-portal.md
     - name: Hyperscale (Citus)
       items:
         - name: Nodes
@@ -193,6 +199,8 @@
           items:
             - name: 構成オプション
               href: concepts-hyperscale-configuration-options.md
+            - name: 予約容量の前払い
+              href: concepts-hyperscale-reserved-pricing.md
 - name: 操作方法ガイド
   items:
     - name: 単一サーバー
@@ -301,6 +309,10 @@
               href: howto-data-encryption-cli.md
             - name: データ暗号化の検証
               href: howto-data-encryption-validation.md
+        - name: インフラストラクチャの二重暗号化
+          items:
+            - name: インフラストラクチャの二重暗号化を構成する
+              href: howto-double-encryption.md
         - name: サーバーの再起動
           items:
             - name: Azure portal

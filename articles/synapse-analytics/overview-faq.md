@@ -5,16 +5,16 @@ services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2c470483cee8b621475fa70dd09c80aa126173be
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 43f0dfa5fd413d201eb8c63aa752a6fd8db68f6c
+ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609150"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85807878"
 ---
 # <a name="azure-synapse-analytics-workspaces-preview-frequently-asked-questions"></a>Azure Synapse Analytics (ワークスペース プレビュー) のよく寄せられる質問
 
@@ -48,6 +48,10 @@ A:Azure Synapse には次の機能があります。
 A:Azure Synapse Analytics は Azure SQL Data Warehouse を分析プラットフォームへと進化させたもので、SQL プールをデータ ウェアハウス ソリューションとして備えています。 このプラットフォームは、データの探索、インジェスト、変換、準備、およびサービスを提供する分析レイヤーを兼ね備えています。
 
 ## <a name="use-cases"></a>ユース ケース
+
+### <a name="q-how-do-i-rename-a-published-artifact-dataset-notebook-sql-script-and-so-on-in-azure-synapse"></a>Q:Azure Synapse では、どのように公開されているアーティファクト (データセット、ノートブック、SQL スクリプトなど) を名前変更するのですか
+
+A:公開されているアーティファクト ファイルを名前変更するには、まずファイルを複製し、新しいファイルの名前を好みの名前に変更します。 アーティファクトを参照しているすべてのファイルの名前を、手動で新しいものに更新し、古いファイルを削除する必要があります。
 
 ### <a name="q-what-is-a-good-use-case-for-synapse-sql-pool"></a>Q:Synapse SQL プールに適したユース ケースを教えてください
 

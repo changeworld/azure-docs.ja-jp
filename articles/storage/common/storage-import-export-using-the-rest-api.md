@@ -4,16 +4,16 @@ description: Azure Import/Export サービス REST API の使用に関する、�
 author: twooley
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/15/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: 833b8c79fba57b7129092e084381c0671c396496
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ae80c00fd81d0966167d2adf00764a0b1089c163
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74978868"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514106"
 ---
 # <a name="using-the-azure-importexport-service-rest-api"></a>Azure Import/Export サービス REST API の使用
 

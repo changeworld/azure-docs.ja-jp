@@ -10,17 +10,17 @@ ms.service: virtual-network
 ms.subservice: nat
 Customer intent: As an IT administrator, I want to understand available Azure Monitor metrics and alerts for Virtual Network NAT.
 ms.devlang: na
-ms.topic: overview
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: 7b4f433ec5782c7a819ffcd6f48bf277d7b13de2
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 75e20a4fb91b73bc353d347f0b34f9be8f7a8a58
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84341356"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84709948"
 ---
 # <a name="azure-virtual-network-nat-metrics"></a>Azure Virtual Network NAT のメトリック
 

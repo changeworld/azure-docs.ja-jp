@@ -8,10 +8,10 @@ ms.date: 03/25/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: c60c1d33954b5e12038fd66787225f4d0aeba62d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82184709"
 ---
 # <a name="azure-security-baseline-for-event-hubs"></a>Event Hubs 用の Azure セキュリティ ベースライン
@@ -70,7 +70,7 @@ Azure Security Center によって提供されるネットワークのセキュ�
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4:既知の悪意のある IP アドレスとの通信を拒否する
 
-**ガイダンス**: イベント ハブに関連付けられた仮想ネットワーク上で DDoS Protection Standard を有効にして、分散型サービス拒否 (DDoS) 攻撃から保護します。 Azure Security Center の統合された脅威インテリジェンスを使用して、既知の悪意のある、または未使用のインターネット IP アドレスとの通信を拒否します。
+**ガイダンス**:イベント ハブに関連付けられた仮想ネットワーク上で DDoS Protection Standard を有効にして、分散型サービス拒否 (DDoS) 攻撃から保護します。 Azure Security Center の統合された脅威インテリジェンスを使用して、既知の悪意のある、または未使用のインターネット IP アドレスとの通信を拒否します。
 
 DDoS 保護を構成する方法: [https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection](/azure/virtual-network/manage-ddos-protection)
 
@@ -220,7 +220,7 @@ Azure アクティビティ ログの診断設定を有効にする方法: https
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5:セキュリティ ログのストレージ保持を構成する
 
-**ガイダンス**: Azure Monitor 内で、組織のコンプライアンス規則に従って Log Analytics ワークスペースの保持期間を設定し、イベント ハブ関連のインシデントを取得して確認します。
+**ガイダンス**:Azure Monitor 内で、組織のコンプライアンス規則に従って Log Analytics ワークスペースの保持期間を設定し、イベント ハブ関連のインシデントを取得して確認します。
 
 Log Analytics ワークスペースのログ保持パラメーターを設定する方法: https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
 
@@ -279,7 +279,7 @@ Azure Sentinel をオンボードする方法: https://docs.microsoft.com/azure/
 
 ### <a name="210-enable-command-line-audit-logging"></a>2.10:コマンドライン監査ログ記録を有効にする
 
-**ガイダンス**: 適用できません。このガイドラインは、コンピューティング リソースを対象にしています。
+**ガイダンス**:適用できません。このガイドラインは、コンピューティング リソースを対象にしています。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -303,7 +303,7 @@ PowerShell を使用して Azure AD でディレクトリ ロールのメンバ�
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2: 既定のパスワードを変更する (該当する場合)
 
-**ガイダンス**: Event Hubs へのコントロール プレーン アクセスは、Azure Active Directory (AD) を介して制御されます。 Azure AD には既定のパスワードという概念がありません。
+**ガイダンス**:Event Hubs へのコントロール プレーン アクセスは、Azure Active Directory (AD) を介して制御されます。 Azure AD には既定のパスワードという概念がありません。
 
 Event Hubs へのデータ プレーン アクセスは、マネージド ID またはアプリの登録と Shared Access Signature を使用して、Azure AD を介して制御されます。 Shared Access Signature は、イベント ハブに接続するクライアントによって使用され、いつでも再生成することができます。
 
@@ -335,7 +335,7 @@ Azure Policy を使用する方法: https://docs.microsoft.com/azure/governance/
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: シングル サインオン (SSO) と Azure Active Directory を統合する
 
-**ガイダンス**: Microsoft Azure では、Azure Active Directory (AD) をベースとする、リソースとアプリケーションの統合されたアクセス制御管理が提供されます。 Azure Event Hubs で Azure AD を使用する主な利点は、資格情報をコード内に格納する必要がなくなることです。 代わりに、Microsoft ID プラットフォームから OAuth 2.0 アクセス トークンを要求することができます。 トークンを要求するリソース名は https:\//eventhubs.azure.net/ です。 Azure AD によって、アプリケーションを実行しているセキュリティ プリンシパル (ユーザー、グループ、またはサービス プリンシパル) が認証されます。 認証が成功すると、Azure AD からアプリケーションにアクセス トークンが返されます。アプリケーションでは、このアクセス トークンを使用して Azure Event Hubs リソースへの要求を承認できます。
+**ガイダンス**:Microsoft Azure では、Azure Active Directory (AD) をベースとする、リソースとアプリケーションの統合されたアクセス制御管理が提供されます。 Azure Event Hubs で Azure AD を使用する主な利点は、資格情報をコード内に格納する必要がなくなることです。 代わりに、Microsoft ID プラットフォームから OAuth 2.0 アクセス トークンを要求することができます。 トークンを要求するリソース名は https:\//eventhubs.azure.net/ です。 Azure AD によって、アプリケーションを実行しているセキュリティ プリンシパル (ユーザー、グループ、またはサービス プリンシパル) が認証されます。 認証が成功すると、Azure AD からアプリケーションにアクセス トークンが返されます。アプリケーションでは、このアクセス トークンを使用して Azure Event Hubs リソースへの要求を承認できます。
 
 Event Hubs リソースにアクセスするために Azure Active Directory でアプリケーションを認証する方法: https://docs.microsoft.com/azure/event-hubs/authenticate-application
 
@@ -425,7 +425,7 @@ Event Hubs の Shared Access Signature について: https://docs.microsoft.com/
 
 ### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11: 非アクティブ化されたアカウントへのアクセス試行を監視する
 
-**ガイダンス**: Azure Active Directory (AD) サインイン アクティビティ、監査、およびリスク イベント ログのソースにアクセスできるため、任意の SIEM または監視ツールと統合することができます。
+**ガイダンス**:Azure Active Directory (AD) サインイン アクティビティ、監査、およびリスク イベント ログのソースにアクセスできるため、任意の SIEM または監視ツールと統合することができます。
 
 このプロセスを効率化するには、Azure AD ユーザー アカウントの診断設定を作成し、監査ログとサインイン ログを Log Analytics ワークスペースに送信します。 Log Analytics 内で必要なログ アラートを構成できます。
 
@@ -453,7 +453,7 @@ Azure Sentinel をオンボードする方法: https://docs.microsoft.com/azure/
 
 ### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13: サポート シナリオで関連する顧客データに Microsoft がアクセスできるようにする
 
-**ガイダンス**: 現時点ではご利用いただけません。カスタマー ロックボックスは、Event Hubs ではまだサポートされていません。
+**ガイダンス**:現時点ではご利用いただけません。カスタマー ロックボックスは、Event Hubs ではまだサポートされていません。
 
 カスタマー ロックボックスでサポートされているサービスの一覧: https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
@@ -571,7 +571,7 @@ Azure Event Hubs を暗号化するためにカスタマー マネージド キ�
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9:重要な Azure リソースへの変更に関するログとアラート
 
-**ガイダンス**: Azure Event Hubs の運用インスタンスやその他の重要なリソースまたは関連リソースへの変更がいつ発生したかに関するアラートを作成するには、Azure Monitor と Azure アクティビティ ログを使用します。
+**ガイダンス**:Azure Event Hubs の運用インスタンスやその他の重要なリソースまたは関連リソースへの変更がいつ発生したかに関するアラートを作成するには、Azure Monitor と Azure アクティビティ ログを使用します。
 
 Azure アクティビティ ログ イベントのアラートを作成する方法: https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
@@ -874,7 +874,7 @@ Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure
 
 ### <a name="711-manage-azure-secrets-securely"></a>7.11:Azure シークレットを安全に管理する
 
-**ガイダンス**: イベント ハブへのアクセスに使用される Azure App Service で実行されている Azure 仮想マシンまたは Web アプリの場合は、マネージド サービス ID を Azure Key Vault と組み合わせて使用して、Azure Event Hubs デプロイの Shared Access Signature の管理を簡素化し、セキュリティで保護します。 Key Vault の論理的な削除を確実に有効にします。
+**ガイダンス**:イベント ハブへのアクセスに使用される Azure App Service で実行されている Azure 仮想マシンまたは Web アプリの場合は、マネージド サービス ID を Azure Key Vault と組み合わせて使用して、Azure Event Hubs デプロイの Shared Access Signature の管理を簡素化し、セキュリティで保護します。 Key Vault の論理的な削除を確実に有効にします。
 
 Azure Active Directory を使用して Event Hubs リソースにアクセスするためのマネージド ID を認証する: https://docs.microsoft.com/azure/event-hubs/authenticate-managed-identity?tabs=latest
 
@@ -1032,7 +1032,7 @@ Azure Security Center 内でワークフロー自動化を構成する方法: ht
 
 ### <a name="103-test-security-response-procedures"></a>10.3:セキュリティ対応手順のテスト
 
-**ガイダンス**: 定期的にシステムのインシデント対応機能をテストする演習を実施します。 弱点やギャップを特定し、必要に応じて計画を見直します。
+**ガイダンス**:定期的にシステムのインシデント対応機能をテストする演習を実施します。 弱点やギャップを特定し、必要に応じて計画を見直します。
 
 NIST の出版物を参照してください。IT の計画と機能に関するテスト、トレーニング、演習プログラムのガイド: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 

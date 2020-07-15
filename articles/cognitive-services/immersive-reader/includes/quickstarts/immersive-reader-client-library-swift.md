@@ -1,7 +1,7 @@
 ---
 title: イマーシブ リーダー Swift クライアント ライブラリのクイックスタート
 titleSuffix: Azure Cognitive Services
-description: このクイックスタートでは、Web アプリを一から構築してイマーシブ リーダー API 機能を追加します。
+description: このクイックスタートでは、iOS アプリを一から構築してイマーシブ リーダー API 機能を追加します。
 services: cognitive-services
 author: pasta
 manager: nitinme
@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/20/2020
 ms.author: pasta
-ms.openlocfilehash: 191d802064d477babd8aa1f782ad15876b821d11
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 3d0a8444312f37b1f59817d50bdc50d3aff22164
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84268687"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86038366"
 ---
 [イマーシブ リーダー](https://www.onenote.com/learningtools)は、読解力向上のために実証済みの手法を実装する、包括的に設計されたツールです。
 
@@ -573,4 +573,4 @@ Xcode で、**Ctrl + R** キーを押すか再生ボタンをクリックして�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [イマーシブ リーダー SDK リファレンス](../../reference.md)を参照する
+* [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) と [Immersive Reader SDK リファレンス](../../reference.md)を探索する

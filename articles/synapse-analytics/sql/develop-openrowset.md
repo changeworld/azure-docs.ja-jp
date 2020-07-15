@@ -5,16 +5,16 @@ services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9c2a2d7059e24b37b0f47d0b568a3929f296d8c6
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 786f277c1a46213b43f81b5cfa563303b3d7ddf9
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560866"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921310"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>SQL オンデマンド (プレビュー) で OPENROWSET を使用する方法
 
@@ -49,10 +49,10 @@ Synapse SQL の OPENROWSET 関数は、データ ソースからファイルの�
     この方法では、データソースにストレージ アカウントの場所を構成し、ストレージへのアクセスに使用する認証方法を指定できます。 
     
     > [!IMPORTANT]
-    > `DATA_SOURCE` を指定しない `OPENROWSET` では、ストレージ ファイルにすばやく簡単にアクセスできますが、認証オプションが限られます。 たとえば、Azure AD プリンシパルがファイルにアクセスするには [Azure AD ID](develop-storage-files-storage-access-control.md?tabs=user-identity#force-azure-ad-pass-through) を使用するしかなく、一般公開されているファイルにはアクセスできません。 より強力な認証オプションが必要な場合は、`DATA_SOURCE` オプションを使用して、ストレージへのアクセスに使用する資格情報を定義します。
+    > `DATA_SOURCE` を指定しない `OPENROWSET` では、ストレージ ファイルにすばやく簡単にアクセスできますが、認証オプションが限られます。 例として、Azure AD プリンシパルは、[Azure AD ID](develop-storage-files-storage-access-control.md?tabs=user-identity) を使用した場合にのみファイルにアクセスできるほか、公開されているファイルにアクセスすることができます。 より強力な認証オプションが必要な場合は、`DATA_SOURCE` オプションを使用して、ストレージへのアクセスに使用する資格情報を定義します。
 
 
-## <a name="security"></a>Security
+## <a name="security"></a>セキュリティ
 
 データベース ユーザーが `OPENROWSET` 関数を使用するには `ADMINISTER BULK OPERATIONS` 権限が必要です。
 
@@ -60,7 +60,8 @@ Synapse SQL の OPENROWSET 関数は、データ ソースからファイルの�
 
 `OPENROWSET` は、次の規則を使用してストレージへの認証方法を決定します。
 - `DATA_SOURCE` を指定しない `OPENROWSET` では、認証メカニズムは呼び出し元の種類によって異なります。
-  - Azure AD ログインは、独自の [Azure AD ID](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types) を使用しないとファイルにアクセスできません。これは、Azure Storage が基になるファイルへのアクセスを Azure AD ユーザーに許可している場合 (たとえば、呼び出し元がストレージに対するストレージ閲覧者権限を持っている場合) と Synapse SQL サービス上での [Azure AD パススルー認証を有効](develop-storage-files-storage-access-control.md#force-azure-ad-pass-through)にした場合です。
+  - すべてのユーザーは、`DATA_SOURCE` なしで `OPENROWSET` を使用して、Azure Storage で公開されているファイルを読み取ることができます。
+  - Azure Storage で Azure AD ユーザーによる基になるファイルへのアクセスが許可されている場合 (たとえば、呼び出し元が Azure Storage に対する `Storage Reader` アクセス許可を持っている場合)、Azure AD ログインは、独自の [Azure AD ID](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types) を使用して保護されたファイルにアクセスできます。
   - SQL ログインは、`DATA_SOURCE` を指定しない `OPENROWSET` を使用して、一般公開されたファイル、または SAS トークンや Synapse ワークスペースのマネージド ID を使用して保護されたファイルにアクセスすることもできます。 ストレージのファイルへのアクセスを許可するには、[サーバースコープ資格情報を作成](develop-storage-files-storage-access-control.md#examples)する必要があります。 
 - `DATA_SOURCE` を指定した `OPENROWSET` では、参照先のデータ ソースに割り当てられるデータベース スコープ資格情報に認証メカニズムが定義されます。 この方法では、一般公開されているストレージへのアクセスや、SAS トークン、ワークスペースのマネージド ID、または[呼び出し元の Azure AD ID](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types) (呼び出し元が Azure AD プリンシパルの場合) を使用しているストレージへのアクセスが行えます。 公開されていない Azure Storage を `DATA_SOURCE` が参照している場合は、[データベース スコープ資格情報を作成](develop-storage-files-storage-access-control.md#examples)して、それを `DATA SOURCE` で参照し、ストレージ ファイルへのアクセスを許可する必要があります。
 
@@ -114,9 +115,11 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
 
 | 外部データ ソース       | Prefix | ストレージ アカウント パス                                 |
 | -------------------------- | ------ | ---------------------------------------------------- |
-| Azure Blob Storage         | https  | \<storage_account>.blob.core.windows.net             |
+| Azure Blob Storage         | https  | \<storage_account>.blob.core.windows.net/path/file   |
+| Azure Blob Storage         | wasb   | \<container>@\<storage_account>.blob.core.windows.net/path/file |
 | Azure Data Lake Store Gen1 | https  | \<storage_account>.azuredatalakestore.net/webhdfs/v1 |
-| Azure Data Lake Store Gen2 | https  | \<storage_account>.dfs.core.windows.net              |
+| Azure Data Lake Store Gen2 | https  | \<storage_account>.dfs.core.windows.net /path/file   |
+| Azure Data Lake Store Gen2 | abfss  | [\<file_system>@\<account_name>.dfs.core.windows.net/path/file](../../storage/blobs/data-lake-storage-introduction-abfs-uri.md#uri-syntax)              |
 ||||
 
 '\<storage_path>'
@@ -177,7 +180,7 @@ ESCAPE_CHAR = 'char'
 
 ファイル内でそれ自体とすべての区切り記号の値をエスケープするために使用するファイル内の文字を指定します。 エスケープ文字の後にそれ自体以外の値、またはいずれかの区切り記号の値が続く場合は、その値を読み取るときにエスケープ文字が削除されます。 
 
-ESCAPE_CHAR パラメーターは、FIELDQUOTE が有効かどうかに関係なく適用されます。 引用文字をエスケープするために使用されることはありません。 引用文字は、Excel CSV の動作に合わせて二重引用符でエスケープされます。
+ESCAPE_CHAR パラメーターは、FIELDQUOTE が有効かどうかに関係なく適用されます。 引用文字をエスケープするために使用されることはありません。 引用文字は、別の引用文字でエスケープする必要があります。 引用文字は、値が引用文字で囲まれている場合にのみ、列の値の中で使用できます。
 
 FIRSTROW = 'first_row' 
 
@@ -238,10 +241,6 @@ FROM
     ) AS [r]
 ```
 
-ファイルが一覧表示されないというエラーが発生する場合は、オンデマンドで Synapse SQL のパブリック ストレージにアクセスできるようにする必要があります。
-- SQL ログインを使用している場合は、[パブリック ストレージへのアクセスを許可するサーバー スコープ資格情報を作成](develop-storage-files-storage-access-control.md#examples)する必要があります。
-- パブリック ストレージにアクセスするために Azure AD プリンシパルを使用している場合は、[パブリック ストレージへのアクセスを許可するサーバー スコープ資格情報を作成](develop-storage-files-storage-access-control.md#examples)し、[Azure AD パススルー認証](develop-storage-files-storage-access-control.md#disable-forcing-azure-ad-pass-through)を無効にする必要があります。
-
 ## <a name="next-steps"></a>次のステップ
 
-その他のサンプルは[ストレージ内のデータのクエリに関するクイックスタート](query-data-storage.md)にあります。`OPENROWSET を使用して [CSV](query-single-csv-file.md)、[PARQUET](query-parquet-files.md)、および [JSON](query-json-files.md) ファイル形式を読み取る方法を参照してください。 また、[CETAS](develop-tables-cetas.md) を使用してクエリの結果を Azure Storage に保存する方法も確認できます。
+その他のサンプルについては、[データ ストレージに対するクエリに関するクイックスタート](query-data-storage.md)を参照して、`OPENROWSET` を使用して [CSV](query-single-csv-file.md)、[PARQUET](query-parquet-files.md)、および [JSON](query-json-files.md) ファイル形式を読み取る方法について学習してください。 また、[CETAS](develop-tables-cetas.md) を使用してクエリの結果を Azure Storage に保存する方法も確認できます。

@@ -1,44 +1,46 @@
 ---
 title: Live Video Analytics on IoT Edge の概要 - Azure
-description: このクイックスタートでは、Live Video Analytics on IoT Edge の概要とライブ ビデオ ストリームにおけるモーション検出の方法について説明します。
+description: このクイックスタートでは、Live Video Analytics on IoT Edge の使用を開始する方法について説明します。 ライブ ビデオ ストリーム内のモーションを検出する方法について説明します。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 307a81938be3e25b8a6a07bb3696ca3b7647c0aa
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 98ab333a495c31889bee2a9cddab778a12876af5
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84261567"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84816905"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>クイック スタート:はじめに - Live Video Analytics on IoT Edge
 
-このクイックスタートでは、Live Video Analytics on IoT Edge の基本的な操作手順について説明します。 IoT Edge デバイスとして Azure VM を使用すると共に、シミュレートしたライブ ビデオ ストリームを使用します。 セットアップ手順の完了後、メディア グラフを通じてライブ ビデオ ストリームのシミュレーションを実行することができます。そのストリーム内のあらゆるモーションがメディア グラフによって検出、レポートされます。 そのメディア グラフをグラフィカルに表したものが次の図です。
+このクイックスタートでは、Live Video Analytics on IoT Edge の基本的な操作手順について説明します。 IoT Edge デバイスとして Azure VM を使用します。 また、シミュレートされたライブ ビデオ ストリームも使用します。 
+
+セットアップ手順の完了後、メディア グラフを通じて、シミュレートされたライブ ビデオ ストリームを実行できます。そのストリーム内のあらゆるモーションがメディア グラフによって検出、レポートされます。 次の図は、そのメディア グラフをグラフィカルに表しています。
 
 ![モーション検出に基づく Live Video Analytics](./media/analyze-live-video/motion-detection.png)
 
 ## <a name="prerequisites"></a>前提条件
 
-* アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* [Visual Studio Code](https://code.visualstudio.com/)。[Azure IoT Tools 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)と共に自分の開発マシンにインストールされている必要があります。
-* 開発マシンの接続先ネットワーク。Azure IoT Tools が Azure IoT Hub と通信できるよう、ポート 5671 で AMQP プロトコルが許可されている必要があります。
+* アクティブなサブスクリプションが含まれる Azure アカウント。 まだお持ちでない場合は、[無料のアカウントを作成します](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* 開発用マシン上の [Visual Studio Code](https://code.visualstudio.com/)。 [Azure IoT Tools 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)があることを確認します。
+* 開発用マシンが接続されているネットワークで、ポート 5671 経由の Advanced Message Queuing Protocol (AMQP) が許可されていることを確認します。 このセットアップにより、Azure IoT Tools が Azure IoT Hub と通信できるようになります。
 
 > [!TIP]
-> Azure IoT Tools 拡張機能のインストール中に Docker のインストールを求められる場合があります。 これは無視してかまいません。
+> Azure IoT Tools 拡張機能のインストール中に Docker のインストールを求められる場合があります。 このプロンプトは無視してかまいません。
 
 ## <a name="set-up-azure-resources"></a>Azure リソースの設定
 
-このチュートリアルには、次の Azure リソースが必要です。
+このチュートリアルでは、次の Azure リソースが必要です。
 
 * IoT Hub
 * ストレージ アカウント
 * Azure Media Services アカウント
-* Azure 上の Linux VM ([IoT Edge ランタイム](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)がインストール済み)
+* Azure 内の Linux VM ([IoT Edge ランタイム](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)がインストール済み)
 
-このクイックスタートでは、[Live Video Analytics リソース セットアップ スクリプト](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)を使用して、ご利用の Azure サブスクリプションに上記の Azure リソースをデプロイするようお勧めします。 そのためには、次の手順に従います。
+このクイックスタートでは、[Live Video Analytics リソース セットアップ スクリプト](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)を使用して、ご利用の Azure サブスクリプションに必要なリソースをデプロイすることをお勧めします。 これを行うには、次のステップに従います。
 
-1. https://shell.azure.com を参照します。
-1. Cloud Shell を初めて使用している場合は、ストレージ アカウントと Microsoft Azure Files 共有を作成するためのサブスクリプションを選択するよう求められます。 [ストレージの作成] を選択して、Cloud Shell のセッション情報を保存するためのストレージ アカウントを作成してください。 Azure Media Services アカウントで使用するためのストレージ アカウントもスクリプトによって作成されますが、このストレージ アカウントはそれとは別のものです。
-1. シェル ウィンドウの左側にあるドロップダウンから "Bash" 環境をご利用の環境として選択します。
+1. [Azure Cloud Shell](https://shell.azure.com) に移動します。
+1. Cloud Shell の初回使用時には、ストレージ アカウントと Microsoft Azure Files 共有を作成するためのサブスクリプションの選択を求められます。 **[ストレージの作成]** を選択して、Cloud Shell のセッション情報用のストレージ アカウントを作成します。 このストレージ アカウントは、Azure Media Services アカウントで使用するためにスクリプトによって作成されるアカウントとは別のものです。
+1. Cloud Shell ウィンドウの左側にあるドロップダウン メニューから **[Bash]** をご利用の環境として選択します。
 
     ![環境セレクター](./media/quickstarts/env-selector.png)
 
@@ -48,7 +50,9 @@ ms.locfileid: "84261567"
     bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
     ```
     
-スクリプトが正常に完了すれば、前述したすべてのリソースがご利用のサブスクリプションに表示されます。 スクリプトの出力の一部として、IoT ハブの名前を列挙したリソース一覧が生成されます。 **"Microsoft.Devices/IotHubs"** というリソースの種類を探して、その名前を書き留めてください。 次の手順で必要になります。 さらにこのスクリプトによって、~/clouddrive/lva-sample/ ディレクトリには、いくつかの構成ファイルが生成されます。後でこのクイックスタートの中で、これらのファイルが必要になります。
+スクリプトが正常に終了すれば、必要なすべてのリソースがご利用のサブスクリプションに表示されます。 スクリプトの出力では、リソースの表に IoT ハブ名が一覧表示されます。 リソースの種類 `Microsoft.Devices/IotHubs` を探し、名前を書き留めます。 この名前は次の手順で必要になります。 
+
+このスクリプトにより、いくつかの構成ファイルが *~/clouddrive/lva-sample/* ディレクトリに生成されます。 これらのファイルは、後ほど、このクイックスタートで必要になります。
 
 ## <a name="deploy-modules-on-your-edge-device"></a>エッジ デバイスにモジュールをデプロイする
 
@@ -58,37 +62,39 @@ Cloud Shell から次のコマンドを実行します。
 az iot edge set-modules --hub-name <iot-hub-name> --device-id lva-sample-device --content ~/clouddrive/lva-sample/edge-deployment/deployment.amd64.json
 ```
 
-エッジ デバイス (Linux VM) には、上記のコマンドによって次のモジュールがデプロイされます。
+このコマンドは、次のモジュールをエッジ デバイス (今回のケースでは Linux VM) にデプロイします。
 
-* Live Video Analytics on IoT Edge (モジュール名: "lvaEdge")
-* RTSP シミュレーター (モジュール名: "rtspsim")
+* Live Video Analytics on IoT Edge (モジュール名 `lvaEdge`)
+* リアルタイム ストリーミング プロトコル (RTSP) シミュレーター (モジュール名 `rtspsim`)
 
-RTSP シミュレーター モジュールは、[Live Video Analytics リソース セットアップ スクリプト](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)の実行時にエッジ デバイスにコピーされた保存済みのビデオ ファイルを使用してライブ ビデオ ストリームをシミュレートします。 この段階で、モジュールのデプロイは完了していますが、メディア グラフはアクティブになっていません。
+RTSP シミュレーター モジュールは、[Live Video Analytics リソース セットアップ スクリプト](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)の実行時にエッジ デバイスにコピーされたビデオ ファイルを使用してライブ ビデオ ストリームをシミュレートします。 
 
-## <a name="configure-azure-iot-tools-extension-in-visual-studio-code"></a>Visual Studio Code で Azure IoT Tools 拡張機能を構成する
+これでモジュールはデプロイされましたが、メディア グラフはアクティブになっていません。
 
-Visual Studio Code を起動します。以下の手順に従い、Azure IoT Tools 拡張機能を使用して Azure IoT Hub に接続します。
+## <a name="configure-the-azure-iot-tools-extension"></a>Azure IoT Tools 拡張機能を構成する
 
-1. Visual Studio Code で、 **[表示]**  >  **[エクスプローラー]** の順に移動するか、単に Ctrl + Shift + E キーを押して、[エクスプローラー] タブに移動します。
-1. [エクスプローラー] タブで、左下隅にある [Azure IoT Hub] をクリックします。
-1. [その他のオプション] アイコンをクリックしてコンテキスト メニューを表示し、[Set IoT Hub Connection String]\(IoT Hub の接続文字列の設定\) オプションを選択します。
-1. 入力ボックスがポップアップ表示されたら、該当する IoT Hub の接続文字列を入力します。 IoT Hub の接続文字列は、Cloud Shell で ~/clouddrive/lva-sample/appsettings.json から取得できます。
-1. 接続に成功した場合、エッジ デバイスの一覧が表示されます。 "lva-sample-device" という名前のデバイスが少なくとも 1 つ存在すると思います。
-1. これでコンテキスト メニューから IoT Edge デバイスを管理し、Azure IoT Hub を操作できるようになりました。
-1. "lva-sample-device" の Modules ノードを展開すると、エッジ デバイスにデプロイされたモジュールを表示できます。
+Azure IoT Tools 拡張機能を使用して IoT ハブに接続するには、次の手順に従います。
 
-    ![lva-sample-device ノード](./media/quickstarts/lva-sample-device-node.png)
+1. Visual Studio Code で、 **[表示]**  >  **[エクスプローラー]** を選択します。 または、Ctrl + Shift + E キーを押します。
+1. **[エクスプローラー]** タブの左下隅で、 **[Azure IoT Hub]** を選択します。
+1. **[その他のオプション]** アイコンを選択して、コンテキスト メニューを表示します。 次に、 **[Set IoT Hub Connection String]\(IoT Hub 接続文字列を設定する\)** を選択します。
+1. 入力ボックスが表示されたら、IoT Hub 接続文字列を入力します。 Cloud Shell では、接続文字列を *~/clouddrive/lva-sample/appsettings.json* から取得できます。
+
+接続に成功した場合、エッジ デバイスの一覧が表示されます。 少なくとも 1 つのデバイス (名前は **lva-sample-device**) が表示されます。 これでコンテキスト メニューから IoT Edge デバイスを管理し、Azure IoT Hub を操作できるようになりました。 エッジ デバイスにデプロイされたモジュールを表示するには、**lva-sample-device** の下の **[モジュール]** ノードを展開します。
+
+![lva-sample-device ノード](./media/quickstarts/lva-sample-device-node.png)
 
 ## <a name="use-direct-methods"></a>ダイレクト メソッドの使用
 
-ライブ ビデオ ストリームの分析は、モジュールを使用し、ダイレクト メソッドを呼び出すことによって行うことができます。 モジュールに用意されているすべてのダイレクト メソッドについては、[Live Video Analytics on IoT Edge のダイレクト メソッド](direct-methods.md)に関するページをご覧ください。 
+ライブ ビデオ ストリームの分析は、モジュールを使用し、ダイレクト メソッドを呼び出すことによって行うことができます。 詳細については、[Live Video Analytics on IoT Edge のダイレクト メソッド](direct-methods.md)に関する記事を参照してください。 
 
 ### <a name="invoke-graphtopologylist"></a>GraphTopologyList を呼び出す
-これにより、モジュール内のすべての[グラフ トポロジ](media-graph-concept.md#media-graph-topologies-and-instances)が列挙されます。
 
-1. "lvaEdge" モジュールを右クリックし、コンテキスト メニューから [Invoke Module Direct Method]\(モジュールのダイレクト メソッドを呼び出す\) を選択します。
-1. Visual Studio Code ウィンドウの上部中央にエディット ボックスがポップアップ表示されます。 エディット ボックスに「GraphTopologyList」と入力して、Enter キーを押します。
-1. さらに、次の JSON ペイロードをコピーしてエディット ボックスに貼り付け、Enter キーを押します。
+モジュール内のすべての[グラフ トポロジ](media-graph-concept.md#media-graph-topologies-and-instances)を列挙するには、次のようにします。
+
+1. Visual Studio Code で、**lvaEdge** モジュールを右クリックし、 **[Invoke Module Direct Method]\(モジュールのダイレクト メソッドを呼び出す\)** を選択します。
+1. 表示されたボックスに、「*GraphTopologyList*」と入力します。
+1. 次の JSON ペイロードをコピーして、ボックスに貼り付けます。 次に、Enter キーを押します。
 
     ```
     {
@@ -96,7 +102,7 @@ Visual Studio Code を起動します。以下の手順に従い、Azure IoT Too
     }
     ```
 
-    数秒すると、次の応答と共に Visual Studio Code の出力ウィンドウがポップアップ表示されます
+    数秒以内に、 **[出力]** ウィンドウに次の応答が表示されます。
 
     ```
     [DirectMethod] Invoking Direct Method [GraphTopologyList] to [lva-sample-device/lvaEdge] ...
@@ -109,12 +115,12 @@ Visual Studio Code を起動します。以下の手順に従い、Azure IoT Too
     }
     ```
     
-    上記は想定内の応答です。まだグラフ トポロジが作成されていないためです。
+    グラフ トポロジが作成されていないため、この応答は予期されたものです。
     
 
 ### <a name="invoke-graphtopologyset"></a>GraphTopologySet を呼び出す
 
-GraphTopologyList を呼び出したときと同じ手順で、次の JSON をペイロードに使用して GraphTopologySet を呼び出せば、[グラフ トポロジ](media-graph-concept.md#media-graph-topologies-and-instances)を設定できます。
+`GraphTopologyList` を呼び出す手順を使用することで、`GraphTopologySet` を呼び出して、[グラフ トポロジ](media-graph-concept.md#media-graph-topologies-and-instances)を設定できます。 ペイロードとして次の JSON を使用します。
 
 ```
 {
@@ -185,10 +191,9 @@ GraphTopologyList を呼び出したときと同じ手順で、次の JSON を�
 
 ```
 
+この JSON ペイロードにより、3 つのパラメーターを定義するグラフ トポロジが作成されます。 これらのパラメーターのうち 2 つには既定値があります。 このトポロジには、ソース (RTSP ソース) ノード、プロセッサ (モーション検出プロセッサ) ノード、シンク (IoT Hub シンク) ノードがそれぞれ 1 つずつ存在します。
 
-上記の JSON ペイロードを使用した場合、3 つのパラメーター (うち 2 つは既定値) を定義するグラフ トポロジが作成されます。 このトポロジには、ソース (RTSP ソース) ノード、プロセッサ (モーション検出プロセッサ) ノード、シンク (IoT Hub シンク) ノードがそれぞれ 1 つずつ存在します。
-
-数秒すると、次の応答が出力ウィンドウに表示されます。
+数秒以内に、次の応答が **[出力]** ウィンドウに表示されます。
 
 ```
 [DirectMethod] Invoking Direct Method [GraphTopologySet] to [lva-sample-device/lvaEdge] ...
@@ -268,25 +273,26 @@ GraphTopologyList を呼び出したときと同じ手順で、次の JSON を�
 }
 ```
 
-返された状態は 201 で、新しいトポロジが作成されたことを意味します。 次の手順を試してみましょう。
+返される状態は 201 です。 この状態は、新しいトポロジが作成されたことを示しています。 
 
-* 再度 GraphTopologySet を呼び出します。返される状態コードが 200 であることに注目してください。 状態コード 200 は、既存のトポロジが正常に更新されたことを意味します。
-* 説明文字列を変えて再度 GraphTopologySet を呼び出します。 応答の状態コードは 200 で、説明が新しい値に更新されたことに注目してください。
-* 前セクションで取り上げた GraphTopologyList を呼び出します。今度は、返されたペイロードに "MotionDetection" トポロジが表示されていることが確認できます。
+次の手順を試してみましょう。
+
+1. `GraphTopologySet` を再度呼び出します。 返された状態コードは 200 です。 このコードは、既存のトポロジが正常に更新されたこと示しています。
+1. `GraphTopologySet` を再度呼び出しますが、説明文字列を変更します。 返された状態コードは 200 であり、説明は新しい値に更新されています。
+1. 前のセクションで説明したように `GraphTopologyList` を呼び出します。 返されたペイロードに `MotionDetection` トポロジが表示されるようになりました。
 
 ### <a name="invoke-graphtopologyget"></a>GraphTopologyGet を呼び出す
 
-今度は、次のペイロードで GraphTopologyGet を呼び出します。
+次のペイロードを使用して `GraphTopologyGet` を呼び出します。
 
 ```
-
 {
     "@apiVersion" : "1.0",
     "name" : "MotionDetection"
 }
 ```
 
-数秒すると、次の応答が出力ウィンドウに表示されます。
+数秒以内に、次の応答が **[出力]** ウィンドウに表示されます。
 
 ```
 [DirectMethod] Invoking Direct Method [GraphTopologyGet] to [lva-sample-device/lvaEdge] ...
@@ -366,16 +372,16 @@ GraphTopologyList を呼び出したときと同じ手順で、次の JSON を�
 }
 ```
 
-応答のペイロードで、次の点に注目してください。
+応答ペイロードで、次の詳細に注目します。
 
-* 状態コードが 200 です。これは成功を意味します。
-* ペイロードに "created" と "lastModified" のタイムスタンプが存在します。
+* 状態コードは 200 であり、成功を示しています。
+* ペイロードには、`created` タイム スタンプと `lastModified` タイム スタンプが含まれています。
 
 ### <a name="invoke-graphinstanceset"></a>GraphInstanceSet を呼び出す
 
-次に、前出のグラフ トポロジを参照するグラフ インスタンスを作成します。 [こちら](media-graph-concept.md#media-graph-topologies-and-instances)の説明にあるように、グラフ インスタンスを使用すると、同じグラフ トポロジを持つさまざまなカメラからのライブ ビデオ ストリームを分析することができます。
+前出のグラフ トポロジを参照するグラフ インスタンスを作成します。 グラフ インスタンスを使用すると、同じグラフ トポロジを使用して複数のカメラからのライブ ビデオ ストリームを分析できます。 詳細については、「[メディア グラフのトポロジとインスタンス](media-graph-concept.md#media-graph-topologies-and-instances)」を参照してください。
 
-次のペイロードでダイレクト メソッド GraphInstanceSet を呼び出します。
+次のペイロードを使用して、ダイレクト メソッド `GraphInstanceSet` を呼び出します。
 
 ```
 {
@@ -391,12 +397,12 @@ GraphTopologyList を呼び出したときと同じ手順で、次の JSON を�
 }
 ```
 
-次のことを考慮してください。
+このペイロードについて次の点に注目します。
 
-* 上記のペイロードには、作成する必要のあるインスタンスのトポロジ名 (MotionDetection) が指定されています。
-* このペイロードには、"rtspUrl" パラメーターの値が含まれています。これには、グラフ トポロジのペイロードで既定値が設定されていませんでした。
+* インスタンスを作成する必要のあるトポロジ名 (`MotionDetection`) が指定されています。
+* `rtspUrl` のパラメーターの値が含まれています。これの既定値は、グラフ トポロジのペイロードに設定されていませんでした。
 
-数秒すると、次の応答が出力ウィンドウに表示されます。
+数秒以内に、次の応答が **[出力]** ウィンドウに表示されます。
 
 ```
 [DirectMethod] Invoking Direct Method [GraphInstanceSet] to [lva-sample-device/lvaEdge] ...
@@ -422,20 +428,20 @@ GraphTopologyList を呼び出したときと同じ手順で、次の JSON を�
 }
 ```
 
-応答のペイロードで、次の点に注目してください。
+応答ペイロードで、次の点に注目します。
 
-* 状態コードが 201 です。これは新しいインスタンスが作成されたことを意味します。
-* 状態が "Inactive" になっています。グラフ インスタンスは作成されたものの、アクティブ化されていないことがわかります。 詳細については、[メディア グラフの状態](media-graph-concept.md)に関するセクションを参照してください。
+* 状態コードは 201 であり、新しいインスタンスが作成されたことを示しています。
+* 状態は `Inactive` であり、グラフ インスタンスは作成されたものの、アクティブにされていないことを示しています。 詳細については、「[メディア グラフの状態](media-graph-concept.md)」を参照してください。
 
 次の手順を試してみましょう。
 
-* 同じペイロードで再度 GraphInstanceSet を呼び出します。返される状態コードが、今度は 200 になっていることに注目してください。
-* 異なる説明で再度 Invoke GraphInstanceSet を呼び出します。応答のペイロードを見ると、説明が更新されていることがわかります。これはグラフ インスタンスが正常に更新されたことを意味します。
-* 名前を "Sample-Graph-2" に変えて GraphInstanceSet を呼び出し、応答のペイロードを観察します。 新しいグラフ インスタンスが作成されている (状態コードが 201 である) ことに注目してください。
+1. 同じペイロードを使用して `GraphInstanceSet` を再度呼び出します。 返された状態コードは 200 であることに注目してください。
+1. `GraphInstanceSet` を再度呼び出しますが、別の説明を使用します。 応答ペイロードの更新された説明に注目してください。これはグラフ インスタンスが正常に更新されたことを示しています。
+1. `GraphInstanceSet` を呼び出しますが、名前を `Sample-Graph-2` に変更します。 応答ペイロードで、新しく作成されたグラフ インスタンス (つまり、状態コード 201) に注目してください。
 
 ### <a name="invoke-graphinstanceactivate"></a>GraphInstanceActivate を呼び出す
 
-今度は、グラフ インスタンスをアクティブにします。グラフ インスタンスをアクティブにすることで、モジュールを使用したライブ ビデオのフローが開始されます。 次のペイロードでダイレクト メソッド GraphInstanceActivate を呼び出します。
+今度は、グラフ インスタンスをアクティブにし、モジュールを使用してライブ ビデオのフローを開始します。 次のペイロードを使用して、ダイレクト メソッド `GraphInstanceActivate` を呼び出します。
 
 ```
 {
@@ -444,7 +450,7 @@ GraphTopologyList を呼び出したときと同じ手順で、次の JSON を�
 }
 ```
 
-数秒すると、次の応答が出力ウィンドウに表示されます。
+数秒以内に、次の応答が **[出力]** ウィンドウに表示されます。
 
 ```
 [DirectMethod] Invoking Direct Method [GraphInstanceActivate] to [lva-sample-device/lvaEdge] ...
@@ -455,11 +461,11 @@ GraphTopologyList を呼び出したときと同じ手順で、次の JSON を�
 }
 ```
 
-応答のペイロードにある状態コード 200 は、グラフ インスタンスが正常にアクティブ化されたことを意味します。
+状態コード 200 は、グラフ インスタンスが正常にアクティブにされたことを示しています。
 
 ### <a name="invoke-graphinstanceget"></a>GraphInstanceGet を呼び出す
 
-次のペイロードでダイレクト メソッド GraphInstanceGet を呼び出します。
+今度は、次のペイロードを使用して、ダイレクト メソッド `GraphInstanceGet` を呼び出します。
 
 ```
  {
@@ -468,7 +474,7 @@ GraphTopologyList を呼び出したときと同じ手順で、次の JSON を�
  }
  ```
 
-数秒すると、次の応答が出力ウィンドウに表示されます。
+数秒以内に、次の応答が **[出力]** ウィンドウに表示されます。
 
 ```
 [DirectMethod] Invoking Direct Method [GraphInstanceGet] to [lva-sample-device/lvaEdge] ...
@@ -494,22 +500,24 @@ GraphTopologyList を呼び出したときと同じ手順で、次の JSON を�
 }
 ```
 
-応答のペイロードで、次の点に注目してください。
+応答ペイロードで、次の詳細に注目します。
 
-* 状態コードが 200 です。これは成功を意味します。
-* 状態が "Active" になり、グラフ インスタンスが "Active" 状態になったことがわかります。
+* 状態コードは 200 であり、成功を示しています。
+* 状態は `Active` であり、グラフ インスタンスがアクティブになったこと示しています。
 
 ## <a name="observe-results"></a>結果を観察する
 
-先ほど作成してアクティブにしたグラフ インスタンスは、モーション検出プロセッサ ノードを使用して、受信したライブ ビデオ ストリーム内から動きを検出し、IoT Hub のシンク ノードにイベントを送信します。 それらのイベントは IoT Edge ハブに中継されて、観察できる状態になります。 これを行うには、次の手順に従います。
+先ほど作成してアクティブにしたグラフ インスタンスは、モーション検出プロセッサ ノードを使用して、受信ライブ ビデオ ストリーム内のモーションを検出します。 これは、IoT Hub シンク ノードにイベントを送信します。 これらのイベントは IoT Edge Hub にリレーされます。 
 
-1. Visual Studio Code の [エクスプローラー] ペインを開いて、左下隅の Azure IoT Hub を探します。
-2. [Devices] ノードを展開します。
-3. [lva-sample-device] を右クリックし、[Start Monitoring Built-in Event Monitoring]\(組み込みイベント モニタリングの監視を開始する\) オプションを選択します。
+結果を確認するには、次の手順に従います。
 
-![IoT Hub イベントの監視を開始する](./media/quickstarts/start-monitoring-iothub-events.png)
+1. Visual Studio Code で **[エクスプローラー]** ペインを開きます。 左下隅で **[Azure IoT Hub]** を探します。
+2. **[デバイス]** ノードを展開します。
+3. **lva-sample-device** を右クリックし、 **[組み込みイベント エンドポイントの監視を開始します]** を選択します。
 
-出力ウィンドウに次のメッセージが表示されます。
+    ![IoT Hub イベントの監視を開始する](./media/quickstarts/start-monitoring-iothub-events.png)
+    
+**[出力]** ウィンドウに次のメッセージが表示されます。
 
 ```
 [IoTHubMonitor] [7:44:33 AM] Message received from [lva-sample-device/lvaEdge]:
@@ -551,16 +559,16 @@ GraphTopologyList を呼び出したときと同じ手順で、次の JSON を�
 }
 ```
 
-上のメッセージに関して、次の点に注意してください
+次の詳細に注目します。
 
-* メッセージに "body" セクションと "applicationProperties" セクションが存在します。 これらのセクションが表す内容については、「[IoT Hub メッセージを作成し、読み取る](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)」の記事を参照してください。
-* applicationProperties の "subject" が、メッセージの生成元となった MediaGraph 内のノードを参照しています。 このケースでは、モーション検出プロセッサからメッセージが生成されています。
-* applicationProperties の "eventType" を見ると、これは Analytics イベントであることがわかります。
-* "eventTime" にはイベントの発生時刻が示されています。
-* "body" に、分析イベントに関するデータが含まれています。 このケースでは、Inference イベントであるため、body には "timestamp" データと "inferences" データが存在します。
-* "inferences" セクションを見ると、"type" が "motion" であること、また、"motion" イベントについての詳しいデータが存在することがわかります。
+* メッセージには、`body` セクションと `applicationProperties` セクションが含まれています。 詳細については、「[IoT Hub メッセージを作成し、読み取る](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)」を参照してください。
+* `applicationProperties` 内の `subject` は、メッセージの生成元の `MediaGraph` 内のノードを参照しています。 今回のケースでは、メッセージはモーション検出プロセッサから生成されています。
+* `applicationProperties` 内の `eventType` は、このイベントが分析イベントであることを示しています。
+* `eventTime` 値は、イベントが発生した時刻です。
+* `body` セクションには、分析イベントに関するデータが含まれています。 今回のケースでは、イベントは推論イベントであるため、本文には `timestamp` および `inferences` のデータが含まれています。
+* `inferences` セクションは、`type` が `motion` であることを示しています。 `motion` イベントに関する追加データが提供されています。
 
-MediaGraph をしばらく実行していると、出力ウィンドウに次のメッセージも表示されます。
+メディア グラフをしばらく実行していると、 **[出力]** ウィンドウに次のメッセージが表示されます。
 
 ```
 [IoTHubMonitor] [7:47:45 AM] Message received from [lva-sample-device/lvaEdge]:
@@ -578,19 +586,19 @@ MediaGraph をしばらく実行していると、出力ウィンドウに次の
 }
 ```
 
-上のメッセージに関して、次の点に注意してください
+このメッセージでは、次の詳細に注目します。
 
-* applicationProperties の "subject" を見ると、メッセージの生成元がメディア グラフの RTSP ソース ノードであることがわかります。
-* applicationProperties の "eventType" を見ると、これは Diagnostic イベントであることがわかります。
-* 診断イベントに関するデータは "body" に含まれています。 このケースでは、イベントが MediaSessionEstablished であるため、その本体となっています。
+* `applicationProperties` 内の `subject` は、メッセージがメディア グラフの RTSP ソース ノードから生成されたことを示しています。
+* `applicationProperties` 内の `eventType` は、このイベントが診断であることを示しています。
+* `body` には、診断イベントに関するデータが含まれています。 今回のケースでは、イベントが `MediaSessionEstablished` であるため、メッセージに本文が含まれています。
 
 ## <a name="invoke-additional-direct-methods-to-clean-up"></a>その他のダイレクト メソッドを呼び出してクリーンアップする
 
-ダイレクト メソッドを呼び出して、グラフ インスタンスをまず非アクティブ化し、その後削除します。
+ダイレクト メソッドを呼び出して、まずグラフ インスタンスを非アクティブ化し、その後削除します。
 
 ### <a name="invoke-graphinstancedeactivate"></a>GraphInstanceDeactivate を呼び出す
 
-次のペイロードでダイレクト メソッド GraphInstanceDeactivate を呼び出します。
+次のペイロードを使用して、ダイレクト メソッド `GraphInstanceDeactivate` を呼び出します。
 
 ```
 {
@@ -599,7 +607,7 @@ MediaGraph をしばらく実行していると、出力ウィンドウに次の
 }
 ```
 
-数秒すると、次の応答が出力ウィンドウに表示されます。
+数秒以内に、次の応答が **[出力]** ウィンドウに表示されます。
 
 ```
 [DirectMethod] Invoking Direct Method [GraphInstanceDeactivate] to [lva-sample-device/lvaEdge] ...
@@ -610,15 +618,13 @@ MediaGraph をしばらく実行していると、出力ウィンドウに次の
 }
 ```
 
-状態コード 200 は、グラフ インスタンスが正常に非アクティブ化されたことを意味します。
+状態コード 200 は、グラフ インスタンスが正常に非アクティブ化されたことを示しています。
 
-次の手順を試してみましょう。
-
-* 前のセクションで触れた GraphInstanceGet を呼び出して、"state" の値を観察します。
+次に、この記事で前述したように `GraphInstanceGet` の呼び出しを試してみます。 `state` 値を確認します。
 
 ### <a name="invoke-graphinstancedelete"></a>GraphInstanceDelete を呼び出す
 
-次のペイロードでダイレクト メソッド GraphInstanceDelete を呼び出します。
+次のペイロードを使用して、ダイレクト メソッド `GraphInstanceDelete` を呼び出します。
 
 ```
 {
@@ -627,7 +633,7 @@ MediaGraph をしばらく実行していると、出力ウィンドウに次の
 }
 ```
 
-数秒すると、次の応答が出力ウィンドウに表示されます。
+数秒以内に、次の応答が **[出力]** ウィンドウに表示されます。
 
 ```
 [DirectMethod] Invoking Direct Method [GraphInstanceDelete] to [lva-sample-device/lvaEdge] ...
@@ -638,11 +644,11 @@ MediaGraph をしばらく実行していると、出力ウィンドウに次の
 }
 ```
 
-応答の状態コード 200 は、グラフ インスタンスが正常に削除されたことを意味します。
+状態コード 200 は、グラフ インスタンスが正常に削除されたことを示しています。
 
 ### <a name="invoke-graphtopologydelete"></a>GraphTopologyDelete を呼び出す
 
-次のペイロードでダイレクト メソッド GraphTopologyDelete を呼び出します。
+次のペイロードを使用して、ダイレクト メソッド `GraphTopologyDelete` を呼び出します。
 
 ```
 {
@@ -651,7 +657,7 @@ MediaGraph をしばらく実行していると、出力ウィンドウに次の
 }
 ```
 
-数秒すると、次の応答が出力ウィンドウに表示されます。
+数秒以内に、次の応答が **[出力]** ウィンドウに表示されます。
 
 ```
 [DirectMethod] Invoking Direct Method [GraphTopologyDelete] to [lva-sample-device/lvaEdge] ...
@@ -662,18 +668,18 @@ MediaGraph をしばらく実行していると、出力ウィンドウに次の
 }
 ```
 
-状態コード 200 は、グラフ トポロジが正常に削除されたことを意味します。
+状態コード 200 は、グラフ トポロジが正常に削除されたことを示しています。
 
 次の手順を試してみましょう。
 
-* GraphTopologyList を呼び出し、モジュールにグラフ トポロジが存在しないことを確認します。
-* GraphTopologyList と同じペイロードで GraphInstanceList を呼び出し、グラフ インスタンスが一切列挙されないことを確認します。
+1. `GraphTopologyList` を呼び出し、モジュールにグラフ トポロジが含まれていないことを確認します。
+1. `GraphTopologyList` と同じペイロードを使用して `GraphInstanceList` を呼び出します。 グラフ インスタンスが列挙されないことを確認します。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-今後このアプリケーションを使う予定がなければ、このクイックスタートで作成したリソースを削除してください。
+このアプリケーションを引き続き使用する予定がない場合は、このクイックスタートで作成したリソースを削除します。
 
 ## <a name="next-steps"></a>次のステップ
 
-* Live Video Analytics on IoT Edge を使用してビデオを記録する方法を学習します。
-* 診断メッセージについて詳しく学習します。
+* [Live Video Analytics on IoT Edge を使用してビデオを記録する](continuous-video-recording-tutorial.md)方法を学習します。
+* [診断メッセージ](monitoring-logging.md)について詳しく学習します。

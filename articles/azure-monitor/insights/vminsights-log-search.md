@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 61a71539dc034a216689eafd8991df60db96d2a4
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 771cfa11375e97f2f6a94fc65cbd72306b12cd7e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396920"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84803968"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>VM 用 Azure Monitor からログを照会する方法
 
@@ -440,7 +440,7 @@ let remoteMachines = remote | summarize by RemoteMachine;
 |SourceSystem | *分析情報* | 
 |TimeGenerated | 値が収集された時刻 (UTC) |
 |Computer | コンピューターの FQDN | 
-|Origin (配信元) | *vm.azm.ms* |
+|出発地 | *vm.azm.ms* |
 |名前空間 | パフォーマンス カウンターのカテゴリ | 
 |名前 | パフォーマンス カウンターの名前 |
 |Val | 収集される値 | 
@@ -454,7 +454,7 @@ let remoteMachines = remote | summarize by RemoteMachine;
 | 名前空間 | 名前 | 説明 | ユニット | Tags |
 |:---|:---|:---|:---|:---|
 | Computer    | Heartbeat             | コンピューターのハートビート                        | | |
-| メモリ      | AvailableMB           | 使用可能なメモリ (バイト)                    | バイト          | memorySizeMB - 合計メモリ サイズ|
+| メモリ      | AvailableMB           | 使用可能なメモリ (バイト)                    | メガバイト      | memorySizeMB - 合計メモリ サイズ|
 | ネットワーク     | WriteBytesPerSecond   | ネットワーク書き込みバイト/秒            | BytesPerSecond | NetworkDeviceId - デバイスの ID<br>bytes - 合計送信バイト数 |
 | ネットワーク     | ReadBytesPerSecond    | ネットワーク読み取りバイト/秒             | BytesPerSecond | networkDeviceId - デバイスの ID<br>bytes - 合計受信バイト数 |
 | プロセッサ   | UtilizationPercentage | プロセッサ使用率          | Percent        | totalCpus-CPU 合計 |
@@ -467,7 +467,7 @@ let remoteMachines = remote | summarize by RemoteMachine;
 | LogicalDisk | ReadLatencyMs         | 論理ディスクの読み取り遅延 (ミリ秒)     | MilliSeconds   | mountId - デバイスのマウント ID |
 | LogicalDisk | ReadBytesPerSecond    | 1 秒あたりの論理ディスク読み取りバイト数        | BytesPerSecond | mountId - デバイスのマウント ID |
 | LogicalDisk | FreeSpacePercentage   | 論理ディスクの空き領域比率        | Percent        | mountId - デバイスのマウント ID |
-| LogicalDisk | FreeSpaceMB           | 論理ディスクの空き領域 (バイト)             | バイト          | mountId - デバイスのマウント ID<br>diskSizeMB - 合計ディスク サイズ |
+| LogicalDisk | FreeSpaceMB           | 論理ディスクの空き領域 (バイト)             | メガバイト      | mountId - デバイスのマウント ID<br>diskSizeMB - 合計ディスク サイズ |
 | LogicalDisk | BytesPerSecond        | 1 秒間の論理ディスクのバイト数             | BytesPerSecond | mountId - デバイスのマウント ID |
 
 

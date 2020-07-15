@@ -69,6 +69,17 @@
         - name: デプロイ手順
           displayName: 'standards, DoD, IL4'
           href: ./samples/dod-impact-level-4/deploy.md
+    - name: DoD 影響レベル 5
+      items:
+        - name: 概要
+          displayName: 'standards, DoD, IL5'
+          href: ./samples/dod-impact-level-5/index.md
+        - name: コントロール マッピング
+          displayName: 'standards, DoD, IL5'
+          href: ./samples/dod-impact-level-5/control-mapping.md
+        - name: デプロイ手順
+          displayName: 'standards, DoD, IL5'
+          href: ./samples/dod-impact-level-5/deploy.md
     - name: FedRAMP Moderate
       items:
         - name: 概要
@@ -160,6 +171,9 @@
     - name: NIST SP 800-53 R4
       displayName: 'standards, nist, 800-53, rev 4'
       href: ./samples/nist-sp-800-53-r4.md
+    - name: NIST SP 800-171 R2
+      displayName: 'standards, nist, 800-171, rev 2'
+      href: ./samples/nist-sp-800-171-r2.md
     - name: PCI-DSS v3.2.1
       items:
         - name: 概要
@@ -250,7 +264,7 @@
     - name: Azure CLI
       href: /cli/azure/ext/blueprint/blueprint
     - name: Azure PowerShell
-      href: '/powershell/module/az.blueprint/#blueprint'
+      href: /powershell/module/az.blueprint/#blueprint
     - name: Azure SDK for .NET
       href: /dotnet/api/overview/azure/blueprints/management
     - name: REST

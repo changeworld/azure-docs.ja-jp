@@ -1,24 +1,22 @@
 ---
-title: Azure Firewall Manager プレビューのデプロイの概要
-description: Azure Firewall Manager プレビューに必要なデプロイ手順の概要について説明します。
+title: Azure Firewall Manager のデプロイ概要
+description: Azure Firewall Manager に必要なデプロイ手順の概要について説明します。
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 02/18/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: c3a94cea838609f65511a21ee2f64e8782a6adea
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 90f817ac3bbd475d8a84df44bc284f09fcd19ce3
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77443127"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565797"
 ---
-# <a name="azure-firewall-manager-preview-deployment-overview"></a>Azure Firewall Manager プレビューのデプロイの概要
+# <a name="azure-firewall-manager-deployment-overview"></a>Azure Firewall Manager のデプロイ概要
 
-[!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
-
-Azure Firewall Manager プレビューをデプロイする方法は複数ありますが、次の一般的な手順をお勧めします。
+Azure Firewall Manager をデプロイする方法は複数ありますが、次の一般的な手順をお勧めします。
 
 ## <a name="general-deployment-process"></a>一般的なデプロイ プロセス
 
@@ -70,4 +68,4 @@ Azure Firewall Manager プレビューをデプロイする方法は複数あり
 
 ## <a name="next-steps"></a>次のステップ
 
-- [チュートリアル:Azure portal を使用して Azure Firewall Manager Preview でクラウド ネットワークをセキュリティで保護する](secure-cloud-network.md)
+- [チュートリアル:Azure portal を使用して Azure Firewall Manager でクラウド ネットワークをセキュリティで保護する](secure-cloud-network.md)

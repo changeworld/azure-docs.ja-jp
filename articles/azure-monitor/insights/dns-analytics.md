@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
-ms.openlocfilehash: 2471c29f559df5c347c62ceb4c7fd9b4ae1e5eec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 385f4a9ff1c299f49a514ad63bb3c8d633d8c191
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77657335"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552810"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>DNS 分析プレビュー ソリューションを使用した DNS インフラストラクチャに関する洞察の収集
 
@@ -179,7 +179,7 @@ DNS タイルには、データ収集中の DNS サーバーの数が含まれ�
 
 1. DNS 参照データが見つからない - この問題のトラブルシューティングを行うには、構成をリセットするか、ポータルで構成ページを 1 回読み込んでください。 リセットの場合は、設定を別の値に変更してから元の値に戻し、構成を保存します。
 
-## <a name="feedback"></a>フィードバック
+## <a name="suggestions"></a>検索候補
 
 フィードバックを提供するには、[Log Analytics UserVoice ページ](https://aka.ms/dnsanalyticsuservoice)にアクセスして、使用している DNS Analytics 機能のアイデアを投稿してください。 
 

@@ -1,18 +1,18 @@
 ---
 title: Lsv2 シリーズ - Azure Virtual Machines
 description: Lsv2 シリーズ VM の仕様。
-services: virtual-machines
 author: sasha-melamed
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
-ms.author: lahugh
-ms.openlocfilehash: bdb9e346b8deea71ef2af9f9f271ffa446be624e
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.author: jushiman
+ms.openlocfilehash: 9db5f391635505c18c7fe7c868431a0abc943730
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594340"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84675980"
 ---
 # <a name="lsv2-series"></a>Lsv2 シリーズ
 

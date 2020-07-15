@@ -4,12 +4,12 @@ description: Azure Migrate Server Assessment を使用して Azure に移行す�
 ms.topic: tutorial
 ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 87eac5979176fe9a71db15961e4c5f822b56568e
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: 6c395d7e2be151e97808fa9601ff6001801d243b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331884"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110353"
 ---
 # <a name="assess-vmware-vms-with-server-assessment"></a>Server Assessment による VMware VM の評価
 
@@ -34,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 - このシリーズの[最初のチュートリアルを完了します](tutorial-prepare-vmware.md)。 そうしないと、このチュートリアルの手順はうまくいきません。
 - 最初のチュートリアルでは、以下のことを行ったはずです。
     - Azure Migrate と連携するように [Azure を準備](tutorial-prepare-vmware.md#prepare-azure)します。
-    - [評価のために VMware を準備](tutorial-prepare-vmware.md#prepare-for-vmware-vm-assessment)します。 これには、VMware の設定の確認、Azure Migrate が vCenter Server にアクセスするために使用できるアカウントの設定などが含まれています。
+    - [評価のために VMware を準備](tutorial-prepare-vmware.md#prepare-for-assessment)します。 これには、VMware の設定の確認、Azure Migrate が vCenter Server にアクセスするために使用できるアカウントの設定などが含まれています。
     - VMware の評価用の Azure Migrate アプライアンスをデプロイするために必要なものを[確認](tutorial-prepare-vmware.md#verify-appliance-settings-for-assessment)します。
 
 ## <a name="set-up-an-azure-migrate-project"></a>Azure Migrate プロジェクトを設定する
@@ -42,25 +42,25 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 次のように、新しい Azure Migrate プロジェクトを設定します。
 
 1. Azure portal の **[すべてのサービス]** で、**Azure Migrate** を検索します。
-1. **[サービス]** で **[Azure Migrate]** を選択します。
-1. **[概要]** の **[サーバーの検出、評価、移行]** で、 **[サーバーの評価と移行]** を選択します。
+2. **[サービス]** で **[Azure Migrate]** を選択します。
+3. **[概要]** の **[サーバーの検出、評価、移行]** で、 **[サーバーの評価と移行]** を選択します。
 
    ![サーバーを評価して移行するボタン](./media/tutorial-assess-vmware/assess-migrate.png)
 
-1. **[作業の開始]** で、 **[ツールの追加]** を選択します。
-1. **[移行プロジェクト]** で、自分の Azure サブスクリプションを選択し、リソース グループがない場合は作成します。     
-1. **[プロジェクトの詳細]** で、プロジェクト名と、プロジェクトを作成したい地理的な場所を指定します。 [パブリック](migrate-support-matrix.md#supported-geographies-public-cloud)と [Government クラウド](migrate-support-matrix.md#supported-geographies-azure-government)でサポートされている地域を確認してください。
+4. **[作業の開始]** で、 **[ツールの追加]** を選択します。
+5. **[移行プロジェクト]** で、自分の Azure サブスクリプションを選択し、リソース グループがない場合は作成します。     
+6. **[プロジェクトの詳細]** で、プロジェクト名と、プロジェクトを作成したい地理的な場所を指定します。 [パブリック](migrate-support-matrix.md#supported-geographies-public-cloud)と [Government クラウド](migrate-support-matrix.md#supported-geographies-azure-government)でサポートされている地域を確認してください。
 
    ![プロジェクト名とリージョンのボックス](./media/tutorial-assess-vmware/migrate-project.png)
 
-1. **[次へ]** を選択します。
-1. **[評価ツールの選択]** で、次を選択します: **[Azure Migrate: Server Assessment]**  >  **[次へ]** 。
+7. **[次へ]** を選択します。
+8. **[評価ツールの選択]** で、次を選択します: **[Azure Migrate: Server Assessment]**  >  **[次へ]** 。
 
    ![Server Assessment ツールの選択](./media/tutorial-assess-vmware/assessment-tool.png)
 
-1. **[移行ツールの選択]** で、 **[今は移行ツールの追加をスキップします]**  >  **[次へ]** の順に選択します。
-1. **[ツールの確認と追加]** で設定を確認し、 **[ツールの追加]** を選択します。
-1. Azure Migrate プロジェクトがデプロイされるまで数分待ちます。 プロジェクトのページが表示されます。 プロジェクトが表示されない場合は、Azure Migrate ダッシュボードの **[サーバー]** からアクセスできます。
+9. **[移行ツールの選択]** で、 **[今は移行ツールの追加をスキップします]**  >  **[次へ]** の順に選択します。
+10. **[ツールの確認と追加]** で設定を確認し、 **[ツールの追加]** を選択します。
+11. Azure Migrate プロジェクトがデプロイされるまで数分待ちます。 プロジェクトのページが表示されます。 プロジェクトが表示されない場合は、Azure Migrate ダッシュボードの **[サーバー]** からアクセスできます。
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>Azure Migrate アプライアンスを設定する
 
@@ -75,8 +75,8 @@ Azure Migrate:Server Assessment では、軽量の Azure Migrate アプライア
 ### <a name="download-the-ova-template"></a>OVA テンプレートをダウンロードする
 
 1. **移行の目標** > **サーバー** > **Azure Migrate: Server Assessment** で、**検出** を選択します。
-1. **[マシンの検出]**  >  **[マシンは仮想化されていますか?]** で、 **[はい。VMware vSphere Hypervisor を使用します]** を選択します。
-1. **[ダウンロード]** を選択して、OVA テンプレート ファイルをダウンロードします。
+2. **[マシンの検出]**  >  **[マシンは仮想化されていますか?]** で、 **[はい。VMware vSphere Hypervisor を使用します]** を選択します。
+3. **[ダウンロード]** を選択して、OVA テンプレート ファイルをダウンロードします。
 
    ![OVA ファイルをダウンロードするための選択](./media/tutorial-assess-vmware/download-ova.png)
 
@@ -99,7 +99,7 @@ OVA ファイルをデプロイする前に、それが安全であることを�
         --- | --- | ---
         VMware (10.9 GB) | [最新バージョン](https://aka.ms/migrate/appliance/vmware) | cacbdaef927fe5477fa4e1f494fcb7203cbd6b6ce7402b79f234bc0fe69663dd
 
-    - Azure Goverment の場合:
+    - Azure Government の場合:
     
         **アルゴリズム** | **ダウンロード** | **SHA256**
         --- | --- | ---
@@ -114,13 +114,13 @@ OVA ファイルをデプロイする前に、それが安全であることを�
 
    ![OVF テンプレートをデプロイするためのメニュー コマンド](./media/tutorial-assess-vmware/deploy-ovf.png)
 
-1. [Deploy OVF Template]\(OVF テンプレートのデプロイ\) ウィザードで **[Source]\(ソース\)** を選択し、OVA ファイルの場所を指定します。
-1. **[名前]** と **[場所]** で、VM のフレンドリ名を指定します。 VM がホストされるインベントリ オブジェクトを選択します。
-1. **[Host/Cluster]\(ホスト/クラスター\)** で、VM が実行されるホストまたはクラスターを指定します。
-1. **[ストレージ]** で、VM の保存先を指定します。
-1. **[Disk Format]\(ディスク フォーマット\)** で、ディスクの種類とサイズを指定します。
-1. **[ネットワーク マッピング]** で、VM の接続先となるネットワークを指定します。 そのネットワークには、Azure Migrate Server Assessment にメタデータを送信するためのインターネット接続が必要です。
-1. 設定を確認し、 **[Finish]\(完了\)** を選択します。
+2. [Deploy OVF Template]\(OVF テンプレートのデプロイ\) ウィザードで **[Source]\(ソース\)** を選択し、OVA ファイルの場所を指定します。
+3. **[名前]** と **[場所]** で、VM のフレンドリ名を指定します。 VM がホストされるインベントリ オブジェクトを選択します。
+4. **[Host/Cluster]\(ホスト/クラスター\)** で、VM が実行されるホストまたはクラスターを指定します。
+5. **[ストレージ]** で、VM の保存先を指定します。
+6. **[Disk Format]\(ディスク フォーマット\)** で、ディスクの種類とサイズを指定します。
+7. **[ネットワーク マッピング]** で、VM の接続先となるネットワークを指定します。 そのネットワークには、Azure Migrate Server Assessment にメタデータを送信するためのインターネット接続が必要です。
+8. 設定を確認し、 **[Finish]\(完了\)** を選択します。
 
 ## <a name="verify-appliance-access-to-azure"></a>アプライアンスによる Azure へのアクセスを確認する
 
@@ -134,8 +134,8 @@ OVA ファイルをデプロイする前に、それが安全であることを�
 > ダウンロードした OVA でなく、[PowerShell スクリプト](deploy-appliance-script.md)を使用してアプライアンスを設定する場合、この手順の最初の 2 つの操作は必要ありません。
 
 1. vSphere クライアント コンソールで、VM を右クリックし、 **[コンソールを開く]** を選択します。
-1. アプライアンスの言語、タイム ゾーン、パスワードを指定します。
-1. VM に接続できる任意のマシン上でブラウザーを開き、アプライアンス Web アプリの URL を開きます (**https://*アプライアンス名または IP アドレス*:44368**)。
+2. アプライアンスの言語、タイム ゾーン、パスワードを指定します。
+3. VM に接続できる任意のマシン上でブラウザーを開き、アプライアンス Web アプリの URL を開きます (**https://*アプライアンス名または IP アドレス*:44368**)。
 
    または、アプリ ショートカットを選択して、アプライアンス デスクトップからアプリを開くこともできます。
 1. Web アプリの **[前提条件のセットアップ]** で、以下を実行します。
@@ -153,13 +153,13 @@ OVA ファイルをデプロイする前に、それが安全であることを�
 ### <a name="register-the-appliance-with-azure-migrate"></a>Azure Migrate にアプライアンスを登録する
 
 1. **[ログイン]** を選択します。 表示されない場合は、ブラウザーでポップアップ ブロックを無効にしてあることを確認します。
-1. 新しいタブで、Azure のユーザー名とパスワードを使用してサインインします。
+2. 新しいタブで、Azure のユーザー名とパスワードを使用してサインインします。
    
    PIN を使用したサインインはサポートされていません。
-1. 正常にサインインしたら、Web アプリに戻ります。
-1. Azure Migrate プロジェクトが作成されたサブスクリプションを選択した後、プロジェクトを選択します。
-1. アプライアンスの名前を指定します。 名前は、14 文字以下の英数字にする必要があります。
-1. **[登録]** を選択します。
+3. 正常にサインインしたら、Web アプリに戻ります。
+4. Azure Migrate プロジェクトが作成されたサブスクリプションを選択した後、プロジェクトを選択します。
+5. アプライアンスの名前を指定します。 名前は、14 文字以下の英数字にする必要があります。
+6. **[登録]** を選択します。
 
 
 ## <a name="start-continuous-discovery"></a>継続的な検出を開始する
@@ -170,7 +170,7 @@ VM の構成データとパフォーマンス データを検出するには、�
 1. **[vCenter Server の詳細を指定する]** で、vCenter Server インスタンスの名前 (FQDN) または IP アドレスを指定します。 既定のポートをそのまま使用することも、vCenter Server でリッスンするカスタム ポートを指定することもできます。
 2. vCenter Server インスタンス上の VM を検出するためにアプライアンスが使用する vCenter Server アカウントの資格情報を **[ユーザー名]** と **[パスワード]** に指定します。 
 
-    - [前のチュートリアル](tutorial-prepare-vmware.md#set-up-an-account-for-assessment)で、必要なアクセス許可を持つアカウントを設定してある必要があります。
+    - [前のチュートリアル](tutorial-prepare-vmware.md#set-up-permissions-for-assessment)で、必要なアクセス許可を持つアカウントを設定してある必要があります。
     - 検出を特定の VMware オブジェクト (vCenter Server データセンター、クラスター、クラスターのフォルダー、ホスト、ホストのフォルダー、または個々の VM) にスコーピングする場合、Azure Migrate によって使用されるアカウントを制限するには、[この記事](set-discovery-scope.md)の手順を参照してください。
 
 3. **[接続の検証]** を選択し、アプライアンスが vCenter Server に接続できることを確認します。
@@ -178,7 +178,7 @@ VM の構成データとパフォーマンス データを検出するには、�
 
     - [アプリケーション検出機能](how-to-discover-applications.md)または[エージェントレスの依存関係の分析機能](how-to-create-group-machine-dependencies-agentless.md)のために使用するアカウントを作成した場合は、必要に応じて、ここで資格情報を追加します。
     - これらの機能を使用していない場合は、この設定を省略できます。
-    - [アプリ検出](migrate-support-matrix-vmware.md#application-discovery)または[エージェントレス分析](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements)に必要な資格情報を確認してください。
+    - [アプリ検出](migrate-support-matrix-vmware.md#application-discovery-requirements)または[エージェントレス分析](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)に必要な資格情報を確認してください。
 
 5. VM の検出を開始するには、 **[保存して検出を開始]** を選択します。
 
@@ -191,39 +191,53 @@ VM の構成データとパフォーマンス データを検出するには、�
 検出の後で、VM が Azure portal に表示されることを確認できます。
 
 1. Azure Migrate ダッシュボードを開きます。
-1. **[Azure Migrate - サーバー]**  >  **[Azure Migrate: Server Assessment]** で、 **[検出済みサーバー]** の数を表示するアイコンを選択します。
+2. **[Azure Migrate - サーバー]**  >  **[Azure Migrate: Server Assessment]** で、 **[検出済みサーバー]** の数を表示するアイコンを選択します。
 
 ## <a name="set-up-an-assessment"></a>評価を設定する
 
 Azure Migrate Server Assessment を使用して、次の 2 種類の評価を作成できます。
 
-**評価** | **詳細** | **データ**
+**評価の種類** | **詳細**
+--- | --- 
+**Azure VM** | オンプレミスのサーバーを Azure 仮想マシンに移行するための評価。 <br/><br/> このタイプの評価を使用すると、Azure への移行について、オンプレミスの [VMware VM](how-to-set-up-appliance-vmware.md)、[Hyper-V VM](how-to-set-up-appliance-hyper-v.md)、[物理サーバー](how-to-set-up-appliance-physical.md)を評価できます。 [詳細情報](concepts-assessment-calculation.md)
+**Azure VMware Solution (AVS)** | オンプレミスのサーバーを [Azure VMware Solution (AVS)](../azure-vmware/introduction.md) に移行するための評価。 <br/><br/> このタイプの評価を使用すると、Azure VMware Solution (AVS) への移行について、オンプレミスの [VMware VM](how-to-set-up-appliance-vmware.md) を評価できます。 [詳細情報](concepts-azure-vmware-solution-assessment-calculation.md)
+
+Server Assessment には、サイズ変更の設定基準として、次の 2 つのオプションが用意されています。
+
+**サイズ変更の設定基準** | **詳細** | **データ**
 --- | --- | ---
-**パフォーマンスベース** | 収集されたパフォーマンス データに基づく評価 | **推奨される VM サイズ**: CPU とメモリの使用率データに基づきます。<br/><br/> **推奨されるディスクの種類 (Standard または Premium マネージド ディスク)** : オンプレミス ディスクの IOPS とスループットに基づきます。
-**オンプレミス** | オンプレミスのサイズ設定に基づく評価 | **推奨される VM サイズ**: オンプレミスの VM サイズに基づきます。<br/><br> **推奨されるディスクの種類**: 評価用に選択するストレージの種類の設定に基づきます。
+**パフォーマンスベース** | 収集されたパフォーマンス データに基づいて推奨を行う評価 | **Azure VM の評価**: VM サイズの推奨値は、CPU とメモリの使用率データに基づきます。<br/><br/> ディスクの種類に関する推奨事項 (標準 HDD/SSD またはプレミアム マネージド ディスク) は、オンプレミス ディスクの IOPS とスループットに基づきます。<br/><br/> **Azure VMware Solution (AVS) の評価**: AVS ノードの推奨値は、CPU とメモリの使用率データに基づきます。
+**現状のオンプレミス** | パフォーマンス データを使用せずに推奨を行う評価。 | **Azure VM の評価**: VM サイズに関する推奨事項は、オンプレミスの VM サイズに基づきます<br/><br> 推奨されるディスクの種類は、評価の [ストレージの種類] 設定で選択した内容に基づきます。<br/><br/> **Azure VMware Solution (AVS) の評価**: AVS ノードに関する推奨事項は、オンプレミスの VM サイズに基づきます。
 
 ## <a name="run-an-assessment"></a>評価を実行する
 
-評価を実行するには次のようにします。
+"*Azure VM の評価*" は、次のように実行します。
 
 1. 評価を作成するための[ベスト プラクティス](best-practices-assessment.md)を確認します。
-1. **[サーバー]** タブの **[Azure Migrate: Server Assessment]** タイルで、 **[評価]** を選択します。
+2. **[サーバー]** タブの **[Azure Migrate: Server Assessment]** タイルで、 **[評価]** を選択します。
 
    ![[評価] ボタンの場所](./media/tutorial-assess-vmware/assess.png)
 
-1. **[サーバーの評価]** で、評価の名前を指定します。
-1. **[すべて表示]** を選択し、評価のプロパティを確認します。
+3. **[サーバーの評価]** で、評価の種類に "Azure VM" を選択し、検出ソースを選択して評価名を指定します。
+
+    ![評価の基本](./media/tutorial-assess-vmware/assess-servers-azurevm.png)
+ 
+4. **[すべて表示]** を選択し、評価のプロパティを確認します。
 
    ![評価のプロパティ](./media/tutorial-assess-vmware/view-all.png)
 
-1. **[グループを選択または作成します]** で **[新規作成]** を選択し、グループ名を指定します。 グループで、評価のために 1 つ以上の VM をまとめます。
-1. **[グループにマシンを追加します]** で、グループに追加する VM を選択します。
-1. **[評価を作成します]** を選択して、グループを作成し、評価を実行します。
+5. **[次へ]** をクリックして**評価するマシンを選択**します。 **[グループを選択または作成します]** で **[新規作成]** を選択し、グループ名を指定します。 グループで、評価のために 1 つ以上の VM をまとめます。
+6. **[グループにマシンを追加します]** で、グループに追加する VM を選択します。
+7. **[次へ]** をクリックして **[評価の確認と作成]** を選択し、評価の詳細を確認します。
+8. **[評価を作成します]** を選択して、グループを作成し、評価を実行します。
 
    ![サーバーの評価](./media/tutorial-assess-vmware/assessment-create.png)
 
-1. 評価が作成されたら、それを表示します ( **[サーバー]**  >  **[Azure Migrate: Server Assessment]**  >  **[評価]** )。
-1. **[評価のエクスポート]** を選択し、Excel ファイルとしてダウンロードします。
+8. 評価が作成されたら、それを表示します ( **[サーバー]**  >  **[Azure Migrate: Server Assessment]**  >  **[評価]** )。
+9. **[評価のエクスポート]** を選択し、Excel ファイルとしてダウンロードします。
+
+**Azure VMware Solution (AVS) の評価**を実行したい場合は、[こちら](how-to-create-azure-vmware-solution-assessment.md)で紹介されている手順に従います。
+
 
 ## <a name="review-an-assessment"></a>評価を確認する
 
@@ -236,20 +250,20 @@ Azure Migrate Server Assessment を使用して、次の 2 種類の評価を作
 評価を表示するには:
 
 1. **[移行の目標]**  >  **[サーバー]** で、 **[評価]** を **[Azure Migrate: Server Assessment]** でクリックします。
-1. **[評価]** で、評価を選択して開きます。
+2. **[評価]** で、評価を選択して開きます。
 
    ![評価の概要](./media/tutorial-assess-vmware/assessment-summary.png)
 
 ### <a name="review-azure-readiness"></a>Azure 対応性の確認
 
 1. **[Azure 対応性]** で、VM が Azure への移行の準備ができているかどうかを確認します。
-1. VM の状態を確認します。
+2. VM の状態を確認します。
     - **[Azure に対応]** : 評価内の VM の VM サイズとコスト見積もりが Azure Migrate から推奨される場合に使用します。
     - **[条件付きで対応]** : 問題と推奨される修復方法が示されます。
     - **[Azure に未対応]** : 問題と推奨される修復方法が示されます。
     - **[Readiness 不明]** : データの可用性の問題により、Azure Migrate が対応性を評価できない場合に使用されます。
 
-1. **[Azure 対応性]** の状態を選択します。 VM の対応性の詳細を確認できます。 また、ドリルダウンして、コンピューティング、ストレージ、ネットワークの設定など、VM の詳細を確認することもできます。
+3. **[Azure 対応性]** の状態を選択します。 VM の対応性の詳細を確認できます。 また、ドリルダウンして、コンピューティング、ストレージ、ネットワークの設定など、VM の詳細を確認することもできます。
 
 ### <a name="review-cost-details"></a>コスト詳細の確認
 

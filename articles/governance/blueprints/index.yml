@@ -1,21 +1,21 @@
 ### YamlMime:Landing
 title: Azure Blueprints のドキュメント
-summary: Resource Manager テンプレート、ロールベースのアクセス制御、ポリシーなどの成果物を単一のブループリント定義にパッケージ化して、デプロイを簡略化しましょう。
+summary: Azure Resource Manager テンプレート、ロールベースのアクセス制御、ポリシーなどの成果物を単一のブループリント定義にパッケージ化して、デプロイを簡略化しましょう。
 metadata:
   title: Azure Blueprints のドキュメント
-  description: Resource Manager テンプレート、ロールベースのアクセス制御、ポリシーなどの成果物を単一のブループリント定義にパッケージ化して、デプロイを簡略化しましょう。
+  description: Azure Resource Manager テンプレート、ロールベースのアクセス制御、ポリシーなどの成果物を単一のブループリント定義にパッケージ化して、デプロイを簡略化しましょう。
   ms.service: blueprints
   ms.topic: landing-page
   ms.collection: collection
   author: DCtheGeek
   ms.author: dacoulte
-  ms.date: 09/01/2019
-  ms.openlocfilehash: 525d09dcd12c19ded3e13b38a56290f7816a26a7
-  ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-  ms.translationtype: HT
+  ms.date: 06/29/2020
+  ms.openlocfilehash: 04c99d2428bd3c92187ce9383f51d38a9729d22a
+  ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+  ms.translationtype: 
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/09/2020
-  ms.locfileid: "84609065"
+  ms.lasthandoff: 07/06/2020
+  ms.locfileid: "85969381"
 landingContent:
 - title: Azure Blueprints について
   linkLists:
@@ -37,11 +37,11 @@ landingContent:
     links:
     - text: 新しいブループリントを作成する (ポータル)
       url: ./create-blueprint-portal.md
-    - text: 新しいブループリントを作成する (PowerShell)
-      url: ./create-blueprint-powershell.md
     - text: 新しいブループリントを作成する (Azure CLI)
       url: ./create-blueprint-azurecli.md
-    - text: 新しいブループリントを作成する (REST API)
+    - text: 新しいブループリントを作成する (Azure PowerShell)
+      url: ./create-blueprint-powershell.md
+    - text: 新しいブループリントを作成する (REST)
       url: ./create-blueprint-rest-api.md
   - linkListType: tutorial
     links:
@@ -99,9 +99,11 @@ landingContent:
       url: ./reference/blueprint-functions.md
     - text: PowerShell モジュール (PSGallery)
       url: https://www.powershellgallery.com/packages/Az.Blueprint
+    - text: Azure CLI
+      url: /cli/azure/ext/blueprint/blueprint
     - text: Azure PowerShell
       url: /powershell/module/az.blueprint/#blueprint
-    - text: REST API
-      url: /rest/api/blueprints/
-    - text: .NET
+    - text: Azure SDK for .NET
       url: /dotnet/api/overview/azure/blueprints/management
+    - text: REST
+      url: /rest/api/blueprints/

@@ -3,25 +3,25 @@ title: アプリケーション プロキシのトラブルシューティング
 description: Azure AD アプリケーション プロキシのエラーのトラブルシューティングを行う方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 06/24/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.custom: H1Hack27Feb2017; it-pro
+ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7be9a17bed2a39d16f813332c2d6effc03393264
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57a77b486239f1fd49a4979d7acbbfc8f0254311
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79224931"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848454"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>アプリケーション プロキシの問題とエラー メッセージのトラブルシューティング | Microsoft Docs
 
@@ -39,13 +39,13 @@ ms.locfileid: "79224931"
 
 たとえば、 `https://yourapp/app` というパスを発行しても、アプリケーションが `https://yourapp/media` 内のイメージを呼び出した場合、イメージは表示されません。 アプリケーションの発行には、関連するコンテンツをすべて含めるために必要な最上位のパスを使用するようにしてください。 この例では `http://yourapp/` になります。
 
-参照するコンテンツを含めるようにパスを変更しても、ユーザーにそのパスのさらに深いリンクにアクセスしてもらう必要がある場合は、ブログ記事「 [Setting the right link for Application Proxy applications in the Azure AD access panel and Office 365 app launcher (Azure AD アクセス パネルと Office 365 アプリ起動ツールでのアプリケーション プロキシ アプリケーションの適切なリンクの設定)](https://blogs.technet.microsoft.com/applicationproxyblog/2016/04/06/setting-the-right-link-for-application-proxy-applications-in-the-azure-ad-access-panel-and-office-365-app-launcher/)」を参照してください。
-
 ## <a name="connector-errors"></a>コネクタのエラー
 
 コネクタ ウィザードのインストール中に登録に失敗した場合は、2 とおりの方法でエラーの原因を確認できます。 **Applications and Services Logs\Microsoft\AadApplicationProxy\Connector\Admin** にあるイベント ログを確認するか、次の Windows PowerShell コマンドを実行してください。
 
-    Get-EventLog application –source "Microsoft AAD Application Proxy Connector" –EntryType "Error" –Newest 1
+```powershell
+Get-EventLog application –source "Microsoft AAD Application Proxy Connector" –EntryType "Error" –Newest 1
+```
 
 イベント ログでコネクタのエラーが確認された場合は、この一般的なエラーの表を参考に問題を解決してください。
 

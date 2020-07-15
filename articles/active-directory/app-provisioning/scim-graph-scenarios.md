@@ -2,21 +2,21 @@
 title: SCIM、Microsoft Graph、Azure AD を使用してユーザーをプロビジョニングし、アプリをデータで強化する
 description: SCIM と Microsoft Graph を一緒に使用してユーザーをプロビジョニングし、必要なデータでアプリケーションを強化します。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 04/26/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh, celested
-ms.openlocfilehash: 0b2c8e6bb71e00ccb6eda33ecb1b087d09ce5de7
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 612663c2edc8aa7bc1eb3a2e4c8106b3e778a961
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82626192"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84781686"
 ---
 # <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>SCIM と Microsoft Graph を一緒に使用してユーザーをプロビジョニングし、必要なデータでアプリケーションを強化する
 

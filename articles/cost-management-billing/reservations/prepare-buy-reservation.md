@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: banders
-ms.openlocfilehash: 718365119b8cdf9279dcabc5f8c54deb386e8500
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 609ca56419ed14f3cf4e449e9b906a75a4ff20ab
+ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84019043"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85807783"
 ---
 # <a name="buy-a-reservation"></a>予約の購入
 
@@ -85,7 +85,7 @@ Enterprise Agreement (EA) のお客様は、EA Portal 内で、 **[予約イン�
 
 Microsoft 顧客契約 (MCA) を使用して予約を購入する場合、毎月の支払金額は、現地通貨に対する当月の市場相場によって異なる場合があります。
 
-Databricks、SUSE Linux の予約、Red Hat プラン、Azure Red Hat OpenShift のコンピューティングは、月払いの対象にはなりません。
+以下は月払いの対象外です。Databricks、SUSE Linux の予約、Red Hat プラン、Azure Red Hat OpenShift のライセンス。
 
 ### <a name="view-payments-made"></a>過去の支払いを確認する
 

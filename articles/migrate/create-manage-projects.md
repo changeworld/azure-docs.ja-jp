@@ -3,12 +3,12 @@ title: Azure Migrate プロジェクトの作成と管理
 description: Azure Migrate でプロジェクトを検索、作成、管理、および削除します。
 ms.topic: how-to
 ms.date: 04/19/2020
-ms.openlocfilehash: f5079ed979d98f2c6f0c654c860c6f176f366497
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 644ac5ecab9f5384b446c3b1ebe762a5d06aaf12
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81676392"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113430"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>Azure Migrate プロジェクトの作成と管理
 
@@ -83,7 +83,7 @@ Azure Migrate プロジェクトが既にあり、追加のプロジェクトを
        
     - 既に Azure Migrate プロジェクトを削除した場合は、Azure portal の左側のウィンドウの **[リソース グループ]** を選択して、ワークスペースを見つけます。
        
-2. [こちらの手順に従って](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace)、ワークスペースを削除します。
+2. [こちらの手順に従って](../azure-monitor/platform/delete-workspace.md)、ワークスペースを削除します。
 
 ## <a name="next-steps"></a>次のステップ
 

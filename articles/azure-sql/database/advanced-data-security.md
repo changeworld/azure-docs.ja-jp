@@ -2,22 +2,22 @@
 title: Advanced Data Security
 description: 機密データの探索と分類、データベースの脆弱性の管理、Azure SQL Database、Azure SQL Managed Instance、または Azure Synapse のデータベースへの脅威を示す可能性がある異常なアクティビティの検出などの機能について説明します。
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
 ms.devlang: ''
 ms.custom: sqldbrb=2
 ms.topic: conceptual
 ms.author: memildin
-author: memildin
 manager: rkarlin
+author: memildin
 ms.reviewer: vanto
 ms.date: 04/23/2020
-ms.openlocfilehash: d600d174aa37c5c4d5d1011b9cb61e4487256c13
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 53765ee97f0f253db4df4ecca3c1c90d6068fb07
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195144"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85983996"
 ---
 # <a name="advanced-data-security"></a>Advanced Data Security
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -62,7 +62,7 @@ ADS の設定を表示および管理するには、ご使用のサーバーま�
 
 ![サーバーの設定](./media/advanced-data-security/server_settings.png)
 
-## <a name="4-manage-ads-settings-for-a-sql-database"></a>4.SQL Database の ADS の設定を管理する
+## <a name="4-manage-ads-settings-for-a-database"></a>4.データベースの ADS の設定を管理する
 
 特定のデータベースに対する ADS の設定をオーバーライドするには、 **[データベース レベルで Advanced Data Security を有効にします]** チェック ボックスをオンにします。 このオプションは、サーバーまたはマネージド インスタンス上の全データベースについて受け取る通知の代わりに、またはそれに加えて、個別のデータベースに対する Advanced Threat Protection アラートまたは脆弱性評価結果を別に受け取る特定の要件がある場合にのみ使用します。
 

@@ -45,9 +45,9 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: ロジック アプリを作成する - Azure portal
+    - text: Logic Apps を作成する - Azure portal
       url: quickstart-create-first-logic-app-workflow.md
-    - text: ロジック アプリを作成する - Visual Studio
+    - text: Logic Apps を作成する - Visual Studio
       url: quickstart-create-logic-apps-with-visual-studio.md
   - linkListType: get-started
     links:
@@ -107,11 +107,11 @@ landingContent:
     links:
     - text: 基本的なエンタープライズ統合
       url: https://docs.microsoft.com/azure/architecture/reference-architectures/enterprise-integration/basic-enterprise-integration
-- title: ロジック アプリを管理して保護する
+- title: Logic Apps を管理して保護する
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: ロジック アプリを管理する - Visual Studio
+    - text: Logic Apps を管理する - Visual Studio
       url: manage-logic-apps-with-visual-studio.md
     - text: 統合サービス環境を管理する
       url: ise-manage-integration-service-environment.md
@@ -119,17 +119,17 @@ landingContent:
       url: logic-apps-securing-a-logic-app.md
     - text: マネージド ID による認証
       url: create-managed-service-identity.md
-- title: ロジック アプリをデプロイする
+- title: Logic Apps をデプロイする
   linkLists:
   - linkListType: concept
     links:
-    - text: ロジック アプリ デプロイを自動化する
+    - text: Logic Apps デプロイを自動化する
       url: logic-apps-azure-resource-manager-templates-overview.md
   - linkListType: how-to-guide
     links:
-    - text: ロジック アプリ テンプレートの作成
+    - text: Logic Apps テンプレートの作成
       url: logic-apps-create-azure-resource-manager-templates.md
-    - text: ロジック アプリ テンプレートのデプロイ
+    - text: Logic Apps テンプレートのデプロイ
       url: logic-apps-deploy-azure-resource-manager-templates.md
   - linkListType: learn
     links:

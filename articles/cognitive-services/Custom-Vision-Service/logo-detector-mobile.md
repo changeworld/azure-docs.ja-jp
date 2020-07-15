@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 0962afb360df0ec6a414f676a2c280b3837c687d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 2bd17e10e6123c48087116e947dc21f4cf788ef3
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81403663"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987857"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>チュートリアル:写真内にある Azure サービスのロゴを認識する
 
@@ -28,7 +28,7 @@ ms.locfileid: "81403663"
 > - アプリを Azure Computer Vision と Custom Vision に接続する。
 > - アプリから Azure サービスをデプロイするための Azure サービス プリンシパル アカウントを作成する。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。 
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="get-the-source-code"></a>ソース コードを入手する
 
-提供されている Web アプリを使用する場合は、GitHub 上の [AI Visual Provision](https://github.com/Microsoft/AIVisualProvision) リポジトリからアプリのソース コードをクローンまたはダウンロードします。 Visual Studio で *Source/VisualProvision.sln* ファイルを開きます。 後で、アプリを実行できるように、一部のプロジェクト ファイルを編集します。
+提供されている Web アプリを使用する場合は、GitHub 上の [AI Visual Provision](https://github.com/Microsoft/AIVisualProvision) リポジトリからアプリのソース コードを複製またはダウンロードします。 Visual Studio で *Source/VisualProvision.sln* ファイルを開きます。 後で、アプリを実行できるように、一部のプロジェクト ファイルを編集します。
 
 ## <a name="create-an-object-detector"></a>オブジェクト検出器を作成する
 
@@ -175,7 +175,7 @@ az ad sp create-for-rbac --name <servicePrincipalName> --password <yourSPStrongP
 
 このシナリオのすべての手順を実行し、アプリを使用して Azure サービスを自分のアカウントにデプロイした場合は、[Azure portal](https://ms.portal.azure.com/) に移動します。 そこで、使用しないサービスを取り消します。
 
-今後 Custom Vision を使用して独自のオブジェクト検出プロジェクトを作成する予定がある場合、このチュートリアルで作成したロゴ検出プロジェクトを削除したくなることがあるかもしれません。 Custom Vision の無料試用版では、利用できるプロジェクトは 2 つだけです。 ロゴ検出プロジェクトを削除するには、[Custom Vision Web サイト](https://customvision.ai)で **[Projects]\(プロジェクト\)** を開き、 **[My New Project]\(自分用の新しいプロジェクト\)** のごみ箱アイコンを選択します。
+今後 Custom Vision を使用して独自のオブジェクト検出プロジェクトを作成する予定がある場合、このチュートリアルで作成したロゴ検出プロジェクトを削除したくなることがあるかもしれません。 Custom Vision の無料サブスクリプションでは、利用できるプロジェクトは 2 つだけです。 ロゴ検出プロジェクトを削除するには、[Custom Vision Web サイト](https://customvision.ai)で **[Projects]\(プロジェクト\)** を開き、 **[My New Project]\(自分用の新しいプロジェクト\)** のごみ箱アイコンを選択します。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -3,18 +3,18 @@ title: Batch サービスのワークフローとリソース
 description: 開発の観点から、Batch サービスの機能とその高レベルのワークフローについて説明します。
 ms.topic: conceptual
 ms.date: 05/12/2020
-ms.openlocfilehash: 5084ae222d0a9da0d8aa171bc89dba48377a9dd4
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 76a0b140f3bea4b07a6de632abbcbc3fd26e582d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835922"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965214"
 ---
 # <a name="batch-service-workflow-and-resources"></a>Batch サービスのワークフローとリソース
 
 ここでは、Azure Batch サービスの主要コンポーネントについて簡単に紹介し、Batch を使って大規模な並列コンピューティング ソリューションを開発する際に利用できる高レベルのワークフロー、および使用される主なサービスとリソースについて取り上げます。
 
-[REST API](https://docs.microsoft.com/rest/api/batchservice/) を直接呼び出す分散コンピューティング アプリケーションまたはサービスを開発する場合も、いずれかの [Batch SDK](batch-apis-tools.md#batch-service-apis) を使う場合も、ここで紹介するさまざまなリソースや機能を活用できます。
+[REST API](/rest/api/batchservice/) を直接呼び出す分散コンピューティング アプリケーションまたはサービスを開発する場合も、いずれかの [Batch SDK](batch-apis-tools.md#batch-service-apis) を使う場合も、ここで紹介するさまざまなリソースや機能を活用できます。
 
 > [!TIP]
 > Batch サービスの基本については、「 [Azure Batch の基礎](batch-technical-overview.md)」を参照してください。 また、最新の [Batch サービスの更新](https://azure.microsoft.com/updates/?product=batch)も参照してください。
@@ -47,4 +47,4 @@ ms.locfileid: "83835922"
 - Batch ソリューションの構築に使用できる [Batch API とツール](batch-apis-tools.md)について学習します。
 - [Batch .NET クライアント ライブラリ](quick-run-dotnet.md)または [Python](quick-run-python.md) を使用した Batch 対応アプリケーションの開発に関する基本事項を確認してください。 これらのクイック スタートでは、Batch サービスを使用して複数のコンピューティング ノードでワークロードを実行するサンプル アプリケーションの開発手順を説明しています。また、Azure Storage を使用してワークロード ファイルのステージングと取得を行う方法についても取り上げています。
 - Batch ソリューションを開発するときに使用する [Batch Explorer](https://azure.github.io/BatchExplorer/) をダウンロードしてインストールします。 Batch Explorer は、Azure Batch アプリケーションの作成、デバッグ、および監視に役立ちます。
-- [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-batch)、[Batch Community リポジトリ](https://github.com/Azure/Batch)、[Azure Batch フォーラム](https://docs.microsoft.com/answers/topics/azure-batch.html)などのコミュニティ リソースを参照してください。
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-batch)、[Batch Community リポジトリ](https://github.com/Azure/Batch)、[Azure Batch フォーラム](/answers/topics/azure-batch.html)などのコミュニティ リソースを参照してください。

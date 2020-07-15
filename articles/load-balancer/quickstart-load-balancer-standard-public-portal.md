@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: b424fe315737b84479283eed2d77398c8ce4f148
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 99a2de4cd8a19d3f05b9dc37f3bcd08cd84b2e68
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78898826"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052750"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>クイック スタート:VM の負荷を分散するロード バランサーを Azure portal を使用して作成する
 
@@ -39,7 +39,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 1. 画面の左上で、 **[リソースの作成]**  >  **[ネットワーク]**  >  **[Load Balancer]** を選択します。
 2. **[ロード バランサーの作成]** ページの **[基本]** タブで、次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[確認と作成]** を選択します。
 
-    | 設定                 | Value                                              |
+    | 設定                 | 値                                              |
     | ---                     | ---                                                |
     | サブスクリプション               | サブスクリプションを選択します。    |    
     | Resource group         | **[新規作成]** を選択して、テキスト ボックスに「*myResourceGroupSLB*」と入力します。|
@@ -78,7 +78,7 @@ Load Balancer でアプリの状態を監視するには、正常性プローブ
 1. 左側のメニューで **[すべてのサービス]** 、 **[すべてのリソース]** の順に選択し、リソースの一覧で **[myLoadBalancer]** を選択します。
 2. **[設定]** で、 **[正常性プローブ]** 、 **[追加]** の順に選択します。
     
-    | 設定 | Value |
+    | 設定 | 値 |
     | ------- | ----- |
     | 名前 | 「*myHealthProbe*」と入力します。 |
     | Protocol | **[HTTP]** を選択します。 |
@@ -95,7 +95,7 @@ Load Balancer でアプリの状態を監視するには、正常性プローブ
 2. **[設定]** で、 **[負荷分散規則]** 、 **[追加]** の順に選択します。
 3. 負荷分散規則の構成には、以下の値を使用します。
     
-    | 設定 | Value |
+    | 設定 | 値 |
     | ------- | ----- |
     | 名前 | 「*myHTTPRule*」と入力します。 |
     | Protocol | **[TCP]** を選択します。 |
@@ -114,7 +114,7 @@ Load Balancer でアプリの状態を監視するには、正常性プローブ
 
 このセクションの手順では、各パラメーターを次のように置き換える必要があります。
 
-| パラメーター                   | Value                |
+| パラメーター                   | 値                |
 |-----------------------------|----------------------|
 | **\<resource-group-name>**  | myResourceGroupSLB |
 | **\<virtual-network-name>** | myVNet          |
@@ -162,7 +162,7 @@ Load Balancer でアプリの状態を監視するには、正常性プローブ
     | 可用性ゾーン | 2 |3|
     |パブリック IP| **Standard** SKU|**Standard** SKU|
     | パブリック IP - 可用性ゾーン| **ゾーン冗長** |**ゾーン冗長**|
-    | ネットワーク セキュリティ グループ | 既存の "*myNetworkSecurity グループ*" を選択します| 既存の "*myNetworkSecurity グループ*" を選択します|
+    | ネットワーク セキュリティ グループ | 既存の *myNetworkSecurityGroup* を選択します| 既存の *myNetworkSecurityGroup* を選択します|
 
  ### <a name="create-nsg-rule"></a>NSG 規則の作成
 

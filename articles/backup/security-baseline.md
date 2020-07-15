@@ -8,10 +8,10 @@ ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 68453341defd2d359e69e0ecf8a821464fead0d3
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82744042"
 ---
 # <a name="azure-security-baseline-for-backup"></a>Backup 用の Azure セキュリティ ベースライン
@@ -62,7 +62,7 @@ Backup 用の Azure セキュリティ ベースラインには、デプロイ�
 
 ### <a name="15-record-network-packets-and-flow-logs"></a>1.5:ネットワーク パケットとフロー ログを記録する
 
-**ガイダンス**: 適用できません。仮想ネットワーク サブネットまたはネットワーク セキュリティ グループを Recovery Services コンテナーに関連付けることはできません。 Azure 仮想マシンをバックアップする場合、データは、Azure バックボーンを経由して転送されます。 オンプレミス マシンからバックアップする場合は、Azure 内の特定のエンドポイントで暗号化されたトンネルが作成され、データは、資格情報を使用して事前に暗号化された後、その暗号化されたトンネルを経由して送信されます。
+**ガイダンス**:適用できません。仮想ネットワーク サブネットまたはネットワーク セキュリティ グループを Recovery Services コンテナーに関連付けることはできません。 Azure 仮想マシンをバックアップする場合、データは、Azure バックボーンを経由して転送されます。 オンプレミス マシンからバックアップする場合は、Azure 内の特定のエンドポイントで暗号化されたトンネルが作成され、データは、資格情報を使用して事前に暗号化された後、その暗号化されたトンネルを経由して送信されます。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -220,7 +220,7 @@ Azure アクティビティ ログの診断設定を有効にし、Log Analytics
 
 ### <a name="28-centralize-anti-malware-logging"></a>2.8:マルウェア対策のログ記録を一元管理する
 
-**ガイダンス**: 適用できません。Azure Backup では、マルウェア対策関連のログの処理や生成を行いません。
+**ガイダンス**:適用できません。Azure Backup では、マルウェア対策関連のログの処理や生成を行いません。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -228,7 +228,7 @@ Azure アクティビティ ログの診断設定を有効にし、Log Analytics
 
 ### <a name="29-enable-dns-query-logging"></a>2.9:DNS クエリのログ記録を有効にする
 
-**ガイダンス**: 適用できません。Azure Backup では、DNS 関連のログの処理や生成を行いません。
+**ガイダンス**:適用できません。Azure Backup では、DNS 関連のログの処理や生成を行いません。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -248,9 +248,9 @@ Azure アクティビティ ログの診断設定を有効にし、Log Analytics
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: 管理アカウントのインベントリを維持する
 
-**ガイダンス**: Azure Active Directory (AD) には、明示的に割り当てる必要があり、クエリ可能な組み込みロールがあります。 Azure AD PowerShell モジュールを使用してアドホック クエリを実行し、管理グループのメンバーであるアカウントを検出します。
+**ガイダンス**:Azure Active Directory (AD) には、明示的に割り当てる必要があり、クエリ可能な組み込みロールがあります。 Azure AD PowerShell モジュールを使用してアドホック クエリを実行し、管理グループのメンバーであるアカウントを検出します。
 
-サポート ドキュメント: 
+サポート ドキュメント:
 
 - [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
@@ -328,7 +328,7 @@ Azure アクティビティ ログの診断設定を有効にし、Log Analytics
 
 - [Privileged Identity Management (PIM) をデプロイする方法](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
 
-- [Azure AD のリスク検出について](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+- [Azure AD のリスク検出の概要](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
 
 **Azure Security Center の監視**: はい
 
@@ -336,7 +336,7 @@ Azure アクティビティ ログの診断設定を有効にし、Log Analytics
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8:承認された場所からのみ Azure リソースを管理する
 
-**ガイダンス**: 条件付きアクセスのネームド ロケーションを使用して、IP アドレスの範囲、国、またはリージョンの特定の論理グループからのみ Azure portal へのアクセスを許可します。
+**ガイダンス**:条件付きアクセスのネームド ロケーションを使用して、IP アドレスの範囲、国、またはリージョンの特定の論理グループからのみ Azure portal へのアクセスを許可します。
 
 - [Azure でネームド ロケーションを構成する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
 
@@ -386,7 +386,7 @@ Azure AD サインイン アクティビティ、監査、リスク イベント
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12: アカウント ログイン動作の偏差に関するアラートを生成する
 
-**ガイダンス**: Recovery Services コンテナーの主要な認証および承認システムとして Azure Active Directory (AD) を使用します。 コントロール プレーン (Azure portal) でのアカウント ログイン動作の偏差について、Azure AD Identity Protection とリスク検出機能を使用して、ユーザー ID に関連して検出された疑わしいアクションへの自動応答を構成します。 Azure Sentinel にデータを取り込んで、さらに詳しく調査することもできます。
+**ガイダンス**:Recovery Services コンテナーの主要な認証および承認システムとして Azure Active Directory (AD) を使用します。 コントロール プレーン (Azure portal) でのアカウント ログイン動作の偏差について、Azure AD Identity Protection とリスク検出機能を使用して、ユーザー ID に関連して検出された疑わしいアクションへの自動応答を構成します。 Azure Sentinel にデータを取り込んで、さらに詳しく調査することもできます。
 
 - [Azure AD ログインを使用するように Azure Backup を構成する方法](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad)
 
@@ -402,7 +402,7 @@ Azure AD サインイン アクティビティ、監査、リスク イベント
 
 ### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13: サポート シナリオで関連する顧客データに Microsoft がアクセスできるようにする
 
-**ガイダンス**: 現時点では利用できません。Azure Backup では、カスタマー ロックボックスはまだサポートされていません。
+**ガイダンス**:現時点では利用できません。Azure Backup では、カスタマー ロックボックスはまだサポートされていません。
 
 - [カスタマー ロックボックスでサポートされているサービスの一覧](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
 
@@ -430,7 +430,7 @@ Azure AD サインイン アクティビティ、監査、リスク イベント
 
 Recovery Services コンテナーの開発、テスト、運用向けに個別のサブスクリプションまたは管理グループ、あるいはその両方を実装します。 リソースは、VNet/サブネットで分割し、適切にタグを付け、NSG または Azure Firewall で保護する必要があります。 機密データを格納または処理するリソースは、十分に分離する必要があります。 機密データを格納または処理する仮想マシンでは、使用されていないときにはオフにするためのポリシーとプロシージャを実装します。
 
-サポート ドキュメント: 
+サポート ドキュメント:
 
 - [Azure Backup の概要](https://docs.microsoft.com/azure/backup/backup-overview)
 
@@ -446,7 +446,7 @@ Recovery Services コンテナーの開発、テスト、運用向けに個別�
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3:機密情報の承認されていない転送を監視してブロックする
 
-**ガイダンス**: 現時点では使用できません。Azure Backup では、データの識別、分類、損失防止機能はまだ使用できません。
+**ガイダンス**:現時点では使用できません。Azure Backup では、データの識別、分類、損失防止機能はまだ使用できません。
 
 Microsoft では、Azure Backup 用の基になるインフラストラクチャを管理し、顧客データの損失や漏洩を防ぐための厳格な管理を実施してきました。
 
@@ -516,7 +516,7 @@ MARS エージェントでバックアップする場合、またはカスタマ
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9:重要な Azure リソースへの変更に関するログとアラート
 
-**ガイダンス**: 運用 Recovery Services コンテナーおよびその他の重要なリソースまたは関連リソースへの変更がいつ発生したかに関するアラートを作成するには、Azure Monitor と Azure アクティビティ ログを使用します。
+**ガイダンス**:運用 Recovery Services コンテナーおよびその他の重要なリソースまたは関連リソースへの変更がいつ発生したかに関するアラートを作成するには、Azure Monitor と Azure アクティビティ ログを使用します。
 
 - [Azure アクティビティ ログ イベントのアラートを作成する方法](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
 
@@ -606,7 +606,7 @@ Microsoft でスキャンおよび修正される、基になるプラットフ�
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3:承認されていない Azure リソースを削除する
 
-**ガイダンス**: Azure リソースを整理および追跡するには、必要に応じて、タグ付け、管理グループ、個別のサブスクリプションを使用します。 定期的にインベントリを調整し、承認されていないリソースがサブスクリプションから適切なタイミングで削除されるようにします。
+**ガイダンス**:Azure リソースを整理および追跡するには、必要に応じて、タグ付け、管理グループ、個別のサブスクリプションを使用します。 定期的にインベントリを調整し、承認されていないリソースがサブスクリプションから適切なタイミングで削除されるようにします。
 
 さらに、次の組み込みのポリシー定義を使用して、顧客のサブスクリプション内に作成できるリソースの種類に制限を適用するには、Azure Policy を使用します。許可されていないリソースの種類と許可されているリソースの種類
 
@@ -630,7 +630,7 @@ Microsoft でスキャンおよび修正される、基になるプラットフ�
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5:承認されていない Azure リソースを監視する
 
-**ガイダンス**: Azure Policy を使用して、サブスクリプションで作成できるリソースの種類に制限を設けます。
+**ガイダンス**:Azure Policy を使用して、サブスクリプションで作成できるリソースの種類に制限を設けます。
 
 Azure Resource Graph を使用して、サブスクリプション内のリソースのクエリまたは検出を行います。  環境に存在するすべての Azure リソースが承認されていることを確認します。
 
@@ -668,7 +668,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9:承認された Azure サービスのみを使用する
 
-**ガイダンス**: 次の組み込みのポリシー定義を使用して、顧客のサブスクリプション内に作成できるリソースの種類に制限を適用するには、Azure Policy を使用します。許可されていないリソースの種類と許可されているリソースの種類
+**ガイダンス**:次の組み込みのポリシー定義を使用して、顧客のサブスクリプション内に作成できるリソースの種類に制限を適用するには、Azure Policy を使用します。許可されていないリソースの種類と許可されているリソースの種類
 
 - [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -688,7 +688,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ### <a name="611-divlimit-users-ability-to-interact-with-azure-resource-manager-via-scriptsdiv"></a>6.11: <div>ユーザーがスクリプトを使用して Azure Resource Manager と対話する機能を制限する</div>
 
-**ガイダンス**: Azure 条件付きアクセスを使用して Azure Resource Manager とやりとりするユーザーの機能を制限するには、"Microsoft Azure 管理" アプリに対して [アクセスのブロック] を構成します。
+**ガイダンス**:Azure 条件付きアクセスを使用して Azure Resource Manager とやりとりするユーザーの機能を制限するには、"Microsoft Azure 管理" アプリに対して [アクセスのブロック] を構成します。
 
 - [Azure Resource Manager へのアクセスをブロックするように条件付きアクセスを構成する方法](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
 
@@ -750,7 +750,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ### <a name="74-maintain-secure-operating-system-configurations"></a>7.4:セキュリティで保護されたオペレーティング システムの構成を維持する
 
-**ガイダンス**: 適用できません。このガイドラインは、コンピューティング リソースを対象にしています。
+**ガイダンス**:適用できません。このガイドラインは、コンピューティング リソースを対象にしています。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -758,7 +758,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5:Azure リソースの構成を安全に格納する
 
-**ガイダンス**: カスタムの Azure Policy 定義を使用する場合は、Azure DevOps または Azure Repos を使用して、コードを安全に格納して管理します。
+**ガイダンス**:カスタムの Azure Policy 定義を使用する場合は、Azure DevOps または Azure Repos を使用して、コードを安全に格納して管理します。
 
 - [Azure DevOps でコードを格納する方法](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
@@ -826,7 +826,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12:ID を安全かつ自動的に管理する
 
-**ガイダンス**: 適用できません。Azure Backup では、マネージド ID はサポートされていません。
+**ガイダンス**:適用できません。Azure Backup では、マネージド ID はサポートされていません。
 
 - [Azure リソースのマネージド ID をサポートするサービス](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)
 
@@ -858,7 +858,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2:非コンピューティング Azure リソースにアップロードするファイルを事前にスキャンする
 
-**ガイダンス**: Microsoft Antimalware は、Azure サービス (たとえば、Azure Backup など) をサポートする、基になるホストに対して有効になっていますが、コンテンツ上では実行されません。
+**ガイダンス**:Microsoft Antimalware は、Azure サービス (たとえば、Azure Backup など) をサポートする、基になるホストに対して有効になっていますが、コンテンツ上では実行されません。
 
 App Service、Data Lake Storage、Blob Storage などの非コンピューティング Azure リソースにアップロードされようとしているファイルはすべて、事前にスキャンしてください。
 
@@ -920,7 +920,7 @@ Azure Key Vault 内のカスタマー マネージド キーをバックアッ�
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: バックアップとカスタマー マネージド キーの保護を確保する
 
-**ガイダンス**: オンプレミスのバックアップでは、Azure にバックアップする際に指定するパスフレーズを使用して保存時の暗号化が行われます。 Azure VM の場合、データは Storage Service Encryption (SSE) を使用して暗号化された上で保存されます。 Key Vault で論理的な削除を有効にして、偶発的または悪意のある削除からキーを保護することができます。
+**ガイダンス**:オンプレミスのバックアップでは、Azure にバックアップする際に指定するパスフレーズを使用して保存時の暗号化が行われます。 Azure VM の場合、データは Storage Service Encryption (SSE) を使用して暗号化された上で保存されます。 Key Vault で論理的な削除を有効にして、偶発的または悪意のある削除からキーを保護することができます。
 
 - [Key Vault で論理的な削除を有効にする方法](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 

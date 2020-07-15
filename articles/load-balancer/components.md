@@ -11,16 +11,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: b696cdf2d54c42d3967041c5d10b1bd9bb5a3065
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: a055216634775254867421854aa0b456fa90c709
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84448684"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85551072"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer のコンポーネント
 
-Azure Load Balancer は、いくつかの重要なコンポーネントで構成されます。 これらは、ご利用のサブスクリプションで、Azure portal、Azure CLI、Azure PowerShell、またはテンプレートを使用して構成できます。
+Azure Load Balancer には、重要なコンポーネントがいくつか含まれています。 これらのコンポーネントは次を利用し、自分のサブスクリプション内で構成できます。
+
+* Azure portal
+* Azure CLI
+* Azure PowerShell
+* リソース マネージャーのテンプレート
 
 ## <a name="frontend-ip-configuration"></a>フロントエンド IP の構成 <a name = "frontend-ip-configurations"></a>
 
@@ -51,7 +56,7 @@ Load Balancer は、複数のフロントエンド IP を持つことができ�
 
 ## <a name="health-probes"></a>正常性プローブ
 
-正常性プローブは、バックエンド プール内のインスタンスの正常性状態を判断するために使用されます。 Load Balancer を作成する場合は、Load Balancer によってインスタンスが正常であるかどうかを判断し、トラフィックをルーティングするために使用できる正常性プローブを構成する必要があります。
+正常性プローブは、バックエンド プール内のインスタンスの正常性状態を判断するために使用されます。 ロード バランサーの作成中に、ロード バランサーで使用する正常性プローブを構成します。  この正常性プローブによって、インスタンスが正常で、トラフィックを受信できるかどうかが判断されます。
 
 正常性プローブには、異常しきい値を定義できます。 プローブが応答できない場合、Load Balancer によって、異常なインスタンスへの新しい接続の送信が停止されます。 プローブの失敗は、既存の接続には影響しません。 接続は、アプリケーションが以下を実行するまで続行されます。
 
@@ -67,32 +72,55 @@ Basic Load Balancer では、HTTPS プローブはサポートされていませ
 
 負荷分散規則は、バックエンド プール内の**すべて**のインスタンスに受信トラフィックを分散する方法を定義するために使用されます。 負荷分散規則は、フロントエンドの特定の IP 構成およびポートをバックエンドの複数の IP アドレスおよびポートにマッピングします。
 
-たとえば、フロントエンド IP のポート 80 (または別のポート) のトラフィックをすべてのバックエンド インスタンスのポート 80 にルーティングする場合は、負荷分散規則を使用してこれを実現します。
+たとえば、フロントエンド IP からバックエンド インスタンスのポート 80 にトラフィックを送信する負荷分散規則をポート 80 に使用します。
 
-### <a name="high-availability-ports"></a>高可用性ポート
+<p align="center">
+  <img src="./media/load-balancer-components/lbrules.svg" width="512" title="負荷分散規則">
+</p>
 
-'protocol - all and port - 0' で構成されたロード バランサー規則。 これにより、内部 Standard Load Balancer のすべてのポートに到着するすべての TCP フローと UDP フローを負荷分散する単一の規則を指定することができます。 負荷分散の決定は、フローごとに行われます。 このアクションは、次の 5 組の接続に基づいています。 
+*図:負荷分散規則*
+
+## <a name="high-availability-ports"></a>高可用性ポート
+
+**'protocol - all and port - 0'** で構成されたロード バランサー規則。 
+
+この規則では、内部 Standard Load Balancer のすべてのポートに到着するすべての TCP フローと UDP フローを単一の規則によって負荷分散できます。 
+
+負荷分散の決定は、フローごとに行われます。 このアクションは、次の 5 組の接続に基づいています。 
+
 1. 発信元 IP アドレス
 2. 発信元ポート
 3. 宛先 IP アドレス
 4. 宛先ポート
 5. protocol
 
-HA ポート負荷分散規則は、仮想ネットワーク内のネットワーク仮想アプライアンス (NVA) の高可用性と拡張性のような、重要なシナリオで役に立ちます。 この機能は、多数のポートを負荷分散する必要がある場合にも役立ちます。
+HA ポート負荷分散規則は、仮想ネットワーク内のネットワーク仮想アプライアンス (NVA) の高可用性と拡張性のような、重要なシナリオで役に立ちます。 この機能は、数多くのポートを負荷分散する必要がある場合に役立ちます。
 
-[HA ポート](load-balancer-ha-ports-overview.md)の詳細については、こちらをご覧ください。
+<p align="center">
+  <img src="./media/load-balancer-components/harules.svg" width="512" title="HA ポートの規則">
+</p>
+
+*図:HA ポートの規則*
+
+HA ポートの詳細については[こちら](load-balancer-ha-ports-overview.md)をご覧ください。
 
 ## <a name="inbound-nat-rules"></a>受信 NAT のルール
 
-受信 NAT のルールによって、選択したフロントエンド IP アドレスとポートの組み合わせに送信された受信トラフィックが、バックエンド プール内の**固有**の仮想マシンまたはインスタンスに転送されます。 ポート フォワーディングも、負荷分散と同じハッシュベースの分散によって実行されます。
+インバウンド NAT 規則によって、フロントエンド IP アドレスとポートの組み合わせに送信された受信トラフィックが転送されます。 トラフィックは、バックエンド プール内の**特定**の仮想マシンまたはインスタンスに送信されます。 ポート フォワーディングも、負荷分散と同じハッシュベースの分散によって実行されます。
 
 たとえば、バックエンド プール内の個々の VM インスタンスにリモート デスクトップ プロトコル (RDP) セッションや SSH (Secure Shell) セッションを使用する場合です。 複数の内部エンドポイントを、同じフロントエンド IP アドレスのポートにマッピングできます。 フロントエンド IP アドレスを使用すると、ジャンプ ボックスを追加しなくても VM をリモート管理できます。
 
-Virtual Machine Scale Sets (VMSS) のコンテキストでの受信 NAT 規則は、受信 NAT プールです。 [Load Balancer のコンポーネントと VMSS](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#azure-virtual-machine-scale-sets-with-azure-load-balancer) の詳細については、こちらをご覧ください。
+<p align="center">
+  <img src="./media/load-balancer-components/inboundnatrules.svg" width="512" title="受信 NAT のルール">
+</p>
+
+*図:インバウンド NAT 規則*
+
+Virtual Machine Scale Sets のコンテキストでの受信 NAT 規則は、受信 NAT プールです。 ロード バランサー コンポーネントと仮想マシン スケール セットの詳細については[こちら](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#azure-virtual-machine-scale-sets-with-azure-load-balancer)をご覧ください。
 
 ## <a name="outbound-rules"></a>アウトバウンド規則
 
-すべての仮想マシン、またはバックエンド プールによって識別されたインスタンスを対象とするアウトバウンド ネットワーク アドレス変換 (NAT) は、アウトバウンド規則によって構成します。 これにより、バックエンド内のインスタンスがインターネットやその他のエンドポイントに通信 (送信) できるようになります。
+すべての仮想マシン、またはバックエンド プールによって識別されたインスタンスを対象とするアウトバウンド ネットワーク アドレス変換 (NAT) は、アウトバウンド規則によって構成します。 この規則により、バックエンド内のインスタンスがインターネットやその他のエンドポイントに通信 (送信) できるようになります。
 
 [送信接続と規則](load-balancer-outbound-connections.md)の詳細については、こちらをご覧ください。
 

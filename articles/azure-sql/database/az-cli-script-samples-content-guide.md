@@ -3,7 +3,7 @@ title: Azure CLI スクリプトの例
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Azure SQL Database と Azure SQL Managed Instance を作成、管理するための Azure CLI サンプル スクリプト
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: service
 ms.custom: overview-samples, mvc, sqldbrb=2
 ms.devlang: azurecli
@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/03/2019
-ms.openlocfilehash: a17b5d80817637f1038996b034f926ee74cf54e9
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: cc762c3c10c087a8c0db5bd17f9c38b8f9d26134
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344664"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85982787"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance のための Azure CLI サンプル 
  
@@ -35,19 +35,19 @@ CLI をローカルにインストールして使用する場合、このトピ�
 
 次の表には、Azure SQL Database の単一データベースとプールされたデータベースを管理する Azure CLI サンプル スクリプトへのリンクが記載されています。 
 
-| | |
+|領域|説明|
 |---|---|
 |**Azure SQL Database にデータベースを作成する**||
 | [単一のデータベースを作成し、ファイアウォール規則を構成する](scripts/create-and-configure-database-cli.md) | SQL Database を作成し、サーバーレベルのファイアウォール規則を構成します。 |
-| [エラスティック プールを作成し、プールされたデータベースを移動する](scripts/move-database-between-elastic-pools-cli.md) | エラスティック プールを作成し、プールされた SQL データベースを移動して、コンピューティング サイズを変更します。 |
+| [エラスティック プールを作成し、プールされたデータベースを移動する](scripts/move-database-between-elastic-pools-cli.md) | エラスティック プールを作成し、プールされたデータベースを移動して、コンピューティング サイズを変更します。 |
 |**Azure SQL Database のデータベースをスケーリングする**||
 | [単一のデータベースをスケーリングする](scripts/monitor-and-scale-database-cli.md) | データベースのサイズ情報の照会後、SQL Database 内のデータベースを別のコンピューティング サイズにスケーリングします。 |
 | [エラスティック プールをスケーリングする](scripts/scale-pool-cli.md) | SQL エラスティック プールを別のコンピューティング サイズにスケーリングします。 |
 |**geo レプリケーションを構成しフェールオーバーする**||
 | [フェールオーバー グループに単一データベースを追加する](scripts/add-database-to-failover-group-cli.md)| データベースとフェールオーバー グループを作成し、データベースをフェールオーバー グループに追加して、セカンダリ サーバーへのフェールオーバーをテストします。 |
 | [エラスティック プールに対してフェールオーバー グループを構成する](../../sql-database/scripts/sql-database-add-elastic-pool-to-failover-group-cli.md) | データベースを作成し、それをエラスティック プールに追加し、そのエラスティック プールをフェールオーバー グループに追加して、セカンダリ サーバーへのフェールオーバーをテストします。 |
-| [アクティブ geo レプリケーションを使用して、単一データベースを構成し、フェールオーバーする](../../sql-database/scripts/sql-database-setup-geodr-and-failover-database-cli.md)| Azure SQL データベースのアクティブ geo レプリケーションを構成し、セカンダリ レプリカにフェールオーバーします。 |
-| [アクティブ geo レプリケーションを使用して、プールされたデータベースを構成およびフェールオーバーする](../../sql-database/scripts/sql-database-setup-geodr-and-failover-pool-cli.md)| SQL エラスティック プール内の Azure SQL データベース用にアクティブ geo レプリケーションを構成し、そのデータベースをセカンダリ レプリカにフェールオーバーします。 |
+| [アクティブ geo レプリケーションを使用して、単一データベースを構成し、フェールオーバーする](../../sql-database/scripts/sql-database-setup-geodr-and-failover-database-cli.md)| Azure SQL Database のデータベースのアクティブ geo レプリケーションを構成し、セカンダリ レプリカにフェールオーバーします。 |
+| [アクティブ geo レプリケーションを使用して、プールされたデータベースを構成およびフェールオーバーする](../../sql-database/scripts/sql-database-setup-geodr-and-failover-pool-cli.md)| エラスティック プール内のデータベース用にアクティブ geo レプリケーションを構成してから、そのデータベースをセカンダリ レプリカにフェールオーバーします。 |
 | **監査と脅威の検出** |
 | [監査と脅威検出を構成する](../../sql-database/scripts/sql-database-auditing-and-threat-detection-cli.md)| Azure SQL Database にあるデータベースの監査と脅威検出ポリシーを構成します。 |
 | **データベースをバックアップ、復元、コピー、インポートする**||
@@ -63,7 +63,7 @@ CLI をローカルにインストールして使用する場合、このトピ�
 
 次の表には、Azure SQL Managed Instance の Azure CLI サンプル スクリプトへのリンクが記載されています。
 
-| | |
+|領域|説明|
 |---|---|
 | **SQL Managed Instance を作成する**||
 | [SQL Managed Instance を作成する](../../sql-database/scripts/sql-database-create-configure-managed-instance-cli.md)| SQL Managed Instance を作成します。 |
@@ -75,6 +75,6 @@ CLI をローカルにインストールして使用する場合、このトピ�
 
 その他の SQL Managed Instance サンプルについては、データベースの[作成](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../create-azure-sql-managed-instance-using-azure-cli/)、[更新](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../modify-azure-sql-database-managed-instance-using-azure-cli/)、[移動](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/)、[操作](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44)に関するスクリプトを参照してください。
 
-[SQL Managed Instance の Azure CLI API](../managed-instance/api-references-create-manage-instance.md#azure-cli-create-and-manage-managed-instances) について理解を深めましょう。
+[SQL Managed Instance の Azure CLI API](../managed-instance/api-references-create-manage-instance.md#azure-cli-create-and-configure-managed-instances) について理解を深めましょう。
 
 ---

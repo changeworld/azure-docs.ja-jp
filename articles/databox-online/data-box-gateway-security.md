@@ -85,7 +85,7 @@ Azure サブスクリプションで作成した Data Box Gateway サービス�
 
 Data Box Gateway の仮想マシン上の仮想ディスクをセキュリティで保護するには、BitLocker を有効にすることをお勧めします。 既定では、BitLocker は有効になっていません。 詳細については、次を参照してください。
 
-- [Hyper-V マネージャーでの暗号化サポート設定](hhttps://docs.microsoft.com/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
+- [Hyper-V マネージャーでの暗号化サポート設定](h https://docs.microsoft.com/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
 - [仮想マシンでの BitLocker のサポート](https://kb.vmware.com/s/article/2036142)
 
 ## <a name="manage-personal-information"></a>個人情報の管理

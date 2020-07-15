@@ -1,21 +1,21 @@
 ---
 title: ポリシー定義の構造の詳細
 description: ポリシー定義を使用し、組織の Azure リソースの規則を確立する方法について説明します。
-ms.date: 05/11/2020
+ms.date: 06/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: de9b3c5242f361c9f0cf7128a5ec32c0e7dce428
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 28f4e3a99b7241711e46ce92fdfd2d7689b4527b
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84205026"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971115"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
 Azure Policy によってリソースの規則が確立されます。 ポリシー定義には、リソースのコンプライアンス[条件](#conditions) と、条件が満たされた場合に実行する効果が記述されます。 条件では、リソース プロパティ [フィールド](#fields)が必要な値と比較されます。 リソース プロパティ フィールドには、[エイリアス](#aliases)を使用することでアクセスします。 リソース プロパティ フィールドは、単一値フィールドまたは複数値の[配列](#understanding-the--alias)です。 条件の評価は、配列では異なります。
 [条件](#conditions)の詳細を参照してください。
 
-規則を定義することによって、コストを制御し、リソースをより簡単に管理することができます。 たとえば、特定の種類の仮想マシンのみを許可するように指定することができます。 また、すべてのリソースに特定のタグが指定されていることを必須にすることができます。 ポリシーは、すべての子リソースが継承します。 リソース グループにポリシーが適用された場合、ポリシーは、そのリソース グループ内のすべてのリソースに適用されます。
+規則を定義することによって、コストを制御し、リソースをより簡単に管理することができます。 たとえば、特定の種類の仮想マシンのみを許可するように指定することができます。 また、リソースに特定のタグを付けることを必須にすることもできます。 ポリシー割り当ては、子リソースによって継承されます。 リソース グループにポリシー割り当てが適用されると、そのリソース グループ内のすべてのリソースに適用されます。
 
 ポリシー定義のスキーマは [https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json) にあります
 
@@ -37,7 +37,7 @@ Azure Policy によってリソースの規則が確立されます。 ポリシ
     "properties": {
         "displayName": "Allowed locations",
         "description": "This policy enables you to restrict the locations your organization can specify when deploying resources.",
-        "mode": "all",
+        "mode": "Indexed",
         "metadata": {
             "version": "1.0.0",
             "category": "Locations"
@@ -83,7 +83,7 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 
 - `Builtin`:これらのポリシー定義は、Microsoft によって提供および管理されます。
 - `Custom`:顧客によって作成されるすべてのポリシー定義にこの値があります。
-- `Static`:Microsoft に**所有権**がある[規制に関するコンプライアンス ポリシー](./regulatory-compliance.md)を示します。 これらのポリシー定義のコンプライアンス結果は、Microsoft インフラストラクチャでのサードパーティの監査の結果です。 Azure portal では、この値は **Microsoft マネージド**として表示されることがあります。 詳細については、「[クラウドにおける共同責任](../../../security/fundamentals/shared-responsibility.md)」を参照してください。
+- `Static`:Microsoft に**所有権**がある[規制に関するコンプライアンス ポリシー](./regulatory-compliance.md)を示します。 これらのポリシー定義のコンプライアンス結果は、Microsoft インフラストラクチャでのサード パーティの監査の結果です。 Azure portal では、この値は **Microsoft マネージド**として表示されることがあります。 詳細については、「[クラウドにおける共同責任](../../../security/fundamentals/shared-responsibility.md)」を参照してください。
 
 ## <a name="mode"></a>モード
 
@@ -91,7 +91,7 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 
 ### <a name="resource-manager-modes"></a>Resource Manager のモード
 
-**mode** では、ポリシーに対して評価されるリソースの種類を決定します。 サポートされているモードは次のとおりです。
+**mode** によって、ポリシー定義に対して評価されるリソースの種類が決定されます。 サポートされているモードは次のとおりです。
 
 - `all`: リソース グループ、サブスクリプション、およびすべてのリソースの種類を評価します
 - `indexed`: タグと場所をサポートするリソースの種類のみを評価します
@@ -106,8 +106,8 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 
 現在、プレビューの間は、次のリソース プロバイダー モードがサポートされています。
 
-- [Azure Kubernetes Service](../../../aks/intro-kubernetes.md) でアドミッション コントローラー規則を管理するための `Microsoft.ContainerService.Data`。 このリソース プロバイダー モードを使用するポリシーでは、[EnforceRegoPolicy](./effects.md#enforceregopolicy) 効果を使用する**必要があります**。 このモデルは "_非推奨_" となっています。
-- Azure 上で、または Azure を離れて Kubernetes クラスターを管理するための `Microsoft.Kubernetes.Data`。 このリソース プロバイダー モードを使用するポリシーでは、[EnforceOPAConstraint](./effects.md#enforceopaconstraint) 効果を使用する**必要があります**。
+- [Azure Kubernetes Service](../../../aks/intro-kubernetes.md) でアドミッション コントローラー規則を管理するための `Microsoft.ContainerService.Data`。 このリソース プロバイダー モードを使用する定義では、[EnforceRegoPolicy](./effects.md#enforceregopolicy) 効果を使用する**必要があります**。 このモデルは "_非推奨_" となっています。
+- Azure 上で、または Azure を離れて Kubernetes クラスターを管理するための `Microsoft.Kubernetes.Data`。 このリソース プロバイダー モードを使用する定義では、効果 _audit_、_deny_、および _disabled_ を使用します。 [EnforceOPAConstraint](./effects.md#enforceopaconstraint) 効果の使用は "_非推奨_" になっています。
 - [Azure Key Vault](../../../key-vault/general/overview.md) でコンテナーと証明書を管理するための `Microsoft.KeyVault.Data`。
 
 > [!NOTE]
@@ -207,7 +207,7 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 定義の場所が:
 
 - **サブスクリプション**の場合 - そのサブスクリプション内のリソースだけを、ポリシーに割り当てることができます。
-- **管理グループ**の場合 - 子管理グループと子サブスクリプション内のリソースだけを、ポリシーに割り当てることができます。 ポリシー定義を複数のサブスクリプションに適用する場合、場所は、それらのサブスクリプションを含む管理グループである必要があります。
+- **管理グループ**の場合 - 子管理グループと子サブスクリプション内のリソースだけを、ポリシーに割り当てることができます。 ポリシー定義を複数のサブスクリプションに適用する予定がある場合、その場所はサブスクリプションを含む管理グループである必要があります。
 
 ## <a name="policy-rule"></a>ポリシー規則
 
@@ -451,7 +451,7 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 **count** では、次のプロパティを使用します。
 
 - **count.field** (必須):配列へのパスを含みます。また、配列のエイリアスである必要があります。 配列が含まれていない場合、式の評価は _false_ となり、条件式は考慮されません。
-- **count.where** (オプション):**count.field** の [\[\*\] alias](#understanding-the--alias) の各配列メンバーをそれぞれ評価するための条件式です。 このプロパティが指定されていない場合、"field" のパスを持つすべての配列メンバーの評価はすべて _true_ になります。 このプロパティ内では、任意の[条件](../concepts/definition-structure.md#conditions)を使用できます。
+- **count.where** (オプション):**count.field** の [\[\*\] alias](#understanding-the--alias) の各配列メンバーをそれぞれ評価するための条件式です。 このプロパティが指定されていない場合、"field" のパスを持つすべての配列メンバーの評価は _true_ になります。 このプロパティ内では、任意の[条件](../concepts/definition-structure.md#conditions)を使用できます。
   このプロパティ内では、[論理演算子](#logical-operators)を使用して複雑な評価要件を作成できます。
 - **\<condition\>** (必須):値は、**count.where** 条件式を満たした項目数と比較されます。 数値の[条件](../concepts/definition-structure.md#conditions)を使用する必要があります。
 
@@ -603,9 +603,9 @@ Azure Policy では、次の種類の効果をサポートしています。
 > [!NOTE]
 > これらの関数は、**deployIfNotExists** ポリシー定義のテンプレートのデプロイの `details.deployment.properties.template` の部分で引き続き使用できます。
 
-次の関数は、ポリシー規則で使用できますが、Azure Resource Manager テンプレートでの使用方法とは異なります。
+次の関数は、ポリシー規則で使用できますが、Azure Resource Manager テンプレート (ARM テンプレート) での使用方法とは異なります。
 
-- `utcNow()` - Resource Manager テンプレートとは異なり、これは defaultValue 外で使用できます。
+- `utcNow()` - ARM テンプレートとは異なり、このプロパティは _defaultValue_ の外部で使用できます。
   - 現在の日時に設定されているユニバーサル ISO 8601 日時形式 'yyyy-MM-ddTHH:mm:ss.fffffffZ' の文字列が返されます。
 
 次の関数は、ポリシー ルールでのみ使用できます。
@@ -619,7 +619,7 @@ Azure Policy では、次の種類の効果をサポートしています。
   - `field` は、主に **AuditIfNotExists** と **DeployIfNotExists** で、評価されるリソースのフィールドを参照するために使用されます。 使用例については、「[DeployIfNotExists の例](effects.md#deployifnotexists-example)」をご覧ください。
 - `requestContext().apiVersion`
   - ポリシーの評価をトリガーした要求の API バージョンを返します (例: `2019-09-01`)。
-    これは、PUT または PATCH 要求で、リソースの作成または更新時の評価に使用された API バージョンになります。 既存のリソースに対するコンプライアンスの評価中は、常に最新バージョンの API が使用されます。
+    この値は、PUT または PATCH 要求で、リソースの作成または更新時の評価に使用された API バージョンになります。 既存のリソースに対するコンプライアンスの評価中は、常に最新バージョンの API が使用されます。
   
 #### <a name="policy-function-example"></a>ポリシー関数の例
 

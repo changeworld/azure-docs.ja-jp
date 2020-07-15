@@ -5,16 +5,16 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: de3f127d97803ea920d61d748a1af0c80a1a1afc
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 4b87008f4172e58440c32e4ff92a3ee1f4d5efae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83759134"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565861"
 ---
 # <a name="textures"></a>テクスチャ
 
-テクスチャは、変更できない[共有リソース](../concepts/lifetime.md)です。 テクスチャは、「[チュートリアル: 環境と素材を変更する](../tutorials/unity/changing-environment-and-materials.md)」に示されているように、[BLOB ストレージ](../how-tos/conversion/blob-storage.md)から読み込んで、モデルに直接適用することができます。 ただし通常は、テクスチャは[変換されたモデル](../how-tos/conversion/model-conversion.md)の一部になり、ここでその[素材](materials.md)によって参照されます。
+テクスチャは、変更できない[共有リソース](../concepts/lifetime.md)です。 テクスチャは、「[チュートリアル: 環境と素材を変更する](../tutorials/unity/materials-lighting-effects/materials-lighting-effects.md)」に示されているように、[BLOB ストレージ](../how-tos/conversion/blob-storage.md)から読み込んで、モデルに直接適用することができます。 ただし通常は、テクスチャは[変換されたモデル](../how-tos/conversion/model-conversion.md)の一部になり、ここでその[素材](materials.md)によって参照されます。
 
 ## <a name="texture-types"></a>テクスチャの種類
 

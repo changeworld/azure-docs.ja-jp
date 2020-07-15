@@ -3,12 +3,12 @@ title: Azure Backup 診断イベントのデータ モデル
 description: このデータ モデルは、Log Analytics (LA) に診断イベントを送信するリソース固有モードを参照しています。
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 0713db1cee9d6737ce69cb108f3cb8f81d1eb2ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: af1e4159ff2794f8d4dd11480eb7f1789e034c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183570"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84484498"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Azure Backup 診断イベントのデータ モデル
 
@@ -120,11 +120,11 @@ ms.locfileid: "82183570"
 | ------------------------------ | ------------- | ------------------------------------------------------------ |
 | ResourceId                     | Text          | 収集されるデータのリソース識別子。 たとえば、Recovery Services コンテナーのリソース ID |
 | OperationName                  | Text          | このフィールドは現在の操作の名前 (Job) を表します。    |
-| カテゴリ                       | Text          | このフィールドは Azure Monitor ログにプッシュされた診断データのカテゴリ (AddonAzureBackupJobs) を表します |
+| カテゴリ                       | Text          | このフィールドは Azure Monitor ログにプッシュされた診断データのカテゴリ (AddonAzureBackupJobs) を表します。 |
 | AdhocOrScheduledJob            | Text          | ジョブがアドホックかスケジュール済みかを指定するフィールド           |
-| BackupItemUniqueId             | Text          | ストレージ エントリに関連するバックアップ項目の識別に使用される一意の ID |
-| BackupManagementServerUniqueId | Text          | ストレージ エントリに関連するバックアップ管理サーバーの識別に使用される一意の ID |
-| BackupManagementType           | Text          | バックアップを実行するためのプロバイダーの種類 (例: IaaSVM、このアラートが属する FileFolder) |
+| BackupItemUniqueId             | Text          | ストレージ エントリに関連するバックアップ項目の識別に使用される一意 ID |
+| BackupManagementServerUniqueId | Text          | ストレージ エントリに関連するバックアップ管理サーバーの識別に使用される一意 ID |
+| BackupManagementType           | Text          | バックアップを実行するためのプロバイダーの種類 (例: IaaSVM、このジョブが属する FileFolder) |
 | DataTransferredInMB            | Number        | このジョブで転送されたデータ (MB)                          |
 | JobDurationInSecs              | Number        | 合計ジョブ期間 (秒単位)                                |
 | JobFailureCode                 | Text          | ジョブ エラーが発生したことによるエラー コードの文字列    |
@@ -133,14 +133,14 @@ ms.locfileid: "82183570"
 | JobStartDateTime               | DateTime      | ジョブの実行を開始した日付と時刻                       |
 | JobStatus                      | Text          | 完了したジョブの状態 (例: 完了、失敗)   |
 | JobUniqueId                    | Text          | ジョブを識別する一意の ID                                |
-| ProtectedContainerUniqueId     | Text          | アラートに関連付けられている保護されるサーバーの一意の識別子 |
+| ProtectedContainerUniqueId     | Text          | ジョブに関連付けられている保護されるサーバーの一意の識別子 |
 | RecoveryJobDestination         | Text          | 回復ジョブの宛先 (データが回復される場所)   |
 | RecoveryJobRPDateTime          | DateTime      | 回復する復旧ポイントが作成された日付、時刻 |
 | RecoveryJobLocation            | Text          | 回復する復旧ポイントが作成された場所 |
 | RecoveryLocationType           | Text          | 回復する場所の種類                                |
 | SchemaVersion                  | Text          | スキーマの現在のバージョン (例: **V2**)            |
-| State                          | Text          | アラート オブジェクトの現在の状態 (例: アクティブ、削除済み) |
-| VaultUniqueId                  | Text          | アラートに関連付けられている保護されるコンテナーの一意の識別子 |
+| State                          | Text          | ジョブ オブジェクトの現在の状態 (例: アクティブ、削除済み) |
+| VaultUniqueId                  | Text          | ジョブに関連付けられている保護されるコンテナーの一意識別子 |
 | SourceSystem                   | Text          | 現在のデータのソース システム (Azure)                    |
 
 ## <a name="addonazurebackuppolicy"></a>AddonAzureBackupPolicy
@@ -205,7 +205,7 @@ ms.locfileid: "82183570"
 | BackupManagementServerUniqueId | Text          | 該当する場合、バックアップ項目の保護に使用されるバックアップ管理サーバーを一意に識別するフィールド |
 | BackupManagementType           | Text          | バックアップ ジョブを実行しているサーバーのプロバイダーの種類。 例: IaaSVM、FileFolder |
 | PreferredWorkloadOnVolume      | Text          | このボリュームが優先ストレージとなるワークロード      |
-| ProtectedContainerUniqueId     | Text          | アラートに関連付けられている保護されるサーバーの一意の識別子 |
+| ProtectedContainerUniqueId     | Text          | バックアップ項目に関連付けられている保護されるコンテナーの一意の識別子 |
 | SchemaVersion                  | Text          | スキーマのバージョン。 例: **V2**                   |
 | State                          | Text          | バックアップ項目オブジェクトの状態。 例: アクティブ、削除済み |
 | StorageAllocatedInMBs          | Number        | 種類が Disk の対応するストレージ内の対応するバックアップ項目によって割り当てられたストレージのサイズ |

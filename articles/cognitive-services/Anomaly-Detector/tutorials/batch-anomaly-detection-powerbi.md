@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
-ms.date: 03/05/2020
+ms.date: 06/17/2020
 ms.author: aahi
-ms.openlocfilehash: 1b486aaf0ce33e31433c2c3d0f7a1ff2c7089132
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 9f27deebe3a1fb21f4c7406bfd424196fb1072ec
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78402651"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921928"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>チュートリアル:バッチ検出と Power BI を使用して異常を視覚化する
 
@@ -32,8 +32,8 @@ ms.locfileid: "78402651"
 * [Azure サブスクリプション](https://azure.microsoft.com/free/)
 * [Microsoft Power BI Desktop](https://powerbi.microsoft.com/get-started/) (無料で利用可能)。
 * 時系列データ ポイントを含む Excel ファイル (.xlsx)。 このクイック スタートのサンプル データは、[GitHub](https://go.microsoft.com/fwlink/?linkid=2090962) にあります
-* Azure サブスクリプションを入手したら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Text Analytics リソースを作成"  target="_blank">Text Analytics リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 
-    * アプリケーションを Text Analytics API に接続するには、作成するリソースのキーとエンドポイントが必要です。 この作業は、このクイックスタートの中で後から行います。
+* Azure サブスクリプションを入手したら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title="Anomaly Detector リソースを作成"  target="_blank">Anomaly Detector リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 
+    * 対象のアプリケーションを Anomaly Detector API に接続するには、作成したリソースのキーとエンドポイントが必要です。 この作業は、このクイックスタートの中で後から行います。
 
 [!INCLUDE [cognitive-services-anomaly-detector-data-requirements](../../../../includes/cognitive-services-anomaly-detector-data-requirements.md)]
 
@@ -143,10 +143,10 @@ Power BI のメイン画面で、上で作成したクエリの使用を開始�
 
 次に、 **[呼び出された関数]** の以下のフィールドを、グラフの **[値]** フィールドに追加します。 下のスクリーンショットを使用すると、グラフの作成に役立ちます。
 
-    * 値
-    * UpperMargins
-    * LowerMargins
-    * ExpectedValues
+* 値
+* UpperMargins
+* LowerMargins
+* ExpectedValues
 
 ![新しいクイック メジャー画面のイメージ](../media/tutorials/chart-settings.png)
 

@@ -65,7 +65,7 @@ Azure Dev Spaces でアプリケーションを実行するには、Dockerfile �
 azds prep --enable-ingress --chart webfrontend/
 ```
 
-`prep`dev-spaces/samples/python/getting-started/webfrontend* ディレクトリから * コマンドを実行し、`--chart` を使用して Helm チャートの場所を指定する必要があります。
+`prep`dev-spaces/samples/python/getting-started/webfrontend *ディレクトリから* コマンドを実行し、`--chart` を使用して Helm チャートの場所を指定する必要があります。
 
 > [!NOTE]
 > 次のような警告が表示されることがあります: *警告: Dockerfile could not be generated due to unsupported language (サポートされていない言語が原因で Dockerfile を生成できませんでした)* " `azds prep` の実行時。 `azds prep` コマンドを実行すると、対象のプロジェクトの [Dockerfile と Helm チャート](how-dev-spaces-works-prep.md#prepare-your-code)の生成が試行されますが、既存の Dockerfile または Helm チャートは上書きされません。

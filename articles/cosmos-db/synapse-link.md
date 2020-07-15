@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 709b442fde94d88adc7fe4cce16ee1a50bf06c6b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: ff64f3f4891aac27a32b642b50ebd51dea9bd34a
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83674331"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025779"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure Synapse Link for Azure Cosmos DB (プレビュー) とは
 
@@ -25,7 +25,7 @@ Azure Synapse Link では、完全に分離された列ストアである [Azure
 
 次の図では、Azure Synapse Link と Azure Cosmos DB および Azure Synapse Analytics との統合を示します。 
 
-![Azure Synapse Analytics と Azure Cosmos DB の統合のアーキテクチャ図](./media/synapse-link/synapse-analytics-cosmos-db-architecture.png)
+:::image type="content" source="./media/synapse-link/synapse-analytics-cosmos-db-architecture.png" alt-text="Azure Synapse Analytics と Azure Cosmos DB の統合のアーキテクチャ図" border="false":::
 
 ## <a name="benefits"></a><a id="synapse-link-benefits"></a> 利点
 
@@ -121,6 +121,8 @@ Synapse Link は、次の場合にお勧めします。
 * パブリック プレビューの間の Azure Synapse Link は、Azure Cosmos DB SQL (Core) API に対してのみサポートされます。 MongoDB 用の Azure Cosmos DB の API と Cassandra API に対するサポートは、現在限定的なプレビュー中です。 限定的なプレビューへのアクセスを要求するには、[Azure Cosmos DB チーム](mailto:cosmosdbsynapselink@microsoft.com)にメールでご連絡ください。
 
 * 現時点では、分析ストアは (新規と既存のどちらの Azure Cosmos DB アカウントでも) 新しいコンテナーに対してのみ有効にすることができます。
+
+* プレビューでは、Synapse Link が有効になっているデータベース アカウントでは、コンテナーのバックアップと復元はサポートされていません。 バックアップと復元の機能を必要とする運用環境のワークロードがある場合、それらのデータベース アカウントでは Synapse Link を有効にしないことをお勧めします。 
 
 * Synapse SQL サーバーレスでの Azure Cosmos DB 分析ストアへのアクセスは、現在限定的なプレビューの段階にあります。 アクセスを要求するには、[Azure Cosmos DB チーム](mailto:cosmosdbsynapselink@microsoft.com)にメールでご連絡ください。
 

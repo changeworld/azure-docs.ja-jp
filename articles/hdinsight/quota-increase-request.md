@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/07/2020
-ms.openlocfilehash: a708ad9626f4d6750de64097a7e1e9177c350e5e
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 4de32bad763c0bbf0e143a7ce639efec8c9c41ae
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83717741"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079617"
 ---
 # <a name="requesting-quota-increases-for-azure-hdinsight"></a>Azure HDInsight のクォータの増加を要求する
 
@@ -48,7 +48,7 @@ CPU コア クォータは、確実に、特定の Azure リージョン内の�
 
      ![HDInsight コア クォータを増やすためのサポート要求を作成します。](./media/quota-increase-request/hdinsight-quota-support-request.png)
 
-1. **ソリューション >>** を選択します。
+1. **次へ:ソリューション >>** を選択します。
 1. **[詳細]** ページで、問題に関する説明を入力し、問題の重大度、希望する連絡方法、およびその他の必須フィールドを選択します。 次に示すテンプレートを使用して、必要な情報を確実に提供てください。 クォータの増加要求は、HDInsight 製品チームではなく、Azure の容量チームによって評価されます。 詳細な情報を提供すれば、要求が承認される可能性が高くなります。
 
     ```
@@ -61,7 +61,7 @@ CPU コア クォータは、確実に、特定の Azure リージョン内の�
 
     ![問題の詳細](./media/quota-increase-request/problem-details.png)
 
-1. **確認と作成 >>** を選択します。
+1. **次へ:確認と作成 >>** を選択します。
 1. **[確認および作成]** タブで、 **[作成]** を選択します。
 
 > [!NOTE]  

@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 05/19/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 90d9c6a2ebf445ba492f2e1634e57910cd235aed
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 7defc33f8e3e2daca60fa5c15c41c62333ffc2d7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83679253"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389260"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのカスタム ポリシーに関する開発者向けのメモ
 
@@ -101,7 +101,7 @@ Azure Active Directory B2C でのカスタム ポリシーの構成が一般提�
 | [ワンタイム パスワード](one-time-password-technical-profile.md) |  | X |  |  |
 | ローカル ディレクトリとしての [Azure Active Directory](active-directory-technical-profile.md) |  |  | X |  |
 | 電子メール検証のための Azure 電子メール サブシステム |  |  | X |  |
-| [サード パーティの電子メール サービス プロバイダー](custom-email.md) |  |X  |  |  |
+| [サード パーティの電子メール サービス プロバイダー](custom-email-mailjet.md) |  |X  |  |  |
 | [複数言語のサポート](localization.md)|  |  | X |  |
 | [述語の検証](predicates.md) |  |  | X | 例: パスワードの複雑さ。 |
 | [表示コントロール](display-controls.md) |  |X  |  |  |

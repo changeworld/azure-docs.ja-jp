@@ -56,12 +56,8 @@
       href: tutorial-azure-devops-blue-green-strategy.md
     - name: 15d - Azure Pipelines を使用した CI/CD (YAML)
       href: tutorial-build-deploy-azure-pipelines.md
-    - name: 16a - LAMP スタックの作成
+    - name: 16 - LAMP スタックの作成
       href: tutorial-lamp-stack.md
-    - name: 16b - LEMP スタックの作成
-      href: tutorial-lemp-stack.md
-    - name: 16c - MEAN スタックの作成
-      href: tutorial-mean-stack.md
     - name: 17 - SSL による Web サーバーのセキュリティ保護
       href: tutorial-secure-web-server.md
 - name: サンプル
@@ -161,8 +157,16 @@
       href: ../policy-samples.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
 - name: 概念
   items:
-    - name: イメージ
-      href: shared-image-galleries.md
+    - name: イメージング
+      items:
+        - name: 概要
+          href: imaging.md
+        - name: プロビジョニング
+          href: provisioning.md
+        - name: 共有イメージ ギャラリー
+          href: shared-image-galleries.md
+        - name: Image Builder
+          href: image-builder-overview.md
     - name: Azure Resource Manager
       href: ../../azure-resource-manager/management/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: リージョン
@@ -346,7 +350,7 @@
       href: ../../virtual-machine-scale-sets/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: インフラストラクチャの自動化
       href: infrastructure-automation.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティとポリシー
           href: security-policy.md
@@ -363,9 +367,9 @@
     - name: バックアップと回復
       href: backup-recovery.md
     - name: クラウド導入フレームワーク
-      href: 'https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/get-started/'
+      href: 'https://docs.microsoft.com/azure/cloud-adoption-framework/get-started/'
     - name: アーキテクチャ センター
-      href: 'https://docs.microsoft.com/en-us/azure/architecture/'
+      href: 'https://docs.microsoft.com/azure/architecture/'
     - name: インフラストラクチャのガイドライン
       href: infrastructure-example.md
 - name: 操作方法ガイド
@@ -419,6 +423,50 @@
     - name: イメージの使用
       displayName: 'SIG, AMI, image'
       items:
+        - name: ディストリビューション固有の要件
+          items:
+            - name: 一般的な手順
+              href: create-upload-generic.md
+            - name: Ubuntu
+              href: create-upload-ubuntu.md
+            - name: CentOS
+              href: create-upload-centos.md
+            - name: Red Hat
+              href: redhat-create-upload-vhd.md
+            - name: Debian
+              href: debian-create-upload-vhd.md
+            - name: SUSE
+              href: suse-create-upload-vhd.md
+            - name: Oracle Linux
+              href: oracle-create-upload-vhd.md
+            - name: OpenBSD
+              href: create-upload-openbsd.md
+            - name: FreeBSD
+              href: freebsd-intro-on-azure.md
+        - name: cloud-init を使用する
+          items:
+            - name: cloud-init の概要
+              href: using-cloud-init.md
+            - name: 詳細情報
+              href: cloud-init-deep-dive.md
+            - name: トラブルシューティング
+              href: cloud-init-troubleshooting.md
+            - name: VM のホスト名の構成
+              href: cloudinit-update-vm-hostname.md
+            - name: VM 内のパッケージの更新
+              href: cloudinit-update-vm.md
+            - name: VM へのユーザーの追加
+              href: cloudinit-add-user.md
+            - name: スワップ ファイルの構成
+              href: cloudinit-configure-swapfile.md
+            - name: 既存の Bash スクリプトの実行
+              href: cloudinit-bash-script.md
+            - name: cloud-init のための既存の VM の準備
+              href: cloudinit-prepare-custom-image.md
+        - name: 次を使用せずにイメージを作成する
+          href: no-agent.md
+        - name: Linux エージェントのプロビジョニングを無効にする
+          href: disable-provisioning.md
         - name: Shared Image Gallery
           items:
             - name: CLI
@@ -429,6 +477,8 @@
                   items:
                     - name: VM から
                       href: ../image-version-vm-cli.md
+                    - name: VHD またはスナップショットから
+                      href: ../image-version-snapshot-cli.md
                     - name: マネージド イメージから移行する
                       href: ../image-version-managed-image-cli.md
                     - name: 別のギャラリーからコピーする
@@ -451,6 +501,8 @@
                   items:
                     - name: VM から
                       href: ../image-version-vm-powershell.md
+                    - name: VHD またはスナップショットから
+                      href: ../image-version-snapshot-powershell.md
                     - name: マネージド イメージから移行する
                       href: ../image-version-managed-image-powershell.md
                     - name: 別のギャラリーからコピーする
@@ -463,6 +515,8 @@
                       href: ../vm-specialized-image-version-powershell.md
                 - name: イメージ リソースを更新する
                   href: ../update-image-resources-powershell.md
+                - name: 共有のためのアプリの登録
+                  href: ../windows/share-images-across-tenants.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: ポータル
               items:
                 - name: ギャラリー、イメージ、VM の作成
@@ -484,8 +538,6 @@
               href: ../image-version-encryption.md
         - name: Image Builder (プレビュー)
           items:
-            - name: 概要
-              href: image-builder-overview.md
             - name: Azure CLI の使用
               href: image-builder.md
             - name: Resource Manager テンプレート リファレンス
@@ -499,27 +551,9 @@
               href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
         - name: イメージを検索および使用する
           href: cli-ps-findimage.md
-        - name: カスタム イメージを作成する
-          items:
-            - name: 一般的な手順
-              href: create-upload-generic.md
-            - name: Ubuntu
-              href: create-upload-ubuntu.md
-            - name: CentOS
-              href: create-upload-centos.md
-            - name: Red Hat
-              href: redhat-create-upload-vhd.md
-            - name: Debian
-              href: debian-create-upload-vhd.md
-            - name: SUSE
-              href: suse-create-upload-vhd.md
-            - name: Oracle Linux
-              href: oracle-create-upload-vhd.md
-            - name: OpenBSD
-              href: create-upload-openbsd.md
-            - name: FreeBSD
-              href: freebsd-intro-on-azure.md
-        - name: VM をイメージにキャプチャする
+        - name: 購入プラン情報
+          href: ../marketplace-images.md
+        - name: VM をマネージド イメージにキャプチャする
           href: capture-image.md
         - name: Packer でイメージを作成する
           href: build-image-with-packer.md
@@ -527,7 +561,7 @@
           href: download-vhd.md
     - name: VM のセキュリティ保護
       items:
-        - name: Recommendations
+        - name: 推奨事項
           href: security-recommendations.md
         - name: ジャストインタイム アクセス
           href: ../../security-center/security-center-just-in-time.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -817,22 +851,6 @@
               href: /azure/developer/terraform/install-configure
             - name: 完全な VM の作成
               href: /azure/developer/terraform/create-linux-virtual-machine-with-infrastructure
-        - name: cloud-init
-          items:
-            - name: cloud-init の概要
-              href: using-cloud-init.md
-            - name: VM のホスト名の構成
-              href: cloudinit-update-vm-hostname.md
-            - name: VM 内のパッケージの更新
-              href: cloudinit-update-vm.md
-            - name: VM へのユーザーの追加
-              href: cloudinit-add-user.md
-            - name: スワップ ファイルの構成
-              href: cloudinit-configure-swapfile.md
-            - name: 既存の Bash スクリプトの実行
-              href: cloudinit-bash-script.md
-            - name: cloud-init のための既存の VM の準備
-              href: cloudinit-prepare-custom-image.md
         - name: Jenkins
           href: /azure/developer/jenkins/overview
           items:
@@ -898,7 +916,7 @@
           href: 'https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/'
         - name: IBM Db2 pureScale
           items:
-            - name: Architecture
+            - name: アーキテクチャ
               href: ibm-db2-purescale-azure.md
             - name: デプロイ
               href: deploy-ibm-db2-purescale-azure.md
@@ -933,6 +951,16 @@
           href: disks-incremental-snapshots-portal.md
         - name: 非管理対象ディスクのバックアップ
           href: incremental-snapshots.md
+        - name: 暗号化
+          items:
+            - name: ホスト時の暗号化を有効にする - CLI
+              href: disks-enable-host-based-encryption-cli.md
+            - name: カスタマー マネージド キーを有効にする - CLI
+              href: disks-enable-customer-managed-keys-cli.md
+            - name: カスタマー マネージド キーを有効にする - ポータル
+              href: disks-enable-customer-managed-keys-portal.md
+            - name: 保存時の二重暗号化を有効にする
+              href: disks-enable-double-encryption-at-rest-cli.md
         - name: 移行と変換
           items:
             - name: Azure Site Recovery を使用した Premium Storage への移行

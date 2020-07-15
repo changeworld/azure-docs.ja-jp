@@ -3,17 +3,17 @@ title: Azure プライベート エンドポイントを使用して非公開で
 description: Azure プライベート エンドポイントを使用して非公開で Web アプリに接続する
 author: ericgre
 ms.assetid: b8c5c7f8-5e90-440e-bc50-38c990ca9f14
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 34ea9961c257f398ebed3baaf4ed2ee5b6f3547e
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 1b3ac4c79ce92f591e74821a9f355717e4b22ea4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298705"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737395"
 ---
 # <a name="connect-privately-to-a-web-app-using-azure-private-endpoint-preview"></a>Azure プライベート エンドポイントを使用して非公開で Web アプリに接続する (プレビュー)
 

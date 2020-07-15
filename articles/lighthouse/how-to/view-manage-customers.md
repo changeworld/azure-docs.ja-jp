@@ -2,13 +2,13 @@
 title: 顧客と委任されたリソースを表示し、管理する
 description: Azure の委任されたリソース管理を使用するサービス プロバイダーは、Azure portal の [マイ カスタマー] を使用して、自社に委任された顧客のリソースとサブスクリプションをすべて表示できます。
 ms.date: 01/22/2020
-ms.topic: conceptual
-ms.openlocfilehash: 0d4b3187066754e8a549f029623762df539b30b1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.openlocfilehash: 9d793d73190b0b35b9794cf926405ebcad07a3d1
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76543428"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920812"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>顧客と委任されたリソースを表示し、管理する
 
@@ -16,9 +16,9 @@ ms.locfileid: "76543428"
 
 Azure portal の **[マイ カスタマー]** ページにアクセスするには、 **[すべてのサービス]** を選択し、 **[マイ カスタマー]** を探して選択します。 Azure portal の上部付近にある検索ボックスに「マイ カスタマー」と入力して見つけることもできます。
 
-**[マイ カスタマー]** ページの先頭の **[顧客]** セクションに表示されるのは、サブスクリプションまたはリソース グループを委任した側の顧客に関する情報だけである点に留意してください。 連携しているのが他の顧客 ([クラウド ソリューション プロバイダー プログラム](https://docs.microsoft.com/partner-center/csp-overview)などを通じた販売先など) である場合、それらの顧客に関する情報は、そのリソースを Azure の委任されたリソース管理用にオンボードしていない限り、 **[顧客]** セクションに表示されません。
+**[マイ カスタマー]** ページの先頭の **[顧客]** セクションに表示されるのは、サブスクリプションまたはリソース グループを委任した側の顧客に関する情報だけである点に留意してください。 連携しているのが他の顧客 ([クラウド ソリューション プロバイダー プログラム](/partner-center/csp-overview)などを通じた販売先など) である場合、それらの顧客に関する情報は、そのリソースを Azure の委任されたリソース管理用にオンボードしていない限り、 **[顧客]** セクションに表示されません。
 
-ページの下の方に、 **[クラウド ソリューション プロバイダー (プレビュー)]** と呼ばれる別のセクションがあり、[Microsoft 顧客契約 (MCA) に署名](https://docs.microsoft.com/partner-center/confirm-customer-agreement)し、[Azure プランに含まれている](https://docs.microsoft.com/partner-center/azure-plan-get-started) CSP のお客様の課金情報とリソースが表示されます。 詳しくは、「[Microsoft Partner Agreement の課金アカウントの概要](../../billing/mpa-overview.md)」をご覧ください。 そのような CSP のお客様は、Azure の委任されたリソース管理にもオンボードされているかどうかにかかわらず、このセクションに表示されることに注意してください。 同様に、CSP のお客様は、Azure の委任されたリソース管理にオンボードされるために、 **[マイ カスタマー]** の **[クラウド ソリューション プロバイダー (プレビュー)]** セクションに表示される必要はありません。
+ページの下の方に、 **[クラウド ソリューション プロバイダー (プレビュー)]** と呼ばれる別のセクションがあり、[Microsoft 顧客契約 (MCA) に署名](/partner-center/confirm-customer-agreement)し、[Azure プランに含まれている](/partner-center/azure-plan-get-started) CSP のお客様の課金情報とリソースが表示されます。 詳しくは、「[Microsoft Partner Agreement の課金アカウントの概要](../../billing/mpa-overview.md)」をご覧ください。 そのような CSP のお客様は、Azure の委任されたリソース管理にもオンボードされているかどうかにかかわらず、このセクションに表示されることに注意してください。 同様に、CSP のお客様は、Azure の委任されたリソース管理にオンボードされるために、 **[マイ カスタマー]** の **[クラウド ソリューション プロバイダー (プレビュー)]** セクションに表示される必要はありません。
 
 > [!NOTE]
 > 顧客は、Azure portal の **[サービス プロバイダー]** に移動して、サービス プロバイダーの情報を表示できます。 詳細については、「[サービス プロバイダーを表示し、管理する](view-manage-service-providers.md)」を参照してください。

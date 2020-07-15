@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 555e4bf9dfa2318796cde124d07867d09adc229d
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: e5db52d1e28a7db5594b3b2a16bc145d0a50e2e3
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310259"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84765082"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>ワークスペース、データ、およびパイプラインへのアクセスを管理する
 
@@ -170,13 +170,6 @@ ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
 > Spark ユーザーが Spark と SQL プールとの間で直接読み取りまたは書き込みを行うには、*db_owner* アクセス許可が必要です。
 
 ユーザーを作成した後、SQL オンデマンドでストレージ アカウントに対してクエリを実行できることを検証します。
-
-- SQL オンデマンドの **master** データベースをターゲットとする次のコマンドを実行します。
-
-    ```sql
-    CREATE CREDENTIAL [https://<storageaccountname>.dfs.core.windows.net]
-    WITH IDENTITY='User Identity';
-    ```
 
 ## <a name="access-control-to-workspace-pipeline-runs"></a>ワークスペースのパイプラインの実行に対するアクセス制御
 

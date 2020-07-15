@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/10/2020
+ms.date: 06/29/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 315bab473ccb42c3ca7b481c16bf8d8fbcfaac67
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: f3861ab8839ba0483c5096e29cd09b6268bd765e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193463"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563911"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 に関する既知の問題
 
@@ -65,19 +65,6 @@ BLOB API と Data Lake Storage Gen2 API では、同じデータを処理でき�
 ## <a name="file-system-support-in-sdks-powershell-and-azure-cli"></a>SDK、PowerShell、Azure CLI でのファイル システムのサポート
 
 - get および set ACL 操作は現在、再帰的ではありません。
-
-
-## <a name="lifecycle-management-policies"></a>ライフサイクル管理ポリシー
-
-BLOB スナップショットの削除は、まだサポートされていません。 
-
-## <a name="archive-tier"></a>アーカイブ層
-
-現在、アーカイブ アクセス層に影響するバグがあります。
-
-## <a name="blobfuse"></a>blobfuse
-
-Blobfuse はサポートされていません。
 
 <a id="known-issues-tools"></a>
 

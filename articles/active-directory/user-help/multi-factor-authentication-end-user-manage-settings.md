@@ -10,14 +10,14 @@ ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 02/20/2020
+ms.date: 07/06/2020
 ms.author: curtand
-ms.openlocfilehash: c9304f4a958360d01d404d9b510feb5659e5436d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 259468d0d3b04b354e782529cefa2149974c9ca0
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746744"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85983307"
 ---
 # <a name="change-your-two-factor-verification-method-and-settings"></a>2 要素検証方法と設定を変更する
 
@@ -88,7 +88,7 @@ ms.locfileid: "83746744"
 
 1. **[追加のセキュリティ確認]** ページの **[応答に使用する方法を選択してください]** セクションで、 **[認証用電話]** (メインのモバイル デバイス) と **[会社電話]** の電話番号情報を更新します。
 
-1. **[代替の認証用電話]** オプションの横にあるボックスをオンにして、メインのデバイスにアクセスできない場合にテキスト メッセージまたは電話を受けることができるサブの電話番号を入力します。
+1. **[代替の認証用電話]** オプションの横にあるボックスをオンにして、メインのデバイスにアクセスできない場合に電話を受けることができるサブの電話番号を入力します。
 
 1. **[保存]** を選択します。
 

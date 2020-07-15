@@ -5,16 +5,17 @@ description: Windows Data Science Virtual Machine 上でデータ探索および
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
+ms.custom: tracking-python
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: acada42cd50d607925d7c4583820c2590ff76639
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 7d9aced42efefc8651605be44f0091b2f4f2815e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266561"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959281"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows データ サイエンス仮想マシンでできる 10 のこと
 
@@ -248,7 +249,9 @@ DSVM には、GitHub リポジトリにアクセスするためのクライア�
 
 GitHub リポジトリからコードをダウンロードするには、```git clone``` コマンドを使います。 たとえば、Microsoft が発行しているデータ サイエンス リポジトリを現在のディレクトリにダウンロードするには、Git Bash で次のコマンドを実行します。
 
-    git clone https://github.com/Azure/DataScienceVM.git
+```bash
+git clone https://github.com/Azure/DataScienceVM.git
+```
 
 Visual Studio から同じクローン操作を行うこともできます。 下のスクリーンショットでは、Visual Studio で Git と GitHub ツールにアクセスする方法を示しています。
 
@@ -275,7 +278,9 @@ Azure Blob Storage は、大規模データにも小規模データにも対応�
 
 ローカル ファイルと BLOB ストレージとの間のデータ移動には、次のように、コマンド ラインまたは PowerShell から AzCopy を使用します。
 
-    AzCopy /Source:C:\myfolder /Dest:https://<mystorageaccount>.blob.core.windows.net/<mycontainer> /DestKey:<storage account key> /Pattern:abc.txt
+```powershell
+AzCopy /Source:C:\myfolder /Dest:https://<mystorageaccount>.blob.core.windows.net/<mycontainer> /DestKey:<storage account key> /Pattern:abc.txt
+```
 
 **C:\myfolder** は対象ファイルが保存されているパスに、**mystorageaccount** はご自分の BLOB ストレージ アカウント名に、**mycontainer** はコンテナー名に、**storage account key** はご自分の BLOB ストレージ アクセス キーにそれぞれ置き換えてください。 ストレージ アカウントの資格情報は、[Azure portal](https://portal.azure.com) で確認できます。
 

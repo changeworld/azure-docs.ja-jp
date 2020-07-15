@@ -5,26 +5,29 @@ services: iot-dps
 author: wesmc7777
 ms.service: iot-dps
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 06/18/2020
 ms.author: wesmc
-ms.openlocfilehash: 285832d80d37c8553ffc8e37c6f6eab5d7f6d943
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 9a90180fa606b14b06c94d3211fdf492add0350d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82984258"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564963"
 ---
 # <a name="tls-support-in-azure-iot-hub-device-provisioning-service-dps"></a>Azure IoT Hub Device Provisioning Service (DPS) の TLS サポート
 
-DPS では、トランスポート層セキュリティ (TLS) を使用して IoT デバイスからの接続をセキュリティで保護します。 現時点では 3 つのバージョンの TLS プロトコル (つまり、バージョン 1.0、1.1、および 1.2) がサポートされています。
+DPS では、[トランスポート層セキュリティ (TLS)](http://wikipedia.org/wiki/Transport_Layer_Security) を使用して IoT デバイスからの接続をセキュリティで保護します。 
 
-TLS 1.0 と 1.1 はレガシと見なされており、非推奨となる予定です。 詳細については、[IoT Hub の TLS 1.0 および 1.1 の廃止](../iot-hub/iot-hub-tls-deprecating-1-0-and-1-1.md)に関する記事を参照してください。 DPS に接続するときは、TLS 1.2 を優先 TLS バージョンとして使用することを強くお勧めします。
+現在 DPS でサポートされている TLS プロトコルのバージョンは次のとおりです。 
+* TLS 1.2
+
+TLS 1.0 と 1.1 はレガシと見なされており、非推奨となる予定です。 詳細については、[IoT Hub の TLS 1.0 および 1.1 の廃止](../iot-hub/iot-hub-tls-deprecating-1-0-and-1-1.md)に関する記事を参照してください。 
 
 ## <a name="restrict-connections-to-tls-12"></a>TLS 1.2 に接続を制限する
 
 セキュリティを強化するためには、TLS バージョン 1.2 を使用するデバイス クライアント接続 "*のみ*" を許可し、[推奨される暗号](#recommended-ciphers)の使用を強制するように、DPS インスタンスを構成することをお勧めします。
 
-これを行うには、[サポートされているリージョン](#supported-regions)のいずれかに新しい DPS リソースをプロビジョニングし、Azure Resource Manager テンプレートの DPS リソース仕様で `minTlsVersion` プロパティを `1.2` に設定します。 次のサンプル テンプレート JSON では、新しい DPS インスタンスに `minTlsVersion` プロパティが指定されます。
+これを行うには、新しい DPS リソースをプロビジョニングし、Azure Resource Manager テンプレートの DPS リソース仕様で `minTlsVersion` プロパティを `1.2` に設定します。 次のサンプル テンプレート JSON では、新しい DPS インスタンスに `minTlsVersion` プロパティが指定されます。
 
 ```json
 {
@@ -35,7 +38,7 @@ TLS 1.0 と 1.1 はレガシと見なされており、非推奨となる予定�
             "type": "Microsoft.Devices/ProvisioningServices",
             "apiVersion": "2020-01-01",
             "name": "<provide-a-valid-DPS-resource-name>",
-            "location": "<any-of-supported-regions-below>",
+            "location": "<any-region>",
             "properties": {
                 "minTlsVersion": "1.2"
             },
@@ -61,24 +64,44 @@ Resource Manager テンプレートで DPS リソースを作成する詳細に�
 > [!NOTE]
 > `minTlsVersion` プロパティは読み取り専用であり、DPS リソースの作成後は変更できません。 したがって、*すべての* IoT デバイスが TLS 1.2 および[推奨される暗号](#recommended-ciphers)と互換性があることを、事前に適切にテストし、検証する必要があります。
 
-## <a name="supported-regions"></a>サポートされているリージョン
-
-TLS 1.2 を使用する必要がある IoT DPS は、次のリージョンで作成できます。
-
-* US Gov アリゾナ
-* US Gov バージニア州
 
 > [!NOTE]
 > フェールオーバー時、DPS の `minTlsVersion` プロパティは、フェールオーバー後に geo ペア リージョンで有効なままになります。
 
 ## <a name="recommended-ciphers"></a>推奨される暗号
 
-TLS 1.2 のみを受け入れるように構成されている DPS インスタンスでは、次の推奨される暗号の使用も強制されます。
+TLS 1.2 のみを受け入れるように構成されている DPS インスタンスでは、次の暗号スイートの使用も強制されます。
 
-* `TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256`
-* `TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384`
-* `TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256`
-* `TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384`
+### <a name="tls-12-cipher-suites"></a>TLS 1.2 暗号スイート
+
+| Minimum Bar |
+| :--- |
+| `TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256`<br>`TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384`<br>`TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256`<br>`TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384`<br>`TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256`<br>`TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384`<br>`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256`<br>`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384` |
+
+| Opportunity for Excellence |
+| :--- |
+| `TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384`<br>`TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256`<br>`TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384`<br>`TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256`<br>`TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384`<br>`TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256`<br>`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384`<br>`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256` |
+
+### <a name="cipher-suite-ordering-prior-to-windows-10"></a>Windows 10 より前の暗号スイートの順序付け
+
+| Minimum Bar |
+| :--- |
+| `TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256_P256`<br>`TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384_P384`<br>`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256`<br>`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384`<br>`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256`<br>`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P384`<br>`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256`<br>`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P384` |
+
+| Opportunity for Excellence |
+| :--- |
+| `TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384_P384`<br>`TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256_P256`<br>`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384`<br>`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256`<br>`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P384`<br>`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256`<br>`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P384`<br>`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256` |
+
+### <a name="legacy-cipher-suites"></a>レガシ暗号スイート 
+
+| オプション #1 (セキュリティ強化) |
+| :--- |
+| `TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA_P384 (uses SHA-1)`<br>`TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA_P256 (uses SHA-1)`<br>`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P384   (uses SHA-1)`<br>`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256   (uses SHA-1)`<br>`TLS_RSA_WITH_AES_256_GCM_SHA384           (lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_128_GCM_SHA256           (lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_256_CBC_SHA256           (lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_128_CBC_SHA256           (lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_256_CBC_SHA              (uses SHA-1, lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_128_CBC_SHA              (uses SHA-1, lack of Perfect Forward Secrecy)` |
+
+| オプション #2 (パフォーマンス向上) |
+| :--- |
+| `TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA_P256 (uses SHA-1)`<br>`TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA_P384 (uses SHA-1)`<br>`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256   (uses SHA-1)`<br>`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P384   (uses SHA-1)`<br>`TLS_RSA_WITH_AES_128_GCM_SHA256           (lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_256_GCM_SHA384           (lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_128_CBC_SHA256           (lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_256_CBC_SHA256           (lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_128_CBC_SHA              (uses SHA-1, lack of Perfect Forward Secrecy)`<br>`TLS_RSA_WITH_AES_256_CBC_SHA              (uses SHA-1, lack of Perfect Forward Secrecy)` |
+
 
 ## <a name="use-tls-12-in-the-iot-sdks"></a>IoT SDK で TLS 1.2 を使用する
 
@@ -92,7 +115,10 @@ TLS 1.2 のみを受け入れるように構成されている DPS インスタ�
 | Java     | バージョン 1.19.0 以降            | [リンク](https://aka.ms/Tls_Java_SDK_IoT) |
 | NodeJS   | バージョン 1.12.2 以降            | [リンク](https://aka.ms/Tls_Node_SDK_IoT) |
 
+## <a name="use-tls-12-with-iot-hub"></a>IoT Hub と共に TLS 1.2 を使用する
+
+IoT Hub は、デバイスとの通信時に TLS 1.2 を使用するように構成できます。 詳細については、[IoT Hub の TLS 1.0 および 1.1 の廃止](../iot-hub/iot-hub-tls-deprecating-1-0-and-1-1.md)に関する記事を参照してください。
 
 ## <a name="use-tls-12-with-iot-edge"></a>IoT Edge と共に TLS 1.2 を使用する
 
-IoT Edge デバイスは、IoT Hub および DPS との通信時に TLS 1.2 を使用するように構成できます。 このためには、[IoT Edge ドキュメント ページ](https://github.com/Azure/iotedge/blob/master/edge-modules/edgehub-proxy/README.md)を使用してください。
+IoT Edge デバイスは、IoT Hub および DPS との通信時に TLS 1.2 を使用するように構成できます。 詳しくは、[IoT Edge ドキュメントのページ](https://github.com/Azure/iotedge/blob/master/edge-modules/edgehub-proxy/README.md)を参照してください。

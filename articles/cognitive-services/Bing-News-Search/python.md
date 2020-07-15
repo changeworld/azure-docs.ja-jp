@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 05/22/2020
+ms.date: 06/16/2020
 ms.author: aahi
 ms.custom: seodec2018, tracking-python
-ms.openlocfilehash: 37571113be715c7eb6b120aa592b5a2422a08ad8
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 534310609b1d2f375feef81fe45147485216d5ec
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84610000"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84883735"
 ---
 # <a name="quickstart-perform-a-news-search-using-python-and-the-bing-news-search-rest-api"></a>クイック スタート:Python と Bing News Search REST API を使用してニュース検索を実行する
 
@@ -60,7 +60,7 @@ params  = {"q": search_term, "textDecorations": True, "textFormat": "HTML"}
     ```python
     response = requests.get(search_url, headers=headers, params=params)
     response.raise_for_status()
-    search_results = response.json()
+    search_results = json.dumps(response.json())
     ```
 
 2. JSON オブジェクトとして `search_results` に格納されている API から、応答に含まれている記事の説明にアクセスします。 

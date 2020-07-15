@@ -10,18 +10,22 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, subject-armqs
 ms.date: 05/28/2020
-ms.openlocfilehash: 127a8550b7f4ca89b8b3a8e61880b295a806e5d0
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: b7217df7fe7ccedf2419480b1114fa1ef6c8e24a
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449364"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043548"
 ---
-# <a name="quickstart-create-an-azure-stream-analytics-job-by-using-the-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートで Azure Stream Analytics ジョブを作成する
+# <a name="quickstart-create-an-azure-stream-analytics-job-by-using-an-arm-template"></a>クイック スタート: ARM テンプレートを使用して Azure Stream Analytics ジョブを作成する
 
-このクイックスタートでは、Azure Resource Manager テンプレートを使用して、Azure Stream Analytics ジョブを作成します。 ジョブの作成後、デプロイを検証します。
+このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、Azure Stream Analytics ジョブを作成します。 ジョブの作成後、デプロイを検証します。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
+
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-streamanalytics-create%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -29,9 +33,7 @@ ms.locfileid: "84449364"
 
 * Azure サブスクリプションがあること - [無料アカウントを作成します](https://azure.microsoft.com/free/)。
 
-## <a name="create-an-azure-stream-analytics-job"></a>Azure Stream Analytics ジョブの作成
-
-### <a name="review-the-template"></a>テンプレートを確認する
+## <a name="review-the-template"></a>テンプレートを確認する
 
 このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-streamanalytics-create/)からのものです。
 
@@ -39,9 +41,9 @@ ms.locfileid: "84449364"
 
 テンプレートで定義されている Azure リソースは [Microsoft.StreamAnalytics/StreamingJobs](/azure/templates/microsoft.streamanalytics/streamingjobs) です。つまり Azure Stream Analytics ジョブを作成します。
 
-### <a name="deploy-the-template"></a>テンプレートのデプロイ
+## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-このセクションでは、Azure Resource Manager テンプレートを使って Azure Stream Analytics ジョブを作成します。
+このセクションでは、ARM テンプレートを使用して Azure Stream Analytics ジョブを作成します。
 
 1. Azure にサインインし、テンプレートを開くには次のイメージを選択します。 テンプレートによって Azure Stream Analytics ジョブが作成されます。
 
@@ -108,7 +110,7 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、Azure Resource Manager テンプレートを使用して Azure Stream Analytics ジョブを作成し、デプロイを検証しました。 次の記事に進み、VS Code を使用して、既存のジョブの Azure Resource Manager テンプレートをエクスポートする方法について学習してください。
+このクイックスタートでは、ARM テンプレートを使用して Azure Stream Analytics ジョブを作成し、デプロイを検証しました。 次の記事に進み、VS Code を使用して、既存のジョブの ARM テンプレートをエクスポートする方法について学習してください。
 
 > [!div class="nextstepaction"]
-> [Azure Stream Analytics ジョブの Azure Resource Manager テンプレートをエクスポートする](resource-manager-export.md)
+> [Azure Stream Analytics ジョブの ARM テンプレートをエクスポートする](resource-manager-export.md)

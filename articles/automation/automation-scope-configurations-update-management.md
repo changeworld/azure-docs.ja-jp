@@ -5,16 +5,16 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 72065b388f348da1d268f875a10d5b13d2f8cf3b
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 8770762fa2d2ae6bc0584d75397829298a62e8c0
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117400"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185893"
 ---
 # <a name="limit-update-management-deployment-scope"></a>Update Management のデプロイのスコープを制限する
 
-この記事では、[Update Management](automation-update-management.md) 機能を使用して VM に更新プログラムとパッチをデプロイする際のスコープ構成の操作方法について説明します。 詳細については、「[Azure Monitor での監視ソリューションのターゲット設定 (プレビュー)](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting)」を参照してください。 
+この記事では、[Update Management](automation-update-management.md) 機能を使用して VM に更新プログラムとパッチをデプロイする際のスコープ構成の操作方法について説明します。 詳細については、「[Azure Monitor での監視ソリューションのターゲット設定 (プレビュー)](../azure-monitor/insights/solution-targeting.md)」を参照してください。 
 
 ## <a name="about-scope-configurations"></a>スコープ構成について
 

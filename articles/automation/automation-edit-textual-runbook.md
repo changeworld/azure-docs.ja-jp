@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d388162738930030ba311a04a0dce1db15590c79
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: c51ef23e27cd63d3706c104d1e39a14bf61c258e
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836840"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186352"
 ---
 # <a name="edit-textual-runbooks-in-azure-automation"></a>Azure Automation でのテキスト形式の Runbook の編集
 
@@ -57,7 +57,7 @@ Azure Automation の各 Runbook には、ドラフトと発行の 2 つのバー
 1. テキスト エディターのキャンバス コントロールで、子 Runbook のコードを配置する場所にカーソルを置きます。
 2. ライブラリ コントロールで **[アセット]** ノードを展開します。
 3. 必要な資産の種類のノードを展開します。
-4. 挿入する資産名を右クリックして、 **[キャンバスに追加]** を選択します。 [変数資産](automation-variables.md)の場合、変数を取得するのか設定するのかに応じて、 **["変数の取得" をキャンバスに追加する]** または **["変数の設定" をキャンバスに追加する]** を選択します。
+4. 挿入する資産名を右クリックして、 **[キャンバスに追加]** を選択します。 [変数資産](./shared-resources/variables.md)の場合、変数を取得するのか設定するのかに応じて、 **["変数の取得" をキャンバスに追加する]** または **["変数の設定" をキャンバスに追加する]** を選択します。
 5. 資産のコードが Runbook に挿入されます。
 
 ## <a name="edit-an-azure-automation-runbook-using-windows-powershell"></a>Windows PowerShell を使用して Azure Automation の Runbook を編集する
@@ -96,9 +96,9 @@ Publish-AzAutomationRunbook -Name $runbookName -AutomationAccountName $automatio
 * [Azure Automation で Runbook を管理する](manage-runbooks.md)。
 * [PowerShell ワークフローについての説明](automation-powershell-workflow.md)。
 * [Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)。
-* [証明書](automation-certificates.md)。
+* [証明書](./shared-resources/certificates.md)。
 * [接続](automation-connections.md)。
-* [資格情報](automation-credentials.md)。
-* [スケジュール](automation-schedules.md)。
-* [変数](automation-variables.md)。
-* [PowerShell コマンドレット リファレンス](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)。
+* [資格情報](./shared-resources/credentials.md)。
+* [スケジュール](./shared-resources/schedules.md)。
+* [変数](./shared-resources/variables.md)。
+* [PowerShell コマンドレット リファレンス](/powershell/module/az.automation/?view=azps-3.7.0#automation)。

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 05/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: ba498fe9f70664a801172a6ff3705ac41a6371ef
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 0c8863615446f8b14043cd7bd13e529b7efa1e46
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835251"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186199"
 ---
 # <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>Azure Monitor ログに Azure Automation のジョブ データを転送する
 
@@ -28,8 +28,8 @@ Azure Automation では、Runbook ジョブの状態とジョブ ストリーム
 
 Azure Monitor ログへの Automation ログの送信を開始するには、次のものが必要です。
 
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) の最新リリース。
-* Log Analytics ワークスペース。 詳細については、[Azure Monitor ログの使用](../log-analytics/log-analytics-get-started.md)に関するページを参照してください
+* [Azure PowerShell](/powershell/azureps-cmdlets-docs/) の最新リリース。
+* Log Analytics ワークスペース。 詳細については、[Azure Monitor ログの使用](../azure-monitor/overview.md)に関するページを参照してください
 * Azure Automation アカウントのリソース ID。
 
 自分の Azure Automation アカウントのリソース ID を調べるには、次のコマンドを使用します。
@@ -186,8 +186,8 @@ Remove-AzDiagnosticSetting -ResourceId $automationAccountId
 
 ## <a name="next-steps"></a>次のステップ
 
-* 検索クエリの作成方法と、Azure Monitor ログでの Automation ジョブ ログの確認方法については、[Azure Monitor ログでのログ検索](../log-analytics/log-analytics-log-searches.md)に関するページを参照してください。
+* 検索クエリの作成方法と、Azure Monitor ログでの Automation ジョブ ログの確認方法については、[Azure Monitor ログでのログ検索](../azure-monitor/log-query/log-query-overview.md)に関するページを参照してください。
 * Runbook の出力とエラー メッセージを作成および取得する方法については、「[Runbook 出力を監視する](automation-runbook-output-and-messages.md)」を参照してください。
 * Runbook の実行、Runbook ジョブの監視方法、その他の技術的な詳細については、「[Azure Automation での Runbook の実行](automation-runbook-execution.md)」を参照してください。
-* Azure Monitor ログとデータ収集ソースの詳細については、[Azure Monitor ログにおける Azure Storage データの収集の概要](../azure-monitor/platform/collect-azure-metrics-logs.md)に関するページを参照してください。
+* Azure Monitor ログとデータ収集ソースの詳細については、[Azure Monitor ログにおける Azure Storage データの収集の概要](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)に関するページを参照してください。
 * Log Analytics のトラブルシューティングについては、[Log Analytics がデータを収集しなくなった場合のトラブルシューティング](../azure-monitor/platform/manage-cost-storage.md#troubleshooting-why-log-analytics-is-no-longer-collecting-data)に関する記事を参照してください。

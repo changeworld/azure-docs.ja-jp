@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
-ms.openlocfilehash: c45d2fc34ccbab6d813f12563678d036f9f35753
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.openlocfilehash: 831f09ecf7550a847c483fbe1678f1e4c3cecb61
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80891494"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052298"
 ---
 # <a name="example-powershell-scripts"></a>PowerShell スクリプトの例
 
@@ -75,6 +75,9 @@ Azure Remote Rendering には、次の 2 つの REST API が用意されてい�
 
 > [!CAUTION]
 > LocalAssetDirectoryPath パスのバックスラッシュは、二重のバックスラッシュ "\\\\" を使用して正しくエスケープするようにし、inputFolderPath や inputAssetPath などの他のすべてのパスにはスラッシュ "/" を使用するようにしてください。
+
+> [!CAUTION]
+> オプションの値を入力するか、キーと値をすべて削除する必要があります。 たとえば、`"outputAssetFileName"` パラメーターを使用しない場合は、`arrconfig.json` 内の行全体を削除する必要があります。
 
 ### <a name="accountsettings"></a>accountSettings
 

@@ -5,16 +5,16 @@ services: automation
 ms.subservice: update-management
 ms.date: 03/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: d08afc6e501fd76167e0939633442213958f0d49
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: a2d16bdca18b7fc0afab2a3deb325d1a75be3bb8
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834630"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185162"
 ---
 # <a name="manage-updates-for-multiple-vms"></a>複数の VM の更新プログラム管理
 
-Azure Automation Update Management を使用すると、Windows および Linux VM の更新プログラムとパッチを管理できます。 [Azure Automation](automation-offering-get-started.md) アカウントから、以下の操作を行うことができます。
+Azure Automation Update Management を使用すると、Windows および Linux VM の更新プログラムとパッチを管理できます。 [Azure Automation](./index.yml) アカウントから、以下の操作を行うことができます。
 
 - VM の更新管理を有効にします。
 - 利用可能な更新プログラムの状態を評価します。

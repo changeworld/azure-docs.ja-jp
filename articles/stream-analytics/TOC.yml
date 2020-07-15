@@ -13,6 +13,8 @@
       items:
         - name: Azure portal
           href: stream-analytics-quick-create-portal.md
+        - name: Azure CLI
+          href: quick-create-azure-cli.md
         - name: ARM テンプレート
           displayName: Resource Manager
           href: quick-create-azure-resource-manager.md
@@ -30,7 +32,7 @@
       href: stream-analytics-with-azure-functions.md
     - name: 3 - Azure Pipelines での CI/CD によるデプロイ
       href: stream-analytics-tools-visual-studio-cicd-vsts.md
-    - name: '4 - C# UDF の実行'
+    - name: 4 - C# UDF の実行
       href: stream-analytics-edge-csharp-udf.md
     - name: 5 - カスタム .NET 逆シリアライザーの作成
       href: custom-deserializer.md
@@ -49,7 +51,7 @@
       href: feature-comparison.md
     - name: ローカルでの開発
       href: develop-locally.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -82,10 +84,12 @@
           href: stream-analytics-javascript-user-defined-functions.md
         - name: JavaScript UDA
           href: stream-analytics-javascript-user-defined-aggregates.md
-        - name: 'C# UDF'
+        - name: C# UDF
           href: stream-analytics-edge-csharp-udf-methods.md
         - name: Machine Learning UDF
           href: machine-learning-udf.md
+        - name: UDF のデバッグ
+          href: debug-user-defined-functions.md
     - name: Stream Analytics のジョブを最適化する
       items:
         - name: ストリーミング ユニットの理解と調整
@@ -228,6 +232,8 @@
           href: visual-studio-code-local-run.md
         - name: ライブ データを使用してローカルでテストする
           href: visual-studio-code-local-run-live-input.md
+        - name: ジョブ ダイアグラムを使用してクエリをデバッグする
+          href: debug-locally-using-job-diagram-vs-code.md
         - name: CI/CD パイプラインの設定
           href: setup-cicd-vs-code.md
         - name: ジョブの探索

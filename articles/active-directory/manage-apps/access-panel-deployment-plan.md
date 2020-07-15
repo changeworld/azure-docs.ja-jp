@@ -2,25 +2,25 @@
 title: Azure Active Directory アクセス パネルのデプロイを計画する
 description: Azure Active Directory アクセス パネルのデプロイに関するガイダンス
 services: active-directory
-author: barbaraselden
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/27/2019
-ms.author: baselden
+ms.author: kenwith
 ms.reviewer: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04d8b6c6d40aa81bf56baed59f90417f2147fa56
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b8a74c85b63e3a532e49136ba3b33437d907694
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76897075"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555312"
 ---
 # <a name="plan-an-azure-active-directory-access-panel-deployment"></a>Azure Active Directory アクセス パネルのデプロイを計画する
 
@@ -87,7 +87,7 @@ Azure AD アクセス パネルは、次のようにビジネスに役立ちま�
 |アクセス | 企業ネットワークの外部にある会社のデバイスからアクセス パネル ポータルにアクセスできます。 |
 | 監査| 使用状況データは、少なくとも 29 日に一度、企業システムにダウンロードされます。 |
 | ガバナンス| Azure AD に接続済みのアプリケーションとグループへのユーザー割り当てのライフサイクルが定義され、監視されます。 |
-| Security| ユーザーとグループの割り当てによって、リソースへのアクセスが制御されます。 許可されているユーザーのみがリソース アクセスを管理できます。 |
+| セキュリティ| ユーザーとグループの割り当てによって、リソースへのアクセスが制御されます。 許可されているユーザーのみがリソース アクセスを管理できます。 |
 | パフォーマンス| アクセス割り当ての伝達タイムラインが文書化され、監視されます。 |
 | ユーザー エクスペリエンス| ユーザーはアクセス パネルの機能と使用方法を理解しています。|
 | ユーザー エクスペリエンス| ユーザーはアプリケーションとグループへの自分のアクセスを管理できます。|
@@ -261,7 +261,7 @@ Azure AD では、独自のセキュリティ グループまたは Office 365 �
 
 Azure AD には、[技術やビジネスの分析情報を提供するレポート](https://azure.microsoft.com/documentation/articles/active-directory-view-access-usage-reports/)が用意されています。 ビジネスおよび技術アプリケーションの所有者と協力して、定期的にこれらのレポートの所有権を引き受け、使用します。 次の表に、一般的なレポート シナリオの例をいくつか示します。
 
-|   | リスクの管理| 生産性の向上| ガバナンスとコンプライアンス |
+| 例 | リスクの管理| 生産性の向上| ガバナンスとコンプライアンス |
 |  - |- | - | - |
 | レポートの種類|  アプリケーションのアクセス許可と使用状況| アカウント プロビジョニングのアクティビティ| アプリケーションにアクセス中のユーザーの確認 |
 | 潜在的なアクション| アクセスの監査。アクセス許可の取り消し| プロビジョニング エラーの修復| アクセス権の取り消し |

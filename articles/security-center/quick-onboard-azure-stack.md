@@ -3,8 +3,8 @@ title: Azure Stack 仮想マシンを Azure Security Center にオンボード�
 description: このクイック スタートでは、Azure Monitor, Update and Configuration Management 仮想マシン拡張機能を Azure Stack 仮想マシンにプロビジョニングする方法を示します。
 services: security-center
 documentationcenter: na
-author: pipposera
-manager: dsavage
+author: memildin
+manager: rkarlin
 ms.assetid: 8982348a-0624-40c7-8a1e-642a523c7f6b
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2019
-ms.author: fiseraci
-ms.openlocfilehash: c186dcb2d7d7d423f5c001bdb4d3f3503beebd9c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.author: memildin
+ms.openlocfilehash: 1f0a11616fe996f02d6464d23724156906176041
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73686529"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771157"
 ---
 # <a name="quickstart-onboard-your-azure-stack-virtual-machines-to-security-center"></a>クイック スタート:Azure Stack 仮想マシンを Security Center にオンボードする
 Azure サブスクリプションをオンボードした後、Azure Stack Marketplace から **Azure Monitor, Update and Configuration Management** 仮想マシン拡張機能を追加することにより、Security Center を有効にして、Azure Stack で動作している仮想マシンを保護できます。

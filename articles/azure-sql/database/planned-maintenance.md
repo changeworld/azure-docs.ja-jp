@@ -2,8 +2,8 @@
 title: Azure メンテナンス イベントの計画
 description: Azure SQL データベースおよび Azure SQL Managed Instance で計画メンテナンス イベントを準備する方法について説明します。
 services: sql-database
-ms.service: sql-database
-ms.subservice: operations
+ms.service: sql-db-mi
+ms.subservice: service
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,14 +11,14 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: carlrab
 ms.date: 01/30/2019
-ms.openlocfilehash: 2f5f69a5f145ae8bbf23aa1e5dbca07b30db0e21
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 5bdc3eb8c118c19f90ce1fd92ac5ee156719dacd
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84027753"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85987210"
 ---
-# <a name="planning-for-azure-maintenance-events-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database および Azure SQL Managed Instance での Azure メンテナンス イベントの計画
+# <a name="plan-for-azure-maintenance-events-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database および Azure SQL Managed Instance での Azure メンテナンス イベントの計画
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Azure SQL データベースおよび Azure SQL Managed Instance 内のデータベースに計画メンテナンス イベントを準備する方法について説明します。
@@ -29,7 +29,7 @@ Azure SQL データベースおよび Azure SQL Managed Instance 内のデータ
 
 ## <a name="what-to-expect-during-a-planned-maintenance-event"></a>計画メンテナンス イベント時に予期されること
 
-再構成/フェールオーバーは、通常、30 秒以内に完了します (平均は 8 秒)。 アプリケーションが既に接続されている場合は、データベースの正常なコピー (新しいプライマリ レプリカ) に再接続する必要があります。 新しいプライマリ レプリカがオンラインになる前にデータベースで再構成を行っている間に新しい接続が試行された場合、エラー 40613 (データベースは使用できません):"サーバー '{servername}' 上のデータベース '{databasename}' は現在使用できません。 後で接続を再試行してください。" などと表示されます。 データベースに実行時間の長いクエリがある場合、このクエリは再構成中に中断され、再開する必要があります。
+再構成/フェールオーバーは、通常 30 秒以内に完了します。 平均は 8 秒です。 アプリケーションが既に接続されている場合は、データベースの正常なコピー (新しいプライマリ レプリカ) に再接続する必要があります。 新しいプライマリ レプリカがオンラインになる前にデータベースで再構成を行っている間に新しい接続が試行された場合、エラー 40613 (データベースは使用できません):"サーバー '{servername}' 上のデータベース '{databasename}' は現在使用できません。 後で接続を再試行してください" のトラブルシューティングを行う データベースに実行時間の長いクエリがある場合、このクエリは再構成中に中断され、再開する必要があります。
 
 ## <a name="retry-logic"></a>再試行ロジック
 
@@ -39,11 +39,11 @@ Azure SQL データベースおよび Azure SQL Managed Instance 内のデータ
 
 平均すると、1 か月に 1.7 回の計画メンテナンス イベントが発生します。
 
-## <a name="resource-health"></a>リソース正常性
+## <a name="resource-health"></a>リソース ヘルス
 
-データベースでログイン エラーが発生している場合は、[Azure portal](https://portal.azure.com) の [[リソース正常性]](../../service-health/resource-health-overview.md#get-started) ウィンドウで、現在の状態を確認します。 [正常性の履歴] セクションには、(該当する場合は) イベントごとのダウンタイムの理由が含まれています。
+データベースでログオン エラーが発生している場合は、[Azure portal](https://portal.azure.com) の [[リソース正常性]](../../service-health/resource-health-overview.md#get-started) ウィンドウで、現在の状態を確認します。 [正常性の履歴] セクションには、(該当する場合は) イベントごとのダウンタイムの理由が含まれています。
 
 ## <a name="next-steps"></a>次のステップ
 
-- Azure SQL Database と Azure SQL Managed Instance の[リソース正常性](resource-health-to-troubleshoot-connectivity.md)について学習します
+- Azure SQL Database と Azure SQL Managed Instance の[リソース正常性](resource-health-to-troubleshoot-connectivity.md)について説明します。
 - 再試行ロジックの詳細については、「[一時エラーの再試行ロジック](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)」を参照してください。

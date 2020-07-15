@@ -3,15 +3,15 @@ title: アプリケーションを Amazon DynamoDB から Azure Cosmos DB に移
 description: .NET アプリケーションを Amazon DynamoDB から Azure Cosmos DB に移行する方法について説明します
 author: manishmsfte
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/29/2020
 ms.author: mansha
-ms.openlocfilehash: b30ebf7dae1d43b5f841677f98831fc4817a9b5a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: cfdeda8ac3957da272ab4c47fb93930c826d55aa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663590"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261870"
 ---
 # <a name="migrate-your-application-from-amazon-dynamodb-to-azure-cosmos-db"></a>アプリケーションを Amazon DynamoDB から Azure Cosmos DB に移行する
 

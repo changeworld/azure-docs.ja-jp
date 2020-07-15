@@ -7,26 +7,28 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: edoyle
 ms.date: 04/24/2020
-ms.openlocfilehash: 2db3dffbbf0f6d98fe6da7a0cec5400f7f2c03da
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 1cb6dc56a5d4fa975f68c1dea08920a7c7db3904
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83722458"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119499"
 ---
-# <a name="quickstart-create-a-service-fabric-cluster-using-resource-manager-template"></a>クイック スタート:Resource Manager テンプレートを使用して Service Fabric クラスターを作成する
+# <a name="quickstart-create-a-service-fabric-cluster-using-arm-template"></a>クイック スタート:ARM テンプレートを使用して Service Fabric クラスターを作成する
 
-Azure Service Fabric は、スケーラブルで信頼性に優れたマイクロサービスとコンテナーのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。 Service Fabric "*クラスター*" は、ネットワークで接続された一連の仮想マシンです。マイクロサービスは Service Fabric クラスターにデプロイされ、そこで管理されます。
+Azure Service Fabric は、スケーラブルで信頼性に優れたマイクロサービスとコンテナーのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。 Service Fabric "*クラスター*" は、ネットワークで接続された一連の仮想マシンです。マイクロサービスは Service Fabric クラスターにデプロイされ、そこで管理されます。 この記事では、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、Azure に Service Fabric テスト クラスターをデプロイする方法について説明します。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-この記事では、Resource Manager を使用して Azure に Service Fabric テスト クラスターをデプロイする方法について説明します。 この 5 ノードの Windows クラスターは、セキュリティの保護に自己署名証明書を使用しているため、運用環境のワークロードではなく、説明のみを目的としています。
+この 5 ノードの Windows クラスターは、セキュリティの保護に自己署名証明書を使用しているため、運用環境のワークロードではなく、説明のみを目的としています。 テンプレートのデプロイには、Azure PowerShell を使用します。 Azure PowerShell だけでなく、Azure portal、Azure CLI、および REST API を使用することもできます。 他のデプロイ方法については、「[テンプレートのデプロイ](../azure-resource-manager/templates/deploy-portal.md)」を参照してください。
 
-テンプレートのデプロイには、Azure PowerShell を使用します。 Azure PowerShell だけでなく、Azure portal、Azure CLI、および REST API を使用することもできます。 他のデプロイ方法については、「[テンプレートのデプロイ](../azure-resource-manager/templates/deploy-portal.md)」を参照してください。
+環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fservice-fabric-secure-cluster-5-node-1-nodetype%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
+
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 ### <a name="install-service-fabric-sdk-and-powershell-modules"></a>Service Fabric SDK と PowerShell モジュールをインストールします
 
@@ -87,11 +89,9 @@ $certUrlValue = "<Certificate URL>"
 $certThumbprint = "<Certificate Thumbprint>"
 ```
 
-## <a name="create-a-service-fabric-cluster"></a>Service Fabric クラスターの作成
+## <a name="review-the-template"></a>テンプレートを確認する
 
-### <a name="review-the-template"></a>テンプレートを確認する
-
-このクイック スタートで使用されるテンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/)からのものです。 この記事のテンプレートは長いため、ここでは表示できません。 テンプレートを表示するには、[azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.json) ファイルを参照してください。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/)からのものです。 この記事のテンプレートは長いため、ここでは表示できません。 テンプレートを表示するには、[azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.json) ファイルを参照してください。
 
 テンプレートでは、複数の Azure リソースが定義されています。
 
@@ -144,7 +144,7 @@ Azure Service Fabric に関連するテンプレートをさらに探すには�
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-Resource Manager テンプレートとパラメーター ファイルのパスを変数に格納し、テンプレートをデプロイします。
+ARM テンプレートとパラメーター ファイルのパスを変数に格納し、テンプレートをデプロイします。
 
 ```powershell
 $templateFilePath = "<full path to azuredeploy.json>"

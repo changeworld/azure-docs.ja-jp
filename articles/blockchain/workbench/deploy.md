@@ -2,14 +2,14 @@
 title: Azure Blockchain Workbench Preview のデプロイ
 description: Azure Blockchain Workbench Preview のデプロイ方法
 ms.date: 01/08/2020
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: brendal
-ms.openlocfilehash: 2e1a5efe4dd5a6f2a0b016626421f33202ede419
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: aaef42f715c9f4fa2550f4a2468b42c5077af14c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021179"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85210770"
 ---
 # <a name="deploy-azure-blockchain-workbench-preview"></a>Azure Blockchain Workbench Preview のデプロイ
 

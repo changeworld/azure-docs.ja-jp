@@ -5,20 +5,20 @@ author: bandersmsft
 ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 05/04/2020
+ms.date: 06/19/2020
 ms.author: banders
-ms.openlocfilehash: b198a781da6e18c363e90d8bd5314dafc563dcca
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 925a69f1f3a408e50cb9dc1d03cb5c1cf673ef41
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791155"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102686"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>サブスクライバーと CSP の間で Azure サブスクリプションを譲渡する
 
 この記事では、クラウド ソリューション プロバイダー (CSP) パートナーと CSP の顧客との間で、Azure サブスクリプションを譲渡するために使用される手順の概要について説明します。
 
-## <a name="transfer-ea-subscriptions"></a>EA サブスクリプションを譲渡する
+## <a name="transfer-ea-subscriptions-to-a-csp-partner"></a>EA サブスクリプションを CSP パートナーに譲渡する
 
 [Azure Expert マネージド サービス プロバイダー (MSP)](https://partner.microsoft.com/membership/azure-expert-msp) として認定されている CSP 直接請求パートナーは、ダイレクト Enterprise Agreement (EA) を使用している顧客に対して Azure サブスクリプションの譲渡を要求できます。 サブスクリプションの譲渡は、Microsoft 顧客契約 (MCA) に同意し、Azure プランを購入した顧客に対してのみ許可されます。
 
@@ -44,7 +44,7 @@ ms.locfileid: "82791155"
     > [!IMPORTANT]
     >  - サブスクリプション間で Azure リソースを移動すると、サブスクリプションのリソースに基づいてサービスのダウンタイムが発生する可能性があります。
 
-## <a name="all-subscription-transfers-from-a-csp-partner"></a>CSP パートナーからのすべてのサブスクリプション譲渡
+## <a name="transfer-csp-subscription-to-other-offer"></a>CSP サブスクリプションを他のオファーに譲渡する
 
 他のサブスクリプションを CSP パートナーから他の Azure オファーに譲渡するには、サブスクライバーがソース CSP サブスクリプションとターゲット サブスクリプションの間でリソースを移動する必要があります。
 
@@ -67,4 +67,4 @@ ms.locfileid: "82791155"
 
 ## <a name="next-steps"></a>次のステップ
 - [MPA アカウントに Azure サブスクリプションの課金所有権を取得する](mpa-request-ownership.md)。
-- [Azure Billing を使用したアカウントとサブスクリプションの管理](index.yml)方法を確認する。
+- [Azure Billing を使用したアカウントとサブスクリプションの管理](../index.yml)方法を確認する。

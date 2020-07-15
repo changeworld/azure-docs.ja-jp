@@ -1,22 +1,22 @@
 ---
 title: Azure と Dynamics 365 のコンサルティング サービスの前提条件
 description: Microsoft コマーシャル マーケットプレースでの Azure または Dynamics 365 コンサルティング サービス オファーの前提条件
-author: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: parthpandyaMSFT
+ms.author: parthp
 ms.date: 05/08/2020
-ms.author: mingshen
-ms.openlocfilehash: 81d047424144b4ad6191bcfb005a422a9ab2fd03
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: ef840985053289858f5145bafa4e51ad84734b66
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996374"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111441"
 ---
 # <a name="consulting-service-prerequisites"></a>コンサルティング サービスの前提条件
 
-このオファーの種類の要件を含む、コンサルティング サービス オファーの詳細については、[Microsoft AppSource および Azure Marketplace 向けコンサルティング サービス](https://docs.microsoft.com/azure/marketplace/consulting-services)に関する記事を参照してください。 次の表に、特定のコンサルティング サービスの種類のための追加の要件を示します。
+このオファーの種類の要件を含む、コンサルティング サービス オファーの詳細については、[Microsoft AppSource および Azure Marketplace 向けコンサルティング サービス](../consulting-services.md)に関する記事を参照してください。 次の表に、特定のコンサルティング サービスの種類のための追加の要件を示します。
 
 | コンサルティング サービスのトピック | パートナーセンターで選択する主な製品 | 要件 |
 |---------|---------|---------|

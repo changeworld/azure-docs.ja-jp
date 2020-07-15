@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 50bff8e55d1b125f56696ac485bc1e05193dea55
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: af46b48d47a53d5a8a19db7c50a9356824607a5d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83992948"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962953"
 ---
 # <a name="how-to-manage-settings"></a>設定を管理する方法
 
@@ -27,7 +27,7 @@ Custom Translator の設定ページでは、新しいワークスペースを�
 
     ![リンクの設定](media/how-to/how-to-settings.png)
 
-## <a name="associating-microsoft-translator-subscription"></a>Microsoft Translator サブスクリプションの関連付け
+## <a name="associating-translator-subscription"></a>Translator サブスクリプションの関連付け
 
 モデルをトレーニングまたはデプロイするには、ワークスペースに関連付けられた Translator サブスクリプション キーが必要です。
 

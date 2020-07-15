@@ -3,14 +3,14 @@ title: Azure Automation で Change Tracking と Inventory を管理する
 description: この記事では、Change Tracking と Inventory を使用して、お使いの環境内でソフトウェアと Microsoft サービスの変更を追跡する方法について説明します。
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 07/03/2018
+ms.date: 06/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2738605680a7035e4e2da95b0f53b4d5e227304b
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: eab509e389c074232526aa93fcebb72f3bc986c0
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170292"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185604"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Change Tracking と Inventory の管理
 
@@ -79,10 +79,10 @@ Change Tracking とインベントリを使用して、ファイルとフォル�
 
 ## <a name="track-file-contents"></a>ファイル コンテンツを追跡する
 
-ファイル コンテンツの追跡により、追跡された変更の前後のファイルのコンテンツを表示できます。 この機能では、変更が発生するたびにファイル コンテンツを[ストレージ アカウント](https://docs.microsoft.com/azure/storage/common/storage-account-overview)に保存します。 ファイル コンテンツを追跡するためのいくつかの規則を次に示します。
+ファイル コンテンツの追跡により、追跡された変更の前後のファイルのコンテンツを表示できます。 この機能では、変更が発生するたびにファイル コンテンツを[ストレージ アカウント](../storage/common/storage-account-overview.md)に保存します。 ファイル コンテンツを追跡するためのいくつかの規則を次に示します。
 
 * ファイル コンテンツの格納には、Resource Manager デプロイ モデルを使用している Standard ストレージ アカウントが必要です。 
-* Premium およびクラシック デプロイ モデルのストレージ アカウントは使用しないでください。 [Azure Storage アカウントの概要](../storage/common/storage-create-storage-account.md)に関する記事をご覧ください。
+* Premium およびクラシック デプロイ モデルのストレージ アカウントは使用しないでください。 [Azure Storage アカウントの概要](../storage/common/storage-account-create.md)に関する記事をご覧ください。
 * ストレージ アカウントを接続できるのは、1 つの Automation アカウントだけです。
 * ご自分の Automation アカウントで [Change Tracking とインベントリ](change-tracking.md)を有効にする必要があります。
 
@@ -143,7 +143,7 @@ Azure Monitor ログに対して、変更レコードのさまざまな検索を
 
 |クエリ  |説明  |
 |---------|---------|
-|`ConfigurationData`<br>&#124; `where ConfigDataType == "Microsoft services" and SvcStartupType == "Auto"`<br>&#124; `where SvcState == "Stopped"`<br>&#124; `summarize arg_max(TimeGenerated, *) by SoftwareName, Computer`         | Microsoft サービスの最新のインベントリ レコードで、Auto に設定されたが、Stopped として報告されたものを表示します。 結果は、指定されたソフトウェア名とコンピューターの最新のレコードに限定されます。    |
+|`ConfigurationData`<br>&#124; `where ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"`<br>&#124; `where SvcState == "Stopped"`<br>&#124; `summarize arg_max(TimeGenerated, *) by SoftwareName, Computer`         | Microsoft サービスの最新のインベントリ レコードで、Auto に設定されたが、Stopped として報告されたものを表示します。 結果は、指定されたソフトウェア名とコンピューターの最新のレコードに限定されます。    |
 |`ConfigurationChange`<br>&#124; `where ConfigChangeType == "Software" and ChangeCategory == "Removed"`<br>&#124; `order by TimeGenerated desc`|削除されたソフトウェアの変更レコードを表示します。|
 
 ## <a name="create-alerts-on-changes"></a>変更に関するアラートを作成する
@@ -170,7 +170,7 @@ Azure Monitor ログに対して、変更レコードのさまざまな検索を
 ## <a name="next-steps"></a>次のステップ
 
 * スコープ構成の詳細については、「[Change Tracking とインベントリのデプロイのスコープを制限する](automation-scope-configurations-change-tracking.md)」を参照してください。
-* Log Analytics ワークスペースに格納されているログを検索する必要がある場合は、[Azure Monitor ログでのログ検索](../log-analytics/log-analytics-log-searches.md)に関する記事を参照してください。
+* Log Analytics ワークスペースに格納されているログを検索する必要がある場合は、[Azure Monitor ログでのログ検索](../azure-monitor/log-query/log-query-overview.md)に関する記事を参照してください。
 * デプロイが完了したら、[Change Tracking とインベントリの Automation アカウントからワークスペースをリンク解除する方法](automation-unlink-workspace-change-tracking.md)についてのページを参照してください。
 * Change Tracking とインベントリから VM を削除する方法については、「[Change Tracking とインベントリから VM を削除する](automation-remove-vms-from-change-tracking.md)」を参照してください。
 * 機能のエラーのトラブルシューティングを行うには、「[Change Tracking と Inventory に関する問題のトラブルシューティング](troubleshoot/change-tracking.md)」を参照してください。

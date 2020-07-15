@@ -6,14 +6,14 @@ ms.author: banders
 tags: azure-resource-manager
 ms.service: cost-management-billing
 ms.topic: quickstart
-ms.date: 04/22/2020
+ms.date: 06/10/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 88dd1dc99f32d0539718c0f71206176cbfc16eec
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: dc37039d6777a77f9de247808329930f1621ee82
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830312"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84686411"
 ---
 # <a name="quickstart-create-a-budget-with-an-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用して予算を作成する
 
@@ -74,7 +74,7 @@ Cost Management データに対するアクセス許可の割り当てについ�
     * **しきい値**: 通知のしきい値を入力します。 コストがしきい値を超えたとき、通知が送信されます。 常にパーセント単位となります。0 から 1000 の範囲で指定してください。
     * **連絡先の電子メール**: しきい値を超えたときに予算の通知が送信される一連のメール アドレスを入力します。 `["user1@domain.com","user2@domain.com"]` 形式で指定する必要があります。
     * **Contact Roles (連絡先の役割)** : しきい値を超えたときに予算の通知が送信される一連の連絡先の役割を入力します。 既定値は、所有者、共同作成者、閲覧者です。 `["Owner","Contributor","Reader"]` 形式で指定する必要があります。
-    * **Contact Groups (連絡先グループ)** : しきい値を超えたときに予算の通知が送信される一連のアクション グループを入力します。 文字列の配列を指定できます。 `["Action Group Name1","Action Group Name2"]` 形式で指定する必要があります。 アクション グループを使用しない場合は、「`[]`」と入力してください。
+    * **Contact Groups (連絡先グループ)** : しきい値を超えたときに予算の通知が送信される一連のアクション グループのリソース ID を完全なリソース URI として入力します。 文字列の配列を指定できます。 `["action group resource ID1","action group resource ID2"]` 形式で指定する必要があります。 アクション グループを使用しない場合は、「`[]`」と入力してください。
     * **Resources Filter (リソース フィルター)** : リソースに使用する一連のフィルターを入力します。 `["Resource Filter Name1","Resource Filter Name2"]` 形式で指定する必要があります。 フィルターを適用しない場合は、「`[]`」と入力してください。 リソース フィルターを入力する場合は、 **[Meters Filters]\(メーター フィルター\)** の値も入力する必要があります。
     * **[Meters Filter]\(メーター フィルター\)** : メーターに対する一連のフィルターを入力します。予算カテゴリが **[使用量]** である場合は必須です。 `["Meter Filter Name1","Meter Filter Name2"]` 形式で指定する必要があります。 **リソース フィルター**を入力しなかった場合は、「`[]`」と入力してください。
     * **上記の使用条件に同意する**: 選択。

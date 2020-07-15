@@ -3,12 +3,12 @@ title: オフライン バックアップの概要
 description: オフライン バックアップのコンポーネントについて説明します。 これには、Azure Data Box に基づくオフライン バックアップと Azure Import/Export サービスに基づくオフライン バックアップが含まれます。
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: c3ef79136ca32c24ae6d16057d3195b57e8ced2d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 84f79efe10f867b37d1e3bb21363be4b12156615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744635"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84628349"
 ---
 # <a name="overview-of-offline-backup"></a>オフライン バックアップの概要
 
@@ -60,7 +60,7 @@ Azure Data Box に基づいてオフライン バックアップを使用する�
 
 MARS エージェントで Azure Import/Export サービスに基づくオフライン バックアップを使用するには、「[Azure Backup でのオフライン バックアップのワークフロー](https://docs.microsoft.com/azure/backup/backup-azure-backup-import-export)」を参照してください。
 
-MABS または DPM-A と共に同じものを使用するには、「[DPM と Azure Backup Server のオフライン バックアップのワークフロー](https://docs.microsoft.com/azure/backup/backup-azure-backup-server-import-export-)」を参照してください。
+MABS または DPM-A と共に同じものを使用するには、「[DPM と Azure Backup Server のオフライン バックアップのワークフロー](https://docs.microsoft.com/azure/backup/backup-azure-backup-server-import-export)」を参照してください。
 
 ## <a name="offline-backup-support-summary"></a>オフライン バックアップのサポートの概要
 
@@ -83,4 +83,4 @@ MABS または DPM-A と共に同じものを使用するには、「[DPM と Az
 
 - [Azure Data Box を使用した Azure Backup のオフライン バックアップ](offline-backup-azure-data-box.md#backup-data-size-and-supported-data-box-skus)
 - [Azure Backup でのオフライン バックアップのワークフロー](backup-azure-backup-import-export.md)
-- [DPM と Azure Backup Server のオフライン バックアップのワークフロー](backup-azure-backup-server-import-export-.md)
+- [DPM と Azure Backup Server のオフライン バックアップのワークフロー](backup-azure-backup-server-import-export.md)

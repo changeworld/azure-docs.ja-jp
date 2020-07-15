@@ -1,21 +1,21 @@
 ---
 title: Azure Batch 用の組み込みポリシー定義
 description: Azure Batch 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 05/29/2020
+ms.date: 06/23/2020
 ms.topic: sample
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 52ca15a4bb3559345c11551b8e8f50bd2763512c
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 855c04c84ae55574dab9bd4e46d10aacdbde67a5
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235792"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85318991"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-batch"></a>Azure Batch 用の Azure Policy 組み込みポリシー定義
+# <a name="azure-policy-built-in-definitions-for-azure-batch"></a>Azure Batch 用の Azure Policy 組み込み定義
 
 このページは、Azure Batch 用の [Azure Policy](../governance/policy/overview.md) 組み込みポリシー定義のインデックスです。 他のサービス用の Azure Policy 組み込みについては、[Azure Policy 組み込み定義](../governance/policy/samples/built-in-policies.md)に関するページをご覧ください。
 
-各組み込みポリシー定義の名前は、Azure portal のポリシー定義にリンクしています。 **[GitHub]** 列のリンクを使用すると、[Azure Policy GitHub リポジトリ](https://github.com/Azure/azure-policy)のソースを表示できます。
+各組み込みポリシー定義の名前は、Azure portal のポリシー定義にリンクしています。 **[バージョン]** 列のリンクを使用すると、[Azure Policy GitHub リポジトリ](https://github.com/Azure/azure-policy)のソースを表示できます。
 
 ## <a name="azure-batch"></a>Azure Batch
 

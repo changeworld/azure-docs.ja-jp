@@ -58,7 +58,7 @@ Microsoft Azure Recovery Services (MARS) のトラブルシューティングを
 1. 管理者特権でのコマンド プロンプトから、`psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe"` を実行します。
 
    このコマンドで Internet Explorer が開きます。
-1. **[ツール]**  >  **[インターネット オプション]**  >  **[接続]**  >  **[LAN の設定]** の順に移動します。
+1. **[ツール]** >  **[インターネット オプション]** >  **[接続]** >  **[LAN の設定]** の順に移動します。
 1. システム アカウントのプロキシ設定を確認します。
 1. プロキシが構成されていてプロキシの詳細が提供されている場合は、詳細を削除します。
 1. プロキシが構成されていてプロキシの詳細が正しくない場合は、**プロキシの IP** と**ポート**の詳細が正しいことを確認します。
@@ -74,7 +74,7 @@ Microsoft Azure Recovery Services (MARS) のトラブルシューティングを
 
 | エラー  | 考えられる原因 | 推奨アクション |
 | ---     | ---     | ---    |
-| <br /><ul><li>Microsoft Azure Recovery Services エージェントは Microsoft Azure Backup に接続できませんでした。 (ID: 100050) ネットワーク設定を調べて、インターネットに接続できることを確認してください。<li>(407) プロキシの認証が必要です。 |プロキシによって接続がブロックされています。 |  <ul><li>Internet Explorer で、 **[ツール]**  >  **[インターネット オプション]**  >  **[セキュリティ]**  >  **[インターネット]** の順に移動します。 次に、 **[レベルのカスタマイズ]** を選択し、 **[ファイルのダウンロード]** セクションまで下にスクロールします。 **[有効化]** を選択します。<p>また、Internet Explorer で信頼済みサイトに [URL と IP アドレス](install-mars-agent.md#verify-internet-access)を追加する必要がある場合もあります。<li>プロキシ サーバーを使用するように設定を変更します。 その後、プロキシ サーバーの詳細を指定します。<li> マシンのインターネットへのアクセスが制限されている場合は、マシンまたはプロキシのファイアウォール設定によって次の [URL と IP アドレス](install-mars-agent.md#verify-internet-access)が許可されることを確認します。 <li>サーバーにウイルス対策ソフトウェアがインストールされている場合は、これらのファイルをウイルス対策スキャンから除外します。 <ul><li>CBEngine.exe (dpmra.exe ではありません)。<li>CSC.exe (.NET Framework に関連するもの)。 CSC.exe は、サーバーにインストールされているすべての .NET Framework のバージョンに対して存在します。 影響を受けるサーバー上のすべてのバージョンの .NET Framework 用の CSC.exe ファイルを除外してください。 <li>スクラッチ フォルダーまたはキャッシュの場所。 <br>スクラッチ フォルダーまたはキャッシュのパスの既定の場所は、C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch です。<li>C:\Program Files\Microsoft Azure Recovery Services Agent\Bin にある bin フォルダー。
+| <br /><ul><li>Microsoft Azure Recovery Services エージェントは Microsoft Azure Backup に接続できませんでした。 (ID: 100050) ネットワーク設定を調べて、インターネットに接続できることを確認してください。<li>(407) プロキシの認証が必要です。 |プロキシによって接続がブロックされています。 |  <ul><li>Internet Explorer で、 **[ツール]** >  **[インターネット オプション]** >  **[セキュリティ]** >  **[インターネット]** の順に移動します。 次に、 **[レベルのカスタマイズ]** を選択し、 **[ファイルのダウンロード]** セクションまで下にスクロールします。 **[有効化]** を選択します。<p>また、Internet Explorer で信頼済みサイトに [URL と IP アドレス](install-mars-agent.md#verify-internet-access)を追加する必要がある場合もあります。<li>プロキシ サーバーを使用するように設定を変更します。 その後、プロキシ サーバーの詳細を指定します。<li> マシンのインターネットへのアクセスが制限されている場合は、マシンまたはプロキシのファイアウォール設定によって次の [URL と IP アドレス](install-mars-agent.md#verify-internet-access)が許可されることを確認します。 <li>サーバーにウイルス対策ソフトウェアがインストールされている場合は、これらのファイルをウイルス対策スキャンから除外します。 <ul><li>CBEngine.exe (dpmra.exe ではありません)。<li>CSC.exe (.NET Framework に関連するもの)。 CSC.exe は、サーバーにインストールされているすべての .NET Framework のバージョンに対して存在します。 影響を受けるサーバー上のすべてのバージョンの .NET Framework 用の CSC.exe ファイルを除外してください。 <li>スクラッチ フォルダーまたはキャッシュの場所。 <br>スクラッチ フォルダーまたはキャッシュのパスの既定の場所は、C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch です。<li>C:\Program Files\Microsoft Azure Recovery Services Agent\Bin にある bin フォルダー。
 
 ## <a name="backup-jobs-completed-with-warning"></a>バックアップ ジョブが警告付きで完了した
 
@@ -174,9 +174,9 @@ Azure Backup が、数分たっても回復ボリュームに正常にマウン�
 
 2. 最新バージョンの Backup エージェントがあるかどうかを確認します。 バージョンを確認するには、MARS コンソールの **[アクション]** ウィンドウで、 **[About Microsoft Azure Recovery Services Agent]\(Microsoft Azure Recovery Services エージェントについて\)** を選択します。 **バージョン**番号が、[この記事](https://go.microsoft.com/fwlink/?linkid=229525)に記載されているバージョン以上であることを確認します。 このリンクを選択して[最新バージョンをダウンロード](https://go.microsoft.com/fwLink/?LinkID=288905)します。
 
-3. **[デバイス マネージャー]**  >  **[ストレージ コントローラー]** の順に移動し、**Microsoft iSCSI イニシエーター**を探します。 見つかった場合は、手順 7 に進みます。
+3. **[デバイス マネージャー]** >  **[ストレージ コントローラー]** の順に移動し、**Microsoft iSCSI イニシエーター**を探します。 見つかった場合は、手順 7 に進みます。
 
-4. Microsoft iSCSI イニシエーター サービスが見つからない場合は、 **[デバイス マネージャー]**  >  **[記憶域コントローラー]** の下で、 **[不明なデバイス]** という名前でハードウェア ID が **ROOT\ISCSIPRT** のエントリを探します。
+4. Microsoft iSCSI イニシエーター サービスが見つからない場合は、 **[デバイス マネージャー]** >  **[記憶域コントローラー]** の下で、 **[不明なデバイス]** という名前でハードウェア ID が **ROOT\ISCSIPRT** のエントリを探します。
 
 5. **[不明なデバイス]** を右クリックし、 **[ドライバー ソフトウェアの更新]** を選択します。
 
@@ -184,7 +184,7 @@ Azure Backup が、数分たっても回復ボリュームに正常にマウン�
 
     ![[記憶域コントローラー] が強調表示されている Azure Backup デバイス マネージャーのスクリーンショット](./media/backup-azure-restore-windows-server/UnknowniSCSIDevice.png)
 
-7. **[タスク マネージャー]**  >  **[サービス (ローカル)]**  >  **[Microsoft iSCSI イニシエーター サービス]** に移動します。
+7. **[タスク マネージャー]** >  **[サービス (ローカル)]** >  **[Microsoft iSCSI イニシエーター サービス]** に移動します。
 
     ![[サービス (ローカル)] が強調表示されている Azure Backup タスク マネージャーのスクリーンショット](./media/backup-azure-restore-windows-server/MicrosoftInitiatorServiceRunning.png)
 

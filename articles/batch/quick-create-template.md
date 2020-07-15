@@ -4,18 +4,22 @@ description: Azure CLI で Batch ジョブを実行する方法を簡単に説�
 ms.topic: quickstart
 ms.date: 05/19/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: a4d2e791d810a55b765669c8e909cf448a68fc99
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: d92751d1463a20c8fb0cb83fe678789860957189
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266901"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086128"
 ---
-# <a name="quickstart-create-a-batch-account-by-using-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用して Batch アカウントを作成する
+# <a name="quickstart-create-a-batch-account-by-using-arm-template"></a>クイック スタート:ARM テンプレートを使用して Batch アカウントを作成する
 
-コンピューティング リソース (コンピューティング ノードのプール) や Batch ジョブを作成するには、Batch アカウントが必要です。 Azure Storage アカウントと Batch アカウントをリンクできます。これは、アプリケーションをデプロイしたり、ほとんどの実際のワークロードの入力データと出力データを格納したりする場合に役立ちます。 このクイック スタートでは、Azure Resource Manager テンプレートを使用し、ストレージなどの Batch アカウントを作成する方法を示します。 このクイック スタートを完了すると、Batch サービスの主要な概念を理解し、より大規模でより現実的なワークロードで Batch を試せるようになります。
+コンピューティング リソース (コンピューティング ノードのプール) や Batch ジョブを作成するには、Batch アカウントが必要です。 Azure Storage アカウントと Batch アカウントをリンクできます。これは、アプリケーションをデプロイしたり、ほとんどの実際のワークロードの入力データと出力データを格納したりする場合に役立ちます。 このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用し、ストレージなどの Batch アカウントを作成する方法を示します。 このクイック スタートを完了すると、Batch サービスの主要な概念を理解し、より大規模でより現実的なワークロードで Batch を試せるようになります。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
+
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-batchaccount-with-storage%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -23,9 +27,7 @@ ms.locfileid: "84266901"
 
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
-
-### <a name="review-the-template"></a>テンプレートを確認する
+## <a name="review-the-template"></a>テンプレートを確認する
 
 このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-batchaccount-with-storage/)からのものです。
 
@@ -33,10 +35,10 @@ ms.locfileid: "84266901"
 
 テンプレートでは、次の 2 つの Azure リソースが定義されています。
 
-- [Microsoft.Storage/storageAccounts](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts): ストレージ アカウントを作成します。
-- [Microsoft.Batch/batchAccounts](https://docs.microsoft.com/azure/templates/microsoft.batch/batchaccounts): Batch アカウントを作成します。
+- [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts): ストレージ アカウントを作成します。
+- [Microsoft.Batch/batchAccounts](/azure/templates/microsoft.batch/batchaccounts): Batch アカウントを作成します。
 
-### <a name="deploy-the-template"></a>テンプレートのデプロイ
+## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
 1. Azure にサインインし、テンプレートを開くには次のイメージを選択します。 テンプレートによって、Azure Batch アカウントとストレージ アカウントが作成されます。
 

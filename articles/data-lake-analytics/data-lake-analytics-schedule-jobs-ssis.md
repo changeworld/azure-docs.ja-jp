@@ -7,15 +7,15 @@ ms.author: yanacai
 ms.reviewer: jasonwhowell
 ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: big-data
 ms.date: 07/17/2018
-ms.openlocfilehash: 0650fcc5023ac57b193fa23b0dedf65113fd64e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cafb657bbb981edddf9d6bbcfc8d390a519804b5
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71672889"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121301"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>SQL Server Integration Services (SSIS) を使用した U-SQL ジョブのスケジュール設定
 
@@ -93,7 +93,7 @@ Azure Data Lake Store ファイル システム タスクの詳細について�
     
     このファイル接続を作成するには:
 
-   1. [FileConnection] の設定で **[\<新しい接続...>]** を選択します。
+   1. FileConnection 設定で **\<New Connection...>** を選択します。
    2. **[使用法の種類]** を **[既存のファイル]** に設定し、 **[ファイル]** を既存の任意のファイルのファイル パスに設定します。
 
        ![Foreach ループ コンテナーを構成する](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)

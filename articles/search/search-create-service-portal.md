@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/07/2020
-ms.openlocfilehash: 83b723c815825a255727e9a48d415fedd405c942
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.date: 06/24/2020
+ms.openlocfilehash: f802ec10410d0a412e29d9ad51bb409a5d099f31
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488224"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85562536"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>クイック スタート:ポータルで Azure Cognitive Search サービスを作成する
 
@@ -24,6 +24,14 @@ Azure Cognitive Search は、カスタム アプリに検索エクスペリエ�
 [![アニメーション GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
 PowerShell をお好みですか? Azure Resource Manager [サービス テンプレート](https://azure.microsoft.com/resources/templates/101-azure-search-create/)をご使用ください。 作業の開始にあたっては、[PowerShell を使用して Azure Cognitive Search サービスを管理する方法](search-manage-powershell.md)に関するページを参照してください。
+
+## <a name="before-you-start"></a>開始する前に
+
+次のサービス プロパティはサービスの有効期間中、据え置きとなり、変更するには新しいサービスが必要です。 サービスを作成するとき、その使用方法について考えます。
+
+* 名前 (サービス名については[こちらの推奨事項](#name-the-service)を確認してください)
+* サービス レベル (Free、Basic、Standard [によって料金が変わり](search-sku-tier.md)、容量の上限が設定されます)
+* リージョン (サービスが関連付けられている場所を選択します。 Cognitive Services または Azure Machine Learning との統合の場合、同じリージョンにサービスを併置することが必須となります)
 
 ## <a name="subscribe-free-or-paid"></a>サブスクリプション (無料または有料)
 
@@ -88,7 +96,7 @@ Azure Cognitive Search はほとんどのリージョンで利用できます。
 
  事業継続とディザスター リカバリー (BCDR) の要件を持つお客様は、[リージョンのペア](https://docs.microsoft.com/azure/best-practices-availability-paired-regions#azure-regional-pairs)にそれらのサービスを作成する必要があります。 たとえば、北米で活動している場合は、各サービスについて米国東部と米国西部や、米国中北部と米国中南部などを選択できます。
 
-### <a name="recommendations"></a>Recommendations
+### <a name="recommendations"></a>推奨事項
 
 複数の Azure サービスを使用している場合は、データまたはアプリケーション サービスもホストしているリージョンを選択します。 そのようにすることで、送信データの帯域幅使用料を最小限またはゼロに抑えられます (サービスが同じリージョンにある場合、送信データには課金されません)。
 

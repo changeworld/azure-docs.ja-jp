@@ -1,14 +1,14 @@
 ---
 title: LUIS ポータルでアプリをテストする
 description: Language Understanding (LUIS) を使用して、アプリケーションの改善とその言語解釈の向上に継続的に取り組みます。
-ms.topic: how-to
-ms.date: 05/20/2020
-ms.openlocfilehash: 86ee90e2d3bb322a4f55439d105941cf43462d3e
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.topic: conceptual
+ms.date: 06/02/2020
+ms.openlocfilehash: 574bacdb5e1f167c9c9174d4a119552391059004
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344154"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677740"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>LUIS ポータルで LUIS アプリをテストする
 
@@ -65,9 +65,25 @@ ms.locfileid: "84344154"
 
 ## <a name="disable-required-features"></a>必須の機能を無効にする
 
-この切り替えをオンにすると、エンティティの機能が必須でなかった場合の予測の内容が表示されます。
+この切り替えは、トレーニング済みアプリが必須の機能に基づいてエンティティを正しく予測しているかどうかを判断するのに役立ちます。 既定の設定では、予測中に必要に応じて機能が適用されます。 この切り替えをオンにすると、サブエンティティの機能が必須でなかった場合の予測の内容が表示されます。
 
-この切り替えは、トレーニング済みアプリが必須の機能に基づいてエンティティを正しく予測しているかどうかを判断するのに役立ちます。 トレーニング済みアプリは、発話例のラベル付けが正しくないこと、または必須の機能がテキストと一致しないことのいずれかに基づいて、機械学習エンティティの予測に失敗することがあります。
+### <a name="when-to-disable-required-features"></a>必須の機能を無効にする場合
+
+トレーニング済みアプリは、次のいずれかに基づいて、機械学習エンティティの予測に失敗することがあります。
+* 発話の例のラベル付けが正しくない。
+* 必須の機能がテキストと一致しない。
+
+例として、人の名前のサブエンティティを持つ機械学習エンティティがあります。
+
+:::image type="content" source="media/luis-how-to-interactive-test/disable-required-feature.png" alt-text="LUIS ポータルの必須の機能を含む機械学習エンティティ スキーマのスクリーンショット":::
+
+この機械学習エンティティの発話の例は、`Assign Bob Jones to work on the new security feature` です。
+
+抽出は、チケットの説明として `security feature`、エンジニアとして `Bob Jones` である必要があります。これは `Assign ticket` エンティティの 2 つのサブエンティティです。
+
+サブエンティティが正常に予測できるようにするには、事前構築済みエンティティ [PersonName](luis-reference-prebuilt-person.md) を機能として `engineer` サブエンティティに追加します。 この機能を必須とする場合、サブエンティティは、PersonName 事前構築済みエンティティがそのテキストに対して予測される場合にのみ抽出されることを意味します。 これは、PersonName サブエンティティを使用して予測しないテキスト内の名前が、ラベル付きサブエンティティ、`engineer` として返されないことを意味します。
+
+対話型テスト ペインを使用して、必須の機能を持つサブエンティティが予測されていないことに気づいた場合は、この設定を切り替えて、機能が必須でない状態でサブエティティが予測されるかどうかを確認します。 サブエンティティは、発話の例の正しいラベル付けにより、機能を必須とせずに正しく予測できることがあります。
 
 ## <a name="view-sentiment-results"></a>センチメント結果の表示
 

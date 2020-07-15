@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/18/2020
-ms.openlocfilehash: da7a47bf61453c30f5c735b1282ae93d2442598c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f6594bbeb9899a255d0c38b6a5b2a378388501b8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127691"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552529"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>Azure Cognitive Search でクエリ要求を監視する
 
@@ -128,11 +128,11 @@ ms.locfileid: "82127691"
    AzureDiagnostics
    | project OperationName, Query_s, IndexName_s, Documents_d
    | where OperationName == "Query.Search"
-   | where Query_s != "?api-version=2019-05-06&search=*"
+   | where Query_s != "?api-version=2020-06-30&search=*"
    | where IndexName_s != "realestate-us-sample-index"
    ```
 
-1. 必要に応じて、*Query_s* に列フィルターを設定して、特定の構文または文字列を検索します。 たとえば、`?api-version=2019-05-06&search=*&%24filter=HotelName` "*に等しい*" というフィルターを設定することができます。
+1. 必要に応じて、*Query_s* に列フィルターを設定して、特定の構文または文字列を検索します。 たとえば、`?api-version=2020-06-30&search=*&%24filter=HotelName` "*に等しい*" というフィルターを設定することができます。
 
    ![ログ記録されたクエリ文字列](./media/search-monitor-usage/log-query-strings.png "ログ記録されたクエリ文字列")
 

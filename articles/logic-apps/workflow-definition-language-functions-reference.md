@@ -3,15 +3,15 @@ title: 式関数のリァレンス ガイド
 description: Azure Logic Apps および Power Automate の式に含まれる関数のリファレンス ガイド
 services: logic-apps
 ms.suite: integration
-ms.reviewer: jonfan, logicappspm
+ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/29/2020
-ms.openlocfilehash: d879429eef68d1bc2448150e2d8eece9cfa35da2
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.date: 07/01/2020
+ms.openlocfilehash: 30806880b3ce9ab89479cedbce60435f44024efd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204856"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833020"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Azure Logic Apps および Power Automate の式で関数を使用するためのリファレンス ガイド
 
@@ -477,6 +477,9 @@ actionOutputs('Get_user')
 実行時のアクションの出力を返すか、または式に割り当てることができる他の JSON の名前と値のペアの値を返します。 既定では、この関数はアクション オブジェクト全体を参照しますが、必要に応じて値を取得するプロパティを指定することができます。
 短縮バージョンについては、[actionBody()](#actionBody)、[actionOutputs()](#actionOutputs)、[body()](#body) をご覧ください。
 現在のアクションの場合は、[action()](#action) をご覧ください。
+
+> [!TIP]
+> `actions()` 関数では、出力が文字列として返されます。 返された値を JSON オブジェクトとして処理する必要がある場合は、先に文字列値を変換する必要があります。 [JSON の解析アクション](logic-apps-perform-data-operations.md#parse-json-action)を使用して、文字列値を JSON オブジェクトに変換できます。
 
 > [!NOTE]
 > 以前は、`actions()` 関数を使うか、またはアクションが別のアクションからの出力を基にして実行したことを指定する場合は `conditions` 要素を使いました。 ただし、現在は、アクション間の依存関係を明示的に宣言するには、依存アクションの `runAfter` プロパティを使い必要があります。
@@ -2046,7 +2049,7 @@ formatNumber(<number>, <format>, <locale>?)
 数値 `1234567890` の形式を設定するとします。 この例では、この数値の形式を文字列 "1,234,567,890.00" として設定します。
 
 ```
-formatNumber(1234567890, '{0:0,0.00}', 'en-us')
+formatNumber(1234567890, '0,0.00', 'en-us')
 ```
 
 *例 2"
@@ -2054,7 +2057,7 @@ formatNumber(1234567890, '{0:0,0.00}', 'en-us')
 数値 `1234567890` の形式を設定するとします。 この例では、数値の形式を文字列 "1.234.567.890,00" に設定します。
 
 ```
-formatNumber(1234567890, '{0:0,0.00}', 'is-is')
+formatNumber(1234567890, '0,0.00', 'is-is')
 ```
 
 *例 3*

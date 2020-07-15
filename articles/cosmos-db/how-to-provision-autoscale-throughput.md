@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/10/2020
-ms.openlocfilehash: 16fad7f57d3054c193da2571f1b33cfd77fdd51c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 59feabce099087edb011df471561229bfa88a289
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663400"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85118731"
 ---
 # <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db"></a>Azure Cosmos DB のデータベースまたはコンテナーで、自動スケーリングのスループットをプロビジョニングする
 
@@ -26,7 +26,7 @@ ms.locfileid: "83663400"
 
 1. **[新しいコンテナー]** を選択します。 データベース、コンテナー、およびパーティション キーの名前を入力します。 **[スループット]** で **[自動スケーリング]** オプションを選択し、データベースまたはコンテナーをスケーリングする、[最大スループット (RU/秒)](provision-throughput-autoscale.md#how-autoscale-provisioned-throughput-works) を設定します。
 
-   ![コンテナーの作成と、自動スケーリングによってプロビジョニングされたスループットの構成](./media/how-to-provision-autoscale-throughput/create-new-autoscale-container.png)
+   :::image type="content" source="./media/how-to-provision-autoscale-throughput/create-new-autoscale-container.png" alt-text="コンテナーの作成と、自動スケーリングによってプロビジョニングされたスループットの構成":::
 
 1. **[OK]** を選択します。
 
@@ -45,7 +45,7 @@ ms.locfileid: "83663400"
 
 1. **[スケーリング]** で、 **[自動スケーリング]** オプションを選択して **[保存]** します。
 
-   ![既存のコンテナーで自動スケーリングを有効にする](./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png)
+   :::image type="content" source="./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png" alt-text="既存のコンテナーで自動スケーリングを有効にする":::
 
 > [!NOTE]
 > 既存のデータベースまたはコンテナーで自動スケーリングを有効にする場合、最大 RU/s の開始値は、現在の手動でプロビジョニングされたスループットの設定とストレージに基づいて、システムによって決定されます。 操作が完了したら、必要に応じて最大 RU/s を変更できます。 [詳細情報。](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) 
@@ -127,7 +127,7 @@ ThroughputProperties autoscaleThroughputProperties = ThroughputProperties.create
 CosmosAsyncDatabase database = client.createDatabase(databaseName, autoscaleThroughputProperties).block().getDatabase();
 ```
 
-#### <a name="sync"></a>[[同期]](#tab/api-sync)
+#### <a name="sync"></a>[同期](#tab/api-sync)
 
 ```java
 // Create instance of CosmosClient
@@ -164,7 +164,7 @@ CosmosAsyncContainer container = database.createContainer(autoscaleContainerProp
                                 .getContainer();
 ```
 
-#### <a name="sync"></a>[[同期]](#tab/api-sync)
+#### <a name="sync"></a>[同期](#tab/api-sync)
 
 ```java
 // Get reference to database that container will be created in
@@ -199,7 +199,7 @@ int autoscaleMaxThroughput = autoscaleContainerThroughput.getAutoscaleMaxThrough
 int currentThroughput = autoscaleContainerThroughput.Throughput;
 ```
 
-#### <a name="sync"></a>[[同期]](#tab/api-sync)
+#### <a name="sync"></a>[同期](#tab/api-sync)
 
 ```java
 // Get a reference to the resource
@@ -226,7 +226,7 @@ int currentThroughput = autoscaleContainerThroughput.Throughput;
 container.replaceThroughput(ThroughputProperties.createAutoscaledThroughput(newAutoscaleMaxThroughput)).block();
 ```
 
-#### <a name="sync"></a>[[同期]](#tab/api-sync)
+#### <a name="sync"></a>[同期](#tab/api-sync)
 
 ```java
 // Change the autoscale max throughput (RU/s)

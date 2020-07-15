@@ -3,12 +3,12 @@ title: プライベート エンドポイント
 description: Azure Backup のプライベート エンドポイントを作成するプロセスと、プライベート エンドポイントを使用することでリソースのセキュリティが維持しやすくなるシナリオについて説明します。
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 2696f3fdbc4e9061afee266ae36ae8d3507026fc
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 8ce767073e9acfe271e6e57f9e6d1237910b33e0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84231433"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85124257"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure Backup のプライベート エンドポイント
 
@@ -21,9 +21,11 @@ Azure Backup で[プライベート エンドポイント](https://docs.microsof
 - プライベート エンドポイントは、新しい Recovery Services コンテナー (そのコンテナーに登録されている項目がない) に対してのみ作成できます。 そのため、コンテナーに項目を保護する前に、プライベート エンドポイントを作成する必要があります。
 - 1 つの仮想ネットワークに複数の Recovery Services コンテナーのプライベート エンドポイントを含めることができます。 また、1 つの Recovery Services コンテナーに対して複数の仮想ネットワークにプライベート エンドポイントを含めることができます。 ただし、1 つのコンテナーに対して作成できるプライベート エンドポイントの最大数は 12 です。
 - コンテナーに対してプライベート エンドポイントが作成されると、コンテナーはロックダウンされます。 そのコンテナーのプライベート エンドポイントを含むネットワーク以外のネットワークからは、そのコンテナーに (バックアップと復元のために) アクセスできません。 コンテナーのすべてのプライベート エンドポイントが削除されると、そのコンテナーはすべてのネットワークからアクセスできるようになります。
+- Backup 用のプライベート エンドポイント接続には、サブネットで合計 11 個のプライベート IP が使用されます。 一部の Azure リージョンでは、この数がさらに多くなる場合があります (最大 15)。 そのため、Backup 用のプライベート エンドポイントを作成する場合は、十分な数のプライベート IP を用意することをお勧めします。
 - Recovery Services コンテナーは Azure Backup と Azure Site Recovery (の両方) に使用されますが、この記事では、Azure Backup だけのためにプライベート エンドポイントを使用する場合について説明します。
 - Azure Active Directory では、現在、プライベート エンドポイントがサポートされていません。 したがって、Azure Active Directory がリージョンで機能するために必要な IP と FQDN には、Azure VM でのデータベースのバックアップおよび MARS エージェントを使用したバックアップを実行するときに、セキュリティで保護されたネットワークからの発信アクセスが許可される必要があります。 また、必要に応じて、NSG タグと Azure Firewall タグを使用して、Azure AD へのアクセスを許可することもできます。
 - ネットワーク ポリシーが適用されている仮想ネットワークは、プライベート エンドポイント用にサポートされません。 続行する前に、ネットワーク ポリシーを無効にする必要があります。
+- Recovery Services リソース プロバイダーをサブスクリプションに 2020 年 5 月 1 日より前に登録した場合は、再登録する必要があります。 プロバイダーを再登録するには、Azure portal のサブスクリプションに移動し、左側のナビゲーションバーで **[リソース プロバイダー]** に移動し、 **[Microsoft.RecoveryServices]** を選択し、 **[再登録] をクリックします**。
 
 ## <a name="recommended-and-supported-scenarios"></a>推奨されるシナリオとサポートされるシナリオ
 
@@ -40,9 +42,6 @@ Azure Backup で[プライベート エンドポイント](https://docs.microsof
 
 >[!IMPORTANT]
 > このドキュメントに示されているのと同じ順序で手順に従うことを強くお勧めします。 そうしないと、コンテナーにプライベート エンドポイントを使用するための互換性がなくなり、新しいコンテナーを使ってプロセスをやり直すことが必要になる可能性があります。
-
->[!NOTE]
-> Azure portal エクスペリエンスの特定の要素は現在使用できない可能性があります。 ご自身のリージョンで完全に利用できるようになるまで、そのようなシナリオでは代替エクスペリエンスを参照してください。
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 

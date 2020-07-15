@@ -5,16 +5,16 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 04/03/2020
-ms.openlocfilehash: c27bf9a29bdb6e75e10fcafc597f40a88f995461
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: dc14334668b76ee8cbb81e48abfe1eecf17fa138
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196086"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130401"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>Azure VM のディザスター リカバリーでのレプリケーションのトラブルシューティング
 
-この記事では、リージョン間で Azure 仮想マシン (VM) をレプリケートおよび復旧するときに、Azure Site Recovery で発生する一般的な問題について説明します。 また、一般的な問題のトラブルシューティング方法についても説明します。 サポートされる構成の詳細については、[Azure VM をレプリケートするためのサポート マトリックス](site-recovery-support-matrix-azure-to-azure.md)に関するページをご覧ください。
+この記事では、リージョン間で Azure 仮想マシン (VM) をレプリケートおよび復旧するときに、Azure Site Recovery で発生する一般的な問題について説明します。 また、一般的な問題のトラブルシューティング方法についても説明します。 サポートされる構成の詳細については、[Azure VM をレプリケートするためのサポート マトリックス](./azure-to-azure-support-matrix.md)に関するページをご覧ください。
 
 Azure Site Recovery は、一貫してソース リージョンからディザスター リカバリー リージョンにデータをレプリケートします。 5 分ごとにクラッシュ整合性復旧ポイントも作成されます。 Site Recovery で復旧ポイントが作成されずに 60 分が経過すると、次の情報が通知されます。
 
@@ -78,7 +78,7 @@ Azure Site Recovery にはデータ変更率に制限があり、これはディ
 
 Site Recovery では、キャッシュ ストレージ アカウントにレプリケートされたデータを送信します。 仮想マシンからキャッシュ ストレージ アカウントへのデータ アップロード速度が 3 秒あたり 4 MB よりも遅い場合、ネットワーク待ち時間が発生することがあります。
 
-待ち時間に関連する問題を確認するには、[AzCopy](/azure/storage/common/storage-use-azcopy) を使用します。 このコマンドライン ユーティリティを使用して、仮想マシンからキャッシュ ストレージ アカウントにデータをアップロードすることができます。 待ち時間が長い場合は、VM からの送信ネットワーク トラフィックを制御するためのネットワーク仮想アプライアンス (NVA) を使用しているかどうかを確認します。 この場合、すべてのレプリケーション トラフィックが NVA を通過すると、アプライアンスがスロットルされる可能性があります。
+待ち時間に関連する問題を確認するには、[AzCopy](../storage/common/storage-use-azcopy-v10.md) を使用します。 このコマンドライン ユーティリティを使用して、仮想マシンからキャッシュ ストレージ アカウントにデータをアップロードすることができます。 待ち時間が長い場合は、VM からの送信ネットワーク トラフィックを制御するためのネットワーク仮想アプライアンス (NVA) を使用しているかどうかを確認します。 この場合、すべてのレプリケーション トラフィックが NVA を通過すると、アプライアンスがスロットルされる可能性があります。
 
 レプリケーション トラフィックが NVA に送られないように、"ストレージ" 用の仮想ネットワーク内にネットワーク サービス エンドポイントを作成することをお勧めします。 詳細については、「[ネットワーク仮想アプライアンスの構成](azure-to-azure-about-networking.md#network-virtual-appliance-configuration)」をご覧ください。
 
@@ -108,7 +108,7 @@ Site Recovery レプリケーションを動作させるには、VM で特定の
 
 ### <a name="app-consistency-not-enabled-on-linux-servers"></a>Linux サーバーでアプリの整合性が有効になっていない
 
-**修正方法**: Linux オペレーティング システム用の Azure Site Recovery では、アプリの整合性のためのアプリケーション カスタム スクリプトがサポートされています。 プリオプションとポストオプションを含むカスタム スクリプトが、アプリの整合性のために Azure Site Recovery の Mobility Agent によって使用されます。 これを有効にする手順は、[こちら](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#replication)をご覧ください。
+**修正方法**: Linux オペレーティング システム用の Azure Site Recovery では、アプリの整合性のためのアプリケーション カスタム スクリプトがサポートされています。 プリオプションとポストオプションを含むカスタム スクリプトが、アプリの整合性のために Azure Site Recovery の Mobility Agent によって使用されます。 これを有効にする手順は、[こちら](./site-recovery-faq.md#replication)をご覧ください。
 
 ### <a name="more-causes-because-of-vss-related-issues"></a>VSS 関連のイシューに起因するその他の原因:
 

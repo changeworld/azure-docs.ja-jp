@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 01/06/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 7c5a8327f53ef5b45418b4f51302d46b568cfb31
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 17c56e87eacc92714b51ebb4ecf7a749650b3bb2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585948"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85205142"
 ---
 # <a name="system-views-supported-in-synapse-sql-pool"></a>Synapse SQL プールでサポートされるシステム ビュー
 

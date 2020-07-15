@@ -4,16 +4,16 @@ description: Virtual WAN に関する FAQ
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 10/17/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to read more details about Virtual WAN in a FAQ format.
-ms.openlocfilehash: 452cb5c7af0bfd7e028f482079b05d3b4d8c6571
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ecec5daddd2e7a885b9c8d390fd98fdba3b038d0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73491645"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84753242"
 ---
 # <a name="virtual-wan-faq"></a>Virtual WAN の FAQ
 

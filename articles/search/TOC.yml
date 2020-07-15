@@ -1,13 +1,13 @@
 - name: Azure Cognitive Search のドキュメント
   href: index.yml
 - name: 概要
+  expanded: true
   items:
     - name: Azure Cognitive Search とは
       href: search-what-is-azure-search.md
     - name: 新機能
       href: whats-new.md
 - name: クイックスタート
-  expanded: true
   items:
     - name: ポータル
       items:
@@ -15,7 +15,7 @@
           href: search-create-service-portal.md
         - name: インデックスを作成する
           href: search-get-started-portal.md
-        - name: アプリを作成する
+        - name: デモ アプリを作成する
           href: search-create-app-portal.md
         - name: スキルセットを作成する
           href: cognitive-search-quickstart-blob.md
@@ -26,7 +26,7 @@
     - name: ARM テンプレート
       displayName: Resource Manager
       href: search-get-started-arm.md
-    - name: 'C#'
+    - name: C#
       href: search-get-started-dotnet.md
     - name: Java
       href: search-get-started-java.md
@@ -40,7 +40,7 @@
       href: search-get-started-python.md
 - name: チュートリアル
   items:
-    - name: 'C# アプリの作成'
+    - name: C# アプリの作成
       items:
         - name: 1 - 基本的な検索ページ
           href: tutorial-csharp-create-first-app.md
@@ -64,7 +64,7 @@
       href: tutorial-optimize-indexing-push-api.md
     - name: AI を使用してコンテンツを作成する
       items:
-        - name: 'C#'
+        - name: C#
           href: cognitive-search-tutorial-blob-dotnet.md
         - name: REST
           href: cognitive-search-tutorial-blob.md
@@ -72,11 +72,13 @@
           href: cognitive-search-tutorial-blob-python.md
     - name: スキルセットをデバッグする
       href: cognitive-search-tutorial-debug-sessions.md
+    - name: カスタム アナライザーを作成する
+      href: tutorial-create-custom-analyzer.md
     - name: Power Apps からのクエリ
       href: search-howto-powerapps.md
 - name: サンプル
   items:
-    - name: 'C# のサンプル'
+    - name: C# のサンプル
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=csharp'
     - name: Java のサンプル
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=java'
@@ -85,7 +87,7 @@
     - name: Python のサンプル
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=python'
     - name: REST サンプル
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=rest'
+      href: 'https://docs.microsoft.com/samples/browse/?languages=http&expanded=azure&products=azure-cognitive-search'
     - name: Azure Policy の組み込み
       displayName: 'samples, policies, definitions'
       href: ./policy-samples.md
@@ -224,8 +226,6 @@
               href: cognitive-search-custom-skill-form.md
             - name: 例 - Azure Machine Learning
               href: cognitive-search-tutorial-aml-custom-skill.md
-            - name: 例 - コンテナー
-              href: 'https://go.microsoft.com/fwlink/?linkid=2089500'
         - name: 設計のヒント
           href: cognitive-search-concept-troubleshooting.md
         - name: ナレッジ ストア
@@ -324,7 +324,7 @@
               href: search-dotnet-mgmt-sdk-migration.md
         - name: REST API をアップグレードする
           href: search-api-migration.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: 概要
           href: search-security-overview.md
@@ -390,10 +390,10 @@
           href: /dotnet/api/overview/azure/search/management?view=azure-dotnet
     - name: REST
       items:
-        - name: 検索 2019-05-06
+        - name: 検索 2020-06-30
           href: /rest/api/searchservice
-        - name: 検索 2019-05-06-Preview
-          href: /rest/api/searchservice/index-2019-05-06-preview
+        - name: 検索 2020-06-30-Preview
+          href: /rest/api/searchservice/index-preview
         - name: 管理 2020-03-13
           href: /rest/api/searchmanagement
         - name: 管理 2019-10-01-Preview
@@ -482,7 +482,7 @@
     - name: フィードバック フォーラム (UserVoice)
       href: 'https://feedback.azure.com/forums/263029-azure-search'
     - name: コンプライアンスと認定資格
-      href: 'https://aka.ms/azurecompliance'
+      href: 'https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/'
     - name: ドキュメントのリンク (ナレッジ マイニング)
       href: cognitive-search-resources-documentation.md
     - name: デモ サイト

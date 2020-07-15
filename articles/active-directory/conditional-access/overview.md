@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 0e13fcba4b961efb6a839f95ad0e8100382619c0
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: fb8687c091e8c34ad1fbae2a50981327b3994b6e
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798240"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85051940"
 ---
 # <a name="what-is-conditional-access"></a>条件付きアクセスとは
 
@@ -93,7 +93,7 @@ Azure AD の条件付きアクセスを使用して、自動化されたアク�
 
 [!INCLUDE [Active Directory P1 license](../../../includes/active-directory-p1-license.md)]
 
-[Microsoft 365 Business ライセンス](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)をお持ちのお客様も、条件付きアクセス機能にアクセスできます。 
+[Microsoft 365 Business Premium ライセンス](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)をお持ちのお客様も、条件付きアクセス機能にアクセスできます。 
 
 ## <a name="next-steps"></a>次のステップ
 

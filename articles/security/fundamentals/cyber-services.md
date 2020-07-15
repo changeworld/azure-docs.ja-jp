@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2019
 ms.author: terrylan
-ms.openlocfilehash: 6242580e3f4199578d663456c14ee160603b372d
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: fa873baa2d2006164536dd26e040ffbf5cdd51cb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266153"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85123985"
 ---
 # <a name="microsoft-services-in-cybersecurity"></a>サイバーセキュリティの Microsoft サービス
 
@@ -38,6 +38,6 @@ Microsoft サービスで提供されるサービスについては、次をご�
 * [Enhanced Security Administration Environment (セキュリティ管理環境の強化)](https://download.microsoft.com/download/A/C/5/AC5D21A6-E04B-4DC4-B1F2-AE060319A4D7/Premier_Support_for_Security/Popis/Enhanced-Security-Admin-Environment-Solution-Datasheet-%5BEN%5D.pdf)
 * [Azure AD Implementation Services (Azure AD の実装サービス)](https://download.microsoft.com/download/0/7/F/07FA8BFC-17D5-4F55-AD4F-3A987A7324AA/azure-active-directory-implementation-services-solution-brief.pdf)
 * [Securing Against Lateral Account Movement (アカウントの横移動に対するセキュリティ保護)](https://docs.microsoft.com/azure-advanced-threat-protection/use-case-lateral-movement-path)
-* [Incident Response and Recovery (インシデントの対応と回復)](https://docs.microsoft.com/microsoft-365/compliance/gdpr-breach-microsoft-support-professional-services?view=o365-worldwide#data-protection-incident-response-overview)
+* [Incident Response and Recovery (インシデントの対応と回復)](/microsoft-365/compliance/gdpr-breach-microsoft-support-professional-services#data-protection-incident-response-overview)
 
 [こちら](https://aka.ms/cyberserv) をご覧ください。

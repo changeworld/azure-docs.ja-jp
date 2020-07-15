@@ -8,22 +8,20 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: b84f98bd383c2b90c3291527b336d798e9b9cae9
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 35590fd8aefb8b6a90adeef52fabe773663403c2
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83662235"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510990"
 ---
 # <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>チュートリアル:スキルセットに対する診断、修復、および変更のコミットを行う
 
 この記事では、Azure portal を使用してデバッグ セッションにアクセスし、指定されたスキルセットの問題を修復します。 このスキルセットには、対処する必要があるいくつかのエラーがあります。 このチュートリアルでは、デバッグ セッションを通じて、スキルの入力と出力に関する問題を特定し、解決します。
 
 > [!Important]
-> Azure Cognitive Search のデバッグ セッションのサポートは、アクセスを制限されたプレビューとして、[要求に応じて](https://aka.ms/DebugSessions)利用できます。 このプレビュー機能は、サービス レベル アグリーメントなしで提供されています。したがってプロダクション ワークロードへの使用は推奨しません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+> デバッグ セッションは、サービス レベル アグリーメントなしで提供されるプレビュー機能です。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 >
-> プレビューへのアクセスが許可されると、Azure portal を使用して、サービスのデバッグ セッションにアクセスして利用できるようになります。
->   
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -85,7 +83,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 コレクションには、このセクションを完了するために使用される 4 種類の REST 呼び出しが含まれています。
 
-最初の呼び出しでは、データ ソースが作成されます。 `clinical-trials-ds` 2 つ目の呼び出しでは、スキルセット `clinical-trials-ss` が作成されます。 3 つ目の呼び出しでは、インデックスの `clinical-trials` が作成されます。 最後の 4 つ目の呼び出しでは、インデクサーの `clinical-trials-idxr` が作成されます。 コレクション内のすべての呼び出しが完了したら、Postman を閉じて Azure portal に戻ります。
+最初の呼び出しでは、データ ソースが作成されます。 `clinical-trials-ds`. 2 つ目の呼び出しでは、スキルセット `clinical-trials-ss` が作成されます。 3 つ目の呼び出しでは、インデックスの `clinical-trials` が作成されます。 最後の 4 つ目の呼び出しでは、インデクサーの `clinical-trials-idxr` が作成されます。 コレクション内のすべての呼び出しが完了したら、Postman を閉じて Azure portal に戻ります。
 
 > [!div class="mx-imgBorder"]
 > ![Postman を使用してデータ ソースを作成する](media/cognitive-search-debug/postman-create-data-source.png)
@@ -173,12 +171,12 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 ## <a name="fix-missing-skill-output-values"></a>不足しているスキル出力値を修正する
 
 > [!div class="mx-imgBorder"]
-> ![エラーおよび警告](media/cognitive-search-debug/warnings-missing-value-locs-orgs.png)
+> ![エラーおよび警告](media/cognitive-search-debug/warnings-missing-value-locations-organizations.png)
 
 スキルからの出力値が不足しています。 エラーが発生したスキルを特定するには、エンリッチ処理されたデータ構造に移動し、値の名前を検索して、[Originating Source]\(元のソース\) を確認します。 組織と場所の値が不足している場合、それらはスキル #1 からの出力です。 各パスの </> で式エバリュエーターを開くと、"/document/content/organizations" および "/document/content/locations" として一覧表示されているそれぞれの式が表示されます。
 
 > [!div class="mx-imgBorder"]
-> ![式エバリュエーターの organizations エンティティ](media/cognitive-search-debug/expression-eval-missing-value-locs-orgs.png)
+> ![式エバリュエーターの organizations エンティティ](media/cognitive-search-debug/expression-eval-missing-value-locations-organizations.png)
 
 これらのエンティティの出力は空ですが、空にするべきではありません。 この結果を生成する入力は何でしょうか。
 
@@ -187,7 +185,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 1. 入力 "text" の **</>** で式エバリュエーターを開きます。
 
 > [!div class="mx-imgBorder"]
-> ![テキスト スキルの入力](media/cognitive-search-debug/input-skill-missing-value-locs-orgs.png)
+> ![テキスト スキルの入力](media/cognitive-search-debug/input-skill-missing-value-locations-organizations.png)
 
 この入力に表示される結果は、テキスト入力のようには見えません。 改行で囲まれた画像のように見えます。 テキストがないことは、エンティティを識別できないことを意味します。 スキルセットの階層を見ると、コンテンツは最初に #6 (OCR) スキルによって処理され、次に #5 (マージ) スキルに渡されると表示されています。 
 
@@ -195,7 +193,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 1. 右側のスキルの詳細ペインで **[実行]** タブを選択し、出力 "mergedText" の **</>** で式エバリュエーターを開きます。
 
 > [!div class="mx-imgBorder"]
-> ![マージ スキルの出力](media/cognitive-search-debug/merge-output-detail-missing-value-locs-orgs.png)
+> ![マージ スキルの出力](media/cognitive-search-debug/merge-output-detail-missing-value-locations-organizations.png)
 
 ここで、テキストは画像とペアになっています。 式 "/document/merged_content" を見ると、#1 スキルの "organizations" および "locations" パスのエラーが表示されています。 "text" 入力には、"/document/content" ではなく、"/document/merged_content" を使用する必要があります。
 
@@ -216,7 +214,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 1. "organizations" エンティティの **</>** で式エバリュエーターを開きます。
 
 > [!div class="mx-imgBorder"]
-> ![organizations エンティティの出力](media/cognitive-search-debug/skill-output-detail-missing-value-locs-orgs.png)
+> ![organizations エンティティの出力](media/cognitive-search-debug/skill-output-detail-missing-value-locations-organizations.png)
 
 式の結果を評価すると、正しい結果が得られます。 このスキルは、"organizations" というエンティティの正しい値を識別するために機能しています。 ただし、エンティティのパス内の出力マッピングでは、引き続きエラーがスローされます。 スキルの出力パスとエラーの出力パスを比較すると、/document/content ノードの下の出力、組織、および場所の親となっているスキルがあります。 一方、出力フィールド マッピングでは、結果が /document/merged_content ノードの下で子になることが想定されています。 前の手順では、入力を "/document/content" から "/document/merged_content" に変更しました。 出力が正しいコンテキストで生成されるようにするには、スキル設定のコンテキストを変更する必要があります。
 
@@ -228,7 +226,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 1. セッションのウィンドウ メニューで **[実行]** をクリックします。 これにより、ドキュメントを使用してスキルセットの別の実行が開始されます。
 
 > [!div class="mx-imgBorder"]
-> ![スキルの設定でのコンテキストの修正](media/cognitive-search-debug/skill-setting-context-correction-missing-value-locs-orgs.png)
+> ![スキルの設定でのコンテキストの修正](media/cognitive-search-debug/skill-setting-context-correction-missing-value-locations-organizations.png)
 
 すべてのエラーが解決されました。
 

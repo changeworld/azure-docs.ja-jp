@@ -4,7 +4,6 @@ description: このチュートリアルでは、Azure portal で Windows 仮想
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
-manager: craigg
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.topic: quickstart
@@ -13,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f775f93313a1a9a62d66a1a27a8d0f84de2c44aa
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: fb10e85b07037805d59dcba91ff20a4bc2a6574e
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84052806"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84667643"
 ---
 # <a name="quickstart-create-sql-server-2017-on-a-windows-virtual-machine-in-the-azure-portal"></a>クイック スタート:Azure portal で Windows 仮想マシン上に SQL Server 2017 を作成する
 

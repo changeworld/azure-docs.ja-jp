@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 27229d36dbe9592b6ad6fc2740f7714f99fd6857
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: cadbe79bbe0af2b5cebacb3d0c7c4e910fc7dbb8
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629055"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856825"
 ---
 # <a name="evaluate-custom-speech-accuracy"></a>カスタム音声の正確性を評価する
 
@@ -23,7 +23,7 @@ ms.locfileid: "84629055"
 
 ## <a name="what-is-word-error-rate-wer"></a>ワード エラー率 (WER) とは
 
-モデルの正確性を測定するための業界標準は、"*ワード エラー率*" (WER) です。 WER では、認識中に識別された誤った単語の数を数え、ヒューマン ラベル付けトランスクリプトで提供された単語の総数で割ります。 最後に、その数に 100% を掛けて WER を計算します。
+モデルの正確性を測定するための業界標準は、"*ワード エラー率*" (WER) です。 WER では、認識中に識別された誤った単語の数を数え、ヒューマン ラベル付けトランスクリプトで提供された単語の総数で割ります (下では N と示されています)。 最後に、その数に 100% を掛けて WER を計算します。
 
 ![WER の数式](./media/custom-speech/custom-speech-wer-formula.png)
 

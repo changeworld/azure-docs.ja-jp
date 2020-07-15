@@ -1,18 +1,16 @@
 ---
 title: Marketplace の分析情報 - Microsoft コマーシャル マーケットプレース
 description: マーケットプレース Web 分析の概要にアクセスすることにより、Microsoft AppSource と Azure Marketplace での顧客エンゲージメントを測定できます。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/16/2019
-ms.openlocfilehash: 2d9691279b987f9d45f755ab340ff70671d350c0
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 8b5f90449f27007febe93f1193c6d2245b076e7e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745651"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120400"
 ---
 # <a name="marketplace-insights-dashboard-in-partner-center"></a>パートナー センターの [Marketplace の分析情報] ダッシュボード
 

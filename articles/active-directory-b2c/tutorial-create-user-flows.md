@@ -6,22 +6,22 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
-ms.date: 06/07/2019
+ms.topic: how-to
+ms.date: 07/01/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 51adbb74635f66ca86347b536dc2607566dcb725
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 63c15b13134f17cd2e1d0bf7b8d11a168dca5b2a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231091"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829961"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C 内にユーザー フローを作成する
 
 お使いのアプリケーションに、ユーザーによるサインアップ、サインイン、プロファイル管理を可能にする[ユーザー フロー](user-flow-overview.md)を設定できます。 Azure Active Directory B2C (Azure AD B2C) テナント内にさまざまな種類のユーザー フローを複数作成し、それらを必要に応じてアプリケーションで使用できます。 ユーザー フローは、アプリケーション間で再利用することができます。
 
-この記事では、次のことについて説明します。
+この記事では、次の方法について説明します。
 
 > [!div class="checklist"]
 > * サインアップとサインイン ユーザー フローを作成する
@@ -46,7 +46,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ![B2C テナント、ディレクトリとサブスクリプションのペイン、Azure portal](./media/tutorial-create-user-flows/directory-subscription-pane.png)
 
 1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
-1. **[ポリシー]** で、 **[ユーザー フロー (ポリシー)]** を選択し、 **[新しいユーザーフロー]** を選択します。
+1. **[ポリシー]** で、 **[ユーザー フロー]** を選択し、 **[新しいユーザー フロー]** を選択します。
 
     ![[新しいユーザー フロー] ボタンが強調表示されているポータル内の [ユーザー フロー] ページ](./media/tutorial-create-user-flows/signup-signin-user-flow.png)
 
@@ -82,7 +82,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 アプリケーションでユーザーによるプロファイル編集を有効にする場合は、プロファイル編集ユーザー フローを使用します。
 
-1. Azure AD B2C テナントの [概要] ページのメニューで、 **[ユーザー フロー (ポリシー)]** を選択し、 **[新しいユーザー フロー]** を選択します。
+1. Azure AD B2C テナントの [概要] ページのメニューで、 **[ユーザー フロー]** を選択し、 **[新しいユーザー フロー]** を選択します。
 1. **[推奨]** タブで **[プロファイル編集]** ユーザー フローを選択します。
 1. ユーザー フローの **[名前]** を入力します。 たとえば、「*profileediting1*」と入力します。
 1. **[ID プロバイダー]** で、 **[ローカル アカウント サインイン]** を選択します。
@@ -100,7 +100,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 アプリケーションのユーザーが自分のパスワードをリセットできるようにするには、パスワード リセット ユーザー フローを使用します。
 
-1. Azure AD B2C テナントの概要メニューで、 **[ユーザー フロー (ポリシー)]** を選択し、 **[新しいユーザー フロー]** を選択します。
+1. Azure AD B2C テナントの概要メニューで、 **[ユーザー フロー]** を選択し、 **[新しいユーザー フロー]** を選択します。
 1. **[推奨]** タブで **パスワード リセット** ユーザー フローを選択します。
 1. ユーザー フローの **[名前]** を入力します。 たとえば、「*passwordreset1*」と入力します。
 1. **[ID プロバイダー]** で、 **[Reset password using email address]\(メール アドレスを使用してパスワードをリセットする\)** を有効にします。

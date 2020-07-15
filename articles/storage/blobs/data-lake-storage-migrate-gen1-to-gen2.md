@@ -2,18 +2,18 @@
 title: Azure Data Lake Storage を Gen1 から Gen2 に移行する
 description: Azure Data Lake Storage を Gen1 から Gen2 に移行します。
 author: normesta
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: normesta
 ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: c2db8c41d29b3fd8cb40744708ff87d7f4ec5b12
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 6c50ceae36c784b8b869977f14351ab5858fc7c0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193484"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84466019"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>Azure Data Lake Storage を Gen1 から Gen2 に移行する
 

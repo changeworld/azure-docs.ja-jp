@@ -5,31 +5,34 @@ description: Azure Machine Learning のリソースにおけるクォータと�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
 ms.date: 05/08/2020
 ms.custom: contperfq4
-ms.openlocfilehash: c5862ee90a12240e7293647fae6af4f18f30c164
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: df636ce1200d8c3744681a60532b22c409dd81dc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680391"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84430467"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>Azure Machine Learning を使用してリソースのクォータを管理し増やす
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-この記事では、[Azure Machine Learning](overview-what-is-azure-ml.md) ユーザーに、サブスクリプションの Azure リソースに対する事前構成済みの制限について詳しく説明します。 また、リソースの種類ごとにクォータの拡張を要求する方法に関する手順も含まれています。 これらの制限は、不正による予算超過を防ぎ、Azure の容量の制約を尊重するために設けられています。
+この記事では、[Azure Machine Learning](overview-what-is-azure-ml.md) サブスクリプションに対して事前構成された Azure リソースの制限と、管理できるクォータについて説明します。 これらの制限は、不正による予算超過を防ぎ、Azure の容量の制約を尊重するために設けられています。 
 
 他の Azure サービスと同様に、Azure Machine Learning に関連付けられている特定のリソースにも制限があります。 これらの制限は、[ワークスペース](concept-workspace.md)の数の上限から、モデルのトレーニングや推論/スコアリングに使用される実際の基盤となるコンピューティングに対する制限まで、多岐にわたります。 
 
 実稼働環境のワークロードに対して Azure Machine Learning リソースの設計やスケールアップを行う際は、これらの制限を考慮してください。 たとえば、クラスターのノード数がターゲットの数に満たない場合は、ご使用のサブスクリプションの Azure Machine Learning コンピューティング コアの制限に達している可能性があります。 制限を引き上げるまたは既定の制限を超えるクォータが必要な場合は、オンライン カスタマー サポートに申請 (無料) してください。 Azure の容量の制約があるため、次の表に示されている上限の値を超える制限の引き上げはできません。 上限列が存在しない場合、記載されているリソースに調整可能な制限がないことを意味します。
 
+
+クォータの管理に加えて、[Azure Machine Learning のコストを計画して管理する](concept-plan-manage-cost.md)方法についても説明します。
+
 ## <a name="special-considerations"></a>特別な考慮事項
 
-+ クォータは、容量の保証ではなく、クレジット制限です。 大規模な容量が必要な場合は、Azure サポートにお問い合わせください。
++ クォータは、容量の保証ではなく、クレジット制限です。 大規模な容量が必要な場合は、Azure サポートにお問い合わせください。 また、[クォータを増やす](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors)こともできます。
 
 + クォータは、Azure Machine Learning を含め、サブスクリプション内のすべてのサービスで共有されます。 唯一の例外は、コア コンピューティング クォータから切り離されたクォータを備えた Azure Machine Learning コンピューティングです。 容量のニーズを評価する際には、すべてのサービスでのクォータ使用率を計算してください。
 

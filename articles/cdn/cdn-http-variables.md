@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: allensu
-ms.openlocfilehash: 57a3bab06e4c0a1e4fd8df5d0794a89904a88954
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: f9768d4d20380e8e0c4ca6f7c71fddd68bb93d5c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747646"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84340676"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Azure CDN ルール エンジンの HTTP 変数
 HTTP 変数は、HTTP 要求と応答のメタデータを取得するための手段を提供します。 このメタデータを使用して、要求または応答を動的に変更できます。 HTTP 変数の使用は、次のルール エンジンの機能に限定されています。
 
-- [Cache-Key Rewrite (キャッシュキー書き換え)](cdn-verizon-premium-rules-engine-reference-features.md#cache-key-rewrite)
-- [Modify Client Request Header (クライアント要求ヘッダーの修正)](cdn-verizon-premium-rules-engine-reference-features.md#modify-client-request-header)
-- [Modify Client Response Header (クライアント応答ヘッダーの修正)](cdn-verizon-premium-rules-engine-reference-features.md#modify-client-response-header)
-- [URL Redirect (URL リダイレクト)](cdn-verizon-premium-rules-engine-reference-features.md#url-redirect)
-- [URL Rewrite (URL 書き換え)](cdn-verizon-premium-rules-engine-reference-features.md#url-rewrite)
+- [Cache-Key Rewrite (キャッシュキー書き換え)](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Key-Rewrite.htm)
+- [Modify Client Request Header (クライアント要求ヘッダーの修正)](https://docs.vdms.com/cdn/Content/HRE/F/Modify-Client-Request-Header.htm)
+- [Modify Client Response Header (クライアント応答ヘッダーの修正)](https://docs.vdms.com/cdn/Content/HRE/F/Modify-Client-Response-Header.htm)
+- [URL Redirect (URL リダイレクト)](https://docs.vdms.com/cdn/Content/HRE/F/URL-Redirect.htm)
+- [URL Rewrite (URL 書き換え)](https://docs.vdms.com/cdn/Content/HRE/F/URL-Rewrite.htm)
 
 ## <a name="definitions"></a>定義
 次の表で、サポートされている HTTP 変数について説明します。 GEO メタデータ (たとえば、郵便番号) が特定の要求に利用できない場合は、空白の値が返されます。

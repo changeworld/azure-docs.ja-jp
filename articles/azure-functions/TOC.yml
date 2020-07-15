@@ -55,6 +55,7 @@
       href: machine-learning-pytorch.md
     - name: カスタム Linux イメージの作成
       href: functions-create-function-linux-custom-image.md
+      displayName: 'container, docker'
     - name: IoT Edge デバイス上の Functions
       href: ../iot-edge/tutorial-deploy-function.md?toc=%2fazure%2fazure-functions%2ftoc.json
     - name: Azure Cosmos DB と Event Hubs での Java
@@ -65,7 +66,7 @@
       href: 'https://www.serverlesslibrary.net/'
     - name: Azure のサンプル
       items:
-        - name: 'C#'
+        - name: C#
           href: /samples/browse/?products=azure-functions&languages=csharp
         - name: Java
           href: /samples/browse/?products=azure-functions&languages=java
@@ -112,11 +113,11 @@
       items:
         - name: サポートされている言語
           href: supported-languages.md
-        - name: 'C# (クラス ライブラリ)'
+        - name: C# (クラス ライブラリ)
           href: functions-dotnet-class-library.md
-        - name: 'C# スクリプト (.csx)'
+        - name: C# スクリプト (.csx)
           href: functions-reference-csharp.md
-        - name: 'F#'
+        - name: F#
           href: functions-reference-fsharp.md
         - name: JavaScript
           href: functions-reference-node.md
@@ -127,8 +128,8 @@
         - name: Python
           href: functions-reference-python.md
         - name: TypeScript
-          href: 'functions-reference-node.md#typescript'
-    - name: Security
+          href: functions-reference-node.md#typescript
+    - name: セキュリティ
       items:
         - name: セキュリティの概要
           href: security-concepts.md
@@ -221,7 +222,7 @@
               href: functions-add-output-binding-storage-queue-java.md
         - name: デバッグおよびテスト
           items:
-            - name: テスト関数
+            - name: テスト Functions
               href: functions-test-a-function.md
             - name: ローカルの PowerShell 関数をデバッグする
               href: functions-debug-powershell-local.md
@@ -252,7 +253,7 @@
           href: run-functions-from-deployment-package.md
         - name: Kubernetes での Functions
           href: functions-kubernetes-keda.md
-          displayName: keda
+          displayName: 'keda, container, docker'
         - name: リソースのデプロイの自動化
           href: functions-infrastructure-as-code.md
         - name: オンプレミスの関数
@@ -275,7 +276,7 @@
           href: functions-geo-disaster-recovery.md
     - name: モニター
       items:
-        - name: 関数の監視
+        - name: Functions の監視
           href: functions-monitoring.md
           displayName: 'App Insights, Application Insights, logs, logging'
         - name: ログの分析
@@ -296,6 +297,8 @@
               href: ../app-service/configure-authentication-provider-microsoft.md?toc=%2fazure%2fazure-functions%2ftoc.json
             - name: Twitter による認証
               href: ../app-service/configure-authentication-provider-twitter.md?toc=%2fazure%2fazure-functions%2ftoc.json
+            - name: OpenID Connect プロバイダーを使用した認証 (プレビュー)
+              href: ../app-service/configure-authentication-provider-openid-connect.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: 高度な認証
           href: ../app-service/app-service-authentication-how-to.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: IP の制限
@@ -377,7 +380,7 @@
             - name: Functions 1.x
               href: functions-bindings-cosmosdb.md
               displayName: Azure Cosmos DB
-            - name: Functions 2.x
+            - name: Functions 2.x 以降
               displayName: Azure Cosmos DB
               items:
                 - name: 概要
@@ -500,6 +503,8 @@
   items:
     - name: Microsoft Learn でスキルを身に付ける
       href: /learn/browse/?products=azure-functions
+    - name: アーキテクチャのガイダンス
+      href: 'https://docs.microsoft.com/azure/architecture/serverless-quest/serverless-overview'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
     - name: 価格
@@ -507,7 +512,7 @@
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: クォータの情報
-      href: 'functions-scale.md#service-limits'
+      href: functions-scale.md#service-limits
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/regions/services/'
     - name: ビデオ

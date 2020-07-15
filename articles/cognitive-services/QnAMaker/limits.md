@@ -3,20 +3,20 @@ title: 制限と境界 - QnA Maker
 description: QnA Maker には、ナレッジ ベースとサービスの一部について、メタデータの制限があります。 テストして発行するためには、これらの制限内にナレッジ ベースを維持することが重要です。
 ms.topic: reference
 ms.date: 02/14/2020
-ms.openlocfilehash: 6375a6c6efc0c7016d9947e04e9479385aa80af5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6a600bcb25bc524cda38d1e35a777d23d47b15c9
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78273350"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855550"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker ナレッジ ベースの制限と境界
 
-以下に示す QnA Maker の制限は、[Azure Cognitive Search の価格レベルの制限](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)と [QnA Maker の価格レベルの制限](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)を組み合わせたものです。 リソースごとにどの程度の数のナレッジベースを作成できて、各ナレッジベースをどこまで拡張できるかを理解するには、両方の制限をセットで知っておく必要があります。
+以下に示す QnA Maker の制限は、[Azure Cognitive Search の価格レベルの制限](../../search/search-limits-quotas-capacity.md)と [QnA Maker の価格レベルの制限](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)を組み合わせたものです。 リソースごとにどの程度の数のナレッジベースを作成できて、各ナレッジベースをどこまで拡張できるかを理解するには、両方の制限をセットで知っておく必要があります。
 
 ## <a name="knowledge-bases"></a>ナレッジ ベース
 
-ナレッジ ベースの最大数は、[Azure Cognitive Search レベルの制限](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)に基づきます。
+ナレッジ ベースの最大数は、[Azure Cognitive Search レベルの制限](../../search/search-limits-quotas-capacity.md)に基づきます。
 
 |**Azure Cognitive Search レベル** | **Free** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
@@ -59,7 +59,7 @@ URL ページから QnA を抽出するためにクロールできるディー�
 
 ### <a name="by-azure-cognitive-search-pricing-tier"></a>Azure Cognitive Search の価格レベル
 
-ナレッジ ベースごとのメタデータ フィールドの最大数は、 **[Azure Cognitive Search レベルの制限](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)** に基づきます。
+ナレッジ ベースごとのメタデータ フィールドの最大数は、 **[Azure Cognitive Search レベルの制限](../../search/search-limits-quotas-capacity.md)** に基づきます。
 
 |**Azure Cognitive Search レベル** | **Free** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
@@ -85,7 +85,7 @@ URL ページから QnA を抽出するためにクロールできるディー�
 * ファイル名の長さ: 200
 * サポートされるファイル形式: ".tsv"、".pdf"、".txt"、".docx"、".xlsx"
 * 代替の質問の最大数: 該当なし
-* 質問と回答のペアの最大数: 選択した **[Azure Cognitive Search レベル](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits)** によって異なります。 質問と回答のペアは、Azure Cognitive Search インデックスのドキュメントにマップされます。
+* 質問と回答のペアの最大数: 選択した **[Azure Cognitive Search レベル](../../search/search-limits-quotas-capacity.md#document-limits)** によって異なります。 質問と回答のペアは、Azure Cognitive Search インデックスのドキュメントにマップされます。
 * URL/HTML ページ: 100 万文字
 
 ## <a name="create-knowledge-base-call-limits"></a>ナレッジ ベースの作成の呼び出しの制限

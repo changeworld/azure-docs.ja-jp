@@ -1,26 +1,19 @@
 ---
 title: Azure テンプレートを使用した Azure Service Bus の名前空間とキューの作成
 description: クイック スタート:Azure Resource Manager テンプレートを使用した、Service Bus の名前空間とキューの作成
-services: service-bus-messaging
 documentationcenter: .net
 author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: a6bfb5fd-7b98-4588-8aa1-9d5f91b599b6
-ms.service: service-bus-messaging
-ms.devlang: tbd
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.tgt_pltfrm: dotnet
-ms.workload: na
-ms.date: 03/30/2020
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: b08253104eeb61f6bb09fde507473d235a996494
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: e382d39e10e1907c9892f03a3da64945f3049fee
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422668"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85337016"
 ---
 # <a name="quickstart-create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用した、Service Bus の名前空間とキューの作成
 

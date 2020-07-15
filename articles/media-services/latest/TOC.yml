@@ -1,7 +1,5 @@
 - name: Media Services のドキュメント
   href: ./index.yml
-- name: Live Video Analytics on IoT Edge のドキュメントに切り替える
-  href: ../live-video-analytics-edge/overview.md
 - name: 概要
   items:
     - name: Media Services について
@@ -18,6 +16,11 @@
     - name: ポータルと OBS を使用したライブ イベント
       displayName: 'live, event, portal, obs'
       href: live-events-obs-quickstart.md
+    - name: ポータルを使用したコンテンツのアップロード、エンコード、ストリーム配信
+      href: manage-assets-quickstart.md
+    - name: ポータルを使用したコンテンツの暗号化
+      displayName: 'protect, drm, aes'
+      href: encrypt-content-quickstart.md
 - name: チュートリアル
   items:
     - name: リモート ファイルのエンコードとビデオのストリーム配信
@@ -156,6 +159,8 @@
           href: streaming-policy-concept.md
         - name: コンテンツ キー ポリシー
           href: content-key-policy-concept.md
+        - name: Azure AD によるコンテンツの保護
+          href: azure-ad-content-protection.md
     - name: 監視
       items:
         - name: Event Grid を使用したイベント
@@ -378,6 +383,8 @@
       href: /azure/templates/microsoft.media/allversions
     - name: Standard Encoder のスキーマ
       items:
+        - name: 入力メタデータ
+          href: input-metadata-schema.md
         - name: 出力メタデータ
           href: output-metadata-schema.md
 - name: リソース

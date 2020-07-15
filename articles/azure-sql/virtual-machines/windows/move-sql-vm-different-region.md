@@ -4,7 +4,6 @@ description: Azure 内のあるリージョンから別のリージョンに SQL
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
-manager: jroth
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
@@ -15,24 +14,24 @@ ms.date: 07/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: bca7237b38c1164d14ccf796e18980ba326090ac
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 37f098bc28ee89bdad9e5bde213e3c2a6847b0bf
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84027833"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851796"
 ---
-# <a name="move-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery-services"></a>Azure Site Recovery サービスを使用して Azure 内の別のリージョンに SQL Server VM を移動する
+# <a name="move-a-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery"></a>Azure Site Recovery を使用して Azure 内の別のリージョンに SQL Server VM を移動する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 この記事では、Azure Site Recovery を使用して、Azure 内のあるリージョンから別のリージョンに SQL Server 仮想マシン (VM) を移行する方法について説明します。 
 
 SQL Server VM を別のリージョンに移動するには、次の手順を実行する必要があります。
-1. [**準備**](#prepare-to-move):ソースの SQL Server VM とターゲット リージョンの両方が、移動用に適切に準備されていることを確認します。 
-1. [**構成**](#configure-azure-site-recovery-vault):SQL Server VM を移動するには、それが Azure Site Recovery コンテナー内のレプリケートされたオブジェクトである必要があります。 Azure Site Recovery コンテナーに SQL Server VM を追加する必要があります。 
-1. [**テスト**](#test-move-process):SQL Server VM を移行するには、それをソース リージョンから、レプリケートされたターゲット リージョンにフェールオーバーする必要があります。 移動プロセスが正常に行われるようにするには、まず、SQL Server VM がターゲット リージョンに正常にフェールオーバーできることをテストする必要があります。 これにより、問題点が明らかになって、実際の移動を実行するときにそれらを回避することができます。 
-1. [**移動**](#move-the-sql-server-vm):テスト フェールオーバーが成功して、SQL Server VM を移行しても安全であることがわかったら、ターゲット リージョンへの VM の移動を実行できます。 
-1. [**クリーンアップ**](#clean-up-source-resources):課金を回避するには、SQL Server VM をコンテナーから削除し、リソース グループに残されている不要なリソースをすべて削除します。 
+1. [準備](#prepare-to-move):ソースの SQL Server VM とターゲット リージョンの両方が、移動用に適切に準備されていることを確認します。 
+1. [構成](#configure-azure-site-recovery-vault):SQL Server VM を移動するには、それが Azure Site Recovery コンテナー内のレプリケートされたオブジェクトである必要があります。 Azure Site Recovery コンテナーに SQL Server VM を追加する必要があります。 
+1. [テスト](#test-move-process): SQL Server VM を移行するには、それをソース リージョンから、レプリケートされたターゲット リージョンにフェールオーバーする必要があります。 移動プロセスが正常に行われることを確保するには、まず、SQL Server VM がターゲット リージョンに正常にフェールオーバーできることをテストする必要があります。 これにより、問題点が明らかになって、実際の移動を実行するときにそれらを回避することができます。 
+1. [移動](#move-the-sql-server-vm):テスト フェールオーバーが成功して、SQL Server VM を移行しても安全であることがわかったら、ターゲット リージョンへの VM の移動を実行できます。 
+1. [クリーンアップ](#clean-up-source-resources):課金を回避するには、SQL Server VM をコンテナーから削除し、リソース グループに残されている不要なリソースをすべて削除します。 
 
 ## <a name="verify-prerequisites"></a>前提条件を確認する 
 
@@ -65,7 +64,7 @@ SQL Server VM を別のリージョンに移動するには、次の手順を実
     - ソース VM のレプリケーションを有効にすると、Azure Site Recovery によって仮想ネットワークが自動的に検出されて作成されます。 また、自分でネットワークを事前に作成しておき、レプリケーションを有効にするユーザー フローの中で VM に割り当てることもできます。 その他のリソースについては、ターゲット リージョンに手動で作成する必要があります。
 - 実際の環境に適した、最も一般的に使用されるネットワーク リソースをソース VM の構成に基づいて作成する場合は、次のドキュメントを参照してください。 
     - [ネットワーク セキュリティ グループ](../../../virtual-network/tutorial-filter-network-traffic.md) 
-    - [Load Balancer](../../../load-balancer/tutorial-load-balancer-basic-internal-portal.md)
+    - [Load Balancer](../../../load-balancer/tutorial-load-balancer-standard-internal-portal.md)
     - [パブリック IP アドレス](../../../virtual-network/virtual-network-public-ip-address.md)
     - その他のネットワーク コンポーネントについては、[ネットワークに関するドキュメント](../../../virtual-network/virtual-networks-overview.md)を参照してください。
 - ターゲット リージョンへの最終的な移動を行う前に構成をテストしたい場合は、ターゲット リージョンに手動で非運用ネットワークを作成します。 運用環境のネットワークへの影響が最小限で済むため、この手順をお勧めします。 
@@ -74,7 +73,7 @@ SQL Server VM を別のリージョンに移動するには、次の手順を実
 
 以下の手順では、Azure Site Recovery を使用してターゲット リージョンにデータをコピーする方法を紹介しています。 ソース リージョン以外のリージョンに Recovery Services コンテナーを作成します。 
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 
+1. [Azure portal](https://portal.azure.com) にサインインします。 
 1. ナビゲーション ウィンドウの左上隅から **[リソースの作成]** を選択します。 
 1. **[IT & Management tools]\(IT & 管理ツール\)** を選択し、次に **[Backup and Site Recovery]\(バックアップおよびサイトの回復\)** を選択します。 
 1. **[基本]** タブの **[プロジェクトの詳細]** で、ターゲット リージョンに新しいリソース グループを作成するか、ターゲット リージョンで既存のリソース グループを選択します。 
@@ -127,7 +126,7 @@ SQL Server VM を別のリージョンに移動するには、次の手順を実
    ![フェールオーバーを開始する](./media/move-sql-vm-different-region/initiate-failover.png)
 
 1. **[復旧ポイント]** で、 **[最新のアプリ整合性]** 復旧ポイントを選択します。 
-1. **[Shut down the machine before beginning failover]\(フェールオーバーを開始する前にマシンをシャットダウンする\)** の横のチェックボックスを選択します。 Site Recovery は、フェールオーバーを開始する前にソース VM をシャットダウンしようとします。 シャットダウンが失敗しても、フェールオーバーは続行されます。 
+1. **[Shut down the machine before beginning failover]\(フェールオーバーを開始する前にマシンをシャットダウンする\)** の横のチェック ボックスを選択します。 Site Recovery は、フェールオーバーを開始する前にソース VM をシャットダウンしようとします。 シャットダウンが失敗しても、フェールオーバーは続行されます。 
 1. **[OK]** を選択すると、フェールオーバーが開始されます。
 1. フェールオーバー プロセスは、前のセクションでフェールオーバー テストを監視していたときに表示したのと同じ **[Site Recovery ジョブ]** ページから監視できます。 
 1. ジョブが完了したら、予想どおりに SQL Server VM がターゲット リージョンに表示されることを確認します。 

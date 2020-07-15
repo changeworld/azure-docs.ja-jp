@@ -5,16 +5,16 @@ services: synapse-analytics
 author: kevinvngo
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/06/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 96e79fdfeed5b56a4e0a33229f419f439b20b04c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 959742ec3c0434213d19b0f92fe523671fd60f33
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124486"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964551"
 ---
 # <a name="bulk-loading-with-synapse-sql"></a>Synapse SQL を使用したデータの一括読み込み
 
@@ -28,7 +28,7 @@ Synapse Studio 内の次の領域を右クリックするだけで、SQL プー�
 
 ## <a name="prerequisites"></a>前提条件
 
-- 少なくとも ADLS Gen2 アカウントに対するストレージ BLOB データ共同作成者 RBAC ロールがある状態で、ワークスペースにアクセスできる必要があります。
+- このウィザードでは、AAD パススルーを認証に使用する COPY ステートメントが生成されます。 少なくとも ADLS Gen2 アカウントに対するストレージ BLOB データ共同作成者 RBAC ロールがある状態で、ワークスペースに [AAD ユーザーがアクセスできる必要があります](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples#d-azure-active-directory-authentication-aad)。
 
 - [COPY ステートメントを使用するために必要なアクセス許可](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#permissions)が必要です。さらに、読み込み先のテーブルを新しく作成する場合は、テーブルの作成アクセス許可が必要です。
 

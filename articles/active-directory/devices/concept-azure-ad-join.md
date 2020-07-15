@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e4521cb67ae95a1cd4a3e728a13e43bfd5773ab
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: ca08b81a71cd61e727b11bbeb88c0c235d25c5e6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83737029"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554901"
 ---
 # <a name="azure-ad-joined-devices"></a>Azure AD 参加済みデバイス
 
 Azure AD 参加は、クラウド優先またはクラウド専用であることを望む組織を対象にしています。 すべての組織で、サイズや業界に関係なく、Azure AD 参加済みデバイスをデプロイすることができます。 Azure AD 参加は、ハイブリッド環境でも動作し、クラウドおよびオンプレミス アプリとリソースと両方にアクセスできます。
 
-|   | Azure AD Join |
+| Azure AD Join | 説明 |
 | --- | --- |
 | **定義** | デバイスにサインインするための組織アカウントを必要とする Azure AD にのみ参加します |
 | **主な対象** | クラウド専用およびハイブリッド組織の両方に適しています。 |

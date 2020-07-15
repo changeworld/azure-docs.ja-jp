@@ -6,23 +6,22 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: mimart
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed56acc9276177951919a3bc63c8a1dc3876e1c4
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: abd6423ebbdba11cd1b0e0c2d00cfd36aa745e72
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594701"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551150"
 ---
 # <a name="language-customization-in-azure-active-directory-preview"></a>Azure Active Directory での言語のカスタマイズ (プレビュー)
-|     |
-| --- |
-| セルフサービス サインアップは、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
-|     |
+
+> [!NOTE]
+> セルフサービス サインアップは、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 Azure Active Directory (Azure AD) の言語のカスタマイズを使うと、ユーザーのニーズに応じて、ユーザー フローをさまざまな言語に対応させることができます。 Microsoft では、[36 言語](#supported-languages)の翻訳を提供しています。 1 つの言語のエクスペリエンスしか提供されない場合でも、属性コレクション ページで属性名をカスタマイズできます。
 

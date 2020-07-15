@@ -1,18 +1,18 @@
 ---
 title: Microsoft パートナー センターで商業マーケットプレース アカウントを管理する方法
 description: Microsoft パートナー センターで商業マーケットプレース アカウントを管理する方法について学習します。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: anbene
+ms.author: mingshen
 ms.date: 04/27/2020
-ms.openlocfilehash: 76eb0638d2b67e7859b25cdda8a6f4cbda285920
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 90ce9e48515213460fdb3db4fed57fd6f5d2688a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800221"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112852"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>パートナー センターで商業マーケットプレース アカウントを管理する
 
@@ -128,7 +128,7 @@ Microsoft から支払いを受けたり、租税条約上の権利を申し立�
 
 レポートは、パートナー値 (Microsoft パートナー ID) と GUID によって行われます。 オファーに含まれるそれぞれのプランに合わせ、さらに細かな粒度で GUID を追跡することもできます。
 
-詳細については、[GUID を使用した Azure 顧客の使用状況追跡に関する FAQ](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution#faq) ページを参照してください。
+詳細については、[GUID を使用した Azure 顧客の使用状況追跡に関する FAQ](../azure-partner-customer-usage-attribution.md#faq)) ページを参照してください。
 
 ## <a name="create-a-billing-profile"></a>請求プロファイルを作成する
 
@@ -138,7 +138,7 @@ Microsoft から支払いを受けたり、租税条約上の権利を申し立�
 
 ## <a name="multi-user-account-management"></a>マルチユーザー アカウント管理
 
-パートナー センターには、マルチユーザー アカウントのアクセスと管理を可能にするために [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (Azure AD) が活用されています。 パートナー センター アカウントには、登録プロセスの過程でお客様の組織の Azure AD が自動的に関連付けられます。
+パートナー センターには、マルチユーザー アカウントのアクセスと管理を可能にするために [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) が活用されています。 パートナー センター アカウントには、登録プロセスの過程でお客様の組織の Azure AD が自動的に関連付けられます。
 
 ## <a name="manage-users"></a>ユーザーの管理
 
@@ -168,7 +168,7 @@ Microsoft から支払いを受けたり、租税条約上の権利を申し立�
 
 ### <a name="create-new-users"></a>新しいユーザーを作成する
 
-新しいユーザー アカウントを作成する作業は、[**グローバル管理者**](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)のアクセス許可があるアカウントで行う必要があります。 
+新しいユーザー アカウントを作成する作業は、[**グローバル管理者**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)のアクセス許可があるアカウントで行う必要があります。 
 
 1. **[アカウント設定]** の **[ユーザー]** に移動し、 **[ユーザーの追加]** を選択した後、 **[新しいユーザーを作成する]** を選択します。
 1. 新しいユーザーごとに、名、姓、およびユーザー名を入力します。 
@@ -182,7 +182,7 @@ Microsoft から支払いを受けたり、租税条約上の権利を申し立�
 
 ### <a name="invite-new-users-by-email"></a>新しいユーザーをメールで招待する
 
-現在貴社の職場アカウント (Azure AD テナント) に属していないユーザーをメールで招待するには、[**グローバル管理者**](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)のアクセス許可があるアカウントを持っている必要があります。
+現在貴社の職場アカウント (Azure AD テナント) に属していないユーザーをメールで招待するには、[**グローバル管理者**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)のアクセス許可があるアカウントを持っている必要があります。
 
 1. **[アカウント設定]** の **[ユーザー]** に移動し、 **[ユーザーの追加]** を選択してから、 **[Invite users by email]\(ユーザーをメールで招待する\)** を選択します。
 2. 少なくとも 1 つのメール アドレス (最大 10 個) をコンマまたはセミコロンで区切って入力します。
@@ -202,7 +202,7 @@ Microsoft から支払いを受けたり、租税条約上の権利を申し立�
 
 ### <a name="change-a-user-password"></a>ユーザーのパスワードを変更する
 
-ユーザー アカウントの作成時に**パスワード回復メール**を指定しておけば、そのユーザーが自身のパスワードを変更する必要がある場合に、自分でパスワードを変更することができます。 また、以下の手順でユーザーのパスワードを更新することもできます。 貴社の職場アカウント (Azure AD テナント) のユーザーのパスワードを変更するには、[**グローバル管理者**](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)のアクセス許可があるアカウントにサインインする必要があります。 これを行うと、Azure AD テナントにおけるユーザーのパスワードが変更されると共に、パートナー センターへのアクセスに使用されるパスワードも変更されます。
+ユーザー アカウントの作成時に**パスワード回復メール**を指定しておけば、そのユーザーが自身のパスワードを変更する必要がある場合に、自分でパスワードを変更することができます。 また、以下の手順でユーザーのパスワードを更新することもできます。 貴社の職場アカウント (Azure AD テナント) のユーザーのパスワードを変更するには、[**グローバル管理者**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)のアクセス許可があるアカウントにサインインする必要があります。 これを行うと、Azure AD テナントにおけるユーザーのパスワードが変更されると共に、パートナー センターへのアクセスに使用されるパスワードも変更されます。
 
 1. **[アカウント設定]** の **[ユーザー]** ページから、編集したいユーザー アカウントの名前を選択します。
 2. ページ下部の **[Reset password]\(パスワードのリセット\)** ボタンを選択します。
@@ -264,7 +264,7 @@ Microsoft から支払いを受けたり、租税条約上の権利を申し立�
 1. **[アカウント設定]** の **[ユーザー]** ページから **[Add Azure AD applications]\(Azure AD アプリケーションの追加\)** を選択します。
 2. 次のページで、 **[New Azure AD application]\(新しい Azure AD アプリケーション\)** を選択します。
 3. 新しい Azure AD アプリケーションの**応答 URL** を入力します。 これは、Azure AD アプリケーションにユーザーがサインインして使用するための URL です ("アプリの URL" や "サインオン URL" と呼ばれることもあります)。 **応答 URL** は 256 文字未満、かつディレクトリ内で一意であることが必要です。
-4. 新しい Azure AD アプリケーションの**アプリ ID/URI** を入力します。 これは、シングル サインオン要求が Azure AD に送信されるときに提示される、Azure AD アプリケーションの論理的な ID です。 **アプリ ID/URI** は、ディレクトリ内の Azure AD アプリケーションごとに一意であることが必要です。 この ID は 256 文字以下にする必要があります。 アプリ ID/URI の詳細については、[Azure Active Directory とアプリケーションの統合](https://docs.microsoft.com/azure/active-directory/develop/quickstart-modify-supported-accounts#change-the-application-registration-to-support-different-accounts)に関するページを参照してください。
+4. 新しい Azure AD アプリケーションの**アプリ ID/URI** を入力します。 これは、シングル サインオン要求が Azure AD に送信されるときに提示される、Azure AD アプリケーションの論理的な ID です。 **アプリ ID/URI** は、ディレクトリ内の Azure AD アプリケーションごとに一意であることが必要です。 この ID は 256 文字以下にする必要があります。 アプリ ID/URI の詳細については、[Azure Active Directory とアプリケーションの統合](../../active-directory/develop/quickstart-modify-supported-accounts.md#change-the-application-registration-to-support-different-accounts)) に関するページを参照してください。
 5. **[ロール]** セクションで、Azure AD アプリケーションのロール (またはカスタマイズされたアクセス許可) を指定します。
 6. **[保存]** を選択します。
 
@@ -328,7 +328,7 @@ Azure Active Directory (AD) テナントは、Azure portal で設定される組
 3. **[Create]\(作成\)** を選択して、新しいドメインとアカウントの情報を確定します。
 4. 新しい Azure AD グローバル管理者のユーザー名とパスワードでサインインして、[ユーザーの追加と管理](#manage-users)を開始します。
 
-パートナー センター ポータルを介さず Azure portal 内で新しいテナントを作成する方法について詳しくは、[Azure Active Directory で新しいテナントを作成する](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)方法に関する記事を参照してください。
+パートナー センター ポータルを介さず Azure portal 内で新しいテナントを作成する方法について詳しくは、[Azure Active Directory で新しいテナントを作成する](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md)方法に関する記事を参照してください。
 
 ### <a name="remove-a-tenant"></a>テナントを削除する
 

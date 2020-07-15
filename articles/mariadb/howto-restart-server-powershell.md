@@ -4,14 +4,14 @@ description: この記事では、PowerShell を使用して Azure Database for 
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/26/2020
-ms.openlocfilehash: ff7a7b7d83089f575df1ac169556c2762dd674a7
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 1cf5cf3f34f2986bbc18b5293dad4862c24f47a2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84039403"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121080"
 ---
 # <a name="restart-azure-database-for-mariadb-server-using-powershell"></a>PowerShell を使用して Azure Database for MariaDB サーバーを再起動する
 

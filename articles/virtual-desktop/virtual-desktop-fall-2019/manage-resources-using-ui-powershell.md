@@ -4,16 +4,16 @@ description: ここでは、PowerShell を使用して Windows Virtual Desktop �
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d9aea1f56b742d87df769a3206f15024afdf87b3
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 0ae3bb87bfee681aa518a4dfef064677ffa97119
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983093"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513396"
 ---
 # <a name="deploy-a-management-tool-with-powershell"></a>PowerShell で管理ツールをデプロイする
 
@@ -24,7 +24,7 @@ ms.locfileid: "82983093"
 
 ## <a name="important-considerations"></a>重要な考慮事項
 
-Azure Active Directory (Azure AD) テナントの各サブスクリプションでは、管理ツールをそれぞれ個別にデプロイする必要があります。 このツールは、Azure AD の B2B シナリオをサポートしていません。 
+Azure Active Directory (Azure AD) テナントの各サブスクリプションでは、管理ツールをそれぞれ個別にデプロイする必要があります。 このツールは、Azure AD の B2B シナリオをサポートしていません。
 
 この管理ツールはサンプルです。 Microsoft は、セキュリティと品質の重要な更新プログラムを提供します。 [ソース コードは GitHub で入手できます](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy)。 あなたがカスタマー/パートナーのどちらであっても、ビジネスニーズを満たすようにツールをカスタマイズすることをお勧めします。
 
@@ -40,7 +40,7 @@ Azure Active Directory (Azure AD) テナントの各サブスクリプション�
 管理ツールをデプロイする前に、アプリの登録を作成して管理 UI をデプロイする Azure Active Directory (Azure AD) ユーザーが必要です。 このユーザーには、次の要件があります。
 
 - ご使用の Azure サブスクリプション内にリソースを作成するためのアクセス許可を持っている
-- Azure AD アプリケーションを作成するためのアクセス許可を持っている 次のステップに従い、あなたのユーザーが[「必要なアクセス許可」](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)の指示に従って必要なアクセス許可を保持しているかどうかを確認します。
+- Azure AD アプリケーションを作成するためのアクセス許可を持っている 次のステップに従い、あなたのユーザーが[「必要なアクセス許可」](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)の指示に従って必要なアクセス許可を保持しているかどうかを確認します。
 
 管理ツールをデプロイして構成した後は、管理 UI を起動し、すべてが動作することを確認することを推奨します。 管理 UI を起動するユーザーには、Windows Virtual Desktop テナントを表示/編集できるロールの割り当てが必要です。
 
@@ -93,7 +93,7 @@ Azure AD アプリの登録は完了です。これで管理ツールをデプ�
 ## <a name="deploy-the-management-tool"></a>管理ツールをデプロイする
 
 次の PowerShell コマンドを実行して、管理ツールをデプロイし、先ほど作成したサービス プリンシパルに関連付けます。
-     
+
 ```powershell
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
@@ -120,7 +120,7 @@ Web アプリの作成後に、Azure AD アプリケーションにリダイレ�
 ```powershell
 $webApp = Get-AzWebApp -ResourceGroupName $resourceGroupName -Name $appName
 $redirectUri = "https://" + $webApp.DefaultHostName + "/"
-Get-AzureADApplication -All $true | where { $_.AppId -match $servicePrincipalCredentials.UserName } | Set-AzureADApplication -ReplyUrls $redirectUri  
+Get-AzureADApplication -All $true | where { $_.AppId -match $servicePrincipalCredentials.UserName } | Set-AzureADApplication -ReplyUrls $redirectUri
 ```
 
 これでリダイレクト URI が追加できました。次に、管理ツールが API バックエンドサービスとインタラクトできるように API URL を更新する必要があります。
@@ -143,11 +143,11 @@ Get-AzureADApplication -All $true | where { $_.AppId -match $servicePrincipalCre
 2. Microsoft Azure potal の上部にある検索バーで「**アプリの登録**」を検索し、 **[サービス]** の項目を選択します。
 3. **[すべてのアプリケーション]** を選択し、「[Azure Active Directory アプリの登録を作成する](#create-an-azure-active-directory-app-registration)」で PowerShell スクリプトに命名した一意のアプリ名を検索します。
 4. 次の図で示すように、ブラウザーの左側のパネルで **[認証]** を選択し、リダイレクト URI が管理ツールの Web アプリの URL と同じであることを確認します。
-   
+
    [![入力したリダイレクト URI の認証ページ](../media/management-ui-redirect-uri-inline.png)](../media/management-ui-redirect-uri-expanded.png#lightbox)
 
 5. 左側のパネルで **[API のアクセス許可]** を選択し、アクセス許可が追加されたことを確認します。 あなたがグローバル管理者の場合は、 **[`tenantname` に管理者の同意を与えます]** ボタンを選択し、ダイアログ プロンプトに従って、あなたの組織に対する管理者の同意を提供します。
-    
+
     [ ![[API のアクセス許可] ページ](../media/management-ui-permissions-inline.png) ](../media/management-ui-permissions-expanded.png#lightbox)
 
 これで管理ツールを使用開始できるようになりました。
@@ -158,13 +158,13 @@ Get-AzureADApplication -All $true | where { $_.AppId -match $servicePrincipalCre
 
 1. Web ブラウザーで Web アプリの URL を開きます。 URL を覚えていない場合は、Azure にサインインし、管理ツール用にデプロイしたアプリサービスを見つけて、その URL を選択します。
 2. ご自分の Windows Virtual Desktop 資格情報を使用してサインインします。
-   
+
    > [!NOTE]
    > 管理ツールの構成時に管理者の同意を与えていない場合、このツールを使用するためには、サインインする各ユーザーがそれぞれ独自にユーザーの同意を提供する必要があります。
 
 3. テナント グループを選択するよう求められたときには、ドロップダウン リストから **[既定のテナント グループ]** を選択します。
 4. **[既定のテナント グループ]** を選択すると、ウィンドウの右側にメニューが表示されます。 このメニューの中から、テナント グループの名前を探して選択します。
-   
+
    > [!NOTE]
    > カスタムのテナント グループがある場合は、ドロップダウン リストから選択せずに、手動でその名前を入力します。
 

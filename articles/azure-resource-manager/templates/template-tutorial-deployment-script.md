@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 2b4b94c05b39dddcef83644638a105d5b6c75118
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 81574f25e2132a7079fa0242284fb67b0132a8af
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82184981"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119329"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>チュートリアル:デプロイ スクリプトを使用して自己署名証明書を作成する (プレビュー)
 
@@ -40,7 +40,7 @@ Azure Resource Manager (ARM) テンプレートでデプロイ スクリプト�
 
 この記事を完了するには、以下が必要です。
 
-* **Resource Manager ツール拡張機能を持つ [Visual Studio Code](https://code.visualstudio.com/)** 。 [Visual Studio Code を使って ARM テンプレートを作成する方法](./use-vs-code-to-create-template.md)に関するページを参照してください。
+* **Resource Manager ツール拡張機能を持つ [Visual Studio Code](https://code.visualstudio.com/)** 。 「[クイック スタート:Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](./quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
 
 * **サブスクリプション レベルで共同作成者のロールが付与された、ユーザー割り当て済みマネージド ID**。 この ID は、デプロイ スクリプトを実行するために使用されます。 作成するには、「[ユーザー割り当てマネージド ID](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#user-assigned-managed-identity)」を参照してください。 この識別 ID は、テンプレートをデプロイするときに必要です。 ID の形式は次のとおりです。
 

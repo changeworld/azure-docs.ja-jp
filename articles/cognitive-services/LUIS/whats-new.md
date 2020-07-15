@@ -2,19 +2,33 @@
 title: 新機能 - Language Understanding (LUIS)
 description: この記事では、Azure Cognitive Services Language Understanding API に関するニュースが定期的に更新されています。
 ms.topic: overview
-ms.date: 05/19/2020
-ms.openlocfilehash: b4d287c8d1ddbeeee63390fb397718de1234c93e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 06/15/2020
+ms.openlocfilehash: d178ee2f5db74949f4a8ad68df93bf3c4407c58a
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83675959"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84789210"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding の新機能
 
 サービス内の新機能について説明します。 これらの項目には、リリース ノート、ビデオ、ブログ記事、およびその他の種類の情報が含まれています。 このページをブックマークして、常にサービスの最新情報を確認してください。
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="june-2020"></a>2020 年 6 月
+
+* [Preview 3.0 Authoring](luis-migration-authoring-entities.md) SDK -
+    * バージョン 3.2.0-preview.3 - [.NET - NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)
+    * バージョン 4.0.0-preview.3 - [JS - NPM](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)
+* LUIS を使用した DevOps プラクティスの適用
+    * 概念
+        * [LUIS の DevOps プラクティス](luis-concept-devops-sourcecontrol.md)
+        * [LUIS DevOps の継続的インテグレーションと継続的デリバリーのワークフロー](luis-concept-devops-automation.md)
+        * [LUIS DevOps のテスト](luis-concept-devops-testing.md)
+    * 操作方法
+        * [GitHub Actions を使用して LUIS アプリ開発に DevOps を適用する](luis-how-to-devops-with-github.md)
+    * [完成したコードの GitHub リポジトリ](https://github.com/Azure-Samples/LUIS-DevOps-Template)
 
 ### <a name="may-2020---build"></a>2020 年 5 月 - //Build
 

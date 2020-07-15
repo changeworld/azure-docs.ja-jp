@@ -49,7 +49,7 @@
       href: ./policy-samples.md
 - name: 概念
   items:
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -135,6 +135,8 @@
           href: batch-virtual-network.md
         - name: パブリック IP アドレスのプールを作成する
           href: create-pool-public-ip.md
+        - name: パブリック IP アドレスのないプールを作成する
+          href: batch-pool-no-public-ip-address.md
         - name: 仮想ファイル システムをマウントする
           href: virtual-file-mount.md
         - name: Azure ファイル共有をマウントする
@@ -270,13 +272,13 @@
     - name: Batch のフィードバック
       href: 'https://feedback.azure.com/forums/269742-batch'
     - name: Batch に関する Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-batch.html'
+      href: /answers/topics/azure-batch.html
     - name: Batch Shipyard
       href: 'https://github.com/Azure/batch-shipyard'
     - name: ブログ
-      href: 'https://blogs.technet.microsoft.com/windowshpc/'
+      href: /archive/blogs/windowshpc/
     - name: Azure での HPC
-      href: 'https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/'
+      href: /azure/architecture/topics/high-performance-computing/
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/batch/'
     - name: 料金計算ツール

@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 49b159434497d4b455a338ba88058d73d7de10ee
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 6e853edf5b7ba756aaedceaf59b1f7d1d7e48b39
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773136"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985428"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Azure 仮想マシンのソリューション
 
@@ -69,6 +69,9 @@ az vm list-skus
     --size dc 
     --query "[?family=='standardDCSv2Family']"
 ```
+### <a name="dedicated-host-requirements"></a>専用ホストの要件
+DCSv2 シリーズの VM ファミリで **Standard_DC8_v2** 仮想マシン サイズをデプロイすると、ホストが完全に占有され、他のテナントやサブスクリプションとは共有されません。 この VM SKU ファミリでは、専用ホスト サービスを使用することによって通常満たされるコンプライアンスとセキュリティの規制要件を満たすために必要な分離が提供されます。 **Standard_DC8_v2** SKU を選択すると、物理ホスト サーバーによって、EPC メモリを含むすべての使用可能なハードウェア リソースが、ユーザーの仮想マシンだけに割り当てられます。 この機能はインフラストラクチャの設計によって存在し、**Standard_DC8_v2** のすべての機能がサポートされることに注意してください。 このデプロイは、他の Azure VM ファミリによって提供される [Azure Dedicated Host](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts) サービスと同じものではありません。
+
 
 ## <a name="deployment-considerations"></a>デプロイに関する考慮事項
 

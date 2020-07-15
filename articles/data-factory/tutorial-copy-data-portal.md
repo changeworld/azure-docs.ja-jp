@@ -1,6 +1,6 @@
 ---
 title: Azure portal を使用してデータ ファクトリ パイプラインを作成する
-description: このチュートリアルでは、Azure Portal を使用してパイプラインを備えたデータ ファクトリを作成するための詳細な手順について説明します。 パイプラインでコピー アクティビティを使用して、Azure Blob Storage から Azure SQL データベースにデータをコピーします。
+description: このチュートリアルでは、Azure Portal を使用してパイプラインを備えたデータ ファクトリを作成するための詳細な手順について説明します。 パイプラインでコピー アクティビティを使用して、Azure Blob Storage から Azure SQL Database にデータをコピーします。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,18 +12,18 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 05/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 8372683c1463fe3443730bd004c013666deb4100
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 16b5eeb33f8be07d6257d8d7957ea2526ab9d3f1
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248619"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253967"
 ---
-# <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Blob Storage から SQL データベースにデータをコピーする
+# <a name="copy-data-from-azure-blob-storage-to-a-database-in-azure-sql-database-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Blob Storage から Azure SQL Database のデータベースにデータをコピーする
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-このチュートリアルでは、Azure Data Factory ユーザー インターフェイス (UI) を使用してデータ ファクトリを作成します。 このデータ ファクトリのパイプラインでは、Azure Blob Storage から Azure SQL Database にデータをコピーします。 このチュートリアルの構成パターンは、ファイルベースのデータ ストアからリレーショナル データ ストアへのコピーに適用されます。 ソースおよびシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する表を参照してください。
+このチュートリアルでは、Azure Data Factory ユーザー インターフェイス (UI) を使用してデータ ファクトリを作成します。 このデータ ファクトリのパイプラインでは、Azure Blob Storage から Azure SQL Database のデータベースにデータをコピーします。 このチュートリアルの構成パターンは、ファイルベースのデータ ストアからリレーショナル データ ストアへのコピーに適用されます。 ソースおよびシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する表を参照してください。
 
 > [!NOTE]
 > - Data Factory を初めて使用する場合は、「[Azure Data Factory の概要](introduction.md)」を参照してください。
@@ -41,7 +41,7 @@ ms.locfileid: "84248619"
 ## <a name="prerequisites"></a>前提条件
 * **Azure サブスクリプション**。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
 * **Azure ストレージ アカウント**。 Blob Storage を "*ソース*" データ ストアとして使用します。 ストレージ アカウントがない場合の作成手順については、[Azure のストレージ アカウントの作成](../storage/common/storage-account-create.md)に関するページを参照してください。
-* **Azure SQL データベース**。 データベースを "*シンク*" データ ストアとして使用します。 Azure SQL データベースがない場合の作成手順については、[SQL データベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関するページを参照してください。
+* **Azure SQL データベース**。 データベースを "*シンク*" データ ストアとして使用します。 Azure SQL Database のデータベースがない場合の作成手順については、[Azure SQL Database のデータベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関するページを参照してください。
 
 ### <a name="create-a-blob-and-a-sql-table"></a>BLOB と SQL テーブルを作成する
 
@@ -61,7 +61,7 @@ ms.locfileid: "84248619"
 
 #### <a name="create-a-sink-sql-table"></a>シンク SQL テーブルを作成する
 
-1. 次の SQL スクリプトを使用して、**dbo.emp** テーブルを SQL データベースに作成します。
+1. 次の SQL スクリプトを使用して、**dbo.emp** テーブルをデータベースに作成します。
 
     ```sql
     CREATE TABLE dbo.emp
@@ -154,7 +154,7 @@ ms.locfileid: "84248619"
 
 1. **[新しいデータセット]** ダイアログ ボックスで、検索ボックスに「SQL」と入力してコネクタをフィルター処理し、 **[Azure SQL Database]** を選択して、 **[続行]** を選択します。 このチュートリアルでは、SQL データベースにデータをコピーします。
 
-1. **[プロパティの設定]** ダイアログ ボックスで、[名前] に「**OutputSqlDataset**」を入力します。 **[リンクされたサービス]** ボックスの一覧から **[+ 新規]** を選択します。 データセットをリンクされたサービスに関連付ける必要があります。 リンクされたサービスには、Data Factory が実行時に SQL データベースに接続するために使用する接続文字列が含まれています。 データセットは、コンテナー、フォルダー、データのコピー先のファイル (オプション) を指定します。
+1. **[プロパティの設定]** ダイアログ ボックスで、[名前] に「**OutputSqlDataset**」を入力します。 **[リンクされたサービス]** ボックスの一覧から **[+ 新規]** を選択します。 データセットをリンクされたサービスに関連付ける必要があります。 リンクされたサービスには、Data Factory が実行時に SQL Database に接続するために使用する接続文字列が含まれています。 データセットは、コンテナー、フォルダー、データのコピー先のファイル (オプション) を指定します。
 
 1. **[New Linked Service (Azure SQL Database)]\(新しいリンクされたサービス (Azure SQL Database)\)** ダイアログ ボックスで、次の手順を実行します。
 
@@ -162,7 +162,7 @@ ms.locfileid: "84248619"
 
     b. **[サーバー名]** で、使用する SQL Server インスタンスを選択します。
 
-    c. **[データベース名]** で、使用する SQL データベースを選択します。
+    c. **[データベース名]** で、使用するデータベースを選択します。
 
     d. **[ユーザー名]** に、ユーザーの名前を入力します。
 
@@ -209,7 +209,7 @@ Data Factory または独自の Azure Repos Git リポジトリにアーティ�
 
     [![アクティビティの実行を監視する](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png)](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png#lightbox)
 
-1. SQL データベースの **emp** テーブルに 2 つの行が追加されていることを確認します。
+1. データベースの **emp** テーブルに 2 つの行が追加されていることを確認します。
 
 ## <a name="trigger-the-pipeline-on-a-schedule"></a>スケジュールに基づいてパイプラインをトリガーする
 このスケジュールでは、パイプラインのスケジュール トリガーを作成します。 このトリガーは、指定されたスケジュール (1 時間に 1 回、毎日など) に基づいてパイプラインを実行します。 ここでは、指定された終了日時まで毎分実行されるようトリガーを設定します。

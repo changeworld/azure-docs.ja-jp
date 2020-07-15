@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: diberry
-ms.openlocfilehash: 3d6b2b5896242ff85c6fb96071b747083893b03a
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 304e76a2bf8bae3e6ee2120b892ef97d89c3decc
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343168"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144405"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>LUIS ポータルでの新しい LUIS アプリの作成
 LUIS アプリを作成するにはいくつかの方法があります。 LUIS ポータル内または LUIS オーサリング [API](developer-reference-resource.md) を使用して LUIS アプリを作成できます。
@@ -45,7 +45,7 @@ LUIS アプリを作成するにはいくつかの方法があります。 LUIS 
 
 ## <a name="create-new-app-in-luis"></a>LUIS で新しいアプリを作成する
 
-1. **[マイ アプリ]** ページ上で、ご自身の **[サブスクリプション]** 、 **[作成リソース]** 、 **[+ 作成]** の順に選択します。 無料試用版キーを使用している場合、[作成リソースの作成方法](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal)について学習してください。
+1. **[マイ アプリ]** ページ上で、ご自身の **[サブスクリプション]** 、 **[作成リソース]** 、 **[+ 作成]** の順に選択します。 
 
 > [!div class="mx-imgBorder"]
 > ![LUIS アプリの一覧](./media/create-app-in-portal.png)

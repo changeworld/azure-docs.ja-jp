@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2815b496545ca5f920c00df7b2b5b7efe15c12a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d9bfc7f194730545469e7d17d46c47f7293f016e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74900897"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84728896"
 ---
 # <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>Azure Active Directory で管理者ロールを表示して割り当てる
 
@@ -49,7 +49,6 @@ Azure Active Directory ポータルで、管理者ロールのすべてのメン
 ロールのメンバーを表示しているときに、 **[説明]** を選択すると、ロールの割り当てによって付与されているアクセス許可の完全な一覧が表示されます。 このページには、ディレクトリ ロールの管理について説明している関連ドキュメントへのリンクが含まれています。
 
 ![管理者ロールのアクセス許可の一覧](./media/directory-manage-roles-portal/role-description.png)
-
 
 ## <a name="next-steps"></a>次のステップ
 

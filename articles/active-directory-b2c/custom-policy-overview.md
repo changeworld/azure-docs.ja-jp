@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/20/2019
+ms.date: 06/06/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f18f44208b97ab5bc8d9cd9ff01d604c62deb963
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1a7cb964064e229ee29591ca14aa8ef33e393a7d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678161"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84484185"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のカスタム ポリシー
 
@@ -25,7 +25,7 @@ ms.locfileid: "81678161"
 
 ## <a name="comparing-user-flows-and-custom-policies"></a>ユーザー フローとカスタム ポリシーの比較
 
-| | ユーザー フロー | カスタム ポリシー |
+| Context | ユーザー フロー | カスタム ポリシー |
 |-|-------------------|-----------------|
 | 対象ユーザー | ID の専門知識を持つ、または持たないすべてのアプリケーション開発者。 | ID のプロフェッショナル、システム インテグレータ、コンサルタント、社内の ID チーム。 彼らは OpenID Connect のフローに慣れており、ID プロバイダーや要求ベースの認証を理解しています。 |
 | 構成方法 | ユーザー フレンドリなユーザー インターフェイス (UI) を備えた Azure portal。 | XML ファイルを直接編集して Azure portal にアップロードします。 |

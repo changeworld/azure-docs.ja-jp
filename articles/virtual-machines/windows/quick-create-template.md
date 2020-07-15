@@ -8,28 +8,28 @@ ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: 6ef929a2934d8480ce6d1eca8bb7ba3b70580110
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: d74994609799c155453f0c7cac887f2e033ea90b
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84551991"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087284"
 ---
-# <a name="quickstart-create-a-windows-virtual-machine-using-a-resource-manager-template"></a>クイック スタート:Resource Manager テンプレートを使用して Windows 仮想マシンを作成する
+# <a name="quickstart-create-a-windows-virtual-machine-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Windows 仮想マシンを作成する
 
-このクイックスタートでは、Resource Manager テンプレートを使用して Windows 仮想マシン (VM) を Azure にデプロイする方法を示します。 
+このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、Azure に Windows 仮想マシン (VM) をデプロイする方法を示します。
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
+
+[![Azure へのデプロイ](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-vm-simple-windows%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
-[なし] :
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-## <a name="create-a-windows-virtual-machine"></a>Windows 仮想マシンの作成
-
-### <a name="review-the-template"></a>テンプレートを確認する
+## <a name="review-the-template"></a>テンプレートを確認する
 
 このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)からのものです。
 
@@ -48,16 +48,16 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 
 
-### <a name="deploy-the-template"></a>テンプレートのデプロイ
+## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
 1. Azure にサインインし、テンプレートを開くには次のイメージを選択します。 このテンプレートを使用すると、キー コンテナーとシークレットが作成されます。
 
     [![Azure へのデプロイ](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-vm-simple-windows%2fazuredeploy.json)
 
-1. 次の値を選択または入力します。 使用可能な場合は、既定値を使用します。
+1. 次の値を選択または入力します。 既定値がある場合には、既定値を使用します。
 
     - **サブスクリプション**: Azure サブスクリプションを選択します。
-    - **リソース グループ**: ドロップダウンから既存のリソース グループを選択するか、または **[新規作成]** を選択してリソース グループの一意の名前を入力してから、 **[OK]** をクリックします。
+    - **[リソース グループ]** : ドロップダウンから既存のリソース グループを選択するか、または **[新規作成]** を選択してリソース グループの一意の名前を入力してから、 **[OK]** をクリックします。
     - **場所**: 場所を選択します。  たとえば **[米国中部]** です。
     - **管理者ユーザー名**: *azureuser* のように、ユーザー名を指定します。
     - **管理者パスワード**: 管理者アカウントに使用するパスワードを指定します。 パスワードは 12 文字以上で、[定義された複雑さの要件](faq.md#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。
@@ -72,21 +72,21 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="review-deployed-resources"></a>デプロイされているリソースを確認する
 
-Azure portal を使用して、作成された VM およびその他のリソースを確認できます。 デプロイが完了したら、 **[リソース グループに移動]** を選択して、VM とその他のリソースを表示します。
+作成した VM およびその他のリソースは、Azure portal を使用して確認できます。 デプロイが完了したら、 **[リソース グループに移動]** を選択すると、VM とその他のリソースが表示されます。
 
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-不要になったら、リソース グループを削除します。これにより、VM とリソース グループ内のすべてのリソースが削除されます。 
+不要になったリソース グループは削除してください。リソース グループを削除すると、そのリソース グループ内の VM とすべてのリソースが削除されます。 
 
 1. **[リソース グループ]** を選択します。
 1. リソース グループのページで、 **[削除]** を選択します。
-1. プロンプトが表示されたら、リソース グループの名前を入力して、 **[削除]** を選択します。
+1. プロンプトが表示されたら、リソース グループ名を入力して **[削除]** を選択します。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、Resource Manager テンプレートを使用してシンプルな仮想マシンをデプロイしました。 Azure 仮想マシンの詳細については、Linux VM のチュートリアルを参照してください。
+このクイックスタートでは、ARM テンプレートを使用してシンプルな仮想マシンをデプロイしました。 Azure 仮想マシンの詳細については、Linux VM のチュートリアルを参照してください。
 
 
 > [!div class="nextstepaction"]

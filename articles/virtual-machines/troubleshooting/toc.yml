@@ -91,6 +91,8 @@
           href: troubleshoot-reboot-loop.md
         - name: Windows Update でのスタック
           href: troubleshoot-stuck-updating-boot-error.md
+        - name: 予期しない再起動またはエラー
+          href: troubleshoot-unexpected-restart-error-during-vm-boot.md
         - name: VM の起動が停止しています
           href: troubleshoot-vm-boot-configure-update.md
         - name: Windows ブート マネージャーが原因で VM を起動できない
@@ -99,6 +101,10 @@
           href: unresponsive-vm-apply-windows-update.md
         - name: グループ ポリシーの適用時に VM が応答しない
           href: unresponsive-vm-apply-group-policy.md
+        - name: セキュリティ ポリシーの適用時に VM が応答しない
+          href: unresponsive-vm-apply-security-policy.md
+        - name: Windows STOP エラー - メモリなし状態
+          href: troubleshoot-windows-stop-error.md
 - name: VM に接続できない
   items:
     - name: RDP
@@ -194,6 +200,8 @@
       href: storage-resource-deletion-errors.md
     - name: クラシック ストレージ リソースの削除時のエラー
       href: storage-classic-cannot-delete-storage-account-container-vhd.md
+    - name: Azure で VM を作成する場合に VHD がサポートされない
+      href: vhd-not-supported-vm-azure.md
     - name: 入れ子になった仮想化の使用
       href: troubleshoot-vm-by-use-nested-virtualization.md
 - name: VM のパフォーマンスの問題

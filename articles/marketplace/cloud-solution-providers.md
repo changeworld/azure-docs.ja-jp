@@ -1,22 +1,22 @@
 ---
 title: クラウド ソリューション プロバイダー - Microsoft コマーシャル マーケットプレース
 description: コマーシャル マーケットプレース内の Microsoft クラウド ソリューション プロバイダー (CSP) プログラムのパートナー チャネルを通じてオファーを販売する方法を説明します。
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 04/16/2020
-ms.author: dsindona
-ms.openlocfilehash: 58bfe5cdc58c41c2ead82ac2d280629e4fec9bcd
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: d6c3af312717627a1719c5f1029ae638e7d4f827
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798149"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104437"
 ---
 # <a name="cloud-solution-provider-program"></a>クラウド ソリューション プロバイダー プログラム
 
-この記事では、クラウド ソリューション プロバイダー (CSP) プログラムから提供できるよう、オファーを構成する方法について説明します。 オファーを[コマーシャル マーケットプレースの Web ネットショップ](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)で公開するだけでなく、CSP プログラムを通じて販売することにより、このプログラムを利用している数百万の Microsoft の正規のお客様にオファーを提供できます。
+この記事では、クラウド ソリューション プロバイダー (CSP) プログラムから提供できるよう、オファーを構成する方法について説明します。 オファーを[コマーシャル マーケットプレースの Web ネットショップ](comparing-appsource-azure-marketplace.md)で公開するだけでなく、CSP プログラムを通じて販売することにより、このプログラムを利用している数百万の Microsoft の正規のお客様にオファーを提供できます。
 
 新規または既存のオファーを CSP プログラムで提供できるよう、オプトイン方式で構成できます。これにより、CSP パートナーは、貴社の製品を販売したり、顧客向けのバンドル ソリューションを作成したりできるようになります。
 
@@ -191,7 +191,7 @@ Cloud パートナー ポータルで CSP チャネルにオプトインして�
 
 ## <a name="next-steps"></a>次のステップ
 
-「[Azure Marketplace と AppSource の公開ガイド](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)」を参照してください。
+「[Azure Marketplace と AppSource の公開ガイド](marketplace-publishers-guide.md)」を参照してください。
 
 マーケットプレース GTM サービスの詳細については、「[Go-to-Market サービス](https://partner.microsoft.com/reach-customers/gtm)」を参照してください。
 

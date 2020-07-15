@@ -1,18 +1,16 @@
 ---
 title: Microsoft コマーシャル マーケットプレース分析の [使用量] ダッシュボード
 description: すべての VM オファーの使用量と従量制課金メトリックにアクセスする方法について説明します。 パートナー センターの [商業マーケットプレース] にある [使用量] ダッシュボードに移動します。
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: b60475c56b18e81b082e7552fec789b06adeff27
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 8747ff98cd2b53773d9e0a95436d90fef74fda55
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746660"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120672"
 ---
 # <a name="usage-dashboard-in-microsoft-commercial-marketplace-analytics"></a>Microsoft コマーシャル マーケットプレース分析の [使用量] ダッシュボード
 

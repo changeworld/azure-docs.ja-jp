@@ -11,17 +11,20 @@ metadata:
   ms.author: nitinme
   manager: nitinme
   ms.date: 03/24/2020
-  ms.openlocfilehash: 398ba97ed8cc221710c301017cae3624dde758f0
-  ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+  ms.openlocfilehash: 18c854389122c7e05a84ea0fd42b0cd2fd0c4c1c
+  ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/01/2020
-  ms.locfileid: "84259458"
+  ms.lasthandoff: 07/10/2020
+  ms.locfileid: "86224368"
 highlightedContent:
   items:
   - title: Cognitive Services とは
     itemType: overview
     url: ./welcome.md
+  - title: ドキュメントの最新情報
+    itemType: whats-new
+    url: whats-new-docs.md
   - title: Cognitive Services と機械学習
     itemType: concept
     url: ./cognitive-services-and-machine-learning.md
@@ -37,9 +40,6 @@ highlightedContent:
   - title: Cognitive Services の仮想ネットワーク
     itemType: architecture
     url: cognitive-services-virtual-networks.md
-  - title: Cognitive Services のカスタム サブドメイン
-    itemType: how-to-guide
-    url: cognitive-services-custom-subdomains.md
   - title: Cognitive Services のセキュリティ
     itemType: concept
     url: cognitive-services-security.md
@@ -59,7 +59,7 @@ conceptualContent:
       text: Face
     - url: ./form-recognizer/index.yml
       itemType: overview
-      text: Form Recognizer (プレビュー)
+      text: Form Recognizer
     - url: ./ink-recognizer/index.yml
       itemType: overview
       text: Ink Recognizer (プレビュー)
@@ -83,7 +83,7 @@ conceptualContent:
       text: Text Analytics
     - url: ./translator/index.yml
       itemType: overview
-      text: '[変換者]'
+      text: Translator
   - title: 音声
     summary: 音声をテキストに変換し、テキストを自然な音声に変換します。 ある言語を別の言語に翻訳し、話者の認証と認識を可能にします。
     links:

@@ -9,12 +9,11 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 7e4bc74a51e3d6b19957bdd12512e18fa594c811
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: HT
+ms.openlocfilehash: 89d69547d793599fc669927b1a500716a858cc89
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83123838"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84433591"
 ---
 # <a name="blob-versioning-preview"></a>BLOB のバージョン管理 (プレビュー)
 
@@ -178,8 +177,8 @@ BLOB のバージョン管理は、誤削除や悪意のある削除からデー
 
 | 説明 | Blob service の操作 | 必要な RBAC データ アクション | RBAC の組み込みロールのサポート |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
-| 現在のバージョンの BLOB の削除 | Delete Blob | **Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete/actionDeleting** | ストレージ BLOB データ共同作成者 |
-| バージョンの削除 | Delete Blob | **Microsoft.Storage/storageAccounts/blobServices/containers/blobs/deleteBlobVersion/** | ストレージ BLOB データ所有者 |
+| 現在のバージョンの BLOB の削除 | Delete Blob | **Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete** | ストレージ BLOB データ共同作成者 |
+| バージョンの削除 | Delete Blob | **Microsoft.Storage/storageAccounts/blobServices/containers/blobs/deleteBlobVersion/action** | ストレージ BLOB データ所有者 |
 
 ### <a name="shared-access-signature-sas-parameters"></a>Shared Access Signature (SAS) パラメーター
 

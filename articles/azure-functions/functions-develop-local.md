@@ -3,12 +3,12 @@ title: Azure 関数をローカル環境で開発して実行する
 description: Azure 関数を Azure Functions で実行する前に、ローカル コンピューターでコーディングしてテストする方法について説明します。
 ms.topic: conceptual
 ms.date: 09/04/2018
-ms.openlocfilehash: 835edcb94b294d93cab41ea51b88ac38db71d95e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ef59c57bf4e2ba1684c3e3b43357efad0da9806f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74230647"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829382"
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Azure Functions をローカルでコーディングしてテストする
 
@@ -27,16 +27,16 @@ Azure Functions の開発やテストは、[Azure Portal] で行うことがで�
 
 [!INCLUDE [Don't mix development environments](../../includes/functions-mixed-dev-environments.md)]
 
-これらの各ローカル開発環境では、関数アプリ プロジェクトを作成し、事前定義の Functions テンプレートを使用して新しい関数を作成できます。 各環境では、Core Tools が使用されています。そのため、マシン上の実際の Functions ランタイムに対して、その他のアプリの場合と同様に関数をテストしたり、デバッグしたりできます。 また、これらのどの環境からでも、関数アプリ プロジェクトを Azure に発行できます。  
+これらの各ローカル開発環境では、関数アプリ プロジェクトを作成し、事前定義の Functions テンプレートを使用して新しい関数を作成できます。 各環境では、Core Tools が使用されています。そのため、マシン上の実際の Functions ランタイムに対して、その他のアプリの場合と同様に関数をテストしたり、デバッグしたりできます。 また、これらのどの環境からでも、関数アプリ プロジェクトを Azure に発行できます。
 
 ## <a name="next-steps"></a>次のステップ
 
 + Visual Studio 2019 を使用して、ローカルでコンパイル済み C# 関数を開発する方法の詳細については、「[Visual Studio を使用する Azure Functions の開発](functions-develop-vs.md)」を参照してください。
-+ Mac、Linux、または Windows コンピューター上で VS Code を使用して、ローカルで関数を開発する方法の詳細については、「[VS Code から Azure Functions をデプロイする](/azure/javascript/tutorial-vscode-serverless-node-01)」を参照してください。
++ Mac、Linux、または Windows コンピューター上で VS Code を使用して、ローカルで関数を開発する方法の詳細については、「[VS Code から Azure Functions をデプロイする](/azure/developer/javascript/tutorial-vscode-serverless-node-01)」を参照してください。
 + コマンド プロンプトまたはターミナルから関数を開発する方法の詳細については、「[Work with Azure Functions Core Tools](functions-run-local.md)」(Azure Functions Core Tools を使用して作業する) を参照してください。
 
 <!-- LINKS -->
 
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
-[Azure Portal]: https://portal.azure.com 
+[Azure Portal]: https://portal.azure.com
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows

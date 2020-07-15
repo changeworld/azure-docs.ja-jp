@@ -37,7 +37,7 @@
       items:
         - name: Azure NetApp Files を使用したソリューション アーキテクチャ
           href: azure-netapp-files-solution-architectures.md
-        - name: 特定のソリューション
+        - name: Azure NetApp Files 利用のメリット
           items:
             - name: Oracle Database での Azure NetApp Files 利用のメリット
               href: solutions-benefits-azure-netapp-files-oracle-database.md

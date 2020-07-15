@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: johndeu
-ms.openlocfilehash: be4009d418f2f8f3dff755e2e990efee593f070b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 30ca3bb86426b144fa6cbf5c63888d9546919ebf
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76514223"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954691"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>HEVC のための Smooth Streaming Protocol (MS-SSTR) の変更 
 
@@ -242,10 +242,12 @@ ProtectionElement は、Common Encryption (CENC) がビデオまたはオーデ�
 > 
 >   このセクションで定義されているフィールドの構文 (ABNF [[RFC5234]](https://go.microsoft.com/fwlink/?LinkId=123096) で規定) は、次のとおりです。
 
-    FileType = MajorBrand MinorVersion CompatibleBrands
-    MajorBrand = STRING_UINT32
-    MinorVersion = STRING_UINT32
-    CompatibleBrands = "ccff" "iso8" 0\*(STRING_UINT32)
+```properties
+FileType = MajorBrand MinorVersion CompatibleBrands
+MajorBrand = STRING_UINT32
+MinorVersion = STRING_UINT32
+CompatibleBrands = "ccff" "iso8" 0\*(STRING_UINT32)
+```
 
 **注**:互換性ブランド 'ccff' と 'iso8' は、フラグメントが “Common Container File Format”、Common Encryption [ISO/IEC 23001-7]、および ISO Base Media File Format Edition 4 [ISO/IEC 14496-12] に準拠していることを示します。
 
@@ -288,14 +290,18 @@ ProtectionElement は、Common Encryption (CENC) がビデオまたはオーデ�
 > 
 >   HEVC ストリームが含まれているプレゼンテーションは、以下を設定するものとします。
 
-    MajorVersion = 2
-    MinorVersion = 2
+```properties
+MajorVersion = 2
+MinorVersion = 2
+```
 
 >   LookaheadCount = 0 (注: ボックスは非推奨)
 > 
 >   プレゼンテーションは以下も設定する必要があります。
 
-    TimeScale = 90000
+```properties
+TimeScale = 90000
+```
 
 >   Stream Collection: セクション *3.1.1.1.2* で規定されている、Stream Description データ要素のコレクション。
 > 

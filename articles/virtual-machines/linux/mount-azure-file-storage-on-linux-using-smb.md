@@ -3,16 +3,16 @@ title: SMB を使用して Linux VM に Azure File Storage をマウントする
 description: Azure CLI で SMB を使用して Linux VM に Azure File Storage をマウントする方法
 author: cynthn
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: 0314095a053087a7d490926c41c6ae386c304919
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7ab798ccbbbfc9cfc11ae85fd698ecedcb5e8e73
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80066647"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84658159"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>SMB を使用して Linux VM に Azure File Storage をマウントする
 
@@ -35,7 +35,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
-[az storage account create](/cli/azure/storage/account) を使用して、作成したリソース グループ内に新しいストレージ アカウントを作成します。 この例では、*mySTORAGEACCT\<random number>* という名前のストレージ アカウントを作成し、そのストレージ アカウントの名前を変数 **STORAGEACCT** に設定します。 ストレージ アカウント名は一意にする必要があります。`$RANDOM` を使用し、末尾に番号を追加して、一意にします。Ⅰ
+[az storage account create](/cli/azure/storage/account) を使用して、作成したリソース グループ内に新しいストレージ アカウントを作成します。 この例では、*mySTORAGEACCT\<random number>* という名前のストレージ アカウントを作成し、ストレージ アカウントの名前を変数 **STORAGEACCT** に設定します。 ストレージ アカウント名は一意にする必要があります。`$RANDOM` を使用し、末尾に番号を追加して、一意にします。Ⅰ
 
 ```azurecli
 STORAGEACCT=$(az storage account create \

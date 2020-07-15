@@ -9,15 +9,15 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
-ms.author: dapine
+ms.author: trbye
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-speech-services-one-nomore
-ms.openlocfilehash: ef498f0660613afdc5a2842898b4538454444759
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: a2370d7a79ea54adf9d12ecb645019aec348f8c7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609308"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85834150"
 ---
 # <a name="quickstart-setup-development-environment"></a>クイック スタート:開発環境を設定する
 

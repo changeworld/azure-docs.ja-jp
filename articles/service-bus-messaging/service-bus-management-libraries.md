@@ -1,25 +1,15 @@
 ---
 title: Azure Service Bus 管理ライブラリ | Microsoft Docs
 description: この記事では、Azure Service Bus 管理ライブラリを使用して、Service Bus の名前空間とエンティティを動的にプロビジョニングする方法について説明します。
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: e1531d9b70860f498a3e38305f26eb862c9513f3
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.date: 06/23/2020
+ms.openlocfilehash: 042edcd1851f86dd2a660673bc87884b68410bfb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901490"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341720"
 ---
 # <a name="service-bus-management-libraries"></a>Service Bus 管理ライブラリ
 

@@ -12,16 +12,16 @@ ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9b3857a5ae845f5cc48464152bb6ca600444c1b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 86e7f1fc18738eef39f8ec29da8763b862cdcc2b
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82136704"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849958"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health エージェントのインストール
 
@@ -329,19 +329,25 @@ HTTP プロキシを使用するように Azure AD Connect Health エージェ�
 
 Internet Explorer HTTP プロキシ設定は、インポートして、Azure AD Connect Health エージェントで使用することができます。 Health エージェントを実行している各サーバーで、次の PowerShell コマンドを実行します。
 
-    Set-AzureAdConnectHealthProxySettings -ImportFromInternetSettings
+```powershell
+Set-AzureAdConnectHealthProxySettings -ImportFromInternetSettings
+```
 
 ##### <a name="import-from-winhttp"></a>WinHTTP からのインポート
 
 WinHTTP プロキシ設定は、インポートして、Azure AD Connect Health エージェントで使用することができます。 Health エージェントを実行している各サーバーで、次の PowerShell コマンドを実行します。
 
-    Set-AzureAdConnectHealthProxySettings -ImportFromWinHttp
+```powershell
+Set-AzureAdConnectHealthProxySettings -ImportFromWinHttp
+```
 
 #### <a name="specify-proxy-addresses-manually"></a>プロキシ アドレスの手動での指定
 
 Health エージェントを実行している各サーバーで、プロキシ サーバーを手動で指定するには、次の PowerShell コマンドを実行します。
 
-    Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress address:port
+```powershell
+Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress address:port
+```
 
 例:*Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress myproxyserver:443*
 
@@ -352,15 +358,17 @@ Health エージェントを実行している各サーバーで、プロキシ 
 
 次のコマンドを実行することで、既存のプロキシ構成をクリアすることができます。
 
-    Set-AzureAdConnectHealthProxySettings -NoProxy
-
+```powershell
+Set-AzureAdConnectHealthProxySettings -NoProxy
+```
 
 ### <a name="read-current-proxy-settings"></a>現在のプロキシ設定の読み取り
 
 現在構成されているプロキシ設定を読み取るには、次のコマンドを実行します。
 
-    Get-AzureAdConnectHealthProxySettings
-
+```powershell
+Get-AzureAdConnectHealthProxySettings
+```
 
 ## <a name="test-connectivity-to-azure-ad-connect-health-service"></a>Azure AD Connect Health サービスへの接続テスト
 
@@ -368,7 +376,9 @@ Azure AD Connect Health エージェントが Azure AD Connect Health サービ�
 
 エージェントが Azure AD Connect Health サービスに 2 時間以上データを送信できない場合は、ポータルに "Health Service data is not up to date (Health サービス データが最新ではありません)" というアラートが表示されます。 影響を受ける Azure AD Connect Health エージェントがデータを Azure AD Connect Health サービスにアップロードできるかどうかを確認するには、次の PowerShell コマンドを実行します。
 
-    Test-AzureADConnectHealthConnectivity -Role ADFS
+```powershell
+Test-AzureADConnectHealthConnectivity -Role ADFS
+```
 
 role パラメーターは、現在、以下の値を受け取ります。
 

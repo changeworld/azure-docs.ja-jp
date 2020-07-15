@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7b8c1b0bcc74d73f1f869972488ba7c5dfe610d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ba229025608d183b886a17346a725bc64dc6b60e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060065"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84556659"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure での SAP ワークロード: 計画とデプロイに関するチェックリスト
 
@@ -86,7 +86,7 @@ ms.locfileid: "80060065"
     - [SAP HANA のインストール](https://github.com/AzureCAT-GSI/SAP-HANA-ARM)
 9.  お客様、システム インテグレーター、Microsoft、およびその他の関係者の間での、定期的な設計およびデプロイ レビューの頻度を定義します。
 
- 
+
 ## <a name="pilot-phase-strongly-recommended"></a>パイロット フェーズ (強く推奨)
  
 プロジェクトの計画と準備の前または実行中に、パイロットを実行できます。 また、計画および準備フェーズで作成したアプローチと設計をテストするために、パイロット フェーズを使用することもできます。 さらにパイロット フェーズを拡張して、実際の概念実証にすることができます。
@@ -213,7 +213,7 @@ ms.locfileid: "80060065"
 14. チームの Azure のロールベースのアクセス、アクセス許可、およびプロセスを最適化して調整します。それにより、義務が確実に分離されるようにします。 同時に、すべてのチームが Azure のインフラストラクチャでタスクを実行できることを確認します。
 15. 高可用性とディザスター リカバリーの手順を演習、テスト、文書化し、これらのタスクをスタッフが実行できるようにします。 欠点を明らかにし、デプロイに統合する新しい Azure の機能を調整します。
 
- 
+
 ## <a name="production-preparation-phase"></a>運用準備フェーズ 
 このフェーズでは、非運用環境のデプロイ中に経験および学習したことを収集し、将来の運用環境のデプロイに適用します。 また、現在のホスト場所と Azure 間のデータ転送作業も準備する必要があります。
 

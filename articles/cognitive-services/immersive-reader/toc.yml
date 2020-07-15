@@ -11,6 +11,10 @@
       href: ./quickstarts/client-libraries.md
 - name: チュートリアル
   items:
+    - name: イマーシブ リーダーの起動 (Android)
+      href: tutorial-android.md
+    - name: イマーシブ リーダーの起動 (iOS)
+      href: tutorial-ios.md
     - name: イマーシブ リーダーの起動 (Python)
       href: tutorial-python.md
     - name: 複数のイマーシブ リーダー リソースの使用
@@ -29,9 +33,15 @@
       href: how-to-customize-launch-button.md
     - name: 認証トークンをキャッシュする
       href: how-to-cache-token.md
+    - name: 音声読み上げを構成する
+      href: how-to-configure-read-aloud.md
+    - name: 翻訳を構成する
+      href: how-to-configure-translation.md
+    - name: ユーザー設定を格納する
+      href: how-to-store-user-preferences.md
 - name: リファレンス
   items:
-    - name: SDK リファレンス
+    - name: JavaScript SDK
       href: reference.md
 - name: リソース
   items:

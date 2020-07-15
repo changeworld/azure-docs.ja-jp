@@ -3,12 +3,12 @@ title: Azure Site Recovery を使用したレプリケーションからディ�
 description: Azure Site Recovery を使用したレプリケーションから Azure にディスクを除外する方法。
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: aa2e3ef3906a03be649a1978c1d662056c4d0f25
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 5a8d52bd0cc40b45f92039c537a1b3b63f0bec61
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83740520"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135682"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>ディザスター リカバリーからディスクを除外する
 
@@ -260,7 +260,6 @@ Azure VM におけるページング ファイルの設定は次のとおりで�
 ## <a name="next-steps"></a>次のステップ
 
 - 一時記憶域ディスクのガイドラインの詳細を確認します。
-    - Azure VM で SSD を使用した SQL Server TempDB とバッファー プール拡張機能の保存の[詳細を確認](https://blogs.technet.microsoft.com/dataplatforminsider/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/)します
-    - Azure VM における SQL Server のパフォーマンスに関するベスト プラクティスを[確認](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-performance)します。
+    - Azure VM で SSD を使用した SQL Server TempDB とバッファー プール拡張機能の保存の[詳細を確認](https://cloudblogs.microsoft.com/sqlserver/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/)します
+    - Azure VM における SQL Server のパフォーマンスに関するベスト プラクティスを[確認](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md)します。
 - デプロイをセットアップし、実行状態にできたら、各種フェールオーバーの [詳細を確認](failover-failback-overview.md) します。
-

@@ -3,15 +3,15 @@ title: Azure Cosmos DB のコンテナーのスループットをプロビジョ
 description: Azure portal、CLI、PowerShell および他のさまざまな SDK を使用して、Azure Cosmos DB のコンテナー レベルでスループットをプロビジョニングする方法について説明します。
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/13/2019
 ms.author: mjbrown
-ms.openlocfilehash: 6ade9baaf7dc125bac6738b44134ee496b8a2be4
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 9167df9c763f4004324a3435ba1a2b0fd0171ac4
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84265932"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851684"
 ---
 # <a name="provision-standard-manual-throughput-on-an-azure-cosmos-container"></a>Azure Cosmos コンテナーに標準 (手動) のスループットをプロビジョニングする
 
@@ -31,7 +31,7 @@ ms.locfileid: "84265932"
    * プロビジョニングするスループットを入力します (例: 1,000 RU)。
    * **[OK]** を選択します。
 
-    ![[新しいコレクション] が強調表示されている [データ エクスプローラー] のスクリーンショット](./media/how-to-provision-container-throughput/provision-container-throughput-portal-all-api.png)
+    :::image type="content" source="./media/how-to-provision-container-throughput/provision-container-throughput-portal-all-api.png" alt-text="[新しいコレクション] が強調表示されている [データ エクスプローラー] のスクリーンショット":::
 
 ## <a name="azure-cli-or-powershell"></a>Azure CLI または PowerShell
 
@@ -99,7 +99,7 @@ offer.content.offerThroughput = 2000;
 await client.offer(offer.id).replace(offer);
 ```
 
-### <a name="mongodb-api"></a><a id="dotnet-cassandra"></a>MongoDB API
+### <a name="mongodb-api"></a><a id="dotnet-mongodb"></a>MongoDB API
 
 ```csharp
 // refer to MongoDB .NET Driver

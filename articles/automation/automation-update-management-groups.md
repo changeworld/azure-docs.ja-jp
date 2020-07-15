@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 11/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: c440862f1379983d4644fe99f33207456f747d23
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 25a306b3281079e8476a67ee70c2ca2cfffdd30c
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830941"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185740"
 ---
 # <a name="use-dynamic-groups-with-update-management"></a>Update Management を利用して動的グループを使用する
 
@@ -21,7 +21,7 @@ Update Management を使用すると、Azure または Azure 以外の VM の動
 
 Azure または Azure 以外のマシンの動的グループは、Azure portal の **Update Management** から定義できます。 「[複数の Azure 仮想マシンの更新を管理する](manage-update-multi.md)」を参照してください。
 
-動的グループは、展開時に Azure Automation で評価されるクエリによって定義されます。 動的グループ クエリで多数のマシンを取得しても、Azure Automation では一度に最大 1000 台のマシンしか処理できません。 「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#update-management)」をご覧ください。 
+動的グループは、展開時に Azure Automation で評価されるクエリによって定義されます。 動的グループ クエリで多数のマシンを取得しても、Azure Automation では一度に最大 1000 台のマシンしか処理できません。 「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md#update-management)」をご覧ください。 
 
 > [!NOTE]
 > 1000 台を超えるマシンを更新することが予想される場合は、更新プログラムを複数の更新スケジュールに分割することをお勧めします。 

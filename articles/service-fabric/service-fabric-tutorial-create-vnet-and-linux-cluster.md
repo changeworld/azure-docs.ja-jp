@@ -4,12 +4,12 @@ description: Azure CLI を使用して Linux Service Fabric クラスターを�
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: mvc
-ms.openlocfilehash: a9026e46f2fd386892af5a3d8f4ec8d7e0c9f649
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 1d6edc086233d757269c12e323241bc4bf55249f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81411004"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611698"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Azure 仮想ネットワークに Linux Service Fabric クラスターをデプロイする
 
@@ -54,8 +54,8 @@ Ubuntu 18.04 LTS の場合:
 * OS: (Ubuntu 16.04 LTS/Ubuntu 18.04 LTS) (テンプレート パラメーターで構成可能)
 * 証明書の保護 (テンプレート パラメーターで構成可能)
 * [DNS サービス](service-fabric-dnsservice.md)が有効
-* ブロンズ[持続性レベル](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) (テンプレート パラメーターで構成可能)
-* シルバー[信頼性レベル](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) (テンプレート パラメーターで構成可能)
+* ブロンズ[持続性レベル](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) (テンプレート パラメーターで構成可能)
+* シルバー[信頼性レベル](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster) (テンプレート パラメーターで構成可能)
 * クライアント接続エンドポイント: 19000 (テンプレート パラメーターで構成可能)
 * HTTP ゲートウェイ エンドポイント: 19080 (テンプレート パラメーターで構成可能)
 

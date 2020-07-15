@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: mvc, seodec18, tracking-python
-ms.openlocfilehash: d9c7b9b296aaf287d185cd3e7544e40d9cdef2f5
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 88ca971986119b3612c79d0bee381d3a0fc9a977
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561097"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84906838"
 ---
 # <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>チュートリアル:カスタム イメージを作成し、プライベート レジストリから App Service 内で実行する
 
@@ -236,23 +236,33 @@ Web アプリの動作を確認するには、これを参照します (`http://
 
 ## <a name="change-web-app-and-redeploy"></a>Web アプリを変更して再デプロイする
 
-ローカルの Git リポジトリで、app/templates/app/index.html を開きます。 最初の HTML 要素を見つけて、それを次のように変更します。
+ローカルの Git リポジトリで、*app/templates/app/index.html* を開きます。 最初の HTML 要素を次のコードに一致するように変更します。
 
-```python
+```html
 <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">Azure App Service - Updated Here!</a>
-      </div>
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Azure App Service - Updated Here!</a>
     </div>
-  </nav>
+  </div>
+</nav>
 ```
 
-Python ファイルを変更し、保存した後で、新しい Docker イメージをリビルドし、プッシュする必要があります。 次に、変更を反映するために Web アプリを再起動します。 このチュートリアルで前に使用したのと同じコマンドを使用します。 「[Docker ファイルからイメージを作成する](#build-the-image-from-the-docker-file)」と「[Azure Container Registry へのイメージのプッシュ](#push-image-to-azure-container-registry)」を参照してください。 「[Web アプリをテストする](#test-the-web-app)」の手順に従って、Web アプリをテストします。
+変更を保存したら、このチュートリアルの前半で使用したのと同じコマンドを使用して、新しい Docker イメージを再構築してプッシュします。 「[Docker ファイルからイメージを作成する](#build-the-image-from-the-docker-file)」と「[Azure Container Registry へのイメージのプッシュ](#push-image-to-azure-container-registry)」を参照してください。
+
+新しいイメージをプッシュした後、次のコマンドを使用して、変更を有効にするために Web アプリを再起動します。
+
+```azurecli-interactive
+az webapp restart --name <app_name> --resource-group myResourceGroup
+```
+
+`<app_name>` を、前に使用した特定の名前に置き換えます。
+
+アプリが再起動したら、「[Web アプリをテストする](#test-the-web-app)」の手順に従ってアプリをテストします。
 
 ## <a name="access-diagnostic-logs"></a>診断ログにアクセスする
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
 
 ## <a name="enable-ssh-connections"></a>SSH 接続を有効にする
 

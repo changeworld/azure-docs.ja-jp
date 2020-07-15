@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
 ms.openlocfilehash: d15058126f43fff328acfc563ffd081164a69a90
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79218877"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710560"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>Bing News Search API の言語と地域のサポート
 
@@ -31,90 +31,90 @@ Bing News Search API では多数の国/地域がサポートされ、その多�
 
 `cc` クエリ パラメーターで指定できる国/地域コードの一覧については、「[国番号](#countrycodes)」を参照してください。  
 
-|国/リージョン|言語|市場コード|  
+|国/リージョン|Language|市場コード|  
 |---------------------|--------------|-----------------|
-|デンマーク|Danish|da-DK|
-|オーストリア|German|de-AT|
-|スイス|German|de-CH|
-|ドイツ|German|de-DE|
-|オーストラリア|English|en-AU|
-|Canada|English|en-CA|
-|イギリス|English|en-GB|
-|インドネシア|English|en-ID|
-|アイルランド|English|en-IE|
-|インド|English|en-IN|
-|マレーシア|English|en-MY|
-|ニュージーランド|English|en-NZ|
-|フィリピン共和国|English|en-PH|
-|シンガポール|English|en-SG|
-|United States|English|ja-JP|
-|English|全般|en-WW|
-|English|全般|en-XA|
-|南アフリカ|English|en-ZA|
-|アルゼンチン|Spanish|es-AR|
-|チリ|Spanish|es-CL|
-|スペイン|Spanish|es-ES|
-|メキシコ|Spanish|es-MX|
-|United States|Spanish|es-US|
-|Spanish|全般|es-XL|
-|フィンランド|Finnish|fi-FI|  
-|フランス|French|fr-BE|
-|Canada|French|fr-CA|
-|ベルギー|Dutch|nl-BE|
-|スイス|French|fr-CH|
-|フランス|French|fr-FR|  
-|イタリア|Italian|it-IT|
+|デンマーク|デンマーク語|da-DK|
+|オーストリア|ドイツ語|de-AT|
+|スイス|ドイツ語|de-CH|
+|ドイツ|ドイツ語|de-DE|
+|オーストラリア|英語|en-AU|
+|Canada|英語|en-CA|
+|イギリス|英語|en-GB|
+|インドネシア|英語|en-ID|
+|アイルランド|英語|en-IE|
+|インド|英語|en-IN|
+|マレーシア|英語|en-MY|
+|ニュージーランド|英語|en-NZ|
+|フィリピン共和国|英語|en-PH|
+|シンガポール|英語|en-SG|
+|United States|英語|ja-JP|
+|英語|全般|en-WW|
+|英語|全般|en-XA|
+|南アフリカ|英語|en-ZA|
+|アルゼンチン|スペイン語|es-AR|
+|チリ|スペイン語|es-CL|
+|スペイン|スペイン語|es-ES|
+|メキシコ|スペイン語|es-MX|
+|United States|スペイン語|es-US|
+|スペイン語|全般|es-XL|
+|フィンランド|フィンランド語|fi-FI|  
+|フランス|フランス語|fr-BE|
+|Canada|フランス語|fr-CA|
+|ベルギー|オランダ語|nl-BE|
+|スイス|フランス語|fr-CH|
+|フランス|フランス語|fr-FR|  
+|イタリア|イタリア語|it-IT|
 |香港特別行政区|Traditional Chinese|zh-HK|  
 |台湾|Traditional Chinese|zh-TW|
-|日本|Japanese|ja-JP|  
-|韓国|Korean|ko-KR|  
-|オランダ|Dutch|nl-NL|  
-|中華人民共和国|中国語|zh-CN|  
+|日本|日本語|ja-JP|  
+|韓国|韓国語|ko-KR|  
+|オランダ|オランダ語|nl-NL|  
+|中華人民共和国|Chinese|zh-CN|  
 |ブラジル|Portuguese|pt-BR|
-|ロシア|Russian|ru-RU|  
-|スウェーデン|Swedish|sv-SE|  
-|トルコ|Turkish|tr-TR|  
+|ロシア|ロシア語|ru-RU|  
+|スウェーデン|スウェーデン語|sv-SE|  
+|トルコ|トルコ語|tr-TR|  
 
 ## <a name="supported-markets-for-news-endpoint"></a>ニュース エンドポイントでサポートされるマーケット
 `/news` エンドポイントについて、`mkt` クエリ パラメーターを指定するために使用できる市場コード値の一覧を次の表に示します。 Bing はこれらの市場に対してのみコンテンツを返します。 一覧は変更されることがあります。  
 
 `cc` クエリ パラメーターで指定できる国/地域コードの一覧については、「[国番号](#countrycodes)」を参照してください。  
 
-|国/リージョン|言語|市場コード|  
+|国/リージョン|Language|市場コード|  
 |---------------------|--------------|-----------------|
-|デンマーク|Danish|da-DK|
-|ドイツ|German|de-DE|
-|オーストラリア|English|en-AU|
-|イギリス|English|en-GB|
-|United States|English|ja-JP|
-|English|全般|en-WW|
-|チリ|Spanish|es-CL|
-|メキシコ|Spanish|es-MX|
-|United States|Spanish|es-US|
-|フィンランド|Finnish|fi-FI|  
-|Canada|French|fr-CA|
-|フランス|French|fr-FR|  
-|イタリア|Italian|it-IT|
+|デンマーク|デンマーク語|da-DK|
+|ドイツ|ドイツ語|de-DE|
+|オーストラリア|英語|en-AU|
+|イギリス|英語|en-GB|
+|United States|英語|ja-JP|
+|英語|全般|en-WW|
+|チリ|スペイン語|es-CL|
+|メキシコ|スペイン語|es-MX|
+|United States|スペイン語|es-US|
+|フィンランド|フィンランド語|fi-FI|  
+|Canada|フランス語|fr-CA|
+|フランス|フランス語|fr-FR|  
+|イタリア|イタリア語|it-IT|
 |ブラジル|Portuguese|pt-BR|
-|中華人民共和国|中国語|zh-CN|
+|中華人民共和国|Chinese|zh-CN|
 
 ## <a name="supported-markets-for-news-trending-endpoint"></a>ニュース トレンド エンドポイントでサポートされるマーケット
 `/news/trendingtopics` エンドポイントについて、`mkt` クエリ パラメーターを指定するために使用できる市場コード値の一覧を次の表に示します。 Bing はこれらの市場に対してのみコンテンツを返します。 一覧は変更されることがあります。  
 
 `cc` クエリ パラメーターで指定できる国/地域コードの一覧については、「[国番号](#countrycodes)」を参照してください。  
 
-|国/リージョン|言語|市場コード|  
+|国/リージョン|Language|市場コード|  
 |---------------------|--------------|-----------------|
-|ドイツ|German|de-DE|
-|オーストラリア|English|en-AU|
-|イギリス|English|en-GB|
-|United States|English|ja-JP|
-|Canada|English|en-CA|
-|インド|English|en-IN|
-|フランス|French|fr-FR|
-|Canada|French|fr-CA|
+|ドイツ|ドイツ語|de-DE|
+|オーストラリア|英語|en-AU|
+|イギリス|英語|en-GB|
+|United States|英語|ja-JP|
+|Canada|英語|en-CA|
+|インド|英語|en-IN|
+|フランス|フランス語|fr-FR|
+|Canada|フランス語|fr-CA|
 |ブラジル|Portuguese|pt-BR|
-|中華人民共和国|中国語|zh-CN|
+|中華人民共和国|Chinese|zh-CN|
 
 
 <a name="countrycodes"></a>   

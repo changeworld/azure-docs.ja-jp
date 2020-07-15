@@ -4,12 +4,12 @@ description: クラウド プールで自動スケールを有効にして、プ
 ms.topic: how-to
 ms.date: 10/24/2019
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: ad1bf47cd2b9d8db950154b5a36786c294549566
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: cb40ea72dad2313618fb3c38bf73bf822f4b4433
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780244"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960845"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Batch プール内のコンピューティング ノードをスケーリングするための自動式を作成する
 
@@ -79,7 +79,7 @@ $NodeDeallocationOption = taskcompletion;
 
 この例では、25 個の優先順位の低いノードから始まるプールを作成します。 優先順位の低いノードが割り込まれるたびに、専用のノードに置き換えられます。 最初の例と同様に、`maxNumberofVMs` 変数は、プールが 25 台の VM を超過することを防ぎます。 この例は、優先順位の低い VM を活用する場合に役立ちます。また、プールの有効期間中、割り込みが一定数に留まるようにします。
 
-## <a name="variables"></a>変数:
+## <a name="variables"></a>変数
 
 自動スケールの数式には、**サービス定義**の変数と**ユーザー定義**の変数の両方を使用できます。 サービス定義の変数は Batch サービスに組み込まれています。 サービス定義の変数には、読み取り/書き込み可能な変数と読み取り専用の変数があります。 ユーザー定義の変数は、ユーザーが定義する変数です。 前のセクションで示した例の数式では、`$TargetDedicatedNodes` と`$PendingTasks` がサービス定義の変数です。 `startingNumberOfVMs` と `maxNumberofVMs` がユーザー定義の変数です。
 
@@ -126,6 +126,9 @@ $NodeDeallocationOption = taskcompletion;
 | $CurrentDedicatedNodes |専用コンピューティング ノードの現在の数。 |
 | $CurrentLowPriorityNodes |優先順位の低い計算ノードの現在の数。割り込まれたノードも含まれます。 |
 | $PreemptedNodeCount | 割り込み状態にあるプール内のノードの数。 |
+
+> [!IMPORTANT]
+> 現在、ジョブ解放タスクは、$ActiveTasks や $PendingTasks など、タスク数を提供する上記の変数には含まれていません。 自動スケーリングの式によっては、このためにノードが削除され、ジョブ解放タスクを実行するためのノードが使用できなくなることがあります。
 
 > [!TIP]
 > 前の表の読み取り専用のサービス定義変数は、それぞれに関連付けられたデータにアクセスするさまざまなメソッドを指定する "*オブジェクト*" です。 詳しくは、後述の「[サンプル データの取得](#getsampledata)」をご覧ください。
@@ -190,7 +193,7 @@ $NodeDeallocationOption = taskcompletion;
 ## <a name="functions"></a>関数
 次の定義済みの **関数** は、自動スケールの数式の定義に使用できます。
 
-| Function | の戻り値の型 : | 説明 |
+| 機能 | の戻り値の型 : | 説明 |
 | --- | --- | --- |
 | avg(doubleVecList) |double |doubleVecList のすべての値の平均値を返します。 |
 | len(doubleVecList) |double |doubleVecList から作成されたベクター長を返します。 |
@@ -226,7 +229,7 @@ $NodeDeallocationOption = taskcompletion;
 $CPUPercent.GetSample(TimeInterval_Minute * 5)
 ```
 
-| 方法 | 説明 |
+| Method | 説明 |
 | --- | --- |
 | GetSample() |`GetSample()` メソッドは、データ サンプルのベクターを返します。<br/><br/>サンプルは、30 秒相当のメトリック データです。 つまり、30 秒ごとにサンプルが取得されます。 ただし、この後も説明しますが、サンプルが収集されてから、それが数式に使用できるようになるまでには時間差があります。 そのため、特定の期間に取得されたすべてのサンプルを数式の評価に使用できない可能性があります。<ul><li>`doubleVec GetSample(double count)`<br/>最新の収集済みサンプルから取得するサンプル数を指定します。<br/><br/>`GetSample(1)` は、使用できる最新のサンプルを返します。 ただし、`$CPUPercent` などのメトリックの場合、サンプルが収集された "*時間*" がわからないので、GetSample を使用できません。 最新の場合もありますが、システム上の問題が原因でかなり古い可能性があります。 このような場合は、次のように期間を使用することをお勧めします。<li>`doubleVec GetSample((timestamp or timeinterval) startTime [, double samplePercent])`<br/>サンプル データを収集する期間を指定します。 指定した期間内に必要となるサンプルの割合をオプションで指定できます。<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10)` は、過去 10 分間のサンプルがすべて CPUPercent 履歴に存在する場合、20 個のサンプルを返します。 ただし、過去 1 分間の履歴を使用できない場合は、18 個のサンプルのみが返されます。 この場合、次のようになります。<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)` は、サンプルの 90% しか使用できないため、失敗します。<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)` は成功します。<li>`doubleVec GetSample((timestamp or timeinterval) startTime, (timestamp or timeinterval) endTime [, double samplePercent])`<br/>開始時刻と終了時刻の両方を使用して、データを収集する期間を指定します。<br/><br/>前述のように、サンプルが収集される時間と、数式に使用できるようになる時間には遅延があります。 `GetSample` メソッドを使用する際にはこの遅延を考慮します。 後述の `GetSamplePercent` をご覧ください。 |
 | GetSamplePeriod() |履歴のサンプル データ セットで受け取ったサンプルの期間を返します。 |
@@ -274,7 +277,7 @@ $runningTasksSample = $RunningTasks.GetSample(60 * TimeInterval_Second, 120 * Ti
 サンプルの使用可用性には遅延があるため、時間範囲を指定する際には、常に、開始時間を 1 分より長く遡って指定することが重要です。 サンプルがシステムを介して伝達されるまで約 1 分かかるため、`(0 * TimeInterval_Second, 60 * TimeInterval_Second)` の範囲内のサンプルは使用できない場合があります。 ここでも、 `GetSample()` の割合パラメーターを使用することで、サンプルの割合に関する特定の要件を適用できます。
 
 > [!IMPORTANT]
-> **自動スケールの数式では "*`GetSample(1)` にのみ依存する*" ことは避ける**ことを**強くお勧め**します。 理由は、`GetSample(1)` は基本的には "どれほど前に取得したのかに関係なく、最後に取得したサンプルを渡す" よう Batch サービスに指示するためです。 それは単一のサンプルであり、また以前のサンプルであるため、最近のタスクまたはリソースの状態を表す情報として十分でない可能性があります。 `GetSample(1)`を使用する場合は、より大きなステートメントの一部であり、数式が依存する唯一のデータ ポイントになっていないことを確認してください。
+> **自動スケールの数式では " *`GetSample(1)` にのみ依存する*" ことは避ける**ことを**強くお勧め**します。 理由は、`GetSample(1)` は基本的には "どれほど前に取得したのかに関係なく、最後に取得したサンプルを渡す" よう Batch サービスに指示するためです。 それは単一のサンプルであり、また以前のサンプルであるため、最近のタスクまたはリソースの状態を表す情報として十分でない可能性があります。 `GetSample(1)`を使用する場合は、より大きなステートメントの一部であり、数式が依存する唯一のデータ ポイントになっていないことを確認してください。
 >
 >
 
@@ -372,17 +375,17 @@ $TargetDedicatedNodes = min(400, $totalDedicatedNodes)
 
 ## <a name="create-an-autoscale-enabled-pool-with-batch-sdks"></a>Batch の SDK で自動スケーリング対応のプールを作成する
 
-プールの自動スケーリングは、[Batch の SDK](batch-apis-tools.md#azure-accounts-for-batch-development)、[Batch REST API](https://docs.microsoft.com/rest/api/batchservice/)、[Batch PowerShell コマンドレット](batch-powershell-cmdlets-get-started.md)、および [Batch CLI](batch-cli-get-started.md) を使用して構成できます。 このセクションでは、.NET と Python の両方の例を紹介します。
+プールの自動スケーリングは、[Batch の SDK](batch-apis-tools.md#azure-accounts-for-batch-development)、[Batch REST API](/rest/api/batchservice/)、[Batch PowerShell コマンドレット](batch-powershell-cmdlets-get-started.md)、および [Batch CLI](batch-cli-get-started.md) を使用して構成できます。 このセクションでは、.NET と Python の両方の例を紹介します。
 
 ### <a name="net"></a>.NET
 
 .NET で自動スケール対応のプールを作成するには、次の手順を実行します。
 
-1. [BatchClient.PoolOperations.CreatePool](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.createpool) でプールを作成します。
-1. [CloudPool.AutoScaleEnabled](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleenabled) プロパティを `true` に設定します。
-1. [CloudPool.AutoScaleFormula](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula) プロパティを自動スケールの数式で設定します。
-1. (省略可能) [CloudPool.AutoScaleEvaluationInterval](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval) プロパティを設定します (既定では 15 分)。
-1. [CloudPool.Commit](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commit) または [CommitAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commitasync) で、プールをコミットします。
+1. [BatchClient.PoolOperations.CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations.createpool) でプールを作成します。
+1. [CloudPool.AutoScaleEnabled](/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleenabled) プロパティを `true` に設定します。
+1. [CloudPool.AutoScaleFormula](/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula) プロパティを自動スケールの数式で設定します。
+1. (省略可能) [CloudPool.AutoScaleEvaluationInterval](/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval) プロパティを設定します (既定では 15 分)。
+1. [CloudPool.Commit](/dotnet/api/microsoft.azure.batch.cloudpool.commit) または [CommitAsync](/dotnet/api/microsoft.azure.batch.cloudpool.commitasync) で、プールをコミットします。
 
 次のコード スニペットを使用すると、.NET で自動スケール対応のプールを作成できます。 このプールでは、自動スケールの数式によって、専用ノードの目標数を月曜日は 5 に、それ以外の曜日は 1 に設定しています。 [自動スケールの間隔](#automatic-scaling-interval)は、30 分に設定されます。 次に示す C# スニペットまたはこの記事で示すその他の C# スニペットでは、`myBatchClient` は適切に初期化された [BatchClient][net_batchclient] クラスのインスタンスです。
 
@@ -519,11 +522,11 @@ await myBatchClient.PoolOperations.EnableAutoScaleAsync(
 
 自動スケールの数式を評価するにはまず、有効な数式を使用して、プールの自動スケールを有効にする必要があります。 自動スケールをまだ有効にしていないプールで数式をテストするには、初めて自動スケールを有効にするときに、1 行の数式 `$TargetDedicatedNodes = 0` を使用します。 その後、次のいずれかを使用してテスト対象の数式を評価します。
 
-* [BatchClient.PoolOperations.EvaluateAutoScale](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscale) または [EvaluateAutoScaleAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscaleasync)
+* [BatchClient.PoolOperations.EvaluateAutoScale](/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscale) または [EvaluateAutoScaleAsync](/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscaleasync)
 
     これらの Batch .NET メソッドでは、既存のプールの ID のほか、評価する自動スケールの数式が含まれた文字列が必要になります。
 
-* [自動スケールの数式の評価](https://docs.microsoft.com/rest/api/batchservice/evaluate-an-automatic-scaling-formula)
+* [自動スケールの数式の評価](/rest/api/batchservice/evaluate-an-automatic-scaling-formula)
 
     この REST API 要求では、URI にプール ID、要求本文の *autoScaleFormula* 要素に自動スケールの数式を指定します。 操作の応答には、数式に関連する可能性があるすべてのエラー情報が含まれています。
 
@@ -609,13 +612,13 @@ AutoScaleRun.Results:
 
 数式が正常に実行されるように、Batch によってプールで行われる自動スケールの実行の結果を、定期的に確認することをお勧めします。 これを行うには、プールへの参照を取得 (または更新) し、最後に行われた自動スケールの実行のプロパティを確認します。
 
-Batch .NET の場合、プールで行われた最近の自動スケールの実行に関する情報は、[CloudPool.AutoScaleRun](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscalerun) プロパティ内のいくつかのプロパティに含まれています。
+Batch .NET の場合、プールで行われた最近の自動スケールの実行に関する情報は、[CloudPool.AutoScaleRun](/dotnet/api/microsoft.azure.batch.cloudpool.autoscalerun) プロパティ内のいくつかのプロパティに含まれています。
 
-* [AutoScaleRun.Timestamp](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.autoscalerun.timestamp)
-* [AutoScaleRun.Results](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.autoscalerun.results)
-* [AutoScaleRun.Error](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.autoscalerun.error)
+* [AutoScaleRun.Timestamp](/dotnet/api/microsoft.azure.batch.autoscalerun.timestamp)
+* [AutoScaleRun.Results](/dotnet/api/microsoft.azure.batch.autoscalerun.results)
+* [AutoScaleRun.Error](/dotnet/api/microsoft.azure.batch.autoscalerun.error)
 
-REST API の場合、[プールに関する情報を取得する](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-pool)要求によって、プールに関する情報が返されます。この情報の [autoScaleRun](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-pool) プロパティに、最新の自動スケールの実行に関する情報が含まれています。
+REST API の場合、[プールに関する情報を取得する](/rest/api/batchservice/get-information-about-a-pool)要求によって、プールに関する情報が返されます。この情報の [autoScaleRun](/rest/api/batchservice/get-information-about-a-pool) プロパティに、最新の自動スケールの実行に関する情報が含まれています。
 
 次の C# コード スニペットでは、Batch .NET ライブラリを使用して、プール "_myPool_" の最新の自動スケール実行に関する情報を出力します。
 
@@ -644,7 +647,7 @@ Error:
 
 さまざまな方法でプールのコンピューティング リソースの量を調整する、いくつかの数式を見ていきます。
 
-### <a name="example-1-time-based-adjustment"></a>例 1: 時間ベースの調整
+### <a name="example-1-time-based-adjustment"></a>例 1:時間ベースの調整
 
 曜日や時間帯でプール サイズを調整する必要があるとします。 この例では、状況に応じてプールのノード数を増減させる方法を示します。
 
@@ -660,7 +663,7 @@ $NodeDeallocationOption = taskcompletion;
 ```
 `$curTime` は、`TimeZoneInterval_Hour` と UTC オフセットの積に `time()` を追加することで、ローカル タイム ゾーンを反映するように調整できます。 たとえば、山地夏時間 (MDT) には `$curTime = time() + (-6 * TimeInterval_Hour);` を使用します。 オフセットは、夏時間の開始時と終了時に調整する必要があることに注意してください (該当する場合)。
 
-### <a name="example-2-task-based-adjustment"></a>例 2: 時間ベースの調整
+### <a name="example-2-task-based-adjustment"></a>例 2:タスクベースの調整
 
 この例では、プールのサイズはキューのタスク数に基づいて調整されます。 数式の文字列にはコメントと改行の両方を使用できます。
 
@@ -732,15 +735,15 @@ string formula = string.Format(@"
 * [同時実行ノード タスクで Azure Batch コンピューティング リソースの使用率を最大にする](batch-parallel-node-tasks.md) 」では、プール内のコンピューティング ノードで複数のタスクを同時に実行する方法の詳細を説明しています。 自動スケール以外にも、この機能は一部のワークロードのジョブの実行時間短縮に役立つことがあり、費用の節約になります。
 * 他にも、効率を上げるために、Batch アプリケーションによって、最適な方法で Batch サービスが照会されていることを確認してください。 数千に上る可能性のある計算ノードやタスクの状態を照会するときに、送信されるデータの量を制限する方法について詳しくは、[効率的な Azure Batch サービスのクエリ](batch-efficient-list-queries.md)に関する記事をご覧ください。
 
-[net_api]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch
-[net_batchclient]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.batchclient
-[net_cloudpool_autoscaleformula]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula
-[net_cloudpool_autoscaleevalinterval]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval
-[net_enableautoscaleasync]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.enableautoscaleasync
-[net_maxtasks]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.maxtaskspercomputenode
-[net_poolops_resizepoolasync]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.resizepoolasync
+[net_api]: /dotnet/api/microsoft.azure.batch
+[net_batchclient]: /dotnet/api/microsoft.azure.batch.batchclient
+[net_cloudpool_autoscaleformula]: /dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula
+[net_cloudpool_autoscaleevalinterval]: /dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval
+[net_enableautoscaleasync]: /dotnet/api/microsoft.azure.batch.pooloperations.enableautoscaleasync
+[net_maxtasks]: /dotnet/api/microsoft.azure.batch.cloudpool.maxtaskspercomputenode
+[net_poolops_resizepoolasync]: /dotnet/api/microsoft.azure.batch.pooloperations.resizepoolasync
 
-[rest_api]: https://docs.microsoft.com/rest/api/batchservice/
-[rest_autoscaleformula]: https://docs.microsoft.com/rest/api/batchservice/enable-automatic-scaling-on-a-pool
-[rest_autoscaleinterval]: https://docs.microsoft.com/rest/api/batchservice/enable-automatic-scaling-on-a-pool
-[rest_enableautoscale]: https://docs.microsoft.com/rest/api/batchservice/enable-automatic-scaling-on-a-pool
+[rest_api]: /rest/api/batchservice/
+[rest_autoscaleformula]: /rest/api/batchservice/enable-automatic-scaling-on-a-pool
+[rest_autoscaleinterval]: /rest/api/batchservice/enable-automatic-scaling-on-a-pool
+[rest_enableautoscale]: /rest/api/batchservice/enable-automatic-scaling-on-a-pool

@@ -4,11 +4,11 @@ description: この記事では、Azure Backup によってバックアップさ
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: cb764fa441c063328dc350cf26f42c5bc7a0ca99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225987"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84712090"
 ---
 # <a name="manage-azure-file-share-backups"></a>Azure ファイル共有のバックアップを管理する
 

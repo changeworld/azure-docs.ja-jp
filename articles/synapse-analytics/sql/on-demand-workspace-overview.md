@@ -5,15 +5,16 @@ services: synapse analytics
 author: filippopovic
 ms.service: synapse-analytics
 ms.topic: overview
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 55ef72b23f804ce7fcdb339ba4c66bcefe39db46
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 35e75037b4bf759fe90d608be0682004d3d3f23c
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020814"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85480441"
 ---
 # <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics の SQL オンデマンド (プレビュー) 
 
@@ -88,21 +89,21 @@ SQL オンデマンドにはローカル ストレージがなく、メタデー
 
 SQL オンデマンドでは、データ レイク内のファイルに格納されているデータに対するインプレース クエリをスムーズに実行できるように、次の機能を追加して既存の [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 関数を拡張します。
 
-[複数のファイルまたはフォルダーに対するクエリの実行](develop-storage-files-overview.md#query-multiple-files-or-folders)
+[複数のファイルまたはフォルダーに対するクエリの実行](query-data-storage.md#query-multiple-files-or-folders)
 
-[PARQUET ファイル形式](develop-storage-files-overview.md#parquet-file-format)
+[PARQUET ファイル形式](query-data-storage.md#query-parquet-files)
 
-[区切りテキストを操作するための追加オプション (フィールド ターミネータ、行ターミネータ、エスケープ文字)](develop-storage-files-overview.md#additional-options-for-working-with-delimited-text)
+[区切りテキストを操作するための追加オプション (フィールド ターミネータ、行ターミネータ、エスケープ文字)](query-data-storage.md#query-csv-files)
 
-[選択した列のサブセットの読み取り](develop-storage-files-overview.md#read-a-chosen-subset-of-columns)
+[選択した列のサブセットの読み取り](query-data-storage.md#read-a-chosen-subset-of-columns)
 
-[スキーマ推論](develop-storage-files-overview.md#schema-inference)
+[スキーマ推論](query-data-storage.md#schema-inference)
 
-[filename 関数](develop-storage-files-overview.md#filename-function)
+[filename 関数](query-data-storage.md#filename-function)
 
-[filepath 関数](develop-storage-files-overview.md#filepath-function)
+[filepath 関数](query-data-storage.md#filepath-function)
 
-[複合型と入れ子または繰り返しのデータ構造の操作](develop-storage-files-overview.md#work-with-complex-types-and-nested-or-repeated-data-structures)
+[複合型と入れ子または繰り返しのデータ構造の操作](query-data-storage.md#work-with-complex-types-and-nested-or-repeated-data-structures)
 
 ## <a name="security"></a>Security
 

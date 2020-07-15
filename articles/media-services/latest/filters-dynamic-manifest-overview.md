@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: juliako
-ms.openlocfilehash: cd955f97a2f26543f799d95b7dc0b1de235333c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb7a399258dcab679468d2b8f699487b1ec5406b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74186208"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84705204"
 ---
 # <a name="filter-your-manifests-using-dynamic-packager"></a>Dynamic Packager を使用してマニフェストをフィルター処理する
 
@@ -36,7 +36,7 @@ ms.locfileid: "74186208"
 
 ## <a name="overview-of-manifests"></a>マニフェストの概要
 
-Azure Media Services では、HLS、MPEG DASH、Smooth Streaming プロトコルがサポートされます。 ストリーミング クライアント マニフェスト (HLS のマスター再生リスト、DASH の Media Presentation Description [MPD]、および Smooth Streaming) は、URL 内の形式セレクターに基づいて、[ダイナミック パッケージ](dynamic-packaging-overview.md)の一部として動的に生成されます。 詳しくは、[一般的なオンデマンド ワークフロー](dynamic-packaging-overview.md#delivery-protocols)での配信プロトコルをご覧ください。
+Azure Media Services では、HLS、MPEG DASH、Smooth Streaming プロトコルがサポートされます。 ストリーミング クライアント マニフェスト (HLS のマスター再生リスト、DASH の Media Presentation Description [MPD]、および Smooth Streaming) は、URL 内の形式セレクターに基づいて、[ダイナミック パッケージ](dynamic-packaging-overview.md)の一部として動的に生成されます。 詳しくは、[一般的なオンデマンド ワークフロー](dynamic-packaging-overview.md#to-prepare-your-source-files-for-delivery)での配信プロトコルをご覧ください。
 
 ### <a name="get-and-examine-manifest-files"></a>マニフェスト ファイルを取得して調査する
 

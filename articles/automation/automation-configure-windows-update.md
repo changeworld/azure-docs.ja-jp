@@ -5,16 +5,16 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: ea05e75c0d1db1ef27ae2e8e9364327528a7c8ed
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: e30d1606a3928f421d2155e2d1abac0c8a6872aa
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837163"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186641"
 ---
 # <a name="configure-windows-update-settings-for-azure-automation-update-management"></a>Azure Automation Update Management 用に Windows Update の設定を構成する
 
-Azure Automation Update Management では、Windows の更新プログラムのダウンロードとインストールに [Windows Update クライアント](https://docs.microsoft.com//windows/deployment/update/windows-update-overview)を使用しています。 Windows Server Update Services (WSUS) または Windows Update への接続時に、Windows Update クライアントによって使用される固有の設定があります。 これらの設定の多くは、以下によって管理できます。
+Azure Automation Update Management では、Windows の更新プログラムのダウンロードとインストールに [Windows Update クライアント](/windows/deployment/update/windows-update-overview)を使用しています。 Windows Server Update Services (WSUS) または Windows Update への接続時に、Windows Update クライアントによって使用される固有の設定があります。 これらの設定の多くは、以下によって管理できます。
 
 - ローカル グループ ポリシー エディター
 - グループ ポリシー
@@ -23,7 +23,7 @@ Azure Automation Update Management では、Windows の更新プログラムの�
 
 Update Management では Windows Update クライアントを制御するために指定される多くの設定が尊重されます。 Windows 以外の更新プログラムを有効にする設定を使用している場合、Update Management では、それらの更新プログラムも管理されます。 更新プログラムの展開が行われる前の更新プログラムのダウンロードを有効にすると、更新プログラムの展開がより速く効率的になり、メンテナンス期間を超過する可能性が低くなります。
 
-Azure サブスクリプションで WSUS を設定し、Windows 仮想マシンを安全に最新の状態に保つ方法に関するその他の推奨事項については、[WSUS を使用して Azure で Windows 仮想マシンを更新するためのデプロイを計画する](https://docs.microsoft.com/azure/architecture/example-scenario/wsus/)方法に関する記事を確認してください。
+Azure サブスクリプションで WSUS を設定し、Windows 仮想マシンを安全に最新の状態に保つ方法に関するその他の推奨事項については、[WSUS を使用して Azure で Windows 仮想マシンを更新するためのデプロイを計画する](/azure/architecture/example-scenario/wsus/)方法に関する記事を確認してください。
 
 ## <a name="pre-download-updates"></a>更新プログラムの事前ダウンロード
 
@@ -58,7 +58,7 @@ $ServiceManager.AddService2($ServiceId,7,"")
 
 Update Management では WSUS 設定がサポートされています。 「[イントラネットの Microsoft 更新サービスの場所を指定する](/windows/deployment/update/waas-wu-settings#specify-intranet-microsoft-update-service-location)」の手順を使用して、更新プログラムをスキャンおよびダウンロードするためのソースを指定できます。 既定では、Windows Update クライアントは Windows Update から更新プログラムをダウンロードするように構成されています。 WSUS サーバーをお使いのマシン用のソースとして指定する場合、更新プログラムが WSUS で承認されていないと、更新プログラムのデプロイは失敗します。 
 
-その内部の更新サービスにマシンを制限するには、[インターネット上の Windows Update に接続しない](https://docs.microsoft.com/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates#do-not-connect-to-any-windows-update-internet-locations)ように設定します。 
+その内部の更新サービスにマシンを制限するには、[インターネット上の Windows Update に接続しない](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates#do-not-connect-to-any-windows-update-internet-locations)ように設定します。 
 
 ## <a name="next-steps"></a>次のステップ
 

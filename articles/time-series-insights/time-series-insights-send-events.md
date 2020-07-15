@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.custom: seodec18
-ms.openlocfilehash: c3c7f59ecb3a06d80012917e2da4425a899859d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dd7a74ff775e6e07d1c32ed198ff028765fce45d
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228015"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037292"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>イベント ハブを使用して Time Series Insights 環境にイベントを送信する
 
@@ -55,13 +55,13 @@ ms.locfileid: "79228015"
 
 ## <a name="add-a-time-series-insights-instance"></a>Time Series Insights のインスタンスを追加する
 
-Time Series Insights の更新では、インスタンスを使用して、受信したテレメトリ データにコンテキスト データが追加されます。 データはクエリ時に**タイム シリーズ ID** を使用して結合されます。 この記事の後半で使用するサンプルの風力発電プロジェクトの**タイム シリーズ ID** は、`id` です。 Time Series Insight のインスタンスと**時系列 ID** について詳しくは、「[時系列 モデル](./time-series-insights-update-tsm.md)」をご覧ください。
+Time Series Insights の更新では、インスタンスを使用して、受信したテレメトリ データにコンテキスト データが追加されます。 データはクエリ時に**タイム シリーズ ID** を使用して結合されます。 この記事の後半で使用するサンプルの風力発電プロジェクトの**タイム シリーズ ID** は、`id` です。 Time Series Insight のインスタンスと**時系列 ID** について詳しくは、「[時系列 モデル](./concepts-model-overview.md)」をご覧ください。
 
 ### <a name="create-a-time-series-insights-event-source"></a>Time Series Insights のイベント ソースを作成する
 
 1. イベント ソースを作成していない場合は、[イベント ソースを作成する](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub)手順を実行します。
 
-1. `timeSeriesId` の値を設定します。 **時系列 ID** について詳しくは、「[時系列 モデル](./time-series-insights-update-tsm.md)」をご覧ください。
+1. `timeSeriesId` の値を設定します。 **時系列 ID** について詳しくは、「[時系列 モデル](./concepts-model-overview.md)」をご覧ください。
 
 ### <a name="push-events-to-windmills-sample"></a>風力発電のサンプルにイベントをプッシュする
 

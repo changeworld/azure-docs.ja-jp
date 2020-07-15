@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 79f85261115dbddcb0b04cd2863a90912de2ab87
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 87a8291387d50fae7027d007eedf49fa55b39b74
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474905"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85052777"
 ---
 # <a name="app-service-networking-features"></a>App Service のネットワーク機能
 
@@ -36,7 +36,7 @@ Azure App Service は分散システムです。 受信した HTTP/HTTPS 要求�
 
 どのようなユース ケースでも、問題解決の手段はいくつか存在します。  時として、使用に適した機能はユース ケース以外の理由から決まるものです。 以下の受信のユース ケースでは、App Service のネットワーク機能を使用して、アプリで受信するトラフィックの制御についての問題を解決する方法の案を示します。 
  
-| 受信のユース ケース | 機能 |
+| 受信のユース ケース | 特徴量 |
 |---------------------|-------------------|
 | アプリの IP ベース SSL のニーズをサポートする | アプリに割り当てられたアドレス |
 | アプリ専用の非共有受信アドレス | アプリに割り当てられたアドレス |
@@ -49,7 +49,7 @@ Azure App Service は分散システムです。 受信した HTTP/HTTPS 要求�
 
 以下の送信のユース ケースでは、App Service のネットワーク機能を使用して、アプリの送信アクセスに関するニーズを解決する方法の案を示します。 
 
-| 送信のユース ケース | 機能 |
+| 送信のユース ケース | 特徴量 |
 |---------------------|-------------------|
 | 同一リージョン内にある Azure Virtual Network のリソースにアクセスする | VNet 統合 </br> ASE |
 | 異なるリージョン内にある Azure Virtual Network のリソースにアクセスする | ゲートウェイが必要な VNet 統合 </br> ASE と VNet ピアリング |

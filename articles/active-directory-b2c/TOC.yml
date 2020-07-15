@@ -191,8 +191,12 @@
               displayName: 'ux, input, cors, html, css'
             - name: 言語をカスタマイズする
               href: custom-policy-localization.md
-            - name: カスタム メール
-              href: custom-email.md
+            - name: カスタム メール確認
+              items:
+                - name: Mailjet
+                  href: custom-email-mailjet.md
+                - name: SendGrid
+                  href: custom-email-sendgrid.md
               displayName: verification
             - name: メールの確認を無効にする
               href: custom-policy-disable-email-verification.md
@@ -325,6 +329,8 @@
                     - name: Azure Multi-Factor Authentication
                       href: multi-factor-auth-technical-profile.md
                       displayName: mfa
+                    - name: Azure AD SSPR
+                      href: aad-sspr-technical-profile.md
                     - name: 要求の変換
                       href: claims-transformation-technical-profile.md
                     - name: JWT トークン発行者
@@ -357,6 +363,22 @@
               href: relyingparty.md
             - name: 要求リゾルバー
               href: claim-resolver-overview.md
+    - name: パートナー統合
+      items:
+        - name: Azure AD B2C パートナー ギャラリー
+          href: partner-gallery.md
+        - name: Arkose Labs
+          href: partner-arkose-labs.md
+        - name: IDology
+          href: partner-idology.md
+        - name: itsme
+          href: partner-itsme.md
+        - name: Trusona
+          href: partner-trusona.md
+        - name: Twilio
+          href: partner-twilio.md
+        - name: TypingDNA
+          href: partner-typingdna.md
     - name: b2clogin.com の使用
       items:
         - name: b2clogin.com の概要

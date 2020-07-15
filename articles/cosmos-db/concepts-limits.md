@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 7ef7a55c81441077d2217ccfc41a2a9c9578eefe
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 296f212e26d066613c54f7d69802654e5f7b5090
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697569"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85391844"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB サービスのクォータ
 
@@ -117,7 +117,7 @@ Cosmos DB は、データのバックアップを一定の間隔で自動的に�
 
 ## <a name="per-request-limits"></a>要求あたりの制限
 
-Azure Cosmos DB は、コンテナー、項目、データベースなどのリソースに対して [CRUD とクエリ操作](https://docs.microsoft.com/rest/api/cosmos-db/)をサポートしています。 また、コンテナー内の同じパーティション キーを持つ複数の項目に対する[トランザクション バッチ要求](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.transactionalbatch)もサポートしています。
+Azure Cosmos DB は、コンテナー、項目、データベースなどのリソースに対して [CRUD とクエリ操作](/rest/api/cosmos-db/)をサポートしています。 また、コンテナー内の同じパーティション キーを持つ複数の項目に対する[トランザクション バッチ要求](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.transactionalbatch)もサポートしています。
 
 | リソース | 既定の制限 |
 | --- | --- |

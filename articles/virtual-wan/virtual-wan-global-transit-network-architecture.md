@@ -5,15 +5,15 @@ description: Virtual WAN のグローバル トランジット ネットワー�
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 72a96e04d308dbb2774d5b8f8aa909ab81bebee3
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 78656b4789ea03601bc12579c391292e2f9ead9a
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195679"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856368"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>グローバル トランジット ネットワーク アーキテクチャと Virtual WAN
 
@@ -47,7 +47,7 @@ Azure Virtual WAN アーキテクチャでは、Virtual WAN のハブは Azure �
 
 Virtual WAN を確立するには、スポーク (ブランチ、VNet、ユーザー) の数が最も多いリージョンに Virtual WAN ハブを 1 つ作成した後、他のリージョン内にあるスポークをハブに接続します。 これは、エンタープライズ フットプリントの大部分が 1 つのリージョン内にあってリモート スポークの数が少ない場合に適したオプションです。  
   
-## <a name="hub-to-hub-connectivity-preview"></a><a name="hubtohub"></a>ハブ間接続 (プレビュー)
+## <a name="hub-to-hub-connectivity"></a><a name="hubtohub"></a>ハブ間接続
 
 エンタープライズ クラウドのフットプリントは複数のクラウド リージョンにまたがることができ、物理サイトやユーザーに最も近いリージョンからクラウドにアクセスするのに最適です (待ち時間対応)。 グローバル トランジット ネットワーク アーキテクチャの重要な原則の 1 つは、すべてのクラウドとオンプレミスのネットワーク エンドポイントの間のリージョン間接続を有効にすることです。 つまり、あるリージョンのクラウドに接続されているブランチからのトラフィックは、[Azure のグローバル ネットワーク](https://azure.microsoft.com/global-infrastructure/global-network/)によって有効になるハブ間接続を使用して、異なるリージョンにある別のブランチまたは VNet に到達できます。
 

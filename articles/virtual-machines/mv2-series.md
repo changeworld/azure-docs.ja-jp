@@ -1,18 +1,18 @@
 ---
 title: Mv2 シリーズ - Azure Virtual Machines
 description: Mv2 シリーズ VM の仕様。
-services: virtual-machines
 author: ayshakeen
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 04/07/2020
-ms.author: lahugh
-ms.openlocfilehash: 7df8dd439008258ea1b4986054660fb0fb9070ce
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.author: jushiman
+ms.openlocfilehash: 4576a8bdcb6077a9d5de20c52f99325fdcacc0f4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204187"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84673700"
 ---
 # <a name="mv2-series"></a>Mv2 シリーズ
 

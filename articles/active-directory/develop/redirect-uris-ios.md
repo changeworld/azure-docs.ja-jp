@@ -7,18 +7,18 @@ author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: overview
+ms.topic: how-to
 ms.workload: identity
 ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: jak
 ms.custom: aaddev
-ms.openlocfilehash: 1291563a39e3cf3acd4b343302be8b150bf794ca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 95bd7b5ac325ef5484bd01284c46489acb919a32
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80883510"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830351"
 ---
 # <a name="using-redirect-uris-with-the-microsoft-authentication-library-for-ios-and-macos"></a>iOS 用と macOS 用の Microsoft 認証ライブラリでのリダイレクト URI の使用
 
@@ -40,10 +40,12 @@ Microsoft ID プラットフォームでアプリ間でトークンを共有す�
 
 Azure portal に次のアプリケーション登録があるとします。
 
-    Client ID: ABCDE-12345 (this is a single client ID)
-    RedirectUris: msauth.com.contoso.app1://auth, msauth.com.contoso.app2://auth, msauth.com.contoso.app3://auth
+* Client ID: `ABCDE-12345` (1 つのクライアントの ID)
+* RedirectUris: `msauth.com.contoso.app1://auth`、`msauth.com.contoso.app2://auth`、`msauth.com.contoso.app3://auth`
 
-App1 ではリダイレクト `msauth.com.contoso.app1://auth` が、App2 では `msauth.com.contoso.app2://auth` が、App3 では `msauth.com.contoso.app1://auth` が使用されます。
+App1 により、リダイレクト `msauth.com.contoso.app1://auth` が使用されます。
+App2 により、`msauth.com.contoso.app2://auth` が使用されます。
+App3 により、`msauth.com.contoso.app1://auth` が使用されます。
 
 ### <a name="migrating-from-adal-to-msal"></a>ADAL から MSAL への移行
 
@@ -70,7 +72,6 @@ Azure AD Authentication ライブラリ (ADAL) を使用していたコードを
         </dict>
     </array>
     ```
-    
 
 MSAL によって、リダイレクト URI が正しく登録されているかどうかが検証され、そうでない場合はエラーが返されます。
     

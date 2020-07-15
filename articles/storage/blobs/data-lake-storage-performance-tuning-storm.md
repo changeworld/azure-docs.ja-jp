@@ -4,16 +4,16 @@ description: Azure Data Lake Storage Gen2 の Storm パフォーマンス チュ
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 125c583512f6bae34c2dd3c3dd76a1b96a181ac1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 60e0d3fc22fdfc158110e9936748cc0bda280853
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74327913"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84465917"
 ---
 # <a name="tune-performance-storm-hdinsight--azure-data-lake-storage-gen2"></a>パフォーマンスをチューニングする: Storm、HDInsight、および Azure Data Lake Storage Gen2
 
@@ -89,7 +89,7 @@ I/O 集中型のトポロジでは、各ボルト スレッドによって独自
 
 * **プロセスの実行における待ち時間の合計。** 1 つのタプルがスパウトによって出力され、ボルトによって処理されて、受信確認されるまでの平均時間です。
 
-* **ボルト プロセスの待ち時間の合計。** ボルトがタプルの受信確認を受信するまでの平均時間です。
+* **ボルト プロセスの待ち時間の合計。** ボルトのタプルが受信確認を受信するまでの平均時間です。
 
 * **ボルトの execute の待ち時間の合計。** ボルトの execute メソッドにかかった平均時間です。
 

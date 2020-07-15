@@ -1,23 +1,23 @@
 ---
-title: T-SQL ループの使用
+title: T-SQL ループを使用する
 description: Synapse SQL の SQL プールによる T-SQL ループの使用、カーソルの置換、関連ソリューションの開発のヒント。
 services: synapse-analytics
 author: filippopovic
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: baff2806b1a8c3c99546365c2496238c24b2b243
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ec15f87bdbf381b71faa7cefd986dd5e55e17a19
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427055"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964993"
 ---
-# <a name="using-t-sql-loops-in-synapse-sql"></a>Synapse SQL での T-SQL ループの使用
+# <a name="use-t-sql-loops-in-synapse-sql"></a>Synapse SQL で T-SQL ループを使用する
 この記事では、Synapse SQL の SQL プールによる T-SQL ループの使用、カーソルの置換、関連ソリューションの開発に関する重要なヒントを提供します。
 
 ## <a name="purpose-of-while-loops"></a>WHILE ループの目的

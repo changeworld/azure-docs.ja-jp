@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door | Microsoft Docs
-description: この記事では、Azure Front Door の概要を示します。 実際のアプリケーションのユーザー トラフィックを負荷分散するための選択肢として適切かどうかを見極めましょう。
+title: Azure Front Door
+description: Azure Front Door は継続的に変更されていますが、この記事ではその最新一覧を提供します。
 services: frontdoor
 documentationcenter: ''
 author: megan-beatty
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: 009891d16d3acf5db2e344bcc2c917ecee9eed5b
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: d00ed607322205daefd80c111b83483524c4a742
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82515847"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85321522"
 ---
 # <a name="whats-new-in-azure-front-door"></a>Azure Front Door の新着情報
 
@@ -30,8 +30,9 @@ Azure Front Door は継続的に更新されます。 常に最新の開発情�
 
 ## <a name="new-features"></a>新機能
 
-|機能  |説明  |追加日  |
+|特徴量  |説明  |追加日  |
 |---------|---------|---------|
+| ルール エンジン GA | エッジでの HTTP 要求の処理方法をカスタマイズします。 詳細については、[ルール エンジンの概要](front-door-rules-engine.md)に関するページを参照してください。 |2020 年 6 月 |
 | ルール エンジン (プレビュー) | エッジでの HTTP 要求の処理方法をカスタマイズします。 詳細については、[ルール エンジンの概要](front-door-rules-engine.md)に関するページを参照してください。 |2020 年 4 月 |
 
 

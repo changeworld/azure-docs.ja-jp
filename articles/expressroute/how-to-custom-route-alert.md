@@ -4,15 +4,15 @@ description: この記事では、Azure Automation と Logic Apps を使用し�
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: b8f0c4df2f8e04649bc094f4cc0a64c6eb7bd5b2
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 42f416cf6f297eb54298a10162e7ba28f7acd1bd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84236511"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738483"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>カスタム アラートを構成して、アドバタイズされるルートを監視する
 

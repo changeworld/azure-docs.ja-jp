@@ -4,13 +4,22 @@
   items:
     - name: Azure Advisor とは
       href: advisor-overview.md
+- name: クイックスタート
+  items:
+    - name: 新しい推奨事項のアラートの構成
+      items:
+        - name: Azure portal
+          href: advisor-alerts-portal.md
+        - name: ARM テンプレート
+          displayName: Resource Manager
+          href: advisor-alerts-arm.md
 - name: チュートリアル
   items:
     - name: Advisor の使用を開始する
       href: advisor-get-started.md
 - name: 操作方法ガイド
   items:
-    - name: Azure アプリケーションの可用性の向上
+    - name: Azure アプリケーションの信頼性の向上
       href: advisor-high-availability-recommendations.md
     - name: リソースのセキュリティを強化する
       href: advisor-security-recommendations.md
@@ -25,7 +34,7 @@
     - name: アクセス許可とブロックされるアクション
       href: permissions.md
     - name: 推奨事項のアラートの構成
-      href: advisor-alerts.md
+      href: advisor-alerts-portal.md
     - name: 推奨事項の一括修復
       href: advisor-quick-fix.md
     - name: Azure Resource Graph の Advisor データ

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 26c734b7a2e9f5592ee6d51dfee4650a3998ab1a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229023"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84699058"
 ---
 # <a name="run-a-test-failover-disaster-recovery-drill-to-azure"></a>Azure へのテスト フェールオーバー (ディザスター リカバリー訓練) を実行する 
 

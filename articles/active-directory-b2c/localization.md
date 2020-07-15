@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 94ff7ddda41f2df2634d927a7dbf8a5a0d4fc1d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 69368ecd7234912bcaf5eb606545f62ddb7b30a0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81681416"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85204185"
 ---
 # <a name="localization"></a>ローカリゼーション
 
@@ -26,7 +26,7 @@ ms.locfileid: "81681416"
 - ポリシーでサポートされている言語の明示的な一覧を設定し、既定の言語を選択する。
 - 言語固有の文字列とコレクションを指定する。
 
-```XML
+```xml
 <Localization Enabled="true">
   <SupportedLanguages DefaultLanguage="en" MergeBehavior="ReplaceAll">
     <SupportedLanguage>en</SupportedLanguage>
@@ -116,7 +116,7 @@ ms.locfileid: "81681416"
 
 次の例は、**LocalizedCollections** 要素の使用を示しています。 これには、2 つの**LocalizedCollection** 要素が含まれています。1 つは英語用、もう 1 つはスペイン語用です。 両方とも、英語とスペイン語の項目の一覧を使用して、要求 `Gender` の **Restriction** コレクションを設定します。
 
-```XML
+```xml
 <LocalizedResources Id="api.selfasserted.en">
  <LocalizedCollections>
    <LocalizedCollection ElementType="ClaimType" ElementId="Gender" TargetCollection="Restriction">
@@ -205,7 +205,7 @@ ClaimType 値は、いずれかの要求属性をローカライズするため�
 
 次の例は、要求の種類 email の DisplayName、UserHelpText、および PatternHelpText の各属性をローカライズする方法を示しています。
 
-```XML
+```xml
 <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Email</LocalizedString>
 <LocalizedString ElementType="ClaimType" ElementId="email" StringId="UserHelpText">Please enter your email</LocalizedString>
 <LocalizedString ElementType="ClaimType" ElementId="email" StringId="PatternHelpText">Please enter a valid email address</LocalizedString>
@@ -228,7 +228,7 @@ ErrorMessage 値は、システム エラー メッセージのいずれかを�
 次の例は、UserMessageIfClaimsPrincipalAlreadyExists エラー メッセージをローカライズする方法を示しています。
 
 
-```XML
+```xml
 <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalAlreadyExists">The account you are trying to create already exists, please sign-in.</LocalizedString>
 ```
 
@@ -319,7 +319,7 @@ InputValidation 値は、[PredicateValidation](predicates.md) グループのエ
 
 次の例は、述語検証グループのヘルプ テキストをローカライズする方法を示しています。
 
-```XML
+```xml
 <LocalizedString ElementType="InputValidation" ElementId="CustomPassword" StringId="CharacterClasses">The password must have at least 3 of the following:</LocalizedString>
 ```
 
@@ -327,7 +327,7 @@ InputValidation 値は、[PredicateValidation](predicates.md) グループのエ
 
 UxElement 値は、ユーザー インターフェイス要素のいずれかをローカライズするために使用されます。 次の例は、続行とキャンセルのボタンをローカライズする方法を示しています。
 
-```XML
+```xml
 <LocalizedString ElementType="UxElement" StringId="button_continue">Create new account</LocalizedString>
 <LocalizedString ElementType="UxElement" StringId="button_cancel">Cancel</LocalizedString>
 ```

@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: ''
-ms.openlocfilehash: 2c9287e6f4bda429309dd0041215b271678d03d3
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: e71cd5f3989a175f883f3a08b4f55d36a154dcee
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860700"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753487"
 ---
 # <a name="resource-manager-template-samples-for-azure-monitor"></a>Azure Monitor 用の Resource Manager テンプレートのサンプル
 
@@ -25,7 +25,7 @@ ms.locfileid: "83860700"
 2. パラメーターを環境に合わせて変更し、JSON ファイルとして保存します。
 4. [任意の Resource Manager テンプレートのデプロイ方法](../../azure-resource-manager/templates/deploy-powershell.md)に従って、テンプレートをデプロイします。 
 
-たとえば、PowerShell または Azure CLI を使用してサブスクリプションにテンプレートとパラメーター ファイルをデプロイする場合は、次のコマンドを実行します。
+たとえば、PowerShell または Azure CLI を使用してリソース グループにテンプレートとパラメーター ファイルをデプロイする場合は、次のコマンドを実行します。
 
 
 ```powershell
@@ -36,7 +36,7 @@ New-AzResourceGroupDeployment -Name AzureMonitorDeployment -ResourceGroupName my
 
 ```azurecli
 az login
-az group deployment create \
+az deployment group create \
     --name AlertDeployment \
     --resource-group ResourceGroupofTargetResource \
     --template-file azure-monitor-deploy.json \

@@ -2,16 +2,14 @@
 title: 概念 - Azure Kubernetes Service (AKS) でのアプリケーションのスケーリング
 description: ポッドの水平オートスケーラー、クラスター オートスケーラー、Azure Container Instances コネクタなど、Azure Kubernetes Service (AKS) でのスケーリングについて説明します。
 services: container-service
-author: zr-msft
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.author: zarhoads
-ms.openlocfilehash: c5c1180acec726d0863e11a3fe0825ffc7c48e3f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 83cbaf49f26a53518b1aa1e211b61af1959642a6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232532"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84465339"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションのスケーリング オプション
 

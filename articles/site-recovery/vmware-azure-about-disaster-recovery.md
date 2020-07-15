@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 589dda80d68fba73a729da4b6e59270cc09c18cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6759b2c0f679a865d0bdcf8ea8cd39f258a9cf25
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73954386"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132114"
 ---
 # <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>VMware VM から Azure へのディザスター リカバリーの概要
 
@@ -21,7 +21,7 @@ ms.locfileid: "73954386"
 
 事業継続とディザスター リカバリー (BCDR) 戦略は、ビジネスを維持するために役立ちます。 計画されたダウンタイム時と予想外の停止時に、BCDR はデータの安全性と可用性を維持し、アプリケーションの継続的な実行を確保します。 リージョンのペアリングや高可用性ストレージなどのプラットフォーム BCDR 機能に加え、Azure は BCDR ソリューションの重要な部分として Recovery Services を提供しています。 Recovery Services には以下が含まれています。 
 
-- [Azure Backup](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup): オンプレミスと Azure VM のデータをバックアップします。 ファイルとフォルダー、特定のワークロード、または VM 全体をバックアップできます。 
+- [Azure Backup](../backup/backup-overview.md): オンプレミスと Azure VM のデータをバックアップします。 ファイルとフォルダー、特定のワークロード、または VM 全体をバックアップできます。 
 - [Azure Site Recovery](site-recovery-overview.md): オンプレミス マシンまたは Azure IaaS VM 上で実行されているアプリとワークロードに復元機能とディザスター リカバリー機能を提供します。 Site Recovery は、障害の発生時にレプリケーションを調整して Azure へのフェールオーバーを処理します。 また、Azure からプライマリ サイトへの復旧も処理します。 
 
 ## <a name="how-does-site-recovery-do-disaster-recovery"></a>Site Recovery によるディザスター リカバリーのしくみ

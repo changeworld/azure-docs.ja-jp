@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 02/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8052f94755019d8ad3fe818d979d2eb7f8ba0a5e
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: e175a81efc1ab0950c1fda314efb206ff97a2b7f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83738763"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85385384"
 ---
 # <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>Azure AD B2C で電話番号要求変換を定義する
 
@@ -37,7 +37,7 @@ ms.locfileid: "83738763"
 
 この例では、値の型が `phoneNumber` のcellPhoneNumber 要求は、値の型が `string` の cellPhone 要求に変換されます。
 
-```XML
+```xml
 <ClaimsTransformation Id="PhoneNumberToString" TransformationMethod="ConvertPhoneNumberClaimToString">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="cellPhoneNumber" TransformationClaimType="phoneNumber" />
@@ -72,7 +72,7 @@ ms.locfileid: "83738763"
 
 この要求変換を使用すると、指定された文字列要求が有効な電話番号であることが保証されます。 そうでない場合は、エラー メッセージがスローされます。 次の例では、**phoneString** ClaimType が実際に有効な電話番号であることを確認してから、標準の Azure AD B2C 形式で電話番号を返します。 そうでない場合は、エラー メッセージがスローされます。
 
-```XML
+```xml
 <ClaimsTransformation Id="ConvertStringToPhoneNumber" TransformationMethod="ConvertStringToPhoneNumberClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="phoneString" TransformationClaimType="phoneNumberString" />
@@ -86,7 +86,7 @@ ms.locfileid: "83738763"
 
 この要求変換を含む検証技術プロファイルを呼び出すセルフアサート技術プロファイルで、エラー メッセージを定義できます。
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignup-Phone">
   <Metadata>
     <Item Key="UserMessageIfClaimsTransformationInvalidPhoneNumber">Custom error message if the phone number is not valid.</Item>
@@ -132,7 +132,7 @@ ms.locfileid: "83738763"
 
 次の例では、電話番号を国内番号と国/地域コードに分割しようとしています。 電話番号が有効な場合、電話番号は国内番号によって上書きされます。 電話番号が有効でない場合、例外はスローされず、電話番号の元の値がそのまま使用されます。
 
-```XML
+```xml
 <ClaimsTransformation Id="GetNationalNumberAndCountryCodeFromPhoneNumberString" TransformationMethod="GetNationalNumberAndCountryCodeFromPhoneNumberString">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="phoneNumber" />
@@ -150,7 +150,7 @@ ms.locfileid: "83738763"
 
 この要求変換を含む検証技術プロファイルを呼び出すセルフアサート技術プロファイルで、エラー メッセージを定義できます。
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignup-Phone">
   <Metadata>
     <Item Key="UserMessageIfPhoneNumberParseFailure">Custom error message if the phone number is not valid.</Item>

@@ -1,6 +1,6 @@
 ---
-title: CLI:アプリを SQL データベースに接続する
-description: Azure CLI を使用して App Service アプリのデプロイと管理を自動化する方法について説明します。 このサンプルでは、SQL データベースにアプリを接続する方法を紹介しています。
+title: CLI:アプリを SQL Database に接続する
+description: Azure CLI を使用して App Service アプリのデプロイと管理を自動化する方法について説明します。 このサンプルでは、SQL Database にアプリを接続する方法を紹介しています。
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 7c2efdd0-f553-4038-a77a-e953021b3f77
@@ -9,16 +9,16 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18
-ms.openlocfilehash: aa922930314d630e1aece004bab0c74adaf8eb2f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 297ef15cbf2b8e261d38dabe3a91cb26f3b449d2
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015490"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250742"
 ---
-# <a name="connect-an-app-service-app-to-a-sql-database-using-cli"></a>CLI を使用して App Service アプリを SQL データベースに接続する
+# <a name="connect-an-app-service-app-to-sql-database-using-cli"></a>CLI を使用して App Service アプリを SQL Database に接続する
 
-このサンプル スクリプトでは、Azure SQL データベースと App Service アプリを作成します。 その後、アプリの設定を使用して SQL データベースをアプリにリンクします。
+このサンプル スクリプトでは、Azure SQL Database のデータベースと App Service アプリを作成します。 その後、アプリの設定を使用してデータベースをアプリにリンクします。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

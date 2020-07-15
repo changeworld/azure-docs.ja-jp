@@ -24,27 +24,6 @@
       items:
         - name: Helm を使用した開発
           href: quickstart-helm.md
-        - name: Azure Dev Spaces
-          expanded: true
-          items:
-            - name: チーム開発に Azure Dev Spaces を使用する
-              href: ../dev-spaces/quickstart-team-development.md
-              maintainContext: true
-            - name: Visual Studio Code の使用
-              href: ../dev-spaces/quickstart-netcore.md
-              maintainContext: true
-            - name: Visual Studio を使用する
-              href: ../dev-spaces/quickstart-netcore-visualstudio.md
-              maintainContext: true
-            - name: CLI の使用
-              href: ../dev-spaces/quickstart-cli.md
-              maintainContext: true
-            - name: Azure Dev Spaces で Java を使用する
-              href: ../dev-spaces/quickstart-java.md
-              maintainContext: true
-            - name: Azure Dev Spaces で Node.js を使用する
-              href: ../dev-spaces/quickstart-nodejs.md
-              maintainContext: true
 - name: チュートリアル
   items:
     - name: 1 - AKS 用にアプリケーションを準備する
@@ -72,7 +51,7 @@
       href: concepts-clusters-workloads.md
     - name: アクセスと ID
       href: concepts-identity.md
-    - name: Security
+    - name: セキュリティ
       href: concepts-security.md
       items: null
     - name: ネットワーク
@@ -153,6 +132,8 @@
           href: upgrade-cluster.md
         - name: アップタイム SLA を使用する
           href: uptime-sla.md
+        - name: 近接配置グループの使用 (プレビュー)
+          href: reduce-latency-ppg.md
         - name: ノード イメージのアップグレード (プレビュー)
           href: node-image-upgrade.md
         - name: ノードの OS の更新プログラムの処理
@@ -247,6 +228,8 @@
           href: control-kubeconfig-access.md
         - name: ネットワーク ポリシーによるポッドのトラフィックのセキュリティ保護
           href: use-network-policies.md
+        - name: Azure Policy を使用したポッドのセキュリティ保護 (プレビュー)
+          href: use-pod-security-on-azure-policy.md
         - name: ポッド セキュリティ ポリシーの使用 (プレビュー)
           href: use-pod-security-policies.md
         - name: API サーバーの許可された IP 範囲の定義
@@ -263,6 +246,8 @@
               href: managed-aad.md
             - name: Azure CLI の使用
               href: azure-ad-integration-cli.md
+        - name: Kubernetes 承認での Azure RBAC の使用 (プレビュー)
+          href: manage-azure-rbac.md
         - name: Azure AD の統合での Kubernetes RBAC の使用
           href: azure-ad-rbac.md
           maintainContext: true
@@ -272,6 +257,8 @@
           href: private-clusters.md
         - name: ディスクの BYOK
           href: azure-disk-customer-managed-keys.md
+        - name: ホストベースの暗号化の有効化
+          href: enable-host-encryption.md
     - name: 監視およびログ記録
       items:
         - name: コンテナーに対する Azure Monitor
@@ -297,59 +284,15 @@
         - name: Kubernetes ダッシュボードの使用
           href: kubernetes-dashboard.md
         - name: Windows Server コンテナー用の Dockerfile の作成
-          href: 'https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/manage-windows-dockerfile?context=/azure/aks/context/aks-context'
+          href: /virtualization/windowscontainers/manage-docker/manage-windows-dockerfile?context=/azure/aks/context/aks-context
         - name: Windows Server コンテナー用の Dockerfile の最適化
-          href: 'https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/optimize-windows-dockerfile?context=/azure/aks/context/aks-context'
+          href: /virtualization/windowscontainers/manage-docker/optimize-windows-dockerfile?context=/azure/aks/context/aks-context
     - name: アプリケーションの開発と実行
       items:
-        - name: Dev Spaces を使用した開発
-          href: ../dev-spaces/azure-dev-spaces.md
-          maintainContext: true
-          items:
-            - name: Java (VS Code と CLI)
-              items:
-                - name: 1 - はじめに
-                  href: ../dev-spaces/get-started-java.md
-                  maintainContext: true
-                - name: 2 - マルチサービス開発
-                  href: ../dev-spaces/multi-service-java.md
-                  maintainContext: true
-                - name: 3 - チーム開発
-                  href: ../dev-spaces/team-development-java.md
-                  maintainContext: true
-            - name: .NET Core (VS Code と CLI)
-              items:
-                - name: 1 - はじめに
-                  href: ../dev-spaces/get-started-netcore.md
-                  maintainContext: true
-                - name: 2 - マルチサービス開発
-                  href: ../dev-spaces/multi-service-netcore.md
-                  maintainContext: true
-                - name: 3 - チーム開発
-                  href: ../dev-spaces/team-development-netcore.md
-                  maintainContext: true
-            - name: .NET Core (Visual Studio 2017)
-              items:
-                - name: 1 - はじめに
-                  href: ../dev-spaces/get-started-netcore-visualstudio.md
-                  maintainContext: true
-                - name: 2 - マルチサービス開発
-                  href: ../dev-spaces/multi-service-netcore-visualstudio.md
-                  maintainContext: true
-                - name: 3 - チーム開発
-                  href: ../dev-spaces/team-development-netcore-visualstudio.md
-                  maintainContext: true
-            - name: Node.js (VS Code と CLI)
-              items:
-                - name: 1 - はじめに
-                  href: ../dev-spaces/get-started-nodejs.md
-                  maintainContext: true
-                - name: 2 - マルチサービス開発
-                  href: ../dev-spaces/multi-service-nodejs.md
-                  maintainContext: true
-                - name: 3 - チーム開発
-                  href: ../dev-spaces/team-development-nodejs.md
-                  maintainContext: true
+        - name: Visual Studio Code を使用して Local Process with Kubernetes を利用する (プレビュー)
+          href: ../dev-spaces/how-to/local-process-kubernetes-vs-code.md
+        - name: Visual Studio で Local Process with Kubernetes を使用する (プレビュー)
+          href: ../dev-spaces/how-to/local-process-kubernetes-visual-studio.md
         - name: 既存のアプリケーションを Helm でインストールする
           href: kubernetes-helm.md
         - name: OpenFaaS の使用

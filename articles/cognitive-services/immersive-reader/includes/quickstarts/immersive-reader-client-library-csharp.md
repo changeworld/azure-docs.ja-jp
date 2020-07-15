@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/20/2020
 ms.author: pasta
-ms.openlocfilehash: 2b6f4bb707d6c5c07dd6a1205ce7be542a220f17
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: a5bd7b3e6262fa21865f04a6b65d1a75faafefa4
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84268671"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86038357"
 ---
 [イマーシブ リーダー](https://www.onenote.com/learningtools)は、読解力向上のために実証済みの手法を実装する、包括的に設計されたツールです。
 
@@ -305,7 +305,8 @@ _Views\Home\Index.cshtml_ の末尾に、次のコードを追加します。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Node.js クイックスタート](../../quickstart-nodejs.md)を参照して、Node.js を使用してイマーシブ リーダー クライアント ライブラリで他にできることを確認する
+* [Node.js クイックスタート](../../tutorial-nodejs.md)を参照して、Node.js を使用してイマーシブ リーダー クライアント ライブラリで他にできることを確認する
+* [Android チュートリアル](../../tutorial-android.md)を参照して、Android 用の Java または Kotlin を使用してイマーシブ リーダー SDK で他にできることを確認する
+* [iOS チュートリアル](../../tutorial-ios.md)を参照して、iOS 用の Swift を使用してイマーシブ リーダー SDK で他にできることを確認する
 * [Python チュートリアル](../../tutorial-python.md)を参照して、Python を使用してイマーシブ リーダー クライアント ライブラリで他にできることを確認する
-* [iOS チュートリアル](../../tutorial-ios-picture-immersive-reader.md)を参照して、Swift を使用してイマーシブ リーダー クライアント ライブラリで他にできることを確認する
 * [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) と [Immersive Reader SDK リファレンス](../../reference.md)を探索する

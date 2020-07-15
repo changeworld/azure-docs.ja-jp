@@ -5,37 +5,21 @@ author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: quickstart
 ms.workload: infrastructure
-ms.date: 11/05/2019
+ms.date: 06/25/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6bf9a89a4806db53797191336578ef9148886181
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5189a9dc8cd83877b4797fd828e9c9f6da8d1b93
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81759243"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392850"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>クイック スタート:Azure portal で Linux 仮想マシンを作成する
 
 Azure 仮想マシン (VM) は、Azure portal で作成できます。 Azure portal は、Azure リソースを作成するためのブラウザーベースのユーザー インターフェイスです。 このクイックスタートでは、Azure portal を使用して、Ubuntu 18.04 LTS を実行する Linux 仮想マシン (VM) をデプロイする方法を示します。 また、VM の動作を確認するために、VM に SSH 接続し、NGINX Web サーバーをインストールします。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-
-## <a name="create-ssh-key-pair"></a>SSH キー ペアの作成
-
-このクイック スタートを完了するには、SSH キー ペアが必要です。 既存の SSH キーの組がある場合は、この手順をスキップできます。
-
-Bash シェルを開き、[ssh-keygen](https://www.ssh.com/ssh/keygen/) を使用して SSH キー ペアを作成します。 Bash シェルがローカル コンピューターにない場合は、[Azure Cloud Shell](https://shell.azure.com/bash) を使用してください。
-
-
-1. [Azure portal](https://portal.azure.com) にサインインします。
-1. ページの上部にあるメニューで、`>_` アイコンを選択して Cloud Shell を開きます。
-1. CloudShell の左上に "**Bash**" と表示されていることを確認します。 PowerShell と表示されている場合は、ドロップダウンを使用して **[Bash]** を選択し、 **[確認]** を選択して Bash シェルに変更します。
-1. 「`ssh-keygen -t rsa -b 2048`」と入力して ssh キーを作成します。 
-1. キー ペアを保存するファイルを入力するように求められます。 そのまま **Enter** キーを押すと、角かっこで囲まれて表示されている既定の場所に保存されます。 
-1. パスフレーズを入力するように求められます。 SSH キーのパスフレーズを入力するか、**Enter** キーを押してパスフレーズなしで続行することができます。
-1. `ssh-keygen` コマンドによって、公開キーと秘密キーが `id_rsa` の既定の名前で `~/.ssh directory` に生成されます。 このコマンドからは、公開キーの完全パスが返されます。 「`cat ~/.ssh/id_rsa.pub`」と入力して `cat` に公開キーのパスを指定すれば、その内容が表示されます。
-1. この記事の後半で使用するために、このコマンドの出力をコピーし、どこかに保存してください。 これは公開キーです。VM にログインするために管理者アカウントを構成するときに必要になります。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -54,7 +38,11 @@ Bash シェルを開き、[ssh-keygen](https://www.ssh.com/ssh/keygen/) を使�
 
     ![[Instance details] (インスタンスの詳細) セクション](./media/quick-create-portal/instance-details.png)
 
-1. **[管理者アカウント]** で、 **[SSH 公開キー]** を選択し、ユーザー名を入力して、公開キーを貼り付けます。 公開キーの先頭または末尾の空白はすべて削除します。
+1. **[管理者アカウント]** で **[SSH 公開キー]** を選択します。
+
+1. **[ユーザー名]** に「*azureuser*」と入力します。
+
+1. **[SSH public key source]\(SSH 公開キー ソース\)** では、 **[新しいキー ペアの生成]** を既定値のまま残し、 **[Key pair name]\(キー ペアの名前\)** に「*myKey*」と入力します。
 
     ![[Administrator account] (管理者アカウント)](./media/quick-create-portal/administrator-account.png)
 
@@ -66,24 +54,29 @@ Bash シェルを開き、[ssh-keygen](https://www.ssh.com/ssh/keygen/) を使�
 
 1. **[仮想マシンの作成]** ページで、これから作成しようとしている VM の詳細を確認できます。 準備ができたら **[作成]** を選択します。
 
-VM がデプロイされるまでに数分かかります。 デプロイが完了したら、次のセクションに移動してください。
+1. **[新しいキー ペアの生成]** ウィンドウが開いたら、 **[Download private key and create resource]\(秘密キーをダウンロードし、リソースを作成する\)** を選択します。 キー ファイルは **myKey.pem** としてダウンロードされます。 `.pem` ファイルがダウンロードされた場所を必ず把握してください。そのパスが次の手順で必要になります。
 
-    
+1. デプロイが完了したら、 **[リソースに移動]** を選択します。
+
+1. 新しい VM のページで、パブリック IP アドレスを選択し、それをクリップボードにコピーします。
+
+
+    ![パブリック IP アドレスをコピーする](./media/quick-create-portal/ip-address.png)
+
 ## <a name="connect-to-virtual-machine"></a>仮想マシンへの接続
 
 VM との SSH 接続を作成します。
 
-1. VM の概要ページの **[接続]** ボタンを選択します。 
+1. Mac または Linux コンピューターを使用している場合、Bash プロンプトを開きます。 Windows コンピューターを使用している場合、PowerShell プロンプトを開きます。 
 
-    ![ポータル 9](./media/quick-create-portal/portal-quick-start-9.png)
+1. プロンプトで、仮想マシンへの SSH 接続を開きます。 IP アドレスをご自分の VM のものに置換し、`.pem` のパスを、キー ファイルがダウンロードされた場所に置換します。
 
-2. **[Connect to virtual machine]\(仮想マシンへの接続\)** ページで、ポート 22 を介して IP アドレスで接続する既定のオプションをそのまま使用します。 **[VM ローカル アカウントを使用してログインする]** に、接続コマンドが表示されます。 ボタンをクリックして、このコマンドをコピーします。 SSH 接続コマンドの例を次に示します。
+```console
+ssh -i .\Downloads\myKey1.pem azureuser@10.111.12.123
+```
 
-    ```bash
-    ssh azureuser@10.111.12.123
-    ```
-
-3. SSH キーの組の作成に使用したのと同じ bash シェルを使用して (Cloud Shell をもう一度開くには、`>_` を再度選択するか `https://shell.azure.com/bash` に移動する)、SSH 接続コマンドをシェルに貼り付け、SSH セッションを作成します。
+> [!TIP]
+> 作成した SSH キーは、次回 Azure で VM を作成するときに使用できます。 次回 VM を作成するときは、 **[SSH public key source]\(SSH 公開キー ソース\)** には **[Use a key stored in Azure]\(Azure に保存されているキーを使用する\)** を選択するだけです。 お使いのコンピューターには既に秘密キーがあります。そのため、何もダウンロードする必要はありません。
 
 ## <a name="install-web-server"></a>Web サーバーのインストール
 

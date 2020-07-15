@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 105a3996753a1d1c2d71846cc8bad574e4498acf
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 6a1dddfbcdbf2bd49586238872db15f1da5d7ce1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478610"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84457305"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Azure Cache for Redis のベスト プラクティス 
 次のベスト プラクティスに従うことにより、Azure Cache for Redis インスタンスを使用するときのパフォーマンスとコスト効率を最大限にできます。
@@ -38,6 +38,8 @@ ms.locfileid: "80478610"
  * **コストの高い操作を避けます** - 一部の Redis 操作 ([KEYS コマンド](https://redis.io/commands/keys)など) は、"*非常に*" コストが高く、避ける必要があります。  詳細については、[実行時間の長いコマンド](cache-troubleshoot-server.md#long-running-commands)に関連したいくつかの考慮事項を参照してください。
 
  * **TLS 暗号化を使用します** - Azure Cache for Redis の既定では、TLS で暗号化された通信が必要です。  現在、TLS バージョン 1.0、1.1、および 1.2 がサポートされています。  ただし、TLS 1.0 と 1.1 は業界全体で非推奨になる予定であるため、可能であれば TLS 1.2 を使用してください。  お使いのクライアント ライブラリまたはツールで TLS がサポートされていない場合は、[Azure portal](cache-configure.md#access-ports) または[管理 API](https://docs.microsoft.com/rest/api/redis/redis/update) を使用して、暗号化されていない接続を有効にすることができます。  暗号化された接続ができない場合は、キャッシュとクライアント アプリケーションを仮想ネットワークに配置することをお勧めします。  仮想ネットワーク キャッシュ シナリオで使用されるポートの詳細については、こちらの[表](cache-how-to-premium-vnet.md#outbound-port-requirements)を参照してください。
+ 
+ * **アイドル タイムアウト** - 現時点では、Azure Redis の接続のアイドル タイムアウトは 10 分間であるため、これは 10 分未満に設定する必要があります。
  
 ## <a name="memory-management"></a>メモリ管理
 Redis サーバー インスタンス内でのメモリ使用量に関連したいくつかの考慮すべき事項があります。  いくつかの例を次に示します。

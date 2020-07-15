@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: bbb2ddaa1fb84590f9dec1c84ac4bc87a8e03022
-ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
+ms.openlocfilehash: 91aaedba13dfd9c0a3ea06b3460beaa8ead20233
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82738118"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130450"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Azure 間の VM レプリケーションに関するエラーのトラブルシューティング
 
@@ -36,7 +36,7 @@ Replication couldn't be enabled for the virtual machine <VmName>.
 
 ### <a name="fix-the-problem"></a>問題の解決
 
-[Azure 課金のサポート](/azure/azure-portal/supportability/resource-manager-core-quotas-request)に連絡して、サブスクリプションで、必要なサイズの VM をターゲットの場所に作成できるようにします。 その後、失敗した操作をやり直してください。
+[Azure 課金のサポート](../azure-portal/supportability/resource-manager-core-quotas-request.md)に連絡して、サブスクリプションで、必要なサイズの VM をターゲットの場所に作成できるようにします。 その後、失敗した操作をやり直してください。
 
 ターゲットの場所に容量の制約がある場合は、その場所へのレプリケーションを無効にします。 次に、必要なサイズの VM を作成できるだけのクォータがサブスクリプションに確保されている別の場所へのレプリケーションを有効にします。
 
@@ -202,7 +202,7 @@ Office 365 認証と ID IP4 エンドポイントへの接続を確立できま�
 #### <a name="fix-the-problem"></a>問題の解決
 
 Azure Site Recovery では、認証のために Office 365 の IP 範囲にアクセスする必要がありました。
-Azure ネットワーク セキュリティ グループ (NSG) 規則またはファイアウォール プロキシを使用して VM 上で発信ネットワーク接続を制御している場合、Azure Active Directory (AAD) へのアクセスを許可するには [AAD サービス タグ](/azure/virtual-network/security-overview#service-tags)に基づく NSG 規則を確実に使用してください。 IP アドレスベースの NSG 規則はサポートしなくなりました。
+Azure ネットワーク セキュリティ グループ (NSG) 規則またはファイアウォール プロキシを使用して VM 上で発信ネットワーク接続を制御している場合、Azure Active Directory (AAD) へのアクセスを許可するには [AAD サービス タグ](../virtual-network/security-overview.md#service-tags)に基づく NSG 規則を確実に使用してください。 IP アドレスベースの NSG 規則はサポートしなくなりました。
 
 ### <a name="issue-3-site-recovery-configuration-failed-151197"></a>問題 3:Site Recovery の構成に失敗しました (151197)
 
@@ -260,8 +260,8 @@ Azure data disk <DiskName> <DiskURI> with logical unit number <LUN> <LUNValue> w
 
 データ ディスクが初期化されていることを確認し、操作を再試行します。
 
-- **Windows**:[新しいディスクを接続し、初期化する](/azure/virtual-machines/windows/attach-managed-disk-portal)。
-- **Linux**:[Linux で新しいデータ ディスクを初期化する](/azure/virtual-machines/linux/add-disk)。
+- **Windows**:[新しいディスクを接続し、初期化する](../virtual-machines/windows/attach-managed-disk-portal.md)。
+- **Linux**:[Linux で新しいデータ ディスクを初期化する](../virtual-machines/linux/add-disk.md)。
 
 問題が解決しない場合は、サポートにお問い合わせください。
 

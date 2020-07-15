@@ -2,18 +2,18 @@
 title: Azure Marketplace での仮想マシンのオファー発行ガイド
 description: この記事では、Azure Marketplace からデプロイされる仮想マシンとソフトウェアの無料試用版を発行するための要件について説明します。
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: iqshahmicrosoft
+ms.author: iqshah
 ms.date: 04/15/2020
-ms.author: dsindona
-ms.openlocfilehash: a01c8658ff4929d07cd185dcea45393cfe3b2a17
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 2d615e81891d68327b3225138495262d4eab9aa3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858302"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116728"
 ---
 # <a name="publishing-guide-for-virtual-machine-offers"></a>仮想マシンのオファー発行ガイド
 
@@ -54,7 +54,7 @@ IaaS (サービスとしてのインフラストラクチャ) アプリまたは
 | 要件 | 詳細 |  
 |:--- |:--- | 
 | 請求/メータリング | 対象の VM は、BYOL または従量課金制の月額請求をサポートしている必要があります。 |  
-| Azure と互換性がある仮想ハード ディスク (VHD) | VM は、Windows または Linux 上に構築されている必要があります。 VHD の作成の詳細については、以下を参照してください。 <ul> <li>[Azure で動作保証済みの Linux ディストリビューション](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) (Linux VHD 用)。</li> <li>[Azure と互換性のある VHD の作成](./partner-center-portal/azure-vm-create-offer.md) (Windows VHD 用)。</li> </ul> |  
+| Azure と互換性がある仮想ハード ディスク (VHD) | VM は、Windows または Linux 上に構築されている必要があります。 VHD の作成の詳細については、以下を参照してください。 <ul> <li>[Azure で動作保証済みの Linux ディストリビューション](../virtual-machines/linux/endorsed-distros.md) (Linux VHD 用)。</li> <li>[Azure と互換性のある VHD の作成](./partner-center-portal/azure-vm-create-offer.md) (Windows VHD 用)。</li> </ul> |  
 
 >[!Note]
 >クラウド ソリューション プロバイダー (CSP) のパートナー チャネル オプトインが利用できるようになりました。 Microsoft CSP パートナー チャネルを通じたオファーのマーケティングの詳細については、「[クラウド ソリューション プロバイダー](./cloud-solution-providers.md)」を参照してください。

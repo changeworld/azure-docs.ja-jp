@@ -1,9 +1,9 @@
 ---
 title: Azure Key Vault を使用して SQL TDE を有効にする
-titleSuffix: Azure SQL Database & Azure Synapse Analytics
-description: PowerShell または CLI を使用して、保存時の暗号化に Transparent Data Encryption (TDE) を使用するように Azure SQL データベースと Azure Synapse Analytics を構成する方法について説明します。
+titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse Analytics
+description: PowerShell または Azure CLI を使用して、保存時の暗号化に Transparent Data Encryption (TDE) を使用するように Azure SQL Database と Azure Synapse Analytics を構成する方法について説明します。
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: seo-lt-2019 sqldbrb=1
 ms.devlang: ''
@@ -12,17 +12,17 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 7a71d4f2d724584509f25c7ae458ed6ab1b415af
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ac72e3e232ec17c4c4d810f6d2c7fed6fa84fd02
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84039873"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85981330"
 ---
-# <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell と CLI:Azure Key Vault のユーザー管理キーを使用して Transparent Data Encryption を有効にする
+# <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell と Azure CLI:Azure Key Vault のユーザー管理キーを使用して Transparent Data Encryption を有効にする
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-この記事では、Azure SQL Database または Azure Synapse Analytics (旧称 SQL DW) で、Transparent Data Encryption (TDE) に Azure Key Vault のキーを使用する方法について説明します。 Bring Your Own Key (BYOK) のサポートのため、Azure Key Vault と統合される TDE の詳細については、[Azure Key Vault のユーザー管理キーを使用する TDE](transparent-data-encryption-byok-overview.md) に関するページを参照してください。
+この記事では、Azure SQL Database または Azure Synapse Analytics (旧称 SQL Data Warehouse) で、Transparent Data Encryption (TDE) に Azure Key Vault のキーを使用する方法について説明します。 Bring Your Own Key (BYOK) のサポートのため、Azure Key Vault と統合される TDE の詳細については、[Azure Key Vault のユーザー管理キーを使用する TDE](transparent-data-encryption-byok-overview.md) に関するページを参照してください。
 
 ## <a name="prerequisites-for-powershell"></a>PowerShell の前提条件
 
@@ -47,9 +47,9 @@ Key Vault の詳細については、「[PowerShell を使用した Key Vault �
 > [!IMPORTANT]
 > PowerShell Azure Resource Manager (RM) モジュールは引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 AzureRM モジュールのバグ修正は、少なくとも 2020 年 12 月までは引き続き受け取ることができます。  Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。 その互換性の詳細については、「[新しい Azure PowerShell Az モジュールの概要](/powershell/azure/new-azureps-module-az)」を参照してください。
 
-## <a name="assign-an-azure-ad-identity-to-your-server"></a>Azure AD ID をサーバーに割り当てる
+## <a name="assign-an-azure-active-directory-azure-ad-identity-to-your-server"></a>サーバーに Azure Active Directory (Azure AD) ID を割り当てる
 
-既存の[サーバー](logical-servers.md)がある場合は、次のコマンドを使用して Azure AD ID をサーバーに追加します。
+既存の[サーバー](logical-servers.md)がある場合は、次を使用してサーバーに Azure Active Directory (Azure AD) ID を追加します。
 
    ```powershell
    $server = Set-AzSqlServer -ResourceGroupName <SQLDatabaseResourceGroupName> -ServerName <LogicalServerName> -AssignIdentity
@@ -121,11 +121,11 @@ Get-AzSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName <SQLDataba
    -ServerName <LogicalServerName> -DatabaseName <DatabaseName>  
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-必要な Command-Line Interface バージョン 2.0 移行をインストールして Azure サブスクリプションに接続するには、「[Azure クロスプラットフォーム コマンド ライン インターフェイス 2.0 のインストールと構成](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
+必要なバージョンの Azure CLI (バージョン 2.0 以降) をインストールして Azure サブスクリプションに接続するには、[Azure クロスプラットフォーム コマンド ライン インターフェイス 2.0 のインストールと構成](https://docs.microsoft.com/cli/azure/install-azure-cli)に関する記事をご覧ください。
 
-Key Vault の詳細については、「[CLI 2.0 を使用した Key Vault の管理](../../key-vault/general/manage-with-cli2.md)」と「[CLI で Key Vault の論理的な削除を使用する方法](../../key-vault/general/soft-delete-cli.md)」を参照してください。
+Key Vault の詳細については、[CLI 2.0 を使用した Key Vault の管理](../../key-vault/general/manage-with-cli2.md)と [CLI で Key Vault の論理的な削除を使用する方法](../../key-vault/general/soft-delete-cli.md)に関する記事をご覧ください。
 
 ## <a name="assign-an-azure-ad-identity-to-your-server"></a>Azure AD ID をサーバーに割り当てる
 
@@ -207,7 +207,7 @@ az sql db tde show --database <dbname> --server <servername> --resource-group <r
    Remove-AzSqlServerKeyVaultKey -KeyId <KeyVaultKeyId> -ServerName <LogicalServerName> -ResourceGroupName <SQLDatabaseResourceGroupName>
    ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 - データベースの一般的な設定については、「[az sql](/cli/azure/sql)」を参照してください。
 
@@ -229,7 +229,7 @@ az sql db tde show --database <dbname> --server <servername> --resource-group <r
    Get-AzSubscription -SubscriptionId <SubscriptionId>
    ```
 
-   # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+   # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
    ```powershell
    az account show - s <SubscriptionId>

@@ -4,12 +4,12 @@ description: プールやタスクなど Azure Batch アカウント リソー�
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: bd8265d18f618980af466e193b41cfcc03999c47
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: abf9ef53d3f2e3ffeffabfe9b7c77dc5c5debec3
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220341"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145088"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch の診断の評価と監視用のメトリック、アラート、およびログ
  
@@ -70,7 +70,7 @@ Azure portal でメトリック アラートを構成するには:
 
 メトリック アラートの作成の詳細については、「[Azure Monitor でのメトリック アラートのしくみを理解する](../azure-monitor/platform/alerts-metric-overview.md)」および「[Azure Monitor を使用してメトリック アラートを作成、表示、管理する](../azure-monitor/platform/alerts-metric.md)」を参照してください。
 
-リアルタイムに近い通知は、Azure Monitor [REST API](https://docs.microsoft.com/rest/api/monitor/) を使用して構成することもできます。 詳細については、「[Microsoft Azure のアラートの概要](../azure-monitor/platform/alerts-overview.md)」を参照してください。 ジョブ、タスク、またはプール固有の情報をアラートに含めるには、「[Azure Monitor のアラートを使用してイベントに応答する](../azure-monitor/learn/tutorial-response.md)」の検索クエリに関する情報を参照してください。
+リアルタイムに近い通知は、Azure Monitor [REST API](/rest/api/monitor/) を使用して構成することもできます。 詳細については、「[Microsoft Azure のアラートの概要](../azure-monitor/platform/alerts-overview.md)」を参照してください。 ジョブ、タスク、またはプール固有の情報をアラートに含めるには、「[Azure Monitor のアラートを使用してイベントに応答する](../azure-monitor/learn/tutorial-response.md)」の検索クエリに関する情報を参照してください。
 
 ## <a name="batch-diagnostics"></a>Batch 診断
 
@@ -87,8 +87,8 @@ Azure portal でメトリック アラートを構成するには:
 
 または、次のことも可能です。
 
-- Batch 診断ログ イベントを [Azure Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md) にストリーミングします。 Event Hubs は、毎秒数百万のイベントを取り込み、任意のリアルタイム分析プロバイダーを使用して変換および格納できます。 
-- 診断ログを [Azure Monitor ログ](../log-analytics/log-analytics-overview.md)に送信して分析したり、Power BI または Excel で分析するためにエクスポートしたりできます。
+- Batch 診断ログ イベントを [Azure Event Hub](../event-hubs/event-hubs-about.md) にストリーミングします。 Event Hubs は、毎秒数百万のイベントを取り込み、任意のリアルタイム分析プロバイダーを使用して変換および格納できます。 
+- 診断ログを [Azure Monitor ログ](../azure-monitor/log-query/log-query-overview.md)に送信して分析したり、Power BI または Excel で分析するためにエクスポートしたりできます。
 
 > [!NOTE]
 > Azure サービスで診断ログ データの格納または処理を行うには、追加料金が発生することがあります。 
@@ -135,7 +135,7 @@ BATCHACCOUNTS/MYBATCHACCOUNT/y=2018/m=03/d=05/h=22/m=00/PT1H.json
 { "Tenant": "65298bc2729a4c93b11c00ad7e660501", "time": "2019-08-22T20:59:13.5698778Z", "resourceId": "/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/BATCHACCOUNTS/MYBATCHACCOUNT/", "category": "ServiceLog", "operationName": "PoolResizeCompleteEvent", "operationVersion": "2017-06-01", "properties": {"id":"MYPOOLID","nodeDeallocationOption":"Requeue","currentDedicatedNodes":10,"targetDedicatedNodes":100,"currentLowPriorityNodes":0,"targetLowPriorityNodes":0,"enableAutoScale":false,"isAutoPool":false,"startTime":"2019-08-22 20:50:59.522","endTime":"2019-08-22 20:59:12.489","resultCode":"Success","resultMessage":"The operation succeeded"}}
 ```
 
-ストレージ アカウント内の診断ログのスキーマの詳細については、「[Azure リソース ログをストレージ アカウントにアーカイブする](../azure-monitor/platform/resource-logs-collect-storage.md#schema-of-platform-logs-in-storage-account)」を参照してください。 ストレージ アカウント内のログにプログラムでアクセスするには、Storage API を使用します。
+ストレージ アカウント内の診断ログのスキーマの詳細については、「[Azure リソース ログをストレージ アカウントにアーカイブする](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)」を参照してください。 ストレージ アカウント内のログにプログラムでアクセスするには、Storage API を使用します。
 
 ### <a name="service-log-events"></a>サービス ログ イベント
 
@@ -178,4 +178,3 @@ Batch サービスによって生成されるサービス ログ イベントに
 
 - Batch ソリューションの構築に使用できる [Batch API とツール](batch-apis-tools.md)について学習します。
 - [Batch ソリューション](monitoring-overview.md)の詳細を確認します。
-

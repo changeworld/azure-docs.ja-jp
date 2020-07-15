@@ -3,12 +3,12 @@ title: Azure Application Insights の IP アドレスの収集 | Microsoft Docs
 description: Azure Application Insights を使用して IP アドレスと位置情報を処理する方法について
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 969061ec89ddd0f13caa675bc324207c6c5d8843
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c7a4506c6a4246edc007a5ea2158998b472ec316
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77656519"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807130"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>位置情報と IP アドレスの処理
 
@@ -235,4 +235,4 @@ requests
 
 * Application Insights での[個人データ収集](https://docs.microsoft.com/azure/azure-monitor/platform/personal-data-mgmt)について、さらに学習します。
 
-* Application Insights の [IP アドレス収集](https://apmtips.com/blog/2016/07/05/client-ip-address/)のしくみについて、さらに学習します (これは、Microsoft のエンジニアの 1 人が書き込んだ外部の古いブログ投稿です。 IP アドレスが `0.0.0.0` として記録される現在の既定の動作より前のものですが、組み込みの `ClientIpHeaderTelemetryInitializer` のメカニズムについてより詳しく説明されています)。
+* Application Insights の [IP アドレス収集](https://apmtips.com/posts/2016-07-05-client-ip-address/)のしくみについて、さらに学習します (これは、Microsoft のエンジニアの 1 人が書き込んだ外部の古いブログ投稿です。 IP アドレスが `0.0.0.0` として記録される現在の既定の動作より前のものですが、組み込みの `ClientIpHeaderTelemetryInitializer` のメカニズムについてより詳しく説明されています)。

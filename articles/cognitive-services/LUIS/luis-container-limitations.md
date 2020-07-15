@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 2061d69fdfd13683ee722951cc7aaedcb1e1750a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 5c76e45f09a0f432d2775eb19d3dcaa668294e6f
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745372"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672665"
 ---
 # <a name="language-understanding-luis-container-limitations"></a>Language Understanding (LUIS) コンテナーの制限
 
@@ -49,6 +49,7 @@ LUIS コンテナーは、LUIS によって適切に[サポートされる言語
 | Language | Locale | 事前構築済みのドメイン | 事前構築済みのエンティティ | フレーズ リストのレコメンデーション | \**[テキスト分析](../text-analytics/language-support.md)<br>(センチメントと<br>キーワード)|
 |--|--|:--:|:--:|:--:|:--:|
 | 英語 (米国) | `en-US` | ✔️ | ✔️ | ✔️ | ✔️ |
+| アラビア語 (プレビュー - 現代標準アラビア語) |`ar-AR`|❌|❌|❌|❌|
 | *[中国語](#chinese-support-notes) |`zh-CN` | ✔️ | ✔️ | ✔️ | ❌ |
 | フランス語 (フランス) |`fr-FR` | ✔️ | ✔️ | ✔️ | ✔️ |
 | フランス語 (カナダ) |`fr-CA` | ❌ | ❌ | ❌ | ✔️ |
@@ -56,9 +57,12 @@ LUIS コンテナーは、LUIS によって適切に[サポートされる言語
 | ヒンディー語 | `hi-IN`| ❌ | ❌ | ❌ | ❌ |
 | イタリア語 |`it-IT` | ✔️ | ✔️ | ✔️ | ✔️ |
 | 韓国語 |`ko-KR` | ✔️ | ❌ | ❌ | *キー フレーズ*のみ |
+| マラーティー語 | `mr-IN`|❌|❌|❌|❌|
 | ポルトガル語 (ブラジル) |`pt-BR` | ✔️ | ✔️ | ✔️ | 一部のサブカルチャのみ |
 | スペイン語 (スペイン) |`es-ES` | ✔️ | ✔️ |✔️|✔️|
 | スペイン語 (メキシコ)|`es-MX` | ❌ | ❌ |✔️|✔️|
+| タミル語 | `ta-IN`|❌|❌|❌|❌|
+| テルグ語 | `te-IN`|❌|❌|❌|❌|
 | トルコ語 | `tr-TR` |✔️| ❌ | ❌ | *センチメント*のみ |
 
 [!INCLUDE [Chinese language support notes](includes/chinese-language-support-notes.md)]

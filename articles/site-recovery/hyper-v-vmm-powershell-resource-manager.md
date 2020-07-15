@@ -7,12 +7,12 @@ manager: rochakm
 ms.topic: article
 ms.date: 1/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: deef7bfdbc28d744cb81da59d3ffc13a1abee54d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d7a2d21dcd8c9474bdf068d7940e497333f35115
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77048617"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130216"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>PowerShell (Resource Manager) を使用して、Hyper-V VM のセカンダリ サイトへのディザスター リカバリーを設定する
 
@@ -23,9 +23,9 @@ ms.locfileid: "77048617"
 ## <a name="prerequisites"></a>前提条件
 
 - [シナリオのアーキテクチャとコンポーネント](hyper-v-vmm-architecture.md)を確認する。
-- すべてのコンポーネントの[サポート要件](site-recovery-support-matrix-to-sec-site.md)を確認する。
-- Virtual Machine Manager サーバーと Hyper-V ホストが[サポート要件](site-recovery-support-matrix-to-sec-site.md)に準拠していることを確認する。
-- レプリケートする VM が[レプリケートされるマシンのサポート要件](site-recovery-support-matrix-to-sec-site.md)に準拠していることを確認する。
+- すべてのコンポーネントの[サポート要件](./vmware-physical-secondary-support-matrix.md)を確認する。
+- Virtual Machine Manager サーバーと Hyper-V ホストが[サポート要件](./vmware-physical-secondary-support-matrix.md)に準拠していることを確認する。
+- レプリケートする VM が[レプリケートされるマシンのサポート要件](./vmware-physical-secondary-support-matrix.md)に準拠していることを確認する。
 
 ## <a name="prepare-for-network-mapping"></a>ネットワーク マッピングを準備する
 
@@ -37,10 +37,10 @@ ms.locfileid: "77048617"
 
 次のように Virtual Machine Manager を準備します。
 
-- ソースおよびターゲットの Virtual Machine Manager サーバー上にそれぞれ [Virtual Machine Manager 論理ネットワーク](https://docs.microsoft.com/system-center/vmm/network-logical)があることを確認します。
+- ソースおよびターゲットの Virtual Machine Manager サーバー上にそれぞれ [Virtual Machine Manager 論理ネットワーク](/system-center/vmm/network-logical)があることを確認します。
   - ソース サーバー上の論理ネットワークは、Hyper-V ホストが配置されているソース クラウドと関連付けられている必要があります。
   - ターゲット サーバーの論理ネットワークは、ターゲット クラウドと関連付けられている必要があります。
-- ソースおよびターゲットの Virtual Machine Manager サーバー上にそれぞれ [VM ネットワーク](https://docs.microsoft.com/system-center/vmm/network-virtual)があることを確認します。 VM ネットワークは、各場所の論理ネットワークにリンクされている必要があります。
+- ソースおよびターゲットの Virtual Machine Manager サーバー上にそれぞれ [VM ネットワーク](/system-center/vmm/network-virtual)があることを確認します。 VM ネットワークは、各場所の論理ネットワークにリンクされている必要があります。
 - ソース Hyper-V ホスト上の VM をソース VM ネットワークに接続します。
 
 ## <a name="prepare-for-powershell"></a>PowerShell の準備

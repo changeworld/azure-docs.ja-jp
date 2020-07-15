@@ -12,22 +12,22 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 05/18/2020
+ms.date: 05/28/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c37850d2188f560b8eb8d0b16f5a1b2880a8b32e
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 7e10daab315fd20fb1f82ada2e17cef28bb6045f
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83740607"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608808"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-bamboo"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と EasySSO for Bamboo の統合
 
 このチュートリアルでは、EasySSO for Bamboo と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と EasySSO for Bamboo を統合すると、次のことができます。
 
-* EasySSO for Bamboo にアクセスできるユーザーを Azure AD で制御できます。
-* ユーザーが自分の Azure AD アカウントを使用して EasySSO for Bamboo に自動的にサインインできるように設定できます。
+* Bamboo にアクセスできるユーザーを Azure AD で制御できます。
+* ユーザーが自分の Azure AD アカウントを使用して Bamboo に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)」を参照してください。
@@ -57,6 +57,7 @@ Azure AD への EasySSO for Bamboo の統合を構成するには、ギャラリ
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**EasySSO for Bamboo**」と入力します。
 1. 結果のパネルから **[EasySSO for Bamboo]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
+
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-easysso-for-bamboo"></a>EasySSO for Bamboo の Azure AD シングル サインオンの構成とテスト
 
@@ -89,28 +90,32 @@ EasySSO for Bamboo で Azure AD SSO を構成してテストするには、次�
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    **[サインオン URL]** ボックスに、`https://<server-base-url>/` という形式で URL を入力します。
+    **[サインオン URL]** ボックスに、`https://<server-base-url>/login.jsp` という形式で URL を入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 この値を取得するには、[EasySSO for Bamboo クライアント サポート チーム](mailto:support@techtime.co.nz)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値の取得方法がわからない場合には、[EasySSO サポート チーム](mailto:support@techtime.co.nz)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. EasySSO for Bamboo アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
     ![image](common/default-attributes.png)
 
 1. その他に、EasySSO for Bamboo アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
-
+    
     | 名前 | ソース属性 |
-    | ---------------|  --------- |
-    | urn:oid:2.16.840.1.113730.3.1.241 | user.displayname |
-    | urn:oid:2.5.4.42 | User.givenname |
-    | urn:oid:2.5.4.4 | User.surname |
+    | ---------------| --------- |
     | urn:oid:0.9.2342.19200300.100.1.1 | user.userprincipalname |
-    | urn:oid:0.9.2342.19200300.100.1.3 | user.userprincipalname |
+    | urn:oid:0.9.2342.19200300.100.1.3 | User.mail |
+    | urn:oid:2.16.840.1.113730.3.1.241 | user.displayname |
+    | urn:oid:2.5.4.4 | User.surname |
+    | urn:oid:2.5.4.42 | User.givenname |
+    
+    Azure AD ユーザーに対して既に **sAMAccountName** を構成済みの場合には、**sAMAccountName** 属性に **urn:oid:0.9.2342.19200300.100.1.1** をマップする必要があります。
+    
+1. **[SAML によるシングル サインオンのセットアップ]** ページの **[SAML 署名証明書]** セクションで **[証明書 (Base64)]** または **[フェデレーション メタデータ XML]** オプションの **[ダウンロード]** リンクをクリックし、そのいずれかまたは両方をコンピューターに保存します。 これは、後で Bamboo EasySSO を構成するために必要になります。
 
-1. **[Set up single sign-on with SAML]\(SAML でシングル サインオンをセットアップします\)** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーして、お使いのコンピューターに保存します。
-
-    ![証明書のダウンロードのリンク](common/copy-metadataurl.png)
+    ![証明書のダウンロードのリンク](./media/easysso-for-bamboo-tutorial/certificate.png)
+    
+    EasySSO for Bamboo の構成を証明書を使って手動で実施する予定の場合には、他にも以下のセクションから**ログイン URL** と **Azure AD ID** をコピーし、コンピューターに保存しておく必要があります。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -144,54 +149,74 @@ EasySSO for Bamboo で Azure AD SSO を構成してテストするには、次�
 
 ## <a name="configure-easysso-for-bamboo-sso"></a>EasySSO for Bamboo SSO の構成
 
-1. 管理者権限で EasySSO for Bamboo インスタンスにサインインし、 **[Manage Apps]\(アプリの管理\)** セクションに移動します。
+1. 管理者権限で Atlassian Bamboo インスタンスにサインインし、 **[Manage Apps]\(アプリの管理\)** セクションに移動します。 
 
-    ![EasySSO for Bamboo の構成](./media/easysso-for-bamboo-tutorial/jira-admin-1.png)
+    ![[Manage Apps]\(アプリの管理\)](./media/easysso-for-bamboo-tutorial/bamboo-admin-1.png)
 
-1. **[EasySSO]** をクリックします。
+2. 左側で **EasySSO** を探し、クリックします。
 
-    ![EasySSO for Bamboo の構成](./media/easysso-for-bamboo-tutorial/jira-admin-2.png)
+    ![[EasySSO]](./media/easysso-for-bamboo-tutorial/bamboo-admin-2.png)
 
-1. **[SAML]** オプションを選択します。 これにより、SAML の構成セクションが表示されます。
+3. **[SAML]** オプションを選択します。 これにより、SAML の構成セクションが表示されます。
 
-    ![EasySSO for Bamboo の構成](./media/easysso-for-bamboo-tutorial/jira-admin-3.png)
+    ![SAML](./media/easysso-for-bamboo-tutorial/bamboo-admin-3.png)
 
-1. 上部の **[Certificates]\(証明書\)** タブを選択すると、次の画面が表示されるので、前の **Azure AD SSO** の構成手順で保存した**証明書 (Base64)** または**メタデータ ファイル**を見つけます。 続行する方法として、次の選択肢があります。
+4. 上部の **[Certificates]\(証明書\)** タブを選択すると、次の画面が表示されます。
 
-    ![EasySSO for Bamboo の構成](./media/easysso-for-bamboo-tutorial/jira-admin-4.png)
+    ![メタデータ URL](./media/easysso-for-bamboo-tutorial/bamboo-admin-4.png)
+
+5. **Azure AD SSO** の構成手順で保存した**証明書 (Base64)** または**メタデータ ファイル**を探します。 続行する方法として、次の選択肢があります。
 
     a. 自分のコンピューター上のローカル ファイルとしてダウンロードした、アプリのフェデレーション **メタデータ ファイル**を使用します。 **[Upload]\(アップロード\)** をクリックし、ご使用のオペレーティング システムに固有のファイルのアップロード ダイアログに従います
 
     **OR**
 
     b. (任意のプレーンテキスト エディターで) アプリのフェデレーション **メタデータ ファイル**を開き、ファイルの内容を確認してクリップボードにコピーします。 **[Input]\(入力\)** オプションを選択し、クリップボードの内容をテキスト フィールドに貼り付けます。
-
+ 
     **OR**
 
-    c. すべて手動で構成します。 (任意のプレーンテキスト エディターで) アプリのフェデレーション**証明書 (Base64)** を開き、ファイルの内容を確認してクリップボードにコピーします。 **[IdP Token Signing Certificates]\(IdP トークン署名証明書\)** テキスト フィールドに貼り付けます。 次に、 **[General]\(全般\)** タブに移動し、 **[POST Binding URL]\(POST バインディング URL\)** および **[Entity ID]\(エンティティ ID\)** フィールドに、前に保存した **[ログイン URL]** と **[Azure AD 識別子]** の値をそれぞれ入力します。
+    c.  すべて手動で構成します。 (任意のプレーンテキスト エディターで) アプリのフェデレーション**証明書 (Base64)** を開き、ファイルの内容を確認してクリップボードにコピーします。 **[IdP Token Signing Certificates]\(IdP トークン署名証明書\)** テキスト フィールドに貼り付けます。 次に、 **[General]\(全般\)** タブに移動し、 **[POST Binding URL]\(POST バインディング URL\)** および **[Entity ID]\(エンティティ ID\)** フィールドに、前に保存した **[ログイン URL]** と **[Azure AD 識別子]** の値をそれぞれ入力します。
+ 
+6. ページの下部にある **[Save]\(保存\)** ボタンをクリックします。 メタデータ ファイルまたは証明書ファイルの内容が構成フィールドで解析されていることを確認できます。 これで、EasySSO for Bamboo の構成は完了しました。
 
-1. ページの下部にある **[Save]\(保存\)** ボタンをクリックします。 メタデータ ファイルまたは証明書ファイルの内容が構成フィールドで解析されていることを確認できます。 これで、EasySSO for Bamboo の構成は完了しました。
+7. 最適なテスト エクスペリエンスを得るには、 **[Look & Feel]\(外観\)** タブに移動し、 **[SAML Login Button]\(SAML ログイン ボタン\)** オプションをオンにします。 これにより、Bamboo ログイン画面の独立したボタンが有効になり、Azure AD SAML 統合をエンド ツー エンドでテストできるようになります。 このボタンをオンのままにすることで、運用モードでの配置、色、および翻訳を構成することもできます。
 
-1. 最適なテスト エクスペリエンスを得るには、 **[Look & Feel]\(外観\)** タブに移動し、 **[SAML Login Button]\(SAML ログイン ボタン\)** オプションをオンにします。 これにより、EasySSO for Bamboo ログイン画面の独立したボタンが有効になり、Azure AD SAML 統合をエンド ツー エンドでテストできるようになります。 このボタンをオンのままにすることで、運用モードでの配置、色、および翻訳を構成することもできます。
-
-    ![EasySSO for Bamboo の構成](./media/easysso-for-bamboo-tutorial/jira-admin-5.png)
+    ![[Look & Feel]\(外観\)](./media/easysso-for-bamboo-tutorial/bamboo-admin-5.png)
 
     > [!NOTE]
     > 問題が発生した場合は、[EasySSO サポート チーム](mailto:support@techtime.co.nz)にお問い合わせください。
 
 ### <a name="create-easysso-for-bamboo-test-user"></a>EasySSO for Bamboo テスト ユーザーの作成
 
-このセクションでは、B.Simon というユーザーを EasySSO for Bamboo に作成します。 EasySSO for Bamboo では Just-In-Time ユーザー プロビジョニングがサポートされており、既定では**無効**になっています。 ユーザー プロビジョニングを有効にするには、EasySSO プラグイン構成の [General]\(全般\) セクションで、 **[Create user on successful login]\(ログイン成功時にユーザーを作成する\)** オプションを明示的にオンにする必要があります。 EasySSO for Bamboo にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
+このセクションでは、Britta Simon というユーザーを Bamboo に作成します。 EasySSO for Bamboo では Just-In-Time ユーザー プロビジョニングがサポートされており、既定では**無効**になっています。 ユーザー プロビジョニングを有効にするには、EasySSO プラグイン構成の [General]\(全般\) セクションで、 **[Create user on successful login]\(ログイン成功時にユーザーを作成する\)** オプションを明示的にオンにする必要があります。 Bamboo にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
-ただし、ユーザーが初めてログインした時点での自動ユーザー プロビジョニングを有効にしない場合は、EasySSO for Bamboo インスタンスが使用するバックエンド ユーザー ディレクトリ (LDAP や Atlassian Crowd など) にユーザーが存在する必要があります。
+ただし、ユーザーが初めてログインした時点での自動ユーザー プロビジョニングを有効にしない場合は、Bamboo インスタンスで使用するバックエンド ユーザー ディレクトリ (LDAP や Atlassian Crowd など) にユーザーが存在する必要があります。
 
-![ユーザー プロビジョニング](./media/easysso-for-bamboo-tutorial/jira-admin-6.png)
+![ユーザー プロビジョニング](./media/easysso-for-bamboo-tutorial/bamboo-admin-6.png)
 
-## <a name="test-sso"></a>SSO のテスト
+## <a name="test-sso"></a>SSO のテスト 
+
+### <a name="idp-initiated-workflow"></a>IdP-Initiated ワークフロー
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [EasySSO for Bamboo] タイルをクリックすると、SSO を設定した EasySSO for Bamboo に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [EasySSO for Bamboo] タイルをクリックすると、SSO を設定した Bamboo インスタンスに自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+
+### <a name="sp-initiated-workflow"></a>SP-Initiated ワークフロー
+
+このセクションでは、Bamboo の **[SAML Login]\(SAML ログイン\)** ボタンを使用して Azure AD のシングル サインオン構成をテストします。
+
+![ユーザーの SAML ログイン](./media/easysso-for-bamboo-tutorial/bamboo-admin-7.png)
+
+このシナリオは、Bamboo EasySSO の構成ページ (上記を参照) の **[Look & Feel]\(外観\)** で **[SAML Login Button]\(SAML ログイン ボタン\)** を有効にしていることが前提になっています。 既存のセッションとの干渉を避けるために、シークレット モードにしたブラウザーで Bamboo のログイン URL を開きます。 **[SAML Login]\(SAML ログイン\)** をクリックすると、Azure AD のユーザー認証フローにリダイレクトされます。 正常に完了すると、認証済みユーザーとして SAML を介して元の Bamboo インスタンスにリダイレクトされます。
+
+Azure AD からのリダイレクト後に、次の画面が表示される可能性があります。
+
+![EasySSO のエラー画面](./media/easysso-for-bamboo-tutorial/bamboo-admin-8.png)
+
+このような場合には、[こちらのページの手順]( https://techtime.co.nz/display/TECHTIME/EasySSO+How+to+get+the+logs#EasySSOHowtogetthelogs-RETRIEVINGTHELOGS)に従って **atlassian-bamboo.log** ファイルにアクセスする必要があります。 EasySSO エラー ページにある参照 ID を使って、エラーの詳細を確認できます。
+
+ログ メッセージの内容について疑問がある場合には、[EasySSO サポート チーム](mailto:support@techtime.co.nz)にお問い合わせください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

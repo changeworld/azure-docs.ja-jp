@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: e818de4885d3859199108d7d88e4cbcb215dc4cc
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 128504c59690476afef03aa82a03d69769968e99
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780744"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84431932"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>IoT Edge ソリューションを運用環境にデプロイするための準備を行う
 
@@ -218,7 +218,7 @@ Azure IoT Hub および IoT Edge の間の通信チャネルは、常にアウ�
 
    | URL (\* = ワイルドカード) | 送信 TCP ポート | 使用法 |
    | ----- | ----- | ----- |
-   | mcr.microsoft.com  | 443 | Microsoft コンテナー レジストリ |
+   | mcr.microsoft.com  | 443 | Microsoft Container Registry |
    | global.azure-devices-provisioning.net  | 443 | DPS でのアクセス (任意指定) |
    | \*.azurecr.io | 443 | 個人やサード パーティのコンテナー レジストリ |
    | \*.blob.core.windows.net | 443 | BLOB ストレージから Azure Container Registry イメージの差分をダウンロードする |
@@ -226,6 +226,10 @@ Azure IoT Hub および IoT Edge の間の通信チャネルは、常にアウ�
    | \*.docker.io  | 443 | Docker Hub でのアクセス (任意指定) |
 
 これらのファイアウォール規則の一部は Azure Container Registry から継承されます。 詳細については、「[ファイアウォールの内側から Azure コンテナー レジストリにアクセスする規則を構成する](../container-registry/container-registry-firewall-access-rules.md)」を参照してください。
+
+> [!NOTE]
+> REST エンドポイントとデータ エンドポイント間に一貫性のある FQDN を提供するために、**2020 年 6 月 15 日**以降、Microsoft Container Registry データ エンドポイントは `*.cdn.mscr.io` から `*.data.mcr.microsoft.com` に変更されます  
+> 詳細については、[Microsoft Container Registry クライアント ファイアウォール規則の構成](https://github.com/microsoft/containerregistry/blob/master/client-firewall-rules.md)に関する記事を参照してください
 
 パブリック コンテナー レジストリへのアクセスを許可するようにファイアウォールを構成しない場合は、「[プライベート レジストリにランタイム コンテナーを格納する](#store-runtime-containers-in-your-private-registry)」で説明されているように、イメージをプライベート コンテナー レジストリに格納することができます。
 

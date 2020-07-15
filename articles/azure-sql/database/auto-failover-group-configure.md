@@ -3,7 +3,7 @@ title: フェールオーバー グループを構成する
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Azure portal、Azure CLI、および PowerShell を使用して、Azure SQL Database (単一データベースとプールされたデータベースの両方) および SQL Managed Instance の自動フェールオーバー グループを構成する方法について説明します。
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: high-availability
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
-ms.openlocfilehash: 13ca1ed4abef1eb367239a60ee7fe3d40ffee8d5
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 6c85fce45bcfa63d921297b068066b8f6e814223
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195541"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85987132"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Azure SQL Database のフェールオーバー グループを構成する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -295,7 +295,7 @@ Azure portal または PowerShell を使用して、エラスティック プー
 1. 作業ウィンドウで **[フェールオーバー]** を選択し、エラスティック プールを含むフェールオーバー グループをフェールオーバーします。
 1. TDS セッションが切断されることが通知される警告で **[はい]** を選択します。
 
-   ![SQL データベースを含むフェールオーバー グループをフェールオーバーする](./media/auto-failover-group-configure/failover-sql-db.png)
+   ![データベースが含まれるフェールオーバー グループをフェールオーバーする](./media/auto-failover-group-configure/failover-sql-db.png)
 
 1. どのサーバーがプライマリで、どのサーバーがセカンダリかを確認します。 フェールオーバーが成功すると、2 つのサーバー ロールがスワップされているはずです。
 1. フェールオーバー グループを元の設定に戻すには、 **[フェールオーバー]** をもう一度選択します。

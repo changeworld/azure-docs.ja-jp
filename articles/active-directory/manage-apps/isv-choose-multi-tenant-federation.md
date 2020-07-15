@@ -2,22 +2,22 @@
 title: マルチテナント アプリケーションに合った適切なフェデレーション プロトコルを選択する
 description: Azure Active Directory との統合に関する独立系ソフトウェア ベンダー向けガイダンス
 services: active-directory
-author: barbaraselden
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/22/2019
-ms.author: baselden
+ms.author: kenwith
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b3edbbe037c3874d639476e516b3732b7573d9b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e7dc40d0e4736b4fef8012b08737cbd07bc36bf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75443377"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763297"
 ---
 # <a name="choose-the-right-federation-protocol-for-your-multi-tenant-application"></a>マルチテナント アプリケーションに適切なフェデレーション プロトコルを選択する
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3c14ff9c4f6d2bc2b1a62d1874d01950d09491c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8512675381f6163e66b6b838e8262dd7d2b12374
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70099814"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130878"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Azure portal を介した Azure HANA L インスタンスの制御
 このドキュメントでは、[HANA Large Instances](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) が [Azure portal](https://portal.azure.com) で提供される方法、および自動的にデプロイされる HANA Large Instance ユニットについて Azure portal で実行できるアクティビティについて説明します。 Azure portal での HANA Large Instances の表示は、HANA Large Instances 用の Azure リソース プロバイダー (現在はパブリック プレビュー) によって提供されます
@@ -31,7 +31,9 @@ ms.locfileid: "70099814"
 ### <a name="register-through-cli-interface"></a>CLI インターフェイスを使用して登録する
 Azure CLI インターフェイスを介した HANA Large Instance のデプロイに使用する Azure サブスクリプションにログインする必要があります。 次のコマンドで、HANA Large Instance プロバイダーを (再) 登録することができます。
     
-    az provider register --namespace Microsoft.HanaOnAzure
+```azurecli
+az provider register --namespace Microsoft.HanaOnAzure
+```
 
 詳細については、「[Azure リソース プロバイダーと種類](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services#azure-cli)」の記事を参照してください。
 

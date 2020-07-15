@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 92f2102d8d6353da2002a4ee9d5bfbe57a774e10
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: cd7e7df5c789743cf6bd84c6150fd901490bdedd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792073"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84751628"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure Storage 用の Azure セキュリティ ベースライン
 
@@ -28,7 +28,7 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1:Virtual Network でネットワーク セキュリティ グループまたは Azure Firewall を使用してリソースを保護する
 
-**ガイダンス**: Azure Storage のファイアウォールを構成して、特定のパブリック IP アドレス範囲からクライアントへのアクセスを制限したり、Azure 上の仮想ネットワーク (VNet) を選択したり、特定の Azure リソースにアクセスしたりできます。 また、プライベート エンドポイントを構成して、トラフィックが、ご自身のエンタープライズからストレージ サービスに、プライベート ネットワーク経由で排他的に転送されるようにすることもできます。
+**ガイダンス**:Azure Storage のファイアウォールを構成して、特定のパブリック IP アドレス範囲からクライアントへのアクセスを制限したり、Azure 上の仮想ネットワーク (VNet) を選択したり、特定の Azure リソースにアクセスしたりできます。 また、プライベート エンドポイントを構成して、トラフィックが、ご自身のエンタープライズからストレージ サービスに、プライベート ネットワーク経由で排他的に転送されるようにすることもできます。
 
 注:従来のストレージ アカウントでは、ファイアウォールと仮想ネットワークはサポートされていません。
 
@@ -80,7 +80,7 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 ### <a name="15-record-network-packets-and-flow-logs"></a>1.5:ネットワーク パケットとフロー ログを記録する
 
-**ガイダンス**: Network Watcher のパケット キャプチャを使用すると、ストレージ アカウントと仮想マシンの間のトラフィックを追跡するキャプチャ セッションを作成できます。 必要なトラフィックのみを確実にキャプチャするためにキャプチャ セッション用のフィルターが用意されています。 パケット キャプチャは、事後と事前、どちらの場合でもネットワークの異常を診断するのに役立ちます。 その他の用途には、ネットワーク統計の収集や、ネットワークへの侵入に関する情報の取得などがあり、クライアントとサーバー間の通信のデバッグなどに役立ちます。 パケット キャプチャをリモートでトリガーできることで、目的の仮想マシンでパケット キャプチャを手動で実行する負担が軽減されて、貴重な時間の節約になります。 
+**ガイダンス**:Network Watcher のパケット キャプチャを使用すると、ストレージ アカウントと仮想マシンの間のトラフィックを追跡するキャプチャ セッションを作成できます。 必要なトラフィックのみを確実にキャプチャするためにキャプチャ セッション用のフィルターが用意されています。 パケット キャプチャは、事後と事前、どちらの場合でもネットワークの異常を診断するのに役立ちます。 その他の用途には、ネットワーク統計の収集や、ネットワークへの侵入に関する情報の取得などがあり、クライアントとサーバー間の通信のデバッグなどに役立ちます。 パケット キャプチャをリモートでトリガーできることで、目的の仮想マシンでパケット キャプチャを手動で実行する負担が軽減されて、貴重な時間の節約になります。 
 
 - [ポータルを使用して Azure Network Watcher でパケット キャプチャを管理する](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-manage-portal)
 
@@ -154,7 +154,7 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11:自動化ツールを使用してネットワーク リソース構成を監視し、変更を検出する
 
-**ガイダンス**: Azure Policy を使用して、ネットワーク リソースへの構成の変更をログに記録します。 重要なネットワーク リソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。 
+**ガイダンス**:Azure Policy を使用して、ネットワーク リソースへの構成の変更をログに記録します。 重要なネットワーク リソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。 
 
 - [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -206,7 +206,7 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5:セキュリティ ログの保有期間を構成する
 
-**ガイダンス**: Azure Storage アカウントまたは Log Analytics ワークスペースにセキュリティ イベント ログを保存する場合は、組織の要件に従ってアイテム保持ポリシーを設定することができます。 
+**ガイダンス**:Azure Storage アカウントまたは Log Analytics ワークスペースにセキュリティ イベント ログを保存する場合は、組織の要件に従ってアイテム保持ポリシーを設定することができます。 
 
 - [Azure Storage アカウント ログの保持ポリシーを構成する方法](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-logging)
 
@@ -248,7 +248,7 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 ### <a name="28-centralize-anti-malware-logging"></a>2.8:マルウェア対策のログ記録を一元管理する
 
-**ガイダンス**: Azure Security Center を使用し、Azure Storage の脅威保護を有効にして、ハッシュ評価分析およびアクティブな Tor 出口ノード (匿名化プロキシ) からの疑わしいアクセスを使用して、Azure Storage へのマルウェアのアップロードを検出します。 
+**ガイダンス**:Azure Security Center を使用し、Azure Storage の脅威保護を有効にして、ハッシュ評価分析およびアクティブな Tor 出口ノード (匿名化プロキシ) からの疑わしいアクセスを使用して、Azure Storage へのマルウェアのアップロードを検出します。 
 
 - [Advanced Threat Protection for Azure Storage を構成する](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal)
 
@@ -370,7 +370,7 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 ### <a name="38-manage-azure-resource-from-only-approved-locations"></a>3.8:承認された場所からの Azure リソースのみを管理する
 
-**ガイダンス**: 条件付きアクセスのネームド ロケーションを使用して、IP アドレス範囲または国、地域の特定の論理グループからのアクセスのみを許可します。 
+**ガイダンス**:条件付きアクセスのネームド ロケーションを使用して、IP アドレス範囲または国、地域の特定の論理グループからのアクセスのみを許可します。 
 
 - [Azure でネームド ロケーションを構成する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
 
@@ -398,7 +398,7 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: ユーザー アクセスを定期的に確認して調整する
 
-**ガイダンス**: Azure Active Directory ログを確認して、古いアカウントを検出します。これには、ストレージ アカウントの管理者ロールを使用するアカウントが含まれる可能性があります。 また、Azure ID アクセス レビューを使用して、グループ メンバーシップ、ストレージ アカウント リソースへのアクセスに使用される可能性のあるエンタープライズ アプリケーションへのアクセス、およびロールの割り当てを効率的に管理します。 適切なユーザーのみが継続的なアクセス権を持っていることを確認するために、ユーザー アクセスを定期的に確認する必要があります。  
+**ガイダンス**:Azure Active Directory ログを確認して、古いアカウントを検出します。これには、ストレージ アカウントの管理者ロールを使用するアカウントが含まれる可能性があります。 また、Azure ID アクセス レビューを使用して、グループ メンバーシップ、ストレージ アカウント リソースへのアクセスに使用される可能性のあるエンタープライズ アプリケーションへのアクセス、およびロールの割り当てを効率的に管理します。 適切なユーザーのみが継続的なアクセス権を持っていることを確認するために、ユーザー アクセスを定期的に確認する必要があります。  
 
 また、Shared Access Signature (SAS) を使用して、データのセキュリティを損なうことなく、ストレージ アカウント内のリソースへのセキュリティで保護された委任アクセスを提供することもできます。 パラメーターの中でも、クライアントがアクセスできるリソース、それらのリソースに対して持つアクセス許可、SAS の有効期間などを制御できます。
 
@@ -560,7 +560,7 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8:機密情報を保存時に暗号化する
 
-**ガイダンス**: Azure Storage 暗号化はすべてのストレージ アカウントに対して有効になり、無効にすることはできません。 Azure Storage では、データがクラウドに永続化されるときに自動的に暗号化されます。 Azure Storage からデータを読み取ると、Azure Storage によって復号化されてから返されます。 Azure Storage の暗号化を使用すると、コードを変更したり、アプリケーションにコードを追加したりする必要なしに、保存データをセキュリティで保護できます。 
+**ガイダンス**:Azure Storage 暗号化はすべてのストレージ アカウントに対して有効になり、無効にすることはできません。 Azure Storage では、データがクラウドに永続化されるときに自動的に暗号化されます。 Azure Storage からデータを読み取ると、Azure Storage によって復号化されてから返されます。 Azure Storage の暗号化を使用すると、コードを変更したり、アプリケーションにコードを追加したりする必要なしに、保存データをセキュリティで保護できます。 
 
 - [Azure Storage の保存時の暗号化について](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
 
@@ -588,7 +588,7 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1:自動化された脆弱性スキャン ツールを実行する
 
-**ガイダンス**: Azure Security Center からの推奨事項に従って、ストレージ アカウントの構成を継続的に監査および監視します。 
+**ガイダンス**:Azure Security Center からの推奨事項に従って、ストレージ アカウントの構成を継続的に監査および監視します。 
 
 - [セキュリティの推奨事項 - リファレンス ガイド](https://docs.microsoft.com/azure/security-center/recommendations-reference)
 
@@ -614,7 +614,7 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 ### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4:バックツーバックの脆弱性スキャンを比較する
 
-**ガイダンス**: 適用できません。Microsoft により、ストレージ アカウントをサポートしている基になるシステムに対して脆弱性の管理が実行されます。
+**ガイダンス**:適用できません。Microsoft により、ストレージ アカウントをサポートしている基になるシステムに対して脆弱性の管理が実行されます。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -650,7 +650,7 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 ### <a name="62-maintain-asset-metadata"></a>6.2:資産メタデータを保持する
 
-**ガイダンス**: メタデータを提供するストレージ アカウント リソースにタグを適用すると、それらのリソースが各分類に論理的に整理されます。 
+**ガイダンス**:メタデータを提供するストレージ アカウント リソースにタグを適用すると、それらのリソースが各分類に論理的に整理されます。 
 
 - [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
@@ -730,7 +730,7 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9:承認された Azure サービスのみを使用する
 
-**ガイダンス**: 次の組み込みのポリシー定義を使用して、顧客のサブスクリプション内に作成できるリソースの種類に制限を適用するには、Azure Policy を使用します。 
+**ガイダンス**:次の組み込みのポリシー定義を使用して、顧客のサブスクリプション内に作成できるリソースの種類に制限を適用するには、Azure Policy を使用します。 
 
 - 許可されないリソースの種類 
 - 許可されるリソースの種類 
@@ -771,7 +771,7 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13:リスクの高いアプリケーションを物理的または論理的に分離する
 
-**ガイダンス**: 適用できません。この推奨事項は、Azure App Service またはコンピューティング リソース上で実行されている Web アプリケーションを対象にしています。
+**ガイダンス**:適用できません。この推奨事項は、Azure App Service またはコンピューティング リソース上で実行されている Web アプリケーションを対象にしています。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -785,7 +785,10 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 **ガイダンス**: ストレージ アカウント インスタンスの構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.Storage" 名前空間で Azure Policy エイリアスを使用します。 Azure Storage アカウントに次のような組み込みの Azure Policy 定義を使用することもできます。 
 
-ストレージ アカウントに対する制限のないネットワーク アクセスを監査する、ストレージ アカウントで Advanced Threat Protection をデプロイする、ストレージ アカウントを新しい Azure Resource Manager リソースに移行する必要がある、ストレージ アカウントへのセキュリティで保護された転送を有効にする必要がある 
+ストレージ アカウントに対する制限のないネットワーク アクセスの監査  
+ストレージ アカウントに対する Advanced Threat Protection のデプロイ  
+ストレージ アカウントを新しい Azure Resource Manager リソースに移行する必要がある  
+ストレージ アカウントへの安全な転送を有効にする必要がある  
 
 ストレージ アカウントの安全な構成基準として Azure Security Center の推奨事項を使用します。 
 
@@ -857,7 +860,7 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 ### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8:オペレーティング システム用のシステム構成管理ツールをデプロイする
 
-**ガイダンス**: 適用できません。この推奨事項は、コンピューティング リソースを対象にしています。
+**ガイダンス**:適用できません。この推奨事項は、コンピューティング リソースを対象にしています。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -897,7 +900,7 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 ### <a name="712-securely-and-automatically-manage-identities"></a>7.12:ID を安全かつ自動的に管理する
 
-**ガイダンス**: Azure Active Directory とマネージド ID を使用して、Azure Storage アカウント内の BLOB およびキューへのアクセスを承認します。 Azure の BLOB およびキュー ストレージでは、Azure リソースのマネージド ID を使用した Azure Active Directory (Azure AD) 認証がサポートされています。 Azure リソースのマネージド ID により、Azure 仮想マシン (VM) で実行されているアプリケーション、関数アプリ、仮想マシン スケール セット、およびその他のサービスから Azure AD 資格情報を使用して、BLOB およびキューのデータへのアクセスを認証することができます。 Azure リソースのマネージド ID を Azure AD 認証と一緒に使用することで、クラウドで動作するアプリケーションに資格情報を保存することを避けることができます。 
+**ガイダンス**:Azure Active Directory とマネージド ID を使用して、Azure Storage アカウント内の BLOB およびキューへのアクセスを承認します。 Azure の BLOB およびキュー ストレージでは、Azure リソースのマネージド ID を使用した Azure Active Directory (Azure AD) 認証がサポートされています。 Azure リソースのマネージド ID により、Azure 仮想マシン (VM) で実行されているアプリケーション、関数アプリ、仮想マシン スケール セット、およびその他のサービスから Azure AD 資格情報を使用して、BLOB およびキューのデータへのアクセスを認証することができます。 Azure リソースのマネージド ID を Azure AD 認証と一緒に使用することで、クラウドで動作するアプリケーションに資格情報を保存することを避けることができます。 
 
 - [マネージド ID を使用して Azure BLOB とキュー データへのアクセス権を付与する方法](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
 
@@ -921,7 +924,7 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1:一元管理されるマルウェア対策ソフトウェアを使用する
 
-**ガイダンス**: 適用できません。この推奨事項は、コンピューティング リソースを対象にしています。 Microsoft は、基になるプラットフォーム用のマルウェア対策を処理します。
+**ガイダンス**:適用できません。この推奨事項は、コンピューティング リソースを対象にしています。 Microsoft は、基になるプラットフォーム用のマルウェア対策を処理します。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1008,7 +1011,7 @@ Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedSto
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: バックアップとカスタマー マネージド キーの保護を保証する
 
-**ガイダンス**: ストレージ アカウントでカスタマー マネージド キーを有効にするには、Azure Key Vault を使用してキーを格納する必要があります。 キー コンテナーで [論理的な削除] と [Do Not Purge]\(消去しない\) の両方のプロパティを有効にする必要があります。 キー コンテナーの [論理的な削除] 機能では、削除されたコンテナーと、キー、シークレット、証明書などのコンテナー オブジェクトを復元できます。 ストレージ アカウント データを Azure Storage BLOB にバックアップする場合、BLOB または BLOB のスナップショットが削除されたときに、論理的な削除機能でデータを保存および復旧することができます。 バックアップを機密データとして扱い、このベースラインの一部として関連するアクセスとデータ保護制御を適用する必要があります。 さらに、保護を強化するために、ビジネスに不可欠なデータ オブジェクトを WORM (Write Once, Read Many) 状態で格納することもできます。
+**ガイダンス**:ストレージ アカウントでカスタマー マネージド キーを有効にするには、Azure Key Vault を使用してキーを格納する必要があります。 キー コンテナーで [論理的な削除] と [Do Not Purge]\(消去しない\) の両方のプロパティを有効にする必要があります。 キー コンテナーの [論理的な削除] 機能では、削除されたコンテナーと、キー、シークレット、証明書などのコンテナー オブジェクトを復元できます。 ストレージ アカウント データを Azure Storage BLOB にバックアップする場合、BLOB または BLOB のスナップショットが削除されたときに、論理的な削除機能でデータを保存および復旧することができます。 バックアップを機密データとして扱い、このベースラインの一部として関連するアクセスとデータ保護制御を適用する必要があります。 さらに、保護を強化するために、ビジネスに不可欠なデータ オブジェクトを WORM (Write Once, Read Many) 状態で格納することもできます。
 
 - [Azure Key Vault の論理的な削除を使用する方法](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell)
 
@@ -1026,7 +1029,7 @@ Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedSto
 
 ### <a name="101-create-incident-response-guide"></a>10.1:インシデント対応ガイドを作成する
 
-**ガイダンス**: 組織のインシデント対応ガイドを作成します。 要員のすべてのロールを定義するインシデント対応計画が記述されていることと、検出からインシデント後のレビューまでのインシデント対応/管理のフェーズがあることを確認します。
+**ガイダンス**:組織のインシデント対応ガイドを作成します。 要員のすべてのロールを定義するインシデント対応計画が記述されていることと、検出からインシデント後のレビューまでのインシデント対応/管理のフェーズがあることを確認します。
 
 - [独自のセキュリティ インシデント対応プロセスを構築するためのガイダンス](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
@@ -1054,7 +1057,7 @@ Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedSto
 
 ### <a name="103-test-security-response-procedures"></a>10.3:セキュリティ対応手順のテスト
 
-**ガイダンス**: ご利用のシステムのインシデント対応機能を定期的にテストする演習を実施することで、ご利用の Azure リソースの保護を支援できます。 弱点やギャップを特定し、必要に応じて計画を見直します。
+**ガイダンス**:ご利用のシステムのインシデント対応機能を定期的にテストする演習を実施することで、ご利用の Azure リソースの保護を支援できます。 弱点やギャップを特定し、必要に応じて計画を見直します。
 
 - [NIST の出版物 - IT 計画と機能に関するテスト、トレーニング、および演習プログラムのガイド](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 

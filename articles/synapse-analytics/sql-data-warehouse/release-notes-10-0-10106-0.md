@@ -4,7 +4,7 @@ description: Azure Synapse Analytics のリリース ノートです。
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 4/30/2020
 author: anumjs
 ms.author: anjangsh
@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: bf74e520340690c3dda71496360e5d9a2fe54ae8
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 6af05a6c17253a2032f493a7d2cd6254dafd352c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84115372"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831422"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Azure Synapse Analytics リリース ノート
 
@@ -41,6 +41,13 @@ ms.locfileid: "84115372"
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
 
+## <a name="july-2020"></a>2020 年 7 月
+| サービスの機能強化 | 詳細 |
+| --- | --- |
+|**列レベルの暗号化 (パブリック プレビュー)**|Transact-SQL を使用してデータの列に対称暗号化を適用することで、Synapse SQL データ ウェアハウス内の機密情報を保護します。 列レベルの暗号化には、証明書、パスワード、対称キー、または非対称キーでさらに保護される対称キーを使用してデータを暗号化するために使用できる、組み込み関数が用意されています。 詳細については、「[データの列の暗号化](/sql/relational-databases/security/encryption/encrypt-a-column-of-data?view=azure-sqldw-latest)」を参照してください。|
+|**互換性レベルのサポート (GA)**|ユーザーはこのリリースで、Synapse SQL エンジンの特定のバージョンの Transact-SQL 言語とクエリ処理の動作を使用できるよう、データベースの互換性レベルを設定できるようになりました。 詳細については、「[sys.database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」と「[データベース スコープ構成の変更](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」を参照してください。|
+|**行レベルのセキュリティ**|このリリースには、RLS が適用された行に対する更新および削除の操作の改善が含まれています。 このリリースでは、組み込み関数で DML ターゲット テーブルの列が参照されていない場合、"is_rolemember" のような組み込み関数での更新操作と削除操作は成功します。 この改善の前は、これらの操作は、基になる DML 操作での制限のために失敗しました。|
+
 ## <a name="may-2020"></a>2020 年 5 月
 
 | サービスの機能強化 | 詳細 |
@@ -48,9 +55,9 @@ ms.locfileid: "84115372"
 |**ワークロードの分離 (GA)**|[ワークロードの分離](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-isolation)の一般提供が開始されました。  [ワークロード グループ](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)を使用して、リソースを予約して含めることができます。  クエリ タイムアウトを構成して、ランナウェイ クエリを取り消すこともできます。|
 |**ワークロード管理ポータル エクスペリエンス (プレビュー)**| ユーザーは、Azure portal を使用して、ワークロード管理の設定を構成および管理できます。  重要度が設定された[ワークロード グループ](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-create-a-workload-classifier-portal)と[ワークロード分類子](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-create-a-workload-classifier-portal)を構成することができます。|
 |**ワークロード グループの変更**|[ALTER WORKLOAD GROUP](https://docs.microsoft.com/sql/t-sql/statements/alter-workload-group-transact-sql?view=azure-sqldw-latest) コマンドを使用できるようになりました。  alter を使用して、既存の[ワークロード グループ](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-isolation)の構成を変更します。|
-|**COPY コマンドでの Parquet ファイルの自動スキーマ検出 (プレビュー)**|[COPY コマンド](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)による Parquet ファイルの読み込み時に自動スキーマ検出がサポートされるようになりました。 このコマンドでは、読み込みの前に Parquet ファイルのスキーマを自動的に検出し、テーブルを作成します。 ホワイトリストへの登録を行うには、電子メール配布リスト sqldwcopypreview@service.microsoft.com までお問い合わせください。 |
-|**COPY コマンドでの複雑な Parquet データ型の読み込み (プレビュー)**|[COPY コマンド](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)で複雑な Parquet 型の読み込みがサポートされるようになりました。 Maps や Lists などの複雑な型を文字列型の列に読み込むことができます。  ホワイトリストへの登録を行うには、電子メール配布リスト sqldwcopypreview@service.microsoft.com までお問い合わせください。 |
-|**COPY コマンドでの Parquet ファイルの自動圧縮検出**|[COPY コマンド](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)で Parquet ファイルの圧縮方法の自動検出がサポートされるようになりました。|
+|**COPY コマンドでの Parquet ファイルの自動スキーマ検出 (プレビュー)**|[COPY コマンド](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)による Parquet ファイルの読み込み時に自動スキーマ検出がサポートされるようになりました。 このコマンドでは、読み込みの前に Parquet ファイルのスキーマを自動的に検出し、テーブルを作成します。 この機能を有効にするには、メール配布リスト sqldwcopypreview@service.microsoft.com にお問い合わせください。 |
+|**COPY コマンドでの複雑な Parquet データ型の読み込み (プレビュー)**|[COPY コマンド](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)で複雑な Parquet 型の読み込みがサポートされるようになりました。 Maps や Lists などの複雑な型を文字列型の列に読み込むことができます。  この機能を有効にするには、メール配布リスト sqldwcopypreview@service.microsoft.com にお問い合わせください。 |
+|**COPY コマンドでの Parquet ファイルの自動圧縮検出**|[COPY コマンド](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)で Parquet ファイルの圧縮方法の自動検出がサポートされるようになりました。 この機能を有効にするには、メール配布リスト sqldwcopypreview@service.microsoft.com にお問い合わせください。|
 |**その他の読み込みに関する推奨事項**|Synapse SQL 向けの[読み込みに関する推奨事項](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-recommendations)が提供されるようになりました。 最大スループットのためにファイルを分割する必要がある場合にプロアクティブな通知を受け取ります。ストレージ アカウントを SQL プールと併置します。または、SQLBulkCopy API や BCP などの読み込みユーティリティを使用するときにバッチ サイズを増やします|
 |**T-SQL の更新可能なディストリビューション列 (GA)**|ユーザーは、ディストリビューション列に格納されているデータを更新できるようになりました。 詳細については、「[Synapse SQL プールでの分散テーブルの設計に関するガイダンス](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-distribute)」を参照してください。|
 |**T-SQL Update/Delete from...Join (GA)**|別のテーブルとの Join の結果に基づく Update と Delete が利用可能になりました。 詳細については、[Update](https://docs.microsoft.com/sql/t-sql/queries/update-transact-sql?view=azure-sqldw-latest) および [Delete](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql?view=azure-sqldw-latest) のドキュメントを参照してください。|

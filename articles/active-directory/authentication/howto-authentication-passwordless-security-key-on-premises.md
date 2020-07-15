@@ -11,21 +11,19 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 181e8192170cd7394d6817edd655f4e8257b48a4
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 81cd2649ff056ab107491cf60602f0da7435b228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654037"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550629"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>Azure Active Directory を使用してオンプレミスのリソースへのパスワードなしのセキュリティ キー サインイン (プレビュー) を有効にする
 
 このドキュメントでは、**Azure AD 参加済み**と**ハイブリッド Azure AD 参加済み**の両方の Windows 10 デバイスがある環境での、オンプレミスのリソースに対するパスワードレス認証の有効化に注目します。 この機能により、Microsoft と互換性のあるセキュリティ キーを使用した、オンプレミスのリソースへのシームレスなシングル サインオン (SSO) が可能になります。
 
-|     |
-| --- |
-| FIDO2 セキュリティ キーは、Azure Active Directory のパブリック プレビュー機能です。 プレビューの詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください|
-|     |
+> [!NOTE]
+> FIDO2 セキュリティ キーは、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 ## <a name="sso-to-on-premises-resources-using-fido2-keys"></a>FIDO2 キーを使用したオンプレミスのリソースへの SSO
 

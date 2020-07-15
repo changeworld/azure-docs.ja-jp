@@ -1,16 +1,16 @@
 ---
 title: 管理グループを使用してリソースを整理する - Azure Governance
 description: 管理グループ、そのアクセス許可のしくみ、その使用方法について説明します。
-ms.date: 04/15/2020
+ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: 43c8bb2bdb71b0b75d2fcc31451952214978093c
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: b3d031b68ee7dba9c80ee0c7e97898bb8b439a47
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773153"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963684"
 ---
-# <a name="organize-your-resources-with-azure-management-groups"></a>Azure 管理グループでリソースを整理する
+# <a name="what-are-azure-management-groups"></a>Azure 管理グループとは
 
 組織に多数のサブスクリプションがある場合は、これらのサブスクリプションのアクセス、ポリシー、およびコンプライアンスを効率的に管理する方法が必要になることがあります。 Azure 管理グループの範囲は、サブスクリプションを上回ります。 "管理グループ" と呼ばれるコンテナーにサブスクリプションを整理して、管理グループに管理条件を適用できます。 管理グループ内のすべてのサブスクリプションは、管理グループに適用された条件を自動的に継承します。 管理グループを使うと、サブスクリプションの種類に関係なく、大きな規模でエンタープライズ レベルの管理を行うことができます。
 単一の管理グループ内のすべてのサブスクリプションは、同じ Azure Active Directory テナントを信頼する必要があります。
@@ -199,6 +199,4 @@ Azure portal の外部で管理グループに対するクエリを使用する�
 
 - [管理グループを作成して Azure リソースを整理する](./create.md)
 - [管理グループを変更、削除、または管理する方法](./manage.md)
-- [Azure PowerShell Resources モジュールで管理グループを確認する](/powershell/module/az.resources#resources)
-- [REST API で管理グループを確認する](/rest/api/resources/managementgroups)
-- [Azure CLI で管理グループを確認する](/cli/azure/account/management-group)
+- 「[リソース階層を保護する方法](./how-to/protect-resource-hierarchy.md)」のオプションを参照する

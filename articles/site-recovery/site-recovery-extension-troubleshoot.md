@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 11/27/2018
-ms.openlocfilehash: a780a42179a0bacf0e4a12ba1e75ae84943539b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 913f1f2a7a03c1abb83d8daa6d4b0c3f6e77e309
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77190718"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133749"
 ---
 # <a name="troubleshoot-azure-vm-extension-issues"></a>Azure VM 拡張機能に関する問題のトラブルシューティング
 
@@ -69,14 +69,14 @@ VM エージェントが破損しているまたはサービスが停止して�
 1. [サービス] に Windows Azure ゲスト エージェント サービスが表示されることを確認します。
 1. 保護ジョブを再開します。
 
-さらに、VM に [Microsoft .NET 4.5 がインストールされていること](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)を確認します。 サービスと通信するには、VM エージェント用の .NET 4.5 が必要です。
+さらに、VM に [Microsoft .NET 4.5 がインストールされていること](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)を確認します。 サービスと通信するには、VM エージェント用の .NET 4.5 が必要です。
 
 ### <a name="the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>VM にインストールされているエージェントが古くなっている (Linux VM の場合)
 
 #### <a name="solution"></a>解決策
 Linux VM の場合、エージェントに関連するエラーまたは拡張機能に関連するエラーのほとんどは、古い VM エージェントに影響する問題が原因で発生します。 この問題のトラブルシューティングを行うには、次の一般的なガイドラインに従います。
 
-1. [Linux VM エージェントを更新](../virtual-machines/linux/update-agent.md)する手順に従います。
+1. [Linux VM エージェントを更新](../virtual-machines/extensions/update-linux-agent.md)する手順に従います。
 
    > [!NOTE]
    > ディストリビューション リポジトリを通してのみエージェントを更新することを "*強くお勧め*" します。 エージェント コードを GitHub から直接ダウンロードし、それを更新することは、推奨されません。 最新のエージェントをディストリビューションで使用できない場合は、そのエージェントをインストールする方法をディストリビューション サポートにお問い合わせください。 最新のエージェントを確認するには、GitHub リポジトリの [Windows Azure Linux エージェント](https://github.com/Azure/WALinuxAgent/releases)のページをご覧ください。
@@ -107,6 +107,6 @@ Linux VM の場合、エージェントに関連するエラーまたは拡張�
 1. **[Site Recovery 拡張機能]** を選択します。
 1. **[アンインストール]** を選択します。
 
-Linux VM で、VMSnapshot 拡張機能が Azure portal に表示されない場合は、[Azure Linux エージェントを更新](../virtual-machines/linux/update-agent.md)してください。 その後、保護を実行してください。
+Linux VM で、VMSnapshot 拡張機能が Azure portal に表示されない場合は、[Azure Linux エージェントを更新](../virtual-machines/extensions/update-linux-agent.md)してください。 その後、保護を実行してください。
 
 これらの手順が完了すると、保護中に拡張機能が再インストールされます。

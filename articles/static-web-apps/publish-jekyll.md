@@ -94,7 +94,7 @@ Azure Static Web Apps では、Web サイトの公開に GitHub を使用しま�
 
 1. **Static Web Apps** を検索します。
 
-1. **[静的 Web アプリ (プレビュー)]** をクリックします。
+1. **[Static Web Apps (プレビュー)]** をクリックします。
 
 1. **Create** をクリックしてください。
 

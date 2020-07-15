@@ -19,10 +19,16 @@
       items:
         - name: Azure Key Vault と Kubernetes の統合
           href: key-vault-integrate-kubernetes.md
+    - name: Azure Databricks
+      items:
+        - name: Azure Databricks と Azure Key Vault を使用して Azure Blob Storage にアクセスする
+          href: integrate-databricks-blob-storage.md
     - name: マネージ ID と .NET を使用した Web アプリへの Key Vault の接続
       href: tutorial-net-create-vault-azure-web-app.md
 - name: サンプル
   items:
+    - name: Key Vault のコード サンプル
+      href: 'https://docs.microsoft.com/samples/browse/?expanded=azure&products=azure-key-vault'
     - name: Azure Policy の組み込み
       displayName: 'samples, policies, definitions'
       href: ../policy-samples.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
@@ -30,7 +36,7 @@
   items:
     - name: 基本的な概念
       href: basic-concepts.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: Azure Key Vault セキュリティ
           href: overview-security.md
@@ -94,6 +100,8 @@
           href: event-grid-logicapps.md
         - name: Azure Event Grid と Azure Automation を使用した通知の受信
           href: event-grid-tutorial.md
+        - name: 個々の Key Vault オブジェクトのバックアップ
+          href: backup.md
     - name: セキュリティで保護
       items:
         - name: Azure Private Link サービスと統合する
@@ -124,18 +132,20 @@
       href: rest-error-codes.md
     - name: 一般的なパラメーターとヘッダー
       href: common-parameters-and-headers.md
+    - name: Key Vault のバージョン
+      href: versions.md
     - name: Azure PowerShell
       href: /powershell/module/az.keyvault/?view=azps-1.2.0#key_vault
     - name: Azure CLI
       href: /cli/azure/keyvault
     - name: .NET
-      href: /dotnet/api/overview/azure/key-vault?view=azure-dotnet
+      href: /dotnet/api/overview/azure/keyvault/management?view=azure-dotnet
     - name: Java
       href: /java/api/overview/azure/keyvault?view=azure-java-stable
     - name: Node.js
       href: /javascript/api/overview/azure/key-vault?view=azure-node-latest
     - name: Python
-      href: /python/api/overview/azure/key-vault?view=azure-python
+      href: /python/api/overview/azure/keyvault/management?view=azure-python
     - name: REST
       href: /rest/api/keyvault
     - name: Resource Manager テンプレート

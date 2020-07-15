@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 0f8e1be92d77dc928389dffb61da52f2db4c804d
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 8e832f57053cb950f705875f2895a9197cc7c83e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142063"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960301"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>Azure Static Web Apps Preview にカスタム ドメインを設定する
 
@@ -29,11 +29,11 @@ Azure Static Web Apps では既定で、自動生成されたドメイン名が�
 
 アプリケーションに使用できる DNS 構成には、いくつかの種類があります。
 
-| 目的                            | THEN                                                |
-| ----------------------------------------- | --------------------------------------------------- |
-| `www.example.com` をサポートします                 | [CNAME レコードのマップ](#map-a-cname-record)           |
-| `example.com` をサポートします                     | [ルート ドメインの構成](#configure-a-root-domain) |
-| `www.example.com` へのすべてのサブドメインを参照 | [ワイルドカードのマップ](#map-a-wildcard-domain)                   |
+| 目的                                 | THEN                                                |
+| -----------------------------------------------| --------------------------------------------------- |
+| `www.example.com` または `blog.example.net` をサポートする| [CNAME レコードのマップ](#map-a-cname-record)           |
+| `example.com` をサポートします                          | [ルート ドメインの構成](#configure-a-root-domain) |
+| `www.example.com` へのすべてのサブドメインを参照      | [ワイルドカードのマップ](#map-a-wildcard-domain)            |
 
 ## <a name="map-a-cname-record"></a>CNAME レコードのマップ
 

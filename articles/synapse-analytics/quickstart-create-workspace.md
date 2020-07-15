@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 6f72e2ee3b83b693d889e9c43fe42a4677f1666d
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: e5896d1eabaf43afcbab7513d7abb0b1de4efe51
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609473"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84656693"
 ---
-# <a name="quickstart-create-an-azure-synapse-analytics-workspace-preview"></a>クイック スタート:Azure Synapse Analytics ワークスペースを作成する (プレビュー)
+# <a name="quickstart-create-a-synapse-workspace"></a>クイック スタート:Synapse ワークスペースを作成する
 
 このクイックスタートでは、Azure portal を使用して Azure Synapse ワークスペースを作成する手順について説明します。
 

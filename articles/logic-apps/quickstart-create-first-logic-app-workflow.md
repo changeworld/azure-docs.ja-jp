@@ -3,16 +3,16 @@ title: 初めての自動化されたワークフローの作成
 description: クイックスタート - システム統合と Enterprise Application Integration (EAI) ソリューション向けに Azure Logic Apps を使用して、初めての自動化されたワークフローを構築します
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: 3087b964ff5f9754d6552fc95625541ce94a6535
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0b3559a27fe9fae6c34b07c648a289d205560bd8
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82147996"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321581"
 ---
 # <a name="quickstart-create-your-first-workflow-by-using-azure-logic-apps---azure-portal"></a>クイック スタート:Azure Logic Apps を使用して初めてのワークフローを作成する - Azure portal
 
@@ -45,9 +45,9 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    | プロパティ | 値 | 説明 |
    |----------|-------|-------------|
-   | **名前** | <*ロジック アプリ名*> | ロジック アプリの名前。文字、数字、ハイフン (`-`)、アンダースコア (`_`)、かっこ (`(`、`)`)、およびピリオド (`.`) のみを含めることができます。 この例では、"My-First-Logic-App" を使用します。 |
+   | **名前** | <*ロジック アプリ名*> | ロジック アプリの名前。文字、数字、ハイフン (`-`)、アンダースコア (`_`)、かっこ (`(`、`)`)、およびピリオド (`.`) のみを含めることができます。 この例では、"My-First-Logic-App" を使用します。 <p><p>**注**:ロジック アプリの名前は、リージョン全体で一意である必要があります。 |
    | **サブスクリプション** | <*Azure サブスクリプション名*> | お使いの Azure サブスクリプション名 |
-   | **リソース グループ** | <*Azure-resource-group-name*> | 関連するリソースの整理に使用する[Azure リソース グループ](../azure-resource-manager/management/overview.md)の名前。 この例では、"My-First-LA-RG" を使用します。 |
+   | **リソース グループ** | <*Azure-resource-group-name*> | 関連するリソースの整理に使用する[Azure リソース グループ](../azure-resource-manager/management/overview.md)の名前。 この例では、"My-First-LA-RG" を使用します。 <p><p>**注**:リソース グループの名前は、リージョン全体で一意である必要があります。 |
    | **場所** | <*Azure-region*> | ロジック アプリの情報の保存先となるリージョン。 この例では "米国西部" を使用します。 |
    | **Log Analytics** | Off | 診断ログの場合は、この設定を**オフ**のままにしてください。 |
    ||||
@@ -74,13 +74,13 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    ![[フィード項目が発行される場合] トリガーを選択する](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-new-feed-item.png)
 
-1. トリガーに関する情報を次のように入力します。
+1. 下の表の説明に基づき、トリガーの情報を指定します。
 
    ![RSS フィード、頻度、および間隔を指定してトリガーを設定する](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-settings.png)
 
    | プロパティ | 値 | 説明 |
    |----------|-------|-------------|
-   | **RSS フィードの URL** | `http://feeds.reuters.com/reuters/topNews` | 監視する RSS フィードのリンク |
+   | **RSS フィードの URL** | <*RSS-feed-URL*> | 監視する RSS フィードのリンク。 この例では、`http://feeds.reuters.com/reuters/topNews` を使用します。 |
    | **間隔** | 1 | チェックの間隔 (単位数) |
    | **頻度** | 分 | チェックの間隔に使う時間の単位  |
    ||||
