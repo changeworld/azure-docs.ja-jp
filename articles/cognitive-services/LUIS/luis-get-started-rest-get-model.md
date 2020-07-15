@@ -3,20 +3,20 @@ title: クイック スタート:REST API を使用してモデルを取得す�
 titleSuffix: Azure Cognitive Services
 description: この REST API のクイック スタートでは、cURL を使用して発話を追加し、モデルをトレーニングします。
 services: cognitive-services
-author: roy-har
+author: nitinme
 manager: diberry
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 06/19/2020
-ms.author: v-royha
-ms.openlocfilehash: 00bc71f76b15455dd8e4f8242c5379e9e97a53f2
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.author: nitinme
+ms.openlocfilehash: e5cf3160e6592a48e3a81480480ad8f01cc6af3a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85119553"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206257"
 ---
 # <a name="quickstart-use-curl-and-rest-to-change-model"></a>クイック スタート:cURL と REST を使用してモデルを変更する
 

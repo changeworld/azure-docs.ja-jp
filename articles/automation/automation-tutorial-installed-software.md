@@ -7,12 +7,12 @@ ms.date: 04/11/2018
 ms.topic: tutorial
 ms.subservice: change-inventory-management
 ms.custom: mvc
-ms.openlocfilehash: d4acecbc6d1a1d7f617b0da95da1b97dc5a3dd75
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: cad92ef376a14805049772cd0bfdbac04309f6c4
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743665"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185825"
 ---
 # <a name="discover-what-software-is-installed-on-your-vms"></a>VM にインストールされているソフトウェアを検出する
 
@@ -32,7 +32,7 @@ ms.locfileid: "83743665"
 このチュートリアルを完了するには、次のものが必要です。
 
 * Azure サブスクリプション。 まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)にサインアップしてください。
-* 監視およびアクションの Runbook と監視タスクを保持する [Automation アカウント](automation-offering-get-started.md)。
+* 監視およびアクションの Runbook と監視タスクを保持する [Automation アカウント](./index.yml)。
 * 機能に対して有効にする[仮想マシン](../virtual-machines/windows/quick-create-portal.md)。
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
@@ -48,7 +48,7 @@ Azure Portal (https://portal.azure.com ) にログインします。
 
 1. Automation アカウントに移動し、 **[構成管理]** で、 **[インベントリ]** または **[Change tracking]** を選択します。
 
-2. [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) ワークスペースを選択します。 このワークスペースは、Change Tracking やインベントリなどの機能によって生成されるデータを収集します。 ワークスペースには、複数のソースからのデータを確認および分析する場所が 1 つ用意されています。
+2. [Log Analytics](../azure-monitor/log-query/log-query-overview.md) ワークスペースを選択します。 このワークスペースは、Change Tracking やインベントリなどの機能によって生成されるデータを収集します。 ワークスペースには、複数のソースからのデータを確認および分析する場所が 1 つ用意されています。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 

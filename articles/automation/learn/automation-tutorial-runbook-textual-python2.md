@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
 ms.custom: has-adal-ref, tracking-python
-ms.openlocfilehash: 1203feaf6b400e91e6ab5381df0af245db0a2973
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 9c587ad9b791d953dce66df2337cf0e7dca52324
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559555"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185366"
 ---
 # <a name="tutorial-create-a-python-runbook"></a>チュートリアル:Python Runbook を作成する
 
@@ -31,7 +31,7 @@ ms.locfileid: "84559555"
 このチュートリアルを完了するには、以下が必要です。
 
 - Azure のサブスクリプション。 まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)にサインアップしてください。
-- [Automation アカウント](../automation-offering-get-started.md)。Runbook の保存と Azure リソースの認証に使用します。 このアカウントには、仮想マシンを開始および停止するアクセス許可が必要です。
+- [Automation アカウント](../index.yml)。Runbook の保存と Azure リソースの認証に使用します。 このアカウントには、仮想マシンを開始および停止するアクセス許可が必要です。
 - Azure 仮想マシン。 マシンを停止して起動するので、運用 VM は使用しないでください。
 
 ## <a name="create-a-new-runbook"></a>新しい Runbook の作成
@@ -161,7 +161,7 @@ Runbook をテストして発行しましたが、これまでのところ役に
 
 ## <a name="add-code-to-create-python-compute-client-and-start-the-vm"></a>コードを追加して、Python Compute クライアントを作成し、VM を起動する
 
-Azure VM で作業するには、[Azure Compute client for Python](https://docs.microsoft.com/python/api/azure-mgmt-compute/azure.mgmt.compute.computemanagementclient) (Python 用の Azure Compute クライアント) のインスタンスを作成します。
+Azure VM で作業するには、[Azure Compute client for Python](/python/api/azure-mgmt-compute/azure.mgmt.compute.computemanagementclient) (Python 用の Azure Compute クライアント) のインスタンスを作成します。
 
 Compute クライアントを使用して、VM を起動します。 Runbook に次のコードを追加します。
 

@@ -7,12 +7,12 @@ ms.date: 12/4/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 013281db2821c99f6942edd1322f4978e100c144
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a4c873e7ec1867b6ce53cd9f4c3d5c54242a6f16
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81729852"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232340"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>クイック スタート:Java 用 Azure Queue storage クライアント ライブラリ v12
 
@@ -167,7 +167,7 @@ Azure Queue storage は、多数のメッセージを格納するためのサー
 * [接続文字列を取得する](#get-the-connection-string)
 * [キューを作成する](#create-a-queue)
 * [メッセージをキューに追加する](#add-messages-to-a-queue)
-* [キュー内のメッセージを表示する](#peek-at-messages -in-a-queue)
+* [キュー内のメッセージを表示する](#peek-at-messages-in-a-queue)
 * [キュー内のメッセージを更新する](#update-a-message-in-a-queue)
 * [キューからメッセージを受信して削除する](#receive-and-delete-messages-from-a-queue)
 * [キューを削除する](#delete-a-queue)

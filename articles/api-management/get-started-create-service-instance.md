@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 63415b221b3980f3b6e3abc7d197cf9f61844f3f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 6c71b88f43570a65edb5d0bea24f623c861f8111
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077492"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206284"
 ---
 # <a name="create-a-new-azure-api-management-service-instance"></a>Azure API Management サービスの新しいインスタンスの作成
 
@@ -86,8 +86,3 @@ API Management (APIM) が組織にもたらす利点は、外部、パートナ�
 
 > [!div class="nextstepaction"]
 > [最初の API をインポートして発行する](import-and-publish.md)
-
-クラウドの支出を最適化して節約しますか?
-
-> [!div class="nextstepaction"]
-> [Cost Management を使用してコスト分析を開始する](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

@@ -1,16 +1,16 @@
 ---
 title: モデルの操作
 description: リモートでレンダリングされたモデルに対し、移動、回転、拡大縮小などの操作を実行します
-author: michael-house
-ms.author: v-mihous
+author: florianborn71
+ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: d3ccdc54e50c3b5a722f490e04ce50d4aaf6e2fd
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 182ceca11d6e9b9bbebcf2911de1783cef43dd1a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85566622"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207332"
 ---
 # <a name="tutorial-manipulating-models"></a>チュートリアル:モデルの操作
 

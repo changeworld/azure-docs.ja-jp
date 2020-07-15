@@ -7,12 +7,12 @@ keywords: 変更, 追跡, Change Tracking, インベントリ, Automation
 ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 211b34b4424fa5bc9b82dc1cc2a2da574ffc5d96
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 63fe36a51b69648039c3a16be4267fc0c72e8a58
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743688"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185808"
 ---
 # <a name="troubleshoot-changes-on-an-azure-vm"></a>Azure VM に対する変更のトラブルシューティング
 
@@ -35,7 +35,7 @@ ms.locfileid: "83743688"
 このチュートリアルを完了するには、次のものが必要です。
 
 * Azure サブスクリプション。 まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)にサインアップしてください。
-* 監視およびアクションの Runbook と監視タスクを保持する [Automation アカウント](automation-offering-get-started.md)。
+* 監視およびアクションの Runbook と監視タスクを保持する [Automation アカウント](./index.yml)。
 * 機能に対して有効にする[仮想マシン](../virtual-machines/windows/quick-create-portal.md)。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
@@ -54,7 +54,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
     ![変更の有効化](./media/automation-tutorial-troubleshoot-changes/enableinventory.png)
 
-3. [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) ワークスペースを選択します。 このワークスペースは、Change Tracking やインベントリなどの機能によって生成されるデータを収集します。 ワークスペースには、複数のソースからのデータを確認および分析する場所が 1 つ用意されています。
+3. [Log Analytics](../azure-monitor/log-query/log-query-overview.md) ワークスペースを選択します。 このワークスペースは、Change Tracking やインベントリなどの機能によって生成されるデータを収集します。 ワークスペースには、複数のソースからのデータを確認および分析する場所が 1 つ用意されています。
 
     [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -238,4 +238,4 @@ Azure portal に変更を表示することは有益ですが、サービスの�
 さらに詳しく学ぶには、Change Tracking およびインベントリ機能の概要に進んでください。
 
 > [!div class="nextstepaction"]
-> [Change Tracking とインベントリの概要](automation-change-tracking.md)
+> [Change Tracking とインベントリの概要](./change-tracking.md)

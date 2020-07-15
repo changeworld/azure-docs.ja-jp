@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 989608b9a087599ab73864ae2605fbffcf3221d9
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 7f6c7a651e133122dab86d6ed81572f239718b43
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84982052"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243241"
 ---
 # <a name="monitor-published-apis"></a>発行された API を監視する
 
@@ -43,7 +43,7 @@ Azure Monitor を使用すると、Azure リソースのメトリックまたは
 
 ## <a name="view-metrics-of-your-apis"></a>API のメトリックを表示する
 
-API Management はメトリックを 1 分間隔で出力するので、API の状態と正常性をほぼリアルタイムで把握できます。 最も頻繁に使用される 2 つのメトリックを次に示します。 使用できるすべてのメトリックの一覧については、[サポートされているメトリック](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftapimanagementservice)に関するページを参照してください。
+API Management はメトリックを 1 分間隔で出力するので、API の状態と正常性をほぼリアルタイムで把握できます。 最も頻繁に使用される 2 つのメトリックを次に示します。 使用できるすべてのメトリックの一覧については、[サポートされているメトリック](../azure-monitor/platform/metrics-supported.md#microsoftapimanagementservice)に関するページを参照してください。
 
 * 容量: APIM サービスのアップグレードとダウングレードに関する判断に役立ちます。 このメトリックは 1 分ごとに出力され、報告時のゲートウェイの容量を反映しています。 メトリックの範囲は 0 から 100 で、CPU やメモリの使用率などのゲートウェイ リソースに基づいて計算されます。
 * 要求: 対象の APIM サービスを通過する API トラフィックを分析するのに役立ちます。 メトリックは 1 分ごとに出力され、応答コード、場所、ホスト名、エラーなどのディメンションと共にゲートウェイ要求の数を報告します。 

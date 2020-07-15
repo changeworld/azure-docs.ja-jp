@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 6/22/2020
 ms.author: mebeatty
-ms.openlocfilehash: 4d698375488d4dac551f0028883fc4e18a10d8ef
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: d489186dc1c012fe8c181f17e00bcdb999e230dd
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323503"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232136"
 ---
 # <a name="add-security-headers-with-rules-engine"></a>ルール エンジンを使用してセキュリティ ヘッダーを追加する
 
 HTTP Strict-Transport-Security (HSTS)、X-XSS-Protection、Content-Security-Policy、X-Frame-Options など、ブラウザーベースの脆弱性を防ぐためにセキュリティ ヘッダーを実装します。 セキュリティベースの属性は、Cookie でも定義できます。
 
-次の例は、ルール エンジン構成が関連付けられているルートに定義されているパスに一致するあらゆる受信要求に Content-Security-Policy ヘッダーを追加する方法を示しています。 ここでは、信頼できるサイト **https://apis.contoso.com** からのスクリプトにのみ、アプリケーション上での実行を許可します。
+次の例は、ルール エンジン構成が関連付けられているルートに定義されているパスに一致するあらゆる受信要求に Content-Security-Policy ヘッダーを追加する方法を示しています。 ここでは、信頼できるサイト **https://apiphany.portal.azure-api.net** からのスクリプトにのみ、アプリケーション上での実行を許可します。
 
 ## <a name="add-a-content-security-policy-header-in-azure-portal"></a>Azure portal で Content-Security-Policy ヘッダーを追加する
 
@@ -33,7 +33,7 @@ HTTP Strict-Transport-Security (HSTS)、X-XSS-Protection、Content-Security-Poli
 
 3. [演算子] を **[追加]** に設定し、このルートへのすべての受信要求に応答としてこのヘッダーを追加します。
 
-4. ヘッダー名として「**Content-Security-Policy**」を追加し、このヘッダーで受け入れる値を定義します。 このシナリオでは、 *"script-src 'self' https://apis.contoso.com"* を選択します。
+4. ヘッダー名として「**Content-Security-Policy**」を追加し、このヘッダーで受け入れる値を定義します。 このシナリオでは、 *"script-src 'self' https://apiphany.portal.azure-api.net"* を選択します。
 
 5. 構成に追加するルールをすべて追加したら、必ず優先ルートに移動し、ルール エンジン構成をルート ルールに関連付けてください。 この手順は、ルールを機能させるために必須です。 
 

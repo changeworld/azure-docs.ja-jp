@@ -1,16 +1,16 @@
 ---
 title: 素材、ライト、および効果の調整
 description: モデルの素材とライトを変更します。 アウトラインや切断面など、その他の効果を追加します。
-author: michael-house
-ms.author: v-mihous
+author: florianborn71
+ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 0379fe460d2bb90d28999a139e3ca9c8b7110eca
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 39560966b542999b2c0c3472075c7497f2146455
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85566714"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207342"
 ---
 # <a name="tutorial-refining-materials-lighting-and-effects"></a>チュートリアル:素材、ライト、および効果の調整
 

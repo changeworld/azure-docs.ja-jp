@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 16c14774b1b032132040ea3fdcf810a4f9de8f18
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 38b723cb823547d4737a68576575c2b629f5eb67
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077356"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206281"
 ---
 # <a name="import-and-publish-your-first-api"></a>最初の API のインポートと発行
 
@@ -97,8 +97,3 @@ Azure portal には、API の操作を表示およびテストするための便
 
 > [!div class="nextstepaction"]
 > [成果物を作成して発行する](api-management-howto-add-products.md)
-
-クラウドの支出を最適化して節約することをご希望ですか?
-
-> [!div class="nextstepaction"]
-> [Cost Management を使用してコスト分析を開始する](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

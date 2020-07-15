@@ -10,18 +10,18 @@ ms.subservice: bing-entity-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: a376c5d223121774b6c707b3bdc8edce42649e42
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 53731540c4a2861c77c02b1a4b25b60fd0e23872
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800059"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184142"
 ---
 # <a name="tutorial-single-page-web-app"></a>チュートリアル:単一ページの Web アプリ
 
 Bing Entity Search API を使用すると、Web で*エンティティ*と*場所*に関する情報を検索できます。 特定のクエリで、いずれかの結果または両方の結果を要求することができます。 場所とエンティティの定義を以下に示します。
 
-|||
+| 結果 | 説明 |
 |-|-|
 |エンティティ|名前で検索する有名な人物、場所、もの|
 |Places|名前*または*種類 (イタリアン レストランなど) で検索するレストラン、ホテル、その他の地元企業|
@@ -141,7 +141,7 @@ HTML `<body>` タグには、ページの読み込みが完了したときに `g
 
 この HTML のフォームには、次のコントロールが含まれます。
 
-| | |
+| コントロール | 説明 |
 |-|-|
 |`where`|検索で使用される市場 (場所と言語) を選択するドロップダウン メニュー。|
 |`query`|検索語句を入力するテキスト フィールド。|
@@ -411,7 +411,7 @@ Bing Entity Search API では、[指定した順序で結果を表示する必�
 
 `rankingResponse` コレクション内の各項目は、2 つの異なる (ただし同等の) 方法で実際の検索結果の項目を参照します。
 
-| | |
+| Item | 説明 |
 |-|-|
 |`id`|`id` は URL に似ていますが、リンクには使用できません。 `id` 型のランキング結果は、応答コレクション内の検索結果項目、"*または*" 応答コレクション全体 (`Entities` など) のいずれかの `id` と一致します。
 |`answerType`<br>`resultIndex`|`answerType` は、結果を含む最上位の応答コレクション (`Entities` など) を参照します。 `resultIndex` は、そのコレクション内の結果のインデックスを参照します。 `resultIndex` を省略すると、ランキング結果はコレクション全体を参照したものとなります。
@@ -452,7 +452,7 @@ searchItemRenderers = {
 
 レンダラー関数では、次のパラメーターを受け取ることができます。
 
-| | |
+| パラメーター | 説明 |
 |-|-|
 |`item`|項目のプロパティ (URL とその説明など) を含む JavaScript オブジェクト。|
 |`index`|コレクション内の結果項目のインデックス。|

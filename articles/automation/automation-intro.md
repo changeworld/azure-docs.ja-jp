@@ -7,12 +7,12 @@ keywords: Azure Automation, DSC, PowerShell, State Configuration, Update Managem
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: e02cfdaac602adfe455c26d9e87939586fd9738a
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 30cfadcec1f0c28a463740ddaefa8fc76f04af3f
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835276"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186182"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Azure Automation の概要
 
@@ -53,14 +53,14 @@ Azure Automation には、共有リソース、ロールベースのアクセス
 
 Azure Automation は、環境を大きな規模で容易に自動化して構成できるようにする一連の共有リソースで構成されます。
 
-* **[スケジュール](automation-schedules.md)** - あらかじめ定義されている時刻にオートメーション操作をトリガーします。
-* **[モジュール](automation-integration-modules.md)** - Azure やその他のシステムを管理します。 モジュールは、Microsoft、サード パーティ、コミュニティ、カスタム定義コマンドレット、および DSC リソース用の Automation アカウントにインポートできます。
+* **[スケジュール](./shared-resources/schedules.md)** - あらかじめ定義されている時刻にオートメーション操作をトリガーします。
+* **[モジュール](./shared-resources/modules.md)** - Azure やその他のシステムを管理します。 モジュールは、Microsoft、サード パーティ、コミュニティ、カスタム定義コマンドレット、および DSC リソース用の Automation アカウントにインポートできます。
 * **[モジュール ギャラリー](automation-runbook-gallery.md)** - PowerShell ギャラリーとのネイティブな統合をサポートします。Runbook を表示してそれらを Automation アカウントにインポートすることができます。 PowerShell ギャラリーと Microsoft スクリプト センターからプロセスの統合と作成をすぐに開始できます。
 * **[Python 2 パッケージ](python-packages.md)** - Automation アカウントでは、Python 2 Runbook がサポートされます。
-* **[資格情報](automation-credentials.md)** - Runbook と構成で実行時に使用される可能性がある秘匿性の高い情報を安全に格納します。
+* **[資格情報](./shared-resources/credentials.md)** - Runbook と構成で実行時に使用される可能性がある秘匿性の高い情報を安全に格納します。
 * **[接続](automation-connections.md)** - システムへの接続に使用される一般的な情報の名前と値の組を格納します。 実行時に Runbook と構成内で使用される接続をモジュールの作成者が定義します。
-* **[証明書](automation-certificates.md)** - デプロイされたリソースに対し、Runbook または DSC 構成が実行時にアクセスする際の認証とセキュリティ保護に使用される情報を定義します。 
-* **[変数](automation-variables.md)** - Runbook と構成間で使用できるコンテンツを保持します。 Runbook またはそれらを参照する構成を変更することなく、変数の値を変更できます。
+* **[証明書](./shared-resources/certificates.md)** - デプロイされたリソースに対し、Runbook または DSC 構成が実行時にアクセスする際の認証とセキュリティ保護に使用される情報を定義します。 
+* **[変数](./shared-resources/variables.md)** - Runbook と構成間で使用できるコンテンツを保持します。 Runbook またはそれらを参照する構成を変更することなく、変数の値を変更できます。
 
 ### <a name="role-based-access-control"></a>ロールベースのアクセス制御
 
