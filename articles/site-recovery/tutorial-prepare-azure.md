@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ba5ecc29edbcd69324500e87add846e4395ce0a3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 312723818c4cef82ad6c96b013d7ec81ede276cc
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80067565"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130905"
 ---
 # <a name="prepare-azure-for-on-premises-disaster-recovery-to-azure"></a>オンプレミスから Azure へのディザスター リカバリーを準備する
 
@@ -90,8 +90,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="next-steps"></a>次のステップ
 
-- VMware のディザスター リカバリーの場合は、[オンプレミスの VMware インフラストラクチャを準備します](tutorial-prepare-on-premises-vmware.md)。
+- VMware のディザスター リカバリーの場合は、[オンプレミスの VMware インフラストラクチャを準備します](./vmware-azure-tutorial-prepare-on-premises.md)。
 - Hyper-V のディザスター リカバリーの場合は、[オンプレミスの Hyper-V サーバーを準備します](hyper-v-prepare-on-premises-tutorial.md)。
 - 物理サーバーのディザスター リカバリーの場合は、[構成サーバーとソース環境を設定します](physical-azure-disaster-recovery.md)
-- [Azure ネットワーク](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)についての学習。
-- [マネージド ディスク](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview)についての学習。
+- [Azure ネットワーク](../virtual-network/virtual-networks-overview.md)についての学習。
+- [マネージド ディスク](../virtual-machines/windows/managed-disks-overview.md)についての学習。

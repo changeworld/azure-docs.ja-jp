@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/04/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c3b2f5332f3dc94f10a7822068b165db13b3d33
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 91200ba4561aa6b715149d91beee8ac9d0375657
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456778"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170464"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smart-global-governance"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Smart Global Governance の統合
 
@@ -85,26 +85,20 @@ Smart Global Governance に対する Azure AD SSO を構成してテストする
 
     a. **[識別子]** ボックスに、これらの URL のいずれかを入力します。
 
-    | | |
-    |-|-|
-    | `https://eu-fr-south.console.smartglobalprivacy.com/platform/authentication-saml2/metadata`|
-    | `https://eu-fr-south.console.smartglobalprivacy.com/dpo/authentication-saml2/metadata`|
+    - `https://eu-fr-south.console.smartglobalprivacy.com/platform/authentication-saml2/metadata`
+    - `https://eu-fr-south.console.smartglobalprivacy.com/dpo/authentication-saml2/metadata`
 
     b. **[応答 URL]** ボックスに、これらの URL のいずれかを入力します。
 
-    | | |
-    |-|-|
-    | `https://eu-fr-south.console.smartglobalprivacy.com/platform/authentication-saml2/acs`|
-    | `https://eu-fr-south.console.smartglobalprivacy.com/dpo/authentication-saml2/acs`|
+    - `https://eu-fr-south.console.smartglobalprivacy.com/platform/authentication-saml2/acs`
+    - `https://eu-fr-south.console.smartglobalprivacy.com/dpo/authentication-saml2/acs`
 
 1. アプリケーションを SP 開始モードで構成する場合は、 **[追加の URL を設定します]** を選択して次の手順に従います。
 
    - **[サインオン URL]** ボックスに、これらの URL のいずれかを入力します。
 
-    | | |
-    |-|-|
-    | `https://eu-fr-south.console.smartglobalprivacy.com/dpo`|
-    | `https://eu-fr-south.console.smartglobalprivacy.com/platform`|
+    - `https://eu-fr-south.console.smartglobalprivacy.com/dpo`
+    - `https://eu-fr-south.console.smartglobalprivacy.com/platform`
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (未加工)]** の **[ダウンロード]** リンクを選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 

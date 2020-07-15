@@ -4,12 +4,12 @@ description: Batch Management .NET ライブラリを使用するアプリケー
 ms.topic: how-to
 ms.date: 04/27/2017
 ms.custom: has-adal-ref
-ms.openlocfilehash: b82d6b5f166f67752ea809353e074c01ac953a48
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 829a742c144f2bba39f1ca392e80db25640d4dee
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848980"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86141966"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Batch 管理ソリューションの認証に Active Directory を使用する
 
@@ -23,9 +23,9 @@ Batch Management .NET ライブラリと AccountManagement サンプルの使用
 
 ## <a name="register-your-application-with-azure-ad"></a>Azure AD にアプリケーションを登録する
 
-[Azure Active Directory Authentication Library](../active-directory/active-directory-authentication-libraries.md) (ADAL) は、お使いのアプリケーション内で使用できる Azure AD へのプログラム インターフェイスです。 アプリケーションから ADAL を呼び出すには、Azure AD テナントにアプリケーションを登録する必要があります。 アプリケーションを登録する場合は、アプリケーションに関する情報 (Azure AD テナント内でのアプリケーション名など) を Azure AD で指定します。 これで、Azure AD から、実行時にアプリケーションを Azure AD と関連付ける際に使用するアプリケーション ID が提供されます。 アプリケーション ID の詳細については、「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/develop/app-objects-and-service-principals.md)」を参照してください。
+[Azure Active Directory Authentication Library](../active-directory/azuread-dev/active-directory-authentication-libraries.md) (ADAL) は、お使いのアプリケーション内で使用できる Azure AD へのプログラム インターフェイスです。 アプリケーションから ADAL を呼び出すには、Azure AD テナントにアプリケーションを登録する必要があります。 アプリケーションを登録する場合は、アプリケーションに関する情報 (Azure AD テナント内でのアプリケーション名など) を Azure AD で指定します。 これで、Azure AD から、実行時にアプリケーションを Azure AD と関連付ける際に使用するアプリケーション ID が提供されます。 アプリケーション ID の詳細については、「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/develop/app-objects-and-service-principals.md)」を参照してください。
 
-AccountManagement サンプル アプリケーションを登録するには、[Azure Active Directory とアプリケーションの統合](../active-directory/active-directory-integrating-applications.md)に関するページの[アプリケーションの追加](../active-directory/develop/quickstart-register-app.md)の手順に従います。 アプリケーションの種類として、 **[ネイティブ クライアント アプリケーション]** を指定します。 **リダイレクト URI** の業界標準 OAuth 2.0 に準拠した URI は `urn:ietf:wg:oauth:2.0:oob` です。 ただし、実際のエンドポイントである必要はないので、**Redirect URI** には (`http://myaccountmanagementsample` などの) 任意の URI を指定できます。
+AccountManagement サンプル アプリケーションを登録するには、[Azure Active Directory とアプリケーションの統合](../active-directory/develop/quickstart-register-app.md)に関するページの[アプリケーションの追加](../active-directory/develop/quickstart-register-app.md)の手順に従います。 アプリケーションの種類として、 **[ネイティブ クライアント アプリケーション]** を指定します。 **リダイレクト URI** の業界標準 OAuth 2.0 に準拠した URI は `urn:ietf:wg:oauth:2.0:oob` です。 ただし、実際のエンドポイントである必要はないので、**Redirect URI** には (`http://myaccountmanagementsample` などの) 任意の URI を指定できます。
 
 ![アプリケーションの追加](./media/batch-aad-auth-management/app-registration-management-plane.png)
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45782d7827a289cc0942eca61d6b30d071a6721c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ccd1304ae43a2f424dab94cf67e7cc41357579fa
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67452403"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86167030"
 ---
 # <a name="tutorial-integrate-vtiger-crm-saml-with-azure-active-directory"></a>チュートリアル:Vtiger CRM (SAML) と Azure Active Directory の統合
 
@@ -85,11 +85,9 @@ Vtiger CRM (SAML) で Azure AD SSO を構成してテストするには、次の
 
     a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。
 
-    | | |
-    | - |- |
-    | `https://<customer_instance>.od1.vtiger.com` |
-    | `https://<customer_instance>.od2.vtiger.com` |
-    | `https://<customer_instance>.od1.vtiger.ws` |
+   - `https://<customer_instance>.od1.vtiger.com`
+   - `https://<customer_instance>.od2.vtiger.com`
+   - `https://<customer_instance>.od1.vtiger.ws`
 
     b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<customer_instance>.od1.vtiger.com/sso/saml?acs`
 

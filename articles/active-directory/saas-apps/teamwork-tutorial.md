@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0b407f29e4dda532ef12019f8d0a2a273832987
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a62bdc0f23f6769dca9914381a81674e470e695d
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67595249"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86167778"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamworkcom"></a>チュートリアル: Azure Active Directory と Teamwork.com の統合
 
@@ -110,10 +110,8 @@ Teamwork.com で Azure AD シングル サインオンを構成するには、�
 
     b. **[識別子 (エンティティ ID)]** ボックスに、URL として次のように入力します:
 
-    | | |
-    |-|-|
-    | `https://teamwork.com/saml`|
-    | `https://eu.teamwork.com/saml`|
+    - `https://teamwork.com/saml`
+    - `https://eu.teamwork.com/saml`
 
     > [!NOTE]
     > このサインオン URL は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Teamwork.com サポート チーム](mailto:support@teamwork.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

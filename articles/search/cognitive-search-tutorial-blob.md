@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/26/2020
-ms.openlocfilehash: ef19c8eb747432a2eea3880b094f77747890c0d9
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 663d6659acf5c1e5abc8be56156af84167c51797
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984013"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146948"
 ---
 # <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>チュートリアル:REST と AI を使用して Azure Blob から検索可能なコンテンツを生成する
 
@@ -451,7 +451,7 @@ Free レベルを使用している場合は、次のメッセージが表示さ
 1. **GET** と次の URL を使用して、用語や語句の出現箇所を検索します。YOUR-SERVICE-NAME は、実際のサービス名に置き換えてください。これにより、`content` フィールドと、一致するドキュメントの数が返されます。
 
    ```http
-   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx?search=*&$count=true&$select=content?api-version=2020-06-30
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$count=true&$select=content&api-version=2020-06-30
    ```
    
    このクエリでは、結果としてドキュメントのコンテンツが返されます。これは、コグニティブ検索パイプラインなしで BLOB インデクサーを使用した場合に取得されるのと同じ結果です。 このフィールドは検索可能ですが、ファセット、フィルター、またはオートコンプリートを使用したいと思っても、動作しません。
@@ -461,7 +461,7 @@ Free レベルを使用している場合は、次のメッセージが表示さ
 1. 2 番目のクエリでは、パイプラインによって作成された新しいフィールドの一部 (persons、organizations、locations、languageCode) が返されます。 簡潔にするために keyPhrases は省略していますが、それらの値を確認したい場合は含める必要があります。
 
    ```http
-   https://mydemo.search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$count=true&$select=metadata_storage_name,persons,organizations,locations,languageCode&api-version=2020-06-30
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$count=true&$select=metadata_storage_name,persons,organizations,locations,languageCode&api-version=2020-06-30
    ```
    $select ステートメントのフィールドには、Cognitive Services の自然言語処理機能によって作成された新しい情報が含まれています。 予想どおり、結果内のノイズやドキュメント間のバリエーションもいくらかあるものの、多くの場合、分析モデルによって正確な結果が生成されます。
 
@@ -483,7 +483,7 @@ Free レベルを使用している場合は、次のメッセージが表示さ
 1. この最後の例では、組織のコレクションにフィルターを適用します。それにより、NASDAQ に基づくフィルター条件に対して 2 件の一致が返されます。
 
    ```http
-   cog-search-demo-idx/docs?search=*&$filter=organizations/any(organizations: organizations eq 'NASDAQ')&$select=metadata_storage_name,organizations&$count=true&api-version=2020-06-30
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$filter=organizations/any(organizations: organizations eq 'NASDAQ')&$select=metadata_storage_name,organizations&$count=true&api-version=2020-06-30
    ```
 
 これらのクエリは、Cognitive Search によって作成された新しいフィールドでクエリ構文やフィルターを操作するいくつかの方法を示しています。 その他のクエリの例については、[Search Documents REST API の例](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples)、[単純構文クエリの例](search-query-simple-examples.md)、および[完全な Lucene クエリの例](search-query-lucene-examples.md)に関するページを参照してください。

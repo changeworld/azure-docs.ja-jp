@@ -4,12 +4,12 @@ description: この記事では、Azure Migrate を使用して、物理マシ�
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: MVC
-ms.openlocfilehash: dbb7737d59f48cadc645be990634bb5cb0cda251
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 16145c5d8b2414750b6eff9669fa7cd61eb482f5
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116099"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165398"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>マシンを物理サーバーとして Azure に移行する
 
@@ -69,9 +69,9 @@ Server Migration を使用した移行に向けて Azure を準備します。
 
 仮想マシン共同作成者ロールを Azure アカウントに割り当てます。 これで、次の作業を行うためのアクセス許可が得られます。
 
-    - 選択したリソース グループ内に VM を作成する。
-    - 選択した仮想ネットワーク内に VM を作成する。
-    - Azure マネージド ディスクに書き込む。 
+- 選択したリソース グループ内に VM を作成する。
+- 選択した仮想ネットワーク内に VM を作成する。
+- Azure マネージド ディスクに書き込む。 
 
 ### <a name="create-an-azure-network"></a>Azure ネットワークを作成する
 

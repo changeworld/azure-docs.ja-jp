@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94012a6830e59658562ed3e7485dad698f74974f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 155222dcbc3fed33ba4f9098986e3fb4f74a3dc3
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67091110"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86168781"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sedgwick-cms"></a>チュートリアル: Azure Active Directory と Sedgwick CMS の統合
 
@@ -108,17 +108,13 @@ Sedgwick CMS で Azure AD シングル サインオンを構成するには、�
 
     a. **[識別子]** ボックスに、次の形式で URL を入力します。
 
-    | |
-    |--|
-    | `expresspreview.sedgwickcms.net/voe/sso` |
-    | `claimlookup.com/Voe/sso` |
+    - `expresspreview.sedgwickcms.net/voe/sso`
+    - `claimlookup.com/Voe/sso`
 
     b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
 
-    | |
-    |--|
-    | `https://<subdomain>.sedgwickcms.net/voe/sso` |
-    | `https://claimlookup.com/Voe/sso` |
+    - `https://<subdomain>.sedgwickcms.net/voe/sso`
+    - `https://claimlookup.com/Voe/sso`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Sedgwick CMS クライアント サポート チーム](https://www.sedgwick.com/help)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

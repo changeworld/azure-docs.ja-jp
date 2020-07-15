@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/15/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e41f2a5124603c8233bf515e07a95d0ee9ff4272
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: a0b418b15aaebe298b8e7c6507c96de2843d51e9
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85255684"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170175"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-intelligencebank"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と IntelligenceBank の統合
 
@@ -88,12 +88,9 @@ IntelligenceBank で Azure AD SSO を構成してテストするには、次の�
 
     b. **[識別子 (エンティティ ID)]** テキスト ボックスでは、以下のいずれかを使用します。
 
-    | |
-    |--|
-    | `IB`| 
-    | `IntelligenceBank`|
-    | `https://<SUBDOMAIN>.intelligencebank.com`|
-    | |
+    - `IB`
+    - `IntelligenceBank`
+    - `https://<SUBDOMAIN>.intelligencebank.com`
 
     c. **[応答 URL]** ボックスに、`https://<SUBDOMAIN>.intelligencebank.com/auth` のパターンを使用して URL を入力します
 

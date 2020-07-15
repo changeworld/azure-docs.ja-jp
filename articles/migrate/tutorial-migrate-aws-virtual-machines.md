@@ -4,12 +4,12 @@ description: この記事では、Azure Migrate を使用して、AWS VM を Azu
 ms.topic: tutorial
 ms.date: 06/16/2020
 ms.custom: MVC
-ms.openlocfilehash: 6eeff73bdcac214eb3836731fcbfd2f9410c6045
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5d697c2146144ca7f4b9a8739b6863ba31845f4e
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102805"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165432"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>アマゾン ウェブ サービス (AWS) の VM を検出して評価し、Azure に移行する
 
@@ -77,9 +77,9 @@ Azure Migrate: Server Migration ツールを使用した移行のために Azure
 
 仮想マシン共同作成者ロールを Azure アカウントに割り当てます。 これで、次の作業を行うためのアクセス許可が得られます。
 
-    - 選択したリソース グループ内に VM を作成する。
-    - 選択した仮想ネットワーク内に VM を作成する。
-    - Azure マネージド ディスクに書き込む。 
+- 選択したリソース グループ内に VM を作成する。
+- 選択した仮想ネットワーク内に VM を作成する。
+- Azure マネージド ディスクに書き込む。 
 
 ### <a name="create-an-azure-network"></a>Azure ネットワークを作成する
 

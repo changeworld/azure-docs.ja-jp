@@ -12,18 +12,18 @@ ms.date: 05/26/2020
 ms.author: erhopf
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: bac8ab3da806927c588d3dc9cd06b83feb904a67
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 017cb7dbc3e81584905530d819de680e79e2282b
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84606549"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147152"
 ---
 # <a name="quickstart-use-the-translator-to-determine-sentence-length"></a>クイック スタート:Translator を使用して文の長さを調べる
 
 このクイック スタートでは、Translator を使用して文の長さを調べる方法について説明します。
 
-このクイック スタートでは、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Translator リソースが必要になります。 アカウントを持っていない場合は、[無料試用版](https://azure.microsoft.com/try/cognitive-services/)を使用してサブスクリプション キーを取得できます。
+このクイック スタートでは、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Translator リソースが必要になります。 
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# quickstart](includes/sentences-csharp.md)]

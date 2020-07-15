@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/18/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18dc2e4393175751f5ac52d53e0c331c82fce7e8
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f3740415652407c834ec258730f89e46398a9f79
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078155"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170481"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-shopify-plus"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Shopify Plus の統合
 
@@ -99,9 +99,9 @@ Shopify Plus との Azure AD SSO を構成し、テストするには、以下�
 
 1. 上記に加えて、Shopify Plus アプリケーションでは、SAML 応答でいくつかの属性が返されると想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
-    | 名前 |  |  ソース属性|
-    | ---------------| --------------- | --------- |
-    | email | | User.mail |
+    | 名前 | ソース属性|
+    | ---- | --------------- |
+    | email | User.mail |
 
 1. **[名前 ID]** の形式を **[永続的]** に変更します。 **[一意のユーザー識別子 (名前 ID)]** オプションを選択し、 **[名前識別子]** 形式を選択します。 このオプションに **[永続的]** を選択します。 変更を保存します。
 1. **[SAML によるシングル サインオンのセットアップ]** ページの **[SAML 署名証明書]** セクションで、コピー ボタンを選択して **[アプリのフェデレーション メタデータ URL]** をコピーし、コンピューターに保存します。

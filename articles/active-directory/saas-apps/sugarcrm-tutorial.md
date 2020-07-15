@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fae7b80fd4d2fcec32bbef5e4cdf18e576412a86
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e3199509b03b058b71b609d276a8d95e8d225175
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74231973"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86167761"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sugar-crm"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Sugar CRM の統合
 
@@ -87,18 +87,14 @@ Sugar CRM に対する Azure AD SSO を構成してテストするには、次�
 
     a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
 
-    | |
-    |--|
-    | `https://<companyname>.sugarondemand.com`|
-    | `https://<companyname>.trial.sugarcrm`|
+    - `https://<companyname>.sugarondemand.com`
+    - `https://<companyname>.trial.sugarcrm`
 
     b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
 
-    | |
-    |--|
-    | `https://<companyname>.sugarondemand.com/<companyname>`|
-    | `https://<companyname>.trial.sugarcrm.com/<companyname>`|
-    | `https://<companyname>.trial.sugarcrm.eu/<companyname>`|
+    - `https://<companyname>.sugarondemand.com/<companyname>`
+    - `https://<companyname>.trial.sugarcrm.com/<companyname>`
+    - `https://<companyname>.trial.sugarcrm.eu/<companyname>`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と応答 URL でこれらの値を更新してください。 これらの値を取得するには、[Sugar CRM クライアント サポート チーム](https://support.sugarcrm.com/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

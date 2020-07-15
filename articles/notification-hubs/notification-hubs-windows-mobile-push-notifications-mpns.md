@@ -18,12 +18,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: db2e583515d948f455e1d2129684f97347a07403
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 2a2db9f7342b984a8c539a345f8e5038caf5ff85
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594935"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170277"
 ---
 # <a name="tutorial-send-push-notifications-to-windows-phone-apps-using-notification-hubs"></a>チュートリアル:Notification Hubs を使用して Windows Phone アプリにプッシュ通知を送信する
 
@@ -84,8 +84,11 @@ ms.locfileid: "82594935"
     ![Visual Studio - NuGet Package Manager][20]
 4. App.xaml.cs ファイルを開き、次の `using` ステートメントを追加します。
 
-        using Microsoft.Phone.Notification;
-        using Microsoft.WindowsAzure.Messaging;
+    ```csharp
+    using Microsoft.Phone.Notification;
+    using Microsoft.WindowsAzure.Messaging;
+    ```
+
 5. `App.xaml.cs` の `Application_Launching` メソッドの先頭に次のコードを追加します。
 
     ```csharp

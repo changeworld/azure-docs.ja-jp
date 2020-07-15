@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: e8ae31122d59238ac104d7d873cf56f32977c9af
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ada0977dafeba546e84b22c6c61efecce1511dc7
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67086516"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170158"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>チュートリアル:Azure Active Directory と xMatters OnDemand の統合
 
@@ -107,24 +107,18 @@ xMatters OnDemand で Azure AD シングル サインオンを構成するには
 
     a. **[識別子]** ボックスに、次の形式で URL を入力します。
 
-    | |
-    |--|
-    | `https://<companyname>.au1.xmatters.com.au/`|
-    | `https://<companyname>.cs1.xmatters.com/`|
-    | `https://<companyname>.xmatters.com/`|
-    | `https://www.xmatters.com`|
-    | `https://<companyname>.xmatters.com.au/`|
-    | |
+    - `https://<companyname>.au1.xmatters.com.au/`
+    - `https://<companyname>.cs1.xmatters.com/`
+    - `https://<companyname>.xmatters.com/`
+    - `https://www.xmatters.com`
+    - `https://<companyname>.xmatters.com.au/`
 
     b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
 
-    | |
-    |--|
-    | `https://<companyname>.au1.xmatters.com.au`|
-    | `https://<companyname>.xmatters.com/sp/<instancename>`|
-    | `https://<companyname>.cs1.xmatters.com/sp/<instancename>`|
-    | `https://<companyname>.au1.xmatters.com.au/<instancename>`|
-    | |
+    - `https://<companyname>.au1.xmatters.com.au`
+    - `https://<companyname>.xmatters.com/sp/<instancename>`
+    - `https://<companyname>.cs1.xmatters.com/sp/<instancename>`
+    - `https://<companyname>.au1.xmatters.com.au/<instancename>`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[xMatters OnDemand クライアント サポート チーム](https://www.xmatters.com/company/contact-us/)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/22/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77bd880bbbc1d600ca21e058993102d69b417f41
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: aecb235006752096c6040066cb9b96fcfa709363
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84764096"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86167251"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-textexpander"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と TextExpander の統合
 
@@ -97,11 +97,11 @@ TextExpander で Azure AD SSO を構成してテストするには、次の構�
 
 1. 上記に加えて、TextExpander アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
     
-    | 名前 | |  ソース属性|
-    | ---------------| --------------- | --------- |
-    | email | | user.email |
-    | firstName | | User.givenname |
-    | lastName | | User.surname |
+    | 名前 | ソース属性|
+    | ---- | --------------- |
+    | email | user.email |
+    | firstName | User.givenname |
+    | lastName | User.surname |
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 

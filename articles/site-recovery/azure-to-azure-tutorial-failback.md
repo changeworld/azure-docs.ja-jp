@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: c27b7bf29e5f124fdcfb886b658fd8e9d4cc48fe
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e6257311473987ee053caeade6bfe14533353b73
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74091341"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134442"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>Azure リージョン間で Azure VM をフェールバックする
 
@@ -28,7 +28,7 @@ ms.locfileid: "74091341"
 > 
 > [!NOTE]
 > 
-> このチュートリアルでは、最小限のカスタマイズで、いくつかの VM をターゲット リージョンにフェールオーバーした後、ソース リージョンにフェールバックする方法を紹介しています。 さらに詳しい手順については、[Azure VM のハウツー ガイド](https://docs.microsoft.com/azure/virtual-machines/windows/)を確認してください。
+> このチュートリアルでは、最小限のカスタマイズで、いくつかの VM をターゲット リージョンにフェールオーバーした後、ソース リージョンにフェールバックする方法を紹介しています。 さらに詳しい手順については、[Azure VM のハウツー ガイド](../virtual-machines/windows/index.yml)を確認してください。
 
 ## <a name="before-you-start"></a>開始する前に
 
