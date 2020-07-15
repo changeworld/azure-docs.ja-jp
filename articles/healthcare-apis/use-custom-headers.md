@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
 ms.date: 10/13/2019
-ms.openlocfilehash: d274160cc2ed1102dfc8fd11df358b34e40d9923
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 937be72bfec96119474e7effe9ba88a2cf253444
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "84870301"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081845"
 ---
 # <a name="add-data-to-audit-logs-by-using-custom-http-headers"></a>カスタム HTTP ヘッダーを使用してデータを監査ログに追加する
 
@@ -36,7 +36,7 @@ Azure 高速ヘルスケア相互運用性リソース (FHIR) API では、ユ�
 > [!IMPORTANT]
 > カスタム ヘッダーで送信された情報は、Azure ログ監視で使用可能になってから 30 日間、Microsoft の内部ログ システムに格納されていることに注意してください。 情報をカスタム ヘッダーに追加する前に暗号化することをお勧めします。 カスタム ヘッダーを通じて PHI 情報を渡すことはできません。
 
-HTTP ヘッダーには、次の名前付け規則を使用する必要があります。X-MS-AZUREFHIR-AUDIT-AUDIT-\<name>。
+HTTP ヘッダーには、次の名前付け規則を使用する必要があります。X-MS-AZUREFHIR-AUDIT-\<name>。
 
 以下の HTTP ヘッダーは、ログに追加されるプロパティ バッグに含まれています。 次に例を示します。
 
@@ -63,7 +63,7 @@ HTTP ヘッダーと同様に、同じヘッダー名を別の値で繰り返す
  
 最大で 10 個の一意のヘッダーを追加できます (異なる値を持つ同じヘッダーの繰り返しは、1 個としてカウントされます)。 1 つのヘッダーの値の最大長は、2,048 文字です。
 
-Firely C# クライアント API ライブラリを使用している場合、コードは次のようになります。
+Firefly C# クライアント API ライブラリを使用している場合、コードは次のようになります。
 
 ```C#
 FhirClient client;

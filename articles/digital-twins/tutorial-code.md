@@ -7,17 +7,14 @@ ms.author: cschorm
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 170901f3410c85ab53a306529053e611b36fa8ec
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: deb69f6ca8f1499f43c12d606434719571a1f400
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298397"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027878"
 ---
 # <a name="coding-with-the-azure-digital-twins-apis"></a>Azure Digital Twins API を使用したコーディング
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Azure Digital Twins を使用する開発者は、Azure Digital Twins サービスのインスタンスとのやり取りのために、クライアント アプリケーションを作成するのが一般的です。 この開発者向けのチュートリアルでは、[.NET 用 Azure IoT Digital Twins クライアント ライブラリ (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core) を使用した、Azure Digital Twins サービスに対するプログラミングの概要を説明します。 C# コンソール クライアント アプリの作成手順を最初から順を追って説明します。
 
@@ -288,6 +285,7 @@ Type name: : dtmi:com:contoso:SampleModel;1
 
 ```csharp
 using System.Text.Json;
+using Azure.DigitalTwins.Core.Serialization;
 ```
 
 次に、`Main` メソッドの末尾に次のコードを追加し、このモデルに基づいて 3 つのデジタル ツインを作成して初期化します。
@@ -318,7 +316,7 @@ for(int i=0; i<3; i++) {
 
 次に、作成したツイン間に**リレーションシップ**を作成することで、それらのツインを接続し、**ツイン グラフ**を形成することができます。 [ツイン グラフ](concepts-twins-graph.md)は、ご自分の環境全体を表すために使用されます。
 
-リレーションシップを作成できるようにするには、SDK にあるリレーションシップの基本データ型を対象にした `using` ステートメントを追加します。
+リレーションシップを作成できるようにするには、SDK にあるリレーションシップの基本データ型を対象にした `using` ステートメントを追加します (追加済みの場合はスキップします)。
 ```csharp
 using Azure.DigitalTwins.Core.Serialization;
 ```
@@ -566,5 +564,5 @@ az ad app delete --id <your-application-ID>
 > [チュートリアル:サンプル クライアント アプリを使用して基本事項を確認する](tutorial-command-line-app.md)
 
 また、このチュートリアルで記述したコードへの追加もできます。そのためには、操作方法に関する記事で管理操作についてさらに学習するか、概念に関するドキュメントの参照を開始して、チュートリアルでの作業に使用した要素の詳細を確認してください。
-* [ツイン モデルを管理する](how-to-manage-model.md)
+* [カスタム モデルを管理する](how-to-manage-model.md)
 * [概念:カスタム モデル](concepts-models.md)
