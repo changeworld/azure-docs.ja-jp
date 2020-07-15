@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 06/23/2020
+ms.date: 07/10/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: f16f9b3fe6cd17b9fb6eb1cb2bd3ef1f42824701
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: a1df804681f0066fda025a60e0baddedc51f7a78
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85312727"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276870"
 ---
 |名前 |説明 |ポリシー |Version |
 |---|---|---|---|
@@ -37,4 +37,3 @@ ms.locfileid: "85312727"
 |[指定されたアプリケーションがインストールされている Windows VM を監査する](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_NotInstalledApp.json) |このイニシアティブはポリシー要件を展開し、指定されたアプリケーションがインストールされている Windows 仮想マシンを監査します。 ゲスト構成ポリシーの詳細については、[https://aka.ms/gcpol](https://aka.ms/gcpol) にアクセスしてください。 |2 |1.0.0 |
 |[再起動が保留中の Windows VM の監査](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_WindowsPendingReboot.json) |このイニシアティブはポリシー要件を展開し、再起動が保留中の Windows 仮想マシンを監査します。 ゲスト構成ポリシーの詳細については、[https://aka.ms/gcpol](https://aka.ms/gcpol) にアクセスしてください。 |2 |1.0.0 |
 |[セキュリティで保護された通信プロトコルを使用していない Windows Web サーバーを監査する](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_TLS.json) |このイニシアティブはポリシー要件を展開し、セキュリティで保護された通信プロトコル (TLS 1.1 や TLS 1.2) を使用していない Windows Web サーバーを監査します。 ゲスト構成ポリシーの詳細については、[https://aka.ms/gcpol](https://aka.ms/gcpol) にアクセスしてください。 |2 |1.0.0 |
-|[仮想マシンでゲスト構成ポリシーを有効にするための前提条件をデプロイする](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_Prerequisites.json) |このイニシアチブでは、ゲスト構成ポリシーによる監視の対象になる資格のある仮想マシンに、システム割り当てマネージド ID が追加され、プラットフォームに適したゲスト構成拡張機能がデプロイされます。 これはすべてのゲスト構成ポリシーに対する前提条件であるため、ゲスト構成ポリシーを使用する前にポリシー割り当てスコープに割り当てる必要があります。 ゲスト構成の詳細については、[https://aka.ms/gcpol](https://aka.ms/gcpol) を参照してください。 |4 |1.0.0-preview |
