@@ -3,20 +3,20 @@ title: Azure ハイブリッド特典
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Azure SQL Database と SQL Managed Instance の割引に既存の SQL Server ライセンスを使用します。
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
+ms.subservice: features
 ms.custom: sqldbrb=4
-ms.subservice: service
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/13/2019
-ms.openlocfilehash: e5af5c6b30c6f03930a61200a11bfa0bd2f72093
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: b4af9fce3c5ca779866055d2835ebfebe9fbb9cf
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196444"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85987020"
 ---
 # <a name="azure-hybrid-benefit---azure-sql-database--sql-managed-instance"></a>Azure ハイブリッド特典 - Azure SQL Database と SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -30,9 +30,13 @@ ms.locfileid: "84196444"
 
 ## <a name="choose-a-license-model"></a>ライセンス モデルを選択する
 
-Azure ハイブリッド特典では、SQL データベース エンジン自体には既存の SQL Server ライセンスを使用して、基になる Azure インフラストラクチャに対してのみ支払うか (基本コンピューティングの価格)、または基になるインフラストラクチャと SQL Server ライセンスの両方に対して支払うか (ライセンス込みの価格) を選択できます。
+Azure ハイブリッド特典では、SQL Server データベース エンジン自体には既存の SQL Server ライセンスを使用して、基になる Azure インフラストラクチャに対してのみ支払うか (基本コンピューティングの価格)、または基になるインフラストラクチャと SQL Server ライセンスの両方に対して支払うか (ライセンス込みの価格) を選択できます。
 
-Azure Portal または次のいずれかの API を使用して、ライセンス モデルを選択または変更できます。
+ライセンス モデルは、Azure portal で選択または変更できます。 
+- 新しいデータベースの場合は、作成時に **[基本]** タブの **[データベースの構成]** を選択し、コストを削減するオプションを選択します。
+- 既存のデータベースの場合は、 **[設定]** メニューの **[構成]** を選択し、コストを削減するオプションを選択します。
+
+次のいずれかの API を使用して、新規または既存のデータベースを構成することもできます。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -77,7 +81,7 @@ Microsoft では、ソフトウェア アシュアランス付きの SQL Server 
 SQL Server 向け Azure ハイブリッド特典は、次の 2 つの重要な点において、ライセンス モビリティとは異なります。
 
 - 高度に仮想化されたワークロードを Azure に移動することで、コスト面でメリットがもたらされます。 SQL Server Enterprise Edition のお客様は、高度に仮想化されたアプリケーション用に、オンプレミスで所有しているすべてのコアに対し、Azure の General Purpose SKU で 4 つのコアを取得できます。 ライセンス モビリティの場合、仮想化されたワークロードをクラウドに移動しても、コスト上のメリットは特にありません。
-- これにより、SQL Server と高い互換性がある Azure (SQL Database Managed Instance) の PaaS 移行先が提供されます。
+- SQL Server と高い互換性がある、Azure (SQL Managed Instance) の PaaS 移行先 が提供されます。
 
 #### <a name="what-are-the-specific-rights-of-the-azure-hybrid-benefit-for-sql-server"></a>SQL Server 向け Azure ハイブリッド特典では、具体的にはどのような権限が付与されますか。
 

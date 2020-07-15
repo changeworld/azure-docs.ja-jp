@@ -3,30 +3,30 @@ title: Azure Advisor の概要
 description: Azure Advisor を使用して、Azure のデプロイを最適化します。
 ms.topic: article
 ms.date: 02/01/2019
-ms.openlocfilehash: 74048073677cdf0f9f57d84469959a84e78cd6c7
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 0c6c79dd764f92475b3b0121ae46706c0dfc0bcb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854439"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85117779"
 ---
 # <a name="introduction-to-azure-advisor"></a>Azure Advisor の概要
 
 Azure Advisor の主な機能について説明し、よく寄せられる質問の回答を示します。
 
 ## <a name="what-is-advisor"></a>Advisor とは
-Azure Advisor は、個人用に設定されたクラウド コンサルタントで、ベスト プラクティスに従って Azure デプロイメントを最適化します。 Azure のリソースの構成と利用統計情報を分析し、Azure リソースの費用対効果、パフォーマンス、高可用性、およびセキュリティを向上させるために役立つソリューションを推奨します。
+Azure Advisor は、個人用に設定されたクラウド コンサルタントで、ベスト プラクティスに従って Azure デプロイメントを最適化します。 リソースの構成と利用統計情報が分析され、Azure リソースの費用対効果、パフォーマンス、信頼性 (以前の高可用性)、およびセキュリティを向上させるために役立つソリューションが推奨されます。
 
 Advisor では、以下の項目を実行できます。
 * 先の見通しを持ち、処理が可能で、個人用に設定されたベスト プラクティスの推奨事項を取得する。 
-* リソースのパフォーマンス、セキュリティ、および高可用性を向上させながら、総合的な Azure の支出を削減する機会を捉える。
+* リソースのパフォーマンス、セキュリティ、および信頼性を向上させながら、総合的な Azure の支出を削減する機会を捉える。
 * アクション提案をインラインで含めた推奨事項を取得する。
 
 Advisor は、[Azure Portal](https://aka.ms/azureadvisordashboard) を通してアクセスできます。 [ポータル](https://portal.azure.com)にサインインし、ナビゲーション メニューの **[Advisor]** を見つけるか、 **[すべてのサービス]** メニューで Advisor を検索します。
 
 Advisor ダッシュボードに、すべてのサブスクリプションの個人用に設定された推奨事項が表示されます。  フィルターを適用して、特定のサブスクリプションやリソースの種類の推奨事項を表示できます。  推奨事項は、5 つのカテゴリに分割されています。 
 
-* **高可用性**: ビジネスに不可欠なアプリケーションの継続稼働を確保し、さらに向上させることができます。 詳細については、「[Advisor の高可用性に関する推奨事項](advisor-high-availability-recommendations.md)」を参照してください。
+* **信頼性 (旧称: 高可用性)** :ビジネスに不可欠なアプリケーションの継続稼働を確保し、さらに向上させることができます。 詳細については、「[Advisor の信頼性に関する推奨事項](advisor-high-availability-recommendations.md)」を参照してください。
 * **セキュリティ**:セキュリティ侵害に至る可能性がある脅威と脆弱性を検出します。 詳細については、「[Advisor のセキュリティに関する推奨事項](advisor-security-recommendations.md)」を参照してください。
 * **パフォーマンス**: アプリケーションの速度を向上させます。 詳細については、「[Advisor のパフォーマンスに関する推奨事項](advisor-performance-recommendations.md)」を参照してください。
 * **コスト**: Azure の全体的な支出を最適化し、削減します。 詳細については、「[Advisor のコストに関する推奨事項](advisor-cost-recommendations.md)」を参照してください。
@@ -68,7 +68,7 @@ Azure Advisor には、[Azure Security Center](https://docs.microsoft.com/azure/
 Advisor の推奨事項の詳細については、以下を参照してください。
 
 * [Advisor の使用を開始する](advisor-get-started.md)
-* [Advisor の高可用性に関する推奨事項](advisor-high-availability-recommendations.md)
+* [Advisor の信頼性に関する推奨事項](advisor-high-availability-recommendations.md)
 * [Advisor のセキュリティに関する推奨事項](advisor-security-recommendations.md)
 * [Advisor のパフォーマンスに関する推奨事項](advisor-performance-recommendations.md)
 * [Advisor のコストに関する推奨事項](advisor-cost-recommendations.md)

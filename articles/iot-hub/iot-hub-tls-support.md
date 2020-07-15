@@ -2,17 +2,17 @@
 title: Azure IoT Hub の TLS サポート
 description: IoT Hub と通信するデバイスとサービスにセキュリティで保護された TLS 接続を使用する際のベスト プラクティス
 services: iot-hub
-author: rezasherafat
+author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 01/10/2020
-ms.author: rezas
-ms.openlocfilehash: 5b9f6b993b0d0f527d041b4ee055bf51fefa1253
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 06/18/2020
+ms.author: jlian
+ms.openlocfilehash: 8c52037684215d1672ed813389d0bbace9a03e42
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848247"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85080615"
 ---
 # <a name="tls-support-in-iot-hub"></a>IoT Hub の TLS サポート
 
@@ -20,11 +20,17 @@ IoT Hub は、トランスポート層セキュリティ (TLS) を使用して�
 
 TLS 1.0 と 1.1 はレガシと見なされており、非推奨となる予定です。 詳細については、[IoT Hub の TLS 1.0 および 1.1 の廃止](iot-hub-tls-deprecating-1-0-and-1-1.md)に関する記事を参照してください。 IoT Hub に接続するときは、TLS 1.2 を優先 TLS バージョンとして使用することを強くお勧めします。
 
-## <a name="restrict-connections-to-tls-12-in-your-iot-hub-resource"></a>IoT Hub リソース内の TLS 1.2 への接続を制限する
+## <a name="tls-12-enforcement-available-in-select-regions"></a>一部のリージョンで利用できる TLS 1.2 の強制
 
-セキュリティを強化するためには、TLS バージョン 1.2 を使用するクライアント接続*のみ*を許可し、[推奨される暗号](#recommended-ciphers)の使用を強制するように、IoT Hub を構成することをお勧めします。
+セキュリティを強化するために、TLS バージョン 1.2 を使用するクライアント接続 "*のみ*" を許可し、[推奨される暗号](#recommended-ciphers)の使用を強制するように、IoT Hub を構成します。 この機能は、次のリージョンでのみサポートされています。
 
-このためには、[サポートされているリージョン](#supported-regions)のいずれかに新しい IoT Hub をプロビジョニングし、Azure Resource Manager テンプレートの IoT ハブ リソース仕様で `minTlsVersion` プロパティを `1.2` に設定します。
+* 米国東部
+* 米国中南部
+* 米国西部 2
+* US Gov アリゾナ
+* US Gov バージニア州
+
+このためには、サポートされているリージョンのいずれかに新しい IoT Hub をプロビジョニングし、Azure Resource Manager テンプレートの IoT ハブ リソース仕様で `minTlsVersion` プロパティを `1.2` に設定します。
 
 ```json
 {
@@ -53,18 +59,7 @@ TLS 1.0 と 1.1 はレガシと見なされており、非推奨となる予定�
 
 > [!NOTE]
 > `minTlsVersion` プロパティは読み取り専用であり、IoT Hub リソースの作成後は変更できません。 したがって、*すべての* IoT デバイスとサービスが TLS 1.2 および[推奨される暗号](#recommended-ciphers)と互換性があることを、事前に適切にテストし、検証する必要があります。
-
-## <a name="supported-regions"></a>サポートされているリージョン
-
-TLS 1.2 を使用する必要がある IoT Hub は、次のリージョンで作成できます。
-
-* 米国東部
-* 米国中南部
-* 米国西部 2
-* US Gov アリゾナ
-* US Gov バージニア州
-
-> [!NOTE]
+> 
 > フェールオーバー時、IoT Hub の `minTlsVersion` プロパティは、フェールオーバー後に geo ペア リージョンで有効なままになります。
 
 ## <a name="recommended-ciphers"></a>推奨される暗号

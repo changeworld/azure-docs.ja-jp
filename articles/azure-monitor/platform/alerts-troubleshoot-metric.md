@@ -4,14 +4,14 @@ description: Azure Monitor のメトリック警告に関する一般的な問�
 author: harelbr
 ms.author: harelbr
 ms.topic: reference
-ms.date: 04/28/2020
+ms.date: 06/21/2020
 ms.subservice: alerts
-ms.openlocfilehash: 605d1f550335417a26340b6ee54736321ad69f80
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 36ff80bc0858d6d08cc120d126628de02ba6e703
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84302664"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85130740"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure Monitor のメトリック警告に関する問題のトラブルシューティング 
 
@@ -112,7 +112,7 @@ Azure リソースを削除しても、関連付けられているメトリッ�
 クォータ制限に達した場合は、次の手順が問題の解決に役立つ場合があります。
 1. 今後使用しないメトリック警告ルールを削除または無効にします。
 
-2. 複数のリソースを監視するメトリック警告ルールを使用するように切り替えます。 この機能を使用すると、クォータに対してカウントされる警告ルールを 1 つだけ使用して、1 つの警告ルールで複数のリソースを監視できます。 この機能とサポートされているリソースの種類の詳細については、[複数の場合](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#monitoring-at-scale-using-metric-alerts-in-azure-monitor)を参照してください。
+2. 複数のリソースを監視するメトリック警告ルールを使用するように切り替えます。 この機能を使用すると、クォータに対してカウントされる警告ルールを 1 つだけ使用して、1 つの警告ルールで複数のリソースを監視できます。 この機能とサポートされているリソースの種類の詳細については、[こちら](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#monitoring-at-scale-using-metric-alerts-in-azure-monitor)を参照してください。
 
 3. クォータ制限を増やす必要がある場合は、サポート リクエストを開き、次の情報を提供します。
 
@@ -191,6 +191,33 @@ Resource Manager テンプレート、REST API、PowerShell、または Azure �
 - 警告ルールのターゲット リソースに対する読み取りアクセス許可
 - 警告ルールが作成されるリソース グループに対する書き込みアクセス許可 (Azure portal から警告ルールを作成する場合、警告ルールはターゲット リソースが存在するのと同じリソース グループに作成されます)
 - 警告ルールに関連付けられているアクション グループに対する読み取りアクセス許可 (該当する場合)
+
+
+## <a name="naming-restrictions-for-metric-alert-rules"></a>メトリック警告ルールの名前付けに関する制限事項
+
+メトリック警告ルール名には、次の制限があることに注意してください。
+
+- メトリック警告ルール名は、作成後に変更できません
+- メトリック警告ルール名はリソース グループ内で一意である必要があります
+- メトリック警告ルール名に次の文字を含めることはできません: * # & +: < >? @ % { } \ / 
+- メトリック警告ルール名の末尾の文字を . にすることはできません
+
+
+## <a name="restrictions-when-using-dimensions-in-a-metric-alert-rule-with-multiple-conditions"></a>複数の条件を含むメトリック警告ルールでディメンションを使用する場合の制限事項
+
+メトリック アラートは、多次元メトリックに対するアラートをサポートし、さらに複数の条件 (警告ルールごとに最大 5 つの条件) の定義をサポートします。
+
+複数の条件を含む警告ルールでディメンションを使用する場合は、次の制約に注意してください。
+1. 各条件内では、ディメンションごとに 1 つの値のみを選択できます。
+2. "現在および将来の値をすべて選択する" (Select \*) オプションは使用できません。
+3. 異なる条件で構成されているメトリックが同じディメンションをサポートしている場合、構成されたディメンションの値は、(関連する条件の) これらのすべてのメトリックに対して同じ方法で明示的に設定する必要があります。
+次に例を示します。
+    - ストレージ アカウントで定義され、次の 2 つの条件を監視するメトリック警告ルールを考えてみます。
+        * 合計 **Transactions** > 5
+        * 平均 **SuccessE2ELatency** > 250 ミリ秒
+    - この最初の条件を更新し、**ApiName** ディメンションが *"GetBlob"* と等しいトランザクションのみを監視したいと考えています。
+    - **Transactions** と **SuccessE2ELatency** のメトリックではどちらも **ApiName** ディメンションがサポートされているため、両方の条件を更新して、 *"GetBlob"* 値を含む **ApiName** ディメンションをその両方に指定する必要があります。
+
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,25 +1,19 @@
 ---
-title: Azure Linux VM のサイズ - 旧世代 | Microsoft Docs
-description: Azure の Linux 仮想マシンに使用できる旧世代のサイズを一覧表示します。 このシリーズのストレージのスループットとネットワーク帯域幅に加え、vCPU、データ ディスク、NIC の数に関する情報を一覧表示します。
-services: virtual-machines-linux
-documentationcenter: ''
+title: Azure VM のサイズ - 旧世代 | Microsoft Docs
+description: Azure の仮想マシンに使用できる旧世代のサイズを一覧表示します。 このシリーズのストレージのスループットとネットワーク帯域幅に加え、vCPU、データ ディスク、NIC の数に関する情報を一覧表示します。
+services: virtual-machines
+ms.subservice: sizes
 author: mimckitt
-manager: gwallace
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: ''
-ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
-ms.author: jonbeck
-ms.openlocfilehash: ac49d2da9d05c9677dbb6f5328874ab3a45ff661
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: jushiman
+ms.openlocfilehash: 6ebd13317940d131facfb36987fb37358260ec05
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82081542"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85119224"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>旧世代の仮想マシンのサイズ
 
@@ -175,7 +169,7 @@ A8 ～ A11 と H シリーズのサイズは、 *コンピューティング集�
 
 ### <a name="d-series"></a>D シリーズ  
 
-**新しいサイズ (推奨)** :[Dv3 シリーズ](dv3-dsv3-series.md)
+**新しいサイズ (推奨)** :[Dav4 シリーズ](dav4-dasv4-series.md)、[Dv4 シリーズ](dv4-dsv4-series.md)および [Ddv4 シリーズ](ddv4-ddsv4-series.md)
 
 ACU: 160 から 250 <sup>1</sup>
 
@@ -196,7 +190,7 @@ Premium Storage キャッシュ:サポートされていません
 
 ### <a name="d-series---memory-optimized"></a>D シリーズ - メモリ最適化済み  
 
-**新しいサイズ (推奨)** :[Dv3 シリーズ](dv3-dsv3-series.md)
+**新しいサイズ (推奨)** :[Dav4 シリーズ](dav4-dasv4-series.md)、[Dv4 シリーズ](dv4-dsv4-series.md)および [Ddv4 シリーズ](ddv4-ddsv4-series.md)
 
 ACU: 160 から 250 <sup>1</sup>
 
@@ -237,7 +231,7 @@ DC シリーズでは、最新世代である 3.7 GHz の Intel XEON E-2176G プ
 
 ### <a name="ds-series"></a>DS シリーズ  
 
-**新しいサイズ (推奨)** :[Dsv3 シリーズ](dv3-dsv3-series.md)
+**新しいサイズ (推奨)** :[Dasv4 シリーズ](dav4-dasv4-series.md)、[Dsv4 シリーズ](dv4-dsv4-series.md)および [Ddsv4 シリーズ](ddv4-ddsv4-series.md)
 
 ACU: 160 から 250 <sup>1</sup>
 
@@ -258,7 +252,7 @@ Premium Storage キャッシュ:サポートされています
 
 ### <a name="ds-series---memory-optimized"></a>DS シリーズ - メモリ最適化済み  
 
-**新しいサイズ (推奨)** :[Dsv3 シリーズ](dv3-dsv3-series.md)
+**新しいサイズ (推奨)** :[Dasv4 シリーズ](dav4-dasv4-series.md)、[Dsv4 シリーズ](dv4-dsv4-series.md)および [Ddsv4 シリーズ](ddv4-ddsv4-series.md)
 
 ACU: 160 から 250 <sup>1、2</sup>
 
@@ -279,6 +273,8 @@ Premium Storage キャッシュ:サポートされています
 <br>
 
 ### <a name="ls-series"></a>Ls シリーズ
+
+**新しいサイズ (推奨)** :[Lsv2 シリーズ](lsv2-series.md)
 
 Ls シリーズでは、[Intel® Xeon® プロセッサ E5 v3 ファミリ](https://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html)を使用し、最大 32 個の vCPU を提供します。 Ls シリーズは、G/GS シリーズと同じ CPU パフォーマンスであり、vCPU あたり 8 GiB のメモリを搭載しています。
 
@@ -303,6 +299,8 @@ Ls シリーズの VM で実現可能な最大ディスク スループットは
 
 ### <a name="gs-series"></a>GS シリーズ
 
+**新しいサイズ (推奨)** :[Easv4 シリーズ](eav4-easv4-series.md)、[Esv4 シリーズ](ev4-esv4-series.md)、[Edsv4 シリーズ](edv4-edsv4-series.md)および [M シリーズ](m-series.md)
+
 ACU: 180 から 240 <sup>1</sup>
 
 Premium Storage: サポートされています
@@ -326,6 +324,8 @@ Premium Storage キャッシュ:サポートされています
 <br>
 
 ### <a name="g-series"></a>G シリーズ
+
+**新しいサイズ (推奨)** :[Eav4 シリーズ](eav4-easv4-series.md)、[Ev4 シリーズ](ev4-esv4-series.md)、[Edv4 シリーズ](edv4-edsv4-series.md)および [M シリーズ](m-series.md)
 
 ACU: 180 から 240
 

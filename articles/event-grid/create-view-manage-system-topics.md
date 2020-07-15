@@ -1,35 +1,23 @@
 ---
-title: Azure Event Grid でのシステム トピックの作成、表示、管理
+title: Azure Event Grid でのシステム トピックの作成、表示、管理 (ポータル)
 description: この記事では、Azure portal を使用して既存のシステム トピックを表示したり、Azure Event Grid のシステム トピックを作成したりする方法について説明します。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 06/02/2020
-ms.author: spelluru
-ms.openlocfilehash: ac22afb351973397960e66c2a8fe86031e0b213a
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.date: 07/07/2020
+ms.openlocfilehash: 2dbb0893668d72cfebf2d64e6515ff6ab6fed9bc
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84316343"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115113"
 ---
-# <a name="create-view-and-manage-system-topics-in-azure-event-grid"></a>Azure Event Grid でのシステム トピックの作成、表示、管理
-この記事では、次のタスクの手順について説明します。
-
-- システム トピックを作成する
-- すべての既存のシステム トピックを表示する 
-- システム トピックを削除します
-- システム トピックのイベント サブスクリプションを作成する
-
+# <a name="create-view-and-manage-event-grid-system-topics-in-the-azure-portal"></a>Azure portal で Event Grid システム トピックを作成、表示、管理する
+この記事では、Azure portal を使用してシステム トピックを作成および管理する方法について説明します。 システム トピックの概要については、[システム トピック](system-topics.md)に関するページを参照してください。
 
 ## <a name="create-a-system-topic"></a>システム トピックを作成する
-Azure リソースのシステム トピックは、次の 2 つの方法で作成できます。
+Azure リソース (ストレージ アカウント、Event Hubs 名前空間など) のシステム トピックは、次の 2 つの方法で作成できます。
 
-- [ストレージ アカウント] ページや [Event Hubs 名前空間] ページなどのリソース ページを使用する。 
-- **[Event Grid System Topics]\(Event Grid システム トピック\)** ページを使用する。 
-
-リソース ページを使用してシステム トピックを作成する例については、こちらの[クイックスタート](blob-event-quickstart-portal.md)を参照してください (Azure portal のリソース ページの **[イベント]** タブ)。 次の手順は、 **[Event Grid System Topics]\(Event Grid システム トピック\)** ページを使用してシステムトピックを作成するためのものです。 
+- ストレージ アカウントや Event Hubs 名前空間などのリソースの **[イベント]** ページを使用する。 Azure portal の **[イベント]** ページを使用して、Azure ソース (Azure Storage アカウントなど) によって発生したイベントのイベント サブスクリプションを作成する場合、ポータルで Azure リソースのシステム トピックが作成され、次にシステム トピックのサブスクリプションが作成されます。 Azure リソースでイベント サブスクリプションを初めて作成する場合は、システム トピックの名前を指定します。 2回目以降は、システム トピック名が読み取り専用モードで表示されます。 「[クイック スタート:Azure portal で Blob Storage のイベントを Web エンドポイントにルーティングする](blob-event-quickstart-portal.md#subscribe-to-the-blob-storage)」で、詳細な手順について参照してください。
+- **[Event Grid System Topics]\(Event Grid システム トピック\)** ページを使用する。 次の手順は、 **[Event Grid System Topics]\(Event Grid システム トピック\)** ページを使用してシステムトピックを作成するためのものです。 
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
 2. 上部の検索ボックスに「**Event Grid System Topics**」と入力し、**ENTER** キーを押します。 
@@ -57,11 +45,9 @@ Azure リソースのシステム トピックは、次の 2 つの方法で作�
 
         ![システム トピック ページ](./media/create-view-manage-system-topics/system-topic-page.png)
 
+
 ## <a name="view-all-system-topics"></a>すべてのシステム トピックを表示する
 既存のすべての Event Grid システム トピックを表示するには、次の手順に従います。 
-
-> [!NOTE]
-> 以前は、Azure のソースによって生成されるイベントのサブスクリプションを作成すると、Event Grid サービスによって、ランダムに生成された名前を持つシステム トピックが自動的に作成されていました。 今では、トピックの作成中にシステム トピックの名前を指定できるようになっています。 このシステム トピック リソースを使用して、メトリックと診断ログを検出できます。
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
 2. 上部の検索ボックスに「**Event Grid System Topics**」と入力し、**ENTER** キーを押します。 
@@ -100,7 +86,6 @@ Azure リソースのシステム トピックは、次の 2 つの方法で作�
 3. **[トピックの種類]** 、 **[ソース リソース]** 、 **[トピック名]** が自動的に入力されていることを確認します。 名前を入力し、 **[エンドポイントのタイプ]** を選択して、**エンドポイント**を指定します。 これで、 **[作成]** を選択し、イベント サブスクリプションを作成します。 
 
     ![システム トピック - イベント サブスクリプションの作成](./media/create-view-manage-system-topics/create-event-subscription.png)
-
 
 ## <a name="next-steps"></a>次のステップ
 Azure Event Grid でサポートされるシステム トピックとトピックの種類の詳細については、「[Azure Event Grid でのシステム トピック](system-topics.md)」セクションを参照してください。 

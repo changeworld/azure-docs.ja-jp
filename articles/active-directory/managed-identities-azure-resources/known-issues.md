@@ -17,12 +17,12 @@ ms.date: 12/12/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: d29689b088759b73465b24d06d4341571b599782
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 6f18c9fe43b0b714e5709b014c051520b3722138
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714051"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855135"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID に関する FAQ と既知の問題
 
@@ -32,6 +32,24 @@ ms.locfileid: "83714051"
 
 > [!NOTE]
 > Azure リソースのマネージド ID は、以前のマネージドサービス ID (MSI) の新しい名前です。
+
+
+### <a name="how-can-you-find-resources-that-have-a-managed-identity"></a>マネージド ID を持つリソースを見つけるにはどうすればいいですか?
+
+次の Azure CLI コマンドを使用して、システム割り当てマネージド ID を持つリソースの一覧を検索できます。 
+
+`az resource list --query "[?identity.type=='SystemAssigned'].{Name:name,  principalId:identity.principalId}" --output table`
+
+
+
+
+### <a name="do-managed-identities-have-a-backing-app-object"></a>マネージド ID にバッキング アプリ オブジェクトはありますか?
+
+いいえ。 マネージド ID と Azure AD アプリ登録は、ディレクトリ内で同じものではありません。 
+
+アプリの登録には、次の 2 つのコンポーネントがあります。アプリケーション オブジェクトとサービス プリンシパル オブジェクト。 Azure リソースのマネージド ID にあるのは、これらのコンポーネントのうち、次の 1 つだけです:サービス プリンシパル オブジェクト。 
+
+マネージド ID では、アプリケーション オブジェクトがディレクトリにありません。これは、MS グラフに対するアプリのアクセス許可を付与するために一般的に使用されるものです。 代わりに、マネージド ID に対する MS グラフのアクセス許可をサービス プリンシパルに直接付与する必要があります。  
 
 ### <a name="does-managed-identities-for-azure-resources-work-with-azure-cloud-services"></a>Azure リソースのマネージド ID は Azure Cloud Services で動作しますか?
 
@@ -114,6 +132,8 @@ az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 
  - システム割り当てマネージドID の場合、無効にしてから最有効化します。 
  - ユーザー割り当てマネージド ID の場合、削除、再作成の後、必要なリソース (例： 仮想マシン) へ再度添付します。
+
+詳細については、「[Azure サブスクリプションを別の Azure AD ディレクトリに移転する (プレビュー)](../../role-based-access-control/transfer-subscription.md)」を参照してください。
 
 ### <a name="moving-a-user-assigned-managed-identity-to-a-different-resource-groupsubscription"></a>ユーザー割り当てマネージド ID の異なるリソース グループ/サブスクリプションへの移動
 

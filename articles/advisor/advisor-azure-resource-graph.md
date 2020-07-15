@@ -4,18 +4,18 @@ description: Azure Resource Graph で Advisor データを照会します
 ms.topic: article
 ms.date: 03/12/2020
 ms.author: sagupt
-ms.openlocfilehash: f8ad8fd450bc004d9caa2699922717f38d38b482
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c0786d1d09ff61ddd9c375c68b7199521e319a4f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79503915"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85117836"
 ---
 # <a name="query-for-advisor-data-in-resource-graph-explorer-azure-resource-graph"></a>Resource Graph エクスプローラーで Advisor データを照会する (Azure Resource Graph)
 
 [Azure Resource Graph](https://azure.microsoft.com/features/resource-graph/) に新たに Advisor リソースがオンボードされました。 これは、Advisor の推奨事項が求められる多くの大規模なカスタマー シナリオの礎となるものです。 以前は大規模に実行することができなかったシナリオのいくつかは、Resource Graph を使用すれば実現できます。その例を次に示します。
 * Azure portal ですべてのサブスクリプションを対象とした複雑なクエリを実行できるようになります。
-* カテゴリ タイプ (高可用性、パフォーマンスなど) と影響タイプ (高、中、低) ごとに推奨事項がまとめられます。
+* カテゴリの種類 (信頼性、パフォーマンスなど) と影響の種類 (高、中、低) ごとにまとめられた推奨事項
 * 特定の推奨事項タイプのすべての推奨事項
 * 影響を受けるリソースの数 (推奨カテゴリごと)
 
@@ -38,7 +38,8 @@ Advisor の推奨事項について詳しくは、以下を参照してくださ
 * [Azure Advisor の概要](advisor-overview.md)
 * [Advisor の使用を開始する](advisor-get-started.md)
 * [Advisor のコストに関する推奨事項](advisor-cost-recommendations.md)
+* [Advisor の信頼性に関する推奨事項](advisor-high-availability-recommendations.md)
 * [Advisor のパフォーマンスに関する推奨事項](advisor-performance-recommendations.md)
 * [Advisor のセキュリティに関する推奨事項](advisor-security-recommendations.md)
-* [Advisor の優れた運用の推奨事項](advisor-operational-excellence-recommendations.md)
+* [Advisor のオペレーショナル エクセレンスに関する推奨事項](advisor-operational-excellence-recommendations.md)
 * [Advisor REST API](https://docs.microsoft.com/rest/api/advisor/)

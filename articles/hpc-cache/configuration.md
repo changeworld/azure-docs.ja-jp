@@ -3,15 +3,15 @@ title: Azure HPC Cache 設定の構成
 description: キャッシュに MTU や no-root-squash などの追加設定を構成する方法、および Azure Blob ストレージ ターゲットから高速スナップショットにアクセスする方法について説明します。
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: v-erkel
-ms.openlocfilehash: a3bab06166110a3627bb3a99d51ceb09b0c7ed80
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 88aea7e58aacd9a630771948c6dbc6ed5712a674
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871421"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85505309"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>Azure HPC Cache の追加設定を構成する
 
@@ -22,6 +22,9 @@ Azure portal の **[構成]** ページには、いくつかの設定をカス�
 設定を表示するには、Azure portal でキャッシュの **[構成]** ページを開きます。
 
 ![Azure portal の [構成] ページのスクリーンショット](media/configuration.png)
+
+> [!TIP]
+> [Azure HPC Cache の管理に関するビデオ](https://azure.microsoft.com/resources/videos/managing-hpc-cache/)には、構成ページとその設定が表示されます。
 
 ## <a name="adjust-mtu-value"></a>MTU 値を調整する
 <!-- linked from troubleshoot-nas article -->

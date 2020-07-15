@@ -4,16 +4,16 @@ description: Azure portal でエクスポート ジョブを作成して、Azure
 author: alkohli
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: fe58f59147db43b1c15298f83a2945b50766f8a8
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: c9ce265707743d98f6c93d3facca33e16d1b75ea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84169204"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513496"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Azure Import/Export サービスを使用して Azure Blob Storage からデータをエクスポートする
 
@@ -39,7 +39,7 @@ Azure Blob Storage からデータを転送するエクスポート ジョブを
 
 以下の手順を実行して、Azure portal でエクスポート ジョブを作成します。
 
-1. https://portal.azure.com/ にログオンします。
+1. <https://portal.azure.com/> にログオンします。
 2. **[すべてのサービス] > [ストレージ] > [インポート/エクスポート ジョブ]** の順に移動します。
 
     ![インポート/エクスポートへの移動](./media/storage-import-export-data-from-blobs/export-from-blob1.png)
@@ -129,7 +129,11 @@ Azure Blob Storage からデータを転送するエクスポート ジョブを
 
 WAImportExport ツールのバージョン 1.4.0.300 を使用している場合は、次のコマンドを使用してドライブのロックを解除します。
 
-   `WAImportExport Unlock /bk:<BitLocker key (base 64 string) copied from journal (*.jrn*) file>`  
+   `WAImportExport Unlock /bk:<BitLocker key (base 64 string) copied from journal (*.jrn*) file> /driveLetter:<Drive letter>`  
+
+サンプル入力の例を次に示します。
+
+   `WAImportExport.exe Unlock /bk:CAAcwBoAG8AdQBsAGQAIABiAGUAIABoAGkAZABkAGUAbgA= /driveLetter:e`
 
 以前のバージョンのツールを使用している場合は、BitLocker ダイアログボックスを使用してドライブのロックを解除します。
 
@@ -143,11 +147,11 @@ WAImportExport ツールのバージョン 1.4.0.300 を使用している場合
 2. 既定のフォルダー `waimportexportv1` に解凍します。 たとえば、「 `C:\WaImportExportV1` 」のように入力します。
 3. 管理者特権を使用して PowerShell またはコマンド ライン ウィンドウを開きます。 解凍されたフォルダーにディレクトリを変更するには、次のコマンドを実行します。
 
-    `cd C:\WaImportExportV1`
+   `cd C:\WaImportExportV1`
 
 4. 選択した BLOB に必要なディスク数を確認するには、次のコマンドを実行します。
 
-    `WAImportExport.exe PreviewExport /sn:<Storage account name> /sk:<Storage account key> /ExportBlobListFile:<Path to XML blob list file> /DriveSize:<Size of drives used>`
+   `WAImportExport.exe PreviewExport /sn:<Storage account name> /sk:<Storage account key> /ExportBlobListFile:<Path to XML blob list file> /DriveSize:<Size of drives used>`
 
     パラメーターについては次の表で説明します。
 

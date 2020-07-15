@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Azure IoT Edge ワークロードをデプロイする
 keywords: Kubernetes, Arc, Azure, K8s, コンテナー
-ms.openlocfilehash: d82c93783d80060bc3443131191b7cec32dc4878
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: bfaa43a03ddd98616b22fc3fc7b4dccb4c38f44c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680782"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103978"
 ---
 # <a name="deploy-azure-iot-edge-workloads-preview"></a>Azure IoT Edge ワークロードをデプロイする (プレビュー)
 
@@ -25,11 +25,11 @@ Azure Arc と Azure IoT Edge は互いの機能を十分に補完するもので
 
 ## <a name="pre-requisites"></a>前提条件
 
-* [IoT Edge デバイスの登録](https://docs.microsoft.com/azure/iot-edge/quickstart-linux#register-an-iot-edge-device)と[シミュレートされた温度センサー モジュールのデプロイ](https://docs.microsoft.com/azure/iot-edge/quickstart-linux#deploy-a-module)。 デバイスの接続文字列を必ず書き留めておいてください。
+* [IoT Edge デバイスの登録](../../iot-edge/quickstart-linux.md#register-an-iot-edge-device)と[シミュレートされた温度センサー モジュールのデプロイ](../../iot-edge/quickstart-linux.md#deploy-a-module)。 デバイスの接続文字列を必ず書き留めておいてください。
 
 * [Kubernetes 向けの IoT Edge のサポート](https://aka.ms/edgek8sdoc)を利用し、Azure Arc の Flux オペレーター経由でデプロイします。
 
-* IoT Edge Helm グラフの [**values.yaml**](https://github.com/Azure/iotedge/blob/master/kubernetes/charts/edge-kubernetes/values.yaml) ファイルをダウンロードし、ファイルの終わりにある **deviceConnectionString** プレースホルダーを手順 1 で書き留めておいた値に変更します。 サポートされている他のグラフ インストール オプションは、必要に応じて設定できます。 IoT Edge ワークロードの名前空間を作成し、その中にシークレットを追加します。
+* IoT Edge Helm グラフの [**values.yaml**](https://github.com/Azure/iotedge/blob/master/kubernetes/charts/edge-kubernetes/values.yaml) ファイルをダウンロードし、ファイルの終わりにある **deviceConnectionString** プレースホルダーを手順 1 で書き留めておいた値に変更します。 サポートされている他のグラフ インストール オプションは、必要に応じて設定できます。 IoT Edge ワークロードの名前空間を作成し、その中にシークレットを作成します。
 
     ```
     $ kubectl create ns iotedge

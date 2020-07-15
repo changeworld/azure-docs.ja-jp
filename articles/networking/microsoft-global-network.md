@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: b78e227159065d2ae85d9b1dc989e8ea192ae26a
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 5028417758bb8be38505d27d3dfb5e2fc055c3ca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982804"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85125823"
 ---
 # <a name="microsoft-global-network"></a>マイクロソフトのグローバル ネットワーク
 
@@ -38,7 +38,7 @@ Microsoft クラウドを使用していれば、[考えられる最高のエク
 
 たとえば、ロンドンのユーザーが東京のサービスにアクセスしようとすると、インターネット トラフィックはロンドンのエッジのいずれかに送信され、フランスを経由して Microsoft WAN に送信され、ヨーロッパとインドの間のインド洋横断経路を通過し、サービスがホストされている日本に到達します。 応答トラフィックは、対称になります。 これは [cold-potato routing (コールド ポテト ルーティング)](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing) とも呼ばれ、トラフィックは、渡されるまで可能な限りマイクロソフトのネットワークに留まります。  
   
-ところで、それは、Microsoft サービスを使用するときの一切かつすべてのトラフィックを意味するのでしょうか。 はい。最適なパフォーマンスと整合性を保証するために、Microsoft Azure 内のデータセンター間、または Virtual Machines、Office 365、Xbox、SQL DB、Storage、仮想ネットワークなどの Microsoft サービス間のあらゆるトラフィックはこのグローバル トラフィック内でルーティングされ、決してパブリック インターネットを経由しません。  
+ところで、それは、Microsoft サービスを使用するときの一切かつすべてのトラフィックを意味するのでしょうか。 はい。最適なパフォーマンスと整合性を保証するために、Microsoft Azure 内のデータセンター間、または Virtual Machines、Microsoft 365、Xbox、SQL DB、Storage、仮想ネットワークなどの Microsoft サービス間のあらゆるトラフィックはこのグローバル トラフィック内でルーティングされ、決してパブリック インターネットを経由しません。  
  
 マイクロソフトのクラウドおよびオンライン サービスの劇的な成長を促進しつつ、一貫した高水準のサービス レベルを維持するためには、メトロ、地上、海底の各経路でファイバーの容量と多様性への莫大な投資が不可欠です。 このグローバル ネットワークに最近加わったものには、ビルバオ (スペイン) とバージニアビーチ (米バージニア州) を結ぶ業界初の海中経由 Open Line System (OLS) である [MAREA](https://www.submarinecablemap.com/#/submarine-cable/marea) 海底ケーブルがあります。このほか、米ニューヨークとダブリン (アイルランド) を結ぶ [AEC](https://www.submarinecablemap.com/#/submarine-cable/aeconnect-1) や、東京 (日本) とポートランド (米オレゴン州) を結ぶ [New Cross Pacific (NCP)](https://www.submarinecablemap.com/#/submarine-cable/new-cross-pacific-ncp-cable-system) があります。 
  

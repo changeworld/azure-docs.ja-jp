@@ -3,8 +3,8 @@ title: モデルの購入
 titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: Azure SQL Database と Azure SQL Managed Instance で利用できる購入モデルについて説明します。
 services: sql-database
-ms.service: sql-database
-ms.subservice: service
+ms.service: sql-db-mi
+ms.subservice: features
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,14 +12,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 05/28/2020
-ms.openlocfilehash: 88d5c36829e2920e18a1be44ba43d7defe883d3e
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: a11894eb94b73d8d31ca7135be2ba9c05eca5e04
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84231233"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86075883"
 ---
-# <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database--sql-managed-instance"></a>仮想コア購入モデルと DTU 購入モデルのどちらかを選択する - Azure SQL Database と SQL Managed Instance
+# <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database-and-sql-managed-instance"></a>仮想コアと DTU のどちらかの購入モデルを選択する - Azure SQL Database と SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Azure SQL Database と Azure SQL Managed Instance を利用すると、パフォーマンスとコストのニーズに合ったフル マネージドのサービスとしてのプラットフォーム (PaaS) データベース エンジンを簡単に購入できます。 Azure SQL Database 用に選択したデプロイ モデルに応じて、目的に沿った購入モデルを選択できます。
@@ -29,18 +29,22 @@ Azure SQL Database と Azure SQL Managed Instance を利用すると、パフォ
 
 次の 2 つの購入モデルがあります。
 
-- [仮想コアベースの購入モデル](service-tiers-vcore.md)は、[Azure SQL Database](sql-database-paas-overview.md) と [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) の両方で使用できます。 [仮想コアベースの購入モデル](service-tiers-vcore.md)を使用している単一の SQL Database には、[Hyperscale サービス レベル](service-tier-hyperscale.md)を利用できます。
+- [仮想コアベースの購入モデル](service-tiers-vcore.md)は、[Azure SQL Database](sql-database-paas-overview.md) と [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) の両方で使用できます。 [仮想コアベースの購入モデル](service-tiers-vcore.md)を使用している単一のデータベースには、[Hyperscale サービス レベル](service-tier-hyperscale.md)を利用できます。
 - [Azure SQL Database](single-database-manage.md) には、[DTU ベースの購入モデル](service-tiers-dtu.md)を利用できます。
 
 次の表とグラフでは、仮想コア ベースと DTU ベースの購入モデルを比較対照しています。
 
 |**購入モデル**|**説明**|**最適な用途**|
 |---|---|---|
-|DTU ベースのモデル|このモデルは、コンピューティング、ストレージ、および I/O リソースのバンドルされた測定値に基づいています。 コンピューティング サイズは、単一データベースの場合は DTU で、エラスティック プールの場合はエラスティック データベース トランザクション ユニット (eDTU) で表されます。 DTU と eDTU については、[DTU および eDTU とは何か](purchasing-models.md#dtu-based-purchasing-model)に関する記述をご覧ください。|シンプルな構成済みリソースのオプションを希望するお客様に最適です。|
-|仮想コアベースのモデル|このモデルでは、コンピューティング リソースとストレージ リソースを個別に選択できます。 また、仮想コアベースの購入モデルでは、SQL Server 向けの [Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)を使用して、コストを削減することもできます。|柔軟性、制御、および透明性を重視するお客様に最適です。|
+|DTU ベース|このモデルは、コンピューティング、ストレージ、および I/O リソースのバンドルされた測定値に基づいています。 コンピューティング サイズは、単一データベースの場合は DTU で、エラスティック プールの場合はエラスティック データベース トランザクション ユニット (eDTU) で表されます。 DTU と eDTU については、[DTU および eDTU とは何か](purchasing-models.md#dtu-based-purchasing-model)に関する記述をご覧ください。|シンプルな事前構成済みリソースのオプションを希望するお客様|
+|仮想コアベース|このモデルでは、コンピューティング リソースとストレージ リソースを個別に選択できます。 また、仮想コアベースの購入モデルでは、SQL Server 向けの [Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)を使用して、コストを削減することもできます。|柔軟性、制御、および透明性を重視するお客様|
 ||||  
 
 ![価格モデルの比較](./media/purchasing-models/pricing-model.png)
+
+クラウドの支出を最適化して節約しますか?
+
+[!INCLUDE [cost-management-horizontal](../../../includes/cost-management-horizontal.md)]
 
 ## <a name="compute-costs"></a>コンピューティング コスト
 
@@ -54,7 +58,7 @@ Business Critical サービス レベルと General Purpose サービス レベ�
 
 ### <a name="serverless-compute-costs"></a>サーバーレス コンピューティング コスト
 
-サーバーレス コンピューティング レベルでのコンピューティング容量の定義方法とコストの計算方法については、「[SQL Database サーバーレス](serverless-tier-overview.md)」をご覧ください。
+サーバーレス コンピューティング レベルでのコンピューティング容量の定義方法とコストの計算方法については、[SQL Database サーバーレスのレベル](serverless-tier-overview.md)に関するページを参照してください。
 
 ## <a name="storage-costs"></a>ストレージ コスト
 
@@ -68,7 +72,7 @@ Business Critical サービス レベルと General Purpose サービス レベ�
 
 仮想コア (vCore) は論理 CPU を表し、ハードウェアの世代とハードウェアの物理特性 (コア数、メモリ、ストレージ サイズなど) を選択できるオプションを提供します。 仮想コア ベースの購入モデルでは、個々のリソース使用量において柔軟性、管理性、透明性が実現されており、オンプレミスのワークロード要件をクラウドに容易に移行する方法を提供しています。 このモデルでは、ワークロードの必要性に基づいて、コンピューティング、メモリ、ストレージのリソースを選択できます。
 
-仮想コアベースの購入モデルでは、SQL Database と SQL Managed Instance について、[General Purpose](high-availability-sla.md#basic-standard-and-general-purpose-service-tier-availability) と [Business Critical](high-availability-sla.md#premium-and-business-critical-service-tier-availability) のどちらかのサービス レベルを選択できます。  単一の Azure SQL Database の場合は、[Hyperscale サービス レベル](service-tier-hyperscale.md)も選択できます。
+仮想コアベースの購入モデルでは、SQL Database と SQL Managed Instance について、[General Purpose](high-availability-sla.md#basic-standard-and-general-purpose-service-tier-availability) と [Business Critical](high-availability-sla.md#premium-and-business-critical-service-tier-availability) のどちらかのサービス レベルを選択できます。  単一データベースの場合は、[Hyperscale サービス レベル](service-tier-hyperscale.md)も選択できます。
 
 仮想コア ベースの購入モデルでは、コンピューティングとストレージのリソースを個別に選択し、オンプレミスのパフォーマンスと一致させて、価格を最適化できます。 仮想コア ベースの購入モデルでは、以下に対して支払いを行います。
 
@@ -78,9 +82,9 @@ Business Critical サービス レベルと General Purpose サービス レベ�
 
 > [!IMPORTANT]
 > コンピューティング リソース、I/O、データとログのストレージは、データベースまたはエラスティック プールごとに課金されます。 バックアップ ストレージはデータベースごとに課金されます。 SQL Managed Instance の料金の詳細については、[SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) に関するページを参照してください。
-> **リージョンの制限:** サポートされているリージョンの現在の一覧については、[リージョンで利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all)に関するページを参照してください。 現在サポートされていないリージョンで SQL Managed Instance を作成するには、[Azure portal 経由でサポート リクエストを送信](quota-increase-request.md)します。
+> **リージョンの制限:** サポートされているリージョンの現在の一覧については、[リージョンで利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all)に関するページを参照してください。 現在サポートされていないリージョンでマネージド インスタンスを作成するには、[Azure portal 経由でサポート要求を送信](quota-increase-request.md)します。
 
-Azure SQL Database で消費量が 300 DTU を超える場合は、仮想コア ベースの購入モデルに変換すると、コストが減る可能性があります。 任意の API を使用するか、または Azure portal を使用して、ダウンタイムなしで変換できます。 ただし、変換は必須ではなく、自動的には行われません。 DTU ベースの購入モデルが自分のパフォーマンスおよびビジネス要件を満たしている場合は、このモデルを引き続き使用してください。
+データベースで消費量が 300 DTU を超える場合は、仮想コア ベースの購入モデルに変換すると、コストが減る可能性があります。 任意の API を使用するか、または Azure portal を使用して、ダウンタイムなしで変換できます。 ただし、変換は必須ではなく、自動的には行われません。 DTU ベースの購入モデルが自分のパフォーマンスおよびビジネス要件を満たしている場合は、このモデルを引き続き使用してください。
 
 DTU ベースの購入モデルから仮想コアベースの購入モデルに変換するには、[DTU から仮想コアへのへの移行](migrate-dtu-to-vcore.md)に関するページを参照してください。
 
@@ -96,14 +100,14 @@ DTU ベースの購入モデルでは、Azure SQL Database に対して、Basic�
 
 これらのリソース間の比率は、本来、一般的な現実の OLTP ワークロードになるように設計された[オンライン トランザクション処理 (OLTP) ベンチマーク ワークロード](service-tiers-dtu.md)によって決定されます。 ワークロードがこれらのいずれかのリソース量を超えると、スループットが調整され、パフォーマンスが低下してタイムアウトが発生します。
 
-お使いのワークロードによって使用されるリソースは、Azure クラウドにある他の SQL Database に利用できるリソースには、影響を及ぼしません。 同様に、その他のワークロードによって使用されるリソースが、SQL Database に対して使用できるリソースに影響を及ぼすことはありません。
+お使いのワークロードによって使用されるリソースは、Azure クラウドにある他のデータベースで使用できるリソースには影響を及ぼしません。 同様に、その他のワークロードによって使用されるリソースが、お使いのデータベースで使用できるリソースに影響を及ぼすことはありません。
 
 ![境界ボックス](./media/purchasing-models/bounding-box.png)
 
-各種のコンピューティング サイズとサービス レベルの Azure SQL Database に割り当てられるリソースの相対量を理解するためには、DTU は最も役立ちます。 次に例を示します。
+DTU は、さまざまなコンピューティング サイズとサービス レベルのデータベースに割り当てられるリソースの相対量を理解するために最も役立ちます。 次に例を示します。
 
 - データベースのコンピューティング サイズを引き上げて DTU を 2 倍にするのは、そのデータベースに利用できるリソース セットを 2 倍にすることと同等です。
-- DTU が 1750 になっている Premium サービス レベルの P11 データベースは、DTU が 5 になっている Basic サービス レベルのデータベースと比べて、350 倍の DTU の処理能力を提供します。  
+- DTU が 1750 である Premium サービス レベルの P11 データベースは、DTU が 5 である Basic サービス レベルのデータベースと比べて、350 倍の DTU コンピューティング能力を提供します。  
 
 お使いのワークロードのリソース (DTU) 使用量の詳細を把握するには、[クエリ パフォーマンスの分析情報](query-performance-insight-use.md)を使用して、次のようにします。
 
@@ -113,7 +117,7 @@ DTU ベースの購入モデルでは、Azure SQL Database に対して、Basic�
 
 ### <a name="elastic-database-transaction-units-edtus"></a>エラスティック データベース トランザクション ユニット (eDTU)
 
-いつでも利用可能な SQL Database に対しては、常に必要になるとはかぎらない専用のリソース セット (DTU) を提供するのではなく、これらのデータベースを[エラスティック プール](elastic-pool-overview.md)に配置することができます。 エラスティック プール内のデータベースは、単一のサーバー上にあり、リソースのプールを共有します。
+常時利用可能なデータベースには、必ずしも必要になるとはかぎらない専用のリソース セット (DTU) を提供する代わりに、これらのデータベースを[エラスティック プール](elastic-pool-overview.md)に配置できます。 エラスティック プール内のデータベースは、単一のサーバー上にあり、リソースのプールを共有します。
 
 エラスティック プール内の共有リソースは、エラスティック データベース トランザクション ユニット (eDTU) によって測定されます。 エラスティック プールは、幅広く異なる予測できない使用パターンを持つ複数のデータベースに対するパフォーマンス目標を管理するための、簡単かつコスト効率に優れたソリューションを提供します。 エラスティック プールは、プール内の 1 つのデータベースによってすべてのリソースを消費できないことを保証する一方で、プール内の各データベースが常に、最低限必要な量の利用可能なリソースを保持していることを保証します。
 
@@ -134,25 +138,25 @@ DTU ベースの購入モデルでは、Azure SQL Database に対して、Basic�
 この式に入力する値は、[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)、[sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)、および [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) DMV から取得できます。 つまり、データベースまたはエラスティック プールの DTU/eDTU 上限に対する DTU/eDTU の使用率を決定するには、特定の時点での `avg_cpu_percent`、`avg_data_io_percent`、および `avg_log_write_percent` から、最大の割合値を選びます。
 
 > [!NOTE]
-> データベースの DTU 上限は、そのデータベースで使用できる CPU、読み取り、書き込み、およびメモリによって決まります。 ただし、SQL データベース エンジンでは、通常、パフォーマンス向上のためにそのデータ キャッシュ用に利用できるすべてのメモリが使用されるため、`avg_memory_usage_percent` の値は、現在のデータベースの負荷に関係なく、通常は 100% 近くになります。 そのため、メモリが DTU 上限に間接的に影響する場合でも、DTU 使用率の式では使用されません。
+> データベースの DTU 上限は、そのデータベースで使用できる CPU、読み取り、書き込み、およびメモリによって決まります。 ただし、SQL Database エンジンでは、通常、パフォーマンス向上のためにそのデータ キャッシュ用に利用できるすべてのメモリが使用されるため、`avg_memory_usage_percent` の値は、現在のデータベースの負荷に関係なく、通常は 100% 近くになります。 そのため、メモリが DTU 上限に間接的に影響する場合でも、DTU 使用率の式では使用されません。
 
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>リソースのエラスティック プールを使うとメリットがあるワークロード
 
-プールは、リソース使用率の平均が低く、使用率の急上昇が比較的発生しにくいデータベースに最適です。 詳しくは、「[SQL Database エラスティック プールを検討すべきとき](elastic-pool-overview.md)」をご覧ください。
+プールは、リソース使用率の平均が低く、使用率の急上昇が比較的発生しにくいデータベースに適しています。 詳しくは、「[SQL Database エラスティック プールを検討すべきとき](elastic-pool-overview.md)」をご覧ください。
 
 ### <a name="hardware-generations-in-the-dtu-based-purchasing-model"></a>DTU ベースの購入モデルのハードウェア世代
 
 DTU ベースの購入モデルでは、お客様は自分のデータベースに使用されるハードウェア世代を選択できません。 データベースは通常、長い間 (通例、数か月)、特定のハードウェア世代に留まりますが、データベースを別のハードウェア世代に移すイベントがあります。
 
-たとえば、別のサービス目標にスケール アップまたはスケール ダウンする場合、データ センターにある現在のインフラストラクチャがその容量制限に近づいている場合、あるいは現在使用されているハードウェアが耐用年数終了により使用停止にする場合、データベースを別のハードウェア世代に移動できます。
+たとえば、別のサービス目標にスケール アップまたはスケール ダウンする場合、データ センターにある現在のインフラストラクチャがその容量制限に近づいている場合、あるいは現在使用されているハードウェアが耐用年数終了により使用停止になる場合、データベースを別のハードウェア世代に移動できます。
 
 データベースを別のハードウェアに移動すると、ワークロード パフォーマンスが変わることがあります。 DTU モデルでは、サービス目標 (DTU の数) が同じである限り、データベースを別のハードウェア世代に移動しても、[DTU ベンチマーク](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-dtu#dtu-benchmark) ワークロードのスループットと応答時間がおおむね同じになります。
 
-ただし、Azure SQL Database で実行されている顧客ワークロードは幅が広く、同じサービス目標に別のハードウェアを使用したときの影響がもっと目立つこともあります。 ハードウェアの構成や特徴が違えば、ワークロードが受ける恩恵もさまざまです。 そのため、DTU ベンチマーク以外のワークロードについては、データベースをあるハードウェア世代から別のハードウェア世代に移す場合、パフォーマンスに違いが見られることがあります。
+ただし、Azure SQL Database で実行されている顧客ワークロードは幅が広く、同じサービス目標に別のハードウェアを使用したときの影響がもっと目立つこともあります。 ハードウェアの構成や特徴が違えば、ワークロードが受ける恩恵もさまざまです。 そのため、DTU ベンチマーク以外のワークロードについては、データベースをあるハードウェア世代から別のものに移した場合、パフォーマンスに違いが見られることがあります。
 
-たとえば、ネットワークの待機時間が重要となるアプリケーションの場合、Gen5 と Gen4 を比較したとき、高速ネットワークを使用しているため Gen5 の方がパフォーマンスの面で優れています。一方、集中的な読み取りで IO が発生するアプリケーションの場合、Gen5 と Gen4 では Gen4 がパフォーマンスに優れています。Gen4 ではコアあたりメモリの比率が高くなるからです。
+たとえば、ネットワークの待機時間が重要となるアプリケーションの場合、Gen5 と Gen4 を比較したとき、高速ネットワークを使用しているため Gen5 の方がパフォーマンスの面で優れています。一方、集中的な読み取り IO を扱うアプリケーションの場合、Gen4 ではコアあたりのメモリ比率が高いため、Gen4 ハードウェアのパフォーマンスが Gen5 と比べて 優れている可能性があります。
 
-ワークロードがハードウェア変更の影響を受けやすい場合、あるいはデータベースのハードウェア世代を選択することを望む場合、お客様は[仮想コア](service-tiers-vcore.md) モデルを利用し、データベースの作成時と拡張時、望みのハードウェア世代を選択できます。 仮想コア モデルでは、[単一データベース](resource-limits-vcore-single-databases.md)と[エラスティック プール](resource-limits-vcore-elastic-pools.md)の両方に対して、ハードウェア世代ごとに各サービス目標のリソース上限が記録されます。 仮想コア モデルのハードウェア世代の詳細については、「[ハードウェアの世代](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore#hardware-generations)」を参照してください。
+ワークロードがハードウェア変更の影響を受けやすい場合、あるいはデータベースのハードウェア世代の選択を制御する必要がある場合は、[仮想コア](service-tiers-vcore.md) モデルを使用して、データベースの作成およびスケーリング時、好みのハードウェア世代を選択できます。 仮想コア モデルでは、[単一データベース](resource-limits-vcore-single-databases.md)と[エラスティック プール](resource-limits-vcore-elastic-pools.md)の両方に対して、ハードウェア世代ごとに各サービス目標のリソース上限が記録されます。 仮想コア モデルのハードウェア世代の詳細については、「[ハードウェアの世代](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore#hardware-generations)」を参照してください。
 
 ## <a name="frequently-asked-questions-faqs"></a>よく寄せられる質問 (FAQ)
 

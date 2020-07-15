@@ -8,14 +8,14 @@ ms.author: memildin
 ms.date: 05/04/2020
 ms.service: security-center
 ms.topic: conceptual
-ms.openlocfilehash: 84b5cd8a59103f60249da861238acb45f8aa2fd5
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 18b1b4cb959603f5898e7c725102f35d7abc90cf
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871694"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848990"
 ---
-# <a name="suppressing-alerts-from-azure-security-centers-threat-protection"></a>Azure Security Center の脅威防止からのアラートの抑制
+# <a name="suppress-alerts-from-azure-security-centers-threat-protection"></a>Azure Security Center の脅威の防止からのアラートを抑制する
 
 このページでは、アラート抑制ルールを使用することにより、Azure Security Center で擬陽性や他の不要なセキュリティ アラートが発生するのを抑制する方法について説明します。
 
@@ -28,7 +28,7 @@ ms.locfileid: "83871694"
     - ✔ ナショナル/ソブリン (US Gov、China Gov、その他の Gov)
 
 
-## <a name="introduction-to-suppression-rules"></a>抑制ルールの概要
+## <a name="what-are-suppression-rules"></a>抑制ルールとは
 
 Azure Security Center の脅威防止コンポーネントでは、ユーザーの環境のいずれかの領域で脅威を検出すると、セキュリティ アラートが生成されます。
 
@@ -43,9 +43,9 @@ Azure Security Center の脅威防止コンポーネントでは、ユーザー�
 > [!CAUTION]
 > セキュリティ アラートを抑制すると、Security Center の脅威防止は低下します。 抑制ルールを使用する場合は、その潜在的な影響を慎重に確認し、長期的に監視する必要があります。
 
-[![アラート抑制オプションが使用されている Azure Security Center の [セキュリティ アラート] ページ](media/alerts-suppression-rules/alerts-screen-with-options.png)](media/alerts-suppression-rules/alerts-screen-with-options.png#lightbox)
+![アラートの抑制ルールの作成](media\alerts-suppression-rules\create-suppression-rule.gif)
 
-## <a name="creating-a-suppression-rule"></a>抑制ルールの作成
+## <a name="create-a-suppression-rule"></a>抑制ルールを作成する
 
 次のいくつかの方法で、不要なセキュリティ アラートを抑制するルールを作成できます。
 
@@ -89,13 +89,13 @@ Azure portal で直接ルールを作成するには:
 
 1. ルールを保存します。 
 
-## <a name="editing-suppression-rules"></a>抑制ルールの編集
+## <a name="edit-a-suppression-rules"></a>抑制ルールを編集する
 
 作成したルールを編集する場合は、[抑制ルール] ページを使用します。
 
 1. Security Center の [セキュリティ アラート] ページから、そのページの上部の **[抑制ルール]** リンクを選択します。
 
-1. [抑制ルール] ページが開き、現在選択されているサブスクリプションに従って、使用可能なすべてのルールが一覧表示されます。 
+1. [抑制ルール] ページが開き、選択したサブスクリプションのすべてのルールが表示されます。
 
     [![抑制ルールの一覧](media/alerts-suppression-rules/suppression-rules-page.png)](media/alerts-suppression-rules/suppression-rules-page.png#lightbox)
 
@@ -103,13 +103,13 @@ Azure portal で直接ルールを作成するには:
 
 1. 必要な変更を加えて、 **[適用]** を選択します。 
 
-## <a name="deleting-suppression-rules"></a>抑制ルールの削除
+## <a name="delete-a-suppression-rule"></a>抑制ルールを削除する
 
 作成した 1 つまたは複数のルールを削除する場合は、[抑制ルール] ページを使用します。
 
 1. Security Center の [セキュリティ アラート] ページから、そのページの上部の **[抑制ルール]** リンクを選択します。
 
-1. [抑制ルール] ページが開き、現在選択されているサブスクリプションに従って、使用可能なすべてのルールが一覧表示されます。 
+1. [抑制ルール] ページが開き、選択したサブスクリプションのすべてのルールが表示されます。
 
 1. 1 つのルールを削除する場合は、そのルールの省略記号メニュー (...) を開き、 **[削除]** を選択します。
 
@@ -117,7 +117,7 @@ Azure portal で直接ルールを作成するには:
 
     ![1 つまたは複数の抑制ルールの削除](media/alerts-suppression-rules/delete-multiple-alerts.png)
 
-## <a name="viewing-alerts-that-have-been-suppressed"></a>抑制されたアラートの表示
+## <a name="view-suppressed-alerts"></a>抑制されたアラートを表示する
 
 有効にした抑制ルールと一致するアラートは、引き続き生成されますが、その状態は **[dismissed]\(無視\)** に設定されます。 その状態は、Azure portal でも確認できますが、Security Center の [セキュリティ アラート] にアクセスして確認することもできます。 
 
@@ -131,7 +131,7 @@ Azure portal で直接ルールを作成するには:
    [![無視されたアラートの表示](media/alerts-suppression-rules/view-dismissed-alerts.png)](media/alerts-suppression-rules/view-dismissed-alerts.png#lightbox)
 
 
-## <a name="using-the-api-to-create-and-manage-suppression-rules"></a>抑制ルールの作成と管理のための API の使用
+## <a name="create-and-manage-suppression-rules-with-the-api"></a>API を使用して抑制ルールの作成および管理を行う
 
 Security Center の REST API を使用して、アラート抑制ルールを作成、表示、または削除することができます。 
 

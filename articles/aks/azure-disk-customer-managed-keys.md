@@ -4,12 +4,12 @@ description: 独自のキー (BYOK) を使用して AKS OS ディスクとデー
 services: container-service
 ms.topic: article
 ms.date: 01/12/2020
-ms.openlocfilehash: ac6c4d2c4b3f309e2098ff6a6513aab8a3f8ea5f
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 9fd04b44be969e03eec2ed18f618068316572066
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84141536"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84882524"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の Azure ディスクに独自のキー (BYOK) を使用する
 
@@ -105,14 +105,13 @@ diskEncryptionSetId=$(az resource show -n mydiskEncryptionSetName -g myResourceG
 az group create -n myResourceGroup -l myAzureRegionName
 
 # Create the AKS cluster
-az aks create -n myAKSCluster -g myResourceGroup --node-osdisk-diskencryptionset-id $diskEncryptionSetId --kubernetes-version 1.17.0 --generate-ssh-keys
+az aks create -n myAKSCluster -g myResourceGroup --node-osdisk-diskencryptionset-id $diskEncryptionSetId --kubernetes-version KUBERNETES_VERSION --generate-ssh-keys
 ```
 
 上の手順で作成したクラスターに新しいノード プールが追加されると、作成時に提供されたカスタマーマネージド キーが OS ディスクの暗号化に使用されます。
 
-## <a name="encrypt-your-aks-cluster-data-disk"></a>AKS クラスターのデータ ディスクを暗号化する
-
-AKS データ ディスクを独自のキーで暗号化することもできます。
+## <a name="encrypt-your-aks-cluster-data-diskoptional"></a>AKS クラスターのデータ ディスクを暗号化する (省略可能)
+V 1.17.2 以降では、データ ディスクにキーが指定されていない場合、OS ディスク暗号化キーがデータ ディスクの暗号化に使用されます。また、AKS データ ディスクを他のキーで暗号化することもできます。
 
 > [!IMPORTANT]
 > 適切な AKS 資格情報を持っていることを確認します。 サービス プリンシパルは、diskencryptionset がデプロイされているリソース グループへの共同作成者アクセス権を保持している必要があります。 そうでないと、サービス プリンシパルにアクセス許可がないことを示すエラーが表示されます。
@@ -166,11 +165,9 @@ kubectl apply -f byok-azure-disk.yaml
 ## <a name="limitations"></a>制限事項
 
 * BYOK は現在、特定の [Azure リージョン][supported-regions]で GA およびプレビューとして提供されています
-* OS ディスクの暗号化は、Kubernetes バージョン 1.17 以降でサポートされます   
+* データ ディスクの暗号化は、Kubernetes バージョン 1.17 以降でサポートされます   
 * BYOK がサポートされているリージョンでのみ使用できます
 * カスタマーマネージド キーによる暗号化は、現在、新しい AKS クラスターのみを対象としています。既存のクラスターはアップグレードできません
-* Virtual Machine Scale Sets を使用する AKS クラスターが必要です。仮想マシン可用性セットのサポートはありません
-
 
 ## <a name="next-steps"></a>次のステップ
 

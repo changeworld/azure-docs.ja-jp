@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/26/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 98b82047c1744fbd63ecd3665e804e9d8f6c5221
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28ea1e68441a57d67fef1e78153e00eb1bd09211
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565983"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143910"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>ユーザーは、Azure Virtual WAN を使用するために、SD-WAN/VPN デバイスを利用したハブとスポークを用意する必要がありますか。
 
@@ -25,7 +25,7 @@ Virtual WAN には、次の 2 種類があります。Basic と Standard です�
 
 ### <a name="how-are-availability-zones-and-resiliency-handled-in-virtual-wan"></a>Virtual WAN では Availability Zones と回復性はどのように処理されますか。
 
-Virtual WAN は、ハブ内で使用可能になったハブとサービスのコレクションです。 ユーザーは、必要な数だけ仮想 WAN を持つことができます。 Virtual WAN ハブには、VPN や ExpressRoute などの複数のサービスがあります。Availability Zones リージョンで Availability Zones がサポートされている場合、これらのサービスはそれぞれそのリージョンにデプロイされます。 ハブでの初期デプロイ後にリージョンが可用性ゾーンになった場合、ユーザーはゲートウェイを再作成できます。これにより、可用性ゾーンのデプロイがトリガーされます。 すべてのゲートウェイがアクティブ/アクティブとしてハブにプロビジョニングされます。これは、ハブ内に回復性が組み込まれていることを意味します。 ユーザーは、複数のリージョンにわたって回復性が必要な場合、複数のハブに接続できます。 Virtual WAN の概念はグローバルですが、実際の Virtual WAN リソースは Resource Manager ベースであり、リージョンでデプロイされます。 仮想 WAN リージョン自体に問題がある場合、その仮想 WAN 内のすべてのハブは引き続きそのまま機能しますが、ユーザーは、仮想 WAN リージョンが使用可能になるまで新しいハブを作成することはできません。
+Virtual WAN は、ハブ内で使用可能になったハブとサービスのコレクションです。 ユーザーは、必要な数だけ Virtual WAN を利用できます。 Virtual WAN ハブには、VPN や ExpressRoute などの複数のサービスがあります。Availability Zones リージョンで Availability Zones がサポートされている場合、これらのサービス (Azure Firewall を除く) はそれぞれそのリージョンにデプロイされます。 ハブでの初期デプロイ後にリージョンが可用性ゾーンになった場合、ユーザーはゲートウェイを再作成できます。これにより、可用性ゾーンのデプロイがトリガーされます。 すべてのゲートウェイがアクティブ/アクティブとしてハブにプロビジョニングされます。これは、ハブ内に回復性が組み込まれていることを意味します。 ユーザーは、複数のリージョンにわたって回復性が必要な場合、複数のハブに接続できます。 Virtual WAN の概念はグローバルですが、実際の Virtual WAN リソースは Resource Manager ベースであり、リージョンでデプロイされます。 仮想 WAN リージョン自体に問題がある場合、その仮想 WAN 内のすべてのハブは引き続きそのまま機能しますが、ユーザーは、仮想 WAN リージョンが使用可能になるまで新しいハブを作成することはできません。
 
 ### <a name="what-client-does-the-azure-virtual-wan-user-vpn-point-to-site-support"></a>Azure Virtual WAN ユーザー VPN (ポイント対サイト) ではどのクライアントがサポートされていますか。
 

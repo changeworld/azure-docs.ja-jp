@@ -1,19 +1,19 @@
 ---
 title: 認証と権限承認
 description: アプリまたはサービスが Azure Spatial Anchors に対して認証できるさまざまな方法と、Azure Spatial Anchors へのアクセスを制限する必要がある制御レベルについて説明します。
-author: julianparismorgan
+author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
-ms.author: pmorgan
+ms.author: crtreasu
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 9a3b326f97246ffac386ad43cfa08ce413eea899
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: baf5252a6b158855739546c2a03e63dceee6701e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653362"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84456506"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Azure Spatial Anchors に対する認証と承認
 
@@ -39,7 +39,6 @@ Azure AD 認証トークンは、次の 2 つの方法で取得できます。
 アカウント キーを使用して自分の Azure Spatial Anchors にアクセスするのが、最も簡単に始める方法です。 自分のアカウント キーは、Azure portal で見つけることができます。 自分のアカウントに移動し、[キー] タブを選択します。
 
 ![Azure Spatial Anchors に対する認証の概要](../../../includes/media/spatial-anchors-get-started-create-resource/view-account-key.png)
-
 
 2 つのキーが利用可能で、どちらも Spatial Anchors アカウントにアクセスするために同時に有効になっています。 アカウントにアクセスするために使用するキーは、定期的に更新することをお勧めします。2 つの異なる有効なキーを持つことで、ダウンタイムを発生させることなくこのような更新が可能になります。主キーと 2 次キーを交互に更新するだけで済みます。
 
@@ -175,13 +174,14 @@ Azure AD アクセス トークンは、[MSAL ライブラリ](../../active-dire
         1.  Azure portal で、 **[Azure Active Directory]** に移動し、 **[アプリの登録]** を選択します
         2.  **[新しいアプリケーションの登録]** を選択します
         3.  アプリケーションの名前を入力し、アプリケーションの種類として **[Web アプリ/API]** を選択し、サービスの認証 URL を入力します。 次に **[作成]** をクリックします。
-        4.  そのアプリケーションで **[設定]** をクリックしてから **[キー]** タブを選択します。キーの名前を入力し、期間を選択してから **[保存]** をクリックします。 このときに表示されているキー値は、Web サービスのコードに含めるために必要になるので、必ず保存してください。
+        4.  そのアプリケーションで **[設定]** をクリックし、次に **[証明書とシークレット]** タブを選択します。新しいクライアント シークレットを作成し、期間を選択し、 **[追加]** をクリックします。 シークレットの値は、Web サービスのコードに含める必要があるため、必ず保存しておいてください。
     2.  アプリケーションまたはユーザー (および両方) にリソースへのアクセス権を付与します。
         1.  Azure portal で、ご使用の Spatial Anchors リソースに移動します
         2.  **[アクセス制御 (IAM)]** タブに切り替えます
         3.  **[ロールの割り当ての追加]** をクリックします
         1.  [ロールを選択します](#role-based-access-control)
         2.  **[選択]** フィールドに、アクセス権を割り当てる作成したアプリケーションの名前を入力します。 アプリのユーザーに Spatial Anchors アカウントに対してさまざまなロールを割り当てる場合は、Azure AD で複数のアプリケーションを登録し、それぞれに別のロールを割り当てる必要があります。 次に、ユーザーに適切なロールを使用するために承認ロジックを実装します。
+        3.  注 - **[ロールの割り当ての追加]** セクションで、 **[アクセスの割り当て先]** を [Azure AD のユーザー、グループ、サービス プリンシパル] に設定します。
     3.  **[保存]** をクリックします。
 2.  コードで次を行います (注: GitHub に含まれているサービスのサンプルを使用できます):
     1.  利用している Azure AD アプリケーションのアプリケーション ID、アプリケーション シークレット、およびリダイレクト URI を、MSAL の client ID、secret、および RedirectUri の各パラメーターとして必ず使用します

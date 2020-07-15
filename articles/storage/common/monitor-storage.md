@@ -9,12 +9,12 @@ ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring
-ms.openlocfilehash: 3ede22b5af942c3f0c0cd88d86b56a625c7656c0
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 9810d29750e7c741c84b11b296099a37d67fc595
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267615"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955167"
 ---
 # <a name="monitor-azure-storage"></a>Azure Storage を監視する
 
@@ -78,7 +78,9 @@ Azure Monitor のメトリックとログでは、Azure Resource Manager スト�
 
 プラットフォーム メトリックとアクティビティ ログは自動的に収集されますが、リソース ログを収集したり、それらを Azure Monitor の外部に転送したりするには、診断設定を作成する必要があります。 Azure portal、Azure CLI、または PowerShell を使用して診断設定を作成するプロセスについては、「[Azure でプラットフォーム ログとメトリックを収集するための診断設定を作成する](../../azure-monitor/platform/diagnostic-settings.md)」をご覧ください。
 
-診断設定を作成するときに、BLOB、キュー、テーブル、ファイルなど、ログを有効にするストレージの種類を選択します。 Azure portal で診断設定を作成する場合は、一覧からリソースを選択できます。 PowerShell または Azure CLI を使用する場合は、ストレージの種類のリソース ID を使用する必要があります。 ストレージ アカウントの **[プロパティ]** ページを開くと、Azure portal 上でリソース ID を確認できます。
+診断設定を作成するときに、BLOB、キュー、テーブル、ファイルなど、ログを有効にするストレージの種類を選択します。 Data Lake Storage Gen2 はストレージの種類として表示されません。 これは、Data Lake Storage Gen2 が BLOB ストレージで使用できる機能のセットであるためです。 
+
+Azure portal で診断設定を作成する場合は、一覧からリソースを選択できます。 PowerShell または Azure CLI を使用する場合は、ストレージの種類のリソース ID を使用する必要があります。 ストレージ アカウントの **[プロパティ]** ページを開くと、Azure portal 上でリソース ID を確認できます。
 
 また、ログを収集する操作のカテゴリを指定する必要もあります。 Azure Storage のカテゴリを次の表に示します。
 
@@ -343,6 +345,8 @@ Azure Monitor ログ クエリを使用して、Log Analytics ワークスペー
 |StorageFileLogs | ファイル共有内のアクティビティを説明するログ。 |
 |StorageQueueLogs | キュー内のアクティビティを説明するログ。|
 |StorageTableLogs| テーブル内のアクティビティを説明するログ。|
+
+Data Lake Storage Gen2 のログは、専用テーブルに表示されません。 この理由は Data Lake Storage Gen2 がサービスではないためです。 これは、BLOB ストレージ アカウントで有効にできる機能のセットです。 これらの機能を有効にしている場合、ログは StorageBlobLogs テーブルに引き続き表示されます。 
 
 ### <a name="azure-storage-log-analytics-queries-in-azure-monitor"></a>Azure Monitor での Azure Storage Log Analytics のクエリ
 

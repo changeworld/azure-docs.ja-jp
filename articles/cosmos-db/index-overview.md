@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: tisande
-ms.openlocfilehash: df9135c39c1ff27abe8915c221185fca517a5614
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 44a51972e459f64f44a791ef1cf40825dddedf91
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849792"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85798155"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Azure Cosmos DB のインデックス作成 - 概要
 
@@ -41,7 +41,7 @@ Azure Cosmos DB はスキーマ非依存のデータベースであり、スキ�
 
 これは次のツリーで表現されます。
 
-![ツリーとして表現された前の項目](./media/index-overview/item-as-tree.png)
+:::image type="content" source="./media/index-overview/item-as-tree.png" alt-text="ツリーとして表現された前の項目" border="false":::
 
 ツリー内で配列がどのようにエンコードされるかに注目します。配列内の各エントリは、配列内のそのエントリのインデックス (0、1 など) でラベル付けされた中間ノードを取得します。
 
@@ -51,14 +51,14 @@ Azure Cosmos DB が項目をツリーに変換する理由は、そのような�
 
 上記の例の項目から各プロパティへのパスは次のとおりです。
 
-    /locations/0/country: "Germany"
-    /locations/0/city: "Berlin"
-    /locations/1/country: "France"
-    /locations/1/city: "Paris"
-    /headquarters/country: "Belgium"
-    /headquarters/employees: 250
-    /exports/0/city: "Moscow"
-    /exports/1/city: "Athens"
+- /locations/0/country:"Germany"
+- /locations/0/city:"Berlin"
+- /locations/1/country:"France"
+- /locations/1/city:"Paris"
+- /headquarters/country:"Belgium"
+- /headquarters/employees:250
+- /exports/0/city:"Moscow"
+- /exports/1/city:"Athens"
 
 項目が書き込まれると、Azure Cosmos DB は各プロパティのパスとそれに対応する値のインデックスを効果的に作成します。
 
@@ -181,7 +181,7 @@ Azure Cosmos DB が項目をツリーに変換する理由は、そのような�
 
 たとえば、次のクエリを考えてみましょう。`SELECT location FROM location IN company.locations WHERE location.country = 'France'` クエリの述語 (どこかの場所に国やリージョンとして "France" が含まれている項目のフィルター処理) は、以下のように赤で強調表示されているパスと一致します。
 
-![ツリー内の特定のパスとの照合](./media/index-overview/matching-path.png)
+:::image type="content" source="./media/index-overview/matching-path.png" alt-text="ツリー内の特定のパスとの照合" border="false":::
 
 > [!NOTE]
 > 1 つのプロパティで並べ替える `ORDER BY` 句には*常に*範囲インデックスが必要であり、その句が参照するパスにこのインデックスが存在しない場合は失敗します。 同様に、複数のプロパティで並べ替える `ORDER BY` クエリには、*常に*複合インデックスが必要です。

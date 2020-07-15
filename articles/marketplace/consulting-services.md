@@ -1,18 +1,16 @@
 ---
 title: Microsoft コマーシャル マーケットプレースのコンサルティング サービス
 description: この記事では、Microsoft AppSource および Azure Marketplace での新しいコンサルティング サービス オファーの適格性基準と公開要件について説明します。
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/08/2020
-ms.author: dsindona
-ms.openlocfilehash: da2588125b455deaf18110687d54adc04a7dd4c0
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.date: 06/08/2020
+ms.openlocfilehash: 4a45239836779fc83aa2e3927c6e3ff752c87182
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83799853"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103757"
 ---
 # <a name="consulting-service-offers"></a>コンサルティング サービス オファー
 
@@ -22,20 +20,11 @@ ms.locfileid: "83799853"
 
 ## <a name="compare-consulting-services"></a>コンサルティング サービスの比較
 
-コマーシャル マーケットプレースのネットショップ (Microsoft AppSource および Azure Marketplace) は、対象ユーザーやクラウド製品に合わせられており、顧客が必要なものを見つけるのに役立ちます。 各ネットショップには、公開への投資を最大限に活かすための特別な公開オプションが用意されています。 これらのオプションを以下の表にまとめています。
-
-|         |Azure Marketplace  |Microsoft AppSource |
-|---------|---------|---------|
-|対象ユーザー      |IT プロフェッショナルとクラウド開発者|ビジネス ユーザーと基幹業務の意思決定者|
-|ソリューションの関連性      |Azure 用または Azure 上に構築されたテクノロジ アプリ|Dynamics 365、Power BI、Office 365、Azure (アドインまたはアドオンの完成したアプリ) を利用または拡張するビジネス アプリ|
-|公開オプション      |問い合わせ、試用版、取引、Azure 向けサービス|Dynamics 365 と Power BI に関する問い合わせ、試用版、サービス|
-|製品内エクスペリエンス      |Azure portal|Dynamics 365、Office 365、Office クライアント アプリ| 
-|その他      |Azure Stack 経由のオンプレミス公開、Azure 向けコンサルティング サービス、Azure 向け管理サービス|Dynamics 365 と Power BI 向けのコンサルティング サービス|
-||
+コマーシャル マーケットプレースのネットショップ (Microsoft AppSource および Azure Marketplace) は、対象ユーザーやクラウド製品に合わせられており、顧客が必要なものを見つけるのに役立ちます。 各ネットショップには、公開への投資を最大限に活かすための特別な公開オプションが用意されています。 2 つのネットショップの違いの詳細については、「[Microsoft AppSource と Azure Marketplace の比較](comparing-appsource-azure-marketplace.md)」を参照してください。
 
 Dynamics 365、Power Apps、Power BI に基づくコンサルティング サービス オファーは、AppSource に掲載される資格があります。 詳細については、[Microsoft AppSource のコンサルティング サービスの掲載に関するガイドライン](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409) PDF ファイルをダウンロードしてください。
 
-Microsoft Azure に基づくコンサルティング サービスおよび管理サービスのオファーは、Azure Marketplace に掲載される資格があります。 詳細については、[Azure コンサルティング サービス オファーの公開](./partner-center-portal/create-consulting-service-offer.md)に関する記事と「[Azure Marketplace にマネージド サービス オファーを発行する](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)」を参照してください。
+Microsoft Azure に基づくコンサルティング サービスおよび管理サービスのオファーは、Azure Marketplace に掲載される資格があります。 詳細については、[Azure コンサルティング サービス オファーの公開](./partner-center-portal/create-consulting-service-offer.md)に関する記事と「[Azure Marketplace にマネージド サービス オファーを発行する](../lighthouse/how-to/publish-managed-services-offers.md)」を参照してください。
 
 > [!Note]
 > Azure Marketplace のコンサルティング サービスは、技術者向けのオファーに焦点を当て、Azure の技術的なソリューションとサービスに重点を置く必要があります。
@@ -79,21 +68,20 @@ Microsoft Azure に基づくコンサルティング サービスおよび管理
 
 コンピテンシーの詳細については、[Microsoft Partner Network のコンピテンシー](https://partner.microsoft.com/membership/competencies)に関するページを参照してください。
 
-システム インテグレーター パートナーは、次の 21 の国/地域でコンサルティング サービス オファーを提供できます
+システム インテグレーター パートナーは、次の 20 の国/地域でコンサルティング サービス オファーを提供できます。
 
-|   |   |   |   |
+| 国  | (続き)   | (続き)  | (続き)  |
 |---------|----------|----------|----------|
 | オーストラリア | ベルギー | Canada | デンマーク |
 | フィンランド  | フランス | ドイツ  | インド   |
 | イタリア    | 日本  |  メキシコ  |  オランダ  |
 |  ニュージーランド  |  ノルウェー  |  ポーランド  | 南アフリカ |
-|  スペイン  | スウェーデン  | スイス  |  United States  |
-| イギリス  |
+|  スウェーデン  | スイス  |  United States  | イギリス  |
 ||
 
 ## <a name="register-for-consulting-services-in-the-commercial-marketplace"></a>コマーシャル マーケットプレースでコンサルティング サービスに登録する
 
-最初に、マーケットプレースにご自身の企業情報を[登録](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)します。 登録要件の完全なチェックリストについては、[マーケットプレースで公開元になる](https://docs.microsoft.com/azure/marketplace/become-publisher)ことに関する記事を参照してください。 
+最初に、マーケットプレースにご自身の企業情報を[登録](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)します。 登録要件の完全なチェックリストについては、[マーケットプレースで公開元になる](become-publisher.md)ことに関する記事を参照してください。 
 
 ## <a name="prepare-your-publishing-artifacts"></a>成果物の公開を準備する
 登録前に、対象の顧客に対してご自身のサービスやソリューションの価値を明確に示すのに役立つコンテンツの収集や準備を開始できます。 
