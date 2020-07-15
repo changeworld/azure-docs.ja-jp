@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: face605d756d2107c04b3df0c072602ac91d147d
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 02e6d776dbb47ee8e30409f6b8adc5a61fc5fe52
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83992897"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958924"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Microsoft Translator Hub ワークスペースとプロジェクトを移行する
 
@@ -141,7 +141,7 @@ Hub からワークスペースまたはプロジェクトの移行を要求す�
 
 ## <a name="new-languages"></a>新しい言語
 
-Microsoft Translator 用の新しい言語システムの作成に取り組んでいるコミュニティや組織のお客様は、[custommt@microsoft.com](mailto:custommt@microsoft.com) までご連絡いただき、詳細についてお問い合わせください。
+Translator 用の新しい言語システムの作成に取り組んでいるコミュニティや組織のお客様は、[custommt@microsoft.com](mailto:custommt@microsoft.com) までご連絡いただき、詳細についてお問い合わせください。
 
 ## <a name="next-steps"></a>次のステップ
 

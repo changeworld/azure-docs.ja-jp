@@ -4,29 +4,25 @@ description: Azure App Service のアプリを Azure 仮想ネットワークと
 author: ccompy
 ms.assetid: 90bc6ec6-133d-4d87-a867-fcf77da75f5a
 ms.topic: article
-ms.date: 04/16/2020
+ms.date: 06/08/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 9b7df06ea7ff07907a292bdcc32e66aafa44ae68
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 7b6b310cdc03cb45fba6ba06dbcf2add9818f6cf
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170785"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85857029"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>アプリを Azure 仮想ネットワークと統合する
 
-この記事では、Azure App Service の VNet 統合機能と、それを [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) のアプリで設定する方法について説明します。 [Azure Virtual Network][VNETOverview] (VNet) を使用すると、多くの Azure リソースをインターネットにルーティングできないネットワークに配置できます。
+この記事では、Azure App Service の VNet 統合機能と、それを [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) のアプリで設定する方法について説明します。 [Azure Virtual Network][VNETOverview] (VNet) を使用すると、多くの Azure リソースをインターネットにルーティングできないネットワークに配置できます。 VNet 統合機能を使用すると、アプリは VNet 内のリソースにアクセスするか、VNet を通じてリソースにアクセスできます。 VNet 統合では、アプリにプライベートでアクセスすることはできません。
 
-Azure App Service には、次の 2 つのバリエーションがあります。
+Azure App Service では、VNet 統合機能に次の 2 つのバリエーションがあります。
 
 [!INCLUDE [app-service-web-vnet-types](../../includes/app-service-web-vnet-types.md)]
 
 ## <a name="enable-vnet-integration"></a>VNET 統合を有効にする
-
-> [!NOTE]
-> Linux アプリのメニューで [ネットワーク] ブレードが無効 (グレー表示) になっている場合は、その機能が現在使用できないことを意味します。
->
 
 1. App Service ポータルで **[ネットワーク]** の UI に移動します。 **[VNet 統合]** の下の **[ここをクリックして構成]** を選択します。
 
@@ -75,8 +71,8 @@ App Service 内のアプリは、worker ロールでホストされます。 Bas
 
 ゲートウェイが必要な VNet 統合は次の場合は使用できません。
 
-* Linux アプリに対して。
 * Azure ExpressRoute で接続された VNet に対して。
+* Linux アプリから
 * サービス エンドポイントによって保護されているリソースにアクセスする場合。
 * ExpressRoute とポイント対サイトまたはサイト間 VPN の両方をサポートする共存ゲートウェイに対して。
 
@@ -155,25 +151,27 @@ VNet で定義されているルートが、アプリから VNet にトラフィ
 
 リージョン VNet 統合では CLI がサポートされています。 次のコマンドにアクセスするには、[Azure CLI をインストール][installCLI]します。
 
-        az webapp vnet-integration --help
+```azurecli
+az webapp vnet-integration --help
 
-        Group
-            az webapp vnet-integration : Methods that list, add, and remove virtual network integrations
-            from a webapp.
-                This command group is in preview. It may be changed/removed in a future release.
-        Commands:
-            add    : Add a regional virtual network integration to a webapp.
-            list   : List the virtual network integrations on a webapp.
-            remove : Remove a regional virtual network integration from webapp.
+Group
+    az webapp vnet-integration : Methods that list, add, and remove virtual network
+    integrations from a webapp.
+        This command group is in preview. It may be changed/removed in a future release.
+Commands:
+    add    : Add a regional virtual network integration to a webapp.
+    list   : List the virtual network integrations on a webapp.
+    remove : Remove a regional virtual network integration from webapp.
 
-        az appservice vnet-integration --help
+az appservice vnet-integration --help
 
-        Group
-            az appservice vnet-integration : A method that lists the virtual network integrations used in an
-            appservice plan.
-                This command group is in preview. It may be changed/removed in a future release.
-        Commands:
-            list : List the virtual network integrations used in an appservice plan.
+Group
+    az appservice vnet-integration : A method that lists the virtual network
+    integrations used in an appservice plan.
+        This command group is in preview. It may be changed/removed in a future release.
+Commands:
+    list : List the virtual network integrations used in an appservice plan.
+```
 
 ゲートウェイが必要な VNet 統合では、PowerShell を使用して App Service を Azure 仮想ネットワークと統合できます。 すぐに使用できるスクリプトについては、「[Azure App Service のアプリを Azure 仮想ネットワークに接続する](https://gallery.technet.microsoft.com/scriptcenter/Connect-an-app-in-Azure-ab7527e3)」をご覧ください。
 

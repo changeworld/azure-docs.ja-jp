@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/29/2020
+ms.date: 06/05/2020
 ms.author: jingwang
-ms.openlocfilehash: c488c57f8c755bfc062dc81a242fbfbb605406e0
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 7fd8fd35ee411d929843be81a1daaa512e0b3ca1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298569"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84611049"
 ---
 # <a name="json-format-in-azure-data-factory"></a>Azure Data Factory での JSON 形式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -194,73 +194,25 @@ JSON ファイルからデータをコピーする場合、コピー アクテ�
 
 ## <a name="mapping-data-flow-properties"></a>Mapping Data Flow のプロパティ
 
-JSON のファイルの種類は、マッピング データ フローでシンクとソースの両方に使用できます。
+マッピング データ フローでは、次のデータ ストアで JSON 形式での読み取りと書き込みを実行できます。[Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties)。
 
-### <a name="creating-json-structures-in-a-derived-column"></a>派生列での JSON 構造の作成
+### <a name="source-properties"></a>ソース プロパティ
 
-派生列式エディターを使用して複合列をデータ フローに追加できます。 派生列変換に新しい列を追加し、青いボックスをクリックして式ビルダーを開きます。 列を複合にするには、手動で JSON 構造を入力するか、UX を使用してサブ列を対話的に追加します。
+次の表に、JSON ソースでサポートされるプロパティの一覧を示します。 これらのプロパティは、 **[ソース オプション]** タブで編集できます。
 
-#### <a name="using-the-expression-builder-ux"></a>式ビルダー UX の使用
-
-出力スキーマのサイド ウィンドウで、列の上にマウス ポインターを移動し、プラス記号のアイコンをクリックします。 列を複合型にするために、 **[Add subcolumn]\(サブ列の追加\)** を選択します。
-
-![サブ列の追加](media/data-flow/addsubcolumn.png "サブ列の追加")
-
-同じ方法で、さらに列とサブ列を追加できます。 複合でない各フィールドについては、式エディターで右側に式を追加できます。
-
-![複合列](media/data-flow/complexcolumn.png "複合列")
-
-#### <a name="entering-the-json-structure-manually"></a>手動による JSON 構造の入力
-
-JSON 構造を手動で追加するには、新しい列を追加し、エディターで式を入力します。 式は、次の一般的な形式に従います。
-
-```
-@(
-    field1=0,
-    field2=@(
-        field1=0
-    )
-)
-```
-
-"complexColumn" という名前の列に対してこの式が入力された場合、次の JSON としてシンクに書き込まれます。
-
-```
-{
-    "complexColumn": {
-        "field1": 0,
-        "field2": {
-            "field1": 0
-        }
-    }
-}
-```
-
-#### <a name="sample-manual-script-for-complete-hierarchical-definition"></a>完全な階層定義のサンプル手動スクリプト
-```
-@(
-    title=Title,
-    firstName=FirstName,
-    middleName=MiddleName,
-    lastName=LastName,
-    suffix=Suffix,
-    contactDetails=@(
-        email=EmailAddress,
-        phone=Phone
-    ),
-    address=@(
-        line1=AddressLine1,
-        line2=AddressLine2,
-        city=City,
-        state=StateProvince,
-        country=CountryRegion,
-        postCode=PostalCode
-    ),
-    ids=[
-        toString(CustomerID), toString(AddressID), rowguid
-    ]
-)
-```
+| 名前 | 説明 | 必須 | 使用できる値 | データ フロー スクリプトのプロパティ |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| ワイルド カードのパス | ワイルドカードのパスに一致するすべてのファイルが処理されます。 データセットで設定されているフォルダーとファイル パスはオーバーライドされます。 | no | String[] | wildcardPaths |
+| パーティションのルート パス | パーティション分割されたファイル データについては、パーティション フォルダーを列として読み取るためにパーティションのルート パスを入力できます。 | no | String | partitionRootPath |
+| ファイルの一覧 | 処理するファイルを一覧表示しているテキスト ファイルをソースが指しているかどうか | no | `true` または `false` | fileList |
+| ファイル名を格納する列 | ソース ファイル名とパスを使用して新しい列を作成します | no | String | rowUrlColumn |
+| 完了後 | 処理後にファイルを削除または移動します。 ファイル パスはコンテナー ルートから始まります | no | 削除: `true` または `false` <br> 移動: `['<from>', '<to>']` | purgeFiles <br> moveFiles |
+| 最終更新日時でフィルター処理 | 最後に変更された日時に基づいてファイルをフィルター処理する場合に選択します | no | Timestamp | modifiedAfter <br> modifiedBefore |
+| 1 つのドキュメント | マッピング データ フローでは、各ファイルから 1 つの JSON ドキュメントが読み取られます | no | `true` または `false` | singleDocument |
+| 引用符で囲まれていない列名 | **[Unquoted column names]\(引用符で囲まれていない列名\)** を選択した場合、マッピング データ フローでは、引用符で囲まれていない JSON 列が読み取られます。 | no | `true` または `false` |  unquotedColumnNames
+| コメントあり | JSON データに C または C++ スタイルのコメントが含まれている場合は、 **[コメントあり]** を選択します | no | `true` または `false` | asComments |
+| 一重引用符付き | 引用符で囲まれていない JSON 列が読み取られます | no | `true` または `false` | singleQuoted |
+| 円記号によるエスケープ | JSON データ内の文字をエスケープするためにバックスラッシュを使用している場合は、 **[円記号によるエスケープ]** を選択します | no | `true` または `false` | backslashEscape |
 
 ### <a name="source-format-options"></a>ソース形式のオプション
 
@@ -331,12 +283,87 @@ JSON フィールドと値に二重引用符ではなく単一引用符を使用
 
 #### <a name="backslash-escaped"></a>円記号によるエスケープ
 
-JSON データ内の文字をエスケープするためにバックスラッシュを使用している場合は、 **[Single quoted]\(単一引用符付き\)** を選択します。
+JSON データ内の文字をエスケープするためにバックスラッシュを使用している場合は、 **[円記号によるエスケープ]** を選択します。
 
 ```
 { "json": "record 1" }
 { "json": "\} \" \' \\ \n \\n record 2" }
 { "json": "record 3" }
+```
+
+### <a name="sink-properties"></a>シンクのプロパティ
+
+次の表に、JSON シンクでサポートされるプロパティの一覧を示します。 これらのプロパティは、 **[設定]** タブで編集できます。
+
+| 名前 | 説明 | 必須 | 使用できる値 | データ フロー スクリプトのプロパティ |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| フォルダーのクリア | 書き込みの前に宛先フォルダーがクリアされるかどうか | no | `true` または `false` | truncate |
+| ファイル名のオプション | 書き込まれたデータの名前付け形式です。 既定では、`part-#####-tid-<guid>` という形式で、パーティションごとに 1 ファイルです | no | パターン:String <br> [Per partition] (パーティションごと): String[] <br> [As data in column] (列内のデータとして): String <br> 1 つのファイルに出力する: `['<fileName>']`  | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |
+
+### <a name="creating-json-structures-in-a-derived-column"></a>派生列での JSON 構造の作成
+
+派生列式エディターを使用して複合列をデータ フローに追加できます。 派生列変換に新しい列を追加し、青いボックスをクリックして式ビルダーを開きます。 列を複合にするには、手動で JSON 構造を入力するか、UX を使用してサブ列を対話的に追加します。
+
+#### <a name="using-the-expression-builder-ux"></a>式ビルダー UX の使用
+
+出力スキーマのサイド ウィンドウで、列の上にマウス ポインターを移動し、プラス記号のアイコンをクリックします。 列を複合型にするために、 **[Add subcolumn]\(サブ列の追加\)** を選択します。
+
+![サブ列の追加](media/data-flow/addsubcolumn.png "サブ列の追加")
+
+同じ方法で、さらに列とサブ列を追加できます。 複合でない各フィールドについては、式エディターで右側に式を追加できます。
+
+![複合列](media/data-flow/complexcolumn.png "複合列")
+
+#### <a name="entering-the-json-structure-manually"></a>手動による JSON 構造の入力
+
+JSON 構造を手動で追加するには、新しい列を追加し、エディターで式を入力します。 式は、次の一般的な形式に従います。
+
+```
+@(
+    field1=0,
+    field2=@(
+        field1=0
+    )
+)
+```
+
+"complexColumn" という名前の列に対してこの式が入力された場合、次の JSON としてシンクに書き込まれます。
+
+```
+{
+    "complexColumn": {
+        "field1": 0,
+        "field2": {
+            "field1": 0
+        }
+    }
+}
+```
+
+#### <a name="sample-manual-script-for-complete-hierarchical-definition"></a>完全な階層定義のサンプル手動スクリプト
+```
+@(
+    title=Title,
+    firstName=FirstName,
+    middleName=MiddleName,
+    lastName=LastName,
+    suffix=Suffix,
+    contactDetails=@(
+        email=EmailAddress,
+        phone=Phone
+    ),
+    address=@(
+        line1=AddressLine1,
+        line2=AddressLine2,
+        city=City,
+        state=StateProvince,
+        country=CountryRegion,
+        postCode=PostalCode
+    ),
+    ids=[
+        toString(CustomerID), toString(AddressID), rowguid
+    ]
+)
 ```
 
 ## <a name="next-steps"></a>次のステップ

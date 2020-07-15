@@ -5,17 +5,17 @@ description: WhiteNoise パッケージを使用して、Azure Machine Learning 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
 ms.date: 05/17/2020
-ms.openlocfilehash: 47497f23da94e529826b8dddb05b869727fb528e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b43fd25e77e07b7b64416d8784d47c14fed48ea7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663670"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84981848"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning"></a>Azure Machine Learning で差分プライバシーを使用する
 
@@ -24,6 +24,9 @@ ms.locfileid: "83663670"
 WhiteNoise Python パッケージを使用して、Azure Machine Learning モデルに差分プライバシーのベスト プラクティスを適用する方法について説明します。
 
 差分プライバシーは、ゴールド スタンダードなプライバシー定義です。 このプライバシー定義に準拠しているシステムでは、幅広いデータ再構成やデータ再識別攻撃 (補助情報を持つ敵対者からの攻撃など) への防御が強力に保証されます。 詳細については、[差分プライバシーのしくみ](./concept-differential-privacy.md)に関するページを参照してください。
+
+> [!NOTE]
+> ツールキットの名前は変更予定で、今後数週間で新しい名前が導入されることにご注意ください。 
 
 ## <a name="prerequisites"></a>前提条件
 

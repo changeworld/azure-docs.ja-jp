@@ -9,12 +9,12 @@ ms.date: 05/01/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: 481406b02d7d864dd16ac42918ae1aa2dea0b145
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 12df9566dd3ddfedd1f4553ad8877258d840858c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195222"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960216"
 ---
 # <a name="azure-storage-monitoring-data-reference"></a>Azure Storage 監視データのリファレンス
 
@@ -32,11 +32,15 @@ Azure Storage は、Azure Monitor で次の容量メトリックを提供しま�
 
 #### <a name="account-level"></a>アカウント レベル
 
+この表は、[アカウントレベルのメトリック](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccounts)を示しています。
+
 | メトリック | 説明 |
 | ------------------- | ----------------- |
 | UsedCapacity | ストレージ アカウントによって使用されているストレージの量。 Standard ストレージ アカウントについては、Blob、Table、File、および Queue で使用される容量の合計です。 Premium ストレージ アカウントと BLOB ストレージ アカウントについては、BlobCapacity と同じです。 <br/><br/> 単位:バイト <br/> 集計の種類:Average <br/> 値の例:1024 |
 
 #### <a name="blob-storage"></a>BLOB ストレージ
+
+この表は、[BLOB ストレージのメトリック](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsblobservices)を示しています。
 
 | メトリック | 説明 |
 | ------------------- | ----------------- |
@@ -47,6 +51,8 @@ Azure Storage は、Azure Monitor で次の容量メトリックを提供しま�
 
 #### <a name="table-storage"></a>テーブル ストレージ
 
+この表は、[Table ストレージのメトリック](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountstableservices)を示しています。
+
 | メトリック | 説明 |
 | ------------------- | ----------------- |
 | TableCapacity | ストレージ アカウントによって使用されている Table Storage の量。 <br/><br/> 単位:バイト <br/> 集計の種類:Average <br/> 値の例:1024 |
@@ -55,13 +61,17 @@ Azure Storage は、Azure Monitor で次の容量メトリックを提供しま�
 
 #### <a name="queue-storage"></a>ストレージ
 
+この表は、[Queue storage のメトリック](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsfileservices)を示しています。
+
 | メトリック | 説明 |
 | ------------------- | ----------------- |
 | QueueCapacity | ストレージ アカウントによって使用されている Queue ストレージの量。 <br/><br/> 単位:バイト <br/> 集計の種類:Average <br/> 値の例:1024 |
 | QueueCount   | ストレージ アカウントのキューの数。 <br/><br/> 単位:Count <br/> 集計の種類:Average <br/> 値の例:1024 |
-| QueueMessageCount | ストレージ アカウントの期限が切れていないキュー メッセージの数。 <br/><br/>単位:Count <br/> 集計の種類:Average <br/> 値の例:1024 |
+| QueueMessageCount | ストレージ アカウントの Queue サービス内のキュー メッセージの概数。 <br/><br/>単位:Count <br/> 集計の種類:Average <br/> 値の例:1024 |
 
 #### <a name="file-storage"></a>File Storage
+
+この表は、[File Storage のメトリック](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsqueueservices)を示しています。
 
 | メトリック | 説明 |
 | ------------------- | ----------------- |

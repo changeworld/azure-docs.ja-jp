@@ -5,18 +5,18 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3b4358651b811ba5c1e7644333a1e9f5a8da2990
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbfb50b40b4705cae55ba6e4f1ef950b586b5fb5
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84424076"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185876"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>Start/Stop VMs during off-hours の概要
 
 Start/Stop VMs during off-hours 機能は、有効になっている Azure VM を開始または停止するものです。 ユーザー定義のスケジュールでマシンを開始または停止し、Azure Monitor ログを介して分析情報を取得し、[アクション グループ](../azure-monitor/platform/action-groups.md)を使用してオプションのメールを送信することができます。 この機能は、ほとんどのシナリオにおいて、Azure Resource Manager とクラシック VM の両方で有効にできます。 
 
-この機能では、[Start-AzVm](https://docs.microsoft.com/powershell/module/az.compute/start-azvm) コマンドレットを使用して VM を開始します。 VM を停止するためには、[Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) を使用します。
+この機能では、[Start-AzVm](/powershell/module/az.compute/start-azvm) コマンドレットを使用して VM を開始します。 VM を停止するためには、[Stop-AzVM](/powershell/module/az.compute/stop-azvm) を使用します。
 
 > [!NOTE]
 > Runbook は、新しい Azure Az モジュール コマンドレットを使用するように更新されていますが、AzureRM プレフィックス エイリアスを使用します。
@@ -37,7 +37,7 @@ Start/Stop VMs during off-hours 機能は、有効になっている Azure VM �
 
 ## <a name="prerequisites"></a>前提条件
 
-Start/Stop VMs during off hours 機能の Runbook は [Azure 実行アカウント](automation-create-runas-account.md)と連動します。 認証方法としては、実行アカウントの使用をお勧めします。有効期限が切れたり頻繁に変わったりするパスワードではなく、証明書を使った認証が使用されるためです。
+Start/Stop VMs during off hours 機能の Runbook は [Azure 実行アカウント](./manage-runas-account.md)と連動します。 認証方法としては、実行アカウントの使用をお勧めします。有効期限が切れたり頻繁に変わったりするパスワードではなく、証明書を使った認証が使用されるためです。
 
 Start/Stop VMs during off-hours 機能には、別の Automation アカウントを使用することをお勧めします。 多くの場合、Azure モジュールのバージョンがアップグレードされ、そのパラメーターが変更される可能性があります。 この機能は同じペースでアップグレードされないため、使用するコマンドレットの新しいバージョンでは動作しない可能性があります。 モジュールの更新は、運用環境の Automation アカウントにインポートする前に、テスト用の Automation アカウントでテストすることをお勧めします。
 
@@ -122,7 +122,7 @@ Start/Stop VMs during off-hours 機能には、構成済みの Runbook、スケ�
 次の表は、Automation アカウント内に作成される変数の一覧です。 `External` のプレフィックスが付いた変数のみを変更します。 `Internal` プレフィックスが付いた変数を変更すると、望ましくない影響が生じます。
 
 > [!NOTE]
-> VM 名とリソース グループの制限は、主に可変サイズの結果です。 「[Azure Automation での変数アセット](https://docs.microsoft.com/azure/automation/shared-resources/variables)」を参照してください。
+> VM 名とリソース グループの制限は、主に可変サイズの結果です。 「[Azure Automation での変数アセット](./shared-resources/variables.md)」を参照してください。
 
 |変数 | 説明|
 |---------|------------|
@@ -177,7 +177,7 @@ Start/Stop VMs during off-hours 機能には、構成済みの Runbook、スケ�
 
 そうしないと、この機能の Automation ジョブが 3 時間を超えて実行された場合、そのジョブは[フェア シェア](automation-runbook-execution.md#fair-share)制限に従って一時的にアンロードまたは停止されます。
 
-Azure CSP サブスクリプションでは、Azure Resource Manager モデルのみがサポートされます。 Azure Resource Manager 以外のサービスは、プログラムでは使用できません。 Start/Stop VMs during off-hours 機能の実行中は、クラシック リソースを管理するコマンドレットがあるため、エラーが発生することがあります。 CSP について詳しくは、[CSP サブスクリプションで利用可能なサービス](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services)に関するページをご覧ください。 CSP サブスクリプションを使用する場合、デプロイ後に [External_EnableClassicVMs](#variables) 変数を False に設定する必要があります。
+Azure CSP サブスクリプションでは、Azure Resource Manager モデルのみがサポートされます。 Azure Resource Manager 以外のサービスは、プログラムでは使用できません。 Start/Stop VMs during off-hours 機能の実行中は、クラシック リソースを管理するコマンドレットがあるため、エラーが発生することがあります。 CSP について詳しくは、[CSP サブスクリプションで利用可能なサービス](/azure/cloud-solution-provider/overview/azure-csp-available-services)に関するページをご覧ください。 CSP サブスクリプションを使用する場合、デプロイ後に [External_EnableClassicVMs](#variables) 変数を False に設定する必要があります。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 

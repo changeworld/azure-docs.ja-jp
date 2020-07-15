@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 06/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2dbaebac2228c11aef5fb33af4588f75ea15677a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc96f2dd81b618b4170acd4b415a09248adbb7d5
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84343056"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186165"
 ---
 # <a name="management-of-azure-automation-data"></a>Azure Automation データの管理
 
@@ -37,9 +37,9 @@ Windows および Linux 用の Log Analytics エージェントでの TLS 1.2 �
 |プラットフォーム/言語 | サポート | 詳細情報 |
 | --- | --- | --- |
 |Linux | Linux ディストリビューションでは、TLS 1.2 のサポートに関して [OpenSSL](https://www.openssl.org) に依存する傾向があります。  | [OpenSSL の Changelog](https://www.openssl.org/news/changelog.html) を参照して、使用している OpenSSL のバージョンがサポートされていることを確認してください。|
-| Windows 8.0 - 10 | サポートされています。既定で有効になっています。 | [既定の設定](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)を使用していることを確認するには。  |
-| Windows Server 2012 - 2016 | サポートされています。既定で有効になっています。 | [既定の設定](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)を使用していることを確認するには |
-| Windows 7 SP1 および Windows Server 2008 R2 SP1 | サポートされていますが、既定では有効になっていません。 | 有効にする方法の詳細については、「[トランスポート層セキュリティ (TLS) のレジストリ設定](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)」を参照してください。  |
+| Windows 8.0 - 10 | サポートされています。既定で有効になっています。 | [既定の設定](/windows-server/security/tls/tls-registry-settings)を使用していることを確認するには。  |
+| Windows Server 2012 - 2016 | サポートされています。既定で有効になっています。 | [既定の設定](/windows-server/security/tls/tls-registry-settings)を使用していることを確認するには |
+| Windows 7 SP1 および Windows Server 2008 R2 SP1 | サポートされていますが、既定では有効になっていません。 | 有効にする方法の詳細については、「[トランスポート層セキュリティ (TLS) のレジストリ設定](/windows-server/security/tls/tls-registry-settings)」を参照してください。  |
 
 ## <a name="data-retention"></a>データの保持
 
@@ -51,7 +51,7 @@ Azure Automation でリソースを削除すると、完全に削除される前
 |:--- |:--- |
 | アカウント |アカウントは、ユーザーによって削除された日から 30 日後に完全に消去されます。 |
 | アセット |アセットは、ユーザーによって削除された日から 30 日後、またはアセットを保持するアカウントがユーザーによって削除された日から 30 日後に、完全に消去されます。 |
-| DSC ノード |DSC ノード は、Azure portal または Windows PowerShell の [Unregister-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-3.7.0) コマンドレットを使用して、Automation アカウントから登録解除された日から 30 日後に、完全に消去されます。 また、ノードは、ノードを保持するアカウントがユーザーによって削除されてから 30 日後に、完全に消去されます。 |
+| DSC ノード |DSC ノード は、Azure portal または Windows PowerShell の [Unregister-AzAutomationDscNode](/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-3.7.0) コマンドレットを使用して、Automation アカウントから登録解除された日から 30 日後に、完全に消去されます。 また、ノードは、ノードを保持するアカウントがユーザーによって削除されてから 30 日後に、完全に消去されます。 |
 | ジョブ |ジョブは、変更 (ジョブの完了など) が停止または中断された日から 30 日後に、削除されて完全に消去されます。 |
 | モジュール |モジュールは、ユーザーによって削除された日から 30 日後、またはモジュールを保持するアカウントがユーザーによって削除された日から 30 日後に、完全に消去されます。 |
 | ノード構成/MOF ファイル |古いノード構成は、新しいノード構成が生成された日から 30 日後に、完全に消去されます。 |
@@ -66,7 +66,7 @@ Azure で Automation アカウントを削除すると、そのアカウント�
 
 ### <a name="runbooks"></a>Runbooks
 
-Azure Portal または Windows PowerShell の [Get-AzureAutomationRunbookDefinition](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition) コマンドレットを使用して、Runbook をスクリプト ファイルにエクスポートできます。 「[Azure Automation で Runbook を管理する](manage-runbooks.md)」で説明されているようにして、これらのスクリプト ファイルを別の Automation アカウントにインポートすることができます。
+Azure Portal または Windows PowerShell の [Get-AzureAutomationRunbookDefinition](/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition) コマンドレットを使用して、Runbook をスクリプト ファイルにエクスポートできます。 「[Azure Automation で Runbook を管理する](manage-runbooks.md)」で説明されているようにして、これらのスクリプト ファイルを別の Automation アカウントにインポートすることができます。
 
 ### <a name="integration-modules"></a>統合モジュール
 
@@ -80,8 +80,7 @@ Azure Automation のアセット (証明書、接続、資格情報、スケジ�
 
 ### <a name="dsc-configurations"></a>DSC の構成
 
-Azure portal または Windows PowerShell の [Export-AzAutomationDscConfiguration](https://docs.microsoft.com/powershell/module/az.automation/export-azautomationdscconfiguration?view=azps-3.7.0
-) コマンドレットを使用して、DSC の構成をスクリプト ファイルにエクスポートできます。 これらの構成を別の Automation アカウントにインポートして使用できます。
+Azure portal または Windows PowerShell の [Export-AzAutomationDscConfiguration](/powershell/module/az.automation/export-azautomationdscconfiguration?view=azps-3.7.0) コマンドレットを使用して、DSC の構成をスクリプト ファイルにエクスポートできます。 これらの構成を別の Automation アカウントにインポートして使用できます。
 
 ## <a name="geo-replication-in-azure-automation"></a>Azure Automation での geo レプリケーション
 
@@ -103,4 +102,4 @@ Automation の geo レプリケーション サービスによって作成され
 
 * Azure Automation でのセキュリティ保護されたアセットの詳細については、「[Azure Automation でセキュリティで保護された資産を暗号化する](automation-secure-asset-encryption.md)」を参照してください。
 
-* geo レプリケーションの詳細については、「[アクティブ geo レプリケーションの作成と使用](../sql-database/sql-database-active-geo-replication.md)」を参照してください。
+* geo レプリケーションの詳細については、「[アクティブ geo レプリケーションの作成と使用](../azure-sql/database/active-geo-replication-overview.md)」を参照してください。

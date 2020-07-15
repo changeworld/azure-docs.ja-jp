@@ -1,18 +1,18 @@
 ---
 title: コマーシャル マーケットプレース パートナーと顧客の使用状況の属性
 description: Azure Marketplace ソリューションの顧客の使用状況を追跡する方法の概要を取得します。
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: vikrambmsft
+ms.author: vikramb
 ms.date: 04/14/2020
-ms.author: dsindona
-ms.openlocfilehash: 9c70f8d728786e8aff8da33f9a39b8c2cfaafdc4
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 6997c1aaab8cbe635ccef21967a0fce1f735c1ab
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84295611"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103026"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>コマーシャル マーケットプレース パートナーと顧客の使用状況の属性
 
@@ -66,7 +66,7 @@ GUID は、32 桁の 16 進数を含む一意の参照識別子です。 追跡�
 
 1. [商業マーケットプレース パブリッシャー](https://aka.ms/JoinMarketplace)としてサインアップします。
 
-   * パートナーは、[パートナー センターにプロファイルを持っている](https://docs.microsoft.com/azure/marketplace/become-publisher)必要があります。 Azure Marketplace または AppSource にプランを登録することをお勧めします。
+   * パートナーは、[パートナー センターにプロファイルを持っている](become-publisher.md)必要があります。 Azure Marketplace または AppSource にプランを登録することをお勧めします。
    * パートナーは複数の GUID を登録できます。
    * パートナーは、マーケットプレース以外のソリューション テンプレートやオファーの GUID を登録できます。
 
@@ -74,7 +74,7 @@ GUID は、32 桁の 16 進数を含む一意の参照識別子です。 追跡�
 
 1. **[アカウント設定]** ページで、 **[Add Tracking GUID]\(追跡用 GUID の追加\)** を選択します。
 
-1. **[GUID]** ボックスに、追跡用 GUID を入力します。 **pid-** プレフィックスは付けずに GUID だけを入力してください。 **[説明]** ボックスに、プランの名前または説明を入力します。
+1. **[GUID]** ボックスに、追跡用 GUID を入力します。 `pid-` プレフィックスは付けずに GUID だけを入力してください。 **[説明]** ボックスに、プランの名前または説明を入力します。
 
 1. 複数の GUID を登録するには、もう一度 **[Add Tracking GUID]\(トラッキング GUID の追加\)** を選択します。 追加のボックスがページに表示されます。
 
@@ -85,7 +85,7 @@ GUID は、32 桁の 16 進数を含む一意の参照識別子です。 追跡�
 
 > [!NOTE]
 > ソリューション テンプレートの作成と公開に関して詳しくは、以下をご覧ください。
-> * [初めての Resource Manager テンプレートの作成とデプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)。
+> * [初めての Resource Manager テンプレートの作成とデプロイ](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)。
 >* [Azure アプリケーション オファー](./partner-center-portal/create-new-azure-apps-offer.md)。
 >* ビデオ:[Azure Marketplace 向けのソリューション テンプレートとマネージド アプリケーションの作成](https://channel9.msdn.com/Events/Build/2018/BRK3603)。
 
@@ -98,7 +98,7 @@ GUID は、32 桁の 16 進数を含む一意の参照識別子です。 追跡�
 
 1. メイン テンプレート ファイルに新しいリソースを追加します。 リソースは、**mainTemplate.json** ファイルまたは **azuredeploy.json** ファイルのみにあればよく、入れ子またはリンクされたテンプレート内には必要ありません。
 
-1. **pid-** プレフィックスに続けて GUID 値を入力します (例: pid-eb7927c8-dd66-43e1-b0cf-c346a422063)。
+1. `pid-` プレフィックスに続けて GUID 値を入力します (例: pid-eb7927c8-dd66-43e1-b0cf-c346a422063)。
 
 1. テンプレートにエラーがないかチェックします。
 
@@ -137,12 +137,12 @@ Resource Manager テンプレートを使用している場合は、上記の手
 
 ### <a name="tag-a-deployment-with-the-resource-manager-apis"></a>Resource Manager API でデプロイにタグを付ける
 
-顧客の使用状況の属性を有効にするには、API 呼び出しを設計するときに、要求内のユーザー エージェント ヘッダーに GUID を含めます。 GUID は、プランごと、または SKU ごとに追加します。 この文字列は、**pid-** というプレフィックスに、パートナーが生成した GUID を含めた形式にします。 ユーザー エージェントに挿入する GUID の形式の例を次に示します。
+顧客の使用状況の属性を有効にするには、API 呼び出しを設計するときに、要求内のユーザー エージェント ヘッダーに GUID を含めます。 GUID は、プランごと、または SKU ごとに追加します。 この文字列は、`pid-` というプレフィックスに、パートナーが生成した GUID を含めた形式にします。 ユーザー エージェントに挿入する GUID の形式の例を次に示します。
 
 ![GUID 形式の例](media/marketplace-publishers-guide/tracking-sample-guid-for-lu-2.PNG)
 
 > [!NOTE]
-> 文字列の形式は重要です。 プレフィックス **pid-** が含まれていないとデータを照会できません。 追跡方法は SDK ごとに異なります。 この方法を実装するには、使用する Azure SDK に合ったサポートと追跡の方法を確認してください。
+> 文字列の形式は重要です。 プレフィックス `pid-` が含まれていないとデータを照会できません。 追跡方法は SDK ごとに異なります。 この方法を実装するには、使用する Azure SDK に合ったサポートと追跡の方法を確認してください。
 
 #### <a name="example-the-python-sdk"></a>例:Python SDK
 
@@ -168,7 +168,7 @@ Azure CLI を使用して GUID を追加するときは、**AZURE_HTTP_USER_AGEN
 ```
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 ```
-詳細については、[Azure SDK for Go](https://docs.microsoft.com/azure/go/) に関するページを参照してください。
+詳細については、[Azure SDK for Go](https://docs.microsoft.com/azure/developer/go/) に関するページを参照してください。
 
 ## <a name="use-terraform"></a>Terraform を使用する
 
@@ -257,7 +257,7 @@ foreach ($deployment in $deployments){
 
 パートナー センターの問題 (顧客の利用状況属性レポートの表示やサインインなど) が発生した場合は、[https://partner.microsoft.com/support](https://partner.microsoft.com/support) でパートナー センター サポート チームにサポート要求を作成します。
 
-![](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
+![サポートの利用ページのスクリーンショット](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
 
 マーケットプレースのオンボードや、顧客の使用状況の属性全般 (顧客の使用状況の属性の設定方法など) についてのサポートが必要な場合は、次の手順に従います。
 
@@ -332,7 +332,7 @@ Azure Storage の GUID ジェネレーター フォームでは、必要な形�
 
 **Azure Marketplace 内でソリューション テンプレート オファー用にプライベートのカスタム VHD を使用できますか?**
 
-いいえ、できません。 仮想マシン イメージは、Azure Marketplace から入手する必要があります。[https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) を参照してください。
+いいえ、できません。 仮想マシン イメージは、Azure Marketplace から入手する必要があります。次を参照してください: [Azure Marketplace での仮想マシンのオファー発行ガイド](marketplace-virtual-machines.md)。
 
 マーケットプレース内でカスタム VHD を使用して VM オファーを作成し、それをプライベートとしてマークすると、誰もそのオファーを見ることができなくなります。 この VM は、ソリューション テンプレート内で参照します。
 

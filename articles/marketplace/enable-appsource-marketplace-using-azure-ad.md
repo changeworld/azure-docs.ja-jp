@@ -1,18 +1,18 @@
 ---
 title: Microsoft のコマーシャル マーケットプレースのオファーを Azure Active Directory に統合する
 description: Azure Active Directory を使用して、Microsoft AppSource と Azure Marketplace オファーを認証します。
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 04/15/2020
-ms.author: dsindona
-ms.openlocfilehash: 17cbfe92744ad96f2b5651b7e2f47a6443337068
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: eab7b556dc45d03bf440a3bc63aa6bf2d799face
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658049"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103625"
 ---
 # <a name="integrate-your-commercial-marketplace-listing-with-azure-active-directory"></a>コマーシャル マーケットプレースの一覧を Azure Active Directory に統合する
 
@@ -29,11 +29,10 @@ Microsoft AppSource と Azure Marketplace のお客様は、製品内エクス�
 
 ## <a name="offers-that-require-azure-ad"></a>Azure AD を必要とするオファー
 
-コマーシャル マーケットプレースのさまざまな[オプションとオファーの種類の一覧](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)には、Azure AD の実装に対してそれぞれ異なる要件があります。 詳細については、次の表を参照してください。
+コマーシャル マーケットプレースのさまざまな[オプションとオファーの種類の一覧](determine-your-listing-type.md)には、Azure AD の実装に対してそれぞれ異なる要件があります。 詳細については、次の表を参照してください。
 
-| **オファリング タイプ**    | **Azure AD の SSO が必要か?**  |  |   |  |
+| プランの種類    | お問い合わせに Azure AD SSO は必要か?  | 試用版に Azure AD SSO は必要か? | 体験版に Azure AD SSO は必要か?  | 取引に Azure AD SSO は必要か? |
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|
-|  | お問い合わせ | 試用版 | 体験版 | トランザクション |
 | 仮想マシン | 該当なし | いいえ | いいえ | いいえ |
 | Azure アプリ (ソリューション テンプレート)  | 該当なし | 該当なし | 該当なし | 該当なし |
 | マネージド アプリ  | 該当なし | 該当なし | 該当なし | いいえ |
@@ -41,18 +40,18 @@ Microsoft AppSource と Azure Marketplace のお客様は、製品内エクス�
 | Containers  | 該当なし | 該当なし | 該当なし | いいえ |
 | コンサルティング サービス  | いいえ | 該当なし | 該当なし | 該当なし |
 
-SaaS 技術要件に関する詳細については、「[SaaS アプリケーションのオファー発行ガイド](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide)」を参照してください。
+SaaS 技術要件に関する詳細については、「[SaaS アプリケーションのオファー発行ガイド](marketplace-saas-applications-technical-publishing-guide.md)」を参照してください。
 
 ## <a name="azure-ad-integration"></a>Azure AD の統合
 
-- 一覧への Azure AD の統合によってシングル サインオンを有効にする方法については、[開発者向けの Azure Active Directory]( https://docs.microsoft.com/azure/active-directory/develop/) に関する記事をご覧ください。
-- Azure AD シングル サインオンについて詳しくは、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)」をご覧ください。
+- 一覧への Azure AD の統合によってシングル サインオンを有効にする方法については、[開発者向けの Azure Active Directory](../active-directory/develop/index.yml) に関する記事をご覧ください。
+- Azure AD シングル サインオンについて詳しくは、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../active-directory/manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="enable-a-trial-listing"></a>試用版の一覧を有効にする
 
 自動化された顧客のセットアップにより、コンバージョン率を高めることができます。 顧客が試用版の一覧を選択し、試用版の環境にリダイレクトされた場合、追加のサインイン手順を必要とせずに、顧客を直接設定できます。
 
-認証時に、Azure AD からアプリまたはオファーにトークンが送信されます。 トークンによって提供されるユーザー情報により、アプリまたはオファー内にユーザー アカウントを作成できます。 詳しくは、[サンプル トークン](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)に関する記事をご覧ください。
+認証時に、Azure AD からアプリまたはオファーにトークンが送信されます。 トークンによって提供されるユーザー情報により、アプリまたはオファー内にユーザー アカウントを作成できます。 詳しくは、[サンプル トークン](../active-directory/develop/id-tokens.md)に関する記事をご覧ください。
 
 Azure AD を使って、アプリまたは試用版一覧でワンクリック認証を有効にした場合、次のことが行われます。
 
@@ -67,20 +66,20 @@ Azure AD を使って、アプリまたは試用版一覧でワンクリック�
 
 Azure AD を使用して、次のアクションをサポートします。
 
-- Marketplace のネットショップの 1 つにアプリを登録する。 詳しくは、[アプリの登録](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)または [AppSource 認定](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified)に関する記事をご覧ください。
+- Marketplace のネットショップの 1 つにアプリを登録する。 詳しくは、[アプリの登録](../active-directory/develop/quickstart-register-app.md)または [AppSource 認定](../active-directory/azuread-dev/howto-get-appsource-certified.md)に関する記事をご覧ください。
 - Azure AD でマルチテナント サポート機能を有効にして、ワンクリックの試用版エクスペリエンスを取得する。
 
 Azure AD フェデレーション シングル サインオンを使用した経験がない場合は、次の手順に従います。
 
 1. Marketplace にアプリを登録します。
-1. [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code) または [OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code) を使って、Azure AD で SSO を開発します。
+1. [OAuth 2.0](../active-directory/azuread-dev/v1-protocols-oauth-code.md) または [OpenID Connect](../active-directory/azuread-dev/v1-protocols-openid-connect-code.md) を使って、Azure AD で SSO を開発します。
 1. Azure AD でマルチテナント サポート機能を有効にして、ワンクリックの試用版エクスペリエンスを提供します。
 
 ### <a name="single-tenant-solutions"></a>シングル テナント ソリューション
 
 Azure AD を使用して、次のアクションの 1 つをサポートします。
 
-- [Azure AD B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) を使って、ディレクトリにゲスト ユーザーを追加する。
+- [Azure AD B2B](../active-directory/b2b/what-is-b2b.md) を使って、ディレクトリにゲスト ユーザーを追加する。
 - **[お問い合わせ]** の公開オプションを使用して、顧客用に試用版を手動で設定する。
 - 顧客ごとの "体験版" を開発する。
 - SSO を使用するマルチテナント サンプル デモ アプリを構築する。

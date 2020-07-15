@@ -1,26 +1,20 @@
 ---
 title: Azure VM のサイズ - HPC | Microsoft Docs
 description: Azure のハイ パフォーマンス コンピューティング仮想マシンで使用できるさまざまなサイズを一覧表示します。 このシリーズのストレージのスループットとネットワーク帯域幅に加え、vCPU、データ ディスク、NIC の数に関する情報を一覧表示します。
-services: virtual-machines
-documentationcenter: ''
 author: vermagit
-manager: gwallace
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: ''
 ms.service: virtual-machines
-ms.devlang: na
+ms.subservice: sizes
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: amverma
-ms.reviewer: jonbeck
-ms.openlocfilehash: 409fe69d111e2c5aebe0ad0bd38ced10604b5f1b
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.reviewer: jushiman
+ms.openlocfilehash: 2d52287d1c343ada58ed4f7e5e1d3e85a4e7162e
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82839064"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850450"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>ハイ パフォーマンス コンピューティング VM のサイズ
 
@@ -44,13 +38,13 @@ Azure H シリーズ仮想マシン (VM) は、実環境のさまざまな HPC �
 このインターフェイスにより、RDMA 対応インスタンスは InfiniBand (IB) ネットワークを介して通信することができ、HBv2 では HDR のレートで、HB、HC では EDR のレートで、H16r、H16mr、および RDMA 対応 N シリーズの仮想マシンでは FDR のレートで、A8 と A9 の VM では QDR のレートで動作します。 これらの RDMA 機能により、特定の Message Passing Interface (MPI) アプリケーションのスケーラビリティとパフォーマンスが向上します。 速度の詳細については、このページの表の詳細情報を参照してください。
 
 > [!NOTE]
-> Azure HPC では、InfiniBand に対して SR-IOV 対応であるかどうかに応じて、2 つのクラスの VM があります。 現在のところ、InfiniBand の SR-IOV 対応の VM は、HBv2、HB、HC、NCv3 です。 残りの InfiniBand 対応 VM は SR-IOV 対応ではありません。
+> Azure HPC では、InfiniBand に対して SR-IOV 対応であるかどうかに応じて、2 つのクラスの VM があります。 現在のところ、InfiniBand の SR-IOV 対応の VM は、HBv2、HB、HC、NCv3、および NDv2。 残りの InfiniBand 対応 VM は SR-IOV 対応ではありません。
 > RDMA over IB は、RDMA 対応のすべての VM でサポートされています。
 > IP over IB は、SR-IOV 対応の VM のみでサポートされています。
 
-- **オペレーティングシステム** - Linux は、HPC VM で適切にサポートされており、CentOS、RHEL、Ubuntu、SUSE などのディストリビューションが一般的です。 Windows のサポートに関しては、すべての HPC シリーズ VM で Windows Server 2016 がサポートされています。 また、Windows Server 2012 R2、Windows Server 2012 は、SR-IOV に対応していない VM でもサポートされています。
+- **オペレーティング システム** - Linux は HPC VM で適切にサポートされており、CentOS、RHEL、Ubuntu、SUSE などのディストリビューションが一般的に使用されています。 Windows のサポートに関しては、すべての HPC シリーズ VM で Windows Server 2016 およびそれ以降のバージョンがサポートされています。 また、Windows Server 2012 R2、Windows Server 2012 は、SR-IOV に対応していない VM (H16r、H16mr、A8、および A9) でもサポートされています。 [Windows Server 2012 R2 は、HBv2 および 64 個を超える (仮想または物理) コアを持つその他の VM ではサポートされていない](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)ことに注意してください。
 
-- **MPI** - Azure の SR-IOV 対応 VM サイズ (HBv2、HB、HC、NCv3) では、ほぼすべてのフレーバーの MPI を Mellanox OFED と一緒に使用できます。
+- **MPI** - Azure の SR-IOV 対応 VM サイズ (HBv2、HB、HC、NCv3、NDv2) では、ほぼすべてのフレーバーの MPI を Mellanox OFED と一緒に使用できます。
 SR-IOV に対応していない VM の場合、サポートされている MPI 実装では、VM 間の通信に Microsoft Network Direct (ND) インターフェイスが使用されます。 そのため、Microsoft MPI (MS MPI) 2012 R2 以降と Intel MPI 5.x バージョンのみがサポートされています。 Intel MPI ランタイム ライブラリの以降のバージョン (2017、2018) は、Azure RDMA ドライバーと互換性がある場合とない場合があります。
 
 - **InfiniBandDriver<Linux|Windows> VM 拡張** - RDMA 対応の VM で、InfiniBandDriver<Linux|Windows> 拡張機能を追加して InfiniBand を有効にします。 Linux では、InfiniBandDriverLinux VM 拡張機能は、RDMA 接続用に Mellanox OFED ドライバーを (SR-IOV VM 上に) インストールします。 Windows では、InfiniBandDriverWindows VM 拡張機能は、RDMA 接続用に Windows Network Direct ドライバーを (SR-IOV に非対応の VM 上に) インストールするか、または Mellanox OFED ドライバーを (SR-IOV VM 上に) インストールします。

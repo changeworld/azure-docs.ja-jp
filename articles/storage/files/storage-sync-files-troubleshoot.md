@@ -3,16 +3,16 @@ title: Azure File Sync のトラブルシューティング | Microsoft Docs
 description: Azure File Sync の一般的な問題をトラブルシューティングします。
 author: jeffpatt24
 ms.service: storage
-ms.topic: conceptual
-ms.date: 1/22/2019
+ms.topic: troubleshooting
+ms.date: 6/12/2020
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 39106f863352061cdaa583bde96f50d3f91a07e9
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ec7469210bcfae53407a157a325c749aee2c2b08
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836517"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85512058"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure File Sync のトラブルシューティング
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -315,6 +315,7 @@ Azure ファイル共有内で直接変更を加えた場合、Azure File Sync �
 |---------|-------------------|--------------|-------|-------------|
 | 0x80070043 | -2147942467 | ERROR_BAD_NET_NAME | サーバー上の階層化されたファイルにアクセスできません。 この問題は、サーバー エンドポイントを削除する前に、階層化されたファイルが取り消されなかった場合に発生します。 | この問題を解決する方法は、「[サーバー エンドポイントを削除した後、サーバー上で階層化されたファイルにアクセスできない](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)」を参照してください。 |
 | 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | 依存フォルダーがまだ同期されていないため、ファイルまたはディレクトリの変更を同期できません。 この項目は、依存する変更が同期された後に同期されます。 | 必要なアクションはありません。 エラーが数日間継続する場合は、PowerShell の FileSyncErrorsReport.ps1 スクリプトを使用して、依存フォルダーがなぜまだ同期されないかを確認します。 |
+| 0x80C8028A | -2134375798 | ECS_E_SYNC_CONSTRAINT_CONFLICT_ON_FAILED_DEPENDEE | 依存フォルダーがまだ同期されていないため、ファイルまたはディレクトリの変更を同期できません。 この項目は、依存する変更が同期された後に同期されます。 | 必要なアクションはありません。 エラーが数日間継続する場合は、PowerShell の FileSyncErrorsReport.ps1 スクリプトを使用して、依存フォルダーがなぜまだ同期されないかを確認します。 |
 | 0x80c80284 | -2134375804 | ECS_E_SYNC_CONSTRAINT_CONFLICT_SESSION_FAILED | 依存フォルダーがまだ同期されておらず、同期セッションが失敗したため、ファイルまたはディレクトリの変更を同期できません。 この項目は、依存する変更が同期された後に同期されます。 | 必要なアクションはありません。 エラーが引き続き発生する場合は、同期セッションの失敗を調査します。 |
 | 0x8007007b | -2147024773 | ERROR_INVALID_NAME | ファイルまたはディレクトリの名前が無効です。 | 問題のファイルまたはディレクトリの名前を変更します。 詳しくは、「[サポートされていない文字の処理](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters)」をご覧ください。 |
 | 0x80c80255 | -2134375851 | ECS_E_XSMB_REST_INCOMPATIBILITY | ファイルまたはディレクトリの名前が無効です。 | 問題のファイルまたはディレクトリの名前を変更します。 詳しくは、「[サポートされていない文字の処理](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters)」をご覧ください。 |
@@ -552,13 +553,13 @@ Azure ファイル共有が削除されている場合は、新しいファイ�
 
 このエラーは、Azure サブスクリプションが中断されている場合に発生します。 Azure サブスクリプションが復元されると、同期は再度有効になります。 詳細については、「[私の Azure サブスクリプションが無効になっています。その理由と、再度有効にする方法を教えてください。](../../cost-management-billing/manage/subscription-disabled.md)」を参照してください。
 
-<a id="-2134364052"></a>**ストレージ アカウントにファイアウォールまたは仮想ネットワークが構成されています。**  
+<a id="-2134375618"></a>**ストレージ アカウントにファイアウォールまたは仮想ネットワークが構成されています。**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c8306c |
-| **HRESULT (10 進値)** | -2134364052 |
-| **エラー文字列** | ECS_E_MGMT_STORAGEACLSNOTSUPPORTED |
+| **HRESULT** | 0x80c8033e |
+| **HRESULT (10 進値)** | -2134375618 |
+| **エラー文字列** | ECS_E_SERVER_BLOCKED_BY_NETWORK_ACL |
 | **修復が必要か** | はい |
 
 このエラーは、ストレージ アカウントにファイアウォールがあるか、またはストレージ アカウントが仮想ネットワークに属しているという理由により、Azure ファイル共有にアクセスできない場合に発生します。 ストレージ アカウントに対するファイアウォールと仮想ネットワークの設定が適切に構成されていることを確認します。 詳細については、「[ファイアウォールと仮想ネットワークの設定を構成する](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)」を参照してください。 
@@ -1087,6 +1088,7 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 
 | HRESULT | HRESULT (10 進値) | エラー文字列 | 問題 | Remediation |
 |---------|-------------------|--------------|-------|-------------|
+| 0x80c86045 | -2134351803 | ECS_E_INITIAL_UPLOAD_PENDING | 初期アップロードが進行中のため、ファイルを階層化できませんでした。 | 必要なアクションはありません。 初期アップロードが完了したら、ファイルは階層化されます。 |
 | 0x80c86043 | -2134351805 | ECS_E_GHOSTING_FILE_IN_USE | ファイルは使用中のため、階層化できませんでした。 | 必要なアクションはありません。 ファイルは使用されなくなると階層化されます。 |
 | 0x80c80241 | -2134375871 | ECS_E_GHOSTING_EXCLUDED_BY_SYNC | ファイルは同期によって除外されているため、階層化できませんでした。 | 必要なアクションはありません。 同期除外リスト内のファイルは階層化できません。 |
 | 0x80c86042 | -2134351806 | ECS_E_GHOSTING_FILE_NOT_FOUND | ファイルはサーバー上で見つからなかったため、階層化できませんでした。 | 必要なアクションはありません。 エラーが引き続き発生する場合は、ファイルがサーバー上に存在するかどうかを確認します。 |
@@ -1108,6 +1110,8 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 | 0x80072ee2 | -2147012894 | WININET_E_TIMEOUT | ネットワークの問題が発生したため、ファイルを階層化できませんでした。 | 必要なアクションはありません。 エラーが引き続き発生する場合は、Azure ファイル共有へのネットワーク接続を確認します。 |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | ファイルは変更されているため、階層化できませんでした。 | 必要なアクションはありません。 ファイルは、変更されたファイルが Azure ファイル共有と同期されると階層化されます。 |
 | 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | システム リソースが不足しているため、ファイルを階層化できませんでした。 | エラーが引き続き発生する場合は、どのアプリケーションまたはカーネル モード ドライバーがシステム リソースを消費しているかを調べます。 |
+| 0x8e5e03fe | -1906441218 | JET_errDiskIO | クラウドを使った階層化のデータベースへの書き込み中に I/O エラーが発生したため、ファイルを階層化できませんでした。 | エラーが引き続き発生する場合は、ボリュームで chkdsk を実行して、ストレージのハードウェアを確認してください。 |
+| 0x8e5e0442 | -1906441150 | JET_errInstanceUnavailable | クラウドを使った階層化のデータベースが実行されていないため、ファイルを階層化できませんでした。 | この問題を解決するには、FileSyncSvc サービスまたはサーバーを再起動します。 エラーが引き続き発生する場合は、ボリュームで chkdsk を実行して、ストレージのハードウェアを確認してください。 |
 
 
 

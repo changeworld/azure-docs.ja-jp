@@ -11,12 +11,12 @@ ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 8328750849f5466c8754499694a41615776ff3da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 036cb15cf16b5f90dc17ccdce378a073a398d403
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85201703"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86181337"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-synapse-sql-pool"></a>Synapse SQL プールでレプリケート テーブルを使用するための設計ガイダンス
 
@@ -149,9 +149,9 @@ SQL プールでは、テーブルのマスター バージョンを保持する
 
 たとえば、次の読み込みパターンでは、4 つのソースからデータを読み込み、4 つの再構築を呼び出します。
 
-        Load from source 1.
+- ソース 1 から読み込む。
 - Select ステートメントで再構築 1 をトリガーする。
-        ソース 2 から読み込む。
+- ソース 2 から読み込む。
 - Select ステートメントで再構築 2 をトリガーする。
 - ソース 3 から読み込む。
 - Select ステートメントで再構築 3 をトリガーする。

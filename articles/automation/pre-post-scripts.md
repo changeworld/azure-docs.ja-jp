@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 7fa2dd335e457307dd6d7e4ecdc787015b742b32
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: f05e705f351d75fdf772d3197b94fcece40d43fb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148278"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85100381"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>事前スクリプトと事後スクリプトを管理する
 
@@ -90,6 +90,9 @@ Runbook を事前スクリプトまたは事後スクリプトとして使用す
 
 > [!NOTE]
 > `SoftwareUpdateConfigurationRunContext` オブジェクトには、マシン用の重複するエントリを含めることができます。 これにより、同じマシンで事前スクリプトと事後スクリプトが複数回実行される可能性があります。 この動作を回避するには、`Sort-Object -Unique` を使用して一意の VM 名だけを選択します。
+
+> [!NOTE]
+> 現時点では、PowerShell Runbook のみが事前および事後スクリプトとしてサポートされています。 Python、グラフィカル、PowerShell ワークフロー、グラフィカル PowerShell ワークフローなどの他の種類の Runbook は、現在、事前スクリプトまたは事後スクリプトとしてサポートされていません。
 
 ## <a name="use-a-pre-script-or-post-script-in-a-deployment"></a>デプロイで事前スクリプトまたは事後スクリプトを使用する
 

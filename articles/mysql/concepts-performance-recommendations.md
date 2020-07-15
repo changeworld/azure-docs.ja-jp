@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 5/12/2020
-ms.openlocfilehash: cba07b84a1ddc2b9362c818ae2d3747b98379f2e
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.date: 6/3/2020
+ms.openlocfilehash: 6f41863f45bdc90cb9fe589ba0a5011dea84a67c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402647"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84485255"
 ---
 # <a name="performance-recommendations-in-azure-database-for-mysql"></a>Azure Database for MySQL のパフォーマンスの推奨事項
 
@@ -29,23 +29,25 @@ ms.locfileid: "83402647"
 
 Azure portal の MySQL サーバーに関するページで、メニュー バーの **[インテリジェント パフォーマンス]** セクションから、 **[パフォーマンスの推奨事項]** を開きます。
 
-![パフォーマンスに関する推奨事項ランディング ページ](./media/concepts-performance-recommendations/performance-recommendations-page.png)
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-page.png" alt-text="パフォーマンスに関する推奨事項ランディング ページ":::
 
 **[解析]** を選択してデータベースを選択すると、分析が開始されます。 ワークロードによっては、分析が完了するまでに数分かかる場合があります。 分析が完了すると、ポータルで通知があります。 分析では、データベースの詳細な検査が行われます。 分析はピーク時を避けて実行することをお勧めします。
 
 **[推奨事項]** ウィンドウには、推奨事項の一覧 (推奨事項が見つかった場合) と、その推奨事項が生成された関連するクエリ ID が表示されます。 このクエリ ID を使用して、[mysql.query_store](concepts-query-store.md#mysqlquery_store) ビューでクエリの詳細を確認できます。
 
-![パフォーマンスに関する推奨事項の新しいページ](./media/concepts-performance-recommendations/performance-recommendations-result.png)
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="パフォーマンスに関する推奨事項の新しいページ":::
 
 推奨事項は自動的には適用されません。 推奨事項を適用するには、クエリ テキストをコピーし、任意のクライアントから実行します。 推奨事項を評価するため、監視とテストを忘れずに行ってください。
 
 ## <a name="recommendation-types"></a>推奨事項の種類
 
-現時点では、"*インデックスの作成*" 推奨事項だけがサポートされています。
-
-### <a name="create-index-recommendations"></a>インデックスの作成に関する推奨事項
+### <a name="index-recommendations"></a>インデックスに関する推奨事項
 
 "*インデックスの作成*" 推奨事項は、ワークロード内で特に頻繁に実行されるクエリまたは時間のかかるクエリを高速化するために、新しいインデックスを提案します。 この推奨事項の種類では、[クエリ ストア](concepts-query-store.md)を有効にする必要があります。 クエリ ストアは、クエリ情報を収集し、クエリの実行時間や頻度に関する詳細な統計情報を提供します。この情報は、分析で推奨事項を作成するために使用されます。
+
+### <a name="query-recommendations"></a>クエリに関する推奨事項
+
+クエリに関する推奨事項では、ワークロード内のクエリに対する最適化とリライトが提案されます。 MySQL クエリのアンチパターンを特定して構文的に修正することで、時間のかかるクエリのパフォーマンスを向上させることができます。 この推奨事項の種類では、クエリ ストアを有効にする必要があります。 クエリ ストアは、クエリ情報を収集し、クエリの実行時間や頻度に関する詳細な統計情報を提供します。この情報は、分析で推奨事項を作成するために使用されます。
 
 ## <a name="next-steps"></a>次のステップ
 - Azure Database for MySQL での[監視とチューニング](concepts-monitoring.md)の詳細を確認する。

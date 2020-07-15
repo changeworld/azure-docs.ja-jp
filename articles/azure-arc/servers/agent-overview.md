@@ -6,25 +6,42 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 05/18/2020
+ms.date: 07/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4dbc559e62523a1ea17236a9e8c9666ef48bba33
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e3d3521cfb3d3b0c6659013922ab11fe765af882
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83662530"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111254"
 ---
 # <a name="overview-of-azure-arc-for-servers-agent"></a>Azure Arc for servers エージェントの概要
 
 Azure Arc for servers Connected Machine エージェントを使用すると、Azure の外部 (企業ネットワークや他のクラウド プロバイダー) でホストされている Windows や Linux のマシンを管理することができます。 この記事では、エージェント、システムとネットワークの要件、およびさまざまなデプロイ方法の概要の詳細を示します。
 
+## <a name="agent-component-details"></a>エージェント コンポーネントの詳細
+
+Azure Connected Machine エージェント パッケージには、まとめてバンドルされているいくつかの論理コンポーネントが含まれています。
+
+* Hybrid Instance Metadata Service (HIMDS) は、Azure への接続と接続されたマシンの Azure ID を管理します。
+
+* ゲスト構成エージェントは、ゲスト内ポリシーとゲスト構成機能 (そのマシンが必要なポリシーに準拠しているかどうかの評価など) を提供します。
+
+    切断されたマシンに対する Azure Policy の[ゲスト構成](../../governance/policy/concepts/guest-configuration.md)での次の動作に注意してください。
+
+    * 切断されたマシンを対象とするゲスト構成ポリシー割り当てには影響を与えません。
+    * ゲスト割り当ては 14 日間ローカルに格納されます。 14 日の期間内に Connected Machine エージェントがサービスに再接続した場合は、ポリシー割り当てが再適用されます。
+    * 割り当ては 14 日後に削除され、14 日の期間の後にマシンに再割り当てされることはありません。
+
+* 拡張エージェントは VM 拡張機能 (インストール、アンインストール、アップグレードなど) を管理します。 拡張機能は Azure からダウンロードされ、Windows では `%SystemDrive%\AzureConnectedMachineAgent\ExtensionService\downloads` フォルダー、Linux の場合は `/opt/GC_Ext/downloads` にコピーされます。 Windows では、拡張機能はパス `%SystemDrive%\Packages\Plugins\<extension>` にインストールされます。Linux では、拡張機能は `/var/lib/waagent/<extension>` にインストールされます。
+
 ## <a name="download-agents"></a>エージェントをダウンロードする
 
 Windows および Linux 用の Azure Connected Machine エージェント パッケージは、以下の場所からダウンロードできます。
 
-- Microsoft ダウンロード センターから [Windows エージェント Windows インストーラー パッケージ](https://aka.ms/AzureConnectedMachineAgent)。
-- Linux エージェント パッケージは、Microsoft の[パッケージ リポジトリ](https://packages.microsoft.com/)から、ディストリビューションに適切なパッケージ形式 (.RPM または .DEB) を使用して配布されます。
+* Microsoft ダウンロード センターから [Windows エージェント Windows インストーラー パッケージ](https://aka.ms/AzureConnectedMachineAgent)。
+
+* Linux エージェント パッケージは、Microsoft の[パッケージ リポジトリ](https://packages.microsoft.com/)から、ディストリビューションに適切なパッケージ形式 (.RPM または .DEB) を使用して配布されます。
 
 >[!NOTE]
 >本プレビュー中は、Ubuntu 16.04 または 18.04 に適したパッケージが 1 つだけリリースされました。
@@ -49,13 +66,15 @@ Windows 用 Connected Machine エージェントをインストールした後�
     |%ProgramData%\AzureConnectedMachineAgent |エージェント構成ファイルが含まれています。|
     |%ProgramData%\AzureConnectedMachineAgent\Tokens |取得したトークンが含まれています。|
     |%ProgramData%\AzureConnectedMachineAgent\Config |サービスへの登録情報を記録する `agentconfig.json` エージェント構成ファイルが含まれています。|
-    |%ProgramData%\GuestConfig |(適用された) Azure ポリシー関連ファイルが含まれています。|
+    |%SystemDrive%\Program Files\ArcConnectedMachineAgent\ExtensionService\GC | ゲスト構成エージェント ファイルを含むインストール パス。 |
+    |%ProgramData%\GuestConfig |Azure からの (適用された) ポリシーが含まれています。|
+    |%SystemDrive%\AzureConnectedMachineAgent\ExtensionService\downloads | 拡張機能は Azure からダウンロードされ、ここにコピーされます。|
 
 * エージェントのインストール中に、次の Windows サービスがターゲット マシン上に作成されます。
 
     |[サービス名] |Display name |[処理名] |説明 |
     |-------------|-------------|-------------|------------|
-    |himds |Azure Hybrid Instance Metadata Service |himds.exe |このサービスでは、マシンを追跡するための Azure Instance Metadata Service (IMDS) を実装します。|
+    |himds |Azure Hybrid Instance Metadata Service |himds.exe |このサービスは、Azure への接続と接続されたマシンの Azure ID を管理するために Azure Instance Metadata Service (IMDS) を実装します。|
     |DscService |ゲスト構成サービス |dsc_service.exe |これは、ゲスト内ポリシーを実装するために Azure 内部で使用される Desired State Configuration (DSC v2) コードベースです。|
 
 * 次の環境変数は、エージェントのインストール中に作成されます。
@@ -64,17 +83,19 @@ Windows 用 Connected Machine エージェントをインストールした後�
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
-    
-* トラブルシューティングに使用できるログ ファイルは 4 つあります。 これらについては、次の表で説明します。
+
+* トラブルシューティングに使用できるログ ファイルがいくつかあります。 これらについては、次の表で説明します。
 
     |ログ |説明 |
     |----|------------|
-    |%ProgramData%\AzureConnectedMachineAgent\Log\himds.log |エージェント (himds) サービスおよび Azure とのやり取りの詳細を記録します。|
+    |%ProgramData%\AzureConnectedMachineAgent\Log\himds.log |エージェント (HIMDS) サービスや Azure との対話の詳細を記録します。|
     |%ProgramData%\AzureConnectedMachineAgent\Log\azcmagent.log |詳細 (-v) 引数が使用されている場合は、azcmagent ツール コマンドの出力が含まれます。|
-    |%ProgramData%\GuestConfig\gc_agent_logs\gc_agent.log |DSC サービス アクティビティの詳細を記録します<br> (特に、himds サービスと Azure Policy 間の接続)。|
+    |%ProgramData%\GuestConfig\gc_agent_logs\gc_agent.log |DSC サービス アクティビティの詳細を記録します<br> (特に、HIMDS サービスと Azure Policy の間の接続)。|
     |%ProgramData%\GuestConfig\gc_agent_logs\gc_agent_telemetry.txt |DSC サービス テレメトリと詳細ログの詳細を記録します。|
+    |%SystemDrive%\ProgramData\GuestConfig\ext_mgr_logs|拡張エージェント コンポーネントに関する詳細を記録します。|
+    |%SystemDrive%\ProgramData\GuestConfig\extension_logs\<Extension>|インストールされた拡張機能の詳細を記録します。|
 
-* ローカル セキュリティ グループの**ハイブリッド エージェント拡張アプリケーション**が作成されます。 
+* ローカル セキュリティ グループの**ハイブリッド エージェント拡張アプリケーション**が作成されます。
 
 * エージェントのアンインストール中に、次の成果物は削除されません。
 
@@ -84,7 +105,7 @@ Windows 用 Connected Machine エージェントをインストールした後�
 
 ## <a name="linux-agent-installation-details"></a>Linux エージェントのインストールの詳細
 
-Linux 用の Connected Machine エージェントは、Microsoft [パッケージ リポジトリ](https://packages.microsoft.com/)でホストされたディストリビューション (.RPM または .DEB) に適したパッケージ形式で提供されます。 エージェントは、シェル スクリプト バンドルの [Install_linux_azcmagent.sh](https://aka.ms/azcmagent) を使用してインストールおよび構成されます。 
+Linux 用の Connected Machine エージェントは、Microsoft [パッケージ リポジトリ](https://packages.microsoft.com/)でホストされたディストリビューション (.RPM または .DEB) に適したパッケージ形式で提供されます。 エージェントは、シェル スクリプト バンドルの [Install_linux_azcmagent.sh](https://aka.ms/azcmagent) を使用してインストールおよび構成されます。
 
 Linux 用 Connected Machine エージェントをインストールした後、次のシステム全体の構成変更がさらに適用されます。
 
@@ -94,25 +115,29 @@ Linux 用 Connected Machine エージェントをインストールした後、�
     |-------|------------|
     |/var/opt/azcmagent/ |エージェント サポート ファイルが含まれている既定のインストール パス。|
     |/opt/azcmagent/ |
+    |/opt/GC_Ext | ゲスト構成エージェント ファイルを含むインストール パス。|
     |/opt/DSC/ |
     |/var/opt/azcmagent/tokens |取得したトークンが含まれています。|
-    |/var/lib/GuestConfig |(適用された) Azure ポリシー関連ファイルが含まれています。|
+    |/var/lib/GuestConfig |Azure からの (適用された) ポリシーが含まれています。|
+    |/opt/GC_Ext/downloads|拡張機能は Azure からダウンロードされ、ここにコピーされます。|
 
 * 次のデーモンは、エージェントのインストール中にターゲット マシン上に作成されます。
 
     |[サービス名] |Display name |[処理名] |説明 |
     |-------------|-------------|-------------|------------|
-    |himdsd.service |Azure Hybrid Instance Metadata Service |/opt/azcmagent/bin/himds |このサービスでは、マシンを追跡するための Azure Instance Metadata Service (IMDS) を実装します。|
+    |himdsd.service |Azure Hybrid Instance Metadata Service |/opt/azcmagent/bin/himds |このサービスは、Azure への接続と接続されたマシンの Azure ID を管理するために Azure Instance Metadata Service (IMDS) を実装します。|
     |dscd.service |ゲスト構成サービス |/opt/DSC/dsc_linux_service |これは、ゲスト内ポリシーを実装するために Azure 内部で使用される Desired State Configuration (DSC v2) コードベースです。|
 
-* トラブルシューティングに使用できるログ ファイルは 4 つあります。 これらについては、次の表で説明します。
+* トラブルシューティングに使用できるログ ファイルがいくつかあります。 これらについては、次の表で説明します。
 
     |ログ |説明 |
     |----|------------|
-    |/var/opt/azcmagent/log/himds.log |エージェント (himds) サービスおよび Azure とのやり取りの詳細を記録します。|
+    |/var/opt/azcmagent/log/himds.log |エージェント (HIMDS) サービスや Azure との対話の詳細を記録します。|
     |/var/opt/azcmagent/log/azcmagent.log |詳細 (-v) 引数が使用されている場合は、azcmagent ツール コマンドの出力が含まれます。|
     |/opt/logs/dsc.log |DSC サービス アクティビティの詳細を記録します<br> (特に、himds サービスと Azure Policy 間の接続)。|
     |/opt/logs/dsc.telemetry.txt |DSC サービス テレメトリと詳細ログの詳細を記録します。|
+    |/var/lib/GuestConfig/ext_mgr_logs |拡張エージェント コンポーネントに関する詳細を記録します。|
+    |/var/log/GuestConfig/extension_logs|インストールされた拡張機能の詳細を記録します。|
 
 * 次の環境変数は、エージェントのインストール中に作成されます。 これらの変数は `/lib/systemd/system.conf.d/azcmagent.conf` に設定されます。
 
@@ -133,11 +158,11 @@ Linux 用 Connected Machine エージェントをインストールした後、�
 Azure Connected Machine エージェントでは、次のバージョンの Windows および Linux オペレーティング システムが正式にサポートされています。 
 
 - Windows Server 2012 R2 以上 (Windows Server Core を含む)
-- Ubuntu 16.04 および 18.04
-- CentOS Linux 7
-- SUSE Linux Enterprise Server (SLES) 15
-- Red Hat Enterprise Linux (RHEL) 7
-- Amazon Linux 2
+- Ubuntu 16.04 および 18.04 (x64)
+- CentOS Linux 7 (x64)
+- SUSE Linux Enterprise Server (SLES) 15 (x64)
+- Red Hat Enterprise Linux (RHEL) 7 (x64)
+- Amazon Linux 2 (x64)
 
 >[!NOTE]
 >このプレビュー リリースの Windows 用 Connected Machine エージェントでサポートされるのは、英語を使用するように構成された Windows Server だけです。
@@ -155,12 +180,12 @@ Azure Arc for servers (プレビュー) を使用してマシンを構成する�
 
 ## <a name="tls-12-protocol"></a>TLS 1.2 プロトコル
 
-Azure に転送中のデータのセキュリティを確保するには、トランスポート層セキュリティ (TLS) 1.2 を使用するようにマシンを構成することを強くお勧めします。 以前のバージョンの TLS/SSL (Secure Sockets Layer) は脆弱であることが確認されています。現在、これらは下位互換性を維持するために使用可能ですが、**推奨されていません**。 
+Azure に転送中のデータのセキュリティを確保するには、トランスポート層セキュリティ (TLS) 1.2 を使用するようにマシンを構成することを強くお勧めします。 以前のバージョンの TLS/SSL (Secure Sockets Layer) は脆弱であることが確認されています。現在、これらは下位互換性を維持するために使用可能ですが、**推奨されていません**。
 
 |プラットフォーム/言語 | サポート | 詳細情報 |
 | --- | --- | --- |
 |Linux | Linux ディストリビューションでは、TLS 1.2 のサポートに関して [OpenSSL](https://www.openssl.org) に依存する傾向があります。 | [OpenSSL の Changelog](https://www.openssl.org/news/changelog.html) を参照して、使用している OpenSSL のバージョンがサポートされていることを確認してください。|
-| Windows Server 2012 R2 以降 | サポートされています。既定で有効になっています。 | [既定の設定](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)を使用していることを確認するには。|
+| Windows Server 2012 R2 以降 | サポートされています。既定で有効になっています。 | [既定の設定](/windows-server/security/tls/tls-registry-settings)を使用していることを確認するには。|
 
 ### <a name="networking-configuration"></a>ネットワーク構成
 
@@ -184,7 +209,7 @@ URL:
 |*-agentservice-prod-1.azure-automation.net|ゲスト構成|
 |*.his.arc.azure.com|ハイブリッド ID サービス|
 
-各サービス タグ/リージョンの IP アドレスの一覧については、「[Azure IP 範囲とサービス タグ – パブリック クラウド](https://www.microsoft.com/download/details.aspx?id=56519)」という JSON ファイルを参照してください。 Microsoft では、各 Azure サービスとそれが使用する IP 範囲を含む更新プログラムを毎週発行しています。 詳細については、「[サービス タグ](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)」を参照してください。
+各サービス タグ/リージョンの IP アドレスの一覧については、「[Azure IP 範囲とサービス タグ – パブリック クラウド](https://www.microsoft.com/download/details.aspx?id=56519)」という JSON ファイルを参照してください。 Microsoft では、各 Azure サービスとそれが使用する IP 範囲を含む更新プログラムを毎週発行しています。 詳細については、「[サービス タグ](../../virtual-network/security-overview.md#service-tags)」を参照してください。
 
 前の表に記載した URL は、サービス タグの IP アドレス範囲情報とは別に必要となります。現在、ほとんどのサービスにはサービス タグの登録がないためです。 結果として IP アドレスが変更される可能性があります。 ファイアウォール構成に IP アドレス範囲が必要な場合は、**AzureCloud** サービス タグを使用して、すべての Azure サービスへのアクセスを許可してください。 これらの URL のセキュリティ監視または検査を無効にせず、他のインターネット トラフィックと同様に許可してください。
 
@@ -215,7 +240,6 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 ```
 
 「[Azure portal](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)」の手順に従って、Azure portal でリソースプロバイダーを登録することもできます。
-
 
 ## <a name="installation-and-configuration"></a>インストールと構成
 

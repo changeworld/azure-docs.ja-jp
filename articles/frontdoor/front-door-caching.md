@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: d4fed878e2c0b1430e963f43743fd772493d3270
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79471746"
 ---
 # <a name="caching-with-azure-front-door"></a>Azure Front Door でのキャッシュ
@@ -102,7 +102,7 @@ Front Door でのキャッシュの消去では、大文字と小文字が区別
 キャッシュに項目が格納される期間を判断するために、次のヘッダーの順序が使用されます。</br>
 1. Cache-Control: s-maxage=\<seconds>
 2. Cache-Control: max-age=\<seconds>
-3. Expires: \<http-date>
+3. 有効期限: \<http-date>
 
 応答がキャッシュされないことを示す Cache-Control 応答ヘッダー (Cache-Control: private、Cache-Control: no-cache、Cache-Control: no-store など) は受け入れられます。 ただし、POP で処理中の同じ URL の複数の要求がある場合、それらは応答を共有する場合があります。 キャッシュ制御が存在しない場合、既定の動作として、AFD によってリソースが X 時間の間、キャッシュに入れられます。ここで、X は 1 日から 3 日までの範囲からランダムに選択されます。
 

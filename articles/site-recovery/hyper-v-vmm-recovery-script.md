@@ -7,18 +7,18 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 14c2a9a2ad818cc358535a91f9a6813ec7b91a6f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb690dfb90c0f7b8216368cb6b26a9af7d895d18
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83826283"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130130"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>復旧計画への VMM スクリプトの追加
 
 この記事では、System Center Virtual Machine Manager (VMM) スクリプトを作成し、[Azure Site Recovery](site-recovery-overview.md) の復旧計画に追加する方法について説明します。
 
-コメントや質問はこの記事の下部、または [Azure Recovery Services に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)で投稿してください。
+コメントや質問はこの記事の下部、または [Azure Recovery Services に関する Microsoft Q&A 質問ページ](/answers/topics/azure-site-recovery.html)で投稿してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,7 +38,7 @@ ms.locfileid: "83826283"
 
     `Import-Module -Name virtualmachinemanager`
 
-    詳細については、「[Windows PowerShell と VMM の概要](https://technet.microsoft.com/library/hh875013.aspx)」を参照してください。
+    詳細については、「[Windows PowerShell と VMM の概要](/previous-versions/system-center/system-center-2012-R2/hh875013(v=sc.12))」を参照してください。
 * VMM デプロイに 1 つ以上のライブラリ サーバーが存在することを確認します。 既定では、VMM サーバーのライブラリ共有パスは、VMM サーバーにローカルに配置されます。 フォルダー名は MSCVMMLibrary です。
 
   ライブラリ共有パスがリモートである (または、ローカルであるが MSCVMMLibrary と共有されていない) 場合は、次の手順を実行して共有パスを構成します。ここでは、例として \\libserver2.contoso.com\share\ が使用されています。
@@ -51,7 +51,7 @@ ms.locfileid: "83826283"
 
      a. 管理者として **64 ビット版 Windows PowerShell** コンソールを開きます。
      
-     b. 「**Set-executionpolicy bypass**」と入力します。 詳細については、「[Set-ExecutionPolicy コマンドレットの使用](https://technet.microsoft.com/library/ee176961.aspx)」を参照してください。
+     b. 「**Set-executionpolicy bypass**」と入力します。 詳細については、「[Set-ExecutionPolicy コマンドレットの使用](/previous-versions/windows/it-pro/windows-powershell-1.0/ee176961(v=technet.10))」を参照してください。
 
      > [!IMPORTANT]
      > **Set-executionpolicy bypass** の設定は、64 ビット版 PowerShell コンソールでのみ使用してください。 32 ビット版 PowerShell コンソールで設定しても、スクリプトは実行されません。

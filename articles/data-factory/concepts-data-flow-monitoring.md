@@ -7,13 +7,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/17/2020
-ms.openlocfilehash: 9594a2ddfaa0103e171618925ba6974bf9ad7f00
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.date: 07/03/2020
+ms.openlocfilehash: 1126f73b4d2e51e952a7cf971363020242838c34
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83833984"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958900"
 ---
 # <a name="monitor-data-flows"></a>データ フローの監視
 
@@ -56,12 +56,31 @@ ms.locfileid: "83833984"
   * クラスターの起動時間:データ フロー実行のための JIT Spark コンピューティング環境を取得する時間
   * 変換の数:フロー内で実行されている変換ステップの数
   
-![データ フローの監視](media/data-flow/monitornew.png "データ フローの監視 新規")  
+![データ フローの監視](media/data-flow/monitornew.png "データ フローの監視 新規")
+
+## <a name="total-sink-processing-time-vs-transformation-processing-time"></a>合計シンク処理時間と変換処理時間
+
+各変換ステージには、そのステージを完了するまでの合計時間と、各パーティションの実行時間の合計が含まれます。 [シンク] をクリックすると、"シンク処理時間" が表示されます。 この時間には、変換時間の合計に "*加えて*"、データを保存先ストアに書き込むために要した I/O 時間が含まれます。 シンク処理時間と変換の合計との違いは、データを書き込むための I/O 時間です。
+
+また、ADF パイプラインの監視ビューでデータ フロー アクティビティからの JSON 出力を開くと、各パーティション変換手順の詳細なタイミングも確認できます。 JSON には各パーティションのミリ秒のタイミングが含まれていますが、UX 監視ビューには各パーティションを加算した集計時間が示されます。
+
+```
+ {
+     "stage": 4,
+     "partitionTimes": [
+          14353,
+          14914,
+          14246,
+          14912,
+          ...
+         ]
+}
+```
   
 ## <a name="monitor-icons"></a>監視アイコン
 
 このアイコンは、変換データが既にクラスターにキャッシュされており、タイミングと実行パスでそのことが考慮されていることを示します。
 
-![データ フローの監視](media/data-flow/mon004.png "データ フローの監視")
+![データ フローの監視](media/data-flow/mon005.png "データ フローの監視")
 
 変換内には、緑色の円のアイコンも表示されます。 これは、データ送信先のシンク数のカウントを示しています。

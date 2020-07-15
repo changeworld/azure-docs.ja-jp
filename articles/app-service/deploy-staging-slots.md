@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 11e133a24ff728cc864e50e898e9db982b186337
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: 17ba8f5bbbf0ac17e0ccb6881379a511afc7c1c3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82597920"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833274"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service でステージング環境を設定する
 <a name="Overview"></a>
@@ -58,7 +58,7 @@ ms.locfileid: "82597920"
    
     ![デプロイ スロットのタイトル](./media/web-sites-staged-publishing/StagingTitle.png)
 
-    ステージング スロットには、他の App Service アプリと同様に管理ページがあります。 スロットの構成を変更することができます。 デプロイ スロットを表示していることを知らせるため、アプリ名は **\<app-name>/\<slot-name>** と表示され、アプリの種類は **App Service (スロット)** です。 また、同じ指定先を使用して、リソース グループ内の別のアプリとしてスロットを表示することもできます。
+    ステージング スロットには、他の App Service アプリと同様に管理ページがあります。 スロットの構成を変更することができます。 デプロイ スロットを表示していることがわかるように、アプリ名は **\<app-name>/\<slot-name>** と表示され、アプリの種類は **App Service (スロット)** となります。 また、同じ指定先を使用して、リソース グループ内の別のアプリとしてスロットを表示することもできます。
 
 6. スロットのリソース ページで、アプリの URL を選択します。 デプロイ スロットは独自のホスト名を持ち、ライブ アプリでもあります。 デプロイ スロットへのパブリック アクセスを制限するには、[Azure App Service の IP 制限](app-service-ip-restrictions.md)に関するページをご覧ください。
 
@@ -183,7 +183,7 @@ ms.locfileid: "82597920"
 
 自動スワップを構成するには:
 
-1. アプリのリソース ページに移動します。 **[デプロイ スロット]**  >  *[\<目的のソース スロット>]*  >  **[構成]**  >  **[全般設定]** と選択します。
+1. アプリのリソース ページに移動します。 **[デプロイ スロット]**  >  *\<desired source slot>*  >  **[構成]**  >  **[全般設定]** の順に選択します。
    
 2. **[Auto swap enabled]\(自動スワップ有効化\)** で、 **[オン]** を選択します。 **[Auto swap deployment slot]\(自動スワップのデプロイ スロット\)** で目的のターゲット スロットを選択し、コマンド バーで **[保存]** を選択します。 
    
@@ -199,12 +199,14 @@ ms.locfileid: "82597920"
 
 一部のアプリでは、スワップ前のカスタム ウォームアップ アクションが必要な場合があります。 web.config の `applicationInitialization` 構成要素を使用して、カスタム初期化アクションを指定できます。 [スワップ操作](#AboutConfiguration)では、このカスタム ウォームアップの終了を待ってから、ターゲット スロットとのスワップが行われます。 以下に、サンプルの web.config フラグメントを示します。
 
-    <system.webServer>
-        <applicationInitialization>
-            <add initializationPage="/" hostName="[app hostname]" />
-            <add initializationPage="/Home/About" hostName="[app hostname]" />
-        </applicationInitialization>
-    </system.webServer>
+```xml
+<system.webServer>
+    <applicationInitialization>
+        <add initializationPage="/" hostName="[app hostname]" />
+        <add initializationPage="/Home/About" hostName="[app hostname]" />
+    </applicationInitialization>
+</system.webServer>
+```
 
 `applicationInitialization` 要素のカスタマイズの詳細については、「[Most common deployment slot swap failures and how to fix them (最も一般的なデプロイ スロットのスワップ エラーとその修正方法)](https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/)」を参照してください。
 
@@ -254,7 +256,7 @@ App Service では、トラフィックの自動ルーティングだけでな�
 
 ベータ版アプリの利用をユーザーが拒否できるようにするには、たとえば次のようなリンクを Web ページに配置します。
 
-```HTML
+```html
 <a href="<webappname>.azurewebsites.net/?x-ms-routing-name=self">Go back to production app</a>
 ```
 
@@ -272,7 +274,7 @@ App Service では、トラフィックの自動ルーティングだけでな�
 
 ## <a name="delete-a-slot"></a>スロットを削除する
 
-アプリを検索して選択します。 **[デプロイ スロット]**  > \<*削除するスロット>*  >  **[概要]** の順に選択します。 アプリの種類は **App Service (スロット)** として表示され、デプロイ スロットが表示されていることを知らせます。 コマンド バーの **[削除]** を選択します。  
+アプリを検索して選択します。 **[デプロイ スロット]**  >  *\<slot to delete>*  >  **[概要]** の順に選択します。 アプリの種類は **App Service (スロット)** として表示され、デプロイ スロットが表示されていることを知らせます。 コマンド バーの **[削除]** を選択します。  
 
 ![デプロイ スロットの削除](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 

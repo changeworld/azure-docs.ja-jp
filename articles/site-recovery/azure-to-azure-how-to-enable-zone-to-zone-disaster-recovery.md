@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: 367ca77b0f3a142d8aa36143052993d1ed96f052
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 1a522193e9e704dce967daeeef70f82a6c0b1378
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996501"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135725"
 ---
 # <a name="enable-zone-to-zone-disaster-recovery-for-azure-virtual-machines"></a>Azure 仮想マシンのゾーン間ディザスター リカバリーを有効にする
 
@@ -20,7 +20,7 @@ ms.locfileid: "83996501"
 
 >[!NOTE]
 >
->- Site Recovery では現在、ゾーン間ディザスター リカバリーの復旧計画はサポートされていません。 
+>- Site Recovery では現在、ポータルを経由したゾーン間ディザスター リカバリーの復旧計画はサポートされていません。 ゾーン間ディザスター リカバリーの復旧計画を利用するには、PowerShell または REST API を使用してください。 
 >- ゾーン間ディザスター リカバリーのサポートは現在、東南アジアおよび英国南部の 2 つのリージョンに限られています。  
 
 Site Recovery サービスは、計画された停止や計画外の停止の際にビジネス アプリの稼働状態を維持することで、事業継続とディザスター リカバリー戦略に貢献します。 リージョン障害が発生した場合にアプリケーションの稼働状態を維持するために、ディザスター リカバリー オプションとして推奨されています。
@@ -65,7 +65,7 @@ Availability Zones は、Azure リージョン内の一意の物理的な場所�
 
 お使いの VM にゾーン間ディザスター リカバリーをデプロイする前に、その VM で有効になっている他の機能がゾーン間のディザスター リカバリーと相互運用可能であるようにすることが重要です。
 
-|機能  | サポートに関する声明  |
+|特徴量  | サポートに関する声明  |
 |---------|---------|
 |クラシック VM   |     サポートされていません    |
 |ARM VM    |    サポートされています    |
@@ -98,7 +98,7 @@ Azure portal にログインします。
 
 5. レプリケーションの設定を変更する場合は、[次:詳細設定] をクリックします。
 
-6. 必要に応じて、既定値の設定を変更します。 Azure 間のディザスター リカバリーのユーザーにとって、このページは使い慣れたように見えるかもしれません。 このブレードに表示されるオプションについて詳しくは、[こちら](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)をご覧ください
+6. 必要に応じて、既定値の設定を変更します。 Azure 間のディザスター リカバリーのユーザーにとって、このページは使い慣れたように見えるかもしれません。 このブレードに表示されるオプションについて詳しくは、[こちら](./azure-to-azure-tutorial-enable-replication.md)をご覧ください
 
     ![詳細設定ページ](./media/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery/zonal-disaster-recovery-advanced-settings-blade.png)
 
@@ -116,7 +116,7 @@ RTO の SLA は、Site Recovery 全体のそれと同じです。 最大 2 時�
 十分なインフラストラクチャ容量が確保されるよう、Site Recovery チームと Azure 容量管理チームが計画を立てます。 フェールオーバーを開始するとき、Site Recovery によって保護される VM インスタンスがターゲット ゾーンにデプロイされるよう、チームも支援します。
 
 **4.サポート対象のオペレーティング システムはどれですか?**
-ゾーン間のディザスター リカバリーでは、Azure 間のディザスター リカバリーと同じオペレーティング システムがサポートされています。 [こちら](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix)のサポート マトリックスを参照してください。
+ゾーン間のディザスター リカバリーでは、Azure 間のディザスター リカバリーと同じオペレーティング システムがサポートされています。 [こちら](./azure-to-azure-support-matrix.md)のサポート マトリックスを参照してください。
 
 **5.ソースとターゲットのリソース グループを同じにすることはできますか?**
 いいえ。別のリソース グループにフェールオーバーする必要があります。
@@ -125,8 +125,8 @@ RTO の SLA は、Site Recovery 全体のそれと同じです。 最大 2 時�
 
 ディザスター リカバリーの訓練、フェールオーバー、再保護、フェールバックを実行するために従う必要がある手順は、Azure 間のディザスター リカバリー シナリオの手順と同じです。
 
-ディザスター リカバリーの訓練を実施するには、[こちら](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-dr-drill)に記載されている手順に従ってください。
+ディザスター リカバリーの訓練を実施するには、[こちら](./azure-to-azure-tutorial-dr-drill.md)に記載されている手順に従ってください。
 
-セカンダリ ゾーンでフェールオーバーと再保護を行うには、[こちら](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback)に記載されている手順に従ってください。
+セカンダリ ゾーンでフェールオーバーと再保護を行うには、[こちら](./azure-to-azure-tutorial-failover-failback.md)に記載されている手順に従ってください。
 
-プライマリ ゾーンにフェールバックするには、[こちら](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failback)に記載されている手順に従ってください。
+プライマリ ゾーンにフェールバックするには、[こちら](./azure-to-azure-tutorial-failback.md)に記載されている手順に従ってください。

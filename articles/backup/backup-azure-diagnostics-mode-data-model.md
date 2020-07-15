@@ -3,12 +3,12 @@ title: Azure Monitor ログのデータ モデル
 description: この記事では、Azure Backup データに使用する Azure Monitor Log Analytics データ モデルの詳細について説明します。
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: ba50e10eee61c571249a9b99c7e3b53d74474382
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: e776649ff22e3249e2472adbe298c869ff5c946a
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248925"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85854759"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Azure Backup データの Log Analytics データ モデル
 
@@ -466,6 +466,30 @@ Azure Diagnostics テーブルにある Azure Backup データのクエリを作
 旧バージョンとの互換性の理由により、Azure Backup エージェントと Azure VM のバックアップの診断データは、現在、V1 スキーマと V2 スキーマの両方の Azure Diagnostics テーブルに送信されます (V1 スキーマは非推奨のパスになりました)。 ログ クエリで SchemaVersion_s=="V1" のレコードをフィルター処理すると、Log Analytics のどのレコードが V1 スキーマのものであるかを識別できます。 
 
 V1 スキーマのみに属する列を特定するには、上記で説明した[データ モデル](https://docs.microsoft.com/azure/backup/backup-azure-diagnostics-mode-data-model#using-azure-backup-data-model)の 3 列目にある「説明」を参照してください。
+
+### <a name="modifying-your-queries-to-use-the-v2-schema"></a>V2 スキーマを使用するようにクエリを変更する
+V1 スキーマは非推奨になる予定であるため、Azure Backup 診断データに対するすべてのカスタム クエリで V2 スキーマのみを使用することをお勧めします。 以下に、V1 スキーマへの依存関係を削除するようにクエリを更新する方法の例を示します。
+
+1. V1 スキーマにのみ適用可能なフィールドがクエリで使用されているかどうかを確認します。 次のように、すべてのバックアップ項目とそれに関連付けられている保護されるサーバーを一覧表示するクエリがあるとします。
+
+````Kusto
+AzureDiagnostics
+| where Category=="AzureBackupReport"
+| where OperationName=="BackupItemAssociation"
+| distinct BackupItemUniqueId_s, ProtectedServerUniqueId_s
+````
+
+上記のクエリでは、V1 スキーマにのみ適用可能なフィールド ProtectedServerUniqueId_s が使用されています。 このフィールドに相当する V2 スキーマでのフィールドは、ProtectedContainerUniqueId_s です (上の表を参照)。 フィールド BackupItemUniqueId_s は V2 スキーマにも適用でき、同じフィールドをこのクエリで使用できます。
+
+2. V2 スキーマのフィールド名を使用するようにクエリを更新します。 すべてのクエリでフィルター where SchemaVersion_s == "V2" を使用することをお勧めします。これにより、V2 スキーマに対応するレコードのみがクエリによって解析されます。
+
+````Kusto
+AzureDiagnostics
+| where Category=="AzureBackupReport"
+| where OperationName=="BackupItemAssociation"
+| where SchemaVersion_s=="V2"
+| distinct BackupItemUniqueId_s, ProtectedContainerUniqueId_s 
+````
 
 ## <a name="next-steps"></a>次のステップ
 

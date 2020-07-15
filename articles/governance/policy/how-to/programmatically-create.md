@@ -3,12 +3,12 @@ title: プログラムによるポリシーの作成
 description: この記事では、Azure CLI、Azure PowerShell、および REST API を使用して、Azure Policy のポリシーをプログラムで作成して管理する方法について説明します。
 ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 8ee87ecd9e7c636b5bb63c8e94be0e353acc3e13
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 3f785556dd86aa8b02f5aa0af09190266b8c509f
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682125"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969891"
 ---
 # <a name="programmatically-create-policies"></a>プログラムによるポリシーの作成
 
@@ -95,7 +95,7 @@ ms.locfileid: "83682125"
    - サブスクリプション - `/subscriptions/{subId}/`
    - 管理グループ - `/providers/Microsoft.Management/managementGroups/{mgName}`
 
-Azure Resource Manager PowerShell モジュールを使用したリソース ポリシーの管理の詳細については、「[Az.Resources](/powershell/module/az.resources/#policies)」をご覧ください。
+Resource Manager PowerShell モジュールを使用したリソース ポリシーの管理の詳細については、「[Az.Resources](/powershell/module/az.resources/#policies)」をご覧ください。
 
 ### <a name="create-and-assign-a-policy-definition-using-armclient"></a>ARMClient を使用してポリシー定義を作成して割り当てる
 

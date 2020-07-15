@@ -1,18 +1,18 @@
 ---
 title: Microsoft コマーシャル マーケットプレースの発行元に関するよくあるご質問
 description: Azure Marketplace と Microsoft AppSource についての一般的な質問への回答を得ます。
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 05/08/2020
-ms.author: dsindona
-ms.openlocfilehash: 1eae45eea35a118be51dc1e2f95055238212560d
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: ad4e80c98097955703e4a6fb3c64e93a338f2720
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800666"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121165"
 ---
 # <a name="common-questions-about-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースに関するよくあるご質問
 
@@ -67,7 +67,7 @@ Microsoft は多くの国/地域で税金の支払いを管理し、Microsoft �
 
 サインアップし、発行元契約に同意すると、パートナー センターのコマーシャル マーケットプレースのページにアクセスできるようになります。 ここで、オファーの作成と管理、および分析レポートの表示を行います。 Microsoft 365 アプリの場合は、パートナー センター内で Office ストア プログラムをアクティブ化する必要もあります。
 
-詳しくは、「[コマーシャル マーケットプレースにようこそ](https://docs.microsoft.com/azure/marketplace/)」と「[Microsoft Commercial Marketplace を通して Office 365 アドインを収益化する](https://docs.microsoft.com/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace)」をご覧ください。
+詳しくは、「[コマーシャル マーケットプレースにようこそ](index.yml)」と「[Microsoft Commercial Marketplace を通して Office 365 アドインを収益化する](https://docs.microsoft.com/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace)」をご覧ください。
 
 ### <a name="how-do-i-get-support-assistance-for-the-commercial-marketplace"></a>コマーシャル マーケットプレースに関するサポートを受けるにはどうすればよいですか?
 
@@ -77,7 +77,7 @@ Microsoft は多くの国/地域で税金の支払いを管理し、Microsoft �
 
 ### <a name="what-analytics-are-available-to-my-organization-from-the-commercial-marketplace"></a>コマーシャル マーケットプレースでは、自分の組織に関するどのような分析を利用できますか?
 
-コマーシャル マーケットプレース内のオファーに関するレポートが提供されます。 顧客、注文、ストア エンゲージメントなどについてのデータにアクセスするには、[パートナー センターでのコマーシャル マーケットプレース向け分析](https://docs.microsoft.com/azure/marketplace/partner-center-portal/analytics)に関するページを参照してください。
+コマーシャル マーケットプレース内のオファーに関するレポートが提供されます。 顧客、注文、ストア エンゲージメントなどについてのデータにアクセスするには、[パートナー センターでのコマーシャル マーケットプレース向け分析](partner-center-portal/analytics.md)に関するページを参照してください。
 
 ### <a name="what-is-microsofts-relationship-with-my-customers"></a>Microsoft とパートナーの顧客の間にはどのような関係がありますか?
 
@@ -89,7 +89,7 @@ Microsoft は多くの国/地域で税金の支払いを管理し、Microsoft �
 
 パートナーは、すべての顧客に適用される変更を作成することも、特定の顧客に固有の変更を加えることもできます。 また、使用条件を完全にカスタマイズすることもできます。これはテキスト ボックスに入力するか、Web アドレスとして表示される Web サイトでホストすることができます。
 
-詳しくは、「[Microsoft 商業マーケットプレースの標準契約](https://docs.microsoft.com/azure/marketplace/standard-contract)」をご覧ください。
+詳しくは、「[Microsoft 商業マーケットプレースの標準契約](standard-contract.md)」をご覧ください。
 
 ### <a name="is-azure-marketplace-available-in-azure-government"></a>Azure Marketplace は Azure Government で利用できますか?
 
@@ -126,7 +126,7 @@ Microsoft は多くの国/地域で税金の支払いを管理し、Microsoft �
 
 顧客が Microsoft AppSource や Azure Marketplace のネットショップでオファーを使用すると、情報が収集されます。 十分な関心があることを顧客が示すと、リードが作成され、パートナーが選択したシステムに営業案件が送信されます。 コマーシャル マーケットプレースで成功している発行元は、多くの場合、リードを追跡し、関係を築いて、関心を取引に結び付けています。
 
-詳細については、「[コマーシャル マーケットプレース オファーからの顧客リード](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)」を参照してください。
+詳細については、「[コマーシャル マーケットプレース オファーからの顧客リード](partner-center-portal/commercial-marketplace-get-customer-leads.md)」を参照してください。
 
 ### <a name="why-arent-my-changes-reflected-in-the-offer-on-microsoft-appsource-or-azure-marketplace"></a>Microsoft AppSource または Azure Marketplace のオファーに変更が反映されないのはなぜですか?
 
@@ -146,7 +146,7 @@ Microsoft AppSource はビジネス ソリューションと業界ソリュー�
 
 Microsoft のリセラーのグローバル ネットワークには、クラウド ソリューション プロバイダー プログラムに参加している数万の組織が含まれます。 CSP プログラムを使用すると、組織はコマーシャル マーケットプレースから Microsoft の製品やオファーを再販できます。また、それを問題なく行うためのツールが提供されています。
 
-詳細については、「[クラウド ソリューション プロバイダー](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers)」を参照してください。
+詳細については、「[クラウド ソリューション プロバイダー](cloud-solution-providers.md)」を参照してください。
 
 ### <a name="how-can-i-find-resellers-to-establish-partnerships"></a>リセラーを見つけてパートナーシップを確立するにはどうすればよいですか?
 
@@ -156,7 +156,7 @@ Microsoft のリセラーのグローバル ネットワークには、クラウ
 
 はい、クラウド ソリューション プロバイダー プログラムでは、オファーをすべてのリセラーが利用できるようにすることも、指定したリセラーだけが利用できるようにすることもできます。
 
-詳細については、「[クラウド ソリューション プロバイダー](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers)」を参照してください。
+詳細については、「[クラウド ソリューション プロバイダー](cloud-solution-providers.md)」を参照してください。
 
 ### <a name="how-can-i-pay-margin-to-resellers"></a>リセラーにマージンを支払うにはどうすればよいですか?
 
@@ -229,7 +229,7 @@ Microsoft AppSource では、クレジット カードによる支払いがサ�
 
 顧客は、世界中の 141 の場所でコマーシャル マーケットプレースからソリューションを入手できます。
 
-場所の一覧を確認するには、「[コマーシャル マーケットプレース発行元向けの税の詳細](https://docs.microsoft.com/azure/marketplace/partner-center-portal/tax-details-paid-transactions)」をご覧ください。
+場所の一覧を確認するには、「[コマーシャル マーケットプレース発行元向けの税の詳細](partner-center-portal/tax-details-paid-transactions.md)」をご覧ください。
 
 ### <a name="what-currencies-are-supported-with-the-commercial-marketplace"></a>コマーシャル マーケットプレースでは、どのような通貨がサポートされていますか?
 
@@ -252,7 +252,7 @@ Microsoft AppSource では、クレジット カードによる支払いがサ�
 - TWD
 - USD
 
-通貨の一覧を確認するには、「[コマーシャル マーケットプレースで利用可能な地域と通貨のサポート](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)」をご確認ください。
+通貨の一覧を確認するには、「[コマーシャル マーケットプレースで利用可能な地域と通貨のサポート](marketplace-geo-availability-currencies.md)」をご確認ください。
 
 ### <a name="can-customers-change-subscriptions-or-license-volumes-mid-term"></a>顧客は、契約期間中にサブスクリプションまたはライセンスのボリュームを変更できますか?
 
@@ -274,29 +274,32 @@ Azure Marketplace の場合、顧客は、アクティブな Azure サブスク�
 
 ### <a name="how-often-will-i-receive-payouts-for-sales-through-the-commercial-marketplace"></a>コマーシャル マーケットプレースでの販売に対する支払いを受け取る頻度はどれくらいですか?
 
-支払いは毎月発生します。 前の月に処理された徴収は一度に支払われ、売上の合算値が $50.00 以上である必要があります。
+支払いは毎月発生します。 支払いスケジュールの詳細、パートナー センターで次回の支払いを確認する方法、および顧客による未払いに対する Microsoft の対応については、「[支払いポリシーの詳細](partner-center-portal/payout-policy-details.md)」を参照してください。
 
-クレジット カードでのサブスクリプションと購入は月単位で請求され、Microsoft 顧客契約または Enterprise Agreement に対する請求は頻度が少なくなる場合があります。 顧客は、請求の時点から 30 日以内に支払う必要があります。 支払いを受けた後、クレジット カード取引は 30 日のエスクロー期間に入ります。
+- 顧客がマイクロソフト エンタープライズ契約を使用している取引の場合、支払いは、顧客の請求書を送信してから 30 日後の次の支払いサイクルで発行されます。 
+- 顧客がクレジット カードを使用している取引の場合、資金が決済され、チャージバックや不正行為がないことを確認するために、支払いを受けた後さらに 30 日間のエスクロー期間があります。
 
-詳細については、「[支払しきい値、方法、期間](https://docs.microsoft.com/azure/marketplace/partner-center-portal/payment-thresholds-methods-timeframes)」を参照してください。
+支払いは、売り上げが最小合計値である $50.00 に達したときにのみ発行されます。
+
+詳細については、「[支払しきい値、方法、期間](partner-center-portal/payment-thresholds-methods-timeframes.md)」を参照してください。
 
 ### <a name="in-what-countriesregions-are-taxes-managed-on-my-behalf"></a>税金の管理が肩代わりされるのはどの国/地域ですか?
 
 顧客は世界中のコマーシャル マーケットプレースでソリューションを探すことができ、多くの場所で Microsoft が税金を管理しています。 
 
-場所の完全な一覧を確認するには、「[コマーシャル マーケットプレース発行元向けの税の詳細](https://docs.microsoft.com/azure/marketplace/partner-center-portal/tax-details-paid-transactions)」をご覧ください。
+場所の完全な一覧を確認するには、「[コマーシャル マーケットプレース発行元向けの税の詳細](partner-center-portal/tax-details-paid-transactions.md)」をご覧ください。
 
 ### <a name="where-can-i-find-payout-reporting-for-the-commercial-marketplace"></a>コマーシャル マーケットプレースの支払いレポートはどこで入手できますか?
 
 "*所有者*" または "*財務共同作成者*" のアクセス許可を持つユーザーは、パートナー センター内で支払いレポートを見ることができます。 これらのユーザーは、右上の請求書を持っている手のアイコンを選択して、レポートにアクセスできます。
 
-詳細については、[支払いレポート](https://docs.microsoft.com/azure/marketplace/partner-center-portal/payout-summary)に関するページを参照してください。
+詳細については、[支払いレポート](partner-center-portal/payout-summary.md)に関するページを参照してください。
 
 ### <a name="how-do-i-configure-my-payout-method-and-destination"></a>支払い方法と支払い先はどのようにして構成できますか?
 
 "*所有者*" アクセス許可を持つユーザーは、パートナー センターで支払いアカウントと税フォームを設定できます。 この操作を行うには、右上にある **[設定]** ボタン (歯車アイコン) を選択します。
 
-詳細については、[支払いアカウントと税フォーム](https://docs.microsoft.com/azure/marketplace/partner-center-portal/set-up-your-payout-account-tax-forms)に関するページを参照してください。
+詳細については、[支払いアカウントと税フォーム](partner-center-portal/set-up-your-payout-account-tax-forms.md)に関するページを参照してください。
 
 ### <a name="are-returns-and-refunds-supported-with-the-commercial-marketplace"></a>コマーシャル マーケットプレースでは、返品と返金はサポートされていますか?
 
@@ -310,7 +313,7 @@ Azure Marketplace の場合、顧客は、アクティブな Azure サブスク�
 
 - [Microsoft コマーシャル マーケットプレースの概要](/azure/marketplace/marketplace-publishers-guide)
 - [Microsoft コマーシャル マーケットプレース パートナー ハブ](https://partner.microsoft.com/asset/collection/commercial-marketplace#/)
-- [コマーシャル マーケットプレースにようこそ](https://docs.microsoft.com/azure/marketplace/)
+- [コマーシャル マーケットプレースにようこそ](index.yml)
 
 ### <a name="how-can-i-engage-with-microsoft-and-other-partners"></a>Microsoft や他のパートナーと協力するにはどうすればよいですか?
 
@@ -322,7 +325,7 @@ Azure Marketplace の場合、顧客は、アクティブな Azure サブスク�
 ### <a name="where-can-i-learn-more-about-partner-center"></a>パートナー センターの詳細については、どこで学習できますか?
 
 - [パートナー センターのドキュメント](https://docs.microsoft.com/partner-center/)
-- [コマーシャル マーケットプレースにようこそ](https://docs.microsoft.com/azure/marketplace/)
+- [コマーシャル マーケットプレースにようこそ](index.yml)
 
 ### <a name="where-can-i-learn-more-about-the-microsoft-admin-center"></a>Microsoft 管理センターの詳細については、どこで確認できますか?
 
@@ -330,14 +333,14 @@ Microsoft 管理センターの詳細については、「[組織のサードパ
 
 ### <a name="where-can-i-learn-more-about-azure-billing"></a>Azure の請求に関する詳細は、どこで学習できますか?
 
-- [Azure Cost Management および Billing のドキュメント](https://docs.microsoft.com/azure/cost-management-billing/)
-- [Azure の請求での Azure Marketplace の料金について](https://docs.microsoft.com/azure/cost-management-billing/understand/understand-azure-marketplace-charges)
-- [Azure サブスクリプションを請求書支払いに切り替える](https://docs.microsoft.com/azure/cost-management-billing/manage/pay-by-invoice)
+- [Azure Cost Management および Billing のドキュメント](../cost-management-billing/index.yml)
+- [Azure の請求での Azure Marketplace の料金について](../cost-management-billing/understand/understand-azure-marketplace-charges.md)
+- [Azure サブスクリプションを請求書支払いに切り替える](../cost-management-billing/manage/pay-by-invoice.md)
 
 ### <a name="where-can-i-learn-about-azure-government-and-the-azure-government-marketplace"></a>Azure Government と Azure Government Marketplace の詳細については、どこで確認できますか?
 
 - [Azure Government](https://azure.microsoft.com/global-infrastructure/government)
 - [Microsoft セキュリティ センター](https://www.microsoft.com/trust-center)
-- [Azure Government のドキュメント](https://docs.microsoft.com/azure/azure-government/)
-- [Azure Government Marketplace](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace)
-- [Azure Government のコンプライアンス](https://docs.microsoft.com/azure/azure-government/documentation-government-plan-compliance)
+- [Azure Government のドキュメント](../azure-government/index.yml)
+- [Azure Government Marketplace](../azure-government/documentation-government-manage-marketplace.md)
+- [Azure Government のコンプライアンス](../azure-government/documentation-government-plan-compliance.md)

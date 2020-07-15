@@ -5,23 +5,24 @@ description: Azure Firewall を使用して Azure Machine Learning ワークス�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 04/27/2020
-ms.openlocfilehash: 40c25dda3fefa9c54df832e16149a68a4aa5a33b
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.custom: tracking-python
+ms.openlocfilehash: 31daec93352c0e142075a55c61f2b8d3a6d56fab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82981967"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85080248"
 ---
 # <a name="use-workspace-behind-azure-firewall-for-azure-machine-learning"></a>Azure Firewall の内側で Azure Machine Learning のワークスペースを使用する
 
 この記事では、Azure Machine Learning ワークスペースで使用するために Azure Firewall を構成する方法について説明します。
 
-Azure Firewall を使用して、Azure Machine Learning ワークスペースとパブリック インターネットへのアクセスを制御できます。 正しく構成しないと、ワークスペースを使用したときにファイアウォールが原因で問題が発生する可能性があります。
+Azure Firewall を使用して、Azure Machine Learning ワークスペースとパブリック インターネットへのアクセスを制御できます。 正しく構成しないと、ワークスペースを使用したときにファイアウォールが原因で問題が発生する可能性があります。 この記事で説明されているように、いずれも Azure Machine Learning ワークスペースで使用されるさまざまなホスト名があります。
 
 ## <a name="network-rules"></a>ネットワーク ルール
 
@@ -40,16 +41,18 @@ Azure Firewall を使用して、Azure Machine Learning ワークスペースと
 | ---- | ---- |
 | **\*.batchai.core.windows.net** | クラスターをトレーニングします |
 | **ml.azure.com** | Azure Machine Learning Studio |
+| **default.exp-tas.com** | Azure Machine Learning スタジオによって使用されます |
 | **\*.azureml.ms** | Azure Machine Learning API によって使用されます |
-| **\*.experiments.azureml.net** | Azure Machine Learning で実行される実験で使用されます|
+| **\*.experiments.azureml.net** | Azure Machine Learning で実行される実験で使用されます |
 | **\*.modelmanagement.azureml.net** | モデルを登録してデプロイするために使用されます|
 | **mlworkspace.azure.ai** | ワークスペースを表示するときに Azure portal によって使用されます |
 | **\*.aether.ms** | Azure Machine Learning パイプラインを実行するときに使用されます |
 | **\*.instances.azureml.net** | Azure Machine Learning のコンピューティング インスタンスです |
+| **\*.instances.azureml.ms** | ワークスペースで Private Link が有効な場合の Azure Machine Learning のコンピューティング インスタンスです |
 | **windows.net** | Azure Blob Storage |
 | **vault.azure.net** | Azure Key Vault |
-| **microsoft.com** | Docker のベース イメージ |
 | **azurecr.io** | Azure Container Registry |
+| **mcr.microsoft.com** | 基本 Docker イメージ用の Microsoft Container Registry |
 
 ## <a name="python-hosts"></a>Python のホスト
 

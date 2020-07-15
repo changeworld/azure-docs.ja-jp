@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 5821c72ae1be4759cf5aa76ff1f5af43337749c0
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: c418ed87bd74471ce8c2e8186bd6244eaf6f21de
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668579"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921582"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services の構成と管理の問題: よく寄せられる質問 (FAQ)
 
@@ -97,9 +97,11 @@ CSR は単なるテキスト ファイルです。 必ずしも、最終的に�
 
 次の PowerShell コマンドを使って、管理証明書を更新できます。
 
-    Add-AzureAccount
-    Select-AzureSubscription -Current -SubscriptionName <your subscription name>
-    Get-AzurePublishSettingsFile
+```powershell
+Add-AzureAccount
+Select-AzureSubscription -Current -SubscriptionName <your subscription name>
+Get-AzurePublishSettingsFile
+```
 
 **Get-AzurePublishSettingsFile** は、Azure Portal の **[サブスクリプション]**  >  **[管理証明書]** に新しい管理証明書を作成します。 新しい証明書の名前は、"<サブスクリプション名>-<今日の日付>-credentials" のようになります。
 
@@ -282,7 +284,7 @@ Cloud Services 用に Azure Diagnostics ログを有効にする方法につい�
 ### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>クラウド サービス VM 上のドライブで表示される空きディスク領域が非常に小さいのはなぜですか。
 これは想定される動作であり、アプリケーションに問題が発生することはないはずです。 Azure PaaS VM の %approot% ドライブでジャーナルがオンになっているため、実質的に、ファイルが通常占有する領域の 2 倍の容量が消費されます。 ただし、この件で問題が起きないようにするには、いくつかの事柄に注意する必要があります。
 
-%approot% ドライブのサイズは、\<.cspkg のサイズ + ジャーナルの最大サイズ + 空き領域のマージン> の計算値と、1.5 GB のうち、どちらか大きい方になります。 VM のサイズは、この計算に影響を与えません。 (VM のサイズは、一時的な C: ドライブのサイズにのみ影響を与えます。) 
+%approot% ドライブのサイズは、\<size of .cspkg + max journal size + a margin of free space> または 1.5 GB のいずれか大きい方として計算されます。 VM のサイズは、この計算に影響を与えません。 (VM のサイズは、一時的な C: ドライブのサイズにのみ影響を与えます。) 
 
 %approot% ドライブへの書き込みはサポートされていません。 Azure VM に対して書き込む場合は、一時的な LocalStorage リソース (または、BLOB ストレージ、Azure Files など、その他のオプション) に対して書き込む必要があります。 したがって、%approot% フォルダー上の空き領域の量は重要ではありません。 アプリケーションが %approot% ドライブに対して書き込んでいるかどうか不明の場合は、サービスを数日間実行し、"実行前" と "実行後" のサイズを比較することができます。 
 
@@ -306,9 +308,11 @@ Cloud Services で SNI を有効にするには、次のいずれかの方法を
 **方法 1: PowerShell を使用する**
 
 SNI バインドは、以下のようにクラウド サービス ロール インスタンスのスタートアップ タスクで PowerShell コマンドレット **New-WebBinding** を使って構成できます。
-    
-    New-WebBinding -Name $WebsiteName -Protocol "https" -Port 443 -IPAddress $IPAddress -HostHeader $HostHeader -SslFlags $sslFlags 
-    
+
+```powershell
+New-WebBinding -Name $WebsiteName -Protocol "https" -Port 443 -IPAddress $IPAddress -HostHeader $HostHeader -SslFlags $sslFlags
+```
+
 [こちら](https://technet.microsoft.com/library/ee790567.aspx)の説明のように、$sslFlags には次の値のいずれかを使用できます。
 
 |値|意味|
@@ -322,14 +326,15 @@ SNI バインドは、以下のようにクラウド サービス ロール イ�
 
 SNI バインドは、こちらの[ブログ投稿](https://blogs.msdn.microsoft.com/jianwu/2014/12/17/expose-ssl-service-to-multi-domains-from-the-same-cloud-service/)のように、ロール スタートアップでコードを使用して構成することもできます。
 
-    
-    //<code snip> 
-                    var serverManager = new ServerManager(); 
-                    var site = serverManager.Sites[0]; 
-                    var binding = site.Bindings.Add(":443:www.test1.com", newCert.GetCertHash(), "My"); 
-                    binding.SetAttributeValue("sslFlags", 1); //enables the SNI 
-                    serverManager.CommitChanges(); 
-    //</code snip> 
+```csharp
+//<code snip> 
+                var serverManager = new ServerManager(); 
+                var site = serverManager.Sites[0]; 
+                var binding = site.Bindings.Add(":443:www.test1.com", newCert.GetCertHash(), "My"); 
+                binding.SetAttributeValue("sslFlags", 1); //enables the SNI 
+                serverManager.CommitChanges(); 
+    //</code snip>
+```
     
 SNI バインドを有効にするには、上記のいずれかのアプローチを使用して、まずスタートアップ タスクまたはコードを使用して、各ホスト名に対応する証明書 (*.pfx) をロール インスタンスにインストールする必要があります。
 
@@ -341,7 +346,9 @@ SNI バインドを有効にするには、上記のいずれかのアプロー�
 
 現在、Azure Portal にこの機能を組み込む作業を行っています。 その間は、次の PowerShell コマンドを使って SDK のバージョンを取得できます。
 
-    Get-AzureService -ServiceName "<Cloud Service name>" | Get-AzureDeployment | Where-Object -Property SdkVersion -NE -Value "" | select ServiceName,SdkVersion,OSVersion,Slot
+```powershell
+Get-AzureService -ServiceName "<Cloud Service name>" | Get-AzureDeployment | Where-Object -Property SdkVersion -NE -Value "" | select ServiceName,SdkVersion,OSVersion,Slot
+```
 
 ### <a name="i-want-to-shut-down-the-cloud-service-for-several-months-how-to-reduce-the-billing-cost-of-cloud-service-without-losing-the-ip-address"></a>数か月間、クラウド サービスをシャットダウンしようと思います。 IP アドレスを失うことなくクラウド サービスの料金を減らす方法を教えてください。
 

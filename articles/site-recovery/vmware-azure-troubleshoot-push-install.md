@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 04/03/2020
-ms.openlocfilehash: 1afd931249d4dbeda2b4b25f822837e2a564f959
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04b4feb1219f6a51a1f0a7ac0d19fc3fd70029c6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80656318"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133530"
 ---
 # <a name="troubleshoot-mobility-service-push-installation"></a>Mobility Service のプッシュ インストールに関するトラブルシューティング
 
@@ -170,7 +170,7 @@ WMI を有効にするには:
 
 WMI のトラブルシューティングに関するその他の記事を次に示します。
 
-* [基本的な WMI テスト](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/)
+* [基本的な WMI テスト](https://techcommunity.microsoft.com/t5/ask-the-performance-team/bg-p/AskPerf)
 * [WMI のトラブルシューティング](/windows/win32/wmisdk/wmi-troubleshooting)
 * [WMI スクリプトと WMI サービスに関する問題のトラブルシューティング](/previous-versions/tn-archive/ff406382(v=msdn.10))
 

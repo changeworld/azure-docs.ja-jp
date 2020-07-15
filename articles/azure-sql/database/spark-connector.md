@@ -1,8 +1,8 @@
 ---
 title: Microsoft Azure SQL と SQL Server で Spark コネクタを使用する
-description: Microsoft Azure SQL と SQL Server 用の Spark コネクタを使用する方法について学習します
+description: Azure SQL Database、Azure SQL Managed Instance、SQL Server で Spark コネクタを使用する方法について説明します。
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: development
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -11,19 +11,19 @@ author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: carlrab
 ms.date: 09/25/2018
-ms.openlocfilehash: b2e042f2c3a7c6e1528ff96fb4fb96f392274855
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: cb7fb7f6c44f9e1c4a9b073c666543a2e892582a
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84025683"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985501"
 ---
 # <a name="accelerate-real-time-big-data-analytics-using-the-spark-connector"></a>Spark コネクタを使用したリアルタイムのビッグ データ分析の高速化 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Spark コネクタを使用すると、Azure SQL Database、Azure SQL Managed Instance、SQL Server データベースを Spark ジョブの入力データ ソースまたは出力データ シンクとして機能させることができます。 ビッグ データ分析の中でリアルタイム トランザクション データを利用でき、アドホック クエリの結果やレポートを保持できます。 組み込みの JDBC コネクタに比べて、このコネクタには、Microsoft Azure SQL データベースと SQL Server データベースにデータを一括挿入する機能があります。 行単位の挿入に比べ、パフォーマンスを 10 倍から 20 倍も向上させることができます。 Spark コネクタは、Azure SQL データベースに接続するための AAD 認証をサポートします。 AAD アカウントを使用して Azure Databricks から Azure SQL データベースに安全に接続できます。 組み込みの JDBC コネクタと同様のインターフェイスを備えています。 この新しいコネクタを使用するための既存の Spark ジョブの移行は簡単に実行できます。
+Spark コネクタを使用すると、Azure SQL Database、Azure SQL Managed Instance、SQL Server のデータベースを Spark ジョブの入力データ ソースまたは出力データ シンクとして機能させることができます。 ビッグ データ分析の中でリアルタイム トランザクション データを利用でき、アドホック クエリの結果やレポートを保持できます。 組み込みの JDBC コネクタに比べて、このコネクタには、データベースにデータを一括挿入する機能があります。 行単位の挿入に比べ、パフォーマンスを 10 倍から 20 倍も向上させることができます。 Spark コネクタでは、Azure SQL Database と Azure SQL Managed Instance に接続するための Azure Active Directory (Azure AD) 認証がサポートされています。これにより、Azure AD アカウントを使用して、Azure Databricks からデータベースを接続できるようになります。 組み込みの JDBC コネクタと同様のインターフェイスを備えています。 この新しいコネクタを使用するための既存の Spark ジョブの移行は簡単に実行できます。
 
-## <a name="download-and-build-spark-connector"></a>Spark コネクタのダウンロードと構築
+## <a name="download-and-build-a-spark-connector"></a>Spark コネクタのダウンロードと構築
 
 開始するには、GitHub の [azure-sqldb-spark リポジトリ](https://github.com/Azure/azure-sqldb-spark)から Spark コネクタをダウンロードします。
 
@@ -38,13 +38,13 @@ Spark コネクタを使用すると、Azure SQL Database、Azure SQL Managed In
 | Azure SQL データベース                    | サポートされています                |
 | Azure SQL Managed Instance            | サポートされています                |
 
-Spark コネクタでは、SQL Server 用の Microsoft JDBC ドライバーを使用して、Spark ワーカー ノードと SQL データベース間でデータを移動します。
+Spark コネクタでは、SQL Server 用の Microsoft JDBC ドライバーを使用して、Spark ワーカー ノードとデータベース間でデータを移動します。
 
 データフローは次のとおりです。
 
-1. Spark のマスター ノードが、Azure SQL データベースまたは SQL Server データベースに接続され、特定のテーブルまたは特定の SQL クエリを使用してデータを読み込みます。
+1. Spark マスター ノードから SQL Database または SQL Server のデータベースへの接続が行われ、特定のテーブルから、または特定の SQL クエリを使用して、データが読み込まれます。
 2. Spark のマスター ノードが、変換のためにワーカー ノードにデータを分散します。
-3. ワーカー ノードが、Azure SQL データベースまたは SQL Server データベースに接続され、データベースにデータを書き込みます。 ユーザーは、使用する挿入方法 (行単位または一括) を選択できます。
+3. ワーカー ノードから、SQL Database および SQL Server に接続するデータベースへの接続が行われ、データベースにデータが書き込まれます。 ユーザーは、使用する挿入方法 (行単位または一括) を選択できます。
 
 次の図にデータ フローを示します。
 
@@ -60,7 +60,7 @@ Spark コネクタでは、SQL Server 用の Microsoft JDBC ドライバーを�
 
 ## <a name="connect-and-read-data-using-the-spark-connector"></a>Spark コネクタを使用した接続とデータの読み取り
 
-Spark ジョブから Azure SQL データベースまたは SQL Server データベースに接続して、データの読み取りまたは書き込みを行うことができます。 Azure SQL または SQL Server のデータベースで DML クエリまたは DDL クエリを実行することもできます。
+Spark ジョブから SQL Database と SQL Server のデータベースに接続して、データの読み取りまたは書き込みを行うことができます。 SQL Database または SQL Server のデータベースで DML または DDL クエリを実行することもできます。
 
 ### <a name="read-data-from-azure-sql-and-sql-server"></a>Azure SQL または SQL Server からデータを読み取る
 
@@ -143,9 +143,9 @@ val config = Config(Map(
 sqlContext.sqlDBQuery(config)
 ```
 
-## <a name="connect-from-spark-to-azure-sql-using-aad-authentication"></a>AAD 認証を使用して Spark から Azure SQL に接続する
+## <a name="connect-from-spark-using-azure-ad-authentication"></a>Azure AD 認証を使用して Spark から接続する
 
-Azure Active Directory (AAD) 認証を使用して Azure SQL に接続できます。 AAD 認証は、データベース ユーザーの ID を一元管理するという目的で使用でき、SQL Server 認証に代わる方法となります。
+Azure AD 認証を使用して Azure SQL Database と SQL Managed Instance に接続できます。 Azure AD 認証は、データベース ユーザーの ID を一元管理するために、SQL Server 認証の代替として使用します。
 
 ### <a name="connecting-using-activedirectorypassword-authentication-mode"></a>ActiveDirectoryPassword 認証モードを使用した接続
 
@@ -170,13 +170,13 @@ val collection = sqlContext.read.sqlDB(config)
 collection.show()
 ```
 
-### <a name="connecting-using-access-token"></a>アクセス トークンを使用した接続
+### <a name="connecting-using-an-access-token"></a>アクセス トークンを使用した接続
 
 #### <a name="setup-requirement"></a>設定要件
 
 アクセス トークンに基づく認証モードを使用する場合は、[azure-activedirectory-library-for-java](https://github.com/AzureAD/azure-activedirectory-library-for-java) とその依存関係をダウンロードし、それらを Java ビルド パスに含める必要があります。
 
-Azure SQL Database または Azure SQL Managed Instance データベースに対するアクセス トークンを取得する方法については、[Azure Active Directory 認証を使用した認証](authentication-aad-overview.md)に関する記事を参照してください。
+Azure SQL Database または Azure SQL Managed Instance のデータベースに対するアクセス トークンを取得する方法については、[Azure Active Directory 認証を使用した認証](authentication-aad-overview.md)に関する記事を参照してください。
 
 ```scala
 import com.microsoft.azure.sqldb.spark.config.Config
@@ -194,9 +194,9 @@ val collection = sqlContext.read.sqlDB(config)
 collection.show()
 ```
 
-## <a name="write-data-to-azure-sql-and-sql-server-using-bulk-insert"></a>一括挿入を使用して Azure SQL または SQL Server にデータを書き込む
+## <a name="write-data-using-bulk-insert"></a>一括挿入を使用したデータの書き込み
 
-従来の JDBC コネクタは、行単位の挿入を使用して Azure SQL または SQL Server にデータを書き込みます。 Spark コネクタでは、一括挿入を使用して Azure SQL または SQL Server にデータを書き込むことができます。 大きなデータ セットを読み込むとき、または列ストア インデックスが使用されているテーブルにデータを読み込むときの書き込みのパフォーマンスが大幅に向上します。
+従来の JDBC コネクタでは、行単位の挿入を使用してデータベースへのデータの書き込みが行われます。 Spark コネクタでは、一括挿入を使用して Azure SQL または SQL Server にデータを書き込むことができます。 大きなデータ セットを読み込むとき、または列ストア インデックスが使用されているテーブルにデータを読み込むときの書き込みのパフォーマンスが大幅に向上します。
 
 ```scala
 import com.microsoft.azure.sqldb.spark.bulkcopy.BulkCopyMetadata

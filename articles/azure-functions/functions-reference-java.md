@@ -3,12 +3,12 @@ title: Azure Functions 用 Java 開発者向けリファレンス
 description: Java を使用して関数を開発する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 6ce886fd0ca47d728a115427b354442fd259e714
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 339615ac99f231fd293a7ea15c853d43da8f998a
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648237"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057604"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions の Java 開発者向けガイド
 
@@ -50,20 +50,6 @@ mvn archetype:generate \
 
 このアーキタイプの基本的な使い方については、[Java クイックスタート](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)を参照してください。 
 
-## <a name="create-kotlin-functions-preview"></a>Kotlin 関数を作成する (プレビュー)
-
-Kotlin 関数を生成する Maven アーキタイプもあります。 このアーキタイプは現在プレビュー段階であり、[com.microsoft.azure:azure-functions-kotlin-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-kotlin-archetype/) という _groupId_:_artifactId_ で発行されています。 
-
-次のコマンドを使用すると、このアーキタイプを使用して新しい Java 関数プロジェクトが生成されます。
-
-```
-mvn archetype:generate \
-    -DarchetypeGroupId=com.microsoft.azure \
-    -DarchetypeArtifactId=azure-functions-kotlin-archetype
-```
-
-このアーキタイプの基本的な使い方については、[Kotlin クイックスタート](functions-create-first-kotlin-maven.md)を参照してください。
-
 ## <a name="folder-structure"></a>フォルダー構造
 
 Azure Functions の Java プロジェクトのフォルダー構造を次に示します。
@@ -89,8 +75,6 @@ FunctionsProject
  | | | | - lib
  | - pom.xml
 ```
-
-_* Kotlin プロジェクトは、あくまで Maven であるため、見た目はよく似ています_
 
 共有 [host.json](functions-host-json.md) ファイルを使用して関数アプリを構成できます。 各関数には、独自のコード ファイル (.java) とバインディング構成ファイル (function.json) があります。
 
@@ -391,7 +375,7 @@ public class Function {
 
 ## <a name="execution-context"></a>実行コンテキスト
 
-`azure-functions-java-library` 内で定義されている `ExecutionContext` には、関数ランタイムと通信するためのヘルパー メソッドが含まれています。
+`azure-functions-java-library` 内で定義されている `ExecutionContext` には、関数ランタイムと通信するためのヘルパー メソッドが含まれています。 詳しくは、[ExecutionContext のリファレンス記事](/java/api/com.microsoft.azure.functions.executioncontext)をご覧ください。
 
 ### <a name="logger"></a>ロガー
 

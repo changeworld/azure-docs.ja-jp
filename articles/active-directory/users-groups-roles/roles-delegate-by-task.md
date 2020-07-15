@@ -8,18 +8,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: reference
 ms.date: 05/04/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4837b654e5b538dda6f55eae9b15ddf0c5604693
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 3bc1546566e5bb79a207899fab7418480e5cfab0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299470"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85117881"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Azure Active Directory における管理タスク別の管理者ロール
 
@@ -38,7 +38,7 @@ ms.locfileid: "84299470"
 コネクタ サービスをダウンロードする | アプリケーション管理者 | 
 すべての構成を読み取る | アプリケーション管理者 | 
 
-## <a name="b2c"></a>B2C
+## <a name="external-identitiesb2c"></a>外部 ID または B2C
 
 タスク | 最小特権ロール | その他のロール
 ---- | --------------------- | ----------------
@@ -47,11 +47,11 @@ B2C アプリケーションを作成する | グローバル管理者 |
 エンタープライズ アプリケーションを作成する | クラウド アプリケーション管理者 | アプリケーション管理者
 B2C のポリシーの作成、読み取り、更新、削除を実行する | B2C IEF ポリシー管理者 | 
 ID プロバイダーの作成、読み取り、更新、削除を実行する | 外部 ID プロバイダー管理者 | 
-パスワード リセット ユーザー フローの作成、読み取り、更新、削除を実行する | B2C ユーザー フロー管理者 | 
-プロファイル編集ユーザー フローの作成、読み取り、更新、削除を実行する | B2C ユーザー フロー管理者 | 
-サインイン ユーザー フローの作成、読み取り、更新、削除を実行する | B2C ユーザー フロー管理者 | 
-サインアップ ユーザー フローの作成、読み取り、更新、削除を実行する |B2C ユーザー フロー管理者 | 
-ユーザー属性の作成、読み取り、更新、削除を実行する | B2C ユーザー フロー属性管理者 | 
+パスワード リセット ユーザー フローの作成、読み取り、更新、削除を実行する | 外部 ID ユーザー フロー管理者 | 
+プロファイル編集ユーザー フローの作成、読み取り、更新、削除を実行する | 外部 ID ユーザー フロー管理者 | 
+サインイン ユーザー フローの作成、読み取り、更新、削除を実行する | 外部 ID ユーザー フロー管理者 | 
+サインアップ ユーザー フローの作成、読み取り、更新、削除を実行する |外部 ID ユーザー フロー管理者 | 
+ユーザー属性の作成、読み取り、更新、削除を実行する | 外部 ID ユーザー フロー属性管理者 | 
 ユーザーの作成、読み取り、更新、削除を実行する | ユーザー管理者
 すべての構成を読み取る | グローバル閲覧者 | 
 B2C 監査ログを読み取る | グローバル閲覧者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)) | 
@@ -73,6 +73,14 @@ B2C 監査ログを読み取る | グローバル閲覧者 ([ドキュメント�
 会社のプロパティを構成する | グローバル管理者 | 
 
 ## <a name="connect"></a>接続する
+
+タスク | 最小特権ロール | その他のロール
+---- | --------------------- | ----------------
+パススルー認証 | グローバル管理者  | 
+すべての構成を読み取る | グローバル閲覧者 | グローバル管理者  |
+シームレス シングル サインオン | グローバル管理者  | 
+
+## <a name="cloud-provisioning"></a>クラウド プロビジョニング
 
 タスク | 最小特権ロール | その他のロール
 ---- | --------------------- | ----------------
@@ -109,7 +117,7 @@ ADFS セキュリティ レポートを読み取る | セキュリティ閲覧�
 タスク | 最小特権ロール | その他のロール
 ---- | --------------------- | ----------------
 Azure AD Domain Services インスタンスを作成する | グローバル管理者 | 
-Azure AD Domain Services の全タスクを実行する | Azure AD DC Administrators グループ ([ドキュメントを参照](../../active-directory-domain-services/tutorial-create-management-vm.md#administrative-tasks-you-can-perform-on-an-azure-ad-ds-managed-domain)) | 
+Azure AD Domain Services の全タスクを実行する | Azure AD DC Administrators グループ ([ドキュメントを参照](../../active-directory-domain-services/tutorial-create-management-vm.md#administrative-tasks-you-can-perform-on-a-managed-domain)) | 
 すべての構成を読み取る | AD DS サービスを含む Azure サブスクリプションの閲覧者 | 
 
 ## <a name="devices"></a>デバイス

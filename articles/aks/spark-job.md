@@ -6,16 +6,16 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 2e399c1a7b0f9bbc2aac375fe8af969a2b9e0e48
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 962d0d6dd51bb30f5df9ca0b609acf932777ebcf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80877629"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887522"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>AKS での Apache Spark ジョブの実行
 
-[Apache Spark][apache-spark] は、大規模データ処理用の高速エンジンです。 [Spark 2.3.0 リリース][spark-latest-release]以降、Apache Spark では Kubernetes クラスターとのネイティブな統合がサポートされています。 Azure Kubernetes Service (AKS) は、Azure で実行される Kubernetes 管理環境です。 このドキュメントでは、Apache Spark ジョブを準備して Azure Kubernetes Service (AKS) クラスターで 実行する方法を詳しく説明します。
+[Apache Spark][apache-spark] は、大規模データ処理用の高速エンジンです。 [Spark 2.3.0 リリース][spark-kubernetes-earliest-version]以降、Apache Spark では Kubernetes クラスターとのネイティブな統合がサポートされています。 Azure Kubernetes Service (AKS) は、Azure で実行される Kubernetes 管理環境です。 このドキュメントでは、Apache Spark ジョブを準備して Azure Kubernetes Service (AKS) クラスターで 実行する方法を詳しく説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -25,6 +25,7 @@ ms.locfileid: "80877629"
 * [Docker Hub][docker-hub] アカウント、または [Azure Container Registry][acr-create]。
 * 開発システムに[インストール][azure-cli]された Azure CLI。
 * システムにインストールされた [JDK 8][java-install]。
+* システムにインストールされた [Apache Maven][maven-install]。
 * システムにインストールされた SBT ([Scala Build Tool][sbt-install])。
 * システムにインストールされた Git コマンド ライン ツール。
 
@@ -340,9 +341,10 @@ Spark スクリプトが含まれるイメージをビルドしてプッシュ�
 [apache-spark]: https://spark.apache.org/
 [docker-hub]: https://docs.docker.com/docker-hub/
 [java-install]: https://aka.ms/azure-jdks
+[maven-install]: https://maven.apache.org/install.html
 [sbt-install]: https://www.scala-sbt.org/1.0/docs/Setup.html
 [spark-docs]: https://spark.apache.org/docs/latest/running-on-kubernetes.html
-[spark-latest-release]: https://spark.apache.org/releases/spark-release-2-3-0.html
+[spark-kubernetes-earliest-version]: https://spark.apache.org/releases/spark-release-2-3-0.html
 [spark-quickstart]: https://spark.apache.org/docs/latest/quick-start.html
 
 

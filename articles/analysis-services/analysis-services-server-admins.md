@@ -8,10 +8,10 @@ ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 944a84405bd7e03b72b2610278f9f0e4d3cfaf38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81454239"
 ---
 # <a name="manage-server-administrators"></a>サーバー管理者の管理
@@ -23,7 +23,7 @@ ms.locfileid: "81454239"
 ## <a name="to-add-server-administrators-by-using-azure-portal"></a>Azure Portal を使用してサーバー管理者を追加するには
 
 1. ポータルで、サーバーの **[Analysis Services 管理者]** をクリックします。
-2. **[\<サーバー名> - Analysis Services 管理者]** で、 **[追加]** をクリックします。
+2. **\<servername> - [Analysis Services 管理者]** で、 **[追加]** をクリックします。
 3. **[サーバー管理者を追加します]** で、Azure AD からユーザー アカウントを選択するか、メール アドレスで外部のユーザーを招待します。
 
     ![Azure Portal のサーバー管理者](./media/analysis-services-server-admins/aas-manage-users-admins.png)

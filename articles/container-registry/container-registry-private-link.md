@@ -1,14 +1,14 @@
 ---
 title: プライベート リンクを設定する
-description: コンテナー レジストリにプライベート エンドポイントを設定し、ローカル仮想ネットワークでプライベート リンク経由のアクセスを有効にする
+description: コンテナー レジストリにプライベート エンドポイントを設定し、ローカル仮想ネットワークでプライベート リンク経由のアクセスを有効にします。 プライベート リンク アクセスは、Premium サービス レベルの機能です。
 ms.topic: article
 ms.date: 05/19/2020
-ms.openlocfilehash: da51a35b66b793294f146c5a0a30b6a91d8aa01b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: f25f7b94a3008b829340cdaaed247d7ab1203c19
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83850047"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84509340"
 ---
 # <a name="configure-azure-private-link-for-an-azure-container-registry"></a>Azure コンテナー レジストリ用に Azure Private Link を構成する 
 
@@ -243,7 +243,7 @@ az network private-dns record-set a add-record \
     | 名前 | 名前を入力します。 |
     |リージョン|リージョンを選択します。|
     |||
-5. **リソース** を選択します。
+5. **次へ:リソース** を選択します。
 6. 次の情報を入力または選択します。
 
     | 設定 | 値 |
@@ -254,7 +254,7 @@ az network private-dns record-set a add-record \
     | リソース |レジストリの名前を選択します|
     |ターゲット サブリソース |**レジストリ**を選択します|
     |||
-7. **構成** を選択します。
+7. **次へ:構成** を選択します。
 8. 次の情報を入力または選択します。
 
     | 設定 | 値 |
@@ -298,7 +298,7 @@ az acr update --name $REGISTRY_NAME --public-network-enabled false
 
 ### <a name="disable-public-access---portal"></a>パブリック アクセスを無効にする - ポータル
 
-1. ポータルで、コンテナー レジストリに移動し、 **[設定]、[ネットワーク]** の順に選択します。
+1. ポータルで、コンテナー レジストリに移動し、 **[設定] > [ネットワーク]** の順に選択します。
 1. **[パブリック アクセス]** タブの **[Allow public network access]\(パブリック ネットワーク アクセスを許可する\)** で、 **[無効]** を選択します。 次に、 **[保存]** を選択します。
 
 ## <a name="validate-private-link-connection"></a>プライベート リンク接続を確認する

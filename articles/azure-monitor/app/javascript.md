@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: d46b9f9386e8b16d4806e054820cbd82d83ef56b
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: f198e4aac08039eb7aed8468e6adb45b5b0d67b4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266990"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84464574"
 ---
 # <a name="application-insights-for-web-pages"></a>Web ページ向けの Application Insights
 
@@ -21,7 +21,7 @@ Web ページまたはアプリのパフォーマンスと使用状況につい�
 ## <a name="adding-the-javascript-sdk"></a>JavaScript SDK を追加する
 
 1. まず Application Insights リソースが必要です。 リソースとインストルメンテーション キーがまだない場合は、[新しいリソースの作成手順](create-new-resource.md)に従います。
-2. JavaScript テレメトリの送信先となるリソースからインストルメンテーション キーをコピーします。
+2. (手順 1. の) JavaScript テレメトリの送信先となるリソースの "_インストルメンテーション キー_" ("iKey" とも呼ばれます) をコピーします。これを Application Insights JavaScript SDK の `instrumentationKey` 設定に追加します。
 3. 次の 2 つの方法のいずれかを使用して、Application Insights JavaScript SDK を Web ページまたはアプリに追加します。
     * [npm のセットアップ](#npm-based-setup)
     * [JavaScript スニペット](#snippet-based-setup)
@@ -34,6 +34,14 @@ Web ページまたはアプリのパフォーマンスと使用状況につい�
 
 ### <a name="npm-based-setup"></a>npm ベースのセットアップ
 
+NPM を使用してインストールします。
+
+```sh
+npm i --save @microsoft/applicationinsights-web
+```
+
+> *注:* **typings はこのパッケージに含まれている**ため、typings パッケージを別途インストールする必要は**ありません**。
+    
 ```js
 import { ApplicationInsights } from '@microsoft/applicationinsights-web'
 
@@ -47,17 +55,63 @@ appInsights.trackPageView(); // Manually call trackPageView to establish the cur
 
 ### <a name="snippet-based-setup"></a>スニペット ベースのセットアップ
 
-アプリで npm が使用されていない場合は、各ページの上部にこのスニペットを貼り付けることによって、Application Insights で Web ページを直接インストルメント化できます。 可能であれば、これを `<head>` セクションの最初のスクリプトとして指定すると、すべての依存関係に関する潜在的な問題を監視することができます。 Blazor サーバー アプリを使用している場合は、ファイル `_Host.cshtml` の先頭の `<head>` セクションにスニペットを追加します。
+アプリで npm が使用されていない場合は、各ページの上部にこのスニペットを貼り付けることによって、Application Insights で Web ページを直接インストルメント化できます。 可能であれば、これを `<head>` セクションの最初のスクリプトとして指定することで、すべての依存関係に関する潜在的な問題と、必要に応じて JavaScript エラーを監視できます。 Blazor サーバー アプリを使用している場合は、ファイル `_Host.cshtml` の先頭の `<head>` セクションにスニペットを追加します。
+
+アプリケーションで使用されているスニペットのバージョンの追跡を支援するために、バージョン 2.5.5 以降では、識別されたスニペット バージョンを含む "ai.internal.snippet" という新しいタグがページ ビュー イベントに含まれます。
+
+現在のスニペット (下記) は、バージョン "3" として識別されます。
 
 ```html
 <script type="text/javascript">
-var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(n){var o={config:n,initialize:!0},t=document,e=window,i="script";setTimeout(function(){var e=t.createElement(i);e.src=n.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",t.getElementsByTagName(i)[0].parentNode.appendChild(e)});try{o.cookie=t.cookie}catch(e){}function a(n){o[n]=function(){var e=arguments;o.queue.push(function(){o[n].apply(o,e)})}}o.queue=[],o.version=2;for(var s=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];s.length;)a("track"+s.pop());var r="Track",c=r+"Page";a("start"+c),a("stop"+c);var u=r+"Event";if(a("start"+u),a("stop"+u),a("addTelemetryInitializer"),a("setAuthenticatedUserContext"),a("clearAuthenticatedUserContext"),a("flush"),o.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4},!(!0===n.disableExceptionTracking||n.extensionConfig&&n.extensionConfig.ApplicationInsightsAnalytics&&!0===n.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){a("_"+(s="onerror"));var p=e[s];e[s]=function(e,n,t,i,a){var r=p&&p(e,n,t,i,a);return!0!==r&&o["_"+s]({message:e,url:n,lineNumber:t,columnNumber:i,error:a}),r},n.autoExceptionInstrumented=!0}return o}(
-{
-  instrumentationKey:"INSTRUMENTATION_KEY"
-}
-);(window[aiName]=aisdk).queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
+!function(T,l,y){var S=T.location,u="script",k="instrumentationKey",D="ingestionendpoint",C="disableExceptionTracking",E="ai.device.",I="toLowerCase",b="crossOrigin",w="POST",e="appInsightsSDK",t=y.name||"appInsights";(y.name||T[e])&&(T[e]=t);var n=T[t]||function(d){var g=!1,f=!1,m={initialize:!0,queue:[],sv:"4",version:2,config:d};function v(e,t){var n={},a="Browser";return n[E+"id"]=a[I](),n[E+"type"]=a,n["ai.operation.name"]=S&&S.pathname||"_unknown_",n["ai.internal.sdkVersion"]="javascript:snippet_"+(m.sv||m.version),{time:function(){var e=new Date;function t(e){var t=""+e;return 1===t.length&&(t="0"+t),t}return e.getUTCFullYear()+"-"+t(1+e.getUTCMonth())+"-"+t(e.getUTCDate())+"T"+t(e.getUTCHours())+":"+t(e.getUTCMinutes())+":"+t(e.getUTCSeconds())+"."+((e.getUTCMilliseconds()/1e3).toFixed(3)+"").slice(2,5)+"Z"}(),iKey:e,name:"Microsoft.ApplicationInsights."+e.replace(/-/g,"")+"."+t,sampleRate:100,tags:n,data:{baseData:{ver:2}}}}var h=d.url||y.src;if(h){function a(e){var t,n,a,i,r,o,s,c,p,l,u;g=!0,m.queue=[],f||(f=!0,t=h,s=function(){var e={},t=d.connectionString;if(t)for(var n=t.split(";"),a=0;a<n.length;a++){var i=n[a].split("=");2===i.length&&(e[i[0][I]()]=i[1])}if(!e[D]){var r=e.endpointsuffix,o=r?e.location:null;e[D]="https://"+(o?o+".":"")+"dc."+(r||"services.visualstudio.com")}return e}(),c=s[k]||d[k]||"",p=s[D],l=p?p+"/v2/track":config.endpointUrl,(u=[]).push((n="SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details)",a=t,i=l,(o=(r=v(c,"Exception")).data).baseType="ExceptionData",o.baseData.exceptions=[{typeName:"SDKLoadFailed",message:n.replace(/\./g,"-"),hasFullStack:!1,stack:n+"\nSnippet failed to load ["+a+"] -- Telemetry is disabled\nHelp Link: https://go.microsoft.com/fwlink/?linkid=2128109\nHost: "+(S&&S.pathname||"_unknown_")+"\nEndpoint: "+i,parsedStack:[]}],r)),u.push(function(e,t,n,a){var i=v(c,"Message"),r=i.data;r.baseType="MessageData";var o=r.baseData;return o.message='AI (Internal): 99 message:"'+("SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details) ("+n+")").replace(/\"/g,"")+'"',o.properties={endpoint:a},i}(0,0,t,l)),function(e,t){if(JSON){var n=T.fetch;if(n&&!y.useXhr)n(t,{method:w,body:JSON.stringify(e),mode:"cors"});else if(XMLHttpRequest){var a=new XMLHttpRequest;a.open(w,t),a.setRequestHeader("Content-type","application/json"),a.send(JSON.stringify(e))}}}(u,l))}function i(e,t){f||setTimeout(function(){!t&&m.core||a()},500)}var e=function(){var n=l.createElement(u);n.src=h;var e=y[b];return!e&&""!==e||"undefined"==n[b]||(n[b]=e),n.onload=i,n.onerror=a,n.onreadystatechange=function(e,t){"loaded"!==n.readyState&&"complete"!==n.readyState||i(0,t)},n}();y.ld<0?l.getElementsByTagName("head")[0].appendChild(e):setTimeout(function(){l.getElementsByTagName(u)[0].parentNode.appendChild(e)},y.ld||0)}try{m.cookie=l.cookie}catch(p){}function t(e){for(;e.length;)!function(t){m[t]=function(){var e=arguments;g||m.queue.push(function(){m[t].apply(m,e)})}}(e.pop())}var n="track",r="TrackPage",o="TrackEvent";t([n+"Event",n+"PageView",n+"Exception",n+"Trace",n+"DependencyData",n+"Metric",n+"PageViewPerformance","start"+r,"stop"+r,"start"+o,"stop"+o,"addTelemetryInitializer","setAuthenticatedUserContext","clearAuthenticatedUserContext","flush"]),m.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4};var s=(d.extensionConfig||{}).ApplicationInsightsAnalytics||{};if(!0!==d[C]&&!0!==s[C]){method="onerror",t(["_"+method]);var c=T[method];T[method]=function(e,t,n,a,i){var r=c&&c(e,t,n,a,i);return!0!==r&&m["_"+method]({message:e,url:t,lineNumber:n,columnNumber:a,error:i}),r},d.autoExceptionInstrumented=!0}return m}(y.cfg);(T[t]=n).queue&&0===n.queue.length&&n.trackPageView({})}(window,document,{
+src: "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js", // The SDK URL Source
+//name: "appInsights", // Global SDK Instance name defaults to "appInsights" when not supplied
+//ld: 0, // Defines the load delay (in ms) before attempting to load the sdk. -1 = block page load and add to head. (default) = 0ms load after timeout,
+//useXhr: 1, // Use XHR instead of fetch to report failures (if available),
+//crossOrigin: "anonymous", // When supplied this will add the provided value as the cross origin attribute on the script tag 
+cfg: { // Application Insights Configuration
+    instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
+    /* ...Other Configuration Options... */
+}});
 </script>
 ```
+
+> [!NOTE]
+> 読みやすくするためと、発生する可能性のある JavaScript エラーを減らすために、上記のスニペット コードでは、使用可能なすべての構成オプションが新しい行に示されています。コメント行の値を変更しない場合は、それを削除できます。
+
+
+#### <a name="reporting-script-load-failures"></a>スクリプトの読み込みエラーのレポート
+
+このバージョンのスニペットでは、CDN から SDK を読み込むときのエラーを検出し、Azure Monitor ポータル ([エラー] &gt; [例外] &gt; [ブラウザー]) に例外としてレポートします。この例外により、この種のエラーが可視化されるので、アプリケーションが想定どおりにテレメトリ (または他の例外) をレポートしていないことがわかるようになります。 このシグナルは、以下の原因となる可能性がある、SDK の読み込みまたは初期化が行われなかったためにテレメトリが失われたことを理解するうえで重要な指標となります。
+- ユーザーがサイトをどのように使用しているか (または使用しようとしているか) についての過少レポート
+- エンド ユーザーによるサイトの使用状況に関するテレメトリの欠落
+- エンド ユーザーがサイトを正常に使用できなくなる可能性のある JavaScript エラーの欠落
+
+この例外の詳細については、[SDK 読み込みエラー](javascript-sdk-load-failure.md)のトラブルシューティングに関するページをご覧ください。
+
+このエラーを例外としてポータルにレポートする場合、Application Insights の構成の ```disableExceptionTracking``` 構成オプションは使用されないため、このエラーが発生した場合、window.onerror のサポートが無効になっていても、スニペットによって常にレポートされます。
+
+SDK 読み込みエラーのレポートは、IE 8 以前では特にサポートされていません。 これにより、ほとんどの環境が IE 8 以前に限定されないことが前提となって、スニペットのサイズ削減が促されます。 この要件があり、これらの例外を受け取りたい場合は、fetch polyfill を含めるか、```XMLHttpRequest``` の代わりに ```XDomainRequest``` を使用する独自のスニペット バージョンを作成する必要があります。[用意されているスニペットのソース コード](https://github.com/microsoft/ApplicationInsights-JS/blob/master/AISKU/snippet/snippet.js)を出発点として使用することをお勧めします。
+
+> [!NOTE]
+> 以前のバージョンのスニペットを使用している場合は、これまでレポートされていなかったこれらの問題を受け取ることができるように、最新バージョンに更新することを強くお勧めします。
+
+#### <a name="snippet-configuration-options"></a>スニペットの構成オプション
+
+SDK の読み込みに失敗する原因となるだけでなく、エラーのレポートを無効にする JavaScript エラーが誤って発生するのを防ぐために、すべての構成オプションがスクリプトの最後に移動されました。
+
+上記では、各構成オプションが新しい行に示されています。[省略可能] と示されている項目の既定値を上書きしたくない場合は、その行を削除することで、返されるページのサイズを最小限に抑えることができます。
+
+使用できる構成オプションは次のとおりです。 
+
+| 名前 | Type | 説明
+|------|------|----------------
+| src | string **[必須]** | SDK の読み込み元の完全な URL。 この値は、動的に追加される &lt;script /&gt; タグの "src" 属性に使用されます。 パブリック CDN の場所を使用することも、プライベートにホストされている独自の場所を使用することもできます。
+| name | string *[省略可能]* | 初期化された SDK のグローバル名。既定値は appInsights です。 ```window.appInsights``` は、初期化されたインスタンスへの参照になります。 注: name 値を指定した場合や、(グローバル名 appInsightsSDK によって) 以前のインスタンスが割り当てられているように見える場合は、この name 値もグローバル名前空間で ```window.appInsightsSDK=<name value>``` として定義されます。これは、スニペットの正しいスケルトン メソッドとプロキシ メソッドを確実に初期化および更新できるように、SDK の初期化コードで必要となります。
+| ld | ミリ秒単位の数値 *[省略可能]* | SDK の読み込みを試行するまで待機する読み込み遅延を定義します。 既定値は 0ms です。負の値を指定すると、スクリプト タグがページの &lt;head&gt; 領域に即座に追加され、スクリプトが読み込まれる (または失敗する) までページ読み込みイベントがブロックされます。
+| useXhr | ブール値 *[省略可能]* | この設定は、SDK 読み込みエラーのレポートにのみ使用されます。 レポートでは、まず fetch() の使用を試みてから (使用可能な場合)、XHR にフォールバックします。この値を true に設定すると、フェッチ チェックがバイパスされます。 この値を使用する必要があるのは、フェッチが失敗したときにエラー イベントを送信する環境でアプリケーションが使用されている場合だけです。
+| crossOrigin | string *[省略可能]* | この設定を含めると、SDK をダウンロードするために追加されたスクリプト タグに、この文字列値が設定された crossOrigin 属性が含まれるようになります。 定義されていない場合 (既定値)、crossOrigin 属性は追加されません。 推奨値は未定義 (既定値) を表す ""、または "anonymous" です (すべての有効な値については、ドキュメント「[HTML crossorigin 属性](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin)」をご覧ください)。
+| cfg | object **[必須]** | 初期化中に Application Insights SDK に渡される構成。
 
 ### <a name="sending-telemetry-to-the-azure-portal"></a>テレメトリを Azure portal に送信する
 
@@ -140,6 +194,11 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | enableRequestHeaderTracking | false | true の場合、AJAX と Fetch の要求ヘッダーが追跡されます。既定値は false です。
 | enableResponseHeaderTracking | false | true の場合、AJAX と Fetch の要求の応答ヘッダーが追跡されます。既定値は false です。
 | distributedTracingMode | `DistributedTracingModes.AI` | 分散トレース モードを設定します。 AI_AND_W3C モードまたは W3C モードが設定されている場合、W3C トレース コンテキスト ヘッダー (traceparent/traceparent) が生成され、送信されるすべての要求に組み込まれます。 AI_AND_W3C は、従来の Application Insights のインストルメント化されたサービスとの下位互換性を保つために用意されています。 [こちら](https://docs.microsoft.com/azure/azure-monitor/app/correlation#enable-w3c-distributed-tracing-support-for-web-apps)の例を参照してください。
+| enableAjaxErrorStatusText | false | 既定値は false です。 true の場合、失敗した AJAX 要求の依存関係イベントに応答エラー データ テキストを含めます。
+| enableAjaxPerfTracking | false | 既定値は false です。 ブラウザーの window.performance の追加のタイミングを検索し、レポートされる ajax (XHR および fetch) のレポートされるメトリックに含めることを可能にするフラグを設定します。
+| maxAjaxPerfLookupAttempts | 3 | 既定値は 3 です。 window.performance のタイミング (使用可能な場合) を検索する最大回数。すべてのブラウザーが、XHR 要求の終了をレポートする前に window.performance を設定するわけではないため、これは必須です。fetch 要求の場合、これは要求の完了後に追加されます。
+| ajaxPerfLookupDelay | 25 | 既定値は 25 ミリ秒です。 ajax 要求で windows.performance のタイミングの検索を再試行するまでの待ち時間。時間はミリ秒単位であり、setTimeout() に直接渡されます。
+| enableUnhandledPromiseRejectionTracking | false | true の場合、未処理の Promise 拒否が自動収集され、JavaScript エラーとしてレポートされます。 disableExceptionTracking が true (例外を追跡しない) の場合、この構成値は無視され、未処理の Promise 拒否はレポートされません。
 
 ## <a name="single-page-applications"></a>シングル ページ アプリケーション
 
@@ -256,12 +315,13 @@ SDK V2 バージョンでの破壊的変更:
 
 ## <a name="sdk-performanceoverhead"></a>SDK のパフォーマンス/オーバーヘッド
 
-Application Insights は、ちょうど 25 KB に GZip され、初期化には最長で 15 ミリ秒しかかからないため、Web サイトの読み込み時間にはほとんど影響ありません。 スニペットを使用すると、ライブラリの最小コンポーネントがすばやく読み込まれます。 その間に、スクリプト全体がバックグラウンドでダウンロードされます。
+Application Insights は、ちょうど 36 KB に gzip 圧縮され、初期化に約 15 ミリ秒しかかからないため、Web サイトの読み込み時間にほとんど影響はありません。 スニペットを使用すると、ライブラリの最小コンポーネントがすばやく読み込まれます。 その間に、スクリプト全体がバックグラウンドでダウンロードされます。
 
 スクリプトが CDN からダウンロードされている間に、ページのすべての追跡がキューに登録されます。 ダウンロードしたスクリプトの初期化が非同期で完了すると、キューに登録されたすべてのイベントが追跡されます。 この結果、ページのライフ サイクル全体でテレメトリが失われることはありません。 このセットアップ プロセスでは、ユーザーには見えないシームレスな分析システムを使用してページが提供されます。
 
 > 概要:
-> - **25 KB**: GZip 圧縮
+> - ![npm バージョン](https://badge.fury.io/js/%40microsoft%2Fapplicationinsights-web.svg)
+> - ![gzip 圧縮サイズ](https://img.badgesize.io/https://js.monitor.azure.com/scripts/b/ai.2.min.js.svg?compression=gzip)
 > - **15 ms**: 全体の初期化時間
 > - **ゼロ**: ページのライフ サイクルで失われる追跡
 
@@ -269,7 +329,15 @@ Application Insights は、ちょうど 25 KB に GZip され、初期化には�
 
 ![Chrome](https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png) | ![Firefox](https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png) | ![IE](https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png) | ![Opera](https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png) | ![Safari](https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png)
 --- | --- | --- | --- | --- |
-Chrome 最新バージョン ✔ |  Firefox 最新バージョン ✔ | IE 9+ & Edge ✔ | Opera 最新バージョン ✔ | Safari 最新バージョン ✔ |
+Chrome 最新バージョン ✔ |  Firefox 最新バージョン ✔ | IE 9+ & Edge ✔<br>IE 8 互換 | Opera 最新バージョン ✔ | Safari 最新バージョン ✔ |
+
+## <a name="es3ie8-compatibility"></a>ES3 および IE8 の互換性
+
+SDK として、顧客が使用するブラウザーを制御できない多数のユーザーがいます。 そのため、古いブラウザーで読み込まれたときに、この SDK が引き続き "動作" し、JS の実行が中断されないようにする必要があります。 IE8 および古い世代 (ES3) のブラウザーをサポートしないことが理想的ですが、ページが "動作する" ことを引き続き必要としている多数の顧客やユーザーがいます。前述のように、そういった方はエンド ユーザーが選択するブラウザーを制御できる場合とできない場合があります。
+
+これは、最も一般的ではない機能セットだけをサポートすることを意味するわけではありません。ES3 コードの互換性を維持する必要があり、新しい機能を追加するときは、ES3 JavaScript 解析を中断させない方法で、オプション機能として追加する必要があるということです。
+
+[IE8 のサポートの詳細については、GitHub を参照してください](https://github.com/Microsoft/ApplicationInsights-JS#es3ie8-compatibility)
 
 ## <a name="open-source-sdk"></a>オープンソース SDK
 
@@ -279,3 +347,4 @@ Application Insights JavaScript SDK はオープンソースです。ソース �
 * [利用状況を追跡する](usage-overview.md)
 * [カスタム イベントとメトリックス](api-custom-events-metrics.md)
 * [ビルド - 測定 - 学習](usage-overview.md)
+* [SDK 読み込みエラーのトラブルシューティング](javascript-sdk-load-failure.md)

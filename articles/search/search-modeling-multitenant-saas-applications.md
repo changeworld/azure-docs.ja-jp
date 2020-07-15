@@ -8,20 +8,24 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d8e453336005f3389f67e9571fac438bfc340c1b
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 90a9672e3a58a068d1a4488a514a6fd51c272a56
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80549023"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85081107"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>マルチテナント SaaS アプリケーションと Azure Cognitive Search の設計パターン
+
 マルチテナント アプリケーションとは、他のテナントのデータを表示したり共有したりできない多数のテナントに同じサービスと機能を提供するアプリケーションです。 このドキュメントでは、Azure Cognitive Search を使用して構築されたマルチテナント アプリケーションのテナント分離戦略について説明します。
 
 ## <a name="azure-cognitive-search-concepts"></a>Azure Cognitive Search の概念
-Search-as-a-service (サービスとしての検索) ソリューションである Azure Cognitive Search を使用すると、開発者はインフラストラクチャを管理したり、情報取得のエキスパートになったりしなくても、豊富な検索機能をアプリケーションに追加できます。 データはこのサービスにアップロードされた後、クラウドに保存されます。 Azure Cognitive Search API への簡単な要求を使用して、データの変更や検索を行うことができます。 このサービスの概要については、 [こちらの記事](https://aka.ms/whatisazsearch)をご覧ください。 設計パターンについて説明する前に、Azure Cognitive Search のいくつかの概念を理解しておく必要があります。
+Search-as-a-service (サービスとしての検索) ソリューションである [Azure Cognitive Search](search-what-is-azure-search.md) を使用すると、開発者はインフラストラクチャを管理したり、情報取得のエキスパートになったりしなくても、豊富な検索機能をアプリケーションに追加できます。 データはこのサービスにアップロードされた後、クラウドに保存されます。 Azure Cognitive Search API への簡単な要求を使用して、データの変更や検索を行うことができます。 
 
 ### <a name="search-services-indexes-fields-and-documents"></a>検索サービス、インデックス、フィールド、ドキュメント
+
+設計パターンについて説明する前に、いくつかの基本的な概念を理解しておく必要があります。
+
 Azure Cognitive Search を使用する場合、" *検索サービス*" にサブスクライブします。 データは、Azure Cognitive Search にアップロードされると、検索サービス内の " *インデックス* " に格納されます。 1 つのサービス内に多数のインデックスを作成できます。 データベースのなじみのある概念に照らし合わせた場合、検索サービスはデータベースに例えることができ、サービス内のインデックスはデータベース内のテーブルに例えることができます。
 
 検索サービス内の各インデックスは、カスタマイズ可能な多数の " *フィールド*" によって定義された独自のスキーマを持ちます。 データは、個々の " *ドキュメント*" の形で Azure Cognitive Search インデックスに追加されます。 各ドキュメントは特定のインデックスにアップロードする必要があり、そのインデックスのスキーマに適合する必要があります。 Azure Cognitive Search を使用してデータを検索するときは、特定のインデックスに対してフルテキスト検索クエリが発行されます。  これらの概念をデータベースの概念と照らし合わせた場合、フィールドはテーブル内の列に例えることができ、ドキュメントは行に例えることができます。
