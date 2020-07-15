@@ -1,5 +1,5 @@
 ---
-title: クイックスタート - Synapse Studio を使用して Apache Spark プール (プレビュー) を作成する
+title: クイック スタート:Synapse Studio を使用して Apache Spark プール (プレビュー) を作成する
 description: このガイドの手順に従って、Synapse Studio を使用して新しい Apache Spark プールを作成します。
 services: synapse-analytics
 author: julieMSFT
@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 3/19/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: c945e56aa0b6f851f54cf7679276558190b4bc10
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 87fcbef5a3cedab3142fe9ad47c68752515fdd2e
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194964"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274341"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-preview-using-synapse-studio"></a>クイック スタート:Synapse Studio を使用して Apache Spark プール (プレビュー) を作成する
 

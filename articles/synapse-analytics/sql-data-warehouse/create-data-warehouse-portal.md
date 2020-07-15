@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: Kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: c7efccf35ddb47bf349d9a21628e9445e37b7699
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: c1b640fa5104ceb0f330c9aee9813ed8b3914d33
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85211308"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166044"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Synapse SQL プールを作成し、クエリを実行する
 
@@ -56,7 +56,7 @@ Azure portal を使用して Azure Synapse Analytics (旧称 SQL DW) の Synapse
    | **サブスクリプション** | 該当するサブスクリプション | サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。 |
    | **リソース グループ** | myResourceGroup | 有効なリソース グループ名については、[名前付け規則と制限](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)に関するページを参照してください。 |
    | **SQL プール名** | グローバルに一意の名前 (例: *mySampleDataWarehouse*) | 有効なデータベース名については、「[Database Identifiers (データベース識別子)](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」を参照してください。 SQL プールは、データベースの一種であることに注意してください。 |
-   | **[サーバー]** | グローバルに一意の名前 | 既存のサーバーを選択するか、新しいサーバー名を付けて **[新規作成]** を選択します。 有効なサーバー名については、[名前付け規則と制限](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)に関するページを参照してください。 |
+   | **サーバー** | グローバルに一意の名前 | 既存のサーバーを選択するか、新しいサーバー名を付けて **[新規作成]** を選択します。 有効なサーバー名については、[名前付け規則と制限](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)に関するページを参照してください。 |
 
    ![データ ウェアハウスの基本情報を作成する](./media/create-data-warehouse-portal/create-sql-pool-basics.png)
 
@@ -199,6 +199,10 @@ SQL Data Warehouse はクエリ言語として T-SQL を使用しています。
 4. 作成したサーバーを削除するには、前の画像の **sqlpoolservername.database.windows.net** を選択して、 **[削除]** を選択します。 サーバーを削除すると、サーバーに割り当てられているすべてのデータベースが削除されるので、削除には注意してください。
 
 5. リソース グループを削除するには、**myResourceGroup** を選択して、 **[リソース グループの削除]** を選択します。
+
+クラウドの支出を最適化して節約しますか?
+
+[!INCLUDE [cost-management-horizontal](../../../includes/cost-management-horizontal.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

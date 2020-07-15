@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: overview
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: a9dab2ca844feb1c24dfffc48b4f29cd1a311314
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 7967b58819523173fd66d45eeabeaddc8605a21d
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76153193"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229467"
 ---
 # <a name="what-is-avere-vfxt-for-azure"></a>Avere vFXT for Azure とは
 
@@ -66,7 +66,7 @@ Avere vFXT は、ファイルが要求されたときにそれらをキャッシ
 
 Avere vFXT for Azure では次の Azure リソースが使用されます。
 
-|Azure のコンポーネント|   |
+|Azure のコンポーネント| リソース |
 |----------|-----------|
 |仮想マシン|3 つ以上の E32s_v3|
 |Premium SSD ストレージ|200 GB の OS スペース、およびノードあたり 1 から 4 TB のキャッシュ |
