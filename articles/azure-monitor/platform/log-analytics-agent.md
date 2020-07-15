@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: cbefe2e2b25db7ce16a7a1bde423f60fda412590
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: ce7edf4dd5ae52f3ea604fe4b8d88d1a29de5a69
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773357"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84608368"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics エージェントの概要
 Azure Log Analytics エージェントは、あらゆるクラウド、オンプレミスマシンの仮想マシン、[System Center Operations Manager](https://docs.microsoft.com/system-center/scom/)で監視される仮想マシンを包括的に管理するために開発されました。 Windows および Linux エージェントは、異なるソースから収集したデータを Azure Monitor の Log Analytics ワークスペースに送信し、モニター ソリューションで定義された固有のログやメトリックを送信します。 Log Analytics エージェントはインサイトや [Azure Monitor for VMs](../insights/vminsights-enable-overview.md)、[Azure Security Center](/azure/security-center/)、[Azure Automation](../../automation/automation-intro.md) といった Azure Monitor のその他のサービスもサポートします。
@@ -114,6 +114,24 @@ Windows エージェントでは、次のバージョンの Windows オペレー
 >[!NOTE]
 >現在サポートされていないディストリビューションまたはバージョンを使用しており、サポート モデルに準拠していない場合、Microsoft サポートは、支援機能にフォークされたエージェント バージョンを提供していることを認識したうえで、このレポジトリをフォークすることをお勧めします。
 
+
+### <a name="python-2-requirement"></a>Python 2 要件
+ Log Analytics エージェントには Python 2 が必須です。 既定で Python 2 が含まれないディストリビューションが仮想マシンで使用されている場合、それをインストールする必要があります。 次のサンプル コマンドでは、異なるディストリビューションに Python 2 がインストールされます。
+
+ - Red Hat、CentOS、Oracle: `yum install -y python2`
+ - Ubuntu、Debian: `apt-get install -y python2`
+ - SUSE: `zypper install -y python2`
+
+次のコマンドを使用し、python2 実行可能ファイルを "python" という別名を付ける必要があります。
+
+```
+alternatives --set python /usr/sbin/python2
+```
+
+### <a name="supported-distros"></a>サポートされているディストリビューション
+
+Linux エージェントでは、次のバージョンの Linux オペレーティング システムが正式にサポートされています。
+
 * Amazon Linux 2017.09 (x64)
 * CentOS Linux 6 (x64) および 7 (x64)  
 * Oracle Linux 6 および 7 (x64) 
@@ -210,4 +228,3 @@ Linux エージェントの場合、プロキシ サーバーは、インスト�
 * [データ ソース](agent-data-sources.md)を見直して、Windows または Linux コンピューターからデータを収集するために使用できるデータ ソースを理解します。 
 * [ログ クエリ](../log-query/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。 
 * Azure Monitor に機能を追加し、Log Analytics ワークスペース内にデータを収集する[監視ソリューション](../insights/solutions.md)について学習します。
-

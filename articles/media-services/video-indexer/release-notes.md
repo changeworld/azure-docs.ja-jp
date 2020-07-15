@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 06/02/2020
 ms.author: juliako
-ms.openlocfilehash: d78390aac51ea6fa70e1285b15dcc7ade74434ee
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 5bd4c9aa3fde9e3fa596ce5a18b892edfab60af5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124586"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84325067"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer リリース ノート
 
@@ -29,6 +29,20 @@ ms.locfileid: "83124586"
 * 既知の問題
 * バグの修正
 * 非推奨の機能
+
+## <a name="may-2020"></a>2020 年 5 月
+
+### <a name="video-indexer-deployed-in-the-east-us"></a>米国東部でデプロイされる Video Indexer
+
+Video Indexer 有料アカウントを米国東部リージョン作成できるようになりました。
+ 
+### <a name="video-indexer-url"></a>Video Indexer の URL
+
+Video Indexer のリージョン エンドポイントはすべて、www でのみ始まるように統一されました。 必要な操作はありません。
+
+今後は、ウィジェットを埋め込む場合も、Video Indexer Web アプリケーションにログインする場合も www.videoindexer.ai にアクセスします。
+
+また、wus.videoindexer.ai も www にリダイレクトされます。 詳細については、「[お使いのアプリに Video Indexer ウィジェットを埋め込む](video-indexer-embed-widgets.md)」を参照してください。
 
 ## <a name="april-2020"></a>2020 年 4 月
 

@@ -1,8 +1,8 @@
 ---
 title: 一般的なセキュリティ要件を解決するためのプレイブック
-titleSuffix: Azure SQL Database & SQL Managed Instance
+titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: この記事では、Azure SQL Database および Azure SQL Managed Instance の一般的なセキュリティ要件とベスト プラクティスについて説明します
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: sqldbrb=2
 author: VanMSFT
@@ -10,14 +10,14 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: a462c3480d58a7895429863cb3d09874cd6ef0f8
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 8104302afa84446e2d57c7156f33bc0160e31472
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84217914"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986783"
 ---
-# <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database--sql-managed-instance"></a>Azure SQL Database と Azure SQL Managed Instance で一般的なセキュリティ要件を解決するためのプレイブック
+# <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database と Azure SQL Managed Instance で一般的なセキュリティ要件を解決するためのプレイブック
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 この記事では、一般的なセキュリティ要件を解決する方法に関するベスト プラクティスを提供します。 一部の要件はすべての環境には適用されないため、どの機能を実装するかについて、ご自分のデータベースおよびセキュリティ チームにご相談ください。
@@ -31,7 +31,7 @@ ms.locfileid: "84217914"
 - [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-single-index): [サーバー](logical-servers.md)内の[単一データベース](single-database-overview.md)と[エラスティック プール](elastic-pool-overview.md)
 - [Azure SQL Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index)
 
-### <a name="sql-deployment-offers-not-covered-in-this-guide"></a>このガイドで扱っていない SQL デプロイのオファー
+### <a name="deployment-offers-not-covered-in-this-guide"></a>このガイドで扱っていないデプロイのオファー
 
 - Azure SQL Data Warehouse
 - Azure SQL VM (IaaS)
@@ -60,8 +60,6 @@ ms.locfileid: "84217914"
 - [NIST Special Publication 800-53 セキュリティ制御](https://nvd.nist.gov/800-53):AC-5、AC-6
 - [PCI DSS](https://www.pcisecuritystandards.org/document_library):6.3.2、6.4.2
 
-### <a name="feedback"></a>フィードバック
-
 こちらに記載されている推奨事項とベスト プラクティスは、継続的に更新予定です。 このドキュメントに関してご意見または訂正事項などがございましたら、この記事の下部にある**フィードバック**のリンクを利用してお寄せください。
 
 ## <a name="authentication"></a>認証
@@ -78,7 +76,7 @@ ms.locfileid: "84217914"
 
 ID の中央管理には、次のような利点があります。
 
-- サーバー、データベース、SQL Managed Instance 間でログインを重複させずに、グループ アカウントを管理してユーザーのアクセス許可を制御します。
+- サーバー、データベース、マネージド インスタンス間でログインを重複させずに、グループ アカウントを管理してユーザーのアクセス許可を制御します。
 - 簡素化された柔軟なアクセス許可の管理。
 - 大規模なアプリケーションの管理。
 
@@ -103,52 +101,52 @@ ID の中央管理には、次のような利点があります。
 
 - Azure AD 監査アクティビティ レポートを使用して Azure AD グループ メンバーシップの変更を監視します。
 
-- SQL Managed Instance の場合、Azure AD 管理者を作成するための別の手順が必要です。
+- マネージド インスタンスの場合、Azure AD 管理者を作成するための別の手順が必要です。
   - 「[マネージド インスタンスの Azure Active Directory 管理者をプロビジョニングする](authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance)」という記事を参照してください。
 
 > [!NOTE]
 >
 > - Azure AD 認証は Azure SQL 監査ログに記録されますが、Azure AD サインイン ログには記録されません。
 > - Azure で付与された RBAC アクセス許可は、Azure SQL Database または SQL Managed Instance のアクセス許可には適用されません。 このようなアクセス許可は、既存の SQL アクセス許可を使用して手動で作成またはマップする必要があります。
-> - クライアント側では、Azure AD 認証にはインターネットへのアクセス、またはユーザー定義ルート (UDR) 経由の VNet へのアクセスが必要です。
+> - クライアント側では、Azure AD 認証にはインターネットへのアクセス、またはユーザー定義ルート (UDR) 経由の仮想ネットワークへのアクセスが必要です。
 > - Azure AD アクセス トークンはクライアント側にキャッシュされ、その有効期間はトークンの構成によって異なります。 「[Azure Active Directory における構成可能なトークンの有効期間](../../active-directory/develop/active-directory-configurable-token-lifetimes.md)」という記事を参照してください。
 > - Azure AD Authentication の問題のトラブルシューティングのガイダンスについては、次のブログを参照してください。[Azure AD のトラブルシューティング](https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991)。
 
-### <a name="multi-factor-authentication-mfa"></a>Multi-Factor Authentication (MFA)
+### <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
 
 > 次で言及されています: OSA プラクティス #2、ISO アクセス制御 (AC)
 
-Azure Multi-Factor Authentication (MFA) は、複数の形式の認証を要求することにより、セキュリティを強化するのに役立ちます。
+Azure Multi-Factor Authentication は、複数の形式の認証を要求することにより、セキュリティを強化するのに役立ちます。
 
 **実装方法**:
 
-- 条件付きアクセスを使用して Azure AD で [MFA を有効](../../active-directory/authentication/concept-mfa-howitworks.md)にし、対話型認証を使用します。
+- 条件付きアクセスを使用して Azure AD で [Multi-Factor Authentication を有効](../../active-directory/authentication/concept-mfa-howitworks.md)にし、対話型認証を使用します。
 
-- 別の方法として、Azure AD または AD ドメイン全体で MFA を有効にすることもできます。
+- 別の方法として、Azure AD または AD ドメイン全体で Multi-Factor Authentication を有効にすることもできます。
 
 **ベスト プラクティス**:
 
 - Azure AD で条件付きアクセスをアクティブにします (Premium サブスクリプションが必要)。
   - [Azure AD での条件付きアクセス](../../active-directory/conditional-access/overview.md)に関する記事を参照してください。  
 
-- Azure AD グループを作成し、Azure AD 条件付きアクセスを使用して、選択したグループに対して MFA ポリシーを有効にします。
+- Azure AD グループを作成し、Azure AD 条件付きアクセスを使用して、選択したグループに対して Multi-Factor Authentication ポリシーを有効にします。
   - [条件付きアクセスの展開の計画](../../active-directory/conditional-access/plan-conditional-access.md)に関する記事を参照してください。
 
-- MFA は、Azure AD 全体、または Azure AD とフェデレーションされた Active Directory 全体で有効にすることができます。
+- Multi-Factor Authentication は、Azure AD 全体、または Azure AD とフェデレーションされた Active Directory 全体で有効にすることができます。
 
-- パスワードが対話形式で要求され、その後に MFA 認証が適用される Azure SQL Database と Azure SQL Managed Instance には Azure AD 対話型認証モードを使用します。
-  - SSMS でユニバーサル認証を使用します。 [Azure SQL Database、SQL Managed Instance、Azure Synapse で多要素 AAD 認証を使用する (MFA の SSMS サポート)](authentication-mfa-ssms-overview.md)に関する記事を参照してください。
+- パスワードが対話形式で要求され、その後に Multi-Factor Authentication 認証が適用される Azure SQL Database と Azure SQL Managed Instance には Azure AD 対話型認証モードを使用します。
+  - SSMS でユニバーサル認証を使用します。 [Azure SQL Database、SQL Managed Instance、Azure Synapse で多要素 Azure AD 認証を使用する (Multi-Factor Authentication の SSMS サポート)](authentication-mfa-ssms-overview.md) に関する記事を参照してください。
   - SQL Server Data Tools (SSDT) でサポートされている対話型認証を使用します。 「[SQL Server Data Tools (SSDT) での Azure Active Directory のサポート](https://docs.microsoft.com/sql/ssdt/azure-active-directory?view=azuresqldb-current)」という記事を参照してください。
-  - MFA をサポートする他の SQL ツールを使用します。
+  - Multi-Factor Authentication をサポートする他の SQL ツールを使用します。
     - データベースをエクスポート/抽出/デプロイするための SSMS ウィザードのサポート  
     - [sqlpackage.exe](https://docs.microsoft.com/sql/tools/sqlpackage): オプション "/ua"
     - [sqlcmd ユーティリティ](https://docs.microsoft.com/sql/tools/sqlcmd-utility): オプション -G (対話型)
     - [bcp ユーティリティ](https://docs.microsoft.com/sql/tools/bcp-utility): オプション -G (対話型)
 
-- MFA をサポートする対話型認証を使用して、Azure SQL Database または Azure SQL Managed Instance に接続するアプリケーションを実装します。
+- Multi-Factor Authentication をサポートする対話型認証を使用して、Azure SQL Database または Azure SQL Managed Instance に接続するアプリケーションを実装します。
   - 「[Azure Multi-Factor Authentication を使用して Azure SQL Database に接続する](active-directory-interactive-connect-azure-sql-db.md)」という記事を参照してください。
   > [!NOTE]
-  > この認証モードには、ユーザーベースの ID が必要です。 個々の Azure AD ユーザー認証をバイパスする信頼できる ID モデルが使用されている場合 (たとえば、Azure リソースにマネージド ID を使用)、MFA は適用されません。
+  > この認証モードには、ユーザーベースの ID が必要です。 個々の Azure AD ユーザー認証をバイパスする信頼できる ID モデルが使用されている場合 (たとえば、Azure リソースにマネージド ID を使用)、Multi-Factor Authentication は適用されません。
 
 ### <a name="minimize-the-use-of-password-based-authentication-for-users"></a>ユーザーに対するパスワードベースの認証の使用を最小限にする
 
@@ -178,7 +176,7 @@ Azure Multi-Factor Authentication (MFA) は、複数の形式の認証を要求�
 - [Azure リソースに対してマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) を使用します。
   - [システム割り当てマネージド ID](../../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-sql.md)
   - [ユーザー割り当てマネージド ID](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
-  - [マネージド ID を使ってアプリ サービスから Azure SQL Database を使用します (コード変更なし)](https://github.com/Azure-Samples/app-service-msi-entityframework-dotnet)
+  - [マネージド ID を使って Azure App Service から Azure SQL Database を使用します (コード変更なし)](https://github.com/Azure-Samples/app-service-msi-entityframework-dotnet)
 
 - アプリケーションに対して、証明書ベースの認証を使用します。
   - こちらの[コード サンプル](https://github.com/Microsoft/sql-server-samples/tree/master/samples/features/security/azure-active-directory-auth/token)を参照してください。
@@ -192,7 +190,7 @@ Azure Multi-Factor Authentication (MFA) は、複数の形式の認証を要求�
 
 **実装方法**:
 
-- Azure Key Vault を使用してパスワードとシークレットを格納します。 適用できる場合は必ず、Azure AD ユーザーを含む Azure SQL Database に対して MFA を使用します。
+- Azure Key Vault を使用してパスワードとシークレットを格納します。 適用できる場合は必ず、Azure AD ユーザーを含む Azure SQL Database に対して Multi-Factor Authentication を使用します。
 
 **ベスト プラクティス**:
 
@@ -294,7 +292,7 @@ SQL 認証とは、ユーザーがユーザー名とパスワードを使用し�
 
 - 必要なユーザー グループにしたがってロールを作成し、ロールにアクセス許可を割り当てます。
   - Azure portal での、または PowerShell 自動化を使用した管理レベルのタスクには、RBAC ロールを使用します。 要件に一致する組み込みロールを見つけるか、使用可能なアクセス許可を使用してカスタム RBAC ロールを作成します。
-  - SQL Managed Instance でサーバー全体のタスク (新しいログイン、データベースの作成) のサーバー ロールを作成します。
+  - サーバー全体のタスク (新しいログイン、データベースの作成) のサーバー ロールをマネージド インスタンスに作成します。
   - データベース レベルのタスクに対するデータベース ロールを作成します。
 
 - 特定の機密性の高いタスクについては、ユーザーに代わってタスクを実行するために、証明書によって署名された特殊なストアド プロシージャを作成することを検討してください。 デジタル署名されたストアド プロシージャの重要な利点の 1 つは、プロシージャが変更された場合に、以前のバージョンのプロシージャに与えられたアクセス許可が直ちに削除されることです。
@@ -400,7 +398,7 @@ SoD についてより深く知りたい読者には、次のリソースをお�
 **実装方法**:
 
 - サービス マネージド キーを使用した [Transparent Database Encryption (TDE)](transparent-data-encryption-tde-overview.md) は、2017 年より後に Azure SQL Database および SQL Managed Instance で作成されたすべてのデータベースに対して既定で有効になっています。
-- SQL Managed Instance で、オンプレミス サーバーを使用した復元操作からデータベースが作成された場合は、元のデータベースの TDE 設定が使用されます。 元のデータベースで TDE が有効になっていない場合は、SQL Managed Instance に対して手動で TDE を有効にすることをお勧めします。
+- マネージド インスタンスで、オンプレミス サーバーを使用した復元操作からデータベースが作成された場合は、元のデータベースの TDE 設定が使用されます。 元のデータベースで TDE が有効になっていない場合は、マネージド インスタンスに対して手動で TDE を有効にすることをお勧めします。
 
 **ベスト プラクティス**:
 
@@ -468,7 +466,7 @@ CLE を使用する場合:
 
 Always Encrypted が、基本的に、使用中の機密データを Azure SQL Database の高い特権を持つユーザー (クラウド オペレーター、DBA) から保護するように設計されていることに留意してください。「[高い特権を持つ承認されていないユーザーから、使用中の機密データを保護する](#protect-sensitive-data-in-use-from-high-privileged-unauthorized-users)」を参照してください。 Always Encrypted を使用してアプリケーション ユーザーからデータを保護する場合は、次の課題に注意してください。
 
-- 既定で、Always Encrypted をサポートするすべての Microsoft クライアント ドライバーは、列暗号化キーのグローバル (アプリケーションごとに 1 つ) のキャッシュを保持しています。 クライアント ドライバーが列マスター キーを保持しているキー ストアに接続して、プレーンテキスト列の暗号化キーを取得すると、そのプレーンテキスト列の暗号化キーはキャッシュされます。 そのため、マルチユーザー アプリケーションのユーザーからデータを分離することは困難になります。 アプリケーションがキー ストア (Azure Key Vault など) と対話するときにエンド ユーザーを偽装すると、ユーザーのクエリによって列暗号化キーがキャッシュに取り込まれた後、同じキーを必要とするが、別のユーザーによってトリガーされる後続のクエリでは、キャッシュされたキーが使用されます。 ドライバーはキー ストアを呼び出さず、2 番目のユーザーが列暗号化キーにアクセスする権限を持っているかどうかはチェックされません。 その結果、ユーザーがキーへのアクセス権を持っていない場合でも、ユーザーは暗号化されたデータを表示できます。 マルチユーザー アプリケーション内のユーザーを分離するには、列暗号化キーのキャッシュを無効にします。 キャッシュを無効にすると、パフォーマンスのオーバーヘッドが増えます。これは、データの暗号化または復号化の操作ごとに、ドライバーがキーストアに接続する必要があるためです。
+- 既定で、Always Encrypted をサポートするすべての Microsoft クライアント ドライバーは、列暗号化キーのグローバル (アプリケーションごとに 1 つ) のキャッシュを保持しています。 クライアント ドライバーが列マスター キーを保持しているキー ストアに接続して、プレーンテキスト列の暗号化キーを取得すると、そのプレーンテキスト列の暗号化キーはキャッシュされます。 そのため、マルチユーザー アプリケーションのユーザーからデータを分離することは困難になります。 アプリケーションがキー ストア (Azure Key Vault など) と対話するときにエンド ユーザーを偽装すると、ユーザーのクエリによって列暗号化キーがキャッシュに取り込まれた後、同じキーを必要とするが、別のユーザーによってトリガーされる後続のクエリでは、キャッシュされたキーが使用されます。 ドライバーはキー ストアを呼び出さず、2 番目のユーザーが列暗号化キーにアクセスする権限を持っているかどうかはチェックされません。 その結果、ユーザーがキーへのアクセス権を持っていない場合でも、そのユーザーは暗号化されたデータを表示できます。 マルチユーザー アプリケーション内のユーザーを分離するには、列暗号化キーのキャッシュを無効にします。 キャッシュを無効にすると、パフォーマンスのオーバーヘッドが増えます。これは、データの暗号化または復号化の操作ごとに、ドライバーがキーストアに接続する必要があるためです。
 
 ### <a name="protect-data-against-unauthorized-viewing-by-application-users-while-preserving-data-format"></a>データ形式を維持しながら、アプリケーション ユーザーによる承認されていない表示からデータを保護する
 
@@ -503,7 +501,7 @@ Always Encrypted が、基本的に、使用中の機密データを Azure SQL D
 
 **実装方法**:
 
-- Azure SQL Database および SQL Managed Instance に接続しているクライアント コンピューターでは、確実に [トランスポート層セキュリティ (TLS)](security-overview.md#transport-layer-security-tls-encryption-in-transit) を使用します。
+- Azure SQL Database および SQL Managed Instance に接続しているクライアント コンピューターでは、確実に [トランスポート層セキュリティ (TLS)](security-overview.md#transport-layer-security-encryption-in-transit) を使用します。
 
 **ベスト プラクティス**:
 
@@ -534,30 +532,30 @@ SQL Database:
 - VNet サービス エンドポイントと VNet ファイアウォール規則を使用します。
 - Private Link (プレビュー) を使用します。
 
-SQL Managed Instance:
+SQL Managed Instance の場合:
 
 - 「[ネットワークの要件](../managed-instance/connectivity-architecture-overview.md#network-requirements)」のガイドラインに従います。
 
 **ベスト プラクティス**:
 
 - (たとえば、プライベート データ パスを使用して) プライベート エンドポイントで接続することにより、Azure SQL Database および SQL Managed Instance へのアクセスを制限します。
-  - SQL Managed Instance を VNet 内で分離して、外部アクセスを防ぐことができます。 同じリージョン内の同じ VNet またはピアリングされた VNet 内にあるアプリケーションとツールからは、直接アクセスできます。 異なるリージョンにあるアプリケーションとツールは、VNet 間接続や ExpressRoute 回線のピアリングを使用して接続を確立できます。 ユーザーは、ネットワーク セキュリティ グループ (NSG) を使用して、ポート 1433 でのアクセスを、マネージド インスタンスへのアクセスを必要とするリソースのみに制限する必要があります。
-  - SQL Database については、VNet 内のサーバーに専用のプライベート IP を提供する [Private Link](../../private-link/private-endpoint-overview.md) 機能を使用します。 また、[VNet サービス エンドポイントと VNet ファイアウォール規則](vnet-service-endpoint-rule-overview.md)を使用して、サーバーへのアクセスを制限することもできます。
+  - マネージド インスタンスは、外部アクセスを防ぐために、仮想ネットワーク内で分離することができます。 同じリージョン内の同じまたはピアリングされた仮想ネットワークにあるアプリケーションとツールは、直接アクセスできます。 異なるリージョンにあるアプリケーションとツールは、仮想ネットワーク間接続や ExpressRoute 回線のピアリングを使用して接続を確立できます。 ユーザーは、ネットワーク セキュリティ グループ (NSG) を使用して、ポート 1433 でのアクセスを、マネージド インスタンスへのアクセスを必要とするリソースのみに制限する必要があります。
+  - SQL Database については、仮想ネットワーク内のサーバーに専用のプライベート IP を提供する [Private Link](../../private-link/private-endpoint-overview.md) 機能を使用します。 また、[仮想ネットワークのファイアウォール規則と共に仮想ネットワーク サービス エンドポイント](vnet-service-endpoint-rule-overview.md)を使用して、ご使用のサーバーへのアクセスを制限することもできます。
   - モバイル ユーザーは、ポイント対サイト VPN 接続を使用して、データ パス経由で接続する必要があります。
   - オンプレミス ネットワークに接続されているユーザーは、サイト間 VPN 接続または ExpressRoute を使用して、データ パス経由で接続する必要があります。
 
 - パブリック エンドポイントに接続することで (たとえば、パブリック データ パスを使用して) Azure SQL Database および SQL Managed Instance にアクセスできます。 次のベスト プラクティスを検討してください。
   - SQL Database のサーバーの場合は、[IP ファイアウォール規則](firewall-configure.md)を使用して、許可された IP アドレスのみにアクセスを制限します。
-  - SQL Managed Instance のインスタンス場合、ネットワーク セキュリティ グループ (NSG) を使用して、ポート 3342 でのアクセスを、必要なリソースのみに制限します。 詳細については、「[パブリック エンドポイントで安全に Azure SQL Managed Instance を使用する](../managed-instance/public-endpoint-overview.md)」を参照してください。
+  - SQL Managed Instance の場合、ネットワーク セキュリティ グループ (NSG) を使用して、ポート 3342 でのアクセスを、必要なリソースのみに制限します。 詳細については、「[パブリック エンドポイントで安全にマネージド インスタンスを使用する](../managed-instance/public-endpoint-overview.md)」を参照してください。
 
 > [!NOTE]
 > SQL Managed Instance のパブリック エンドポイントは、既定では有効になっておらず、明示的に有効にする必要があります。 会社のポリシーでパブリック エンドポイントの使用が禁止されている場合は、最初に [Azure Policy](../../governance/policy/overview.md) を使用して、パブリック エンドポイントを有効にしないようにします。
 
 - Azure のネットワーク コンポーネントを設定します。
   - 「[Azure のネットワーク セキュリティのベスト プラクティス](../../security/fundamentals/network-best-practices.md)」に従います。
-  - 「[Azure Virtual Network のよく寄せられる質問 (FAQ)](../../virtual-network/virtual-networks-faq.md)」で説明されているベスト プラクティスと計画に従って、Virtual Network (VNet) の構成を計画します。
-  - VNet を複数のサブネットにセグメント化し、同様のロールのリソースを同じサブネット (たとえば、フロントエンドとバックエンドのリソース) に割り当てます。
-  - [ネットワーク セキュリティ グループ (NSG)](../../virtual-network/security-overview.md) を使用して、Azure VNet 境界内のサブネット間のトラフィックを制御します。
+  - 「[Azure Virtual Network のよく寄せられる質問 (FAQ)](../../virtual-network/virtual-networks-faq.md)」で説明されているベスト プラクティスと計画に従って、Virtual Network の構成を計画します。
+  - 仮想ネットワークを複数のサブネットにセグメント化し、同様のロールのリソースを同じサブネット (たとえば、フロントエンドとバックエンドのリソース) に割り当てます。
+  - [ネットワーク セキュリティ グループ (NSG)](../../virtual-network/security-overview.md) を使用して、Azure 仮想ネットワーク境界内のサブネット間のトラフィックを制御します。
   - サブスクリプションで [Azure Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md) を有効にして、ネットワークの送受信トラフィックを監視します。
 
 ### <a name="configure-power-bi-for-secure-connections-to-sql-databasesql-managed-instance"></a>SQL Database または SQL Managed Instance へのセキュリティで保護された接続用に Power BI を構成する
@@ -578,23 +576,23 @@ SQL Managed Instance:
 
 - 単純な Web アプリの場合、パブリック エンドポイント経由で接続するには、 **[Azure サービスを許可する]** を [オン] に設定する必要があります。
 
-- SQL Managed Instance へのプライベート データ パスの接続のために、[アプリを Azure Virtual Network に統合](../../app-service/web-sites-integrate-with-vnet.md)します。 必要に応じて、[App Service Environment (ASE)](../../app-service/environment/intro.md) を使用して Web アプリをデプロイすることもできます。
+- マネージド インスタンスへのプライベート データ パスの接続のために、[アプリを Azure Virtual Network に統合](../../app-service/web-sites-integrate-with-vnet.md)します。 必要に応じて、[App Service Environment (ASE)](../../app-service/environment/intro.md) を使用して Web アプリをデプロイすることもできます。
 
-- ASE を使用する Web アプリ、または SQL Database 内のデータベースに接続する VNet に統合された Web アプリの場合、[VNet サービス エンドポイントと VNet ファイアウォール規則](vnet-service-endpoint-rule-overview.md)を使用して特定の VNet とサブネットからのアクセスを制限することができます。 次に、 **[Azure サービスを許可する]** を [オフ] に設定します。 また、プライベート データ パス経由で ASE を SQL Managed Instance のマネージド インスタンスに接続することもできます。  
+- ASE を使用する Web アプリ、または SQL Database 内のデータベースに接続する仮想ネットワークに統合された Web アプリの場合、[仮想ネットワーク サービス エンドポイントと仮想ネットワーク ファイアウォール規則](vnet-service-endpoint-rule-overview.md)を使用して特定の仮想ネットワークとサブネットからのアクセスを制限することができます。 次に、 **[Azure サービスを許可する]** を [オフ] に設定します。 また、プライベート データ パス経由で ASE を SQL Managed Instance のマネージド インスタンスに接続することもできます。  
 
-- 「[Azure App Service を使用して PaaS の Web アプリケーションを保護するベスト プラクティス](../../security/fundamentals/paas-applications-using-app-services.md)」の記事に従って Web アプリが構成されていることを確認します。
+- 「[Azure App Service を使用してサービスとしてのプラットフォーム (PaaS) の Web アプリケーションを保護するベスト プラクティス](../../security/fundamentals/paas-applications-using-app-services.md)」の記事に従って Web アプリが構成されていることを確認します。
 
 - Web アプリを一般的な悪用と脆弱性から保護するために、[Web アプリケーション ファイアウォール (WAF)](../../web-application-firewall/ag/ag-overview.md) をインストールします。
 
-### <a name="configure-azure-vm-hosting-for-secure-connections-to-sql-databasesql-managed-instance"></a>SQL Database または SQL Managed Instance へのセキュリティで保護された接続用に Azure VM ホスティングを構成する
+### <a name="configure-azure-virtual-machine-hosting-for-secure-connections-to-sql-databasesql-managed-instance"></a>SQL Database または SQL Managed Instance へのセキュリティで保護された接続用に Azure 仮想マシンのホスティングを構成する
 
 **ベスト プラクティス**:
 
-- Azure VM の NSG で許可と拒否の規則を組み合わせて使用して、VM からアクセスできるリージョンを制御します。
+- Azure 仮想マシンの NSG で許可と拒否の規則を組み合わせて使用して、VM からアクセスできるリージョンを制御します。
 
 - 「[Azure における IaaS ワークロードのセキュリティに関するベスト プラクティス](../../security/fundamentals/iaas.md)」という記事に従って VM が構成されていることを確認します。
 
-- すべての VM が特定の VNet およびサブネットに関連付けられていることを確認します。
+- すべての VM が特定の仮想ネットワークおよびサブネットに関連付けられていることを確認します。
 
 - 「[強制トンネリングについて](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md#about-forced-tunneling)」のガイダンスに従って、既定のルート 0.0.0.0/インターネットが必要かどうかを評価します。
   - 必要な場合 (たとえば、フロントエンド サブネット) は、既定のルートを保持します。
@@ -602,9 +600,9 @@ SQL Managed Instance:
 
 - ピアリングを使用しているか、オンプレミスに接続している場合は、[省略可能な既定のルート](../../virtual-network/virtual-networks-udr-overview.md#optional-default-routes)を実装します。
 
-- パケット検査のために VNet 内のすべてのトラフィックをネットワーク仮想アプライアンスに送信する必要がある場合は、[ユーザー定義ルート](../../virtual-network/virtual-networks-udr-overview.md#user-defined)を実装します。
+- パケット検査のために仮想ネットワーク内のすべてのトラフィックをネットワーク仮想アプライアンスに送信する必要がある場合は、[ユーザー定義ルート](../../virtual-network/virtual-networks-udr-overview.md#user-defined)を実装します。
 
-- Azure のバックボーン ネットワーク経由で Azure Storage などの PaaS サービスに安全にアクセスするには、[VNet サービス エンドポイント](vnet-service-endpoint-rule-overview.md)を使用します。
+- Azure のバックボーン ネットワーク経由で Azure Storage などの PaaS サービスに安全にアクセスするには、[仮想ネットワーク サービス エンドポイント](vnet-service-endpoint-rule-overview.md)を使用します。
 
 ### <a name="protect-against-distributed-denial-of-service-ddos-attacks"></a>分散型サービス拒否 (DDoS) 攻撃から保護する
 
@@ -616,7 +614,7 @@ SQL Managed Instance:
 
 DDoS 保護は、Azure プラットフォームの一部として自動的に有効になります。 これには、パブリック エンドポイントでのネットワーク レベル攻撃に対する常時オンのトラフィック監視とリアルタイム軽減策が含まれます。
 
-- [Azure DDoS Protection](../../virtual-network/ddos-protection-overview.md) を使用して、VNet にデプロイされたリソースに関連付けられているパブリック IP アドレスを監視します。
+- [Azure DDoS Protection](../../virtual-network/ddos-protection-overview.md) を使用して、仮想ネットワークにデプロイされたリソースに関連付けられているパブリック IP アドレスを監視します。
 
 - [SQL Database の Advanced Threat Protection](threat-detection-overview.md) を使用して、データベースに対するサービス拒否 (DoS) 攻撃を検出します。
 
@@ -755,7 +753,7 @@ Advanced Threat Protection を使用すると、異常なアクティビティ�
 
 ### <a name="visualize-security-and-compliance-status"></a>セキュリティとコンプライアンスの状態を視覚化する
 
-データ センター (SQL Database を含む) のセキュリティ体制を強化する、統一されたインフラストラクチャ セキュリティ管理システムを使用します。 データベースとコンプライアンス状態のセキュリティに関連する推奨事項の一覧を表示します。
+データ センター (SQL Database のデータベースを含む) のセキュリティ体制を強化する、統一されたインフラストラクチャ セキュリティ管理システムを使用します。 データベースとコンプライアンス状態のセキュリティに関連する推奨事項の一覧を表示します。
 
 **実装方法**:
 

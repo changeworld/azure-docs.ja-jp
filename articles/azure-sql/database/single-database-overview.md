@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/08/2019
-ms.openlocfilehash: f6b705da74fc939cab5f72e6335278207b98dc1a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8f92fe8e4a4ebbc2d970bf28e415859249b9f67c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84026433"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84343321"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Azure SQL Database の単一データベースとは
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-単一データベースのリソースの種類では、Azure SQL Database 内にその独自のリソース セットでデータベースが作成され、[サーバー](logical-servers.md)経由で管理されます。 単一データベースでは、各データベースは互いに分離しており、移植可能です。各データベースでは、[DTU ベースの購入モデル](service-tiers-dtu.md)または[仮想コアベースの購入モデル](service-tiers-vcore.md)内に独自のサービス レベルがあり、コンピューティング サイズが保証されています。
+単一データベースのリソースの種類では、Azure SQL Database 内にその独自のリソース セットでデータベースが作成され、[サーバー](logical-servers.md)経由で管理されます。 単一データベースでは、各データベースが分離され、移植可能となります。 それぞれに、[DTU ベースの購入モデル](service-tiers-dtu.md)または[仮想コアベースの購入モデル](service-tiers-vcore.md)内で独自のサービス レベルが与えられ、特定のコンピューティング サイズが保証されます。
 
 > [!IMPORTANT]
 > 単一データベースは、Azure SQL Database 用のリソースの種類の 1 つです。 もう 1 つは[エラスティック プール](elastic-pool-overview.md)です。
@@ -46,11 +46,11 @@ ms.locfileid: "84026433"
 
 アプリケーションが使用する Transact-SQL 機能の大半は、Microsoft SQL Server と Azure SQL Database の両方で完全にサポートされます。 たとえば、データ型、演算子、文字列、算術演算子、論理、およびカーソル機能などのコア SQL コンポーネントは、SQL Server および SQL Database で同様に動作します。 ただし、DDL (データ定義言語) と DML (データ操作言語) 要素における T-SQL のいくつかの相違点により、T-SQL ステートメントとクエリは部分的にしかサポートされません (これについてはこの記事で後ほど説明します)。
 
-また、Azure SQL Database はマスター データベースとオペレーティング システムへの依存関係から機能を分離するように設計されているため、サポートされていない機能と構文がいくつかあります。 そのため、サーバー レベルの大半のアクティビティは SQL Database には不適切です。 T-SQL ステートメントとオプションは、サーバー レベルのオプション、オペレーティング システムのコンポーネントを構成した場合、またはファイル システムの構成を指定した場合は使用できません。 このような機能が必要な場合は、SQL Database や別の Azure 機能またはサービスから代わりの適切な機能を使用できることがあります。
+また、Azure SQL Database はマスター データベースとオペレーティング システムへの依存関係から機能を分離するように設計されているため、サポートされていない機能と構文がいくつかあります。 そのため、サーバー レベルの大半のアクティビティは SQL Database には不適切です。 T-SQL ステートメントとオプションは、サーバー レベルのオプションを構成するか、オペレーティング システムのコンポーネントを構成するか、またはファイル システムの構成を指定する場合は利用できません。 このような機能が必要な場合は、SQL Database や別の Azure 機能またはサービスから代わりの適切な機能を使用できることがあります。
 
 詳細については、「[SQL Database への移行時に Transact-SQL の相違点を解決する](transact-sql-tsql-differences-sql-server.md)」を参照してください。
 
-## <a name="security"></a>Security
+## <a name="security"></a>セキュリティ
 
 SQL Database は、アプリケーションがさまざまなセキュリティとコンプライアンスの要件を満たすために役立つ、幅広い[組み込みのセキュリティとコンプライアンス](security-overview.md)の機能を備えています。
 

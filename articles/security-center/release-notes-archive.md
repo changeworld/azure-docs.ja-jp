@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: 253ea748462ec09cd9cf4eab14c05be678cfb82d
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: 36c3515bbdd0f08063ecad2ba26fc7b92a5f0e19
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860904"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970690"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure Security Center の最新情報のアーカイブ
 
@@ -29,9 +29,37 @@ ms.locfileid: "83860904"
 - バグの修正
 - 非推奨の機能
 
+
+## <a name="january-2020"></a>2020 年 1 月
+
+### <a name="enhanced-secure-score-preview"></a>強化されたセキュア スコア (プレビュー)
+
+Azure Security Center のセキュア スコア機能の強化バージョンが、プレビュー版で利用できるようになりました。 このバージョンでは、複数の推奨事項が、脆弱な攻撃対象領域をより正確に反映するセキュリティ コントロールにグループ化されています (例: 管理ポートへのアクセスの制限)。
+
+プレビュー段階でセキュア スコアの変更に慣れていただけるほか、ご自分の環境のセキュリティを高めるのに役立つその他の修復機能をご確認いただけます。
+
+詳細については、[強化されたセキュア スコア (プレビュー)](secure-score-security-controls.md) に関するページを参照してください。
+
+
+
 ## <a name="november-2019"></a>2019 年 11 月
 
-### <a name="threat-protection-for-azure-key-vault-in-public-preview-in-north-america-regions"></a>北米リージョンで Azure Key Vault 用 Threat Protection のパブリック プレビューを開始
+11 月の更新プログラムには次のものが含まれます。
+ - [北米リージョンで Azure Key Vault 用 Threat Protection (プレビュー)](#threat-protection-for-azure-key-vault-in-north-america-regions-preview)
+ - [Azure Storage 用 Threat Protection にマルウェア評価スクリーニングを追加](#threat-protection-for-azure-storage-includes-malware-reputation-screening)
+ - [Logic Apps を使用したワークフローの自動化 (プレビュー)](#workflow-automation-with-logic-apps-preview)
+ - [大量のリソースのクイック修正の一般提供を開始](#quick-fix-for-bulk-resources-generally-available)
+ - [コンテナー イメージの脆弱性スキャン (プレビュー)](#scan-container-images-for-vulnerabilities-preview)
+ - [規制コンプライアンス標準の追加 (プレビュー)](#additional-regulatory-compliance-standards-preview)
+ - [Azure Kubernetes Service 用 Threat Protection (プレビュー)](#threat-protection-for-azure-kubernetes-service-preview)
+ - [仮想マシンの脆弱性評価 (プレビュー)](#virtual-machine-vulnerability-assessment-preview)
+ - [Azure Virtual Machines の SQL Server 向け Advanced Data Security (プレビュー)](#advanced-data-security-for-sql-servers-on-azure-virtual-machines-preview)
+ - [カスタム ポリシーのサポート (プレビュー)](#support-for-custom-policies-preview)
+ - [コミュニティおよびパートナー向けのプラットフォームで Azure Security Center のカバレッジを拡大](#extending-azure-security-center-coverage-with-platform-for-community-and-partners)
+ - [推奨事項とアラートのエクスポートによる高度な統合 (プレビュー)](#advanced-integrations-with-export-of-recommendations-and-alerts-preview)
+ - [Windows Admin Center から Security Center へのオンプレミス サーバーのオンボード (プレビュー)](#onboard-on-prem-servers-to-security-center-from-windows-admin-center-preview)
+
+### <a name="threat-protection-for-azure-key-vault-in-north-america-regions-preview"></a>北米リージョンで Azure Key Vault 用 Threat Protection (プレビュー)
 
 Azure Key Vault は、キー、シークレット、暗号化キー、ポリシーをクラウドで一元管理する機能を提供することによって、データを保護し、クラウド アプリケーションのパフォーマンスを向上させる非常に重要なサービスです。 Azure Key Vault には、機密性の高い、ビジネスに不可欠なデータが格納されているため、キー コンテナーとそこに格納されるデータの最大限のセキュリティが必要となります。
 
@@ -146,6 +174,11 @@ Windows Admin Center は、Azure にデプロイされていない Windows サ�
 
 ## <a name="september-2019"></a>2019 年 9 月
 
+9 月の更新プログラムには次のものが含まれます。
+
+ - [適応型アプリケーション制御のルール管理の改善](#managing-rules-with-adaptive-application-controls-improvements)
+ - [Azure Policy を使用してコンテナーのセキュリティの推奨事項を制御](#control-container-security-recommendation-using-azure-policy)
+
 ### <a name="managing-rules-with-adaptive-application-controls-improvements"></a>適応型アプリケーション制御のルール管理の改善
 
 適応型アプリケーション制御を使用した仮想マシンのルール管理のエクスペリエンスが改善されました。 Azure Security Center の適応型アプリケーション制御を使用すると、仮想マシン上で実行できるアプリケーションを制御できます。 ルール管理の全般的な改善に加え、新たに追加される機能により、新しいルールを追加するときに保護するファイルの種類を制御できるようになります。
@@ -161,6 +194,12 @@ Windows Admin Center は、Azure にデプロイされていない Windows サ�
 
 
 ## <a name="august-2019"></a>2019 年 8 月
+
+8 月の更新プログラムには次のものが含まれます。
+
+ - [Azure Firewall 用 Just-In-Time (JIT) VM アクセス](#just-in-time-jit-vm-access-for-azure-firewall)
+ - [セキュリティ体制を強化するシングル クリック修復 (プレビュー)](#single-click-remediation-to-boost-your-security-posture-preview)
+ - [テナント間の管理](#cross-tenant-management)
 
 ### <a name="just-in-time-jit-vm-access-for-azure-firewall"></a>Azure Firewall 用 Just-In-Time (JIT) VM アクセス 
 

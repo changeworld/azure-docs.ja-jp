@@ -2,7 +2,7 @@
 title: 自動チューニングの有効化
 description: データベースの自動チューニングは、Azure portal を使用して簡単に有効にすることができます。
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: ''
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: 02a6bba2dd4162a1cd9f05249174c2174a85b931
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 6ffc81f7fc5cf36ff4e9bada8f72cfef013afcbc
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84029173"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85982789"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>クエリの監視とワークロード パフォーマンスの向上のために Azure portal で自動チューニングを有効にする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,7 +25,6 @@ ms.locfileid: "84029173"
 Azure SQL Database では、データ サービスが自動的に管理されます。データ サービスが常にクエリを監視し、ワークロードのパフォーマンスを向上させるために実行できるアクションを識別します。 推奨事項を確認し、手動で適用できます。また、Azure SQL Database で自動的に是正措置を適用することもできます (**自動チューニング モード**ともいう)。
 
 サーバーまたはデータベース レベルで自動チューニングを有効にすることができます。次の方法があります。
-
 
 - [Azure Portal](automatic-tuning-enable.md#azure-portal)
 - [REST API](automatic-tuning-enable.md#rest-api) 呼び出し
@@ -42,7 +41,7 @@ Azure SQL Database では、データ サービスが自動的に管理されま
 自動チューニングの構成を [Azure の既定値] から継承するかどうかをサーバー レベルで選択できます。 Azure の既定値では、FORCE_LAST_GOOD_PLAN が有効で、CREATE_INDEX と DROP_INDEX が無効です。
 
 > [!IMPORTANT]
-> 2020 年 3 月より、自動チューニングに関する Azure の既定値は次のようになります。
+> 2020 年 3 月より、自動チューニングに関する新しい Azure の既定値は次のようになります。
 >
 > - FORCE_LAST_GOOD_PLAN が有効、CREATE_INDEX が無効、DROP_INDEX が無効になります。
 > - 自動チューニング設定が構成されていない既存のサーバーは、Azure の既定値を継承するように自動的に構成されます。 これは、現在未定義の状態の自動チューニングのサーバー設定があるすべてのお客様に適用されます。

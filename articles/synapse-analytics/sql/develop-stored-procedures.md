@@ -6,18 +6,18 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: a431df1ff4ef0984d1197933e7ca78979fa23089
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 0f88b994104ed8a2d80fb3b16f125f8a087cbe3c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427371"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958380"
 ---
-# <a name="using-stored-procedures-in-sql-pool"></a>SQL プールでのストアド プロシージャの使用
+# <a name="use-stored-procedures-in-sql-pool"></a>SQL プールでのストアド プロシージャの使用
 
 ソリューション開発のための Synapse SQL プール (データ ウェアハウス) でのストアド プロシージャの実装に関するヒント。
 

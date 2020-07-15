@@ -4,21 +4,19 @@ description: Azure ファイル共有に対するオンプレミスの AD DS 認
 author: roygara
 ms.service: storage
 ms.subservice: files
-ms.topic: conceptual
-ms.date: 05/29/2020
+ms.topic: how-to
+ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 6e49201b0574e0a1235cc9e2cb313b40b0563f93
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 38168db9706bd168b3edc2e740eaea40b23d4b0b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84268380"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85510581"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>パート 3: SMB 経由でディレクトリとファイル レベルのアクセス許可を構成する 
 
-この記事を開始する前に、前の記事「[ID に共有レベルのアクセス許可を割り当てる](storage-files-identity-ad-ds-assign-permissions.md)」を完了していることを確認してください。 共有レベルのアクセス許可が適用されていることを確認します。
-
-RBAC に共有レベルのアクセス許可を割り当てたら、詳細なアクセス制御を活用するために、ルート、ディレクトリ、またはファイル レベルに適切な Windows ACL (NTFS アクセス許可とも呼ばれます) を割り当てる必要があります。 RBAC 共有レベルのアクセス許可は、ユーザーが共有にアクセスできるかどうかを決定する高レベルのゲートキーパーと考えてください。 一方、Windows ACL は、さらに細かなレベルで動作し、ディレクトリまたはファイル レベルでユーザーが実行できる操作を決定します。
+この記事を開始する前に、前の記事「[ID に共有レベルのアクセス許可を割り当てる](storage-files-identity-ad-ds-assign-permissions.md)」を完了し、共有レベルのアクセス許可が確実に設定されているようにしてください。
 
 RBAC に共有レベルのアクセス許可を割り当てたら、詳細なアクセス制御を活用するために、ルート、ディレクトリ、またはファイル レベルで適切な Windows ACL を構成する必要があります。 RBAC 共有レベルのアクセス許可は、ユーザーが共有にアクセスできるかどうかを決定する高レベルのゲートキーパーと考えてください。 一方、Windows ACL は、さらに細かなレベルで機能し、ディレクトリまたはファイル レベルでユーザーが実行できる操作を決定します。 ユーザーがファイルまたはディレクトリにアクセスしようとしたときに、共有レベルとファイル/ディレクトリ レベルの両方のアクセス許可が適用されます。したがって、両方に違いがある場合は、最も制限の厳しい方だけが適用されます。 たとえば、ユーザーがファイル レベルで読み取り/書き込みアクセス権を持っているが、共有レベルでは読み取りアクセス権しかない場合は、そのファイルは読み取ることしかできません。 同じことはこの逆にも当てはまります。ユーザーが共有レベルで読み取り/書き込みアクセス権を持っていても、ファイル レベルでは読み取りアクセス権しか持っていない場合は、やはりファイルを読み取ることしかできません。
 
@@ -31,12 +29,22 @@ Azure Files では、基本的な Windows ACL と詳細な Windows ACL で構成
 ファイル共有のルート ディレクトリには、次のアクセス許可が含まれています。
 
 - BUILTIN\Administrators:(OI)(CI)(F)
-- NT AUTHORITY\SYSTEM:(OI)(CI)(F)
 - BUILTIN\Users:(RX)
 - BUILTIN\Users:(OI)(CI)(IO)(GR,GE)
 - NT authority \authenticated Users:(OI)(CI)(M)
+- NT AUTHORITY\SYSTEM:(OI)(CI)(F)
 - NT AUTHORITY\SYSTEM:(F)
 - CREATOR OWNER:(OI)(CI)(IO)(F)
+
+|ユーザー|定義|
+|---|---|
+|BUILTIN\Administrators (BUILTIN\Administrators)|オンプレミスの AD DS 環境のドメイン管理者であるすべてのユーザー。
+|BUILTIN\Users|AD 内のビルトイン セキュリティ グループ。 既定では、NT AUTHORITY\Authenticated Users が含まれています。 従来のファイル サーバーの場合は、サーバーごとにメンバーシップの定義を構成できます。 Azure Files の場合は、ホスティング サーバーが存在しないため、BUILTIN\Users には NT AUTHORITY\Authenticated Users と同じユーザーのセットが含まれます。|
+|NT AUTHORITY\SYSTEM|ファイル サーバーのオペレーティング システムのサービス アカウント。 このようなサービス アカウントは、Azure Files コンテキストでは適用されません。 これは、ハイブリッド シナリオでの Windows Files サーバー エクスペリエンスと一貫性を持たせるために、ルート ディレクトリに含まれています。|
+|NT AUTHORITY\Authenticated Users|有効な Kerberos トークンを取得できる AD 内のすべてのユーザー。|
+|CREATOR OWNER|ディレクトリまたはファイルのオブジェクトにはそれぞれ、そのオブジェクトの所有者が含まれています。 そのオブジェクト上で "CREATOR OWNER" に ACL が割り当てられている場合、このオブジェクトの所有者であるユーザーは、ACL によって定義されたオブジェクトに対するアクセス許可を持っています。|
+
+
 
 ## <a name="mount-a-file-share-from-the-command-prompt"></a>コマンド プロンプトからファイル共有をマウントする
 

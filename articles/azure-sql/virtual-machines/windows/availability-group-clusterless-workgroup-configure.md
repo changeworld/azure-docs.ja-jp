@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
-ms.openlocfilehash: 36c4a141acf38d83ff925bafaa75c294847a7d74
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 93819332def05022272eabc130e0f2240938f244
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84037233"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955507"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>ワークグループ可用性グループを構成する 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -46,13 +46,13 @@ ms.locfileid: "84037233"
 | **ワークグループ名** | AGWorkgroup | 
 | &nbsp; | &nbsp; |
 
-## <a name="set-dns-suffix"></a>DNS サフィックスを設定する 
+## <a name="set-a-dns-suffix"></a>DNS サフィックスを設定する 
 
 この手順では、両方のサーバーの DNS サフィックスを構成します。 たとえば、「 `ag.wgcluster.example.com` 」のように入力します。 これにより、接続するオブジェクトの名前をネットワーク内の完全修飾アドレスとして使用できます (例: `AGNode1.ag.wgcluster.example.com`)。 
 
 DNS サフィックスを構成するには、次の手順に従います。
 
-1. 最初のノードに RDP 接続し、サーバー マネージャーを開きます。 
+1. お使いの最初のノードに RDP 接続し、サーバー マネージャーを開きます。 
 1. **[ローカル サーバー]** を選択した後、 **[コンピューター名]** から仮想マシンの名前を選択します。 
 1. **[To rename this computer...]\(このコンピューターの名前を変更するには...\)** の下の **[変更...]** を選択します。 
 1. ワークグループ名の名前を、`AGWORKGROUP` などの意味のある名前に変更します。 
@@ -71,13 +71,13 @@ DNS サフィックスを構成するには、次の手順に従います。
 1. 再起動を求めるメッセージが表示されたら、サーバーを再起動します。 
 1. 可用性グループに使用する他のすべてのノードで、これらの手順を繰り返します。 
 
-## <a name="edit-host-file"></a>ホスト ファイルを編集する
+## <a name="edit-a-host-file"></a>ホスト ファイルを編集する
 
 Active Directory がないため、Windows 接続を認証する方法はありません。 そのため、テキスト エディターでホスト ファイルを編集することで信頼を割り当てます。 
 
 ホスト ファイルを編集するには、次の手順を実行します。
 
-1. 仮想マシンに RDP 接続します。 
+1. お使いの仮想マシンに RDP 接続します。 
 1. **エクスプローラー**を使用して、`c:\windows\system32\drivers\etc` に移動します。 
 1. **hosts** ファイルを右クリックし、**メモ帳** (またはその他のテキスト エディター) を使用してファイルを開きます。
 1. ファイルの末尾に、次のように、各ノード、可用性グループ、およびリスナーのエントリを `IP Address, DNS Suffix #comment` の形式で追加します。 
@@ -104,7 +104,7 @@ new-itemproperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\
 
 ## <a name="create-the-failover-cluster"></a>フェールオーバー クラスターを作成する
 
-この手順では、フェールオーバー クラスターを作成します。 これらの手順に慣れていない場合は、[フェールオーバー クラスターのチュートリアル](failover-cluster-instance-storage-spaces-direct-manually-configure.md#step-2-configure-the-windows-server-failover-cluster-with-storage-spaces-direct)に従うことができます。
+この手順では、フェールオーバー クラスターを作成します。 これらの手順に慣れていない場合は、[フェールオーバー クラスターのチュートリアル](failover-cluster-instance-storage-spaces-direct-manually-configure.md)に従うことができます。
 
 このチュートリアルとワークグループ クラスターに対して行う必要があることの主な相違点は次のとおりです。
 - クラスターの検証を実行するときに、 **[ストレージ]** と **[記憶域スペース ダイレクト]** をオフにします。 
@@ -130,13 +130,13 @@ new-itemproperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\
 
 ## <a name="create-a-cloud-witness"></a>クラウド監視を作成する 
 
-この手順では、クラウド共有監視を構成します。 この手順に慣れていない場合は、[フェールオーバー クラスターのチュートリアル](failover-cluster-instance-storage-spaces-direct-manually-configure.md#create-a-cloud-witness)を参照してください。 
+この手順では、クラウド共有監視を構成します。 この手順がよくわからない場合は、「[フェールオーバー クラスターのクラウド監視を展開する](/windows-server/failover-clustering/deploy-cloud-witness)」参照してください。 
 
-## <a name="enable-availability-group-feature"></a>可用性グループ機能を有効にする 
+## <a name="enable-the-availability-group-feature"></a>可用性グループ機能を有効にする 
 
 この手順では、可用性グループ機能を有効にします。 この手順に慣れていない場合は、[可用性グループのチュートリアル](availability-group-manually-configure-tutorial.md#enable-availability-groups)を参照してください。 
 
-## <a name="create-keys-and-certificate"></a>キーと証明書を作成する
+## <a name="create-keys-and-certificates"></a>キーと証明書を作成する
 
 この手順では、SQL ログイン時に暗号化されたエンドポイントで使用される証明書を作成します。 証明書のバックアップを保持するフォルダーを各ノードに作成します (`c:\certs` など)。 
 
@@ -277,19 +277,19 @@ GO
 
 クラスターに他のノードがある場合は、それぞれの証明書とユーザーの名前を変更しながら、これらの手順を繰り返します。 
 
-## <a name="configure-availability-group"></a>可用性グループの構成
+## <a name="configure-an-availability-group"></a>可用性グループを構成する
 
 この手順では、可用性グループを構成して、そこにデータベースを追加します。 この時点ではリスナーを作成しないでください。 この手順に慣れていない場合は、[可用性グループのチュートリアル](availability-group-manually-configure-tutorial.md#create-the-availability-group)を参照してください。 フェールオーバーとフェールバックを開始して、すべてが正常に動作していることを確認します。 
 
    > [!NOTE]
    > 同期プロセス中にエラーが発生した場合は、最初のノード (`AGNode1` など) 上にクラスター リソースを作成するために `NT AUTHORITY\SYSTEM` sysadmin 権限を一時的に付与することが必要になる場合があります。 
 
-## <a name="configure-load-balancer"></a>ロード バランサーを構成する
+## <a name="configure-a-load-balancer"></a>ロード バランサーを構成する
 
 この最後の手順では、[Azure portal](availability-group-load-balancer-portal-configure.md) または [PowerShell](availability-group-listener-powershell-configure.md) を使用してロード バランサーを構成します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Az SQL VM CLI](availability-group-az-cli-configure.md) を使用して、可用性グループを構成することもできます。 
 

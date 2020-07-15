@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: Zhchia
 ms.openlocfilehash: a3e1c936d46e0d9b0ad3b98dafeda7df0b4a23db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77058471"
 ---
 # <a name="tutorial-configure-elium-for-automatic-user-provisioning"></a>チュートリアル:Elium を構成し、自動ユーザー プロビジョニングに対応させる
@@ -112,7 +112,7 @@ Azure AD で Elium の自動ユーザー プロビジョニングを構成する
 
     ![[プロビジョニング モード] の [自動] 設定](common/provisioning-automatic.png)
 
-1. **[管理者資格情報]** セクションの **[テナントの URL]** フィールドに、「 **\<tenantURL\>/scim/v2**」を入力します。 (**tenantURL** は、以前に Elium 管理コンソールから取得した値です。)また、 **[シークレット トークン]** フィールドに Elium の**シークレット トークン**を入力します。 最後に、 **[テスト接続]** を選択して、Azure AD から Elium に接続できることを確認します。 接続できない場合は、使用中の Elium アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+1. **[管理者資格情報]** セクションの **[テナントの URL]** フィールドに「 **\<tenantURL\>/scim/v2**」と入力します。 (**tenantURL** は、以前に Elium 管理コンソールから取得した値です。)また、 **[シークレット トークン]** フィールドに Elium の**シークレット トークン**を入力します。 最後に、 **[テスト接続]** を選択して、Azure AD から Elium に接続できることを確認します。 接続できない場合は、使用中の Elium アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![[管理者資格情報] の [テナントの URL] フィールドと [シークレット トークン] フィールド](common/provisioning-testconnection-tenanturltoken.png)
 

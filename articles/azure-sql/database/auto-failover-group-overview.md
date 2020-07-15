@@ -3,7 +3,7 @@ title: 自動フェールオーバー グループ
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: 自動フェールオーバー グループを使用して、サーバー上のデータベースのグループや、マネージド インスタンス内のすべてのデータベースのレプリケーションおよび自動または調整されたフェールオーバーを管理することができます。
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: high-availability
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 2/10/2020
-ms.openlocfilehash: d32670ba79bd526c8f53438bf348323084f99928
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 39329eb9ea2c396f8b5f04287f3e933bb6242f85
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84258574"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85982997"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -229,9 +229,9 @@ OLTP 操作を実行するときに、サーバー URL として `<fog-name>.dat
 フェールオーバー後にプライマリ SQL Managed Instance に中断することなく確実に接続するには、プライマリとセカンダリの両方のインスタンスが同じ DNS ゾーンにある必要があります。 それにより、フェールオーバー グループに属する 2 つのインスタンスのいずれかに対してクライアント接続を認証する目的で同じマルチドメイン (SAN) 証明書を利用できます。 アプリケーションを運用環境にデプロイする準備ができたら、別のリージョンでセカンダリ SQL Managed Instance を作成し、プライマリ SQL Managed Instance と DNS ゾーンを共有していることを確認します。 これは、Azure portal、PowerShell、または REST API を使用して、省略可能な `DNS Zone Partner` パラメーターを指定することで実行できます。
 
 > [!IMPORTANT]
-> サブネットに作成された最初の SQL Managed Instance により、同じサブネット内のそれ以降のすべてのインスタンスに対する DNS ゾーンが決まります。 つまり、同じサブネットの 2 つのインスタンスが異なる DNS ゾーンに属することはできません。
+> サブネットに作成された最初のマネージド インスタンスにより、同じサブネット内のそれ以降のすべてのインスタンスに対する DNS ゾーンが決まります。 つまり、同じサブネットの 2 つのインスタンスが異なる DNS ゾーンに属することはできません。
 
-プライマリ インスタンスと同じ DNS ゾーンでのセカンダリ SQL Managed Instance の作成の詳細については、「[セカンダリ マネージド インスタンスを作成する](../managed-instance/failover-group-add-instance-tutorial.md#3---create-a-secondary-sql-managed-instance)」を参照してください。
+プライマリ インスタンスと同じ DNS ゾーンでのセカンダリ SQL Managed Instance の作成の詳細については、「[セカンダリ マネージド インスタンスを作成する](../managed-instance/failover-group-add-instance-tutorial.md#3---create-a-secondary-managed-instance)」を参照してください。
 
 ### <a name="enabling-replication-traffic-between-two-instances"></a>2 つのインスタンス間のレプリケーション トラフィックを有効にする
 

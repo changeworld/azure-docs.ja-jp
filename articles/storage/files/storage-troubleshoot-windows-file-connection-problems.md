@@ -3,16 +3,16 @@ title: Windows での Azure Files に関する問題のトラブルシューテ�
 description: Windows での Azure Files に関する問題のトラブルシューティング
 author: jeffpatt24
 ms.service: storage
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 40b8616f40f2ce33332fc42ec68532e4ae0ecdb0
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 89a5fa0be104c3a7b7e035f82d2fed80d4781701
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267819"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85511992"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Windows での Azure Files に関する問題のトラブルシューティング
 
@@ -340,14 +340,14 @@ $StorageAccountName = "<storage-account-name-here>"
 Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName -Verbose
 ```
 コマンドレットでは、以下のチェックが順番に実行されて、障害に関するガイダンスが提供されます。
-1. CheckPort445Connectivity: SMB 接続に対してポート 445 が開かれていることがチェックされます
-2. CheckDomainJoined: クライアント コンピューターが AD にドメイン参加していることが検証されます
-3. CheckADObject: ログオンしているユーザーに対し、ストレージ アカウントが関連付けられた有効な表現が AD ドメイン内にあることが確認されます
-4. CheckGetKerberosTicket: ストレージ アカウントに接続するための Kerberos チケットの取得が試みられます 
-5. CheckADObjectPasswordIsCorrect: ストレージ アカウントを表す AD ID に対して構成されているパスワードが、ストレージ アカウントの kerb キーのパスワードと一致していることが確認されます
-6. CheckSidHasAadUser: ログオンしている AD ユーザーが Azure AD と同期されていることが確認されます
-
-よりよいトラブルシューティングのガイダンスが提供されるよう、この診断コマンドレットの拡張作業が行われています。
+1. CheckPort445Connectivity: SMB 接続に対してポート 445 が開いていることを確認します。
+2. CheckDomainJoined: クライアント コンピューターが AD にドメイン参加していることを検証します
+3. CheckADObject: ストレージ アカウントを表すオブジェクトが Active Directory にあり、正しい SPN (サービス プリンシパル名) を持っていることを確認します。
+4. CheckGetKerberosTicket: ストレージ アカウントに接続するための Kerberos チケットの取得を試みます。 
+5. CheckADObjectPasswordIsCorrect: ストレージ アカウントを表す AD ID に対して構成されているパスワードが、ストレージ アカウントの kerb1 キー、または kerb2 キーのパスワードと確実に一致しているようにします。
+6. CheckSidHasAadUser: ログオンしている AD ユーザーが Azure AD と同期されていることを確認します。 特定の AD ユーザーが Azure AD に同期されているかどうかを調べる場合は、入力パラメーターに -UserName と -Domain を指定します。
+7. CheckAadUserHasSid: Azure AD ユーザーが AD の SID を持っているかどうかを確認します。この確認を行う際、ユーザーは、パラメーター -ObjectId を使用して Azure AD ユーザーのオブジェクト Id を入力する必要があります。 
+8. CheckStorageAccountDomainJoined: ストレージ アカウントのプロパティを確認して、AD 認証が有効になっており、アカウントの AD プロパティが設定されていることを確認します。
 
 ## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>Windows エクスプローラーでディレクトリまたはファイル レベルのアクセス許可 (Windows ACL) を構成できない
 

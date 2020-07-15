@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
-ms.openlocfilehash: 0ae06a1c3d486b5d5998b4c6d050d86f50910a0a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: ba01b89b54dc7209449490059555f531f7616720
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595551"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85193364"
 ---
 # <a name="what-is-routing-preference-preview"></a>ルーティング優先設定とは (プレビュー)
 
@@ -88,7 +88,7 @@ Azure のルーティング優先設定を使用すると、Azure とインタ�
 
 ルーティング優先設定のサポートは、インターネット エグレスにパブリック IP アドレスを使用する仮想マシンやインターネットに接続するロード バランサーなどのサービスについて、次のリージョンで利用できます: 北ヨーロッパ、西ヨーロッパ、フランス南部、英国南部、米国東部、米国中北部、米国中南部、米国西部、米国中西部、東南アジア、ドイツ中西部、スイス西部、東日本、西日本。
 
-ストレージ アカウントに対するルーティング優先設定のサポートは、次の Azure リージョンで利用できます: フランス南部、米国中北部、米国中西部。
+ストレージ アカウントに対するルーティング優先設定がサポートされている Azure リージョンは、フランス南部、米国中北部、米国中西部、東日本、西日本、ドイツ中西部、スイス西部です。
 ## <a name="limitations"></a>制限事項
 
 * ルーティング優先設定は、パブリック IP アドレスの Standard SKU とのみ互換性があります。 パブリック IP アドレスの Basic SKU はサポートされていません。

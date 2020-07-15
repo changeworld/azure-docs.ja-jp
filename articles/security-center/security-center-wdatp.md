@@ -12,21 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: memildin
-ms.openlocfilehash: a741fb76827327c1231890d71ee1da79e052ed50
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d394f0bb72f353e65c48a564fa7187364eae8121
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232412"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970809"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Microsoft Defender Advanced Threat Protection と Azure Security Center
 
-Azure Security Center のクラウド ワークロード保護プラットフォーム オファリングは、[Microsoft Defender Advanced Threat Protection](https://www.microsoft.com/microsoft-365/windows/microsoft-defender-atp) (ATP) との統合によって拡張されています。
-この変更により、包括的なエンドポイントの検出と対応 (EDR) 機能が実現されます。 Microsoft Defender ATP の統合により、異常を見つけることができます。 また、Azure Security Center によって監視されているサーバー エンドポイントでの高度な攻撃を検出して対応することもできます。
+Azure Security Center は、包括的なエンドポイントの検出と応答 (EDR) 機能を提供する [Microsoft Defender Advanced Threat Protection (ATP)](https://www.microsoft.com/microsoft-365/windows/microsoft-defender-atp) と統合されます。
 
 ## <a name="microsoft-defender-atp-features-in-security-center"></a>Security Center の Microsoft Defender ATP 機能
 
-Microsoft Defender ATP を使用すると、次の機能が得られます。
+Microsoft Defender ATP では次のものが提供されます。
 
 - **高度な侵害後検出センサー**:Windows サーバー用の Microsoft Defender ATP センサーにより、ありとあらゆる動作の信号が収集されます。
 
@@ -34,22 +33,27 @@ Microsoft Defender ATP を使用すると、次の機能が得られます。
 
 - **脅威インテリジェンス**:Microsoft Defender ATP では、攻撃者のツール、テクニック、およびプロシージャが識別されると、アラートが生成されます。 Microsoft の脅威ハンターおよびセキュリティ チームによって生成され、パートナーによって提供されるインテリジェンスによって強化されたデータを使用します。
 
-現在、Azure Security Center では次の機能を利用できます。
 
-- **自動オンボード**:Microsoft Defender ATP センサーは、Azure Security Center にオンボードされた Windows サーバー (Windows Server 2019 を実行しているものを除く) に対して自動的に有効になります。
+Defender ATP を Azure Security Center と統合することによって、次の追加機能を利用することもできます。
 
-- **1 つのウィンドウ**:Azure Security Center コンソールには、Microsoft Defender ATP のアラートが表示されます。
+- **自動オンボード**:統合により、Azure Security Center によって監視されている Windows サーバー向けの Microsoft Defender ATP センサーが自動的に有効になります (Windows Server 2019 を実行している場合を除く)。
 
-さらに調査するには、Microsoft Defender ATP を使用します。 Microsoft Defender ATP には、アラート プロセス ツリーやインシデント グラフなどの追加情報が表示されます。 最大 6 か月前まで遡って、すべての動作を示す詳細なマシン タイムラインを見ることもできます。
+- **1 つのウィンドウ**:Azure Security Center コンソールには、Microsoft Defender ATP のアラートが表示されます。 さらに調査するには、Microsoft Defender ATP を使用します。 Microsoft Defender ATP には、アラート プロセス ツリーやインシデント グラフなどの追加情報が表示されます。 最大 6 か月前まで遡って、すべての動作を示す詳細なマシン タイムラインを見ることもできます。
 
-![アラートに関する詳細情報が表示された Microsoft Defender ATP ページ](media/security-center-wdatp/image3.png)
+    ![アラートに関する詳細情報が表示された Microsoft Defender ATP ページ](media/security-center-wdatp/image3.png)
 
 ## <a name="platform-support"></a>プラットフォームのサポート
 
-Security Center の Microsoft Defender ATP は、Windows Server 2016、2012 R2、および 2008 R2 SP1 での検出をサポートしています。Azure VM では Standard レベルのサブスクリプションが必要であり、Azure 以外の VM ではワークスペース レベルでのみ Standard レベルが必要です。
+Security Center の Microsoft Defender ATP では、Windows Server 2016、2012 R2、2008 R2 SP1 での検出がサポートされています。 Azure VM の場合、Standard レベルのサブスクリプションが必要です。Azure 以外の VM の場合は、ワークスペース レベルのみで Standard レベルが必要です。
 
-> [!NOTE]
-> Azure Security Center を使用してサーバーを監視すると、Microsoft Defender ATP テナントが自動的に作成され、Microsoft Defender ATP データが既定ではヨーロッパに格納されます。 データを別の場所に移動する必要がある場合は、Microsoft サポートに連絡してテナントをリセットする必要があります。 この統合を利用したサーバー エンドポイントの監視は、Office 365 GCC のお客様に対して無効になっています。
+この統合を使用したサーバー エンドポイントの監視は、Office 365 GCC のお客様に対して無効になっています。
+
+## <a name="data-storage-location"></a>データ ストレージの場所
+
+Azure Security Center を使用してサーバーを監視すると、Microsoft Defender ATP テナントが自動的に作成されます。 Microsoft Defender ATP によって収集されたデータは、プロビジョニング時に識別されたテナントの geo ロケーションに格納されます。 偽名フォームの顧客データは、米国の中央のストレージおよび処理システムにも格納される可能性があります。 
+
+構成されると、データが格納されている場所を変更することはできません。 データを別の場所に移動する必要がある場合は、Microsoft サポートに連絡してテナントをリセットしてください。
+
 
 ## <a name="onboarding-servers-to-security-center"></a>Security Center にサーバーをオンボードする 
 
@@ -81,11 +85,9 @@ Microsoft Defender ATP の統合が有効になっているかどうかを確認
 
 ## <a name="access-to-the-microsoft-defender-atp-portal"></a>Microsoft Defender ATP ポータルにアクセスする
 
-「[ポータルへのユーザー アクセスの割り当て](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/assign-portal-access)」の指示に従ってください。
+1. 「[ポータルへのユーザー アクセスの割り当て](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/assign-portal-access)」の指示に従ってください。
 
-## <a name="set-the-firewall-configuration"></a>ファイアウォールの構成を設定する
-
-匿名のトラフィックをブロックするプロキシまたはファイアウォールがある場合、Microsoft Defender ATP センサーはシステム コンテキストから接続するので、匿名のトラフィックが許可されていることを確認します。 「[プロキシ サーバーで Microsoft Defender ATP サービス URL へのアクセスを有効にする](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet#enable-access-to-microsoft-defender-atp-service-urls-in-the-proxy-server)」の説明に従ってください。
+1. 匿名トラフィックをブロックしているプロキシまたはファイアウォールがあるかどうかを確認します。 Defender ATP センサーはシステム コンテキストと接続するため、匿名トラフィックを許可する必要があります。 Microsoft Defender ATP ポータルに制限なく確実にアクセスするには、「[プロキシ サーバーで Microsoft Defender ATP サービス URL へのアクセスを有効にする](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet#enable-access-to-microsoft-defender-atp-service-urls-in-the-proxy-server)」の説明に従ってください。
 
 ## <a name="test-the-feature"></a>機能をテストする
 

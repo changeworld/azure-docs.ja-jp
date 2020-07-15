@@ -1,6 +1,6 @@
 ---
 title: Azure Monitor ログによる SQL データ同期の監視
-description: Azure Monitor ログを使用して SQL データ同期を監視する方法について説明します
+description: Azure Monitor ログを使用して SQL データ同期を監視する方法について説明します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,15 +11,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: b7c801d75d778deccae645e0945fba557dbc6782
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 307e501743d01b94cfca3692cc09c05cc90ed3ce
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84188791"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84343236"
 ---
 # <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>Azure Monitor ログによる SQL データ同期の監視 
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 SQL データ同期アクティビティ ログをチェックし、エラーおよび警告を検出するには、以前に Azure Portal で SQL データ同期を手動でチェックするか、PowerShell または REST API を使用している必要があります。 データ同期の監視エクスペリエンスを向上させるカスタム ソリューションを構成するには、この記事の手順に従ってください。 このソリューションは、シナリオに合わせてカスタマイズできます。
 
@@ -80,7 +79,7 @@ Runbook の作成の詳細については、「[初めての PowerShell Runbook]
 
 1.  Azure Automation アカウントで、[プロセスの自動化] の下にある **[Runbook]** タブを選択します。
 
-2.  [Runbook] ページの左上にある **[Runbook の追加]** を選択します。
+2.  [Runbook] ページの左上隅にある **[Runbook の追加]** を選択します。
 
 3.  **[既存の Runbook のインポート]** を選択します。
 
@@ -100,7 +99,7 @@ Runbook の作成の詳細については、「[初めての PowerShell Runbook]
 
     1.  Azure の情報。
 
-    2.  同期グループの情報。
+    2.  同期グループ情報。
 
     3.  Azure Monitor ログの情報。 これらの情報は、[Azure portal] | [設定] | [接続されたソース] で見つけてください。 Azure Monitor ログへのデータ送信のついて詳しくは、「[HTTP データ コレクター API を使用した Azure Monitor ログへのデータの送信 (プレビュー)](../../azure-monitor/platform/data-collector-api.md)」をご覧ください。
 
@@ -160,7 +159,7 @@ Azure Monitor ログを使用するアラートを作成するには、次のこ
 
 -   すべての同期グループのタイル。これには、同期グループごとのエラーおよび警告の数が表示されます。 このタイルには、問題が発生していないグループは表示されません。
 
--   同期グループごとのタイル。これには、エラー、成功、および警告の数と、最新のエラー メッセージが表示されます。
+-   同期グループごとのタイル。これには、エラー、成功、警告の数と、最新のエラー メッセージが表示されます。
 
 Azure Monitor ビューを構成するには、次のことを実行します。
 

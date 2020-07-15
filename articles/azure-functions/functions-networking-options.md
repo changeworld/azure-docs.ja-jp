@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: a2c57ca6a1f7eb50c277543e9fbe27a13f839bac
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 03402828720272851f9b74000d5bcb79405885a5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648837"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85117228"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions のネットワーク オプション
 
@@ -28,13 +28,7 @@ ms.locfileid: "83648837"
 
 ## <a name="matrix-of-networking-features"></a>ネットワーク機能のマトリックス
 
-|                |[従量課金プラン](functions-scale.md#consumption-plan)|[Premium プラン](functions-scale.md#premium-plan)|[App Service プラン](functions-scale.md#app-service-plan)|[App Service 環境](../app-service/environment/intro.md)|
-|----------------|-----------|----------------|---------|-----------------------|  
-|[受信 IP の制限とプライベート サイト アクセス](#inbound-ip-restrictions)|✅はい|✅はい|✅はい|✅はい|
-|[仮想ネットワークの統合](#virtual-network-integration)|❌いいえ|✅はい (リージョン)|✅はい (リージョンとゲートウェイ)|✅はい|
-|[仮想ネットワーク トリガー (非 HTTP)](#virtual-network-triggers-non-http)|❌いいえ| ✅はい |✅はい|✅はい|
-|[ハイブリッド接続](#hybrid-connections) (Windows のみ)|❌いいえ|✅はい|✅はい|✅はい|
-|[送信 IP の制限](#outbound-ip-restrictions)|❌いいえ| ✅はい|✅はい|✅はい|
+[!INCLUDE [functions-networking-features](../../includes/functions-networking-features.md)]
 
 ## <a name="inbound-ip-restrictions"></a>受信 IP の制限
 
@@ -139,6 +133,12 @@ Azure Functions で使用されるとき、各ハイブリッド接続は、単�
 送信 IP の制限は、Premium プラン、App Service プラン、App Service Environment で利用できます。 App Service Environment が展開されている仮想ネットワークの送信制限を構成することができます。
 
 Premium プランまたは App Service プランの関数アプリを仮想ネットワークと統合した場合でも、アプリは既定でインターネットへの送信呼び出しを行うことができます。 アプリケーション設定 `WEBSITE_VNET_ROUTE_ALL=1` を追加することで、ネットワーク セキュリティ グループ ルールをトラフィックの制限に使用できる仮想ネットワークに、送信トラフィックがすべて送信されます。
+
+## <a name="automation"></a>オートメーション
+次の API では、リージョンでの仮想ネットワーク統合をプログラミングで管理できます。
+
++ **Azure CLI**:[`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) コマンドを使用し、リージョンでの仮想ネットワーク統合を追加、一覧表示、または削除します。  
++ **ARM テンプレート**:リージョンでの仮想ネットワーク統合は、Azure Resource Manager テンプレートを使用することで有効にできます。 完全な例については、[こちらの関数クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/) ページを参照してください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

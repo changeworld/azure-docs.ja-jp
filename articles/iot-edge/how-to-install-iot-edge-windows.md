@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: kgremban
-ms.openlocfilehash: e95f68610f8469a829255d6a16115dcf728ef612
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: ba3e8b9d7649d56d1639f7f608d85a2da04ff74a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856739"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84465560"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Windows に Azure IoT Edge ランタイムをインストールする
 
@@ -42,7 +42,7 @@ IoT Edge の最新バージョンの内容については、[Azure IoT Edge リ�
 Windows 用の IoT Edge には Windows バージョン 1809、ビルド 17763 が必要です。これは、最新の [Windows の長期サポートのビルド](https://docs.microsoft.com/windows/release-information/)です。 Windows SKU のサポートについては、運用シナリオまたは開発およびテストのシナリオのどちらに対して準備しているかに基づいて、サポート対象を確認してください。
 
 * **運用**: 運用シナリオ向けに現在サポートされているオペレーティング システムに関する最新の情報については、「[Azure IoT Edge のサポートされるシステム](support.md#operating-systems)」を参照してください。
-* **開発とテスト**:開発およびテストのシナリオでは、コンテナー機能をサポートする任意のバージョンの Windows 10 または Windows Server 2019 に、Azure IoT Edge と Windows コンテナーをインストールできます。
+* **開発とテスト**:開発およびテストのシナリオでは、コンテナー機能がサポートされる Windows ビルド 17763 のあらゆる SKU (Pro、Enterprise、Server など) に、Azure IoT Edge と Windows コンテナーをインストールできます。
 
 IoT Core デバイスには、IoT Edge ランタイムをサポートするための IoT Core Windows コンテナー オプション機能が含まれている必要があります。 [リモート PowerShell セッション](https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell)で次のコマンドを使用して、お使いのデバイスで Windows コンテナーがサポートされていることを確認します。
 

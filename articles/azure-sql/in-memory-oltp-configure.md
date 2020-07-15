@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 11/07/2018
-ms.openlocfilehash: 870182af6a00e4d2e2a762ce92b569fb9eeb7f0a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d31fd8cca9df2ea21bf19beed26810568fc6481e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84033783"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84345310"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>インメモリ OLTP を使用して Azure SQL Database と Azure SQL Managed Instance のアプリケーション パフォーマンスを向上させる
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -23,7 +23,7 @@ ms.locfileid: "84033783"
 [インメモリ OLTP](in-memory-oltp-overview.md) は、[Premium および Business Critical レベル](database/service-tiers-vcore.md)のデータベースで、価格レベルを上げることなくトランザクション処理、データ インジェスト、一時的なデータ シナリオのパフォーマンスを向上させるために使用できます。
 
 > [!NOTE]
-> [Quorum 社が SQL Database を使用して DTU を 70% 下げながら、主要なデータベースのワークロードを 2 倍にした](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)方法を学習します
+> [Quorum 社が Azure SQL Database を使用して DTU を 70% 下げながら、主要なデータベースのワークロードを 2 倍にした](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)方法を学習します
 
 既存のデータベースでインメモリ OLTP を採用するには、以下の手順に従います。
 
@@ -137,7 +137,7 @@ CREATE PROCEDURE schemaname.procedurename
         END;
 ```
 
-* TRANSACTION_ISOLATION_LEVEL は、SNAPSHOT がネイティブ コンパイル ストアド プロシージャで最も一般的な値です。 ただし、次のような他の値も少数ながらサポートされています。
+* TRANSACTION_ISOLATION_LEVEL は、SNAPSHOT がネイティブ コンパイル ストアド プロシージャで最も一般的な値です。 ただし、その他の値のサブセットもサポートされています。
   
   * REPEATABLE READ
   * SERIALIZABLE

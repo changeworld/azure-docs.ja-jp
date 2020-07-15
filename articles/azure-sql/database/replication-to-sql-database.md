@@ -1,6 +1,6 @@
 ---
-title: SQL Server の Azure SQL Database へのレプリケーション
-description: Azure SQL Database は、一方向のトランザクションまたはスナップショット レプリケーション トポロジのプッシュ サブスクライバーとして構成できます。
+title: Azure SQL Server の Azure SQL Database へのレプリケーション
+description: Azure SQL Database のデータベースは、一方向のトランザクションまたはスナップショット レプリケーション トポロジのプッシュ サブスクライバーとして構成できます。
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: ec0aebc10d47b3e9945e63e818240da7bf2451e4
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 6f1eb48655c4e38e2cf0520409e5e2b38750baf5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84192968"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84324149"
 ---
 # <a name="replication-to-azure-sql-database"></a>Azure SQL Database へのレプリケーション
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,13 +29,13 @@ Azure SQL Database は、一方向のトランザクションまたはスナッ�
 ## <a name="supported-configurations"></a>サポートされている構成
   
 - Azure SQL Database は、SQL Server パブリッシャーとディストリビューターのプッシュ サブスクライバーとしてのみ構成できます。  
-- パブリッシャーまたはディストリビューターとして機能する SQL Server は、[オンプレミスで実行されている SQL Server](https://www.microsoft.com/sql-server/sql-server-downloads) のインスタンス、[Azure SQL Managed Instance](../managed-instance/instance-create-quickstart.md)、[またはクラウドの Azure 仮想マシンで実行されている SQL Server](../virtual-machines/windows/sql-vm-create-portal-quickstart.md) のインスタンスのいずれかになります。 
-- ディストリビューション データベースとレプリケーション エージェントは、Azure SQL Database に配置できません。  
+- パブリッシャーまたはディストリビューターとして機能する SQL Server インスタンスは、[オンプレミスで実行されている SQL Server](https://www.microsoft.com/sql-server/sql-server-downloads) のインスタンス、[Azure SQL Managed Instance](../managed-instance/instance-create-quickstart.md)、[またはクラウドの Azure 仮想マシンで実行されている SQL Server](../virtual-machines/windows/sql-vm-create-portal-quickstart.md) のインスタンスのいずれかになります。 
+- ディストリビューション データベースとレプリケーション エージェントは、Azure SQL Database のデータベースに配置できません。  
 - [スナップショット](/sql/relational-databases/replication/snapshot-replication)および[一方向のトランザクション](/sql/relational-databases/replication/transactional/transactional-replication) レプリケーションがサポートされています。 ピア ツー ピア トランザクション レプリケーションおよびマージ レプリケーションはサポートされていません。
 
 ### <a name="versions"></a>バージョン  
 
-Azure SQL Database へ正常にレプリケートするには、SQL Server パブリッシャーおよびディストリビューターで、(少なくとも) 次のいずれかのバージョンが使用されている必要があります。 
+Azure SQL Database のデータベースへ正常にレプリケートするには、SQL Server パブリッシャーおよびディストリビューターで、(少なくとも) 次のいずれかのバージョンが使用されている必要があります。
 
 SQL Server データベースから Azure SQL Database への発行は、次のバージョンの SQL Server でサポートされます。
 
@@ -116,7 +116,6 @@ Azure SQL Database のすべての機能を使用するには、最新バージ�
 - MAX データ型への hierarchyid の変換  
 - MAX データ型への spatial の変換  
 - 拡張プロパティのコピー  
-- アクセス許可のコピー  
 
 ### <a name="limitations-to-be-determined"></a>未定の制限事項
 

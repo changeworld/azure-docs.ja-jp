@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/14/2020
-ms.openlocfilehash: 58b60a0eee8ab407709f33911d3c6b13ffbf301a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/18/2020
+ms.openlocfilehash: 96177686e78a0595ac4ad49b9969b22d862facd6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77498378"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85051732"
 ---
 # <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>Azure Cognitive Search のインデックスを再構築する方法
 
@@ -21,7 +21,17 @@ ms.locfileid: "77498378"
 
 "*再構築*" とは、フィールドに基づくすべての逆インデックスなど、インデックスに関連付けられている物理的なデータ構造を削除して作成しなおすことです。 Azure Cognitive Search では、個々のフィールドを削除して再作成することはできません。 インデックスを再構築するには、すべてのフィールド ストレージを削除して、既存のインデックス スキーマまたは変更したインデックス スキーマに基づいて再作成した後、インデックスにプッシュされたデータまたは外部ソースからプルされたデータで再設定する必要があります。 
 
-インデックスの再構築は開発中に行うのが一般的ですが、構造の変更 (複合型の追加、サジェスターへのフィールドの追加など) に対応するために、運用レベルのインデックスの再構築が必要になることもあります。
+インデックス デザインを繰り返すとき、インデックスの再構築は開発中に行うのが一般的ですが、構造の変更 (複合型の追加、サジェスタへのフィールドの追加など) に対応するために、運用レベルのインデックスの再構築が必要になることもあります。
+
+## <a name="rebuild-versus-refresh"></a>"再構築" と "更新"
+
+インデックスの内容を新しいドキュメント、変更後のドキュメント、削除したドキュメントで更新することと再構築を混同しないようにしてください。 検索コーパスの更新はあらゆる検索アプリでほぼ当然のことであり、一部のシナリオでは分単位で更新する必要があります (オンライン販売アプリで在庫変化を検索コーパスに反映させる必要があるときなど)。
+
+インデックスの構造を変更しない限り、インデックスを最初に読み込んだときに使用したものと同じ手法でインデックスを更新できます。
+
+* プッシュモードでインデックスを作成する場合、[ドキュメントの追加、更新、または削除](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)を呼び出し、インデックスに変更をプッシュします。
+
+* インデクサーの場合、[インデクサー実行をスケジュール](search-howto-schedule-indexers.md)し、変更追跡やタイムスタンプを利用して差分を特定できます。 スケジューラの管理機能より短時間で更新を反映させなければならない場合、代わりにプッシュモードのインデックス作成を利用できます。
 
 ## <a name="rebuild-conditions"></a>再構築の条件
 
@@ -85,7 +95,7 @@ ms.locfileid: "77498378"
 
 フィールドを追加したり名前変更したりした場合は、[$select](search-query-odata-select.md) を使用してこのフィールドを返します。`search=*&$select=document-id,my-new-field,some-old-field&$count=true`
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 + [インデクサーの概要](search-indexer-overview.md)
 + [大規模なデータ セットに大規模にインデックスを付ける](search-howto-large-index.md)

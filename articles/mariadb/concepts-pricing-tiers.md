@@ -5,19 +5,19 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: f00d93a639bacd1d0862fed7b6b003302bb2920e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/9/2020
+ms.openlocfilehash: 7ded54e0116e6c6e58c0ca8019942dfaaaa88480
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82097661"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954196"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB の価格レベル
 
-Azure Database for MariaDB サーバーは、Basic、General Purpose、および Memory Optimized の 3 つの価格レベルのいずれかで作成できます。 価格レベルは、プロビジョニングできる仮想コアでのコンピューティング量、仮想コアあたりのメモリ、およびデータの格納に使用されるストレージ テクノロジによって区別されています。 リソースはすべて、MariaDB サーバー レベルでプロビジョニングされます。 1 つのサーバーには 1 つ以上のデータベースを含めることができます。
+Azure Database for MariaDB サーバーは、次の 3 つの価格レベルのいずれかで作成できます: Basic、汎用、メモリ最適化。 価格レベルは、プロビジョニングできる仮想コアでのコンピューティング量、仮想コアあたりのメモリ、およびデータの格納に使用されるストレージ テクノロジによって区別されています。 リソースはすべて、MariaDB サーバー レベルでプロビジョニングされます。 1 つのサーバーには 1 つ以上のデータベースを含めることができます。
 
-|    | **Basic** | **汎用** | **メモリ最適化** |
+| リソース | **Basic** | **汎用** | **メモリ最適化** |
 |:---|:----------|:--------------------|:---------------------|
 | コンピューティング世代 | Gen 5 |Gen 5 | Gen 5 |
 | 仮想コア | 1、2 | 2、4、8、16、32、64 |2、4、8、16、32 |
@@ -43,7 +43,7 @@ Azure Database for MariaDB サーバーは、Basic、General Purpose、および
 
 プロビジョニングするストレージは、使用している Azure Database for MariaDB サーバーで使用可能なストレージ容量です。 ストレージは、データベース ファイル、一時ファイル、トランザクション ログ、および MariaDB サーバー ログに使用されます。 プロビジョニングするストレージの合計容量によって、ご利用のサーバーで使用できる I/O 容量も決まります。
 
-|    | **Basic** | **汎用** | **メモリ最適化** |
+| ストレージの属性   | Basic | General Purpose | メモリ最適化 |
 |:---|:----------|:--------------------|:---------------------|
 | ストレージの種類 | 基本的なストレージ | 汎用のストレージ | 汎用のストレージ |
 | ストレージ サイズ | 5 GB ～ 1 TB | 5 GB ～ 4 TB | 5 GB ～ 4 TB |
@@ -58,6 +58,20 @@ Azure Database for MariaDB サーバーは、Basic、General Purpose、および
 Basic レベルでは、IOPS 保証は提供されません。 汎用およびメモリ最適化の価格レベルでは、IOPS は、プロビジョニング済みのストレージ サイズに合わせて 3 対 1 の比率でスケーリングされます。
 
 ご自身の I/O 使用量を監視するには、Azure Portal または Azure CLI コマンドを使用します。 監視すべき関連メトリックは、[容量の上限、ストレージの割合、ストレージの使用量、および IO の割合](concepts-monitoring.md)です。
+
+### <a name="large-storage-preview"></a>大容量のストレージ (プレビュー)
+
+汎用レベルおよびメモリ最適化レベルのストレージ制限の上限を引き上げています。 プレビューにオプトインされる新しく作成されたサーバーでは、最大 16 TB のストレージをプロビジョニングできます。 IOPS は、3:1 の比率で最大で 20,000 IOPS までスケーリングされます。 現在一般的に使用できるストレージと同様に、サーバーの作成後にさらにストレージ容量を追加でき、システムではワークロードのストレージ使用量に基づいて自動的にストレージを拡張できます。
+
+| ストレージの属性 | General Purpose | メモリ最適化 |
+|:-------------|:--------------------|:---------------------|
+| ストレージの種類 | Azure Premium Storage | Azure Premium Storage |
+| ストレージ サイズ | 32 GB ～ 16 TB| 32 ～ 16 TB |
+| ストレージの増分サイズ | 1 GB | 1 GB |
+| IOPS | 3 IOPS/GB<br/>最小 100 IOPS<br/>最大 20,000 IOPS| 3 IOPS/GB<br/>最小 100 IOPS<br/>最大 20,000 IOPS |
+
+> [!IMPORTANT]
+> 大容量ストレージは、現在、次のリージョンでパブリック プレビュー中です。米国東部、米国東部 2、米国中部、米国西部、米国中北部、米国中南部、北ヨーロッパ、西ヨーロッパ、英国南部、英国西部、東南アジア、東アジア、東日本、西日本、韓国中部、韓国南部、オーストラリア東部、オーストラリア東南部、米国西部 2、米国中西部。
 
 ### <a name="reaching-the-storage-limit"></a>容量の上限に到達
 

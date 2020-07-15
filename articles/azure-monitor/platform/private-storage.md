@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/20/2020
-ms.openlocfilehash: 7213cb10936fc1c2117b2c5c3fc32a6bfea02d30
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: 0c9982fd4aa6459cdcbd715077f08092075a9776
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816587"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84610068"
 ---
 # <a name="customer-owned-storage-accounts-for-log-ingestion-in-azure-monitor"></a>Azure Monitor におけるログ取り込み用の顧客所有のストレージ アカウント
 
-Azure Monitor では、[カスタム ログ](data-sources-custom-logs.md)や [Azure ログ](azure-storage-iis-table.md)などの一部のデータ型の取り込みプロセスでストレージ アカウントを使用します。 取り込みプロセス中、ログはまずストレージ アカウントに送信され、その後 Log Analytics または Application Insights に取り込まれます。 取り込み中にデータを制御する場合は、サービスで管理されたストレージの代わりに独自のストレージ アカウントを使用します。 独自のストレージ アカウントを使用すると、取り込み中にログのアクセス、コンテンツ、暗号化、およびリテンション期間を制御できます。 これは、"独自ストレージの持ち込み" または "BYOS" と呼ばれています。 
+Azure Monitor では、[カスタム ログ](data-sources-custom-logs.md)や [Azure ログ](azure-storage-iis-table.md)などの一部のデータ型の取り込みプロセスでストレージ アカウントを使用します。 取り込みプロセス中、ログはまずストレージ アカウントに送信され、その後 Log Analytics または Application Insights に取り込まれます。 取り込み中にデータを制御する場合は、サービスで管理されたストレージの代わりに独自のストレージ アカウントを使用します。 独自のストレージ アカウントを使用すると、取り込み中にログのアクセス、コンテンツ、暗号化、リテンション期間を制御できます。 これは、"独自ストレージの持ち込み" または "BYOS" と呼ばれています。 
 
 BYOS を必要とするシナリオの 1 つが、 Private Link によるネットワークの分離です。 VNet を使用する場合、ネットワークの分離は多くの場合要件であり、パブリック インターネットへのアクセスは制限されています。 このような場合、ログ取り込みのために Azure Monitor サービス ストレージにアクセスすることは完全にブロックされるか、または不適切な方法と考えられます。 代わりに、VNet 内の顧客所有のストレージ アカウント経由で取り込むか、または簡単にアクセスできるログを取り込む必要があります。
 
@@ -232,4 +232,4 @@ DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroup
 
 ## <a name="next-steps"></a>次のステップ
 
-- プライベート リンクの設定に関する詳細については、[Use Azure Private Link to securely connect networks to Azure Monitor}(private-link-security.md)]\(Azure Private Link を使用して Azure Monitor を安全に接続する}(private-link-security.md)\) を参照してください。
+- プライベート リンクの設定に関する詳細については、「[Azure Private Link を使用して、ネットワークを Azure Monitor に安全に接続する](private-link-security.md)」を参照してください。

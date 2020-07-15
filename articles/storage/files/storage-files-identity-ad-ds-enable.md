@@ -4,39 +4,39 @@ description: SMB を使用して Azure ファイル共有へのオンプレミ�
 author: roygara
 ms.service: storage
 ms.subservice: files
-ms.topic: conceptual
-ms.date: 05/29/2020
+ms.topic: how-to
+ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 5592a3c53a57e9cd96468bfca187e02faef28b05
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 4c374e62c0807269d1457bfe46d3df4260acd45c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84268400"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85510462"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>パート 1: Azure ファイル共有に対する AD DS 認証を有効にする 
 
 Active Directory Domain Services (AD DS) 認証を有効にする前に、[概要の記事](storage-files-identity-auth-active-directory-enable.md)を読んで、サポートされているシナリオと要件を理解してください。
 
-この記事では、ストレージ アカウントで Active Directory Domain Services (AD DS) 認証を有効にするために必要なプロセスについて説明します。 この機能を有効にした後、AD DS の資格情報を使用して Azure ファイル共有に対して認証するために、ストレージ アカウントと AD DS を構成する必要があります。 Azure ファイル共有に対する SMB 経由の AD DS 認証を有効にするには、ストレージ アカウントを AD DS に登録してから、ストレージ アカウントに必要なドメイン プロパティを設定する必要があります。 機能は、ストレージ アカウントで有効になると、アカウント内のすべての新規および既存のファイル共有に適用されます。
+この記事では、ストレージ アカウントで Active Directory Domain Services (AD DS) 認証を有効にするために必要なプロセスについて説明します。 この機能を有効にした後、AD DS の資格情報を使用して Azure ファイル共有に対して認証するために、ストレージ アカウントと AD DS を構成する必要があります。 Azure ファイル共有に対する SMB 経由の AD DS 認証を有効にするには、ストレージ アカウントを AD DS に登録してから、ストレージ アカウントに必要なドメイン プロパティを設定する必要があります。
 
-## <a name="option-one-recommended-use-the-script"></a>オプション 1 (推奨):スクリプトの使用
+ストレージ アカウントを AD DS に登録するには、それを表すアカウントを AD DS 内に作成します。 このプロセスは、オンプレミスの Windows ファイル サーバーを表すアカウントを AD DS 内に作成するのと同じように考えることができます。 機能は、ストレージ アカウントで有効になると、アカウント内のすべての新規および既存のファイル共有に適用されます。
 
-この記事のスクリプトは、ユーザーの代わりに必要な変更を行い、機能を有効にします。 スクリプトの一部はオンプレミスの AD DS と相互作用するため、ここではスクリプトの動作について説明します。これにより、変更がコンプライアンス ポリシーとセキュリティ ポリシーに適合するかどうかを判断し、スクリプトを実行するための適切なアクセス許可を持っていることを確認できます。 スクリプトを使用することをお勧めしますが、使用できない場合は、手動で実行するための手順を用意しています。
+## <a name="option-one-recommended-use-azfileshybrid-powershell-module"></a>オプション 1 (推奨):AzFilesHybrid PowerShell モジュールを使用する
 
-### <a name="script-prerequisites"></a>スクリプトの前提条件
+AzFilesHybrid PowerShell モジュールのコマンドレットによって、ユーザーの代わりに必要な変更が行われ、機能が有効になります。 コマンドレットの一部はオンプレミスの AD DS と相互作用するため、ここではコマンドレットの動作について説明します。これにより、変更がコンプライアンス ポリシーとセキュリティ ポリシーに適合するかどうかを判断し、コマンドレットを実行するための適切なアクセス許可を持っていることを確実にすることができます。 AzFilesHybrid モジュールの使用をお勧めしますが、使用できない場合は、手動で実行するための手順を用意しています。
 
-- [AzFilesHybrid モジュールをダウンロードして解凍する](https://github.com/Azure-Samples/azure-files-samples/releases)
+### <a name="download-azfileshybrid-module"></a>AzFilesHybrid モジュールをダウンロードする
+
+- [AzFilesHybrid モジュールをダウンロードして解凍します](https://github.com/Azure-Samples/azure-files-samples/releases) (GA モジュール v0.2.0 以降)
 - ターゲット AD でサービス ログオン アカウントまたはコンピューター アカウントを作成する権限がある AD DS 資格情報を使用して、オンプレミスの AD DS に参加しているデバイスにモジュールをインストールして実行します。
 -  Azure AD に同期されているオンプレミスの AD DS 資格情報を使用して、スクリプトを実行します。 オンプレミスの AD DS 資格情報には、ストレージ アカウント所有者または共同作成者の RBAC ロールのアクセス許可が必要です。
 
-### <a name="offline-domain-join"></a>オフライン ドメイン参加
+### <a name="run-join-azstorageaccountforauth"></a>Join-AzStorageAccountForAuth を実行する
 
-`Join-AzStorageAccountForAuth` コマンドレットでは、指定されたストレージ アカウントに代わってオフライン ドメイン参加に相当することを行います。 このスクリプトではコマンドレットを使用して、AD ドメインに [コンピューター アカウント](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (既定) または[サービス ログオン アカウント](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts)のいずれかのアカウントが作成されます。 このコマンドを手動で実行する場合は、環境に最も適したアカウントを選択する必要があります。
+`Join-AzStorageAccountForAuth` コマンドレットでは、指定されたストレージ アカウントに代わってオフライン ドメイン参加に相当することを行います。 このスクリプトでは、コマンドレットを使用して、AD ドメインに[コンピューター アカウント](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory)を作成します。 何らかの理由でコンピューター アカウントを使用できない場合は、代わりに[サービス ログオン アカウント](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts)を作成するようにスクリプトを変更できます。 このコマンドを手動で実行する場合は、環境に最も適したアカウントを選択する必要があります。
 
-コマンドレットによって作成された AD DS アカウントは、ストレージ アカウントを表します。 AD DSアカウントが、パスワードの有効期限を適用する組織単位 (OU) の下で作成されている場合は、パスワードの有効期間の前にパスワードを更新する必要があります。 その日付の前にアカウント パスワードの更新に失敗すると、Azure ファイル共有にアクセスするときに認証エラーが発生します。 パスワードを更新する方法については、[AD DS アカウント パスワードを更新する](storage-files-identity-ad-ds-update-password.md)方法に関する記事を参照してください。
-
-### <a name="use-the-script-to-enable-ad-ds-authentication"></a>スクリプトを使用して AD DS 認証を有効にする
+コマンドレットによって作成された AD DS アカウントは、ストレージ アカウントを表します。 AD DSアカウントが、パスワードの有効期限を適用する組織単位 (OU) の下で作成されている場合は、パスワードの有効期間の前にパスワードを更新する必要があります。 その日付の前までにアカウント パスワードが更新されない場合は、Azure ファイル共有にアクセスするときに認証エラーが発生します。 パスワードを更新する方法については、[AD DS アカウント パスワードを更新する](storage-files-identity-ad-ds-update-password.md)方法に関する記事を参照してください。
 
 PowerShell で実行する前に、必ず、以下のパラメーターのプレースホルダーの値を実際の値に置き換えてください。
 > [!IMPORTANT]
@@ -66,20 +66,20 @@ Select-AzSubscription -SubscriptionId $SubscriptionId
 
 # Register the target storage account with your active directory environment under the target OU (for example: specify the OU with Name as "UserAccounts" or DistinguishedName as "OU=UserAccounts,DC=CONTOSO,DC=COM"). 
 # You can use to this PowerShell cmdlet: Get-ADOrganizationalUnit to find the Name and DistinguishedName of your target OU. If you are using the OU Name, specify it with -OrganizationalUnitName as shown below. If you are using the OU DistinguishedName, you can set it with -OrganizationalUnitDistinguishedName. You can choose to provide one of the two names to specify the target OU.
-# You can choose to create the identity that represents the storage account as either a Service Logon Account or Computer Account, depends on the AD permission you have and preference. 
+# You can choose to create the identity that represents the storage account as either a Service Logon Account or Computer Account (default parameter value), depends on the AD permission you have and preference. 
 # Run Get-Help Join-AzStorageAccountForAuth for more details on this cmdlet.
 
 Join-AzStorageAccountForAuth `
         -ResourceGroupName $ResourceGroupName `
-        -Name $StorageAccountName `
-        -DomainAccountType "<ComputerAccount|ServiceLogonAccount>" ` #Default set to "ComputerAccount" if parameter is omitted
-        -OrganizationalUnitName "<ou-name-here>" #You can also use -OrganizationalUnitDistinguishedName "<ou-distinguishedname-here>" instead. If you don't provide the OU name as an input parameter, the AD identity that represents the storage account will be created under the root directory.
+        -StorageAccountName $StorageAccountName `
+        -DomainAccountType "<ComputerAccount|ServiceLogonAccount>" `
+        -OrganizationalUnitDistinguishedName "<ou-distinguishedname-here>" # If you don't provide the OU name as an input parameter, the AD identity that represents the storage account is created under the root directory.
 
 #You can run the Debug-AzStorageAccountAuth cmdlet to conduct a set of basic checks on your AD configuration with the logged on AD user. This cmdlet is supported on AzFilesHybrid v0.1.2+ version. For more details on the checks performed in this cmdlet, see Azure Files Windows troubleshooting guide.
 Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName -Verbose
 ```
 
-## <a name="option-2-manually-perform-the-script-actions"></a>オプション 2:スクリプト アクションを手動で実行する
+## <a name="option-2-manually-perform-the-enablement-actions"></a>オプション 2:有効化アクションを手動で実行する
 
 前述の `Join-AzStorageAccountForAuth` スクリプトを既に正常に実行している場合は、セクション[「機能が有効になっていることを確認する」](#confirm-the-feature-is-enabled)に進んでください。 次の手動の手順を実行する必要はありません。
 
@@ -89,7 +89,18 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 
 ### <a name="creating-an-identity-representing-the-storage-account-in-your-ad-manually"></a>AD でのストレージ アカウントを表す ID の手動による作成
 
-このアカウントを手動で作成するには、`New-AzStorageAccountKey -KeyName kerb1` を使用して、ストレージ アカウント用の新しい Kerberos キーを作成します。 次に、その Kerberos キーをアカウントのパスワードとして使用します。 このキーは、設定時にのみ使われ、ストレージ アカウントに対する制御やデータ プレーンの操作には使用できません。 そのキーを作成したら、OU の下にサービスまたはコンピューター アカウントを作成します。 次の仕様を使用します (テキスト例は実際のストレージ アカウント名に置き換えてください)。
+このアカウントを手動で作成するには、ストレージ アカウント用の新しい Kerberos キーを作成します。 次に、以下の PowerShell コマンドレットを使用して、その Kerberos キーをアカウントのパスワードとして使用します。 このキーは、設定時にのみ使われ、ストレージ アカウントに対する制御やデータ プレーンの操作には使用できません。 
+
+```PowerShell
+# Create the Kerberos key on the storage account and get the Kerb1 key as the password for the AD identity to represent the storage account
+$ResourceGroupName = "<resource-group-name-here>"
+$StorageAccountName = "<storage-account-name-here>"
+
+New-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName -KeyName kerb1
+Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName -ListKerbKey | where-object{$_.Keyname -contains "kerb1"}
+```
+
+そのキーを作成したら、OU の下にサービスまたはコンピューター アカウントを作成します。 次の仕様を使用します (テキスト例は実際のストレージ アカウント名に置き換えてください)。
 
 SPN: "cifs/ここはご利用のストレージ アカウントの名前.file.core.windows.net"。パスワード: ストレージ アカウントの Kerberos キー。
 
@@ -142,6 +153,6 @@ $storageAccount.AzureFilesIdentityBasedAuth.ActiveDirectoryProperties
 
 ## <a name="next-steps"></a>次のステップ
 
-この時点で、ストレージ アカウントで機能が正常に有効になりました。 この機能を使用するには、構成して変更する必要があります。 次のセクションに進みます。
+これで、ストレージ アカウントで機能が正常に有効になりました。 この機能を使用するには、共有レベルのアクセス許可を割り当てる必要があります。 次のセクションに進みます。
 
 [パート 2: ID に共有レベルのアクセス許可を割り当てる](storage-files-identity-ad-ds-assign-permissions.md)

@@ -4,7 +4,7 @@ titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Azure SQL Database および SQL Managed Instance でクラウド ビジネス継続性とデータベース復旧がどのようにサポートされ、ミッション クリティカルなクラウド アプリケーションの実行を維持できるようになるかについて説明します。
 keywords: ビジネス継続性, クラウド ビジネス継続性, データベースの障害復旧, データベース復旧
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: high-availability
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -13,12 +13,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 8312fe1370ded990bd3523d531d168fd2cac5564
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 8ceef173e33c3603d9bc5d6ef217d54eef88609c
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84189758"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85982474"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Azure SQL Database によるビジネス継続性の概要
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -65,14 +65,14 @@ SQL Database および SQL Managed Instance では、データ損失からビジ
 
 |                                              | geo レプリケーション | フェールオーバー グループ  |
 |:---------------------------------------------| :-------------- | :----------------|
-| 自動フェールオーバー                           |     いいえ          |      はい         |
-| 複数のデータベースを同時にフェールオーバーする  |     いいえ          |      はい         |
-| ユーザーがフェールオーバー後に接続文字列を更新する必要がある      |     はい         |      いいえ          |
-| SQL Managed Instance のサポート                   |     いいえ          |      はい         |
-| プライマリと同じリージョンに存在できる             |     はい         |      いいえ          |
-| 複数のレプリカ                            |     はい         |      いいえ          |
-| 読み取りスケールをサポートする                          |     はい         |      はい         |
-| &nbsp; | &nbsp; | &nbsp; |
+| **Automatic failover**                          |     いいえ          |      はい         |
+| **複数のデータベースを同時にフェールオーバーする**  |     いいえ          |      はい         |
+| **ユーザーがフェールオーバー後に接続文字列を更新する必要がある**      |     はい         |      いいえ          |
+| **SQL Managed Instance のサポート**                   |     いいえ          |      はい         |
+| **プライマリと同じリージョンに存在できる**             |     はい         |      いいえ          |
+| **複数のレプリカ**                            |     はい         |      いいえ          |
+| **読み取りスケールをサポートする**                          |     はい         |      はい         |
+
 
 ## <a name="recover-a-database-to-the-existing-server"></a>既存のサーバーにデータベースを復旧する
 

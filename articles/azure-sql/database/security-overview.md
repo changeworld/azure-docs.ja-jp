@@ -1,9 +1,9 @@
 ---
 title: セキュリティの概要
-titleSuffix: Azure SQL Database & SQL Managed Instance
+titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: Azure SQL Database と Azure SQL Managed Instance のセキュリティについて、SQL Server との違いを含めて説明します。
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -12,15 +12,14 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: 7beaae92d8f08aaaa3625240bc2c70256ed0e1d4
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: bfb7c94f1a29eaaf849dbf18a2b6137102617be8
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266051"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986850"
 ---
-# <a name="an-overview-of-azure-sql-database--sql-managed-instance-security-capabilities"></a>Azure SQL Database と SQL Managed Instance のセキュリティ機能の概要
-
+# <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Azure SQL Database と SQL Managed Instance のセキュリティ機能の概要
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 この記事では、[Azure SQL Database](sql-database-paas-overview.md) と [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) を使用して、アプリケーションのデータ層をセキュリティで保護するための基本の概要を示します。 説明されているセキュリティ戦略では、下の図に示すように多層防御アプローチに従い、外側から内側に移動します。
@@ -42,12 +41,12 @@ IP ファイアウォール規則では、各要求の送信元 IP アドレス�
 [仮想ネットワーク規則](vnet-service-endpoint-rule-overview.md)を使用すると、Azure SQL Database は、仮想ネットワーク内の選択されたサブネットから送信される通信のみを受け入れるようにすることができます。
 
 > [!NOTE]
-> ファイアウォール規則でのアクセスの制御は、**SQL Managed Instance** には適用され*ません*。 必要なネットワーク構成について詳しくは、[SQL Managed Instance への接続](../managed-instance/connect-application-instance.md)に関するページを参照してください。
+> ファイアウォール規則でのアクセスの制御は、**SQL Managed Instance** には適用され "*ません*"。 必要なネットワーク構成について詳しくは、「[マネージド インスタンスへの接続](../managed-instance/connect-application-instance.md)」を参照してください
 
 ## <a name="access-management"></a>アクセス管理
 
 > [!IMPORTANT]
-> Azure 内でのデータベースとサーバーの管理は、ポータル ユーザー アカウントのロール割り当てによって制御されます。 この記事の詳細については、「[Azure Portal でのロール ベースのアクセス制御](../../role-based-access-control/overview.md)」を参照してください。
+> Azure 内でのデータベースとサーバーの管理は、ポータル ユーザー アカウントのロール割り当てによって制御されます。 この記事の詳細については、「[Azure portal でのロール ベースのアクセス制御](../../role-based-access-control/overview.md)」を参照してください。
 
 ### <a name="authentication"></a>認証
 
@@ -55,7 +54,7 @@ IP ファイアウォール規則では、各要求の送信元 IP アドレス�
 
 - **SQL 認証**:
 
-    SQL データベース認証とは、ユーザーがユーザー名とパスワードを使用して Azure SQL Database または Azure SQL Managed Instance に接続するときに、そのユーザーを認証することです。 サーバーの作成時には、ユーザー名とパスワードを使用して**サーバー管理者**ログインを指定する必要があります。 これらの資格情報を使用することで、**サーバー管理者**はデータベース所有者として、そのサーバーまたはインスタンスにある任意のデータベースを認証できます。 その後、サーバー管理者は、追加の SQL ログインとユーザーを作成できます。これにより、ユーザーはユーザー名とパスワードを使用して接続できるようになります。
+    SQL 認証とは、ユーザーがユーザー名とパスワードを使用して Azure SQL Database または Azure SQL Managed Instance に接続するときに、そのユーザーを認証することを指します。 サーバーの作成時には、ユーザー名とパスワードを使用して**サーバー管理者**ログインを指定する必要があります。 これらの資格情報を使用することで、**サーバー管理者**はデータベース所有者として、そのサーバーまたはインスタンスにある任意のデータベースを認証できます。 その後、サーバー管理者は、追加の SQL ログインとユーザーを作成できます。これにより、ユーザーはユーザー名とパスワードを使用して接続できるようになります。
 
 - **Azure Active Directory 認証**:
 
@@ -66,11 +65,11 @@ IP ファイアウォール規則では、各要求の送信元 IP アドレス�
     使用できる追加の Azure AD 認証オプションには、[多要素認証](../../active-directory/authentication/concept-mfa-howitworks.md)と[条件付きアクセス](conditional-access-configure.md)を含む、[SQL Server Management Studio 用の Active Directory ユニバーサル認証](authentication-mfa-ssms-overview.md)接続があります。
 
 > [!IMPORTANT]
-> Azure 内でのデータベースとサーバーの管理は、ポータル ユーザー アカウントのロール割り当てによって制御されます。 この記事の詳細については、「[Azure Portal でのロール ベースのアクセス制御](../../role-based-access-control/overview.md)」を参照してください。 ファイアウォール規則でのアクセスの制御は、**SQL Managed Instance** には適用され*ません*。 必要なネットワーク構成の詳細については、[マネージド インスタンスへの接続](../managed-instance/connect-application-instance.md)に関する次の記事をご覧ください。
+> Azure 内でのデータベースとサーバーの管理は、ポータル ユーザー アカウントのロール割り当てによって制御されます。 この記事の詳細については、「[Azure Portal でのロール ベースのアクセス制御](../../role-based-access-control/overview.md)」を参照してください。 ファイアウォール規則でのアクセスの制御は、**SQL Managed Instance** には適用され "*ません*"。 必要なネットワーク構成の詳細については、[マネージド インスタンスへの接続](../managed-instance/connect-application-instance.md)に関する次の記事をご覧ください。
 
 ## <a name="authorization"></a>承認
 
-承認は、Azure SQL Database または SQL Managed Instance 内のユーザーに割り当てられるアクセス許可を指し、ユーザーが実行できる操作を決定するものです。 アクセス許可を制御するには、[データベース ロール](/sql/relational-databases/security/authentication-access/database-level-roles)にユーザー アカウントを追加してデータベース レベルのアクセス許可をこれらのロールに割り当てるか、特定の[オブジェクト レベルのアクセス許可](/sql/relational-databases/security/permissions-database-engine)をユーザーに付与することができます。 詳細については、[ログインとユーザー](logins-create-manage.md)に関するページを参照してください
+承認は、Azure SQL Database のデータベースまたは Azure SQL Managed Instance 内のユーザーに割り当てられるアクセス許可を指し、ユーザーが実行できる操作を決定するものです。 アクセス許可を制御するには、[データベース ロール](/sql/relational-databases/security/authentication-access/database-level-roles)にユーザー アカウントを追加してデータベース レベルのアクセス許可をこれらのロールに割り当てるか、特定の[オブジェクト レベルのアクセス許可](/sql/relational-databases/security/permissions-database-engine)をユーザーに付与することができます。 詳細については、[ログインとユーザー](logins-create-manage.md)に関するページを参照してください
 
 ベスト プラクティスとして、必要なときにカスタム ロールを作成することをお勧めします。 職務に必要な最小限の特権を持つロールにユーザーを追加してください。 ユーザーにアクセス許可を直接割り当てないでください。 サーバー管理者アカウントは、広範なアクセス許可を持つ組み込み db_owner ロールのメンバーです。管理業務を行うごく少数のユーザーにのみ、これを付与してください。 アプリケーションでは、呼び出されるモジュールの実行コンテキストを指定するために [EXECUTE AS](/sql/t-sql/statements/execute-as-clause-transact-sql) を使用するか、限定的なアクセス許可を持つ[アプリケーション ロール](/sql/relational-databases/security/authentication-access/application-roles)を使用します。 こうすると、データベースに接続するアプリケーションに、そのアプリケーションで必要な最小限の特権が確実に付与されます。 また、このようなベスト プラクティスに従うことで、職務の分離も促進されます。
 
@@ -96,9 +95,9 @@ Advanced Threat Protection では、ログを分析し、通常とは異なる�
 
 ## <a name="information-protection-and-encryption"></a>情報の保護と暗号化
 
-### <a name="transport-layer-security-tls-encryption-in-transit"></a>トランスポート層セキュリティ TLS (転送中の暗号化)
+### <a name="transport-layer-security-encryption-in-transit"></a>トランスポート層セキュリティ (転送中の暗号化)
 
-SQL Database と SQL Managed Instance では、[トランスポート層セキュリティ](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server)を使用して、移動中のデータを暗号化することで、顧客データをセキュリティで保護します。
+SQL Database と SQL Managed Instance では、[トランスポート層セキュリティ (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) を使用して、移動中のデータを暗号化することで、顧客データをセキュリティで保護します。
 
 SQL Database と SQL Managed Instance では、すべての接続に対して常に暗号化 (SSL/TLS) が適用されます。 これにより、接続文字列での **Encrypt** または **TrustServerCertificate** の設定に関係なく、すべてのデータがクライアントとサーバー間の "移動中" に暗号化されることが保証されます。
 
@@ -125,7 +124,7 @@ Azure では、新しく作成されたすべてのデータベースが既定�
 
 ![azure-database-ae.png](./media/security-overview/azure-database-ae.png)
 
-[Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) は、特定のデータベース列に格納された機微なデータ (クレジット カード番号、国民識別番号、_知る必要性_ に基づくデータなど) がアクセスされないようにすることを目的とした機能です。 これには、データベース管理者や、管理タスクを実行するためにデータベースへのアクセスを許可されているものの、暗号化された列の特定のデータには業務上、アクセスする必要がない他の特権ユーザーが含まれます。 データは常に暗号化されます。つまり、暗号化されたデータは、暗号化キーにアクセスできるクライアント アプリケーションによって処理される場合にのみ、暗号化解除されます。  暗号化キーは SQL に公開されることはなく、[Windows 証明書ストア](always-encrypted-certificate-store-configure.md)または [Azure Key Vault](always-encrypted-azure-key-vault-configure.md) に格納できます。
+[Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) は、特定のデータベース列に格納された機微なデータ (クレジット カード番号、国民識別番号、_知る必要性_ に基づくデータなど) がアクセスされないようにすることを目的とした機能です。 これには、データベース管理者や、管理タスクを実行するためにデータベースへのアクセスを許可されているものの、暗号化された列の特定のデータには業務上、アクセスする必要がない他の特権ユーザーが含まれます。 データは常に暗号化されます。つまり、暗号化されたデータは、暗号化キーにアクセスできるクライアント アプリケーションによって処理される場合にのみ、暗号化解除されます。 暗号化キーは SQL Database または SQL Managed Instance に公開されることはなく、[Windows 証明書ストア](always-encrypted-certificate-store-configure.md)または [Azure Key Vault](always-encrypted-azure-key-vault-configure.md) に格納できます。
 
 ### <a name="dynamic-data-masking"></a>動的データ マスク
 
@@ -139,7 +138,7 @@ Azure では、新しく作成されたすべてのデータベースが既定�
 
 [脆弱性評価](sql-vulnerability-assessment.md)では、全体的なデータベース セキュリティを積極的に向上させる目的で、データベースの潜在的な脆弱性を検出、追跡、修復できるサービスを簡単に構成できます。 脆弱性評価 (VA) は、高度な SQL セキュリティ機能の統合パッケージである Advanced Data Security オファリングの一部です。 脆弱性評価は、SQL Advanced Data Security ポータルを使って一元的にアクセスおよび管理できます。
 
-### <a name="data-discovery--classification"></a>データの検出と分類
+### <a name="data-discovery-and-classification"></a>データの検出と分類
 
 データの検出と分類 (現在プレビュー段階) には、データベース内の機密データの検出、分類、ラベル付け、および保護を行うための、Azure SQL Database と SQL Managed Instance に組み込まれた高度な機能が用意されています。 最も機微なデータ (ビジネス/金融、医療、個人データなど) の検出と分類は、組織の情報保護水準において極めて重要な役割を果たします。 次のような場合にインフラストラクチャとして使用できます。
 

@@ -1,18 +1,14 @@
 ---
 title: Azure Event Grid でのイベントのフィルター処理
 description: Azure Event Grid サブスクリプションを作成するときにイベントをフィルター処理する方法について説明します。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/28/2020
-ms.author: spelluru
-ms.openlocfilehash: 0f503b21d5a7d0fdfbee79354c198775789c0b91
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.date: 07/07/2020
+ms.openlocfilehash: 837209d4197c271598155776b8d171a705e1f454
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82888779"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120094"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Event Grid サブスクリプションでのイベントのフィルター処理を理解します
 
@@ -155,7 +151,7 @@ Cloud Events スキーマのイベントの場合は、キーの次の値を使�
 
 高度なフィルター処理には次の制限事項があります。
 
-* Event Grid サブスクリプションあたり高度なフィルターは 5 つ
+* イベント グリッド サブスクリプションあたり、フィルター全体で高度なフィルターが 5、フィルター値が 25
 * 文字列値あたり 512 文字
 * **in** 演算子および **not in** 演算子の値は 5 つ
 * **`.` (ドット)** 文字を含むキー。 たとえば、`http://schemas.microsoft.com/claims/authnclassreference` や `john.doe@contoso.com` などです。 現時点では、エスケープ文字を含むキーはサポートされていません。 

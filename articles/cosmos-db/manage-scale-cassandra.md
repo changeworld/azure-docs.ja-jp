@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: thvankra
-ms.openlocfilehash: 8f84d611ecdf3fc0f86273498753e550315cd878
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: c9517b6d48f21a2ac2c4b92e68c788a33897511b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83586186"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85119156"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Azure Cosmos DB Cassandra API アカウントをエラスティックにスケーリングする
 
@@ -19,7 +19,7 @@ Azure Cosmos DB の Cassandra 用 API のエラスティック特性を調べる
 
 Cassandra API では、[.NET および Java SDK](https://docs.microsoft.com/azure/cosmos-db/find-request-unit-charge#cassandra-api) を使用して、個々のクエリの要求ユニットの料金を取得できます。 これは、サービスでプロビジョニングする必要がある RU/秒の量を決定するのに役立ちます。
 
-![データベース操作による要求ユニットの消費](./media/request-units/request-units.png)
+:::image type="content" source="./media/request-units/request-units.png" alt-text="データベース操作による要求ユニットの消費" border="false":::
 
 ## <a name="handling-rate-limiting-429-errors"></a>レート制限の処理 (429 エラー)
 

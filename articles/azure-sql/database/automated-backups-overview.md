@@ -3,117 +3,120 @@ title: 自動の geo 冗長バックアップ
 titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: Azure SQL Database および Azure SQL Managed Instance は数分ごとにローカル データベースを自動的にバックアップし、Azure 読み取りアクセス geo 冗長ストレージを利用して地理的冗長性を提供します。
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: backup-restore
 ms.custom: sqldbrb=2
-ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
-manager: craigg
-ms.date: 12/13/2019
-ms.openlocfilehash: a99045359d9d6c6a327ef646ba15457c3e4fbbda
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.date: 06/04/2020
+ms.openlocfilehash: 340f4310da5131ea0d2576e7c77d8f6cd0a731b3
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299810"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85983106"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>自動バックアップ - Azure SQL Database および SQL Managed Instance
 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Azure SQL Database と Azure SQL Managed Instance のどちらでも、構成された保有期間にわたって保存されるデータベース バックアップが作成されます。 Azure の[読み取りアクセス geo 冗長ストレージ (RA-GRS)](../../storage/common/storage-redundancy.md) を使用して、データセンターが使用できない場合でもバックアップが確実に保存されます。
-
-データの不慮の破損または削除から保護するデータベース バックアップは、ビジネス継続性およびディザスター リカバリー戦略の最も重要な部分です。 セキュリティ規則で、バックアップを長期間 (最長 10 年間) 利用できるようにする必要がある場合は、単一データベースとプールされたデータベースの両方で[長期保有](long-term-retention-overview.md)を構成できます。
-
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-## <a name="what-is-a-sql-database-backup"></a>SQL Database バックアップとは何か。
+## <a name="what-is-a-database-backup"></a>データベースのバックアップとは
 
-SQL Database と SQL Managed Instance は SQL Server 技術を利用して、[完全バックアップ](https://docs.microsoft.com/sql/relational-databases/backup-restore/full-database-backups-sql-server)を毎週、[差分バックアップ](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server)を 12 時間ごと、そして[トランザクション ログ バックアップ](https://docs.microsoft.com/sql/relational-databases/backup-restore/transaction-log-backups-sql-server)を 5 から 10 分ごとに作成します。 バックアップは [RA-GRS ストレージ BLOB](../../storage/common/storage-redundancy.md) に格納され、この BLOB はデータセンターの停止に対する保護のために[ペアのデータセンター](../../best-practices-availability-paired-regions.md)にレプリケートされます。 データベースを復元するとき、復元する必要がある完全バックアップ、差分バックアップ、トランザクション ログ バックアップはどれであるかがサービスによって判定されます。
+データの破損または削除から保護するデータベース バックアップは、ビジネス継続性およびディザスター リカバリー戦略の最も重要な部分です。
+
+SQL Database と SQL Managed Instance は SQL Server 技術を利用して、[完全バックアップ](https://docs.microsoft.com/sql/relational-databases/backup-restore/full-database-backups-sql-server)を毎週、[差分バックアップ](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server)を 12 から 24 時間ごと、そして[トランザクション ログ バックアップ](https://docs.microsoft.com/sql/relational-databases/backup-restore/transaction-log-backups-sql-server)を 5 から 10 分ごとに作成します。 トランザクション ログ バックアップの頻度は、コンピューティング サイズとデータベース アクティビティの量に基づいて決まります。
+
+データベースを復元するとき、復元する必要がある完全バックアップ、差分バックアップ、トランザクション ログ バックアップはどれであるかがサービスによって判定されます。
+
+これらのバックアップにより、構成された保有期間内の特定の時点にデータベースを復元できます。 バックアップは [RA-GRS Storage Blob](../../storage/common/storage-redundancy.md) として格納された後、プライマリ リージョンのバックアップ ストレージに影響する障害から保護するため、[ペアのリージョン](../../best-practices-availability-paired-regions.md)にレプリケートされます。 
+
+データ保護規則で、バックアップを長期間 (最長 10 年間) 利用できるようにする必要がある場合は、単一データベースとプールされたデータベースの両方で[長期保有](long-term-retention-overview.md)を構成できます。
 
 これらのバックアップを使用して、以下を行うことができます。
 
-- 保有期間内の**過去の特定の時点に既存のデータベースを復元する**。その際、Azure portal、Azure PowerShell、Azure CLI、または REST API を使用します。 単一データベースおよびプールされたデータベースでは、この操作により、元のデータベースと同じサーバーの同じサブスクリプションに新しいデータベースが作成されます。 マネージド インスタンスでは、この操作により、同じサブスクリプションに、データベースのコピーか、同じマネージド インスタンスまたは異なるマネージド インスタンスのコピーを作成できます。
-- **削除したデータベースを削除の時点に復元する**。また、保有期間内の任意の時点に復元することもできます。 削除されたデータベースは、元のデータベースが作成されたサーバーまたはマネージド インスタンスの同じサブスクリプションにのみ復元できます。
-- **別の地理的リージョンにデータベースを復元する**。 geo リストアにより、サーバーやデータベースにアクセスできないときに、地理的な障害から復旧できます。 世界中のどこでも、あらゆる既存のサーバーで新しいデータベースを作成します。
-- **特定の長期バックアップからデータベースを復元する**。データベースに長期保有ポリシー (LTR) が構成されている場合に、単一データベースまたはプールされたデータベースで復元できます。 LTR により、[Azure portal](long-term-backup-retention-configure.md#using-azure-portal) または [Azure PowerShell](long-term-backup-retention-configure.md#using-powershell) を使用して、コンプライアンスの要求を満たすため、またはアプリケーションの以前バージョンを実行するために、以前のバージョンのデータベースを復元できます。 詳細については、「[長期保存](long-term-retention-overview.md)」をご覧ください。
+- Azure portal、Azure PowerShell、Azure CLI、または REST API を使用して、保持期間内の[過去の特定の時点に既存のデータベースを復元します](recovery-using-backups.md#point-in-time-restore)。 単一データベースおよびプールされたデータベースでは、この操作により、元のデータベースと同じサーバーに新しいデータベースが作成されますが、元のデータベースが上書きされるのを防ぐため、別の名前が使用されます。 復元が完了したら、元のデータベースを削除するか[名前を変更](https://docs.microsoft.com/sql/relational-databases/databases/rename-a-database)し、復元されたデータベースの名前を元のデータベース名に変更できます。 マネージド インスタンスでは、この操作により、同じリージョンの同じサブスクリプションの同じ、または異なるマネージド インスタンスに、データベースのコピーを同じように作成できます。
+- [削除されたデータベースを削除の時点に復元します](recovery-using-backups.md#deleted-database-restore)。または、保持期間内の特定の時点に復元します。 削除されたデータベースは、元のデータベースが作成されていたのと同じサーバーまたはマネージド インスタンスにのみ復元できます。 データベースを削除すると、データが失われないように、削除前にサービスによって最後のトランザクション ログ バックアップが取得されます。
+- [別の地理的リージョンにデータベースを復元する](recovery-using-backups.md#geo-restore)。 geo リストアを使用すると、プライマリ リージョンのデータベースまたはバックアップにアクセスできないときでも、地理的な災害から復旧できます。 任意の Azure リージョンの既存のサーバーまたはマネージド インスタンスに、新しいデータベースが作成されます。
+- データベースに長期保有ポリシー (LTR) が構成されている場合、単一データベースまたはプールされたデータベースの[特定の長期バックアップからデータベースを復元します](long-term-retention-overview.md)。 LTR により、[Azure portal](long-term-backup-retention-configure.md#using-the-azure-portal) または [Azure PowerShell](long-term-backup-retention-configure.md#using-powershell) を使用して、コンプライアンスの要求を満たすため、またはアプリケーションの以前バージョンを実行するために、以前のバージョンのデータベースを復元できます。 詳細については、「[長期保存](long-term-retention-overview.md)」をご覧ください。
 
 復元を実行するには、[バックアップからのデータベースの復元](recovery-using-backups.md)に関する記事を参照してください。
 
 > [!NOTE]
-> Azure Storage の "*レプリケーション*" という用語は、ある場所から別の場所にファイルをコピーすることを表します。 Azure SQL Database と SQL Managed Instance では、"*データベース レプリケーション*" は、複数のセカンダリ データベースとプライマリ データベースとの同期を保つことを意味します。
+> Azure Storage では、"*レプリケーション*" とは、ある場所から別の場所に BLOB をコピーすることを表します。 SQL では、"*データベース レプリケーション*" とは、複数のセカンダリ データベースをプライマリ データベースと同期しておくために使用されるさまざまなテクノロジのことです。
 
-次の例を使用して、これらの操作のいくつかを試すことができます。
+次の例を使用して、バックアップの構成と復元の操作を試すことができます。
 
-| | Azure ポータル | Azure PowerShell |
+| | Azure portal | Azure PowerShell |
 |---|---|---|
-| バックアップ保有期間を変更する | [1 つのデータベース](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) <br/> [マネージド インスタンス](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) | [1 つのデータベース](automated-backups-overview.md#change-the-pitr-backup-retention-period-by-using-powershell) <br/>[マネージド インスタンス](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
-| 長期的なバックアップ保有期間を変更する | [1 つのデータベース](long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>マネージド インスタンス - N/A  | [1 つのデータベース](long-term-backup-retention-configure.md)<br/>マネージド インスタンス - N/A  |
-| 特定の時点からデータベースを復元する | [1 つのデータベース](recovery-using-backups.md#point-in-time-restore) | [1 つのデータベース](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [マネージド インスタンス](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
-| 削除されたデータベースの復元 | [1 つのデータベース](recovery-using-backups.md) | [1 つのデータベース](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [マネージド インスタンス](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
-| Azure BLOB ストレージからデータベースを復元する | Single Database - N/A <br/>マネージド インスタンス - N/A  | Single Database - N/A <br/>[マネージド インスタンス](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
+| **バックアップ保有期間を変更する** | [1 つのデータベース](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) <br/> [マネージド インスタンス](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) | [1 つのデータベース](automated-backups-overview.md#change-the-pitr-backup-retention-period-by-using-powershell) <br/>[マネージド インスタンス](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
+| **長期的なバックアップ保有期間を変更する** | [1 つのデータベース](long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>マネージド インスタンス - N/A  | [1 つのデータベース](long-term-backup-retention-configure.md)<br/>マネージド インスタンス - N/A  |
+| **特定の時点からデータベースを復元する** | [1 つのデータベース](recovery-using-backups.md#point-in-time-restore) | [1 つのデータベース](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [マネージド インスタンス](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
+| **削除されたデータベースの復元** | [1 つのデータベース](recovery-using-backups.md) | [1 つのデータベース](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [マネージド インスタンス](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
+| **Azure Blob Storage からデータベースを復元する** | Single Database - N/A <br/>マネージド インスタンス - N/A  | Single Database - N/A <br/>[マネージド インスタンス](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
 
-## <a name="backup-frequency"></a>バックアップ頻度
+## <a name="backup-scheduling"></a>バックアップのスケジュール設定
 
-### <a name="point-in-time-restore"></a>ポイントインタイム リストア
+初回の完全バックアップは、新しいデータベースの作成または復元の直後にスケジュールされます。 通常このバックアップは 30 分以内に終了しますが、データベースが大きい場合はそれ以上かかることがあります。 たとえば、復元されたデータベースまたはデータベースのコピーでは、初期バックアップに時間がかかる場合があり、通常は新しいデータベースより大きくなります。 初回の完全バックアップ以降のすべてのバックアップは、自動的にスケジュールおよび管理されます。 すべてのデータベースのバックアップの正確なタイミングは、システム全体のワークロードのバランスを取りながら、SQL Database サービスまたは SQL Managed Instance サービスによって決定されます。 バックアップ ジョブのスケジュールを変更したり、スケジュールを無効にしたりすることはできません。
 
-SQL Database と SQL Managed Instance では、完全バックアップ、差分バックアップ、およびトランザクション ログ バックアップが自動的に作成され、ポイントインタイム リストア (PITR) のセルフサービスがサポートされています。 データベースの完全バックアップは毎週作成され、データベースの差分バックアップは一般的に 12 時間ごとに作成されます。 トランザクション ログ バックアップは、通常、5 から 10 分ごとに作成されます。 トランザクション ログ バックアップの頻度は、コンピューティング サイズとデータベース アクティビティの量に基づいて決まります。
-
-初回の完全バックアップは、データベースの作成直後にスケジュールされます。 通常このバックアップは 30 分以内に終了しますが、データベースが大きい場合はそれ以上かかることがあります。 たとえば、復元されたデータベースまたはデータベースのコピーでは、初期バックアップに時間がかかります。 初回の完全バックアップ以降のバックアップは、すべて自動的にスケジュールされ、バックグラウンドで自動的に管理されます。 すべてのデータベースのバックアップの正確なタイミングは、全体的なシステムのワークロードのバランスを図りながら、SQL Database または SQL Managed Instance によって決定されます。 バックアップ ジョブを変更または無効化することはできません。
-
-### <a name="default-backup-retention-period"></a>既定のバックアップの保有期間
-
-PITR バックアップは、geo 冗長ストレージで保護されています。 詳細については、「[Azure Storage の冗長性](../../storage/common/storage-redundancy.md)」をご覧ください。
-
-PITR の詳細については、「[ポイントインタイム リストア](recovery-using-backups.md#point-in-time-restore)」を参照してください。
-
-### <a name="long-term-retention"></a>長期保存
-
-単一データベースとプールされたデータベースには、Azure Blob Storage で最大 10 年間にわたる完全バックアップを行う長期保有 (LTR) を構成できます。 LTR ポリシーを有効にした場合、毎週の完全バックアップは自動的に別の RA-GRS ストレージ コンテナーにコピーされます。 各種のコンプライアンス要件を満たすために、毎週、毎月、毎年のバックアップに対してさまざまな保有期間を選択できます。 ストレージの使用量は、選択したバックアップの頻度と保有期間によって異なります。 LTR ストレージのコストは、[LTR 料金計算ツール](https://azure.microsoft.com/pricing/calculator/?service=sql-database)を使用して見積もることができます。
-
-PITR バックアップなどの LTR バックアップは、geo 冗長ストレージで保護されています。 詳細については、「[Azure Storage の冗長性](../../storage/common/storage-redundancy.md)」をご覧ください。
-
-LTR の詳細については、[バックアップの長期保有](long-term-retention-overview.md)に関するページを参照してください。
+> [!IMPORTANT]
+> 新しいデータベース、復元されたデータベース、またはコピーされたデータベースの場合、特定の時点への復元機能は、最初の完全バックアップの後で最初のトランザクション ログ バックアップが作成された時点から、使用できるようになります。
 
 ## <a name="backup-storage-consumption"></a>バックアップ ストレージ消費量
 
-単一データベースおよびマネージド インスタンスの場合、バックアップ ストレージ合計使用量の計算にはこの式が使用されます。
+SQL Server のバックアップと復元のテクノロジでは、特定の時点にデータベースを復元するには、1 回の完全バックアップ、必要に応じて 1 回の差分バックアップ、1 回以上のトランザクション ログ バックアップで構成される、中断のないバックアップ チェーンが必要です。 SQL Database および SQL Managed Instance のバックアップ スケジュールには、毎週、1 回の完全バックアップが含まれます。 したがって、保有期間全体で PITR を有効にするには、構成されている保有期間より最大で 1 週間長い期間の、完全バックアップ、差分バックアップ、トランザクション ログ バックアップが追加で保存されている必要があります。 
 
-`Total backup storage size = (size of full backups + size of differential backups + size of log backups) – database size`
+つまり、保有期間中の任意の時点において、保有期間の最も古い時点より古い完全バックアップと、その完全バックアップから次の完全バックアップまでの差分バックアップとトランザクション ログ バックアップの中断されていないチェーンが、存在する必要があります。
 
-プールされたデータベースの場合、バックアップ ストレージの合計サイズはプール レベルで集計され、次のように計算されます。
+> [!NOTE]
+> PITR を有効にするため、追加のバックアップは、構成されている保有期間より最大 1 週間長く格納されます。 バックアップ ストレージは、すべてのバックアップと同じ料金で課金されます。 
 
-`Total backup storage size = (total size of all full backups + total size of all differential backups + total size of all log backups) - allocated pool data storage`
+PITR 機能を提供するために必要なくなったバックアップは、自動的に削除されます。 差分バックアップとログ バックアップでは先行する完全バックアップが復元可能である必要なため、3 つのバックアップの種類すべてが毎週まとめて消去されます。
 
-保有期間より前に作成されたバックアップは、タイムスタンプに基づいて自動的に消去されます。 差分バックアップとログ バックアップも毎週まとめて消去されます。これらが有用であるためには、先行する完全バックアップが必要なためです。
+[TDE で暗号化された](transparent-data-encryption-tde-overview.md)データベースを含むすべてのデータベースでは、バックアップ ストレージの大きさとコストを削減するためバックアップが圧縮されます。 平均のバックアップ圧縮率は 3 から 4 倍ですが、データの性質や、データベースでデータ圧縮が使用されているかどうかにより、大幅に低くなったり高くなったりする可能性があります。
 
-SQL Database および SQL Managed Instance では、保持期間内のバックアップ ストレージの合計が累積値として計算されます。 この累積値が 1 時間おきに Azure 課金パイプラインに報告されます。この時間あたり使用量がパイプラインによって集計されて、毎月末に消費量が計算されます。 データベースの削除後は、バックアップの時間経過と共に消費量が減少します。 バックアップが保有期間を過ぎたら、課金が停止します。
+SQL Database と SQL Managed Instance では、使用されたバックアップ ストレージの合計が累積値として計算されます。 この累積値が 1 時間おきに Azure 課金パイプラインに報告されます。この時間あたり使用量がパイプラインによって集計されて、毎月末に消費量が計算されます。 データベースの削除後は、バックアップが古くなって削除されると共に消費量が減少します。 すべてのバックアップが削除されて、PITR が不可能になると、課金は停止します。
    
-   > [!IMPORTANT]
-   > データベースのバックアップは、データベースが削除されている場合でも、指定した保持期間にわたって保持されます。 データベースを削除して再作成すると、多くの場合にストレージやコンピューティングのコストを削減できますが、削除された各データベースについて、削除されるたびに、指定された保有期間にわたり Microsoft によってバックアップが保持されるため、バックアップ ストレージのコストが増加する可能性があります。 
+> [!IMPORTANT]
+> データベースが削除された場合でも、データベースのバックアップは PITR を有効にするために保持されます。 データベースを削除して再作成すると、ストレージとコンピューティングのコストが削減される場合がありますが、削除されるたびに、削除された各データベースのバックアップがサービスによって保持されるため、バックアップ ストレージのコストが増加する可能性があります。 
 
 ### <a name="monitor-consumption"></a>消費量の監視
 
-各種バックアップ (完全、差分、ログ) はデータベース監視ブレード上で別個のメトリックとして報告されます。 次の図では、単一データベースのバックアップ ストレージ消費量の監視方法が示されています。 この機能は、マネージド インスタンスでは現在使用できません。
+仮想コア データベースの場合、各種バックアップ (完全、差分、ログ) によって使用されるストレージは、データベース監視ブレード上で別個のメトリックとして報告されます。 次の図では、単一データベースのバックアップ ストレージ消費量の監視方法が示されています。 この機能は、マネージド インスタンスでは現在使用できません。
 
 ![Azure portal でのデータベース バックアップ消費量の監視](./media/automated-backups-overview/backup-metrics.png)
 
 ### <a name="fine-tune-backup-storage-consumption"></a>バックアップ ストレージ消費量を微調整する
 
-超過のバックアップ ストレージ消費量は、個々のデータベースのワークロードとサイズに依存します。 バックアップ ストレージ消費量を減らすには、次の調整手法のいくつかを検討してください。
+データベースの最大データ サイズまでのバックアップ ストレージの使用量については、課金されません。 超過のバックアップ ストレージ消費量は、個々のデータベースのワークロードと最大サイズに依存します。 バックアップ ストレージ消費量を減らすには、次の調整手法のいくつかを検討してください。
 
 - 必要最小限まで[バックアップの保持期間](#change-the-pitr-backup-retention-period-by-using-the-azure-portal)を短縮します。
 - インデックスの再構築などの大規模な書き込み操作を、必要以上に頻繁に行わないようにします。
-- 大規模なデータ読み込み操作の場合、[クラスター化された列ストア インデックス](https://docs.microsoft.com/sql/database-engine/using-clustered-columnstore-indexes)の使用を検討し、クラスター化されていないインデックスの数を減らして、100 万ほどの行数での一括読み込み操作を検討します。
-- 汎用サービス レベルでは、プロビジョニングされたデータ ストレージの方が、超過のバックアップ ストレージの価格よりも安価です。 超過のバックアップ ストレージのコストが継続的に増加している場合は、データ ストレージを増やしてバックアップ ストレージを節約することを検討してください。
-- 一時的な結果の保存には、パーマネント テーブルではなく TempDB を ETL ロジックで使用します (SQL Managed Instance にのみ該当)。
-- 機密データが含まれないデータベース (開発またはテスト データベースなど) の TDE 暗号化をオフにすることを検討します。 暗号化されていないデータベースのバックアップを圧縮するときは、通常、圧縮率が高くなります。
+- 大規模なデータ読み込み操作の場合、[クラスター化された列ストア インデックス](https://docs.microsoft.com/sql/database-engine/using-clustered-columnstore-indexes)を使用して、関連する[ベスト プラクティス](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance)に従うことを検討し、クラスター化されていないインデックスの数を減らします。
+- 汎用サービス レベルでは、プロビジョニングされたデータ ストレージの方が、バックアップ ストレージの価格よりも安価です。 超過のバックアップ ストレージのコストが継続的に増加している場合は、データ ストレージを増やしてバックアップ ストレージを節約することを検討してください。
+- 一時的な結果やデータの保存には、アプリケーションのロジックでの永続的テーブルではなく TempDB を使用します。
+
+## <a name="backup-retention"></a>バックアップ保有期間
+
+新しいデータベース、復元されたデータベース、コピーされたデータベースのすべてについて、Azure SQL Database と Azure SQL Managed Instance では、既定で、過去 7 日間の PITR が可能な十分なバックアップが保持されます。 Hyperscale データベースを除き、1 から 35 日の範囲で、データベースごとに[バックアップ保有期間を変更する](#change-the-pitr-backup-retention-period)ことができます。 「[バックアップ ストレージ消費量](#backup-storage-consumption)」で説明されているように、PITR を有効にするために保存されているバックアップは、保有期間より古い場合があります。
+
+データベースを削除した場合、システムでは、オンライン データベースと同じ方法で、特定の保有期間のバックアップが保持されます。 削除されたデータベースのバックアップ保有期間を変更することはできません。
 
 > [!IMPORTANT]
-> 分析のデータ マートまたはデータ ウェアハウス ワークロードの場合、[クラスター化された列ストア インデックス](https://docs.microsoft.com/sql/database-engine/using-clustered-columnstore-indexes)を使用し、クラスター化されていないインデックスの数を減らすこと、また、100 万ほどの行数での一括読み込み操作を検討し、超過のバックアップ ストレージ消費量を減らすことを強くお勧めします。
+> サーバーまたはマネージド インスタンスを削除すると、そのサーバーまたはマネージド インスタンス上のすべてのデータベースも削除され、復旧できなくなります。 削除されたサーバーまたはマネージド インスタンスは復元できません。 ただし、データベースまたはマネージド インスタンスに対して長期保有 (LTR) を構成していた場合、長期保有バックアップは削除されず、同じサブスクリプション内の異なるサーバーまたはマネージド インスタンスのデータベースを、長期保有バックアップが作成された特定の時点まで復元するために使用できます。
+
+過去 1 から 35 日以内の PITR のためのバックアップ保有は、短期バックアップ保有とも呼ばれます。 短期保有期間の最大値である 35 日より長くバックアップを保持する必要がある場合は、[長期保有](long-term-retention-overview.md)を有効にすることができます。
+
+### <a name="long-term-retention"></a>長期保存
+
+単一データベースとプールされたデータベースおよびマネージド インスタンスの場合、最大 10 年間の完全バックアップの長期保有 (LTR) を Azure Blob Storage で構成できます。 LTR ポリシーを有効にした場合、毎週の完全バックアップは自動的に別の RA-GRS ストレージ コンテナーにコピーされます。 各種のコンプライアンス要件を満たすために、毎週、毎月、毎年の完全バックアップに対してさまざまな保有期間を選択できます。 ストレージの使用量は、選択した LTR バックアップの頻度と保有期間によって異なります。 LTR ストレージのコストは、[LTR 料金計算ツール](https://azure.microsoft.com/pricing/calculator/?service=sql-database)を使用して見積もることができます。
+
+PITR バックアップなどの LTR バックアップは、geo 冗長ストレージで保護されています。 詳細については、「[Azure Storage の冗長性](../../storage/common/storage-redundancy.md)」をご覧ください。
+
+LTR の詳細については、[バックアップの長期保有](long-term-retention-overview.md)に関するページを参照してください。
 
 ## <a name="storage-costs"></a>ストレージ コスト
 
@@ -121,17 +124,35 @@ SQL Database および SQL Managed Instance では、保持期間内のバック
 
 ### <a name="dtu-model"></a>DTU モデル
 
-DTU モデルを使用している場合、データベースおよびエラスティック データベース プールについては、バックアップ ストレージに追加請求はありません。
+DTU モデルでは、データベースおよびエラスティック プール用のバックアップ ストレージに対する追加請求はありません。 バックアップ ストレージの料金は、データベースまたはプールの価格の一部です。
 
 ### <a name="vcore-model"></a>仮想コア モデル
 
-SQL Database の単一データベースの場合は、データベース サイズの 100% に等しい最小バックアップ ストレージ容量が、追加料金なしで提供されます。 SQL Database のエラスティック プールと、SQL Managed Instance の単一インスタンスおよびインスタンス プールの場合は、プールまたはインスタンス サイズにそれぞれ割り当てられたデータ ストレージの 100% に等しい最小バックアップ ストレージ容量が、追加料金なしで提供されます。 100% を超えるバックアップ ストレージの使用については、月あたりの GB 数で請求されます。 この追加の消費量は、個々のデータベースのワークロードとサイズによって異なります。
+SQL Database の単一データベースの場合は、データベースの最大データ ストレージ サイズの 100% に等しいバックアップ ストレージ容量が、追加料金なしで提供されます。 エラスティック プールとマネージド インスタンスの場合は、それぞれ、プールに対する最大データ ストレージまたは最大インスタンス ストレージ サイズの 100% に等しいバックアップ ストレージ容量が、追加料金なしで提供されます。 
 
-SQL Database および SQL Managed Instance では、保持期間内のバックアップ ストレージの合計が累積値として計算されます。 この累積値が 1 時間おきに Azure 課金パイプラインに報告されます。この時間あたり使用量がパイプラインによって集計されて、毎月末に消費量が算出されます。 データベースの削除後は、バックアップの時間経過と共に消費量が減少します。 バックアップが保有期間を過ぎたら、課金が停止します。 ログ バックアップと差分バックアップはすべて、保有期間全体にわたり保持されるため、大幅に変更されたデータベースはバックアップ料金が高くなります。
+単一データベースの場合、課金対象のバックアップ ストレージ合計使用量の計算には次の式が使用されます。
 
-データベースのバックアップ ストレージが累積で 744 GB になったとします。この量はまる 1 か月にわたり変化しません。 この累積ストレージ消費量を 1 時間あたりの使用量に変換するには、744.0 (1 か月 31 日 * 1 日 24 時間) で割ります。 したがって、SQL Database からは、データベースで 1 時間あたり 1 GB の PITR バックアップを消費したと報告されます。 Azure の課金では、この消費量を集計し、1 か月全体で 744 GB という使用量が示されます。 コストは、使っているリージョンでの GB 単位の月額料金に基づいて算出されます。
+`Total billable backup storage size = (size of full backups + size of differential backups + size of log backups) – maximum data storage`
 
-次の例はもっと複雑になります。 データベースの保有期間が、月の途中で 14 日間に増やされたとします。 この増加 (仮に) により、バックアップ ストレージの合計が 1,488 GB に倍増したとしましょう。 SQL Database によって、1 時間から 372 時間までの使用量が 1 GB と報告されます。 373 時間から 744 時間の使用量は 2 GB と報告されます。 この使用量が集計されて最終的な請求は 1,116 GB/月になります。
+プールされたデータベースの場合、課金対象のバックアップ ストレージの合計サイズはプール レベルで集計され、次のように計算されます。
+
+`Total billable backup storage size = (total size of all full backups + total size of all differential backups + total size of all log backups) - maximum pool data storage`
+
+マネージド インスタンスの場合、課金対象のバックアップ ストレージの合計サイズはインスタンス レベルで集計され、次のように計算されます。
+
+`Total billable backup storage size = (total size of full backups + total size of differential backups + total size of log backups) – maximum instance data storage`
+
+課金対象の合計バックアップ ストレージ (存在する場合) は、GB および月単位で課金されます。 このバックアップ ストレージ消費量は、個々のデータベース、エラスティック プール、マネージド インスタンスのワークロードとサイズに依存します。 差分バックアップとログ バックアップのサイズはデータの変更量に比例するため、大幅に変更されたデータベースでは、これらのバックアップが大きくなります。 したがって、そのようなデータベースではバックアップ料金が高くなります。
+
+SQL Database と SQL Managed Instance では、課金対象の合計バックアップ ストレージは、すべてのバックアップ ファイルの累積値として計算されます。 この累積値が 1 時間ごとに Azure 課金パイプラインに報告され、そこで、この時間あたり使用量が集計されて、毎月末にバックアップ ストレージの消費量が算出されます。 データベースが削除されると、古いバックアップが期限切れになって削除されるに従い、バックアップ ストレージの使用量は徐々に減少します。 差分バックアップとログ バックアップでは先行する完全バックアップが復元可能である必要なため、3 つのバックアップの種類すべてが毎週まとめて消去されます。 すべてのバックアップが削除されると、課金は停止します。 
+
+簡単な例として、データベースのバックアップ ストレージが累積で 744 GB になり、データベースは完全にアイドル状態であるため、この量は 1 か月を通して変わらないものとします。 この累積ストレージ消費量を 1 時間あたりの使用量に変換するには、744.0 (1 か月 31 日 * 1 日 24 時間) で割ります。 SQL Database では、データベースで 1 時間あたり 1 GB の PITR バックアップが一定の割合で消費されたことが、Azure 課金パイプラインに報告されます。 Azure の課金では、この消費量を集計し、1 か月全体で 744 GB という使用量が示されます。 コストは、使っているリージョンでの GB 単位の月額料金に基づいて算出されます。
+
+次の例はもっと複雑になります。 同じアイドル状態のデータベースで、保有期間が月の途中で 7 日から 14 日間に増やされたとします。 この増加により、バックアップ ストレージの合計は 1,488 GB に倍増します。 SQL Database では、1 時間から 372 時間まで (月の前半) の使用量が 1 GB と報告されます。 373 時間から 744 時間まで (月の後半) の使用量は 2 GB と報告されます。 この使用量が集計されて最終的な請求は 1,116 GB/月になります。
+
+実際のバックアップの課金シナリオはさらに複雑です。 データベース内の変更の割合はワークロードに依存し、時間の経過と共に変化するので、各差分バックアップとログ バックアップのサイズも変化するため、時間単位のバックアップ ストレージの消費量はそれに応じて変動します。 さらに、各差分バックアップには、前回の完全バックアップ以降にデータベースで行われたすべての変更が含まれるため、すべての差分バックアップの合計サイズは 1 週間の間に徐々に増加した後、完全バックアップ、差分バックアップ、ログ バックアップの古いセットが削除されると、大幅に低下します。たとえば、完全バックアップが完了した直後にインデックスの再構築などの大量の書き込み操作が実行された場合、インデックスの再構築によって行われた変更は、再構築の間に作成されたトランザクション ログ バックアップ、次の差分バックアップ、および次回の完全バックアップが実行されるまでのすべての差分バックアップに含まれます。 大規模なデータベースにおける後者のシナリオでは、そうしないと差分バックアップが過剰に大きくなる場合は、サービスの最適化によって差分バックアップではなく完全バックアップが作成されます。 これにより、次の完全バックアップまで、すべての差分バックアップのサイズが小さくなります。
+
+「[消費量の監視](#monitor-consumption)」で説明されているように、各バックアップの種類 (完全、差分、トランザクション ログ) の合計バックアップ ストレージ使用量を、時間を追って監視できます。
 
 ### <a name="monitor-costs"></a>コストを監視する
 
@@ -141,35 +162,21 @@ SQL Database および SQL Managed Instance では、保持期間内のバック
 
 ![バックアップ ストレージのコスト分析](./media/automated-backups-overview/check-backup-storage-cost-sql-mi.png)
 
-## <a name="backup-retention"></a>バックアップ保有期間
-
-SQL Database および SQL Managed Instance のすべてのデータベースには、7 日間という既定のバックアップ保有期間が設定されています。 [バックアップ保有期間は、35 日にまで変更](#change-the-pitr-backup-retention-period)できます。
-
-データベースを削除した場合、Azure はオンライン データベースの場合と同じようにバックアップを保持します。 たとえば、7 日間の保有期間が設定された Basic のデータベースを削除すると、4 日間保存されているバックアップはさらに 3 日間保存されます。
-
-最大の保有期間より長くバックアップを保持する必要がある場合は、データベースに 1 つまたは複数のより長い保有期間を追加するようにバックアップのプロパティを変更できます。 詳細については、「[長期保存](long-term-retention-overview.md)」をご覧ください。
-
-> [!IMPORTANT]
-> バックアップ保有期間を 1 日 (または 1 から 7 までの任意の値) に設定することは、現時点では PowerShell または REST API 経由でのみサポートされています。 Az.SQL モジュールの最低限必要なバージョンは v2.6.0 です。また、常に最新の Az.SQL バージョンが備わっている CloudShell を通じて実行することもできます。
-
-> [!IMPORTANT]
-> サーバーまたはマネージド インスタンスを削除すると、そのサーバーまたはマネージド インスタンスによって管理されているすべてのデータベースも削除されます。 復旧はできません。 削除されたサーバーまたはマネージド インスタンスは復元できません。 一方、SQL Database またはマネージド インスタンスに対して長期保有を構成した場合は、LTR を使用したデータベースのバックアップは削除されず、これらのデータベースを復元することができます。
-
 ## <a name="encrypted-backups"></a>暗号化バックアップ
 
-データベースが TDE で暗号化されている場合、LTR バックアップを含むバックアップは保存中に自動的に暗号化されます。 SQL Database または SQL Managed Instance に対して TDE が有効になっている場合は、バックアップも暗号化されます。 SQL Database および SQL Managed Instance のすべての新しいデータベースは、既定では TDE が有効になるように構成されます。 TDE の詳細については、[SQL Database および SQL Managed Instance での Transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) に関するページを参照してください。
+データベースが TDE で暗号化されている場合、LTR バックアップを含むバックアップは保存中に自動的に暗号化されます。 Azure SQL のすべての新しいデータベースでは、既定で TDE が有効に構成されます。 TDE の詳細については、[SQL Database および SQL Managed Instance での Transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) に関するページを参照してください。
 
 ## <a name="backup-integrity"></a>バックアップの整合性
 
-Azure SQL のエンジニアリング チームは、SQL Database のデータベースの自動データベース バックアップに対する復元の自動テストを継続的に行っています (このテストは SQL Managed Instance では使用できません)。ポイントインタイム リストア時に、データベースは DBCC CHECKDB の整合性チェックも受けます。
-
-SQL Managed Instance では、移行の完了後、ネイティブ `RESTORE` コマンドまたは Azure Data Migration Service を利用して復元されたデータベースの `CHECKSUM` を含む自動初回バックアップが行われます。
+Azure SQL のエンジニアリング チームは、自動データベース バックアップに対する復元の自動テストを継続的に行っています。 (このテストは、現在は SQL Managed Instance では使用できません)。ポイントインタイム リストア時に、データベースは DBCC CHECKDB の整合性チェックも受けます。
 
 整合性チェック中に問題が見つかると、エンジニアリング チームにアラートが送信されます。 詳細については、[SQL Database でのデータ整合性](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/)に関するページを参照してください。
 
+すべてのデータベース バックアップは、バックアップの整合性を高めるために、CHECKSUM オプションを使用して実行されます。
+
 ## <a name="compliance"></a>コンプライアンス
 
-DTU ベースのサービス レベルから仮想コア ベースのサービス レベルにデータベースを移行した場合、アプリケーションのデータ回復ポリシーに違反しないように、PITR 保有期間が維持されます。 既定の保有期間でコンプライアンス要件が満たされない場合は、PowerShell または REST API を使用して PITR 保有期間を変更できます。 詳細については、「[PITR バックアップ保有期間を変更する](#change-the-pitr-backup-retention-period)」を参照してください。
+DTU ベースのサービス レベルから仮想コア ベースのサービス レベルにデータベースを移行した場合、アプリケーションのデータ回復ポリシーに違反しないように、PITR 保有期間が維持されます。 既定の保有期間がコンプライアンス要件を満たしていない場合は、PITR 保有期間を変更できます。 詳細については、「[PITR バックアップ保有期間を変更する](#change-the-pitr-backup-retention-period)」を参照してください。
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
@@ -178,18 +185,18 @@ DTU ベースのサービス レベルから仮想コア ベースのサービ�
 既定の PITR バックアップ保有期間は、Azure portal、PowerShell、または REST API を使用して変更できます。 次の例では、PITR 保有期間を 28 日間に変更する方法を示します。
 
 > [!WARNING]
-> 現在の保有期間を短縮した場合、新しい保有期間より古いすべての既存のバックアップは使用できなくなります。 現在の保有期間を延長した場合、Azure では、長くなった保有期間が終了するまで、既存のバックアップが保持されます。
+> 現在の保有期間を短くすると、新しい保有期間より古い特定の時点に復元することができなくなります。 新しい保有期間内で PITR を提供するために必要がなくなったバックアップは削除されます。 現在の保有期間を長くした場合、新しい保有期間内の古い特定の時点に復元する機能はすぐには利用できません。 システムにより長いバックアップの保有が開始されたら、やがて使用できるようになります。
 
 > [!NOTE]
 > これらの API は PITR 保有期間にのみ影響します。 データベースに LTR が構成されている場合、それには影響しません。 LTR の保有期間を変更する方法については、[長期保有](long-term-retention-overview.md)に関するページを参照してください。
 
 ### <a name="change-the-pitr-backup-retention-period-by-using-the-azure-portal"></a>Azure portal を使用して PITR バックアップ保有期間を変更する
 
-Azure portal を使用して PITR バックアップ保有期間を変更するには、portal 上で、保有期間を変更するサーバー オブジェクトに移動します。 次に、変更するサーバー オブジェクトに基づいて、適切なオプションを選択します。
+Azure portal を使用して PITR バックアップ保有期間を変更するには、保有期間を変更するデータベースのサーバーまたはマネージド インスタンスに移動します。 
 
 #### <a name="sql-database"></a>[SQL Database](#tab/single-database)
 
-SQL Database の PITR バックアップ保有期間に対する変更は、サーバー レベルで実行されます。 サーバー レベルで行われた変更は、そのサーバー上のデータベースに適用されます。 Azure portal でサーバーの PITR 保有期間を変更するには、サーバーの概要ブレードに移動します。 左側のペインで **[バックアップの管理]** を選択し、画面の上部にある **[保有期間の構成]** を選択します。
+SQL Database の PITR バックアップ保有期間に対する変更は、ポータルのサーバー ページで行われます。 サーバーでデータベースの PITR 保有期間を変更するには、サーバーの概要ブレードに移動します。 左側のペインで **[バックアップの管理]** を選択し、変更の範囲内のデータベースを選択してから、画面の上部にある **[保有期間の構成]** を選択します。
 
 ![PITR 保有期間の変更 (サーバー レベル)](./media/automated-backups-overview/configure-backup-retention-sqldb.png)
 

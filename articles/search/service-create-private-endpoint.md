@@ -8,16 +8,18 @@ ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 0945743fb2cf3e37345ff562250e48511944cee6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: e55dfc692bdd625de8873f6e61c9969ed7fbf2df
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125555"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84466172"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Azure Cognitive Search への安全な接続を行うためのプライベート エンドポイントを作成する
 
 この記事では、Azure portal を使用して、インターネット経由ではアクセスできない新しい Azure Cognitive Search Service インスタンスを作成します。 次に、同じ仮想ネットワーク内に Azure 仮想マシンを構成し、それを使用してプライベート エンドポイント経由で検索サービスにアクセスします。
+
+プライベート エンドポイントは、別サービスとして、[Azure Private Link](../private-link/private-link-overview.md) によって提供されます。 コストの詳細については、[価格に関するページ](https://azure.microsoft.com/pricing/details/private-link/)を参照してください。
 
 > [!Important]
 > Azure Cognitive Search に対するプライベート エンドポイントのサポートは、Azure portal または [管理 REST API バージョン 2020-03-13](https://docs.microsoft.com/rest/api/searchmanagement/) を使用して構成できます。 サービス エンドポイントがプライベートの場合、一部のポータル フィーチャーが無効になります。 サービスレベル情報を表示して管理することはできますが、インデックスデータやサービス内のさまざまなコンポーネント (インデックス、インデクサー、スキルセットの定義など) へのポータル アクセスは、セキュリティ上の理由で制限されています。
@@ -69,7 +71,7 @@ Azure Cognitive Search の [プライベートエンドポイント](../private-
     | Pricing tier | **[価格レベルの変更]** を選択し、目的のサービス レベルを選択します。 (**Free** レベルではサポートされていません。 **Basic** 以上である必要があります。) |
     |||
   
-1. **スケール** をクリックします。
+1. **次へ:スケール** をクリックします。
 
 1. 残りは既定値のままにして、 **[次へ:ネットワーク]** を選択します。
 
@@ -134,7 +136,7 @@ Azure Cognitive Search の [プライベートエンドポイント](../private-
     | Windows ライセンスを既にお持ちの場合 | 既定値 **[なし]** のままにします。 |
     |||
 
-1. **ディスク** を選択します。
+1. **次へ:ディスク** を選択します。
 
 1. **[仮想マシンの作成 - Disk]** で、既定値のままにし、 **[Next: Networking]\(次へ : ネットワーク\)** を選択します。
 

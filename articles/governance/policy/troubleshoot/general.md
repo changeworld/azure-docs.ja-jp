@@ -3,12 +3,12 @@ title: 一般的なエラーのトラブルシューティング
 description: ポリシー定義、さまざまな SDK、および Kubernetes のアドオンの作成に関する問題をトラブルシューティングする方法について説明します。
 ms.date: 05/22/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: b1cb8ab51ecc00610f1e04532ba3063be5415607
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 6d23a148521506adf0c0fc16913a32aab5eb7a30
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234186"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135572"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>Azure Policy を使用してエラーを解決する
 
@@ -28,7 +28,7 @@ ms.locfileid: "84234186"
 
 #### <a name="issue"></a>問題
 
-Azure Policy が[エイリアス](../concepts/definition-structure.md#aliases)を使用して、Resource Manager のプロパティにマップしています。
+Azure Policy が[エイリアス](../concepts/definition-structure.md#aliases)を使用して、Azure Resource Manager のプロパティにマップしています。
 
 #### <a name="cause"></a>原因
 
@@ -95,7 +95,7 @@ Azure Policy によって処理される予定のリソースが処理されず�
 
 #### <a name="resolution"></a>解決策
 
-拒否されたポリシー割り当てのエラー メッセージには、ポリシー定義とポリシー割り当て ID が含まれています。 メッセージ内のエラー情報が欠落している場合は、[アクティビティ ログ](../../../azure-monitor/platform/activity-log-view.md)でも確認できます。 この情報を使用して、リソースの制限を理解し、許可された値に一致するように要求のリソース プロパティを調整します。
+拒否されたポリシー割り当てのエラー メッセージには、ポリシー定義とポリシー割り当て ID が含まれています。 メッセージ内のエラー情報が欠落している場合は、[アクティビティ ログ](../../../azure-monitor/platform/activity-log.md#view-the-activity-log)でも確認できます。 この情報を使用して、リソースの制限を理解し、許可された値に一致するように要求のリソース プロパティを調整します。
 
 ## <a name="template-errors"></a>テンプレート エラー
 
@@ -103,7 +103,7 @@ Azure Policy によって処理される予定のリソースが処理されず�
 
 #### <a name="issue"></a>問題
 
-Azure Policy は、Resource Manager テンプレートの関数とポリシー定義でのみ使用できる関数を多数サポートしています。 Resource Manager は、ポリシー定義の一部としてではなく、デプロイの一部としてこれらの機能を処理します。
+Azure Policy は、Azure Resource Manager テンプレート (ARM テンプレート) の関数とポリシー定義でのみ使用できる関数を多数サポートしています。 Resource Manager は、ポリシー定義の一部としてではなく、デプロイの一部としてこれらの機能を処理します。
 
 #### <a name="cause"></a>原因
 
@@ -152,6 +152,6 @@ Azure Policy は、Resource Manager テンプレートの関数とポリシー�
 
 問題がわからなかった場合、または問題を解決できない場合は、次のいずれかのチャネルでサポートを受けてください。
 
-- [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-policy.html) を通じて、専門家からの回答を得る。
+- [Microsoft Q&A](/answers/topics/azure-policy.html) を通じて、専門家からの回答を得る。
 - [@AzureSupport](https://twitter.com/azuresupport) に問い合わせる – Microsoft Azure 公式アカウントです。Azure コミュニティを適切なリソース (回答、サポート、エキスパート) に結び付けることで、カスタマー エクスペリエンスを向上します。
 - さらにヘルプが必要であれば、Azure サポート インシデントを送信できます。 その場合は、 [Azure サポートのサイト](https://azure.microsoft.com/support/options/) に移動して、 **[サポートの要求]** をクリックします。

@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: 53ebf8adb99362b5aaf27676bbd50fb8b525f526
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 4f9d117ccc763744411bfe24163ed955532e8e56
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82994487"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921855"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>Azure Stream Analytics ジョブ用の .NET Standard ユーザー定義関数を開発する (プレビュー)
 
@@ -186,6 +186,10 @@ SELECT udf.MyUdfMethod(input.value) as udfValue FROM input
 * Azure portal で .NET Standard UDF を使用すると、ポータルのクエリ エディターにエラーが表示されます。 
 
 * カスタム コードは Azure Stream Analytics エンジンとコンテキストを共有するため、名前空間/dll_name が Azure Stream Analytics コードと競合するものをカスタム コードで参照することはできません。 たとえば、*Newtonsoft Json* を参照することはできません。
+
+* プロジェクトに含まれるサポート ファイルは、ジョブをクラウドに発行するときに使用されるユーザー カスタム コード zip ファイルにコピーされます。 サブフォルダー内のすべてのファイルは、解凍時に、クラウド内のユーザー カスタムコード フォルダーのルートに直接コピーされます。 この zip は、圧縮解除時に "フラット化" されます。
+
+* ユーザー カスタム コードでは、空のフォルダーはサポートしていません。 プロジェクトのサポート ファイルに空のフォルダーは追加しないでください。
 
 ## <a name="next-steps"></a>次のステップ
 

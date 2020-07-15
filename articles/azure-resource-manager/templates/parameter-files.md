@@ -2,13 +2,13 @@
 title: パラメーター ファイルを作成する
 description: Azure Resource Manager テンプレートのデプロイ中に値を渡すためのパラメーター ファイルを作成します
 ms.topic: conceptual
-ms.date: 04/20/2020
-ms.openlocfilehash: a9845bbb9e14288a01fb7836db260a2baf484395
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.date: 06/19/2020
+ms.openlocfilehash: 7c03e161c7b3a18020de6a06d356720f5e4c31fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873084"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85117507"
 ---
 # <a name="create-resource-manager-parameter-file"></a>Resource Manager パラメーター ファイルを作成する
 
@@ -182,12 +182,18 @@ ms.locfileid: "83873084"
 }
 ```
 
+## <a name="deploy-template-with-parameter-file"></a>パラメーター ファイルを使用したテンプレートのデプロイ
+
+参照:
+
+- [ARM テンプレートと Azure CLI でリソースをデプロイする](./deploy-powershell.md#pass-parameter-values)
+- [ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](./deploy-cli.md#parameters)
+
 ## <a name="file-name"></a>ファイル名
 
 パラメーター ファイルに名前を付けるための一般的な規則は、テンプレート名に **.parameters** を追加することです。 たとえば、テンプレートの名前が **azuredeploy.json** の場合、パラメーター ファイルには **azuredeploy.parameters.json** という名前を付けます。 この名前付け規則により、テンプレートとパラメーターの関連がわかります。
 
 異なる環境にデプロイする場合は、複数のパラメーター ファイルを作成します。 パラメーター ファイルに名前を付けるときは、その用途を識別する方法を追加します。 たとえば、 **azuredeploy.parameters-dev.json** や **azuredeploy.parameters-prod.json** を使用します。
-
 
 ## <a name="parameter-precedence"></a>パラメーターの優先順位
 
@@ -198,6 +204,7 @@ ms.locfileid: "83873084"
 ## <a name="parameter-name-conflicts"></a>パラメーター名の競合
 
 PowerShell コマンドのパラメーターのいずれかと名前が同じであるパラメーターがテンプレートに含まれている場合、PowerShell ではテンプレート内のパラメーター名の後ろに **FromTemplate** という文字を付加します。 たとえば、テンプレート内の **ResourceGroupName** という名前のパラメーターは、[New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) コマンドレットの **ResourceGroupName** パラメーターと競合します。 **ResourceGroupNameFromTemplate** の値を指定するように求められます。 デプロイ コマンドに使用されていないパラメーター名を使用すると、このような混乱を回避できます。
+
 
 ## <a name="next-steps"></a>次のステップ
 

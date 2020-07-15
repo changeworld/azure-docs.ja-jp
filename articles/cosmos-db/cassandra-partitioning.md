@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 2f62af434a49d11cdc1acfc4a09b5bffbd69140b
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 5f159ffcea0aa88f354ae503be96a5c571c10adb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84316413"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85806834"
 ---
 # <a name="partitioning-in-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API でのパーティション分割
 
@@ -27,7 +27,7 @@ Cassandra API では、パーティション分割を使用して、キースペ
 
 Azure Cosmos DB では、パーティションが格納されている各マシンは、[物理パーティション](partition-data.md#physical-partitions)と呼ばれます。 物理パーティションは、仮想マシンに似ています (専用のコンピューティング ユニットや物理リソースのセット)。 このコンピューティング ユニットに格納された各パーティションは、Azure Cosmos DB で[論理パーティション](partition-data.md#logical-partitions)と呼ばれます。 Apache Cassandra に既に慣れている場合は、Cassandra での通常のパーティションと同じように論理パーティションを考えることができます。 
 
-Apache Cassandra では、パーティションに格納できるデータのサイズの上限に 100 MB が推奨されます。 Azure Cosmos DB 用の Cassandra API では、論理パーティションあたり最高 20 GB、物理パーティションあたり最高 50 GB のデータが許容されています。 Azure Cosmos DB では、Apache Cassandra とは異なり、物理パーティションで使用できるコンピューティング容量は、[要求ユニット](request-units.md)と呼ばれる単一のメトリックを使用して表されます。これにより、コア数、メモリ、または IOPS ではなく、秒あたりの要求数の点でワークロードを考えることができます。 このため、それぞれの要求のコストを把握すると、容量計画をさらに簡単に行うことができます。 それぞれの物理パーティションには、利用できるコンピューティングとして最高 10000 RU を割り当てることができます。 スケーラビリティ オプションの詳細については、Cassandra API での[エラスティック スケール](manage-scale-cassandra.md)に関する記事をご覧ください。 
+Apache Cassandra では、パーティションに格納できるデータのサイズの上限に 100 MB が推奨されます。 Azure Cosmos DB 用の Cassandra API では、論理パーティションあたり最高 20 GB、物理パーティションあたり最高 30 GB のデータが許容されています。 Azure Cosmos DB では、Apache Cassandra とは異なり、物理パーティションで使用できるコンピューティング容量は、[要求ユニット](request-units.md)と呼ばれる単一のメトリックを使用して表されます。これにより、コア数、メモリ、または IOPS ではなく、秒あたりの要求数の点でワークロードを考えることができます。 このため、それぞれの要求のコストを把握すると、容量計画をさらに簡単に行うことができます。 それぞれの物理パーティションには、利用できるコンピューティングとして最高 10000 RU を割り当てることができます。 スケーラビリティ オプションの詳細については、Cassandra API での[エラスティック スケール](manage-scale-cassandra.md)に関する記事をご覧ください。 
 
 Azure Cosmos DB では、各物理パーティションはレプリカ セットとも呼ばれる一連のレプリカで構成され、パーティションごとに少なくとも 4 つのレプリカがあります。 これは、レプリケーション係数を 1 に設定できる Apache Cassandra とは対照的です。 ただし、データを持つ唯一のノードがダウンした場合は、これによって可用性が低下します。 Cassandra API では、常に 4 のレプリケーション係数 (3 のクォーラム) があります。 Azure Cosmos DB は自動的にレプリカ セットを管理しますが、これらは、Apache Cassandra でさまざまなツールを使用して保持する必要があります。 
 
@@ -53,7 +53,7 @@ CREATE TABLE uprofile.user (
 
 この設計では、`id` フィールドを主キーとして定義しました。 主キーは、テーブル内のレコードの識別子として機能し、Azure Cosmos DB のパーティション キーとしても使用されます。 前に説明した方法で主キーが定義されている場合、各パーティションには 1 つのレコードのみが存在します。 これは、データベースにデータを書き込むときに、完全に水平でスケーラブルな分布になり、キー値ルックアップ ユース ケースに理想的です。 アプリケーションは、読み取りパフォーマンスを最大にするために、テーブルからデータを読み取るときにはいつでも主キーを提供する必要があります。 
 
-![パーティション](./media/cassandra-partitioning/cassandra-partitioning.png)
+:::image type="content" source="./media/cassandra-partitioning/cassandra-partitioning.png" alt-text="パーティション" border="false":::
 
 
 ## <a name="compound-primary-key"></a>複合主キー
@@ -83,11 +83,11 @@ insert into uprofile.user (user, id, message) values ('theo', 2, 'hello again');
 
 データは返されると、Apache Cassandra で想定されているように、クラスター化キーによって並べ替えられます。
 
-![パーティション](./media/cassandra-partitioning/select-from-pk.png)
+:::image type="content" source="./media/cassandra-partitioning/select-from-pk.png" alt-text="パーティション":::
 
 この方法でモデル化されたデータを使用して、各パーティションに複数のレコードを割り当て、ユーザー別にグループ化することができます。 そのため、`partition key` (この場合は `user`) によって効率的にルーティングされるクエリを発行して、特定のユーザーのすべてのメッセージを取得できます。 
 
-![パーティション](./media/cassandra-partitioning/cassandra-partitioning2.png)
+:::image type="content" source="./media/cassandra-partitioning/cassandra-partitioning2.png" alt-text="パーティション" border="false":::
 
 
 ## <a name="composite-partition-key"></a>複合パーティション キー

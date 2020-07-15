@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.author: yexu
-ms.openlocfilehash: a386c7d44cf5ba7eda895006cda7ce1fa9b798ac
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a45c8ce820532d11f18758924dc3399818cb9158
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663710"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84610221"
 ---
 #  <a name="data-consistency-verification-in-copy-activity-preview"></a>コピー アクティビティでのデータ整合性の検証 (プレビュー)
 
@@ -93,9 +93,8 @@ path | ログ ファイルのパス。 | ログ ファイルを格納するパ�
 
 >[!NOTE]
 >- ステージング コピー シナリオでは、データの整合性はサポートされていません。 
->- 任意のストレージ ストアから Azure Blob Storage または Azure Data Lake Storage Gen2 にバイナリ ファイルをコピーする場合、ソース ストアとコピー先ストアの間のデータの整合性を確保するために、コピー アクティビティによってファイル サイズと MD5 チェックサムの検証が行われます。 
->- 任意のストレージ ストアから Azure Blob Storage または Azure Data Lake Storage Gen2 以外のストレージ ストアにバイナリ ファイルをコピーする場合、ソース ストアとコピー先ストアの間のデータの整合性を確保するために、コピー アクティビティによってファイル サイズの検証が行われます。
-
+>- Azure Blob または Azure Data Lake Storage Gen2 との間でファイルをコピーするとき、ADF では、[Azure Blob API](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy) と [Azure Data Lake Storage Gen2 API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update#request-headers) を活用し、レベル MD5 チェックサム検証がブロックされます。 ファイル上の ContentMD5 がデータ ソースとして Azure Blob または Azure Data Lake Storage Gen2 に存在する場合、ADF では、ファイルも読み取った後に、レベル MD5 チェックサム検証がファイリングされます。 データのコピー先として Azure Blob または Azure Data Lake Storage Gen2 にファイルをコピーした後、ADF では、Azure Blob または Azure Data Lake Storage Gen2 に ContentMD5 が書き込まれ、データの一貫性検証のために下流のアプリケーションでさらに利用できます。
+>- ADF では、ストレージ ストア間でファイルをコピーしたとき、サイズ検証がファイリングされます。
 
 ## <a name="monitoring"></a>監視
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 18409f93ab50f7d031ec78a55b9eaf8ad1b85a49
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 601af3a5e642b4bbda54f461b3139e72b01b21d6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70101410"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85193500"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SAP Business One
 このドキュメントでは、Azure Virtual Machines に SAP Business One をデプロイするためのガイダンスを提供します。 このドキュメントは、SAP の Business One のインストール ドキュメントに代わるものではありません。 このドキュメントでは、Business One アプリケーションを実行する Azure インフラストラクチャの計画とデプロイに関する基本的なガイドラインについて説明します。
@@ -67,13 +67,13 @@ Business One は、次の 2 つの階層を持つアプリケーションです�
 - 'ファット' クライアントによるクライアント層
 - テナントのデータベース スキーマを含むデータベース層
 
-どのコンポーネントがクライアント側で実行され、どの部分がサーバー側で実行されているかについて、わかりやすい概要が「[SAP Business One Administrator's Guide](https://help.sap.com/http.svc/rc/879bd9289df34a47af838e67d74ea302/9.3/en-US/AdministratorGuide_SQL.pdf)」 (SAP ビジネス 1 つ管理者のガイド) に記載されています。 
+どのコンポーネントがクライアント側で実行され、どの部分がサーバー側で実行されているかについて、わかりやすい概要が「[SAP Business One Administrator's Guide](https://help.sap.com/doc/601fbd9113be4240b81d74626439cfa9/10.0/en-US/AdministratorGuide_SQL.pdf)」 (SAP ビジネス 1 つ管理者のガイド) に記載されています。 
 
 クライアント層と DBMS 層との重要なやりとりには、長い待機時間があるため、Azure でデプロイする際には、両方の層を Azure に配置する必要があります。 その後、通常はユーザーが Business One クライアント コンポーネント用の RDS を実行している 1 つまたは複数の VM に RDS を配置します。
 
 ### <a name="sizing-vms-for-sap-business-one"></a>SAP Business One の VM のサイズ設定
 
-クライアント VM のサイズ設定については、SAP のドキュメント「[SAP Business One Hardware Requirements Guide](https://help.sap.com/http.svc/rc/011000358700000244612011e/9.3/en-US/B1_Hardware_Requirements_Guide.pdf)」 (SAP Business One のハードウェア要件ガイド) にリソース要件が記載されています。 Azure については、このドキュメントのチャプター 2.4 に記載されている要件を使用して、計算する必要があります。
+クライアント VM のサイズ設定については、SAP のドキュメント「[SAP Business One Hardware Requirements Guide](https://help.sap.com/doc/bfa9770d12284cce8509956dcd4c5fcb/9.3/en-US/B1_Hardware_Requirements_Guide.pdf)」 (SAP Business One のハードウェア要件ガイド) にリソース要件が記載されています。 Azure については、このドキュメントのチャプター 2.4 に記載されている要件を使用して、計算する必要があります。
 
 Business One クライアント コンポーネントと DBMS ホストをホストするための Azure 仮想マシンとしては、SAP NetWeaver がサポートされている VM のみが許可されます。 SAP NetWeaver がサポートされている Azure VM の一覧を検索するには、[SAP Note #1928533](https://launchpad.support.sap.com/#/notes/1928533) をお読みください。
 
@@ -107,7 +107,7 @@ Azure にデプロイする必要があるネットワーク インフラスト�
 ユーザーがプライベート接続なしでインターネットを介して Azure に接続している場合、Azure のネットワークのデザインは、「[Azure とインターネットの間の DMZ](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-dmz)」の Azure 参照アーキテクチャに記載されている原則に合わせる必要があります。
 
 ### <a name="business-one-database-server"></a>Business One データベース サーバー
-データベースの種類については、SQL Server と SAP HANA が使用できます。 DBMS とは関係なく、「[Considerations for Azure Virtual Machines DBMS deployment for SAP workload](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)」 (SAP のための Azure Virtual Machines DBMS のデプロイに関する考慮事項) のドキュメントを読んで、Azure VM での DBMS デプロイと、関連するネットワークとストレージのトピックについて理解する必要があります。
+データベースの種類については、SQL Server と SAP HANA が使用できます。 DBMS とは関係なく、「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)」のドキュメントを読んで、Azure VM での DBMS デプロイと、関連するネットワークとストレージのトピックについて理解する必要があります。
 
 特定のおよび全般的なデータベースのドキュメントで既に強調されていますが、以下に精通している必要があります。
 

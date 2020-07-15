@@ -1,7 +1,7 @@
 ---
 title: 透過的なデータ暗号化
-titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse
-description: Azure SQL Database、Azure SQL Managed Instance、および Azure Synapse の透過的なデータ暗号化の概要。 このドキュメントでは、Transparent Data Encryption の利点と構成オプション (サービスによって管理された Transparent Data Encryption や Bring Your Own Key など) について説明します。
+titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse Analytics
+description: Azure SQL Database、Azure SQL Managed Instance、および Azure Synapse Analytics の透過的なデータ暗号化の概要。 このドキュメントでは、Transparent Data Encryption の利点と構成オプション (サービスによって管理された Transparent Data Encryption や Bring Your Own Key など) について説明します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,25 +11,25 @@ ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
-ms.date: 04/10/2020
-ms.openlocfilehash: 05bd4b83a6387eefb243ed8058c3fe833615cfb4
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 06/15/2020
+ms.openlocfilehash: 8bf1a19c8756e8c51b79ec63f10822efa7816d32
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84188286"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84986960"
 ---
-# <a name="transparent-data-encryption-for-sql-database-sql-managed-instance--azure-synapse"></a>SQL Database、SQL Managed Instance および Azure Synapse の透過的なデータ暗号化
+# <a name="transparent-data-encryption-for-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>SQL Database、SQL Managed Instance および Azure Synapse Analytics の透過的なデータ暗号化
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-[透過的なデータ暗号化 (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) では、保存データを暗号化することによって、Azure SQL Database、Azure SQL Managed Instance、および Azure Synapse Analytics の Synapse SQL を悪意のあるオフライン アクティビティの脅威から保護するために役立ちます。 データベース、関連付けられているバックアップ、保管されているトランザクション ログ ファイルの暗号化と暗号化解除をリアルタイムで実行することにより、アプリケーションに変更を加えずに暗号化を行うことができます。 新しくデプロイされるすべてのデータベースでは、TDE は既定で有効になっています。Azure SQL Database、Azure SQL Managed Instance、または Azure Synapse の古いデータベースでは手動で有効にする必要があります。
+[Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) は、保存データを暗号化することによって、Azure SQL Database、Azure SQL Managed Instance、Azure Synapse Analytics を悪意のあるオフライン アクティビティの脅威から保護するために役立ちます。 データベース、関連付けられているバックアップ、保管されているトランザクション ログ ファイルの暗号化と暗号化解除をリアルタイムで実行することにより、アプリケーションに変更を加えずに暗号化を行うことができます。 新しくデプロイされるすべての SQL Database では、TDE は既定で有効になっています。Azure SQL Database や Azure SQL Managed Instance の古いデータベースでは手動で有効にする必要があります。 Azure Synapse Analytics には、TDE を手動で有効にする必要があります。
 
 TDE では、ページ レベルでデータのリアルタイム I/O 暗号化と暗号化解除が実行されます。 各ページは、メモリに読み込まれるときに暗号化解除され、ディスクに書き込まれる前に暗号化されます。 TDE では、データベース暗号化キー (DEK) という対称キーを使用してデータベース全体のストレージが暗号化されます。 データベースの起動時に、DEK の暗号化は解除され、SQL Server データベース エンジン プロセスでデータベース ファイルの暗号化解除と再暗号化を行うために使用されます。 DEK は TDE 保護機能によって保護されます。 TDE 保護機能は、サービスによって管理される証明書 (サービスによって管理される透過的なデータ暗号化) または [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault) に格納される非対称キー (顧客によって管理される透過的なデータ暗号化) のどちらかです。
 
 Azure SQL Database と Azure Synapse の場合、TDE 保護機能は[サーバー](logical-servers.md) レベルで設定され、そのサーバーに関連付けられているすべてのデータベースによって継承されます。 Azure SQL Managed Instance (プレビュー段階の BYOK 機能) の場合、TDE 保護機能はインスタンス レベルで設定され、そのインスタンスのすべての暗号化されたデータベースによって継承されます。 *サーバー*という言葉は、別途明記されていない限り、このドキュメントではサーバーとインスタンスの両方を指します。
 
 > [!IMPORTANT]
-> SQL Database と Azure Synapse で新しく作成されたすべてのデータベースは、サービスによって管理される透過的なデータ暗号化を使用して既定で暗号化されます。 2017 年 5 月より前に作成された既存の SQL データベースと、復元、geo レプリケーション、データベース コピーによって作成された SQL データベースは、既定では暗号化されません。 2019 年 2 月より前に作成された既存の Managed Instance データベースは、既定では暗号化されません。 復元によって作成された Managed Instance データベースでは、ソースから暗号化の状態が継承されます。
+> SQL Database で新しく作成されたすべてのデータベースは、サービスによって管理される透過的なデータ暗号化を使用して既定で暗号化されます。 2017 年 5 月より前に作成された既存の SQL データベースと、復元、geo レプリケーション、データベース コピーによって作成された SQL データベースは、既定では暗号化されません。 2019 年 2 月より前に作成された既存の SQL Managed Instance データベースは、既定では暗号化されません。 復元によって作成された SQL Managed Instance データベースでは、ソースから暗号化の状態が継承されます。
 
 > [!NOTE]
 > TDE を使用して、SQL Database の **master** データベースを暗号化することはできません。  **master** データベースには、ユーザー データベースで TDE 操作を実行するために必要なオブジェクトが含まれています。
@@ -61,17 +61,17 @@ Azure 内での操作のためにデータベースを暗号化解除する必�
 - Azure SQL Managed Instance にバックアップ ファイルを復元する
 
 > [!IMPORTANT]
-> サービス マネージド TDE によって暗号化されたデータベースのコピーのみの手動バックアップを取得することは、Azure SQL Managed Instance ではサポートされていません。暗号化に使用される証明書にアクセスできないためです。 ポイントインタイム リストア機能を使用して、この種類のデータベースを別の SQL Managed Instance に移動してください。
+> サービス マネージド TDE によって暗号化されたデータベースのコピーのみの手動バックアップを取得することは、Azure SQL Managed Instance ではサポートされていません。暗号化に使用される証明書にアクセスできないためです。 ポイントインタイム リストア機能を使用して、この種類のデータベースを別の SQL Managed Instance に移動するか、カスタマー マネージド キーに切り替えてください。
 
 TDE で保護されたデータベースをエクスポートする場合、エクスポートされるデータベースのコンテンツは暗号化されません。 このエクスポートされたコンテンツは、暗号化されていない BACPAC ファイルに保存されます。 新しいデータベースのインポートが完了したら、BACPAC ファイルが適切に保護されていることを確認し、TDE を有効にします。
 
 たとえば、BACPAC ファイルを SQL Server インスタンスからエクスポートした場合、新しいデータベースのインポートされるコンテンツは自動的には暗号化されません。 同様に、BACPAC ファイルを SQL Server インスタンスにインポートした場合も、新しいデータベースは自動的には暗号化されません。
 
-唯一の例外は、SQL Database との間でエクスポートを実行する場合です。 新しいデータベースでは TDE が有効になりますが、BACPAC ファイル自体はまだ暗号化されていません。
+唯一の例外は、SQL Database との間でデータベースをエクスポートする場合です。 新しいデータベースでは TDE が有効になりますが、BACPAC ファイル自体はまだ暗号化されていません。
 
 ## <a name="manage-transparent-data-encryption"></a>Transparent Data Encryption の管理
 
-# <a name="portal"></a>[ポータル](#tab/azure-portal)
+# <a name="the-azure-portal"></a>[Azure ポータル](#tab/azure-portal)
 
 Azure portal で TDE を管理します。
 

@@ -1,10 +1,10 @@
 ---
-title: General Purpose サービス レベル
-titleSuffix: Azure SQL Database & SQL Managed Instance
+title: 汎用のサービス階層
+titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: Azure SQL Database と Azure SQL Managed Instance の General Purpose サービス レベルについて説明します。
 services: sql-database
-ms.service: sql-database
-ms.subservice: service
+ms.service: sql-db-mi
+ms.subservice: features
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,14 +12,14 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/07/2019
-ms.openlocfilehash: 7fd446e6894c3c88701527bb2d3668a570888a06
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ee218253309995e721c97f4a7f7b4547b32f7c36
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84038063"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986643"
 ---
-# <a name="general-purpose-service-tier---azure-sql-database--sql-managed-instance"></a>General Purpose サービス レベル - Azure SQL Database と SQL Managed Instance
+# <a name="general-purpose-service-tier---azure-sql-database-and-azure-sql-managed-instance"></a>General Purpose サービス レベル - Azure SQL Database と Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 > [!NOTE]
@@ -29,10 +29,10 @@ Azure SQL Database と Azure SQL Managed Instance は、インフラストラク
 
 Azure SQL Database と SQL Managed Instance では、次の 2 つのサービス レベルが使用されています。 
 
-- 汎用
+- General Purpose
 - Business Critical
 
-Azure SQL Database には 3 つ目のサービス レベルもありますが、現在、Azure SQL Managed Instance には使用できません。 
+Azure SQL Database には 3 つ目のサービス レベルもありますが、現在、Azure SQL Managed Instance には使用できません。
 
 - ハイパースケール
 
@@ -51,11 +51,11 @@ General Purpose サービス レベルのアーキテクチャ モデルには�
 
 ## <a name="when-to-choose-this-service-tier"></a>このサービス レベルを選択する場合
 
-General Purpose サービス レベルは、Azure SQL Database および Azure SQL Managed Instance の既定のサービス レベルであり、ほとんどの一般的なワークロード向けに設計されています。 ほとんどのケースで、Azure VM 上の SQL Server に匹敵する、ストレージの待ち時間が 5 から 10 ミリ秒で SLA が 99.99% のフル マネージド データベース エンジンが必要な場合は、General Purpose レベルをお勧めします。
+General Purpose サービス レベルは、Azure SQL Database および Azure SQL Managed Instance の既定のサービス レベルであり、ほとんどの一般的なワークロード向けに設計されています。 ほとんどのケースで、Azure 仮想マシン上の SQL Server に匹敵する、ストレージの待ち時間が 5 から 10 ミリ秒で SLA が 99.99% のフル マネージド データベース エンジンが必要な場合は、General Purpose レベルをお勧めします。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [SQL Managed Instance](../managed-instance/resource-limits.md#service-tier-characteristics) の General Purpose および Standard レベル、[仮想コア モデル](resource-limits-vcore-single-databases.md#general-purpose---provisioned-compute---gen4)または [DTU モデル](resource-limits-dtu-single-databases.md#single-database-storage-sizes-and-compute-sizes)の単一データベース、[仮想コア モデル](resource-limits-vcore-elastic-pools.md#general-purpose---provisioned-compute---gen4)および [DTU モデル](resource-limits-dtu-elastic-pools.md#standard-elastic-pool-limits)のエラスティック プールのリソース特性 (コア数、IO、メモリ) を確認します。
+- [SQL Managed Instance](../managed-instance/resource-limits.md#service-tier-characteristics) の General Purpose および Standard レベル、[仮想コア モデル](resource-limits-vcore-single-databases.md#general-purpose---provisioned-compute---gen4)または [DTU モデル](resource-limits-dtu-single-databases.md#single-database-storage-sizes-and-compute-sizes)の単一データベース、[仮想コア モデル](resource-limits-vcore-elastic-pools.md#general-purpose---provisioned-compute---gen4)および [DTU モデル](resource-limits-dtu-elastic-pools.md#standard-elastic-pool-limits)のエラスティック プールのリソース特性 (コア数、I/O、メモリ) を確認します。
 - [Business Critical](service-tier-business-critical.md) レベルと [Hyperscale](service-tier-hyperscale.md) レベルについて学びます。
 - [Service Fabric](../../service-fabric/service-fabric-overview.md) について学びます。
 - 高可用性およびディザスター リカバリーのためのその他のオプションについては、[ビジネス継続性](business-continuity-high-availability-disaster-recover-hadr-overview.md)に関するページを参照してください。

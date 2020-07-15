@@ -4,21 +4,27 @@ description: この記事では、リダイレクトを使用して Azure Databa
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: 608206ed1c1ffe1015f579d69868385ebd32208c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.topic: how-to
+ms.date: 6/8/2020
+ms.openlocfilehash: be660101a28d5ef289de1b25f8f7d33fbe9f617b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660277"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86107820"
 ---
 # <a name="connect-to-azure-database-for-mysql-with-redirection"></a>リダイレクトを使用して Azure Database for MySQL に接続する
 
 このトピックでは、リダイレクト モードで Azure Database for MySQL サーバーにアプリケーションを接続する方法について説明します。 リダイレクトは、アプリケーションをバックエンド サーバー ノードに直接接続できるようにすることで、クライアント アプリケーションと MySQL サーバー間のネットワーク待機時間を短縮することを目的としています。
 
 ## <a name="before-you-begin"></a>開始する前に
-[Azure portal](https://portal.azure.com) にサインインします。 エンジン バージョン 5.6、5.7、または 8.0 を使用して、Azure Database for MySQL サーバーを作成します。 詳細については、[Azure Portal を使用した Azure Database for MySQL サーバーの作成方法](quickstart-create-mysql-server-database-using-azure-portal.md)に関するページ、または[Azure CLI を使用した Azure Database for MySQL サーバーの作成方法](quickstart-create-mysql-server-database-using-azure-cli.md)に関するページをご覧ください。
+[Azure portal](https://portal.azure.com) にサインインします。 エンジン バージョン 5.6、5.7、または 8.0 を使用して、Azure Database for MySQL サーバーを作成します。 
+
+詳細については、[Azure portal](quickstart-create-mysql-server-database-using-azure-portal.md) または [Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md) を使用した Azure Database for MySQL サーバーの作成を参照してください。
+
+## <a name="enable-redirection"></a>リダイレクトを有効化する
+
+Azure Database for MySQL サーバーで、リダイレクト モードでの接続を許可するように `redirect_enabled` パラメーターを `ON` に構成します。 このサーバー パラメーターを更新するには、[Azure portal](howto-server-parameters.md) または [Azure CLI](howto-configure-server-parameters-using-cli.md) を使用します。
 
 ## <a name="php"></a>PHP
 

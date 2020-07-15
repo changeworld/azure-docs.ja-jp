@@ -5,17 +5,17 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/12/2020
-ms.openlocfilehash: 73c18d45136eea90ad29dc1bd40c4539dddc0ee6
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.date: 06/25/2020
+ms.openlocfilehash: 7d3c4e0f4bd34f996bb39426af39a692a6f79c5c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81767259"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85507179"
 ---
 # <a name="enable-azure-monitor-for-vms-by-using-azure-policy"></a>Azure Policy を使用して Azure Monitor for VMs を有効にする
 
-この記事では、Azure Policy を使用して、Azure 仮想マシンまたは仮想マシン スケール セットで Azure Monitor for VMs を有効にする方法について説明します。 このプロセスの最後には、Log Analytics エージェントと依存関係エージェントの有効化が正常に構成され、準拠していない仮想マシンが識別されています。
+この記事では、Azure Policy を使用して、Azure 仮想マシン、Azure 仮想マシン スケール セット、Azure Arc マシンで Azure Monitor for VMs を有効にする方法について説明します。 このプロセスの最後には、Log Analytics エージェントと依存関係エージェントの有効化が正常に構成され、準拠していない仮想マシンが識別されています。
 
 すべての Azure 仮想マシンまたは仮想マシン スケール セットで Azure Monitor for VMs を検出、管理、および有効化するには、Azure Policy または Azure PowerShell のどちらかを使用できます。 Azure Policy は、新しくプロビジョニングされた VM の一貫性のあるコンプライアンスと自動的な有効化が保証されるようにサブスクリプションを効果的に制御するポリシー定義を管理できるため、これが推奨される方法です。 これらのポリシー定義は、次のことを行います。
 
@@ -46,10 +46,7 @@ Azure PowerShell または Azure Resource Manager テンプレートを使用し
 
 この情報は、中心的な 1 つの場所から Azure Monitor for VMs のためのガバナンス シナリオを計画して実行するために役立ちます。 Azure Policy では、ポリシーまたはイニシアチブがスコープに割り当てられているときのコンプライアンス ビューが提供されるのに対して、この新しいページを使用すると、ポリシーまたはイニシアチブが割り当てられていない場所を検出し、所定の場所に割り当てることができます。 割り当て、表示、編集などのすべてのアクションが Azure Policy に直接リダイレクトされます。 **[Azure Monitor for VMs Policy Coverage]\(Azure Monitor for VMs のポリシー対象範囲\)** ページは、 **[Azure Monitor for VMs の有効化]** イニシアチブのみに対して拡張および統合されたエクスペリエンスです。
 
-このページからは、Azure Monitor for VMs のための Log Analytics ワークスペースを構成することもできます。これにより、次が実行されます。
-
-- Service Map ソリューションをインストールします。
-- パフォーマンス グラフ、ワークブック、およびカスタム ログ クエリとアラートによって使用されるオペレーティング システムのパフォーマンス カウンターを有効にします。
+このページからは、Azure Monitor for VMs の Log Analytics ワークスペースを構成することもできます。これにより、*VMInsights* ソリューションがインストールされます。
 
 ![Azure Monitor for VMs のワークスペースの構成](media/vminsights-enable-at-scale-policy/manage-policy-page-02.png)
 
@@ -94,6 +91,21 @@ Azure PowerShell または Azure Resource Manager テンプレートを使用し
 |Windows VM への依存関係エージェントのデプロイ |VM イメージ (OS) が一覧で定義されており、依存関係エージェントがインストールされていない場合は、Windows VM にこのエージェントをデプロイします。 |ポリシー |
 |Linux VM への Log Analytics エージェントのデプロイ |VM イメージ (OS) が一覧で定義されており、Log Analytics エージェントがインストールされていない場合は、Linux VM にこのエージェントをデプロイします。 |ポリシー |
 |Windows VM への Log Analytics エージェントのデプロイ |VM イメージ (OS) が一覧で定義されており、Log Analytics エージェントがインストールされていない場合は、Windows VM にこのエージェントをデプロイします。 |ポリシー |
+
+
+### <a name="policies-for-hybrid-azure-arc-machines"></a>ハイブリッド Azure Arc マシンのポリシー
+
+次の表は、ハイブリッド Azure Arc マシンのポリシー定義の一覧を示しています。
+
+|名前 |説明 |Type |
+|-----|------------|-----|
+| [プレビュー]:Log Analytics エージェントは Linux Azure Arc マシンにインストールされる必要がある |VM イメージ (OS) が一覧で定義されており、エージェントがインストールされていない場合は、ハイブリッド Azure Arc マシンを Linux VM に準拠しないものとして報告します。 |ポリシー |
+| [プレビュー]:Log Analytics エージェントは Windows Azure Arc マシンにインストールされる必要がある |VM イメージ (OS) が一覧で定義されており、エージェントがインストールされていない場合は、ハイブリッド Azure Arc マシンを Windows VM に準拠しないものとして報告します。 |ポリシー |
+| [プレビュー]:ハイブリッド Linux Azure Arc マシンに依存関係エージェントをデプロイする |VM イメージ (OS) が一覧で定義されており、Linux ハイブリッド Azure Arc マシン用の依存関係エージェントがインストールされていない場合は、このエージェントをデプロイします。 |ポリシー |
+| [プレビュー]:Windows Azure Arc マシンに依存関係エージェントをデプロイする |VM イメージ (OS) が一覧で定義されており、Windows ハイブリッド Azure Arc マシン用の依存関係エージェントがインストールされていない場合は、このエージェントをデプロイします。 |ポリシー |
+| [プレビュー]:Linux Azure Arc マシンに Log Analytics エージェントをデプロイする |VM イメージ (OS) が一覧で定義されており、Linux ハイブリッド Azure Arc マシン用の Log Analytics エージェントがインストールされていない場合は、このエージェントをデプロイします。 |ポリシー |
+| [プレビュー]:Windows Azure Arc マシンに Log Analytics エージェントをデプロイする |VM イメージ (OS) が一覧で定義されており、Windows ハイブリッド Azure Arc マシン用の Log Analytics エージェントがインストールされていない場合は、このエージェントをデプロイします。 |ポリシー |
+
 
 ### <a name="policies-for-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットのポリシー
 
