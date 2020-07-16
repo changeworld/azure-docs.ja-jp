@@ -1,28 +1,28 @@
 ---
-title: アンマネージド Azure AD 組織の職場または学校アカウントを削除する
+title: アンマネージド Azure AD の組織で職場または学校アカウントを閉鎖する
 description: アンマネージド Azure Active Directory のご自身の職場または学校アカウントを削除する方法。
 services: active-directory
 author: rolyon
 manager: mtillman
 ms.service: active-directory
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 05/20/2019
 ms.author: rolyon
 ms.reviewer: ''
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11c337f4838279771523a1f375b7349387d68f45
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 1bbc1644294a471bbb704d10c5f684d7404eae95
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582541"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85374578"
 ---
 # <a name="close-your-work-or-school-account-in-an-unmanaged-azure-ad-organization"></a>アンマネージド Azure AD 組織の職場または学校アカウントを削除する
 
-ご自身がアンマネージド Azure Active 組織 (Azure AD) 組織のユーザーで、その組織のアプリを利用する必要がなくなった場合、または関連付けを維持する必要がなくなった場合、お使いのアカウントはいつでも削除できます。 アンマネージド組織には、グローバル管理者がいません。 アンマネージド組織のユーザーは自分のアカウントをご自身で削除できます。その際、管理者に連絡する必要はありません。
+ご自身がアンマネージド Azure Active Directory (Azure AD) 組織のユーザーで、その組織のアプリを利用する必要がなくなった場合、または関連付けを維持する必要がなくなった場合、お使いのアカウントはいつでも削除できます。 アンマネージド組織には、グローバル管理者がいません。 アンマネージド組織のユーザーは自分のアカウントをご自身で削除できます。その際、管理者に連絡する必要はありません。
 
 アンマネージド組織のユーザーは、多くの場合、セルフサービス サインアップ中に作成されます。 たとえば、無料サービスにサインアップした組織のインフォメーション ワーカーが、このユーザーに該当する可能性があります。 セルフサービス サインアップの詳細については、 ("バイラル") サインアップの詳細については、「[Azure Active Directory のセルフサービス サインアップについて](directory-self-service-signup.md)」を参照してください。
 

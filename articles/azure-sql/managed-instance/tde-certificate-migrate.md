@@ -1,8 +1,8 @@
 ---
 title: TDE 証明書の移行 - マネージド インスタンス
-description: Transparent Data Encryption が有効なデータベースのデータベース暗号化キーを保護する証明書を Azure SQL Managed Instance に移行します
+description: Transparent Data Encryption を使用してデータベースのデータベース暗号化キーを保護している証明書を Azure SQL Managed Instance に移行します
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: sqldbrb=1
 ms.devlang: ''
@@ -11,34 +11,34 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: carlrab, jovanpop
 ms.date: 04/25/2019
-ms.openlocfilehash: eb8c794f4817c11d30112fbdf7d754081cc29859
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: c9a9b42d6f6d8c89847b03f5eda858c75d198c58
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84032173"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711393"
 ---
-# <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-managed-instance"></a>TDE で保護されたデータベースの証明書を Azure SQL Managed Instance に移行する
+# <a name="migrate-a-certificate-of-a-tde-protected-database-to-azure-sql-managed-instance"></a>TDE で保護されたデータベースの証明書を Azure SQL Managed Instance に移行する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-ネイティブな復元オプションを使用して、[Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) によって保護されたデータベースを Azure SQL Managed Instance に移行する場合、データベースの復元前に、SQL Server インスタンスから対応する証明書を移行しておく必要があります。 この記事では、証明書を Azure SQL Managed Instance に手動で移行するプロセスについて説明します。
+ネイティブな復元オプションを使用して、[Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) によって保護されたデータベースを Azure SQL Managed Instance に移行する場合、データベースの復元前に、SQL Server インスタンスから対応する証明書を移行しておく必要があります。 この記事では、証明書を Azure SQL Managed Instance に手動で移行するプロセスについて説明します。
 
 > [!div class="checklist"]
 >
 > * 証明書を Personal Information Exchange (.pfx) ファイルにエクスポートする
-> * ファイルから Base-64 文字列に証明書を抽出する
+> * ファイルから base-64 文字列に証明書を抽出する
 > * PowerShell コマンドレットを使用してそれをアップロードする
 
 TDE で保護されたデータベースと対応する証明書の両方を円滑に移行するためにフル マネージド サービスを使用する別の方法については、[Azure Database Migration Service を使用してオンプレミスのデータベースを Azure SQL Managed Instance に移行する方法](../../dms/tutorial-sql-server-to-managed-instance.md)に関するページを参照してください。
 
 > [!IMPORTANT]
-> 移行された証明書は TDE で保護されたデータベースの復元にのみ使用されます。 復元が終わり次第、移行済みの証明書は、インスタンスに設定した透過データ暗号化によりサービス マネージド証明書またはキー コンテナーの非同期キーのいずれかの異なるプロテクタに置き換わります。
+> 移行された証明書は TDE で保護されたデータベースの復元にのみ使用されます。 復元が終わり次第、移行済みの証明書は、インスタンスに設定した TDE によりサービス マネージド証明書またはキー コンテナーの非同期キーのいずれかの異なるプロテクタに置き換わります。
 
 ## <a name="prerequisites"></a>前提条件
 
 この記事の手順を完了するには、次の前提条件を満たす必要があります。
 
-* ファイルとしてエクスポートされた証明書にアクセス可能なオンプレミス サーバーまたは他のコンピューターへの [Pvk2Pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) コマンドライン ツールのインストール。 Pvk2Pfx ツールは、スタンドアロンの自己完結型コマンドライン環境、[Enterprise Windows Driver Kit](https://docs.microsoft.com/windows-hardware/drivers/download-the-wdk) に含まれています。
+* ファイルとしてエクスポートされた証明書にアクセス可能なオンプレミス サーバーまたは他のコンピューターへの [Pvk2Pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) コマンドライン ツールのインストール。 Pvk2Pfx ツールは、自己完結型コマンドライン環境である [Enterprise Windows Driver Kit](https://docs.microsoft.com/windows-hardware/drivers/download-the-wdk) に含まれています。
 * [Windows PowerShell](/powershell/scripting/install/installing-windows-powershell) バージョン 5.0 以上のインストール。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -51,7 +51,7 @@ TDE で保護されたデータベースと対応する証明書の両方を円�
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager モジュールは Azure SQL Managed Instance によってまだサポートされていますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
+> PowerShell Azure Resource Manager モジュールは Azure SQL Managed Instance によってまだサポートされていますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRM モジュールのコマンドの引数は実質的に同じです。
 
 PowerShell で次のコマンドを実行して、モジュールをインストール/更新します。
 
@@ -66,15 +66,15 @@ Update-Module -Name Az.Sql
 
 * * *
 
-## <a name="export-tde-certificate-to-a-personal-information-exchange-pfx-file"></a>TDE 証明書を Personal Information Exchange (.pfx) ファイルにエクスポートする
+## <a name="export-the-tde-certificate-to-a-pfx-file"></a>TDE 証明書を .pfx ファイルにエクスポートします。
 
-証明書はソース SQL Server から直接エクスポートできます。または、証明書ストアに保持されている場合にそこからエクスポートできます。
+証明書はソース SQL Server インスタンスから直接エクスポートできます。または、証明書ストアに保持されている場合にそこからエクスポートできます。
 
-### <a name="export-certificate-from-the-source-sql-server"></a>ソース SQL Server から証明書をエクスポートする
+### <a name="export-the-certificate-from-the-source-sql-server-instance"></a>ソース SQL Server インスタンスから証明書をエクスポートする
 
 SQL Server Management Studio で証明書をエクスポートして .pfx 形式に変換するには、次の手順を使用します。 手順全体を通して、証明書名およびファイル名とパスには汎用的な名前である *TDE_Cert* と *full_path* が使用されています。 これらは実際の名前に置き換える必要があります。
 
-1. SSMS で、新しいクエリ ウィンドウを開いてソース SQL Server に接続します。
+1. SSMS で、新しいクエリ ウィンドウを開いてソース SQL Server インスタンスに接続します。
 
 1. 次のスクリプトを使用することで、TDE で保護されたデータベースを一覧表示し、移行対象のデータベースの暗号化を保護する証明書の名前を取得します。
 
@@ -107,13 +107,13 @@ SQL Server Management Studio で証明書をエクスポートして .pfx 形式
 
    ![TDE 証明書のバックアップ](./media/tde-certificate-migrate/backup-onprem-certificate.png)
 
-1. PowerShell コンソールを使って Pvk2Pfx ツールを使用し、新しく作成された 1 組のファイルから Personal Information Exchange (.pfx) ファイルに証明書情報をコピーします。
+1. PowerShell コンソールを使用し、Pvk2Pfx ツールを使用して、新しく作成されたファイルのペアから .pfx ファイルに証明書情報をコピーします。
 
    ```cmd
    .\pvk2pfx -pvk c:/full_path/TDE_Cert.pvk  -pi "<SomeStrongPassword>" -spc c:/full_path/TDE_Cert.cer -pfx c:/full_path/TDE_Cert.pfx
    ```
 
-### <a name="export-certificate-from-certificate-store"></a>証明書ストアから証明書をエクスポートする
+### <a name="export-the-certificate-from-a-certificate-store"></a>証明書ストアから証明書をエクスポートする
 
 証明書が SQL Server のローカル コンピューター証明書ストアに保持される場合、次の手順を使用してそれをエクスポートできます。
 
@@ -125,11 +125,11 @@ SQL Server Management Studio で証明書をエクスポートして .pfx 形式
 
 2. 証明書 MMC スナップインで Personal、Certificates の順にパスを展開し、証明書の一覧を表示します。
 
-3. 証明書を右クリックして [エクスポート] をクリックします。
+3. 証明書を右クリックして **[エクスポート]** をクリックします。
 
-4. ウィザードに従って、証明書と秘密キーを Personal Information Exchange 形式にエクスポートします。
+4. ウィザードに従って、証明書と秘密キーを .pfx 形式にエクスポートします。
 
-## <a name="upload-certificate-to-azure-sql-managed-instance-using-azure-powershell-cmdlet"></a>Azure PowerShell コマンドレットを使用して証明書を Azure SQL Managed Instance にアップロードする
+## <a name="upload-the-certificate-to-azure-sql-managed-instance-using-an-azure-powershell-cmdlet"></a>Azure PowerShell コマンドレットを使用して証明書を Azure SQL Managed Instance にアップロードする
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -160,7 +160,7 @@ SQL Server Management Studio で証明書をエクスポートして .pfx 形式
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-最初に、 *.pfx* ファイルを使用して [Azure Key Vault をセットアップ](/azure/key-vault/key-vault-manage-with-cli2)する必要があります。
+最初に、 *.pfx* ファイルを使用して [Azure キー コンテナーを設定する](/azure/key-vault/key-vault-manage-with-cli2)必要があります。
 
 1. PowerShell で準備手順を開始します。
 
@@ -188,6 +188,6 @@ SQL Server Management Studio で証明書をエクスポートして .pfx 形式
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、Transparent Data Encryption が有効なデータベースの暗号化キーを保護する証明書を、オンプレミスまたは IaaS の SQL Server から Azure SQL Managed Instance に移行する方法について説明しました。
+この記事では、Transparent Data Encryption が有効なデータベースの暗号化キーを保護する証明書を、オンプレミスまたは IaaS の SQL Server インスタンスから Azure SQL Managed Instance に移行する方法について説明しました。
 
 データベース バックアップを Azure SQL Managed Instance に復元する方法については、[Azure SQL Managed Instance へのデータベース バックアップの復元](restore-sample-database-quickstart.md)に関するページを参照してください。

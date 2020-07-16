@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: d6141d48d67dd44c348961c6e09acf4e2531a61e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 512688345c03ea9d5da0e4933cd6a794eaaf597b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81685984"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84660762"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Azure ファイル共有への移行
 
@@ -120,9 +120,9 @@ Microsoft およびその他のファイル コピー ツールがいくつか�
 |![はい、推奨されます](media/storage-files-migration-overview/circle-green-checkmark.png)| RoboCopy | サポートされています。 Azure ファイル共有は、ネットワーク ドライブとしてマウントできます。 | 完全な忠実性。* |
 |![はい、推奨されます](media/storage-files-migration-overview/circle-green-checkmark.png)| Azure File Sync | Azure ファイル共有にネイティブに統合されます。 | 完全な忠実性。* |
 |![はい、推奨されます](media/storage-files-migration-overview/circle-green-checkmark.png)| 記憶域移行サービス | 間接的にサポートされています。 Azure ファイル共有は、SMS ターゲット サーバーでネットワーク ドライブとしてマウントできます。 | 完全な忠実性。* |
+|![はい、推奨されます](media/storage-files-migration-overview/circle-green-checkmark.png)| AzCopy、バージョン 10.4 以降| サポートされています。 | 完全な忠実性。* |
 |![完全にはお勧めできません](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Data Box | サポートされています。 | メタデータがコピーされません。 [Data Box は Azure File Sync と共に使用できます](storage-sync-offline-data-transfer.md)。 |
-|![推奨されません](media/storage-files-migration-overview/circle-red-x.png)| AzCopy | サポートされています。 | メタデータがコピーされません。 |
-|![推奨されません](media/storage-files-migration-overview/circle-red-x.png)| Azure ストレージ エクスプローラー | サポートされています。 | メタデータがコピーされません。 |
+|![完全にはお勧めできません](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Azure Storage Explorer、バージョン 1.14 | サポートされています。 | ACL はコピーされません。 タイムスタンプがサポートされます。  |
 |![推奨されません](media/storage-files-migration-overview/circle-red-x.png)| Azure Data Factory | サポートされています。 | メタデータがコピーされません。 |
 |||||
 

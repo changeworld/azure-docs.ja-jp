@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 609ad2539753a838f02c4a79be56444ca0fb07f9
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b7eb632405ef17ef4100503f30168c1207179f48
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014391"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85373864"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect クラウド プロビジョニングの前提条件
 この記事では、ID ソリューションとして Azure Active Directory (Azure AD) クラウド プロビジョニングを選択して使用する方法に関するガイダンスを示します。
@@ -27,7 +27,7 @@ ms.locfileid: "84014391"
 Azure AD Connect クラウド プロビジョニングを使用するには、次のものが必要です。
     
 - ゲスト ユーザーではない、Azure AD テナントのハイブリッド ID 管理者アカウント。
-- Windows 2012 R2 以降を搭載した、プロビジョニング エージェント用のオンプレミス サーバー
+- Windows 2012 R2 以降を搭載した、プロビジョニング エージェント用のオンプレミス サーバー  このサーバーは、[Active Directory 管理層モデル](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)に基づいた階層 0 のサーバーである必要があります。
 - オンプレミスのファイアウォールの構成
 
 >[!NOTE]

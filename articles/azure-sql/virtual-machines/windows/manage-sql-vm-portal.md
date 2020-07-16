@@ -1,10 +1,9 @@
 ---
-title: Azure portal を使用して Azure 内の SQL Server VM を管理する | Microsoft Docs
+title: Azure portal を使用して Azure 内の SQL Server 仮想マシンを管理する | Microsoft Docs
 description: Azure でホストされている SQL Server VM 用の Azure portal 内の SQL 仮想マシン リソースにアクセスする方法について説明します。
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
-manager: craigg
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.topic: article
@@ -13,17 +12,17 @@ ms.workload: iaas-sql-server
 ms.date: 05/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 6cf6fac84abd1d996c77aae7240c0322c5ec53fb
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8def7c52f2b1005419a29d35ef122b48f34fdee4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84036863"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84669003"
 ---
 # <a name="manage-sql-server-vms-in-azure-by-using-the-azure-portal"></a>Azure portal を使用して Azure 内の SQL Server VM を管理する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-[Azure portal](https://portal.azure.com) において、**SQL 仮想マシン** リソースは独立した管理サービスです。 これを使用すると、すべての SQL Server VM を同時に表示し、SQL Server 専用の設定を変更できます。 
+[Azure portal](https://portal.azure.com) において、**SQL 仮想マシン** (VM) リソースは独立した管理サービスです。 これを使用すると、すべての SQL Server VM を同時に表示し、SQL Server 専用の設定を変更できます。 
 
 ![SQL 仮想マシン リソース](./media/manage-sql-vm-portal/sql-vm-manage.png)
 

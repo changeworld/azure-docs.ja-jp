@@ -1,14 +1,14 @@
 ---
 title: プレビュー - Kubernetes 用の Azure Policy について学習する
 description: Azure Policy で Rego および Open Policy Agent を使用して、Azure 内またはオンプレミスで Kubernetes を実行しているクラスターを管理する方法について説明します。 これはプレビュー機能です。
-ms.date: 05/20/2020
+ms.date: 06/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9969bed9cb7c84faf9736bff2fb8337dc05d1bb0
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: a044ea33f1a7710c4bb97d30cf8f11d4de2838b1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221154"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85373626"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>Kubernetes 用の Azure Policy について理解する (プレビュー)
 
@@ -25,7 +25,7 @@ Kubernetes 用の Azure Policy では、次のクラスター環境がサポー�
 - [AKS エンジン](https://github.com/Azure/aks-engine/blob/master/docs/README.md)
 
 > [!IMPORTANT]
-> Kubernetes 用の Azure Policy はプレビュー中であり、Linux ノード プールと組み込みのポリシー定義のみをサポートします。 組み込みのポリシー定義は、**Kubernetes** カテゴリ内にあります。 **EnforceRegoPolicy** 効果を持つ限定プレビュー ポリシー定義と、関連する **Kubernetes Service** カテゴリは、_非推奨_になっています。 代わりに、更新された [EnforceOPAConstraint](./effects.md#enforceopaconstraint) 効果を使用してください。
+> Kubernetes 用の Azure Policy はプレビュー中であり、Linux ノード プールと組み込みのポリシー定義のみをサポートします。 組み込みのポリシー定義は、**Kubernetes** カテゴリ内にあります。 **EnforceOPAConstraint** および **EnforceRegoPolicy** 効果を持つ限定プレビュー ポリシー定義と、関連する **Kubernetes Service** カテゴリは "_非推奨_" になっています。 代わりに、リソース プロバイダー モード `Microsoft.Kubernetes.Data` で "_audit_" および "_deny_" 効果を使用します。
 
 ## <a name="overview"></a>概要
 
@@ -52,9 +52,6 @@ Azure Policy アドオンをインストールするか、このサービスの�
 1. Azure CLI バージョン 2.0.62 以降がインストールされて構成されている必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 1. リソース プロバイダーとプレビュー機能を登録します。
-
-   > [!CAUTION]
-   > サブスクリプションで機能を登録する場合、その機能を登録解除することはできません。 一部のプレビュー機能を有効にした後、すべての AKS クラスターに対して既定値が使用され、サブスクリプション内に作成されます。 運用サブスクリプションではプレビュー機能を有効にしないでください。 プレビュー機能をテストし、フィードバックを集めるには、別のサブスクリプションを使用してください。
 
    - Azure portal:
 
@@ -370,7 +367,7 @@ kubectl get pods -n gatekeeper-system
 
 ## <a name="policy-language"></a>ポリシーの言語
 
-Kubernetes を管理するための Azure Policy 言語構造は、既存のポリシー定義のものに従います。 有効な _EnforceOPAConstraint_ は、Kubernetes クラスターの管理に使用され、[OPA Constraint Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint) と Gatekeeper v3 での作業に固有の詳細プロパティを受け取ります。 詳細と例については、[EnforceOPAConstraint](./effects.md#enforceopaconstraint) 効果に関する記事を参照してください。
+Kubernetes を管理するための Azure Policy 言語構造は、既存のポリシー定義のものに従います。 `Microsoft.Kubernetes.Data` の[リソース プロバイダー モード](./definition-structure.md#resource-provider-modes)では、Kubernetes クラスターを管理するために、"[audit](./effects.md#audit)" および "[deny](./effects.md#deny)" 効果が使用されます。 "_audit_" および "_deny_" によって、[OPA Constraint Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint) および Gatekeeper v3 の操作に固有の **details** プロパティが提供される必要があります。
 
 Azure Policy からはアドオンに対して、ポリシー定義の _details.constraintTemplate_ および _details.constraint_ プロパティの一部として [CustomResourceDefinitions](https://github.com/open-policy-agent/gatekeeper#constraint-templates) (CRD) の URI が渡されます。 Rego は、Kubernetes クラスターへの要求を検証するために OPA および Gatekeeper がサポートする言語です。 Azure Policy は、Kubernetes 管理のための既存の標準をサポートすることによって、既存の規則を再利用し、これらを Azure Policy とペアにすることで、統合されたクラウド コンプライアンス レポート体験を実現します。 詳しくは、「[Rego とは](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego)」を参照してください。
 

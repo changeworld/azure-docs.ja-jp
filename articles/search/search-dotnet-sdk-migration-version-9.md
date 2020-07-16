@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fcc70267754f7e66f29dd1b855d3efb8b814e78b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6268bf94350699518d8d578e3a1d5a56a52ad785
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72793021"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85562353"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-9"></a>Azure Search .NET SDK バージョン 9 へのアップグレード
 
-バージョン 7.0-preview 以前の [Azure Search .NET SDK](https://aka.ms/search-sdk) を使用している場合、この記事を参考にして、バージョン 9 を使用するようにアプリケーションをアップグレードできます。
+バージョン 7.0-preview 以前の [Azure Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) を使用している場合、この記事を参考にして、バージョン 9 を使用するようにアプリケーションをアップグレードできます。
 
 > [!NOTE]
 > バージョン 8.0-preview を使用してまだ一般提供されていない機能を評価する場合、この記事の手順に従って、以前のバージョンから 8.0-preview にアップグレードすることもできます。
@@ -35,7 +35,7 @@ Azure Search .NET SDK のバージョン 9 には、以前のバージョンか�
 <a name="WhatsNew"></a>
 
 ## <a name="whats-new-in-version-9"></a>バージョン 9 の新機能
-Azure Search .NET SDK のバージョン 9 は、Azure Search REST API の最新の一般提供バージョン (2019-05-06) を対象としています。 これにより、次のような Azure Search の新機能を .NET アプリケーションから使用することが可能になります。
+Azure Search .NET SDK のバージョン 9 では、Azure Search REST API の 2019-05-06 バージョンを対象としており、次の機能を備えています。
 
 * [AI エンリッチメント](cognitive-search-concept-intro.md)では、画像や BLOB などの構造化されていないデータ ソースからテキストを抽出し、コンテンツを充実させて Azure Search インデックスで検索しやすくします。
 * [複合型](search-howto-complex-data-types.md)のサポートにより、Azure Search インデックス内の入れ子になったほとんどすべての JSON 構造をモデル化できます。

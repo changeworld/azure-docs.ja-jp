@@ -3,15 +3,16 @@ title: Azure Cosmos DB の C# ノートブックで組み込みのノートブ�
 description: Azure Cosmos DB の組み込み C# ノートブックを使用して、組み込みのコマンドと機能で一般的な操作を実行する方法について説明します。
 author: deborahc
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: 94cb23b1795a93462a0356fb0af215601edb9d64
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.custom: tracking-python
+ms.openlocfilehash: d9d48e825adeecd54375ce13c612d4a0c6eaaa18
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83662470"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263417"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-c-notebooks-preview"></a>Azure Cosmos DB の C# ノートブックで組み込みのノートブック コマンドと機能を使用する (プレビュー)
 
@@ -114,14 +115,14 @@ for (int i = 0; i < 5; i++) {
 
 たとえば、*GetingStarted_Csharp.ipynb* の例では、変数 ``telemetryEvents`` を結果と共に出力できます。 サンプル全体については、[ノートブックの GettingStarted_Csharp.ipynb](https://github.com/Azure-Samples/cosmos-notebooks/blob/master/CSharp_quickstarts/GettingStarted_CSharp.ipynb) を参照してください。 
 
-![Csharp のクエリ セル](media/use-notebook-features-and-commands/csharp-query-cell.png)
+:::image type="content" source="media/use-notebook-features-and-commands/csharp-query-cell.png" alt-text="Csharp のクエリ セル":::
 
-![nteract データ エクスプローラー](media/use-notebook-features-and-commands/csharp-nteract-built-in-chart.png)
+:::image type="content" source="media/use-notebook-features-and-commands/csharp-nteract-built-in-chart.png" alt-text="nteract データ エクスプローラー":::
 
 ## <a name="use-built-in-dictionary-viewer"></a>組み込みの辞書ビューアーを使用する
 組み込みの辞書ビューアーを使用して、変数を表示できます。 セルで、視覚化する変数を最後の行に配置します。すると、セルを実行するときに、その変数が自動的に表示されます。
 
-![組み込みの辞書ビューアー](media/use-notebook-features-and-commands/csharp-built-in-dictionary-viewer.png)
+:::image type="content" source="media/use-notebook-features-and-commands/csharp-built-in-dictionary-viewer.png" alt-text="組み込みの辞書ビューアー":::
 
 ## <a name="upload-json-items-to-a-container"></a>JSON 項目をコンテナーにアップロードする
 ``%%upload`` マジックコマンドを使用して、JSON ファイルから指定された Azure Cosmos コンテナーにデータをアップロードできます。 次のコマンドを使用して項目をアップロードします。
@@ -159,7 +160,7 @@ Total RUs consumed : 25022.58
 ## <a name="reset-notebooks-workspace"></a>ノートブック ワークスペースをリセットする
 ノートブック ワークスペースをリセットし、既定の設定に戻すには、コマンド バーで **[Reset Workspace]\(ワークスペースのリセット\)** を選択します。 これでインストールされているカスタム パッケージがすべて削除され、Jupyter サーバーが再起動されます。 ノートブック、ファイル、Azure Cosmos リソースは影響を受けません。  
 
-![ノートブック ワークスペースをリセットする](media/use-notebook-features-and-commands/reset-workspace.png)
+:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="ノートブック ワークスペースをリセットする":::
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,15 +1,14 @@
 ---
 title: ファイルとフォルダーのバックアップが遅い場合のトラブルシューティング
 description: Azure Backup のパフォーマンスに関する問題の原因を診断するのに役立つトラブルシューティングの指針を示します。
-ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: c229bd836029226a1e042de9bfe706654f97dc26
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 07f596f0900fbd92391a383678ade99df30592f1
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658930"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135039"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Azure Backup でファイルとフォルダーのバックアップが遅い場合のトラブルシューティング
 
@@ -50,13 +49,13 @@ Windows には、これらのボトルネックを検出することができる
 
 | カウンター | Status |
 | --- | --- |
-| Logical Disk(Physical Disk)--%idle |* 100% から 50% アイドル = 正常</br>* 49% から 20% アイドル = 警告または監視</br>* 19% から 0% アイドル = 重大または基準不適合 |
-| Logical Disk(Physical Disk)--%Avg.Disk Sec Read or Write |* 0.001 から 0.015 ミリ秒 = 正常</br>* 0.015 から 0.025 ミリ秒 = 警告または監視</br>* 0.026 ミリ秒以上 = 重大または基準不適合 |
+| Logical Disk(Physical Disk)--%idle |<li> 100% から 50% アイドル = 正常</br><li> 49% から 20% アイドル = 警告または監視</br><li> 19% から 0% アイドル = 重大または基準不適合 |
+| Logical Disk(Physical Disk)--%Avg.Disk Sec Read or Write |<li> 0.001 から 0.015 ミリ秒 = 正常</br><li> 0.015 から 0.025 ミリ秒 = 警告または監視</br><li> 0.026 ミリ秒以上 = 重大または基準不適合 |
 | Logical Disk(Physical Disk)--Current Disk Queue Length (全インスタンス) |要求数が 80 件の状態が 6 分超 |
-| Memory--Pool Non Paged Bytes |* プールの 60% 未満を消費 = 正常<br>* プールの 61% から 80% を消費 = 警告または監視</br>* プールの 80% 超を消費 = 重大または基準不適合 |
-| Memory--Pool Paged Bytes |* プールの 60% 未満を消費 = 正常</br>* プールの 61% から 80% を消費 = 警告または監視</br>* プールの 80% 超を消費 = 重大または基準不適合 |
-| Memory--Available Megabytes |* 空きメモリ 50% 以上 = 正常</br>* 空きメモリ 25% = 監視</br>* 空きメモリ 10% = 警告</br>* 空きメモリ 100 MB または 5% 未満 = 重大または基準不適合 |
-| Processor--\%Processor Time (全インスタンス) |* 60% 未満を消費 = 正常</br>* 61% から 90% を消費 = 監視または注意</br>* 91% から 100% を消費 = 重大 |
+| Memory--Pool Non Paged Bytes |<li> プールの 60% 未満を消費 = 正常<br><li> プールの 61% から 80% を消費 = 警告または監視</br><li> プールの 80% 超を消費 = 重大または基準不適合 |
+| Memory--Pool Paged Bytes |<li> プールの 60% 未満を消費 = 正常</br><li> プールの 61% から 80% を消費 = 警告または監視</br><li> プールの 80% 超を消費 = 重大または基準不適合 |
+| Memory--Available Megabytes |<li> 空きメモリ 50% 以上 = 正常</br><li> 空きメモリ 25% = 監視</br><li>空きメモリ 10% = 警告</br><li> 空きメモリ 100 MB または 5% 未満 = 重大または基準不適合 |
+| Processor--\%Processor Time (全インスタンス) |<li> 60% 未満を消費 = 正常</br><li> 61% から 90% を消費 = 監視または注意</br><li> 91% から 100% を消費 = 重大 |
 
 > [!NOTE]
 > インフラストラクチャが原因であることがわかった場合は、パフォーマンス向上のために定期的にディスクを最適化することをお勧めします。

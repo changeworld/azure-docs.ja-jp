@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 3e5507069a3e1eeadfaf4c3eeee288b2651e88a1
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 637bdb02cd9fc5296c74633bbfa381e62673a4bf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996042"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85355660"
 ---
 # <a name="manage-and-find-data-on-azure-blob-storage-with-blob-index-preview"></a>BLOB インデックスを使用して Azure Blob Storage でデータを管理および検索する (プレビュー)
 
@@ -63,7 +63,7 @@ BLOB に複数のタグを適用して、データをよりわかりやすくす
 > "Priority" = '01' 
 >
 
-既存のインデックス タグ属性を変更するには、最初に既存のタグ属性を取得し、そのタグ属性を変更して、SetBlobTags 操作を使用して置き換えます。 BLOB からすべてのインデックス タグを削除するには、タグ属性を指定せずに SetBlobTags 操作を呼び出します。 BLOB インデックス タグは BLOB データ コンテンツのサブリソースであるため、SetBlobTags は基になるコンテンツを変更せず、BLOB の last-modified-time を変更しません。
+既存のインデックス タグ属性を変更するには、最初に既存のタグ属性を取得し、そのタグ属性を変更して、SetBlobTags 操作を使用して置き換えます。 BLOB からすべてのインデックス タグを削除するには、タグ属性を指定せずに SetBlobTags 操作を呼び出します。 BLOB インデックス タグは BLOB データ コンテンツのサブリソースであるため、SetBlobTags は基になるコンテンツを変更せず、BLOB の last-modified-time も ETag (エンティティ タグ) も変更しません。 現在のすべてのベース BLOB と以前のバージョンのインデックス タグは作成または変更できますが、スナップショットまたは論理的に削除された BLOB のタグは変更できません。 
 
 BLOB インデックス タグには次の制限が適用されます。
 - 各 BLOB には、最大 10 個の BLOB インデックス タグを設定できます
@@ -208,7 +208,7 @@ BLOB インデックス タグは、BLOB データのサブリソースです。
 
 |   BLOB 操作   |  RBAC アクション   |
 |---------------------|----------------|
-| タグによる BLOB の検索  | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter |
+| タグによる BLOB の検索  | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action |
 | BLOB タグの設定         | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write | 
 | BLOB タグの取得         | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read |
 

@@ -3,12 +3,12 @@ title: Azure Site Recovery の最新情報
 description: Azure Site Recovery サービスの新機能と最新の更新プログラムの概要について説明します。
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: e0015aa9de51e3cb43473a079d09698fcbeef9a0
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: f774dbd3172199e82509301f520eac4e25deb15b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259220"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131087"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery の最新情報
 
@@ -22,6 +22,7 @@ Site Recovery コンポーネントでは、N-4 バージョン (N は最新リ�
 
 **アップデート** |  **統合セットアップ** | **構成サーバー ova** | **モビリティ サービス エージェント** | **Site Recovery プロバイダー** | **Recovery Services エージェント**
 --- | --- | --- | --- | --- | ---
+[ロールアップ 47](https://support.microsoft.com/help/4570609/) | 9.34.5634.1 | 5.1.6100.0 | 9.34.5634.1 | 5.1.6100.0 | 2.0.9183.0
 [ロールアップ 46](https://support.microsoft.com/help/4564347/) | 9.33.5598.1 | 5.1.5900.0 | 9.33.5598.1 | 5.1.5900.0 | 2.0.9175.0
 [ロールアップ 45](https://support.microsoft.com/help/4550047/) | 9.32.5487.1 | 5.1.5400.0 | 9.32.5487.1 | 5.1.5400.0 | 2.0.9165.0
 [ロールアップ 43](https://support.microsoft.com/help/4537047/) | 9.31.5449.1 | 5.1.5300.0 | 9.31.5449.1 | 5.1.5300.0 | 2.0.9165.0
@@ -32,6 +33,17 @@ Site Recovery コンポーネントでは、N-4 バージョン (N は最新リ�
 
 > [!NOTE]
 > 更新プログラムの ロールアップ 44 は、Site Recovery プロバイダーおよびエージェントの更新プログラムが含まれていなかったため、表には表示されていません。
+
+## <a name="updates-june-2020"></a>更新プログラム (2020 年 6 月)
+
+### <a name="update-rollup-47"></a>更新プログラム ロールアップ 47
+
+[更新プログラム ロールアップ 47](https://support.microsoft.com/help/4570609/update-rollup-47-for-azure-site-recovery) では、以下の更新が提供されます。
+
+**アップデート** | **詳細**
+--- | ---
+**プロバイダーおよびエージェント** | Site Recovery のエージェントとプロバイダーに対する更新プログラム (詳細はロールアップを参照)
+**問題の修正/改善点** | さまざまな修正プログラムと機能強化 (詳細はロールアップを参照)
 
 ## <a name="updates-june-2020"></a>更新プログラム (2020 年 6 月)
 
@@ -346,8 +358,8 @@ Site Recovery では、キャッシュ ストレージまたはターゲット �
 **機能** | **詳細**
 --- | ---
 **ネットワーク マッピング** | Azure VM ディザスター リカバリーで、レプリケーションを有効にすると、利用可能な任意のターゲット ネットワークを使用できるようになりました。
-**Standard SSD** | [Standard SSD ディスク](https://docs.microsoft.com/azure/virtual-machines/windows/disks-standard-ssd)を使用して Azure VM のディザスター リカバリーを設定できるようになりました。
-**記憶域スペース ダイレクト** | Azure VM アプリで実行されるアプリのディザスター リカバリーを、高可用性を実現するために[記憶域スペース ダイレクト](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview)を使用して設定できるようになりました。  Site Recovery と共に記憶域スペース ダイレクト (S2D) を使用することで、Azure VM ワークロードを包括的に保護することができます。 S2D では、Azure でゲスト クラスターをホストすることができます。 これは特に、SAP ASCS レイヤー、SQL Server、スケールアウト ファイル サーバーなど、重要なアプリケーションを VM でホストするときに便利です。
+**Standard SSD** | [Standard SSD ディスク](../virtual-machines/windows/disks-types.md#standard-ssd)を使用して Azure VM のディザスター リカバリーを設定できるようになりました。
+**記憶域スペース ダイレクト** | Azure VM アプリで実行されるアプリのディザスター リカバリーを、高可用性を実現するために[記憶域スペース ダイレクト](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)を使用して設定できるようになりました。  Site Recovery と共に記憶域スペース ダイレクト (S2D) を使用することで、Azure VM ワークロードを包括的に保護することができます。 S2D では、Azure でゲスト クラスターをホストすることができます。 これは特に、SAP ASCS レイヤー、SQL Server、スケールアウト ファイル サーバーなど、重要なアプリケーションを VM でホストするときに便利です。
 
 
 ### <a name="vmwarephysical-server-disaster-recovery"></a>VMware/物理サーバーのディザスター リカバリー
@@ -365,7 +377,7 @@ Site Recovery では、キャッシュ ストレージまたはターゲット �
 
 ### <a name="accelerated-networking-azure-vms"></a>高速ネットワーク (Azure VM)
 
-高速ネットワークによって、VM へのシングル ルート I/O 仮想化 (SR-IOV) が可能になり、ネットワークのパフォーマンスが向上します。 Azure VM のレプリケーションを有効にすると、Site Recovery は、高速ネットワークが有効になっているかどうかを検出します。 有効な場合はフェールオーバー後に、[Windows](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell#enable-accelerated-networking-on-existing-vms) と [Linux](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli#enable-accelerated-networking-on-existing-vms) の両方について、Site Recovery によってターゲットのレプリカ Azure VM 上に高速ネットワークが自動的に構成されます。
+高速ネットワークによって、VM へのシングル ルート I/O 仮想化 (SR-IOV) が可能になり、ネットワークのパフォーマンスが向上します。 Azure VM のレプリケーションを有効にすると、Site Recovery は、高速ネットワークが有効になっているかどうかを検出します。 有効な場合はフェールオーバー後に、[Windows](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) と [Linux](../virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms) の両方について、Site Recovery によってターゲットのレプリカ Azure VM 上に高速ネットワークが自動的に構成されます。
 
 [詳細については、こちらを参照してください](azure-vm-disaster-recovery-with-accelerated-networking.md)。
 
@@ -427,7 +439,7 @@ Site Recovery では、キャッシュ ストレージまたはターゲット �
 **Linux のサポート** | Red Hat 互換カーネルを使用する Oracle Linux 6.8、Oracle Linux 6.9、および Oracle Linux 7.0 と、Unbreakable Enterprise Kernel (UEK) リリース 5 に対するサポートが追加されました。
 **Linux BRTFS ファイル システム** | Azure VM でサポートされるようになりました。
 **可用性ゾーンにある Azure VM** | 可用性ゾーンにデプロイされた Azure VM の別のリージョンへのレプリケーションを有効にできます。 Azure VM のレプリケーションを有効にして、フェールオーバーのターゲットを、1 つの VM インスタンス、可用性セット内の VM、または可用性ゾーン内の VM に設定できるようになりました。 この設定は、レプリケーションに影響を与えません。 お知らせを[読む](https://azure.microsoft.com/blog/disaster-recovery-of-zone-pinned-azure-virtual-machines-to-another-region/)
-**ファイアウォールが有効なストレージ (ポータル/PowerShell)** | [ファイアウォールが有効なストレージ アカウント](https://docs.microsoft.com/azure/storage/common/storage-network-security)のサポートが追加されました。<br/><br/> ファイアウォールが有効なストレージ アカウント上のアンマネージド ディスクを持つ Azure VM を、ディザスター リカバリーのために別の Azure リージョンにレプリケートできます。<br/><br/> ファイアウォールが有効なストレージ アカウントを、アンマネージド ディスクのターゲット ストレージ アカウントとして使用できます。<br/><br/> ポータルでサポートされ、PowerShell の使用がサポートされます。
+**ファイアウォールが有効なストレージ (ポータル/PowerShell)** | [ファイアウォールが有効なストレージ アカウント](../storage/common/storage-network-security.md)のサポートが追加されました。<br/><br/> ファイアウォールが有効なストレージ アカウント上のアンマネージド ディスクを持つ Azure VM を、ディザスター リカバリーのために別の Azure リージョンにレプリケートできます。<br/><br/> ファイアウォールが有効なストレージ アカウントを、アンマネージド ディスクのターゲット ストレージ アカウントとして使用できます。<br/><br/> ポータルでサポートされ、PowerShell の使用がサポートされます。
 
 ## <a name="updates-december-2018"></a>更新プログラム (2018 年 12 月)
 
@@ -468,7 +480,7 @@ Azure VM のディザスター リカバリーでは、VM のライセンス コ
 **リージョンのサポート** | オーストラリア中部 1 およびオーストラリア中部 2 で Site Recovery のサポートが追加されました。
 **ディスク暗号化のサポート** | Azure AD アプリを使用した、Azure Disk Encryption (ADE) で暗号化された Azure VM のディザスター リカバリーのサポートが追加されました。 [詳細については、こちらを参照してください](azure-to-azure-how-to-enable-replication-ade-vms.md)。
 **ディスクの除外** | 初期化されていないディスクが、Azure VM のレプリケーション中に自動的に除外されるようになりました。
-**ファイアウォールが有効なストレージ (PowerShell)** | [ファイアウォールが有効なストレージ アカウント](https://docs.microsoft.com/azure/storage/common/storage-network-security)のサポートが追加されました。<br/><br/> ファイアウォールが有効なストレージ アカウント上のアンマネージド ディスクを持つ Azure VM を、ディザスター リカバリーのために別の Azure リージョンにレプリケートできます。<br/><br/> ファイアウォールが有効なストレージ アカウントを、アンマネージド ディスクのターゲット ストレージ アカウントとして使用できます。<br/><br/> PowerShell のみの使用がサポートされるようになりました。
+**ファイアウォールが有効なストレージ (PowerShell)** | [ファイアウォールが有効なストレージ アカウント](../storage/common/storage-network-security.md)のサポートが追加されました。<br/><br/> ファイアウォールが有効なストレージ アカウント上のアンマネージド ディスクを持つ Azure VM を、ディザスター リカバリーのために別の Azure リージョンにレプリケートできます。<br/><br/> ファイアウォールが有効なストレージ アカウントを、アンマネージド ディスクのターゲット ストレージ アカウントとして使用できます。<br/><br/> PowerShell のみの使用がサポートされるようになりました。
 
 
 ### <a name="update-rollup-29"></a>更新プログラム ロールアップ 29
@@ -506,7 +518,7 @@ Azure VM のディザスター リカバリーでは、VM のライセンス コ
 
 **機能** | **詳細**
 --- | ---
-**Linux のサポート** | RedHat Enterprise Linux 6.10、CentOS 6.10 のサポートが追加されました。<br/><br/> レガシ BIOS 互換モードで GUID パーティション テーブル (GPT) のパーティション スタイルを使用する Linux ベースの VM がサポートされるようになりました。 詳細については、[Azure VM の FAQ](https://docs.microsoft.com/azure/virtual-machines/linux/faq-for-disks) を確認してください。
+**Linux のサポート** | RedHat Enterprise Linux 6.10、CentOS 6.10 のサポートが追加されました。<br/><br/> レガシ BIOS 互換モードで GUID パーティション テーブル (GPT) のパーティション スタイルを使用する Linux ベースの VM がサポートされるようになりました。 詳細については、[Azure VM の FAQ](../virtual-machines/linux/faq-for-disks.md) を確認してください。
 **移行後の VM のディザスター リカバリー** | Azure に移行されたオンプレミスの VMware VM のセカンダリ リージョンへのディザスター リカバリーの有効化がサポートされます。レプリケーションを有効にする前に VM でモビリティ サービスをアンインストールする必要はありません。
 **Windows Server 2008** | Windows Server 2008 R2/2008 64 ビット版および 32 ビット版を実行するマシンの移行がサポートされるようになりました。<br/><br/> 移行のみ (レプリケーションとフェールオーバー)。 フェールバックはサポートされていません。
 

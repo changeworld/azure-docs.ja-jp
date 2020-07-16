@@ -2,21 +2,21 @@
 title: SQL Server と Azure SQL Managed Instance での T-SQL の相違点
 description: この記事では、Azure SQL Managed Instance と SQL Server の Transact-SQL (T-SQL) の相違点について説明します。
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova, danil
-ms.date: 03/11/2020
+ms.date: 06/02/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 190d0bd242a685487480d4da613f354277663d9c
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 229a74fe760386b59bc83373cc7b1429bd826929
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84308032"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85298449"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server と Azure SQL Managed Instance での T-SQL の相違点
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -82,7 +82,7 @@ SQL Managed Instance には自動バックアップがあるので、ユーザ�
 
 T-SQL を使用したバックアップについては、[BACKUP](/sql/t-sql/statements/backup-transact-sql) に関する記事をご覧ください。
 
-## <a name="security"></a>Security
+## <a name="security"></a>セキュリティ
 
 ### <a name="auditing"></a>監査
 
@@ -432,7 +432,7 @@ HDFS または Azure BLOB ストレージ内のファイルを参照する外部
   - `FROM URL` (Azure BLOB ストレージ) が、サポートされている唯一のオプションです。
   - `FROM DISK`/`TAPE`/バックアップ デバイスはサポートされていません。
   - バックアップ セットはサポートされていません。
-- `WITH` オプションはサポートされていません (`DIFFERENTIAL`、`STATS` などは使用不可)。
+- `WITH` オプションはサポートされていません。 `DIFFERENTIAL`、`STATS`、`REPLACE`などの `WITH` を含む復元の試行は失敗します。
 - `ASYNC RESTORE`:クライアント接続が切断されても、復元は続行されます。 接続が破棄された場合は、`sys.dm_operation_status` ビューで復元操作とデータベースの CREATE 操作および DROP 操作の状態を確認できます。 [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) に関する記事をご覧ください。 
 
 次のデータベース オプションを設定またはオーバーライドします。これらを後で変更することはできません。 
@@ -506,6 +506,9 @@ RESTORE ステートメントについては、[RESTORE ステートメント](/
 - VNet はリソース モデルを使用してデプロイできます。VNet のクラシック モードはサポートされていません。
 - SQL Managed Instance の作成後の SQL Managed Instance または VNet の別のリソース グループまたはサブスクリプションへの移動はサポートされていません。
 - VNet が[グローバル ピアリング](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)を使用して接続されている場合、App Service Environment、ロジック アプリ、SQL Managed Instance (geo レプリケーション、トランザクション レプリケーション、またはリンクされたサーバー経由で使用) など、一部のサービスでは、さまざまなリージョンにある SQL Managed Instance にアクセスできません。 ExpressRoute、または VNet ゲートウェイ経由の VNet 対 VNet を介してこのようなリソースに接続できます。
+
+### <a name="failover-groups"></a>フェールオーバー グループ
+システム データベースは、フェールオーバー グループのセカンダリ インスタンスにはレプリケートされません。 そのため、オブジェクトがセカンダリに手動で作成されていない限り、セカンダリ インスタンスではシステム データベースのオブジェクトに依存するシナリオは実現できません。
 
 ### <a name="failover-groups"></a>フェールオーバー グループ
 システム データベースは、フェールオーバー グループのセカンダリ インスタンスにはレプリケートされません。 そのため、オブジェクトがセカンダリに手動で作成されていない限り、セカンダリ インスタンスではシステム データベースのオブジェクトに依存するシナリオは実現できません。

@@ -3,15 +3,15 @@ title: Azure Cosmos DB で Time to Live を構成および管理する
 description: Azure Cosmos DB でコンテナーと項目の Time to Live を構成および管理する方法について説明します
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/27/2020
 ms.author: anfeldma
-ms.openlocfilehash: 11f5615d44cef4b6717dc9fe2004a64cf2f800ba
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: bbddcb8627c78544d603e1ea3ca33bc410419da1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124127"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263624"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Azure Cosmos DB で Time to Live を構成する
 
@@ -34,7 +34,7 @@ Azure Cosmos DB では、コンテナー レベルで Time to Live (TTL) の構�
    * **[オン (既定値なし)]** または **[オン]** を選択し、TTL 値を設定します
    * **[保存]** をクリックして変更を保存します。
 
-   ![Azure portal で Time to Live を構成する](./media/how-to-time-to-live/how-to-time-to-live-portal.png)
+   :::image type="content" source="./media/how-to-time-to-live/how-to-time-to-live-portal.png" alt-text="Azure portal で Time to Live を構成する":::
 
 * DefaultTimeToLive が null の場合、Time to Live はオフになります
 * DefaultTimeToLive が -1 の場合、Time to Live の設定はオン (既定値なし) になります

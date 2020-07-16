@@ -1,18 +1,18 @@
 ---
 title: Azure Marketplace にマネージド サービス オファーを発行する
-description: Azure の委任されたリソース管理に顧客をオンボードするマネージド サービス オファーを発行する方法について説明します。
+description: Azure Lighthouse に顧客をオンボードするマネージド サービス オファーを発行する方法について説明します。
 ms.date: 05/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 214a71faca59072660f1e1f413cb107d8e8f6fc9
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 19364164617a32a561140e985c8723f8deafe1a7
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920899"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133301"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Azure Marketplace にマネージド サービス オファーを発行する
 
-この記事では、Partner Center の[コマーシャル マーケットプレース](../../marketplace/partner-center-portal/commercial-marketplace-overview.md) プログラムを使用して、パブリックまたはプライベートのマネージド サービス オファーを [Azure Marketplace](https://azuremarketplace.microsoft.com) に発行する方法について説明します。 オファーを購入した顧客は、[Azure の委任されたリソース管理](../concepts/azure-delegated-resource-management.md)のためにサブスクリプションとリソース グループをオンボードできます。
+この記事では、Partner Center の[コマーシャル マーケットプレース](../../marketplace/partner-center-portal/commercial-marketplace-overview.md) プログラムを使用して、パブリックまたはプライベートのマネージド サービス オファーを [Azure Marketplace](https://azuremarketplace.microsoft.com) に発行する方法について説明します。 プランを購入した顧客は、その後サブスクリプションまたはリソース グループを委任します。これにより、お客様は [Azure Lighthouse](../overview.md) を通じて顧客を管理できるようになります。
 
 ## <a name="publishing-requirements"></a>発行要件
 
@@ -20,10 +20,10 @@ ms.locfileid: "85920899"
 
 [マネージド サービス オファーの認定要件](/legal/marketplace/certification-policies#7004-business-requirements)に従って、マネージド サービス オファーを発行するには、[Silver または Gold Cloud Platform コンピテンシー レベル](/partner-center/learn-about-competencies)を取得しているか、または [Azure Expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) である必要があります。
 
-顧客エンゲージメント全体に対するお客様の影響を追跡するために、ご使用の Microsoft Partner Network (MPN) ID はお客様が発行したオファーに[自動的に関連付けられます](../../billing/billing-partner-admin-link-started.md)。
+顧客エンゲージメント全体に対するお客様の影響を追跡するために、ご使用の Microsoft Partner Network (MPN) ID はお客様が発行したオファーに[自動的に関連付けられます](../../cost-management-billing/manage/link-partner-id.md)。
 
 > [!NOTE]
-> オファーを Azure Marketplace に発行しない場合は、Azure Resource Manager テンプレートを使用して、顧客を手動でオンボードできます。 詳細については、「[Azure の委任されたリソース管理に顧客をオンボードする](onboard-customer.md)」を参照してください。
+> オファーを Azure Marketplace に発行しない場合は、Azure Resource Manager テンプレートを使用して、顧客を手動でオンボードできます。 詳細については、「[Azure Lighthouse への顧客のオンボード](onboard-customer.md)」をご覧ください。
 
 ## <a name="create-your-offer"></a>プランを作成する
 
@@ -31,7 +31,7 @@ ms.locfileid: "85920899"
 
 一般的な発行プロセスについては、「[Azure Marketplace と AppSource の公開ガイド](../../marketplace/marketplace-publishers-guide.md)」を参照してください。 さらに、「[商業マーケットプレースの認定ポリシー](/legal/marketplace/certification-policies)」(特に「[マネージド サービス](/legal/marketplace/certification-policies#700-managed-services)」セクション) も確認してください。
 
-顧客がオファーを追加すると、1 つまたは複数のサブスクリプションまたはリソース グループを委任できるようになり、これらは [Azure の委任されたリソース管理のためにオンボード](#the-customer-onboarding-process)されます。
+顧客がオファーを追加すると、1 つ以上のサブスクリプションまたはリソース グループを委任できるようになり、これらは [Azure Lighthouse にオンボード](#the-customer-onboarding-process)されます。
 
 > [!IMPORTANT]
 > マネージド サービス オファー内の各プランには、 **[Manifest Details]\(マニフェストの詳細\)** セクションが含まれています。そこでは、そのプランを購入したお客様に代わり、委任されたリソース グループやサブスクリプションへのアクセス権を持つ Azure Active Directory (Azure AD) エンティティをお客様のテナント内に定義します。 含まれるグループ (またはユーザーまたはサービス プリンシパル) は、そのプランを購入したすべての顧客に対して同じアクセス許可を持つことに注意する必要があります。 顧客ごとに異なる担当グループを割り当てるには、各顧客専用の個別の[プライベート プラン](../../marketplace/private-offers.md)を発行する必要があります。
@@ -44,7 +44,7 @@ ms.locfileid: "85920899"
 
 ## <a name="the-customer-onboarding-process"></a>顧客オンボーディング プロセス
 
-顧客がオファーを追加すると、[1 つまたは複数の特定のサブスクリプションまたはリソース グループを委任](view-manage-service-providers.md#delegate-resources)できるようになります。これらは、Azure の委任されたリソース管理のためにオンボードされます。 顧客がオファーを承諾しても、まだリソースを委任していなければ、Azure portal の [ **[サービス プロバイダー]** ](view-manage-service-providers.md) ページの **[プロバイダーのオファー]** セクションの上部に注意書きが表示されます。
+顧客がオファーを追加すると、[1 つ以上の特定のサブスクリプションまたはリソース グループを委任](view-manage-service-providers.md#delegate-resources)できるようになり、これらは Azure Lighthouse にオンボードされます。 顧客がオファーを承諾しても、まだリソースを委任していなければ、Azure portal の [ **[サービス プロバイダー]** ](view-manage-service-providers.md) ページの **[プロバイダーのオファー]** セクションの上部に注意書きが表示されます。
 
 > [!IMPORTANT]
 > 委任は、ゲスト以外のアカウントが、オンボード対象のサブスクリプションで[所有者の組み込みロール](../../role-based-access-control/built-in-roles.md#owner)を持っている (またはオンボード対象のリソース グループを含む) 顧客のテナント内で実行する必要があります。 サブスクリプションを委任できるすべてのユーザーを表示するには、顧客のテナントのユーザーが Azure portal でサブスクリプションを選択し、 **[アクセス制御 (IAM)]** を開くと、[所有者ロールを持つすべてのユーザーを表示](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription)することができます。

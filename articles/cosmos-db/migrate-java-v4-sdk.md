@@ -4,15 +4,15 @@ description: 古い Azure Cosmos DB Java SDK を使用している既存の Java
 author: anfeldma-ms
 ms.author: anfeldma
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 05/26/2020
+ms.topic: how-to
+ms.date: 06/11/2020
 ms.reviewer: sngun
-ms.openlocfilehash: b1ad7b44b34b678eac3348ba3b3ec54fcc508fcf
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 29b3ca267e22c8d1f349cb127efb7d2fd71e1477
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310667"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263502"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-java-sdk-v4"></a>Azure Cosmos DB Java SDK v4 を使用するようにアプリケーションを移行する
 
@@ -35,7 +35,7 @@ ms.locfileid: "84310667"
 | Async 2.x.x  | 2018 年 6 月    | Async(RxJava)  | `com.microsoft.azure::azure-cosmosdb` | `com.microsoft.azure.cosmosdb.rx` | [API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [リリース ノート](sql-api-sdk-async-java.md) |
 | Sync 2.x.x     | 2018 年 9 月    | 同期   | `com.microsoft.azure::azure-documentdb` | `com.microsoft.azure.cosmosdb` | [API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [リリース ノート](sql-api-sdk-java.md)  |
 | 3.x.x    | 2019 年 7 月    | Async(Reactor)/Sync  | `com.microsoft.azure::azure-cosmos`  | `com.azure.data.cosmos` | [API](https://azure.github.io/azure-cosmosdb-java/3.0.0/) | - |
-| 4.0   | 2020 年 4 月   | Async(Reactor)/Sync  | `com.azure::azure-cosmos` | `com.azure.cosmos`   | -  | -  |
+| 4.0   | 2020 年 6 月   | Async(Reactor)/Sync  | `com.azure::azure-cosmos` | `com.azure.cosmos`   | -  | [API](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-cosmos/4.0.1/index.html)  |
 
 ## <a name="sdk-level-implementation-changes"></a>SDK レベルの実装の変更
 
@@ -55,7 +55,7 @@ Azure Cosmos DB Sync Java SDK 2.x.x を使用している場合、Azure Cosmos D
 
 以前の SDK (Java SDK 3.x.x、Async Java SDK 2.x.x、Sync Java SDK 2.x.x) と比較した Azure Cosmos DB Java SDK 4.x.x での API レベルの変更点を次に示します。
 
-![Azure Cosmos DB Java SDK の名前付け規則](./media/migrate-java-v4-sdk/java-sdk-naming-conventions.png)
+:::image type="content" source="./media/migrate-java-v4-sdk/java-sdk-naming-conventions.png" alt-text="Azure Cosmos DB Java SDK の名前付け規則":::
 
 * Azure Cosmos DB Java SDK 3.x.x と 4.0 では、クライアント リソースが `Cosmos<resourceName>` として参照されています。 たとえば、`CosmosClient`、`CosmosDatabase`、`CosmosContainer` などです。 一方、バージョン 2.x.x の Azure Cosmos DB Java SDK には、一貫した名前付けスキームはありません。
 
@@ -72,7 +72,8 @@ Azure Cosmos DB Sync Java SDK 2.x.x を使用している場合、Azure Cosmos D
 次の 4.0 SDK コード スニペットで示すように、Azure Cosmos DB Java SDK 4.0 と 3.x.x では、クライアント、データベース、コンテナーが入れ子として編成された階層型 API 構造が導入されています。
 
 ```java
-CosmosContainer = client.getDatabase("MyDatabaseName").getContainer("MyContainerName");
+CosmosContainer container = client.getDatabase("MyDatabaseName").getContainer("MyContainerName");
+
 ```
 
 Azure Cosmos DB Java SDK のバージョン 2.x では、リソースとドキュメントに対するすべての操作は、クライアント インスタンスを介して実行されます。
@@ -114,36 +115,7 @@ Azure Cosmos DB Java SDK 4.0 では、インスタンス メンバーにアク�
 
 # <a name="java-sdk-40-async-api"></a>[Java SDK 4.0 Async API](#tab/java-v4-async)
 
-```java
-ConnectionPolicy defaultPolicy = ConnectionPolicy.getDefaultPolicy();
-//  Setting the preferred location to Cosmos DB Account region
-defaultPolicy.setPreferredLocations(Lists.newArrayList("Your Account Location"));
-// Use Direct Mode for best performance
-defaultPolicy.setConnectionMode(ConnectionMode.DIRECT);
-
-// Create Async client.
-// Building an async client is still a sync operation.
-client = new CosmosClientBuilder()
-        .setEndpoint("your.hostname")
-        .setKey("yourmasterkey")
-        .setConnectionPolicy(ConnectionPolicy.getDefaultPolicy())
-        .setConsistencyLevel(ConsistencyLevel.EVENTUAL)
-        .buildAsyncClient();
-
-// Create database with specified name
-client.createDatabaseIfNotExists("YourDatabaseName")
-      .flatMap(databas'Response -> {
-        database = databaseResponse.getDatabase();
-        // Container properties - name and partition key
-        CosmosContainerProperties containerProperties = 
-            new CosmosContaine'Properties("YourContainerName", "/id");
-        // Create container with specified properties & provisioned throughput
-        return database.createContainerIfNotExists(containerProperties, 400);
-    }).flatMap(containerResponse -> {
-        container = containerResponse.getContainer();
-        return Mono.empty();
-}).subscribe();
-```
+[!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=MigrateJavaSDKv4ResourceAsync)]
 
 # <a name="java-sdk-3xx-async-api"></a>[Java SDK 3.x.x Async API](#tab/java-v3-async)
 
@@ -183,16 +155,7 @@ client.createDatabaseIfNotExists("YourDatabaseName")
 
 # <a name="java-sdk-40-async-api"></a>[Java SDK 4.0 Async API](#tab/java-v4-async)
 
-```java
-// Container is created. Generate many docs to insert.
-int number_of_docs = 50000;
-ArrayList<JsonNode> docs = generateManyDocs(number_of_docs);
-
-// Insert many docs into container...
-Flux.fromIterable(docs)
-    .flatMap(doc -> container.createItem(doc))
-    .subscribe(); // ...Subscribing triggers stream execution.
-```
+[!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=MigrateItemOpsAsync)]
 
 # <a name="java-sdk-3xx-async-api"></a>[Java SDK 3.x.x Async API](#tab/java-v3-async)
 
@@ -214,33 +177,7 @@ Flux.fromIterable(docs)
 
 # <a name="java-sdk-40-async-api"></a>[Java SDK 4.0 Async API](#tab/java-v4-async)
 
-```java
-CosmosContainerProperties containerProperties = new CosmosContainerProperties(containerName, "/lastName");
-
-// Custom indexing policy
-IndexingPolicy indexingPolicy = new IndexingPolicy();
-indexingPolicy.setIndexingMode(IndexingMode.CONSISTENT); 
-
-// Included paths
-List<IncludedPath> includedPaths = new ArrayList<>();
-IncludedPath includedPath = new IncludedPath();
-includedPath.setPath("/*");
-includedPaths.add(includedPath);
-indexingPolicy.setIncludedPaths(includedPaths);
-
-// Excluded paths
-List<ExcludedPath> excludedPaths = new ArrayList<>();
-ExcludedPath excludedPath = new ExcludedPath();
-excludedPath.setPath("/name/*");
-excludedPaths.add(excludedPath);
-indexingPolicy.setExcludedPaths(excludedPaths);
-
-containerProperties.setIndexingPolicy(indexingPolicy);
-
-CosmosAsyncContainer containerIfNotExists = database.createContainerIfNotExists(containerProperties, 400)
-                                                    .block()
-                                                    .getContainer();
-```
+[!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=MigrateIndexingAsync)]
 
 # <a name="java-sdk-3xx-async-api"></a>[Java SDK 3.x.x Async API](#tab/java-v3-async)
 
@@ -279,45 +216,7 @@ CosmosContainer containerIfNotExists = database.createContainerIfNotExists(conta
 
 # <a name="java-sdk-40-async-api"></a>[Java SDK 4.0 Async API](#tab/java-v4-async)
 
-```java
-logger.info("Creating stored procedure...\n");
-
-sprocId = "createMyDocument";
-String sprocBody = "function createMyDocument() {\n" +
-        "var documentToCreate = {\"id\":\"test_doc\"}\n" +
-        "var context = getContext();\n" +
-        "var collection = context.getCollection();\n" +
-        "var accepted = collection.createDocument(collection.getSelfLink(), documentToCreate,\n" +
-        "    function (err, documentCreated) {\n" +
-        "if (err) throw new Error('Error' + err.message);\n" +
-        "context.getResponse().setBody(documentCreated.id)\n" +
-        "});\n" +
-        "if (!accepted) return;\n" +
-        "}";
-CosmosStoredProcedureProperties storedProcedureDef = new CosmosStoredProcedureProperties(sprocId, sprocBody);
-container.getScripts()
-        .createStoredProcedure(storedProcedureDef,
-                new CosmosStoredProcedureRequestOptions()).block();
-
-// ...
-
-logger.info(String.format("Executing stored procedure %s...\n\n", sprocId));
-
-CosmosStoredProcedureRequestOptions options = new CosmosStoredProcedureRequestOptions();
-options.setPartitionKey(new PartitionKey("test_doc"));
-
-container.getScripts()
-        .getStoredProcedure(sprocId)
-        .execute(null, options)
-        .flatMap(executeResponse -> {
-            logger.info(String.format("Stored procedure %s returned %s (HTTP %d), at cost %.3f RU.\n",
-                    sprocId,
-                    executeResponse.getResponseAsString(),
-                    executeResponse.getStatusCode(),
-                    executeResponse.getRequestCharge()));
-            return Mono.empty();
-        }).block();
-```
+[!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=MigrateSprocAsync)]
 
 # <a name="java-sdk-3xx-async-api"></a>[Java SDK 3.x.x Async API](#tab/java-v3-async)
 
@@ -368,44 +267,7 @@ container.getScripts()
 
 # <a name="java-sdk-40-async-api"></a>[Java SDK 4.0 Async API](#tab/java-v4-async)
 
-```java
-ChangeFeedProcessor changeFeedProcessorInstance = 
-ChangeFeedProcessor.changeFeedProcessorBuilder()
-    .setHostName(hostName)
-    .setFeedContainer(feedContainer)
-    .setLeaseContainer(leaseContainer)
-    .setHandleChanges((List<JsonNode> docs) -> {
-        logger.info("--->setHandleChanges() START");
-
-        for (JsonNode document : docs) {
-            try {
-                //Change Feed hands the document to you in the form of a JsonNode
-                //As a developer you have two options for handling the JsonNode document provided to you by Change Feed
-                //One option is to operate on the document in the form of a JsonNode, as shown below. This is great
-                //especially if you do not have a single uniform data model for all documents.
-                logger.info("---->DOCUMENT RECEIVED: " + OBJECT_MAPPER.writerWithDefaultPrettyPrinter()
-                        .writeValueAsString(document));
-
-                //You can also transform the JsonNode to a POJO having the same structure as the JsonNode,
-                //as shown below. Then you can operate on the POJO.
-                CustomPOJO pojo_doc = OBJECT_MAPPER.treeToValue(document, CustomPOJO.class);
-                logger.info("----=>id: " + pojo_doc.getId());
-
-            } catch (JsonProcessingException e) {
-                e.printStackTrace();
-            }
-        }
-        logger.info("--->handleChanges() END");
-
-    })
-    .build();
-
-// ...
-
- changeFeedProcessorInstance.start()
-                            .subscribeOn(Schedulers.elastic())
-                            .subscribe();
-```
+[!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=MigrateCFAsync)]
 
 # <a name="java-sdk-3xx-async-api"></a>[Java SDK 3.x.x Async API](#tab/java-v3-async)
 
@@ -449,14 +311,7 @@ ChangeFeedProcessor.Builder()
 
 # <a name="java-sdk-40-async-api"></a>[Java SDK 4.0 Async API](#tab/java-v4-async)
 
-```java
-CosmosAsyncContainer container;
-
-// Create a new container with TTL enabled with default expiration value
-CosmosContainerProperties containerProperties = new CosmosContainerProperties("myContainer", "/myPartitionKey");
-containerProperties.setDefaultTimeToLiveInSeconds(90 * 60 * 60 * 24);
-container = database.createContainerIfNotExists(containerProperties, 400).block().getContainer();
-```
+[!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=MigrateContainerTTLAsync)]
 
 # <a name="java-sdk-3xx-async-api"></a>[Java SDK 3.x.x Async API](#tab/java-v3-async)
 
@@ -476,37 +331,9 @@ container = database.createContainerIfNotExists(containerProperties, 400).block(
 
 # <a name="java-sdk-40-async-api"></a>[Java SDK 4.0 Async API](#tab/java-v4-async)
 
-```java
-// Include a property that serializes to "ttl" in JSON
-public class SalesOrder
-{
-    private String id;
-    private String customerId;
-    private Integer ttl;
+[!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=MigrateItemTTLClassAsync)]
 
-    public SalesOrder(String id, String customerId, Integer ttl) {
-        this.id = id;
-        this.customerId = customerId;
-        this.ttl = ttl;
-    }
-
-    public String getId() {return this.id;}
-    public void setId(String new_id) {this.id = new_id;}
-    public String getCustomerId() {return this.customerId;}
-    public void setCustomerId(String new_cid) {this.customerId = new_cid;}
-    public Integer getTtl() {return this.ttl;}
-    public void setTtl(Integer new_ttl) {this.ttl = new_ttl;}
-
-    //...
-}
-
-// Set the value to the expiration in seconds
-SalesOrder salesOrder = new SalesOrder(
-    "SO05",
-    "CO18009186470",
-    60 * 60 * 24 * 30  // Expire sales orders in 30 days
-);
-```
+[!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=MigrateItemTTLAsync)]
 
 # <a name="java-sdk-3xx-async-api"></a>[Java SDK 3.x.x Async API](#tab/java-v3-async)
 

@@ -1,10 +1,9 @@
 ---
-title: Linux Azure Virtual Machines における SQL Server に関する FAQ | Microsoft Docs
-description: この記事では、Linux Azure VM で SQL Server を実行することに関してよく寄せられる質問に対する回答を示します。
+title: SQL Server on Linux 仮想マシンに関する FAQ | Microsoft Docs
+description: この記事では、SQL Server on Linux 仮想マシンの実行ついてよく寄せられる質問とその回答を示します。
 services: virtual-machines-linux
 documentationcenter: ''
 author: MashaMSFT
-manager: craigg
 tags: azure-service-management
 ms.service: virtual-machines-sql
 ms.topic: troubleshooting
@@ -12,21 +11,21 @@ ms.workload: iaas-sql-server
 ms.date: 12/13/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f5447e61936b55db353404aae7cb391377d78294
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: afd36eb079b6e5f29fa664050cded3c5ddd17d8e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84035343"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84669463"
 ---
-# <a name="frequently-asked-questions-for-sql-server-on-linux-azure-virtual-machines"></a>Linux Azure Virtual Machines における SQL Server についてよく寄せられる質問
+# <a name="frequently-asked-questions-for-sql-server-on-linux-virtual-machines"></a>SQL Server on Linux 仮想マシンについてよく寄せられる質問
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!div class="op_single_selector"]
 > * [Windows](../windows/frequently-asked-questions-faq.md)
 > * [Linux](frequently-asked-questions-faq.md)
 
-この記事では、[Linux Azure Virtual Machines における SQL Server](sql-server-on-linux-vm-what-is-iaas-overview.md) に関して特に多く寄せられる質問への回答を示します。
+この記事では、[SQL Server on Linux 仮想マシン](sql-server-on-linux-vm-what-is-iaas-overview.md)について特に多く寄せられる質問とその回答を示します。
 
 [!INCLUDE [support-disclaimer](../../../../includes/support-disclaimer.md)]
 
@@ -34,7 +33,7 @@ ms.locfileid: "84035343"
 
 1. **どのような SQL Server 仮想マシン ギャラリーのイメージを使用できますか?**
 
-   Azure では、Linux と Windows の両方のすべてのエディションで、SQL Server のサポートされているすべてのメジャー リリース用の仮想マシン イメージを保持します。 詳細については、[Linux VM イメージ](sql-server-on-linux-vm-what-is-iaas-overview.md#create)と [Windows VM イメージ](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md#payasyougo)の完全な一覧を参照してください。
+   Azure では、Linux と Windows の両方のすべてのエディションで、SQL Server のサポートされているすべてのメジャー リリース用の仮想マシン (VM) イメージを保持します。 詳細については、[Linux VM イメージ](sql-server-on-linux-vm-what-is-iaas-overview.md#create)と [Windows VM イメージ](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md#payasyougo)の完全な一覧を参照してください。
 
 1. **既存の SQL Server 仮想マシン ギャラリー イメージは更新されますか?**
 
@@ -42,7 +41,7 @@ ms.locfileid: "84035343"
 
 1. **どのような関連 SQL Server パッケージがインストールされますか?**
 
-   SQL Server Linux VM に既定でインストールされる SQL Server パッケージを確認するには、「[インストール済みパッケージ](sql-server-on-linux-vm-what-is-iaas-overview.md#packages)」をご覧ください。
+   SQL Server on Linux VM に既定でインストールされる SQL Server パッケージを確認するには、「[インストール済みパッケージ](sql-server-on-linux-vm-what-is-iaas-overview.md#packages)」を参照してください。
 
 1. **SQL Server 仮想マシン イメージはギャラリーから削除される可能性がありますか?**
 
@@ -50,9 +49,9 @@ ms.locfileid: "84035343"
 
 ## <a name="creation"></a>作成
 
-1. **SQL Server で Linux Azure 仮想マシンを作成するにはどうするのですか?**
+1. **SQL Server で Linux 仮想マシンを作成するにはどうすればよいですか?**
 
-   最も簡単な解決方法は、SQL Server を含む Linux 仮想マシンを作成することです。 Azure にサインアップして、ポータルから SQL VM を作成するチュートリアルについては、「[Azure Portal での Linux SQL Server 仮想マシンのプロビジョニング](sql-vm-create-portal-quickstart.md)」をご覧ください。 無料ライセンス版 (Developer または Express) を利用するかオンプレミスのライセンスを再利用して、SQL Server を VM に手動でインストールすることもできます。 現在所有しているライセンスを使用する場合は、[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](https://azure.microsoft.com/pricing/license-mobility)が必要です。
+   最も簡単な解決方法は、SQL Server を含む Linux 仮想マシンを作成することです。 Azure にサインアップして、ポータルから SQL Server VM を作成するチュートリアルについては、[Azure portal で SQL Server を実行する Linux 仮想マシンをプロビジョニングする方法](sql-vm-create-portal-quickstart.md)に関するページを参照してください。 無料ライセンス版 (Developer または Express) を利用するかオンプレミスのライセンスを再利用して、SQL Server を VM に手動でインストールすることもできます。 現在所有しているライセンスを使用する場合は、[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](https://azure.microsoft.com/pricing/license-mobility)が必要です。
 
 1. **RHEL または SLES SQL Server VM を使用制限のある Azure サブスクリプションでプロビジョニングできないのはなぜですか?**
 
@@ -74,13 +73,13 @@ ms.locfileid: "84035343"
 
 ## <a name="administration"></a>管理
 
-1. **Linux SQL Server 仮想マシンを SQL Server Management Studio (SSMS) で管理できますか?**
+1. **SQL Server を実行している Linux 仮想マシンを SQL Server Management Studio (SSMS) で管理できますか?**
 
-   はい。ただし、SSMS は現時点では Windows 限定のツールです。 Linux SQL Server VM で SSMS を使用するには、Windows コンピューターからリモートで接続する必要があります。 Linux では、新しい[mssql-conf](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf)ツールでさまざまな管理タスクをローカルに実行できます。 クロスプラットフォームのデータベース管理ツールについては、[Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) を参照してください。
+   はい。ただし、SSMS は現時点では Windows 限定のツールです。 SQL Server を実行している Linux VM で SSMS を使用するには、Windows マシンからリモートで接続する必要があります。 Linux では、新しい[mssql-conf](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf)ツールでさまざまな管理タスクをローカルに実行できます。 クロスプラットフォームのデータベース管理ツールについては、[Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) を参照してください。
 
-1. **SQL VM から SQL Server を完全に削除できますか。**
+1. **SQL Server VM から SQL Server を完全に削除できますか?**
 
-   はい。ただし、[SQL Server Azure VM の価格に関するガイダンス](../windows/pricing-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2fsql%2ftoc.json)のページで説明されているように、SQL VM に対しては引き続き課金されます。 SQL Server が不要になった場合は、新しい仮想マシンをデプロイし、データとアプリケーションを新しい仮想マシンに移行してから、 SQL Server 仮想マシンを削除してください。
+   はい。ただし、[SQL Server Azure VM の価格に関するガイダンス](../windows/pricing-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2fsql%2ftoc.json)のページで説明されているように、SQL Server VM に対して引き続き課金されます。 SQL Server が不要になった場合は、新しい仮想マシンをデプロイし、データとアプリケーションを新しい仮想マシンに移行してから、 SQL Server 仮想マシンを削除してください。
 
 ## <a name="updating-and-patching"></a>更新プログラムと修正プログラムの適用
 
@@ -99,11 +98,11 @@ ms.locfileid: "84035343"
 **Linux VM**:
 
 * [Linux VM における SQL Server の概要](sql-server-on-linux-vm-what-is-iaas-overview.md)
-* [SQL Server Linux VM のプロビジョニング](sql-vm-create-portal-quickstart.md)
+* [Linux VM での SQL Server のプロビジョニング](sql-vm-create-portal-quickstart.md)
 * [SQL Server on Linux のドキュメント](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)
 
 **Windows VM**:
 
 * [Windows VM における SQL Server の概要](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
-* [SQL Server Windows VM のプロビジョニング](../windows/sql-vm-create-portal-quickstart.md)
+* [Windows VM での SQL Server のプロビジョニング](../windows/sql-vm-create-portal-quickstart.md)
 * [FAQ (Windows)](../windows/frequently-asked-questions-faq.md)

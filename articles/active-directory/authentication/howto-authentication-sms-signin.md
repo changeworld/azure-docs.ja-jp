@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 450e6aa1b22806fbd4d142e47caee720d7f63648
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: 55e64fad910aba25354d8d7829fc1189b744ca16
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860173"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550491"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory-preview"></a>Azure Active Directory を使用して SMS ベース認証 (プレビュー) 用にユーザーを構成して有効にする
 
@@ -24,10 +24,8 @@ ms.locfileid: "83860173"
 
 この記事では、Azure AD で選択されたユーザーまたはグループに対して SMS ベースの認証を有効にする方法について説明します。
 
-|     |
-| --- |
-| ユーザー用の SMS ベース認証は、Azure Active Directory のパブリック プレビュー機能です。 プレビューの詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください|
-|     |
+> [!NOTE]
+> ユーザー用の SMS ベース認証は、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -150,12 +148,16 @@ Azure portal でユーザーのアカウントに電話番号を設定しよう�
 
 Microsoft Authenticator アプリや FIDO2 セキュリティ キーなど、パスワードを使用せずに Azure AD にサインインするその他の方法については、「[Azure AD のパスワードレス認証オプション][concepts-passwordless]」を参照してください。
 
+また、Microsoft Graph REST API ベータ版を使用して、SMS ベースのサインインを[有効][rest-enable]または[無効][rest-disable]にすることができます。
+
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../fundamentals/sign-up-organization.md
 [associate-azure-ad-tenant]: ../fundamentals/active-directory-how-subscriptions-associated-directory.md
 [concepts-passwordless]: concept-authentication-passwordless.md
 [tutorial-azure-mfa]: tutorial-enable-azure-mfa.md
 [tutorial-sspr]: tutorial-enable-sspr.md
+[rest-enable]: /graph/api/phoneauthenticationmethod-enablesmssignin?view=graph-rest-beta&tabs=http
+[rest-disable]: /graph/api/phoneauthenticationmethod-disablesmssignin?view=graph-rest-beta&tabs=http
 
 <!-- EXTERNAL LINKS -->
 [azure-portal]: https://portal.azure.com

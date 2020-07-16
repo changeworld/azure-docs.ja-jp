@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: carlrab, sstein
-ms.date: 05/29/2020
-ms.openlocfilehash: 03884a7d1b834ef8c176434ad4127e1638aabcb1
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.date: 06/10/2020
+ms.openlocfilehash: 4ffd92c0641b74682a74ffd2898e226999ac2dd4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235746"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84668459"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>仮想コア購入モデルを使用したエラスティック プールに対するリソース制限
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -28,7 +28,7 @@ DTU 購入モデルの制限については、[SQL Database の DTUのリソー�
 > [!IMPORTANT]
 > 場合によっては、未使用領域を再利用できるようにデータベースを縮小する必要があります。 詳細については、「[Manage file space in Azure SQL Database](file-space-manage.md)」(Azure SQL Database でファイル領域を管理する) を参照してください。
 
-[Azure Portal](elastic-pool-manage.md#azure-portal)、[PowerShell](elastic-pool-manage.md#powershell)、[Azure CLI](elastic-pool-manage.md#azure-cli)、または [REST API](elastic-pool-manage.md#rest-api) を使って、サービス レベル、コンピューティング サイズ、ストレージ容量を設定できます。
+[Azure portal](elastic-pool-manage.md#azure-portal)、[PowerShell](elastic-pool-manage.md#powershell)、[Azure CLI](elastic-pool-manage.md#azure-cli)、または [REST API](elastic-pool-manage.md#rest-api) を使用して、サービス レベル、コンピューティング サイズ (サービス目標)、およびストレージ容量を設定できます。
 
 > [!IMPORTANT]
 > スケーリングのガイダンスと考慮事項については、[エラスティック プールのスケーリング](elastic-pool-scale.md)に関するページをご覧ください。
@@ -40,7 +40,7 @@ DTU 購入モデルの制限については、[SQL Database の DTUのリソー�
 
 ### <a name="general-purpose-service-tier-generation-4-compute-platform-part-1"></a>General Purpose サービス レベル:第 4 世代コンピューティング プラットフォーム (パート 1)
 
-|コンピューティング サイズ|GP_Gen4_1|GP_Gen4_2|GP_Gen4_3|GP_Gen4_4|GP_Gen4_5|GP_Gen4_6
+|コンピューティング サイズ (サービス目標)|GP_Gen4_1|GP_Gen4_2|GP_Gen4_3|GP_Gen4_4|GP_Gen4_5|GP_Gen4_6
 |:--- | --: |--: |--: |--: |--: |--: |
 |コンピューティング世代|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |仮想コア|1|2|3|4|5|6|
@@ -72,7 +72,7 @@ DTU 購入モデルの制限については、[SQL Database の DTUのリソー�
 
 ### <a name="general-purpose-service-tier-generation-4-compute-platform-part-2"></a>General Purpose サービス レベル:第 4 世代コンピューティング プラットフォーム (パート 2)
 
-|コンピューティング サイズ|GP_Gen4_7|GP_Gen4_8|GP_Gen4_9|GP_Gen4_10|GP_Gen4_16|GP_Gen4_24|
+|コンピューティング サイズ (サービス目標)|GP_Gen4_7|GP_Gen4_8|GP_Gen4_9|GP_Gen4_10|GP_Gen4_16|GP_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |コンピューティング世代|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |仮想コア|7|8|9|10|16|24|
@@ -106,7 +106,7 @@ DTU 購入モデルの制限については、[SQL Database の DTUのリソー�
 
 ### <a name="general-purpose-service-tier-generation-5-compute-platform-part-1"></a>General Purpose サービス レベル:第 5 世代コンピューティング プラットフォーム (パート 1)
 
-|コンピューティング サイズ|GP_Gen5_2|GP_Gen5_4|GP_Gen5_6|GP_Gen5_8|GP_Gen5_10|GP_Gen5_12|GP_Gen5_14|
+|コンピューティング サイズ (サービス目標)|GP_Gen5_2|GP_Gen5_4|GP_Gen5_6|GP_Gen5_8|GP_Gen5_10|GP_Gen5_12|GP_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |コンピューティング世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|
 |仮想コア|2|4|6|8|10|12|14|
@@ -138,7 +138,7 @@ DTU 購入モデルの制限については、[SQL Database の DTUのリソー�
 
 ### <a name="general-purpose-service-tier-generation-5-compute-platform-part-2"></a>General Purpose サービス レベル:第 5 世代コンピューティング プラットフォーム (パート 2)
 
-|コンピューティング サイズ|GP_Gen5_16|GP_Gen5_18|GP_Gen5_20|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
+|コンピューティング サイズ (サービス目標)|GP_Gen5_16|GP_Gen5_18|GP_Gen5_20|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |コンピューティング世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|
 |仮想コア|16|18|20|24|32|40|80|
@@ -172,7 +172,7 @@ DTU 購入モデルの制限については、[SQL Database の DTUのリソー�
 
 ### <a name="fsv2-series-compute-generation-preview"></a>Fsv2 シリーズのコンピューティング世代 (プレビュー)
 
-|コンピューティング サイズ|GP_Fsv2_72|
+|コンピューティング サイズ (サービス目標)|GP_Fsv2_72|
 |:--- | --: |
 |コンピューティング世代|Fsv2 シリーズ|
 |仮想コア|72|
@@ -209,7 +209,7 @@ DTU 購入モデルの制限については、[SQL Database の DTUのリソー�
 
 ### <a name="business-critical-service-tier-generation-4-compute-platform-part-1"></a>Business Critical サービス レベル:第 4 世代コンピューティング プラットフォーム (パート 1)
 
-|コンピューティング サイズ|BC_Gen4_2|BC_Gen4_3|BC_Gen4_4|BC_Gen4_5|BC_Gen4_6|
+|コンピューティング サイズ (サービス目標)|BC_Gen4_2|BC_Gen4_3|BC_Gen4_4|BC_Gen4_5|BC_Gen4_6|
 |:--- | --: |--: |--: |--: |--: |--: |
 |コンピューティング世代|Gen4|Gen4|Gen4|Gen4|Gen4|
 |仮想コア|2|3|4|5|6|
@@ -241,7 +241,7 @@ DTU 購入モデルの制限については、[SQL Database の DTUのリソー�
 
 ### <a name="business-critical-service-tier-generation-4-compute-platform-part-2"></a>Business Critical サービス レベル:第 4 世代コンピューティング プラットフォーム (パート 2)
 
-|コンピューティング サイズ|BC_Gen4_7|BC_Gen4_8|BC_Gen4_9|BC_Gen4_10|BC_Gen4_16|BC_Gen4_24|
+|コンピューティング サイズ (サービス目標)|BC_Gen4_7|BC_Gen4_8|BC_Gen4_9|BC_Gen4_10|BC_Gen4_16|BC_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |コンピューティング世代|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |仮想コア|7|8|9|10|16|24|
@@ -275,7 +275,7 @@ DTU 購入モデルの制限については、[SQL Database の DTUのリソー�
 
 ### <a name="business-critical-service-tier-generation-5-compute-platform-part-1"></a>Business Critical サービス レベル:第 5 世代コンピューティング プラットフォーム (パート 1)
 
-|コンピューティング サイズ|BC_Gen5_4|BC_Gen5_6|BC_Gen5_8|BC_Gen5_10|BC_Gen5_12|BC_Gen5_14|
+|コンピューティング サイズ (サービス目標)|BC_Gen5_4|BC_Gen5_6|BC_Gen5_8|BC_Gen5_10|BC_Gen5_12|BC_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |コンピューティング世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|
 |仮想コア|4|6|8|10|12|14|
@@ -307,7 +307,7 @@ DTU 購入モデルの制限については、[SQL Database の DTUのリソー�
 
 ### <a name="business-critical-service-tier-generation-5-compute-platform-part-2"></a>Business Critical サービス レベル:第 5 世代コンピューティング プラットフォーム (パート 2)
 
-|コンピューティング サイズ|BC_Gen5_16|BC_Gen5_18|BC_Gen5_20|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
+|コンピューティング サイズ (サービス目標)|BC_Gen5_16|BC_Gen5_18|BC_Gen5_20|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |コンピューティング世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|
 |仮想コア|16|18|20|24|32|40|80|
@@ -341,7 +341,7 @@ DTU 購入モデルの制限については、[SQL Database の DTUのリソー�
 
 ### <a name="m-series-compute-generation-preview"></a>M シリーズのコンピューティング世代 (プレビュー)
 
-|コンピューティング サイズ|BC_M_128|
+|コンピューティング サイズ (サービス目標)|BC_M_128|
 |:--- | --: |
 |コンピューティング世代|M シリーズ|
 |仮想コア|128|
@@ -378,7 +378,7 @@ DTU 購入モデルの制限については、[SQL Database の DTUのリソー�
 次の表では、プールされたデータベースのプロパティについて説明します。
 
 > [!NOTE]
-> エラスティック プール内の個々のデータベースのリソース制限は、一般的に同じコンピューティング サイズのプール外の単一のデータベースのリソース制限と同じです。 たとえば、GP_Gen4_1 データベースの最大同時実行ワーカー数は 200 ワーカーです。 そのため、GP_Gen4_1 プール内のデータベースの最大の同時実行ワーカー数も 200 ワーカーです。 GP_Gen4_1 プールの同時実行ワーカーの総数は 210 です。
+> エラスティック プール内の個々のデータベースのリソース制限は、一般的に同じコンピューティング サイズ (サービス目標) のプール外の単一のデータベースのリソース制限と同じです。 たとえば、GP_Gen4_1 データベースの最大同時実行ワーカー数は 200 ワーカーです。 そのため、GP_Gen4_1 プール内のデータベースの最大の同時実行ワーカー数も 200 ワーカーです。 GP_Gen4_1 プールの同時実行ワーカーの総数は 210 です。
 
 | プロパティ | 説明 |
 |:--- |:--- |

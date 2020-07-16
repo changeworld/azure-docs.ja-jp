@@ -1,19 +1,19 @@
 ---
 title: Azure Image Builder テンプレートを作成する (プレビュー)
 description: Azure Image Builder で使用するテンプレートを作成する方法について説明します。
-author: danis
+author: danielsollondon
 ms.author: danis
-ms.date: 03/24/2020
+ms.date: 06/23/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: f567114613f484f0765a6e007c3f0ba97480a968
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 975d6842110ffa864a534e09cf35d0d33612d7d5
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779339"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135076"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>プレビュー:Azure Image Builder テンプレートを作成する 
 
@@ -29,7 +29,7 @@ Azure Image Builder では、.json ファイルを使って Image Builder サー
     "tags": {
         "<name": "<value>",
         "<name>": "<value>"
-             }
+     },
     "identity":{},           
     "dependsOn": [], 
     "properties": { 
@@ -88,7 +88,7 @@ location は、カスタム イメージを作成するリージョンです。 
 
 ## <a name="osdisksizegb"></a>osDiskSizeGB
 
-既定では Image Builder はイメージのサイズを変更しません。ソース イメージのサイズが使用されます。 OS Disk (Win および Linux) のサイズは増やすことができます。これは省略可能であり、値 0 はソース イメージと同じサイズを維持することを意味します。 
+既定では Image Builder はイメージのサイズを変更しません。ソース イメージのサイズが使用されます。 OS ディスク (Win および Linux) のサイズは増やすこと**だけ**が可能です。これは省略可能であり、値 0 はソース イメージと同じサイズを維持することを意味します。 OS ディスクのサイズをソース イメージのサイズより小さくすることはできません。
 
 ```json
  {
@@ -391,7 +391,8 @@ OS のサポート: Linux、Windows
 
 ### <a name="windows-update-customizer"></a>Windows Update カスタマイザー
 このカスタマイザーは、Packer の[コミュニティ Windows Update Provisioner](https://packer.io/docs/provisioners/community-supported.html) に基づいて構築されたオープン ソース プロジェクトで、Packer コミュニティによって管理されています。 Microsoft では、Image Builder サービスを使ってプロビジョナーをテストおよび検証し、問題の調査を支援して、解決に取り組んでいきますが、正式にはこのオープン ソース プロジェクトをサポートしていません。 Windows Update Provisioner の詳細なドキュメントとヘルプについては、プロジェクトのリポジトリを参照してください。
- 
+
+```json
      "customize": [
             {
                 "type": "WindowsUpdate",
@@ -403,7 +404,8 @@ OS のサポート: Linux、Windows
                 "updateLimit": 20
             }
                ], 
-OS のサポート: Windows
+OS support: Windows
+```
 
 カスタマイズのプロパティ:
 - **type**  – WindowsUpdate。
@@ -561,7 +563,7 @@ Azure 共有イメージ ギャラリーは新しいイメージ管理サービ�
 共有イメージ ギャラリーの配布プロパティ:
 
 - **type** - sharedImage  
-- **galleryImageId** – 共有イメージ ギャラリーの ID。 形式は /subscriptions/\<subscriptionId>/resourceGroups/\<resourceGroupName>/providers/Microsoft.Compute/galleries/\<sharedImageGalleryName>/images/\<imageGalleryName> です。
+- **galleryImageId** – 共有イメージ ギャラリーの ID。 形式is: /subscriptions/\<subscriptionId>/resourceGroups/\<resourceGroupName>/providers/Microsoft.Compute/galleries/\<sharedImageGalleryName>/images/\<imageGalleryName>。
 - **runOutputName** – 配布を示す一意の名前。  
 - **artifactTags** -省略可能なユーザー指定のキー値ペアのタグ。
 - **replicationRegions** -レプリケーション用のリージョンの配列。 リージョンの 1 つは、ギャラリーがデプロイされているリージョンでなければなりません。

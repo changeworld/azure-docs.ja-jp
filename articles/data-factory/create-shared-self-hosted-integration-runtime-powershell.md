@@ -10,13 +10,13 @@ ms.author: abnarain
 author: nabhishek
 manager: anansub
 ms.custom: seo-lt-2019
-ms.date: 10/31/2018
-ms.openlocfilehash: 0f018d6b94d1c5b9d9002a767b3ebceb6c9c746c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/10/2020
+ms.openlocfilehash: 8422d6978c21744696e3d37c34fdd867b014a19e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106629"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84655758"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Azure Data Factory で共有のセルフホステッド統合ランタイムを作成する
 
@@ -28,21 +28,19 @@ ms.locfileid: "82106629"
 
 Azure Data Factory の UI を使用して共有のセルフホステッド IR を作成するには、次の手順を実行します。
 
-1. 共有されるセルフホステッド IR で、リンクされた IR を作成するデータ ファクトリへのアクセス許可を付与します。
+1. 共有されるセルフホステッド IR で、 **[別のデータ ファクトリにアクセス許可を付与]** を選択し、[統合ランタイムのセットアップ] ページで、リンクされた IR を作成するデータ ファクトリを選択します。
       
-    ![[共有] タブのアクセス許可を付与するためのボタン](media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png)
-      
-    ![アクセス許可を割り当てるための選択](media/create-self-hosted-integration-runtime/3_rbac_permissions.png)     
+    ![[共有] タブのアクセス許可を付与するためのボタン](media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png)  
     
-2. 共有されるセルフホステッド IR のリソース ID をメモしておきます。
-      
-   ![リソース ID の場所](media/create-self-hosted-integration-runtime/4_ResourceID_self-hostedIR.png)
-    
+2. 上記の共有されるセルフホステッド IR の "リソース ID" に注目してコピーしておきます。
+         
 3. アクセス許可が付与されたデータ ファクトリで、新しいセルフホステッド IR (共有) を作成して、リソース ID を入力します。
       
-   ![リンクされたセルフホステッド統合ランタイムを作成するためのボタン](media/create-self-hosted-integration-runtime/6_create-linkedIR_2.png)
-      
-    ![名前とリソース ID のボックス](media/create-self-hosted-integration-runtime/6_create-linkedIR_3.png)
+    ![セルフホステッド統合ランタイムを作成するためのボタン](media/create-self-hosted-integration-runtime/create-linkedir-1.png)
+   
+    ![リンクされたセルフホステッド統合ランタイムを作成するためのボタン](media/create-self-hosted-integration-runtime/create-linkedir-2.png) 
+
+    ![名前とリソース ID のボックス](media/create-self-hosted-integration-runtime/create-linkedir-3.png)
 
 ## <a name="create-a-shared-self-hosted-ir-using-azure-powershell"></a>Azure PowerShell を使用して共有のセルフホステッド IR を作成する
 

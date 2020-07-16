@@ -2,14 +2,14 @@
 author: ccompy
 ms.service: app-service-web
 ms.topic: include
-ms.date: 04/15/2020
+ms.date: 06/08/2020
 ms.author: ccompy
-ms.openlocfilehash: f7208307df51ecefb76f9adaedea59b327cdc19e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee81b391587b994bd79e9f0950d041de70153b5c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81604870"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84488794"
 ---
 リージョン VNet 統合を使用すると、アプリは次のものにアクセスできるようになります。
 
@@ -56,11 +56,7 @@ ms.locfileid: "81604870"
 
 別のプラン内のご自身のアプリが、別のプラン内のアプリから既に接続されている VNet にアクセスできるようにしたい場合は、既存の VNet 統合によって使用されているものとは異なるサブネットを選択します。
 
-この機能は、Linux ではプレビュー段階にあります。 Linux 形式の機能では、RFC 1918 アドレス (10.0.0.0/8、172.16.0.0/12、192.168.0.0/16) への呼び出しのみがサポートされます。
-
-### <a name="web-or-function-app-for-containers"></a>Web App for Containers または Function App for Containers
-
-Linux 上のアプリを組み込みイメージでホストする場合、リージョン VNet 統合は追加の変更なしで機能します。 Web App for Containers または Function App for Containers を使用している場合は、VNet 統合を使用するために docker イメージを変更する必要があります。 docker イメージでは、ハードコーディングされたポート番号を使用するのではなく、メイン Web サーバーのリスニング ポートとして PORT 環境変数を使用します。 PORT 環境変数は、コンテナーの起動時にプラットフォームによって自動的に設定されます。 SSH を使用する場合は、リージョン VNet 統合を使用するときに SSH_PORT 環境変数で指定されたポート番号でリッスンするように SSH デーモンを構成する必要があります。 Linux 上では、ゲートウェイが必要な VNet 統合はサポートされていません。
+この機能は、Windows と Linux の両方の Web アプリで完全にサポートされています。 すべての動作は、Windows アプリと Linux アプリ間で同じです。
 
 ### <a name="service-endpoints"></a>サービス エンドポイント
 

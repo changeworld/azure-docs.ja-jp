@@ -6,10 +6,10 @@ ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
 ms.openlocfilehash: 0a4dcf749a76623df7f46d77bf3e4877f2c41900
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83821498"
 ---
 組織で標準化された仮想マシン (VM) イメージを使用すると、クラウドに移行し、デプロイの一貫性を保つことができます。 通常、イメージには、事前に定義されたセキュリティと構成設定と、必要なソフトウェアが含まれています。 独自のイメージング パイプラインを設定するには、時間、インフラストラクチャ、設定が必要ですが、Azure VM Image Builder を使用すると、イメージを説明する単純な構成を用意し、それをサービスに送信するだけで、イメージが構築され、配布されます。
@@ -70,9 +70,9 @@ Azure Image Builder は、Azure リソース プロバイダーからアクセ�
 ![Azure Image Builder プロセスの概念図](./media/virtual-machines-image-builder-overview/image-builder-process.png)
 
 1. .json ファイル形式でイメージ テンプレートを作成します。 この .json ファイルには、イメージ ソース、カスタマイズ、および配布に関する情報が含まれています。 [Azure Image Builder GitHub リポジトリ](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts)には複数の例が掲載されています。
-1. サービスに送信すると、指定したリソース グループにイメージ テンプレート アーティファクトが作成されます。 バックグラウンドで、Image Builder によってソース イメージまたは ISO と、必要に応じてスクリプトがダウンロードされます。 これらは、サブスクリプションに自動的に作成される別のリソース グループに次の形式で格納されます。IT_\<DestinationResourceGroup>_\<TemplateName> 
+1. サービスに送信すると、指定したリソース グループにイメージ テンプレート アーティファクトが作成されます。 バックグラウンドで、Image Builder によってソース イメージまたは ISO と、必要に応じてスクリプトがダウンロードされます。 これらは、サブスクリプションに自動的に作成される別のリソース グループに次の形式で格納されます。IT_\<DestinationResourceGroup>_\<TemplateName>。 
 1. イメージ テンプレートが作成されたら、次にイメージを作成できます。 バックグラウンドで、Image Builder ではテンプレートとソース ファイルを使用して、IT_\<DestinationResourceGroup>_\<TemplateName> リソース グループに VM (既定のサイズ: Standard_D1_v2)、ネットワーク、パブリック IP、NSG、およびストレージが作成されます。
-1. Image Builder では、イメージ作成の一環として、テンプレートに従ってイメージが配布されてから、そのプロセス用に作成された IT_\<DestinationResourceGroup>_\<TemplateName> リソース グループ内の追加リソースが削除されます。
+1. イメージ作成の一環として、Image Builder でテンプレートに従ってイメージが配布されてから、そのプロセス用に作成された IT_\<DestinationResourceGroup>_\<TemplateName> リソース グループ内の追加リソースが削除されます。
 
 
 ## <a name="permissions"></a>アクセス許可

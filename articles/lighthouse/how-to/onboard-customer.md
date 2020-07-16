@@ -1,27 +1,30 @@
 ---
-title: Azure の委任されたリソース管理に顧客をオンボードする
-description: Azure の委任されたリソース管理に顧客をオンボードする方法について説明します。これにより、自分のテナントからそれらのリソースにアクセスして管理できるようになります。
+title: Azure Lighthouse への顧客のオンボード
+description: Azure Lighthouse に顧客をオンボードする方法について説明します。これにより、Azure の委任されたリソース管理を使用して自分のテナントからそれらのリソースにアクセスして管理できるようになります。
 ms.date: 05/26/2020
-ms.topic: conceptual
-ms.openlocfilehash: a6cdfea7e0520aa704e70a12784f7a7ba5d6aa6d
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.topic: how-to
+ms.openlocfilehash: 3cc754dba124c5f647cd4b51246ced19360c82c3
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871116"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133457"
 ---
-# <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Azure の委任されたリソース管理に顧客をオンボードする
+# <a name="onboard-a-customer-to-azure-lighthouse"></a>Azure Lighthouse への顧客のオンボード
 
-この記事では、どうすればサービス プロバイダーが Azure の委任されたリソース管理に顧客をオンボードでき、それらの委任されたリソース (サブスクリプションやリソース グループ) に自分の Azure Active Directory (Azure AD) テナントからアクセスして管理できるかについて説明します。 ここではサービス プロバイダーと顧客に言及しますが、[複数のテナントを管理している企業](../concepts/enterprise.md)では、同じプロセスを使用して Azure Lighthouse を設定し、自社の管理エクスペリエンスを強化することができます。
+この記事では、サービス プロバイダーが顧客を Azure Lighthouse にオンボードする方法について説明します。 これを行うとき、[Azure の委任されたリソース管理](../concepts/azure-delegated-resource-management.md)を使用すると、顧客の委任されたリソース (サブスクリプションやリソース グループ) に自分の Azure Active Directory (Azure AD) テナントからアクセスして管理できます。
 
 このプロセスは、複数の顧客のリソースを管理している場合に繰り返すことができます。 その後、許可されているユーザーが自分のテナントにサインインすると、そのユーザーは、個々の顧客テナントにサインインしなくても管理操作を実行することが顧客のテナント スコープ全体で承認されます。
 
-顧客エンゲージメント全体におけるご自身の影響を追跡して評価を受けるには、オンボードされた各サブスクリプションにアクセスできる少なくとも 1 つのユーザー アカウントに Microsoft Partner Network (MPN) ID を関連付けます。 サービス プロバイダー テナントでこの関連付けを実行する必要があることに注意してください。 簡略化するために、MPN ID に関連付けられているテナントでサービス プリンシパル アカウントを作成し、オンボードするすべての顧客に対する閲覧者アクセス権をこのアカウントに付与することをお勧めします。 詳しくは、「[Azure アカウントにパートナー ID をリンクする](../../billing/billing-partner-admin-link-started.md)」をご覧ください。 
+顧客エンゲージメント全体におけるご自身の影響を追跡して評価を受けるには、オンボードされた各サブスクリプションにアクセスできる少なくとも 1 つのユーザー アカウントに Microsoft Partner Network (MPN) ID を関連付けます。 サービス プロバイダー テナントでこの関連付けを実行する必要があることに注意してください。 簡略化するために、MPN ID に関連付けられているテナントでサービス プリンシパル アカウントを作成し、オンボードするすべての顧客に対する閲覧者アクセス権をこのアカウントに付与することをお勧めします。 詳しくは、「[Azure アカウントにパートナー ID をリンクする](../../cost-management-billing/manage/link-partner-id.md)」をご覧ください。 
 
 > [!NOTE]
-> また、Azure Marketplace に公開したマネージド サービス オファー (パブリックまたはプライベート) を顧客が購入したときに、顧客をオンボードすることもできます。 詳細については、「[Azure Marketplace にマネージド サービス オファーを公開する](publish-managed-services-offers.md)」を参照してください。 また、ここで説明されているオンボード プロセスは、Azure Marketplace に公開されているオファーと共に使用できます。
+> また、Azure Marketplace に公開したマネージド サービス オファー (パブリックまたはプライベート) を顧客が購入したときに、顧客を Azure Lighthouse にオンボードすることもできます。 詳細については、「[Azure Marketplace にマネージド サービス オファーを公開する](publish-managed-services-offers.md)」を参照してください。 また、ここで説明されているオンボード プロセスは、Azure Marketplace に公開されているオファーと共に使用できます。
 
 オンボード プロセスでは、サービス プロバイダーのテナントと顧客のテナント両方の中からアクションを実行する必要があります。 これらの手順はすべて、この記事で説明します。
+
+> [!TIP]
+> このトピックではサービス プロバイダーと顧客に言及しますが、[複数のテナントを管理している企業](../concepts/enterprise.md)では、同じプロセスを使用して Azure Lighthouse を設定し、自社の管理エクスペリエンスを強化することができます。
 
 ## <a name="gather-tenant-and-subscription-details"></a>テナントとサブスクリプションの詳細を収集する
 
@@ -189,18 +192,18 @@ az role definition list --name "<roleName>" | grep name
 }
 ```
 
-上記の例の最後の承認では、ユーザー アクセス管理者ロール (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9) が設定された **principalId** が追加されます。 このロールを割り当てる際は、**delegatedRoleDefinitionIds** プロパティと 1 つ以上の組み込みロールを含める必要があります。 この承認で作成されたユーザーは、これらの組み込みのロールを顧客テナント内の[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) に割り当てることができます。これは、[修復可能なポリシーをデプロイする](deploy-policy-remediation.md)ためには必要なことです。 ユーザー アクセス管理者ロールに通常関連付けられている他のアクセス許可は、このユーザーに適用されません。
+上記の例の最後の承認では、ユーザー アクセス管理者ロール (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9) が設定された **principalId** が追加されます。 このロールを割り当てる際は、**delegatedRoleDefinitionIds** プロパティと 1 つ以上の組み込みロールを含める必要があります。 この承認で作成されたユーザーは、これらの組み込みのロールを顧客テナント内の[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) に割り当てることができます。これは、[修復可能なポリシーをデプロイする](deploy-policy-remediation.md)ためには必要なことです。  ユーザーは、サポート インシデントを作成することもできます。  ユーザー アクセス管理者ロールに通常関連付けられている他のアクセス許可は、このユーザーに適用されません。
 
 ## <a name="deploy-the-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートをデプロイする
 
-パラメーター ファイルを更新したら、顧客のテナント内のユーザーは、Azure Resource Manager テンプレートをサブスクリプションレベルのデプロイとして顧客のテナントにデプロイする必要があります。 Azure の委任されたリソース管理にオンボードするサブスクリプションごと (または、オンボードするリソース グループを含むサブスクリプションごと) に個別のデプロイが必要です。
+パラメーター ファイルを更新したら、顧客のテナント内のユーザーは、Azure Resource Manager テンプレートをサブスクリプションレベルのデプロイとして顧客のテナントにデプロイする必要があります。 オンボードするサブスクリプションごと (または、オンボードするリソース グループを含むサブスクリプションごと) に個別のデプロイが必要です。
 
 これはサブスクリプション レベルのデプロイなので、Azure portal 上で開始することはできません。 デプロイは、次に示すように PowerShell または Azure CLI を使用して、行うことができます。
 
 > [!IMPORTANT]
-> このサブスクリプションレベルのデプロイは、ゲスト以外のアカウントが、オンボード対象のサブスクリプションで[所有者の組み込みロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)を持っている (またはオンボード対象のリソース グループを含む) 顧客のテナントで実行する必要があります。 サブスクリプションを委任できるすべてのユーザーを表示するには、顧客のテナントのユーザーが Azure portal でサブスクリプションを選択し、 **[アクセス制御 (IAM)]** を開くと、[所有者ロールを持つすべてのユーザーを表示](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription)することができます。
+> このサブスクリプションレベルのデプロイは、ゲスト以外のアカウントが、オンボード対象のサブスクリプションで[所有者の組み込みロール](../../role-based-access-control/built-in-roles.md#owner)を持っている (またはオンボード対象のリソース グループを含む) 顧客のテナントで実行する必要があります。 サブスクリプションを委任できるすべてのユーザーを表示するには、顧客のテナントのユーザーが Azure portal でサブスクリプションを選択し、 **[アクセス制御 (IAM)]** を開くと、[所有者ロールを持つすべてのユーザーを表示](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription)することができます。
 >
-> サブスクリプションが[クラウド ソリューション プロバイダー (CSP) プログラム](../concepts/cloud-solution-provider.md)を使用して作成されている場合、サービス プロバイダー テナントの[管理エージェント](https://docs.microsoft.com/partner-center/permissions-overview#manage-commercial-transactions-in-partner-center-azure-ad-and-csp-roles) ロールを持つユーザーがデプロイを実行できます。
+> サブスクリプションが[クラウド ソリューション プロバイダー (CSP) プログラム](../concepts/cloud-solution-provider.md)を使用して作成されている場合、サービス プロバイダー テナントの[管理エージェント](/partner-center/permissions-overview#manage-commercial-transactions-in-partner-center-azure-ad-and-csp-roles) ロールを持つユーザーがデプロイを実行できます。
 
 ### <a name="powershell"></a>PowerShell
 
@@ -244,7 +247,7 @@ az deployment create --name <deploymentName> \
 
 ## <a name="confirm-successful-onboarding"></a>オンボードが成功したことを確認する
 
-顧客サブスクリプションが Azure の委任されたリソース管理に正常にオンボードされたら、サービス プロバイダーのテナント内のユーザーは、そのサブスクリプションとそのリソースを表示できるようになります (上記のプロセスを通じて、個人として、または適切なアクセス許可を持つ Azure AD グループのメンバーとして、それに対するアクセスが許可されている場合)。 これを確認するには、次のいずれかの方法でサブスクリプションが表示されることを確認します。  
+顧客サブスクリプションが Azure Lighthouse に正常にオンボードされたら、サービス プロバイダーのテナント内のユーザーは、サブスクリプションとそのリソースを表示できるようになります (上記のプロセスを通じて、個人として、または適切なアクセス許可を持つ Azure AD グループのメンバーとして、それに対するアクセスが許可されている場合)。 これを確認するには、次のいずれかの方法でサブスクリプションが表示されることを確認します。  
 
 ### <a name="azure-portal"></a>Azure portal
 
@@ -255,7 +258,7 @@ az deployment create --name <deploymentName> \
 3. Resource Manager テンプレートで指定したオファー名の付いたサブスクリプションが表示されることを確認します。
 
 > [!IMPORTANT]
-> [[マイ カスタマー]](view-manage-customers.md) にある委任されたサブスクリプションを表示するためには、Azure の委任されたリソース管理にサブスクリプションがオンボードされたときに、サービス プロバイダーのテナント内のユーザーに[閲覧者](../../role-based-access-control/built-in-roles.md#reader)ロール (または、閲覧者アクセスを含む別の組み込みロール) が付与されている必要があります。
+> [[マイ カスタマー]](view-manage-customers.md) にある委任されたサブスクリプションを表示するためには、サブスクリプションがオンボードされたときに、サービス プロバイダーのテナント内のユーザーに[閲覧者](../../role-based-access-control/built-in-roles.md#reader)ロール (または、閲覧者アクセスを含む別の組み込みロール) が付与されている必要があります。
 
 顧客のテナントで
 

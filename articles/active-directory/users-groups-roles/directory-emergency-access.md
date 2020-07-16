@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c26b4e04970dd6c35fc6a71a1aade94d949b520
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: 0339d9d47752c194eeda96cd2df4859d6b97518b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816184"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85338281"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Azure AD で緊急アクセス用管理者アカウントを管理する
 
@@ -156,5 +156,5 @@ AD Domain Services および ADFS または同様の ID プロバイダーを使
 - [Azure AD を使用してユーザーを追加する](../fundamentals/add-users-azure-active-directory.md)、および[新しいユーザーをグローバル管理者ロールに割り当てる](../fundamentals/active-directory-users-assign-role-azure-portal.md)
 - [Azure AD Premium へのサインアップ](../fundamentals/active-directory-get-started-premium.md) (まだサインアップしていない場合)
 - [ユーザーに 2 段階認証を要求する方法](../authentication/howto-mfa-userstates.md)
-- [Office 365 のグローバル管理者に追加の保護を構成する](https://docs.microsoft.com/office365/enterprise/protect-your-global-administrator-accounts) (Office 365 を使っている場合)
+- [Microsoft 365 のグローバル管理者に追加の保護を構成する](https://docs.microsoft.com/office365/enterprise/protect-your-global-administrator-accounts) (Microsoft 365 を使っている場合)
 - [グローバル管理者のアクセス レビューを開始する](../privileged-identity-management/pim-how-to-start-security-review.md)、および[既存のグローバル管理者をより明確な管理者ロールに移行する](directory-assign-admin-roles.md)

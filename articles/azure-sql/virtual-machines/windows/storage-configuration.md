@@ -1,10 +1,9 @@
 ---
 title: SQL Server VM のストレージの構成 | Microsoft Docs
-description: このトピックでは、プロビジョニング中に SQL Server VM のストレージが Azure によってどのように構成されるかを説明します (Resource Manager デプロイ モデル)。 また、既存の SQL Server VM のストレージを構成する方法についても説明します。
+description: このトピックでは、プロビジョニング中に SQL Server VM のストレージが Azure によってどのように構成されるかを説明します (Azure Resource Manager デプロイ モデル)。 また、既存の SQL Server VM のストレージを構成する方法についても説明します。
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
-manager: jroth
 tags: azure-resource-manager
 ms.assetid: 169fc765-3269-48fa-83f1-9fe3e4e40947
 ms.service: virtual-machines-sql
@@ -13,17 +12,17 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: f5f71f342152a1f7d524053f1a2f82937784dbd1
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 21609e38625d0911476c85a9d6e518f5ff7e9e61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84030003"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84667371"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM のストレージの構成
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Azure で SQL Server 仮想マシン イメージを構成するとき、ポータルを使用して、ストレージ構成を自動化すると便利です。 これには、ストレージを VM に接続する、そのストレージが SQL Server にアクセスできるようにする、特定のパフォーマンス要件を最適化するためにストレージを構成する、などの作業が含まれます。
+Azure で SQL Server 仮想マシン (VM) イメージを構成するとき、Azure portal を使用してストレージ構成を自動化できます。 これには、ストレージを VM に接続する、そのストレージが SQL Server にアクセスできるようにする、特定のパフォーマンス要件を最適化するためにストレージを構成する、などの作業が含まれます。
 
 このトピックでは、プロビジョニング中に SQL Server VM のストレージが Azure によってどのように構成されるか、また、既存の VM のストレージがどのように構成されるかを説明します。 この構成は、SQL Server が実行されている Azure VM の [パフォーマンスに関するベスト プラクティス](performance-guidelines-best-practices.md) に基づいています。
 
@@ -76,7 +75,7 @@ VM が作成されたら、ここで選択した内容に基づいて、次の�
 
 Azure によるストレージ設定の構成方法の詳細については、「 [ストレージの構成](#storage-configuration)」を参照してください。 Azure portal で SQL Server VM を作成する詳しい手順については、[プロビジョニング チュートリアル](../../../azure-sql/virtual-machines/windows/create-sql-vm-portal.md)をご覧ください。
 
-### <a name="resource-manage-templates"></a>Resource Manager テンプレート
+### <a name="resource-manager-templates"></a>Resource Manager テンプレート
 
 次の Resource Manager テンプレートを使用する場合、既定では、2 つ Premium データ ディスクが記憶域プール構成なしで接続されます。 ただし、仮想マシンに接続される Premium データ ディスクの数は、次のテンプレートをカスタマイズすることで変更できます。
 
@@ -113,7 +112,7 @@ SQL Server VM の作成プロセス中に構成されたドライブのディス
 
 ## <a name="storage-configuration"></a>ストレージの構成
 
-このセクションでは、Azure portal での SQL VM のプロビジョニングまたは構成時に自動的に行われる、ストレージ構成の変更に関するリファレンス情報を提供します。
+このセクションでは、Azure portal での SQL Server VM のプロビジョニングまたは構成時に自動的に行われる、ストレージ構成の変更に関するリファレンス情報を提供します。
 
 * Azure では、VM から選択されたストレージから記憶域プールが構成されます。 このトピックの次のセクションでは、記憶域プールの構成について詳しく説明します。
 * 自動ストレージ構成では、必ず [Premium SSD](../../../virtual-machines/windows/disks-types.md) P30 データ ディスクが使用されます。 結果として、選択したテラバイト数と、VM に接続されているデータ ディスク数は 1 対 1 で対応しています。
@@ -148,7 +147,7 @@ Azure では、次の設定を使用して、SQL Server VM で記憶域プール
 | **データ ウェアハウス** |分析とレポートのワークロード用にストレージを最適化します |トレース フラグ 610<br/>トレース フラグ 1117 |
 
 > [!NOTE]
-> ワークロードの種類を指定するには、SQL 仮想マシンをプロビジョニングしているときに、ストレージの構成手順でそのワークロードの種類を選択します。
+> ワークロードの種類の指定は、SQL Server 仮想マシンをプロビジョニングするときに、ストレージ構成手順の中でそれを選択することでのみ実行できます。
 
 ## <a name="next-steps"></a>次のステップ
 

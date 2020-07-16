@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 08/23/2019
 ms.author: genli
 ms.custom: has-adal-ref
-ms.openlocfilehash: 67a3ba99e29582c5681d69cd0c6db377a258020a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e0e0d9bfe46a473210b89701b5a8c56e999771d3
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83201339"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132953"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Azure VM での BitLocker ブート エラー
 
@@ -136,11 +136,15 @@ ms.locfileid: "83201339"
 
     - 保護を中断して、次のように実行して BitLocker を一時的に無効にします。
 
-                    manage-bde -protectors -disable F: -rc 0
-           
+    ```console
+    manage-bde -protectors -disable F: -rc 0
+    ```
+
     - ドライブを完全に復号化します。 そのためには、次のコマンドを実行します。
 
-                    manage-bde -off F:
+    ```console
+    manage-bde -off F:
+    ```
 
 ### <a name="key-encryption-key-scenario"></a>Key Encryption Key のシナリオ
 
@@ -237,17 +241,17 @@ Key Encryption Key のシナリオでは、次の手順に従います。
 
 4. スクリプトが開始されると、次の出力が表示されます。
 
-        GAC    Version        Location                                                                              
-        ---    -------        --------                                                                              
-        False  v4.0.30319     C:\Program Files\WindowsPowerShell\Modules\Az.Accounts\...
-        False  v4.0.30319     C:\Program Files\WindowsPowerShell\Modules\Az.Accounts\...
+    GAC バージョンの場所                                                                              
+    ---    -------        --------                                                                              
+    False  v4.0.30319     C:\Program Files\WindowsPowerShell\Modules\Az.Accounts\...False  v4.0.30319     C:\Program Files\WindowsPowerShell\Modules\Az.Accounts\...
 
     スクリプトが終了すると、次の出力が表示されます。
 
-        VERBOSE: POST https://myvault.vault.azure.net/keys/rondomkey/<KEY-ID>/unwrapkey?api-
-        version=2015-06-01 with -1-byte payload
-        VERBOSE: received 360-byte response of content type application/json; charset=utf-8
-
+    ```output
+    VERBOSE: POST https://myvault.vault.azure.net/keys/rondomkey/<KEY-ID>/unwrapkey?api-
+    version=2015-06-01 with -1-byte payload
+    VERBOSE: received 360-byte response of content type application/json; charset=utf-8
+    ```
 
 5. アタッチされたディスクのロックを BEK ファイルを使用して解除するには、次のコマンドを実行します。
 
@@ -265,11 +269,16 @@ Key Encryption Key のシナリオでは、次の手順に従います。
 
     - 保護を中断して、次のコマンドを実行して BitLocker を一時的に無効にします。
 
-             manage-bde -protectors -disable F: -rc 0
-           
+    ```console
+    manage-bde -protectors -disable F: -rc 0
+    ```
+
     - ドライブを完全に復号化します。 そのためには、次のコマンドを実行します。
 
-                    manage-bde -off F:
+    ```console
+    manage-bde -off F:
+    ```
+
 ## <a name="script-troubleshooting"></a>スクリプトのトラブルシューティング
 
 **エラー:Could not load file or assembly (ファイルまたはアセンブリを読み込めませんでした)**

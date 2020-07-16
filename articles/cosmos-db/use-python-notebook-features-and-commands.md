@@ -3,15 +3,15 @@ title: Azure Cosmos DB の Python ノートブックで組み込みのノート�
 description: Azure Cosmos DB の組み込み Python ノートブックを使用し、組み込みのコマンドと機能で一般的な操作を実行する方法について説明します。
 author: deborahc
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: a16b95249562db98d9382f8ca56bf4a27beba2fd
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: c35c34d5ffe3f3349430f17e71ad8192f4d8256e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743488"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263366"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-python-notebooks-preview"></a>Azure Cosmos DB の Python ノートブックで組み込みのノートブック コマンドと機能を使用する (プレビュー)
 
@@ -23,7 +23,7 @@ Azure Cosmos アカウントのノートブック サポートを有効にした
 新しいコード セルに次のコードを挿入して実行します。このとき、``PackageToBeInstalled`` を任意の Python パッケージに変更します。
 ```python
 import sys
-!{sys.executable} -m pip install PackageToBeInstalled –user
+!{sys.executable} -m pip install PackageToBeInstalled --user
 ```
 このパッケージは、Azure Cosmos アカウントワークスペースの任意のノートブックから使用できます。 
 
@@ -140,7 +140,7 @@ pd.options.display.max_rows = None
 
 df_cosmos.groupby("Item").size()
 ```
-![nteract データ エクスプローラー](media/use-notebook-features-and-commands/nteract-built-in-chart.png)
+:::image type="content" source="media/use-notebook-features-and-commands/nteract-built-in-chart.png" alt-text="nteract データ エクスプローラー":::
 
 ## <a name="use-the-built-in-python-sdk"></a>組み込みの Python SDK を使用する
 [Azure Cosmos DB Python SDK for SQL API](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos) のバージョン 4 がインストールされ、Azure Cosmos アカウントのノートブック環境に含まれます。
@@ -200,7 +200,7 @@ primary_key = COSMOS.KEY
 ## <a name="reset-notebooks-workspace"></a>ノートブック ワークスペースをリセットする
 ノートブック ワークスペースをリセットし、既定の設定に戻すには、コマンド バーで **[Reset Workspace]\(ワークスペースのリセット\)** を選択します。 これでインストールされているカスタム パッケージがすべて削除され、Jupyter サーバーが再起動されます。 ノートブック、ファイル、Azure Cosmos リソースは影響を受けません。  
 
-![ノートブック ワークスペースをリセットする](media/use-notebook-features-and-commands/reset-workspace.png)
+:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="ノートブック ワークスペースをリセットする":::
 
 ## <a name="next-steps"></a>次のステップ
 

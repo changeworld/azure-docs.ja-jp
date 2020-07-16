@@ -2,13 +2,13 @@
 title: リソースの種類別の移動操作のサポート
 description: 新しいリソース グループまたはサブスクリプションに移動できる Azure リソースの種類を一覧表示します。
 ms.topic: conceptual
-ms.date: 05/21/2020
-ms.openlocfilehash: 4f2ed7f1cb24b9896b533fb5d18ac4e57db48e2c
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.date: 06/15/2020
+ms.openlocfilehash: 785243676040fc86d42e3125684239ebe6da2061
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780323"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134668"
 ---
 # <a name="move-operation-support-for-resources"></a>リソースの操作のサポートの移動
 
@@ -36,7 +36,6 @@ ms.locfileid: "83780323"
 > - [Microsoft.AzureStack](#microsoftazurestack)
 > - [Microsoft.AzureStackHCI](#microsoftazurestackhci)
 > - [Microsoft.Batch](#microsoftbatch)
-> - [Microsoft.BatchAI](#microsoftbatchai)
 > - [Microsoft.Billing](#microsoftbilling)
 > - [Microsoft.BingMaps](#microsoftbingmaps)
 > - [Microsoft.BizTalkServices](#microsoftbiztalkservices)
@@ -54,12 +53,10 @@ ms.locfileid: "83780323"
 > - [Microsoft.ClassicNetwork](#microsoftclassicnetwork)
 > - [Microsoft.ClassicStorage](#microsoftclassicstorage)
 > - [Microsoft.ClassicSubscription](#microsoftclassicsubscription)
-> - [Microsoft.Cognition](#microsoftcognition)
 > - [Microsoft.CognitiveServices](#microsoftcognitiveservices)
 > - [Microsoft.Commerce](#microsoftcommerce)
 > - [Microsoft.Compute](#microsoftcompute)
 > - [Microsoft.Consumption](#microsoftconsumption)
-> - [Microsoft.Container](#microsoftcontainer)
 > - [Microsoft.ContainerInstance](#microsoftcontainerinstance)
 > - [Microsoft.ContainerRegistry](#microsoftcontainerregistry)
 > - [Microsoft.ContainerService](#microsoftcontainerservice)
@@ -109,6 +106,7 @@ ms.locfileid: "83780323"
 > - [Microsoft.HealthcareApis](#microsofthealthcareapis)
 > - [Microsoft.HybridCompute](#microsofthybridcompute)
 > - [Microsoft.HybridData](#microsofthybriddata)
+> - [Microsoft.HybridNetwork](#microsofthybridnetwork)
 > - [Microsoft.Hydra](#microsofthydra)
 > - [Microsoft.ImportExport](#microsoftimportexport)
 > - [microsoft.insights](#microsoftinsights)
@@ -126,7 +124,6 @@ ms.locfileid: "83780323"
 > - [Microsoft.MachineLearningCompute](#microsoftmachinelearningcompute)
 > - [Microsoft.MachineLearningExperimentation](#microsoftmachinelearningexperimentation)
 > - [Microsoft.MachineLearningModelManagement](#microsoftmachinelearningmodelmanagement)
-> - [Microsoft.MachineLearningOperationalization](#microsoftmachinelearningoperationalization)
 > - [Microsoft.MachineLearningServices](#microsoftmachinelearningservices)
 > - [Microsoft.Maintenance](#microsoftmaintenance)
 > - [Microsoft.ManagedIdentity](#microsoftmanagedidentity)
@@ -151,11 +148,10 @@ ms.locfileid: "83780323"
 > - [Microsoft.Peering](#microsoftpeering)
 > - [Microsoft.PolicyInsights](#microsoftpolicyinsights)
 > - [Microsoft.Portal](#microsoftportal)
-> - [Microsoft.PortalSdk](#microsoftportalsdk)
 > - [Microsoft.PowerBI](#microsoftpowerbi)
 > - [Microsoft.PowerBIDedicated](#microsoftpowerbidedicated)
+> - [Microsoft.PowerPlatform](#microsoftpowerplatform)
 > - [Microsoft.ProjectBabylon](#microsoftprojectbabylon)
-> - [Microsoft.ProjectOxford](#microsoftprojectoxford)
 > - [Microsoft.ProviderHub](#microsoftproviderhub)
 > - [Microsoft.Quantum](#microsoftquantum)
 > - [Microsoft.RecoveryServices](#microsoftrecoveryservices)
@@ -179,7 +175,6 @@ ms.locfileid: "83780323"
 > - [Microsoft.Solutions](#microsoftsolutions)
 > - [Microsoft.Sql](#microsoftsql)
 > - [Microsoft.SqlVirtualMachine](#microsoftsqlvirtualmachine)
-> - [Microsoft.SqlVM](#microsoftsqlvm)
 > - [Microsoft.Storage](#microsoftstorage)
 > - [Microsoft.StorageCache](#microsoftstoragecache)
 > - [Microsoft.StorageSync](#microsoftstoragesync)
@@ -191,7 +186,6 @@ ms.locfileid: "83780323"
 > - [Microsoft.Subscription](#microsoftsubscription)
 > - [microsoft.support](#microsoftsupport)
 > - [Microsoft.Synapse](#microsoftsynapse)
-> - [Microsoft.TerraformOSS](#microsoftterraformoss)
 > - [Microsoft.TimeSeriesInsights](#microsofttimeseriesinsights)
 > - [Microsoft.Token](#microsofttoken)
 > - [Microsoft.VirtualMachineImages](#microsoftvirtualmachineimages)
@@ -203,6 +197,7 @@ ms.locfileid: "83780323"
 > - [Microsoft.Web](#microsoftweb)
 > - [Microsoft.WindowsESU](#microsoftwindowsesu)
 > - [Microsoft.WindowsIoT](#microsoftwindowsiot)
+> - [Microsoft.WorkloadBuilder](#microsoftworkloadbuilder)
 > - [Microsoft.WorkloadMonitor](#microsoftworkloadmonitor)
 
 ## <a name="microsoftaad"></a>Microsoft.AAD
@@ -221,8 +216,11 @@ ms.locfileid: "83780323"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | privatelinkforazuread | いいえ | いいえ |
-> | tenants | いいえ | いいえ |
+> | diagnosticsettings | いいえ | いいえ |
+> | diagnosticsettingscategories | いいえ | いいえ |
+> | operations | いいえ | いいえ |
+> | privatelinkforazuread | はい | はい |
+> | tenants | はい | はい |
 
 ## <a name="microsoftaddons"></a>Microsoft.Addons
 
@@ -327,6 +325,8 @@ ms.locfileid: "83780323"
 > | locations / operationstatus | いいえ | いいえ |
 > | operations | いいえ | いいえ |
 > | spring | はい | はい |
+> | spring / apps | いいえ | いいえ |
+> | spring / apps / deployments | いいえ | いいえ |
 
 ## <a name="microsoftappservice"></a>Microsoft.AppService
 
@@ -361,11 +361,14 @@ ms.locfileid: "83780323"
 > | findorphanroleassignments | いいえ | いいえ |
 > | locks | いいえ | いいえ |
 > | operations | いいえ | いいえ |
+> | operationstatus | いいえ | いいえ |
 > | 権限 | いいえ | いいえ |
 > | policyassignments | いいえ | いいえ |
 > | policydefinitions | いいえ | いいえ |
 > | policysetdefinitions | いいえ | いいえ |
+> | privatelinkassociations | いいえ | いいえ |
 > | provideroperations | いいえ | いいえ |
+> | resourcemanagementprivatelinks | いいえ | いいえ |
 > | roleassignments | いいえ | いいえ |
 > | roleassignmentsusagemetrics | いいえ | いいえ |
 > | roledefinitions | いいえ | いいえ |
@@ -388,6 +391,8 @@ ms.locfileid: "83780323"
 
 > [!IMPORTANT]
 > Runbook は Automation アカウントと同じリソース グループに存在する必要があります。
+>
+> 詳しくは、「[Azure Automation アカウントを別のサブスクリプションに移動する](../../automation/how-to/move-account.md?toc=/azure/azure-resource-manager/toc.json)」をご覧ください。
 
 ## <a name="microsoftavs"></a>Microsoft.AVS
 
@@ -396,6 +401,7 @@ ms.locfileid: "83780323"
 > | ------------- | ----------- | ---------- |
 > | locations | いいえ | いいえ |
 > | locations / checkquotaavailability | いいえ | いいえ |
+> | locations / checktrialavailability | いいえ | いいえ |
 > | operations | いいえ | いいえ |
 > | privateclouds | はい | はい |
 > | privateclouds / clusters | いいえ | いいえ |
@@ -455,21 +461,6 @@ ms.locfileid: "83780323"
 > | locations / checknameavailability | いいえ | いいえ |
 > | locations / quotas | いいえ | いいえ |
 > | operations | いいえ | いいえ |
-
-## <a name="microsoftbatchai"></a>Microsoft.BatchAI
-
-> [!div class="mx-tableFixed"]
-> | リソースの種類 | Resource group | サブスクリプション |
-> | ------------- | ----------- | ---------- |
-> | clusters | いいえ | いいえ |
-> | fileservers | いいえ | いいえ |
-> | jobs | いいえ | いいえ |
-> | operations | いいえ | いいえ |
-> | workspaces | いいえ | いいえ |
-> | workspaces / clusters | いいえ | いいえ |
-> | workspaces / experiments | いいえ | いいえ |
-> | workspaces / experiments / jobs | いいえ | いいえ |
-> | workspaces / fileservers | いいえ | いいえ |
 
 ## <a name="microsoftbilling"></a>Microsoft.Billing
 
@@ -644,7 +635,7 @@ ms.locfileid: "83780323"
 > | locations / operationsstatus | いいえ | いいえ |
 > | operations | いいえ | いいえ |
 > | redis | はい | はい |
-> | redis / privateendpointconnections | いいえ | いいえ |
+> | redis / eventgridfilters | いいえ | いいえ |
 > | redis / privatelinkresources | いいえ | いいえ |
 > | redisenterprise | いいえ | いいえ |
 
@@ -829,13 +820,6 @@ ms.locfileid: "83780323"
 > [!IMPORTANT]
 > [Classic deployment move guidance (クラシック デプロイの移動のガイダンス)](./move-limitations/classic-model-move-limitations.md) に関する記事をご覧ください。 クラシック デプロイのリソースは、そのシナリオに固有の操作を使用して、サブスクリプション間で移動できます。
 
-## <a name="microsoftcognition"></a>Microsoft.Cognition
-
-> [!div class="mx-tableFixed"]
-> | リソースの種類 | Resource group | サブスクリプション |
-> | ------------- | ----------- | ---------- |
-> | syntheticsaccounts | いいえ | いいえ |
-
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 
 > [!div class="mx-tableFixed"]
@@ -937,13 +921,6 @@ ms.locfileid: "83780323"
 > | tenants | いいえ | いいえ |
 > | terms | いいえ | いいえ |
 > | usagedetails | いいえ | いいえ |
-
-## <a name="microsoftcontainer"></a>Microsoft.Container
-
-> [!div class="mx-tableFixed"]
-> | リソースの種類 | Resource group | サブスクリプション |
-> | ------------- | ----------- | ---------- |
-> | containergroups | いいえ | いいえ |
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
 
@@ -1134,7 +1111,8 @@ ms.locfileid: "83780323"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | databoxedgedevices | いいえ | いいえ |
+> | availableskus | いいえ | いいえ |
+> | databoxedgedevices | はい | はい |
 > | databoxedgedevices / checknameavailability | いいえ | いいえ |
 > | operations | いいえ | いいえ |
 
@@ -1428,6 +1406,7 @@ ms.locfileid: "83780323"
 > | elasticpools/iothubtenants | いいえ | いいえ |
 > | iothubs | はい | はい |
 > | iothubs / eventgridfilters | いいえ | いいえ |
+> | iothubs / securitysettings | いいえ | いいえ |
 > | operationresults | いいえ | いいえ |
 > | operations | いいえ | いいえ |
 > | provisioningservices | はい | はい |
@@ -1473,6 +1452,7 @@ ms.locfileid: "83780323"
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
 > | digitaltwinsinstances | いいえ | いいえ |
+> | digitaltwinsinstances / operationresults | いいえ | いいえ |
 > | locations | いいえ | いいえ |
 > | operations | いいえ | いいえ |
 
@@ -1520,7 +1500,6 @@ ms.locfileid: "83780323"
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
 > | domains | はい | はい |
-> | eventSubscriptions | いいえ - 個別に移動できませんが、サブスクライブしたリソースで自動的に移動されます。 | いいえ - 個別に移動できませんが、サブスクライブしたリソースで自動的に移動されます。 |
 > | domains / topics | いいえ | いいえ |
 > | eventsubscriptions | いいえ - 個別に移動できませんが、サブスクライブしたリソースで自動的に移動されます。 | いいえ - 個別に移動できませんが、サブスクライブしたリソースで自動的に移動されます。 |
 > | extensiontopics | いいえ | いいえ |
@@ -1672,8 +1651,11 @@ ms.locfileid: "83780323"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
+> | locations | いいえ | いいえ |
+> | locations / operationresults | いいえ | いいえ |
+> | locations / operationstatus | いいえ | いいえ |
 > | machines | はい | はい |
-> | machines / extensions | いいえ | いいえ |
+> | machines / extensions | はい | はい |
 > | operations | いいえ | いいえ |
 
 ## <a name="microsofthybriddata"></a>Microsoft.HybridData
@@ -1683,6 +1665,17 @@ ms.locfileid: "83780323"
 > | ------------- | ----------- | ---------- |
 > | datamanagers | はい | はい |
 > | operations | いいえ | いいえ |
+
+## <a name="microsofthybridnetwork"></a>Microsoft.HybridNetwork
+
+> [!div class="mx-tableFixed"]
+> | リソースの種類 | Resource group | サブスクリプション |
+> | ------------- | ----------- | ---------- |
+> | devices | いいえ | いいえ |
+> | locations | いいえ | いいえ |
+> | locations / operationstatuses | いいえ | いいえ |
+> | operations | いいえ | いいえ |
+> | vnfs | いいえ | いいえ |
 
 ## <a name="microsofthydra"></a>Microsoft.Hydra
 
@@ -1718,6 +1711,7 @@ ms.locfileid: "83780323"
 > | components | はい | はい |
 > | components / events | いいえ | いいえ |
 > | components / linkedstorageaccounts | いいえ | いいえ |
+> | components / metadata | いいえ | いいえ |
 > | components / metrics | いいえ | いいえ |
 > | components / pricingplans | いいえ | いいえ |
 > | components / query | いいえ | いいえ |
@@ -1756,6 +1750,7 @@ ms.locfileid: "83780323"
 > | トランザクション | いいえ | いいえ |
 > | vminsightsonboardingstatuses | いいえ | いいえ |
 > | webtests | はい | はい |
+> | webtests / gettestresultfile | いいえ | いいえ |
 > | Workbooks | はい | はい |
 > | workbooktemplates | はい | はい |
 
@@ -1794,6 +1789,7 @@ ms.locfileid: "83780323"
 > | locations / deletedvaults | いいえ | いいえ |
 > | locations / deletevirtualnetworkorsubnets | いいえ | いいえ |
 > | locations / operationresults | いいえ | いいえ |
+> | managedhsms | いいえ | いいえ |
 > | operations | いいえ | いいえ |
 > | vaults | はい | はい |
 > | vaults / accesspolicies | いいえ | いいえ |
@@ -1916,13 +1912,6 @@ ms.locfileid: "83780323"
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
 > | accounts | いいえ | いいえ |
-
-## <a name="microsoftmachinelearningoperationalization"></a>Microsoft.MachineLearningOperationalization
-
-> [!div class="mx-tableFixed"]
-> | リソースの種類 | Resource group | サブスクリプション |
-> | ------------- | ----------- | ---------- |
-> | hostingaccounts | いいえ | いいえ |
 
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 
@@ -2089,11 +2078,11 @@ ms.locfileid: "83780323"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | assessmentprojects | はい | はい |
+> | assessmentprojects | いいえ | いいえ |
 > | locations | いいえ | いいえ |
 > | locations / assessmentoptions | いいえ | いいえ |
 > | locations / checknameavailability | いいえ | いいえ |
-> | migrateprojects | はい | はい |
+> | migrateprojects | いいえ | いいえ |
 > | movecollections | いいえ | いいえ |
 > | operations | いいえ | いいえ |
 > | projects | いいえ | いいえ |
@@ -2167,10 +2156,12 @@ ms.locfileid: "83780323"
 > | firewallpolicies | はい | はい |
 > | frontdooroperationresults | いいえ | いいえ |
 > | frontdoors | いいえ | いいえ |
+> | frontdoors / frontendendpoints | いいえ | いいえ |
 > | frontdoorwebapplicationfirewallmanagedrulesets | いいえ | いいえ |
 > | frontdoorwebapplicationfirewallpolicies | いいえ | いいえ |
 > | getdnsresourcereference | いいえ | いいえ |
 > | internalnotify | いいえ | いいえ |
+> | ipallocations | はい | はい |
 > | ipgroups | はい | はい |
 > | loadbalancers | はい - Basic SKU<br>いいえ - Standard SKU | はい - Basic SKU<br>いいえ - Standard SKU |
 > | localnetworkgateways | はい | はい |
@@ -2273,11 +2264,11 @@ ms.locfileid: "83780323"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | hypervsites | はい | はい |
-> | importsites | はい | はい |
+> | hypervsites | いいえ | いいえ |
+> | importsites | いいえ | いいえ |
 > | operations | いいえ | いいえ |
-> | serversites | はい | はい |
-> | vmwaresites | はい | はい |
+> | serversites | いいえ | いいえ |
+> | vmwaresites | いいえ | いいえ |
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 
@@ -2325,7 +2316,7 @@ ms.locfileid: "83780323"
 > | operations | いいえ | いいえ |
 > | peerasns | いいえ | いいえ |
 > | peeringlocations | いいえ | いいえ |
-> | peerings | はい | はい |
+> | peerings | いいえ | いいえ |
 > | peeringservicecountries | いいえ | いいえ |
 > | peeringservicelocations | いいえ | いいえ |
 > | peeringserviceproviders | いいえ | いいえ |
@@ -2356,13 +2347,6 @@ ms.locfileid: "83780323"
 > | operations | いいえ | いいえ |
 > | usersettings | いいえ | いいえ |
 
-## <a name="microsoftportalsdk"></a>Microsoft.PortalSdk
-
-> [!div class="mx-tableFixed"]
-> | リソースの種類 | Resource group | サブスクリプション |
-> | ------------- | ----------- | ---------- |
-> | rootresources | いいえ | いいえ |
-
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
 
 > [!div class="mx-tableFixed"]
@@ -2384,6 +2368,13 @@ ms.locfileid: "83780323"
 > | locations / operationstatuses | いいえ | いいえ |
 > | operations | いいえ | いいえ |
 
+## <a name="microsoftpowerplatform"></a>Microsoft.PowerPlatform
+
+> [!div class="mx-tableFixed"]
+> | リソースの種類 | Resource group | サブスクリプション |
+> | ------------- | ----------- | ---------- |
+> | operations | いいえ | いいえ |
+
 ## <a name="microsoftprojectbabylon"></a>Microsoft.ProjectBabylon
 
 > [!div class="mx-tableFixed"]
@@ -2392,13 +2383,6 @@ ms.locfileid: "83780323"
 > | accounts | いいえ | いいえ |
 > | checknameavailability | いいえ | いいえ |
 > | operations | いいえ | いいえ |
-
-## <a name="microsoftprojectoxford"></a>Microsoft.ProjectOxford
-
-> [!div class="mx-tableFixed"]
-> | リソースの種類 | Resource group | サブスクリプション |
-> | ------------- | ----------- | ---------- |
-> | accounts | いいえ | いいえ |
 
 ## <a name="microsoftproviderhub"></a>Microsoft.ProviderHub
 
@@ -2504,6 +2488,7 @@ ms.locfileid: "83780323"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
+> | calculatetemplatehash | いいえ | いいえ |
 > | checkpolicycompliance | いいえ | いいえ |
 > | checkresourcename | いいえ | いいえ |
 > | deployments | いいえ | いいえ |
@@ -2623,6 +2608,7 @@ ms.locfileid: "83780323"
 > | aggregations | いいえ | いいえ |
 > | alertrules | いいえ | いいえ |
 > | alertruletemplates | いいえ | いいえ |
+> | automationrules | いいえ | いいえ |
 > | bookmarks | いいえ | いいえ |
 > | cases | いいえ | いいえ |
 > | dataconnectors | いいえ | いいえ |
@@ -2724,8 +2710,6 @@ ms.locfileid: "83780323"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | providerregistrations | いいえ | いいえ |
-> | providerregistrations / resourcetyperegistrations | いいえ | いいえ |
 > | rollouts | いいえ | いいえ |
 
 ## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
@@ -2770,7 +2754,6 @@ ms.locfileid: "83780323"
 > | checknameavailability | いいえ | いいえ |
 > | instancepools | いいえ | いいえ |
 > | locations | はい | はい |
-> | locations | いいえ | いいえ |
 > | locations / administratorazureasyncoperation | いいえ | いいえ |
 > | locations / administratoroperationresults | いいえ | いいえ |
 > | locations / auditingsettingsazureasyncoperation | いいえ | いいえ |
@@ -2940,7 +2923,7 @@ ms.locfileid: "83780323"
 > | virtualclusters | はい | はい |
 
 > [!IMPORTANT]
-> データベースとサーバーは同じリソース グループ内に存在する必要があります。 SQL Server を移動すると、そのデータベースもすべて移動されます。 この動作は、Azure SQL Database と Azure SQL Data Warehouse データベースに適用されます。
+> データベースとサーバーは同じリソース グループ内に存在する必要があります。 SQL Server を移動すると、そのデータベースもすべて移動されます。 この動作は、Azure SQL Database と Azure Synapse Analytics データベースに適用されます。
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
 
@@ -2956,13 +2939,6 @@ ms.locfileid: "83780323"
 > | sqlvirtualmachinegroups | はい | はい |
 > | sqlvirtualmachinegroups / availabilitygrouplisteners | いいえ | いいえ |
 > | sqlvirtualmachines | はい | はい |
-
-## <a name="microsoftsqlvm"></a>Microsoft.SqlVM
-
-> [!div class="mx-tableFixed"]
-> | リソースの種類 | Resource group | サブスクリプション |
-> | ------------- | ----------- | ---------- |
-> | dwvm | いいえ | いいえ |
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
@@ -3001,6 +2977,8 @@ ms.locfileid: "83780323"
 > | ------------- | ----------- | ---------- |
 > | locations | いいえ | いいえ |
 > | locations / checknameavailability | いいえ | いいえ |
+> | locations / operationresults | いいえ | いいえ |
+> | locations / operations | いいえ | いいえ |
 > | locations / workflows | いいえ | いいえ |
 > | operations | いいえ | いいえ |
 > | storagesyncservices | はい | はい |
@@ -3098,14 +3076,6 @@ ms.locfileid: "83780323"
 > | workspaces / operationstatuses | いいえ | いいえ |
 > | workspaces / sqlpools | はい | はい |
 
-## <a name="microsoftterraformoss"></a>Microsoft.TerraformOSS
-
-> [!div class="mx-tableFixed"]
-> | リソースの種類 | Resource group | サブスクリプション |
-> | ------------- | ----------- | ---------- |
-> | providerregistrations | いいえ | いいえ |
-> | resources | いいえ | いいえ |
-
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 
 > [!div class="mx-tableFixed"]
@@ -3133,6 +3103,9 @@ ms.locfileid: "83780323"
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
 > | imagetemplates | いいえ | いいえ |
+> | imagetemplates / runoutputs | いいえ | いいえ |
+> | locations | いいえ | いいえ |
+> | locations / operations | いいえ | いいえ |
 > | operations | いいえ | いいえ |
 
 ## <a name="microsoftvisualstudio"></a>microsoft.visualstudio
@@ -3201,6 +3174,7 @@ ms.locfileid: "83780323"
 > | accounts | いいえ | いいえ |
 > | operations | いいえ | いいえ |
 > | plans | いいえ | いいえ |
+> | registeredsubscriptions | いいえ | いいえ |
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 
@@ -3279,6 +3253,16 @@ ms.locfileid: "83780323"
 > | ------------- | ----------- | ---------- |
 > | deviceservices | いいえ | いいえ |
 > | operations | いいえ | いいえ |
+
+## <a name="microsoftworkloadbuilder"></a>Microsoft.WorkloadBuilder
+
+> [!div class="mx-tableFixed"]
+> | リソースの種類 | Resource group | サブスクリプション |
+> | ------------- | ----------- | ---------- |
+> | locations | いいえ | いいえ |
+> | locations / operationstatuses | いいえ | いいえ |
+> | operations | いいえ | いいえ |
+> | workloads | いいえ | いいえ |
 
 ## <a name="microsoftworkloadmonitor"></a>Microsoft.WorkloadMonitor
 

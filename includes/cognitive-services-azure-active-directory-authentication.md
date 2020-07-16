@@ -4,12 +4,12 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/11/2020
-ms.openlocfilehash: eeaab547a1f0648d2e7a59fda24454d7bfe1fadf
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 6bbdd3eb62229c3f8f180d2618dd25062ff0c1e9
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84754672"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86062668"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>Azure Active Directory を使用して認証する
 
@@ -86,6 +86,10 @@ ms.locfileid: "84754672"
    ```
 
 2. トークンを取得します。
+   > [!NOTE]
+   > Azure Cloud Shell を使用している場合、`SecureClientSecret` クラスは使用できません。 
+
+   #### <a name="powershell"></a>[PowerShell](#tab/powershell)
    ```powershell-interactive
    $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList "https://login.windows.net/<TENANT_ID>"
    $secureSecretObject = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.SecureClientSecret" -ArgumentList $SecureStringPassword   
@@ -93,6 +97,17 @@ ms.locfileid: "84754672"
    $token=$authContext.AcquireTokenAsync("https://cognitiveservices.azure.com/", $clientCredential).Result
    $token
    ```
+   
+   #### <a name="azure-cloud-shell"></a>[Azure Cloud Shell](#tab/azure-cloud-shell)
+   ```Azure Cloud Shell
+   $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList "https://login.windows.net/<TENANT_ID>"
+   $clientCredential = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential" -ArgumentList $app.ApplicationId, <YOUR_PASSWORD>
+   $token=$authContext.AcquireTokenAsync("https://cognitiveservices.azure.com/", $clientCredential).Result
+   $token
+   ``` 
+
+   ---
+
 3. Computer Vision API を呼び出します。
    ```powershell-interactive
    $url = $account.Endpoint+"vision/v1.0/models"

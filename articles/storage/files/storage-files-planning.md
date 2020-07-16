@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5356ff0ac165deefc5053cf4faa40c1159e98678
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: d1d36c6f6413a9438063c6fe30403af095ed9a6b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856902"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84659639"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Files のデプロイの計画
 [Azure Files](storage-files-introduction.md) は、サーバーレスの Azure ファイル共有を直接マウントすることと、Azure File Sync を使用してオンプレミスで Azure ファイル共有をキャッシュすることの 2 つの主な方法でデプロイできます。選択するデプロイ オプションによって、デプロイを計画する際に考慮する必要がある内容が変わります。 
@@ -160,17 +160,12 @@ Premium ファイル共有は、最大 3 倍の IOPS をバーストできます
 [!INCLUDE [storage-files-redundancy-overview](../../../includes/storage-files-redundancy-overview.md)]
 
 ## <a name="migration"></a>移行
-多くの場合、組織に対して新しいファイル共有を確立するのではなく、既存のファイル共有をオンプレミスのファイル サーバーまたは NAS デバイスから Azure Files に移行します。 ファイル共有への移行を行うために、Microsoft とサード パーティの両方で提供されるツールは多数ありますが、これらは大きく 2 つのカテゴリに分けられます。
+多くの場合、組織に対して新しいファイル共有を確立するのではなく、既存のファイル共有をオンプレミスのファイル サーバーまたは NAS デバイスから Azure Files に移行します。 移行を成功させるには、シナリオに適した移行戦略とツールを選択することが重要です。 
 
-- **ACL やタイムスタンプなどのファイル システム属性を保持するツール**:
-    - **[Azure File Sync](storage-sync-files-planning.md)** :Azure File Sync は、Azure ファイル共有にデータを取り込む方法として使用できます。これは、目的のエンド デプロイでオンプレミスの存在を維持しない場合でも同様です。 Azure File Sync は、既存の Windows Server 2012 R2、Windows Server 2016、Windows Server 2019 デプロイの所定の場所にインストールできます。 取り込みメカニズムとして Azure File Sync を使用する利点は、エンド ユーザーが所定の場所で既存のファイル共有を引き続き使用できることです。Azure ファイル共有への切り替えは、バックグラウンドでのすべてのデータのアップロードが完了した後に発生する可能性があります。
-    - **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)** :Robocopy は、Windows および Windows Server に付属する、よく知られているコピー ツールです。 Robocopy では、ファイル共有をローカルにマウントした後、マウントした場所を Robocopy コマンドのコピー先として使って、Azure Files にデータを転送できます。
-
-- **ファイル システム属性を保持しないツール**:
-    - **Data Box**: Data Box では、物理的にデータを Azure に配布するためのオフライン データ転送メカニズムが提供されます。 この方法は、スループットの向上と帯域幅の節約を目的に設計されていますが、現在、タイムスタンプや ACL などのファイル システム属性はサポートされていません。
-    - **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** :AzCopy は、最高のパフォーマンスの単純なコマンドを使って Azure Files および Azure Blob Storage との間で双方向にデータをコピーするために設計された、コマンドライン ユーティリティです。
+[移行の概要に関する記事](storage-files-migration-overview.md)に、基本についての説明と、シナリオに適した移行ガイドを紹介する表が含まれています。
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure File Sync のデプロイの計画](storage-sync-files-planning.md)
 * [Azure Files のデプロイ方法](storage-files-deployment-guide.md)
 * [Azure ファイル同期のデプロイ方法](storage-sync-files-deployment-guide.md)
+* [シナリオに適した移行ガイドを見つけるには、移行の概要に関する記事をご覧ください。](storage-files-migration-overview.md)

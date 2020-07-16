@@ -1,22 +1,22 @@
 ---
 title: インクルード ファイル
 description: file
-author: anbene
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: include
+author: anbene
+ms.author: mingshen
 ms.date: 05/19/2020
-ms.openlocfilehash: 60358c60ed28b63d97f11ce2ba26474103bcdb54
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: c1f799f1f3aafd8d2d4b9de919ce67214c7150f2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698423"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109667"
 ---
-オファーの詳しい説明 (最大 3,000 文字) を入力します。 顧客は、マーケットプレースのリスト登録に関する概要でこれを確認できます。
+オファーの詳しい説明 (最大 3,000 文字) を入力します。 顧客は、Marketplace のリスト登録に関する概要でこれを確認できます。
 
-説明には、次の 1 つまたは複数を含めます。
+説明には、次の項目を 1 つ以上含めます。
 
 - オファーの価値と主な利益
 - カテゴリや業界の関連付け

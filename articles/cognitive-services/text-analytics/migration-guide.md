@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 05/13/2020
+ms.date: 06/25/2020
 ms.author: aahi
-ms.openlocfilehash: 2fd6c908aa95ef22cbf7ea0b62b925d84d66cd28
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 12c09ad8e1db3914263fcc864c9c2d09069d63a6
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84143248"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85412585"
 ---
 # <a name="migrate-to-version-3x-of-the-text-analytics-api"></a>Text Analytics API のバージョン 3.x への移行
 
@@ -44,7 +44,7 @@ Text Analytics API のバージョン 2.1 を使用している場合、この�
 ## <a name="feature-changes"></a>機能の変更
 
 > [!NOTE] 
-> 現在、[v3 のエンティティ カテゴリ](named-entity-types.md)は、英語のテキストの場合のみに返されます。 この API は、他の言語の要求に対して、バージョン 2.1 でサポートされていれば、バージョン 2.1 の結果を返します。
+> 現在、[v3 のエンティティ カテゴリ](named-entity-types.md)は、英語およびスペイン語のテキストの場合にのみ返されます。 この API は、他の言語の要求に対して、バージョン 2.1 でサポートされていれば、バージョン 2.1 の結果を返します。
 
 バージョン 2.1 の Text Analytics API では、固有表現認識 (NER) とエンティティ リンク設定に 1 つのエンドポイントが使用されます。 バージョン 3 では、名前付きエンティティの検出が拡張され、NER とエンティティ リンク設定に個別のエンドポイントが使用されます。 v3.1-preview.1 以降、NER はさらに個人 `pii` と医療 `phi` の情報を検出できます。 
 

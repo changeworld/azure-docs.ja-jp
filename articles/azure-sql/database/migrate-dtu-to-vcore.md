@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 05/28/2020
-ms.openlocfilehash: 4802e9e6fa2fdd918266d3ddc58b783bdb6bb83e
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 0193e7f7001fb8f63794a379c4d2b8e28abd5c0f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84258468"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85297870"
 ---
 # <a name="migrate-azure-sql-database-from-the-dtu-based-model-to-the-vcore-based-model"></a>Azure SQL Database を DTU ベースのモデルから仮想コア ベースのモデルに移行する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -97,7 +97,7 @@ FROM dtu_vcore_map;
 - 同じハードウェアの世代および同じ数の仮想コアについては、多くの場合、仮想コア データベースの IOPS とトランザクション ログのスループット リソース制限が DTU データベースよりも高くなります。 IO にバインドされたワークロードでは、同じレベルのパフォーマンスを実現するために、仮想コア モデルの仮想コア数を減らせる場合があります。 DTU および仮想コア データベースの絶対値のリソース制限は、[sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) ビューで公開されています。 ほぼ一致するサービス目標を使用する仮想コア データベースと、移行される DTU データベースとの間でのこれらの値の比較は、仮想コア サービスの目標をより正確に選択するのに役立ちます。
 - また、マッピング クエリでは、移行される DTU データベースまたはエラスティック プール、および仮想コア モデルの各ハードウェアの、コアあたりのメモリ量を返します。 十分なパフォーマンスを実現するために大量のメモリ データ キャッシュを必要とするワークロード、またはクエリ処理に大量のメモリ許可を必要とするワークロードでは、仮想コアへの移行後に、同様のあるいはそれ以上の合計メモリを確保することが重要です。 このようなワークロードでは、実際のパフォーマンスに応じて、十分な合計メモリを得るために仮想コアの数を増やすことが必要になる場合があります。
 - 仮想コア サービスの目標を選択する際には、DTU データベースの[リソース使用率の履歴](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)を考慮する必要があります。 CPU リソースの使用率が常に低い DTU データベースでは、マッピング クエリで返されるよりも少ない仮想コアが必要になることがあります。 逆に、CPU 使用率が常に高いためにワークロードのパフォーマンスが不十分になる DTU データベースでは、クエリで返されるよりも多い仮想コアが必要になることがあります。
-- 使用パターンが間欠的または予測できないデータベースを移行する場合は、[サーバーレス](serverless-tier-overview.md) コンピューティング レベルの使用を検討してください。
+- 使用パターンが間欠的または予測できないデータベースを移行する場合は、[サーバーレス](serverless-tier-overview.md) コンピューティング レベルの使用を検討してください。  サーバーレスでの同時実行ワーカー (要求) の最大数は、構成されている同じ最大仮想コア数に対してプロビジョニングされたコンピューティングの上限の 75% であることに注意してください。  また、サーバーレスで使用できる最大メモリは、構成されている最大仮想コア数に 3 GB を乗算したものになります。たとえば、構成されている最大コア数が 40 のとき、最大メモリは 120 GB になります。   
 - 仮想コア モデルでは、サポートされるデータベースの最大サイズが、ハードウェアの世代によって異なる場合があります。 大規模なデータベースの場合は、[単一データベース](resource-limits-vcore-single-databases.md)と[エラスティック プール](resource-limits-vcore-elastic-pools.md)の仮想コア モデルでサポートされる最大サイズを確認してください。
 - エラスティック プールの場合、[DTU](resource-limits-dtu-elastic-pools.md) および[仮想コア](resource-limits-vcore-elastic-pools.md) モデルでは、プールあたりのデータベースの最大サポート数が異なります。 多くのデータベースがあるエラスティック プールを移行する場合は、このことを考慮する必要があります。
 - ハードウェアの世代によっては、すべてのリージョンで使用できないものもあります。 「[ハードウェアの世代](service-tiers-vcore.md#hardware-generations)」で使用できるかどうかを確認してください。

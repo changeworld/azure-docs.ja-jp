@@ -5,14 +5,14 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 02/12/2020
 ms.author: mimart
-ms.openlocfilehash: 587a4bfed00415499bcca6d6054d4ab25cddf0b8
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: f8c972bdb9195008c2983d3993e8d9369749b284
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298927"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85200191"
 ---
-#### <a name="app-registrations-preview"></a>[アプリの登録 (プレビュー)](#tab/app-reg-preview/)
+#### <a name="app-registrations"></a>[アプリの登録](#tab/app-reg-ga/) 
 
 1. **[管理]** の下にある **[API のアクセス許可]** を選択します。
 1. **[構成されたアクセス許可]** の下で **[アクセス許可の追加]** を選択します。
@@ -24,11 +24,10 @@ ms.locfileid: "84298927"
     * **[Policy]\(ポリシー\)**  >  **[Policy.ReadWrite.TrustFramework]** :継続的インテグレーション/継続的デリバリー (CI/CD) のシナリオの場合。 たとえば、Azure Pipelines を使用したカスタム ポリシーの展開などです。
 1. **[アクセス許可の追加]** を選択します. 指示に従って、数分待ってから次の手順に進みます。
 1. **[<テナント名> に管理者の同意を与えます]** を選択します。
-1. 現在サインインしているお使いの管理者アカウントを選択するか、少なくとも*クラウド アプリケーション管理者* ロールが割り当てられているお使いの Azure AD B2C テナントのアカウントでサインインします。
-1. **[Accept]\(承認\)** を選択します。
+1. 現在グローバル管理者アカウントを使用してサインインしていない場合は、少なくとも "*クラウド アプリケーション管理者*" ロールが割り当てられている Azure AD B2C テナントのアカウントでサインインしてから、 **[<テナント名> に管理者の同意を与えます]** を選択します。
 1. **[更新]** を選択し、 **[状態]** に、"... に付与されました" と表示されていることを確認します。 アクセス許可が反映されるまでに数分かかる場合があります。
 
-#### <a name="applications"></a>[アプリケーション](#tab/applications/)
+#### <a name="applications-legacy"></a>[アプリケーション (レガシ)](#tab/applications-legacy/)
 
 1. **[登録済みのアプリ]** 概要ページで、 **[設定]** を選択します。
 1. **[API アクセス]** の下の、 **[必要なアクセス許可]** を選択します。

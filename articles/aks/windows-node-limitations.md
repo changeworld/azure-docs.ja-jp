@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Windows Server ノード プールとアプリケーション ワークロードを Azure Kubernetes Service (AKS) 内で実行するときの既知の制限事項について説明します
 services: container-service
 ms.topic: article
-ms.date: 12/18/2019
-ms.openlocfilehash: 935b049ce5e1951952b4af4e7df9574df764b6e8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/28/2020
+ms.openlocfilehash: c420eb850313900d3726b93dd97f911a428d3560
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208008"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85339879"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Windows Server ノード プールとアプリケーション ワークロードについての現在の制限事項
 
@@ -58,6 +58,19 @@ Windows ノード プールの AKS クラスターでは、Azure CNI (高度) �
 > 更新された Windows Server イメージは、ノード プールをアップグレードする前にクラスターのアップグレード (コントロール プレーンのアップグレード) が実行された場合にのみ使用されます。
 >
 
+## <a name="why-am-i-seeing-an-error-when-i-try-to-create-a-new-windows-agent-pool"></a>新しい Windows エージェント プールを作成しようとしたときにエラーが表示されるのはなぜですか。
+
+2020 年 2 月より前にクラスターを作成し、クラスターのアップグレード操作が行われていない場合、クラスターは引き続き古い Windows イメージを使用します。 次のようなエラーが表示されている可能性があります。
+
+"デプロイ テンプレートから参照されている次のイメージの一覧が見つかりません:発行元: MicrosoftWindowsServer、オファー:WindowsServer、Sku:2019-datacenter-core-smalldisk-2004、バージョン: 最新。 利用可能なイメージの検索方法については、 https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage をご覧ください。"
+
+この問題を解決するには:
+
+1. [クラスター コントロール プレーン][upgrade-cluster-cp]をアップグレードします。 これにより、イメージのオファーと発行元が更新されます。
+1. 新しい Windows エージェント プールを作成します。
+1. Windows ポッドを既存の Windows エージェント プールから新しい Windows エージェント プールに移動します。
+1. 古い Windows エージェント プールを削除します。
+
 ## <a name="how-do-i-rotate-the-service-principal-for-my-windows-node-pool"></a>Windows ノード プールのサービス プリンシパルはどのようにローテーションするのですか?
 
 Windows ノード プールは、サービス プリンシパルのローテーションをサポートしていません。 サービス プリンシパルを更新するには、新しい Windows ノード プールを作成し、ポッドを古いプールから新しいプールに移行します。 この処理が完了したら、古いノード プールを削除します。
@@ -72,7 +85,7 @@ AKS クラスターでは、最大で 10 のノード プールを作成でき�
 
 ## <a name="are-all-features-supported-with-windows-nodes"></a>Windows ノードではすべての機能がサポートされていますか?
 
-現在、Windows ノードでは、ネットワーク ポリシーと kubernet はサポートされていません。 
+現在、Windows ノードでは、ネットワーク ポリシーと kubernet はサポートされていません。
 
 ## <a name="can-i-run-ingress-controllers-on-windows-nodes"></a>Windows ノードでイングレス コントローラーを実行できますか?
 
@@ -88,7 +101,7 @@ Azure Dev Spaces は現在、Linux ベースのノード プールに対して�
 
 ## <a name="can-i-use-azure-monitor-for-containers-with-windows-nodes-and-containers"></a>Windows ノードとコンテナーを含むコンテナーには Azure Monitor を使用できますか?
 
-はい。ただし、Azure Monitor を使って Windows コンテナーからログ (stdout) を収集することはできません。 Windows コンテナーからの stdout ログのライブ ストリームにアタッチすることはできます。
+はい。ただし、Windows コンテナーからログ (stdout、stderr) とメトリックを収集するための Azure Monitor はパブリック プレビュー段階です。 また、Windows コンテナーから stdout ログのライブ ストリームにアタッチできます。
 
 ## <a name="what-if-i-need-a-feature-which-is-not-supported"></a>サポートされていない機能が必要な場合はどうすればよいですか?
 
@@ -112,7 +125,10 @@ AKS で Windows Server コンテナーの使用を開始するには、[AKS で 
 [windows-node-cli]: windows-container-cli.md
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
+[upgrade-cluster]: upgrade-cluster.md
+[upgrade-cluster-cp]: use-multiple-node-pools.md#upgrade-a-cluster-control-plane-with-multiple-node-pools
 [azure-outbound-traffic]: ../load-balancer/load-balancer-outbound-connections.md#defaultsnat
 [nodepool-limitations]: use-multiple-node-pools.md#limitations
 [windows-container-compat]: /virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-2019%2Cwindows-10-1909
 [maximum-number-of-pods]: configure-azure-cni.md#maximum-pods-per-node
+[azure-monitor]: ../azure-monitor/insights/container-insights-overview.md#what-does-azure-monitor-for-containers-provide

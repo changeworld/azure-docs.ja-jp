@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 03/22/2020
+ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af0f68ca9520c1715463212da80aaabed48f8269
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8576088069f419872db57b063163e8d9b1968b33
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128691"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85338208"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>Azure AD のエンタイトルメント管理で外部ユーザーのアクセスを管理する
 
@@ -103,13 +103,13 @@ Azure AD のエンタイトルメント管理では、[Azure AD 企業間 (B2B)]
 
 - サイトレベルの設定で、ゲスト アクセスが有効になっていることを確認します (前述と同じオプションを選択します)。 詳細については、「[サイトの外部共有を有効または無効にする](https://docs.microsoft.com/sharepoint/change-external-sharing-site)」を参照してください。
 
-### <a name="review-your-office-365-group-sharing-settings"></a>Office 365 グループの共有設定を確認する
+### <a name="review-your-microsoft-365-group-sharing-settings"></a>Microsoft 365 グループの共有設定を確認する
 
-- 外部ユーザーのアクセス パッケージに Office 365 グループを含めるには、 **[ユーザーが組織に新しいゲストを追加できるようにします]** が **[オン]** に設定されていることを確認して、ゲスト アクセスを許可します。 詳細については、「[Office 365 グループへのゲスト アクセスの管理](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide#manage-groups-guest-access)」を参照してください。
+- 外部ユーザーのアクセス パッケージに Microsoft 365 グループを含めるには、 **[ユーザーが組織に新しいゲストを追加できるようにします]** が **[オン]** に設定されていることを確認して、ゲスト アクセスを許可します。 詳細については、「[Microsoft 365 グループへのゲスト アクセスの管理](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide#manage-groups-guest-access)」を参照してください。
 
-- Office 365 グループに関連付けられている SharePoint Online サイトとリソースに外部ユーザーがアクセスできるようにするには、SharePoint Online の外部共有がオンになっていることを確認してください。 詳細については、「[外部共有を有効または無効にする](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting)」を参照してください。
+- Microsoft 365 グループに関連付けられている SharePoint Online サイトとリソースに外部ユーザーがアクセスできるようにするには、SharePoint Online の外部共有がオンになっていることを確認してください。 詳細については、「[外部共有を有効または無効にする](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting)」を参照してください。
 
-- PowerShell のディレクトリ レベルで Office 365 グループのゲスト ポリシーを設定する方法については、「[例:ディレクトリ レベルでグループのゲスト ポリシーを構成する](../users-groups-roles/groups-settings-cmdlets.md#example-configure-guest-policy-for-groups-at-the-directory-level)」を参照してください。
+- PowerShell のディレクトリ レベルで Microsoft 365 グループのゲスト ポリシーを設定する方法については、「[例:ディレクトリ レベルでグループのゲスト ポリシーを構成する](../users-groups-roles/groups-settings-cmdlets.md#example-configure-guest-policy-for-groups-at-the-directory-level)」を参照してください。
 
 ### <a name="review-your-teams-sharing-settings"></a>Teams の共有設定を確認する
 

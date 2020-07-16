@@ -1,5 +1,5 @@
 ---
-title: AI エンリッチメント スキルセットをデバッグする (プレビュー)
+title: デバッグ セッションの概念 (プレビュー)
 titleSuffix: Azure Cognitive Search
 description: Azure portal を介してアクセスされる、デバッグ セッションでは、エラーを特定して修正し、変更を確認し、AI エンリッチメント パイプラインでスキルセットに変更をプッシュできる環境などの IDE が提供されます。 デバッグ セッションはプレビュー段階です。
 manager: nitinme
@@ -8,21 +8,20 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 04b221d772abf923d7aabfe767a6424b72ed8fb2
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: edce8f3460e92eef4f6665b1b38a61582d6841ad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83662410"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560374"
 ---
-# <a name="debug-sessions"></a>デバッグ セッション
+# <a name="debug-sessions-in-azure-cognitive-search"></a>Azure Cognitive Search でのデバッグ セッション
 
 デバッグ セッションは、Azure portal の既存のスキルセットと連動するビジュアル エディターです。 デバッグ セッション内では、エラーを特定して解決し、変更を確認し、AI エンリッチメント パイプラインで運用スキルセットに変更をプッシュすることができます。
 
 > [!Important]
-> Azure Cognitive Search のデバッグ セッションのサポートは、アクセスが制限されたプレビューとして、[要求に応じて](https://aka.ms/DebugSessions)利用できます。 このプレビュー機能は、サービス レベル アグリーメントなしで提供されています。したがってプロダクション ワークロードへの使用は推奨しません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+> デバッグ セッションは、サービス レベル アグリーメントなしで提供されるプレビュー機能です。運用環境のワークロードに対してはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 >
-> プレビューへのアクセスが許可されると、Azure portal を使用して、サービスのデバッグ セッションにアクセスして利用できるようになります。
 
 ## <a name="using-debug-sessions"></a>デバッグ セッションの使用
 
@@ -86,6 +85,10 @@ ms.locfileid: "83662410"
 ## <a name="errorswarnings"></a>エラー/警告
 
 このウィンドウには、デバッグ セッションでドキュメントに対してスキルセットが実行されるときに生成されるすべてのエラーと警告が表示されます。
+
+## <a name="limitations"></a>制限事項
+
+デバッグ セッションは、一般提供されているすべてのデータ ソースとほとんどのプレビュー データ ソースで機能します。 Cosmos DB の MongoDB API (プレビュー) および Cassandra API (プレビュー) は現在、サポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
 

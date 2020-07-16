@@ -6,17 +6,17 @@ author: mabasile-MSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: b3d77a84aa5206257f82bc5d634e1a3eae1a7790
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: c8ab5bc5072612edd3eaabbd13468567a92f42e4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996425"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85296391"
 ---
 # <a name="azure-synapse-analytics-data-integration-partners"></a>Azure Synapse Analytics データ統合パートナー
 
@@ -36,7 +36,7 @@ Azure Synapse の Synapse SQL プール機能を使用してデータ ウェア�
 | ![Information Builders](./media/sql-data-warehouse-partner-data-integration/informationbuilders_logo.png) |**Information Builders (Omni-Gen データ管理)**<br>Information Builder の Omni-Gen データ管理プラットフォームでは、データ統合、データ品質、およびマスター データ管理のソリューションを提供しています。 形式、場所、ボリューム、または待機時間に関係なく、すべてのデータのアクセス、移動、および混合を簡単に行えるようにします。|[製品ページ](https://www.informationbuilders.com/3i-platform)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/informationbuilders.omni-gen-mdm) |
 | ![Matillion](./media/sql-data-warehouse-partner-data-integration/matillion-logo.png) |**Matillion**<br>Matillion は、クラウド データ ウェアハウス向けのデータ変換ソフトウェアです。 Azure Synapse のために特注で開発され、新しいレベルのわかりやすさ、スピード、スケール、節約を企業が達成できるようにするのは Matillion だけです。 Matillion 製品は、データ統合ニーズやデータ変換ニーズを満たすと、あらゆる規模の企業に高く評価されており、信頼されています。 クラウドを利用した Matillion のデータ変換手法でデータの可能性を解放する方法をご覧ください。| [製品ページ](https://www.matillion.com/technology/cloud-data-warehouse/microsoft-azure-synapse/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/matillion.matillion-etl-azure-synapse?tab=Overview) |
 | ![oh22 HEDDA.IO](./media/sql-data-warehouse-partner-data-integration/heddaiowhitebg-logo.png) |**oh22 HEDDA<span></span>.IO**<br>oh22 の HEDDA<span></span>.IO は、Microsoft Azure 用に構築されたナレッジ ドリブンのデータ品質製品です。 これにより、ナレッジ ベースを構築し、それを使用して、データの修正、強化、標準化などの多くの重要なデータ品質タスクを実行できます。 HEDDA<span></span>.IO では、参照データ プロバイダーによって提供されるか、お客様が開発または提供したクラウド ベースの参照データ サービスを使用することで、データのクレンジングを実行することもできます。| [製品ページ](https://hedda.io)<br> [Azure Marketplace]( https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oh22.hedda-io) |
-| ![Qubole](./media/sql-data-warehouse-partner-data-integration/qubole_logo.png) |**Qubole**<br>Qubole は、ユーザーによる ETL、分析、および AI/ML ワークロードの実行を可能にするクラウド ネイティブのプラットフォームを提供します。 Apache Spark、TensorFlow、Presto、Airflow、Hadoop、Hive など、さまざまな種類のオープン ソース エンジンをサポートしています。 SQL クエリ ツールをはじめ、ノートブック、そして優れたオープン ソース エンジンを活用したダッシュボードまで、エンドユーザーにとって使いやすいデータ処理用ツールを提供しています。|[製品ページ](https://www.qubole.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/qubole-inc.qubole-data-service?tab=Overview) |
+| ![Qubole](./media/sql-data-warehouse-partner-data-integration/qubole_logo.png) |**Qubole**<br>Qubole は、ユーザーによる ETL、分析、および AI/ML ワークロードの実行を可能にするクラウド ネイティブのプラットフォームを提供します。 Apache Spark、TensorFlow、Presto、Airflow、Hadoop、Hive など、さまざまな種類のオープン ソース エンジンをサポートしています。 SQL クエリ ツールをはじめ、ノートブック、そして優れたオープン ソース エンジンを活用したダッシュボードまで、エンドユーザーにとって使いやすいデータ処理用ツールを提供しています。|[製品ページ](https://www.qubole.com/company/partners/partners-microsoft-azure/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/qubole-inc.qubole-data-service?tab=Overview) |
 | ![Segment](./media/sql-data-warehouse-partner-data-integration/segment_logo.png) |**Segment**<br>Segment は、さまざまなソースに由来する顧客データを有意義に活用できるデータ管理と分析のソリューションです。 より優れた意思決定、製品、およびエクスペリエンスを作り出すために、200 を超えるツールにデータを接続できます。 Segment では、組み込みのデータ コネクターを使用して、複数のデータ ソースを変換してユーザーのウェアハウスに読み込みます。|[製品ページ](https://segment.com/)<br> |
 | ![Skyvia](./media/sql-data-warehouse-partner-data-integration/skyvia_logo.png) |**Skyvia (データ統合)**<br>Skyvia のデータ統合は、データのインポートを自動化するウィザードを提供します。 このウィザードは、さまざまな種類のソース (CRM、アプリケーション データベース、CSV ファイルなど) 間でのデータ移行を可能にします。 |[製品ページ](https://skyvia.com/)<br> |
 | ![SnapLogic](./media/sql-data-warehouse-partner-data-integration/snaplogic_logo.png) |**SnapLogic**<br>SnapLogic プラットフォームを利用すると、顧客は Azure Synapse データ ウェアハウスに出入りするデータをすばやく転送できます。 数百ものアプリケーション、サービス、および IoT シナリオを 1 つのソリューションに統合する機能を提供しています。|[製品ページ](https://www.snaplogic.com/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/snaplogic.snaplogic-elastic-integration-windows)<br> |
@@ -48,4 +48,4 @@ Azure Synapse の Synapse SQL プール機能を使用してデータ ウェア�
 
 
 ## <a name="next-steps"></a>次のステップ
-その他のパートナーの詳細については、[ビジネス インテリジェンス パートナー](sql-data-warehouse-partner-business-intelligence.md)および[データ管理パートナー](sql-data-warehouse-partner-data-management.md)に関するページをご覧ください。
+その他のパートナーの詳細については、「[ビジネス インテリジェンス パートナー](sql-data-warehouse-partner-business-intelligence.md)」、「[データ管理パートナー](sql-data-warehouse-partner-data-management.md)」、「[機械学習と AI のパートナー](sql-data-warehouse-partner-machine-learning-ai.md)」を参照してください。

@@ -4,7 +4,6 @@ description: この記事では、SQL Server IaaS Agent 拡張機能を管理し
 services: virtual-machines-windows
 documentationcenter: ''
 author: MashaMSFT
-manager: jroth
 editor: ''
 tags: azure-resource-manager
 ms.assetid: effe4e2f-35b5-490a-b5ef-b06746083da4
@@ -17,12 +16,12 @@ ms.date: 08/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 08b9076ae81c8c8c071b03167d0242c1d933e619
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 89210cda6390fd7c3cf4ca2877b8899559a41321
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84034233"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84668714"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-by-using-the-sql-server-iaas-agent-extension"></a>SQL Server IaaS Agent 拡張機能を使用して Azure 仮想マシン上で管理タスクを自動化する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -82,7 +81,7 @@ VM で SQL Server IaaS Agent 拡張機能を使用するための要件を次に
 
 
 ##  <a name="installation"></a>インストール
-SQL Server IaaS 拡張機能は、SQL Server VM を [SQL VM リソース プロバイダー](sql-vm-resource-provider-register.md)に登録するとインストールされます。 必要に応じて、以下の PowerShell コマンドを使用して、SQL Server IaaS エージェントを手動でインストールできます。 
+SQL Server VM を [SQL Server VM リソース プロバイダー](sql-vm-resource-provider-register.md)に登録すると、SQL Server IaaS 拡張機能がインストールされます。 必要に応じて、以下の PowerShell コマンドを使用して、SQL Server IaaS エージェントを手動でインストールできます。 
 
   ```powershell-interactive
     Set-AzVMSqlServerExtension -VMName "sql2017" `

@@ -1,24 +1,24 @@
 ---
 title: 顧客と委任されたリソースを表示し、管理する
-description: Azure の委任されたリソース管理を使用するサービス プロバイダーは、Azure portal の [マイ カスタマー] を使用して、自社に委任された顧客のリソースとサブスクリプションをすべて表示できます。
-ms.date: 01/22/2020
+description: Azure Lighthouse を使用するサービス プロバイダーは、Azure portal の [マイ カスタマー] にアクセスすることで、自社に委任された顧客のリソースとサブスクリプションをすべて表示できます。
+ms.date: 07/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 9d793d73190b0b35b9794cf926405ebcad07a3d1
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: f509a91d71caa3ab1ec8282f4151556f7c10d52c
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920812"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133268"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>顧客と委任されたリソースを表示し、管理する
 
-[Azure の委任されたリソース管理](../concepts/azure-delegated-resource-management.md)を使用するサービス プロバイダーは、[Azure portal](https://portal.azure.com) の **[マイ カスタマー]** ページを使用して、委任された顧客のリソースとサブスクリプションを表示できます。 ここではサービス プロバイダーと顧客に言及しますが、複数のテナントを管理している企業では、同じプロセスを使用して自社の管理エクスペリエンスを強化することができます。
+[Azure Lighthouse](../overview.md) を使用するサービス プロバイダーは、[Azure portal](https://portal.azure.com) の **[マイ カスタマー]** ページを使用して、委任された顧客のリソースとサブスクリプションを表示できます。 ここではサービス プロバイダーと顧客に言及しますが、複数のテナントを管理している企業では、同じプロセスを使用して自社の管理エクスペリエンスを強化することができます。
 
 Azure portal の **[マイ カスタマー]** ページにアクセスするには、 **[すべてのサービス]** を選択し、 **[マイ カスタマー]** を探して選択します。 Azure portal の上部付近にある検索ボックスに「マイ カスタマー」と入力して見つけることもできます。
 
-**[マイ カスタマー]** ページの先頭の **[顧客]** セクションに表示されるのは、サブスクリプションまたはリソース グループを委任した側の顧客に関する情報だけである点に留意してください。 連携しているのが他の顧客 ([クラウド ソリューション プロバイダー プログラム](/partner-center/csp-overview)などを通じた販売先など) である場合、それらの顧客に関する情報は、そのリソースを Azure の委任されたリソース管理用にオンボードしていない限り、 **[顧客]** セクションに表示されません。
+**[マイ カスタマー]** ページの先頭の **[顧客]** セクションに表示されるのは、サブスクリプションまたはリソース グループを委任した側の顧客に関する情報だけである点に留意してください。 他の顧客と連携する場合 ([クラウド ソリューション プロバイダー プログラム](/partner-center/csp-overview)を使用する場合など)、それらの顧客に関する情報は、[そのリソースを Azure Lighthouse にオンボード](onboard-customer.md)していない限り、 **[顧客]** セクションに表示されません。
 
-ページの下の方に、 **[クラウド ソリューション プロバイダー (プレビュー)]** と呼ばれる別のセクションがあり、[Microsoft 顧客契約 (MCA) に署名](/partner-center/confirm-customer-agreement)し、[Azure プランに含まれている](/partner-center/azure-plan-get-started) CSP のお客様の課金情報とリソースが表示されます。 詳しくは、「[Microsoft Partner Agreement の課金アカウントの概要](../../billing/mpa-overview.md)」をご覧ください。 そのような CSP のお客様は、Azure の委任されたリソース管理にもオンボードされているかどうかにかかわらず、このセクションに表示されることに注意してください。 同様に、CSP のお客様は、Azure の委任されたリソース管理にオンボードされるために、 **[マイ カスタマー]** の **[クラウド ソリューション プロバイダー (プレビュー)]** セクションに表示される必要はありません。
+ページの下の方に、 **[クラウド ソリューション プロバイダー (プレビュー)]** と呼ばれる別のセクションがあり、[Microsoft 顧客契約 (MCA) に署名](/partner-center/confirm-customer-agreement)し、[Azure プランに含まれている](/partner-center/azure-plan-get-started) CSP のお客様の課金情報とリソースが表示されます。 詳しくは、「[Microsoft Partner Agreement の課金アカウントの概要](../../cost-management-billing/understand/mpa-overview.md)」をご覧ください。 そのような CSP 顧客は、Azure Lighthouse にもオンボードしているかどうかにかかわらず、このセクションに表示されることに注意してください。 同様に、CSP 顧客は、Azure Lighthouse にオンボードするために、 **[マイ カスタマー]** の **[クラウド ソリューション プロバイダー (プレビュー)]** セクションに表示される必要はありません。
 
 > [!NOTE]
 > 顧客は、Azure portal の **[サービス プロバイダー]** に移動して、サービス プロバイダーの情報を表示できます。 詳細については、「[サービス プロバイダーを表示し、管理する](view-manage-service-providers.md)」を参照してください。
@@ -52,8 +52,7 @@ Azure portal の **[マイ カスタマー]** ページにアクセスするに�
 
 ### <a name="remove-delegations"></a>委任を削除する
 
-Azure の委任されたリソース管理に顧客をオンボードするときに、[マネージド サービスの登録割り当ての削除ロール](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)をユーザーに付与すると、そのユーザーは、委任の行に表示されたごみ箱アイコンを選択することで委任を削除できます。 これが行われると、サービス プロバイダーのテナント内のユーザーは、以前に委任されたリソースにアクセスできなくなります。
-
+Azure Lighthouse に顧客をオンボードするときに、[マネージド サービスの登録割り当ての削除ロール](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)をユーザーに付与した場合、そのユーザーは、委任の行に表示されるごみ箱アイコンを選択することで委任を削除できます。 これが行われると、サービス プロバイダーのテナント内のユーザーは、以前に委任されたリソースにアクセスできなくなります。
 
 ## <a name="work-in-the-context-of-a-delegated-subscription"></a>委任されたサブスクリプションのコンテキストで作業する
 

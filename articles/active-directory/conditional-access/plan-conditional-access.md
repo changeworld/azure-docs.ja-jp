@@ -4,21 +4,21 @@ description: 条件付きアクセス ポリシーを設計し、組織で効果
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 09/17/2019
+ms.topic: how-to
+ms.date: 06/09/2020
 ms.author: baselden
 author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d4ae1c9926c7ea1d18bf5c87fbed837edc2a5d5
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 83cc75c1d69ee7232edf0c21643d25027b97f088
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83641488"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85339724"
 ---
-# <a name="plan--a-conditional-access-deployment"></a>条件付きアクセスのデプロイを計画する
+# <a name="plan-a-conditional-access-deployment"></a>条件付きアクセスのデプロイを計画する
 
 アプリとリソースに関する組織のアクセス戦略を実現するために、条件付きアクセスのデプロイを計画することが重要です。
 
@@ -28,11 +28,11 @@ Azure Active Directory (Azure AD) の条件付きアクセス (CA) では、ユ�
 
 ![条件付きアクセスの概要](./media/plan-conditional-access/conditional-access-overview-how-it-works.png)
 
-Microsoft は、基本レベルのセキュリティを保証する[セキュリティの既定値群](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)と呼ばれる標準の条件付きポリシーを提供しています。 ただし、組織では、セキュリティの既定値群が提供する柔軟性よりも高い柔軟性が必要になる場合があります。 条件付きアクセスを使用すると、セキュリティの既定値群をより詳細にカスタマイズしたり、要件を満たす新しいポリシーを構成したりすることができます。
+Microsoft は、基本レベルのセキュリティを保証する[セキュリティの既定値群](../fundamentals/concept-fundamentals-security-defaults.md)と呼ばれる標準の条件付きポリシーを提供しています。 ただし、組織では、セキュリティの既定値群が提供する柔軟性よりも高い柔軟性が必要になる場合があります。 条件付きアクセスを使用すると、セキュリティの既定値群をより詳細にカスタマイズしたり、要件を満たす新しいポリシーを構成したりすることができます。
 
 ## <a name="learn"></a>学習する
 
-始める前に、[条件付きアクセス](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)のしくみと、どのような場合に使用すればよいかを理解しておく必要があります。
+始める前に、[条件付きアクセス](overview.md)のしくみと、どのような場合に使用すればよいかを理解しておく必要があります。
 
 ### <a name="benefits"></a>メリット
 
@@ -40,7 +40,7 @@ Microsoft は、基本レベルのセキュリティを保証する[セキュリ
 
 * 生産性が向上します。 MFA のようなサインイン条件でユーザーが中断されるのは、それが 1 つ以上のシグナルによって保証されている場合のみです。 CA ポリシーを使用すると、ユーザーに MFA を求めるプロンプトをいつ出すか、アクセスをいつブロックするか、ユーザーが信頼できるデバイスをいつ使用する必要があるかを制御できます。
 
-* リスクを管理します。 ポリシー条件を使用してリスク評価を自動化すると、危険なサインインがただちに特定され、修復またはブロックされます。 条件付きアクセスと [ID 保護](https://docs.microsoft.com/azure/active-directory/identity-protection/overview)を組み合わせることで、異常および疑わしいイベントが検出され、リソースへのアクセスをいつブロックまたは締め出すかを制御できます。 
+* リスクを管理します。 ポリシー条件を使用してリスク評価を自動化すると、危険なサインインがただちに特定され、修復またはブロックされます。 条件付きアクセスと [ID 保護](../identity-protection/overview-identity-protection.md)を組み合わせることで、異常および疑わしいイベントが検出され、リソースへのアクセスをいつブロックまたは締め出すかを制御できます。 
 
 * コンプライアンスとガバナンスに対応します。 条件付きアクセスを使用すると、アプリケーションへのアクセスを監査し、同意のための使用条件を提示し、コンプライアンス ポリシーに基づいてアクセスを制限できます。
 
@@ -48,7 +48,7 @@ Microsoft は、基本レベルのセキュリティを保証する[セキュリ
 
 ### <a name="license-requirements"></a>ライセンスの要件
 
-[条件付きアクセスのライセンス要件](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)に関する記事を参照してください。
+[条件付きアクセスのライセンス要件](overview.md)に関する記事を参照してください。
 
 追加機能が必要な場合、関連するライセンスが必要になることもあります。 詳細については、「[Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory/)」をご覧ください。
 
@@ -58,76 +58,73 @@ Microsoft は、基本レベルのセキュリティを保証する[セキュリ
 
 * 条件付きアクセスの管理者特権があるアカウント。
 
-* パスワードがわかっている管理者以外のユーザー (testuser など)。 ユーザーを作成する必要がある場合は、「[クイックスタート: Azure Active Directory に新しいユーザーを追加する](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory)」を参照してください。
+* パスワードがわかっている管理者以外のユーザー (testuser など)。 ユーザーを作成する必要がある場合は、「[クイックスタート: Azure Active Directory に新しいユーザーを追加する](../fundamentals/add-users-azure-active-directory.md)」を参照してください。
 
-* 管理者以外のユーザーが所属するグループ。 グループを作成する必要がある場合は、[Azure Active Directory でグループを作成し、メンバーを追加する方法](https://docs.microsoft.com/azure/active-directory/active-directory-groups-create-azure-portal)に関する記事を参照してください。
+* 管理者以外のユーザーが所属するグループ。 グループを作成する必要がある場合は、[Azure Active Directory でグループを作成し、メンバーを追加する方法](../fundamentals/active-directory-groups-create-azure-portal.md)に関する記事を参照してください。
 
 ### <a name="training-resources"></a>トレーニング リソース
 
 条件付きアクセスについて学習する際に、次のリソースが役立ちます。
 
 
-**ビデオ**
+#### <a name="videos"></a>ビデオ
+
 * [条件付きアクセスとは](https://youtu.be/ffMAw2IVO7A)
 * [条件付きアクセスをデプロイする方法](https://youtu.be/c_izIRNJNuk)
 * [CA ポリシーをエンド ユーザーにロールアウトする方法](https://youtu.be/0_Fze7Zpyvc)
 * [デバイス コントロールを使用した条件付きアクセス](https://youtu.be/NcONUf-jeS4)
 * [Azure MFA を使用した条件付きアクセス](https://youtu.be/Tbc-SU97G-w)
 * [Conditional Access in Enterprise Mobility + Security](https://youtu.be/A7IrxAH87wc) (Enterprise Mobility + Security での条件付きアクセス)
-* [Device-based Conditional Access](https://in.video.search.yahoo.com/search/video;_ylt=AwrPiBX0yHRcZiMAhFa7HAx.;_ylu=X3oDMTB0N2poMXRwBGNvbG8Dc2czBHBvcwMxBHZ0aWQDBHNlYwNwaXZz?p=conditional+access+videos+microsoft&fr2=piv-web&fr=mcafee) (デバイスベースの条件付きアクセス)
 
-**PluralSight のオンライン コース**
+
+#### <a name="online-courses-on-pluralsight"></a>PluralSight のオンライン コース
+
 * [Design Identity Management in Microsoft Azure](https://www.pluralsight.com/courses/microsoft-azure-identity-management-design) (Microsoft Azure での ID 管理の設計)
 * [Design Authentication for Microsoft Azure](https://www.pluralsight.com/courses/microsoft-azure-authentication-design) (Microsoft Azure の認証の設計)
 * [Design Authorization for Microsoft Azure](https://www.pluralsight.com/courses/microsoft-azure-authorization-design) (Microsoft Azure の承認の設計)
 
-**FAQ**
-
-[Azure AD の条件付きアクセスに関する FAQ](https://docs.microsoft.com/azure/active-directory/conditional-access/faqs)
 ## <a name="plan-the-deployment-project"></a>デプロイ プロジェクトを計画する
 
 お客様の環境でこのデプロイの戦略を決定するときは、お客様の組織のニーズを考慮してください。
+
 ### <a name="engage-the-right-stakeholders"></a>適切な関係者を関わらせる
+
 テクノロジ プロジェクトが失敗した場合、その原因は通常、影響、結果、および責任に対する想定の不一致です。 これらの落とし穴を回避するには、[適切な関係者が担当していることを確認](https://aka.ms/deploymentplans)し、またそのプロジェクトの役割が明確になっていることを確認します。
 
 ### <a name="plan-communications"></a>連絡を計画する
+
 コミュニケーションは、新しいサービスの成功に必要不可欠です。 ユーザー エクスペリエンスがどのように変わるのか、いつ変わるのか、問題が発生したときにサポートを受ける方法について、ユーザーに事前に連絡します。
 
 ### <a name="plan-a-pilot"></a>パイロットを計画する
-現在の環境で新しいポリシーを使用する準備が整ったら、それらを運用環境で段階的にデプロイします。 最初に、テスト環境で少数のユーザーにポリシーを適用し、ポリシーが想定どおりに動作するかどうかを確認します。 「[パイロットのベスト プラクティス](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans)」を参照してください。
+
+現在の環境で新しいポリシーを使用する準備が整ったら、それらを運用環境で段階的にデプロイします。 最初に、テスト環境で少数のユーザーにポリシーを適用し、ポリシーが想定どおりに動作するかどうかを確認します。 「[パイロットのベスト プラクティス](../fundamentals/active-directory-deployment-plans.md)」を参照してください。
 
 > [!NOTE]
 > 管理者に固有ではない新しいポリシーをロールアウトする場合は、すべての管理者を除外します。 これにより、管理者はポリシーにアクセスして、重大な影響がある場合にはそれを変更または取り消すことができます。 すべてのユーザーに適用する前に、必ず小規模なユーザー グループでポリシーを検証してください。
 
 ## <a name="understand-ca-policy-components"></a>CA ポリシー コンポーネントについて
-
-CA ポリシーは if-then ステートメントです。割り当てられた条件が満たされた場合、それらのアクセス制御が適用されます。 
-
-![条件付きアクセスの概要](media/plan-conditional-access/10.png)
+CA ポリシーは if-then ステートメントです。割り当てが満たされた場合、それらのアクセス制御が適用されます。
 
 CA ポリシーを構成する場合、条件は "*割り当て*" と呼ばれます。 CA ポリシーを使用すると、特定の割り当てに基づいて組織のアプリに対してアクセス制御を適用できます。
 
-![割り当てとアクセス制御 ](media/plan-conditional-access/ca-policy-access.png)
 
-
-詳細については、[CA ポリシーの構築](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policies)に関する記事を参照してください。
-
-[割り当て](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policies)によって以下を定義します。
-
-* ポリシーの影響を受ける[ユーザーとグループ](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-users-groups)
-
-* ポリシーを適用する先の[クラウド アプリまたはアクション](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-cloud-apps) 
-
-* ポリシーが適用される[条件](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions) 
-<p>
+詳細については、[CA ポリシーの構築](concept-conditional-access-policies.md)に関する記事を参照してください。
 
 ![ポリシー作成の画面](media/plan-conditional-access/create-policy.png)
 
-[アクセス制御](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policies)の設定によって、ポリシーを適用する方法が決まります。
+[割り当て](concept-conditional-access-policies.md#assignments)によって以下を定義します。
 
-* クラウド アプリへのアクセスを[許可またはブロック](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-grant)します。
+* ポリシーの影響を受ける[ユーザーとグループ](concept-conditional-access-users-groups.md)
 
-* [セッション制御](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-session)によって、特定のクラウド アプリ内でのエクスペリエンスを制限できます。
+* ポリシーを適用する先の[クラウド アプリまたはアクション](concept-conditional-access-cloud-apps.md) 
+
+* ポリシーが適用される[条件](concept-conditional-access-conditions.md)
+
+[アクセス制御](concept-conditional-access-policies.md)の設定によって、ポリシーを適用する方法が決まります。
+
+* クラウド アプリへのアクセスを[許可またはブロック](concept-conditional-access-grant.md)します。
+
+* [セッション制御](concept-conditional-access-session.md)によって、特定のクラウド アプリ内でのエクスペリエンスを制限できます。
 
 ### <a name="ask-the-right-questions-to-build-your-policies"></a>ポリシーを構築するために適切な質問を行う
 
@@ -137,19 +134,19 @@ CA ポリシーを構成する場合、条件は "*割り当て*" と呼ばれ�
 
 #### <a name="common-questions-about-assignments"></a>割り当てに関する一般的な質問
 
-[ユーザーとグループ](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-users-groups)
+[ユーザーとグループ](concept-conditional-access-users-groups.md)
 
 * どのユーザーとグループをポリシーに含めますか、またはポリシーから除外しますか?
 
 * このポリシーには、すべてのユーザー、特定のユーザー グループ、ディレクトリ ロール、または外部のユーザーを含めますか?
 
-[クラウド アプリまたはアクション](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-cloud-apps)
+[クラウド アプリまたはアクション](concept-conditional-access-cloud-apps.md)
 
 * ポリシーをどのアプリケーションに適用しますか?
 
 * どのようなユーザー アクションがこのポリシーの対象となりますか?
 
-[条件](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions)
+[条件](concept-conditional-access-conditions.md)
 
 * ポリシーに含める、またはポリシーから除外するデバイス プラットフォームはどれですか?
 
@@ -161,11 +158,11 @@ CA ポリシーを構成する場合、条件は "*割り当て*" と呼ばれ�
 
 * Azure AD 参加済みデバイスまたは Hybrid Azure AD 参加済みデバイスをポリシーから除外するポリシーはありますか? 
 
-* [ID 保護](https://docs.microsoft.com/azure/active-directory/identity-protection/overview)を使用する場合、サインイン リスク保護を組み込みますか?
+* [ID 保護](../identity-protection/concept-identity-protection-risks.md)を使用する場合、サインイン リスク保護を組み込みますか?
 
 #### <a name="common-questions-about-access-controls"></a>アクセス制御に関する一般的な質問
 
-[許可またはブロック](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-grant) 
+[許可またはブロック](concept-conditional-access-grant.md) 
 
 次の 1 つ以上を必須としてリソースへのアクセスを許可しますか?
 
@@ -179,7 +176,7 @@ CA ポリシーを構成する場合、条件は "*割り当て*" と呼ばれ�
 
 * アプリの保護ポリシーを必須にする
 
-[セッション制御](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-session)
+[セッション制御](concept-conditional-access-session.md)
 
 クラウド アプリに次のアクセス制御を適用しますか?
 
@@ -197,7 +194,8 @@ CA ポリシーを構成する場合、条件は "*割り当て*" と呼ばれ�
 
 ![アクセス トークン発行のダイアグラム](media/plan-conditional-access/CA-policy-token-issuance.png)
 
-**割り当てが不要で、CA ポリシーが適用されていない場合、既定の動作ではアクセス トークンが発行されることに特に注意してください**。 
+> [!NOTE]
+> 割り当てが不要で、CA ポリシーが適用されていない場合、既定の動作ではアクセス トークンが発行されます。 
 
 たとえば、次のようなポリシーを考えてみます。
 
@@ -218,11 +216,11 @@ CA ポリシー条件によってアクセス制御がトリガーされない�
 
 ### <a name="minimize-the-number-of-ca-policies"></a>CA ポリシーの数を最小にする
 
-アプリごとにポリシーを作成するのは効率的ではなく、管理が困難になります。 条件付きアクセスでは、ユーザーごとに最初の 195 個のポリシーのみが適用されます。 アプリを分析し、同じユーザーに対して同じリソース要件があるアプリケーションにそれらをグループ化することをお勧めします。 たとえば、すべての Office 365 アプリまたはすべての HR アプリで同じユーザーに対して同じ要件がある場合、1 つのポリシーを作成し、それが適用されるすべてのアプリを含めます。 
+アプリごとにポリシーを作成するのは効率的ではなく、管理が困難になります。 条件付きアクセスでは、ユーザーごとに最初の 195 個のポリシーのみが適用されます。 アプリを分析し、同じユーザーに対して同じリソース要件があるアプリケーションにそれらをグループ化することをお勧めします。 たとえば、すべての Microsoft 365 アプリまたはすべての HR アプリで同じユーザーに対して同じ要件がある場合、1 つのポリシーを作成し、それが適用されるすべてのアプリを含めます。 
 
 ### <a name="set-up-emergency-access-accounts"></a>緊急アクセス用アカウントを設定する
 
-ポリシーを誤って構成した場合、それによって Azure portal から組織がロックアウトされる可能性があります。 組織で[緊急アクセス用アカウント](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)を 2 つ以上作成することで、誤って管理者がロックアウトされた場合の影響を軽減します。
+ポリシーを誤って構成した場合、それによって Azure portal から組織がロックアウトされる可能性があります。 組織で[緊急アクセス用アカウント](../users-groups-roles/directory-emergency-access.md)を 2 つ以上作成することで、誤って管理者がロックアウトされた場合の影響を軽減します。
 
 * ポリシー管理専用のユーザー アカウントを作成し、すべてのポリシーから除外します。
 
@@ -242,13 +240,13 @@ CA ポリシー条件によってアクセス制御がトリガーされない�
 * MFA の要求
 * サインイン リスク ポリシーの実装
 
-[レポート専用モード](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-report-only)を使用すると、管理者は、環境で CA ポリシーを有効にする前に、その影響を評価できます。
+[レポート専用モード](concept-conditional-access-report-only.md)を使用すると、管理者は、環境で CA ポリシーを有効にする前に、その影響を評価できます。
 
-[CA ポリシーでレポート専用モードを構成する](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-report-only)方法について確認してください。
+[CA ポリシーでレポート専用モードを構成する](howto-conditional-access-report-only.md)方法について確認してください。
 
 ### <a name="plan-for-disruption"></a>中断に対する計画を立てる
 
-MFA や 1 つのネットワークの場所などの単一のアクセス制御に依存して IT システムをセキュリティ保護している場合、その単一のアクセス制御が使用不能になった場合や誤って構成された場合には、アクセス障害が発生する可能性があります。 予期しない中断が発生した場合のロックアウトのリスクを軽減するために、組織に導入する[戦略を計画](https://docs.microsoft.com/azure/active-directory/authentication/concept-resilient-controls)します。
+MFA や 1 つのネットワークの場所などの単一のアクセス制御に依存して IT システムをセキュリティ保護している場合、その単一のアクセス制御が使用不能になった場合や誤って構成された場合には、アクセス障害が発生する可能性があります。 予期しない中断が発生した場合のロックアウトのリスクを軽減するために、組織に導入する[戦略を計画](../authentication/concept-resilient-controls.md)します。
 
 ### <a name="set-naming-standards-for-your-policies"></a>ポリシーの名前付け基準を設定する
 
@@ -274,7 +272,7 @@ MFA や 1 つのネットワークの場所などの単一のアクセス制御�
 
 #### <a name="naming-standards-for-emergency-access-controls"></a>緊急アクセス制御の名前付け基準
 
-アクティブ ポリシーに加えて、[機能停止や緊急状況のシナリオでセカンダリの回復性があるアクセス制御](https://docs.microsoft.com/azure/active-directory/authentication/concept-resilient-controls)として機能する停止時のポリシーを実装します。 コンティンジェンシー ポリシーの命名規則には、以下を含める必要があります。
+アクティブ ポリシーに加えて、[機能停止や緊急状況のシナリオでセカンダリの回復性があるアクセス制御](../authentication/concept-resilient-controls.md)として機能する停止時のポリシーを実装します。 コンティンジェンシー ポリシーの命名規則には、以下を含める必要があります。
 * 他のポリシーから名前が目立つようにするため、先頭に ENABLE IN EMERGENCY (緊急時に有効化)。
 
 * 適用する必要のある中断の名前。
@@ -289,55 +287,61 @@ EM01 - ENABLE IN EMERGENCY:MFA Disruption [1/4] - Exchange SharePoint:Require hy
 
 ### <a name="exclude-countries-from-which-you-never-expect-a-sign-in"></a>サインイン元の国として想定されない国を除外する
 
-Azure Active Directory では、[ネームド ロケーション](https://docs.microsoft.com/azure/active-directory/conditional-access/location-condition)を作成できます。 サインイン元の国として想定されないすべての国を含むネームド ロケーションを作成します。 次に、そのネームド ロケーションからのサインインをブロックする、すべてのアプリ用のポリシーを作成します。 **管理者はこのポリシーから必ず除外してください**。
+Azure Active Directory では、[ネームド ロケーション](location-condition.md)を作成できます。 サインイン元の国として想定されないすべての国を含むネームド ロケーションを作成します。 次に、そのネームド ロケーションからのサインインをブロックする、すべてのアプリ用のポリシーを作成します。 **管理者はこのポリシーから必ず除外してください**。
 
 ### <a name="plan-your-policy-deployment"></a>ポリシーのデプロイを計画する
 
 環境用の新しいポリシーの準備ができたら、望ましくない結果を避けるために、各ポリシーをリリース前に必ず確認してください。 ポリシーの適用方法と問題の回避方法に関する重要な情報について、次のドキュメントを参照してください。
 
-* [知っておくべきこと](https://docs.microsoft.com/azure/active-directory/conditional-access/best-practices)
+* [知っておくべきこと](best-practices.md)
 
-* [避けるべきこと](https://docs.microsoft.com/azure/active-directory/conditional-access/best-practices)
+* [避けるべきこと](best-practices.md)
 
 ## <a name="common-policies"></a>一般的なポリシー
 
 CA ポリシー ソリューションを計画するときは、次の結果を達成するためにポリシーを作成する必要があるかどうかを評価します。
 
+* [MFA の要求](#require-mfa)
+* [侵害された可能性があるアカウントに応答する](#respond-to-potentially-compromised-accounts)
+* [マネージド デバイスを必須にする](#require-managed-devices)
+* [承認済みクライアント アプリケーションを必須にする](#require-approved-client-apps)
+* [アクセスをブロックする](#block-access)
+
 ### <a name="require-mfa"></a>Require MFA (MFA が必須)
 
 MFA アクセスを必須とする一般的なユース ケース:
 
-* [管理者による](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-admin-mfa)
+* [管理者による](howto-conditional-access-policy-admin-mfa.md)
 
-* [特定のアプリに対する](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-mfa)
+* [特定のアプリに対する](app-based-mfa.md)
 
-* [すべてのユーザーに対して](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-all-users-mfa)
+* [すべてのユーザーに対して](howto-conditional-access-policy-all-users-mfa.md)
 
-* [信頼していないネットワークの場所から](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)
+* [信頼していないネットワークの場所から](untrusted-networks.md)
 
-* [Azure の管理のため](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-azure-management)
+* [Azure の管理のため](howto-conditional-access-policy-azure-management.md)
 
 ### <a name="respond-to-potentially-compromised-accounts"></a>侵害された可能性があるアカウントへの応答
 
 CA ポリシーを使用すると、侵害された可能性がある ID からのサインインに対する自動応答を実装できます。 アカウントが侵害された可能性は、リスク レベルの形で表現されます。 ID 保護によって計算される 2 つのリスク レベルがあります。サインイン リスクとユーザー リスクです。 次の 3 つの既定のポリシーを有効にできます。
 
-* [すべてのユーザーが MFA に登録することを必須にする](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-risk)
+* [すべてのユーザーが MFA に登録することを必須にする](howto-conditional-access-policy-risk.md)
 
-* [リスクの高いユーザーのパスワードの変更を必須にする](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-risk)
+* [リスクの高いユーザーのパスワードの変更を必須にする](howto-conditional-access-policy-risk.md)
 
-* [サインインのリスクが中以上のユーザーに対して MFA を必須にする](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-risk)
+* [サインインのリスクが中以上のユーザーに対して MFA を必須にする](howto-conditional-access-policy-risk.md)
 
 ### <a name="require-managed-devices"></a>マネージド デバイスを必須にする
 
-クラウド リソースへのアクセスでサポートされるデバイスの急増は、ユーザーの生産性の向上に役立ちます。 環境内の特定のリソースに、保護レベルが不明なデバイスがアクセスするのは望ましくない場合があります。 これらのリソースについては、[ユーザーがマネージド デバイスを使用した場合に限りアクセスできるようにする必要があります](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)。
+クラウド リソースへのアクセスでサポートされるデバイスの急増は、ユーザーの生産性の向上に役立ちます。 環境内の特定のリソースに、保護レベルが不明なデバイスがアクセスするのは望ましくない場合があります。 これらのリソースについては、[ユーザーがマネージド デバイスを使用した場合に限りアクセスできるようにする必要があります](require-managed-devices.md)。
 
 ### <a name="require-approved-client-apps"></a>承認済みクライアント アプリを必須にする
 
-従業員は個人的な作業と業務上の作業のどちらにもモバイル デバイスを使用します。 BYOD のシナリオでは、デバイス全体を管理するか、デバイスのデータのみを管理するかを決定する必要があります。 データとアクセスのみを管理する場合は、企業のデータを保護できる[承認済みクラウド アプリを必須にする](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)ことができます。 たとえば、電子メールには、汎用メール プログラムではなく、Outlook モバイルからのみアクセスすることを必須にできます。
+従業員は個人的な作業と業務上の作業のどちらにもモバイル デバイスを使用します。 BYOD のシナリオでは、デバイス全体を管理するか、デバイスのデータのみを管理するかを決定する必要があります。 データとアクセスのみを管理する場合は、企業のデータを保護できる[承認済みクラウド アプリを必須にする](app-based-conditional-access.md)ことができます。 たとえば、電子メールには、汎用メール プログラムではなく、Outlook モバイルからのみアクセスすることを必須にできます。
 
 ### <a name="block-access"></a>アクセスのブロック
 
-[すべてのアクセスをブロック](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-block-access)するオプションは強力です。 これは、たとえば、アプリを Azure AD に移行しているが、まだだれもそれにサインインする準備ができていない場合に使用できます。 アクセスをブロックする: 
+[すべてのアクセスをブロック](howto-conditional-access-policy-block-access.md)するオプションは強力です。 これは、たとえば、アプリを Azure AD に移行しているが、まだだれもそれにサインインする準備ができていない場合に使用できます。 アクセスをブロックする: 
 
 * ユーザーの他のすべての割り当てをオーバーライドする
 
@@ -348,9 +352,9 @@ CA ポリシーを使用すると、侵害された可能性がある ID から�
 
 ユーザーのアクセスをブロックできる他の一般的なシナリオを次に示します。
 
-* クラウド アプリへの[特定のネットワークの場所からのアクセスをブロックする](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-location)。 このポリシーを使用すると、トラフィックの発生元として不適切であると認識している特定の国をブロックできます。
+* クラウド アプリへの[特定のネットワークの場所からのアクセスをブロックする](howto-conditional-access-policy-location.md)。 このポリシーを使用すると、トラフィックの発生元として不適切であると認識している特定の国をブロックできます。
 
-* Azure AD は、レガシ認証をサポートしています。 ただし、レガシ認証では MFA はサポートされておらず、多くの環境では、ID セキュリティに対処するために MFA が必要です。 この場合、[レガシ認証を使用するアプリがテナント リソースにアクセスしないようにブロック](https://docs.microsoft.com/azure/active-directory/conditional-access/block-legacy-authentication)できます。
+* Azure AD は、レガシ認証をサポートしています。 ただし、レガシ認証では MFA はサポートされておらず、多くの環境では、ID セキュリティに対処するために MFA が必要です。 この場合、[レガシ認証を使用するアプリがテナント リソースにアクセスしないようにブロック](block-legacy-authentication.md)できます。
 
 ## <a name="build-and-test-policies"></a>ポリシーをビルドしてテストする
 
@@ -378,16 +382,14 @@ CA ポリシーを使用すると、侵害された可能性がある ID から�
 
 | ポリシー| シナリオ| 予測される結果 |
 | - | - | - |
-| [社外ネットワークからの利用は MFA を要求する](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)| 承認済みユーザーが信頼できる場所または社内にいるときにアプリにサインインする| ユーザーに MFA は求められません |
-| [社外ネットワークからの利用は MFA を要求する](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)| 承認済みユーザーが信頼できる場所または社内にいないときにアプリにサインインする| ユーザーには MFA が求められ、正常にサインインできます |
-| [(管理者に) MFA を要求する](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-baseline-protect-administrators)| 全体管理者がアプリにサインインする| 管理者に MFA が求められます |
-| [リスクの高いサインイン](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)| ユーザーが [Tor ブラウザー](https://microsoft.sharepoint.com/azure/active-directory/active-directory-identityprotection-playbook)を使用してアプリにサインインする| 管理者に MFA が求められます |
-| [デバイス管理](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)| 承認済みユーザーが承認済みデバイスからサインインしようとする| アクセスが許可されます |
-| [デバイス管理](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)| 承認済みユーザーが承認されていないデバイスからサインインしようとする| アクセスはブロックされます |
+| [社外ネットワークからの利用は MFA を要求する](untrusted-networks.md)| 承認済みユーザーが信頼できる場所または社内にいるときにアプリにサインインする| ユーザーに MFA は求められません |
+| [社外ネットワークからの利用は MFA を要求する](untrusted-networks.md)| 承認済みユーザーが信頼できる場所または社内にいないときにアプリにサインインする| ユーザーには MFA が求められ、正常にサインインできます |
+| [(管理者に) MFA を要求する](howto-baseline-protect-administrators.md)| 全体管理者がアプリにサインインする| 管理者に MFA が求められます |
+| [リスクの高いサインイン](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)| ユーザーが未承認のブラウザーを使用してアプリにサインインする| 管理者に MFA が求められます |
+| [デバイス管理](require-managed-devices.md)| 承認済みユーザーが承認済みデバイスからサインインしようとする| アクセスが許可されます |
+| [デバイス管理](require-managed-devices.md)| 承認済みユーザーが承認されていないデバイスからサインインしようとする| アクセスはブロックされます |
 | [危険なユーザーのパスワード変更](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)| 承認済みユーザーが侵害された資格情報を使用してサインインしようとする (高リスクのサインイン)| ユーザーはパスワードを変更するよう求められるか、ポリシーに基づいてアクセスがブロックされます |
 
-
- 
 
 ### <a name="configure-the-test-policy"></a>テスト ポリシーを構成する
 
@@ -401,7 +403,7 @@ CA ポリシーを作成する方法について詳しくは、次の例を参�
 
 ### <a name="enable-the-policy-in-report-only-mode"></a>レポート専用モードでポリシーを有効にする
 
-ポリシーの影響を評価するために、最初に[レポート専用モード](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-report-only)でポリシーを有効にします。 レポート専用のポリシーは、サインイン時に評価されますが、許可制御とセッション制御は適用されません。 レポート専用モードでポリシーを保存すると、サインイン ログでリアルタイム サインインへの影響を確認できます。 サインイン ログから、イベントを選択し、[レポート専用] タブに移動して、各レポート専用ポリシーの結果を確認します。
+ポリシーの影響を評価するために、最初に[レポート専用モード](concept-conditional-access-report-only.md)でポリシーを有効にします。 レポート専用のポリシーは、サインイン時に評価されますが、許可制御とセッション制御は適用されません。 レポート専用モードでポリシーを保存すると、サインイン ログでリアルタイム サインインへの影響を確認できます。 サインイン ログから、イベントを選択し、[レポート専用] タブに移動して、各レポート専用ポリシーの結果を確認します。
 
 
 ![レポート専用モード ](media/plan-conditional-access/report-only-mode.png)
@@ -410,11 +412,11 @@ CA ポリシーを作成する方法について詳しくは、次の例を参�
 
 ### <a name="understand-the-impact-of-your-policies-using-the-insights-and-reporting-workbook"></a>分析情報とレポートのブックを使用してポリシーの影響を理解する
 
-分析情報とレポートのブックで、条件付きアクセス ポリシーの全体的な影響を確認できます。 ブックにアクセスするには、Azure Monitor のサブスクリプションが必要であり、[サインイン ログを Log Analytics ワークスペースにストリーミングする](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)必要があります。 
+分析情報とレポートのブックで、条件付きアクセス ポリシーの全体的な影響を確認できます。 ブックにアクセスするには、Azure Monitor のサブスクリプションが必要であり、[サインイン ログを Log Analytics ワークスペースにストリーミングする](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)必要があります。 
 
 ### <a name="simulate-sign-ins-using-the-what-if-tool"></a>what-if ツールを使用してサインインをシミュレートする
 
-条件付きアクセス ポリシーを検証するもう 1 つの方法は、[what-if ツール](https://docs.microsoft.com/azure/active-directory/conditional-access/troubleshoot-conditional-access-what-if)を使用する方法です。これは、仮想的な状況でサインインするユーザーにどのポリシーが適用されるかをシミュレートします。 テストするサインイン属性 (ユーザー、アプリケーション、デバイス プラットフォーム、場所など) を選択し、どのポリシーが適用されるかを確認します。
+条件付きアクセス ポリシーを検証するもう 1 つの方法は、[what-if ツール](troubleshoot-conditional-access-what-if.md)を使用する方法です。これは、仮想的な状況でサインインするユーザーにどのポリシーが適用されるかをシミュレートします。 テストするサインイン属性 (ユーザー、アプリケーション、デバイス プラットフォーム、場所など) を選択し、どのポリシーが適用されるかを確認します。
 
 > [!NOTE] 
 > シミュレートされた実行によって、CA ポリシーが及ぼす影響を把握できますが、これは実際のテスト実行に代わるものではありません。
@@ -451,19 +453,19 @@ CA ポリシーを作成する方法について詳しくは、次の例を参�
 
 ### <a name="named-locations"></a>ネームド ロケーション
 
-CA ポリシーの場所の条件によって、アクセス制御設定をユーザーのネットワークの場所に関連付けることができます。 [ネームド ロケーション](https://docs.microsoft.com/azure/active-directory/conditional-access/location-condition)を使用すると、IP アドレス範囲または国や地域の論理グループを作成できます。
+CA ポリシーの場所の条件によって、アクセス制御設定をユーザーのネットワークの場所に関連付けることができます。 [ネームド ロケーション](location-condition.md)を使用すると、IP アドレス範囲または国や地域の論理グループを作成できます。
 
 ### <a name="custom-controls"></a>カスタム コントロール
 
-[カスタム コントロール](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)によって、Azure AD の外部での認証要件を満たすために、ユーザーは互換性のあるサービスにリダイレクトされます。 このコントロールを満たすために、ユーザーのブラウザーは外部サービスにリダイレクトされ、すべての必要な認証を実行してから、元の Azure AD にリダイレクトされます。 Azure AD は応答を検証し、ユーザーが正常に認証または検証された場合には、そのユーザーは条件付きアクセス フロー内にとどまります。
+[カスタム コントロール](controls.md)によって、Azure AD の外部での認証要件を満たすために、ユーザーは互換性のあるサービスにリダイレクトされます。 このコントロールを満たすために、ユーザーのブラウザーは外部サービスにリダイレクトされ、すべての必要な認証を実行してから、元の Azure AD にリダイレクトされます。 Azure AD は応答を検証し、ユーザーが正常に認証または検証された場合には、そのユーザーは条件付きアクセス フロー内にとどまります。
 
 ### <a name="terms-of-use"></a>使用条件
 
-環境内の特定のクラウド アプリへのアクセス前に、使用条件 (ToU) を受け入れてもらうことでユーザーから同意を得ることができます。 この[使用条件を作成するためのクイック スタート](https://docs.microsoft.com/azure/active-directory/conditional-access/require-tou)に関する記事に従ってください。
+環境内の特定のクラウド アプリへのアクセス前に、使用条件 (ToU) を受け入れてもらうことでユーザーから同意を得ることができます。 この[使用条件を作成するためのクイック スタート](require-tou.md)に関する記事に従ってください。
 
 ### <a name="classic-policies"></a>クラシック ポリシー
 
-[Azure portal](https://portal.azure.com/) の [Azure Active Directory] > [セキュリティ] > [条件付きアクセス] で CA ポリシーを見つけることができます。 このページを使用して作成されていない古い CA ポリシーが、組織に存在している場合もあります。 これらのポリシーはクラシック ポリシーと呼ばれます。 [Azure portal へのこれらのクラシック ポリシーの移行を検討すること](https://docs.microsoft.com/azure/active-directory/conditional-access/best-practices)をお勧めします。
+[Azure portal](https://portal.azure.com/) の [Azure Active Directory] > [セキュリティ] > [条件付きアクセス] で CA ポリシーを見つけることができます。 このページを使用して作成されていない古い CA ポリシーが、組織に存在している場合もあります。 これらのポリシーはクラシック ポリシーと呼ばれます。 [Azure portal へのこれらのクラシック ポリシーの移行を検討すること](best-practices.md)をお勧めします。
 
 ## <a name="troubleshoot-conditional-access"></a>条件付きアクセスのトラブルシューティングを行う
 
@@ -489,14 +491,14 @@ CA ポリシーの場所の条件によって、アクセス制御設定をユ�
 
 情報を収集した後、次のリソースを参照してください。
 
-* [条件付きアクセスでのサインインの問題](https://docs.microsoft.com/azure/active-directory/conditional-access/troubleshoot-conditional-access) – エラー メッセージと Azure AD のサインイン ログを使用して、条件付きアクセスに関連する予期しないサインイン結果について理解してください。
+* [条件付きアクセスでのサインインの問題](troubleshoot-conditional-access.md) – エラー メッセージと Azure AD のサインイン ログを使用して、条件付きアクセスに関連する予期しないサインイン結果について理解してください。
 
-* [What-If ツールの使用](https://docs.microsoft.com/azure/active-directory/conditional-access/troubleshoot-conditional-access-what-if) - ポリシーが特定の状況でユーザーに適用された理由や適用されなかった理由、ポリシーが既知の状態で適用されるかどうかについて理解してください。
+* [What-If ツールの使用](troubleshoot-conditional-access-what-if.md) - ポリシーが特定の状況でユーザーに適用された理由や適用されなかった理由、ポリシーが既知の状態で適用されるかどうかについて理解してください。
 
 ## <a name="next-steps"></a>次の手順
 
-[多要素認証の詳細を確認する](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks)
+[多要素認証の詳細を確認する](../authentication/concept-mfa-howitworks.md)
 
-[ID 保護の詳細を確認する](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection)
+[ID 保護の詳細を確認する](../identity-protection/overview-identity-protection.md)
 
-[Microsoft Graph API を使用して CA ポリシーを管理する](https://docs.microsoft.com/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta)
+[Microsoft Graph API を使用して CA ポリシーを管理する](https://docs.microsoft.com/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md)

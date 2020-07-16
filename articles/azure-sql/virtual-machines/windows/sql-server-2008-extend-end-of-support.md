@@ -4,7 +4,6 @@ description: Azure に SQL Server インスタンスを移行するか、オン�
 services: virtual-machines-windows
 documentationcenter: ''
 author: MashaMSFT
-manager: craigg
 tags: azure-service-management
 ms.service: virtual-machines-sql
 ms.topic: conceptual
@@ -14,12 +13,12 @@ ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 62ed33b8344d0d5a79cd956274c5f7ddd62a714a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 48288ed3765fa939fc56a4469f64070315c4c6aa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84034253"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84668748"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Azure での SQL Server 2008 および SQL Server 2008 R2 のサポート延長
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -61,7 +60,7 @@ SQL Server には、回復を保証するために、アプリ整合性のある
 
 ### <a name="database-migration-service"></a>Database Migration Service
 
-[Database Migration Service](/azure/dms/dms-overview) は、お客様が SQL Server を 2012 バージョン以降にアップグレードすることでオンプレミスから Azure VM に移行する場合のオプションです。
+[Azure Database Migration Service](/azure/dms/dms-overview) は、お客様が SQL Server を 2012 バージョン以降にアップグレードすることでオンプレミスから Azure VM に移行する場合のオプションです。
 
 ## <a name="disaster-recovery"></a>障害復旧
 
@@ -74,7 +73,7 @@ Azure VM 上の EOS SQL Server のディザスター リカバリー ソリュ�
 ## <a name="security-patching"></a>セキュリティ修正
 SQL Server VM の延長セキュリティ更新プログラムは、SQL Server VM が SQL VM [リソースプロバイダー](sql-vm-resource-provider-register.md)に登録された後、Microsoft Update チャンネルを通じて配信されます。 パッチは、手動または自動でダウンロードできます。
 
-*[自動修正]* は、既定で有効になります。 自動修正を有効にすると、Azure は SQL Server とオペレーティング システムに修正プログラムを自動的に適用します。 SQL Server IaaS 拡張機能がインストールされている場合は、メンテナンス期間の曜日、時刻、および期間を指定できます。 Azure は、修正プログラムの適用をこのメンテナンス ウィンドウで実行します。 メンテナンス ウィンドウのスケジュールでは、VM のロケールが時刻に使用されます。  詳細については、[Azure Virtual Machines での SQL Server の自動修正](automated-patching.md)に関するページを参照してください。
+*[自動修正]* は、既定で有効になります。 自動修正を有効にすると、Azure は SQL Server とオペレーティング システムに修正プログラムを自動的に適用します。 SQL Server IaaS 拡張機能がインストールされている場合は、メンテナンス期間の曜日、時刻、および期間を指定できます。 Azure は、修正プログラムの適用をこのメンテナンス ウィンドウで実行します。 メンテナンス ウィンドウのスケジュールでは、VM のロケールが時刻に使用されます。 詳細については、[Azure Virtual Machines での SQL Server の自動修正](automated-patching.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

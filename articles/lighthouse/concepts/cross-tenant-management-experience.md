@@ -3,16 +3,16 @@ title: テナント間の管理エクスペリエンス
 description: Azure の委任されたリソース管理によって、テナント間の管理エクスペリエンスが可能になります。
 ms.date: 05/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: ad8fc7452a704a4a030e7a6eb45a5ba397912ef1
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: 5e8a678530d9cf334d89091e7f23191ae8613737
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402374"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135478"
 ---
 # <a name="cross-tenant-management-experiences"></a>テナント間の管理エクスペリエンス
 
-サービス プロバイダーは、[Azure portal](https://portal.azure.com) 上で自分のテナント内から複数の顧客の Azure リソースを管理するために、[Azure の委任されたリソース管理](../concepts/azure-delegated-resource-management.md)を使用できます。 ほとんどのタスクとサービスは、委任された Azure リソースに対して、マネージド テナントをまたいで実行できます。 この記事では、Azure の委任されたリソース管理が有効に機能する可能性がある強化されたシナリオの一部について説明します。
+サービス プロバイダーは、[Azure portal](https://portal.azure.com) 上で自分のテナント内から複数の顧客のリソースを管理するために、[Azure Lighthouse](../overview.md) を使用できます。 [Azure の委任されたリソース管理](../concepts/azure-delegated-resource-management.md)を使用して、多くのタスクとサービスを、委任された Azure リソースに対して複数のマネージド テナントにわたって実行できます。
 
 > [!NOTE]
 > Azure の委任されたリソース管理はまた、[独自の Azure AD テナントが複数存在する企業内で](enterprise.md)使用して、テナントにまたがる管理を簡素化することもできます。
@@ -23,9 +23,9 @@ Azure Active Directory (Azure AD) テナントは組織を表したものです�
 
 通常、顧客の Azure リソースを管理するために、サービス プロバイダーは、その顧客のテナントに関連付けられたアカウントを使用して Azure portal にサインインする必要があります。その際、顧客のテナントの管理者は、そのサービス プロバイダー用にユーザー アカウントを作成して管理する必要があります。
 
-Azure の委任されたリソース管理により、オンボード プロセスでは、顧客のテナント内のサブスクリプション、リソース グループ、およびリソースにアクセスして管理できるようにする、サービス プロバイダーのテナント内のユーザーを指定します。 これらのユーザーは、その後、自分の資格情報を使用して Azure portal にサインインできます。 Azure portal 内では、彼らは、アクセスできるすべての顧客に属するリソースを管理できます。 これを行うには、Azure portal の [[マイ カスタマー]](../how-to/view-manage-customers.md) ページにアクセスするか、Azure portal または API を使用してその顧客のサブスクリプションのコンテキスト内で直接作業します。
+Azure Lighthouse により、オンボード プロセスでは、顧客のテナント内のサブスクリプション、リソース グループ、およびリソースにアクセスして管理できるようにする、サービス プロバイダーのテナント内のユーザーを指定します。 これらのユーザーは、その後、自分の資格情報を使用して Azure portal にサインインできます。 Azure portal 内では、彼らは、アクセスできるすべての顧客に属するリソースを管理できます。 これを行うには、Azure portal の [[マイ カスタマー]](../how-to/view-manage-customers.md) ページにアクセスするか、Azure portal または API を使用してその顧客のサブスクリプションのコンテキスト内で直接作業します。
 
-Azure の委任されたリソース管理を使用すると、テナントによって異なるアカウントにサインインしなくても、複数の顧客のリソースをより柔軟に管理できます。 たとえば、サービス プロバイダーには、責任とアクセス レベルが異なる 2 人の顧客が存在するとします。 Azure の委任されたリソース管理を使用すると、許可されているユーザーは、サービス プロバイダーのテナントにサインインしてこれらのリソースにアクセスすることができます。
+Azure Lighthouse を使用すると、テナントによって異なるアカウントにサインインしなくても、複数の顧客のリソースをより柔軟に管理できます。 たとえば、サービス プロバイダーには、責任とアクセス レベルが異なる 2 人の顧客が存在するとします。 Azure Lighthouse を使用すると、許可されているユーザーは、サービス プロバイダーのテナントにサインインしてこれらのリソースにアクセスすることができます。
 
 ![1 つのサービス プロバイダーのテナントを通じて管理される顧客のリソース](../media/azure-delegated-resource-management-service-provider-tenant.jpg)
 
@@ -33,22 +33,22 @@ Azure の委任されたリソース管理を使用すると、テナントに�
 
 委任されたリソースに対して管理タスクをポータル上で直接実行するか、API および管理ツール (Azure CLI や Azure PowerShell など) を使用して実行することができます。 既存の API はすべて、委任されたリソースを操作するときに使用できます。ただし、テナント間の管理において機能がサポートされており、ユーザーが適切なアクセス許可を持っている必要があります。
 
-Azure PowerShell の [Get-AzSubscription コマンドレット](https://docs.microsoft.com/powershell/module/Az.Accounts/Get-AzSubscription?view=azps-3.5.0)では、返されたサブスクリプションがサービス プロバイダーのテナントまたは管理対象の顧客のテナントに属しているかどうかを識別できるように、各サブスクリプションの **tenantID** が表示されます。
+Azure PowerShell の [Get-AzSubscription コマンドレット](/powershell/module/Az.Accounts/Get-AzSubscription?view=azps-3.5.0)では、返されたサブスクリプションがサービス プロバイダーのテナントまたは管理対象の顧客のテナントに属しているかどうかを識別できるように、各サブスクリプションの **tenantID** が表示されます。
 
-同様に、[az account list](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list) などの Azure CLI コマンドでは、**homeTenantId** 属性と **managedByTenants** 属性が表示されます。
+同様に、[az account list](/cli/azure/account?view=azure-cli-latest#az-account-list) などの Azure CLI コマンドでは、**homeTenantId** 属性と **managedByTenants** 属性が表示されます。
 
 > [!TIP]
 > Azure CLI の使用時にこれらの値が表示されない場合は、`az account clear` を実行してから `az login --identity` を実行して、キャッシュをクリアしてみてください。
 
-また、Azure の委任されたリソース管理タスクの実行に固有の API も用意されています。 詳細については、**リファレンス**を参照してください。
+また、Azure Lighthouse タスクの実行に固有の API も用意されています。 詳細については、**リファレンス**を参照してください。
 
 ## <a name="enhanced-services-and-scenarios"></a>強化されたサービスとシナリオ
 
-ほとんどのタスクとサービスは、委任されたリソースに対して、マネージド テナントをまたいで実行できます。 テナント間の管理を有効にできる重要なシナリオの一部を以下に示します。
+ほとんどのタスクとサービスは、委任されたリソースに対して、マネージド テナントをまたいで実行できます。 テナント間の管理が特に効果的な重要なシナリオの一部を以下に示します。
 
 [サーバー向け Azure Arc (プレビュー)](../../azure-arc/servers/overview.md):
 
-- Azure 内の委任されたサブスクリプションまたはリソース グループに [Azure外の Windows Server または Linux コンピューターを接続する](../../azure-arc/servers/quickstart-onboard-portal.md)
+- Azure 内の委任されたサブスクリプションまたはリソース グループに [Azure外の Windows Server または Linux コンピューターを接続する](../../azure-arc/servers/onboard-portal.md)
 - Azure Policy やタグ付けなどの Azure コンストラクトを使用して接続されたコンピューターを管理する
 
 [Azure Automation](../../automation/index.yml):
@@ -60,6 +60,10 @@ Azure PowerShell の [Get-AzSubscription コマンドレット](https://docs.mic
 - 顧客のテナントにある顧客データをバックアップおよび復元する
 - [バックアップ エクスプローラー](../../backup/monitor-azure-backup-with-backup-explorer.md)を使用すると、バックアップ項目 (まだバックアップ対象として構成されていない Azure リソースを含む) の運用情報と、委任されたサブスクリプションの監視情報 (ジョブとアラート) を表示できます。 バックアップ エクスプローラーは、現在、Azure VM データに対してのみ使用できます。
 - 委任されたサブスクリプション全体で[バックアップ レポート](../../backup/configure-reports.md)を使用して、過去の傾向を追跡し、バックアップ ストレージの使用量を分析し、バックアップと復元を監査します。
+
+[Azure Cost Management および Billing](../../cost-management-billing/index.yml):
+
+- CSP パートナーは、管理しているテナントから、Azure プランに含まれるお客様に対する、(購入を含めずに) 税引き前消費コストを表示、管理、分析できます。 コストは、小売価格と、お客様のサブスクリプションに対してパートナーが持っている Azure RBAC アクセスに基づきます。
 
 [Azure Kubernetes Service (AKS)](../../aks/index.yml):
 
@@ -143,7 +147,6 @@ Azure PowerShell の [Get-AzSubscription コマンドレット](https://docs.mic
 - ロールの割り当てでは、ロールベースのアクセス制御 (RBAC) の[組み込みロール](../../role-based-access-control/built-in-roles.md)を使用する必要があります。 現在、組み込みロールはすべて、Azure の委任されたリソース管理によってサポートされています。ただし、所有者または [DataActions](../../role-based-access-control/role-definitions.md#dataactions) アクセス許可を持つ組み込みロールは除きます。 [マネージド ID へのロールの割り当て](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)において、ユーザー アクセス管理者ロールは、限定された用途のみに対してサポートされています。  カスタム ロールと[従来のサブスクリプション管理者ロール](../../role-based-access-control/classic-administrators.md)はサポートされていません。
 - Azure Databricks を使用するサブスクリプションをオンボードすることはできますが、現時点では、管理テナントのユーザーは、委任されたサブスクリプションで Azure Databricks ワークスペースを起動することはできません。
 - リソース ロックがある Azure の委任されたリソース管理のサブスクリプションとリソース グループをオンボードすることはできますが、このようなロックがあっても、管理テナントのユーザーによるアクションの実行は妨げられません。 Azure マネージド アプリケーションまたは Azure Blueprints (システム割り当ての拒否割り当て) によって作成されたものなど、システムの管理対象リソースを保護する[拒否割り当て](../../role-based-access-control/deny-assignments.md)がある場合、管理テナントのユーザーはそれらのリソースを操作できません。ただし、現時点では、顧客テナントのユーザーは自分の拒否割り当て (ユーザー割り当て拒否割り当て) を作成できません。
-- 管理テナント内のユーザーは、通常はアクセスを許可する組み込みロールを持っている場合でも、委任された顧客のサブスクリプションの課金情報を表示するためのアクセス権が与えられません。 これは、課金情報にアクセスするには、現在は同じテナント内のユーザーに対してのみサポートされている追加の手順が必要であるためです。
 
 ## <a name="next-steps"></a>次のステップ
 

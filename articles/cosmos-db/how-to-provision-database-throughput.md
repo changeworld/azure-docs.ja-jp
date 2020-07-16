@@ -3,15 +3,15 @@ title: Azure Cosmos DB のデータベースのスループットをプロビジ
 description: Azure portal、CLI、PowerShell、および他のさまざまな SDK を使用して、Azure Cosmos DB でデータベース レベルでスループットをプロビジョニングする方法について説明します。
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: cc89c0052097ba9250370334386943ec4107140c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 63f8d408d76cfce86c254ad3840c2f0eefb09fd4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655326"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263641"
 ---
 # <a name="provision-standard-manual-throughput-on-a-database-in-azure-cosmos-db"></a>Azure Cosmos DB のデータベースに標準 (手動) のスループットをプロビジョニングする
 
@@ -32,7 +32,7 @@ ms.locfileid: "83655326"
    * スループットを入力します (例: 1000 RU)。
    * **[OK]** を選択します。
 
-    ![[新しいデータベース] ダイアログ ボックスのスクリーンショット](./media/how-to-provision-database-throughput/provision-database-throughput-portal-all-api.png)
+    :::image type="content" source="./media/how-to-provision-database-throughput/provision-database-throughput-portal-all-api.png" alt-text="[新しいデータベース] ダイアログ ボックスのスクリーンショット":::
 
 ## <a name="provision-throughput-using-azure-cli-or-powershell"></a>Azure CLI または PowerShell を使用してスループットをプロビジョニングする
 

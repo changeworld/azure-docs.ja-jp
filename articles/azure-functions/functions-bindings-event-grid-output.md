@@ -5,17 +5,17 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 4df0faf3f74ef3423dcd42c2c76af8b39a889a92
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.custom: fasttrack-edit, tracking-python
+ms.openlocfilehash: 2eaa2202ac6c2f0fac0f53c6eeb2f5d08c764f1e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773949"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85413350"
 ---
 # <a name="azure-event-grid-output-binding-for-azure-functions"></a>Azure Functions の Azure Event Grid 出力バインディング
 
-イベントをカスタム トピックに書き込むには、Event Grid 出力バインディングを使用します。 有効な[カスタム トピックのアクセス キー](../event-grid/security-authentication.md#authenticate-publishing-clients-using-sas-or-key)が必要です。
+イベントをカスタム トピックに書き込むには、Event Grid 出力バインディングを使用します。 有効な[カスタム トピックのアクセス キー](../event-grid/security-authenticate-publishing-clients.md)が必要です。
 
 セットアップと構成の詳細については、[概要](./functions-bindings-event-grid.md)を参照してください。
 
@@ -162,7 +162,7 @@ module.exports = function(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-次の例は、*function.json* ファイルのトリガー バインドと、そのバインドが使用される [Python 関数](functions-reference-python.md)を示しています。 次に、`topicEndpointUri` で指定されたとおり、イベントがカスタム Event Grid トピックに送信されます。
+次の例は、*function.json* ファイルのトリガー バインドと、そのバインドが使用される [Python 関数](functions-reference-python.md)を示しています。 次に、`topicEndpointUri` によって指定されたとおり、イベントがカスタム トピックに送信されます。
 
 *function.json* ファイルのバインディング データを次に示します。
 
@@ -187,7 +187,7 @@ module.exports = function(context) {
 }
 ```
 
-`EventGridOutputEvent` を設定してカスタム Event Grid トピックにイベントを送信する Python のサンプルを次に示します。
+`EventGridOutputEvent` を設定してカスタム トピックにイベントを送信する Python サンプルを次に示します。
 
 ```python
 import logging

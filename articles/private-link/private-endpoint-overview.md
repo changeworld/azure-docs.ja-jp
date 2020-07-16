@@ -5,14 +5,14 @@ services: private-link
 author: malopMSFT
 ms.service: private-link
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: f75b080ce31a5c954471d277aad354879c16c6b3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f4e5bbdc50d99eca774dc5b96657ac8bfdebca17
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022199"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85414149"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Azure プライベート エンドポイントとは
 
@@ -55,6 +55,7 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 |プライベート リンク リソース名  |リソースの種類   |サブリソース  |
 |---------|---------|---------|
 |**Private Link サービス** (独自のサービス)   |  Microsoft.Network/privateLinkServices       | empty |
+|**Azure Automation** |  Microsoft.Automation/automationAccounts | Webhook、DSCAndHybridWorker |
 |**Azure SQL Database** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        |
 |**Azure Synapse Analytics** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        | 
 |**Azure ストレージ**  | Microsoft.Storage/storageAccounts    |  BLOB (blob、blob_secondary)<BR> Table (table、table_secondary)<BR> Queue (queue、queue_secondary)<BR> File (file、file_secondary)<BR> Web (web、web_secondary)        |
@@ -75,7 +76,7 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 |**Azure Relay** | Microsoft.Relay/namespaces | namespace |
 |**Azure Event Grid** | Microsoft.EventGrid/topics    | topic |
 |**Azure Event Grid** | Microsoft.EventGrid/domains    | domain |
-|**Azure WebApps** | Microsoft.Web/sites    | site |
+|**Azure WebApps** | Microsoft.Web/sites    | sites |
 |**Azure Machine Learning** | Microsoft.MachineLearningServices/workspaces    | ワークスペース |
   
  

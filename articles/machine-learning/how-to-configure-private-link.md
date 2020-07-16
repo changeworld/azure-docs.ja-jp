@@ -1,23 +1,23 @@
 ---
-title: Azure Private Link を構成する
+title: プライベート エンドポイントを構成する (プレビュー)
 titleSuffix: Azure Machine Learning
 description: Azure Private Link を使用して、仮想ネットワークから Azure Machine Learning ワークスペースに安全にアクセスします。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 5428f24ea5ab780c4b51e0af37908077ddc32232
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: ed3b59b9e6aecb91f4ecb9d569b989b6b2396c48
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891362"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134865"
 ---
-# <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Azure Machine Learning ワークスペースの Azure Private Link を構成する (プレビュー)
+# <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Azure Machine Learning ワークスペース用に Azure Private Link を構成する (プレビュー)
 
 このドキュメントでは、Azure Machine Learning ワークスペースで Azure Private Link を使用する方法について説明します。 この機能は現在プレビュー段階であり、米国東部、米国西部 2、米国中南部の各リージョンでご利用いただけます。 
 
@@ -99,14 +99,13 @@ az group deployment create \
 
 ## <a name="using-a-workspace-over-a-private-endpoint"></a>プライベート エンドポイント経由でのワークスペースの使用
 
-ワークスペースへの通信は仮想ネットワークからのみ許可されているため、ワークスペースを使用する開発環境はすべて仮想ネットワークのメンバーである必要があります。 たとえば、仮想ネットワーク内の仮想マシンや、VPN ゲートウェイを使用して仮想ネットワークに接続されているコンピューターなどです。
+ワークスペースへの通信は仮想ネットワークからのみ許可されているため、ワークスペースを使用する開発環境はすべて仮想ネットワークのメンバーである必要があります。 たとえば、仮想ネットワーク内の仮想マシンを使用します。
 
 > [!IMPORTANT]
 > 接続の一時的な中断を回避するために、Private Link を有効にした後で、ワークスペースに接続しているコンピューターの DNS キャッシュをフラッシュすることをお勧めします。 
 
 Azure Virtual Machines について詳しくは、「[Virtual Machines のドキュメント](/azure/virtual-machines/)」を参照してください。
 
-VPN ゲートウェイの詳細については、「[VPN ゲートウェイとは](/azure/vpn-gateway/vpn-gateway-about-vpngateways)」を参照してください。
 
 ## <a name="using-azure-storage"></a>Azure Storage を使用する
 

@@ -1,10 +1,9 @@
 ---
-title: さまざまなリージョン間で可用性グループを構成する
-description: この記事では、別のリージョンのレプリカを使って、Azure Virtual Machines に SQL Server 可用性グループを構成する方法について説明します。
+title: 複数のリージョンにまたがる SQL Server Always On 可用性グループを構成する
+description: この記事では、別のリージョンのレプリカを使って、Azure Virtual Machines に SQL Server Always On 可用性グループを構成する方法について説明します。
 services: virtual-machines
 documentationCenter: na
 author: MikeRayMSFT
-manager: craigg
 editor: monicar
 tags: azure-service-management
 ms.assetid: 388c464e-a16e-4c9d-a0d5-bb7cf5974689
@@ -15,14 +14,15 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 996b5a59c5c79a045cd396a24778fe0928682c5a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8ab62a93546719e172eec34168a0692daccf281a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84030033"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84669309"
 ---
-# <a name="configure-an-availability-group-on-azure-sql-server-virtual-machines-in-different-regions"></a>さまざまなリージョンに存在する Azure SQL Server 仮想マシンに可用性グループを構成する
+# <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>複数の Azure リージョンにまたがる SQL Server Always On 可用性グループを構成する
+
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 この記事では、リモートの Azure の場所にある Azure Virtual Machines に SQL Server Always On 可用性グループのレプリカを構成する方法を説明しています。 障害復旧をサポートするには、この構成を使います。
@@ -113,7 +113,7 @@ ms.locfileid: "84030033"
 
 1. クラスター内の可用性グループ ロールに IP アドレス リソースを追加します。 
 
-   フェールオーバー クラスター マネージャーで可用性グループ ロールを右クリックし、 **[リソースの追加]** 、 **[More Resources]\(その他のリソース\)** と選択し、 **[IP アドレス]** を選択します。
+   フェールオーバー クラスター マネージャーで可用性グループ ロールを右クリックし、 **[リソースの追加]** 、 **[その他のリソース]** を選択し、 **[IP アドレス]** を選択します。
 
    ![IP アドレスを作成する](./media/availability-group-manually-configure-multiple-regions/20-add-ip-resource.png)
 
@@ -133,7 +133,7 @@ ms.locfileid: "84030033"
 
 1. [PowerShell でクラスターのパラメーターを設定する](availability-group-manually-configure-tutorial.md#setparam)。
 
-新しいリージョンのロード バランサーに構成したクラスター ネットワーク名、IP アドレス、およびプローブ ポートを指定して、PowerShell スクリプトを実行します。
+   新しいリージョンのロード バランサーに構成したクラスター ネットワーク名、IP アドレス、およびプローブ ポートを指定して、PowerShell スクリプトを実行します。
 
    ```powershell
    $ClusterNetworkName = "<MyClusterNetworkName>" # The cluster name for the network in the new region (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name).
@@ -170,16 +170,16 @@ ms.locfileid: "84030033"
 リモート リージョンへのリスナー接続をテストするには、リモート リージョンにレプリカをフェールオーバーしてみます。 レプリカは非同期ですが、フェールオーバーはデータ損失の可能性に対して脆弱です。 データを失わずにフェールオーバーするには、可用性モードを同期に変更し、フェールオーバー モードを自動に設定します。 次の手順に従います。
 
 1. **オブジェクト エクスプローラー**で、プライマリ レプリカをホストする SQL Server のインスタンスに接続します。
-1. **[AlwaysOn 可用性グループ]** の **[可用性グループ]** で、可用性グループを右クリックして **[プロパティ]** をクリックします。
+1. **[AlwaysOn 可用性グループ]** の **[可用性グループ]** で、可用性グループを右クリックして **[プロパティ]** を選択します。
 1. **[全般]** ページの **[可用性レプリカ]** で、DR サイトのセカンダリ レプリカを、 **[同期コミット]** 可用性モードと **[自動]** フェールオーバー モードを使うように設定します。
 1. 高可用性のためにプライマリ レプリカと同じサイトにセカンダリ レプリカがある場合は、このレプリカを **[非同期コミット]** および **[手動]** に設定します。
-1. [OK] をクリックします。
-1. **オブジェクト エクスプローラー**で、可用性グループを右クリックし、 **[ダッシュボードの表示]** をクリックします。
+1. [OK] を選択します。
+1. **オブジェクト エクスプローラー**で、可用性グループを右クリックし、 **[ダッシュボードの表示]** を選択します。
 1. ダッシュボードで、DR サイトのレプリカが同期されていることを確認します。
-1. Explore**オブジェクト エクスプローラー**で、可用性グループを右クリックし、 **[フェールオーバー...]** をクリックします。SQL Server Management Studio で、SQL Server をフェールオーバーするためのウィザードが開きます。  
-1. **[次へ]** をクリックし、DR サイトの SQL Server インスタンスを選びます。 もう一度 **[次へ]** をクリックします。
-1. DR サイトの SQL Server インスタンスに接続し、 **[次へ]** をクリックします。
-1. **[概要]** ページで設定を確認し、 **[完了]** をクリックします。
+1. **オブジェクト エクスプローラー**で、可用性グループを右クリックし、 **[フェールオーバー]** を選択します。SQL Server Management Studio で、SQL Server をフェールオーバーするためのウィザードが開きます。  
+1. **[次へ]** を選択し、DR サイトの SQL Server インスタンスを選択します。 もう一度 **[次へ]** を選択します
+1. DR サイトの SQL Server インスタンスに接続し、 **[次へ]** を選択します。
+1. **[概要]** ページで設定を確認し、 **[完了]** を選択します。
 
 接続をテストした後は、プライマリ レプリカをプライマリ データ センターに戻し、可用性モードを通常の動作設定に戻します。 次の表では、このドキュメントで説明されているアーキテクチャの通常の動作設定を示します。
 
@@ -197,7 +197,7 @@ ms.locfileid: "84030033"
 - [可用性グループの計画的な手動フェールオーバーの実行 (SQL Server)](https://msdn.microsoft.com/library/hh231018.aspx)
 - [可用性グループの強制手動フェールオーバーの実行 (SQLServer)](https://msdn.microsoft.com/library/ff877957.aspx)
 
-## <a name="additional-links"></a>追加リンク
+## <a name="next-steps"></a>次のステップ
 
 * [Always On 可用性グループ](https://msdn.microsoft.com/library/hh510230.aspx)
 * [Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/)

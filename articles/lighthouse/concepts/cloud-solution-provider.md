@@ -1,14 +1,14 @@
 ---
 title: Cloud Solution Provider プログラムの考慮事項
 description: CSP パートナーにとって、Azure の委任されたリソース管理は、粒度の細かいアクセス許可を実現することによってセキュリティと制御を強化する効果があります。
-ms.date: 12/18/2019
+ms.date: 07/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 15b66568ae468d772c0fb7141a10e336cd94afc3
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 8dd40c5c4f7131554dcc3249777de9f0d92c35bb
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921625"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131501"
 ---
 # <a name="azure-lighthouse-and-the-cloud-solution-provider-program"></a>Azure Lighthouse と Cloud Solution Provider プログラム
 
@@ -27,19 +27,19 @@ AOBO を使用すると、テナント内の[管理エージェント](/partner-
 
 ## <a name="azure-delegated-resource-management"></a>Azure の委任されたリソース管理
 
-Azure の委任されたリソース管理を使用すると、次の図に示すように、さまざまなグループをさまざまな顧客またはロールに割り当てることができます。 ユーザーは Azure の委任されたリソース管理によって適切なレベルのアクセス権を持つことになるため、管理エージェント ロールを持つ (つまり、完全な AOBO アクセス権を持つ) ユーザーの数を減らすことができます。 これにより、顧客のリソースへの不要なアクセスが制限されるので、セキュリティの強化につながります。 また、より柔軟に、複数の顧客を大規模に管理できます。
+Azure Lighthouse を使用すると、次の図に示すように、さまざまなグループをさまざまな顧客またはロールに割り当てることができます。 ユーザーは Azure の委任されたリソース管理によって適切なレベルのアクセス権を持つことになるため、管理エージェント ロールを持つ (つまり、完全な AOBO アクセス権を持つ) ユーザーの数を減らすことができます。 これにより、顧客のリソースへの不要なアクセスが制限されるので、セキュリティの強化につながります。 また、より柔軟に、複数の顧客を大規模に管理できます。
 
-CSP プログラムを使用して作成したサブスクリプションをオンボードするには、[Azure の委任されたリソース管理へのサブスクリプションのオンボード](../how-to/onboard-customer.md)に関する記事で説明されている手順を参照してください。 テナント内に管理エージェント ロールを持つすべてのユーザーが、このオンボードを実行できます。
+CSP プログラムを使用して作成したサブスクリプションをオンボードするには、[Azure Lighthouse へのサブスクリプションのオンボード](../how-to/onboard-customer.md)に関する記事で説明されている手順に従ってください。 テナント内に管理エージェント ロールを持つすべてのユーザーが、このオンボードを実行できます。
 
 ![AOBO と Azure の委任されたリソース管理を使用したテナント管理](../media/csp-2.jpg)
 
 > [!NOTE]
-> [Azure portal の **[マイ カスタマー]** ページ](../how-to/view-manage-customers.md)に、 **[クラウド ソリューション プロバイダー (プレビュー)]** セクションが含まれるようになり、[Microsoft 顧客契約 (MCA) に署名](/partner-center/confirm-customer-agreement)し、[Azure プランに含まれている](/partner-center/azure-plan-get-started) CSP のお客様の課金情報とリソースが表示されます。 詳しくは、「[Microsoft Partner Agreement の課金アカウントの概要](../../billing/mpa-overview.md)」をご覧ください。
+> [Azure portal の **[マイ カスタマー]** ページ](../how-to/view-manage-customers.md)に、 **[クラウド ソリューション プロバイダー (プレビュー)]** セクションが含まれるようになり、[Microsoft 顧客契約 (MCA) に署名](/partner-center/confirm-customer-agreement)し、[Azure プランに含まれている](/partner-center/azure-plan-get-started) CSP のお客様の課金情報とリソースが表示されます。 詳しくは、「[Microsoft Partner Agreement の課金アカウントの概要](../../cost-management-billing/understand/mpa-overview.md)」をご覧ください。
 >
 > CSP のお客様は、Azure の委任されたリソース管理にもオンボードされているかどうかにかかわらず、このセクションに表示されることがあります。 オンボードされている場合は、「[顧客と委任されたリソースを表示し、管理する](../how-to/view-manage-customers.md)」に説明されているように、 **[顧客]** セクションにも表示されます。 同様に、CSP のお客様は、Azure の委任されたリソース管理にオンボードされるために、 **[マイ カスタマー]** の **[クラウド ソリューション プロバイダー (プレビュー)]** セクションに表示される必要はありません。
 
 ## <a name="next-steps"></a>次のステップ
 
 - [テナント間の管理エクスペリエンス](cross-tenant-management-experience.md)について学習します。
-- [Azure の委任されたリソース管理にサブスクリプションをオンボード](../how-to/onboard-customer.md)する方法について説明します。
+- [サブスクリプションを Azure Lighthouse にオンボードする](../how-to/onboard-customer.md)方法について学習します。
 - [Cloud Solution Provider プログラム](/partner-center/csp-overview)について学習します。

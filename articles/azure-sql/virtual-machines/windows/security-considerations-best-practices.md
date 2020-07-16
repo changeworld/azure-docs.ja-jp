@@ -1,10 +1,9 @@
 ---
-title: Azure における SQL Server のセキュリティに関する考慮事項 | Microsoft Docs
-description: このトピックでは、Azure の仮想マシンで実行されている SQL Server をセキュリティで保護するための一般的なガイダンスを示します。
+title: セキュリティに関する考慮事項 | Microsoft Docs
+description: このトピックでは、Azure 仮想マシンで実行されている SQL Server をセキュリティで保護するための一般的なガイダンスを示します。
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
-manager: craigg
 editor: ''
 tags: azure-service-management
 ms.assetid: d710c296-e490-43e7-8ca9-8932586b71da
@@ -15,14 +14,14 @@ ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f04620430571a1f86d601eac2b1b662c77499a76
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 4421b30d672cc026a033febb34b8b31afa0ef3c7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84034283"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84668810"
 ---
-# <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Azure Virtual Machines における SQL Server のセキュリティに関する考慮事項
+# <a name="security-considerations-for-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server のセキュリティに関する考慮事項
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 このトピックでは、Azure の仮想マシン (VM) の SQL Server インスタンスへのセキュリティで保護されたアクセスの確立に役立つ全体的なセキュリティ ガイドラインについて説明します。
@@ -31,7 +30,7 @@ Azure はいくつかの業界規制および標準に準拠しているため�
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="control-access-to-the-sql-vm"></a>SQL VM へのアクセスの制御
+## <a name="control-access-to-the-sql-virtual-machine"></a>SQL 仮想マシンへのアクセスを制御する
 
 SQL Server 仮想マシンを作成するときに、マシンと SQL Server へのアクセス権を持つユーザーを注意深く制御する方法を検討します。 一般に、次の作業を行う必要があります。
 
@@ -46,7 +45,7 @@ SQL Server 仮想マシンを作成するときに、マシンと SQL Server へ
 
 ![SQL Server 接続](./media/security-considerations-best-practices/sql-vm-connectivity-option.png)
 
-セキュリティを最大限に強化するため、自分のシナリオで最も制限の厳しいオプションを選択します。 たとえば、同じ VM の SQL Server にアクセスするアプリケーションを実行している場合、最もセキュリティで保護された選択は **[ローカル]** です。 SQL Server へのアクセスを必要とする Azure アプリケーションを実行している場合、 **[プライベート]** は指定した [Azure Virtual Network](../../../virtual-network/virtual-networks-overview.md) 内でのみの SQL Server への通信をセキュリティで保護します。 SQL Server VM にアクセスする [**パブリック** (インターネット)] が必要な場合、危険を回避するために、このトピックの他のベスト プラクティスに従ってください。
+セキュリティを最大限に強化するため、自分のシナリオで最も制限の厳しいオプションを選択します。 たとえば、同じ VM の SQL Server にアクセスするアプリケーションを実行している場合、最もセキュリティで保護された選択は **[ローカル]** です。 SQL Server へのアクセスを必要とする Azure アプリケーションを実行している場合、 **[プライベート]** では、指定された [Azure 仮想ネットワーク](../../../virtual-network/virtual-networks-overview.md)内の SQL Server への通信のみがセキュリティで保護します。 SQL Server VM にアクセスする [**パブリック** (インターネット)] が必要な場合、危険を回避するために、このトピックの他のベスト プラクティスに従ってください。
 
 ポータルで選択されたオプションは、VM の[ネットワーク セキュリティ グループ](../../../active-directory/identity-protection/security-overview.md) (NSG) の受信セキュリティ ルールを使用して、仮想マシンへのネットワーク トラフィックを許可または拒否します。 SQL Server ポート (既定値 1433) へのトラフィックを許可するには、受信 NSG ルールを変更または新規作成します。 また、このポートでの通信を許可する、特定の IP アドレスを指定することもできます。
 
@@ -54,13 +53,13 @@ SQL Server 仮想マシンを作成するときに、マシンと SQL Server へ
 
 ネットワーク トラフィックを制限する NSG ルールに加え、仮想マシンで Windows ファイアウォールを使用することもできます。
 
-クラシック デプロイ モデルでエンドポイントを使用している場合、使用しない仮想マシンのエンドポイントは削除します。 エンドポイントで ACL を使用する手順については、「 [エンドポイントの ACL の管理](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint)」を参照してください。 これは、Resource Manager を使用する VM には必要ありません。
+クラシック デプロイ モデルでエンドポイントを使用している場合、使用しない仮想マシンのエンドポイントは削除します。 エンドポイントで ACL を使用する手順については、「 [エンドポイントの ACL の管理](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint)」を参照してください。 これは、Azure Resource Manager を使用する VM には必要ありません。
 
 最後に、Azure の仮想マシンの SQL Server データベース エンジンのインスタンスで、暗号化された接続オプションを有効にすることを検討してください。 署名付き証明書で SQL Server インスタンスを構成します。 詳細については、「[データベース エンジンへの暗号化接続の有効化](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)」および「[接続文字列の構文](https://msdn.microsoft.com/library/ms254500.aspx)」をご覧ください。
 
 ## <a name="encryption"></a>暗号化
 
-マネージド ディスクでは、サーバー側暗号化と Azure Disk Encryption が提供されます。 [サーバー側暗号化](/azure/virtual-machines/windows/disk-encryption)では、保管データの暗号化を提供し、データを保護して組織のセキュリティおよびコンプライアンス要件を満たします。 [Azure Disk Encryption](/azure/security/fundamentals/azure-disk-encryption-vms-vmss) では、Bitlocker または DM-Crypt テクノロジを使用し、Azure Key Vault と統合して OS とデータ ディスクの両方を暗号化します。 
+マネージド ディスクでは、サーバー側暗号化と Azure Disk Encryption が提供されます。 [サーバー側暗号化](/azure/virtual-machines/windows/disk-encryption)では、保存時の暗号化が提供され、組織のセキュリティおよびコンプライアンス要件を満たすようにデータが保護されます。 [Azure Disk Encryption](/azure/security/fundamentals/azure-disk-encryption-vms-vmss) では、Bitlocker または DM-Crypt テクノロジを使用し、Azure Key Vault と統合して OS とデータ ディスクの両方を暗号化します。 
 
 ## <a name="use-a-non-default-port"></a>既定以外のポートの使用
 
@@ -107,9 +106,9 @@ SQL Server が既定以外のポートをリッスンしている場合は、接
 仮想マシンのセキュリティの詳細については、[仮想マシンのセキュリティの概要](/azure/security/fundamentals/virtual-machines-overview)に関するページを参照してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-パフォーマンスに関するベスト プラクティスにも関心がある場合は、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](performance-guidelines-best-practices.md)」をご覧ください。
+パフォーマンスに関するベスト プラクティスにも関心がある場合は、「[Azure Virtual Machines 上の SQL Server のパフォーマンスに関するベスト プラクティス](performance-guidelines-best-practices.md)」をご覧ください。
 
 Azure VM での SQL Server の実行に関するその他のトピックについては、「[Azure Virtual Machines における SQL Server の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)」をご覧ください。 SQL Server の仮想マシンに関するご質問については、[よくあるご質問](frequently-asked-questions-faq.md)に関するページをご覧ください。
 

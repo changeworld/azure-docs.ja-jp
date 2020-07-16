@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 10/18/2018
 ms.author: cshoe
-ms.openlocfilehash: 97509001aa66c2c1bf0c91b6b2a5ab25f9d6ec88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bfb502e42e41ac530851766db87bcebf3c94c371
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74227064"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340872"
 ---
 # <a name="azure-function-event-grid-trigger-local-debugging"></a>Azure Functions の Event Grid トリガーのローカル デバッグ
 
@@ -62,7 +62,7 @@ Azure portal を開き、ストレージ アカウントに移動し、 **[イ�
 
 ![ストレージ アカウント イベントを追加する](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-add-event.png)
 
-*[イベント]* ウィンドウで、 **[イベント サブスクリプション]** ボタンをクリックします。 *[イベント サブスクリプション]* ウィンドウで、 *[エンドポイントの種類]* ドロップダウンを選択し、 **[Webhook]** を選択します。
+*[イベント]* ウィンドウで、 **[イベント サブスクリプション]** ボタンをクリックします。 *[イベント サブスクリプション]* ウィンドウで、 *[エンドポイントの種類]* ドロップダウンを選択し、 **[webhook]** を選択します。
 
 ![サブスクリプションの種類を選択する](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-type.png)
 

@@ -5,17 +5,17 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/05/2020
-ms.openlocfilehash: 2d7f53862a30287460ca72297231da468514646b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 06/18/2020
+ms.openlocfilehash: 3643092cf867fb49a24d5c1961d1a10834d5d3a3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648172"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85298856"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>統合サービス環境 (ISE) を使用して Azure Logic Apps から Azure Virtual Network に接続する
 
-ロジック アプリと統合アカウントが [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)にアクセスする必要があるシナリオでは、"[*統合サービス環境*" (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) を作成します。 ISE は、専用のストレージなど、"グローバル" なマルチテナント Logic Apps サービスとは別に確保されているリソースを使用する分離環境です。 この分離で、他の Azure テナントがご利用のアプリのパフォーマンスに与える可能性がある影響も軽減されます。 ISE には、独自の静的 IP アドレスも用意されています。 これらの IP アドレスは、パブリックのマルチテナント サービスのロジック アプリによって共有される静的 IP アドレスとは別のものです。
+ロジック アプリと統合アカウントが [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)にアクセスする必要があるシナリオでは、"[*統合サービス環境*" (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) を作成します。 ISE は、専用のストレージと、"グローバル" なマルチテナント Logic Apps サービスとは別に確保されている他のリソースを使用する専用環境です。 この分離で、他の Azure テナントがご利用のアプリのパフォーマンスに与える可能性がある影響も軽減されます。 ISE には、独自の静的 IP アドレスも用意されています。 これらの IP アドレスは、パブリックのマルチテナント サービスのロジック アプリによって共有される静的 IP アドレスとは別のものです。
 
 ISE を作成すると、Azure によってその ISE が Azure 仮想ネットワークに "*挿入*" され、その仮想ネットワークに Logic Apps サービスがデプロイされます。 ロジック アプリまたは統合アカウントを作成するときに、お使いの ISE を場所として選択します。 ロジック アプリまたは統合アカウントは、仮想ネットワーク内の仮想マシン (VM)、サーバー、システム、サービスなどのリソースに直接アクセスできます。
 
@@ -44,30 +44,38 @@ ISE では、実行継続時間、ストレージのリテンション期間、�
   > [!IMPORTANT]
   > ISE 内で実行されるロジック アプリ、組み込みトリガー、組み込みアクション、およびコネクターでは、使用量ベースの価格プランとは異なる価格プランが使用されます。 ISE の価格と課金のしくみについては、「[固定価格モデル](../logic-apps/logic-apps-pricing.md#fixed-pricing)」を参照してください。 価格については、[Logic Apps の価格](../logic-apps/logic-apps-pricing.md)に関する記事を参照してください。
 
-* [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)。 仮想ネットワークがない場合は、[Azure 仮想ネットワークの作成](../virtual-network/quick-create-portal.md)方法について学んでください。
+* [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)。 仮想ネットワークには、ISE 内にリソースを作成およびデプロイするために、どのサービスにも委任されていない "*空の*" サブネットが 4 つ必要です。 各サブネットでは、ISE で使用されるさまざまな Logic Apps コンポーネントがサポートされます。 サブネットは、事前に作成するか、同時にサブネットを作成できる ISE を作成するまで待つことができます。 [サブネット要件](#create-subnet)の詳細を参照してください。
 
-  * 仮想ネットワークには、ISE 内にリソースを作成およびデプロイするため、*空の*サブネットが 4 つ必要です。 各サブネットでは、ISE で使用されるさまざまな Logic Apps コンポーネントがサポートされます。 このようなサブネットは、事前に作成するか、同時にサブネットを作成できる ISE を作成するまで待つことができます。 [サブネット要件](#create-subnet)の詳細を参照してください。
-
-  * サブネット名の最初の文字はアルファベット文字かアンダースコアにする必要があります。`<`、`>`、`%`、`&`、`\\`、`?`、`/` はいずれも使用できません。 
-  
-  * Azure Resource Manager テンプレートを使用して ISE をデプロイする場合は、最初に空のサブネットを Microsoft.Logic/integrationServiceEnvironment に委任していることを確認します。 Azure portal を使用してデプロイする場合、この委任を行う必要はありません。
+  > [!IMPORTANT]
+  >
+  > 次の IP アドレス空間は Azure Logic Apps によって解決されないため、仮想ネットワークやサブネットに使用しないでください。<p>
+  > 
+  > * 0.0.0.0/8
+  > * 100.64.0.0/10
+  > * 127.0.0.0/8
+  > * 168.63.129.16/32
+  > * 169.254.169.254/32
+  > 
+  > サブネット名の最初の文字はアルファベット文字かアンダースコアにする必要があります。`<`、`>`、`%`、`&`、`\\`、`?`、`/` はいずれも使用できません。 Azure Resource Manager テンプレートを使用して ISE をデプロイする場合は、最初に 1 つの空のサブネットを `Microsoft.Logic/integrationServiceEnvironment` に委任していることを確認します。 Azure portal を使用してデプロイする場合、この委任を行う必要はありません。
 
   * ISE が正常に動作し、アクセス可能な状態を維持できるように、仮想ネットワークで [ISE アクセスが有効になっている](#enable-access)ことを確認します。
 
-  * [ExpressRoute](../expressroute/expressroute-introduction.md) を使用すると、オンプレミスのネットワークを Microsoft クラウドに拡張し、接続プロバイダーが提供するプライベート接続を介して Microsoft クラウドサービスに接続することができます。 具体的には、ExpressRoute は、パブリック インターネットではなくプライベート ネットワーク経由でトラフィックをルーティングする仮想プライベート ネットワークです。 Logic apps を ExpressRoute または仮想プライベート ネットワーク経由で接続する場合、同じ仮想ネットワーク内にあるオンプレミスのリソースに接続できます。 
-  
-    ExpressRoute を使用する場合、次のルートを持つ[ルート テーブルを作成](../virtual-network/manage-route-table.md)し、ISE によって使用される各サブネットにそのテーブルをリンクする必要があります。
+  * [ExpressRoute](../expressroute/expressroute-introduction.md) を[強制トンネリング](../firewall/forced-tunneling.md)と共に使用する場合は、次の特定のルートを使用して[ルート テーブルを作成](../virtual-network/manage-route-table.md)し、ISE で使用される各サブネットにそのルート テーブルをリンクする必要があります。
 
     **名前**: <*route-name*><br>
     **アドレス プレフィックス**:0.0.0.0/0<br>
     **次ホップ**:インターネット
+    
+    この特定のルート テーブルは、Logic Apps コンポーネントが、Azure Storage や Azure SQL DB などの他に依存している Azure サービスと通信するために必要です。 このルートの詳細については、「[アドレス プレフィックス 0.0.0.0/0](../virtual-network/virtual-networks-udr-overview.md#default-route)」を参照してください。 ExpressRoute と共に強制トンネリングを使用しない場合、この特定のルート テーブルは必要ありません。
+    
+    ExpressRoute を使用すると、オンプレミスのネットワークを Microsoft クラウドに拡張し、接続プロバイダーが提供するプライベート接続を介して Microsoft クラウド サービスに接続できます。 具体的には、ExpressRoute は、パブリック インターネットを通じてではなくプライベート ネットワーク経由でトラフィックをルーティングする仮想プライベート ネットワークです。 ロジック アプリを ExpressRoute または仮想プライベート ネットワーク経由で接続するときに、同じ仮想ネットワーク内にあるオンプレミスのリソースに接続できます。
+   
+  * [ネットワーク仮想アプライアンス (NVA)](../virtual-network/virtual-networks-udr-overview.md#user-defined) を使用する場合は、TLS/SSL 終端を有効にすることも、TLS/SSL の送信トラフィックを変更することもしないでください。 また、ISE のサブネットから発信されたトラフィックの検査を有効にしないようにしてください。 詳細については、「[仮想ネットワーク トラフィックのルーティング](../virtual-network/virtual-networks-udr-overview.md)」を参照してください。
 
-    このルート テーブルは、Logic Apps コンポーネントが、Azure Storage や Azure SQL DB などの他に依存している Azure サービスと通信するために必要です。
+  * Azure 仮想ネットワークでカスタム DNS サーバーを使用する場合は、ISE を仮想ネットワークにデプロイする前に、[次の手順に従ってそのようなサーバーを設定します](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。 DNS サーバー設定の管理方法に関する詳細については、「[仮想ネットワークの作成、変更、削除](../virtual-network/manage-virtual-network.md#change-dns-servers)」を参照してください。
 
-* Azure 仮想ネットワークでカスタム DNS サーバーを使用する場合は、ISE を仮想ネットワークにデプロイする前に、[次の手順に従ってそのようなサーバーを設定します](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。 DNS サーバー設定の管理方法に関する詳細については、「[仮想ネットワークの作成、変更、削除](../virtual-network/manage-virtual-network.md#change-dns-servers)」を参照してください。
-
-  > [!NOTE]
-  > DNS サーバーまたはその設定に変更を加えた場合は、それらの変更を ISE が取得できるよう、ISE を再起動する必要があります。 詳細については、「[ISE を再起動する](../logic-apps/ise-manage-integration-service-environment.md#restart-ISE)」を参照してください。
+    > [!NOTE]
+    > DNS サーバーまたはその設定に変更を加えた場合は、それらの変更を ISE が取得できるよう、ISE を再起動する必要があります。 詳細については、「[ISE を再起動する](../logic-apps/ise-manage-integration-service-environment.md#restart-ISE)」を参照してください。
 
 <a name="enable-access"></a>
 
@@ -128,6 +136,12 @@ ISE にアクセスできること、および ISE 内のロジック アプリ�
 | ロール インスタンス間での Azure Cache for Redis インスタンスへのアクセス | **VirtualNetwork** | * | **VirtualNetwork** | 6379 - 6383、(さらに、**メモ**を参照)| Azure Cache for Redis で動作する ISE の場合は、[Azure Cache for Redis の FAQ で説明されている送信ポートと受信ポート](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements)を開く必要があります。 |
 |||||||
 
+また、[App Service Environment (ASE)](../app-service/environment/intro.md) のアウトバウンド規則を追加する必要があります。
+
+* Azure Firewall を使用する場合は、App Service Environment (ASE) の[完全修飾ドメイン名 (FQDN) タグ](../firewall/fqdn-tags.md#current-fqdn-tags)を使用してファイアウォールを設定する必要があります。これにより、ASE プラットフォームのトラフィックへの発信アクセスが許可されます。
+
+* Azure Firewall 以外のファイアウォール アプライアンスを使用する場合は、App Service Environment に必要とされる、[ファイアウォール統合の依存関係](../app-service/environment/firewall-integration.md#dependencies)にリストされている "*すべて*" の規則を使用してファイアウォールを設定する必要があります。
+
 <a name="create-environment"></a>
 
 ## <a name="create-your-ise"></a>ISE を作成する
@@ -167,7 +181,7 @@ ISE にアクセスできること、および ISE 内のロジック アプリ�
 
    * [Classless Inter-Domain Routing (CIDR) 形式](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)とクラス B アドレス空間を使用する。
 
-   * 各サブネットには 32 個のアドレスが必要なため、アドレス空間で `/27` を使用する。 たとえば、2<sup>(32-27)</sup> は 2<sup>5</sup> (つまり 32) なので、`10.0.0.0/27` には 32 個のアドレスがあります。 アドレスが増加しても追加の利点はありません。  アドレス計算の詳細については、「[IPv4 CIDR blocks (IPv4 CIDR ブロック)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks)」を参照してください。
+   * 各サブネットには 32 個のアドレスが必要なため、アドレス空間で `/27` を使用する。 たとえば、2<sup>(32-27)</sup> は 2<sup>5</sup> (つまり 32) なので、`10.0.0.0/27` には 32 個のアドレスがあります。 アドレスが増加しても追加の利点はありません。 アドレス計算の詳細については、「[IPv4 CIDR blocks (IPv4 CIDR ブロック)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks)」を参照してください。
 
    * [ExpressRoute](../expressroute/expressroute-introduction.md) を使用する場合、次のルートを持つ[ルート テーブルを作成](../virtual-network/manage-route-table.md)し、ISE によって使用される各サブネットにそのテーブルをリンクする必要があります。
 
@@ -214,7 +228,7 @@ ISE にアクセスできること、および ISE 内のロジック アプリ�
    表示されない場合は、デプロイのトラブルシューティングに関する Azure portal の手順に従います。
 
    > [!NOTE]
-   > デプロイが失敗するか、ISE を削除する場合、サブネットがリリースされるまでに最長 1 時間かかる可能性があります。 この遅延のため、このようなサブネットを他の ISE で再利用できるようになるまで待たなければならない場合があります。
+   > デプロイが失敗するか、ISE を削除する場合、サブネットがリリースされるまでに最長 1 時間 (まれにそれ以上) かかる可能性があります。 そのため、このようなサブネットを他の ISE で再利用できるようになるまで待たなければならない場合があります。
    >
    > 仮想ネットワークを削除すると、通常、サブネットがリリースされるまでに最長 2 時間かかる可能性があり、この操作にさらに時間がかかる場合があります。 
    > 仮想ネットワークを削除する場合は、まだ接続されているリソースがないことを確認してください。 

@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: a71d8e251de1d1aedea1d1a329a27bfa236ddfff
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b2e77049d121a11a45a096017f18f1345f6c6884
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652386"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85374850"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Azure HDInsight 4.0 の概要
 
@@ -91,6 +91,7 @@ HDI 4.0 に含まれる Apache Oozie 4.3.1 では以下の点が変更されて�
 
 * HDInsight 4.0 では、Apache Hive 用 MapReduce はサポートされていません。 代わりに Apache Tez を使用してください。 詳しくは、[Apache Tez](https://tez.apache.org/) に関するページをご覧ください。
 * HDInsight 4.0 では Apache Storm がサポートされていません。
+* HDInsight 4.0 では、ML Services クラスターの種類がサポートされていません。
 * HDInsight 4.0 では、Hive ビューは使用できなくなります。
 * Apache Zeppelin のシェル インタープリターは、Spark および対話型クエリ クラスターではサポートされていません。
 * Spark-LLAP クラスターでは LLAP を "*無効にする*" ことはできません。 LLAP をオフにすることだけができます。

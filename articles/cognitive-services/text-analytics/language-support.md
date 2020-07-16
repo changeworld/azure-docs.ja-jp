@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/03/2020
+ms.date: 06/25/2020
 ms.author: aahi
-ms.openlocfilehash: 4fd893691f68c8b51fa3ef234d7828b1bd70cea5
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 367e214a3945ec9d6ed0ffc5b11e6af25dc41503
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465594"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413333"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Text Analytics API v3 の言語のサポート 
 
@@ -57,7 +57,7 @@ ms.locfileid: "84465594"
 #### <a name="named-entity-recognition-ner"></a>[固有表現認識 (NER)](#tab/named-entity-recognition)
 
 > [!NOTE]
-> * NER v3 では、現在、英語のみがサポートされています。 別の言語で NER v3 を呼び出した場合、その言語がバージョン 2.1 でサポートされていれば、API から v2.1 の結果が返されます。
+> * NER v3 では現在、英語とスペイン語のみがサポートされています。 別の言語で NER v3 を呼び出した場合、その言語がバージョン 2.1 でサポートされていれば、API から v2.1 の結果が返されます。
 > * v2.1 で返されるのは、英語、簡体中国語、フランス語、ドイツ語、スペイン語で使用できるエンティティ一式のみです。  サポートされている他の言語では、"Person"、"Location"、"Organization" のエンティティが返されます。
 
 | Language               | 言語コード | v2.1 のサポート | v3 のサポート | 次の v3 のモデル バージョン以降 |       Notes        |
@@ -82,7 +82,7 @@ ms.locfileid: "84465594"
 | ポルトガル語 (ポルトガル) |    `pt-PT`    |     ✓      |            |                                 | `pt` も可能 |
 | ポルトガル語 (ブラジル)   |    `pt-BR`    |     ✓      |            |                                 |                    |
 | ロシア語              |     `ru`      |     ✓      |            |                                 |                    |
-| スペイン語               |     `es`      |     ✓      |            |                                 |                    |
+| スペイン語               |     `es`      |     ✓      |     ✓       |              2020-04-01                   |                    |
 | スウェーデン語               |     `sv`      |     ✓      |            |                                 |                    |
 | トルコ語               |     `tr`      |     ✓      |            |                                 |                    |
 

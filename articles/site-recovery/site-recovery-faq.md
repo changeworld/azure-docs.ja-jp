@@ -4,12 +4,12 @@ description: この記事では、Azure Site Recovery に関してよく寄せ�
 ms.topic: conceptual
 ms.date: 1/24/2020
 ms.author: raynew
-ms.openlocfilehash: 2e6cbac9896fc2bc6b3d4d95a28a25d8177bd7a5
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: b02d001d6fad905badaf17422bdd0554e3fc8493
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193557"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133658"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Azure Site Recovery に関する一般的な質問
 
@@ -22,11 +22,16 @@ ms.locfileid: "84193557"
 ## <a name="general"></a>全般
 
 ### <a name="what-does-site-recovery-do"></a>Site Recovery は何をするものですか。
+
 Site Recovery は、リージョン間の Azure VM のレプリケーション、オンプレミスの仮想マシンと物理サーバーの Azure へのレプリケーション、およびオンプレミスのマシンのセカンダリ データセンターへのレプリケーションを調整および自動化することで、ビジネス継続性とディザスター リカバリー (BCDR) 戦略に貢献します。 [詳細については、こちらを参照してください](site-recovery-overview.md)。
 
 ### <a name="can-i-protect-a-virtual-machine-that-has-a-docker-disk"></a>Docker ディスクを備えた仮想マシンを保護できますか?
 
 いいえ、これはサポートされていないシナリオです。
+
+### <a name="what-does-site-recovery-do-to-ensure-data-integrity"></a>データの整合性を確保するために Site Recovery では何が行われますか。
+
+データの整合性を確保するために Site Recovery ではさまざまな対策が講じられます。 HTTPS プロトコルを使用して、すべてのサービス間にセキュリティで保護された接続が確立されます。 これにより、すべてのマルウェアまたは外部エンティティによるデータの改ざんがなくなります。 もう 1 つの対策として、チェックサムを使用します。 ソースとターゲット間のデータ転送は、それらの間でのデータのチェックサムを計算することによって実行されます。 これにより、転送されるデータの整合性が保たれます。
 
 ## <a name="service-providers"></a>サービス プロバイダー
 
@@ -51,7 +56,7 @@ Azure にレプリケートする場合、アプリケーション データは 
 はい。
 
 ### <a name="what-platforms-do-you-currently-support"></a>現在、どのプラットフォームがサポートされていますか。
-Azure パック、クラウド プラットフォーム システム、および System Center ベース (Hyper 2012 以降) のデプロイメントがサポートされています。 [詳細情報](https://technet.microsoft.com/library/dn850370.aspx) をご覧ください。
+Azure パック、クラウド プラットフォーム システム、および System Center ベース (Hyper 2012 以降) のデプロイメントがサポートされています。 [詳細情報](/previous-versions/azure/windows-server-azure-pack/dn850370(v=technet.10)) をご覧ください。
 
 ### <a name="do-you-support-single-azure-pack-and-single-vmm-server-deployments"></a>単一の Azure パックおよび単一の VMM サーバーのデプロイメントもサポートされますか。
 はい。Hyper-V 仮想マシンを Azure にレプリケートできます。または、サービス プロバイダー サイト間でレプリケートできます。  サービス プロバイダー サイト間でレプリケートする場合は、Azure Runbook 統合が使用できないことに注意してください。
@@ -88,7 +93,7 @@ DR ドリルに対しては、別個のコストはかかりません。 テス�
 
 
 
-## <a name="security"></a>Security
+## <a name="security"></a>セキュリティ
 
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>Site Recovery サービスにレプリケーション データが送信されますか。
 いいえ。Site Recovery は、レプリケートされたデータをインターセプトすることも、仮想マシンまたは物理サーバーでの実行内容に関するどのような情報を持つこともありません。
@@ -100,7 +105,7 @@ Site Recovery は ISO 27001:2013、27018、HIPAA、DPA の認証を受けてお�
 はい。 リージョンに Site Recovery コンテナーを作成すると、レプリケーションとフェールオーバーを有効にし、調整するために必要なすべてのメタデータが、そのリージョンの地理的境界内に維持されます。
 
 ### <a name="does-site-recovery-encrypt-replication"></a>Site Recovery はレプリケーションを暗号化しますか。
-オンプレミスのサイト間で仮想マシンと物理サーバーをレプリケートする場合には、転送中の暗号化がサポートされます。 Azure に仮想マシンと物理サーバーをレプリケートする場合には、転送中の暗号化と [(Azure での) 保管データの暗号化](https://docs.microsoft.com/azure/storage/storage-service-encryption)の両方がサポートされます。
+オンプレミスのサイト間で仮想マシンと物理サーバーをレプリケートする場合には、転送中の暗号化がサポートされます。 Azure に仮想マシンと物理サーバーをレプリケートする場合には、転送中の暗号化と [(Azure での) 保管データの暗号化](../storage/common/storage-service-encryption.md)の両方がサポートされます。
 
 ### <a name="does-azure-to-azure-site-recovery-use-tls-12-for-all-communications-across-microservices-of-azure"></a>Azure から Azure へのサイトの回復では、Azure のマイクロサービス間のすべての通信に TLS 1.2 が使用されますか。
 はい。Azure から Azure へのサイトの回復のシナリオでは、TLS 1.2 プロトコルが既定で適用されます。 
@@ -128,7 +133,7 @@ Site Recovery を使用すると、サポートされている VM または物�
 
 ### <a name="is-disaster-recovery-supported-for-azure-vms"></a>Azure VM でディザスター リカバリーはサポートされますか?
 
-はい、Site Recovery では Azure リージョン間での Azure VM のディザスター リカバリーがサポートされます。 Azure VM のディザスター リカバリーに関する[一般的な質問を確認します](azure-to-azure-common-questions.md)。
+はい、Site Recovery では Azure リージョン間での Azure VM のディザスター リカバリーがサポートされます。 Azure VM のディザスター リカバリーに関する[一般的な質問を確認します](azure-to-azure-common-questions.md)。 同じ大陸の 2 つの Azure リージョン間でレプリケートしたい場合、Azure から Azure への DR オファリングを使用してください。 構成サーバーまたはプロセス サーバー、ExpressRoute 接続を設定する必要はありません。
 
 ### <a name="is-disaster-recovery-supported-for-vmware-vms"></a>VMware VM でディザスター リカバリーはサポートされますか?
 
@@ -193,10 +198,10 @@ Hyper-V 仮想マシンをレプリケートする場合、および Azure に V
 はい。 帯域幅の調整の詳細については、次の記事を参照してください。
 
 * [VMware VM と物理サーバーをレプリケートするためのキャパシティ プランニング](site-recovery-plan-capacity-vmware.md)
-* [Azure に Hyper-V VM をレプリケートするためのキャパシティ プランニング](site-recovery-capacity-planning-for-hyper-v-replication.md)
+* [Azure に Hyper-V VM をレプリケートするためのキャパシティ プランニング](./hyper-v-deployment-planner-overview.md)
 
 ### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>Linux サーバーでアプリの整合性を使用してレプリケーションを有効にすることはできますか。 
-はい。 Linux オペレーティング システム用の Azure Site Recovery では、アプリの整合性のためのアプリケーション カスタム スクリプトがサポートされています。 プリオプションとポストオプションを含むカスタム スクリプトが、アプリの整合性時に Azure Site Recovery の Mobility Agent によって使用されます。 これを有効にする手順は、次のとおりです。
+はい。 Linux オペレーティング システム用の Azure Site Recovery では、アプリの整合性を保つためのアプリケーション カスタム スクリプトがサポートされています。 プリオプションとポストオプションを含むカスタム スクリプトが、アプリの整合性時に Azure Site Recovery の Mobility Agent によって使用されます。 これを有効にする手順は、次のとおりです。
 
 1. マシンに root としてサインインします。
 2. Azure Site Recovery Mobility Agent のインストール場所にディレクトリを変更します。 既定値は "/usr/local/ASR" です。<br>
@@ -227,6 +232,9 @@ Hyper-V 仮想マシンをレプリケートする場合、および Azure に V
 
 5. アプリの整合性を必要とするアプリケーションの pre と post の手順で、凍結と凍結解除の入力/出力コマンドを追加します。 これらを指定する別のスクリプトを追加し、pre と post オプションを使用して "customscript.sh" から呼び出すこともできます。
 
+>[!Note]
+>カスタム スクリプトをサポートするには、Site Recovery エージェントのバージョンは 9.24 以上である必要があります。
+
 ## <a name="failover"></a>[フェールオーバー]
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-vms-after-failover"></a>Azure にフェールオーバーする場合、フェールオーバー後に Azure VM にどうしたらアクセスできますか?
 
@@ -246,7 +254,7 @@ Azure は復元するように設計されています。 Site Recovery は、Az
 
 * リカバリー プランについての[詳細をお読みください](site-recovery-create-recovery-plans.md)。
 * フェールオーバーについての[詳細をお読みください](site-recovery-failover.md)。
-* VMware VMs と物理サーバーのフェールバックについては、[こちら](site-recovery-failback-azure-to-vmware.md) を参照してください。
+* VMware VMs と物理サーバーのフェールバックについては、[こちら](./vmware-azure-failback.md) を参照してください。
 
 ### <a name="if-my-on-premises-host-is-not-responding-or-crashed-can-i-fail-back-to-a-different-host"></a>オンプレミスのホストが応答しない場合やクラッシュした場合は、別のホストにフェールバックできますか?
 はい。alternate location recovery (別の場所への復旧) を使用すると、Azure から別のホストにフェールバックできます。
@@ -271,4 +279,3 @@ Azure は復元するように設計されています。 Site Recovery は、Az
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Site Recovery の概要](site-recovery-overview.md)
-

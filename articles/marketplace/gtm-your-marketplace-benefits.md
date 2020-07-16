@@ -1,18 +1,18 @@
 ---
-title: Go-To-Market Services - 商用マーケットプレースのベネフィット | Azure Marketplace
+title: Go-To-Market Services - 商用マーケットプレースのベネフィット、Azure Marketplace
 description: Go-To-Market Services - このセクションでは、公開元が使用できる Microsoft リソースについて説明します。
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 04/23/2020
-ms.author: dsindona
-ms.openlocfilehash: ce8534fae44549c20eceda16e0e12fb0adc52c6f
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.topic: article
+ms.date: 07/06/2020
+author: keferna
+ms.author: keferna
+ms.openlocfilehash: c954e3c685a795942f78bdb19b59ca817252d26b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957768"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135511"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>商用マーケットプレースのベネフィット
 
@@ -36,13 +36,13 @@ Marketplace 報酬は、認識アクティビティから始めて最初の顧�
 
 パートナーは、使用可能なリソースの理解およびベスト プラクティスの実装についてサポートを受けることができます。また、[パートナー自身で確認する](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)こともできます。
 
-プログラムのすべてのベネフィットの詳細については、[Marketplace 報酬プログラム デッキ](https://aka.ms/marketplacerewards)をご覧ください。
+プログラムのすべてのベネフィットの詳細については、こちらの [Marketplace Rewards プログラムのプレゼンテーション](https://aka.ms/marketplacerewards)をご覧ください。
 
-始める手順は簡単です。
+簡単に使用を開始できます。
 
 1. Microsoft AppSource または Azure Marketplace でオファーを発行します。
-2. パートナー センター [ダッシュボード](https://partner.microsoft.com/dashboard/directory)に移動し、[Marketplace Rewards] ページの **[Sales and Marketing benefits]\(営業とマーケティングのベネフィット\)** タブを選択し、ベネフィットの一覧を表示します。
-3. 営業とマーケティングのベネフィットを有効にするには、最初に会社のマーケティングの連絡先を割り当てる必要があります。 この連絡先には、Marketplace Rewards に関するフォローアップ通信が送られます。
+2. パートナー センターで [Marketplace Rewards](https://partner.microsoft.com/en-us/dashboard/mpn/program/commercialmarketplace) にアクセスし、 **[Enroll in Marketplace Rewards Program]\(Marketplace Rewards プログラムに登録する\)** を選択します。
+3. 営業とマーケティングのベネフィットを有効にするには、会社のマーケティングの連絡先を割り当てます。 この連絡先には、Marketplace Rewards に関するフォローアップ通信が送られます。
 4. マーケティングの連絡先情報を追加または更新するには、[Marketplace Rewards] ページの [Sales and Marketing benefits]\(営業とマーケティングのベネフィット\) タブの上部に移動し、 **[Add, update, or change]\(追加、更新、または変更\)** を選択します。  続けて次の作業を行います。
 
     1. 一覧からユーザーを選択します。 割り当てるユーザーが一覧にない場合は、 **[アカウント設定]** で新しいユーザーを追加できます。
@@ -55,8 +55,8 @@ Marketplace 報酬は、認識アクティビティから始めて最初の顧�
 1. 技術上のベネフィットを使用すると、クラウドおよびハイブリッド ソリューションのプリセールス、設計、導入、アプリ開発の各段階で技術的なサポートを依頼できます。 サポートを依頼するには、依頼フォームに入力して、 **[要求の送信]** を選択します。
 2. Azure スポンサーのベネフィットを利用する方法は、これらのベネフィットのロックを解除するときにメールで共有されます。
 
->[!Note]
->オファーを発行してから 4 週間経ってもメッセージを受け足らない場合は、パートナー センターで検索し、組織内で誰が問題のオファーの所有者であるか確認してください。 その人が通信と次の手順を受け取っているはずです。 <br> <br> 所有者がわからない場合、または所有者が退職した場合は、[ヘルプとサポート](https://aka.ms/marketplacepublishersupport)でサポート チケットを提出できます。
+>[!NOTE]
+>オファーを発行してから 4 週間経ってもメッセージを受け足らない場合は、パートナー センターで検索し、組織内で誰が問題のオファーの所有者であるか確認してください。 その人が通信と次の手順を受け取っているはずです。<br><br>所有者がわからない場合、または所有者が退職した場合は、[ヘルプとサポート](https://aka.ms/marketplacepublishersupport)でサポート チケットを提出できます。
 
 マーケットプレースでのオファリングの拡大に合わせて、使用可能なアクティビティの範囲が広がります。 リストのすべての項目が、リソースとベスト プラクティスに関するセルフサービスのメールの一部として、基本レベルの最適化に関する推奨事項とプロモーションを受け取ります。
 
@@ -74,8 +74,8 @@ Marketplace 報酬は、認識アクティビティから始めて最初の顧�
 
 Azure Marketplace または Microsoft AppSource でトランザクション可能なオファーを発行すると、商用マーケットプレースで請求販売取引やチケットの収益を拡大するときに、追加のベネフィットにアクセスできるようになります。 
 
->[!Note]
->チケットの収益のしきい値は Microsoft 365 アプリのみ (Microsoft Teams、Office、Outlook、または SharePoint と統合された SaaS アプリケーション) に適用されます。また、ベネフィットは 2020 年 6 月 30 日までに完了する必要があります。
+>[!NOTE]
+>チケットの収益のしきい値は Microsoft 365 アプリのみ (Microsoft Teams、Office、Outlook、または SharePoint と統合された SaaS アプリケーション) に適用されます。また、ベネフィットは 2020 年 6 月 30 日までに完了している必要があります。
 
 これらのベネフィットは、マーケティング、販売、および技術アクティビティでのサポートを目的としています。これにより、より多くの訪問者を取得し、より多くの潜在顧客を獲得し、より多くのビジネスを変換することができます。
 
@@ -123,5 +123,3 @@ Microsoft は、次のような発行元に対する Marketplace 報酬ベネフ
 [利用可能なセルフサービス リソース](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)を確認します。
 
 [Microsoft AppSource および Azure Marketplace のコミュニティ フォーラム](https://aka.ms/MarketplaceCommunity)にサインアップし、関連するトピックについて学習したり、ディスカッションに参加したりすることができます。
-
----

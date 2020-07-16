@@ -3,7 +3,6 @@ title: クイック スタート:Azure で Linux SQL Server VM を作成する
 description: このチュートリアルでは、Azure Portal で Linux SQL Server 2017 仮想マシンを作成する方法について説明します。
 services: virtual-machines-linux
 author: MashaMSFT
-manager: craigg
 ms.date: 10/22/2019
 tags: azure-service-management
 ms.topic: conceptual
@@ -11,14 +10,14 @@ ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ac7a836f339e86ce3705d64d04cad143f1043a81
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 41f39c7e60e79e034d4c855a77bfee0f6fa2094d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259526"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84669513"
 ---
-# <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>Azure Portal での Linux SQL Server 仮想マシンのプロビジョニング
+# <a name="provision-a-linux-virtual-machine-running-sql-server-in-the-azure-portal"></a>Azure portal で SQL Server を実行している Linux 仮想マシンをプロビジョニングする
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!div class="op_single_selector"]
@@ -28,7 +27,7 @@ ms.locfileid: "84259526"
 このクイック スタート チュートリアルでは、Azure portal を使用して、SQL Server 2017 がインストールされている Linux 仮想マシンを作成します。 次のことについて学習します。 
 
 
-* [ギャラリーからの Linux SQL VM の作成](#create)
+* [ギャラリーから SQL Server を実行する Linux VM を作成する](#create)
 * [SSH による新しい VM への接続](#connect)
 * [SA パスワードの変更](#password)
 * [リモート接続の構成](#remote)
@@ -125,7 +124,7 @@ Windows を使用していて BASH シェルがない場合は PuTTY などの S
 
 Linux VM への接続の詳細については、[ポータルを使用して Azure に Linux VM を作成する方法](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-portal)に関するページを参照してください。
 
-> [!Note]
+> [!NOTE]
 > サーバーのホストキーがレジストリにキャッシュされていないことを示す PuTTY のセキュリティ アラートが表示された場合は、次のオプションから選択します。 このホストを信頼する場合は、 **[Yes]\(はい\)** を選択して PuTTy のキャッシュにキーを追加し、接続を続行します。 キーをキャッシュに追加せずに接続を 1 回だけ実行する場合は、 **[No]\(いいえ\)** を選択します。 このホストを信頼しない場合は、 **[Cancel]\(キャンセル\)** を選択して接続を破棄します。
 
 ## <a name="change-the-sa-password"></a><a id="password"></a> SA パスワードの変更
