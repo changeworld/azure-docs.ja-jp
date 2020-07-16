@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 05/29/2020
-ms.openlocfilehash: 47879ab55a91904cdc41d9a486d77d55ed27f706
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.date: 06/10/2020
+ms.openlocfilehash: 9dfa45e463ecd53524e7516160324a80824e4d8d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235700"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84669530"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>仮想コア購入モデルを使用した単一データベースに対するリソース制限
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "84235700"
 
 サーバー上の単一データベースに対する DTU 購入モデルの制限については、[サーバー上のリソース制限の概要](resource-limits-logical-server.md)に関するページを参照してください。
 
-[Azure portal](single-database-manage.md#azure-portal)、[Transact-SQL](single-database-manage.md#transact-sql-t-sql)、[PowerShell](single-database-manage.md#powershell)、[Azure CLI](single-database-manage.md#azure-cli)、または [REST API](single-database-manage.md#rest-api) を使って、単一のデータベースにサービス レベル、コンピューティング サイズ、ストレージ容量を設定できます。
+[Azure portal](single-database-manage.md#the-azure-portal)、[Transact-SQL](single-database-manage.md#transact-sql-t-sql)、[PowerShell](single-database-manage.md#powershell)、[Azure CLI](single-database-manage.md#the-azure-cli)、または [REST API](single-database-manage.md#rest-api) を使って、単一のデータベースにサービス レベル、コンピューティング サイズ (サービス目標)、ストレージ容量を設定できます。
 
 > [!IMPORTANT]
 > スケーリングのガイダンスと考慮事項については、[単一データベースのスケーリング](single-database-scale.md)に関するページを参照してください。
@@ -36,12 +36,12 @@ ms.locfileid: "84235700"
 
 ### <a name="gen5-compute-generation-part-1"></a>Gen5 コンピューティング世代 (パート 1)
 
-|コンピューティング サイズ|GP_S_Gen5_1|GP_S_Gen5_2|GP_S_Gen5_4|GP_S_Gen5_6|GP_S_Gen5_8|
+|コンピューティング サイズ (サービス目標)|GP_S_Gen5_1|GP_S_Gen5_2|GP_S_Gen5_4|GP_S_Gen5_6|GP_S_Gen5_8|
 |:--- | --: |--: |--: |--: |--: |
 |コンピューティング世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|
 |最小最大の仮想コア|0.5 から 1|0.5 から 2|0.5 から 4|0.75 から 6|1.0 から 8|
 |最小最大のメモリ (GB)|2.02 から 3|2.05 から 6|2.10 から 12|2.25 から 18|3.00 から 24|
-|最小の自動一時停止の遅延 (分)|60|60|60|60|60|
+|最小最大の自動一時停止の遅延 (分)|60 から 10080|60 から 10080|60 から 10080|60 から 10080|60 から 10080|
 |列ストアをサポート|はい|はい|はい|はい|はい|
 |インメモリ OLTP ストレージ (GB)|該当なし|該当なし|該当なし|該当なし|該当なし|
 |データの最大サイズ (GB)|512|1024|1024|1024|1536|
@@ -62,12 +62,12 @@ ms.locfileid: "84235700"
 
 ### <a name="gen5-compute-generation-part-2"></a>Gen5 コンピューティング世代 (パート 2)
 
-|コンピューティング サイズ|GP_S_Gen5_10|GP_S_Gen5_12|GP_S_Gen5_14|GP_S_Gen5_16|
+|コンピューティング サイズ (サービス目標)|GP_S_Gen5_10|GP_S_Gen5_12|GP_S_Gen5_14|GP_S_Gen5_16|
 |:--- | --: |--: |--: |--: |
 |コンピューティング世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|
 |最小最大の仮想コア|1.25 から 10|1.50 から 12|1.75 ～ 14|2.00 から 16|
 |最小最大のメモリ (GB)|3.75 から 30|4.50 から 36|5.25 から 42|6.00 から 48|
-|最小の自動一時停止の遅延 (分)|60|60|60|60|
+|最小最大の自動一時停止の遅延 (分)|60 から 10080|60 から 10080|60 から 10080|60 から 10080|
 |列ストアをサポート|はい|はい|はい|はい|
 |インメモリ OLTP ストレージ (GB)|該当なし|該当なし|該当なし|該当なし|
 |データの最大サイズ (GB)|1536|3072|3072|3072|
@@ -86,11 +86,38 @@ ms.locfileid: "84235700"
 
 \* IO サイズの最大値。範囲は 8 KB ～ 64 KB。 実際の IOPS はワークロードに依存します。 詳細については、[データ IO のガバナンス](resource-limits-logical-server.md#resource-governance)に関するページを参照してください。
 
+### <a name="gen5-compute-generation-part-3"></a>Gen5 コンピューティング世代 (パート 3)
+
+|コンピューティング サイズ (サービス目標)|GP_S_Gen5_18|GP_S_Gen5_20|GP_S_Gen5_24|GP_S_Gen5_32|GP_S_Gen5_40|
+|:--- | --: |--: |--: |--: |--:|
+|コンピューティング世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|
+|最小最大の仮想コア|2.25 から 18|2.5 から 20|3 ～ 24|4 から 32|5 から 40|
+|最小最大のメモリ (GB)|6.75 から 54|7.5 から 60|9 から 72|12 から 96|15 から 120|
+|最小最大の自動一時停止の遅延 (分)|60 から 10080|60 から 10080|60 から 10080|60 から 10080|60 から 10080|
+|列ストアをサポート|はい|はい|はい|はい|はい|
+|インメモリ OLTP ストレージ (GB)|該当なし|該当なし|該当なし|該当なし|該当なし|
+|データの最大サイズ (GB)|3072|3072|4096|4096|4096|
+|最大ログ サイズ (GB)|922|922|1229|1229|1229|
+|TempDB の最大データ サイズ (GB)|576|640|768|1024|1280|
+|ストレージの種類|リモート SSD|リモート SSD|リモート SSD|リモート SSD|リモート SSD|
+|IO 待機時間 (概算)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|
+|最大データ IOPS *|5760|6400|7680|10240|12800|
+|最大ログ速度 (Mbps)|30|30|30|30|30|
+|最大同時実行ワーカー (要求) 数|1350|1500|1800|2400|3000|
+|最大同時セッション数|30,000|30,000|30,000|30,000|30,000|
+|レプリカの数|1|1|1|1|1|
+|マルチ AZ|該当なし|該当なし|該当なし|該当なし|該当なし|
+|読み取りスケールアウト|該当なし|該当なし|該当なし|該当なし|該当なし|
+|含まれるバックアップ ストレージ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|
+
+\* IO サイズの最大値。範囲は 8 KB ～ 64 KB。 実際の IOPS はワークロードに依存します。 詳細については、[データ IO のガバナンス](resource-limits-logical-server.md#resource-governance)に関するページを参照してください。
+
+
 ## <a name="hyperscale---provisioned-compute---gen4"></a>Hyperscale - プロビジョニング済みコンピューティング - Gen4
 
 ### <a name="gen4-compute-generation-part-1"></a>Gen4 コンピューティング世代 (パート 1)
 
-|パフォーマンス レベル|HS_Gen4_1|HS_Gen4_2|HS_Gen4_3|HS_Gen4_4|HS_Gen4_5|HS_Gen4_6|
+|コンピューティング サイズ (サービス目標)|HS_Gen4_1|HS_Gen4_2|HS_Gen4_3|HS_Gen4_4|HS_Gen4_5|HS_Gen4_6|
 |:--- | --: |--: |--: |---: | --: |--: |
 |コンピューティング世代|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |仮想コア|1|2|3|4|5|6|
@@ -115,7 +142,7 @@ ms.locfileid: "84235700"
 
 ### <a name="gen4-compute-generation-part-2"></a>Gen4 コンピューティング世代 (パート 2)
 
-|パフォーマンス レベル|HS_Gen4_7|HS_Gen4_8|HS_Gen4_9|HS_Gen4_10|HS_Gen4_16|HS_Gen4_24|
+|コンピューティング サイズ (サービス目標)|HS_Gen4_7|HS_Gen4_8|HS_Gen4_9|HS_Gen4_10|HS_Gen4_16|HS_Gen4_24|
 |:--- | ---: |--: |--: | --: |--: |--: |
 |コンピューティング世代|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |仮想コア|7|8|9|10|16|24|
@@ -144,7 +171,7 @@ ms.locfileid: "84235700"
 
 ### <a name="gen5-compute-generation-part-1"></a>Gen5 コンピューティング世代 (パート 1)
 
-|パフォーマンス レベル|HS_Gen5_2|HS_Gen5_4|HS_Gen5_6|HS_Gen_8|HS_Gen5_10|HS_Gen5_12|HS_Gen5_14|
+|コンピューティング サイズ (サービス目標)|HS_Gen5_2|HS_Gen5_4|HS_Gen5_6|HS_Gen_8|HS_Gen5_10|HS_Gen5_12|HS_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |
 |コンピューティング世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|
 |仮想コア|2|4|6|8|10|12|14|
@@ -171,7 +198,7 @@ ms.locfileid: "84235700"
 
 ### <a name="gen5-compute-generation-part-2"></a>Gen5 コンピューティング世代 (パート 2)
 
-|パフォーマンス レベル|HS_Gen5_16|HS_Gen5_18|HS_Gen5_20|HS_Gen_24|HS_Gen5_32|HS_Gen5_40|HS_Gen5_80|
+|コンピューティング サイズ (サービス目標)|HS_Gen5_16|HS_Gen5_18|HS_Gen5_20|HS_Gen_24|HS_Gen5_32|HS_Gen5_40|HS_Gen5_80|
 |:--- | --: |--: |--: |--: |---: |--: |--: |
 |コンピューティング世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|
 |仮想コア|16|18|20|24|32|40|80|
@@ -211,7 +238,7 @@ ms.locfileid: "84235700"
 
 ### <a name="gen4-compute-generation-part-1"></a>Gen4 コンピューティング世代 (パート 1)
 
-|コンピューティング サイズ|GP_Gen4_1|GP_Gen4_2|GP_Gen4_3|GP_Gen4_4|GP_Gen4_5|GP_Gen4_6
+|コンピューティング サイズ (サービス目標)|GP_Gen4_1|GP_Gen4_2|GP_Gen4_3|GP_Gen4_4|GP_Gen4_5|GP_Gen4_6
 |:--- | --: |--: |--: |--: |--: |--: |
 |コンピューティング世代|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |仮想コア|1|2|3|4|5|6|
@@ -236,7 +263,7 @@ ms.locfileid: "84235700"
 
 ### <a name="gen4-compute-generation-part-2"></a>Gen4 コンピューティング世代 (パート 2)
 
-|コンピューティング サイズ|GP_Gen4_7|GP_Gen4_8|GP_Gen4_9|GP_Gen4_10|GP_Gen4_16|GP_Gen4_24
+|コンピューティング サイズ (サービス目標)|GP_Gen4_7|GP_Gen4_8|GP_Gen4_9|GP_Gen4_10|GP_Gen4_16|GP_Gen4_24
 |:--- | --: |--: |--: |--: |--: |--: |
 |コンピューティング世代|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |仮想コア|7|8|9|10|16|24|
@@ -263,7 +290,7 @@ ms.locfileid: "84235700"
 
 ### <a name="gen5-compute-generation-part-1"></a>Gen5 コンピューティング世代 (パート 1)
 
-|コンピューティング サイズ|GP_Gen5_2|GP_Gen5_4|GP_Gen5_6|GP_Gen5_8|GP_Gen5_10|GP_Gen5_12|GP_Gen5_14|
+|コンピューティング サイズ (サービス目標)|GP_Gen5_2|GP_Gen5_4|GP_Gen5_6|GP_Gen5_8|GP_Gen5_10|GP_Gen5_12|GP_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |コンピューティング世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|
 |仮想コア|2|4|6|8|10|12|14|
@@ -288,7 +315,7 @@ ms.locfileid: "84235700"
 
 ### <a name="gen5-compute-generation-part-2"></a>Gen5 コンピューティング世代 (パート 2)
 
-|コンピューティング サイズ|GP_Gen5_16|GP_Gen5_18|GP_Gen5_20|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
+|コンピューティング サイズ (サービス目標)|GP_Gen5_16|GP_Gen5_18|GP_Gen5_20|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |コンピューティング世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|
 |仮想コア|16|18|20|24|32|40|80|
@@ -315,7 +342,7 @@ ms.locfileid: "84235700"
 
 ### <a name="fsv2-series-compute-generation-preview"></a>Fsv2 シリーズのコンピューティング世代 (プレビュー)
 
-|コンピューティング サイズ|GP_Fsv2_72|
+|コンピューティング サイズ (サービス目標)|GP_Fsv2_72|
 |:--- | --: |
 |コンピューティング世代|Fsv2 シリーズ|
 |仮想コア|72|
@@ -346,7 +373,7 @@ ms.locfileid: "84235700"
 
 ### <a name="gen4-compute-generation-part-1"></a>Gen4 コンピューティング世代 (パート 1)
 
-|コンピューティング サイズ|BC_Gen4_1|BC_Gen4_2|BC_Gen4_3|BC_Gen4_4|BC_Gen4_5|BC_Gen4_6|
+|コンピューティング サイズ (サービス目標)|BC_Gen4_1|BC_Gen4_2|BC_Gen4_3|BC_Gen4_4|BC_Gen4_5|BC_Gen4_6|
 |:--- | --: |--: |--: |--: |--: |--: |
 |コンピューティング世代|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |仮想コア|1|2|3|4|5|6|
@@ -372,7 +399,7 @@ ms.locfileid: "84235700"
 
 ### <a name="gen4-compute-generation-part-2"></a>Gen4 コンピューティング世代 (パート 2)
 
-|コンピューティング サイズ|BC_Gen4_7|BC_Gen4_8|BC_Gen4_9|BC_Gen4_10|BC_Gen4_16|BC_Gen4_24|
+|コンピューティング サイズ (サービス目標)|BC_Gen4_7|BC_Gen4_8|BC_Gen4_9|BC_Gen4_10|BC_Gen4_16|BC_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |コンピューティング世代|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |仮想コア|7|8|9|10|16|24|
@@ -400,7 +427,7 @@ ms.locfileid: "84235700"
 
 ### <a name="gen5-compute-generation-part-1"></a>Gen5 コンピューティング世代 (パート 1)
 
-|コンピューティング サイズ|BC_Gen5_2|BC_Gen5_4|BC_Gen5_6|BC_Gen5_8|BC_Gen5_10|BC_Gen5_12|BC_Gen5_14|
+|コンピューティング サイズ (サービス目標)|BC_Gen5_2|BC_Gen5_4|BC_Gen5_6|BC_Gen5_8|BC_Gen5_10|BC_Gen5_12|BC_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |コンピューティング世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|
 |仮想コア|2|4|6|8|10|12|14|
@@ -426,7 +453,7 @@ ms.locfileid: "84235700"
 
 ### <a name="gen5-compute-generation-part-2"></a>Gen5 コンピューティング世代 (パート 2)
 
-|コンピューティング サイズ|BC_Gen5_16|BC_Gen5_18|BC_Gen5_20|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
+|コンピューティング サイズ (サービス目標)|BC_Gen5_16|BC_Gen5_18|BC_Gen5_20|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |コンピューティング世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|
 |仮想コア|16|18|20|24|32|40|80|
@@ -454,7 +481,7 @@ ms.locfileid: "84235700"
 
 ### <a name="m-series-compute-generation-preview"></a>M シリーズのコンピューティング世代 (プレビュー)
 
-|コンピューティング サイズ|BC_M_128|
+|コンピューティング サイズ (サービス目標)|BC_M_128|
 |:--- | --: |
 |コンピューティング世代|M シリーズ|
 |仮想コア|128|

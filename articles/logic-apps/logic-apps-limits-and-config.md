@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/25/2020
-ms.openlocfilehash: 33e521046889733b2f0a66b839ab5dde46398318
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 350c542e1b183c79707c99989b2544fd8faa43ac
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85412697"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248477"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps の制限と構成情報
 
@@ -180,7 +180,7 @@ Azure Logic Apps では、ゲートウェイ経由での挿入や更新などの
 
 ### <a name="authentication-limits"></a>認証制限
 
-以下に、Request トリガーで開始され、[Azure Active Directory Open Authentication](../active-directory/develop/about-microsoft-identity-platform.md) (Azure AD OAuth) を有効にして Request トリガーへの受信呼び出しを承認するロジック アプリの制限を示します。
+以下に、Request トリガーで開始され、[Azure Active Directory Open Authentication](/azure/active-directory/develop/) (Azure AD OAuth) を有効にして Request トリガーへの受信呼び出しを承認するロジック アプリの制限を示します。
 
 | 名前 | 制限 | Notes |
 | ---- | ----- | ----- |
@@ -302,7 +302,8 @@ B2B プロトコルに適用されるメッセージ サイズの制限を次に
 着信および発信で Azure Logic Apps が使用する IP アドレスは、ご利用のロジック アプリが置かれているリージョンによって異なります。 同じリージョン内の*すべての*ロジック アプリは、同じ IP アドレス範囲を使用します。 **HTTP** 要求や **HTTP + OpenAPI** 要求など、一部の [Power Automate](https://docs.microsoft.com/power-automate/getting-started) 呼び出しは、Azure Logic Apps サービスを通じて直接実行され、ここに記載されている IP アドレスから取得されます。 Power Automate によって使用される IP アドレスについて詳しくは、[Power Automate での制限事項と構成](https://docs.microsoft.com/flow/limits-and-config#ip-address-configuration)に関するページを参照してください。
 
 > [!TIP]
-> セキュリティ規則を作成する際の複雑さを軽減するために、必要に応じて、このセクションの後半で説明する各リージョンの Logic Apps IP アドレスを指定するのではなく、[サービス タグ](../virtual-network/service-tags-overview.md)を使用することもできます。 これらのタグは、Logic Apps サービスが使用可能なリージョン全体で動作します。
+> セキュリティ規則を作成する際の複雑さを軽減するために、必要に応じて、このセクションの後半で説明する各リージョンの Logic Apps IP アドレスを指定するのではなく、[サービス タグ](../virtual-network/service-tags-overview.md)を使用することもできます。
+> これらのタグは、Logic Apps サービスが使用可能なリージョン全体で動作します。
 >
 > * **LogicAppsManagement**:Logic Apps サービスの受信 IP アドレスのプレフィックスを表します。
 > * **LogicApps**:Logic Apps サービスの送信 IP アドレスのプレフィックスを表します。
@@ -326,7 +327,8 @@ B2B プロトコルに適用されるメッセージ サイズの制限を次に
 このセクションには、Azure Logic Apps サービスのみの受信 IP アドレスが一覧表示されています。 Azure Government をご使用の場合は、「[Azure Government - 受信 IP アドレス](#azure-government-inbound)」を参照してください。
 
 > [!TIP]
-> セキュリティ規則を作成する際の複雑さを軽減するために、必要に応じて、各リージョンの受信 Logic Apps IP アドレスのプレフィックスを指定するのではなく、[サービス タグ](../virtual-network/service-tags-overview.md) **LogicAppsManagement** を使用することもできます。 このタグは、Logic Apps サービスが使用可能なリージョン全体で動作します。
+> セキュリティ規則を作成する際の複雑さを軽減するために、必要に応じて、各リージョンの受信 Logic Apps IP アドレスのプレフィックスを指定するのではなく、[サービス タグ](../virtual-network/service-tags-overview.md) **LogicAppsManagement** を使用することもできます。
+> このタグは、Logic Apps サービスが使用可能なリージョン全体で動作します。
 
 <a name="multi-tenant-inbound"></a>
 
@@ -386,7 +388,9 @@ B2B プロトコルに適用されるメッセージ サイズの制限を次に
 このセクションには、Azure Logic Apps サービスとマネージド コネクタの送信 IP アドレスが一覧表示されています。 Azure Government をご使用の場合は、「[Azure Government - 送信 IP アドレス](#azure-government-outbound)」を参照してください。
 
 > [!TIP]
-> セキュリティ規則を作成する際の複雑さを軽減するために、必要に応じて、各リージョンの送信 Logic Apps IP アドレスのプレフィックスを指定するのではなく、[サービス タグ](../virtual-network/service-tags-overview.md) **LogicApps** を使用することもできます。 このタグは、Logic Apps サービスが使用可能なリージョン全体で動作します。 マネージド コネクタの場合は、引き続き IP アドレスを使用する必要があります。
+> セキュリティ規則を作成する際の複雑さを軽減するために、必要に応じて、各リージョンの送信 Logic Apps IP アドレスのプレフィックスを指定するのではなく、[サービス タグ](../virtual-network/service-tags-overview.md) **LogicApps** を使用することもできます。
+> このタグは、Logic Apps サービスが使用可能なリージョン全体で動作します。
+> マネージド コネクタの場合は、引き続き IP アドレスを使用する必要があります。
 
 <a name="multi-tenant-outbound"></a>
 
@@ -441,5 +445,5 @@ B2B プロトコルに適用されるメッセージ サイズの制限を次に
 
 ## <a name="next-steps"></a>次のステップ
 
-* [初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)方法を確認する  
+* [初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)方法を確認する
 * [一般的な例とシナリオ](../logic-apps/logic-apps-examples-and-scenarios.md)を確認する

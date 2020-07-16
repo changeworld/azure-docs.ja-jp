@@ -4,14 +4,14 @@ description: Azure Cosmos DB でのインデックス作成の自動化とパフ
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/28/2020
+ms.date: 06/09/2020
 ms.author: tisande
-ms.openlocfilehash: 68adfb8b4cfb7c665a8e8b162b4698a095bb671e
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: a335da61fac914368b4044a97582ef0060f5de4a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82869941"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84636327"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB でのインデックス作成ポリシー
 
@@ -27,10 +27,10 @@ Azure Cosmos DB では、すべてのコンテナーに、コンテナーの項�
 Azure Cosmos DB では 2 つのインデックス作成モードがサポートされます。
 
 - **同期**: 項目を作成、更新、削除すると、それに同期してインデックスが更新されます。 つまり、読み取りクエリの一貫性は、[アカウント用に構成された整合性](consistency-levels.md)になります。
-- **なし**: コンテナーでインデックス作成が無効になっています。 これは、コンテナーがセカンダリ インデックスを必要としない純粋なキー値ストアとして使用される場合に一般的に使用されます。 一括操作のパフォーマンスを改善する目的で使用することもできます。 一括操作が完了したら、インデックス モードを Consistent に設定し、完了まで [IndexTransformationProgress](how-to-manage-indexing-policy.md#dotnet-sdk) を利用して監視できます。
+- **None**:コンテナーでインデックス作成が無効になっています。 これは、コンテナーがセカンダリ インデックスを必要としない純粋なキー値ストアとして使用される場合に一般的に使用されます。 一括操作のパフォーマンスを改善する目的で使用することもできます。 一括操作が完了したら、インデックス モードを Consistent に設定し、完了まで [IndexTransformationProgress](how-to-manage-indexing-policy.md#dotnet-sdk) を利用して監視できます。
 
 > [!NOTE]
-> Azure Cosmos DB では、Lazy インデックス作成モードもサポートされます。 Lazy 方式のインデックスではインデックス更新の優先順位が低く、エンジンが他に何も作業をしていないときに実行されます。 結果的に、クエリの結果に**一貫性がなくなったり、不完全になったり**します。 Cosmos コンテナーに対してクエリを実行する場合は、Lazy インデックス作成を選択しないでください。
+> Azure Cosmos DB では、Lazy インデックス作成モードもサポートされます。 Lazy 方式のインデックスではインデックス更新の優先順位が低く、エンジンが他に何も作業をしていないときに実行されます。 結果的に、クエリの結果に**一貫性がなくなったり、不完全になったり**します。 Cosmos コンテナーに対してクエリを実行する場合は、Lazy インデックス作成を選択しないでください。 2020 年 6 月、新しいコンテナーへの Lazy インデックス作成モードの設定はもう許可されないという変更が導入されました。 Azure Cosmos DB アカウントに、Lazy インデックスが設定されたコンテナーが少なくとも 1 つ含まれている場合、このアカウントは自動的に変更から除外されます。 [Azure サポート](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)に連絡することで、除外をリクエストすることもできます。
 
 既定では、インデックス作成ポリシーは `automatic` に設定されます。 これはインデックス作成ポリシーの `automatic` プロパティを `true` に設定することで行います。 このプロパティを `true` に設定すると、Azure Cosmos DB で、ドキュメントが書き込まれたときに自動的にインデックスを作成できます。
 

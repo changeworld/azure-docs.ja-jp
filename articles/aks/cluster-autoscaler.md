@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) クラスターでのアプリケー
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: e87470e577f4d2613b43cc02755ccc2d500c0ef8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9aa06ea2fbc3aff218a4940fa60da767fabca500
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84730018"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252030"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションの需要を満たすようにクラスターを自動的にスケーリング
 
@@ -213,7 +213,7 @@ AKS では、ユーザーに代わってクラスター オートスケーラー
 
 クラスター オートスケーラーから Log Analytics にプッシュされるようにログを構成するには、次の手順に従います。
 
-1. Log Analytics にクラスター オートスケーラーのログをプッシュするようにリソース ログのルールを設定します。 [手順の詳細はこちらにあります](https://docs.microsoft.com/azure/aks/view-master-logs#enable-resource-logs)。[ログ] のオプションを選択するときは、確実に `cluster-autoscaler` のボックスにチェックマークを入れます。
+1. Log Analytics にクラスター オートスケーラーのログをプッシュするようにリソース ログのルールを設定します。 [手順の詳細はこちらにあります](./view-master-logs.md#enable-resource-logs)。[ログ] のオプションを選択するときは、確実に `cluster-autoscaler` のボックスにチェックマークを入れます。
 1. Azure portal から、クラスターの [ログ] セクションをクリックします。
 1. Log Analytics に次のサンプル クエリを入力します。
 

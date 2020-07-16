@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4cbfe03c48c6d971c140dc332c38a47bc9234173
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: d41df8fe4f411cf28af83c8b4b667f1e86bdb45d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135110"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259915"
 ---
 # <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>ホスト プールのリモート デスクトップ プロトコル プロパティをカスタマイズする
 
@@ -132,7 +132,7 @@ CustomRdpProperty : <CustomRDPpropertystring>
 
 特定のホスト プールの RDP プロパティをカスタマイズしたので、Windows Virtual Desktop クライアントにサインインして、それらをユーザー セッションの一部としてテストできます。 次の攻略ガイドでは、選択したクライアントを使用してセッションに接続する方法を説明します。
 
-- [Windows デスクトップ クライアントを使用して接続する](connect-windows-7-and-10.md)
+- [Windows デスクトップ クライアントを使用して接続する](connect-windows-7-10.md)
 - [Web クライアントに接続する](connect-web.md)
 - [Android クライアントに接続する](connect-android.md)
 - [macOS クライアントに接続する](connect-macos.md)
