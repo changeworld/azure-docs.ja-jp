@@ -30,7 +30,7 @@ java.io.IOException: Not a valid BCFile.
 
 Apache Yarn ログは `IndexFile` 形式に集約されますが、これはファイル パーサーでサポートされていません。
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決策
 
 1. Web ブラウザーから、`https://CLUSTERNAME.azurehdinsight.net` に移動します。ここで、`CLUSTERNAME` はクラスターの名前です。
 

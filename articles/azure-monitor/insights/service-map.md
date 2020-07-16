@@ -571,7 +571,7 @@ Microsoft Dependency Agent は、Microsoft Visual Studio ランタイム ライ�
 
 次の表に、コード番号と推奨される解決策を示します。
 
-| コード | 説明 | 解像度 |
+| コード | 説明 | 解決策 |
 |:--|:--|:--|
 | 0x17 | ライブラリのインストーラーは、まだインストールされていない Windows Update を要求しています。 | 最新のライブラリ インストーラー ログを確認してください。<br><br>`Windows8.1-KB2999226-x64.msu` への参照の後に `Error 0x80240017: Failed to execute MSU package,` という行が続いている場合、KB2999226 をインストールするための前提条件が揃っていません。 [Windows での汎用の C ランタイム](https://support.microsoft.com/kb/2999226)に関する記事の前提条件セクションに記載の手順に従ってください。 前提条件をインストールするためには、Windows Update の実行と再起動が複数回必要になることがあります。<br><br>Microsoft Dependency Agent インストーラーをもう一度実行します。 |
 

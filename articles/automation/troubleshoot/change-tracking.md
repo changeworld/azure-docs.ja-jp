@@ -40,7 +40,7 @@ ms.locfileid: "82582154"
 * Change Tracking と Inventory 用の管理パックがダウンロードされていません。
 * オンボードされている VM の複製元が、Windows 用 Log Analytics エージェントがインストールされた状態で sysprep されなかった複製マシンであった可能性があります。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決策
 
 Log Analytics エージェント マシン上で **C:\Program Files\Microsoft Monitoring Agent\Agent\Tools** に移動し、次のコマンドを実行します。
 
@@ -92,7 +92,7 @@ Change Tracking とインベントリの次の管理パックがローカルに�
 * Linux 用 Log Analytics エージェントが正しく構成されていません。
 * ファイルの整合性の監視 (FIM) の競合があります。
 
-#### <a name="resolution"></a>解像度 
+#### <a name="resolution"></a>解決策 
 
 ##### <a name="log-analytics-agent-for-linux-not-running"></a>Linux 用 Log Analytics エージェントが実行されていない
 

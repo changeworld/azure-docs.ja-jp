@@ -31,7 +31,7 @@ Azure Automation Update Management ソリューションをオンボードする
 
 登録されたノードの名前を変更しても、Azure Automation 内のノード名は更新されません。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決策
 
 Azure Automation State Configuration からノードの登録を解除し、再度登録してください。 それより前にサービスに発行されたレポートは、使用できなくなります。
 
@@ -45,7 +45,7 @@ HTTPS トラフィックを終了してから新しい証明書を使用して�
 
 Azure Automation では、トラフィックの暗号化に使用される証明書の再署名はサポートされていません。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決策
 
 現時点では、この問題の回避策はありません。
 
@@ -69,7 +69,7 @@ The solution cannot be enabled on this VM because the permission to read the wor
 
 このエラーは、VM またはワークスペースに対するアクセス許可、またはユーザーのアクセス許可が正しくないか、不足しているために発生します。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決策
 
 [マシンをオンボードするために必要な正しいアクセス許可](../automation-role-based-access-control.md#onboarding-permissions)があることを確認してから、再度ソリューションをオンボードしてみてください。 `The solution cannot be enabled on this VM because the permission to read the workspace is missing` というエラー メッセージが発生する場合は、ワークスペースに VM がオンボードされているかどうかを調べることができる `Microsoft.OperationalInsights/workspaces/read` アクセス許可があることを確認してください。
 
@@ -87,7 +87,7 @@ Failed to configure automation account for diagnostic logging
 
 このエラーは、価格レベルがサブスクリプションの課金モデルと一致しない場合に発生することがあります。 詳細については、「[Azure Monitor での使用量と推定コストの監視](https://aka.ms/PricingTierWarning)」を参照してください。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決策
 
 Log Analytics ワークスペースを手動で作成し、オンボード プロセスを繰り返して、作成したワークスペースを選択します。
 
@@ -101,7 +101,7 @@ Log Analytics ワークスペースを手動で作成し、オンボード プ�
 
 クエリが変更されたか、システムによってそれが変更されたことが考えられます。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決策
 
 そのソリューションに対するクエリを削除してから、ソリューションを再度オンボードすれば、クエリが再度作成されます。 クエリはワークスペース内の、 **[保存された検索条件]** にあります。 クエリの名前は **MicrosoftDefaultComputerGroup** です。クエリのカテゴリは、関連付けられたソリューションの名前となります。 複数のソリューションが有効な場合は、**MicrosoftDefaultComputerGroup** クエリが複数回 **[保存された検索条件]** に表示されます。
 
@@ -115,7 +115,7 @@ Log Analytics ワークスペースを手動で作成し、オンボード プ�
 
 ポリシーによって操作の完了が阻止されています。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決策
 
 ソリューションを正常にデプロイするには、指定されたポリシーの変更を検討する必要があります。 定義可能なポリシーが多数あるため、必要になる変更は、違反しているポリシーによって異なります。 たとえば、リソース グループに対して、含まれている一部のリソースの内容を変更するためのアクセス許可を拒否するポリシーが定義されている場合は、次のいずれかの修正を選択できます。
 
@@ -140,7 +140,7 @@ The link cannot be updated or deleted because it is linked to Update Management 
 
 このエラーは、Log Analytics ワークス ペース内に Automation アカウントに依存するアクティブなソリューションがまだ存在し、Log Analytics ワークスペースがリンクされている場合に発生します。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 次のソリューションを使用している場合は、ご利用のワークスペースから削除する必要があります。
 
@@ -185,7 +185,7 @@ Please verify the VM has a running VM agent, and can establish outbound connecti
 * VM 内で構成されているプロキシでは、特定のポートのみ許可されます。
 * ファイアウォールの設定によって、必要なポートとアドレスへのアクセスがブロックされた。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決策
 
 適切なポートとアドレスが通信のために開いていることを確認します。 ポートとアドレスの一覧は、[ネットワークの計画](../automation-hybrid-runbook-worker.md#network-planning)に関する記事を参照してください。
 
@@ -216,7 +216,7 @@ The Microsoft Monitoring Agent failed to install on this machine. Please try to 
 * 別のインストールが進行中です。
 * テンプレートのデプロイ中にシステムの再起動がトリガーされます。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決策
 
 このエラーは本質的に一時的なものです。 デプロイを再試行して拡張機能をインストールしてください。
 
@@ -236,7 +236,7 @@ Install failed for plugin (name: Microsoft.EnterpriseCloud.Monitoring.MicrosoftM
 
 この種のエラーは、インストール中に VM の負荷が大きくなったために発生します。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 VM の負荷が小さい場合に、Windows 拡張機能用の Log Analytics エージェントをインストールしてみてください。
 

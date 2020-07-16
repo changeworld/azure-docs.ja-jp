@@ -30,7 +30,7 @@ Azure Resource Graph を使用して Azure リソースをクエリすると、�
 
 Azure CLI と PowerShell は、最初の 1,000 サブスクリプションのみを Azure Resource Graph に転送します。 Azure Resource Graph 用の REST API は、クエリを実行するために最大数のサブスクリプションを受け付けます。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決策
 
 1,000 サブスクリプションの制限を超えないよう、サブスクリプションのサブセットを使用してクエリ要求をバッチ化します。 ソリューションでは PowerShell の **Subscription** パラメーターを使用しています。
 
@@ -67,7 +67,7 @@ Azure Resource Graph REST API クエリを実行すると、_500_ (内部サー�
 
 Azure Resource Graph REST API では、**application/json** の `Content-Type` のみがサポートされます。 一部の REST ツールまたはエージェントは、既定で **text/plain** に設定されています。これは、REST API ではサポートされていません。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決策
 
 Azure Resource Graph のクエリに使用しているツールまたはエージェントの REST API ヘッダー `Content-Type` が **application/json** 用に構成されていることを検証します。
 
@@ -81,7 +81,7 @@ Azure Resource Graph クエリを使用してサブスクリプションの一�
 
 指定されたすべてのサブスクリプションに対する読み取りアクセス許可を持っていない場合は、ユーザーに適切なセキュリティ権限がないため、要求は拒否されます。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決策
 
 そのクエリを実行するユーザーが、少なくとも読み取りアクセス権を持っている 1 つ以上のサブスクリプションを、サブスクリプション一覧に含めます。 詳細については、「[Azure Resource Graph でのアクセス許可](../overview.md#permissions-in-azure-resource-graph)」を参照してください。
 

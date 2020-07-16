@@ -145,7 +145,7 @@ Azure Pipelines (プレビュー) を使用してアプリのローカル Git �
 
 Git を使用して Azure の App Service アプリに発行すると、次の一般的なエラーが表示される場合があります。
 
-|Message|原因|解像度
+|Message|原因|解決策
 ---|---|---|
 |`Unable to access '[siteURL]': Failed to connect to [scmAddress]`|アプリが稼働していません。|Azure portal でアプリを起動します。 Web アプリが停止しているとき、Git デプロイは利用できません。|
 |`Couldn't resolve host 'hostname'`|'azure' リモートのアドレス情報が正しくありません。|`git remote -v` コマンドを使用して、すべてのリモートおよび関連付けられている URL を一覧表示します。 "azure" リモートの URL が正しいことを確認します。 必要に応じて、このリモートを削除し、正しい URL を使用して再作成します。|

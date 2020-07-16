@@ -67,7 +67,7 @@ An error occurred while deleting the DSC configuration '<name>'.  Error-details:
 
 このエラーは、一時的な問題であり、解決される予定です。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 [Remove-AzAutomationDscConfiguration](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationDscConfiguration?view=azps-3.7.0 ) コマンドレットを使用して、構成を削除します。
 
@@ -92,7 +92,7 @@ ps://<location>-agentservice-prod-1.azure-automation.net/accounts/00000000-0000-
 
 このエラーは、通常、ファイアウォール、プロキシ サーバーの背後にあるマシン、またはその他のネットワーク エラーが原因で発生します。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 DSC の適切なエンドポイントへのアクセス権がご利用のマシンにあることを確認し、もう一度やり直してください。 必要なポートとアドレスの一覧については、[ネットワークの計画](../automation-dsc-overview.md#network-planning)に関するページを参照してください。
 
@@ -116,7 +116,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / 
 
 この問題は、* **.azure-automation.net** へのアクセスを許可しないプロキシ構成が原因である場合もあります。 詳細については、「[プライベート ネットワークの構成](../automation-dsc-overview.md#network-planning)」を参照してください。 
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 失敗した DSC ノードを再登録するには、次の手順に従います。
 
@@ -174,7 +174,7 @@ The attempt to get the action from server https://<url>//accounts/<account-id>/N
 
 通常、このエラーは、ノードがノード構成 (MOF ファイル) の名前 (**ABC.WebServer** など) ではなく構成名 (**ABC** など) に割り当てられている場合に発生します。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 * ノードに構成名ではなく、ノード構成名が割り当てられていることを確認してください。
 * ノード構成は、Azure portal または PowerShell コマンドレットを使用してノードに割り当てることができます。
@@ -196,7 +196,7 @@ Compilation completed successfully, but no node configuration **.mof** files wer
 
 DSC 構成の `Node` キーワードに続く式の評価結果が `$null` の場合、ノード構成は生成されません。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 問題を解決するには、次のいずれかの解決策を使用します。
 
@@ -217,7 +217,7 @@ No instance found with given property values
 
 ご利用の Windows Management Framework (WMF) バージョンをアップグレードしましたが、Windows Management Instrumentation (WMI) が破損しています。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 [DSC の既知の問題と制限事項](https://docs.microsoft.com/powershell/scripting/wmf/known-issues/known-issues-dsc)に関するページに示された手順に従ってください。
 
@@ -235,7 +235,7 @@ System.InvalidOperationException error processing property 'Credential' of type 
 
 構成に資格情報を使用したが、ノード構成ごとに `PSDscAllowPlainTextPassword` を true に設定するための適切な `ConfigurationData` を指定していませんでした。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 構成に示されている各ノード構成の `PSDscAllowPlainTextPassword` を true に設定するために、適切な `ConfigurationData` を渡してください。 [Azure Automation State Configuration での DSC 構成のコンパイル](../automation-dsc-compile.md)に関するページを参照してください。
 
@@ -253,7 +253,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. 
 
 通常、このエラーは、サービスに存在しないノード構成名がノードに割り当てられたときに発生します。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 * ノードに割り当てる名前が、サービスに存在する名前と正確に一致していることを確認します。
 * ノード構成名を含めないようにすることもできます。この場合、ノードはオンボードされますが、ノード構成は割り当てられません。
@@ -272,7 +272,7 @@ One or more errors occurred.
 
 このエラーは、Automation アカウントで使用されているものとは別のサブスクリプションにノードを登録しようとしたときに発生します。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 別のクラウドまたはオンプレミスに対して定義されているかのように、クロスサブスクリプション ノードを扱います。 次のいずれかのオンボード オプションを使用してノードを登録します。
 
@@ -293,7 +293,7 @@ Provisioning has failed
 
 ノードと Azure 間の接続に問題がある場合、このメッセージが表示されます。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 ご利用のノードが仮想プライベート ネットワーク (VPN) 内にあるのか、または Azure への接続に関する他の問題を抱えているかを判断します。 [ソリューションをオンボードする際のエラーに対するトラブルシューティング](onboarding.md)に関するページを参照してください。
 
@@ -311,7 +311,7 @@ This event indicates that failure happens when LCM is processing the configurati
 
 **/tmp** の場所が `noexec` に設定されていると、現在のバージョンの DSC は構成の適用に失敗します。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 **/tmp** の場所から `noexec` オプションを削除します。
 
@@ -325,7 +325,7 @@ This event indicates that failure happens when LCM is processing the configurati
 
 これはコンパイル サービスにおける既知の問題です。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 最善の回避策としては、ローカルで、または CI/CD パイプラインでコンパイルを行い、サービスにノード構成 MOF ファイルを直接アップロードします。 サービス内でコンパイルを行うことが必須である場合、最善の回避策として次に推奨されるのは、名前が重複しないように、コンパイル ジョブを分割することです。
 
@@ -339,7 +339,7 @@ DSC 構成をアップロードするときに、`GatewayTimeout` エラーが�
 
 コンパイルに長い時間がかかる DSC 構成では、このエラーが発生する可能性があります。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 任意の [Import-DSCResource](https://docs.microsoft.com/powershell/scripting/dsc/configurations/import-dscresource?view=powershell-5.1) 呼び出しに対して `ModuleName` パラメーターを明示的に含めることで、DSC 構成をより速く解析することができます。
 

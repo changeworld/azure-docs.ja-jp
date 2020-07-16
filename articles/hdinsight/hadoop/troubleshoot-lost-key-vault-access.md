@@ -28,7 +28,7 @@ Resource Health Center (RHC) のアラート `The HDInsight cluster is unable to
 
 **ディスク暗号化の Key Vault ステータス**からのアラートに関する詳細情報を検索するには、Apache Ambari UI に移動します。 このアラートには、検証エラーの理由に関する詳細が含まれます。
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決策
 
 ### <a name="kvaad-outage"></a>KV/AAD の停止
 

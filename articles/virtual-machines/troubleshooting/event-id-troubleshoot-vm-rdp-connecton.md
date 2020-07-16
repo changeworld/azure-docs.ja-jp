@@ -113,7 +113,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 
 2. RSA キーが壊れているか、ない。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 この問題をトラブルシューティングするには、以下の手順を使用して、RDP 証明書への適切なアクセス許可を設定する必要があります。
 
@@ -231,7 +231,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 
 この問題は、セキュリティ ポリシーによって発生します。 古いバージョンの TLS (1.0 など) が無効になっていると、RDP アクセスが失敗します。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 RDP では、既定のプロトコルとして TLS 1.0 が使用されます。 ただし、プロトコルが新しい TLS 1.1 に変更されている場合があります。
 
@@ -284,7 +284,7 @@ NULL <br />
 
 ホスト名には Windows Internal Database に対するエントリと依存関係があり、リモート デスクトップ サービス ファームが動作するために必要です。 ファームが既に構築された後でホスト名を変更すると、多くのエラーが発生し、ブローカー サーバーの動作が停止する可能性があります。
 
-### <a name="resolution"></a>解像度 
+### <a name="resolution"></a>解決策 
 
 この問題を解決するには、リモート デスクトップ接続ブローカー ロールと Windows Internal Database を再インストールする必要があります。
 

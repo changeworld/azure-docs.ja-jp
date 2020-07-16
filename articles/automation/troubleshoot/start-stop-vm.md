@@ -67,7 +67,7 @@ Start-AzureRmVm : Run Login-AzureRmAccount to login
 - Log Analytics ワークスペースがロックされている。
 - 古いバージョンの AzureRM モジュールまたは Start/Stop VMs during off hours ソリューションを使用している。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 問題の考えられる解決策について、次の修正を確認してください。
 
@@ -98,7 +98,7 @@ Start/Stop VMs during off hours ソリューションを構成したが、すべ
 - Runbook でエラーが発生した可能性がある。
 - VM が除外されている可能性がある。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 問題の考えられる解決策について、次の一覧を確認してください。
 
@@ -139,7 +139,7 @@ Start/Stop VMs during off hours ソリューションを構成したが、構成
 - 実行アカウントが、VM に対する十分なアクセス許可を持っていない可能性がある。
 - VM の起動または停止を妨げる問題が発生している可能性がある。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 問題の考えられる解決策または参照する場所については、次の一覧を確認してください。
 
@@ -169,7 +169,7 @@ Start/Stop VMs during off hours ソリューションを構成したが、構成
 
 このエラーには多くの原因が考えられます。 Azure portal で Automation アカウントに移動し、 **[プロセス オートメーション]** の下で **[ジョブ]** を選択します。 **[ジョブ]** ページで、Runbook のジョブを検索してジョブのエラーを表示します。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 推奨事項は次のとおりです。
 
@@ -186,7 +186,7 @@ Start/Stop VMs during off hours ソリューションを構成したが、構成
 
 この問題は、VM でのタグ付けが正しく行われていないことが原因で発生します。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 次の手順に従い、ソリューションが正しく構成されていることを確認してください。
 
@@ -206,7 +206,7 @@ Start/Stop VMs during off-hours ソリューション Runbook に対してジョ
 
 この問題は、実行アカウントが正しく構成されていないか、有効期限が切れている場合に発生する可能性があります。 また、実行アカウントによる VM リソースへのアクセス許可が不十分であることが原因である場合もあります。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 実行アカウントが正しく構成されていることを確認するには、Azure portal で Automation アカウントにアクセスし、 **[アカウント設定]** の下で **[実行アカウント]** を選択します。 実行アカウントが正しく構成されていないか、有効期限が切れている場合、状態にその状況が表示されます。
 
@@ -229,7 +229,7 @@ Start/Stop VMs during off-hours ソリューションを使用しているとき
 > [!NOTE]
 > Start/Stop VMs during off-hours ソリューションは、このソリューションのデプロイ時にご使用の Automation アカウントにインポートされた Azure モジュールを使用してテストされています。 このソリューションは現在、Azure モジュールの新しいバージョンでは動作しません。 この制約は、Start/Stop VMs during off-hours ソリューションの実行に使用している Automation アカウントのみに影響します。 [Azure Automation で Azure PowerShell モジュールを更新する方法](../automation-update-azure-modules.md)に関する記事で説明されているように、他の Automation アカウントでは引き続き Azure モジュールの新しいバージョンを使用できます。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 何度も発生するエラーを解決するには、[Start/Stop VMs during off hours ソリューションを削除して更新](../automation-solution-vm-management.md#update-the-solution)します。 また、[ジョブ ストリーム](../automation-runbook-execution.md#job-statuses)を確認してエラーがないか探します。 
 

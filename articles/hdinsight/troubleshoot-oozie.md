@@ -38,7 +38,7 @@ Apache Oozie UI では、Oozie のログを見ることができます。 また
 
 **job.xml** ファイルで使われている Azure Blob Storage アドレスに、ストレージ コンテナー名またはストレージ アカウント名が含まれていません。 Blob Storage アドレスは、`wasbs://containername@storageaccountname.blob.core.windows.net` という形式にする必要があります。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 ジョブが使う Blob Storage アドレスを変更します。
 
@@ -56,7 +56,7 @@ Apache Oozie UI では、Oozie のログを見ることができます。 また
 
 現在のアクセス許可設定で、Oozie が指定されたユーザー アカウントを偽装することを許可していません。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 Oozie では、 **`users`** グループ内のユーザーを偽装できます。 `groups USERNAME` を使用して、ユーザー アカウントがメンバーとして属するグループを確認します。 ユーザーが **`users`** グループのメンバーでない場合は、次のコマンドを使用して、ユーザーをグループに追加します。
 
@@ -79,7 +79,7 @@ Oozie では、 **`users`** グループ内のユーザーを偽装できます�
 
 Sqoop が、データベースにアクセスするために必要なデータベース ドライバーを読み込むことができません。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 Oozie ジョブから Sqoop を使うときは、ジョブが使う他のリソース (workflow.xml など) とともにデータベース ドライバーを含める必要があります。 また、workflow.xml の `<sqoop>...</sqoop>` セクションから、データベース ドライバーが格納されたアーカイブを参照します。
 

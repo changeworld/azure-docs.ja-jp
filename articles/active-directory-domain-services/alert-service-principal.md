@@ -40,7 +40,7 @@ ms.locfileid: "83845969"
 1. **[エンタープライズ アプリケーション]** を選択します。 **[アプリケーションの種類]** ドロップダウン メニューの *[すべてのアプリケーション]* を選択し、 **[適用]** を選択します。
 1. 各アプリケーション ID を検索します。 既存のアプリケーションが見つからない場合は、*解決策*の手順に従ってサービス プリンシパルを作成するか、名前空間を再登録します。
 
-    | アプリケーション ID | 解像度 |
+    | アプリケーション ID | 解決策 |
     | :--- | :--- |
     | 2565bd9d-da50-47d4-8b85-4c97f669dc36 | [不足しているサービス プリンシパルを再作成する](#recreate-a-missing-service-principal) |
     | 443155a6-77f3-45e3-882b-22b3a8d431fb | [Microsoft.AAD 名前空間を再登録する](#re-register-the-microsoft-aad-namespace) |
@@ -85,7 +85,7 @@ Azure AD DS マネージド ドメインの正常性が 2 時間以内に自動�
 
 Azure AD DS は、Azure AD からユーザー アカウントと資格情報を自動的に同期します。 このプロセスで使用されている Azure AD アプリケーションに問題がある場合、Azure AD DS と Azure AD 間の資格情報の同期は失敗します。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 資格情報の同期に使用する Azure AD アプリケーションを再作成するには、Azure AD PowerShell を使用して次の手順を実行します。 詳細については、[Azure AD PowerShell のインストール](/powershell/azure/active-directory/install-adv2)に関するページを参照してください。
 
