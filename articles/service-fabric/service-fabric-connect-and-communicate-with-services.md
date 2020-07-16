@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: e57d169decf482f8b8be1e3b31a07690bc222c5d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a873a32aa8c12b535c06711ea7dc7a4aa920a27f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75458227"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257773"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>Service Fabric のサービスとの接続と通信
 Service Fabric では、Service Fabric クラスター内のどこかで、通常は複数の VM に分散されてサービスが実行されます。 サービスの場所は、サービスの所有者が移動することも、Service Fabric が自動的に移動することもあります。 サービスは特定のコンピューターまたはアドレスに対して静的に関連付けられてはいません。
@@ -163,14 +163,14 @@ Azure Load Balancer とプローブが把握しているのは*ノード*につ�
 Reliable Services フレームワークには、事前に構築されたいくつかの通信オプションが用意されています。 最適なオプションの決定は、プログラミング モデル、通信フレームワーク、およびサービスが作成されているプログラミング言語に応じて異なります。
 
 * **特定のプロトコルがない場合**: 特定の通信フレームワークを選択していないものの、すぐに利用できるようにすることが必要という場合、最適なオプションは[サービスのリモート処理](service-fabric-reliable-services-communication-remoting.md)です。これにより、Reliable Services と Reliable Actors 向けの厳密に型指定されたリモート プロシージャ コールが可能になります。 これは、サービスの通信を開始する最も簡単ですばやい方法です。 サービスのリモート処理では、サービス アドレスの解決、接続、再試行、エラー処理を扱います。 これは、C# と Java のアプリケーションの両方で利用できます。
-* **HTTP**:言語に依存しない通信の場合、HTTP ではさまざまな言語で利用できる業界標準のツールと HTTP サーバーを選択でき、そのすべてが Service Fabric でサポートされています。 サービスでは、C# アプリケーションの [ASP.NET Web API](service-fabric-reliable-services-communication-webapi.md) など、任意の HTTP スタックを利用できます。 C# で記述されたクライアントでは `ICommunicationClient` クラスと `ServicePartitionClient` クラス、Java では `CommunicationClient` クラスと `FabricServicePartitionClient` クラスを[サービスの解決、HTTP 通信、再試行ループ](service-fabric-reliable-services-communication.md)に活用できます。
+* **HTTP**:言語に依存しない通信の場合、HTTP ではさまざまな言語で利用できる業界標準のツールと HTTP サーバーを選択でき、そのすべてが Service Fabric でサポートされています。 サービスでは、C# アプリケーションの [ASP.NET Web API](./service-fabric-reliable-services-communication-aspnetcore.md) など、任意の HTTP スタックを利用できます。 C# で記述されたクライアントでは `ICommunicationClient` クラスと `ServicePartitionClient` クラス、Java では `CommunicationClient` クラスと `FabricServicePartitionClient` クラスを[サービスの解決、HTTP 通信、再試行ループ](service-fabric-reliable-services-communication.md)に活用できます。
 * **WCF**: 通信フレームワークとして WCF を使用する既存のコードがある場合、サーバー側で `WcfCommunicationListener` を使用し、クライアントで `WcfCommunicationClient` クラスおよび `ServicePartitionClient` クラスを使用することができます。 ただし、これは Windows ベースのクラスター上の C# アプリケーションでのみ利用できます。 詳細については、 [WCF ベースの通信スタックの実装](service-fabric-reliable-services-communication-wcf.md)に関するこの記事を参照してください。
 
 ## <a name="using-custom-protocols-and-other-communication-frameworks"></a>カスタム プロトコルとその他の通信フレームワークの使用
 サービスでは、通信用の任意のプロトコルまたはフレームワークを使用できるため、TCP ソケットでのカスタム バイナリ プロトコルも、 [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) または [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) を介したストリーミング イベントも使用することができます。 Service Fabric では、通信スタックを接続できる通信 API が提供されるだけでなく、検出と接続のためのすべての作業が不要になります。 詳細については、 [Reliable Services 通信モデル](service-fabric-reliable-services-communication.md) に関するこの記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-[Reliable Services 通信モデル](service-fabric-reliable-services-communication.md)の概念と利用できる API の詳細について確認し、[サービスのリモート処理](service-fabric-reliable-services-communication-remoting.md)の利用をすぐに開始するか、[OWIN 自己ホストによる Web API](service-fabric-reliable-services-communication-webapi.md) を使用して通信リスナーを記述する方法についてさらに深く理解します。
+[Reliable Services 通信モデル](service-fabric-reliable-services-communication.md)の概念と利用できる API の詳細について確認し、[サービスのリモート処理](service-fabric-reliable-services-communication-remoting.md)の利用をすぐに開始するか、[OWIN 自己ホストによる Web API](./service-fabric-reliable-services-communication-aspnetcore.md) を使用して通信リスナーを記述する方法についてさらに深く理解します。
 
 [1]: ./media/service-fabric-connect-and-communicate-with-services/serviceendpoints.png
 [2]: ./media/service-fabric-connect-and-communicate-with-services/namingservice.png

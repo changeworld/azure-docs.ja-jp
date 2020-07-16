@@ -13,12 +13,12 @@ ms.date: 05/22/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 2e9a50553a12c57c0043c7f2924245f6a907242a
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 095bc5594cf9b6eaf0df7929ea83c25a401793e2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83825960"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252115"
 ---
 # <a name="authentication-vs-authorization"></a>認証と承認
 
@@ -38,7 +38,7 @@ ms.locfileid: "83825960"
 
 Azure Active Directory (Azure AD) は、クラウド内の一元化された ID プロバイダーです。 認証と承認を委任することにより、ユーザーが特定の場所にいることを要求する条件付きアクセス ポリシー、[多要素認証](../authentication/concept-mfa-howitworks.md) (2 要素認証または 2FA とも呼ばれる) の使用のほか、ユーザーが 1 回サインインすると、同じ一元化されたディレクトリを共有するすべての Web アプリに自動的にサインインできるようにするなどのシナリオを実現できます。 この機能は、**シングル サインオン (SSO)** と呼ばれます。
 
-Microsoft ID プラットフォームでは、サービスとしての ID を提供することでアプリケーション開発者による承認と認証を容易にしています。また、コーディングをすばやく開始できるように、OAuth 2.0 や OpenID Connect などの業界標準プロトコルや、さまざまなプラットフォーム向けのオープン ソース ライブラリをサポートしています。 そのため、開発者はすべての Microsoft ID にサインインし、[Microsoft Graph](https://developer.microsoft.com/graph/)、その他の Microsoft API、または開発者が作成した API を呼び出すトークンを取得できます。 詳細については、「[Microsoft ID プラットフォームの進化](about-microsoft-identity-platform.md)」を参照してください。
+Microsoft ID プラットフォームでは、サービスとしての ID を提供することでアプリケーション開発者による承認と認証を容易にしています。また、コーディングをすばやく開始できるように、OAuth 2.0 や OpenID Connect などの業界標準プロトコルや、さまざまなプラットフォーム向けのオープン ソース ライブラリをサポートしています。 そのため、開発者はすべての Microsoft ID にサインインし、[Microsoft Graph](https://developer.microsoft.com/graph/)、その他の Microsoft API、または開発者が作成した API を呼び出すトークンを取得できます。
 
 Microsoft ID プラットフォームで使用されるさまざまなプロトコルの簡単な比較を次に示します。
 

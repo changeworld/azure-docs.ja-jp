@@ -5,12 +5,12 @@ author: tugup
 ms.topic: conceptual
 ms.date: 05/1/2020
 ms.author: tugup
-ms.openlocfilehash: da395f020cf3d299211427e740975764653b487d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b106061805ea5485893df292c40974d3ee9bcadb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85800342"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258823"
 ---
 # <a name="azure-service-fabric-hosting-lifecycle"></a>Azure Service Fabric ホスティングのライフサイクル
 この記事では、アプリケーションがノードでアクティブ化されるときに発生するイベントと、動作を制御するために使用されるさまざまなクラスター構成の概要について説明します。
@@ -159,4 +159,4 @@ ServicePackage が **DeactivationGraceInterval**/**ExclusiveModeDeactivationGrac
 [a3]: service-fabric-package-apps.md
 [a4]: service-fabric-deploy-remove-applications.md
 
-[p1]: https://docs.microsoft.com/powershell/module/servicefabric/copy-servicefabricservicepackagetonode
+[p1]: /powershell/module/servicefabric/copy-servicefabricservicepackagetonode

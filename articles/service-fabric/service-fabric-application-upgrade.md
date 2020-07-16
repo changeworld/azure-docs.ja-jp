@@ -3,12 +3,12 @@ title: Service Fabric アプリケーションのアップグレード
 description: この記事では、アップグレード モードの選択や正常性チェックの実行など、Service Fabric アプリケーションのアップグレードの概要を紹介します。
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 2dc484b49c5250510e5f018cbbc2da107573d452
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e7a93dd3ef8a1adf6617dcd57887a0ce694c509
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710322"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248001"
 ---
 # <a name="service-fabric-application-upgrade"></a>Service Fabric アプリケーションのアップグレード
 Service Fabric アプリケーションは、サービスのコレクションです。 アップグレードの際、Service Fabric は新しい [アプリケーション マニフェスト](service-fabric-application-and-service-manifests.md) を以前のバージョンと比較し、アプリケーション内でアップグレードの必要があるサービスを決定します。 Service Fabric は、サービス マニフェスト内のバージョン番号を、以前のバージョンのバージョン番号と比較します。 サービスが変更されていない場合は、そのサービスはアップグレードされません。
@@ -37,7 +37,7 @@ Service Fabric アプリケーションは、サービスのコレクション�
 監視対象外手動モードでは、更新ドメインですべてのアップグレードが行われた後、次の更新ドメインでアップグレードを開始するために、手動操作が必要になります。 Service Fabric の正常性チェックは実行されません。 管理者は、次の更新ドメインでアップグレードを開始する前に、正常性または状態のチェックを実行します。
 
 ## <a name="upgrade-default-services"></a>既定のサービスをアップグレードする
-アプリケーションのアップグレードの一環として、[アプリケーション マニフェスト](service-fabric-application-and-service-manifests.md)で定義されている一部の既定のサービス パラメーターもアップグレードできます。 アップグレードの一環として変更できるのは、[Update-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) による変更がサポートされているサービス パラメーターのみです。 アプリケーションのアップグレード時に既定のサービス パラメーターを変更する動作は次のとおりです。
+アプリケーションのアップグレードの一環として、[アプリケーション マニフェスト](service-fabric-application-and-service-manifests.md)で定義されている一部の既定のサービス パラメーターもアップグレードできます。 アップグレードの一環として変更できるのは、[Update-ServiceFabricService](/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) による変更がサポートされているサービス パラメーターのみです。 アプリケーションのアップグレード時に既定のサービス パラメーターを変更する動作は次のとおりです。
 
 1. クラスターに既に存在していない新しいアプリケーション マニフェストの既定のサービスは、作成されます。
 2. 以前のアプリケーション マニフェストと新しいアプリケーション マニフェストの両方に存在している既定のサービスは、更新されます。 新しいアプリケーション マニフェストの既定のサービスのパラメーターによって、既存のサービスのパラメーターが上書きされます。 既定のサービスの更新が失敗した場合、アプリケーションのアップグレードは自動的にロールバックされます。

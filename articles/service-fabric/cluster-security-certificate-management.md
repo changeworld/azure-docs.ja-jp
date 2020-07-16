@@ -4,12 +4,12 @@ description: X.509 証明書で保護された Service Fabric クラスターで
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev
-ms.openlocfilehash: 6be9cbe77ef5e64659e56447d0a5b6be30b05272
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb5d19e1cceacfeabc4bc670de98e56d3fbc2596
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324744"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246709"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Service Fabric クラスターでの証明書管理
 
@@ -76,8 +76,8 @@ Service Fabric クラスターのコンテキストで、証明書の発行か�
 ![サブジェクトの共通名によって宣言された証明書のプロビジョニング][Image2]
 
 ### <a name="certificate-enrollment"></a>証明書の登録
-このトピックの詳細については、Key Vault の[ドキュメント](../key-vault/create-certificate.md)を参照してください。継続性と参照を容易にするために、この記事には概要を含めています。 引き続き Azure をコンテキストとして使用し、Azure Key Vault をシークレット管理サービスとして使用する場合、承認された証明書要求者には、コンテナーに対して、少なくともコンテナー所有者から付与された証明書管理アクセス許可が必要です。次に、要求者は次のように証明書に登録します。
-    - Azure Key Vault (AKV) で証明書ポリシーを作成します。これにより、証明書のドメインとサブジェクト、目的の発行者、キーの種類と長さ、目的のキー使用法などが指定されます。詳細については、[Azure Key Vault の証明書](../key-vault/certificate-scenarios.md)に関するページを参照してください。 
+このトピックの詳細については、Key Vault の[ドキュメント](../key-vault/certificates/create-certificate.md)を参照してください。継続性と参照を容易にするために、この記事には概要を含めています。 引き続き Azure をコンテキストとして使用し、Azure Key Vault をシークレット管理サービスとして使用する場合、承認された証明書要求者には、コンテナーに対して、少なくともコンテナー所有者から付与された証明書管理アクセス許可が必要です。次に、要求者は次のように証明書に登録します。
+    - Azure Key Vault (AKV) で証明書ポリシーを作成します。これにより、証明書のドメインとサブジェクト、目的の発行者、キーの種類と長さ、目的のキー使用法などが指定されます。詳細については、[Azure Key Vault の証明書](../key-vault/certificates/certificate-scenarios.md)に関するページを参照してください。 
     - 上記で指定したポリシーを使用して、同じコンテナーに証明書を作成します。これにより、コンテナー オブジェクトとしてキー ペア、秘密キーで署名された証明書署名要求が生成され、署名のために指定された発行者に転送されます
     - 発行者 (証明機関) が署名入り証明書を使用して応答すると、結果はコンテナーにマージされ、証明書を次の操作に使用できるようになります。
       - {vaultUri}/certificates/{name} 以下: 公開キーとメタデータを含む証明書
@@ -210,7 +210,7 @@ Service Fabric の証明書は、フェデレーション レイヤーでの相�
 
 以降のすべての抜粋も付随してデプロイする必要があります。これらは、実行ごとの分析と説明のために個別に示されます。
 
-まず、ユーザー割り当て ID を定義します (既定値が例として含まれています)。最新の情報については、[公式ドキュメント](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm#create-a-user-assigned-managed-identity)を参照してください。
+まず、ユーザー割り当て ID を定義します (既定値が例として含まれています)。最新の情報については、[公式ドキュメント](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md#create-a-user-assigned-managed-identity)を参照してください。
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -241,7 +241,7 @@ Service Fabric の証明書は、フェデレーション レイヤーでの相�
   ]}
 ```
 
-次に、この ID にコンテナー シークレットへのアクセス権を付与します。最新の情報については、[公式ドキュメント](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy)を参照してください。
+次に、この ID にコンテナー シークレットへのアクセス権を付与します。最新の情報については、[公式ドキュメント](/rest/api/keyvault/vaults/updateaccesspolicy)を参照してください。
 ```json
   "resources":
   [{
@@ -266,7 +266,7 @@ Service Fabric の証明書は、フェデレーション レイヤーでの相�
 次の手順では、以下を実行します。
   - ユーザーが割り当てた ID を仮想マシン スケール セットに割り当てる
   - マネージド ID の作成と、コンテナーへのアクセス権を付与した結果に対する仮想マシン スケール セットの依存関係を宣言する
-  - KeyVault VM 拡張機能を宣言し、起動時に監視対象の証明書を取得することを要求する ([公式ドキュメント](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows))
+  - KeyVault VM 拡張機能を宣言し、起動時に監視対象の証明書を取得することを要求する ([公式ドキュメント](../virtual-machines/extensions/key-vault-windows.md))
   - KVVM 拡張機能を利用し、クラスター証明書を共通名に変換するように Service Fabric VM 拡張機能の定義を更新します (これらの変更は同じリソースのスコープに含まれるため、1 つの手順で行っています)。
 
 ```json
@@ -420,12 +420,12 @@ KVVM 拡張機能は、プロビジョニング エージェントとして、�
 #### <a name="certificate-linking-explained"></a>証明書のリンク、説明
 KVVM 拡張機能の "linkOnRenewal" フラグと、それが false に設定されていることに気づいたかもしれません。 ここでは、このフラグによって制御される動作と、クラスターの機能への影響について詳しく説明します。 この動作は Windows に固有のものです。
 
-その[定義](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows#extension-schema)に従って次のようにします。
+その[定義](../virtual-machines/extensions/key-vault-windows.md#extension-schema)に従って次のようにします。
 ```json
 "linkOnRenewal": <Only Windows. This feature enables auto-rotation of SSL certificates, without necessitating a re-deployment or binding.  e.g.: false>,
 ```
 
-TLS 接続の確立に使用される証明書は、通常、S チャネル セキュリティ サポート プロバイダーを介して [ハンドルとして取得](https://docs.microsoft.com/windows/win32/api/sspi/nf-sspi-acquirecredentialshandlea)されます。つまり、クライアントからは証明書自体の秘密キーに直接アクセスしません。 S チャネルは、証明書拡張機能 ([CERT_RENEWAL_PROP_ID](https://docs.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certsetcertificatecontextproperty#cert_renewal_prop_id)) の形式で資格情報のリダイレクト (リンク) をサポートします。このプロパティが設定されている場合、その値は "更新" 証明書の拇印を表すため、S チャネルでは、代わりにリンクされた証明書を読み込もうと試行されます。 実際、このリンクされた (そしてできれば非循環的な) リストは、"最終的な" 証明書 (更新マークのないもの) になるまで走査されます。 この機能を慎重に使用すると、(たとえば) 証明書の期限切れなどによる可用性の損失を軽減できます。 その他の例として、診断や軽減が困難な停止の原因となる場合があります。 S チャネルでは、サブジェクト、発行者、またはクライアントによる結果の証明書の検証に参加するその他の特定の属性に関係なく、更新プロパティに対して無条件に証明書の走査を実行されます。 実際には、生成された証明書に秘密キーが関連付けられていないか、またはキーが想定されるコンシューマーに ACL 処理されていない可能性があります。 
+TLS 接続の確立に使用される証明書は、通常、S チャネル セキュリティ サポート プロバイダーを介して [ハンドルとして取得](/windows/win32/api/sspi/nf-sspi-acquirecredentialshandlea)されます。つまり、クライアントからは証明書自体の秘密キーに直接アクセスしません。 S チャネルは、証明書拡張機能 ([CERT_RENEWAL_PROP_ID](/windows/win32/api/wincrypt/nf-wincrypt-certsetcertificatecontextproperty#cert_renewal_prop_id)) の形式で資格情報のリダイレクト (リンク) をサポートします。このプロパティが設定されている場合、その値は "更新" 証明書の拇印を表すため、S チャネルでは、代わりにリンクされた証明書を読み込もうと試行されます。 実際、このリンクされた (そしてできれば非循環的な) リストは、"最終的な" 証明書 (更新マークのないもの) になるまで走査されます。 この機能を慎重に使用すると、(たとえば) 証明書の期限切れなどによる可用性の損失を軽減できます。 その他の例として、診断や軽減が困難な停止の原因となる場合があります。 S チャネルでは、サブジェクト、発行者、またはクライアントによる結果の証明書の検証に参加するその他の特定の属性に関係なく、更新プロパティに対して無条件に証明書の走査を実行されます。 実際には、生成された証明書に秘密キーが関連付けられていないか、またはキーが想定されるコンシューマーに ACL 処理されていない可能性があります。 
  
 リンクが有効な場合、KeyVault VM 拡張機能では、監視対象の証明書をコンテナーから取得すると、更新の拡張機能プロパティを介してそれらをリンクするために、一致する既存の証明書を見つけようとします。 一致は、(排他的に) サブジェクトの別名 (SAN) に基づいており、次の例のように機能します。
 次の 2 つの既存の証明書を想定します。A:CN = “Alice's accessories”, SAN = {“alice.universalexports.com”}, renewal = ‘’ B:CN = “Bob's bits”, SAN = {“bob.universalexports.com”, “bob.universalexports.net”}, renewal = ‘’
@@ -492,4 +492,3 @@ Microsoft 内部の PKI については、承認された発行者を取得す�
 
 [Image1]:./media/security-cluster-certificate-mgmt/certificate-journey-thumbprint.png
 [Image2]:./media/security-cluster-certificate-mgmt/certificate-journey-common-name.png
-

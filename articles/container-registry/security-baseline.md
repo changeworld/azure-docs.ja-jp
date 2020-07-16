@@ -7,24 +7,24 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 95864f932fe255d561eaeb2d803b5fcc79cb2802
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0004b7689b6ede2200e3fe4cb06bba2bbc168d6d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82184097"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259404"
 ---
 # <a name="azure-security-baseline-for-azure-container-registry"></a>Azure Container Registry 用の Azure セキュリティ ベースライン
 
 Azure Container Registry 用の Azure セキュリティ ベースラインには、デプロイのセキュリティ体制を改善するために役立つ推奨事項が含まれています。
 
-このサービス用のベースラインは、ベスト プラクティス ガイダンスを使用して Azure 上のクラウド ソリューションをセキュリティで保護する方法について推奨事項を提供する [Azure セキュリティ ベンチマーク バージョン 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview) に基づいて作成されています。
+このサービス用のベースラインは、ベスト プラクティス ガイダンスを使用して Azure 上のクラウド ソリューションをセキュリティで保護する方法について推奨事項を提供する [Azure セキュリティ ベンチマーク バージョン 1.0](../security/benchmarks/overview.md) に基づいて作成されています。
 
-詳細については、[Azure セキュリティ ベースラインの概要](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)に関するページを参照してください。
+詳細については、[Azure セキュリティ ベースラインの概要](../security/benchmarks/security-baselines-overview.md)に関するページを参照してください。
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
 
-*詳細については、「[セキュリティ コントロール: ネットワークのセキュリティ](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ネットワークのセキュリティ](../security/benchmarks/security-control-network-security.md)」を参照してください。*
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1:Virtual Network でネットワーク セキュリティ グループまたは Azure Firewall を使用してリソースを保護する
 
@@ -55,7 +55,7 @@ NSG フロー ログを有効にする方法: https://docs.microsoft.com/azure/n
 
 ### <a name="13-protect-critical-web-applications"></a>1.3:重要な Web アプリケーションを保護する
 
-**ガイダンス**:適用不可。 ベンチマークは、Web アプリケーションをホストしている Azure App Service またはコンピューティング リソースを対象にしています。
+**ガイダンス**: 適用不可。 ベンチマークは、Web アプリケーションをホストしている Azure App Service またはコンピューティング リソースを対象にしています。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -122,7 +122,7 @@ Azure Firewall でアラートを構成する方法: https://docs.microsoft.com/
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8:ネットワーク セキュリティ規則の複雑さと管理オーバーヘッドを最小限に抑える
 
-**ガイダンス**:ご利用のコンテナー レジストリへのアクセスが必要なリソースについては、Azure Container Registry サービス用の仮想ネットワークサービス タグを使用して、ネットワーク セキュリティ グループまたは Azure Firewall に対するネットワーク アクセス制御を定義します。 セキュリティ規則を作成するときは、特定の IP アドレスの代わりにサービス タグを使うことができます。 規則の適切なソース フィールドまたはターゲット フィールドにサービス タグ名 "AzureContainerRegistry" を指定することにより、対応するサービスのトラフィックを許可または拒否できます。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。
+**ガイダンス**: ご利用のコンテナー レジストリへのアクセスが必要なリソースについては、Azure Container Registry サービス用の仮想ネットワークサービス タグを使用して、ネットワーク セキュリティ グループまたは Azure Firewall に対するネットワーク アクセス制御を定義します。 セキュリティ規則を作成するときは、特定の IP アドレスの代わりにサービス タグを使うことができます。 規則の適切なソース フィールドまたはターゲット フィールドにサービス タグ名 "AzureContainerRegistry" を指定することにより、対応するサービスのトラフィックを許可または拒否できます。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。
 
 サービス タグによるアクセスを許可する: https://docs.microsoft.com/azure/container-registry/container-registry-firewall-access-rules#allow-access-by-service-tag
 
@@ -174,11 +174,11 @@ Azure Monitor でアラートを作成する方法:  https://docs.microsoft.com/
 
 ## <a name="logging-and-monitoring"></a>ログ記録と監視
 
-*詳細については、「[セキュリティ コントロール: ログ記録と監視](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ログ記録と監視](../security/benchmarks/security-control-logging-monitoring.md)」を参照してください。*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1:承認された時刻同期ソースを使用する
 
-**ガイダンス**: Microsoft は Azure リソースのためにタイム ソースを管理していますが、コンピューティング リソースのために時刻同期設定を管理するオプションが用意されています。
+**ガイダンス**:Microsoft は Azure リソースのためにタイム ソースを管理していますが、コンピューティング リソースのために時刻同期設定を管理するオプションが用意されています。
 
 Azure コンピューティング リソースの時刻同期を構成する方法: https://docs.microsoft.com/azure/virtual-machines/windows/time-sync
 
@@ -285,7 +285,7 @@ Log Analytics のログ データに関するアラートを送信する方法: 
 
 ## <a name="identity-and-access-control"></a>ID およびアクセス制御
 
-*詳細については、「[セキュリティ コントロール: ID およびアクセス制御](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ID およびアクセス制御](../security/benchmarks/security-control-identity-access-control.md)」を参照してください。*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: 管理アカウントのインベントリを維持する
 
@@ -364,7 +364,7 @@ Azure Security Center で ID とアクセスを監視する方法: https://docs.
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: すべての管理タスクに専用マシン (特権アクセス ワークステーション) を使用する
 
-**ガイダンス**: MFA が構成されている PAW (特権アクセス ワークステーション) を使用して Azure リソースにログインし、構成します。
+**ガイダンス**:MFA が構成されている PAW (特権アクセス ワークステーション) を使用して Azure リソースにログインし、構成します。
 
 特権アクセス ワークステーションについて:  https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
 
@@ -390,7 +390,7 @@ Azure Security Center でユーザーの ID およびアクセス アクティ�
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8:承認された場所からのみ Azure リソースを管理する
 
-**ガイダンス**:条件付きアクセスのネームド ロケーションを使用して、IP アドレス範囲または国/地域の特定の論理グループからのアクセスのみを許可します。
+**ガイダンス**: 条件付きアクセスのネームド ロケーションを使用して、IP アドレス範囲または国/地域の特定の論理グループからのアクセスのみを許可します。
 
 Azure でネームド ロケーションを構成する方法:  https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
@@ -464,7 +464,7 @@ Identity Protection のリスク ポリシーを構成して有効にする方�
 
 ## <a name="data-protection"></a>データ保護
 
-*詳細については、「[セキュリティ コントロール: データ保護](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: データ保護](../security/benchmarks/security-control-data-protection.md)」を参照してください。*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: 機密情報のインベントリを維持する
 
@@ -529,7 +529,7 @@ Azure での顧客データの保護について:  https://docs.microsoft.com/az
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4:転送中のすべての機密情報を暗号化する
 
-**ガイダンス**: ご利用の Azure Container Registry に接続されているクライアントがいずれも TLS 1.2 以上を確実にネゴシエートできるようにします。 Microsoft Azure リソースでは、既定で TLS 1.2 がネゴシエートされます。
+**ガイダンス**:ご利用の Azure Container Registry に接続されているクライアントがいずれも TLS 1.2 以上を確実にネゴシエートできるようにします。 Microsoft Azure リソースでは、既定で TLS 1.2 がネゴシエートされます。
 
 該当する場合、保存時の暗号化と転送中の暗号化に関する Azure Security Center の推奨事項に従います。
 
@@ -543,7 +543,7 @@ Azure での転送中の暗号化の概要:  https://docs.microsoft.com/azure/se
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5:アクティブ検出ツールを使用して機密データを特定する
 
-**ガイダンス**:Azure Container Registry では、データの識別、分類、損失防止の各機能はまだ使用できません。 コンプライアンスのために必要な場合は、サードパーティ ソリューションを実装します。
+**ガイダンス**: Azure Container Registry では、データの識別、分類、損失防止の各機能はまだ使用できません。 コンプライアンスのために必要な場合は、サードパーティ ソリューションを実装します。
 
 Microsoft によって管理される基になるプラットフォームの場合、Microsoft は顧客のすべてのコンテンツを機密として扱い、顧客データを損失や漏洩から保護するためにあらゆる手段を尽くします。 Azure 内の顧客データが確実にセキュリティで保護されるように、Microsoft では一連の堅牢なデータ保護制御および機能を実装して管理しています。
 
@@ -556,7 +556,7 @@ Azure での顧客データの保護の概要: https://docs.microsoft.com/azure/
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
-**ガイダンス**:Azure Active Directory (Azure AD) RBAC を使用して、Azure コンテナー レジストリ内のデータとリソースへのアクセスを制御します。 
+**ガイダンス**: Azure Active Directory (Azure AD) RBAC を使用して、Azure コンテナー レジストリ内のデータとリソースへのアクセスを制御します。 
 
 Azure で RBAC を構成する方法:  https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 
@@ -608,7 +608,7 @@ Azure Container Registry 内のカスタマー マネージド キー:  https://
 
 ## <a name="vulnerability-management"></a>脆弱性の管理
 
-*詳細については、「[セキュリティ コントロール: 脆弱性の管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: 脆弱性の管理](../security/benchmarks/security-control-vulnerability-management.md)」を参照してください。*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1:自動化された脆弱性スキャン ツールを実行する
 
@@ -651,7 +651,7 @@ ACR タスクの基本イメージの更新について:  https://docs.microsoft
 
 ### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4:バックツーバックの脆弱性スキャンを比較する
 
-**ガイダンス**:Azure Container Registry (ACR) を Azure Security Center に統合して、コンテナー イメージの脆弱性を定期的にスキャンできるようにします。 必要があれば、Azure Marketplace からのサードパーティのソリューションをデプロイして、イメージの脆弱性評価を定期的に実行します。
+**ガイダンス**: Azure Container Registry (ACR) を Azure Security Center に統合して、コンテナー イメージの脆弱性を定期的にスキャンできるようにします。 必要があれば、Azure Marketplace からのサードパーティのソリューションをデプロイして、イメージの脆弱性評価を定期的に実行します。
 
 Azure Container Registry と Security Center の統合 (プレビュー):  https://docs.microsoft.com/azure/security-center/azure-container-registry-integration
 
@@ -674,7 +674,7 @@ Azure Container Registry と Security Center の統合 (プレビュー):  https
 
 ## <a name="inventory-and-asset-management"></a>インベントリと資産の管理
 
-*詳細については、「[セキュリティ コントロール: インベントリと資産の管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: インベントリと資産の管理](../security/benchmarks/security-control-inventory-asset-management.md)」を参照してください。*
 
 ### <a name="61-use-azure-asset-discovery"></a>6.1:Azure Asset Discovery を使用する
 
@@ -723,7 +723,7 @@ Azure RBAC について:  https://docs.microsoft.com/azure/role-based-access-con
 
 ### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4:承認された Azure リソースとソフトウェア タイトルのインベントリを管理する
 
-**ガイダンス**:組織のニーズに応じて、承認された Azure リソースのインベントリを作成する必要があります。  
+**ガイダンス**: 組織のニーズに応じて、承認された Azure リソースのインベントリを作成する必要があります。  
 
 **Azure Security Center の監視**: 適用なし
 
@@ -843,7 +843,7 @@ Azure Policy を使用して特定のリソースの種類を拒否する方法:
 
 ## <a name="secure-configuration"></a>セキュリティで保護された構成
 
-*詳細については、「[セキュリティ コントロール: セキュリティで保護された構成](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: セキュリティで保護された構成](../security/benchmarks/security-control-secure-configuration.md)」を参照してください。*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1:すべての Azure リソースに対してセキュリティで保護された構成を確立する
 
@@ -897,7 +897,7 @@ Azure Policy の効果の概要:  https://docs.microsoft.com/azure/governance/po
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5:Azure リソースの構成を安全に格納する
 
-**ガイダンス**: カスタム Azure Policy 定義を使用する場合は、Azure Repos を使用してコードを安全に格納して管理します。
+**ガイダンス**:カスタム Azure Policy 定義を使用する場合は、Azure Repos を使用してコードを安全に格納して管理します。
 
 Azure DevOps でコードを格納する方法:  https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
@@ -910,7 +910,7 @@ Azure Repos のドキュメント:  https://docs.microsoft.com/azure/devops/repo
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6:カスタム オペレーティング システム イメージを安全に格納する
 
-**ガイダンス**: 適用不可。 ベンチマークは、コンピューティング リソースに適用されます。
+**ガイダンス**:適用不可。 ベンチマークは、コンピューティング リソースに適用されます。
 
 
 **Azure Security Center の監視**: 適用なし
@@ -932,7 +932,7 @@ Azure Policy を構成して管理する方法:  https://docs.microsoft.com/azur
 
 ### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8:オペレーティング システム用のシステム構成管理ツールをデプロイする
 
-**ガイダンス**:適用不可。 ベンチマークは、コンピューティング リソースに適用されます。
+**ガイダンス**: 適用不可。 ベンチマークは、コンピューティング リソースに適用されます。
 
 
 **Azure Security Center の監視**: 適用なし
@@ -941,7 +941,7 @@ Azure Policy を構成して管理する方法:  https://docs.microsoft.com/azur
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9:Azure サービスの自動構成監視を実装する
 
-**ガイダンス**: Azure Security Center を使用して、ご利用の Azure リソースのベースライン スキャンを実行します。
+**ガイダンス**:Azure Security Center を使用して、ご利用の Azure リソースのベースライン スキャンを実行します。
 
 Azure Policy を使用して、サブスクリプションで作成できるリソースの種類に制限を設けます。
 
@@ -1007,7 +1007,7 @@ Azure Container Registry タスクで Azure マネージド ID を使用する: 
 
 ## <a name="malware-defense"></a>マルウェアからの防御
 
-*詳細については、「[セキュリティ コントロール: マルウェアからの防御](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: マルウェアからの防御](../security/benchmarks/security-control-malware-defense.md)」を参照してください。*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1:一元管理されるマルウェア対策ソフトウェアを使用する
 
@@ -1042,7 +1042,7 @@ App Service、Data Lake Storage、Blob Storage などの非コンピューティ
 
 ## <a name="data-recovery"></a>データの復旧
 
-*詳細については、「[セキュリティ コントロール: データの復旧](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: データの復旧](../security/benchmarks/security-control-data-recovery.md)」を参照してください。*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1:定期的に自動バックアップを行う
 
@@ -1060,7 +1060,7 @@ Azure Container Registry の geo レプリケーション:  https://docs.microso
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: システムの完全バックアップを実行し、カスタマー マネージド キーをバックアップする
 
-**ガイダンス**:必要に応じて、コンテナー イメージを、あるレジストリから別のレジストリにインポートすることでバックアップします。
+**ガイダンス**: 必要に応じて、コンテナー イメージを、あるレジストリから別のレジストリにインポートすることでバックアップします。
 
 Azure コマンドライン ツールまたは SDK を使用して、Azure Key Vault 内のカスタマー マネージド キーをバックアップします。
 
@@ -1097,7 +1097,7 @@ Key Vault で論理的な削除を有効にする方法: https://docs.microsoft.
 
 ## <a name="incident-response"></a>インシデント対応
 
-*詳細については、「[セキュリティ コントロール: インシデント対応](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: インシデント対応](../security/benchmarks/security-control-incident-response.md)」を参照してください。*
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1:インシデント対応ガイドを作成する
 
@@ -1130,7 +1130,7 @@ Microsoft Security Response Center のインシデントの構造:  https://msrc
 
 ### <a name="103-test-security-response-procedures"></a>10.3:セキュリティ対応手順のテスト
 
-**ガイダンス**:定期的にシステムのインシデント対応機能をテストする演習を実施します。 弱点やギャップを特定し、必要に応じて計画を見直します。
+**ガイダンス**: 定期的にシステムのインシデント対応機能をテストする演習を実施します。 弱点やギャップを特定し、必要に応じて計画を見直します。
 
 NIST の出版物を参照してください。IT 計画と機能に関するテスト、トレーニング、および演習プログラムのガイド:  https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
@@ -1176,11 +1176,11 @@ Azure Sentinel にアラートをストリーミングする方法:  https://doc
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>侵入テストとレッド チーム演習
 
-*詳細については、「[セキュリティ コントロール: 侵入テストとレッド チーム演習](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: 侵入テストとレッド チーム演習](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)」を参照してください。*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1:Azure リソースの通常の侵入テストを実施し、セキュリティに関する重大な調査結果がすべて、60 日以内に確実に修復されるようにします
 
-**ガイダンス**:お客様の侵入テストが Microsoft のポリシーに違反しないように、Microsoft の活動規則 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1 に従ってください。
+**ガイダンス**: お客様の侵入テストが Microsoft のポリシーに違反しないように、Microsoft の活動規則 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1 に従ってください。
 
 Microsoft マネージド クラウド インフラストラクチャ、サービス、アプリケーションに対する Red Teaming およびライブ サイト侵入テストに関する Microsoft の戦略と実施の詳細については、こちらの https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e で確認できます。
 
@@ -1192,5 +1192,5 @@ Microsoft マネージド クラウド インフラストラクチャ、サー�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure セキュリティ ベンチマーク](https://docs.microsoft.com/azure/security/benchmarks/overview)に関するページを参照する
-- [Azure セキュリティ ベースライン](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- [Azure セキュリティ ベンチマーク](../security/benchmarks/overview.md)に関するページを参照する
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

@@ -4,12 +4,12 @@ description: Azure Service Fabric クラスターのセキュリティ シナリ
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: ba1565c31e8a3ce3f25501f0cad321d5413dc962
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 258a6dd141ccc31516e37dac9f265328f981bbf5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080676"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261069"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric クラスターのセキュリティに関するシナリオ
 
@@ -27,7 +27,7 @@ Azure Service Fabric クラスターは、ユーザーが所有するリソー�
 
 ![ノード間通信の図][Node-to-Node]
 
-Azure で実行するクラスターおよび Windows で実行するスタンドアロン クラスターのいずれにも、[証明書セキュリティ](https://msdn.microsoft.com/library/ff649801.aspx)または [Windows セキュリティ](https://msdn.microsoft.com/library/ff649396.aspx) (Windows Server コンピューターの場合) を利用できます。
+Azure で実行するクラスターおよび Windows で実行するスタンドアロン クラスターのいずれにも、[証明書セキュリティ](/previous-versions/msp-n-p/ff649801(v=pandp.10))または [Windows セキュリティ](/previous-versions/msp-n-p/ff649396(v=pandp.10)) (Windows Server コンピューターの場合) を利用できます。
 
 ### <a name="node-to-node-certificate-security"></a>ノード間の証明書セキュリティ
 
@@ -54,7 +54,7 @@ Azure 用にクラスターで証明書セキュリティを設定する方法�
 
 ![クライアントとノードの間の通信の図][Client-to-Node]
 
-Azure で実行するクラスターと Windows で実行するスタンドアロン クラスターでは、両方とも[証明書セキュリティ](https://msdn.microsoft.com/library/ff649801.aspx)または [Windows セキュリティ](https://msdn.microsoft.com/library/ff649396.aspx)を使用できますが、推奨されるのは、可能な場合は常に X.509 証明書認証を使用することです。
+Azure で実行するクラスターと Windows で実行するスタンドアロン クラスターでは、両方とも[証明書セキュリティ](/previous-versions/msp-n-p/ff649801(v=pandp.10))または [Windows セキュリティ](/previous-versions/msp-n-p/ff649396(v=pandp.10))を使用できますが、推奨されるのは、可能な場合は常に X.509 証明書認証を使用することです。
 
 ### <a name="client-to-node-certificate-security"></a>クライアントとノードの間の証明書セキュリティ
 
@@ -95,7 +95,7 @@ Azure でホストされているパブリック ネットワークにデプロ�
 
 ## <a name="x509-certificates-and-service-fabric"></a>X.509 証明書と Service Fabric
 
-一般的に、X.509 デジタル証明書は、クライアントとサーバーの認証に使用されています。 また、メッセージの暗号化やデジタル署名にも使用されます。 Service Fabric では、X.509 証明書を使用してクラスターをセキュリティで保護し、アプリケーションのセキュリティ機能を提供します。 X.509 デジタル証明書の詳細については、「[証明書の使用](https://msdn.microsoft.com/library/ms731899.aspx)」を参照してください。 [Key Vault](../key-vault/general/overview.md) を使用して、Azure の Service Fabric クラスターの証明書を管理します。
+一般的に、X.509 デジタル証明書は、クライアントとサーバーの認証に使用されています。 また、メッセージの暗号化やデジタル署名にも使用されます。 Service Fabric では、X.509 証明書を使用してクラスターをセキュリティで保護し、アプリケーションのセキュリティ機能を提供します。 X.509 デジタル証明書の詳細については、「[証明書の使用](/dotnet/framework/wcf/feature-details/working-with-certificates)」を参照してください。 [Key Vault](../key-vault/general/overview.md) を使用して、Azure の Service Fabric クラスターの証明書を管理します。
 
 次のような、考慮すべき重要な点がいくつかあります。
 

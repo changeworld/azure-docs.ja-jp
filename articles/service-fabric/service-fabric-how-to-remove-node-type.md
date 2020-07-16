@@ -6,12 +6,12 @@ manager: sridmad
 ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: chrpap
-ms.openlocfilehash: d9562c09fe99372a9b1106d3ae891f65663cf307
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6cc7cbcc8344c5015d60d9721c682b6a856cbb6e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610102"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247236"
 ---
 # <a name="how-to-remove-a-service-fabric-node-type"></a>Service Fabric ノード タイプを削除する方法
 この記事では、クラスターから既存のノード タイプを削除することで、Azure Service Fabric クラスターをスケーリングする方法について説明します。 Service Fabric クラスターは、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 クラスターに属しているコンピューターまたは VM を "ノード" と呼びます。 仮想マシン スケール セットは、セットとして仮想マシンのコレクションをデプロイおよび管理するために使用する Azure コンピューティング リソースです。 Azure クラスターで定義されているすべてのノードの種類は、[異なるスケール セットとしてセットアップされます](service-fabric-cluster-nodetypes.md)。 その後は、ノードの種類ごとに個別に管理できます。 Service Fabric クラスターを作成した後は、ノード タイプ (仮想マシン スケール セット) とそのノードすべてを削除することで、クラスターを水平方向にスケーリングできます。  クラスターは、クラスターでワークロードを実行中であっても、いつでもスケーリングできます。  クラスターをスケーリングすると、アプリケーションも自動的にスケーリングされます。
@@ -20,7 +20,7 @@ ms.locfileid: "85610102"
 > 運用環境のクラスターからノード タイプを削除するためにこの方法を使用することは、頻繁に使用する場合は推奨されません。 ノード タイプの背後にある仮想マシン スケール セット リソースが削除されるため、危険なコマンドです。 
 
 ## <a name="durability-characteristics"></a>耐久性の特性
-Remove-AzServiceFabricNodeType の使用時には、速度よりも安全性が優先されます。 次に示す理由から、ノード タイプはシルバーまたはゴールドの[耐久性レベル](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#durability-characteristics-of-the-cluster)にする必要があります。
+Remove-AzServiceFabricNodeType の使用時には、速度よりも安全性が優先されます。 次に示す理由から、ノード タイプはシルバーまたはゴールドの[耐久性レベル](./service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)にする必要があります。
 - ブロンズでは、状態情報の保存に関する保証が一切提供されしません。
 - シルバーとゴールドの耐久性では、スケール セットに対するすべての変更がトラップされます。
 - ゴールドでは、スケール セットの下にある Azure の更新に対する制御も与えられます。
@@ -175,6 +175,6 @@ Service Fabric では、データが失われないように、基になって�
     - デプロイが完了するまで待ちます。
 
 ## <a name="next-steps"></a>次のステップ
-- クラスターの[耐久性の特性](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#durability-characteristics-of-the-cluster)についてさらに学習します。
+- クラスターの[耐久性の特性](./service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)についてさらに学習します。
 - [ノード タイプと Virtual Machine Scale Sets](service-fabric-cluster-nodetypes.md) についてさらに学習します。
 - [Service Fabric クラスターのスケーリング](service-fabric-cluster-scaling.md)についてさらに学習します。

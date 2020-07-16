@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) クラスターで内部のプライ
 services: container-service
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: 8f1a538364284863cbfe3786213434b14918f214
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: eecf34c6ad622c374e6f43670972279e297662a9
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920241"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251588"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で内部の仮想ネットワークにイングレス コントローラーを作成する
 
@@ -346,7 +346,7 @@ kubectl delete namespace ingress-basic
 
 <!-- LINKS - external -->
 [helm]: https://helm.sh/
-[helm-cli]: https://docs.microsoft.com/azure/aks/kubernetes-helm
+[helm-cli]: ./kubernetes-helm.md
 [nginx-ingress]: https://github.com/kubernetes/ingress-nginx
 
 <!-- LINKS - internal -->

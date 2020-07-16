@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: apimpm
-ms.openlocfilehash: c10939b50a66cd608d27a71f02d959fbc2380f59
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cc19c5ea7a45f78110818bc6c8cea8fbe25981c0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70072319"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243445"
 ---
 # <a name="policies-in-azure-api-management"></a>Azure API Management のポリシー
 
@@ -58,7 +58,7 @@ Azure API Management (APIM) のポリシーは、発行者がその構成を通�
 </policies> 
 ```
 
-要求の処理中にエラーが発生した場合、`inbound`、`backend`、または `outbound` セクションの残りの手順はスキップされ、実行は `on-error` セクションのステートメントにジャンプします。 `on-error` セクションにポリシー ステートメントを配置することで、`context.LastError` プロパティを使用してエラーを確認し、`set-body` ポリシーを使用してエラーの検査とカスタマイズを行い、エラーが発生した場合の動作を構成できます。 組み込み手順用と、ポリシー ステートメントの処理中に発生する可能性があるエラー用のエラー コードがあります。 詳細については、 [API Management のポリシーにおけるエラー処理](/azure/api-management/api-management-error-handling-policies)に関するページを参照してください。
+要求の処理中にエラーが発生した場合、`inbound`、`backend`、または `outbound` セクションの残りの手順はスキップされ、実行は `on-error` セクションのステートメントにジャンプします。 `on-error` セクションにポリシー ステートメントを配置することで、`context.LastError` プロパティを使用してエラーを確認し、`set-body` ポリシーを使用してエラーの検査とカスタマイズを行い、エラーが発生した場合の動作を構成できます。 組み込み手順用と、ポリシー ステートメントの処理中に発生する可能性があるエラー用のエラー コードがあります。 詳細については、 [API Management のポリシーにおけるエラー処理](./api-management-error-handling-policies.md)に関するページを参照してください。
 
 ## <a name="how-to-configure-policies"></a><a name="scopes"> </a>ポリシーの構成方法
 
@@ -66,7 +66,7 @@ Azure API Management (APIM) のポリシーは、発行者がその構成を通�
 
 ## <a name="policy-reference"></a>ポリシー リファレンス
 
-ポリシー ステートメントとその設定の一覧については、[ポリシー リファレンス](api-management-policy-reference.md)に関する記事をご覧ください。
+ポリシー ステートメントとその設定の一覧については、[ポリシー リファレンス](./api-management-policies.md)に関する記事をご覧ください。
 
 ## <a name="policy-samples"></a>ポリシーのサンプル
 
@@ -118,17 +118,17 @@ Azure API Management (APIM) のポリシーは、発行者がその構成を通�
 ポリシーを使用する方法の詳細については、次のトピックを参照してください。
 
 + [API を変換する](transform-api.md)
-+ ポリシー ステートメントとその設定の一覧に関する[ポリシー リファレンス](api-management-policy-reference.md)
++ ポリシー ステートメントとその設定の一覧に関する[ポリシー リファレンス](./api-management-policies.md)
 + [ポリシーのサンプル](policy-samples.md)   
 
-[Policy Reference]: api-management-policy-reference.md
+[Policy Reference]: ./api-management-policies.md
 [Product]: api-management-howto-add-products.md
 [API]: api-management-howto-add-products.md
-[Operation]: api-management-howto-add-operations.md
+[Operation]: ./mock-api-responses.md
 
-[Advanced policies]: https://msdn.microsoft.com/library/azure/dn894085.aspx
-[Control flow]: https://msdn.microsoft.com/library/azure/dn894085.aspx#choose
-[Set variable]: https://msdn.microsoft.com/library/azure/dn894085.aspx#set_variable
-[Policy expressions]: https://msdn.microsoft.com/library/azure/dn910913.aspx
+[Advanced policies]: ./api-management-advanced-policies.md
+[Control flow]: ./api-management-advanced-policies.md#choose
+[Set variable]: ./api-management-advanced-policies.md#set-variable
+[Policy expressions]: ./api-management-policy-expressions.md
 
 [policies-restrict]: ./media/api-management-howto-policies/api-management-policies-restrict.png

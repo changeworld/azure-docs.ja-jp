@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: dc8ca7296658f4113d86765f230ca0158727255f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 28a9f37f58a6c056bf23a85fcf2641f407988891
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649201"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243479"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Azure API Management ポリシーでの名前付きの値の使用方法
 
@@ -34,7 +34,7 @@ API Management のポリシーは、Azure Portal がその構成を通じて API
 
 ![名前付きの値](./media/api-management-howto-properties/named-values.png)
 
-名前付きの値には、リテラル文字列と[ポリシー式](/azure/api-management/api-management-policy-expressions)を含めることができます。 たとえば、`Expression` の値は、現在の日時を含む文字列を返すポリシー式です。 名前付きの値 `Credential` はシークレットとしてマークされているので、既定では、その値は表示されません。
+名前付きの値には、リテラル文字列と[ポリシー式](./api-management-policy-expressions.md)を含めることができます。 たとえば、`Expression` の値は、現在の日時を含む文字列を返すポリシー式です。 名前付きの値 `Credential` はシークレットとしてマークされているので、既定では、その値は表示されません。
 
 | 名前       | 値                      | Secret | Tags          |
 | ---------- | -------------------------- | ------ | ------------- |
@@ -110,8 +110,8 @@ API Management のポリシーは、Azure Portal がその構成を通じて API
 
 -   ポリシーの使用に関する説明
     -   [API Management のポリシー](api-management-howto-policies.md)
-    -   [Policy reference (ポリシー リファレンス)](/azure/api-management/api-management-policies)
-    -   [ポリシー式](/azure/api-management/api-management-policy-expressions)
+    -   [Policy reference (ポリシー リファレンス)](./api-management-policies.md)
+    -   [ポリシー式](./api-management-policy-expressions.md)
 
 [api-management-send-results]: ./media/api-management-howto-properties/api-management-send-results.png
 [api-management-properties-filter]: ./media/api-management-howto-properties/api-management-properties-filter.png

@@ -3,12 +3,12 @@ title: Service Fabric とコンテナーの概要
 description: Service Fabric に関する説明と、コンテナーを使用してマイクロサービス アプリケーションをデプロイする方法の概要を示します。 この記事では、コンテナーの使い方と、Service Fabric で利用可能な機能の概要について説明しています。
 ms.topic: conceptual
 ms.date: 8/8/2018
-ms.openlocfilehash: 884cefa3d6a60f55269afac73c40b9f6b21518f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7c92910a92c8fa3061a1a0d53611734cf681484f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75458212"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259231"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric とコンテナー
 
@@ -65,7 +65,7 @@ Windows ベースのチュートリアルについては、「[Windows で初め
 
 コンテナーの選択が望まれる一般的な例を以下に示します。
 
-* **IIS のリフトとシフト**: 既存の [ASP.NET MVC](https://www.asp.net/mvc) アプリを ASP.NET Core に移行する代わりにコンテナー内に配置できます。 これらの ASP.NET MVC アプリケーションは、インターネット インフォメーション サービス (IIS) に依存します。 このようなアプリケーションは、事前に作成された IIS イメージからコンテナー イメージにパッケージ化し、Service Fabric でデプロイすることができます。 Windows コンテナーの作成方法については、「[Windows Server のコンテナー イメージ](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server)」を参照してください。
+* **IIS のリフトとシフト**: 既存の [ASP.NET MVC](https://www.asp.net/mvc) アプリを ASP.NET Core に移行する代わりにコンテナー内に配置できます。 これらの ASP.NET MVC アプリケーションは、インターネット インフォメーション サービス (IIS) に依存します。 このようなアプリケーションは、事前に作成された IIS イメージからコンテナー イメージにパッケージ化し、Service Fabric でデプロイすることができます。 Windows コンテナーの作成方法については、「[Windows Server のコンテナー イメージ](/virtualization/windowscontainers/quick-start/quick-start-windows-server)」を参照してください。
 
 * **コンテナーと Service Fabric マイクロサービスの混在使用**: アプリケーションの一部として、既存のコンテナー イメージを使用できます。 たとえば、より多くのバックエンド計算に対応するために、アプリケーションやステートフル サービスの Web フロントエンドに [NGINX コンテナー](https://hub.docker.com/_/nginx/)を使用できます。
 
@@ -90,7 +90,7 @@ Service Fabric には、コンテナー化されたマイクロサービスで�
 * コンテナーにセキュリティ資格情報を設定する機能
 * コンテナーに対する異なるネットワーク モードの選択
 
-Azure Kubernetes Service での Kubernetes クラスターの作成方法や Azure Container Registry へのプライベート Docker レジストリの作成方法など、Azure でのコンテナーのサポートの包括的な概要については、「[Azure for Containers](https://docs.microsoft.com/azure/containers/)」を参照してください。
+Azure Kubernetes Service での Kubernetes クラスターの作成方法や Azure Container Registry へのプライベート Docker レジストリの作成方法など、Azure でのコンテナーのサポートの包括的な概要については、「[Azure for Containers](../containers/index.yml)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -98,6 +98,6 @@ Azure Kubernetes Service での Kubernetes クラスターの作成方法や Azu
 
 [Linux で初めての Service Fabric コンテナー アプリケーションを作成する](service-fabric-get-started-containers-linux.md)  
 [Windows で初めての Service Fabric コンテナー アプリケーションを作成する](service-fabric-get-started-containers.md)  
-[Windows コンテナーの詳細](https://docs.microsoft.com/virtualization/windowscontainers/about/)
+[Windows コンテナーの詳細](/virtualization/windowscontainers/about/)
 
 [Image1]: media/service-fabric-containers/Service-Fabric-Types-of-Isolation.png

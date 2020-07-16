@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 70ae4a014768976c7dcf81ffadf1066027fa06ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 956934bd536d8eb5e692ed193cad1424929db24b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85214283"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260772"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>新しいセッション ホストで既存のホスト プールを拡張する
 
@@ -130,7 +130,7 @@ Azure Resource Manager テンプレートを再デプロイしてホスト プ�
 
 既存のホスト プールを拡張したので、Windows Virtual Desktop クライアントにサインインして、ユーザー セッションの一部としてそれらをテストできるようになりました。 次のいずれかのクライアントとのセッションに接続できます。
 
-- [Windows デスクトップ クライアントを使用して接続する](../connect-windows-7-and-10.md)
+- [Windows デスクトップ クライアントを使用して接続する](connect-windows-7-10-2019.md)
 - [Web クライアントに接続する](connect-web-2019.md)
 - [Android クライアントに接続する](connect-android-2019.md)
 - [macOS クライアントに接続する](connect-macos-2019.md)

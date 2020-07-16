@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 07/03/2020
-ms.openlocfilehash: 769d82cae6b5f9039587018ba5a7cde407f74e4c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 902c48f2edcca6eb25958a9f22d6760faf1fcbc2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964245"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248715"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps におけるアクセスとデータのセキュリティ保護
 
@@ -110,7 +110,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 ### <a name="enable-azure-active-directory-oauth"></a>Azure Active Directory OAuth の有効化
 
-[Request トリガー](../connectors/connectors-native-reqres.md)で開始されるロジック アプリの場合は、Request トリガーへの受信呼び出しに対する承認ポリシーを作成することで、[Azure Active Directory Open Authentication](../active-directory/develop/about-microsoft-identity-platform.md) (Azure AD OAuth) を有効にすることができます。 この認証を有効にする前に、次の考慮事項を確認してください。
+[Request トリガー](../connectors/connectors-native-reqres.md)で開始されるロジック アプリの場合は、Request トリガーへの受信呼び出しに対する承認ポリシーを作成することで、[Azure Active Directory Open Authentication](/azure/active-directory/develop/) (Azure AD OAuth) を有効にすることができます。 この認証を有効にする前に、次の考慮事項を確認してください。
 
 * ロジック アプリへの受信呼び出しには、Azure AD OAuth または [Shared Access Signature (SAS)](#sas) のいずれか 1 つの認証スキームのみを使用できます。 OAuth トークンに対しては[ベアラー型](../active-directory/develop/active-directory-v2-protocols.md#tokens)の承認スキームのみがサポートされ、これは Request トリガーに対してのみサポートされます。
 
@@ -309,7 +309,7 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 
 1. **[アクセス制御の構成]**  >  **[許可された着信 IP アドレス]** で、 **[特定の IP 範囲]** を選択します。
 
-1. **[コンテンツの IP 範囲]** で、入力と出力からの内容にアクセスできる IP アドレス範囲を指定します。 
+1. **[コンテンツの IP 範囲]** で、入力と出力からの内容にアクセスできる IP アドレス範囲を指定します。
 
    有効な IP 範囲では、*x.x.x.x/x* または *x.x.x.x-x.x.x.x* の形式が使用されます。
 
@@ -462,7 +462,8 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 たとえば、[Azure Active Directory Open Authentication (Azure AD OAuth)](#azure-active-directory-oauth-authentication) で HTTP アクションの認証を行う場合、認証に使用されるクライアント ID とクライアント シークレットを受け入れるパラメーターを定義し、隠すことができます。 ロジック アプリでこれらのパラメーターを定義するには、ロジック アプリのワークフロー定義内の `parameters` セクションと、デプロイ用の Resource Manager テンプレートを使用します。 ロジック アプリの編集時や実行履歴の確認時に表示させたくないパラメーター値をセキュリティで保護するには、`securestring` または `secureobject` 型を使用してパラメーターを定義し、必要に応じてエンコードを使用します。 この型のパラメーターはリソース定義と一緒に返されず、デプロイ後にリソースを表示するときにもアクセスできません。 それらのパラメーターの値に実行時にアクセスするには、ワークフロー定義内で `@parameters('<parameter-name>')` 式を使用します。 この式は実行時にのみ評価され、[ワークフロー定義言語](../logic-apps/logic-apps-workflow-definition-language.md)で記述されます。
 
 > [!NOTE]
-> 要求のヘッダーまたは本文でパラメーターを使用した場合、ロジック アプリの実行履歴や送信 HTTP 要求を表示したときに、そのパラメーターが表示されることがあります。 コンテンツ アクセス ポリシーも適切に設定するようにしてください。 [難読化](#obfuscate)を使用して、実行履歴の入力と出力を表示されないようにすることもできます。 Authorization ヘッダーは入力や出力では表示されません。 そのため、ここでシークレットが使用された場合はそのシークレットを取得できません。
+> 要求のヘッダーまたは本文でパラメーターを使用した場合、ロジック アプリの実行履歴や送信 HTTP 要求を表示したときに、そのパラメーターが表示されることがあります。 コンテンツ アクセス ポリシーも適切に設定するようにしてください。
+> [難読化](#obfuscate)を使用して、実行履歴の入力と出力を表示されないようにすることもできます。 Authorization ヘッダーは入力や出力では表示されません。 そのため、ここでシークレットが使用された場合はそのシークレットを取得できません。
 
 詳細については、このトピックの以下のセクションをご覧ください。
 
@@ -680,7 +681,7 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
   * [Active Directory OAuth 認証](#azure-active-directory-oauth-authentication)
 
   * [マネージド ID の認証](#managed-identity-authentication)
-  
+
   詳しくは、後の「[送信呼び出しに認証を追加する](#add-authentication-outbound)」をご覧ください。
 
 * ロジック アプリの IP アドレスからのアクセスを制限する。
@@ -727,7 +728,8 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 HTTP および HTTPS エンドポイントでは、さまざまな種類の認証がサポートされています。 これらのエンドポイントへの送信呼び出しまたは要求の送信に使用するトリガーとアクションによっては、認証の種類を指定できます。 ロジック アプリ デザイナーでは、認証の種類の選択がサポートされているトリガーとアクションには、 **[認証]** プロパティがあります。 ただし、このプロパティが既定で常に表示されるとは限りません。 このような場合は、トリガーまたはアクションで **[新しいパラメーターの追加]** の一覧を開き、 **[認証]** を選択します。
 
 > [!IMPORTANT]
-> ロジック アプリで処理される機密情報を保護するには、セキュリティで保護されたパラメーターを使用し、必要に応じてデータをエンコードします。 パラメーターの使用とセキュリティ保護の詳細については、「[パラメーターの入力へのアクセス](#secure-action-parameters)」を参照してください。
+> ロジック アプリで処理される機密情報を保護するには、セキュリティで保護されたパラメーターを使用し、必要に応じてデータをエンコードします。
+> パラメーターの使用とセキュリティ保護の詳細については、「[パラメーターの入力へのアクセス](#secure-action-parameters)」を参照してください。
 
 次の表では、認証の種類を選択できるトリガーとアクションで使用できる認証の種類を示します。
 
@@ -814,7 +816,7 @@ HTTP および HTTPS エンドポイントでは、さまざまな種類の認�
 
 ### <a name="azure-active-directory-open-authentication"></a>Azure Active Directory Open Authentication
 
-Request トリガーでは、[Azure Active Directory Open Authentication](../active-directory/develop/about-microsoft-identity-platform.md) (Azure AD OAuth) を使用して、ロジック アプリの [Azure AD 承認ポリシー](#enable-oauth)を設定した後に着信呼び出しを認証できます。 **Active Directory OAuth** の認証の種類を提供するその他のすべてのトリガーとアクションについては、次のプロパティ値を指定します。
+Request トリガーでは、[Azure Active Directory Open Authentication](/azure/active-directory/develop/) (Azure AD OAuth) を使用して、ロジック アプリの [Azure AD 承認ポリシー](#enable-oauth)を設定した後に着信呼び出しを認証できます。 **Active Directory OAuth** の認証の種類を提供するその他のすべてのトリガーとアクションについては、次のプロパティ値を指定します。
 
 | プロパティ (デザイナー) | プロパティ (JSON) | 必須 | 値 | 説明 |
 |---------------------|-----------------|----------|-------|-------------|
