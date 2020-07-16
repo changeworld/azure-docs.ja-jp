@@ -4,12 +4,12 @@ description: Azure CLI を使用して Linux Service Fabric クラスターを�
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: mvc
-ms.openlocfilehash: 1d6edc086233d757269c12e323241bc4bf55249f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14e029622f17e8aae392cc55ba4418b3971a5ad2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611698"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260219"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Azure 仮想ネットワークに Linux Service Fabric クラスターをデプロイする
 
@@ -162,7 +162,7 @@ sfctl cluster health
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-次の記事にすぐに進まない場合は、料金の発生を避けるため、[クラスターを削除](service-fabric-cluster-delete.md)することができます。
+次の記事にすぐに進まない場合は、料金の発生を避けるため、[クラスターを削除](./service-fabric-tutorial-delete-cluster.md)することができます。
 
 ## <a name="next-steps"></a>次のステップ
 

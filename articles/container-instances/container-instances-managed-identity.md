@@ -3,12 +3,12 @@ title: コンテナー グループでマネージド ID を有効にする
 description: ここでは、他のサービスで認証できるマネージド ID を Azure Container Instances で有効にする方法を説明します。
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: 9bc96ed29039650082bdfa8b7b2b1b48ecb6bd3f
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 23f2347593137a4846c8fd22e3b90f22db39bda3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169784"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259627"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Azure Container Instances でマネージド ID を使用する方法
 
@@ -392,6 +392,6 @@ identity:
 > * ID に Azure Key Vault へのアクセス権を付与する
 > * マネージド ID を使用して、実行中のコンテナーから Key Vault にアクセスする
 
-* 詳細については、「[Azure リソースの管理 ID について](/azure/active-directory/managed-identities-azure-resources/)」を参照してください。
+* 詳細については、「[Azure リソースの管理 ID について](../active-directory/managed-identities-azure-resources/index.yml)」を参照してください。
 
 * マネージド ID を使って Azure Container Instances から Key Vault にアクセスする例については、[Azure Go SDK サンプル](https://medium.com/@samkreter/c98911206328)を参照してください。

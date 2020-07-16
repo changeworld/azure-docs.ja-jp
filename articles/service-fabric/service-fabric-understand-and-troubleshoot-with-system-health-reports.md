@@ -5,12 +5,12 @@ author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
-ms.openlocfilehash: a3b2f7c22c1afd0a24aafa3bcd9dc9a6c3f725f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8e60ac5065c2f9543a641daf4f62299c00c61fc8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392575"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260192"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>システム正常性レポートを使用したトラブルシューティング
 Azure Service Fabric コンポーネントは、追加の設定なしで、クラスター内のすべてのエンティティについてのシステム正常性レポートを提供します。 [正常性ストア](service-fabric-health-introduction.md#health-store) は、システム レポートに基づいてエンティティを作成および削除します。 さらに、エンティティの相互作用をキャプチャする階層で、それらを編成します。
@@ -74,17 +74,17 @@ Azure Service Fabric コンポーネントは、追加の設定なしで、ク�
 * **次のステップ**: この警告がクラスターに表示される場合は、次の修正手順に従います。Service Fabric バージョン 6.5 以降を実行しているクラスターの場合:Azure 上の Service Fabric クラスターでは、シード ノードが停止した後、Service Fabric は自動的にそれを非シード ノードに変更しようとします。 そうなるようにするには、プライマリ ノード タイプの非シード ノードの数が、ダウンしているシード ノードの数以上になるようにします。 そのために、必要に応じて、プライマリ ノード タイプにノードを追加します。
 クラスターの状態によっては、問題を解決するまでに時間がかかる場合があります。 これが完了すると、警告レポートは自動的にクリアされます。
 
-Service Fabric スタンドアロン クラスターでは、すべてのシード ノードが正常にならないと警告レポートをクリアできません。 シード ノードが正常でない理由に応じて、さまざまなアクションを実行する必要があります。シード ノードが [ダウン] の場合、ユーザーがそのシード ノードを起動する必要があります。シード ノードが [削除済み] または [不明] の場合、このシード ノードを[クラスターから削除する必要があります](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes)。
+Service Fabric スタンドアロン クラスターでは、すべてのシード ノードが正常にならないと警告レポートをクリアできません。 シード ノードが正常でない理由に応じて、さまざまなアクションを実行する必要があります。シード ノードが [ダウン] の場合、ユーザーがそのシード ノードを起動する必要があります。シード ノードが [削除済み] または [不明] の場合、このシード ノードを[クラスターから削除する必要があります](./service-fabric-cluster-windows-server-add-remove-nodes.md)。
 すべてのシード ノードが正常になると、警告レポートは自動的にクリアされます。
 
 6\.5 より前のバージョンの Service Fabric を実行しているクラスターの場合:この場合、警告レポートを手動でクリアする必要があります。 **レポートをクリアする前に、すべてのシード ノードが正常になったことをユーザーが確認する必要があります**: シード ノードが [ダウン] の場合、ユーザーがそのシード ノードを起動する必要があります。シード ノードが [削除済み] または [不明] の場合、そのシード ノードをクラスターから削除する必要があります。
-すべてのシード ノードが正常になったら、PowerShell から次のコマンドを使用して[警告レポートをクリア](https://docs.microsoft.com/powershell/module/servicefabric/send-servicefabricclusterhealthreport)します。
+すべてのシード ノードが正常になったら、PowerShell から次のコマンドを使用して[警告レポートをクリア](/powershell/module/servicefabric/send-servicefabricclusterhealthreport)します。
 
 ```powershell
 PS C:\> Send-ServiceFabricClusterHealthReport -SourceId "System.FM" -HealthProperty "SeedNodeStatus" -HealthState OK
 
 ## Node system health reports
-System.FM, which represents the Failover Manager service, is the authority that manages information about cluster nodes. Each node should have one report from System.FM showing its state. The node entities are removed when the node state is removed. For more information, see [RemoveNodeStateAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync).
+System.FM, which represents the Failover Manager service, is the authority that manages information about cluster nodes. Each node should have one report from System.FM showing its state. The node entities are removed when the node state is removed. For more information, see [RemoveNodeStateAsync](/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync).
 
 ### Node up/down
 System.FM reports as OK when the node joins the ring (it's up and running). It reports an error when the node departs the ring (it's down, either for upgrading or simply because it has failed). The health hierarchy built by the health store acts on deployed entities in correlation with System.FM node reports. It considers the node a virtual parent of all deployed entities. The deployed entities on that node are exposed through queries if the node is reported as up by System.FM, with the same instance as the instance associated with the entities. When System.FM reports that the node is down or restarted, as a new instance, the health store automatically cleans up the deployed entities that can exist only on the down node or on the previous instance of the node.
@@ -675,7 +675,7 @@ HealthEvents          :
 * **プロパティ**: レプリカのロールに応じて **PrimaryReplicationQueueStatus** または **SecondaryReplicationQueueStatus**。
 
 ### <a name="slow-naming-operations"></a>名前付け操作が遅い
-**System.NamingService** は、名前付け操作にかかる時間が許容範囲を超える場合に、そのプライマリ レプリカの正常性を報告します。 名前付け操作の例として、[CreateServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) または [DeleteServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync) があります。 FabricClient ではその他多くのメソッドが見つかります。 たとえば、[サービス管理メソッド](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient)や[プロパティ管理メソッド](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.propertymanagementclient)にあります。
+**System.NamingService** は、名前付け操作にかかる時間が許容範囲を超える場合に、そのプライマリ レプリカの正常性を報告します。 名前付け操作の例として、[CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) または [DeleteServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync) があります。 FabricClient ではその他多くのメソッドが見つかります。 たとえば、[サービス管理メソッド](/dotnet/api/system.fabric.fabricclient.servicemanagementclient)や[プロパティ管理メソッド](/dotnet/api/system.fabric.fabricclient.propertymanagementclient)にあります。
 
 > [!NOTE]
 > 名前付けサービスによって、サービス名がクラスター内の場所に解決されます。 ユーザーはこれを使用してサービス名とプロパティを管理できます。 これは、Service Fabric のパーティション分割型の永続化されたサービスです。 パーティションの 1 つは、Service Fabric のすべての名前とサービスに関するメタデータを含む *Authority Owner* を表します。 Service Fabric の名前は、*Name Owner* パーティションという各種パーティションにマップされるため、サービスは拡張可能です。 詳細については、[ネーム サービス](service-fabric-architecture.md)に関するページをご覧ください。
@@ -880,4 +880,3 @@ System.Hosting は、アップグレード中に検証が失敗した場合、�
 * [ローカルでのサービスの監視と診断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
 * [Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)
-

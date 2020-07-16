@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 9/11/2018
 ms.author: dekapur
-ms.openlocfilehash: 495949d1a4ec927c601f174521c360f51034a2fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b07e3fe14478cf45df2f02378da4e83853cf9ea
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85079344"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261039"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Service Fabric スタンドアロン クラスターのデプロイの計画と準備
 
@@ -59,10 +59,10 @@ Service Fabric クラスター内のマシンに対して推奨される仕様�
 * すべてのマシンのセキュリティで保護された 1 つ以上のネットワークへの接続
 * Windows Server OS がインストールされている (有効なバージョン: 2012 R2、2016、1709、1803)。 Service Fabric バージョン 6.4.654.9590 以降では、Server 2019 と 1809 もサポートされています。
 * [.NET Framework 4.5.1 以降](https://www.microsoft.com/download/details.aspx?id=40773) (フル インストール)
-* [Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/install/installing-windows-powershell)
-* [RemoteRegistry サービス](https://technet.microsoft.com/library/cc754820)がすべてのマシンで実行されている必要があります。
+* [Windows PowerShell 3.0](/powershell/scripting/windows-powershell/install/installing-windows-powershell?view=powershell-7)
+* [RemoteRegistry サービス](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754820(v=ws.11))がすべてのマシンで実行されている必要があります。
 * **Service Fabric のインストール ドライブは、NTFS ファイル システムである必要があります**
-* **Windows サービスの "*パフォーマンス ログとアラート*" と "*Windows イベント ログ*" が[有効である](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc755249(v=ws.11))必要があります**。
+* **Windows サービスの "*パフォーマンス ログとアラート*" と "*Windows イベント ログ*" が[有効である](/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/cc755249(v=ws.11))必要があります**。
 
 > [!IMPORTANT]
 > クラスターのデプロイと構成を行うクラスター管理者には、個々のマシンに対する [管理者特権](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) が必要です。 ドメイン コントローラーに Service Fabric をインストールすることはできません。
@@ -157,7 +157,7 @@ Passed                     : True
 現在、この構成テスト モジュールではセキュリティ構成は検証されないため、別個に検証を行う必要があります。
 
 > [!NOTE]
-> このモジュールの信頼性を高めるために絶えず改善を行っていますので、不備や、現時点では TestConfiguration により検出されないと思われるケースがある場合には、[サポート チャネル](https://docs.microsoft.com/azure/service-fabric/service-fabric-support) からお知らせください。
+> このモジュールの信頼性を高めるために絶えず改善を行っていますので、不備や、現時点では TestConfiguration により検出されないと思われるケースがある場合には、[サポート チャネル](./service-fabric-support.md) からお知らせください。
 >
 >
 

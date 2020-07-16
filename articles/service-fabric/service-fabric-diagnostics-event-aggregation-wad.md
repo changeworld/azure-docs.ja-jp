@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: b9a448ff41c66fa3a38c124f7acde062bacbe9ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff13f8301274ebfc8b31dcbe01ef2a0fe6cd6fcc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846660"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247763"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Windows Azure Diagnostics を使用したイベントの集計と収集
 > [!div class="op_single_selector"]
@@ -21,7 +21,7 @@ ms.locfileid: "85846660"
 
 Azure Service Fabric クラスターを実行している場合、1 か所ですべてのノードのログを収集することをお勧めします。 1 か所でログを収集すると、クラスター内の問題と、そのクラスターで実行されているアプリケーションやサービスで発生する問題の分析と解決に役立ちます。
 
-ログをアップロードして収集する 1 つの方法として、Windows Azure Diagnostics (WAD) 拡張機能を使用します。この機能を使用すると、ログが Azure Storage にアップロードされますが、Azure Application Insights や Event Hubs にログを送信することもできます。 また、外部プロセスを使用してストレージからイベントを読み取り、[Azure Monitor ログ](../log-analytics/log-analytics-service-fabric.md)などの分析プラットフォーム製品や別のログ解析ソリューションに配置することもできます。
+ログをアップロードして収集する 1 つの方法として、Windows Azure Diagnostics (WAD) 拡張機能を使用します。この機能を使用すると、ログが Azure Storage にアップロードされますが、Azure Application Insights や Event Hubs にログを送信することもできます。 また、外部プロセスを使用してストレージからイベントを読み取り、[Azure Monitor ログ](./service-fabric-diagnostics-oms-setup.md)などの分析プラットフォーム製品や別のログ解析ソリューションに配置することもできます。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -31,7 +31,7 @@ Azure Service Fabric クラスターを実行している場合、1 か所です
 
 * [Azure Resource Manager](../azure-resource-manager/management/overview.md)
 * [Azure PowerShell](/powershell/azure/overview)
-* [Azure Resource Manager テンプレート](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Azure Resource Manager テンプレート](../virtual-machines/extensions/diagnostics-template.md?toc=/azure/virtual-machines/windows/toc.json)
 
 ## <a name="service-fabric-platform-events"></a>Service Fabric プラットフォームのイベント
 Service Fabric には[すぐに使用できるログ チャネル](service-fabric-diagnostics-event-generation-infra.md)がいくつか用意されています。そのうち、次のチャネルは、監視および診断データをストレージ テーブルや他の場所に送信する拡張機能が事前に構成されています。
@@ -202,12 +202,12 @@ extensions 配列内に次のコードを追加し、 template.json ファイル
 ## <a name="log-collection-configurations"></a>ログ収集の構成
 追加チャネルのログも収集できます。Azure で実行されているクラスターを対象とした、テンプレートで作成できる最も一般的な構成をいくつか次に示します。
 
-* 稼働チャネル - 基本: 既定で有効。Service Fabric とクラスターで実行される高度な操作。ノードの起動、新しいアプリケーションのデプロイ、アップグレードのロールバックなどのイベントが含まれます。イベントの一覧については、[稼働チャネル イベント](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-operational)に関するページをご覧ください。
+* 稼働チャネル - 基本: 既定で有効。Service Fabric とクラスターで実行される高度な操作。ノードの起動、新しいアプリケーションのデプロイ、アップグレードのロールバックなどのイベントが含まれます。イベントの一覧については、[稼働チャネル イベント](./service-fabric-diagnostics-event-generation-operational.md)に関するページをご覧ください。
   
 ```json
       scheduledTransferKeywordFilter: "4611686018427387904"
   ```
-* 稼働チャネル - 詳細: 正常性レポートと負荷分散の決定、および基本稼働チャネルのすべてが含まれます。 これらのイベントは、[ReportPartitionHealth](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportpartitionhealth.aspx)、[ReportLoad](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportload.aspx) などの正常性または負荷レポート API を使うことで、システムまたはユーザーのコードのいずれかによって生成されます。 Visual Studio の診断イベント ビューアーでこれらのイベントを表示するには、ETW プロバイダーのリストに "Microsoft-ServiceFabric:4:0x4000000000000008" を追加します。
+* 稼働チャネル - 詳細: 正常性レポートと負荷分散の決定、および基本稼働チャネルのすべてが含まれます。 これらのイベントは、[ReportPartitionHealth](/previous-versions/azure/reference/mt645153(v=azure.100))、[ReportLoad](/previous-versions/azure/reference/mt161491(v=azure.100)) などの正常性または負荷レポート API を使うことで、システムまたはユーザーのコードのいずれかによって生成されます。 Visual Studio の診断イベント ビューアーでこれらのイベントを表示するには、ETW プロバイダーのリストに "Microsoft-ServiceFabric:4:0x4000000000000008" を追加します。
 
 ```json
       scheduledTransferKeywordFilter: "4611686018427387912"
@@ -296,7 +296,7 @@ template.json ファイル内の `EtwEventSourceProviderConfiguration` セクシ
         }
 ```
 
-パフォーマンス カウンターまたはイベント ログを収集するには、「[Azure リソース マネージャー テンプレートを使用して監視および診断を含む Windows 仮想マシンを登録する](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」に記載されている例を使用して Resource Manager テンプレートを変更します。 その後、Resource Manager テンプレートを再発行します。
+パフォーマンス カウンターまたはイベント ログを収集するには、「[Azure リソース マネージャー テンプレートを使用して監視および診断を含む Windows 仮想マシンを登録する](../virtual-machines/extensions/diagnostics-template.md?toc=/azure/virtual-machines/windows/toc.json)」に記載されている例を使用して Resource Manager テンプレートを変更します。 その後、Resource Manager テンプレートを再発行します。
 
 ## <a name="collect-performance-counters"></a>パフォーマンス カウンターを収集する
 
@@ -358,7 +358,7 @@ Azure Diagnostics を正しく構成すると、ETW ログと EventSource ログ
 >[!NOTE]
 >現在のところ、テーブルに送信されるイベントを絞り込む方法はありません。 テーブルからイベントを削除するプロセスを実装しない場合、テーブルは増加を続けます。 現在、[ウォッチドッグ サンプル](https://github.com/Azure-Samples/service-fabric-watchdog-service)で実行されるデータ グルーミング サービスの例があります。30 日または 90 日の期間を超えてログを保存する正当な理由がない限り、データ グルーミング サービスを自分で作成することをお勧めします。
 
-* [診断拡張機能を使用してパフォーマンス カウンターまたはログを収集する方法についての説明](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [診断拡張機能を使用してパフォーマンス カウンターまたはログを収集する方法についての説明](../virtual-machines/extensions/diagnostics-template.md?toc=/azure/virtual-machines/windows/toc.json)
 * [Application Insights を使用したイベントの分析と視覚化](service-fabric-diagnostics-event-analysis-appinsights.md)
 * [Azure Monitor ログを使用したイベントの分析と視覚化](service-fabric-diagnostics-event-analysis-oms.md)
 * [Application Insights を使用したイベントの分析と視覚化](service-fabric-diagnostics-event-analysis-appinsights.md)

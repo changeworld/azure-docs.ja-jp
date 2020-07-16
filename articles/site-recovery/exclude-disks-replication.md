@@ -3,12 +3,12 @@ title: Azure Site Recovery を使用したレプリケーションからディ�
 description: Azure Site Recovery を使用したレプリケーションから Azure にディスクを除外する方法。
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 5a8d52bd0cc40b45f92039c537a1b3b63f0bec61
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 778bb030d9768c5fbe1cb8aeba0becfc68c00629
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135682"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245400"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>ディザスター リカバリーからディスクを除外する
 
@@ -105,29 +105,35 @@ Disk3 | G:\ | ユーザー データベース 2
 1. コマンド プロンプトを開きます。
 2. コマンド プロンプトから SQL Server を回復モードで実行します。
 
-        Net start MSSQLSERVER /f / T3608
+    ```console
+    Net start MSSQLSERVER /f / T3608
+    ```
 
 3. 次の sqlcmd を実行して、tempdb のパスを新しいパスに変更します。
 
-        sqlcmd -A -S SalesDB        **Use your SQL DBname**
-        USE master;     
-        GO      
-        ALTER DATABASE tempdb       
-        MODIFY FILE (NAME = tempdev, FILENAME = 'E:\MSSQL\tempdata\tempdb.mdf');
-        GO      
-        ALTER DATABASE tempdb       
-        MODIFY FILE (NAME = templog, FILENAME = 'E:\MSSQL\tempdata\templog.ldf');       
-        GO
-
+    ```sql
+    sqlcmd -A -S SalesDB        **Use your SQL DBname**
+    USE master;     
+    GO      
+    ALTER DATABASE tempdb       
+    MODIFY FILE (NAME = tempdev, FILENAME = 'E:\MSSQL\tempdata\tempdb.mdf');
+    GO      
+    ALTER DATABASE tempdb       
+    MODIFY FILE (NAME = templog, FILENAME = 'E:\MSSQL\tempdata\templog.ldf');       
+    GO
+    ```
 
 4. Microsoft SQL Server サービスを停止します。
 
-        Net stop MSSQLSERVER
+    ```console
+    Net stop MSSQLSERVER
+    ```
+
 5. Microsoft SQL Server サービスを開始します。
 
-        Net start MSSQLSERVER
-
-
+    ```console
+    Net start MSSQLSERVER
+    ```
 
 ### <a name="vmware-vms-disks-during-failback-to-original-location"></a>VMware VM:元の場所へのフェールバック中のディスク
 

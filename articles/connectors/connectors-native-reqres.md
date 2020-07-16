@@ -7,12 +7,12 @@ ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
 tags: connectors
-ms.openlocfilehash: 9f3f361b3e9fafdb350f943c0a8adcd87fa06c78
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25aafee59c7f5f7ae59aa2fd7871de8926907f68
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84325135"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261384"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Azure Logic Apps で受信 HTTPS 要求を受信して応答する
 
@@ -24,7 +24,7 @@ ms.locfileid: "84325135"
 
 * 別のロジック アプリからの HTTPS 呼び出しを受信して応答する。
 
-Request トリガーは、ロジック アプリへの受信呼び出しの承認のために [Azure Active Directory Open Authentication](../active-directory/develop/about-microsoft-identity-platform.md) (Azure AD OAuth) をサポートしています。 この認証を有効にする方法の詳細については、[Azure Logic Apps でのセキュリティで保護されたアクセスとデータ - Azure AD OAuth 認証を有効にする](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth)方法に関する記事を参照してください。
+Request トリガーは、ロジック アプリへの受信呼び出しの承認のために [Azure Active Directory Open Authentication](/azure/active-directory/develop/) (Azure AD OAuth) をサポートしています。 この認証を有効にする方法の詳細については、[Azure Logic Apps でのセキュリティで保護されたアクセスとデータ - Azure AD OAuth 認証を有効にする](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth)方法に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -157,7 +157,7 @@ Request トリガーは、ロジック アプリへの受信呼び出しの承�
          "account": {
             "name": "Contoso",
             "ID": "12345",
-            "address": { 
+            "address": {
                "number": "1234",
                "street": "Anywhere Street",
                "city": "AnyTown",
@@ -172,9 +172,9 @@ Request トリガーは、ロジック アプリへの受信呼び出しの承�
 1. 指定したスキーマに一致する要求本文が受信呼び出しに含まれることを確認するには、次の手順に従います。
 
    1. 要求トリガーのタイトル バーにある省略記号 ( **...** ) ボタンを選択します。
-   
+
    1. トリガーの設定で **[スキーマの検証]** をオンにし、 **[完了]** を選択します。
-   
+
       受信呼び出しの要求本文がスキーマと一致しない場合、トリガーからは `HTTP 400 Bad Request` エラーが返されます。
 
 1. 追加のプロパティを指定するには、 **[新しいパラメーターの追加]** リストを開き、追加するパラメーターを選択します。
@@ -259,7 +259,7 @@ Response アクションを使用すると、受信 HTTPS 要求に対してペ�
 
    この例では、わかりやすくするため Request トリガーは折りたたまれています。
 
-1. 応答メッセージに必要なすべての値を追加します。 
+1. 応答メッセージに必要なすべての値を追加します。
 
    フィールドによっては、ボックス内をクリックすると動的なコンテンツの一覧が表示されます。 次に、ワークフローの前のステップからの使用可能な出力を表すトークンを選択できます。 前の例で指定したスキーマからのプロパティは、動的コンテンツの一覧に表示されるようになりました。
 
@@ -271,7 +271,7 @@ Response アクションを使用すると、受信 HTTPS 要求に対してペ�
 
    ![ヘッダー - テキスト ビューへの切り替え](./media/connectors-native-reqres/switch-to-text-view.png)
 
-   Response アクション内に設定できるプロパティの詳細を次に示します。 
+   Response アクション内に設定できるプロパティの詳細を次に示します。
 
    | プロパティ名 | JSON プロパティ名 | 必須 | 説明 |
    |---------------|--------------------|----------|-------------|
@@ -282,7 +282,7 @@ Response アクションを使用すると、受信 HTTPS 要求に対してペ�
 
 1. 応答本文用の JSON スキーマなど、追加のプロパティを指定するには、 **[新しいパラメーターの追加]** リストを開いて、追加するパラメーターを選択します。
 
-1. 完了したら、ロジック アプリを保存します。 デザイナーのツール バーで、 **[保存]** を選択します。 
+1. 完了したら、ロジック アプリを保存します。 デザイナーのツール バーで、 **[保存]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 

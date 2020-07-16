@@ -3,12 +3,12 @@ title: ファイアウォール アクセス規則
 description: ファイアウォールの内側から Azure コンテナー レジストリにアクセスする規則を構成します。これには、("ホワイトリスト登録") REST API およびデータ エンドポイントのドメイン名またはサービス固有の IP アドレス範囲へのアクセスを許可します。
 ms.topic: article
 ms.date: 05/18/2020
-ms.openlocfilehash: 4774191087b3e88e657e8dc9bc6a9f9c406153e2
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 679dbcaf30653b855d35825f94e93f87ac68c322
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849989"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246981"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>ファイアウォールの内側から Azure コンテナー レジストリにアクセスする規則を構成する
 
@@ -183,7 +183,7 @@ az acr show-endpoints --name myregistry
 
 * [Azure のネットワーク セキュリティのベスト プラクティス](../security/fundamentals/network-best-practices.md)について学習する
 
-* Azure 仮想ネットワークの[セキュリティ グループ](/azure/virtual-network/security-overview)について学習する
+* Azure 仮想ネットワークの[セキュリティ グループ](../virtual-network/security-overview.md)について学習する
 
 * コンテナー レジストリの [Private Link](container-registry-private-link.md) の設定について学習する
 
@@ -199,4 +199,3 @@ az acr show-endpoints --name myregistry
 
 [az-acr-update]: /cli/azure/acr#az-acr-update
 [az-acr-show-endpoints]: /cli/azure/acr#az-acr-show-endpoints
-

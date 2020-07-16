@@ -3,12 +3,12 @@ title: 一度だけ実行されるタスクの再起動ポリシー
 description: Azure Container Instances を使用して、ビルド、テスト、イメージ レンダリングのジョブなど、完了まで実行するタスクを実行する方法を説明します。
 ms.topic: article
 ms.date: 04/15/2019
-ms.openlocfilehash: 8ef4ef228038242f53abc8041470f7f596ab1157
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a582036ae54a0b100b768e37bcf0d952521559d9
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131505"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261350"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>再起動ポリシーによるコンテナー化タスクの実行
 
@@ -90,13 +90,13 @@ az container logs --resource-group myResourceGroup --name mycontainer
  ('HAMLET', 386)]
 ```
 
-この例は、スクリプトが STDOUT に送信した出力を示しています。 ただし、コンテナー化されたタスクでは、後で取得できるように、その出力を永続的ストレージに書き込む場合があります。 たとえば、[Azure ファイル共有](container-instances-mounting-azure-files-volume.md)に書き込むなどです。
+この例は、スクリプトが STDOUT に送信した出力を示しています。 ただし、コンテナー化されたタスクでは、後で取得できるように、その出力を永続的ストレージに書き込む場合があります。 たとえば、[Azure ファイル共有](./container-instances-volume-azure-files.md)に書き込むなどです。
 
 ## <a name="next-steps"></a>次のステップ
 
 いくつかのコンテナーがある大きなデータセットのバッチ処理など、タスク ベースのシナリオでは、ランタイムではカスタムの[環境変数](container-instances-environment-variables.md)または[コマンド ライン](container-instances-start-command.md)のメリットが得られます。
 
-完了まで実行するコンテナーの出力を保存する方法の詳細については、「[Azure Container Instances での Azure ファイル共有のマウント](container-instances-mounting-azure-files-volume.md)」をご覧ください。
+完了まで実行するコンテナーの出力を保存する方法の詳細については、「[Azure Container Instances での Azure ファイル共有のマウント](./container-instances-volume-azure-files.md)」をご覧ください。
 
 <!-- LINKS - External -->
 [aci-wordcount-image]: https://hub.docker.com/_/microsoft-azuredocs-aci-wordcount

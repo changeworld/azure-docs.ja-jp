@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: juluk
 ms.date: 06/29/2020
 author: jluk
-ms.openlocfilehash: d98261629f9e1612966bf74084ae0e0fa70d3605
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c5d6bf83d9aa9c3717b0f8e08785b0fc897577d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85829256"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244448"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route"></a>ユーザー定義ルートを使用してクラスターのエグレスをカスタマイズする
 
@@ -75,9 +75,9 @@ AKS リソース プロバイダーによって Standard ロード バランサ�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure ネットワークの UDR の概要](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)に関する記事を参照してください。
+[Azure ネットワークの UDR の概要](../virtual-network/virtual-networks-udr-overview.md)に関する記事を参照してください。
 
-[ルート テーブルの作成、変更、削除の方法](https://docs.microsoft.com/azure/virtual-network/manage-route-table)に関する記事を参照してください。
+[ルート テーブルの作成、変更、削除の方法](../virtual-network/manage-route-table.md)に関する記事を参照してください。
 
 <!-- LINKS - internal -->
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: b9568d352b22d9c48789f2648489be0444823fff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ea46a42fa8063aaf1d67c4f5ae0d2eef3a83fd5a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82195988"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242707"
 ---
 # <a name="azure-security-baseline-for-azure-cache-for-redis"></a>Azure Cache for Redis 用の Azure セキュリティ ベースライン
 
@@ -46,7 +46,7 @@ https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#firewall
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2:VNet、サブネット、NIC の構成とトラフィックを監視してログに記録する
 
-**ガイダンス**:Azure Cache for Redis インスタンスと同じ仮想ネットワークに Virtual Machines がデプロイされている場合、ネットワーク セキュリティ グループ (NSG) を使用して、データ窃盗のリスクを軽減することができます。 NSG フロー ログを有効にし、トラフィック監査のためにログを Azure Storage アカウントに送信します。 また、NSG フロー ログを Log Analytics ワークスペースに送信し、Traffic Analytics を使用して Azure クラウド内のトラフィック フローに関する分析情報を提供することもできます。 Traffic Analytics のいくつかの利点として、ネットワーク アクティビティを視覚化してホット スポットを特定したり、セキュリティの脅威を識別したり、トラフィック フロー パターンを把握したり、ネットワークの誤った構成の正確な場所を特定したりする機能が挙げられます。
+**ガイダンス**: Azure Cache for Redis インスタンスと同じ仮想ネットワークに Virtual Machines がデプロイされている場合、ネットワーク セキュリティ グループ (NSG) を使用して、データ窃盗のリスクを軽減することができます。 NSG フロー ログを有効にし、トラフィック監査のためにログを Azure Storage アカウントに送信します。 また、NSG フロー ログを Log Analytics ワークスペースに送信し、Traffic Analytics を使用して Azure クラウド内のトラフィック フローに関する分析情報を提供することもできます。 Traffic Analytics のいくつかの利点として、ネットワーク アクティビティを視覚化してホット スポットを特定したり、セキュリティの脅威を識別したり、トラフィック フロー パターンを把握したり、ネットワークの誤った構成の正確な場所を特定したりする機能が挙げられます。
 
 NSG フロー ログを有効にする方法:
 
@@ -88,7 +88,7 @@ https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
 
 ### <a name="15-record-network-packets-and-flow-logs"></a>1.5:ネットワーク パケットとフロー ログを記録する
 
-**ガイダンス**: Azure Cache for Redis インスタンスと同じ仮想ネットワークに Virtual Machines がデプロイされている場合、ネットワーク セキュリティ グループ (NSG) を使用して、データ窃盗のリスクを軽減することができます。 NSG フロー ログを有効にし、トラフィック監査のためにログを Azure Storage アカウントに送信します。 また、NSG フロー ログを Log Analytics ワークスペースに送信し、Traffic Analytics を使用して Azure クラウド内のトラフィック フローに関する分析情報を提供することもできます。 Traffic Analytics のいくつかの利点として、ネットワーク アクティビティを視覚化してホット スポットを特定したり、セキュリティの脅威を識別したり、トラフィック フロー パターンを把握したり、ネットワークの誤った構成の正確な場所を特定したりする機能が挙げられます。
+**ガイダンス**:Azure Cache for Redis インスタンスと同じ仮想ネットワークに Virtual Machines がデプロイされている場合、ネットワーク セキュリティ グループ (NSG) を使用して、データ窃盗のリスクを軽減することができます。 NSG フロー ログを有効にし、トラフィック監査のためにログを Azure Storage アカウントに送信します。 また、NSG フロー ログを Log Analytics ワークスペースに送信し、Traffic Analytics を使用して Azure クラウド内のトラフィック フローに関する分析情報を提供することもできます。 Traffic Analytics のいくつかの利点として、ネットワーク アクティビティを視覚化してホット スポットを特定したり、セキュリティの脅威を識別したり、トラフィック フロー パターンを把握したり、ネットワークの誤った構成の正確な場所を特定したりする機能が挙げられます。
 
 NSG フロー ログを有効にする方法:
 
@@ -104,7 +104,7 @@ https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6:ネットワーク ベースの侵入検出/侵入防止システム (IDS/IPS) をデプロイする
 
-**ガイダンス**:Azure App Service またはコンピューティング インスタンスで実行されている Web アプリケーションで Azure Cache for Redis を使用する場合は、Azure Virtual Network (VNet) 内にすべてのリソースをデプロイし、Web Application Gateway で Azure Web アプリケーション ファイアウォール (WAF) を使用してセキュリティ保護します。 "防止モード" で実行されるように WAF を構成します。 防止モードにより、規則で検出された侵入や攻撃がブロックされます。 攻撃者に "403 不正アクセス" の例外が送信され、接続が終了します。 防止モードでは、このような攻撃を WAF ログに記録します。
+**ガイダンス**: Azure App Service またはコンピューティング インスタンスで実行されている Web アプリケーションで Azure Cache for Redis を使用する場合は、Azure Virtual Network (VNet) 内にすべてのリソースをデプロイし、Web Application Gateway で Azure Web アプリケーション ファイアウォール (WAF) を使用してセキュリティ保護します。 "防止モード" で実行されるように WAF を構成します。 防止モードにより、規則で検出された侵入や攻撃がブロックされます。 攻撃者に "403 不正アクセス" の例外が送信され、接続が終了します。 防止モードでは、このような攻撃を WAF ログに記録します。
 
 または、Azure Marketplace から、ペイロード検査や異常検出能力を備えた IDS または IPS 機能をサポートするプランを選択することもできます。
 
@@ -134,7 +134,7 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8:ネットワーク セキュリティ規則の複雑さと管理オーバーヘッドを最小限に抑える
 
-**ガイダンス**:ネットワーク セキュリティ グループ (NSG) または Azure Firewall でのネットワーク アクセス制御を定義するには、仮想ネットワーク サービス タグを使用します。 セキュリティ規則を作成するときは、特定の IP アドレスの代わりにサービス タグを使うことができます。 規則の適切なソースまたは宛先フィールドにサービス タグ名 (ApiManagement など) を指定することにより、対応するサービスのトラフィックを許可または拒否できます。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。
+**ガイダンス**: ネットワーク セキュリティ グループ (NSG) または Azure Firewall でのネットワーク アクセス制御を定義するには、仮想ネットワーク サービス タグを使用します。 セキュリティ規則を作成するときは、特定の IP アドレスの代わりにサービス タグを使うことができます。 規則の適切なソースまたは宛先フィールドにサービス タグ名 (ApiManagement など) を指定することにより、対応するサービスのトラフィックを許可または拒否できます。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。
 
 また、アプリケーション セキュリティグループ (ASG) を使用して、複雑なセキュリティ構成を簡略化することもできます。 ASG を使用すると、ネットワーク セキュリティをアプリケーションの構造の自然な拡張として構成でき、仮想マシンをグループ化して、それらのグループに基づくネットワーク セキュリティ ポリシーを定義できます。
 
@@ -152,7 +152,7 @@ https://docs.microsoft.com/azure/virtual-network/security-overview#application-s
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9:ネットワーク デバイスの標準的なセキュリティ構成を維持する
 
-**ガイダンス**:Azure Policy を使用して、Azure Cache for Redis インスタンスに関連するネットワーク リソースの標準的なセキュリティ構成を定義して実装します。 Azure Cache for Redis インスタンスのネットワーク構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.Cache" と "Microsoft.Network" の名前空間で Azure Policy エイリアスを使用します。 次のように、組み込みのポリシー定義を使用することもできます。
+**ガイダンス**: Azure Policy を使用して、Azure Cache for Redis インスタンスに関連するネットワーク リソースの標準的なセキュリティ構成を定義して実装します。 Azure Cache for Redis インスタンスのネットワーク構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.Cache" と "Microsoft.Network" の名前空間で Azure Policy エイリアスを使用します。 次のように、組み込みのポリシー定義を使用することもできます。
 
 Redis Cache に対してセキュリティで保護された接続のみを有効にする必要がある
 
@@ -186,7 +186,7 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11:自動化ツールを使用してネットワーク リソース構成を監視し、変更を検出する
 
-**ガイダンス**:Azure アクティビティ ログを使用して、ネットワーク リソース構成を監視し、Azure Cache for Redis インスタンスに関連するネットワーク リソースの変更を検出します。 重要なネットワーク リソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
+**ガイダンス**: Azure アクティビティ ログを使用して、ネットワーク リソース構成を監視し、Azure Cache for Redis インスタンスに関連するネットワーク リソースの変更を検出します。 重要なネットワーク リソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
 Azure アクティビティ ログ イベントを表示して取得する方法:
 
@@ -214,7 +214,7 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 ### <a name="22-configure-central-security-log-management"></a>2.2:セキュリティ ログの一元管理を構成する
 
-**ガイダンス**: Azure アクティビティ ログの診断設定を有効にして、Log Analytics ワークスペース、Azure イベント ハブ、または Azure ストレージア カウントにログを送信してアーカイブします。 アクティビティ ログは、コントロール プレーン レベルで Azure Cache for Redis インスタンスで実行された操作に関する分析情報を提供します。 Azure アクティビティ ログのデータを使用すると、Azure Cache for Redis インスタンスのコントロール プレーン レベルで実行された書き込み操作 (PUT、POST、DELETE) について、"いつだれが何を" 行ったのかを確認できます。
+**ガイダンス**:Azure アクティビティ ログの診断設定を有効にして、Log Analytics ワークスペース、Azure イベント ハブ、または Azure ストレージア カウントにログを送信してアーカイブします。 アクティビティ ログは、コントロール プレーン レベルで Azure Cache for Redis インスタンスで実行された操作に関する分析情報を提供します。 Azure アクティビティ ログのデータを使用すると、Azure Cache for Redis インスタンスのコントロール プレーン レベルで実行された書き込み操作 (PUT、POST、DELETE) について、"いつだれが何を" 行ったのかを確認できます。
 
 Azure アクティビティ ログの診断設定を有効にする方法: https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
 
@@ -284,7 +284,7 @@ Azure Cache for Redis のアラートを構成する方法: https://docs.microso
 
 ### <a name="28-centralize-anti-malware-logging"></a>2.8:マルウェア対策のログ記録を一元管理する
 
-**ガイダンス**: 適用できません。Azure Cache for Redis では、マルウェア対策関連のログの処理や生成は行われません。
+**ガイダンス**:適用できません。Azure Cache for Redis では、マルウェア対策関連のログの処理や生成は行われません。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -338,7 +338,7 @@ Azure Cache for Redis のアクセス キーを再生成する方法: https://do
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3: 専用管理者アカウントを使用する
 
-**ガイダンス**: 専用管理者アカウントの使用に関する標準的な操作手順を作成します。 Azure Security Center ID とアクセス管理を使用して、管理者アカウントの数を監視します。
+**ガイダンス**:専用管理者アカウントの使用に関する標準的な操作手順を作成します。 Azure Security Center ID とアクセス管理を使用して、管理者アカウントの数を監視します。
 
 さらに、専用管理者アカウントを追跡できるように、Azure Security Center または組み込みの Azure ポリシーの次のような推奨事項を使用することもできます。
 
@@ -359,7 +359,7 @@ Azure Policy を使用する方法: https://docs.microsoft.com/azure/governance/
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: シングル サインオン (SSO) と Azure Active Directory を統合する
 
-**ガイダンス**:Azure Cache for Redis では、アクセス キーを使用してユーザーを認証します。データプ レーン レベルでのシングル サインオン (SSO) はサポートしていません。 Azure Cache for Redis のコントロール プレーンへのアクセスは、REST API 経由で行うことができ、SSO がサポートされています。 認証を行うには、Azure Active Directory から取得した要求の Authorization ヘッダーを JSON Web トークンに設定します。
+**ガイダンス**: Azure Cache for Redis では、アクセス キーを使用してユーザーを認証します。データプ レーン レベルでのシングル サインオン (SSO) はサポートしていません。 Azure Cache for Redis のコントロール プレーンへのアクセスは、REST API 経由で行うことができ、SSO がサポートされています。 認証を行うには、Azure Active Directory から取得した要求の Authorization ヘッダーを JSON Web トークンに設定します。
 
 Azure Cache for Redis REST API について: https://docs.microsoft.com/rest/api/redis/
 
@@ -384,7 +384,7 @@ Azure Security Center 内で ID とアクセスを監視する方法: https://do
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: すべての管理タスクに専用マシン (特権アクセス ワークステーション) を使用する
 
-**ガイダンス**: Multi-Factor Authentication (MFA) が構成された特権アクセス ワークステーション (PAW) を使用してログインし、Azure リソースを構成します。
+**ガイダンス**:Multi-Factor Authentication (MFA) が構成された特権アクセス ワークステーション (PAW) を使用してログインし、Azure リソースを構成します。
 
 特権アクセス ワークステーションについて:
 
@@ -400,7 +400,7 @@ https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getst
 
 ### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7: 管理者アカウントからの疑わしいアクティビティを記録してアラートを生成する
 
-**ガイダンス**:Azure Active Directory (AD) Privileged Identity Management (PIM) を使用して、環境内で疑わしいアクティビティまたは安全でないアクティビティが発生したときにログとアラートを生成します。
+**ガイダンス**: Azure Active Directory (AD) Privileged Identity Management (PIM) を使用して、環境内で疑わしいアクティビティまたは安全でないアクティビティが発生したときにログとアラートを生成します。
 
 また、Azure AD のリスク検出を使用して、危険なユーザーの行動に関するアラートとレポートを表示します。
 
@@ -435,7 +435,7 @@ Azure Cache for Redis のデータ プレーンに直接アクセスするため
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: ユーザー アクセスを定期的に確認して調整する
 
-**ガイダンス**:Azure Active Directory (AD) では、古いアカウントの検出に役立つログが提供されます。 また、Azure ID アクセス レビューを使用して、グループ メンバーシップ、エンタープライズ アプリケーションへのアクセス、およびロールの割り当てを効率的に管理します。 ユーザー アクセスを定期的にレビューし、適切なユーザーのみが継続的なアクセス権を持っていることを確認できます。 
+**ガイダンス**: Azure Active Directory (AD) では、古いアカウントの検出に役立つログが提供されます。 また、Azure ID アクセス レビューを使用して、グループ メンバーシップ、エンタープライズ アプリケーションへのアクセス、およびロールの割り当てを効率的に管理します。 ユーザー アクセスを定期的にレビューし、適切なユーザーのみが継続的なアクセス権を持っていることを確認できます。 
 
 Azure AD のレポートについて: https://docs.microsoft.com/azure/active-directory/reports-monitoring/
 
@@ -447,7 +447,7 @@ Azure ID アクセスレビューの使用方法: https://docs.microsoft.com/azu
 
 ### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11: 非アクティブ化されたアカウントへのアクセス試行を監視する
 
-**ガイダンス**:Azure Active Directory (AD) サインイン アクティビティ、監査、およびリスク イベント ログのソースにアクセスできるため、Azure Sentinel またはサードパーティの SIEM との統合が可能です。
+**ガイダンス**: Azure Active Directory (AD) サインイン アクティビティ、監査、およびリスク イベント ログのソースにアクセスできるため、Azure Sentinel またはサードパーティの SIEM との統合が可能です。
 
 このプロセスを効率化するには、Azure AD ユーザー アカウントの診断設定を作成し、監査ログとサインイン ログを Log Analytics ワークスペースに送信します。 Log Analytics 内で必要なログ アラートを構成できます。
 
@@ -465,7 +465,7 @@ Azure Sentinel をオンボードする方法: https://docs.microsoft.com/azure/
 
 Azure AD の危険なサインインを表示する方法: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
 
-Identity Protection のリスク ポリシーを構成して有効にする方法: https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
+ID Protection のリスク ポリシーを構成して有効にする方法: https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
 
 Azure Sentinel をオンボードする方法: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
@@ -543,7 +543,7 @@ Azure での顧客データの保護について: https://docs.microsoft.com/azu
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4:転送中のすべての機密情報を暗号化する
 
-**ガイダンス**: Azure Cache for Redis では、TLS で暗号化された通信が既定で必要です。 現在、TLS バージョン 1.0、1.1、および 1.2 がサポートされています。 ただし、TLS 1.0 と 1.1 は業界全体で非推奨になる予定であるため、可能であれば TLS 1.2 を使用してください。 お使いのクライアント ライブラリまたはツールで TLS がサポートされていない場合は、Azure portal または管理 API を使用して、暗号化されていない接続を有効にすることができます。 暗号化された接続ができない場合は、キャッシュとクライアント アプリケーションを仮想ネットワークに配置することをお勧めします。
+**ガイダンス**:Azure Cache for Redis では、TLS で暗号化された通信が既定で必要です。 現在、TLS バージョン 1.0、1.1、および 1.2 がサポートされています。 ただし、TLS 1.0 と 1.1 は業界全体で非推奨になる予定であるため、可能であれば TLS 1.2 を使用してください。 お使いのクライアント ライブラリまたはツールで TLS がサポートされていない場合は、Azure portal または管理 API を使用して、暗号化されていない接続を有効にすることができます。 暗号化された接続ができない場合は、キャッシュとクライアント アプリケーションを仮想ネットワークに配置することをお勧めします。
 
 Azure Cache for Redis の転送中の暗号化について:
 
@@ -597,7 +597,7 @@ https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8:機密情報を保存時に暗号化する
 
-**ガイダンス**: Azure Cache for Redis は顧客データをメモリに格納します。メモリは、Microsoft によって実装される多くのコントロールで強固に保護されていますが、既定では暗号化されません。 組織で必要な場合は、Azure Cache for Redis に格納する前にコンテンツを暗号化してください。
+**ガイダンス**:Azure Cache for Redis は顧客データをメモリに格納します。メモリは、Microsoft によって実装される多くのコントロールで強固に保護されていますが、既定では暗号化されません。 組織で必要な場合は、Azure Cache for Redis に格納する前にコンテンツを暗号化してください。
 
 Azure Cache for Redis の "Redis データの永続化" 機能を使用している場合は、所有して管理している Azure Storage アカウントにデータが送信されます。 永続化の構成は、キャッシュの作成中に [New Azure Cache for Redis]\(新規 Azure Cache for Redis\) ブレードから、および既存の Premium キャッシュ用の [リソース] メニューで行うことができます。
 
@@ -659,7 +659,7 @@ Azure Security Center の推奨事項について: https://docs.microsoft.com/az
 
 ### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4:バックツーバックの脆弱性スキャンを比較する
 
-**ガイダンス**: 適用できません。この推奨事項は、コンピューティング リソースを対象にしています。
+**ガイダンス**:適用できません。この推奨事項は、コンピューティング リソースを対象にしています。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -809,7 +809,7 @@ https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-
 
 ### <a name="611-limit-users-ability-to-interact-with-azure-resources-manager-via-scripts"></a>6.11:スクリプトを使用して Azure Resource Manager を操作するユーザーの機能を制限する
 
-**ガイダンス**: Azure Resource Manager (ARM) を操作するユーザーの権限を制限するように Azure Conditional Access を構成するには、"Microsoft Azure 管理" アプリに対して [アクセスのブロック] を構成します。
+**ガイダンス**:Azure Resource Manager (ARM) を操作するユーザーの権限を制限するように Azure Conditional Access を構成するには、"Microsoft Azure 管理" アプリに対して [アクセスのブロック] を構成します。
 
 ARM へのアクセスをブロックするように条件付きアクセスを構成する方法:
 
@@ -863,7 +863,7 @@ Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3:セキュリティで保護された Azure リソースの構成を維持する
 
-**ガイダンス**: Azure リソース全体にセキュリティで保護された設定を適用するには、Azure Policy の [deny] と [deploy if not exist] を使用します。
+**ガイダンス**:Azure リソース全体にセキュリティで保護された設定を適用するには、Azure Policy の [deny] と [deploy if not exist] を使用します。
 
 Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -883,7 +883,7 @@ Azure Policy の効果の概要: https://docs.microsoft.com/azure/governance/pol
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5:Azure リソースの構成を安全に格納する
 
-**ガイダンス**:Azure Cache for Redis インスタンスおよび関連リソースにカスタムの Azure Policy 定義または Azure Resource Manager テンプレートを使用している場合は、Azure Repos を使用してコードを安全に格納して管理します。
+**ガイダンス**: Azure Cache for Redis インスタンスおよび関連リソースにカスタムの Azure Policy 定義または Azure Resource Manager テンプレートを使用している場合は、Azure Repos を使用してコードを安全に格納して管理します。
 
 Azure DevOps でコードを格納する方法: https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
@@ -1067,7 +1067,7 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvau
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3:カスタマー マネージド キーを含むすべてのバックアップを検証する
 
-**ガイダンス**:Azure Cache for Redis Importを使用します。 Import は、任意のクラウドまたは環境で稼働している任意の Redis サーバー (Linux や Windows のほか、アマゾン ウェブ サービスをはじめとする各種クラウド プロバイダーで稼働している Redis など) から Redis と互換性のある RDB ファイルを取り込むときに使用できます。 データをインポートすると、あらかじめデータが入力されたキャッシュを簡単に作成できます。 インポート処理中に、Azure Cache for Redis では RDB ファイルが Azure Storage からメモリに読み込まれて、キーがキャッシュに挿入されます。
+**ガイダンス**: Azure Cache for Redis Importを使用します。 Import は、任意のクラウドまたは環境で稼働している任意の Redis サーバー (Linux や Windows のほか、アマゾン ウェブ サービスをはじめとする各種クラウド プロバイダーで稼働している Redis など) から Redis と互換性のある RDB ファイルを取り込むときに使用できます。 データをインポートすると、あらかじめデータが入力されたキャッシュを簡単に作成できます。 インポート処理中に、Azure Cache for Redis では RDB ファイルが Azure Storage からメモリに読み込まれて、キーがキャッシュに挿入されます。
 
 Azure Key Vault シークレットのデータ復元を定期的にテストします。
 
@@ -1189,7 +1189,7 @@ https://docs.microsoft.com/azure/security-center/workflow-automation
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1:Azure リソースの通常の侵入テストを実施し、セキュリティに関する重大な調査結果がすべて、60 日以内に確実に修復されるようにします
 
-**ガイダンス**:お客様の侵入テストが Microsoft のポリシーに違反しないように、Microsoft の活動規則に従ってください。
+**ガイダンス**: お客様の侵入テストが Microsoft のポリシーに違反しないように、Microsoft の活動規則に従ってください。
 
 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
 

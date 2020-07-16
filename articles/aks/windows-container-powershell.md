@@ -4,12 +4,12 @@ description: 迅速に Kubernetes クラスターを作成し、PowerShell を�
 services: container-service
 ms.topic: article
 ms.date: 05/26/2020
-ms.openlocfilehash: 735869da1432c241927597789f00a0bd2aea63f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 036c97d406e37e038474287daf39182ddce194a1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207950"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250874"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-powershell"></a>PowerShell を使用して Azure Kubernetes Service (AKS) クラスター上に Windows Server コンテナーを作成する
 
@@ -47,7 +47,7 @@ Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[Azure リソース グループ](/azure/azure-resource-manager/resource-group-overview)は、Azure リソースが展開され管理される論理グループです。 リソース グループを作成する際は、場所を指定するよう求められます。 この場所は、リソース グループのメタデータが格納される場所です。リソースの作成時に別のリージョンを指定しない場合は、Azure でリソースが実行される場所でもあります。 [New-AzResourceGroup][new-azresourcegroup] コマンドレットを使用してリソース グループを作成します。
+[Azure リソース グループ](../azure-resource-manager/management/overview.md)は、Azure リソースが展開され管理される論理グループです。 リソース グループを作成する際は、場所を指定するよう求められます。 この場所は、リソース グループのメタデータが格納される場所です。リソースの作成時に別のリージョンを指定しない場合は、Azure でリソースが実行される場所でもあります。 [New-AzResourceGroup][new-azresourcegroup] コマンドレットを使用してリソース グループを作成します。
 
 次の例では、**myResourceGroup** という名前のリソース グループを **eastus** に作成します。
 
@@ -70,7 +70,7 @@ ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000/resource
 
 ## <a name="create-an-aks-cluster"></a>AKS クラスターを作成する
 
-`ssh-keygen` コマンドライン ユーティリティを使用して、SSH キー ペアを生成します。 詳細については、「[簡単な手順: Azure 内に Linux VM 用の SSH 公開/秘密キーのペアを作成して使用する](/azure/virtual-machines/linux/mac-create-ssh-keys)」を参照してください。
+`ssh-keygen` コマンドライン ユーティリティを使用して、SSH キー ペアを生成します。 詳細については、「[簡単な手順: Azure 内に Linux VM 用の SSH 公開/秘密キーのペアを作成して使用する](../virtual-machines/linux/mac-create-ssh-keys.md)」を参照してください。
 
 Windows Server コンテナー用のノード プールをサポートする AKS クラスターを実行するには、[Azure CNI][azure-cni-about] の (高度な) ネットワーク プラグインを使用するネットワーク ポリシーを、ご利用のクラスターで使用する必要があります。 必要なサブネット範囲とネットワークに関する考慮事項を計画するのに役立つ詳細情報については、[Azure CNI ネットワークの構成][use-advanced-networking]に関するページを参照してください。 **myAKSCluster** という名前の AKS クラスターを作成するには、下の [New-AzAks][new-azaks] コマンドレットを使用します。 次の例では、必要なネットワーク リソースが存在しない場合、それらが作成されます。
 

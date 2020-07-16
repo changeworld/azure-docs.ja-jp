@@ -3,12 +3,12 @@ title: Azure Service Fabric アプリをパッケージ化する
 description: Azure Service Fabric アプリケーションをパッケージ化し、クラスターへのデプロイを準備する方法について説明します。
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 7c99eec28ac06ecf666d6dda1015f889841a5dbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c00e46915c7bf147d224911ef4988d9fedd691c7
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701049"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260972"
 ---
 # <a name="package-an-application"></a>アプリケーションをパッケージ化する
 
@@ -211,7 +211,7 @@ diff プロビジョニングが選択肢とならず、パッケージを含め
 `sfpkg` ファイルは、初期アプリケーション パッケージを含む、拡張子が ".sfpkg" の zip です。
 zip には、圧縮されているアプリケーション パッケージと圧縮されていないアプリケーション パッケージのどちらも含めることができます。 zip 内のアプリケーション パッケージの圧縮は、[前述のように](service-fabric-package-apps.md#compress-a-package)、コード、構成、およびデータ パッケージ レベルで行われます。
 
-`sfpkg` を作成するには、圧縮されているかどうかにかかわらず、元のアプリケーション パッケージを含むフォルダーから開始します。 その後、任意のユーティリティを使用してフォルダーを圧縮して、拡張子 ".sfpkg" を付けます。 たとえば、[ZipFile.CreateFromDirectory](https://msdn.microsoft.com/library/hh485721(v=vs.110).aspx) を使用します。
+`sfpkg` を作成するには、圧縮されているかどうかにかかわらず、元のアプリケーション パッケージを含むフォルダーから開始します。 その後、任意のユーティリティを使用してフォルダーを圧縮して、拡張子 ".sfpkg" を付けます。 たとえば、[ZipFile.CreateFromDirectory](/dotnet/api/system.io.compression.zipfile.createfromdirectory?view=netcore-3.1#System_IO_Compression_ZipFile_CreateFromDirectory_System_String_System_String_System_IO_Compression_CompressionLevel_System_Boolean_) を使用します。
 
 ```csharp
 ZipFile.CreateFromDirectory(appPackageDirectoryPath, sfpkgFilePath);

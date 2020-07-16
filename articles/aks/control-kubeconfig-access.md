@@ -4,12 +4,12 @@ description: クラスターの管理者とクラスターのユーザーを対�
 services: container-service
 ms.topic: article
 ms.date: 05/06/2020
-ms.openlocfilehash: 87f4dc18fc595242117e10233d4fecd77e66373f
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 4d25babd13bb8ecdcd8c9eb60a976a05702fb9b6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890892"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255270"
 ---
 # <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Azure のロールベースのアクセス制御を使用して Azure Kubernetes Service (AKS) 内の Kubernetes 構成ファイルに対するアクセス権を定義する
 
@@ -154,5 +154,5 @@ AKS クラスターにアクセスする際のセキュリティを強化する�
 [az-ad-user-show]: /cli/azure/ad/user#az-ad-user-show
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [az-role-assignment-delete]: /cli/azure/role/assignment#az-role-assignment-delete
-[aad-integration]: azure-ad-integration.md
+[aad-integration]: ./azure-ad-integration-cli.md
 [az-ad-group-show]: /cli/azure/ad/group#az-ad-group-show

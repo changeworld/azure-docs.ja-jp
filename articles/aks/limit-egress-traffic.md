@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: jpalma
 ms.date: 06/29/2020
 author: palma21
-ms.openlocfilehash: 6aed6c84439e65646c15367cdad3bf13c5573256
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d06852e9d3d61b3e3d368a1d1c6f4107aff1442
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831701"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251316"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でクラスター ノードに対するエグレス トラフィックを制御する
 
@@ -239,7 +239,7 @@ Azure Firewall では、この構成を簡略化するための Azure Kubernetes
   * AKS エージェント ノードからの要求は、AKS クラスターがデプロイされたサブネットに設定されている UDR に従います。
   * Azure Firewall は、パブリック IP フロントエンドから仮想ネットワークを出ます
   * パブリック インターネットまたはその他の Azure サービスへのアクセスは、ファイアウォール フロントエンド IP アドレスを送信先と送信元として行われます。
-  * AKS コントロール プレーンへのアクセスは、必要に応じて、[API サーバーの許可された IP 範囲](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges)により保護されます。これには、ファイアウォールのパブリック フロントエンド IP アドレスが含まれます。
+  * AKS コントロール プレーンへのアクセスは、必要に応じて、[API サーバーの許可された IP 範囲](./api-server-authorized-ip-ranges.md)により保護されます。これには、ファイアウォールのパブリック フロントエンド IP アドレスが含まれます。
 * 内部トラフィック
   * 必要に応じて、[パブリック ロード バランサー](load-balancer-standard.md)の代わりに、またはそれに加えて、内部トラフィックに[内部ロード バランサー](internal-lb.md)を使用することもできます。これも、独自のサブネットで分離できます。
 
@@ -353,7 +353,7 @@ FWPRIVATE_IP=$(az network firewall show -g $RG -n $FWNAME --query "ipConfigurati
 ```
 
 > [!NOTE]
-> [承認済み IP アドレス範囲](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges)で AKS API サーバーへのセキュリティで保護されたアクセスを使用する場合は、承認された IP 範囲にファイアウォール パブリック IP を追加する必要があります。
+> [承認済み IP アドレス範囲](./api-server-authorized-ip-ranges.md)で AKS API サーバーへのセキュリティで保護されたアクセスを使用する場合は、承認された IP 範囲にファイアウォール パブリック IP を追加する必要があります。
 
 ### <a name="create-a-udr-with-a-hop-to-azure-firewall"></a>Azure Firewall へのホップがある UDR を作成する
 
@@ -389,7 +389,7 @@ az network firewall network-rule create -g $RG -f $FWNAME --collection-name 'aks
 az network firewall application-rule create -g $RG -f $FWNAME --collection-name 'aksfwar' -n 'fqdn' --source-addresses '*' --protocols 'http=80' 'https=443' --fqdn-tags "AzureKubernetesService" --action allow --priority 100
 ```
 
-Azure Firewall サービスの詳細については、[Azure Firewall のドキュメント](https://docs.microsoft.com/azure/firewall/overview)を参照してください。
+Azure Firewall サービスの詳細については、[Azure Firewall のドキュメント](../firewall/overview.md)を参照してください。
 
 ### <a name="associate-the-route-table-to-aks"></a>ルート テーブルを AKS に関連付ける
 
@@ -722,7 +722,7 @@ kubectl apply -f example.yaml
 ### <a name="add-a-dnat-rule-to-azure-firewall"></a>Azure Firewall に DNAT 規則を追加する
 
 > [!IMPORTANT]
-> Azure Firewall を使用してエグレス トラフィックを制限し、すべてのエグレス トラフィックを強制するユーザー定義ルート (UDR) を作成するときは、イグレス トラフィックを正しく許可するために、ファイアウォールで適切な DNAT 規則を作成する必要があります。 UDR で Azure Firewall を使用すると、非対称ルーティングによってイングレス設定が機能しなくなります (AKS サブネットにファイアウォールのプライベート IP アドレスに送信される既定のルートがあるのに、種類が LoadBalancer であるイングレスまたは Kubernetes サービスのパブリック ロード バランサーを使用している場合、この問題が発生します)。 この場合、ロード バランサーの受信トラフィックはパブリック IP アドレス経由で受信されますが、復路のパスはファイアウォールのプライベート IP アドレスを通過します。 ファイアウォールはステートフルであり、確立済みのセッションを認識しないため、返されるパケットは破棄されます。 Azure Firewall をイングレスまたはサービスのロード バランサーと統合する方法については、「[Azure Firewall と Azure Standard Load Balancer を統合する](https://docs.microsoft.com/azure/firewall/integrate-lb)」を参照してください。
+> Azure Firewall を使用してエグレス トラフィックを制限し、すべてのエグレス トラフィックを強制するユーザー定義ルート (UDR) を作成するときは、イグレス トラフィックを正しく許可するために、ファイアウォールで適切な DNAT 規則を作成する必要があります。 UDR で Azure Firewall を使用すると、非対称ルーティングによってイングレス設定が機能しなくなります (AKS サブネットにファイアウォールのプライベート IP アドレスに送信される既定のルートがあるのに、種類が LoadBalancer であるイングレスまたは Kubernetes サービスのパブリック ロード バランサーを使用している場合、この問題が発生します)。 この場合、ロード バランサーの受信トラフィックはパブリック IP アドレス経由で受信されますが、復路のパスはファイアウォールのプライベート IP アドレスを通過します。 ファイアウォールはステートフルであり、確立済みのセッションを認識しないため、返されるパケットは破棄されます。 Azure Firewall をイングレスまたはサービスのロード バランサーと統合する方法については、「[Azure Firewall と Azure Standard Load Balancer を統合する](../firewall/integrate-lb.md)」を参照してください。
 
 
 受信接続を構成するには、DNAT 規則を Azure ファイアウォールに書き込む必要があります。 クラスターへの接続をテストするために、内部サービスによって公開されている内部 IP にルーティングされるように、ファイアウォール フロントエンド パブリック IP アドレスの規則を定義します。

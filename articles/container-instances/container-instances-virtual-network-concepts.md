@@ -4,12 +4,12 @@ description: コンテナー グループを Azure 仮想ネットワークに�
 ms.topic: article
 ms.date: 04/29/2020
 ms.author: danlep
-ms.openlocfilehash: 77fbdb1720e571027f28b5bdca5c0e3c65c3ded2
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: c4e983e7d83e661b4ba50ebe2c6d65bce2f42514
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82584195"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259533"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>仮想ネットワークのシナリオとリソース
 
@@ -67,7 +67,7 @@ Azure 仮想ネットワークにデプロイされたコンテナー グルー�
 
 ネットワーク プロファイルは、Azure リソース用のネットワーク構成テンプレートです。 このプロファイルでは、リソースのネットワーク プロパティが指定されます (たとえば、リソースのデプロイ先となるサブネットなど)。 最初に [az container create][az-container-create] コマンドを使用してコンテナー グループをサブネット (および仮想ネットワーク) にデプロイすると、Azure により、ネットワーク プロファイルが自動的に作成されます。 その後は、そのネットワーク プロファイルを使ってサブネットにリソースをデプロイしていくことができます。 
 
-Resource Manager テンプレート、YAML ファイル、またはプログラムのメソッドを使用して、コンテナー グループをサブネットにデプロイするには、ネットワーク プロファイルの完全な Resource Manager リソース ID を指定する必要があります。 以前 [az container create][az-container-create] を使用して作成したプロファイルを使用することも、Resource Manager テンプレート ([テンプレートの例](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet)と[リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/networkprofiles)を参照) を使用してプロファイルを作成することもできます。 以前作成したプロファイルの ID を取得するには、[az network profile list][az-network-profile-list] コマンドを使用します。 
+Resource Manager テンプレート、YAML ファイル、またはプログラムのメソッドを使用して、コンテナー グループをサブネットにデプロイするには、ネットワーク プロファイルの完全な Resource Manager リソース ID を指定する必要があります。 以前 [az container create][az-container-create] を使用して作成したプロファイルを使用することも、Resource Manager テンプレート ([テンプレートの例](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet)と[リファレンス](/azure/templates/microsoft.network/networkprofiles)を参照) を使用してプロファイルを作成することもできます。 以前作成したプロファイルの ID を取得するには、[az network profile list][az-network-profile-list] コマンドを使用します。 
 
 次の図では、Azure Container Instances へ委任されたサブネットに、複数のコンテナー グループがデプロイされています。 サブネットにコンテナー グループを 1 つデプロイしたら、同じネットワーク プロファイルを指定して追加のコンテナー グループをデプロイしていくことができます。
 
@@ -86,4 +86,3 @@ Resource Manager テンプレート、YAML ファイル、またはプログラ�
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container#az-container-create
 [az-network-profile-list]: /cli/azure/network/profile#az-network-profile-list
-

@@ -7,36 +7,36 @@ ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 3897ef75be34d4413e06dc5459739baec3afdcec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 996793f2851949f7474312a18ccff04e88db2232
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84268010"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259161"
 ---
 # <a name="azure-security-baseline-for-container-instances"></a>Container Instances の Azure セキュリティ ベースライン
 
 Container Instances 用の Azure セキュリティ ベースラインには、デプロイのセキュリティ体制を改善するために役立つ推奨事項が含まれています。
 
-このサービス用のベースラインは、ベスト プラクティス ガイダンスを使用して Azure 上のクラウド ソリューションをセキュリティで保護する方法について推奨事項を提供する [Azure セキュリティ ベンチマーク バージョン 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview) に基づいて作成されています。
+このサービス用のベースラインは、ベスト プラクティス ガイダンスを使用して Azure 上のクラウド ソリューションをセキュリティで保護する方法について推奨事項を提供する [Azure セキュリティ ベンチマーク バージョン 1.0](../security/benchmarks/overview.md) に基づいて作成されています。
 
-詳細については、「[Azure セキュリティ ベースラインの概要](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)」を参照してください。
+詳細については、「[Azure セキュリティ ベースラインの概要](../security/benchmarks/security-baselines-overview.md)」を参照してください。
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
 
-*詳細については、「[セキュリティ コントロール: ネットワークのセキュリティ](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ネットワークのセキュリティ](../security/benchmarks/security-control-network-security.md)」を参照してください。*
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1:Virtual Network でネットワーク セキュリティ グループまたは Azure Firewall を使用してリソースを保護する
 
 **ガイダンス**: Azure Virtual Network では、ご利用の Azure リソースやオンプレミス リソースに合わせてセキュリティで保護されたプライベート ネットワークを実現できます。 Azure Container Instances 内のコンテナー グループを Azure 仮想ネットワークと統合します。 
 
-* [仮想ネットワークのシナリオとリソース - Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-virtual-network-concepts)
+* [仮想ネットワークのシナリオとリソース - Azure Container Instances](./container-instances-virtual-network-concepts.md)
 
-* [コンテナー インスタンスを Azure 仮想ネットワークにデプロイする](https://docs.microsoft.com/azure/container-instances/container-instances-vnet)
+* [コンテナー インスタンスを Azure 仮想ネットワークにデプロイする](./container-instances-vnet.md)
 
-* [セキュリティ構成を使用して NSG を作成する方法](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [セキュリティ構成を使用して NSG を作成する方法](../virtual-network/tutorial-filter-network-traffic.md)
 
-* [Azure Firewall をデプロイして構成する方法](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Azure Firewall をデプロイして構成する方法](../firewall/tutorial-firewall-deploy-portal.md)
 
 
 **Azure Security Center の監視**: はい
@@ -45,11 +45,11 @@ Container Instances 用の Azure セキュリティ ベースラインには、�
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2:VNet、サブネット、NIC の構成とトラフィックを監視してログに記録する
 
-**ガイダンス**:Azure Security Center を使用し、ネットワークの保護に関する推奨事項を修正することで、Azure 内でご利用のネットワーク リソースを容易に保護することができます。 NSG フロー ログを有効にし、トラフィック監査のためにログをストレージ アカウントに送信します。
+**ガイダンス**: Azure Security Center を使用し、ネットワークの保護に関する推奨事項を修正することで、Azure 内でご利用のネットワーク リソースを容易に保護することができます。 NSG フロー ログを有効にし、トラフィック監査のためにログをストレージ アカウントに送信します。
 
-* [NSG フロー ログを有効にする方法](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [NSG フロー ログを有効にする方法](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [ネットワーク リソースの保護](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+* [ネットワーク リソースの保護](../security-center/security-center-network-recommendations.md)
 
 **Azure Security Center の監視**: はい
 
@@ -57,9 +57,9 @@ Container Instances 用の Azure セキュリティ ベースラインには、�
 
 ### <a name="13-protect-critical-web-applications"></a>1.3:重要な Web アプリケーションを保護する
 
-**ガイダンス**: 着信トラフィックをさらに検査するために、Azure Web アプリケーション ファイアウォール (WAF) を Azure Container Instances にホストされている重要な Web アプリケーションの前にデプロイします。 WAF の診断設定を有効にし、ストレージ アカウント、イベント ハブ、または Log Analytics ワークスペースにログを取り込みます。
+**ガイダンス**:着信トラフィックをさらに検査するために、Azure Web アプリケーション ファイアウォール (WAF) を Azure Container Instances にホストされている重要な Web アプリケーションの前にデプロイします。 WAF の診断設定を有効にし、ストレージ アカウント、イベント ハブ、または Log Analytics ワークスペースにログを取り込みます。
 
-* [Azure WAF をデプロイする方法](https://docs.microsoft.com/azure/web-application-firewall/ag/create-waf-policy-ag)
+* [Azure WAF をデプロイする方法](../web-application-firewall/ag/create-waf-policy-ag.md)
 
 
 
@@ -71,13 +71,13 @@ Container Instances 用の Azure セキュリティ ベースラインには、�
 
 **ガイダンス**: DDoS 攻撃から保護するために、Azure Virtual Network で DDoS Standard 保護を有効にします。 Azure Security Center の統合された脅威インテリジェンスを使用して、既知の悪意のある IP アドレスとの通信を拒否します。 有効化され、悪意のあるネットワーク トラフィックに対して "アラートおよび拒否" するように構成された脅威インテリジェンスとともに、組織の各ネットワーク境界に Azure Firewall をデプロイします。 Azure Security Center の Just In Time ネットワーク アクセスを使用して、NSG を構成し、限られた期間、承認された IP アドレスへのエンドポイントの公開を制限します。 Azure Security Center のアダプティブ ネットワークのセキュリティ強化を使用して、実際のトラフィックと脅威インテリジェンスに基づいてポートとソース IP を制限する NSG 構成を推奨します。 
 
-* [Azure Firewall をデプロイする方法l](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Azure Firewall をデプロイする方法l](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Azure Security Center の統合された脅威インテリジェンスについて](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer)
+* [Azure Security Center の統合された脅威インテリジェンスについて](../security-center/threat-protection.md)
 
-* [Azure Security Center のアダプティブ ネットワークのセキュリティ強化について](https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening)
+* [Azure Security Center のアダプティブ ネットワークのセキュリティ強化について](../security-center/security-center-adaptive-network-hardening.md)
 
-* [Azure Security Center の Just In Time ネットワーク アクセス制御](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
+* [Azure Security Center の Just In Time ネットワーク アクセス制御](../security-center/security-center-just-in-time.md)
 
 **Azure Security Center の監視**: はい
 
@@ -87,9 +87,9 @@ Container Instances 用の Azure セキュリティ ベースラインには、�
 
 **ガイダンス**: 仮想ネットワークの実装でネットワーク セキュリティ グループ (NSG) を使用する場合は、Azure Container Instances に委任されたサブネットにアタッチされている NSG に対して、NSG フロー ログを有効にします。 フロー レコードを生成するために、NSG フロー ログを Azure Storage アカウントに記録します。 異常なアクティビティを調査する必要がある場合は、Azure Network Watcher パケット キャプチャを有効にします。
 
-* [NSG フロー ログを有効にする方法](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [NSG フロー ログを有効にする方法](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [Network Watcher を有効にする方法](https://docs.microsoft.com/azure/network-watcher/network-watcher-create)
+* [Network Watcher を有効にする方法](../network-watcher/network-watcher-create.md)
 
 **Azure Security Center の監視**: はい
 
@@ -103,11 +103,11 @@ Container Instances 用の Azure セキュリティ ベースラインには、�
 
 * [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall)
 
-* [Azure Firewall をデプロイする方法l](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Azure Firewall をデプロイする方法l](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Azure Firewall でアラートを構成する方法](https://docs.microsoft.com/azure/firewall/threat-intel)
+* [Azure Firewall でアラートを構成する方法](../firewall/threat-intel.md)
 
-* [仮想ネットワークでのデプロイ - Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-vnet) 
+* [仮想ネットワークでのデプロイ - Azure Container Instances](./container-instances-vnet.md) 
 
 
 
@@ -119,15 +119,15 @@ Container Instances 用の Azure セキュリティ ベースラインには、�
 
 **ガイダンス**: 信頼できる証明書に対して HTTPS/SSL を有効にした Web アプリケーションの Azure Application Gateway をデプロイします。
 
-* [Application Gateway をデプロイする方法](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
+* [Application Gateway をデプロイする方法](../application-gateway/quick-create-portal.md)
 
-* [HTTPS を使用するように Application Gateway を構成する方法](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal) 
+* [HTTPS を使用するように Application Gateway を構成する方法](../application-gateway/create-ssl-portal.md) 
 
-* [Azure Web アプリケーション ゲートウェイを使用したレイヤー 7 負荷分散について](https://docs.microsoft.com/azure/application-gateway/overview)
+* [Azure Web アプリケーション ゲートウェイを使用したレイヤー 7 負荷分散について](../application-gateway/overview.md)
 
-* [コンテナー グループの静的 IP アドレスの公開](https://docs.microsoft.com/azure/container-instances/container-instances-application-gateway)
+* [コンテナー グループの静的 IP アドレスの公開](./container-instances-application-gateway.md)
 
-* [仮想ネットワークでのデプロイ - Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-vnet)
+* [仮想ネットワークでのデプロイ - Azure Container Instances](./container-instances-vnet.md)
 
 
 
@@ -141,11 +141,11 @@ Container Instances 用の Azure セキュリティ ベースラインには、�
 
 また、アプリケーション セキュリティグループを使用して、複雑なセキュリティ構成を簡略化することもできます。 アプリケーション セキュリティ グループを使用すると、ネットワーク セキュリティをアプリケーションの構造の自然な拡張として構成でき、仮想マシンをグループ化して、それらのグループに基づくネットワーク セキュリティ ポリシーを定義できます。 
 
-* [サービス タグの概要と使用](https://docs.microsoft.com/azure/virtual-network/service-tags-overview) 
+* [サービス タグの概要と使用](../virtual-network/service-tags-overview.md) 
 
-* [アプリケーション セキュリティ グループの概要と使用](https://docs.microsoft.com/azure/virtual-network/security-overview#application-security-groups)
+* [アプリケーション セキュリティ グループの概要と使用](../virtual-network/security-overview.md#application-security-groups)
 
-* [仮想ネットワークでのデプロイ - Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-vnet)
+* [仮想ネットワークでのデプロイ - Azure Container Instances](./container-instances-vnet.md)
 
 
 
@@ -155,13 +155,13 @@ Container Instances 用の Azure セキュリティ ベースラインには、�
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9:ネットワーク デバイスの標準的なセキュリティ構成を維持する
 
-**ガイダンス**:Azure Blueprints を使用して、Azure Resource Manager テンプレート、RBAC コントロール、ポリシーなどの主要な環境成果物を単一のブループリント定義にパッケージ化することで、大規模な Azure デプロイを簡略化することもできます。 ブループリントを新しいサブスクリプションに適用し、バージョン管理によって制御と管理を微調整できます。 
+**ガイダンス**: Azure Blueprints を使用して、Azure Resource Manager テンプレート、RBAC コントロール、ポリシーなどの主要な環境成果物を単一のブループリント定義にパッケージ化することで、大規模な Azure デプロイを簡略化することもできます。 ブループリントを新しいサブスクリプションに適用し、バージョン管理によって制御と管理を微調整できます。 
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [ネットワークに関する Azure Policy のサンプル](https://docs.microsoft.com/azure/governance/policy/samples/#network)
+* [ネットワークに関する Azure Policy のサンプル](/azure/governance/policy/samples/#network)
 
-* [Azure Blueprint を作成する方法](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+* [Azure Blueprint を作成する方法](../governance/blueprints/create-blueprint-portal.md)
 
 
 
@@ -177,11 +177,11 @@ Container Instances 用の Azure セキュリティ ベースラインには、�
 
 Azure PowerShell または Azure CLI を使用して、タグに基づいてリソースを検索したり、リソースに対するアクションを実行したりすることもできます。
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
-* [仮想ネットワークでのデプロイ - Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-vnet)
+* [仮想ネットワークでのデプロイ - Azure Container Instances](./container-instances-vnet.md)
 
-* [セキュリティ構成を使用して NSG を作成する方法](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [セキュリティ構成を使用して NSG を作成する方法](../virtual-network/tutorial-filter-network-traffic.md)
 
 
 **Azure Security Center の監視**: 適用なし
@@ -192,9 +192,9 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 **ガイダンス**: ネットワーク リソース構成を監視し、ご利用のコンテナー インスタンスに関連したネットワーク リソースに関する変更を検出するには、Azure アクティビティ ログを使用します。 重要なネットワーク リソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-* [Azure アクティビティ ログ イベントを表示して取得する方法](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+* [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
-* [Azure Monitor でアラートを作成する方法](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Azure Monitor でアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -202,15 +202,15 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 ## <a name="logging-and-monitoring"></a>ログ記録と監視
 
-*詳細については、「[セキュリティ コントロール: ログ記録と監視](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ログ記録と監視](../security/benchmarks/security-control-logging-monitoring.md)」を参照してください。*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1:承認された時刻同期ソースを使用する
 
 **ガイダンス**: Microsoft は Azure リソースのためにタイム ソースを管理していますが、コンピューティング リソースのために時刻同期設定を管理するオプションが用意されています。 たとえば、実行中のコンテナーで時刻同期コマンドを実行します。
 
-* [Azure コンピューティング リソースの時刻同期を構成する方法](https://docs.microsoft.com/azure/virtual-machines/windows/time-sync)
+* [Azure コンピューティング リソースの時刻同期を構成する方法](../virtual-machines/windows/time-sync.md)
 
-* [実行中の Azure Container Instances でコマンドを実行する](https://docs.microsoft.com/azure/container-instances/container-instances-exec)
+* [実行中の Azure Container Instances でコマンドを実行する](./container-instances-exec.md)
 
 
 
@@ -222,7 +222,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 **ガイダンス**: Azure Monitor を介してログを取り込んで、Azure コンテナー グループによって生成されたセキュリティ データを集計します。 Azure Monitor 内で Log Analytics ワークスペースを使用してクエリを発行し、分析を実行して、長期/アーカイブ ストレージには Azure Storage アカウントを使用します。
 
-* [Azure Monitor ログによるコンテナー グループおよびインスタンスのログ記録](https://docs.microsoft.com/azure/container-instances/container-instances-log-analytics)
+* [Azure Monitor ログによるコンテナー グループおよびインスタンスのログ記録](./container-instances-log-analytics.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -232,7 +232,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 **ガイダンス**: Azure Monitor を使用すると、ご利用のレジストリ内のユーザー駆動型イベントのリソース ログ (以前は "診断ログ" と呼ばれていました) を収集できます。 Azure Container Instances には、コンテナー グループのログとイベント データ、コンテナー ログを Azure Monitor ログに送信するための組み込みサポートが含まれています。
 
-* [Azure Monitor ログによるコンテナー グループおよびインスタンスのログ記録](https://docs.microsoft.com/azure/container-registry/container-registry-diagnostics-audit-logs)
+* [Azure Monitor ログによるコンテナー グループおよびインスタンスのログ記録](../container-registry/container-registry-diagnostics-audit-logs.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -251,7 +251,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 **ガイダンス**: Azure Monitor 内で、組織のコンプライアンス規則に従って Log Analytics ワークスペースの保持期間を設定します。 長期/アーカイブ ストレージには Azure Storage アカウントを使用します。
 
-* [Log Analytics ワークスペースのログ保持パラメーターを設定する方法](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+* [Log Analytics ワークスペースのログ保持パラメーターを設定する方法](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -259,13 +259,13 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 ### <a name="26-monitor-and-review-logs"></a>2.6:ログを監視して確認する
 
-**ガイダンス**: 異常な動作がないかログの分析と監視を行って、定期的に結果を確認します。 Azure Monitor の Log Analytics ワークスペースを使用してログを確認し、ログ データに対してクエリを実行します。 
+**ガイダンス**:異常な動作がないかログの分析と監視を行って、定期的に結果を確認します。 Azure Monitor の Log Analytics ワークスペースを使用してログを確認し、ログ データに対してクエリを実行します。 
 
-* [Azure Monitor ログによるコンテナー グループおよびインスタンスのログ記録](https://docs.microsoft.com/azure/container-instances/container-instances-log-analytics)
+* [Azure Monitor ログによるコンテナー グループおよびインスタンスのログ記録](./container-instances-log-analytics.md)
 
-* [Log Analytics ワークスペースについて](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
+* [Log Analytics ワークスペースについて](../azure-monitor/log-query/get-started-portal.md)
 
-* [Azure Monitor でカスタム クエリを実行する方法](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
+* [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/log-query/get-started-queries.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -275,9 +275,9 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 **ガイダンス**: Log Analytics ワークスペースを使用し、セキュリティ ログやイベントで検出される異常なアクティビティに対する監視とアラートの送信を行います。 
 
-* [Azure Monitor ログによるコンテナー グループおよびインスタンスのログ記録](https://docs.microsoft.com/azure/container-instances/container-instances-log-analytics)
+* [Azure Monitor ログによるコンテナー グループおよびインスタンスのログ記録](./container-instances-log-analytics.md)
 
-* [Log Analytics のログ データに関するアラートを送信する方法](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
+* [Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/learn/tutorial-response.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -285,7 +285,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 ### <a name="28-centralize-anti-malware-logging"></a>2.8:マルウェア対策のログ記録を一元管理する
 
-**ガイダンス**: コンテナーで実行するために必要な場合は、独自のマルウェア対策ソリューションとイベント収集を提供します。 
+**ガイダンス**:コンテナーで実行するために必要な場合は、独自のマルウェア対策ソリューションとイベント収集を提供します。 
 
 
 **Azure Security Center の監視**: 適用なし
@@ -304,7 +304,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 **ガイダンス**: 必要に応じて、実行中のコンテナー インスタンスでコンソール ログを構成します。
 
-* [実行中の Azure Container Instances でコマンドを実行する](https://docs.microsoft.com/azure/container-instances/container-instances-exec)
+* [実行中の Azure Container Instances でコマンドを実行する](./container-instances-exec.md)
 
 
 
@@ -314,7 +314,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 ## <a name="identity-and-access-control"></a>ID とアクセスの制御
 
-*詳細については、「[セキュリティ コントロール: ID およびアクセス制御](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ID およびアクセス制御](../security/benchmarks/security-control-identity-access-control.md)」を参照してください。*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: 管理アカウントのインベントリを維持する
 
@@ -322,11 +322,11 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 Azure コンテナー レジストリを Azure Container Instances と共に使用する場合は、Azure コンテナー レジストリごとに、組み込みの管理者アカウントが有効になっているか無効になっているかを追跡します。 使用されていない場合、アカウントは無効にします。
 
-* [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-* [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
-* [Azure Container Registry 管理者アカウント](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account)
+* [Azure Container Registry 管理者アカウント](../container-registry/container-registry-authentication.md#admin-account)
 
 **Azure Security Center の監視**: はい
 
@@ -334,11 +334,11 @@ Azure コンテナー レジストリを Azure Container Instances と共に使�
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2: 既定のパスワードを変更する (該当する場合)
 
-**ガイダンス**:Azure Active Directory (Azure AD) には、既定のパスワードの概念がありません。 パスワードを必要とする他の Azure リソースでは、パスワードが強制的に作成されます。これには複雑な要件と、サービスによって異なるパスワードの最小文字数が適用されます。 既定のパスワードが使用される可能性があるサードパーティ製のアプリケーションと Marketplace サービスについては、お客様が責任を負うものとします。
+**ガイダンス**: Azure Active Directory (Azure AD) には、既定のパスワードの概念がありません。 パスワードを必要とする他の Azure リソースでは、パスワードが強制的に作成されます。これには複雑な要件と、サービスによって異なるパスワードの最小文字数が適用されます。 既定のパスワードが使用される可能性があるサードパーティ製のアプリケーションと Marketplace サービスについては、お客様が責任を負うものとします。
 
 Azure コンテナー レジストリを Azure Container Instances と共に使用し、Azure コンテナー レジストリの既定の管理者アカウントが有効になっている場合は、複雑なパスワードが自動的に作成されます。これはローテーションされる必要があります。 使用されていない場合、アカウントは無効にします。
 
-* [Azure Container Registry 管理者アカウント](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account)
+* [Azure Container Registry 管理者アカウント](../container-registry/container-registry-authentication.md#admin-account)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -350,9 +350,9 @@ Azure コンテナー レジストリを Azure Container Instances と共に使�
 
 Azure コンテナー レジストリを Azure Container Instances と共に使用する場合は、コンテナー レジストリの組み込みの管理者アカウントを有効にする手順を作成します。 使用されていない場合、アカウントは無効にします。
 
-* [Azure Security Center ID とアクセスについて](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Azure Security Center ID とアクセスについて](../security-center/security-center-identity-access.md)
 
-* [Azure Container Registry 管理者アカウント](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account)
+* [Azure Container Registry 管理者アカウント](../container-registry/container-registry-authentication.md#admin-account)
 
 **Azure Security Center の監視**: はい
 
@@ -360,9 +360,9 @@ Azure コンテナー レジストリを Azure Container Instances と共に使�
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: シングル サインオン (SSO) と Azure Active Directory を統合する
 
-**ガイダンス**: 可能な限り、サービスごとに個別のスタンドアロン資格情報を構成するのではなく、Azure Active Directory SSO を使用します。 Azure Security Center ID とアクセス管理の推奨事項を使用してください。
+**ガイダンス**:可能な限り、サービスごとに個別のスタンドアロン資格情報を構成するのではなく、Azure Active Directory SSO を使用します。 Azure Security Center ID とアクセス管理の推奨事項を使用してください。
 
-* [Azure AD を使用した SSO の概要](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+* [Azure AD を使用した SSO の概要](../active-directory/manage-apps/what-is-single-sign-on.md)
 
 
 **Azure Security Center の監視**: 適用なし
@@ -373,9 +373,9 @@ Azure コンテナー レジストリを Azure Container Instances と共に使�
 
 **ガイダンス**: Azure Active Directory (Azure AD) 多要素認証 (MFA) を有効にし、Azure Security Center ID とアクセス管理の推奨事項に従います。
 
-* [Azure で MFA を有効にする方法](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
-* [Azure Security Center で ID とアクセスを監視する方法](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Azure Security Center で ID とアクセスを監視する方法](../security-center/security-center-identity-access.md)
 
 **Azure Security Center の監視**: はい
 
@@ -385,9 +385,9 @@ Azure コンテナー レジストリを Azure Container Instances と共に使�
 
 **ガイダンス**: MFA が構成されている PAW (特権アクセス ワークステーション) を使用して Azure リソースにログインし、構成します。
 
-* [特権アクセス ワークステーションについて](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [特権アクセス ワークステーションについて](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-* [Azure で MFA を有効にする方法](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -395,11 +395,11 @@ Azure コンテナー レジストリを Azure Container Instances と共に使�
 
 ### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7: 管理者アカウントからの疑わしいアクティビティを記録してアラートを生成する
 
-**ガイダンス**:環境内で疑わしいアクティビティまたは安全でないアクティビティが発生したときに、Azure Active Directory (Azure AD) セキュリティ レポートを使用して、ログおよびアラートを生成します。 Azure Security Center を使用して ID およびアクセス アクティビティを監視します。
+**ガイダンス**: 環境内で疑わしいアクティビティまたは安全でないアクティビティが発生したときに、Azure Active Directory (Azure AD) セキュリティ レポートを使用して、ログおよびアラートを生成します。 Azure Security Center を使用して ID およびアクセス アクティビティを監視します。
 
-* [危険なアクティビティのフラグが設定された Azure AD ユーザーを識別する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk)
+* [危険なアクティビティのフラグが設定された Azure AD ユーザーを識別する方法](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Azure Security Center でユーザーの ID およびアクセス アクティビティを監視する方法](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Azure Security Center でユーザーの ID およびアクセス アクティビティを監視する方法](../security-center/security-center-identity-access.md)
 
 **Azure Security Center の監視**: はい
 
@@ -407,9 +407,9 @@ Azure コンテナー レジストリを Azure Container Instances と共に使�
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8:承認された場所からのみ Azure リソースを管理する
 
-**ガイダンス**: 条件付きアクセスのネームド ロケーションを使用して、IP アドレス範囲または国/地域の特定の論理グループからのアクセスのみを許可します。
+**ガイダンス**:条件付きアクセスのネームド ロケーションを使用して、IP アドレス範囲または国/地域の特定の論理グループからのアクセスのみを許可します。
 
-* [Azure でネームド ロケーションを構成する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [Azure でネームド ロケーションを構成する方法](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -419,7 +419,7 @@ Azure コンテナー レジストリを Azure Container Instances と共に使�
 
 **ガイダンス**: Azure Active Directory (Azure AD) を中央認証と承認システムとして使用します。 Azure AD でデータを保護するには、保存データと転送中のデータに強力な暗号化を使用します。 また、Azure AD では、ユーザーの資格情報がソルト化およびハッシュされ、安全に格納されます。
 
-* [Azure AD インスタンスを作成して構成する方法](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+* [Azure AD インスタンスを作成して構成する方法](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure Security Center の監視**: はい
 
@@ -429,9 +429,9 @@ Azure コンテナー レジストリを Azure Container Instances と共に使�
 
 **ガイダンス**: Azure Active Directory (Azure AD) では、古いアカウントの検出に役立つログが提供されます。 また、Azure ID アクセス レビューを使用して、グループ メンバーシップ、エンタープライズ アプリケーションへのアクセス、およびロールの割り当てを効率的に管理します。 ユーザー アクセスを定期的にレビューし、適切なユーザーのみが継続的なアクセス権を持っていることを確認できます。
 
-* [Azure AD のレポートの概要](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+* [Azure AD のレポートの概要](../active-directory/reports-monitoring/index.yml)
 
-* [Azure ID アクセス レビューの使用方法](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [Azure ID アクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
 
 **Azure Security Center の監視**: はい
 
@@ -443,7 +443,7 @@ Azure コンテナー レジストリを Azure Container Instances と共に使�
 
 このプロセスを効率化するには、Azure Active Directory ユーザー アカウントの診断設定を作成し、監査ログとサインイン ログを Log Analytics ワークスペースに送信します。 Log Analytics ワークスペースで必要なアラートを構成できます。
 
-* [Azure アクティビティ ログを Azure Monitor に統合する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [Azure アクティビティ ログを Azure Monitor に統合する方法](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -453,9 +453,9 @@ Azure コンテナー レジストリを Azure Container Instances と共に使�
 
 **ガイダンス**: Azure Active Directory (Azure AD) のリスクおよび ID Protectoin 機能を使用して、ユーザー ID に関連して検出された疑わしいアクションに対する自動応答を構成します。
 
-* [Azure AD の危険なサインインを表示する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+* [Azure AD の危険なサインインを表示する方法](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Identity Protection のリスク ポリシーを構成して有効にする方法](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+* [Identity Protection のリスク ポリシーを構成して有効にする方法](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -465,7 +465,7 @@ Azure コンテナー レジストリを Azure Container Instances と共に使�
 
 **ガイダンス**: 現在は使用できません。現在、Azure Container Instances ではカスタマー ロックボックスはサポートされていません。
 
-* [カスタマー ロックボックスでサポートされているサービスの一覧](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+* [カスタマー ロックボックスでサポートされているサービスの一覧](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -473,7 +473,7 @@ Azure コンテナー レジストリを Azure Container Instances と共に使�
 
 ## <a name="data-protection"></a>データ保護
 
-*詳細については、「[セキュリティ コントロール: データ保護](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: データ保護](../security/benchmarks/security-control-data-protection.md)」を参照してください。*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: 機密情報のインベントリを維持する
 
@@ -481,9 +481,9 @@ Azure コンテナー レジストリを Azure Container Instances と共に使�
 
 コンテナー イメージのタグ付けとバージョン管理で、機密情報を格納または処理するイメージの追跡を支援します。
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
-* [コンテナー イメージのタグ付けとバージョン管理に関する推奨事項](https://docs.microsoft.com/azure/container-registry/container-registry-image-tag-version)
+* [コンテナー イメージのタグ付けとバージョン管理に関する推奨事項](../container-registry/container-registry-image-tag-version.md)
 
 
 **Azure Security Center の監視**: 現在は使用できません
@@ -494,20 +494,20 @@ Azure コンテナー レジストリを Azure Container Instances と共に使�
 
 **ガイダンス**: 開発、テスト、および運用で別々のサブスクリプションまたは管理グループ、あるいはその両方を実装します。 リソースは、VNet/サブネットで分割し、適切にタグを付け、NSG または Azure Firewall で保護する必要があります。 機密データを格納または処理するリソースは、十分に分離する必要があります。
 
-* [実行中の Azure Container Instances でコマンドを実行する](https://docs.microsoft.com/azure/container-instances/container-instances-exec)
+* [実行中の Azure Container Instances でコマンドを実行する](./container-instances-exec.md)
 
-* [追加の Azure サブスクリプションを作成する方法](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-* [管理グループを作成する方法](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [管理グループを作成する方法](../governance/management-groups/create.md)
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
-* [仮想ネットワークでのデプロイ - Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-vnet) 
-* [セキュリティ構成を使用して NSG を作成する方法](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [仮想ネットワークでのデプロイ - Azure Container Instances](./container-instances-vnet.md) 
+* [セキュリティ構成を使用して NSG を作成する方法](../virtual-network/tutorial-filter-network-traffic.md)
 
-* [Azure Firewall をデプロイする方法l](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Azure Firewall をデプロイする方法l](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Azure Firewall でアラートまたはアラートと拒否を構成する方法](https://docs.microsoft.com/azure/firewall/threat-intel)
+* [Azure Firewall でアラートまたはアラートと拒否を構成する方法](../firewall/threat-intel.md)
 
 
 **Azure Security Center の監視**: 現在は使用できません
@@ -520,11 +520,11 @@ Azure コンテナー レジストリを Azure Container Instances と共に使�
 
 Microsoft によって管理される基になるプラットフォームの場合、Microsoft は顧客のすべてのコンテンツを機密として扱い、顧客データを損失や漏洩から保護するためにあらゆる手段を尽くします。 Azure 内の顧客データが確実にセキュリティで保護されるように、Microsoft では一連の堅牢なデータ保護制御および機能を実装して管理しています。
 
-* [Azure での顧客データの保護について](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
 
-* [仮想ネットワークでのデプロイ - Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-vnet) 
+* [仮想ネットワークでのデプロイ - Azure Container Instances](./container-instances-vnet.md) 
 
-* [Azure Container Instances に Azure ファイル共有をマウントする](https://docs.microsoft.com/azure/container-instances/container-instances-volume-azure-files)
+* [Azure Container Instances に Azure ファイル共有をマウントする](./container-instances-volume-azure-files.md)
 
 
 **Azure Security Center の監視**: 現在は使用できません
@@ -533,11 +533,11 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4:転送中のすべての機密情報を暗号化する
 
-**ガイダンス**:ご利用の Azure コンテナー グループに接続されているクライアントがいずれも TLS 1.2 以上を確実にネゴシエートできるようにします。 Microsoft Azure リソースでは、既定で TLS 1.2 がネゴシエートされます。
+**ガイダンス**: ご利用の Azure コンテナー グループに接続されているクライアントがいずれも TLS 1.2 以上を確実にネゴシエートできるようにします。 Microsoft Azure リソースでは、既定で TLS 1.2 がネゴシエートされます。
 
 該当する場合、保存時の暗号化と転送中の暗号化に関する Azure Security Center の推奨事項に従います。
 
-* [Azure での転送中の暗号化の概要](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
+* [Azure での転送中の暗号化の概要](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
 **Azure Security Center の監視**: はい
 
@@ -549,7 +549,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 Microsoft によって管理される基になるプラットフォームの場合、Microsoft は顧客のすべてのコンテンツを機密として扱い、顧客データを損失や漏洩から保護するためにあらゆる手段を尽くします。 Azure 内の顧客データが確実にセキュリティで保護されるように、Microsoft では一連の堅牢なデータ保護制御および機能を実装して管理しています。
 
-* [Azure での顧客データの保護について](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -559,7 +559,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス**: Azure AD RBAC を使用して、Azure Container Instances のデータとリソースへのアクセスを制御します。 
 
-* [Azure で RBAC を構成する方法](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+* [Azure で RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md)
 
 
 **Azure Security Center の監視**: 適用なし
@@ -572,7 +572,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 Microsoft によって管理される基になるプラットフォームの場合、Microsoft は顧客のすべてのコンテンツを機密として扱い、顧客データを損失や漏洩から保護するためにあらゆる手段を尽くします。 Azure 内の顧客データが確実にセキュリティで保護されるように、Microsoft では一連の堅牢なデータ保護制御および機能を実装して管理しています。
 
-* [Azure での顧客データの保護について](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -582,9 +582,9 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス**: 既定では、Azure Container Instances 内のすべてのデプロイ データが、Microsoft のマネージド キーを使用して保存時に暗号化されます。 必要に応じて、独自のキー (ユーザーが管理するキー) で暗号化を管理します。
 
-* [Azure での保存時の暗号化の概要](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
+* [Azure での保存時の暗号化の概要](../security/fundamentals/encryption-atrest.md)
 
-* [Azure Container Instances でデプロイ データを暗号化する](https://docs.microsoft.com/azure/container-instances/container-instances-encrypt-data)
+* [Azure Container Instances でデプロイ データを暗号化する](./container-instances-encrypt-data.md)
 
 
 
@@ -596,7 +596,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス**: Azure アクティビティ ログで Azure Monitor を使用して、コンテナー グループとコンテナー インスタンスに対して変更が行われたときのアラートを作成します。 
 
-* [Azure アクティビティ ログ イベントのアラートを作成する方法](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
 
 
 **Azure Security Center の監視**: 適用なし
@@ -605,15 +605,15 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 ## <a name="vulnerability-management"></a>脆弱性の管理
 
-*詳細については、「[セキュリティ コントロール: 脆弱性の管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: 脆弱性の管理](../security/benchmarks/security-control-vulnerability-management.md)」を参照してください。*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1:自動化された脆弱性スキャン ツールを実行する
 
 **ガイダンス**: プライベート レジストリ内のコンテナー イメージをスキャンし、潜在的な脆弱性を識別するためのソリューションを実装します。 Azure Container Registry に保存されているコンテナー イメージに対して脆弱性評価を実行する際は Azure Security Center からの推奨事項に従ってください。 必要があれば、Azure Marketplace からのサードパーティのソリューションをデプロイして、イメージの脆弱性評価を実行します。
 
-* [Azure Container Instances のセキュリティに関する考慮事項](https://docs.microsoft.com/azure/container-instances/container-instances-image-security)
+* [Azure Container Instances のセキュリティに関する考慮事項](./container-instances-image-security.md)
 
-* [Azure Container Registry と Security Center の統合](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)
+* [Azure Container Registry と Security Center の統合](../security-center/azure-container-registry-integration.md)
 
 **Azure Security Center の監視**: はい
 
@@ -625,9 +625,9 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 カスタムまたはサード パーティのソリューションを使用して、コンテナー イメージを修正します。 コンテナー イメージを Azure Container Registry に保存している場合は、基本 OS イメージでのセキュリティ パッチまたはその他の更新プログラムに基づいてコンテナー レジストリ内のアプリケーション イメージに対する更新を自動化するための Azure Container Registry タスクを実行することもできます。
 
-* [Azure Container Instances のセキュリティに関する考慮事項](https://docs.microsoft.com/azure/container-instances/container-instances-image-security)
+* [Azure Container Instances のセキュリティに関する考慮事項](./container-instances-image-security.md)
 
-* [Azure Container Registry タスクの基本イメージの更新について](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-base-images)
+* [Azure Container Registry タスクの基本イメージの更新について](../container-registry/container-registry-tasks-base-images.md)
 
 
 **Azure Security Center の監視**: 適用なし
@@ -638,9 +638,9 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス**: カスタムまたはサード パーティのソリューションを使用して、コンテナー イメージを修正します。 コンテナー イメージを Azure Container Registry に保存している場合は、基本 OS イメージでのセキュリティ パッチまたはその他の更新プログラムに基づいてコンテナー レジストリ内のアプリケーション イメージに対する更新を自動化するための Azure Container Registry タスクを実行することもできます。
 
-* [Azure Container Instances のセキュリティに関する考慮事項](https://docs.microsoft.com/azure/container-instances/container-instances-image-security)
+* [Azure Container Instances のセキュリティに関する考慮事項](./container-instances-image-security.md)
 
-* [ACR タスクの基本イメージの更新について](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-base-images)
+* [ACR タスクの基本イメージの更新について](../container-registry/container-registry-tasks-base-images.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -650,9 +650,9 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス**: イメージのスキャン結果を一定の間隔でエクスポートして結果を比較し、脆弱性が修復されていることを確認します。 コンテナー イメージを Azure Container Registry に保存している場合は、レジストリを Azure Security Center に統合することで、コンテナー イメージの脆弱性を定期的にスキャンできるようにします。 必要があれば、Azure Marketplace からのサードパーティのソリューションをデプロイして、イメージの脆弱性評価を定期的に実行します。
 
-* [Azure Container Instances のセキュリティに関する考慮事項](https://docs.microsoft.com/azure/container-instances/container-instances-image-security)
+* [Azure Container Instances のセキュリティに関する考慮事項](./container-instances-image-security.md)
 
-* [Azure Container Registry と Security Center の統合](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)
+* [Azure Container Registry と Security Center の統合](../security-center/azure-container-registry-integration.md)
 
 **Azure Security Center の監視**: はい
 
@@ -662,9 +662,9 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス**: コンテナー イメージを Azure Container Registry に保存している場合は、レジストリを Azure Security Center に統合することで、コンテナー イメージの脆弱性を定期的にスキャンし、リスクを分類できるようにします。 必要があれば、Azure Marketplace からのサードパーティのソリューションをデプロイして、イメージの定期的な脆弱性評価とリスクの分類を実行します。
 
-* [Azure Container Instances のセキュリティに関する考慮事項](https://docs.microsoft.com/azure/container-instances/container-instances-image-security)
+* [Azure Container Instances のセキュリティに関する考慮事項](./container-instances-image-security.md)
 
-* [Azure Container Registry と Security Center の統合](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)
+* [Azure Container Registry と Security Center の統合](../security-center/azure-container-registry-integration.md)
 
 **Azure Security Center の監視**: はい
 
@@ -672,7 +672,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 ## <a name="inventory-and-asset-management"></a>インベントリと資産の管理
 
-*詳細については、「[セキュリティ コントロール: インベントリと資産の管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: インベントリと資産の管理](../security/benchmarks/security-control-inventory-asset-management.md)」を参照してください。*
 
 ### <a name="61-use-azure-asset-discovery"></a>6.1:Azure Asset Discovery を使用する
 
@@ -680,11 +680,11 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 従来の Azure リソースは Resource Graph で検出できますが、今後は Azure Resource Manager リソースを作成して使用することを強くお勧めします。
 
-* [Azure Resource Graph を使用してクエリを作成する方法](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Azure Resource Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
-* [Azure サブスクリプションを表示する方法](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-* [Azure RBAC について](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Azure RBAC について](../role-based-access-control/overview.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -692,9 +692,9 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 ### <a name="62-maintain-asset-metadata"></a>6.2:資産メタデータを保持する
 
-**ガイダンス**: メタデータを提供する Azure Container Instances および関連リソースにタグを適用し、論理的に分類してまとめます。
+**ガイダンス**:メタデータを提供する Azure Container Instances および関連リソースにタグを適用し、論理的に分類してまとめます。
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 
 **Azure Security Center の監視**: 適用なし
@@ -705,11 +705,11 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス**:必要に応じて、タグ付け、管理グループ、および個別のサブスクリプションを使用して、資産の整理と追跡を行います。 定期的にインベントリを調整し、承認されていないリソースがサブスクリプションから適切なタイミングで削除されるようにします。
 
-* [追加の Azure サブスクリプションを作成する方法](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-* [管理グループを作成する方法](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [管理グループを作成する方法](../governance/management-groups/create.md)
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 
 **Azure Security Center の監視**: 適用なし
@@ -718,7 +718,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 ### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4:承認された Azure リソースとソフトウェア タイトルのインベントリを管理する
 
-**ガイダンス**:組織のニーズに応じて、承認された Azure リソースのインベントリを作成する必要があります。
+**ガイダンス**: 組織のニーズに応じて、承認された Azure リソースのインベントリを作成する必要があります。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -730,11 +730,11 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 Azure Resource Graph を使用して、サブスクリプション内のリソースのクエリまたは検出を行います。 環境に存在するすべての Azure リソースが承認されていることを確認します。
 
-* [Azure Policy を使用した Azure コンテナー レジストリのコンプライアンスの監査](https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy)
+* [Azure Policy を使用した Azure コンテナー レジストリのコンプライアンスの監査](../container-registry/container-registry-azure-policy.md)
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Graph を使用してクエリを作成する方法](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Azure Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -748,14 +748,14 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 異常な動作がないか Azure Container Instances ログを監視し、結果を定期的に確認します。 Azure Monitor の Log Analytics ワークスペースを使用してログを確認し、ログ データに対してクエリを実行します。
 
-* [Azure Monitor ログによるコンテナー グループおよびインスタンスのログ記録](https://docs.microsoft.com/azure/container-instances/container-instances-log-analytics)
+* [Azure Monitor ログによるコンテナー グループおよびインスタンスのログ記録](./container-instances-log-analytics.md)
 
-* [Log Analytics ワークスペースについて](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
+* [Log Analytics ワークスペースについて](../azure-monitor/log-query/get-started-portal.md)
 
-* [Azure Monitor でカスタム クエリを実行する方法](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
+* [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/log-query/get-started-queries.md)
 
-* [Azure Container Instances のセキュリティに関する考慮事項](https://docs.microsoft.com/azure/container-instances/container-instances-image-security)
-* [Azure Container Registry と Security Center の統合](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)
+* [Azure Container Instances のセキュリティに関する考慮事項](./container-instances-image-security.md)
+* [Azure Container Registry と Security Center の統合](../security-center/azure-container-registry-integration.md)
 
 
 
@@ -767,7 +767,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: Azure Automation は、ワークロードとリソースの展開、運用、および使用停止を完全に制御します。 承認されていない Azure リソースとソフトウェア アプリケーションを削除するための独自のソリューションを実装することができます。
 
-* [Azure Automation の概要](https://docs.microsoft.com/azure/automation/automation-intro)
+* [Azure Automation の概要](../automation/automation-intro.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -776,7 +776,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 ### <a name="68-use-only-approved-applications"></a>6.8:承認されたアプリケーションのみを使用する
 
 **ガイダンス**: コンテナー イメージのタグ付けとバージョン管理で、承認済みアプリケーションを実行するイメージの追跡を支援します。
-* [コンテナー イメージのタグ付けとバージョン管理に関する推奨事項](https://docs.microsoft.com/azure/container-registry/container-registry-image-tag-version)
+* [コンテナー イメージのタグ付けとバージョン管理に関する推奨事項](../container-registry/container-registry-image-tag-version.md)
 
 
 **Azure Security Center の監視**: 適用なし
@@ -787,9 +787,9 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: Azure Policy を使用して、環境内でプロビジョニングできるサービスを制限します。
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy を使用して特定のリソースの種類を拒否する方法](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+* [Azure Policy を使用して特定のリソースの種類を拒否する方法](/azure/governance/policy/samples/not-allowed-resource-types)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -798,7 +798,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 ### <a name="610-implement-approved-application-list"></a>6.10:承認されたアプリケーションの一覧を実装する
 
 **ガイダンス**: コンテナー イメージのタグ付けとバージョン管理で、承認済みアプリケーションを実行するイメージの追跡を支援します。
-* [コンテナー イメージのタグ付けとバージョン管理に関する推奨事項](https://docs.microsoft.com/azure/container-registry/container-registry-image-tag-version)
+* [コンテナー イメージのタグ付けとバージョン管理に関する推奨事項](../container-registry/container-registry-image-tag-version.md)
 
 
 **Azure Security Center の監視**: 適用なし
@@ -809,7 +809,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: "Microsoft Azure Management" アプリに対して [アクセスのブロック] を構成することによって、Azure Resource Manager を操作するユーザーの機能を制限するには、Azure 条件付きアクセスを使用します。 
 
-* [条件付きアクセスを構成して Azure Resource Manager へのアクセスをブロックする方法](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+* [条件付きアクセスを構成して Azure Resource Manager へのアクセスをブロックする方法](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -821,17 +821,17 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 さまざまな Azure サブスクリプションまたは管理グループを使用して Azure Container Instances リソースへのアクセスを管理および確認するか、または仮想ネットワークと NSG、または Azure Firewall を使用してリソースを分離します。
 
-* [実行中の Azure Container Instances でコマンドを実行する](https://docs.microsoft.com/azure/container-instances/container-instances-exec)
+* [実行中の Azure Container Instances でコマンドを実行する](./container-instances-exec.md)
 
-* [追加の Azure サブスクリプションを作成する方法](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-* [管理グループを作成する方法](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [管理グループを作成する方法](../governance/management-groups/create.md)
 
-* [仮想ネットワークでのデプロイ - Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-vnet)
+* [仮想ネットワークでのデプロイ - Azure Container Instances](./container-instances-vnet.md)
 
-* [セキュリティ構成を使用して NSG を作成する方法](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [セキュリティ構成を使用して NSG を作成する方法](../virtual-network/tutorial-filter-network-traffic.md)
 
-* [Azure Firewall をデプロイする方法l](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Azure Firewall をデプロイする方法l](../firewall/tutorial-firewall-deploy-portal.md)
 
 
 
@@ -843,9 +843,9 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: 業務に必要であっても、組織のリスクが高くなる可能性があるソフトウェアは、独自の仮想ネットワーク内に隔離し、Azure Firewall またはネットワーク セキュリティ グループで十分に保護する必要があります。
 
-* [仮想ネットワークでのデプロイ - Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-vnet) 
+* [仮想ネットワークでのデプロイ - Azure Container Instances](./container-instances-vnet.md) 
 
-* [セキュリティ構成を使用して NSG を作成する方法](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [セキュリティ構成を使用して NSG を作成する方法](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -853,7 +853,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ## <a name="secure-configuration"></a>セキュリティで保護された構成
 
-*詳細については、「[セキュリティ コントロール: セキュリティで保護された構成](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: セキュリティで保護された構成](../security/benchmarks/security-control-secure-configuration.md)」を参照してください。*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1:すべての Azure リソースに対してセキュリティで保護された構成を確立する
 
@@ -861,7 +861,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 * [Azure Container Instances のコンテナー グループ](container-instances-container-groups.md#deployment)
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
 
 **Azure Security Center の監視**: 適用なし
@@ -872,7 +872,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: カスタムまたはサード パーティのソリューションを使用して、コンテナー イメージを修正します。 コンテナー イメージを Azure Container Registry に保存している場合は、基本 OS イメージでのセキュリティ パッチまたはその他の更新プログラムに基づいてコンテナー レジストリ内のアプリケーション イメージに対する更新を自動化するための Azure Container Registry タスクを実行することもできます。 
 
-* [Azure Container Registry タスクの基本イメージの更新について](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-base-images)
+* [Azure Container Registry タスクの基本イメージの更新について](../container-registry/container-registry-tasks-base-images.md)
 
 
 
@@ -884,9 +884,9 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: Azure リソース全体にセキュリティで保護された設定を適用するには、Azure ポリシー [拒否] と [存在する場合はデプロイする] を使用します。
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy の効果について](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+* [Azure Policy の効果について](../governance/policy/concepts/effects.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -898,10 +898,10 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 カスタムまたはサード パーティのソリューションを使用して、コンテナー イメージを修正します。 コンテナー イメージを Azure Container Registry に保存している場合は、基本 OS イメージでのセキュリティ パッチまたはその他の更新プログラムに基づいてコンテナー レジストリ内のアプリケーション イメージに対する更新を自動化するための Azure Container Registry タスクを実行することもできます。 
 
-* [Azure Container Instances のコンテナーの監視とスキャンに関するセキュリティについての推奨事項](https://docs.microsoft.com/azure/container-instances/container-instances-image-security)
+* [Azure Container Instances のコンテナーの監視とスキャンに関するセキュリティについての推奨事項](./container-instances-image-security.md)
 
-* [Azure Container Registry と Security Center の統合](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)
-* [Azure Container Registry タスクの基本イメージの更新について](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-base-images)
+* [Azure Container Registry と Security Center の統合](../security-center/azure-container-registry-integration.md)
+* [Azure Container Registry タスクの基本イメージの更新について](../container-registry/container-registry-tasks-base-images.md)
 
 
 
@@ -911,11 +911,11 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5:Azure リソースの構成を安全に格納する
 
-**ガイダンス**: ARM テンプレート、YAML ファイル、カスタム Azure ポリシーの定義をソース管理に安全に保存し、管理します。
+**ガイダンス**:ARM テンプレート、YAML ファイル、カスタム Azure ポリシーの定義をソース管理に安全に保存し、管理します。
 
-* [Azure DevOps でコードを格納する方法](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-* [Azure Repos のドキュメント](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+* [Azure Repos のドキュメント](/azure/devops/repos/index?view=azure-devops)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -925,11 +925,11 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: コンテナー イメージを Azure Container Registry に保存し、RBAC を利用して、承認されたユーザーだけがイメージにアクセスできるようにします。
 
-* [Azure での RBAC の概要](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
+* [Azure での RBAC の概要](../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-* [コンテナー レジストリの RBAC を理解する](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
+* [コンテナー レジストリの RBAC を理解する](../container-registry/container-registry-roles.md)
 
-* [Azure で RBAC を構成する方法](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
+* [Azure で RBAC を構成する方法](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 
 **Azure Security Center の監視**: 適用なし
@@ -938,9 +938,9 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ### <a name="77-deploy-system-configuration-management-tools"></a>7.7:システム構成管理ツールをデプロイする
 
-**ガイダンス**: Azure Policy を使用して、システム構成をアラート、監査、および適用します。 さらに、ポリシー例外を管理するためのプロセスとパイプラインを作成します。
+**ガイダンス**:Azure Policy を使用して、システム構成をアラート、監査、および適用します。 さらに、ポリシー例外を管理するためのプロセスとパイプラインを作成します。
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -948,7 +948,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8:オペレーティング システム用のシステム構成管理ツールをデプロイする
 
-**ガイダンス**: 適用できません。このガイドラインは、IaaS コンピューティング リソースを対象にしています。
+**ガイダンス**:適用できません。このガイドラインは、IaaS コンピューティング リソースを対象にしています。
 
 
 **Azure Security Center の監視**: 適用なし
@@ -961,9 +961,9 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 Azure Policy を使用して、サブスクリプションで作成できるリソースの種類に制限を設けます。
 
-* [Azure Security Center の推奨事項を修復する方法](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations)
+* [Azure Security Center の推奨事項を修復する方法](../security-center/security-center-remediate-recommendations.md)
 
-* [Azure Policy を使用した Azure コンテナー レジストリのコンプライアンスの監査](https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy)
+* [Azure Policy を使用した Azure コンテナー レジストリのコンプライアンスの監査](../container-registry/container-registry-azure-policy.md)
 
 **Azure Security Center の監視**: はい
 
@@ -973,7 +973,7 @@ Azure Policy を使用して、サブスクリプションで作成できるリ�
 
 **ガイダンス**: Azure Container Registry を使用してコンテナー イメージを保存している場合は、Azure Security Center を使用して、コンテナーの OS と Docker の設定のベースライン スキャンを実行します。
 
-* [Azure Security Center のコンテナーの推奨事項を理解する](https://docs.microsoft.com/azure/security-center/security-center-container-recommendations)
+* [Azure Security Center のコンテナーの推奨事項を理解する](../security-center/container-security.md)
 
 
 **Azure Security Center の監視**: はい
@@ -984,13 +984,13 @@ Azure Policy を使用して、サブスクリプションで作成できるリ�
 
 **ガイダンス**: マネージド サービス ID を Azure Key Vault と組み合わせて使用し、クラウド アプリケーションのシークレット管理を簡素化し、セキュリティで保護します。
 
-* [Azure マネージド ID と統合する方法](https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity)
+* [Azure マネージド ID と統合する方法](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-* [キー コンテナーを作成する方法](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
+* [キー コンテナーを作成する方法](../key-vault/secrets/quick-create-portal.md)
 
-* [マネージド ID で Key Vault の認証を提供する方法](https://docs.microsoft.com/azure/key-vault/managed-identity)
+* [マネージド ID で Key Vault の認証を提供する方法](../key-vault/general/managed-identity.md)
 
-* [Azure Container Instances でマネージド ID を使用する方法](https://docs.microsoft.com/azure/container-instances/container-instances-managed-identity)
+* [Azure Container Instances でマネージド ID を使用する方法](./container-instances-managed-identity.md)
 
 **Azure Security Center の監視**: はい
 
@@ -998,11 +998,11 @@ Azure Policy を使用して、サブスクリプションで作成できるリ�
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12:ID を安全かつ自動的に管理する
 
-**ガイダンス**: マネージド ID を使用して、Azure AD で自動的に管理される ID を Azure サービスに提供します。 マネージド ID を使用すると、コードに資格情報を追加しなくても、Azure AD の認証をサポートするさまざまなサービス (Key Vault を含む) に対して認証を行うことができます。
+**ガイダンス**:マネージド ID を使用して、Azure AD で自動的に管理される ID を Azure サービスに提供します。 マネージド ID を使用すると、コードに資格情報を追加しなくても、Azure AD の認証をサポートするさまざまなサービス (Key Vault を含む) に対して認証を行うことができます。
 
-* [マネージド ID を構成する方法](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
+* [マネージド ID を構成する方法](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 
-* [Azure Container Instances でマネージド ID を使用する方法](https://docs.microsoft.com/azure/container-instances/container-instances-managed-identity)
+* [Azure Container Instances でマネージド ID を使用する方法](./container-instances-managed-identity.md)
 
 
 
@@ -1022,7 +1022,7 @@ Azure Policy を使用して、サブスクリプションで作成できるリ�
 
 ## <a name="malware-defense"></a>マルウェアからの防御
 
-*詳細については、「[セキュリティ コントロール: マルウェアからの防御](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: マルウェアからの防御](../security/benchmarks/security-control-malware-defense.md)」を参照してください。*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1:一元管理されるマルウェア対策ソフトウェアを使用する
 
@@ -1045,7 +1045,7 @@ App Service、Data Lake Storage、Blob Storage などの非コンピューティ
 
 ### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>手順 8.3:マルウェア対策ソフトウェアと署名が確実に更新されるようにする
 
-**ガイダンス**:適用できません。この推奨事項は、IaaS コンピューティング リソースを対象にしています。
+**ガイダンス**: 適用できません。この推奨事項は、IaaS コンピューティング リソースを対象にしています。
 
 Microsoft のマルウェア対策は、Azure サービス (Azure Container Instances など) をサポートする基になるホストで有効にされます。ただし、顧客のコンテンツに対しては実行されません。
 
@@ -1055,15 +1055,15 @@ Microsoft のマルウェア対策は、Azure サービス (Azure Container Inst
 
 ## <a name="data-recovery"></a>データの復旧
 
-*詳細については、「[セキュリティ コントロール: データの復旧](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: データの復旧](../security/benchmarks/security-control-data-recovery.md)」を参照してください。*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1:定期的に自動バックアップを行う
 
-**ガイダンス**:Azure Backup を有効にし、バックアップ ソース (コンテナー グループにマウントされたファイル共有など)、および必要な頻度と保持期間を構成します。 
+**ガイダンス**: Azure Backup を有効にし、バックアップ ソース (コンテナー グループにマウントされたファイル共有など)、および必要な頻度と保持期間を構成します。 
 
-* [Azure Backup を有効にする方法](https://docs.microsoft.com/azure/backup/)
+* [Azure Backup を有効にする方法](../backup/index.yml)
 
-* [Azure Container Instances に Azure ファイル共有をマウントする](https://docs.microsoft.com/azure/container-instances/container-instances-volume-azure-files)
+* [Azure Container Instances に Azure ファイル共有をマウントする](./container-instances-volume-azure-files.md)
 
 
 **Azure Security Center の監視**: 適用なし
@@ -1072,12 +1072,12 @@ Microsoft のマルウェア対策は、Azure サービス (Azure Container Inst
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: システムの完全バックアップを実行し、カスタマー マネージド キーをバックアップする
 
-**ガイダンス**: Azure コマンドライン ツールまたは SDK を使用して、Azure Key Vault 内のカスタマー マネージド キーをバックアップします。
+**ガイダンス**:Azure コマンドライン ツールまたは SDK を使用して、Azure Key Vault 内のカスタマー マネージド キーをバックアップします。
 
 必要に応じて、コンテナー イメージを、あるレジストリから別のレジストリにインポートすることでバックアップします。
-* [Azure 上でキー コンテナーのキーをバックアップする方法](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Azure 上でキー コンテナーのキーをバックアップする方法](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
-* [コンテナー レジストリにコンテナー イメージをインポートする](https://docs.microsoft.com/azure/container-registry/container-registry-import-images)
+* [コンテナー レジストリにコンテナー イメージをインポートする](../container-registry/container-registry-import-images.md)
 
 
 
@@ -1089,9 +1089,9 @@ Microsoft のマルウェア対策は、Azure サービス (Azure Container Inst
 
 **ガイダンス**: Azure コマンドライン ツールまたは SDK を使用して、Azure Key Vault でバックアップされたカスタマー マネージド キーの復元をテストします。
 
-* [Azure で Azure Key Vault キーを復元する方法](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Azure で Azure Key Vault キーを復元する方法](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
-* [デプロイ データを暗号化する - Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-encrypt-data)
+* [デプロイ データを暗号化する - Azure Container Instances](./container-instances-encrypt-data.md)
 
 
 
@@ -1101,9 +1101,9 @@ Microsoft のマルウェア対策は、Azure サービス (Azure Container Inst
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: バックアップとカスタマー マネージド キーの保護を確保する
 
-**ガイダンス**:Azure Key Vault で論理的な削除を有効にすれば、偶発的な削除や悪意のある削除からキーを保護することができます。
+**ガイダンス**: Azure Key Vault で論理的な削除を有効にすれば、偶発的な削除や悪意のある削除からキーを保護することができます。
 
-* [Key Vault で論理的な削除を有効にする方法](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+* [Key Vault で論理的な削除を有効にする方法](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -1111,7 +1111,7 @@ Microsoft のマルウェア対策は、Azure サービス (Azure Container Inst
 
 ## <a name="incident-response"></a>インシデント対応
 
-*詳細については、「[セキュリティ コントロール: インシデント対応](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: インシデント対応](../security/benchmarks/security-control-incident-response.md)」を参照してください。*
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1:インシデント対応ガイドを作成する
 
@@ -1119,7 +1119,7 @@ Microsoft のマルウェア対策は、Azure サービス (Azure Container Inst
 
 お客様は、独自のインシデント対応計画の作成に役立つ NIST の「コンピューター セキュリティ インシデント対応ガイド」を利用することもできます。
 
-* [Azure Security Center 内でワークフロー自動化を構成する方法](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
+* [Azure Security Center 内でワークフロー自動化を構成する方法](../security-center/security-center-planning-and-operations-guide.md)
 
 * [独自のセキュリティ インシデント対応プロセスを構築するためのガイダンス](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
@@ -1156,7 +1156,7 @@ Microsoft のマルウェア対策は、Azure サービス (Azure Container Inst
 
 **ガイダンス**: セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) で、不正なユーザーまたは権限のないユーザーによるお客様のデータへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。 事後にインシデントをレビューして、問題が解決されていることを確認します。
 
-* [Azure Security Center のセキュリティ連絡先を設定する方法](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+* [Azure Security Center のセキュリティ連絡先を設定する方法](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure Security Center の監視**: はい
 
@@ -1166,9 +1166,9 @@ Microsoft のマルウェア対策は、Azure サービス (Azure Container Inst
 
 **ガイダンス**:連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用して、アラートの Sentinel のストリーミングを実行できます。
 
-* [連続エクスポートを構成する方法](https://docs.microsoft.com/azure/security-center/continuous-export)
+* [連続エクスポートを構成する方法](../security-center/continuous-export.md)
 
-* [Azure Sentinel にアラートをストリーミングする方法](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+* [Azure Sentinel にアラートをストリーミングする方法](../sentinel/connect-azure-security-center.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1178,7 +1178,7 @@ Microsoft のマルウェア対策は、Azure サービス (Azure Container Inst
 
 **ガイダンス**:セキュリティ アラートやセキュリティに関する推奨事項に対して "Logic Apps" 経由で応答を自動的にトリガーするには、Azure Security Center のワークフローの自動化機能を使用します。
 
-* [ワークフローの自動化と Logic Apps を構成する方法](https://docs.microsoft.com/azure/security-center/workflow-automation)
+* [ワークフローの自動化と Logic Apps を構成する方法](../security-center/workflow-automation.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1186,11 +1186,11 @@ Microsoft のマルウェア対策は、Azure サービス (Azure Container Inst
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>侵入テストとレッド チーム演習
 
-*詳細については、「[セキュリティ コントロール: 侵入テストとレッド チーム演習](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: 侵入テストとレッド チーム演習](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)」を参照してください。*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1:Azure リソースの通常の侵入テストを実施し、セキュリティに関する重大な調査結果がすべて、60 日以内に確実に修復されるようにします
 
-**ガイダンス**:お客様の侵入テストが Microsoft のポリシーに違反しないように、Microsoft の実施ルールに確実に従ってください。 Microsoft が管理しているクラウド インフラストラクチャ、サービス、アプリケーションに対する Red Teaming およびライブ サイト侵入テストに関する Microsoft の戦略と実施を活用してください。
+**ガイダンス**: お客様の侵入テストが Microsoft のポリシーに違反しないように、Microsoft の実施ルールに確実に従ってください。 Microsoft が管理しているクラウド インフラストラクチャ、サービス、アプリケーションに対する Red Teaming およびライブ サイト侵入テストに関する Microsoft の戦略と実施を活用してください。
 
 * [侵入テストの実施ルール](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
@@ -1203,5 +1203,5 @@ Microsoft のマルウェア対策は、Azure サービス (Azure Container Inst
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure セキュリティ ベンチマーク](https://docs.microsoft.com/azure/security/benchmarks/overview)に関するページを参照する
-- [Azure セキュリティ ベースライン](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- [Azure セキュリティ ベンチマーク](../security/benchmarks/overview.md)に関するページを参照する
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

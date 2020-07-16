@@ -12,12 +12,12 @@ ms.date: 04/24/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: 764600d61704378b1bc0937dd1399260a1266150
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 91094285aa50641f62527326bab121adcf026a9a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84308628"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252064"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft ID プラットフォーム開発者向け用語集
 
@@ -117,7 +117,7 @@ Microsoft ID プラットフォーム アプリケーション統合の場合、
 
 ## <a name="microsoft-identity-platform"></a>Microsoft ID プラットフォーム
 
-Microsoft ID プラットフォームは、Azure Active Directory (Azure AD) の ID サービスおよび開発者プラットフォームの進化版です。 これにより、開発者はすべての Microsoft ID にサインインし、Microsoft Graph、その他の Microsoft API、または開発者が作成した API を呼び出すトークンを取得することができます。 これは多彩な機能を備えたプラットフォームであり、認証サービス、ライブラリ、アプリケーションの登録と構成、完全な開発者向けドキュメント、サンプル コード、およびその他の開発者向けコンテンツによって構成されています。 Microsoft ID プラットフォームでは、OAuth 2.0 や OpenID Connect など業界標準のプロトコルがサポートされています。 詳細については、「[Microsoft ID プラットフォームについて](about-microsoft-identity-platform.md)」を参照してください。
+Microsoft ID プラットフォームは、Azure Active Directory (Azure AD) の ID サービスおよび開発者プラットフォームの進化版です。 これにより、開発者はすべての Microsoft ID にサインインし、Microsoft Graph、その他の Microsoft API、または開発者が作成した API を呼び出すトークンを取得することができます。 これは多彩な機能を備えたプラットフォームであり、認証サービス、ライブラリ、アプリケーションの登録と構成、完全な開発者向けドキュメント、サンプル コード、およびその他の開発者向けコンテンツによって構成されています。 Microsoft ID プラットフォームでは、OAuth 2.0 や OpenID Connect など業界標準のプロトコルがサポートされています。
 
 ## <a name="multi-tenant-application"></a>マルチテナント アプリケーション
 

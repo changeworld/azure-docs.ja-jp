@@ -5,12 +5,12 @@ author: sumukhs
 ms.topic: conceptual
 ms.date: 10/02/2017
 ms.author: sumukhs
-ms.openlocfilehash: 9743213394b59af701b25b8be9dd48cf4310b499
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8765e86ffeae86b9f4e2b693c0dbf92478632dbf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75645516"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253169"
 ---
 # <a name="configure-stateful-reliable-services"></a>ステートフル Reliable Services の構成
 Reliable Services の構成設定には 2 つのセットがあります。 1 つはクラスター内のすべての Reliable Services 用のグローバルな設定、もう 1 つは特定の Reliable Services に固有の設定です。
@@ -184,5 +184,4 @@ SharedLogId と SharedLogPath の設定は常に一緒に使用して、サー�
 
 ## <a name="next-steps"></a>次のステップ
 * [Visual Studio での Service Fabric アプリケーションのデバッグ](service-fabric-debugging-your-application.md)
-* [Reliable Services の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/dn706529.aspx)
-
+* [Reliable Services の開発者向けリファレンス](/previous-versions/azure/dn706529(v=azure.100))

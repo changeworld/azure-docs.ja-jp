@@ -4,12 +4,12 @@ description: Azure Container Instances のコンテナー グループからリ�
 ms.topic: article
 ms.date: 07/02/2020
 ms.author: danlep
-ms.openlocfilehash: c76d8a2e7e468c511f0df47ebb240a787f40e026
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: d9f3e844e9d82e540776cdcf821770929d238e3f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169733"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259611"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Azure Monitor ログによるコンテナー グループおよびインスタンスのログ記録
 
@@ -29,7 +29,7 @@ Log Analytics ワークスペースは、Azure リソースからだけでなく
 コンテナー インスタンスでログ記録を有効にするには、次のものが必要です。
 
 * [Log Analytics ワークスペース](../azure-monitor/learn/quick-create-workspace.md)
-* [Azure CLI](/cli/azure/install-azure-cli) (または [Cloud Shell](/azure/cloud-shell/overview))
+* [Azure CLI](/cli/azure/install-azure-cli) (または [Cloud Shell](../cloud-shell/overview.md))
 
 ## <a name="get-log-analytics-credentials"></a>Log Analytics の資格情報を取得する
 
@@ -153,7 +153,7 @@ ContainerInstanceLog_CL
 
 Azure Monitor ログでのログのクエリとアラートの構成について詳しくは、以下をご覧ください。
 
-* [Azure Monitor ログでのログ検索について](../log-analytics/log-analytics-log-search.md)
+* [Azure Monitor ログでのログ検索について](../azure-monitor/log-query/log-query-overview.md)
 * [Azure Monitor での統合アラート](../azure-monitor/platform/alerts-overview.md)
 
 

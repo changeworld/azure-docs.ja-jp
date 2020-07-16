@@ -3,12 +3,12 @@ title: GPU 対応コンテナー インスタンスをデプロイする
 description: GPU リソースを使用してコンピューティング集中型コンテナー アプリを実行するために、Azure コンテナー インスタンスをデプロイする方法について説明します。
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: 78b67843978583dd6b0f0aee2c1d8ad0e5a7ca77
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: a25efc90573eb338b81f4a6532a632a140c7ab7d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169750"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259593"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>GPU リソースを使用するコンテナー インスタンスをデプロイする
 
@@ -225,7 +225,7 @@ az container delete --resource-group myResourceGroup --name gpucontainergrouprm 
 ## <a name="next-steps"></a>次のステップ
 
 * [YAML ファイル](container-instances-multi-container-yaml.md)または [Resource Manager テンプレート](container-instances-multi-container-group.md)を使用したコンテナー グループのデプロイについて学習します。
-* Azure での [GPU 最適化済み VM サイズ](../virtual-machines/linux/sizes-gpu.md)について学習します。
+* Azure での [GPU 最適化済み VM サイズ](../virtual-machines/sizes-gpu.md)について学習します。
 
 
 <!-- IMAGES -->

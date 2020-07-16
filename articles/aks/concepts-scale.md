@@ -4,12 +4,12 @@ description: ポッドの水平オートスケーラー、クラスター オー
 services: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: 83cbaf49f26a53518b1aa1e211b61af1959642a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41d4088a0942eb408d3d3c9eeb2d13ff38fc0362
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465339"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244516"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションのスケーリング オプション
 
@@ -26,7 +26,7 @@ Azure Kubernetes Service (AKS) でアプリケーションを実行すると、�
 
 レプリカ (ポッド) とノードを手動でスケーリングし、使用可能なリソースと状態の変化に対するアプリケーションの対応をテストできます。 手動によるリソースのスケーリングでは、ノード数などの固定コストを維持するために、使用する一定量のリソースを定義することもできます。 手動でスケーリングするには、レプリカまたはノードの数を定義します。 その後、そのレプリカまたはノードの数に基づき、Kubernetes API によって追加ポッドの作成またはノードのドレインのスケジュールが設定されます。
 
-ノードをスケールダウンすると、Kubernetes API によって、クラスターで使用されるコンピューティングの種類に関連付けられている Azure コンピューティング API が呼び出されます。 たとえば、VM Scale Sets 上に構築されたクラスターの場合は、VM Scale Sets API によって、削除するノードを選択するロジックが決められます。 スケールダウン時に削除対象のノードがどのように選択されるかの詳細については、[VMSS の FAQ](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-faq#if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed)を参照してください。
+ノードをスケールダウンすると、Kubernetes API によって、クラスターで使用されるコンピューティングの種類に関連付けられている Azure コンピューティング API が呼び出されます。 たとえば、VM Scale Sets 上に構築されたクラスターの場合は、VM Scale Sets API によって、削除するノードを選択するロジックが決められます。 スケールダウン時に削除対象のノードがどのように選択されるかの詳細については、[VMSS の FAQ](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed)を参照してください。
 
 ポッドとノードの手動によるスケーリングを開始するには、「[チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションのスケーリング][aks-scale]」を参照してください。
 
@@ -80,7 +80,7 @@ AKS クラスターを迅速にスケーリングするために、Azure Contain
 
 ![ACI への Kubernetes バースト スケーリング](media/concepts-scale/burst-scaling.png)
 
-ACI では、追加のインフラストラクチャのオーバーヘッドなしに、コンテナー インスタンスを迅速にデプロイできます。 AKS で接続する場合、ACI は、AKS クラスターのセキュリティ保護された論理拡張機能になります。 [仮想ノード][virtual-nodes-cli] コンポーネントは [Virtual Kubelet][virtual-kubelet] に基づいており、仮想 Kubernetes ノードとして ACI を提示する AKS クラスターにインストールされます。 Kubernetes は続いて、直接 AKS クラスター内にある VM ノード上のポッドとしてではなく、仮想ノードを通じた ACI インスタンスとして実行するポッドをスケジュール設定できます。 仮想ノードは、現在 AKS でプレビューの段階です。
+ACI では、追加のインフラストラクチャのオーバーヘッドなしに、コンテナー インスタンスを迅速にデプロイできます。 AKS で接続する場合、ACI は、AKS クラスターのセキュリティ保護された論理拡張機能になります。 [仮想ノード][virtual-nodes-cli] コンポーネントは [Virtual Kubelet][virtual-kubelet] に基づいており、仮想 Kubernetes ノードとして ACI を提示する AKS クラスターにインストールされます。 Kubernetes は続いて、直接 AKS クラスター内にある VM ノード上のポッドとしてではなく、仮想ノードを通じた ACI インスタンスとして実行するポッドをスケジュール設定できます。
 
 アプリケーションは、仮想ノードを使用するために変更は不要です。 クラスター オートスケーラーが AKS クラスター内に新しいノードをデプロイするときに、デプロイは AKS と ACI にわたって遅延なくスケーリングできます。
 
@@ -111,7 +111,7 @@ Kubernetes と AKS の中心概念の詳細については、次の記事を参�
 [aks-scale]: tutorial-kubernetes-scale.md
 [aks-manually-scale-pods]: tutorial-kubernetes-scale.md#manually-scale-pods
 [aks-manually-scale-nodes]: tutorial-kubernetes-scale.md#manually-scale-aks-nodes
-[aks-cluster-autoscaler]: autoscaler.md
+[aks-cluster-autoscaler]: ./cluster-autoscaler.md
 [aks-concepts-clusters-workloads]: concepts-clusters-workloads.md
 [aks-concepts-security]: concepts-security.md
 [aks-concepts-storage]: concepts-storage.md

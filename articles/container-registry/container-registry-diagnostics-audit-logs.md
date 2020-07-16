@@ -3,12 +3,12 @@ title: リソース ログの収集と分析
 description: 認証、イメージのプッシュ、イメージのプルなど、Azure Container Registry のリソース ログ イベントを記録および分析します。
 ms.topic: article
 ms.date: 06/01/2020
-ms.openlocfilehash: b41b1001a669fe42721471bc196e7628eabff983
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8757b8bdb67cf75b1ba800658d80b2a44311f1ba
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84343185"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252489"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>診断の評価と監査のための Azure Container Registry ログ
 
@@ -142,10 +142,9 @@ ContainerRegistryLoginEvents
 
 ログを Log Analytics に送信することに加えて、または別の方法として、Azure ストレージ アカウントをログの保存先として選択するのが一般的です。 ログを Azure Storage にアーカイブするには、診断設定を使用してアーカイブを有効にする前に、ストレージ アカウントを作成します。
 
-また、診断ログ イベントを [Azure イベント ハブ](../event-hubs/event-hubs-what-is-event-hubs.md)にストリーム配信することもできます。 Event Hubs は、毎秒数百万のイベントを取り込み、任意のリアルタイム分析プロバイダーを使用して変換および格納できます。 
+また、診断ログ イベントを [Azure イベント ハブ](../event-hubs/event-hubs-about.md)にストリーム配信することもできます。 Event Hubs は、毎秒数百万のイベントを取り込み、任意のリアルタイム分析プロバイダーを使用して変換および格納できます。 
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Log Analytics](../azure-monitor/log-query/get-started-portal.md) の使用と[ログ クエリ](../azure-monitor/log-query/get-started-queries.md)の作成の詳細について学習します。
 * 「[Azure プラットフォーム ログの概要](../azure-monitor/platform/platform-logs-overview.md)」を参照して、Azure のさまざまなレイヤーで使用できるプラットフォーム ログについて学習します。
-

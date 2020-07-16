@@ -17,12 +17,12 @@ ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23508535c1853cd056bb162c254cda5f7f86d7fe
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f84724285dee6dfff4913b067daa651837787d4e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681757"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255780"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect:アカウントとアクセス許可
 
@@ -141,7 +141,7 @@ AD DS コネクタ アカウントは、Windows Server AD の読み取りと書�
 
 必要なアクセス許可は、有効にしたオプションの機能によって異なります。 複数のドメインがある場合は、フォレスト内のすべてのドメインにアクセス許可を付与する必要があります。 これらのいずれの機能も有効にしなかった場合、既定の **ドメイン ユーザー** アクセス許可で十分対応できます。
 
-| 機能 | アクセス許可 |
+| 特徴量 | アクセス許可 |
 | --- | --- |
 | ms-DS-ConsistencyGuid 機能 |「[設計概念 - sourceAnchor としての ms-DS-ConsistencyGuid の使用](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor)」に記載された msDS-ConsistencyGuid 属性への書き込みアクセス許可。 | 
 | パスワード ハッシュの同期 |<li>ディレクトリの変更のレプリケート</li>  <li>ディレクトリの変更をすべてにレプリケート |
@@ -202,7 +202,6 @@ Azure AD Connect のいずれかのバージョンから新しいリリースに
 
 | | LocalDB</br>Express | LocalDB/LocalSQL</br>Custom | リモート SQL</br>Custom |
 | --- | --- | --- | --- |
-| **スタンドアロン/ワークグループ コンピューター** | サポートされていません | **VSA**</br>ローカル アカウント (2008)</br>ローカル アカウント |  サポートされていません |
 | **ドメインに参加しているコンピューター** | **VSA**</br>ローカル アカウント (2008) | **VSA**</br>ローカル アカウント (2008)</br>ローカル アカウント</br>ドメイン アカウント</br>sMSA、gMSA | **gMSA**</br>ドメイン アカウント |
 | **ドメイン コントローラー** | **ドメイン アカウント** | *gMSA*</br>**ドメイン アカウント**</br>sMSA| *gMSA*</br>**ドメイン アカウント**|
 
