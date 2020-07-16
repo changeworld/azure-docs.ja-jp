@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 37df5ae8e88bf7832fbbeae37555d60943fca446
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: eea4de106fe566b55ae30330d4c9d101f7126bbf
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187304"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229620"
 ---
 # <a name="use-source-control-integration"></a>ソース管理の統合を使用する
 
@@ -202,7 +202,7 @@ New-AzAutomationSourceControl -Name SCReposTFVC -RepoUrl https://dev.azure.com/<
 現時点では、ソース管理の PAT を更新するために Azure portal を使用できません。 PAT が有効期限切れになったり取り消されたりしたら、以下のいずれかの方法で、新しいアクセス トークンを使用してソース管理を更新できます。
 
 * [REST API](/rest/api/automation/sourcecontrol/update) を使用する。
-* [Update-AzAutomationSourceControl](//powershell/module/az.automation/update-azautomationsourcecontrol) コマンドレットを使用する。
+* [Update-AzAutomationSourceControl](/powershell/module/az.automation/update-azautomationsourcecontrol) コマンドレットを使用する。
 
 ## <a name="next-steps"></a>次のステップ
 

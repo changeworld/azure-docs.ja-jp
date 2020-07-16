@@ -7,12 +7,12 @@ ms.topic: article
 author: anbene
 ms.author: mingshen
 ms.date: 06/29/2020
-ms.openlocfilehash: 2192b3757281bf6796fbf93f83cab6e71deb29f6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e708d9a32d63c306a2d1ee8d06b044652f108dde
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120556"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231881"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Cloud パートナー ポータルからパートナー センターへの切り替えに関してよく寄せられる質問
 
@@ -76,7 +76,7 @@ Dynamics Nav Managed Service オファーと Cortana Intelligence オファー�
 | コンサルティング サービス | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 詳細については、「[コンサルティング サービス オファーを作成する](partner-center-portal/create-consulting-service-offer.md)」を参照してください。 |
 | マネージド サービス | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 詳細については、「[管理サービス オファーの作成](partner-center-portal/create-new-managed-service-offer.md)」を参照してください。 |
 | Dynamics Nav Managed Service | いいえ | Dynamics NAV Managed Service は [Dynamics 365 Business Central](https://docs.microsoft.com/dynamics365/business-central/) に発展したため、Dynamics NAV Managed Service のライブ オファーは AppSource から除外されました。 これらのオファーは、顧客が検出できなくなり、パートナー センターには移動されていません。 自分のオファーを AppSource で利用できるようにするには、それらを Dynamics 365 Business Central オファーに適合させた後、[パートナー センター](https://partner.microsoft.com/)に提出してください。 詳細については、「[Dynamics 365 Business Central オファーの作成](partner-center-portal/create-new-business-central-offer.md)」を参照してください。 |
-| Cortana Intelligence | いいえ | Cortana Intelligence の製品ロード マップが発展したため、Cortana Intelligence のライブ オファーは AppSource から除外されました。 これらのオファーは、顧客が検出できなくなり、パートナー センターには移動されていません。 自分のオファーをコマーシャル マーケットプレースで利用できるようにするには、オファーをサービスとしてのソフトウェア (SaaS) オファーに適合させた後、[パートナー センター](hhttps://partner.microsoft.com/)に提出してください。 詳細については、「[SaaS オファー作成のチェックリスト](partner-center-portal/offer-creation-checklist.md)」を参照してください。 |
+| Cortana Intelligence | いいえ | Cortana Intelligence の製品ロード マップが発展したため、Cortana Intelligence のライブ オファーは AppSource から除外されました。 これらのオファーは、顧客が検出できなくなり、パートナー センターには移動されていません。 自分のオファーをコマーシャル マーケットプレースで利用できるようにするには、オファーをサービスとしてのソフトウェア (SaaS) オファーに適合させた後、[パートナー センター](https://partner.microsoft.com/)に提出してください。 詳細については、「[SaaS オファー作成のチェックリスト](partner-center-portal/offer-creation-checklist.md)」を参照してください。 |
 
 ## <a name="i-cant-find-my-cloud-partner-portal-offers-in-partner-center"></a>パートナー センターで自分の Cloud パートナー ポータル オファーが見つかりません
 

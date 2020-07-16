@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 902996c1813931638012c78f81bd65c400bee7a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 09e492ae950003f97ed86355257c97777cd71c1a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74113162"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202005"
 ---
 # <a name="odata-geo-spatial-functions-in-azure-cognitive-search---geodistance-and-geointersects"></a>Azure Cognitive Search の OData 地理空間関数 - `geo.distance` および `geo.intersects`
 
@@ -105,21 +105,29 @@ Azure Cognitive Search での他のコレクション以外のすべてのフィ
 
 指定された参照ポイントの 10 キロメートル内にあるホテルをすべて探します (場所は `Edm.GeographyPoint` 型のフィールドです)。
 
+```odata-filter-expr
     geo.distance(location, geography'POINT(-122.131577 47.678581)') le 10
+```
 
 多角形として表現された所与のビューポート内にあるホテルをすべて探します (場所は `Edm.GeographyPoint` 型のフィールドです)。 多角形が閉じられていること (最初のポイントと最後のポイントのセットを同じにする必要があります)、[ポイントが時計回りで一覧表示されている](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1)ことに注意してください。
 
+```odata-filter-expr
     geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
+```
 
 ### <a name="order-by-examples"></a>order by の例
 
 `rating` 別にホテルを降順で並べ替え、その後、特定の座標からの距離別に昇順で並べ替えます。
 
+```odata-filter-expr
     rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
+```
 
 `search.score` と `rating` に基づいて降順でホテルを並べ替え、その後、所与の座標からの距離別に昇順で並べ替え、2 つのホテルで評価が同じ場合、距離的に近い方が先に表示されるようにします。
 
+```odata-filter-expr
     search.score() desc,rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
+```
 
 ## <a name="next-steps"></a>次のステップ  
 

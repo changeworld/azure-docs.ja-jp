@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 99ec639b88f3334530243242aadfa0ab52a40df0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 68e6ec0af0b24771b21dac35c944fc7fa098b404
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74113153"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203111"
 ---
 # <a name="odata-orderby-syntax-in-azure-cognitive-search"></a>Azure Cognitive Search での OData $orderby 構文
 
@@ -64,19 +64,27 @@ sortable_function ::= geo_distance_call | 'search.score()'
 
 基本料金別にホテルを昇順で並べ替えます。
 
+```odata-filter-expr
     $orderby=BaseRate asc
+```
 
 評価別にホテルを降順で並べ替え、その後、基本料金別に昇順で並べ替えます (昇順は既定値です)。
 
+```odata-filter-expr
     $orderby=Rating desc,BaseRate
+```
 
 評価別にホテルを降順で並べ替え、その後、特定の座標からの距離別に昇順で並べ替えます。
 
+```odata-filter-expr
     $orderby=Rating desc,geo.distance(Location, geography'POINT(-122.131577 47.678581)') asc
+```
 
 search.score と評価に基づいて降順でホテルを並べ替え、その後、特定の座標からの距離別に昇順で並べ替えます。 2 つのホテルで関連性スコアおよび評価が同じ場合、距離的に近い方が先に表示されるようにします。
 
+```odata-filter-expr
     $orderby=search.score() desc,Rating desc,geo.distance(Location, geography'POINT(-122.131577 47.678581)') asc
+```
 
 ## <a name="next-steps"></a>次のステップ  
 

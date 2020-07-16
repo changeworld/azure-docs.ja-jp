@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 36f416183bd44180bee59142714e924e0ac8fefe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf41232026fcb51e63cb68d6f42b7b66d14022e1
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830045"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207797"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>StorSimple Device Manager サービスを使用して StorSimple アラートを表示および管理する
 
@@ -199,8 +199,8 @@ StorSimple デバイス マネージャーのサービスの概要ブレード�
 
 ### <a name="performance-alerts"></a>パフォーマンスのアラート
 
-| アラートのテキスト | Event | 追加情報 / 推奨される対処法 | |
-|:--- |:--- |:--- | --- |
+| アラートのテキスト | Event | 追加情報 / 推奨される対処法 |
+|:--- |:--- |:--- |
 | デバイスの負荷が <*しきい値*> を超えています。 |応答時間が予想よりも長くかかっています。 |デバイスの入出力に大きな負荷がかかっていることが報告されています。 これにより、デバイスが予期したとおりには動作しない可能性があります。 デバイスに割り当てたワークロードを確認して、別のデバイスに移すことのできるワークロードまたはもう必要ないワークロードがないか判断してください。|
 | StorSimple サービスを開始できませんでした。 |データパス エラー |問題が解決しない場合は、Microsoft サポートにお問い合わせください。 |
 

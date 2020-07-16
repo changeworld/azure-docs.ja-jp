@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 12/16/2019
 ms.author: rohogue
-ms.openlocfilehash: c6a4b2c1d95bc803d10697ce2164ea190f824d96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8850162847f2dd416b0951a797e2eb0cd7d55d2
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85505445"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229569"
 ---
 # <a name="mount-the-avere-vfxt-cluster"></a>Avere vFXT クラスターをマウントする
 
@@ -28,7 +28,7 @@ ms.locfileid: "85505445"
 > [!TIP]
 > 他の負荷分散方法は、さらに大規模なシステムまたは複雑なシステムに適しています (ヘルプが必要な場合は、[サポート チケットを開いて](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt)ください)。
 >
-> サーバー側の自動負荷分散に DNS サーバーを使用したい場合は、Azure 内で独自の DNS サーバーを設定して管理する必要があります。 その場合は、「[Avere cluster DNS configuration](avere-vfxt-configure-dns.md)」(Avere クラスターの DNS 構成) に従って、vFXT クラスター用にラウンドロビン DNS を構成することができます。
+> サーバー側の自動負荷分散に DNS サーバーを使用したい場合は、Azure 内で独自の DNS サーバーを設定して管理する必要があります。 その場合は、vFXT クラスター用にラウンドロビン DNS を構成することができます。手順については、「[Avere クラスターの DNS 構成](avere-vfxt-configure-dns.md)」を参照してください。
 
 ### <a name="sample-balanced-client-mounting-script"></a>負荷分散されたクライアントのマウント スクリプトの例
 
@@ -102,7 +102,7 @@ IP アドレスは、vserver に対して定義されたクライアント側の
 
 ``mount -o hard,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
 
-| 必須の設定 | |
+| 必須の設定 | 説明 |
 --- | ---
 ``hard`` | vFXT クラスターに対するソフト マウントは、アプリケーション エラーおよび可能性のあるデータ損失と関連付けられます。
 ``proto=netid`` | このオプションは、NFS ネットワーク エラーの適切な処理をサポートします。

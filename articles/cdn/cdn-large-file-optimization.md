@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
-ms.openlocfilehash: 22ec4058d9485858489162af223bb6d6c381797e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0fb136b6c37c8ef14f85455431fea80099088936
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887662"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206725"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>Azure CDN を使用した大きなファイルのダウンロードの最適化
 
@@ -107,11 +107,10 @@ CDN は受信したチャンクをすべてキャッシュします。 ファイ
 ### <a name="caching"></a>キャッシュ
 大きなファイルの最適化で使用する既定のキャッシュの有効期限は、一般的な Web 配信のものと異なります。 HTTP 応答コードに基づいて、正のキャッシュと負のキャッシュを区別します。 配信元サーバーが応答の cache-control または expires ヘッダーで有効期限を指定している場合、CDN はその値を優先させます。 配信元で指定されず、ファイルがこの最適化の種類のファイルの種類とサイズの条件と一致する場合、CDN は大きいファイルの最適化に既定値を使います。 それ以外の場合は、CDN は一般的な Web 配信用の既定値を使います。
 
-
-|    | 一般 Web | 大きなファイルの最適化 
+| キャッシュ  | 一般 Web | 大きなファイルの最適化 
 --- | --- | --- 
-キャッシュ: 正の値 <br> HTTP 200、203、300、 <br> 301、302、410 | 7 日 |1 日  
-キャッシュ: 負の値 <br> HTTP 204、305、404、 <br> 405 | なし | 1 秒 
+キャッシュ:Positive <br> HTTP 200、203、300、 <br> 301、302、410 | 7 日 |1 日  
+キャッシュ:Negative <br> HTTP 204、305、404、 <br> 405 | なし | 1 秒 
 
 ### <a name="deal-with-origin-failure"></a>配信元のエラーの処理
 

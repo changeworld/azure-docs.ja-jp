@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: how-to
 ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: e918740c884f377048febfe2177e2fe956b1d552
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: de2a8e6377ababadc7d42f873a816a01a8f3b77e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085057"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207466"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Apache Hadoop サンドボックス (仮想マシンのエミュレーター) の概要
 
@@ -57,7 +57,9 @@ Hortonworks の Hadoop サンドボックスを仮想マシンにインストー
 
 2. ログインが完了したら、次のコマンドを入力します。
 
-        ambari-admin-password-reset
+    ```bash
+    ambari-admin-password-reset
+    ```
 
     メッセージが表示されたら、Ambari の管理者アカウントのパスワードを入力します。 これは、Ambari Web UI にアクセスするときに使用します。
 
@@ -65,13 +67,21 @@ Hortonworks の Hadoop サンドボックスを仮想マシンにインストー
 
 1. サンドボックスへの SSH 接続から、次のコマンドを使用して Hive シェルを起動します。
 
-        hive
+    ```bash
+    hive
+    ```
+
 2. シェルが起動したら、次のコマンドを使用して、サンドボックスに用意されているテーブルを表示します。
 
-        show tables;
+    ```hiveql
+    show tables;
+    ```
+
 3. 次のコマンドを使用して、 `sample_07` テーブルから 10 行を取得します。
 
-        select * from sample_07 limit 10;
+    ```hiveql
+    select * from sample_07 limit 10;
+    ```
 
 ## <a name="next-steps"></a>次のステップ
 

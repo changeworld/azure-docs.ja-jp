@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: brendm
-ms.openlocfilehash: ed8a46683d79211559b4af7972c6d1bb784e1f02
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ef7614b32dd88e804b1a74749ee87504f9cea40
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84434163"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205453"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Azure Spring Cloud のメトリックについて
 
@@ -90,63 +90,41 @@ Azure Spring Cloud は、1 分ごとに更新されるメトリックを使用�
 >[!div class="mx-tdCol2BreakAll"]
 >| 名前 | Spring Actuator メトリック名 | ユニット | 詳細 |
 >|----|----|----|------------|
->| Tomcat グローバル エラー (非推奨)<br><br>(2020 年 7 月 1 日以降に削除予定)  | tomcat.global.error | Count | 処理された要求で発生したエラーの数 |
 >| tomcat.global.error | tomcat.global.error | Count | 処理された要求で発生したエラーの数 |
 
 ### <a name="performance"></a>パフォーマンス
 >[!div class="mx-tdCol2BreakAll"]
 >| 名前 | Spring Actuator メトリック名 | ユニット | 詳細 |
 >|----|----|----|------------|
->| システムの CPU 使用率 (%) (非推奨)<br><br>(2020 年 7 月 1 日以降に削除予定) | system.cpu.usage | Percent | システム全体の最近の CPU 使用率。 この値は、0.0 から 1.0 の範囲の倍精度浮動小数点数です。 値 0.0 は、最近の観測期間中にすべての CPU がアイドル状態であったことを意味します。一方、値 1.0 は、最近の観測期間中にすべての CPU が 100% の稼働状態であったことを意味します。|
 >| system.cpu.usage | system.cpu.usage | Percent | システム全体の最近の CPU 使用率。 この値は、0.0 から 1.0 の範囲の倍精度浮動小数点数です。 値 0.0 は、最近の観測期間中にすべての CPU がアイドル状態であったことを意味します。一方、値 1.0 は、最近の観測期間中にすべての CPU が 100% の稼働状態であったことを意味します。|
->| アプリの CPU 使用率 (%) (非推奨)<br><br>(2020 年 7 月 1 日以降に削除予定) | アプリの CPU 使用率 (%) | Percent | Java 仮想マシン プロセスの最近の CPU 使用率。 この値は、0.0 から 1.0 の範囲の倍精度浮動小数点数です。 値 0.0 は、最近の観測期間中に、どの CPU でも JVM プロセスからスレッドが実行されなかったことを意味します。一方、値 1.0 は、最近の観測期間中に、すべての CPU で JVM からスレッドが 100% 実行されたことを意味します。 JVM からのスレッドには、アプリケーション スレッドだけでなく、JVM 内部スレッドも含まれます。|
 >| process.cpu.usage | アプリの CPU 使用率 (%) | Percent | Java 仮想マシン プロセスの最近の CPU 使用率。 この値は、0.0 から 1.0 の範囲の倍精度浮動小数点数です。 値 0.0 は、最近の観測期間中に、どの CPU でも JVM プロセスからスレッドが実行されなかったことを意味します。一方、値 1.0 は、最近の観測期間中に、すべての CPU で JVM からスレッドが 100% 実行されたことを意味します。 JVM からのスレッドには、アプリケーション スレッドだけでなく、JVM 内部スレッドも含まれます。|
->| 割り当て済みアプリ メモリ (非推奨)<br><br>(2020 年 7 月 1 日以降に削除予定) | jvm.memory.committed | バイト | JVM で使用できることが保証されているメモリの量を表します。 JVM からシステムにメモリが解放される場合があり、保証されているメモリが初回メモリよりも少なくなる可能性があります。 保証されているメモリは常に、メモリの使用量以上になります。 |
 >| jvm.memory.committed | jvm.memory.committed | バイト | JVM で使用できることが保証されているメモリの量を表します。 JVM がシステムに対してメモリを解放する場合があり、保証されているメモリが初期値よりも少なくなる可能性があります。 保証されているメモリは、常に使用量以上になります。 |
->| アプリのメモリ使用量 (非推奨)<br><br>(2020 年 7 月 1 日以降に削除予定) | jvm.memory.used | バイト | 現在使用されているメモリの量を表します (バイト単位)。 |
 >| jvm.memory.used | jvm.memory.used | バイト | 現在使用されているメモリの量を表します (バイト単位)。 |
->| アプリの最大メモリ (非推奨)<br><br>(2020 年 7 月 1 日以降に削除予定) | jvm.memory.max | バイト | メモリ管理に使用できるメモリの最大量を表します。 最大量が定義されている場合、使用されるメモリおよび保証されるメモリの量は常にそれ以下になります。 使用されているメモリ量が最大メモリ量以下であっても、保証されているメモリ量よりも使用されるメモリ量が大きくなるように使用されるメモリ量を増やそうとすると、メモリ割り当てが失敗する可能性があります (たとえば、システムの仮想メモリが不足している場合)。 |
 >| jvm.memory.max | jvm.memory.max | バイト | メモリ管理に使用できるメモリの最大量を表します。 最大量が定義されている場合、使用されるメモリおよび保証されるメモリの量は常にそれ以下になります。 使用されているメモリ量が最大メモリ量以下であっても、保証されているメモリ量よりも使用されるメモリ量が大きくなるように使用されるメモリ量を増やそうとすると、メモリ割り当てが失敗する可能性があります (たとえば、システムの仮想メモリが不足している場合)。 |
->| 使用可能な古い世代データの最大サイズ (非推奨)<br><br>(2020 年 7 月 1 日以降に削除予定) | jvm.gc.max.data.size | バイト | Java 仮想マシンが起動されてからの、古い世代のメモリ プールのメモリ使用量のピーク。 |
 >| jvm.gc.max.data.size | jvm.gc.max.data.size | バイト | Java 仮想マシンが起動されてからの、古い世代のメモリ プールのメモリ使用量のピーク。 |
->| 古い世代データのサイズ (非推奨)<br><br>(2020 年 7 月 1 日以降に削除予定) | jvm.gc.live.data.size | バイト | 完全な GC 後の古い世代のメモリ プールのサイズ。 |
 >| jvm.gc.live.data.size | jvm.gc.live.data.size | バイト | 完全な GC 後の古い世代のメモリ プールのサイズ。 |
->| 古い世代データのサイズ (非推奨)<br><br>(2020 年 7 月 1 日以降に削除予定) | jvm.gc.memory.promoted | バイト | GC 前から後にかけた古い世代のメモリ プールのサイズ増加数。 |
 >| jvm.gc.memory.promoted | jvm.gc.memory.promoted | バイト | GC 前から後にかけた古い世代のメモリ プールのサイズ増加数。 |
->| 若い世代データのサイズに昇格 (非推奨)<br><br>(2020 年 7 月 1 日以降に削除予定) | jvm.gc.memory.allocated | バイト | 1つの GC の後から次の GC の前までの若い世代のメモリ プールのサイズ増加に合わせて増加。 |
 >| jvm.gc.memory.allocated | jvm.gc.memory.allocated | バイト | 1つの GC の後から次の GC の前までの若い世代のメモリ プールのサイズ増加に合わせて増加。 |
->| GC の一時停止回数 (非推奨)<br><br>(2020 年 7 月 1 日以降に削除予定) | jvm.gc.pause (合計数) | Count | この JMV が起動した後の GC の合計数 (若い GC と古い GC を含む)。 |
 >| jvm.gc.pause.total.count | jvm.gc.pause (合計数) | Count | この JMV が起動した後の GC の合計数 (若い GC と古い GC を含む)。 |
->| GC の一時停止合計時間 (非推奨)<br><br>(2020 年 7 月 1 日以降に削除予定) | jvm.gc.pause (合計時間) | ミリ秒 | この JMV が起動した後に消費された GC 時間の合計 (若い GC と古い GC を含む)。 |
 >| jvm.gc.pause.total.time | jvm.gc.pause (合計時間) | ミリ秒 | この JMV が起動した後に消費された GC 時間の合計 (若い GC と古い GC を含む)。 |
 
 ### <a name="request"></a>Request
 >[!div class="mx-tdCol2BreakAll"]
 >| 名前 | Spring Actuator メトリック名 | ユニット | 詳細 |
 >|----|----|----|------------|
->| Tomcat 合計送信バイト数 (非推奨)<br><br>(2020 年 7 月 1 日以降に削除予定) | tomcat.global.sent | バイト | Tomcat Web サーバーが送信したデータの量 |
 >| tomcat.global.sent | tomcat.global.sent | バイト | Tomcat Web サーバーが送信したデータの量 |
->| Tomcat 合計受信バイト (非推奨)<br><br>(2020 年 7 月 1 日以降に削除予定) | tomcat.global.received | バイト | Tomcat Web サーバーが受信したデータの量 |
 >| tomcat.global.received | tomcat.global.received | バイト | Tomcat Web サーバーが受信したデータの量 |
->| Tomcat 要求合計時間 (非推奨)<br><br>(2020 年 7 月 1 日以降に削除予定) | tomcat.global.request (合計時間) | ミリ秒 | 要求を処理するための Tomcat Web サーバーの合計時間 |
->| Tomcat 要求合計数 (非推奨)<br><br>(2020 年 7 月 1 日以降に削除予定) | tomcat.global.request (合計数) | Count | Tomcat Web サーバーが処理した要求の合計数 |
 >| tomcat.global.request.total.count | tomcat.global.request (合計数) | Count | Tomcat Web サーバーが処理した要求の合計数 |
->| Tomcat 要求最大時間 (非推奨)<br><br>(2020 年 7 月 1 日以降に削除予定) | tomcat.global.request.max | ミリ秒 | 要求を処理するための Tomcat Web サーバーの最大時間 |
 >| tomcat.global.request.max | tomcat.global.request.max | ミリ秒 | 要求を処理するための Tomcat Web サーバーの最大時間 |
 
 ### <a name="session"></a>Session
 >[!div class="mx-tdCol2BreakAll"]
 >| 名前 | Spring Actuator メトリック名 | ユニット | 詳細 |
 >|----|----|----|------------|
->| Tomcat セッション最大アクティブ数 (非推奨)<br><br>(2020 年 7 月 1 日以降に削除予定) | tomcat.sessions.active.max | Count | 同時にアクティブになったセッションの最大数 |
 >| tomcat.sessions.active.max | tomcat.sessions.active.max | Count | 同時にアクティブになったセッションの最大数 |
->| Tomcat セッション最大アライブ時間 (非推奨)<br><br>(2020 年 7 月 1 日以降に削除予定) | tomcat.sessions.alive.max | ミリ秒 | 期限切れのセッションがアライブ状態だった最長時間 (秒単位) |
 >| tomcat.sessions.alive.max | tomcat.sessions.alive.max | ミリ秒 | 期限切れのセッションがアライブ状態だった最長時間 (秒単位) |
->| Tomcat セッション作成数 (非推奨)<br><br>(2020 年 7 月 1 日以降に削除予定) | tomcat.sessions.created | Count | 作成されたセッションの数 |
 >| tomcat.sessions.created | tomcat.sessions.created | Count | 作成されたセッションの数 |
->| Tomcat セッション期限切れ数 (非推奨)<br><br>(2020 年 7 月 1 日以降に削除予定) | tomcat.sessions.expired | Count | 期限切れになったセッションの数 |
 >| tomcat.sessions.expired | tomcat.sessions.expired | Count | 期限切れになったセッションの数 |
->| Tomcat セッション拒否数 (非推奨)<br><br>(2020 年 7 月 1 日以降に削除予定) | tomcat.sessions.rejected | Count | アクティブなセッションの最大数に達したために作成されなかったセッションの数。 |
 >| tomcat.sessions.rejected | tomcat.sessions.rejected | Count | アクティブなセッションの最大数に達したために作成されなかったセッションの数。 |
 >| tomcat.sessions.active.current | tomcat.sessions.active.current | Count | Tomcat セッションのアクティブ数 |
 

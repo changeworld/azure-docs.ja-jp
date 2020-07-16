@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: 23c7913fbe9b3943559d36f5cbf2a21d7ed63dbe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a53122b324c0a6dc43619eb2e9c704873f87b69
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563453"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207308"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Azure Cognitive Search でのシノニム
 
@@ -51,6 +51,7 @@ Azure Cognitive Search でのシノニムのサポートは、定義してサー
 
 次の例のように、HTTP POST を使用して、新しいシノニム マップを作成できます。
 
+```synonym-map
     POST https://[servicename].search.windows.net/synonymmaps?api-version=2020-06-30
     api-key: [admin key]
 
@@ -61,9 +62,11 @@ Azure Cognitive Search でのシノニムのサポートは、定義してサー
           USA, United States, United States of America\n
           Washington, Wash., WA => WA\n"
     }
+```
 
 または、PUT を使用し、URI にシノニム マップ名を指定できます。 シノニム マップが存在しない場合、作成されます。
 
+```synonym-map
     PUT https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2020-06-30
     api-key: [admin key]
 
@@ -73,10 +76,12 @@ Azure Cognitive Search でのシノニムのサポートは、定義してサー
           USA, United States, United States of America\n
           Washington, Wash., WA => WA\n"
     }
+```
 
 ##### <a name="apache-solr-synonym-format"></a>Apache Solr シノニム形式
 
 Solr 形式は同等の明示的なシノニム マッピングをサポートします。 マッピング規則は、このドキュメントで説明している Apache Solr のオープンソース シノニム フィルター仕様[SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter) に準拠しています。 同等のシノニムのサンプル規則を以下に示します。
+
 ```
 USA, United States, United States of America
 ```
@@ -84,29 +89,37 @@ USA, United States, United States of America
 上の規則では、検索クエリ "USA" が "USA" または "United States" または "United States of America" に拡張されます。
 
 明示的なマッピングは、"=>" 矢印で示します。 指定した場合、"=>" の左側に一致する検索クエリの用語のシーケンスが、右側の代替で置き換えられます。 次の規則を指定した場合、検索クエリ "Washington"、"Wash."、 または "WA" はすべて "WA" に書き換えられます。 明示的なマッピングは指定した方向でのみ適用され、この例では、クエリ "WA" が "Washington" に書き換えられることはありません。
+
 ```
 Washington, Wash., WA => WA
 ```
 
 #### <a name="list-synonym-maps-under-your-service"></a>サービスのシノニム マップを一覧表示します。
 
+```synonym-map
     GET https://[servicename].search.windows.net/synonymmaps?api-version=2020-06-30
     api-key: [admin key]
+```
 
 #### <a name="get-a-synonym-map-under-your-service"></a>サービスのシノニム マップを取得します。
 
+```synonym-map
     GET https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2020-06-30
     api-key: [admin key]
+```
 
 #### <a name="delete-a-synonyms-map-under-your-service"></a>サービスのシノニム マップを削除します。
 
+```synonym-map
     DELETE https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2020-06-30
     api-key: [admin key]
+```
 
 ### <a name="configure-a-searchable-field-to-use-the-synonym-map-in-the-index-definition"></a>インデックス定義でシノニム マップを使用するように、検索可能フィールドを構成します。
 
 新しいフィールド プロパティ **synonymMaps** を使用して、検索可能フィールドに使用するシノニム マップを指定できます。 シノニム マップは、サービス レベル リソースであり、そのサービスに属するインデックスの任意のフィールドによって参照できます。
 
+```synonym-map
     POST https://[servicename].search.windows.net/indexes?api-version=2020-06-30
     api-key: [admin key]
 
@@ -138,6 +151,7 @@ Washington, Wash., WA => WA
           }
        ]
     }
+```
 
 **synonymMaps** は型 'Edm.String' または 'Collection(Edm.String)' の検索可能フィールドに指定できます。
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: allensu
-ms.openlocfilehash: f9768d4d20380e8e0c4ca6f7c71fddd68bb93d5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e601e3e06965faf8ec0fd238c54115570150b61
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84340676"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203577"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Azure CDN ルール エンジンの HTTP 変数
 HTTP 変数は、HTTP 要求と応答のメタデータを取得するための手段を提供します。 このメタデータを使用して、要求または応答を動的に変更できます。 HTTP 変数の使用は、次のルール エンジンの機能に限定されています。
@@ -187,7 +187,7 @@ https:\//www.mydomain.com/mobile/marketing/proposal.htm
 
 次の表で、この構文の動作方法を示します。
 
-| 構文例 | 結果 | |
+| 構文例 | 結果 | 説明 |
 | ------------- | ------- | --- |
 | %{request_uri#/800001}/customerorigin | /customerorigin/myorigin/marketing/product.html?language=en-US | 変数がパターンで始まっているため、置き換えられました。 |
 | %{request_uri%html}htm | /800001/myorigin/marketing/product.html?language=en-US | 変数がパターンで終わっていないため、変更はありませんでした。|

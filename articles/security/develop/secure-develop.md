@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: f9ed611ae530e49ad8e776c47450bc9b7ece3190
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34294bf29ec861d7bbb954ece7016de37769a332
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266765"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232697"
 ---
 # <a name="develop-secure-applications-on-azure"></a>セキュリティで保護されたアプリケーションを Azure 上で開発する
 この記事では、クラウド向けのアプリケーションを開発するときに考慮するセキュリティ アクティビティとコントロールについて説明します。 Microsoft [セキュリティ開発ライフサイクル (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) の実装と検証のフェーズ中に考慮するセキュリティの質問と概念について説明します。 目標は、より安全なアプリケーションの開発に使用できるアクティビティと Azure サービスの定義を手助けすることです。
@@ -134,7 +134,7 @@ DAST は、静的アプリケーション セキュリティ テスト (SAST) �
 
 [ファジー テスト](https://cloudblogs.microsoft.com/microsoftsecure/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/)では、正しくないデータまたはランダムなデータをアプリケーションに意図的に導入することで、プログラムの障害を誘発します。 プログラムの障害の誘発は、アプリケーションをリリースする前に、潜在的なセキュリティの問題を明らかにするのに役立ちます。
 
-[Security Risk Detection](https://docs.microsoft.com/security-risk-detection/) は、ソフトウェアのセキュリティ クリティカルなバグを発見するための、マイクロソフト独自のファジー テスト サービスです。
+[Security Risk Detection](https://www.microsoft.com/en-us/security-risk-detection/) は、ソフトウェアのセキュリティ クリティカルなバグを発見するための、マイクロソフト独自のファジー テスト サービスです。
 
 ### <a name="conduct-attack-surface-review"></a>攻撃対象領域レビューを実施する
 

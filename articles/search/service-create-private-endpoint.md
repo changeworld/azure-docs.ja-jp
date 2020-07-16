@@ -8,12 +8,12 @@ ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: e55dfc692bdd625de8873f6e61c9969ed7fbf2df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27fb165c36c17cee83cd9f90eba3bdcb9e32d517
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84466172"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206911"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Azure Cognitive Search への安全な接続を行うためのプライベート エンドポイントを作成する
 
@@ -71,7 +71,7 @@ Azure Cognitive Search の [プライベートエンドポイント](../private-
     | Pricing tier | **[価格レベルの変更]** を選択し、目的のサービス レベルを選択します。 (**Free** レベルではサポートされていません。 **Basic** 以上である必要があります。) |
     |||
   
-1. **次へ:スケール** をクリックします。
+1. **[Next:スケール]** をクリックします。
 
 1. 残りは既定値のままにして、 **[次へ:ネットワーク]** を選択します。
 
@@ -86,11 +86,11 @@ Azure Cognitive Search の [プライベートエンドポイント](../private-
     | サブスクリプション | サブスクリプションを選択します。 |
     | Resource group | **[myResourceGroup]** を選択します。 これは前のセクションで作成しました。|
     | 場所 | **[米国西部]** を選択します。|
-    | 名前 | 「 *myPrivateEndpoint*」と入力します。  |
+    | 名前 | 「*myPrivateEndpoint*」と入力します。  |
     | ターゲット サブリソース | 既定の **searchService** をそのまま使用します。 |
     | **ネットワーク** |  |
-    | 仮想ネットワーク  | リソース グループの *[myResourceGroup]* から、 *[MyVirtualNetwork]* を選択します。 |
-    | Subnet |  *[mySubnet]* を選択します。 |
+    | 仮想ネットワーク  | リソース グループの *[myResourceGroup]* から、 *[MyVirtualNetwork]* を選択します。 |
+    | Subnet | *[mySubnet]* を選択します。 |
     | **プライベート DNS 統合** |  |
     | プライベート DNS ゾーンとの統合  | 既定値 **[はい]** のままにします。 |
     | プライベート DNS ゾーン  | 既定値の * * (新規) privatelink.search.windows.net * * をそのまま使用します。 |
@@ -136,7 +136,7 @@ Azure Cognitive Search の [プライベートエンドポイント](../private-
     | Windows ライセンスを既にお持ちの場合 | 既定値 **[なし]** のままにします。 |
     |||
 
-1. **次へ:ディスク** を選択します。
+1. **[Next:ディスク]** を選択します。
 
 1. **[仮想マシンの作成 - Disk]** で、既定値のままにし、 **[Next: Networking]\(次へ : ネットワーク\)** を選択します。
 
@@ -189,7 +189,7 @@ Azure Cognitive Search の [プライベートエンドポイント](../private-
 
 検索サービス エンドポイントがプライベートの場合、一部のポータル機能が無効になります。 サービス レベル設定を表示して管理することはできますが、インデックス データやサービス内のさまざまなその他のコンポーネント (インデックス、インデクサー、スキルセットの定義など) へのポータル アクセスは、セキュリティ上の理由で制限されています。
 
-1.  *myVM* のリモート デスクトップで、PowerShell を開きます。
+1. *myVM* のリモート デスクトップで、PowerShell を開きます。
 
 1. 「nslookup [検索サービス名].search.windows.net」と入力します。
 
@@ -207,7 +207,7 @@ Azure Cognitive Search の [プライベートエンドポイント](../private-
 
 1. サービスが完全に動作していることが確認できたら、VM からのクイックスタートは完了です。
 
-1.  *myVM* へのリモート デスクトップ接続を閉じます。 
+1. *myVM* へのリモート デスクトップ接続を閉じます。 
 
 1. パブリック エンドポイント上でサービスにアクセスできないことを確認するには、ローカル ワークステーションで Postman を開き、クイックスタートの最初のいくつかのタスクを実行します。 「リモートサーバーが存在しません」というエラー表示が出た場合には、検索サービスのプライベート エンドポイントが正常に構成されています。
 

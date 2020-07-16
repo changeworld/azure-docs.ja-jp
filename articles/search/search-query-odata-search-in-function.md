@@ -19,22 +19,26 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: b43c46599cbacaf40bc9583e364d088fa27a3ac9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1748a334c024401d845145947ecd55519f61e5e3
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74113123"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206922"
 ---
 # <a name="odata-searchin-function-in-azure-cognitive-search"></a>Azure Cognitive Search における OData の `search.in` 関数
 
 [OData フィルター式](query-odata-filter-orderby-syntax.md)の一般的なシナリオは、各ドキュメントの 1 つのフィールドが多数の可能な値のいずれかと等しいかどうかを調べることです。 たとえば、一部のアプリケーションでは、1 つ以上のプリンシパル ID を含むフィールドを、クエリを発行するユーザーを表すプリンシパル ID のリストと照合することで、[セキュリティによるトリミング](search-security-trimming-for-azure-search.md)を実装しています。 このようなクエリを記述する 1 つの方法として、[`eq`](search-query-odata-comparison-operators.md) および [`or`](search-query-odata-logical-operators.md) 演算子を使用します。
 
+```odata-filter-expr
     group_ids/any(g: g eq '123' or g eq '456' or g eq '789')
+```
 
 ただし、`search.in` 関数を使用すると、より簡潔に記述できます。
 
+```odata-filter-expr
     group_ids/any(g: search.in(g, '123, 456, 789'))
+```
 
 > [!IMPORTANT]
 > `search.in` を使用すると、より簡潔で読みやすくなるだけでなく、[パフォーマンス上の利点](#bkmk_performance)も得られます。また、フィルターに含める値が数百または数千になる場合に、[フィルターの特定のサイズ制限](search-query-odata-filter.md#bkmk_limits)を回避することもできます。 そのため、等値式のより複雑な論理和演算ではなく、`search.in` を使用することを強くお勧めします。
@@ -86,23 +90,33 @@ search_in_call ::=
 
 "Sea View motel" または "Budget hotel" と同じ名前のすべてのホテルを探します。 語句には、既定の区切り記号であるスペースを含めます。 3 番目の文字列パラメーターとして、単一引用符で囲まれた代替区切り記号を指定できます。  
 
+```odata-filter-expr
     search.in(HotelName, 'Sea View motel,Budget hotel', ',')
+```
 
 "Sea View motel" または "Budget hotel" と同じ名前のすべてのホテルを探します。区切り記号として '|' を使用します。
 
+```odata-filter-expr
     search.in(HotelName, 'Sea View motel|Budget hotel', '|')
+```
 
 "wifi" または "tub" というタグが付いた客室があるすべてのホテルを探します。
 
+```odata-filter-expr
     Rooms/any(room: room/Tags/any(tag: search.in(tag, 'wifi, tub')))
+```
 
 タグ内の 'heated towel racks' (タオル ウォーマー ラック) や 'hairdryer included' (ヘアドライヤーあり) など、コレクション内の語句との一致を探します。
 
+```odata-filter-expr
     Rooms/any(room: room/Tags/any(tag: search.in(tag, 'heated towel racks,hairdryer included', ','))
+```
 
 "motel" または "cabin" というタグがないすべてのホテルを探します。
 
+```odata-filter-expr
     Tags/all(tag: not search.in(tag, 'motel, cabin'))
+```
 
 ## <a name="next-steps"></a>次のステップ  
 

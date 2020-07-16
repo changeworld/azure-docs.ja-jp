@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: b9bac7b5b23c4e7d4042b53b93347628488be953
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: a06f0838f25e771a90fb6dc6f4fcd3bd9bdeda87
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984272"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203815"
 ---
 # <a name="create-a-consulting-service-offer"></a>コンサルティング サービス オファーの作成
 
@@ -77,7 +77,7 @@ ms.locfileid: "85984272"
 その他のリード管理リソースをいくつか次に示します。
 
 - [リード管理の概要](commercial-marketplace-get-customer-leads.md)
-- [リード管理に関する FAQ](../lead-management-for-cloud-marketplace.md#frequently-asked-questions))
+- [リード管理に関する FAQ](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)
 - [一般的なリード構成エラー](../lead-management-for-cloud-marketplace.md#publishing-config-errors))
 - [リード管理の概要](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (ポップアップ ブロックが無効になっていることを確認してください)
 
@@ -98,12 +98,22 @@ ms.locfileid: "85984272"
 
 3. 主要な製品として **Azure** を選択した場合は、 **[ソリューションの分野]** を最大 3 つ選択します。 これにより、Azure Marketplace の顧客は、貴社のオファーをさらに容易に見つけられるようになります。 Azure を選択しなかった場合は、この手順をスキップします。
 
-    | ソリューション分野 | | | |
-    | --- | --- | --- | --- |
-    | Analytics | バックアップ | DevOps | 移行 |
-    | アプリの最新化 | ビッグ データ | ディザスター リカバリー | ネットワーク |
-    | アーカイブ | データ プラットフォーム | ID | セキュリティ |
-    | AI + 機械学習 | データセンターの管理 | モノのインターネット (IoT) | ストレージ |
+    - Analytics
+    - アプリの最新化
+    - アーカイブ
+    - AI + 機械学習
+    - バックアップ
+    - ビッグ データ
+    - データ プラットフォーム
+    - データセンターの管理
+    - DevOps
+    - ディザスター リカバリー
+    - ID
+    - モノのインターネット (IoT)
+    - 移行
+    - ネットワーク
+    - セキュリティ
+    - ストレージ
 
 1. 主要な製品として **Azure** を選択した場合は、最大 6 つの **[業界]** を選択できます。 これにより、Azure Marketplace の顧客は、貴社のオファーをさらに容易に見つけられるようになります。 業界の完全な一覧については、「[オファーの掲載のベスト プラクティス](../gtm-offer-listing-best-practices.md)」をご覧ください。 Azure を選択しなかった場合は、この手順をスキップします。
 1. Azure *以外の*主要製品を選択した場合は、**適用対象の製品**を最大 3 つ選択します。 これにより、AppSource の顧客は、貴社のオファーをさらに容易に見つけられるようになります。 詳細については、「[Microsoft AppSource のコンサルティング サービスの掲載に関するガイドライン](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409)」 (PDF) を参照してください。

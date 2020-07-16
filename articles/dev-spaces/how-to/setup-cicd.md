@@ -8,12 +8,12 @@ ms.topic: conceptual
 manager: gwallace
 description: Azure DevOps と Azure Dev Spaces を使用して、継続的インテグレーション/継続的配置を設定する方法について学習します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, コンテナー
-ms.openlocfilehash: f2eb9449518b32ab74f2dbbca6b5489aed325db7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a5f232111bd01f707080cc1638970f8dc51e6fa
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81685630"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229331"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>Azure Dev Spaces と共に CI/CD を使用する
 
@@ -26,7 +26,7 @@ ms.locfileid: "81685630"
 ## <a name="prerequisites"></a>前提条件
 * [Azure Dev Spaces が有効になっている Azure Kubernetes Service (AKS) クラスター](../get-started-netcore.md)
 * [インストール済みの Azure Dev Spaces CLI](upgrade-tools.md)
-* [1 つのプロジェクトを含む Azure DevOps 組織](https://docs.microsoft.com/azure/devops/user-guide/sign-up-invite-teammates?view=vsts)
+* [1 つのプロジェクトを含む Azure DevOps 組織](/azure/devops/user-guide/sign-up-invite-teammates?view=vsts)
 * [Azure Container Registry (ACR)](../../container-registry/container-registry-get-started-azure-cli.md)
     * Azure Container Registry [管理者アカウント](../../container-registry/container-registry-authentication.md#admin-account)の詳細が利用可能
 * [お使いの Azure コンテナー レジストリからプルするように AKS クラスターを承認する](../../aks/cluster-container-registry-integration.md)
@@ -68,7 +68,7 @@ Web ブラウザーで Azure DevOps チーム プロジェクトを開き、" _[
 > [!Note]
 > Azure DevOps の "_YAML パイプライン作成の新しいエクスペリエンス_" プレビュー機能は、この時点では、事前定義されたビルド パイプラインの作成と競合します。 事前定義されたビルド パイプラインをデプロイするために、今は無効にしておく必要があります。
 
-_azds_updates_ ブランチには、*mywebapi* および *webfrontend* に必要なビルド手順を定義した簡単な [Azure パイプラインの YAML](https://docs.microsoft.com/azure/devops/pipelines/yaml-schema?view=vsts&tabs=schema) を組み込んでいます。
+_azds_updates_ ブランチには、*mywebapi* および *webfrontend* に必要なビルド手順を定義した簡単な [Azure パイプラインの YAML](/azure/devops/pipelines/yaml-schema?view=vsts&tabs=schema) を組み込んでいます。
 
 選択した言語に応じて、パイプラインの YAML は `samples/dotnetcore/getting-started/azure-pipelines.dotnetcore.yml` と類似のパスにチェックインされています。
 

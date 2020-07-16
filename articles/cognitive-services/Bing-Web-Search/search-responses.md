@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 7933d5e5cf7d82de013e18b221f3a0c3ce6b5229
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 284f8c8432d732fdfa7e16b43a47578437bcf0ba
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800530"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202246"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Bing Web Search API の応答の構造と答えの種類  
 
@@ -435,7 +435,7 @@ Query: What time is it in the U.S.
 
 Bing Web Search API からの応答には、以下のヘッダーが含まれることがあります。
 
-|||
+| ヘッダー | 説明 |
 |-|-|
 |`X-MSEdge-ClientID`|Bing がユーザーに割り当てた一意の ID|
 |`BingAPIs-Market`|要求を満たすために使用された市場|

@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 06/19/2020
-ms.openlocfilehash: 95ca527d8f7912e2c455f94036fe61828b220257
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: abad72145b095b4da77ec499f936c6912fd970a6
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121471"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229450"
 ---
 # <a name="what-is-a-test-drive"></a>体験版とは
 
@@ -74,7 +74,7 @@ ms.locfileid: "86121471"
 
 ## <a name="generate-leads-from-your-test-drive"></a>体験版から潜在顧客を生み出す
 
-コマーシャル マーケットプレースの体験版は、マーケティング担当にとって最適なツールです。 ビジネスでより多くの潜在顧客を生み出すために、市場進出プロセスに体験版を組み込むことをお勧めします。 詳細なガイダンスについては、「[コマーシャル マーケットプレース オファーからの潜在顧客](https://github.com/partner-center-portal/commercial-marketplace-get-customer-leads.md)」を参照してください。
+コマーシャル マーケットプレースの体験版は、マーケティング担当にとって最適なツールです。 ビジネスでより多くの潜在顧客を生み出すために、市場進出プロセスに体験版を組み込むことをお勧めします。 詳細なガイダンスについては、「[コマーシャル マーケットプレース オファーからの潜在顧客](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads.md)」を参照してください。
 
 体験版での潜在顧客との取引を終了する前に、[Microsoft Partner Sales Connect](https://support.microsoft.com/help/3155788/getting-started-with-microsoft-partner-sales-connect) に忘れずに登録します。 また、体験版が役に立って顧客を獲得した話をお聞かせください。
 

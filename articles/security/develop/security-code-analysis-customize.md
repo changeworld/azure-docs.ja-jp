@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 744b186b32927f81be21ff067c9195bddb33c416
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4c7f82b729355e59ff05d5513e22fa143d53a5e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362093"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206860"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>ビルド タスクを構成およびカスタマイズする
 
@@ -64,9 +64,11 @@ Windows Update のエラーとその軽減策について詳しくは、「[コ�
     - ディレクトリの指定は、常に \\* で終わる必要があります。
     - 例 :
 
+```binskim-targets
            *.dll;*.exe
            $(BUILD_STAGINGDIRECTORY)\*
            $(BUILD_STAGINGDIRECTORY)\*.dll;$(BUILD_STAGINGDIRECTORY)\*.exe;
+```
 
 - **[Type]\(種類\)** ボックスの一覧で **[Command Line]\(コマンド ライン\)** を選択した場合は、binskim.exe を実行する必要があります。
      - binskim.exe に対するの最初の引数では、動詞 **analyze** に続けて 1 つ以上のパスを指定する必要があります。 各パスには、完全なパスまたはソース ディレクトリを基準とした相対パスを指定できます。
@@ -74,11 +76,13 @@ Windows Update のエラーとその軽減策について詳しくは、「[コ�
      - **/o** または **/output** オプションは省略できます。 出力の値は自動的に追加または置換されます。
      - 標準のコマンドライン構成は次のようになります。
 
+```binskim-line-args
            analyze $(Build.StagingDirectory)\* --recurse --verbose
            analyze *.dll *.exe --recurse --verbose
+```
 
-          > [!NOTE]
-          > ターゲットに対してディレクトリを指定する場合、末尾の \\* は重要です。
+> [!NOTE]
+> ターゲットに対してディレクトリを指定する場合、末尾の \\* は重要です。
 
 BinSkim のコマンドライン引数、ID ごとのルール、終了コードについて詳しくは、[BinSkim のユーザー ガイド](https://github.com/Microsoft/binskim/blob/master/docs/UserGuide.md)を参照してください。
 

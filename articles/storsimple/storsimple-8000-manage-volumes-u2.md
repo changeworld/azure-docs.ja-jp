@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 12/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 3d8ab6da9327048469c8b781657bb03b6a4b9669
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 920f7f2fa6fb6e80b060f0308b124a3a1214cb3f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85508250"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86204455"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>StorSimple デバイス マネージャー サービスを使用してボリュームを管理する (Update 3 以降)
 
@@ -25,8 +25,8 @@ StorSimple デバイス マネージャー サービスは Azure Portal の拡�
 
 StorSimple ボリュームは、次のいずれかです。
 
-* **ローカル固定ボリューム**: これらのボリュームのデータは、常にローカル StorSimple デバイスに残ります。
-* **階層化ボリューム**: これらのボリュームのデータは、クラウドにあふれる場合があります。
+* **ローカル固定ボリューム**:これらのボリュームのデータは、常にローカル StorSimple デバイスに残ります。
+* **階層化ボリューム**:これらのボリュームのデータは、クラウドにあふれる場合があります。
 
 アーカイブ ボリュームは、階層化ボリュームの一種です。 アーカイブ ボリュームでより大きな重複除去チャンク サイズを使用すると、デバイスはより大きなデータのセグメントをクラウドに転送できます。
 
@@ -51,7 +51,7 @@ StorSimple ボリュームは、次のいずれかです。
 
 デバイスとボリュームの種類ごとの最大プロビジョニング容量については、次の表を参照してください (仮想デバイスではローカル固定ボリュームを使用できない点に注意してください)。
 
-|  | 階層化ボリュームの最大サイズ | ローカル固定ボリュームの最大サイズ |
+| Type | 階層化ボリュームの最大サイズ | ローカル固定ボリュームの最大サイズ |
 | --- | --- | --- |
 | **物理デバイス** | | |
 | 8100 |64 TB |8 TB |

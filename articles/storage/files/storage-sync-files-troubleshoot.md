@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 6/12/2020
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: ec7469210bcfae53407a157a325c749aee2c2b08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17c8f846201553d3cfa9a2d68b8b4a7ab655c378
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512058"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232380"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure File Sync のトラブルシューティング
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -690,7 +690,9 @@ Azure ファイル共有が削除されている場合は、新しいファイ�
 | **HRESULT (10 進値)** | -1906441711 |
 | **エラー文字列** | JET_errLogDiskFull |
 | **修復が必要か** | はい |
+
 | | |
+|-|-|
 | **HRESULT** | 0x80c8031a |
 | **HRESULT (10 進値)** | -2134375654 |
 | **エラー文字列** | ECS_E_NOT_ENOUGH_LOCAL_STORAGE |
@@ -717,12 +719,16 @@ Azure ファイル共有が削除されている場合は、新しいファイ�
 | **HRESULT (10 進値)** | -2134375877 |
 | **エラー文字列** | ECS_E_SYNC_METADATA_KNOWLEDGE_SOFT_LIMIT_REACHED |
 | **修復が必要か** | はい |
+
 | | |
+|-|-|
 | **HRESULT** | 0x80c8021c |
 | **HRESULT (10 進値)** | -2134375908 |
 | **エラー文字列** | ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED |
 | **修復が必要か** | はい |
+
 | | |
+|-|-|
 | **HRESULT** | 0x80c80253 |
 | **HRESULT (10 進値)** | -2134375853 |
 | **エラー文字列** | ECS_E_TOO_MANY_PER_ITEM_ERRORS |

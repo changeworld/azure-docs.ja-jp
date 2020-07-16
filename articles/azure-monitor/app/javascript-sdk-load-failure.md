@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: MSNev
 ms.author: newylie
 ms.date: 06/05/2020
-ms.openlocfilehash: 50a7e9520730159ad2df3ec3e0b75fcfa0c5ce0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dae6b40e7ec8a2bb6f635a6ffca4886ed09c1364
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84450586"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229535"
 ---
 # <a name="troubleshooting-sdk-load-failure-for-javascript-web-apps"></a>JavaScript Web アプリの SDK 読み込みエラーのトラブルシューティング
 
@@ -76,11 +76,11 @@ Application Insights CDN が停止しているかどうかの確認は、エン�
 スニペットとその構成は、生成された各ページの一部としてアプリケーションによって返されるため、スニペットの `src` 構成を変更することで、SDK に別の URL を使用することができます。 この方法を使用すると、新しい URL はブロックされないため、CDN がブロックされる問題を回避できます。
 
 現在の Application Insights JavaScript SDK CDN エンドポイント
-- https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js
-- https://js.monitor.azure.com/scripts/b/ai.2.min.js
+- `https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js`
+- `https://js.monitor.azure.com/scripts/b/ai.2.min.js`
 
 > [!NOTE]
-> https://js.monitor.azure.com/ エンドポイントはエイリアスで、これを使用すると、構成を変更しなくても、CDN プロバイダーをおよそ 5 分以内に切り替えることができます。これにより、CDN プロバイダーで地域的な問題や世界規模の問題が発生している場合、すべてのユーザーが自分の設定を調整しなくても、検出された CDN 関連の問題をより迅速に修正できます。
+> `https://js.monitor.azure.com/` エンドポイントはエイリアスで、これを使用すると、構成を変更しなくても、CDN プロバイダーをおよそ 5 分以内に切り替えることができます。これにより、CDN プロバイダーで地域的な問題や世界規模の問題が発生している場合、すべてのユーザーが自分の設定を調整しなくても、検出された CDN 関連の問題をより迅速に修正できます。
 
 ## <a name="sdk-failed-to-initialize-after-loading-the-script"></a>スクリプト読み込み後の SDK の初期化エラー
 
