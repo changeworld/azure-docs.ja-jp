@@ -29,9 +29,9 @@ ms.locfileid: "84629260"
 
 [ブート診断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)を使用して VM のスクリーンショットを表示すると、読み込み中に画面が停止して次のメッセージが表示されます:"グループ ポリシーの [ローカル ユーザーとグループ] ポリシーの適用中"。
 
-:::image type="content" source="media//unresponsive-vm-apply-group-policy/applying-group-policy-1.png" alt-text=""グループ ポリシーのローカル ユーザーとグループ ポリシーの適用中" の読み込みの画面 (Windows Server 2012 R2)。":::
+:::image type="content" source="media//unresponsive-vm-apply-group-policy/applying-group-policy-1.png" alt-text="グループ ポリシーのローカル ユーザーとグループ ポリシーの適用中 の読み込みの画面 (Windows Server 2012 R2)。":::
 
-:::image type="content" source="media/unresponsive-vm-apply-group-policy/applying-group-policy-2.png" alt-text=""グループ ポリシーのローカル ユーザーとグループ ポリシーの適用中" の読み込みの画面 (Windows Server 2012)。":::
+:::image type="content" source="media/unresponsive-vm-apply-group-policy/applying-group-policy-2.png" alt-text="グループ ポリシーのローカル ユーザーとグループ ポリシーの適用中 の読み込みの画面 (Windows Server 2012)。":::
 
 ## <a name="cause"></a>原因
 
