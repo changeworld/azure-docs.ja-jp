@@ -575,7 +575,7 @@ SAP から自分のロジック アプリに IDoc を送信するには、次の
 
     * [受信側ポートの識別子](#create-receiver-port)を入力します。
 
-    * IDoc のサイズを入力します ( **[Pack.　サイズ]** を選択します。 [SAP から IDoc を 1 つずつ送信する](#receive-idoc-packets-from-sap)場合は、 **[Pass IDoc Immediately]\(IDoc をすぐに渡す\)** を選択します。
+    * **[Pack. Size]\(パッケージ サイズ\)** に IDoc のサイズを入力します。 [SAP から IDoc を 1 つずつ送信する](#receive-idoc-packets-from-sap)場合は、 **[Pass IDoc Immediately]\(IDoc をすぐに渡す\)** を選択します。
 
 1. 変更を保存します。
 
