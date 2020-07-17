@@ -11,15 +11,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: c2c0e6d1d3ffd9ec3091e92530ec5c191f3f7ca6
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 80bc254aafa9c221fcaf724331928b7f30360eac
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84297957"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610848"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Azure の SQL データ同期とは
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 SQL データ同期は、Azure SQL Database 上に構築されているサービスであり、選択したデータをオンプレミスおよびクラウドの複数のデータベース間で双方向に同期させることができます。 
 
@@ -35,7 +34,7 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 
 - **ハブ データベース**は、Azure SQL データベースにする必要があります。
 - **メンバー データベース**にできるのは、Azure SQL Database 内のデータベースか、SQL Server のインスタンス内のデータベースです。
-- **同期データベース**には、データ同期のメタデータとログが含まれています。同期データベースは、ハブ データベースと同じリージョンにある Azure SQL データベースである必要があります。 同期データベースは、お客様が作成し、所有します。
+- **同期メタデータ データベース**には、データ同期のメタデータとログが含まれています。同期メタデータ データベースは、ハブ データベースと同じリージョンにある Azure SQL データベースである必要があります。 同期メタデータ データベースは、お客様が作成し、所有します。 同期メタデータ データベースは、リージョンおよびサブスクリプションごとに 1 つだけ作成できます。 同期グループまたは同期エージェントが存在する間は、同期メタデータ データベースを削除したり、名前を変更したりすることはできません。 Microsoft では、同期メタデータ データベースとして使用する新しい空のデータベースを作成することをお勧めしています。 データ同期は、このデータベースにテーブルを作成し、頻繁に発生するワークロードを実行します。
 
 > [!NOTE]
 > オンプレミスのデータベースをメンバー データベースとして使用している場合は、[ローカル同期エージェントをインストールして構成する](sql-data-sync-sql-server-configure.md#add-on-prem)必要があります。
@@ -72,7 +71,7 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 ## <a name="how-it-works"></a>しくみ
 
 - **データ変更の追跡:** データ同期では、挿入、更新、および削除の 3 種類のトリガーを使用して変更を追跡します。 変更はユーザー データベースのサイド テーブルに記録されます。 既定では BULK INSERT はトリガーを起動しないことに注意してください。 FIRE_TRIGGERS が指定されていない場合は、INSERT トリガーは実行しません。 データ同期がこれらの INSERT を追跡できるように、FIRE_TRIGGERS オプションを追加します。 
-- **データの同期:** データ同期は、ハブとスポークのモデルで設計されています。 ハブは、各メンバーと個別に同期されます。 ハブからの変更がメンバーにダウンロードされ、次にメンバーからの変更がハブにアップロードされます。
+- **データの同期:** データ同期は、ハブとスポークのモデルで設計されています。 ハブは、各メンバーと個別に同期されます。 ハブの変更がメンバーにダウンロードされ、次にメンバーの変更がハブにアップロードされます。
 - **競合の解決:** データ同期には、競合を解決するために、 *[ハブ側に合わせる]* と *[Member wins] (メンバー側に合わせる)* という 2 つのオプションが用意されています。
   - *[ハブ側に合わせる]* を選択すると、ハブでの変更が常にメンバーでの変更を上書きします。
   - *[Member wins]\(メンバー側に合わせる\)* を選択すると、メンバーでの変更がハブでの変更を上書きします。 複数のメンバーがある場合、最終的な値は、どのメンバーが最初に同期されるかによって異なります。
@@ -200,16 +199,16 @@ SQL データ同期はすべてのリージョンでご利用いただけます�
 
 直接無効にすることはできません。 しかし、Azure でハブ データベースを作成し、オンプレミス データベースを同期グループに追加することで、SQL Server データベース間で間接的に同期できます。
 
-### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-subscriptions"></a>データ同期を使用して、異なるサブスクリプションの SQL データベース間で同期できますか?
+### <a name="can-i-use-data-sync-to-sync-between-databases-in-sql-database-that-belong-to-different-subscriptions"></a>データ同期を使用して、異なるサブスクリプションに属している SQL Database のデータベース間で同期できますか?
 
-はい。 異なるサブスクリプションが所有するリソース グループに属している SQL データベース間で同期できます。
+はい。 異なるサブスクリプションが所有するリソース グループに属しているデータベース間で同期できます。
 
 - サブスクリプションが同じテナントに属していて、すべてのサブスクリプションへのアクセス許可がある場合、Azure Portal 上で同期グループを構成できます。
 - それ以外の場合、PowerShell を使用して、異なるサブスクリプションに属している同期メンバーを追加する必要があります。
 
-### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>データ同期を使用して、異なるクラウド (Azure パブリック クラウドと Azure China 21Vianet など) の SQL データベース間で同期できますか?
+### <a name="can-i-use-data-sync-to-sync-between-databases-in-sql-database-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>データ同期を使用して、異なるクラウド (Azure パブリック クラウドと Azure China 21Vianet など) に属している SQL Database のデータベース間で同期できますか?
 
-はい。 異なるクラウドに属している SQL データベース間で同期できます。PowerShell を使用して、異なるサブスクリプションに所属する同期メンバーを追加する必要があります。
+はい。 異なるクラウドに属しているデータベース間で同期を行うことができます。 異なるサブスクリプションに属している同期メンバーを追加する場合は、PowerShell を使用する必要があります。
 
 ### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-sync-them"></a>データ同期を使用して、自分の実稼働データベースから空のデータベースにデータをシードし、同期することはできますか?
 
@@ -217,9 +216,9 @@ SQL データ同期はすべてのリージョンでご利用いただけます�
 
 ### <a name="should-i-use-sql-data-sync-to-back-up-and-restore-my-databases"></a>自分のデータベースのバックアップおよび復元に、SQL データ同期を使う必要がありますか?
 
-SQL データ同期を使ってデータのバックアップを作成することはお勧めできません。 SQL データ同期の同期はバージョン管理されていないため、バックアップして特定の時点に復元することはできません。 さらに、SQL データ同期では、ストアド プロシージャなどの他の SQL オブジェクトはバックアップされず、復元操作に相当する処理は迅速に行われません。
+SQL データ同期を使ってデータのバックアップを作成することはお勧めできません。 SQL データ同期の同期はバージョン管理されていないため、バックアップして特定の時点に復元することはできません。 さらに、SQL データ同期を使用すると、ストアド プロシージャなどの他の SQL オブジェクトがバックアップされないため、復元操作に相当する処理を迅速に行うことはできません。
 
-お勧めするバックアップ方法の 1 つについては、「[Azure SQL データベースのコピー](database-copy.md)」をご覧ください。
+お勧めするバックアップ方法の 1 つについては、[Azure SQL Database のデータベースのコピー](database-copy.md)に関するページをご覧ください。
 
 ### <a name="can-data-sync-sync-encrypted-tables-and-columns"></a>データ同期では、暗号化されたテーブルと列を同期できますか?
 
@@ -236,6 +235,10 @@ SQL データ同期を使ってデータのバックアップを作成するこ�
 ### <a name="is-federation-supported-in-sql-data-sync"></a>SQL データ同期ではフェデレーションはサポートされていますか?
 
 フェデレーション ルート データベースは、SQL データ同期サービスで制限なしに使うことができます。 現在のバージョンの SQL データ同期には、フェデレーション データベースのエンドポイントを追加できません。
+
+### <a name="can-i-use-data-sync-to-sync-data-exported-from-dynamics-365-using-bring-your-own-database-byod-feature"></a>データ同期を使用して、Dynamics 365 からエクスポートされたデータを、独自データベースの持ち込み (BYOD) 機能によって同期することはできますか?
+
+管理者は、Dynamics 365 の独自データベースの持ち込み機能を使用して、データ エンティティをアプリケーションから自分の Microsoft Azure SQL データベースにエクスポートできます。 **増分プッシュ**を使用してデータをエクスポートし (完全プッシュはサポートされていません)、かつ **[ターゲット データベースのトリガーを有効にする]** を **[はい]** に設定している場合、データ同期を使用してこのデータを他のデータベースに同期することができます。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -259,3 +262,4 @@ Azure SQL Database の詳細については、以下の記事を参照してく�
 
 - [SQL Database の概要](sql-database-paas-overview.md)
 - [データベースのライフサイクル管理](https://msdn.microsoft.com/library/jj907294.aspx)
+ 

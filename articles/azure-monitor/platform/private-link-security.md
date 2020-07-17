@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.subservice: ''
-ms.openlocfilehash: 95345ba864d498190186e1a366c8551be97c33f5
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 14ecd1a35f8aae8365b7c7dc458712acdb894e62
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299685"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85602586"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Azure Private Link を使用して、ネットワークを Azure Monitor に安全に接続する
 
@@ -123,7 +123,7 @@ AMPLS リソースを設定する前に、ネットワークの分離要件を�
 
    a.    Azure Monitor リソースに接続する **[仮想ネットワーク]** と **[サブネット]** を選択します。 
  
-   b.    **[プライベート DNS ゾーンとの統合]** で **[はい]** を選択して、新しいプライベート DNS ゾーンを自動で作成します。 
+   b.    **[プライベート DNS ゾーンとの統合]** で **[はい]** を選択して、新しいプライベート DNS ゾーンを自動で作成します。 実際の DNS ゾーンは、下のスクリーンショットに示されているものとは異なる場合があります。 
  
    c.    **[Review + create]\(レビュー + 作成\)** をクリックします。
  
@@ -168,9 +168,8 @@ Azure Portal にアクセスします。 Azure Monitor Application Insights コ�
 
 > [!NOTE]
 > ワークスペース ベースの Application Insights を完全に保護するには、基になる Log Analytics ワークスペースと、Application Insights リソースへの両方のアクセスをロックダウンする必要があります。
-
-> [!NOTE]
-> コードレベルの診断 (プロファイラー/デバッガー) は、現在、Private Link をサポートしていません。
+>
+> コードレベルの診断 (プロファイラーまたはデバッガー) を行うには、プライベート リンクをサポートするご自身のストレージ アカウントを指定する必要があります。 これを行う方法については、[こちらのドキュメント](https://docs.microsoft.com/azure/azure-monitor/app/profiler-bring-your-own-storage)を参照してください。
 
 ## <a name="use-apis-and-command-line"></a>API とコマンド ラインの使用
 
@@ -226,9 +225,13 @@ Log Analytics エージェントでソリューション パックをダウン�
 
 | クラウド環境 | エージェントのリソース | Port | Direction |
 |:--|:--|:--|:--|
-|Azure Public     | scadvisor.blob.core.windows.net         | 443 | 送信
+|Azure Public     | scadvisorcontent.blob.core.windows.net         | 443 | 送信
 |Azure Government | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  送信
 |Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | 送信
+
+### <a name="browser-dns-settings"></a>ブラウザーの DNS 設定
+
+プライベート リンクを介して Azure Monitor リソースに接続している場合、これらのリソースへのトラフィックは、お使いのネットワーク上で構成されているプライベート エンドポイントを経由する必要があります。 プライベート エンドポイントを有効にするには、「[プライベート エンドポイントへの接続](#connect-to-a-private-endpoint)」の説明に従って、DNS 設定を更新します。 一部のブラウザーでは、ユーザーが設定したものではなく、ブラウザー自身の DNS 設定が使用されています。 ブラウザーが Azure Monitor パブリック エンドポイントに接続を試みる際に、プライベート リンクを完全にバイパスする場合があります。 ブラウザーの設定によって、DNS 設定がオーバーライドされていないこと、また、古い DNS 設定がキャッシュされていないことを確認してください。 
 
 ## <a name="next-steps"></a>次のステップ
 

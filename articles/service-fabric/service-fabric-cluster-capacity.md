@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: 774b114a47958b173f891ed13d423f9b051ee37c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2af8dcb2460e4e95d29bd81e6994d145ac61a48
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610542"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247779"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric クラスターの容量計画に関する考慮事項
 
@@ -26,7 +26,7 @@ ms.locfileid: "85610542"
 
 ## <a name="initial-number-and-properties-of-cluster-node-types"></a>クラスターのノード タイプに関する初期の数とプロパティ
 
-*ノード タイプ*により、クラスター内の一連のノード (仮想マシン) のサイズ、数、およびプロパティが定義されます。 Service Fabric クラスターで定義されているすべてのノード タイプは、[仮想マシン スケール セット](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)にマップされます。
+*ノード タイプ*により、クラスター内の一連のノード (仮想マシン) のサイズ、数、およびプロパティが定義されます。 Service Fabric クラスターで定義されているすべてのノード タイプは、[仮想マシン スケール セット](../virtual-machine-scale-sets/overview.md)にマップされます。
 
 各ノード タイプは異なるスケール セットであるため、個別にスケールアップまたはスケールダウン可能で、異なるポートのセットを開いたり、異なる容量メトリックを設けたりすることができます。 ノード タイプと仮想マシン スケール セットの間の関係について詳しくは、[Service Fabric クラスターのノード タイプ](service-fabric-cluster-nodetypes.md)に関するページを参照してください。
 
@@ -34,7 +34,7 @@ ms.locfileid: "85610542"
 
 **非プライマリ ノード タイプ**を使用すると、アプリケーション ロール (*フロントエンド* サービスや*バックエンド* サービスなど) を定義し、クラスター内でサービスを物理的に分離することができます。 Service Fabric クラスターには、0 個以上の非プライマリ ノードタイプを作成できます。
 
-プライマリ ノード タイプは、Azure Resource Manager のデプロイ テンプレートで、ノード タイプの定義の下にある `isPrimary` 属性を使用して構成されます。 ノード タイプのプロパティの完全な一覧については、「[NodeTypeDescription オブジェクト](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object)」を参照してください。 使用例については、[Service Fabric クラスター サンプル](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/)でいずれかの *AzureDeploy.json* ファイルを開き、 *[ページ内の検索]* で `nodetTypes` オブジェクトを検索します。
+プライマリ ノード タイプは、Azure Resource Manager のデプロイ テンプレートで、ノード タイプの定義の下にある `isPrimary` 属性を使用して構成されます。 ノード タイプのプロパティの完全な一覧については、「[NodeTypeDescription オブジェクト](/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object)」を参照してください。 使用例については、[Service Fabric クラスター サンプル](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/)でいずれかの *AzureDeploy.json* ファイルを開き、 *[ページ内の検索]* で `nodetTypes` オブジェクトを検索します。
 
 ### <a name="node-type-planning-considerations"></a>ノード タイプの計画に関する考慮事項
 
@@ -79,7 +79,7 @@ ms.locfileid: "85610542"
 > Bronze 持続性を使用する場合、OS イメージの自動アップグレードは使用できません。 [パッチ オーケストレーション アプリケーション](service-fabric-patch-orchestration-application.md) (Azure 以外でホストされているクラスターのみが対象) は、Silver 以上の持続性レベルでは*推奨されません*が、Service Fabric アップグレード ドメインに関しては、Windows 更新プログラムを自動化する唯一のオプションです。
 
 > [!IMPORTANT]
-> 持続性レベルを問わず、仮想マシン スケール セットに対して[割り当て解除](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/deallocate)操作を実行すると、クラスターが破棄されます。
+> 持続性レベルを問わず、仮想マシン スケール セットに対して[割り当て解除](/rest/api/compute/virtualmachinescalesets/deallocate)操作を実行すると、クラスターが破棄されます。
 
 ### <a name="bronze"></a>ブロンズ
 

@@ -11,17 +11,17 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/28/2020
+ms.date: 06/19/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: cded8fef70e22ffebc412ea37898100cda4bb3df
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 4906ea7c3ed3486a4ce089f51916fb8322761fe9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219018"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559542"
 ---
-# <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Monitor ログで使用量とコストを管理する
+# <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Monitor ログで使用量とコストを管理する    
 
 > [!NOTE]
 > この記事では、Azure Monitor ログにかかるコストを理解し、それを制御する方法について説明します。 関連記事の「[使用量と推定コストの監視](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs)」では、さまざまな価格モデルに対する複数の Azure 監視機能全体の使用量と推定コストを表示する方法について説明します。 この記事に記載されているすべての価格とコストは、単に例示を目的としています。 
@@ -32,7 +32,7 @@ Azure Monitor ログは、企業内のソースまたは Azure に展開され�
 
 ## <a name="pricing-model"></a>価格モデル
 
-Log Analytics の既定の料金は、取り込まれたデータの量に基づく**従量課金制**であり、必要に応じてデータの保持期間を長くすることができます。 データ ボリュームは、格納されるデータのサイズとして測定されます。 各 Log Analytics ワークスペースは個々のサービスとして課金され、Azure サブスクリプションの課金内容に加えられます。 データ インジェストの量は、次の要因に大きく依存する可能性があります。 
+Log Analytics の既定の料金は、取り込まれたデータの量に基づく**従量課金制**であり、必要に応じてデータの保持期間を長くすることができます。 データ量は、GB (10^9 バイト) 単位で格納されるデータのサイズとして測定されます。 各 Log Analytics ワークスペースは個々のサービスとして課金され、Azure サブスクリプションの課金内容に加えられます。 データ インジェストの量は、次の要因に大きく依存する可能性があります。 
 
   - 有効にされている管理ソリューションの数とその構成
   - 監視対象 VM の数
@@ -40,7 +40,7 @@ Log Analytics の既定の料金は、取り込まれたデータの量に基づ
   
 従量課金制モデルに加えて、Log Analytics には**容量予約**レベルがあります。これにより、従量課金制の料金と比較して 25 % も節約できます。 容量予約の価格を選択すると、1 日あたり 100 GB から予約を購入できます。 予約レベルを超える使用量は、従量課金制で請求されます。 容量予約レベルには、31 日間のコミットメント期間があります。 コミットメント期間中は、より高いレベルの容量予約レベルに変更できます (これにより 31 日間のコミットメント期間が再スタートされます) が、コミットメント期間が終了するまでは、従量課金制または低い容量予約レベルに戻ることはできません。 容量予約レベルの課金は 1 日単位で行われます。 Log Analytics の従量課金制および容量予約の価格の詳細については、[こちら](https://azure.microsoft.com/pricing/details/monitor/)をご覧ください。 
 
-すべての価格レベルで、データ ボリュームは、格納するための準備としてデータの文字列表現から計算されます。 `_ResourceId`、`_ItemId`、`_IsBillable`、`_BilledSize` など、[すべてのデータ型に共通するいくつかのプロパティ](https://docs.microsoft.com/azure/azure-monitor/platform/log-standard-properties)は、イベント サイズの計算に含まれません。
+イベントのデータ サイズは、すべての価格レベルで、このイベントの Log Analytics に格納されているプロパティの文字列形式から計算されます。データがエージェントから送信されたか、インジェスト プロセス中に追加されたかは関係ありません。 これには、データが収集されて Log Analytics に格納されるときに追加されるすべての[カスタム フィールド](https://docs.microsoft.com/azure/azure-monitor/platform/custom-fields)が含まれます。 一部の [Log Analytics 標準プロパティ](https://docs.microsoft.com/azure/azure-monitor/platform/log-standard-properties)を含む、すべてのデータ型に共通するいくつかのプロパティは、イベント サイズの計算から除外されます。 これには、`_ResourceId`、`_ItemId`、`_IsBillable`、`_BilledSize`、および `Type` が含まれます。 Log Analytics に格納されている他のすべてのプロパティは、イベント サイズの計算に含まれます。 AzureActivity、Heartbeat、Usage 型などの一部のデータ型に対しては、データ インジェスト料金は一切かかりません。 イベントがデータ インジェストの課金から除外されたかどうかを確認するには、[以下](#data-volume-for-specific-events)に示すように `_IsBillable` プロパティを使用できます。 使用量は GB (1.0E9 バイト) 単位でレポートされます。 
 
 また、[Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/)、[Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/)、 [構成管理](https://azure.microsoft.com/pricing/details/automation/) などの一部のソリューションには、独自の価格モデルがあります。 
 
@@ -55,7 +55,6 @@ Log Analytics 専用クラスターは、ワークスペースのコレクショ
 1. **クラスター**: この場合 (既定)、取り込まれたデータに対してクラスター レベルで課金されます。 クラスターに関連付けられている各ワークスペースが取り込んだデータ量が集計され、クラスターの日次請求が計算されます。 [Azure Security Center](https://docs.microsoft.com/azure/security-center/) からのノードごとの割り当ては、クラスター内のすべてのワークスペースで集計されるデータのこの集計の前にワークスペース レベルで適用されることに注意してください。 
 
 2. **ワークスペース**: ご使用のクラスターの容量予約コストは、クラスター内のワークスペースに比例します (各ワークスペースに対する [Azure Security Center](https://docs.microsoft.com/azure/security-center/) からのノードごとの割り当てを考慮した後)。1 日の間にワークスペースに取り込まれたデータ ボリュームの合計が容量予約よりも少ない場合、ワークスペースごとに容量予約分として取り込まれたデータに対して有効な 1 GB あたりの容量予約料金で課金され、容量予約の未使用分についてはクラスター リソースに課金されます。 1 日の間にワークスペースに取り込まれたデータ ボリュームの合計が容量予約よりも多い場合、ワークスペースごとにその日に取り込まれたデータの容量予約分について課金され、ワークスペースごとに容量予約を超えて取り込まれたデータ分について課金されます。 1 日の間にワークスペースに取り込まれたデータ ボリュームの合計が容量予約を超えている場合、クラスター リソースに課金されることはありません。
-
 
 クラスター課金オプションでは、データ保持は引き続きワークスペース レベルで課金されます。 クラスターが作成されると、ワークスペースがそのクラスターに関連付けられているかどうかに関係なく、クラスターの課金が開始されることに注意してください。 また、クラスターに関連付けられているワークスペースの価格レベルはなくなりました。
 
@@ -192,10 +191,12 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 
 日次上限を構成して、ワークスペースの毎日のインジェストを制限できますが、1 日の上限に達することが目標ではないので注意する必要があります。  そうしないと、その日の残りの時間についてデータが失われ、ワークスペースで最新のデータが利用できることに依存する機能を持つ他の Azure サービスやソリューションに影響を与える可能性があります。  その結果、IT サービスをサポートするリソースの正常性状態を監視してアラートを受け取る機能が影響を受けます。  日次上限は、マネージド リソースからのデータ ボリュームの予期しない増加を管理して制限内に留めるための手段、またはワークスペースの計画外の料金を制限する手段として使うためのものです。  
 
-日次上限に達するとすぐに、課金対象のデータの種類の収集は、その日はそれ以上行われません。 (1 日の上限の適用には待機時間が内在するため、指定された 1 日の上限レベルが正確には適用されない可能性があります。)選択した Log Analytics ワークスペースのページの上部に警告バナーが表示され、**LogManagement** カテゴリの *Operation* テーブルに操作イベントが送信されます。 [*1 日の上限を次に設定する*] で定義されているリセット時刻が過ぎると、データ収集が再開されます。 この操作イベントに基づいてアラート ルールを定義し、データの日次制限に達したら通知するよう構成することをお勧めします。 
+各ワークスペースには、1 日の異なる時間に適用される 1 日の上限があります。 リセット時間は、 **[日次上限]** ページに表示されます (下記参照)。 このリセット時間は構成できません。 
+
+日次上限に達するとすぐに、課金対象のデータの種類の収集は、その日はそれ以上行われません。 (1 日の上限の適用には待ち時間が内在するため、指定された 1 日の上限レベルが正確には適用されません。)選択した Log Analytics ワークスペースのページの上部に警告バナーが表示され、**LogManagement** カテゴリの *Operation* テーブルに操作イベントが送信されます。 [*1 日の上限を次に設定する*] で定義されているリセット時刻が過ぎると、データ収集が再開されます。 この操作イベントに基づいてアラート ルールを定義し、データの日次制限に達したら通知するよう構成することをお勧めします。 
 
 > [!WARNING]
-> 2017 年 6 月 19 日より前にインストールされた Azure Security Center のワークスペースを除き、1 日の上限では、Azure Security Center からのデータ収集は停止されません。 
+> 2017 年 6 月 19 日より前にインストールされた Azure Security Center のワークスペースを除き、1 日の上限によって Azure Sentinel または Azure Security Center からのデータ収集が停止することはありません。 
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>定義する日次データ制限を明らかにする
 
@@ -206,10 +207,12 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 次の手順では、Log Analytics ワークスペースが 1 日に取り込むデータのボリュームを管理する制限を構成する方法について説明します。  
 
 1. ワークスペースの左ウィンドウから **[使用量と推定コスト]** を選びます。
-2. 選んだワークスペースの **[使用量と推定コスト]** ページの上部にある **[データ ボリュームの管理]** をクリックします。 
+2. 選択したワークスペースの **[使用とコストの見積もり]** ページの上部にある **[Data Cap]\(データの上限\)** をクリックします。 
 3. 日次上限が既定で **[オフ]** になっていますか。 有効にするには、 **[オン]** をクリックし、GB/日でデータ ボリュームの制限を設定します。
 
     ![Log Analytics のデータ制限の構成](media/manage-cost-storage/set-daily-volume-cap-01.png)
+    
+1 日の上限は、[こちら](https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate#workspacecapping)で説明されているように、`WorkspaceCapping` の下の `dailyQuotaGb` パラメーターを設定することにより、ARM を介して構成できます。 
 
 ### <a name="alert-when-daily-cap-reached"></a>1 日の上限に達したら警告する
 
@@ -250,7 +253,7 @@ Heartbeat
 過去 24 時間でデータを送信したノードの数を取得するには、次のクエリを使用します。 
 
 ```kusto
-union withsource = tt * 
+union * 
 | where TimeGenerated > ago(24h)
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
@@ -260,7 +263,7 @@ union withsource = tt *
 データを送信するノードの一覧 (およびそれぞれによって送信されたデータの量) を取得するには、次のクエリを使用できます。
 
 ```kusto
-union withsource = tt * 
+union * 
 | where TimeGenerated > ago(24h)
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
@@ -286,7 +289,7 @@ Event
 | summarize count(), Bytes=sum(_BilledSize) by EventID, bin(TimeGenerated, 1d)
 ``` 
 
-句 `where IsBillable = true` は、取り込み料金がかからない特定のソリューションからのデータの種類を除外することに注意してください。 
+句 `where _IsBillable = true` は、取り込み料金がかからない特定のソリューションからのデータの種類を除外することに注意してください。 `_IsBillable` に関する[詳細情報](log-standard-properties.md#_isbillable)を参照してください。
 
 ### <a name="data-volume-by-solution"></a>ソリューション別のデータ ボリューム
 
@@ -330,11 +333,12 @@ Usage
 `Usage` データ型には、コンピューター レベルの情報は含まれていません。 コンピューターごとに、取り込まれたデータの**サイズ**を表示するには `_BilledSize` [プロパティ](log-standard-properties.md#_billedsize)を使用します。サイズはバイト単位で示されます。
 
 ```kusto
-union withsource = tt * 
+union * 
 | where TimeGenerated > ago(24h)
 | where _IsBillable == true 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
-| summarize BillableDataBytes = sum(_BilledSize) by  computerName | sort by Bytes nulls last
+| summarize BillableDataBytes = sum(_BilledSize) by  computerName 
+| sort by BillableDataBytes nulls last
 ```
 
 `_IsBillable` [プロパティ](log-standard-properties.md#_isbillable)では、取り込まれたデータで課金が発生するかどうかを指定します。 
@@ -342,11 +346,12 @@ union withsource = tt *
 コンピューターごとに取り込まれた請求対象のイベントの**数**を表示するには、次を使用します 
 
 ```kusto
-union withsource = tt * 
+union * 
 | where TimeGenerated > ago(24h)
 | where _IsBillable == true 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
-| summarize eventCount = count() by computerName  | sort by eventCount nulls last
+| summarize eventCount = count() by computerName  
+| sort by eventCount nulls last
 ```
 
 > [!TIP]
@@ -357,24 +362,40 @@ union withsource = tt *
 __コンピューター__ごとに取り込まれたデータの**サイズ**を取得できる Azure でホストされているノードからのデータについては、次のようにリソースへの完全パスを提供する _ResourceId [プロパティ](log-standard-properties.md#_resourceid)を使用します。
 
 ```kusto
-union withsource = tt * 
+union * 
 | where TimeGenerated > ago(24h)
 | where _IsBillable == true 
-| summarize BillableDataBytes = sum(_BilledSize) by _ResourceId | sort by Bytes nulls last
+| summarize BillableDataBytes = sum(_BilledSize) by _ResourceId | sort by BillableDataBytes nulls last
 ```
 
-__Azure サブスクリプションごとに__取り込まれたデータトの**サイズ**を取得できる Azure でホストされているノードからのデータについては、`_ResourceId` プロパティを次のように解析します。
+__Azure サブスクリプションごとに__取り込まれたデータの**サイズ**を取得できる Azure でホストされているノードからのデータについては、次のように `_ResourceId` プロパティを使用してサブスクリプション ID を取得します。
 
 ```kusto
-union withsource = tt * 
+union * 
 | where TimeGenerated > ago(24h)
 | where _IsBillable == true 
-| parse tolower(_ResourceId) with "/subscriptions/" subscriptionId "/resourcegroups/" 
-    resourceGroup "/providers/" provider "/" resourceType "/" resourceName   
-| summarize BillableDataBytes = sum(_BilledSize) by subscriptionId | sort by Bytes nulls last
+| summarize BillableDataBytes = sum(_BilledSize) by _ResourceId
+| extend subscriptionId = split(_ResourceId, "/")[2] 
+| summarize BillableDataBytes = sum(BillableDataBytes) by subscriptionId | sort by BillableDataBytes nulls last
 ```
 
-`subscriptionId` を `resourceGroup` に変更すると、Azure リソース グループごとの課金可能な取り込まれたデータ ボリュームが表示されます。 
+同様に、リソース グループ別にデータ量を取得するには、次のようになります。
+
+```kusto
+union * 
+| where TimeGenerated > ago(24h)
+| where _IsBillable == true 
+| summarize BillableDataBytes = sum(_BilledSize) by _ResourceId
+| extend resourceGroup = split(_ResourceId, "/")[4] 
+| summarize BillableDataBytes = sum(BillableDataBytes) by resourceGroup | sort by BillableDataBytes nulls last
+```
+
+また、必要に応じて、次のように `_ResourceId` をより完全に解析することもできます
+
+```Kusto
+| parse tolower(_ResourceId) with "/subscriptions/" subscriptionId "/resourcegroups/" 
+    resourceGroup "/providers/" provider "/" resourceType "/" resourceName   
+```
 
 > [!TIP]
 > 複数の種類のデータにわたるスキャンは、実行に[多量のリソースを使うため](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane)、これらの `union  *` クエリは多用しないようにします。 サブスクリプション、リソース グループ、またはリソース名ごとの結果が不要な場合は、Usage データ型に関するクエリを実行します。
@@ -424,7 +445,7 @@ union withsource = tt *
 ワークスペースが "ノードごと" のレガシ価格レベルである場合に、ノードとして課金対象になるコンピューターの一覧を取得するには、**課金されるデータの種類**を送信しているノードを探します (一部のデータの種類は無料です)。 これを行うには、`_IsBillable` [プロパティ](log-standard-properties.md#_isbillable)を使用し、完全修飾ドメイン名の左端のフィールドを使用します。 これにより、1 時間あたりの課金対象のデータがあるコンピューターの数が返されます (ノードがカウントされて課金される粒度)。
 
 ```kusto
-union withsource = tt * 
+union * 
 | where _IsBillable == true 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
@@ -498,7 +519,7 @@ let daysToEvaluate = 7; // Enter number of previous days look at (reduce if the 
 let SecurityDataTypes=dynamic(["SecurityAlert", "SecurityBaseline", "SecurityBaselineSummary", "SecurityDetection", "SecurityEvent", "WindowsFirewall", "MaliciousIPCommunication", "LinuxAuditLog", "SysmonEvent", "ProtectionStatus", "WindowsEvent", "Update", "UpdateSummary"]);
 let StartDate = startofday(datetime_add("Day",-1*daysToEvaluate,now()));
 let EndDate = startofday(now());
-union withsource = tt * 
+union * 
 | where TimeGenerated >= StartDate and TimeGenerated < EndDate
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
@@ -542,64 +563,23 @@ union withsource = tt *
 
 ## <a name="create-an-alert-when-data-collection-is-high"></a>収集したデータの量が多い場合のアラートを作成する
 
-このセクションでは、次の場合のアラートを作成する方法について説明します。
-- データ量が指定された量を超えた。
-- データ量が指定された量を超えると予測された。
+このセクションでは、Azure Monitor の[ログ アラート](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)を使用して、過去 24 時間のデータ量が指定された量を超えたことを示すアラートを作成する方法について説明します。 
 
-Azure アラートでは、検索クエリを使用する[ログ アラート](alerts-unified-log.md)をサポートしています。 
-
-次のクエリでは、過去 24 時間で 100 GB を超えるデータが収集された場合に結果が返されます。
-
-```kusto
-union withsource = $table Usage 
-| where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true 
-| extend Type = $table | summarize DataGB = sum((Quantity / 1000.)) by Type 
-| where DataGB > 100
-```
-
-次のクエリでは、簡単な数式を使用して、1 日に 100 GB を超えるデータが送信される場合を予測します。 
-
-```kusto
-union withsource = $table Usage 
-| where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true 
-| extend Type = $table 
-| summarize EstimatedGB = sum(((Quantity * 8) / 1000.)) by Type 
-| where EstimatedGB > 100
-```
-
-別のデータ量でアラートを生成するには、クエリの 100 をアラートを生成する GB 数に変更します。
-
-[新しいログ アラートの作成](alerts-metric.md)に関するページで説明されている手順を使用して、収集したデータの量が予測を超えた場合に通知されるようにします。
-
-最初のクエリ (24 時間でデータが 100 GB を超えた場合) のアラートを作成するには、次のように設定します。  
+過去 24 時間に取り込まれた課金対象データの量が 50 GB を超えた場合に警告するには、次の手順に従います。 
 
 - **[アラートの条件を定義します]** では、リソース ターゲットとして Log Analytics ワークスペースを指定します。
 - **[アラートの条件]** では、以下を指定します。
    - **[シグナル名]** では、 **[カスタム ログ検索]** を選択します。
-   - **[検索クエリ]** : `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1000.)) by Type | where DataGB > 100`
+   - **[検索クエリ]** : `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50`。 他のものが必要な場合 
    - **[アラート ロジック]** は "*結果の数*" **に基づき、** **[条件]** は**しきい値**の *0* "*より大きい*" です
-   - **[期間]** を *1440* 分にします。使用状況データが更新されるのは 1 時間に 1 回のみのため、 **[アラートの頻度]** を *60* 分ごとにします。
+   - 1 日に 1 回実行するため、 **[期間]** を *1,440* 分に設定し、 **[アラートの頻度]** を *1,440* 分間隔に設定します。
 - **[アラートの詳細を定義します]** では、以下を指定します。
-   - **[名前]** : "*24 時間でデータ量が 100 GB を超えた場合*"
+   - **[名前]** : "*24 時間でデータ量が 50 GB を超える課金対象データ*"
    - **[重大度]** : *[警告]*
 
 ログ アラートが条件に一致するときに通知されるように、既存の[アクション グループ](action-groups.md)を指定するか、アクション グループを新たに作成します。
 
-2 つ目のクエリ (24 時間でデータが 100 GB を超えると予測される場合) のアラートを作成するには、次のように設定します。
-
-- **[アラートの条件を定義します]** では、リソース ターゲットとして Log Analytics ワークスペースを指定します。
-- **[アラートの条件]** では、以下を指定します。
-   - **[シグナル名]** では、 **[カスタム ログ検索]** を選択します。
-   - **[検索クエリ]** : `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1000.)) by Type | where EstimatedGB > 100`
-   - **[アラート ロジック]** は "*結果の数*" **に基づき、** **[条件]** は**しきい値**の *0* "*より大きい*" です
-   - **[期間]** を *180* 分にします。使用状況データが更新されるのは 1 時間に 1 回のみのため、 **[アラートの頻度]** を *60* 分ごとにします。
-- **[アラートの詳細を定義します]** では、以下を指定します。
-   - **[名前]** : "*24 時間でデータ量が 100 GB を超えると予想される場合*"
-   - **[重大度]** : *[警告]*
-
-ログ アラートが条件に一致するときに通知されるように、既存の[アクション グループ](action-groups.md)を指定するか、アクション グループを新たに作成します。
-
-アラートを受け取ったら、次のセクションの手順を使用して、使用量が予想よりも多い理由のトラブルシューティングを行います。
+アラートを受け取ったら、上記の、使用量が予想よりも多い理由についてのトラブルシューティングを行う方法に関するセクションの手順を使用します。
 
 ## <a name="data-transfer-charges-using-log-analytics"></a>Log Analytics を使用したデータ転送の料金
 

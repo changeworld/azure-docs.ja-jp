@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3fc44ca18f237fecd1c694e96f9ebc2d5b541757
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d482b3335b31d116846ec64883b43897fcc4e43d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564461"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255661"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Windows Virtual Desktop で Microsoft Teams を使用する
 
@@ -32,7 +32,7 @@ Microsoft Teams のメディア最適化では、Teams を使った通話と会�
 Windows Virtual Desktop で Microsoft Teams を使用するには、次の操作を行う必要があります。
 
 - Microsoft Teams 用の[ネットワークを準備します](/microsoftteams/prepare-network/)。
-- [Windows PC 上で Microsoft Teams を使用するためのハードウェア要件](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/)を満たしている Windows 10 または Windows 10 IoT Enterprise デバイスに [Windows デスクトップ クライアント](connect-windows-7-and-10.md)をインストールします。
+- [Windows PC 上で Microsoft Teams を使用するためのハードウェア要件](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/)を満たしている Windows 10 または Windows 10 IoT Enterprise デバイスに [Windows デスクトップ クライアント](connect-windows-7-10.md)をインストールします。
 - Windows 10 マルチセッションまたは Windows 10 Enterprise 仮想マシン (VM) に接続します。
 - マシン単位のインストールを使って、ホストに Teams のデスクトップ アプリをインストールします。 Microsoft Teams のメディア最適化の利用には、Teams デスクトップ アプリのバージョン 1.3.00.4461 以降が必要です。
 

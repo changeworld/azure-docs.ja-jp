@@ -8,18 +8,35 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/03/2020
+ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: 7ab886b65e665bdd38e2461e49fa051213602f0e
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 3d9fb7f3fa01c06cc778e4062dd1d136e9c6e342
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84462798"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103400"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Text Analytics API の新機能
 
 Text Analytics API は継続的に更新されます。 常に最新の開発情報を把握していただけるよう、この記事では新しいリリースと機能に関する情報を提供します。
+
+## <a name="july-2020"></a>2020 年 7 月
+
+### <a name="text-analytics-for-health-container-public-gated-preview"></a>Text Analytics for Health コンテナーのパブリックのゲート付きプレビュー
+
+Text Analytics for Health コンテナーがパブリックのゲート付きプレビュー段階に入りました。これにより、患者の問診票、医師のメモ、研究論文、退院要約などの臨床ドキュメントに記載されている英語の非構造化テキストから情報を抽出できるようになります。 現在、Text Analytics for Health コンテナーの使用には課金されません。 
+
+コンテナーには、以下の機能が用意されています。
+
+* 名前付きエンティティの認識
+* 関係抽出
+* エンティティ リンク設定
+* 否定
+
+
+> [!div class="nextstepaction"]
+> [Text Analytics for Health コンテナーの詳細情報](how-tos/text-analytics-for-health.md)
 
 ## <a name="may-2020"></a>2020 年 5 月
 
@@ -61,9 +78,6 @@ JSON 応答に含まれる次のプロパティの名前が変更されていま
 ### <a name="text-analytics-api-v31-public-preview"></a>Text Analytics API v3.1 パブリック プレビュー
    * 新しい感情分析機能 - [意見マイニング](how-tos/text-analytics-how-to-sentiment-analysis.md#opinion-mining)
    * 保護された医療情報 (`PHI`) 用の新しい[個人情報 (`PII`) ドメイン フィルター](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)。
-   * 新しい個人情報 (`PII`) カテゴリ:
-      * 国際疾病分類 (ICD-9-CM)
-      * 国際疾病分類 (ICD-10-CM)
 
 > [!div class="nextstepaction"]
 > [Text Analytics API v3.1 プレビューについての詳細](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Languages)

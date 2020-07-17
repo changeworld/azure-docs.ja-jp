@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
-ms.openlocfilehash: ace818adb4c5157675ac3b1d88f5df2ef61d69ee
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a264e40814952577d3a7db3b36c168dfc396f388
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84027053"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85249167"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>抽出されたデータを使用したクロステナント分析 - マルチテナント アプリ
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -90,8 +90,8 @@ ms.locfileid: "84027053"
 次の手順では、**tenantanalytics** という分析ストアをデプロイします。 このチュートリアルで後ほど設定する、定義済みのテーブルもデプロイします。
 1. PowerShell ISE で *…\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1* を開きます。 
 2. 選択した分析ストアに合わせて、スクリプト内の $DemoScenario 変数を設定します。 学習目的のため、列ストアなしのデータベースの使用をお勧めします。
-    - 列ストアを使用せずに SQL データベースを使用するには、 **$DemoScenario** = **2** と設定します。
-    - 列ストアを使用して SQL データベースを使用するには、 **$DemoScenario** = **3** と設定します。  
+    - 列ストアを使用せずに SQL Database を使用するには、 **$DemoScenario** = **2** と設定します
+    - 列ストアを使用して SQL Database を使用するには、 **$DemoScenario** = **3** と設定します  
 3. **F5** キーを押して、テナント分析ストアを作成するデモ スクリプト (*Deploy-TenantAnalytics\<XX>.ps1* スクリプトを呼び出すスクリプト) を実行します。 
 
 アプリケーションをデプロイし、対象のテナント データを入力しました。次に、[SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) を使用して、**tenants1-mt-\<User\>** サーバーと **catalog-mt-\<User\>** サーバーを接続します。[ログイン] に「*developer*」、[パスワード] に「*P\@ssword1*」を使用します。

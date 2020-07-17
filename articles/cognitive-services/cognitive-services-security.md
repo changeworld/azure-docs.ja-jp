@@ -1,21 +1,21 @@
 ---
-title: Security
+title: セキュリティ
 titleSuffix: Azure Cognitive Services
 description: Cognitive Services を使用するときに考慮する必要のあるセキュリティに関する事柄について説明します。
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.author: dapine
+ms.date: 06/30/2020
+ms.author: aahi
 ms.custom: tracking-python
-ms.openlocfilehash: be1f6bd05069024194cb9312b17941c609d544dd
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: d97b944d5d18a39d6eaf84b55363f487a2c17dbf
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608453"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611409"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure Cognitive Services のセキュリティ
 
@@ -201,11 +201,11 @@ NSString* value =
 
 カスタマー ロックボックスはこのコグニティブ サービスで利用できます。
 
-* [変換者]
+* Translator
 
 Language Understanding については、Microsoft のエンジニアが E0 SKU の顧客データにアクセスすることはありません。 E0 SKU を使用するための機能を要求するには、 [LUIS サービス要求フォーム](https://aka.ms/cogsvc-cmk)に記入し、提出してください。 要求の状態について連絡を差し上げるまで、約 3 から 5 営業日かかります。 要求によっては、お客様は待ち行列に登録され、スペースが利用できるようになってから承認される場合があります。 LUIS での E0 SKU の使用が承認されたら、Azure portal から新しい Language Understanding リソースを作成し、価格レベルとして E0 を選択する必要があります。 ユーザーは、F0 を新しい E0 SKU にアップグレードすることはできません。
 
-Speech サービスでは、現在、カスタマー ロックボックスはサポートされていません。 ただし、BYOS を使用すれば顧客データを格納することができるため、[カスタマー ロックボックス](../security/fundamentals/customer-lockbox-overview.md)と類似のデータ管理を実現できます。 Speech サービスのデータは保持され、Speech リソースが作成されたリージョンで処理されることに注意してください。 これは、保存データと転送中のデータに適用されます。 Custom Speech や Custom Voice などのカスタマイズ機能を使用する場合、顧客データはすべて、BYOS (使用されている場合) と Speech サービス リソースが存在しているのと同じリージョンで転送、格納、および処理されます。
+Speech サービスでは、現在、カスタマー ロックボックスはサポートされていません。 ただし、BYOS ("独自のストレージの持ち込み") を使用すれば顧客データを格納することができるため、[カスタマー ロックボックス](../security/fundamentals/customer-lockbox-overview.md)と類似のデータ管理を実現できます。 Speech サービスのデータは保持され、Speech リソースが作成されたリージョンで処理されることに注意してください。 これは、保存データと転送中のデータに適用されます。 Custom Speech や Custom Voice などのカスタマイズ機能を使用する場合、顧客データはすべて、BYOS (使用されている場合) と Speech サービス リソースが存在しているのと同じリージョンで転送、格納、および処理されます。
 
 > [!IMPORTANT]
 > Microsoft では、Speech モデルを改善するためにお客様のデータを**使用するということはありません**。 また、エンドポイントのログ記録が無効になっていて、カスタマイズが使用されていない場合、顧客データは格納されません。 

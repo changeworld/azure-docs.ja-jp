@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 5547c78007d38788d71e84f8fbf3ca8b60dc1576
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: cdefca11131a16630e600385bf350465fccc228f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86101751"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206660"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>ポータルを使用して Azure Database for MySQL 用のプライベート リンクを作成および管理する
 
@@ -166,7 +166,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     | ------- | ----- |
     |**ネットワーク**| |
     | 仮想ネットワーク| *[MyVirtualNetwork]* を選択します。 |
-    | Subnet |  *[mySubnet]* を選択します。 |
+    | Subnet | *[mySubnet]* を選択します。 |
     |**プライベート DNS 統合**||
     |プライベート DNS ゾーンとの統合 |**[はい]** を選択します。 |
     |プライベート DNS ゾーン |*[(新規)privatelink.mysql.database.azure.com]* を選択します。 |
@@ -211,7 +211,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="access-the-mysql-server-privately-from-the-vm"></a>VM から MySQL サーバーにプライベートにアクセスする
 
-1.  *myVM* のリモート デスクトップで、PowerShell を開きます。
+1. *myVM* のリモート デスクトップで、PowerShell を開きます。
 
 2. 「 `nslookup  myServer.privatelink.mysql.database.azure.com`」と入力します。 
 
@@ -248,7 +248,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 プライベート エンドポイント、MySQL サーバー、VM を使い終えたら、リソース グループとそこに含まれるすべてのリソースを削除します。
 
-1. ポータルの上部にある**検索**ボックスに「 *myResourceGroup*」と入力し、検索結果から  *myResourceGroup* を選択します。
+1. ポータルの上部にある**検索**ボックスに「*myResourceGroup*」と入力し、検索結果から *myResourceGroup* を選択します。
 2. **[リソース グループの削除]** を選択します。
 3. **[TYPE THE RESOURCE GROUP NAME]\(リソース グループ名を入力してください\)** に「myResourceGroup」と入力し、 **[削除]** を選択します。
 

@@ -5,14 +5,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: b9a855a89a37cde0be3c30b2428c32db361aa2e8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e00ab059c68d7a3f2288d94894199773cab63ac5
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021689"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039298"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>SQL Database からの参照データを Azure Stream Analytics ジョブに使用する
 
@@ -69,7 +69,7 @@ Visual Studio を使用して参照入力ソースとして Azure SQL Database �
 
 ### <a name="create-a-sql-database-table"></a>SQL Database テーブルの作成
 
-SQL Server Management Studio を使用して、参照データを格納するためのテーブルを作成します。 詳しくは、「[SSMS を使用して最初の Azure SQL データベースを設計する](../azure-sql/database/design-first-database-tutorial.md)」をご覧ください。
+SQL Server Management Studio を使用して、参照データを格納するためのテーブルを作成します。 詳しくは、[SSMS を使用した最初の Azure SQL Database の設計](../azure-sql/database/design-first-database-tutorial.md)に関するチュートリアルをご覧ください。
 
 後の例で使用するテーブルの例は、次のステートメントで作成しました。
 
@@ -115,7 +115,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 4. エディターで SQL ファイルを開き、SQL クエリを記述します。
 
-5. Visual Studio 2019 を使用していて、SQL Server Data Tools をインストールしている場合は、 **[実行]** をクリックしてクエリをテストできます。 SQL Database への接続を支援するウィザード ウィンドウがポップアップし、クエリの結果が下部のウィンドウに表示されます。
+5. Visual Studio 2019 を使用していて、SQL Server Data Tools をインストールしている場合は、 **[実行]** をクリックしてクエリをテストできます。 SQL Database への接続を支援するウィザード ウィンドウがポップアップし、クエリの結果がウィンドウの下部に表示されます。
 
 ### <a name="specify-storage-account"></a>ストレージ アカウントを指定する
 
@@ -147,7 +147,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
    ```
 2. スナップショット クエリを作成します。 
 
-   **\@snapshotTime** パラメーターを使用して、システム時刻で有効な SQL Database のテンポラル テーブルから参照データ セットを取得するよう Stream Analytics ランタイムに指示します。 このパラメーターを指定しないと、クロックのずれが原因で不正確な基本参照データ セットを取得する可能性があります。 完全なスナップショット クエリの例を以下に示します。
+   **\@snapshotTime** パラメーターを使用して、システム時刻において有効であった SQL Database の一時テーブルから参照データ セットを取得するよう Stream Analytics ランタイムに指示します。 このパラメーターを指定しないと、クロックのずれが原因で不正確な基本参照データ セットを取得する可能性があります。 完全なスナップショット クエリの例を以下に示します。
    ```SQL
       SELECT DeviceId, GroupDeviceId, [Description]
       FROM dbo.DeviceTemporal

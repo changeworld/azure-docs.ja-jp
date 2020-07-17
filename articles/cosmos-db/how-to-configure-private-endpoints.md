@@ -4,14 +4,14 @@ description: 仮想ネットワークのプライベート IP アドレスを使
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 06/11/2020
+ms.date: 07/10/2020
 ms.author: thweiss
-ms.openlocfilehash: 1ee468b99cddeb5f18f78a6d1298c8959bda075b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb1310d0f45f945fc150e0ae011ede0d102a5918
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261632"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259110"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Azure Cosmos アカウントの Azure Private Link を構成する
 
@@ -655,8 +655,6 @@ Azure Cosmos アカウントで Private Link を使用する場合は、次の�
 * Azure Cosmos DB の MongoDB 用 API アカウントを使用している場合で、プライベート リンクがある場合、一部のツールやライブラリでは、接続文字列から `appName` パラメーターが自動的に除去されるため、正常に機能しないことがあります。 このパラメーターは、プライベート エンドポイント経由でアカウントに接続するために必要です。 一部のツール (Visual Studio Code など) では、このパラメーターが接続文字列から削除されないので、互換性が維持されます。
 
 * 自動承認されるプライベート エンドポイントを作成するには、Azure Cosmos アカウント スコープで少なくとも `Microsoft.DocumentDB/databaseAccounts/PrivateEndpointConnectionsApproval/action` アクセス許可がネットワーク管理者に付与されている必要があります。
-
-* 直接モードは、中国ベースの Azure リージョンでは現在サポートされていません。
 
 ### <a name="limitations-to-private-dns-zone-integration"></a>プライベート DNS ゾーンの統合に関する制限事項
 

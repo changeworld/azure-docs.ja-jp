@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7c81c4cd72a34f69632c2b1264ba2d276ff03de4
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 6c8c93c8721527d506847e394a02fc4eb5a98c47
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118597"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85248362"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>チュートリアル:Data Factory を使用した Blob Storage から SQL Database へのデータのコピー
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ ms.locfileid: "84118597"
 
 * **Azure サブスクリプション**。  サブスクリプションがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/) のページを参照してください。
 * **Azure ストレージ アカウント**。 このチュートリアルでは、BLOB ストレージを **ソース** データ ストアとして使用します。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「 [ストレージ アカウントの作成](../../storage/common/storage-account-create.md) 」をご覧ください。
-* **Azure SQL データベース**。 このチュートリアルでは、Azure SQL データベースを **コピー先** データ ストアとして使用します。 このチュートリアルで使用できる Azure SQL データベースがない場合の作成方法については、「 [Azure SQL Database を作成して構成する方法](../../sql-database/sql-database-get-started.md) 」を参照してください。
+* **Azure SQL データベース**。 このチュートリアルでは、Azure SQL Database を**コピー先**データ ストアとして使用します。 このチュートリアルで使用できるデータベースが Azure SQL Database にない場合は、[Azure SQL Database でデータベースを作成および構成する方法](../../sql-database/sql-database-get-started.md)に関するページを参照してデータベースを作成してください。
 * **SQL Server 2012/2014 または Visual Studio 2013**。 サンプル データベースを作成し、結果データをデータベースに表示するには、SQL Server Management Studio または Visual Studio を使用します。  
 
 ## <a name="collect-blob-storage-account-name-and-key"></a>BLOB ストレージ アカウントの名前とキーを収集する
@@ -66,7 +66,7 @@ ms.locfileid: "84118597"
 7. **[X]** をクリックしてすべてのブレードを閉じます。
 
 ## <a name="collect-sql-server-database-user-names"></a>SQL サーバー、データベース、ユーザーの名前を収集する
-このチュートリアルを実行するには、論理 SQL サーバー名、データベース名、ユーザー名が必要です。 Azure SQL データベースの**サーバー**、**データベース**、**ユーザー**の名前をメモしておきます。
+このチュートリアルを実行するには、論理 SQL サーバー名、データベース名、ユーザー名が必要です。 Azure SQL Database の**サーバー**、**データベース**、**ユーザー**の名前をメモしておきます。
 
 1. **Azure Portal** で、左側にある **[すべてのサービス]** をクリックし、 **[SQL データベース]** を選択します。
 2. **[SQL データベース]** ブレードで、このチュートリアルで使用する**データベース**を選択します。 **データベース名**をメモしておきます。  
@@ -83,7 +83,7 @@ Data Factory サービスからサーバーにアクセスできるように、�
 4. **[X]** をクリックしてすべてのブレードを閉じます。
 
 ## <a name="prepare-blob-storage-and-sql-database"></a>Blob Storage と SQL Database を準備する
-ここからは、次の手順を実行して、チュートリアルで使用する Azure Blob Storage と Azure SQL データベースを準備します。  
+ここからは、次の手順を実行して、チュートリアルで使用する Azure Blob Storage と Azure SQL Database を準備します。  
 
 1. メモ帳を起動します。 次のテキストを貼り付け、**emp.txt** という名前でハード ドライブの **C:\ADFGetStarted** フォルダーに保存します。
 

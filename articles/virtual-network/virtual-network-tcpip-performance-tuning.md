@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/02/2019
 ms.author: rimayber
 ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
-ms.openlocfilehash: bb23484903ac3ce129c6e7a7a27e0765c227fb1d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dc77f3267813bd049274f44e43c4d64b0eb3801e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68297777"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120281"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Azure VM の TCP/IP パフォーマンス チューニング
 
@@ -136,7 +136,7 @@ Azure の場合、TCP MSS クランプを 1,350 バイトに設定し、トン�
 
 `minimum RTT = 2 * (Distance in kilometers / Speed of propagation)`
 
-伝播の速度には、200 を使用できます。 これは、光が 1 ミリ秒に移動する、メートル単位の距離です。
+伝播の速度には、200 を使用できます。 これは、光が 1 ミリ秒に移動する、キロメートル単位の距離です。
 
 例として、ニューヨークからサンフランシスコを取り上げてみましょう。 直線距離は、4,148 km です。 式に値を代入すると、次の解が得られます。
 

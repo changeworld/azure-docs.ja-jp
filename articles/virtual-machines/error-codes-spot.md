@@ -4,15 +4,15 @@ description: スポット VM とスケール セットのインスタンスを�
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 5a34dc2b9468c6c5af4af0e0addfd8b9ebb7e792
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 4625a0fa75f992ac18eeb91629af373a426aa955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547812"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84676575"
 ---
 # <a name="error-messages-for-spot-vms-and-scale-sets"></a>スポット VM とスケール セットのエラー メッセージ
 
@@ -21,7 +21,7 @@ ms.locfileid: "80547812"
 
 | Key | Message | 説明 |
 |-----|---------|-------------|
-| SkuNotAvailable | リソース '\<resource\>' に要求された階層は、場所 '\<location\>' ではサブスクリプション '\<subscriptionID\>' に対して現在使用できません。 別の階層を試すか、別の場所にデプロイしてください。 | この場所には、VM またはスケール セットのインスタンスを作成するための十分な Azure スポットの容量がありません。 |
+| SkuNotAvailable | リソース "\<resource\>" に要求された階層は、場所 "\<location\>" ではサブスクリプション "\<subscriptionID\>" に対して現在使用できません。 別の階層を試すか、別の場所にデプロイしてください。 | この場所には、VM またはスケール セットのインスタンスを作成するための十分な Azure スポットの容量がありません。 |
 | EvictionPolicyCanBeSetOnlyOnAzureSpotVirtualMachines  |  排除ポリシーは、Azure Spot Virtual Machines のみで設定できます。 | この VM はスポット VM ではないため、排除ポリシーを設定することはできません。 |
 | AzureSpotVMNotSupportedInAvailabilitySet  |  Azure Spot Virtual Machine は、可用性セットではサポートされていません。 | スポット VM を使用するか、可用性セット内の VM を使用するかを選択する必要があります。両方を選択することはできません。 |
 | AzureSpotFeatureNotEnabledForSubscription  |  Azure スポット機能でサブスクリプションが有効になっていません。 | スポット VM をサポートするサブスクリプションを使用してください。 |

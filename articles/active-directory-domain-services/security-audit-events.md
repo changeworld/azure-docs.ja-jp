@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/10/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: ce910b553e14d09eefa35efc5f2973337dfa1309
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: c86f98fb20af2cd5ac969867cabfdc5dcb62db54
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654676"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039893"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services でセキュリティ監査を有効にする
 
@@ -25,7 +25,7 @@ Azure Active Directory Domain Services (Azure AD DS) セキュリティ監査を
 Azure ストレージ内にイベントをアーカイブし、Azure Event Hubs を使用してセキュリティ情報およびイベント管理 (SIEM) ソフトウェア (または同等のもの) にイベントをストリーム配信したり、Azure portal から Azure Log Analytics ワークスペースを使用して独自の分析を行ったりすることができます。
 
 > [!IMPORTANT]
-> Azure AD DS セキュリティ監査は、Azure Resource Manager ベースのインスタンスでのみ使用できます。 移行方法の詳細については、「[クラシック仮想ネットワーク モデルから Resource Manager への Azure AD DS の移行][migrate-azure-adds]」を参照してください。
+> Azure AD DS セキュリティ監査は、Azure Resource Manager ベースのマネージド ドメインでのみ使用できます。 移行方法の詳細については、「[クラシック仮想ネットワーク モデルから Resource Manager への Azure AD DS の移行][migrate-azure-adds]」を参照してください。
 
 ## <a name="security-audit-destinations"></a>セキュリティ監査の出力先
 
@@ -159,11 +159,11 @@ AADDomainServicesAccountManagement
 
 ### <a name="sample-query-2"></a>サンプル クエリ 2
 
-2020 年 2 月 3 日午前 9 時から 2019 年 2 月 10 日午前 0 時までのすべてのアカウント ロックアウト イベント (*4740*) を、 日時の昇順でソートして表示します。
+2020 年 6 月 3 日午前 9 時から 2020 年 6 月 10 日午前 0 時までのすべてのアカウント ロックアウト イベント (*4740*) を、 日時の昇順でソートして表示します。
 
 ```Kusto
 AADDomainServicesAccountManagement
-| where TimeGenerated >= datetime(2020-02-03 09:00) and TimeGenerated <= datetime(2020-02-10)
+| where TimeGenerated >= datetime(2020-06-03 09:00) and TimeGenerated <= datetime(2020-06-10)
 | where OperationName has "4740"
 | sort by TimeGenerated asc
 ```

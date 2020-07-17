@@ -1,7 +1,7 @@
 ---
 title: Azure SQL データを検索する
 titleSuffix: Azure Cognitive Search
-description: Azure Cognitive Search でのフルテキスト検索用のインデクサーを使用して Azure SQL Database からデータをインポートします。 この記事では、接続、インデクサーの構成、およびデータの取り込みについて説明します。
+description: Azure Cognitive Search のフルテキスト検索用のインデクサーを使用して Azure SQL Database または SQL Managed Instance からデータをインポートします。 この記事では、接続、インデクサーの構成、およびデータの取り込みについて説明します。
 manager: nitinme
 author: mgottein
 ms.author: magottei
@@ -9,20 +9,20 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c09727e8d92a449b41124eae6ad8381d66cb2619
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 862b3056445bddb358e6485ce5fec4de4d53eace
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74113307"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039281"
 ---
-# <a name="connect-to-and-index-azure-sql-database-content-using-an-azure-cognitive-search-indexer"></a>Azure SQL Database に接続し、Azure Cognitive Search インデクサーを使用してコンテンツのインデックスを作成する
+# <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>Azure SQL に接続し、Azure Cognitive Search インデクサーを使用してコンテンツのインデックスを作成する
 
-[Azure Search インデックス](search-what-is-an-index.md)を照会するには、先に Azure Cognitive Search インデックスにデータを入力する必要があります。 データが Azure SQL データベースに存在する場合は、**Azure SQL Database 用 Azure Cognitive Search インデクサー** (**Azure SQL インデクサー**) でインデックス作成プロセスを自動化できます。これは、記述するコードと対処するインフラストラクチャが減ることを意味します。
+[Azure Search インデックス](search-what-is-an-index.md)を照会するには、先に Azure Cognitive Search インデックスにデータを入力する必要があります。 データが Azure SQL Database または SQL Managed Instance に存在する場合は、**Azure SQL Database 用 Azure Cognitive Search インデクサー** (**Azure SQL インデクサー**) でインデックス作成プロセスを自動化できます。これにより、記述するコードと対処するインフラストラクチャが減ります。
 
-この記事では[インデクサー](search-indexer-overview.md)使用のしくみだけでなく、Azure SQL データベースでのみ使用できる機能 (統合された変更追跡など) についても説明します。 
+この記事では[インデクサー](search-indexer-overview.md)を使用するしくみだけでなく、Azure SQL Database または SQL Managed Instance でのみ使用できる機能 (統合された変更追跡など) についても説明します。 
 
-Azure SQL データベースだけでなく、Azure Cognitive Search では [Azure Cosmos DB](search-howto-index-cosmosdb.md)、[Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)、[Azure Table Storage](search-howto-indexing-azure-tables.md) 用のインデクサーも用意されています。 その他のデータ ソースについてのサポートを希望する場合は、[Azure Cognitive Search フィードバック フォーラム](https://feedback.azure.com/forums/263029-azure-search/)でフィードバックをお寄せください。
+Azure SQL Database と SQL Managed Instance に加え、Azure Cognitive Search では [Azure Cosmos DB](search-howto-index-cosmosdb.md)、[Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)、[Azure Table Storage](search-howto-indexing-azure-tables.md) 用のインデクサーも用意されています。 その他のデータ ソースについてのサポートを希望する場合は、[Azure Cognitive Search フィードバック フォーラム](https://feedback.azure.com/forums/263029-azure-search/)でフィードバックをお寄せください。
 
 ## <a name="indexers-and-data-sources"></a>インデクサーとデータ ソース
 
@@ -62,7 +62,7 @@ Azure SQL インデクサーのセットアップと構成には次を使用で�
 1. データ ソースを作成します。
 
    ```
-    POST https://myservice.search.windows.net/datasources?api-version=2019-05-06
+    POST https://myservice.search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: admin-key
 
@@ -80,8 +80,8 @@ Azure SQL インデクサーのセットアップと構成には次を使用で�
 
 3. 名前を指定し、データ ソースとターゲット インデックスを参照することによって、インデクサーを作成します。
 
-    ```
-    POST https://myservice.search.windows.net/indexers?api-version=2019-05-06
+   ```
+    POST https://myservice.search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: admin-key
 
@@ -90,12 +90,14 @@ Azure SQL インデクサーのセットアップと構成には次を使用で�
         "dataSourceName" : "myazuresqldatasource",
         "targetIndexName" : "target index name"
     }
-    ```
+   ```
 
 この方法で作成されたインデクサーには、スケジュールがありません。 作成すると自動的に 1 回実行されます。 **インデクサー実行** 要求を使用して、いつでも再び実行できます。
 
-    POST https://myservice.search.windows.net/indexers/myindexer/run?api-version=2019-05-06
+```
+    POST https://myservice.search.windows.net/indexers/myindexer/run?api-version=2020-06-30
     api-key: admin-key
+```
 
 インデクサーの動作の一部 (バッチ サイズ、インデクサーの実行が失敗する前にスキップできるドキュメントの数など) をカスタマイズできます。 詳細については、[インデクサーの作成 API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer) に関するページをご覧ください。
 
@@ -103,11 +105,14 @@ Azure サービスにデータベースへの接続を許可することが必�
 
 インデクサーの状態および実行履歴 (インデックスを作成された項目の数、エラーなど) を監視するには、 **インデクサーの状態** 要求を使用します。
 
-    GET https://myservice.search.windows.net/indexers/myindexer/status?api-version=2019-05-06
+```
+    GET https://myservice.search.windows.net/indexers/myindexer/status?api-version=2020-06-30
     api-key: admin-key
+```
 
 応答は、次のようになります。
 
+```
     {
         "\@odata.context":"https://myservice.search.windows.net/$metadata#Microsoft.Azure.Search.V2015_02_28.IndexerExecutionInfo",
         "status":"running",
@@ -138,14 +143,16 @@ Azure サービスにデータベースへの接続を許可することが必�
             ... earlier history items
         ]
     }
+```
 
 実行履歴には、最近完了した 50 件の実行内容が含まれ、時系列の逆の順に並べられます (そのため、最近の実行内容が応答の最初に表示されます)。
-応答の詳細については、「 [Get Indexer Status (インデクサーの状態の取得)](https://go.microsoft.com/fwlink/p/?LinkId=528198)
+応答の詳細については、「 [Get Indexer Status (インデクサーの状態の取得)](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)
 
 ## <a name="run-indexers-on-a-schedule"></a>スケジュールに従ったインデクサーの実行
 スケジュールに従って定期的に実行するようにインデクサーを調整することもできます。 そのためには、インデクサーを作成または更新するときに、**schedule** プロパティを追加します。 次の例では、インデクサーを更新する PUT 要求を示します。
 
-    PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2019-05-06
+```
+    PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2020-06-30
     Content-Type: application/json
     api-key: admin-key
 
@@ -154,6 +161,7 @@ Azure サービスにデータベースへの接続を許可することが必�
         "targetIndexName" : "target index name",
         "schedule" : { "interval" : "PT10M", "startTime" : "2015-01-01T00:00:00Z" }
     }
+```
 
 **interval** パラメーターは必須です。 interval は、連続する 2 つのインデクサー実行の開始の時間間隔を示します。 許可される最短の間隔は 5 分です。最長は 1 日です。 XSD "dayTimeDuration" 値 ([ISO 8601 期間](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)値の制限されたサブセット) として書式設定する必要があります。 使用されるパターンは、`P(nD)(T(nH)(nM))` です。 たとえば、15 分ごとの場合は `PT15M`、2 時間ごとの場合は `PT2H` です。
 
@@ -172,7 +180,7 @@ SQL データベースが [変更追跡](https://docs.microsoft.com/sql/relation
 
 + データベースのバージョンの要件:
   * Azure VM で SQL Server を使用している場合は、SQL Server 2012 SP3 以降。
-  * Azure SQL Database を使用している場合は、Azure SQL Database V12。
+  * Azure SQL Database または SQL Managed Instance。
 + テーブルのみ (ビューなし)。 
 + データベースでテーブルの[変更の追跡を有効にしている](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-tracking-sql-server)。 
 + テーブルに複合主キー (複数の列を含む主キー) がない。  
@@ -181,6 +189,7 @@ SQL データベースが [変更追跡](https://docs.microsoft.com/sql/relation
 
 このポリシーを使用するには、データ ソースを次のように作成または更新します。
 
+```
     {
         "name" : "myazuresqldatasource",
         "type" : "azuresql",
@@ -190,6 +199,7 @@ SQL データベースが [変更追跡](https://docs.microsoft.com/sql/relation
            "@odata.type" : "#Microsoft.Azure.Search.SqlIntegratedChangeTrackingPolicy"
       }
     }
+```
 
 SQL 統合変更追跡ポリシーを使用するときは、個別のデータ削除検出ポリシーを指定しないでください。個別のデータ削除ポリシーには、削除された行を識別するためのサポートが組み込まれています。 ただし、削除が "自動的に" 検出されるためには、検索インデックスのドキュメント キーが SQL テーブルの主キーと同じである必要があります。 
 
@@ -216,6 +226,7 @@ SQL 統合変更追跡ポリシーを使用するときは、個別のデータ�
 
 高基準値ポリシーを使用するには、データ ソースを次のように作成または更新します。
 
+```
     {
         "name" : "myazuresqldatasource",
         "type" : "azuresql",
@@ -226,27 +237,59 @@ SQL 統合変更追跡ポリシーを使用するときは、個別のデータ�
            "highWaterMarkColumnName" : "[a rowversion or last_updated column name]"
       }
     }
+```
 
 > [!WARNING]
 > ソース テーブルの高基準列にインデックスがない場合、SQL インデクサーが使用するクエリはタイムアウトになる可能性があります。具体的には、多くの行が含まれるテーブルに対してクエリを効率的に実行するには、`ORDER BY [High Water Mark Column]` 句にはインデックスが必要です。
 >
 >
 
+<a name="convertHighWaterMarkToRowVersion"></a>
+
+##### <a name="converthighwatermarktorowversion"></a>convertHighWaterMarkToRowVersion
+
+高基準値列に [rowversion](https://docs.microsoft.com/sql/t-sql/data-types/rowversion-transact-sql) データ型を使用している場合は、`convertHighWaterMarkToRowVersion` インデクサー構成設定を使用することを検討してください。 `convertHighWaterMarkToRowVersion` は次の 2 つの処理を行います。
+
+* インデクサー SQL クエリ内の高基準値列に rowversion データ型を使用します。 正しいデータ型を使用することで、インデクサー クエリのパフォーマンスが向上します。
+* インデクサー クエリが実行される前に、rowversion 値から 1 を減算します。 1 対多の結合を含むビューには、重複する rowversion 値を持つ行が含まれる場合があります。 1 を減算すると、インデクサー クエリはこれらの行を見逃すことがなくなります。
+
+この機能を有効にするには、次の構成を使用してインデクサーを作成または更新します。
+
+```
+    {
+      ... other indexer definition properties
+     "parameters" : {
+            "configuration" : { "convertHighWaterMarkToRowVersion" : true } }
+    }
+```
+
+<a name="queryTimeout"></a>
+
+##### <a name="querytimeout"></a>queryTimeout
+
 タイムアウト エラーを発生した場合は、`queryTimeout` インデクサー構成設定を使用すると、クエリのタイムアウトを、既定の 5 分よりも大きい値に設定できます。 たとえば、タイムアウトを 10 分に設定するには、次の構成でインデクサーを作成または更新します。
 
+```
     {
       ... other indexer definition properties
      "parameters" : {
             "configuration" : { "queryTimeout" : "00:10:00" } }
     }
+```
+
+<a name="disableOrderByHighWaterMarkColumn"></a>
+
+##### <a name="disableorderbyhighwatermarkcolumn"></a>disableOrderByHighWaterMarkColumn
 
 `ORDER BY [High Water Mark Column]` 句を無効にすることもできます。 ただし、これはお勧めしません。インデクサーの実行がエラーで中断された場合、その時点でほぼすべての行の処理が完了していても、そのインデクサーが後で実行されたときに、すべての行を再処理しなければならないためです。 `ORDER BY` 句を無効にするには、インデクサー定義で `disableOrderByHighWaterMarkColumn` 設定を使用します。  
 
+```
     {
      ... other indexer definition properties
      "parameters" : {
             "configuration" : { "disableOrderByHighWaterMarkColumn" : true } }
     }
+```
 
 ### <a name="soft-delete-column-deletion-detection-policy"></a>論理削除列削除検出ポリシー
 ソース テーブルから行が削除されると、おあそらく検索インデックスからも同様に行を削除する必要があります。 SQL 統合変更追跡ポリシーを使用する場合、これは自動的に行われます。 ただし、高基準変更追跡ポリシーでは行は削除されません。 どうすればよいでしょうか。
@@ -255,6 +298,7 @@ SQL 統合変更追跡ポリシーを使用するときは、個別のデータ�
 
 論理削除手法を使用する場合は、データ ソースを作成または更新するときに、次のような論理削除ポリシーを指定できます。
 
+```
     {
         …,
         "dataDeletionDetectionPolicy" : {
@@ -263,6 +307,7 @@ SQL 統合変更追跡ポリシーを使用するときは、個別のデータ�
            "softDeleteMarkerValue" : "[the value that indicates that a row is deleted]"
         }
     }
+```
 
 **softDeleteMarkerValue** は、文字列にする必要があります。実際の値の文字列表現を使用してください。 たとえば、削除された行が値 1 でマークされている整数列がある場合は、`"1"` を使用します。 削除された行が BIT 列でブール型の true 値でマークされている場合は、文字列リテラル `True` または `true` を使用します。大文字/小文字は区別されません。
 
@@ -293,11 +338,13 @@ SQL インデクサーが公開している構成設定をいくつか次に示�
 
 こうした設定は、インデクサー定義の `parameters.configuration` オブジェクトで使用されます。 たとえば、クエリのタイムアウトを 10 分に設定するには、次の構成でインデクサーを作成または更新します。
 
+```
     {
       ... other indexer definition properties
      "parameters" : {
             "configuration" : { "queryTimeout" : "00:10:00" } }
     }
+```
 
 ## <a name="faq"></a>よく寄せられる質問
 
@@ -327,13 +374,13 @@ SQL インデクサーが公開している構成設定をいくつか次に示�
 
 Azure Cognitive Searchでは、増分インデックス作成用に、SQL 統合変更追跡と高基準値という 2 つの変更検出ポリシーがサポートされています。
 
-読み取り専用のレプリカでは、SQL データベースは統合変更追跡に対応しません。 そのため、高基準値ポリシーを使用する必要があります。 
+読み取り専用のレプリカでは、SQL Database は統合変更追跡に対応しません。 そのため、高基準値ポリシーを使用する必要があります。 
 
-標準推奨事項として、高基準列には、rowversion データ型を使用することをお勧めします。 ただし、rowversion の使用は、読み取り専用のレプリカでサポートされていない、SQL Database の `MIN_ACTIVE_ROWVERSION` 関数に依存します。 そのため、rowversion を使用する場合は、インデクサーはプライマリ レプリカを指す必要があります。
+標準推奨事項として、高基準列には、rowversion データ型を使用することをお勧めします。 ただし、rowversion を使用するには `MIN_ACTIVE_ROWVERSION` 関数が必要ですが、この関数は読み取り専用のレプリカではサポートされていません。 そのため、rowversion を使用する場合は、インデクサーはプライマリ レプリカを指す必要があります。
 
 読み取り専用レプリカで rowversion の使用を試みると、次のようなエラーが表示されます。 
 
-    "Using a rowversion column for change tracking is not supported on secondary (read-only) availability replicas. Please update the datasource and specify a connection to the primary availability replica.Current database 'Updateability' property is 'READ_ONLY'".
+"Using a rowversion column for change tracking is not supported on secondary (read-only) availability replicas. (変更追跡での rowversion 列の使用は、セカンダリ (読み取り専用) 可用性レプリカではサポートされていません。) Please update the datasource and specify a connection to the primary availability replica.Current database 'Updateability' property is 'READ_ONLY' (データソースを更新して、プライマリ可用性レプリカへの接続を指定してください。現在のデータベースの "Updateability" プロパティは "READ_ONLY" です。)"
 
 **Q:高基準変更追跡に代替の非 rowversion 列を使用することはできますか?**
 

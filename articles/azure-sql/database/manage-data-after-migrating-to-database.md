@@ -12,17 +12,17 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: e36e11e4150c977b72b445e5bda7dce410c77925
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 4c6904cfa2a7a3c3281da9a930fd59e8d511ac89
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193929"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85249280"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>クラウドの新しい DBA – 移行後の Azure SQL Database の管理
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-従来の自己管理型で自己制御型の環境から PaaS 環境への移行は、最初は少し面倒に思えるかもしれません。 アプリの開発者や DBA であれば、常に、アプリケーションの高い可用性、パフォーマンス、セキュリティ、回復力を維持するのに役立つプラットフォームのコア機能を知りたいと思うでしょう。 この記事の目的はまさにそれです。 この記事では、リソースを簡潔に整理すると共に、アプリケーションの効率的な実行を管理および維持し、クラウドで最善の結果を得るために、単一データベースとプールされたデータベースで SQL Database の主要な機能を最大限に活用する方法のガイダンスを示します。 この記事は、主に以下のような読者を対象に書かれています。
+従来の自己管理型で自己制御型の環境から PaaS 環境への移行は、最初は少し面倒に思えるかもしれません。 アプリの開発者や DBA であれば、常に、アプリケーションの高い可用性、パフォーマンス、セキュリティ、回復力を維持するのに役立つプラットフォームのコア機能を知りたいと思うでしょう。 この記事の目的はまさにそれです。 この記事では、リソースを簡潔に整理すると共に、アプリケーションの効率的な実行を管理および維持し、クラウドで最善の結果を得るために、単一データベースとプールされたデータベースで Azure SQL Database の主要な機能を最大限に活用する方法のガイダンスを示します。 この記事は、主に以下のような読者を対象に書かれています。
 
 - Azure SQL Database へのアプリケーションの移行を評価している – アプリケーションの現代化。
 - アプリケーションの移行を行っている – 進行中の移行シナリオ。
@@ -30,7 +30,7 @@ ms.locfileid: "84193929"
 
 この記事では、単一データベースおよびエラスティック プール内のプールされたデータベースを使用するときにすぐに利用できる、プラットフォームとしての Azure SQL Database の主要な特性の一部について説明します。 次のような内容です。
 
-- Azure portal を使用したデータベースの監視
+- Azure ポータルを使用したデータベースの監視
 - ビジネス継続性とディザスター リカバリー (BCDR)
 - セキュリティとコンプライアンス
 - インテリジェントなデータベースの監視とメンテナンス
@@ -90,7 +90,7 @@ Azure SQL Database ではバックアップを作成しません。なぜなら�
 
 SQL Database ではセキュリティとプライバシーが非常に重視されています。 SQL Database 内のセキュリティはデータベース レベルとプラットフォーム レベルで利用でき、最も理解しやすいのは複数のレイヤーに分類されているときです。 各レイヤーで、アプリケーションを制御して最善のセキュリティを提供します。 以下のレイヤーがあります。
 
-- ID と認証 ([SQL 認証および Azure Active Directory (AAD) 認証](logins-create-manage.md))。
+- ID と認証 ([SQL 認証および Azure Active Directory [Azure AD] 認証](logins-create-manage.md))。
 - アクティビティの監視 ([監査](../../azure-sql/database/auditing-overview.md)および[脅威の検出](threat-detection-configure.md))。
 - 実際のデータの保護 ([Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) および [Always Encrypted (AE)](/sql/relational-databases/security/encryption/always-encrypted-database-engine))。
 - 機密データおよび特権データの制御 ([行レベル セキュリティ](/sql/relational-databases/security/row-level-security)および[動的データ マスク](/sql/relational-databases/security/dynamic-data-masking))。
@@ -104,13 +104,13 @@ SQL Database では 2 種類の認証方法が提供されています。
 - [Azure Active Directory 認証](authentication-aad-overview.md)
 - [SQL 認証](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
-従来の Windows 認証はサポートされていません。 Azure Active Directory (AD) は、ID とアクセスの集中管理サービスです。 組織内のすべての担当者にシングル サインオン (SSO) アクセスを非常に簡単に提供できます。 つまり、認証が簡単なように、資格情報はすべての Azure サービスで共有されます。 AAD は [MFA (多要素認証)](authentication-mfa-ssms-overview.md) をサポートし、[数クリック](../../active-directory/hybrid/how-to-connect-install-express.md)で AAD を Windows Server Active Directory と統合できます。 SQL 認証はこれまでとまったく同じように動作します。 ユーザー名とパスワードを提供すると、特定のサーバーの任意のデータベースでユーザーを認証できます。 このサービスを使用すると、SQL Database および SQL Data Warehouse で、Azure AD ドメイン内において多要素認証とゲスト ユーザー アカウントを提供できます。 既に Active Directory をオンプレミスで使用している場合、そのディレクトリを Azure Active Directory とフェデレーションして Azure へ拡張できます。
+従来の Windows 認証はサポートされていません。 Azure Active Directory (Azure AD) は、ID とアクセスの集中管理サービスです。 組織内のすべての担当者にシングル サインオン (SSO) アクセスを非常に簡単に提供できます。 つまり、認証が簡単なように、資格情報はすべての Azure サービスで共有されます。 Azure AD は [Azure Multi-Factor Authentication](authentication-mfa-ssms-overview.md) をサポートします。[数クリック](../../active-directory/hybrid/how-to-connect-install-express.md)で Azure AD を Windows Server Active Directory と統合できます。 SQL 認証はこれまでとまったく同じように動作します。 ユーザー名とパスワードを提供すると、特定のサーバーの任意のデータベースでユーザーを認証できます。 このサービスを使用すると、SQL Database および SQL Data Warehouse で、Azure AD ドメイン内において Multi-Factor Authentication とゲスト ユーザー アカウントを提供できます。 既に Active Directory をオンプレミスで使用している場合、そのディレクトリを Azure Active Directory とフェデレーションして Azure へ拡張できます。
 
 |**ユーザーの条件**|**SQL Database/SQL Data Warehouse**|
 |---|---|
-|Azure で Azure Active Directory (AD) を使用しない|[SQL 認証](security-overview.md)を使用します。|
+|Azure で Azure Active Directory (Azure AD) を使用しない|[SQL 認証](security-overview.md)を使用します。|
 |オンプレミスの SQL Server で AD を使用している|[AD と Azure AD をフェデレーションして](../../active-directory/hybrid/whatis-hybrid-identity.md)、Azure AD 認証を使用します。 これにより、シングル サインオンを使用できます。|
-|多要素認証 (MFA) を適用する必要がある|[Microsoft 条件付きアクセス](conditional-access-configure.md)で MFA をポリシーとして必須にして、[MFA サポート付きの Azure AD ユニバーサル認証](authentication-mfa-ssms-overview.md)を使用します。|
+|Multi-Factor Authentication を適用する必要がある|[Microsoft 条件付きアクセス](conditional-access-configure.md)で Multi-Factor Authentication をポリシーとして必須にして、[ サポート付きの Azure AD ユニバーサル認証](authentication-mfa-ssms-overview.md)を使用します。|
 |Microsoft アカウント (live.com、outlook.com) または他のドメイン (gmail.com など) のゲスト アカウントを持っている|SQL Database/Data Warehouse で、[Azure AD B2B コラボレーション](../../active-directory/b2b/what-is-b2b.md)を利用する [Azure AD ユニバーサル認証](authentication-mfa-ssms-overview.md)を使用します。|
 |フェデレーション ドメインから Azure AD の資格情報を使用して Windows にログオンしている|[Azure AD 統合認証](authentication-aad-configure.md)を使用します。|
 |Azure にフェデレーションされていないドメインから資格情報を使用して Windows にログオンしている|[Azure AD 統合認証](authentication-aad-configure.md)を使用します。|
@@ -133,7 +133,7 @@ SQL Database では 2 種類の認証方法が提供されています。
 
 #### <a name="service-endpoints"></a>サービス エンドポイント
 
-既定では、SQL Database は、"Azure サービスがサーバーにアクセスできる" ように構成されます。これは、Azure 内の任意の仮想マシンがデータベースへの接続を試行できることを意味します。 これらの試みも認証を受ける必要があります。 ただし、Azure IP がデータベースにアクセスできるようにしたくない場合は、"サーバーへの Azure サービスのアクセスの許可" を無効にできます。 さらに、[VNet サービス エンドポイント](vnet-service-endpoint-rule-overview.md)を構成できます。
+既定では、対象のデータベースは、"Azure サービスにサーバーへのアクセスを許可する" ように構成されます。これは、Azure 内の任意の仮想マシンが対象のデータベースへの接続を試行する可能性があることを意味します。 これらの試みも認証を受ける必要があります。 ただし、Azure IP がデータベースにアクセスできるようにしたくない場合は、"サーバーへの Azure サービスのアクセスの許可" を無効にできます。 さらに、[VNet サービス エンドポイント](vnet-service-endpoint-rule-overview.md)を構成できます。
 
 サービス エンドポイント (SE) を使うと、Azure 内の自分のプライベート仮想ネットワークのみに、重要な Azure リソースを公開できます。 これにより、基本的に、リソースへのパブリック アクセスが除去されます。 仮想ネットワークと Azure の間のトラフィックは、Azure のバックボーン ネットワーク上に留まります。 SE を使わない場合は、強制トンネリング パケット ルーティングを使います。 仮想ネットワークはインターネット トラフィックを強制的に組織に送り、Azure サービス トラフィックは同じルートを経由します。 サービス エンドポイントを使うと、パケットは仮想ネットワークから Azure バックボーン ネットワーク上のサービスに直接流れるので、これを最適化できます。
 
@@ -211,13 +211,13 @@ Always Encrypted は [2 キー階層](/sql/relational-databases/security/encrypt
 
 ### <a name="how-can-i-optimize-and-secure-the-traffic-between-my-organization-and-sql-database"></a>組織と SQL Database の間のトラフィックを最適化してセキュリティ保護するにはどうすればよいですか
 
-組織と SQL Database の間のネットワーク トラフィックは、一般に、パブリック ネットワーク経由でルーティングされます。 ただし、このパスを最適化してセキュリティを強化する場合は、ExpressRoute を検討できます。 ExpressRoute を使うと、基本的に、プライベート接続経由で企業ネットワークを Azure プラットフォームに拡張できます。 これにより、パブリック インターネットを使う必要がなくなります。 また、パブリック インターネット経由の場合より、セキュリティと信頼性が強化され、ルーティングの最適化によりネットワーク待機時間が短縮されてはるかに高速になります。 組織と Azure の間で大きなデータ チャンクを転送することを計画している場合、ExpressRoute を使うとコストの点でメリットがあります。 組織 から Azure への接続は、3 つの異なる接続モデルから選ぶことができます。
+組織と SQL Database の間のネットワーク トラフィックは、一般に、パブリック ネットワーク経由でルーティングされます。 ただし、このパスを最適化してセキュリティを強化する場合は、Azure ExpressRoute を検討できます。 ExpressRoute を使うと、基本的に、プライベート接続経由で企業ネットワークを Azure プラットフォームに拡張できます。 これにより、パブリック インターネットを使う必要がなくなります。 また、パブリック インターネット経由の場合より、セキュリティと信頼性が強化され、ルーティングの最適化によりネットワーク待機時間が短縮されてはるかに高速になります。 組織と Azure の間で大きなデータ チャンクを転送することを計画している場合、ExpressRoute を使うとコストの点でメリットがあります。 組織 から Azure への接続は、3 つの異なる接続モデルから選ぶことができます。
 
 - [クラウドの Exchange で同一場所配置](../../expressroute/expressroute-connectivity-models.md#CloudExchange)
 - [任意の環境間](../../expressroute/expressroute-connectivity-models.md#IPVPN)
 - [ポイント ツー ポイント](../../expressroute/expressroute-connectivity-models.md#Ethernet)
 
-また、ExpressRoute では、購入した帯域幅制限の最大 2 倍を追加料金なしで利用できます。 また、ExpressRoute を使用してリージョン間接続を構成することもできます。 ER 接続プロバイダーの一覧については、「[Express Route パートナーとピアリングの場所](../../expressroute/expressroute-locations.md)」を参照してください。 次の記事では、ExpressRoute についてさらに詳しく説明されています。
+また、ExpressRoute では、購入した帯域幅制限の最大 2 倍を追加料金なしで利用できます。 また、ExpressRoute を使用してリージョン間接続を構成することもできます。 ExpressRoute 接続プロバイダーの一覧については、以下を参照してください: 「[ExpressRoute パートナーとピアリングの場所](../../expressroute/expressroute-locations.md)」。 次の記事では、ExpressRoute についてさらに詳しく説明されています。
 
 - [ExpressRoute の概要](../../expressroute/expressroute-introduction.md)
 - [前提条件](../../expressroute/expressroute-prerequisites.md)
@@ -237,7 +237,7 @@ SQL Database は、さまざまな規制に準拠しています。 SQL Database
 
 ### <a name="performance-monitoring-and-optimization"></a>パフォーマンスの監視と最適化
 
-Query Performance Insight を使うと、データベースのワークロードに合わせて調整された推奨事項が得られ、アプリケーションは常に最適なレベルで実行できます。 推奨事項を自動的に適用し、面倒なメンテナンス タスクを実行しなくてよいように設定することもできます。 Index Advisor を使うと、ワークロードに基づくインデックスの推奨設定を自動的に実装できます。これは自動チューニングと呼ばれます。 推奨事項はアプリケーション ワークロードの変化に応じて進化し、最も重要な推奨事項が提供されます。 また、手動でこれらの推奨事項を確認し、自分で判断して適用することもできます。  
+Query Performance Insight を使うと、データベースのワークロードに合わせて調整された推奨事項が得られ、アプリケーションは常に最適なレベルで実行できます。 推奨事項を自動的に適用し、面倒なメンテナンス タスクを実行しなくてよいように設定することもできます。 SQL Database Advisor を使うと、ワークロードに基づくインデックスの推奨設定を自動的に実装できます。これは自動チューニングと呼ばれます。 推奨事項はアプリケーション ワークロードの変化に応じて進化し、最も重要な推奨事項が提供されます。 また、手動でこれらの推奨事項を確認し、自分で判断して適用することもできます。  
 
 ### <a name="security-optimization"></a>セキュリティの最適化
 
@@ -281,11 +281,11 @@ Azure portal でデータベースを選択し [概要] ペインのグラフを
 
 #### <a name="azure-sql-analytics-preview-in-azure-monitor-logs"></a>Azure Monitor ログの Azure SQL Analytics (プレビュー)
 
-[Azure Monitor ログ](../../azure-monitor/insights/azure-sql.md)では、主要な Azure SQL Database のパフォーマンス メトリックを収集して視覚化することができます。ワークスペースごとに SQL Database は最大 150,000 個、SQL エラスティック プールは最大 5,000 個までサポートされています。 これにより、監視を行い、通知を受け取ることができます。 SQL Database およびエラスティック プールのメトリックは、複数の Azure サブスクリプションとエラスティック プールにわたって監視でき、これらのメトリックを利用してアプリケーション スタックの各層における問題を特定できます。
+[Azure Monitor ログ](../../azure-monitor/insights/azure-sql.md)では、主要な Azure SQL Database のパフォーマンス メトリックを収集して視覚化することができます。ワークスペースごとにデータベースは最大 150,000 個、SQL エラスティック プールは最大 5,000 個までサポートされています。 これにより、監視を行い、通知を受け取ることができます。 SQL Database およびエラスティック プールのメトリックは、複数の Azure サブスクリプションとエラスティック プールにわたって監視でき、これらのメトリックを利用してアプリケーション スタックの各層における問題を特定できます。
 
 ### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>パフォーマンスに問題があります。SQL Database と SQL Server のトラブルシューティングの方法の違いはどのようなものですか
 
-クエリおよびデータベース パフォーマンスの問題の診断に使用するトラブルシューティング手法の主要な部分は、変わりません。 クラウドで利用されている SQL データベース エンジンは同じものです。 ただし、Azure SQL Database プラットフォームには "インテリジェンス" が組み込まれています。 それにより、パフォーマンスの問題のトラブルシューティングと診断が容易になります。 ユーザーに代わって是正措置の一部を実行することもでき、場合によっては事前に問題を自動的に修復します。
+クエリおよびデータベース パフォーマンスの問題の診断に使用するトラブルシューティング手法の主要な部分は、変わりません。 クラウドで利用されているデータベース エンジンは同じものです。 ただし、Azure SQL Database プラットフォームには "インテリジェンス" が組み込まれています。 それにより、パフォーマンスの問題のトラブルシューティングと診断が容易になります。 ユーザーに代わって是正措置の一部を実行することもでき、場合によっては事前に問題を自動的に修復します。
 
 パフォーマンスの問題のトラブルシューティングに向けたアプローチには、[Query Performance Insight (QPI)](query-performance-insight-use.md) や [Database Advisor](database-advisor-implement-performance-recommendations.md) などのインテリジェントな機能を組み合わせて使うと大きなメリットがあり、方法においてはその点が異なります。問題のトラブルシューティングに役立つかもしれない重要な詳細を手作業で調べる必要はもうありません。 難しい作業はプラットフォームがやってくれます。 その 1 つの例は QPI です。 QPI では、クエリ レベルまでドリルダウンし、過去の傾向を見て、クエリが回帰したときを正確に識別できます。 Database Advisor では、インデックスの欠落、インデックスの削除、クエリのパラメーター化など、全体的なパフォーマンスの向上に役立つ推奨事項が提供されます。
 

@@ -7,12 +7,12 @@ ms.subservice: diagnostic-extension
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
-ms.openlocfilehash: a964a28b728a2b1741fb555f47fe6e329bc9902a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 10d4c2d6650502510bd160cc452ac2289130263b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655710"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85549499"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>Windows Azure Diagnostics 拡張機能 (WAD) のインストールと構成
 [Azure Diagnostics 拡張機能](diagnostics-extension-overview.md)は Azure Monitor のエージェントで、ゲスト オペレーティング システムと Azure 仮想マシンと他のコンピューティング リソースのワークロードから監視データを収集します。 この記事では、Windows 診断拡張機能のインストールと構成の詳細と、Azure ストレージ アカウントでデータを保存する方法について説明します。
@@ -20,7 +20,7 @@ ms.locfileid: "83655710"
 診断拡張機能は、Azure では[仮想マシン拡張機能](../../virtual-machines/extensions/overview.md)として実装されているため、Resource Manager テンプレート、PowerShell、および CLI を使用した場合と同じインストール オプションがサポートされています。 仮想マシン拡張機能のインストールと保守の詳細については、[Windows 用の仮想マシン拡張機能と機能](../../virtual-machines/extensions/features-windows.md)に関する記事を参照してください。
 
 ## <a name="overview"></a>概要
-Windows Azure の診断拡張機能を構成するときに、指定したすべてのデータが送信されるストレージ アカウントを指定する必要があります。 必要に応じて、1 つ以上の*データ シンク*を追加して、別の場所にデータを送信することもできます。
+Windows Azure の診断拡張機能を構成するときに、指定したすべてのデータが送信されるストレージ アカウントを指定する必要があります。 必要に応じて、1 つ以上の "*データ シンク*" を追加して、別の場所にデータを送信することもできます。
 
 - Azure Monitor シンク - ゲスト パフォーマンス データを Azure Monitor メトリックに送信します。
 - イベント ハブ シンク - Azure の外部に転送するために、ゲスト パフォーマンスおよびログ データを Azure Event Hubs に送信します。 このシンクは、Azure portal では構成できません。

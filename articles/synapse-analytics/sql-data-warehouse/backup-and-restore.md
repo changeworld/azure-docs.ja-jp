@@ -6,17 +6,17 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/04/2020
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: ea9a9430f9abee6179bacd4f999b7eeca92a8129
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d4a08035b03c104555c39311bfb812218cca44b1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020848"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85482549"
 ---
 # <a name="backup-and-restore-in-azure-synapse-sql-pool"></a>Azure Synapse の SQL プールにおけるバックアップと復元
 
@@ -107,4 +107,4 @@ Azure Synapse の価格の詳細については、[Azure Synapse の価格](http
 
 ## <a name="next-steps"></a>次のステップ
 
-障害計画の詳細については、[ビジネス継続性の概要](../../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)をご覧ください
+復元ポイントの詳細については、「[ユーザー定義の復元ポイント](sql-data-warehouse-restore-points.md)」を参照してください

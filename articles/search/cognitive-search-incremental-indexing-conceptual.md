@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: d4b36f00bad8c06c2f62794fa03a85120af79965
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3957884a8c559194c436487050f0dbc09acf0441
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85557392"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232510"
 ---
 # <a name="incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Azure Cognitive Search のインクリメンタル エンリッチメントとキャッシュ
 
@@ -109,7 +109,7 @@ PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-versi
 
 キャッシュの目的は不必要な処理を回避することにあります。ここで、インデクサーによって検出されない変更 (たとえば、カスタム スキルなどの外部コード内の変更) をスキルに加えるケースを考えてみましょう。
 
-この場合は、[スキルのリセット](https://docs.microsoft.com/rest/api/searchservice/reset-skills)を使用して、特定のスキル (そのスキルの出力に依存するダウンストリームのスキルも含まれます) を強制的に再処理することができます。 この API は、無効にして再処理用にマークする必要があるスキルのリストが含まれた POST 要求を受け取ります。 スキルのリセット後、インデクサーを実行してパイプラインを起動します。
+この場合は、[スキルのリセット](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-skills)を使用して、特定のスキル (そのスキルの出力に依存するダウンストリームのスキルも含まれます) を強制的に再処理することができます。 この API は、無効にして再処理用にマークする必要があるスキルのリストが含まれた POST 要求を受け取ります。 スキルのリセット後、インデクサーを実行してパイプラインを起動します。
 
 ## <a name="change-detection"></a>変更検出
 
@@ -152,13 +152,13 @@ PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-versi
 
 REST API バージョン `2020-06-30-Preview` では、インデクサーの追加のプロパティを使用して、インクリメンタル エンリッチメントが提供されます。 スキルセットとデータ ソースは、一般公開されているバージョンを使用できます。 API の呼び出し方法の詳細については、リファレンス ドキュメントに加えて、[インクリメンタル エンリッチメント用のキャッシュの構成](search-howto-incremental-index.md)に関するページを参照してください。
 
-+ [インデクサーの作成 (api-version=2020-06-30-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-indexer) 
++ [インデクサーの作成 (api-version=2020-06-30-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-indexer) 
 
-+ [インデクサーの更新 (api-version=2020-06-30-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-indexer) 
++ [インデクサーの更新 (api-version=2020-06-30-Preview)](https://docs.microsoft.com/rest/api/searchservice/update-indexer) 
 
 + [スキルセットの更新 (api-version=2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/update-skillset) (要求での新しい URI パラメーター)
 
-+ [スキルのリセット (api-version=2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/reset-skills)
++ [スキルのリセット (api-version=2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-skills)
 
 + データベースのインデクサー (Azure SQL、Cosmos DB)。 一部のインデクサーでは、クエリを使用してデータを取得します。 データを取得するクエリ用に、[データ ソースの更新](https://docs.microsoft.com/rest/api/searchservice/update-data-source)では、要求の新しいパラメーター **ignoreResetRequirement** がサポートされています。更新アクションによってキャッシュが無効にされないようにするには、これを `true` に設定する必要があります。 
 

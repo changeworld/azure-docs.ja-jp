@@ -9,15 +9,15 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9613b74b727d27bd47a05fadc1398bf898f667a5
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 426c79c19b599127e2235f61e8c917062ede3b79
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835727"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84675204"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Azure ML の実験の実行とメトリックを監視する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -127,6 +127,8 @@ __Python スクリプトの実行__モジュールを使用して、ログ記録
         run.log(name='Mean_Absolute_Error', value=dataframe1['Mean_Absolute_Error'])
 
         # Log the mean absolute error to the parent run to see the metric in the run details page.
+        # Note: 'run.parent.log()' should not be called multiple times because of performance issues.
+        # If repeated calls are necessary, cache 'run.parent' as a local variable and call 'log()' on that variable.
         run.parent.log(name='Mean_Absolute_Error', value=dataframe1['Mean_Absolute_Error'])
     
         return dataframe1,
@@ -207,9 +209,11 @@ __Python スクリプトの実行__モジュールを使用して、ログ記録
 
 実験の実行が完了したら、記録された実験の実行レコードを参照できます。 [Azure Machine Learning Studio](https://ml.azure.com) から履歴にアクセスできます。
 
-[実験] タブに移動し、実験を選択します。 実験実行ダッシュボードが表示されます。ここで、実行ごとにログに記録された、追跡対象のメトリックとグラフを確認できます。 この場合は、MSE とアルファ値を記録しました。
+[実験] タブに移動し、実験を選択します。 実験実行ダッシュボードが表示されます。ここで、実行ごとにログに記録された、追跡対象のメトリックとグラフを確認できます。 
 
-  ![Azure Machine Learning Studio での実行の詳細](./media/how-to-track-experiments/experiment-dashboard.png)
+実行一覧テーブルを編集して、特定の実行に関してログされた直近の値や、最小値、最大値を表示することができます。 実行一覧で複数の実行を選択したり選択解除したりすることができます。また、選択された実行は、グラフのデータに反映されます。 新しいグラフを追加したり、グラフを編集したりして、ログされたメトリック (最小値、最大値、直近の値、すべての値) を複数の実行間で比較することもできます。 効率よくデータを調査するために、グラフを最大化することもできます。
+
+:::image type="content" source="media/how-to-track-experiments/experimentation-tab.gif" alt-text="Azure Machine Learning Studio での実行の詳細":::
 
 また、特定の実行にドリルダウンしてその出力やログを表示したり、送信した実験のスナップショットをダウンロードして他のユーザーと実験フォルダーを共有したりすることもできます。
 

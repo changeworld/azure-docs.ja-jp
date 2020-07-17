@@ -1,18 +1,18 @@
 ---
 title: 委任へのアクセスを削除する
-description: Azure の委任されたリソース管理のためにサービス プロバイダーに委任されたリソースへのアクセスを削除する方法について説明します。
-ms.date: 04/24/2020
-ms.topic: conceptual
-ms.openlocfilehash: d0db809eb057f8b4bb48bdf9dd127f4d488f0406
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+description: Azure Lighthouse のためにサービス プロバイダーに委任されたリソースへのアクセスを削除する方法について説明します。
+ms.date: 07/07/2020
+ms.topic: how-to
+ms.openlocfilehash: be1547056bc3ec387ba4cba52f6b6d6fbcaad23c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82149210"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111730"
 ---
 # <a name="remove-access-to-a-delegation"></a>委任へのアクセスを削除する
 
-顧客のサブスクリプションまたはリソース グループが、[Azure の委任されたリソース管理](../concepts/azure-delegated-resource-management.md)のためにサービス プロバイダーに委任された後、必要に応じて委任を削除できます。 委任が削除されると、サービス プロバイダー テナントのユーザーに以前付与されていたアクセスは、適用されなくなります。
+顧客のサブスクリプションまたはリソース グループが、[Azure Lighthouse](../overview.md) のためにサービス プロバイダーに委任された後、必要に応じて委任を削除できます。 委任が削除されると、サービス プロバイダー テナントのユーザーに以前付与されていた、[Azure の委任されたリソース管理](../concepts/azure-delegated-resource-management.md)アクセスは適用されなくなります。
 
 委任の削除は、ユーザーが適切なアクセス許可を持っている限り、顧客テナントまたはサービス プロバイダー テナントのユーザーが行うことができます。
 

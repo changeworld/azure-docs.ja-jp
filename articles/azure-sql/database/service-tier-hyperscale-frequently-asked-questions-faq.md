@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 03/03/2020
-ms.openlocfilehash: d5faa08b0b493ac9b7fc03cd15c4747c3e602f02
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d265726835620c5b468c8a81570e80c7167b2997
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84038073"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084343"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL Database ハイパースケールに関する FAQ
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -43,11 +43,11 @@ ms.locfileid: "84038073"
 | | リソースの種類 | General Purpose |  ハイパースケール | Business Critical |
 |:---:|:---:|:---:|:---:|:---:|
 | **最適な用途** |All|予算重視のバランスの取れたコンピューティングおよびストレージ オプションを提供します。|ほとんどのビジネス ワークロード。 最大 100 TB のストレージ サイズの自動スケーリング、垂直および水平方向への高速コンピューティング スケーリング、データベースの高速復元。|トランザクション レートが高く IO 待ち時間が低い OLTP アプリケーション。 同期的に更新された複数のレプリカを使用して、最高の耐障害性と高速フェールオーバーを提供します。|
-|  **リソースの種類** ||単一データベース/エラスティック プール/マネージド インスタンス | 単一データベース | 単一データベース/エラスティック プール/マネージド インスタンス |
-| **コンピューティング サイズ**|単一データベース/エラスティック プール* | 1 - 80 の仮想コア | 1 - 80 の仮想コア * | 1 - 80 の仮想コア |
+|  **リソースの種類** ||SQL Database/SQL Managed Instance | 単一データベース | SQL Database/SQL Managed Instance |
+| **コンピューティング サイズ**|SQL Database* | 1 - 80 の仮想コア | 1 - 80 の仮想コア * | 1 - 80 の仮想コア |
 | |SQL Managed Instance | 8、16、24、32、40、64、80 の仮想コア | 該当なし | 8、16、24、32、40、64、80 の仮想コア |
 | **ストレージの種類** | All |Premium リモート ストレージ (インスタンスあたり) | ローカル SSD キャッシュを使用して切り離したストレージ (インスタンスあたり) | 超高速ローカル SSD ストレージ (インスタンスあたり) |
-| **ストレージ サイズ** | 単一データベース/エラスティック プール *| 5 GB – 4 TB | 最大 100 TB | 5 GB – 4 TB |
+| **ストレージ サイズ** | SQL Database *| 5 GB – 4 TB | 最大 100 TB | 5 GB – 4 TB |
 | | SQL Managed Instance  | 32 GB – 8 TB | 該当なし | 32 GB – 4 TB |
 | **IOPS** | 単一データベース | 仮想コアあたり 500 IOPS (最大 7000 IOPS) | Hyperscale は、複数のレベルのキャッシュが存在する複数レベル アーキテクチャです。 有効な IOPS はワークロードによって異なります。 | 5000 IOPS (最大 200,000 IOPS)|
 | | SQL Managed Instance | ファイル サイズによって異なる | 該当なし | 1375 IOPS/仮想コア |

@@ -7,14 +7,14 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
-ms.date: 05/29/2020
+ms.date: 06/23/2020
 tags: connectors
-ms.openlocfilehash: 557e162d9d7f0238d5554c32cb3ae96885877dbe
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 01c1a2b3f9455f19877f1b16b7fff5a7c2e77c76
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220500"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85323162"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Azure Logic Apps から SAP システムに接続する
 
@@ -49,9 +49,12 @@ SAP コネクタでは [SAP .NET Connector (NCo) ライブラリ](https://suppor
 
 * [SAP アプリケーション サーバー](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server)または [SAP メッセージ サーバー](https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm)。
 
-* SAP サーバーに送信できるメッセージの内容 (サンプル IDoc ファイルなど) は、XML 形式である必要があり、使用する SAP アクションの名前空間を含める必要があります。
+* SAP サーバーに送信するメッセージの内容 (サンプル IDoc ファイルなど) は、XML 形式である必要があり、使用する SAP アクションの名前空間を含める必要があります。
 
 * **[When a message is received from SAP]\(SAP からメッセージを受信したとき\)** のトリガーを使用するには、次の設定手順も実行する必要があります。
+  
+  > [!NOTE]
+  > このトリガーでは、Webhook サブスクリプションの更新と登録解除の両方に同じ URI の場所を使用します。 更新操作では HTTP `PATCH` メソッドを使用し、登録解除操作では HTTP `DELETE` メソッドを使用します。 この動作により、トリガーの履歴に更新操作が登録解除操作として表示される場合がありますが、トリガーでは HTTP メソッドとして `DELETE` ではなく `PATCH` を使用しているため、その操作は更新になります。
 
   * この設定を使用して、SAP ゲートウェイのセキュリティ アクセス許可を設定します。
 
@@ -360,9 +363,9 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
       Logic Apps により、接続のセットアップとテストが行われ、適切に機能していることが確認されます。
 
-1. SAP システム構成に基づいて[必須パラメーター](#parameters)を指定します。
+1. SAP システム構成に基づいて[必須パラメーター](#parameters)を指定します。 
 
-   任意で 1 つまたは複数の SAP アクションを指定できます。 このアクション リストにより、SAP サーバーからトリガーが受信するメッセージが指定されます。 リストが空の場合、トリガーはすべてのメッセージを受信します。 リストに複数のメッセージが含まれる場合、リストで指定されているメッセージのみをトリガーは受信します。 SAP サーバーから送信された他のすべてのメッセージは拒否されます。
+   [SAP アクションのリストを指定することで、SAP サーバーから受信するメッセージをフィルター処理](#filter-with-sap-actions)できます。
 
    SAP アクションはファイル ピッカーから選択できます。
 
@@ -395,6 +398,56 @@ SAP コネクタは、単純な文字列と数値の入力と共に、次のテ�
 * パラメーターの変更。これにより、新しい SAP リリースのテーブル方向パラメーターが置き換えられます。
 * 階層テーブル パラメーター
 
+<a name="filter-with-sap-actions"></a>
+
+#### <a name="filter-with-sap-actions"></a>SAP アクションでフィルター処理する
+
+必要に応じて、1 つまたは複数の SAP アクションを含むリスト (配列) を指定することによって、ロジック アプリが SAP サーバーから受信するメッセージをフィルター処理できます。 既定では、この配列は空です。つまり、ロジック アプリは、フィルター処理を行わずに SAP サーバーからすべてのメッセージを受信します。 
+
+配列フィルターを設定すると、トリガーは指定された SAP アクションの種類のメッセージだけを受信し、SAP サーバーからの他のすべてのメッセージを拒否します。 ただし、このフィルターは、受信したペイロードの型指定が厳密かそうでないかには影響しません。
+
+SAP アクションによるフィルター処理は、オンプレミス データ ゲートウェイの SAP アダプターのレベルで実行されます。 詳細については、[SAP から Logic Apps にテスト用 IDoc を送信する方法](#send-idocs-from-sap)に関するセクションをご覧ください。
+
+SAP からロジック アプリのトリガーに IDoc パケットを送信できない場合は、SAP トランザクション RFC (tRFC) ダイアログ ボックス (T コード SM58) で、tRFC 呼び出し拒否メッセージを確認します。 SAP インターフェイスに、次のエラー メッセージが表示される場合があります。 **[Status Text]\(状態テキスト\)** フィールドのサブ文字列の制限により、これらは切り詰められています。
+
+* `The RequestContext on the IReplyChannel was closed without a reply being`:エラーにより、チャネルの汎用ハンドラーがチャネルを終了し、他のメッセージを処理するためにチャネルを再構築すると、予期しないエラーが発生します。
+
+  * ロジック アプリが IDoc を受信したことを確認するには、`200 OK` 状態コードを返す [Response アクションを追加](../connectors/connectors-native-reqres.md#add-a-response-action)します。 IDoc は tRFC 経由で転送され、応答ペイロードは許可されません。
+
+  * IDoc を拒否する必要がある場合は、SAP アダプターがユーザーに代わって SAP に例外を返すように、`200 OK` 以外の HTTP 状態コードで応答します。 
+
+* `The segment or group definition E2EDK36001 was not found in the IDoc meta`:セグメントが SAP によってリリースされていないため、変換に必要なそのセグメント タイプのメタデータが見つからないことが原因で IDoc XML ペイロードを生成できないなど、他のエラーによって予期されたエラーが発生します。 
+
+  * これらのセグメントを SAP にリリースしてもらうには、SAP システムの ABAP エンジニアに連絡してください。
+
+<a name="find-extended-error-logs"></a>
+
+#### <a name="find-extended-error-logs"></a>拡張エラー ログを確認する
+
+完全なエラー メッセージについては、SAP アダプターの拡張ログを確認します。 
+
+2020 年 6 月以降のオンプレミス データ ゲートウェイ リリースでは、[アプリ設定でゲートウェイ ログを有効にする](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app)ことができます。
+
+2020 年 4 月以前のオンプレミス データ ゲートウェイ リリースでは、ログは既定で無効になっています。 拡張ログを取得するには、これらの手順に従います。
+
+1. オンプレミス データ ゲートウェイのインストール フォルダーで、`Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config` ファイルを開きます。 
+
+1. **SapExtendedTracing** 設定で、値を **False** から **True** に変更します。
+
+1. 必要に応じて、イベント数を減らす場合は、**SapTracingLevel** 値を **Informational** (既定値) から **Error** または **Warning** に変更します。 イベント数を増やす場合は、**Informational** を **Verbose** に変更します。
+
+1. 構成ファイルを保存します。
+
+1. データ ゲートウェイを再起動します。 オンプレミス データ ゲートウェイ インストーラー アプリを開き、 **[サービス設定]** メニューに移動します。 **[ゲートウェイの再起動]** で、 **[今すぐ再起動]** を選択します。
+
+1. 問題を再現します。
+
+1. ゲートウェイ ログをエクスポートします。 データ ゲートウェイ インストーラー アプリで、 **[診断]** メニューに移動します。 **[ゲートウェイ ログ]** で **[ログのエクスポート]** を選択します。 これらのファイルには、日付別に整理された SAP ログが含まれています。 ログのサイズによっては、1 つの日付に対して複数のログ ファイルが存在する場合があります。
+
+1. 構成ファイルで、**SapExtendedTracing** 設定を **False** に戻します。
+
+1. ゲートウェイ サービスを再起動します。
+
 ### <a name="test-your-logic-app"></a>ロジック アプリをテストする
 
 1. ロジック アプリをトリガーするには、SAP システムからメッセージを送信します。
@@ -403,9 +456,148 @@ SAP コネクタは、単純な文字列と数値の入力と共に、次のテ�
 
 1. 最新の実行を開きます。トリガー出力セクションに SAP システムから送信されたメッセージが表示されます。
 
+<a name="send-idocs-from-sap"></a>
+
+### <a name="test-sending-idocs-from-sap"></a>SAP からの IDoc の送信をテストする
+
+SAP から自分のロジック アプリに IDoc を送信するには、次の最小構成が必要です。
+
+> [!IMPORTANT]
+> これらの手順は、自分のロジック アプリで SAP 構成をテストする場合にのみ使用します。 運用環境では追加の構成が必要になります。
+
+1. [SAP で RFC 宛先を構成する](#create-rfc-destination)
+
+1. [RFC 宛先への ABAP 接続を作成する](#create-abap-connection)
+
+1. [受信側ポートを作成する](#create-receiver-port)
+
+1. [送信側ポートを作成する](#create-sender-port)
+
+1. [論理システム パートナーを作成する](#create-logical-system-partner)
+
+1. [パートナー プロファイルを作成する](#create-partner-profiles)
+
+1. [メッセージの送信をテストする](#test-sending-messages)
+
+#### <a name="create-rfc-destination"></a>RFC 宛先を作成する
+
+1. **[Configuration of RFC Connections]\(RFC 接続の構成\)** 設定を開くには、SAP インターフェイスで、 **/n** プレフィックスを付けた **sm59** トランザクション コード (T コード) を使用します。
+
+1. **[TCP/IP Connections]\(TCP/IP 接続\)**  >  **[Create]\(作成\)** の順に選択します。
+
+1. 次の設定を使用して新しい RFC 宛先を作成します。
+    
+    * **[RFC Destination]\(RFC 宛先\)** に名前を入力します。
+    
+    * **[Technical Settings]\(技術設定\)** タブの **[Activation Type]\(アクティブ化の種類\)** で、 **[Registered Server Program]\(登録済みサーバー プログラム\)** を選択します。 **[Program ID]\(プログラム ID\)** に値を入力します。 SAP では、この識別子を使用してロジック アプリのトリガーが登録されます。
+    
+    * **[Unicode]** タブの **[Communication Type with Target System]\(ターゲット システムとの通信の種類\)** で、 **[Unicode]** を選択します。
+
+1. 変更を保存します。
+
+1. 新しい**プログラム ID** を Azure Logic Apps に登録します。
+
+1. 接続をテストするには、SAP インターフェイスの新しい **RFC 宛先**で、 **[Connection Test]\(接続テスト\)** を選択します。
+
+#### <a name="create-abap-connection"></a>ABAP 接続を作成する
+
+1. **[Configuration of RFC Connections]\(RFC 接続の構成\)** 設定を開くには、SAP インターフェイスで、 **/n** プレフィックスを付けた **sm59*** トランザクション コード (T コード) を使用します。
+
+1. **[ABAP Connections]\(ABAP 接続\)**  >  **[Create]\(作成\)** の順に選択します。
+
+1. **[RFC Destination]\(RFC 宛先\)** に、[テスト用 SAP システム](#create-rfc-destination)の識別子を入力します。
+
+1. 変更を保存します。
+
+1. 接続をテストするには、 **[Connection Test]\(接続テスト\)** を選択します。
+
+#### <a name="create-receiver-port"></a>受信側ポートを作成する
+
+1. **[Ports In IDOC processing]\(IDOC 処理のポート\)** 設定を開くには、SAP インターフェイスで、 **/n** プレフィックスを付けた **we21** トランザクション コード (T コード) を使用します。
+
+1. **[Ports]\(ポート\)**  >  **[Transactional RFC]\(トランザクション RFC\)**  >  **[Create]\(作成\)** の順に選択します。
+
+1. 表示された設定ボックスで、 **[own port name]\(独自のポート名\)** を選択します。 テスト ポートの**名前**を入力します。 変更を保存します。
+
+1. 新しい受信側ポートの設定で、 **[RFC destination]\(RFC 宛先\)** に[テスト用 RFC 宛先](#create-rfc-destination)の識別子を入力します。
+
+1. 変更を保存します。
+
+#### <a name="create-sender-port"></a>送信側ポートを作成する
+
+1.  **[Ports In IDOC processing]\(IDOC 処理のポート\)** 設定を開くには、SAP インターフェイスで、 **/n** プレフィックスを付けた **we21** トランザクション コード (T コード) を使用します。
+
+1. **[Ports]\(ポート\)**  >  **[Transactional RFC]\(トランザクション RFC\)**  >  **[Create]\(作成\)** の順に選択します。
+
+1. 表示された設定ボックスで、 **[own port name]\(独自のポート名\)** を選択します。 テスト ポートについて、**SAP** で始まる**名前**を入力します。 送信側ポート名はすべて、**SAP** という文字で始まる必要があります (例: **SAPTEST**)。 変更を保存します。
+
+1. 新しい送信側ポートの設定で、 **[RFC destination]\(RFC 宛先\)** に [ABAP 接続](#create-abap-connection)の識別子を入力します。
+
+1. 変更を保存します。
+
+#### <a name="create-logical-system-partner"></a>論理システム パートナーを作成する
+
+1. **[Change View "Logical Systems": Overview]\("論理システム" ビューの変更: 概要\)** 設定を開くには、SAP インターフェイスで、**bd54** トランザクション コード (T コード) を使用します。
+
+1. 表示される警告メッセージを受け入れます。 **[Caution: The table is cross-client]\(注意: このテーブルはクロスクライアントです\)**
+
+1. 既存の論理システムを示す一覧の上にある **[New Entries]\(新規エントリ\)** を選択します。
+
+1. 新しい論理システムについて、**Log.System** 識別子と**名前**の簡単な説明を入力します。 変更を保存します。
+
+1. **[Prompt for Workbench]\(ワークベンチのプロンプト\)** が表示されたら、説明を入力して新しい要求を作成します。要求を既に作成している場合は、この手順をスキップします。
+
+1. ワークベンチ要求を作成したら、その要求をテーブル更新要求にリンクします。 テーブルが更新されたことを確認するために、変更を保存します。
+
+#### <a name="create-partner-profiles"></a>パートナー プロファイルを作成する
+
+運用環境では、2 つのパートナー プロファイルを作成する必要があります。 1 つ目のプロファイルは、送信側 (組織および SAP システム) 用です。 2 つ目のプロファイルは、受信側 (ロジック アプリ) 用です。
+
+1. **[Partner profiles]\(パートナー プロファイル\)** 設定を開くには、SAP インターフェイスで、 **/n** プレフィックスを付けた **we20** トランザクション コード (T コード) を使用します。
+
+1. **[Partner Profiles]\(パートナー プロファイル\)** で、 **[Partner Type LS]\(パートナー タイプ LS\)**  >  **[Create]\(作成\)** の順に選択します。
+
+1. 次の設定を使用して新しいパートナー プロファイルを作成します。
+
+    * **[Partner No.]\(パートナー番号\)** に、[論理システム パートナーの識別子](#create-logical-system-partner)を入力します。
+
+    * **[Partn.Type]\(パートナー タイプ\)** に、「**LS**」と入力します。
+
+    * **[Agent]\(エージェント\)** に、Azure Logic Apps または SAP ではない他のシステムのプログラム識別子を登録するときに使用する SAP ユーザー アカウントの識別子を入力します。
+
+1. 変更を保存します。 [論理システム パートナーを作成](#create-logical-system-partner)していない場合、 **[Enter a valid partner number]\(有効なパートナー番号を入力してください\)** というエラーが表示されます。
+
+1. パートナー プロファイルの設定の **[Outbound parmtrs.]\(送信パラメーター\)** で、 **[Create outbound parameter]\(送信パラメーターの作成\)** を選択します。
+
+1. 次の設定を使用して新しい送信パラメーターを作成します。
+
+    * **メッセージの種類**を入力します (例: **CREMAS**)。
+
+    * [受信側ポートの識別子](#create-receiver-port)を入力します。
+
+    * IDoc のサイズを入力します ( **[Pack.　サイズ]** を選択します。 [SAP から IDoc を 1 つずつ送信する](#receive-idoc-packets-from-sap)場合は、 **[Pass IDoc Immediately]\(IDoc をすぐに渡す\)** を選択します。
+
+1. 変更を保存します。
+
+#### <a name="test-sending-messages"></a>メッセージの送信をテストする
+
+1. **[Test Tool for IDoc Processing]\(IDoc 処理のテスト ツール\)** 設定を開くには、SAP インターフェイスで、 **/n** プレフィックスを付けた **we19** トランザクション コード (T コード) を使用します。
+
+1. **[Template for test]\(テスト用テンプレート\)** で、 **[Via message type]\(メッセージの種類を使用\)** を選択し、メッセージの種類 (例: **CREMAS**) を入力します。 **［作成］** を選択します
+
+1. **[Continue]\(続行\)** を選択して、 **[Which IDoc type?]\(どの IDoc タイプですか?\)** というメッセージを確認します。
+
+1. **EDIDC** ノードを選択します。 受信側と送信側のポートの適切な値を入力します。 **[続行]** をクリックします。
+
+1. **[Standard Outbound Processing]\(標準の送信処理\)** を選択します。
+
+1. 送信 IDoc 処理を開始するには、 **[Continue]\(続行\)** を選択します。 処理が完了すると、 **"IDoc sent to SAP system or external program" (SAP システムまたは外部プログラムに IDoc が送信されました)** というメッセージが表示されます。
+
+1.  処理エラーがないかどうかを確認するには、 **/n** プレフィックスを付けた **sm58** トランザクション コード (T コード) を使用します。
+
 ## <a name="receive-idoc-packets-from-sap"></a>SAP から IDoc パケットを受信する
 
-[IDoc をパケットで送信する](https://help.sap.com/viewer/8f3819b0c24149b5959ab31070b64058/7.4.16/en-US/4ab38886549a6d8ce10000000a42189c.html)ように SAP を設定することができます。パケットは、IDoc のバッチまたはグループです。 IDoc パケットを受信するには、SAP コネクタ、特にトリガーでは、追加の構成は必要ありません。 ただし、トリガーがパケットを受信した後に IDoc パケット内の各項目を処理するには、パケットを個々の IDoc に分割するためにいくつかの追加の手順が必要になります。
+[IDoc をパケットで送信する](https://help.sap.com/viewer/8f3819b0c24149b5959ab31070b64058/7.4.16/4ab38886549a6d8ce10000000a42189c.html)ように SAP を設定することができます。パケットは、IDoc のバッチまたはグループです。 IDoc パケットを受信するには、SAP コネクタ、特にトリガーでは、追加の構成は必要ありません。 ただし、トリガーがパケットを受信した後に IDoc パケット内の各項目を処理するには、パケットを個々の IDoc に分割するためにいくつかの追加の手順が必要になります。
 
 次の例は、[`xpath()` 関数](./workflow-definition-language-functions-reference.md#xpath)を使用してパケットから個々の IDoc を抽出する方法を示しています。
 
@@ -439,7 +631,14 @@ SAP コネクタは、単純な文字列と数値の入力と共に、次のテ�
 
 ## <a name="generate-schemas-for-artifacts-in-sap"></a>SAP でアーティファクトのスキーマを生成する
 
-この例では、HTTP 要求でトリガーすることのできるロジック アプリを使用します。 この SAP アクションにより、指定の IDoc と BAPI 向けのスキーマの生成要求が SAP システムに送信されます。 応答で返されたスキーマは、Azure Resource Manager コネクタを使用して、統合アカウントにアップロードされます。
+この例では、HTTP 要求でトリガーすることのできるロジック アプリを使用します。 指定された IDoc および BAPI のスキーマを生成するために、"**スキーマを生成する**" SAP アクションによって要求が SAP システムに送信されます。
+
+この SAP アクションは、XML ドキュメント自体のコンテンツやデータではなく、XML スキーマを返します。 応答で返されたスキーマは、Azure Resource Manager コネクタを使用して統合アカウントにアップロードされます。 スキーマには次の部分が含まれます。
+
+* 要求メッセージの構造。 この情報を使用して、BAPI `get` リストを作成します。
+* 応答メッセージの構造。 この情報を使用して応答を解析します。 
+
+要求メッセージを送信するには、汎用 SAP アクションである "**SAP にメッセージを送信する**"、またはターゲットとなる "**BAPI の呼び出し**" アクションを使用します。
 
 ### <a name="add-an-http-request-trigger"></a>HTTP 要求トリガーを追加する
 
@@ -639,9 +838,23 @@ SAP コネクタは、単純な文字列と数値の入力と共に、次のテ�
 
 ## <a name="advanced-scenarios"></a>高度なシナリオ
 
+### <a name="change-language-headers"></a>言語ヘッダーを変更する
+
+Logic Apps から SAP に接続する場合、接続の既定の言語は英語です。 受信要求で[標準 HTTP ヘッダーの `Accept-Language`](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4) を使用して、接続の言語を設定できます。
+
+> [!TIP]
+> ほとんどの Web ブラウザーでは、ユーザーの設定に基づいて `Accept-Language` ヘッダーが追加されます。 Logic Apps デザイナーで新しい SAP 接続を作成すると、Web ブラウザーによってこのヘッダーが適用されます。 Web ブラウザーの優先言語で SAP 接続を作成しない場合は、希望の優先言語を使用するように Web ブラウザーの設定を更新するか、Logic Apps デザイナーではなく、Azure Resource Manager を使用して SAP 接続を作成します。 
+
+たとえば、**HTTP 要求**トリガーを使用して、`Accept-Language` ヘッダーを含む要求をロジック アプリに送信できます。 ロジック アプリのすべてのアクションがこのヘッダーを受け取ります。 次に、SAP では、BAPI エラー メッセージなどのシステム メッセージで指定された言語が使用されます。
+
+ロジック アプリの SAP 接続パラメーターには言語プロパティがありません。 そのため、`Accept-Language` ヘッダーを使用すると、次のエラーが発生する場合があります: **"Please check your account info and/or permissions and try again" (お使いのアカウントの情報やアクセス許可を確認し、もう一度お試しください)** 。 この場合、代わりに SAP コンポーネントのエラー ログを確認してください。 エラーは、実際にはこのヘッダーを使用する SAP コンポーネントで発生するため、これらのいずれかのエラー メッセージが表示される可能性があります。
+
+* `"SAP.Middleware.Connector.RfcLogonException: Select one of the installed languages"`
+* `"SAP.Middleware.Connector.RfcAbapMessageException: Select one of the installed languages"`
+
 ### <a name="confirm-transaction-explicitly"></a>トランザクションを明示的に確認する
 
-Logic Apps から SAP にトランザクションを送信する場合、この交換は SAP ドキュメントの「[Transactional RFC Server Programs](https://help.sap.com/doc/saphelp_nwpi71/7.1/en-US/22/042ad7488911d189490000e829fbbd/content.htm?no_cache=true)」 (トランザクション RFC サーバー プログラム) で説明されている 2 つの手順で行われます。 既定では、 **[SAP に送信する]** アクションで、関数転送とトランザクション確認の両方の手順が 1 回の呼び出しで処理されます。 SAP コネクタには、これらの手順を分離するオプションが用意されています。 IDoc を送信することができ、トランザクションを自動的に確認するのではなく、明示的な **[Confirm transaction ID]\(トランザクション ID の確認\)** アクションを使用することができます。
+Logic Apps から SAP にトランザクションを送信する場合、この交換は SAP ドキュメントの「[Transactional RFC Server Programs](https://help.sap.com/doc/saphelp_nwpi71/7.1/22/042ad7488911d189490000e829fbbd/content.htm?no_cache=true)」 (トランザクション RFC サーバー プログラム) で説明されている 2 つの手順で行われます。 既定では、 **[SAP に送信する]** アクションで、関数転送とトランザクション確認の両方の手順が 1 回の呼び出しで処理されます。 SAP コネクタには、これらの手順を分離するオプションが用意されています。 IDoc を送信することができ、トランザクションを自動的に確認するのではなく、明示的な **[Confirm transaction ID]\(トランザクション ID の確認\)** アクションを使用することができます。
 
 トランザクション ID の確認を分離するこの機能は、SAP でトランザクションを複製したくない場合に役立ちます。たとえば、ネットワークの問題などが原因でエラーが発生する可能性のあるシナリオの場合です。 トランザクション ID を個別に確認することで、トランザクションは SAP システム内で 1 回だけ完了します。
 

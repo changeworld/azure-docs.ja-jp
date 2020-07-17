@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: rolyon
-ms.openlocfilehash: f169cf45702d4a5051f9f6908b77c645c7a0018f
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: db1b030aed34498ade91a195d5ca68725b579ba3
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042392"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230844"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>Azure サブスクリプションを別の Azure AD ディレクトリに移転する (プレビュー)
 
@@ -189,7 +189,7 @@ ms.locfileid: "86042392"
 
 1. [マネージド ID がサポートされている Azure サービスの一覧](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)を確認して、マネージド ID を使用している可能性がある場所を記録します。
 
-1. システム割り当てとユーザー割り当てのマネージド ID の一覧を表示するには、[az ad sp list](/azure/ad/sp#az-ad-sp-list) を使用します。
+1. システム割り当てとユーザー割り当てのマネージド ID の一覧を表示するには、[az ad sp list](/cli/azure/identity?view=azure-cli-latest#az-identity-list) を使用します。
 
     ```azurecli
     az ad sp list --all --filter "servicePrincipalType eq 'ManagedIdentity'"
